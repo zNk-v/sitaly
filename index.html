@@ -211,15 +211,6 @@
   .panneau.actif .p-corps{opacity:1;transform:none;}
   .p-corps h3{font-size:1.28rem;font-weight:700;letter-spacing:-.02em;line-height:1.2;margin-bottom:.55rem;}
   .p-corps p{color:var(--gris);font-size:.94rem;max-width:24rem;}
-  @media(max-width:780px){
-    .accordion{flex-direction:column;height:auto;}
-    .panneau{flex:none;min-height:80px;}
-    .panneau .p-mot{position:static;left:auto;right:auto;bottom:auto;margin-top:1rem;}
-    .panneau.actif .p-mot{display:none;}
-    .panneau .p-corps{position:static;left:auto;right:auto;bottom:auto;margin-top:1rem;opacity:1;transform:none;}
-    .panneau:not(.actif) .p-corps{display:none;}
-  }
-
   /* ===== Tarifs ===== */
   .grille-prix{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1.2rem;align-items:stretch;}
   .offre{background:var(--carte);border:1px solid var(--bord);border-radius:24px;padding:2.1rem 1.7rem;display:flex;flex-direction:column;position:relative;transition:transform .25s ease-out,border-color .25s;}
@@ -300,6 +291,22 @@
   .final .contenu-final{position:relative;z-index:1;}
 
   footer{border-top:1px solid var(--bord);text-align:center;padding:2.2rem 1.4rem;color:var(--doux);font-size:.83rem;position:relative;z-index:1;background:var(--noir);}
+
+  /* ===== Mobile : toutes les cartes en carrousel horizontal (placé en fin pour primer) ===== */
+  @media(max-width:780px){
+    .etapes,.grille-prix,.grille-options,.accordion{
+      display:flex !important;flex-direction:row !important;flex-wrap:nowrap;overflow-x:auto;overflow-y:visible;
+      scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+      gap:.9rem;padding:1.1rem .2rem;margin:0 -.2rem;scroll-padding-left:.2rem;scrollbar-width:none;}
+    .etapes::-webkit-scrollbar,.grille-prix::-webkit-scrollbar,.grille-options::-webkit-scrollbar,.accordion::-webkit-scrollbar{display:none;}
+    .etapes>*,.grille-prix>*,.grille-options>*,.accordion>*{
+      flex:0 0 84% !important;scroll-snap-align:center;}
+    .accordion{height:auto;}
+    .panneau{min-height:240px;}
+    .panneau .p-mot{display:none;}
+    .panneau .p-corps{position:absolute;left:1.6rem;right:1.6rem;bottom:1.6rem;opacity:1;transform:none;}
+    .panneau:not(.actif){border-color:var(--bord);background:var(--carte);}
+  }
 </style>
 </head>
 <body>
