@@ -1,0 +1,15 @@
+# Sitaly
+
+> Sitaly crée des sites internet professionnels pour artisans et TPE en France. Création à 790€ en paiement unique, ou 99€/mois avec maintenance complète incluse. Livré en 48h.
+
+## Pages
+
+- [Accueil](/): Offre, exemples, process, FAQ et contact.
+- [Exemple K.S Artisan](/exemples/ks-artisan): Site vitrine d'un couvreur-façadier en Essonne réalisé par Sitaly.
+
+## Optional
+
+- [CGV](/cgv): Conditions générales de vente.
+- [Mentions légales](/mentions-legales): Éditeur et hébergeur.
+- [Politique de confidentialité](/politique-confidentialite): RGPD.
+- [Cookies](/cookies): Gestion des cookies.
