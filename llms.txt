@@ -1,14 +1,27 @@
 # Sitaly
 
-> Sitaly crée des sites internet professionnels pour artisans et TPE en France. Création à 790€ en paiement unique, ou 99€/mois avec maintenance complète incluse. Livré en 48h.
+> Sitaly crée des sites internet professionnels pour artisans et TPE. Zone : Brétigny-sur-Orge, Essonne (91) et Île-de-France. Création à 790€ en paiement unique, ou 99€/mois avec hébergement et maintenance inclus. Site livré en 48h.
+
+## Tarifs
+- Création (paiement unique) : 790€ TTC, site vitrine sur mesure livré en 48h, optimisé référencement local.
+- Site + maintenance : 99€/mois, inclut hébergement, nom de domaine, sécurité, mises à jour, petites modifications et support. Sans engagement.
+- Devis et appel découverte gratuits.
+
+## Pour qui
+Artisans (plombiers, électriciens, couvreurs, façadiers, menuisiers, peintres, maçons) et TPE en Essonne et Île-de-France.
+
+## Contact
+- Téléphone : +33 6 58 68 33 72
+- Email : contact@sitaly.fr
 
 ## Pages
-
 - [Accueil](/): Offre, exemples, process, FAQ et contact.
-- [Exemple K.S Artisan](/exemples/ks-artisan): Site vitrine d'un couvreur-façadier en Essonne réalisé par Sitaly.
+- [Tarifs détaillés](/pricing.md): Détail des offres 790€ et 99€/mois.
+- [Exemple K.S Artisan](/exemples/ks-artisan): Site d'un couvreur-façadier en Essonne réalisé par Sitaly.
+- [Exemple Menuiserie](/exemples/menuiserie): Site d'un menuisier en Île-de-France réalisé par Sitaly.
+- [Blog](/blog): Guides sur la création de site, le référencement local et l'acquisition de clients pour artisans.
 
 ## Optional
-
 - [CGV](/cgv): Conditions générales de vente.
 - [Mentions légales](/mentions-legales): Éditeur et hébergeur.
 - [Politique de confidentialité](/politique-confidentialite): RGPD.
