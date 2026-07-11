@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /sitaly-app
 
 Sitemap: https://sitaly.fr/sitemap.xml
