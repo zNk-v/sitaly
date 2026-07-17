@@ -67,6 +67,12 @@ export const Route = createFileRoute("/agents-ia")({
           "Des agents IA installés clé en main : packs prêts à l'emploi ou agents à l'unité. Ils répondent, qualifient, relancent et prennent les rendez-vous à votre place. Réservez un appel.",
       },
       { property: "og:url", content: "https://sitaly.fr/agents-ia" },
+      { property: "og:image", content: "https://sitaly.fr/og-agents-ia.jpg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Sitaly Agents IA" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "https://sitaly.fr/og-agents-ia.jpg" },
     ],
     links: [{ rel: "canonical", href: "https://sitaly.fr/agents-ia" }],
     scripts: [
