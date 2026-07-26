@@ -9,6 +9,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { SitalyLogo } from "@/components/SitalyLogo";
+import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
 import { CALENDLY_URL } from "@/lib/config";
 
 export const Route = createFileRoute("/acquisition")({
@@ -106,19 +107,23 @@ function AcquisitionPage() {
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
+        <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
           <Link to="/" aria-label="Retour à sitaly.fr" className="flex items-center">
             <SitalyLogo />
           </Link>
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
-          >
-            <Calendar className="h-4 w-4" />
-            Réserver un appel
-          </a>
+          <div className="flex items-center gap-2">
+            <HeaderCallButton />
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden h-11 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90 sm:inline-flex"
+            >
+              <Calendar className="h-4 w-4" />
+              Réserver un appel
+            </a>
+            <MobileMenu />
+          </div>
         </div>
       </header>
 

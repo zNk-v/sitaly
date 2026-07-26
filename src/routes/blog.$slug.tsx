@@ -9,6 +9,7 @@ import {
   type BlogSection,
 } from "@/data/blog-posts";
 import { SitalyLogo } from "@/components/SitalyLogo";
+import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
 import { CALENDLY_URL } from "@/lib/config";
 
 export const Route = createFileRoute("/blog/$slug")({
@@ -399,7 +400,7 @@ function FinalCTA() {
 function PostNav() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
+      <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link to="/" className="flex items-center" aria-label="Sitaly — accueil">
           <SitalyLogo />
         </Link>
@@ -411,14 +412,18 @@ function PostNav() {
             Blog
           </Link>
         </nav>
-        <a
-          href={CALENDLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
-        >
-          Réserver un appel
-        </a>
+        <div className="flex items-center gap-2">
+          <HeaderCallButton />
+          <a
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden h-11 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90 sm:inline-flex"
+          >
+            Réserver un appel
+          </a>
+          <MobileMenu current="blog" />
+        </div>
       </div>
     </header>
   );

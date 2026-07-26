@@ -31,6 +31,7 @@ import exampleRenovation from "@/assets/example-renovation.jpg";
 import examplePlombier from "@/assets/example-plombier.jpg";
 import exampleElectricien from "@/assets/example-electricien.jpg";
 import { SitalyLogo } from "@/components/SitalyLogo";
+import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
 import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 const FAQ_ITEMS = [
@@ -124,29 +125,10 @@ function SitalyHome() {
 }
 
 /* ---------------- NAV ---------------- */
-const NAV_LINKS = [
-  { label: "Offres", href: "#offre" },
-  { label: "Exemples", href: "#exemples" },
-  { label: "Process", href: "#process" },
-  { label: "FAQ", href: "#faq" },
-];
-
 function Nav() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  // Empêche le scroll de la page derrière le menu mobile ouvert.
-  useEffect(() => {
-    if (!menuOpen) return;
-    const previous = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = previous;
-    };
-  }, [menuOpen]);
-
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
+      <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <a href="#top" className="flex items-center" aria-label="Sitaly — accueil">
           <SitalyLogo />
         </a>
@@ -163,15 +145,7 @@ function Nav() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
-            href={`tel:${SITALY_PHONE}`}
-            className="inline-flex h-11 items-center gap-2 rounded-lg border border-border bg-card px-3 text-sm font-semibold text-foreground shadow-soft transition hover:border-accent hover:text-accent sm:px-4"
-            aria-label={`Appeler Sitaly au ${SITALY_PHONE_DISPLAY}`}
-          >
-            <Phone className="h-4 w-4" />
-            <span className="hidden lg:inline">{SITALY_PHONE_DISPLAY}</span>
-            <span className="lg:hidden">Appeler</span>
-          </a>
+          <HeaderCallButton />
           <a
             href={CALENDLY_URL}
             target="_blank"
@@ -181,70 +155,9 @@ function Nav() {
             <Calendar className="h-4 w-4" />
             Réserver un appel
           </a>
-          <button
-            type="button"
-            onClick={() => setMenuOpen((v) => !v)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-border bg-card text-foreground shadow-soft transition hover:border-accent md:hidden"
-            aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-            aria-expanded={menuOpen}
-            aria-controls="menu-mobile"
-          >
-            {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          <MobileMenu onHome />
         </div>
       </div>
-
-      {menuOpen && (
-        <div
-          id="menu-mobile"
-          className="border-t border-border bg-background md:hidden"
-        >
-          <nav className="mx-auto flex max-w-7xl flex-col px-4 py-2 sm:px-6">
-            <Link
-              to="/agents-ia"
-              onClick={() => setMenuOpen(false)}
-              className="flex items-center gap-2 border-b border-border/60 py-3.5 text-base font-semibold text-accent"
-            >
-              <Sparkles className="h-4 w-4" />
-              Agents IA
-            </Link>
-            {NAV_LINKS.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setMenuOpen(false)}
-                className="border-b border-border/60 py-3.5 text-base font-medium text-foreground"
-              >
-                {l.label}
-              </a>
-            ))}
-            <Link
-              to="/blog"
-              onClick={() => setMenuOpen(false)}
-              className="border-b border-border/60 py-3.5 text-base font-medium text-foreground"
-            >
-              Blog
-            </Link>
-            <a
-              href="#contact"
-              onClick={() => setMenuOpen(false)}
-              className="py-3.5 text-base font-medium text-foreground"
-            >
-              Contact
-            </a>
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMenuOpen(false)}
-              className="my-3 inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary text-base font-semibold text-primary-foreground shadow-soft"
-            >
-              <Calendar className="h-4 w-4" />
-              Réserver un appel
-            </a>
-          </nav>
-        </div>
-      )}
     </header>
   );
 }

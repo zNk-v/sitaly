@@ -16,6 +16,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { SitalyLogo } from "@/components/SitalyLogo";
+import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
 import { CALENDLY_URL } from "@/lib/config";
 
 /* Ombres bleutées très subtiles à la Wiza (≤ 32px de flou, ~6-8% d'opacité, teinte bleu-nuit) */
@@ -113,7 +114,7 @@ function Nav() {
   return (
     <div className="sticky top-0 z-50 px-4 pt-3 sm:px-6 sm:pt-4">
       <header
-        className={`mx-auto flex h-16 max-w-6xl items-center justify-between rounded-full border border-border/70 bg-background/80 px-4 backdrop-blur-md sm:px-6 ${SOFT_SHADOW}`}
+        className={`relative mx-auto flex h-16 max-w-6xl items-center justify-between rounded-full border border-border/70 bg-background/80 px-4 backdrop-blur-md sm:px-6 ${SOFT_SHADOW}`}
       >
         <Link to="/" className="flex items-center" aria-label="Sitaly — accueil">
           <SitalyLogo />
@@ -144,15 +145,19 @@ function Nav() {
             Blog
           </Link>
         </nav>
-        <a
-          href={CALENDLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:opacity-90 ${SOFT_SHADOW}`}
-        >
-          <Calendar className="h-4 w-4" />
-          Réserver un appel
-        </a>
+        <div className="flex items-center gap-2">
+          <HeaderCallButton rounded="full" />
+          <a
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`hidden h-11 items-center gap-2 rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground transition hover:opacity-90 sm:inline-flex ${SOFT_SHADOW}`}
+          >
+            <Calendar className="h-4 w-4" />
+            Réserver un appel
+          </a>
+          <MobileMenu variant="floating" current="agents-ia" />
+        </div>
       </header>
     </div>
   );
@@ -161,7 +166,7 @@ function Nav() {
 /* ---------------- HERO ---------------- */
 function Hero() {
   return (
-    <section className="hero-bg relative overflow-hidden">
+    <section className="hero-bg relative -mt-[76px] overflow-hidden pt-[76px] sm:-mt-20 sm:pt-20">
       <div className="mx-auto max-w-6xl px-4 pb-20 pt-16 sm:px-6 sm:pt-20 lg:pb-28">
         <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_1fr]">
           <div>
