@@ -1284,7 +1284,7 @@ function Contact() {
             <div className="text-sm text-muted-foreground">Vous préférez appeler ?</div>
             <a
               href={`tel:${SITALY_PHONE}`}
-              className="mt-1 inline-flex items-center gap-2.5 font-display text-2xl font-extrabold tracking-tight text-foreground transition hover:text-accent"
+              className="mt-1 inline-flex items-center gap-2.5 py-1.5 font-display text-2xl font-extrabold tracking-tight text-foreground transition hover:text-accent"
             >
               <Phone className="h-5 w-5 text-accent" />
               {SITALY_PHONE_DISPLAY}
@@ -1405,12 +1405,12 @@ function Footer() {
           <div>
             <div className="text-sm font-semibold">Navigation</div>
             <ul className="mt-3 space-y-1 text-sm text-primary-foreground/70">
-              <li><a href="#offre" className="block py-1.5 hover:text-primary-foreground">Offres</a></li>
-              <li><Link to="/agents-ia" className="block py-1.5 hover:text-primary-foreground">Agents IA</Link></li>
-              <li><a href="#exemples" className="block py-1.5 hover:text-primary-foreground">Exemples</a></li>
-              <li><a href="#process" className="block py-1.5 hover:text-primary-foreground">Process</a></li>
-              <li><a href="#faq" className="block py-1.5 hover:text-primary-foreground">FAQ</a></li>
-              <li><Link to="/blog" className="block py-1.5 hover:text-primary-foreground">Blog</Link></li>
+              <li><a href="#offre" className="block py-2.5 hover:text-primary-foreground">Offres</a></li>
+              <li><Link to="/agents-ia" className="block py-2.5 hover:text-primary-foreground">Agents IA</Link></li>
+              <li><a href="#exemples" className="block py-2.5 hover:text-primary-foreground">Exemples</a></li>
+              <li><a href="#process" className="block py-2.5 hover:text-primary-foreground">Process</a></li>
+              <li><a href="#faq" className="block py-2.5 hover:text-primary-foreground">FAQ</a></li>
+              <li><Link to="/blog" className="block py-2.5 hover:text-primary-foreground">Blog</Link></li>
             </ul>
           </div>
           <div>
@@ -1419,7 +1419,7 @@ function Footer() {
               <li>
                 <a
                   href={`tel:${SITALY_PHONE}`}
-                  className="flex items-center gap-2 py-1 font-semibold text-primary-foreground hover:text-accent"
+                  className="flex items-center gap-2 py-2.5 font-semibold text-primary-foreground hover:text-accent"
                 >
                   <Phone className="h-4 w-4" /> {SITALY_PHONE_DISPLAY}
                 </a>
@@ -1427,18 +1427,18 @@ function Footer() {
               <li>
                 <a
                   href="mailto:contact@sitaly.fr"
-                  className="flex items-center gap-2 py-1 hover:text-primary-foreground"
+                  className="flex items-center gap-2 py-2.5 hover:text-primary-foreground"
                 >
                   <Mail className="h-4 w-4" /> contact@sitaly.fr
                 </a>
               </li>
-              <li className="flex items-center gap-2 py-1"><Globe className="h-4 w-4" /> sitaly.fr</li>
+              <li className="flex items-center gap-2 py-2.5"><Globe className="h-4 w-4" /> sitaly.fr</li>
               <li>
                 <a
                   href="https://instagram.com/sitaly.fr"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 hover:text-primary-foreground"
+                  className="flex items-center gap-2 py-2.5 hover:text-primary-foreground"
                 >
                   <Instagram className="h-4 w-4" /> @sitaly.fr
                 </a>
@@ -1449,10 +1449,10 @@ function Footer() {
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-primary-foreground/60 sm:flex-row">
           <div>© {new Date().getFullYear()} Sitaly. Tous droits réservés.</div>
           <div className="flex flex-wrap justify-center gap-x-5 gap-y-1">
-            <Link to="/mentions-legales" className="py-1.5 hover:text-primary-foreground">Mentions légales</Link>
-            <Link to="/politique-confidentialite" className="py-1.5 hover:text-primary-foreground">Confidentialité</Link>
-            <Link to="/cgv" className="py-1.5 hover:text-primary-foreground">CGV</Link>
-            <Link to="/cookies" className="py-1.5 hover:text-primary-foreground">Cookies</Link>
+            <Link to="/mentions-legales" className="inline-block py-2.5 hover:text-primary-foreground">Mentions légales</Link>
+            <Link to="/politique-confidentialite" className="inline-block py-2.5 hover:text-primary-foreground">Confidentialité</Link>
+            <Link to="/cgv" className="inline-block py-2.5 hover:text-primary-foreground">CGV</Link>
+            <Link to="/cookies" className="inline-block py-2.5 hover:text-primary-foreground">Cookies</Link>
           </div>
         </div>
       </div>
