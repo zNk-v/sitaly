@@ -24,12 +24,14 @@ import {
   FileText,
   Instagram,
   Bot,
+  Menu,
+  X,
 } from "lucide-react";
 import exampleRenovation from "@/assets/example-renovation.jpg";
 import examplePlombier from "@/assets/example-plombier.jpg";
 import exampleElectricien from "@/assets/example-electricien.jpg";
 import { SitalyLogo } from "@/components/SitalyLogo";
-import { CALENDLY_URL } from "@/lib/config";
+import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 const FAQ_ITEMS = [
   {
@@ -65,16 +67,16 @@ const FAQ_ITEMS = [
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Sitaly | Sites web, Google Ads et automatisation pour générer plus de clients" },
+      { title: "Site web & Google Ads pour artisans et TPE | Sitaly" },
       {
         name: "description",
         content:
-          "Sitaly aide les artisans, indépendants et PME à obtenir plus de clients grâce à des sites internet performants, Google Ads et des automatisations simples. Développez votre activité avec un système conçu pour générer des appels et des demandes de devis.",
+          "Site internet livré en 48h, Google Ads et automatisation pour artisans, indépendants et PME. Dès 149€/mois, sans engagement. Plus d'appels, plus de devis.",
       },
-      { property: "og:title", content: "Sitaly | Sites web, Google Ads et automatisation pour générer plus de clients" },
+      { property: "og:title", content: "Site web & Google Ads pour artisans et TPE | Sitaly" },
       {
         property: "og:description",
-        content: "Sitaly aide les artisans, indépendants et PME à obtenir plus de clients grâce à des sites internet performants, Google Ads et des automatisations simples. Développez votre activité avec un système conçu pour générer des appels et des demandes de devis.",
+        content: "Site internet livré en 48h, Google Ads et automatisation pour artisans, indépendants et PME. Dès 149€/mois, sans engagement. Plus d'appels, plus de devis.",
       },
       { property: "og:url", content: "https://sitaly.fr/" },
     ],
@@ -113,7 +115,7 @@ function SitalyHome() {
       <Options />
       <Examples />
       <Process />
-      <Testimonials />
+      <Clients />
       <Faq />
       <Contact />
       <Footer />
@@ -122,7 +124,26 @@ function SitalyHome() {
 }
 
 /* ---------------- NAV ---------------- */
+const NAV_LINKS = [
+  { label: "Offres", href: "#offre" },
+  { label: "Exemples", href: "#exemples" },
+  { label: "Process", href: "#process" },
+  { label: "FAQ", href: "#faq" },
+];
+
 function Nav() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Empêche le scroll de la page derrière le menu mobile ouvert.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [menuOpen]);
+
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
@@ -140,16 +161,90 @@ function Nav() {
           <Link to="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground">Blog</Link>
           <a href="#faq" className="text-sm font-medium text-muted-foreground hover:text-foreground">FAQ</a>
         </nav>
-        <a
-          href={CALENDLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
-        >
-          <Calendar className="h-4 w-4" />
-          Réserver un appel
-        </a>
+
+        <div className="flex items-center gap-2">
+          <a
+            href={`tel:${SITALY_PHONE}`}
+            className="inline-flex h-11 items-center gap-2 rounded-lg border border-border bg-card px-3 text-sm font-semibold text-foreground shadow-soft transition hover:border-accent hover:text-accent sm:px-4"
+            aria-label={`Appeler Sitaly au ${SITALY_PHONE_DISPLAY}`}
+          >
+            <Phone className="h-4 w-4" />
+            <span className="hidden lg:inline">{SITALY_PHONE_DISPLAY}</span>
+            <span className="lg:hidden">Appeler</span>
+          </a>
+          <a
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden h-11 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90 sm:inline-flex"
+          >
+            <Calendar className="h-4 w-4" />
+            Réserver un appel
+          </a>
+          <button
+            type="button"
+            onClick={() => setMenuOpen((v) => !v)}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-border bg-card text-foreground shadow-soft transition hover:border-accent md:hidden"
+            aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={menuOpen}
+            aria-controls="menu-mobile"
+          >
+            {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
+
+      {menuOpen && (
+        <div
+          id="menu-mobile"
+          className="border-t border-border bg-background md:hidden"
+        >
+          <nav className="mx-auto flex max-w-7xl flex-col px-4 py-2 sm:px-6">
+            <Link
+              to="/agents-ia"
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center gap-2 border-b border-border/60 py-3.5 text-base font-semibold text-accent"
+            >
+              <Sparkles className="h-4 w-4" />
+              Agents IA
+            </Link>
+            {NAV_LINKS.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setMenuOpen(false)}
+                className="border-b border-border/60 py-3.5 text-base font-medium text-foreground"
+              >
+                {l.label}
+              </a>
+            ))}
+            <Link
+              to="/blog"
+              onClick={() => setMenuOpen(false)}
+              className="border-b border-border/60 py-3.5 text-base font-medium text-foreground"
+            >
+              Blog
+            </Link>
+            <a
+              href="#contact"
+              onClick={() => setMenuOpen(false)}
+              className="py-3.5 text-base font-medium text-foreground"
+            >
+              Contact
+            </a>
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMenuOpen(false)}
+              className="my-3 inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary text-base font-semibold text-primary-foreground shadow-soft"
+            >
+              <Calendar className="h-4 w-4" />
+              Réserver un appel
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
@@ -1016,61 +1111,79 @@ function Process() {
   );
 }
 
-/* ---------------- TESTIMONIALS ---------------- */
-function Testimonials() {
-  const items = [
+/* ---------------- CLIENTS ---------------- */
+function Clients() {
+  const clients = [
     {
-      name: "J. M.",
-      role: "Plombier — Lyon",
-      quote:
-        "Depuis que mon site est en ligne, je reçois 3 à 5 appels par semaine de nouveaux clients. Le rapport qualité-prix est imbattable.",
+      name: "Aymeric Pataud",
+      role: "Chef à domicile",
+      place: "Île-de-France",
+      detail: "Site vitrine premium, livré et hébergé par Sitaly.",
+      url: "https://znk-v.github.io/aymeric-pataud/",
+      icon: Sparkles,
     },
     {
-      name: "S. R.",
-      role: "Artisan rénovation — Bordeaux",
-      quote:
-        "Sitaly a tout pris en charge. En 48h, j'avais un site magnifique et des demandes de devis dès le premier mois.",
-    },
-    {
-      name: "K. B.",
-      role: "Électricien — Toulouse",
-      quote:
-        "Simple, clair, efficace. Je n'ai rien à gérer et je peux me concentrer sur mes chantiers. Je recommande sans hésiter.",
+      name: "Brian Lafleur",
+      role: "Couvreur",
+      place: "Essonne (91)",
+      detail: "Site vitrine + référencement local, en ligne sur lafleur-toiture.fr.",
+      url: "https://lafleur-toiture.fr/#top",
+      icon: Shield,
     },
   ];
+
   return (
     <section className="py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
-          eyebrow="Témoignages"
-          title="Ils ont fait confiance à Sitaly"
-          subtitle="Des artisans qui reçoivent enfin des appels grâce à leur site."
+          eyebrow="Clients"
+          title="Ils ont confié leur présence en ligne à Sitaly"
+          subtitle="Des sites en ligne, vérifiables. Cliquez pour les visiter."
         />
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {items.map((t) => (
-            <figure
-              key={t.name}
-              className="flex flex-col rounded-2xl border border-border bg-card p-7 shadow-soft"
+          {clients.map((c) => (
+            <a
+              key={c.name}
+              href={c.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col rounded-2xl border border-border bg-card p-7 shadow-soft transition hover:-translate-y-1 hover:shadow-elevated"
             >
-              <div className="flex gap-0.5 text-accent">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-current" />
-                ))}
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                <c.icon className="h-5 w-5" />
               </div>
-              <blockquote className="mt-4 flex-1 text-[15px] leading-relaxed text-foreground/90">
-                « {t.quote} »
-              </blockquote>
-              <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-4">
-                <div className="grid h-10 w-10 place-items-center rounded-full bg-primary font-bold text-primary-foreground">
-                  {t.name[0]}
-                </div>
-                <div>
-                  <div className="text-sm font-semibold">{t.name}</div>
-                  <div className="text-xs text-muted-foreground">{t.role}</div>
-                </div>
-              </figcaption>
-            </figure>
+              <div className="mt-5 text-lg font-bold">{c.name}</div>
+              <div className="text-sm text-muted-foreground">
+                {c.role} — {c.place}
+              </div>
+              <p className="mt-3 flex-1 text-[15px] leading-relaxed text-foreground/90">
+                {c.detail}
+              </p>
+              <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent transition-all group-hover:gap-2.5">
+                Voir le site
+                <ArrowRight className="h-4 w-4" />
+              </span>
+            </a>
           ))}
+
+          <a
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col justify-center rounded-2xl border border-dashed border-accent/40 bg-accent/[0.04] p-7 text-center transition hover:border-accent hover:bg-accent/[0.07]"
+          >
+            <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent">
+              <Calendar className="h-5 w-5" />
+            </div>
+            <div className="mt-5 text-lg font-bold">Votre entreprise ici</div>
+            <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
+              Site livré en 48h, sans engagement. On en parle 20 minutes ?
+            </p>
+            <span className="mt-5 inline-flex items-center justify-center gap-1.5 text-sm font-semibold text-accent transition-all group-hover:gap-2.5">
+              Réserver un appel
+              <ArrowRight className="h-4 w-4" />
+            </span>
+          </a>
         </div>
       </div>
     </section>
@@ -1166,6 +1279,17 @@ function Contact() {
               Réponse sous 24h
             </li>
           </ul>
+
+          <div className="mt-8 rounded-2xl border border-border bg-card/70 p-5 shadow-soft">
+            <div className="text-sm text-muted-foreground">Vous préférez appeler ?</div>
+            <a
+              href={`tel:${SITALY_PHONE}`}
+              className="mt-1 inline-flex items-center gap-2.5 font-display text-2xl font-extrabold tracking-tight text-foreground transition hover:text-accent"
+            >
+              <Phone className="h-5 w-5 text-accent" />
+              {SITALY_PHONE_DISPLAY}
+            </a>
+          </div>
         </div>
 
         <form
@@ -1179,7 +1303,7 @@ function Contact() {
             const message = String(fd.get("message") || "");
             const fullName = `${firstname} ${name}`.trim();
             const body = `Bonjour, je suis ${fullName}${company ? ` (${company})` : ""}.\nTéléphone : ${phone}\n\n${message}`;
-            const sitalyPhone = "+33658683372";
+            const sitalyPhone = SITALY_PHONE;
             const ua = navigator.userAgent;
             const isIOS = /iPad|iPhone|iPod/.test(ua);
             const separator = isIOS ? "&" : "?";
@@ -1280,20 +1404,35 @@ function Footer() {
           </div>
           <div>
             <div className="text-sm font-semibold">Navigation</div>
-            <ul className="mt-3 space-y-2 text-sm text-primary-foreground/70">
-              <li><a href="#offre" className="hover:text-primary-foreground">Offres</a></li>
-              <li><Link to="/agents-ia" className="hover:text-primary-foreground">Agents IA</Link></li>
-              <li><a href="#exemples" className="hover:text-primary-foreground">Exemples</a></li>
-              <li><a href="#process" className="hover:text-primary-foreground">Process</a></li>
-              <li><a href="#faq" className="hover:text-primary-foreground">FAQ</a></li>
-              <li><Link to="/blog" className="hover:text-primary-foreground">Blog</Link></li>
+            <ul className="mt-3 space-y-1 text-sm text-primary-foreground/70">
+              <li><a href="#offre" className="block py-1.5 hover:text-primary-foreground">Offres</a></li>
+              <li><Link to="/agents-ia" className="block py-1.5 hover:text-primary-foreground">Agents IA</Link></li>
+              <li><a href="#exemples" className="block py-1.5 hover:text-primary-foreground">Exemples</a></li>
+              <li><a href="#process" className="block py-1.5 hover:text-primary-foreground">Process</a></li>
+              <li><a href="#faq" className="block py-1.5 hover:text-primary-foreground">FAQ</a></li>
+              <li><Link to="/blog" className="block py-1.5 hover:text-primary-foreground">Blog</Link></li>
             </ul>
           </div>
           <div>
             <div className="text-sm font-semibold">Contact</div>
             <ul className="mt-3 space-y-2 text-sm text-primary-foreground/70">
-              <li className="flex items-center gap-2"><Mail className="h-4 w-4" /> contact@sitaly.fr</li>
-              <li className="flex items-center gap-2"><Globe className="h-4 w-4" /> sitaly.fr</li>
+              <li>
+                <a
+                  href={`tel:${SITALY_PHONE}`}
+                  className="flex items-center gap-2 py-1 font-semibold text-primary-foreground hover:text-accent"
+                >
+                  <Phone className="h-4 w-4" /> {SITALY_PHONE_DISPLAY}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:contact@sitaly.fr"
+                  className="flex items-center gap-2 py-1 hover:text-primary-foreground"
+                >
+                  <Mail className="h-4 w-4" /> contact@sitaly.fr
+                </a>
+              </li>
+              <li className="flex items-center gap-2 py-1"><Globe className="h-4 w-4" /> sitaly.fr</li>
               <li>
                 <a
                   href="https://instagram.com/sitaly.fr"
@@ -1309,11 +1448,11 @@ function Footer() {
         </div>
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-primary-foreground/60 sm:flex-row">
           <div>© {new Date().getFullYear()} Sitaly. Tous droits réservés.</div>
-          <div className="flex flex-wrap justify-center gap-5">
-            <Link to="/mentions-legales" className="hover:text-primary-foreground">Mentions légales</Link>
-            <Link to="/politique-confidentialite" className="hover:text-primary-foreground">Confidentialité</Link>
-            <Link to="/cgv" className="hover:text-primary-foreground">CGV</Link>
-            <Link to="/cookies" className="hover:text-primary-foreground">Cookies</Link>
+          <div className="flex flex-wrap justify-center gap-x-5 gap-y-1">
+            <Link to="/mentions-legales" className="py-1.5 hover:text-primary-foreground">Mentions légales</Link>
+            <Link to="/politique-confidentialite" className="py-1.5 hover:text-primary-foreground">Confidentialité</Link>
+            <Link to="/cgv" className="py-1.5 hover:text-primary-foreground">CGV</Link>
+            <Link to="/cookies" className="py-1.5 hover:text-primary-foreground">Cookies</Link>
           </div>
         </div>
       </div>

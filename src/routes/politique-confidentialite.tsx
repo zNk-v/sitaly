@@ -9,9 +9,9 @@ export const Route = createFileRoute("/politique-confidentialite")({
       { name: "robots", content: "index,follow" },
       { property: "og:title", content: "Politique de confidentialité — Sitaly" },
       { property: "og:description", content: "Comment Sitaly collecte, utilise et protège vos données personnelles, sur le site comme dans l'application, conformément au RGPD." },
-      { property: "og:url", content: "https://sitaly.fr/politique-confidentialite" },
+      { property: "og:url", content: "https://sitaly.fr/politique-confidentialite/" },
     ],
-    links: [{ rel: "canonical", href: "https://sitaly.fr/politique-confidentialite" }],
+    links: [{ rel: "canonical", href: "https://sitaly.fr/politique-confidentialite/" }],
   }),
   component: PolitiqueConfidentialite,
 });

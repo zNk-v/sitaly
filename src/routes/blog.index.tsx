@@ -58,7 +58,7 @@ export const Route = createFileRoute("/blog/")({
       {
         name: "description",
         content:
-          "Le blog Sitaly : guides pratiques pour artisans, indépendants et PME qui veulent générer plus de clients — site internet, référencement Google local, Google Ads et automatisation.",
+          "Guides pratiques pour artisans, indépendants et PME : site internet, référencement Google local, Google Ads et automatisation. Trouvez plus de clients.",
       },
       { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large" },
       { property: "og:title", content: "Blog Sitaly — Plus de clients : site web, Google Ads & automatisation" },
@@ -68,7 +68,7 @@ export const Route = createFileRoute("/blog/")({
           "Guides pratiques pour générer plus de clients : site internet, référencement Google local, Google Ads et automatisation. Pour artisans, indépendants et PME de services.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://sitaly.fr/blog" },
+      { property: "og:url", content: "https://sitaly.fr/blog/" },
       { property: "og:site_name", content: "Sitaly" },
       { property: "og:locale", content: "fr_FR" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -79,7 +79,7 @@ export const Route = createFileRoute("/blog/")({
           "Guides pratiques pour générer plus de clients : site internet, référencement Google local, Google Ads et automatisation. Pour artisans, indépendants et PME de services.",
       },
     ],
-    links: [{ rel: "canonical", href: "https://sitaly.fr/blog" }],
+    links: [{ rel: "canonical", href: "https://sitaly.fr/blog/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -87,7 +87,7 @@ export const Route = createFileRoute("/blog/")({
           "@context": "https://schema.org",
           "@type": "Blog",
           name: "Blog Sitaly",
-          url: "https://sitaly.fr/blog",
+          url: "https://sitaly.fr/blog/",
           inLanguage: "fr-FR",
           description:
             "Guides pour générer plus de clients : site internet, référencement Google local, Google Ads et automatisation. Pour artisans, indépendants et PME de services.",
@@ -116,7 +116,7 @@ export const Route = createFileRoute("/blog/")({
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Accueil", item: "https://sitaly.fr" },
-            { "@type": "ListItem", position: 2, name: "Blog", item: "https://sitaly.fr/blog" },
+            { "@type": "ListItem", position: 2, name: "Blog", item: "https://sitaly.fr/blog/" },
           ],
         }),
       },

@@ -9,9 +9,9 @@ export const Route = createFileRoute("/cookies")({
       { name: "robots", content: "index,follow" },
       { property: "og:title", content: "Politique cookies — Sitaly" },
       { property: "og:description", content: "Comment Sitaly utilise et gère les cookies, conformément au RGPD et aux recommandations de la CNIL." },
-      { property: "og:url", content: "https://sitaly.fr/cookies" },
+      { property: "og:url", content: "https://sitaly.fr/cookies/" },
     ],
-    links: [{ rel: "canonical", href: "https://sitaly.fr/cookies" }],
+    links: [{ rel: "canonical", href: "https://sitaly.fr/cookies/" }],
   }),
   component: Cookies,
 });

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 
-const URL = "https://sitaly.fr/site-internet-menuisier";
+const URL = "https://sitaly.fr/site-internet-menuisier/";
 const TITLE = "Site internet menuisier : portfolio & devis | Sitaly dès 149€/mois";
 const DESCRIPTION =
   "Site internet menuisier avec portfolio avant/après, devis en ligne et SEO local. Livré en 48h, dès 149€/mois en location, sans engagement et tout inclus.";

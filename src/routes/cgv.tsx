@@ -9,9 +9,9 @@ export const Route = createFileRoute("/cgv")({
       { name: "robots", content: "index,follow" },
       { property: "og:title", content: "Conditions Générales de Vente et d'Utilisation — Sitaly" },
       { property: "og:description", content: "Les conditions régissant les prestations de sites internet et l'accès à la plateforme Sitaly." },
-      { property: "og:url", content: "https://sitaly.fr/cgv" },
+      { property: "og:url", content: "https://sitaly.fr/cgv/" },
     ],
-    links: [{ rel: "canonical", href: "https://sitaly.fr/cgv" }],
+    links: [{ rel: "canonical", href: "https://sitaly.fr/cgv/" }],
   }),
   component: CGV,
 });

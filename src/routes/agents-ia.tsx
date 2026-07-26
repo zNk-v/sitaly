@@ -58,7 +58,7 @@ export const Route = createFileRoute("/agents-ia")({
       {
         name: "description",
         content:
-          "Une équipe d'agents IA installés clé en main par Sitaly : standardiste, prise de rendez-vous, relance de devis, messages. Des packs pensés pour les artisans et TPE, ou des agents à l'unité. Réservez un appel.",
+          "Des agents IA installés clé en main : standardiste, prise de rendez-vous, relance de devis, réponse aux messages. Pour artisans et TPE, en pack ou à l'unité.",
       },
       { property: "og:title", content: "Agents IA pour artisans & TPE | Sitaly" },
       {
@@ -66,7 +66,7 @@ export const Route = createFileRoute("/agents-ia")({
         content:
           "Des agents IA installés clé en main : packs prêts à l'emploi ou agents à l'unité. Ils répondent, qualifient, relancent et prennent les rendez-vous à votre place. Réservez un appel.",
       },
-      { property: "og:url", content: "https://sitaly.fr/agents-ia" },
+      { property: "og:url", content: "https://sitaly.fr/agents-ia/" },
       { property: "og:image", content: "https://sitaly.fr/og-agents-ia.jpg" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
@@ -74,7 +74,7 @@ export const Route = createFileRoute("/agents-ia")({
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: "https://sitaly.fr/og-agents-ia.jpg" },
     ],
-    links: [{ rel: "canonical", href: "https://sitaly.fr/agents-ia" }],
+    links: [{ rel: "canonical", href: "https://sitaly.fr/agents-ia/" }],
     scripts: [
       {
         type: "application/ld+json",

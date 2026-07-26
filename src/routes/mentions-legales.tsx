@@ -9,9 +9,9 @@ export const Route = createFileRoute("/mentions-legales")({
       { name: "robots", content: "index,follow" },
       { property: "og:title", content: "Mentions légales — Sitaly" },
       { property: "og:description", content: "Informations légales sur l'éditeur, l'hébergeur et la propriété intellectuelle du site Sitaly." },
-      { property: "og:url", content: "https://sitaly.fr/mentions-legales" },
+      { property: "og:url", content: "https://sitaly.fr/mentions-legales/" },
     ],
-    links: [{ rel: "canonical", href: "https://sitaly.fr/mentions-legales" }],
+    links: [{ rel: "canonical", href: "https://sitaly.fr/mentions-legales/" }],
   }),
   component: MentionsLegales,
 });

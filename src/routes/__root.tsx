@@ -78,10 +78,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Sitaly | Sites web, Google Ads et automatisation pour générer plus de clients" },
-      { name: "description", content: "Sitaly aide les artisans, indépendants et PME à obtenir plus de clients grâce à des sites internet performants, Google Ads et des automatisations simples. Développez votre activité avec un système conçu pour générer des appels et des demandes de devis." },
-      { property: "og:title", content: "Sitaly | Sites web, Google Ads et automatisation pour générer plus de clients" },
-      { property: "og:description", content: "Sitaly aide les artisans, indépendants et PME à obtenir plus de clients grâce à des sites internet performants, Google Ads et des automatisations simples. Développez votre activité avec un système conçu pour générer des appels et des demandes de devis." },
+      { title: "Site web & Google Ads pour artisans et TPE | Sitaly" },
+      { name: "description", content: "Site internet livré en 48h, Google Ads et automatisation pour artisans, indépendants et PME. Dès 149€/mois, sans engagement. Plus d'appels, plus de devis." },
+      { property: "og:title", content: "Site web & Google Ads pour artisans et TPE | Sitaly" },
+      { property: "og:description", content: "Site internet livré en 48h, Google Ads et automatisation pour artisans, indépendants et PME. Dès 149€/mois, sans engagement. Plus d'appels, plus de devis." },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Sitaly" },
       { property: "og:url", content: "https://sitaly.fr" },
@@ -96,9 +96,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" },
+      // Polices auto-hébergées (voir src/fonts.css) : plus de requête bloquante vers Google.
+      {
+        rel: "preload",
+        as: "font",
+        type: "font/woff2",
+        href: "/fonts/inter-latin.woff2",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "preload",
+        as: "font",
+        type: "font/woff2",
+        href: "/fonts/plus-jakarta-sans-latin.woff2",
+        crossOrigin: "anonymous",
+      },
     ],
     scripts: [
       {

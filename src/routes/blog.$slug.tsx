@@ -24,7 +24,7 @@ export const Route = createFileRoute("/blog/$slug")({
         meta: [{ title: "Article introuvable | Blog Sitaly" }],
       };
     }
-    const url = `https://sitaly.fr/blog/${post.slug}`;
+    const url = `https://sitaly.fr/blog/${post.slug}/`;
     const faqSection = post.content.find((s) => s.type === "faq");
     const wordCount = post.content.reduce((acc, s) => {
       if (s.type === "p" || s.type === "h2" || s.type === "h3" || s.type === "quote") return acc + s.text.split(/\s+/).length;
@@ -55,7 +55,7 @@ export const Route = createFileRoute("/blog/$slug")({
             logo: { "@type": "ImageObject", url: "https://sitaly.fr/apple-touch-icon.png" },
           },
           mainEntityOfPage: { "@type": "WebPage", "@id": url },
-          isPartOf: { "@type": "Blog", "@id": "https://sitaly.fr/blog" },
+          isPartOf: { "@type": "Blog", "@id": "https://sitaly.fr/blog/" },
           url,
         }),
       },
@@ -66,7 +66,7 @@ export const Route = createFileRoute("/blog/$slug")({
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Accueil", item: "https://sitaly.fr" },
-            { "@type": "ListItem", position: 2, name: "Blog", item: "https://sitaly.fr/blog" },
+            { "@type": "ListItem", position: 2, name: "Blog", item: "https://sitaly.fr/blog/" },
             { "@type": "ListItem", position: 3, name: post.title, item: url },
           ],
         }),

@@ -27,9 +27,9 @@ export const Route = createFileRoute("/acquisition")({
         content:
           "La gestion de vos campagnes Google Ads pour attirer des clients. Indépendant de votre site. Dès 299€/mois.",
       },
-      { property: "og:url", content: "https://sitaly.fr/acquisition" },
+      { property: "og:url", content: "https://sitaly.fr/acquisition/" },
     ],
-    links: [{ rel: "canonical", href: "https://sitaly.fr/acquisition" }],
+    links: [{ rel: "canonical", href: "https://sitaly.fr/acquisition/" }],
     scripts: [
       {
         type: "application/ld+json",
