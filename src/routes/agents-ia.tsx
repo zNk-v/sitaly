@@ -681,7 +681,7 @@ function Footer() {
     <footer className="border-t border-border bg-primary py-12 text-primary-foreground">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-          <SitalyLogo />
+          <SitalyLogo variant="blanc" />
           <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-primary-foreground/70">
             <Link to="/" className="transition hover:text-primary-foreground">Accueil</Link>
             <a href="/#offre" className="transition hover:text-primary-foreground">Offres</a>

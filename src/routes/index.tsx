@@ -1309,7 +1309,7 @@ function Footer() {
         <div className="grid gap-8 md:grid-cols-3">
           <div>
             <div className="flex items-center gap-2">
-              <SitalyLogo />
+              <SitalyLogo variant="blanc" />
             </div>
             <p className="mt-3 text-sm text-primary-foreground/70">
               Plus de clients pour les artisans, indépendants et PME : site internet, Google Ads et automatisation.
