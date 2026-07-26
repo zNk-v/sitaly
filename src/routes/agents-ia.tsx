@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { SitalyLogo } from "@/components/SitalyLogo";
 import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
+import { WorkflowCanvas } from "@/components/WorkflowCanvas";
 import { CALENDLY_URL } from "@/lib/config";
 
 /* Ombres bleutées très subtiles à la Wiza (≤ 32px de flou, ~6-8% d'opacité, teinte bleu-nuit) */
@@ -100,6 +101,7 @@ function AgentsIA() {
       <Nav />
       <Hero />
       <Packs />
+      <Coulisses />
       <Comparatif />
       <AgentsUnit />
       <Faq />
@@ -410,6 +412,35 @@ function Packs() {
   );
 }
 
+/* ---------------- COULISSES : CANVAS WORKFLOW n8n ---------------- */
+function Coulisses() {
+  return (
+    <section id="coulisses" className="py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <SectionHeader
+          eyebrow="Sous le capot"
+          title="Voici concrètement ce qu'on installe pour vous"
+          subtitle="Chaque agent est un vrai workflow automatisé, branché à vos outils : téléphonie, agenda, CRM, SMS. Choisissez un scénario pour le voir travailler."
+        />
+        <div className="mx-auto mt-14 max-w-5xl">
+          <WorkflowCanvas />
+        </div>
+        <div className="mt-10 text-center">
+          <a
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`inline-flex items-center justify-center gap-2 rounded-[8px] bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition hover:opacity-90 ${CARD_SHADOW}`}
+          >
+            <Calendar className="h-5 w-5" />
+            Réserver un audit gratuit
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------- COMPARATIF ---------------- */
 const PACK_COLS = ["Essentiel", "Performance", "Croissance"];
 const COMPARISON: { feature: string; vals: [boolean, boolean, boolean] }[] = [
@@ -681,7 +712,7 @@ function Footer() {
     <footer className="border-t border-border bg-primary py-12 text-primary-foreground">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-          <SitalyLogo variant="blanc" />
+          <SitalyLogo />
           <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-primary-foreground/70">
             <Link to="/" className="transition hover:text-primary-foreground">Accueil</Link>
             <a href="/#offre" className="transition hover:text-primary-foreground">Offres</a>

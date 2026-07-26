@@ -19,7 +19,7 @@ export function SitalyLogo({
       alt="Sitaly"
       width={414}
       height={108}
-      className={`h-8 w-auto ${className}`}
+      className={`h-6 w-auto sm:h-7 ${className}`}
     />
   );
 }
