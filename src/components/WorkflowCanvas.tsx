@@ -430,7 +430,11 @@ export function WorkflowCanvas() {
     return () => mq.removeEventListener("change", update);
   }, []);
 
-  /* Déclenchement au scroll (~40% visible) */
+  /* Déclenchement dès que le canvas entre à l'écran.
+     Seuil volontairement à 0 : en vertical (mobile) le canvas dépasse largement
+     la hauteur de l'écran, et un seuil en pourcentage devient inatteignable sur
+     un écran court — le schéma resterait alors invisible. Le rootMargin négatif
+     laisse simplement le canvas s'engager un peu avant de lancer l'entrée. */
   useEffect(() => {
     const el = frameRef.current;
     if (!el) return;
@@ -439,7 +443,7 @@ export function WorkflowCanvas() {
         if (e.isIntersecting) setEntered(true);
         setInView(e.isIntersecting);
       },
-      { threshold: 0.35 },
+      { threshold: 0, rootMargin: "0px 0px -10% 0px" },
     );
     io.observe(el);
     return () => io.disconnect();
@@ -496,7 +500,7 @@ export function WorkflowCanvas() {
           {/* Grille de points façon canvas n8n */}
           <defs>
             <pattern id="wfc-dots" width="24" height="24" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1.2" fill="#33333a" />
+              <circle cx="2" cy="2" r="1.2" fill="var(--wfc-dot, #33333a)" />
             </pattern>
           </defs>
           <rect width={layout.vb.w} height={layout.vb.h} fill="url(#wfc-dots)" />

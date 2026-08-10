@@ -66,8 +66,9 @@
   --input: oklch(0.93 0.01 300);
   --ring: oklch(0.6 0.2 300);
 
-  --gradient-hero: radial-gradient(ellipse at top, oklch(0.6 0.2 300 / 0.12), transparent 60%),
-                   linear-gradient(180deg, oklch(0.985 0.005 300), oklch(1 0 0));
+  --gradient-hero:
+    radial-gradient(ellipse at top, oklch(0.6 0.2 300 / 0.12), transparent 60%),
+    linear-gradient(180deg, oklch(0.985 0.005 300), oklch(1 0 0));
   --gradient-primary: linear-gradient(135deg, oklch(0.24 0.07 300), oklch(0.38 0.12 300));
   --gradient-accent: linear-gradient(135deg, oklch(0.6 0.2 300), oklch(0.7 0.15 320));
 }
@@ -86,7 +87,10 @@
     -webkit-font-smoothing: antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
   }
@@ -101,21 +105,36 @@
   background-clip: text;
   color: transparent;
 }
-@utility shadow-soft { box-shadow: var(--shadow-soft); }
-@utility shadow-elevated { box-shadow: var(--shadow-elevated); }
-@utility shadow-glow { box-shadow: var(--shadow-glow); }
+@utility shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+@utility shadow-elevated {
+  box-shadow: var(--shadow-elevated);
+}
+@utility shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
 
 @keyframes float-soft {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 @utility animate-float {
   animation: float-soft 6s ease-in-out infinite;
 }
 
 @keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 @utility animate-marquee {
   animation: marquee-scroll 38s linear infinite;
@@ -133,6 +152,260 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee {
     animation: none;
+  }
+}
+
+/* ============================================================
+   Thème sombre local — page /agents-ia
+   Redéfinit les tokens de couleur sur `.ai-page` uniquement : les
+   utilitaires Tailwind (bg-card, text-muted-foreground, border-border…)
+   basculent en sombre sans toucher au reste du site.
+
+   Teinte 300 partout : c'est le violet du logo Sitaly, simplement
+   éclairci pour rester lisible sur fond sombre. Le fond garde une
+   pointe de la même teinte, très désaturée, plutôt qu'un gris neutre.
+   ============================================================ */
+
+.ai-page {
+  --background: oklch(0.16 0.03 300);
+  --foreground: oklch(0.97 0.008 300);
+  --card: oklch(0.2 0.038 300);
+  --card-foreground: oklch(0.97 0.008 300);
+  --popover: oklch(0.2 0.038 300);
+  --popover-foreground: oklch(0.97 0.008 300);
+  --primary: oklch(0.72 0.19 300);
+  --primary-foreground: oklch(0.15 0.04 300);
+  --secondary: oklch(0.24 0.042 300);
+  --secondary-foreground: oklch(0.97 0.008 300);
+  --muted: oklch(0.24 0.042 300);
+  --muted-foreground: oklch(0.77 0.028 300);
+  --accent: oklch(0.74 0.18 300);
+  --accent-foreground: oklch(0.15 0.04 300);
+  --success: oklch(0.78 0.15 172);
+  --success-foreground: oklch(0.15 0.04 300);
+  --destructive: oklch(0.68 0.18 25);
+  --border: oklch(0.98 0.01 300 / 0.14);
+  --input: oklch(0.98 0.01 300 / 0.2);
+  --ring: oklch(0.74 0.18 300);
+
+  /* Déclinaisons de l'accent, du plus clair au plus profond.
+     Nommées par rôle et non par couleur : la teinte peut évoluer. */
+  --ai-accent: oklch(0.74 0.18 300);
+  --ai-accent-soft: oklch(0.82 0.13 322);
+  --ai-accent-deep: oklch(0.63 0.19 288);
+
+  /* Couleurs internes du canvas workflow, réaccordées au thème */
+  --wfc-dot: oklch(0.98 0.01 300 / 0.1);
+
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* Texture numérique très discrète, posée derrière tout le contenu */
+.ai-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(oklch(0.98 0.01 300 / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.98 0.01 300 / 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 75%);
+}
+
+/* Halo lumineux, réservé aux zones importantes (hero, CTA final).
+   Dégradé pur plutôt qu'un filter: blur() : même rendu, sans couche
+   de compositing coûteuse sur mobile. */
+.ai-halo {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.4;
+  background: radial-gradient(
+    closest-side,
+    oklch(0.74 0.18 300 / 0.55),
+    oklch(0.82 0.13 322 / 0.22) 45%,
+    transparent 78%
+  );
+}
+
+/* Carte technique : surface translucide sur fond opaque, sans backdrop-filter
+   (aucun gain visuel ici, et un coût GPU réel multiplié par le nombre de cartes). */
+.ai-card {
+  background: oklch(0.98 0.01 300 / 0.04);
+  border: 1px solid oklch(0.98 0.01 300 / 0.12);
+  border-radius: 14px;
+}
+.ai-card-hover {
+  transition:
+    border-color 0.25s,
+    background-color 0.25s,
+    transform 0.25s;
+}
+@media (hover: hover) {
+  .ai-card-hover:hover {
+    border-color: oklch(0.74 0.18 300 / 0.5);
+    background: oklch(0.98 0.01 300 / 0.07);
+    transform: translateY(-2px);
+  }
+}
+
+/* Filet dégradé en haut de carte, utilisé sur les blocs agents */
+.ai-topline::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ai-accent), transparent);
+  opacity: 0.7;
+}
+
+/* CTA principal */
+.ai-cta {
+  background: linear-gradient(135deg, var(--ai-accent), var(--ai-accent-deep));
+  color: oklch(0.14 0.03 264);
+  box-shadow: 0 10px 30px -12px oklch(0.74 0.18 300 / 0.65);
+  transition:
+    box-shadow 0.25s,
+    transform 0.15s,
+    filter 0.25s;
+}
+.ai-cta:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 14px 40px -12px oklch(0.74 0.18 300 / 0.8);
+}
+.ai-cta:active {
+  transform: translateY(1px);
+}
+
+.ai-page :is(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--ai-accent-soft);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.ai-gradient-text {
+  background: linear-gradient(
+    100deg,
+    var(--ai-accent-soft),
+    var(--ai-accent) 45%,
+    var(--ai-accent-deep)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* --- Apparition progressive des sections ---
+   Le contenu est visible par défaut (sans JS, ou avant hydratation).
+   Le script ajoute `.ai-anim` sur le conteneur, puis `.is-in` au scroll. */
+.ai-anim [data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+.ai-anim [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* FAQ native <details> : on masque le marqueur par défaut des navigateurs */
+.ai-page summary::-webkit-details-marker {
+  display: none;
+}
+.ai-page summary::marker {
+  content: "";
+}
+
+/* --- Rail de flux (hero) --- */
+.ai-rail {
+  display: grid;
+  gap: 0;
+}
+.ai-rail-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 0.85rem;
+  padding-bottom: 1.4rem;
+}
+.ai-rail-step:last-child {
+  padding-bottom: 0;
+}
+.ai-rail-step::before {
+  content: "";
+  position: absolute;
+  left: 21px;
+  top: 46px;
+  bottom: 2px;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    var(--ai-accent) 0%,
+    oklch(0.98 0.01 300 / 0.14) 45%,
+    oklch(0.98 0.01 300 / 0.14) 100%
+  );
+  background-size: 100% 220%;
+  animation: ai-rail-flow 3.2s linear infinite;
+}
+.ai-rail-step:last-child::before {
+  display: none;
+}
+@keyframes ai-rail-flow {
+  from {
+    background-position: 0 -120%;
+  }
+  to {
+    background-position: 0 120%;
+  }
+}
+@media (min-width: 1024px) {
+  .ai-rail {
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+  }
+  .ai-rail-step {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 0 1.1rem 0 0;
+  }
+  .ai-rail-step::before {
+    left: 52px;
+    right: 0;
+    top: 21px;
+    bottom: auto;
+    width: auto;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      var(--ai-accent) 0%,
+      oklch(0.98 0.01 300 / 0.14) 45%,
+      oklch(0.98 0.01 300 / 0.14) 100%
+    );
+    background-size: 220% 100%;
+    animation: ai-rail-flow-h 3.2s linear infinite;
+  }
+  @keyframes ai-rail-flow-h {
+    from {
+      background-position: -120% 0;
+    }
+    to {
+      background-position: 120% 0;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-anim [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .ai-rail-step::before {
+    animation: none !important;
   }
 }
 
@@ -159,7 +432,9 @@
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
-.wfc-tabs::-webkit-scrollbar { display: none; }
+.wfc-tabs::-webkit-scrollbar {
+  display: none;
+}
 .wfc-tab {
   flex: none;
   display: flex;
@@ -172,17 +447,35 @@
   color: #a8a8b6;
   cursor: pointer;
   text-align: left;
-  transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s,
+    color 0.2s;
 }
-.wfc-tab:hover { border-color: #55555f; color: #f2f2f5; }
-.wfc-tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wfc-tab:hover {
+  border-color: #55555f;
+  color: #f2f2f5;
+}
+.wfc-tab:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
 .wfc-tab[aria-selected="true"] {
   background: oklch(0.6 0.2 300 / 0.16);
   border-color: oklch(0.6 0.2 300 / 0.55);
   color: #fff;
 }
-.wfc-tab-name { font-size: 13px; font-weight: 600; line-height: 1.25; white-space: nowrap; }
-.wfc-tab-offer { font-size: 10.5px; opacity: 0.65; white-space: nowrap; }
+.wfc-tab-name {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+.wfc-tab-offer {
+  font-size: 10.5px;
+  opacity: 0.65;
+  white-space: nowrap;
+}
 
 .wfc-blurb {
   padding: 10px 18px 2px;
@@ -192,32 +485,55 @@
   max-width: 62ch;
 }
 
-.wfc-svg { display: block; width: 100%; height: auto; font-family: var(--font-sans); }
+.wfc-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--font-sans);
+}
 
 /* --- Nodes : entrée en fade + translate séquentiel (stagger via --d) --- */
 .wfc-node {
   opacity: 0;
   transform: translateY(10px);
   transform-box: fill-box;
-  transition: opacity 0.45s ease var(--d, 0ms), transform 0.45s ease var(--d, 0ms);
+  transition:
+    opacity 0.45s ease var(--d, 0ms),
+    transform 0.45s ease var(--d, 0ms);
 }
-.wfc-live .wfc-node { opacity: 1; transform: none; }
+.wfc-live .wfc-node {
+  opacity: 1;
+  transform: none;
+}
 .wfc-node-box {
   fill: #2b2b33;
   stroke: #3a3a44;
   stroke-width: 1;
-  transition: stroke 0.25s, filter 0.25s;
+  transition:
+    stroke 0.25s,
+    filter 0.25s;
 }
 .wfc-node:hover .wfc-node-box,
 .wfc-node.wfc-lit .wfc-node-box {
   stroke: var(--accent);
   filter: drop-shadow(0 0 7px oklch(0.6 0.2 300 / 0.5));
 }
-.wfc-title { fill: #f2f2f5; font-size: 13px; font-weight: 600; }
-.wfc-sub { fill: #a8a8b6; font-size: 10.5px; }
+.wfc-title {
+  fill: #f2f2f5;
+  font-size: 13px;
+  font-weight: 600;
+}
+.wfc-sub {
+  fill: #a8a8b6;
+  font-size: 10.5px;
+}
 /* Textes un cran plus grands en vertical (mobile) pour rester ≥ 13px effectifs */
-.wfc-svg--v .wfc-title { font-size: 14.5px; }
-.wfc-svg--v .wfc-sub { font-size: 11.5px; }
+.wfc-svg--v .wfc-title {
+  font-size: 14.5px;
+}
+.wfc-svg--v .wfc-sub {
+  font-size: 11.5px;
+}
 
 /* --- Connexions : tracé progressif à l'entrée, accent quand actives --- */
 .wfc-edge {
@@ -226,10 +542,16 @@
   stroke-width: 1.75;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  transition: stroke-dashoffset 0.5s ease var(--d, 0ms), stroke 0.25s;
+  transition:
+    stroke-dashoffset 0.5s ease var(--d, 0ms),
+    stroke 0.25s;
 }
-.wfc-live .wfc-edge { stroke-dashoffset: 0; }
-.wfc-edge.wfc-active { stroke: var(--accent); }
+.wfc-live .wfc-edge {
+  stroke-dashoffset: 0;
+}
+.wfc-edge.wfc-active {
+  stroke: var(--accent);
+}
 
 /* --- Liens pointillés vers les sub-nodes de l'Agent IA --- */
 .wfc-sublink {
@@ -238,37 +560,117 @@
   stroke-width: 1.4;
   stroke-dasharray: 4 4;
   opacity: 0;
-  transition: opacity 0.45s ease var(--d, 0ms), stroke 0.25s;
+  transition:
+    opacity 0.45s ease var(--d, 0ms),
+    stroke 0.25s;
 }
-.wfc-live .wfc-sublink { opacity: 1; }
+.wfc-live .wfc-sublink {
+  opacity: 1;
+}
 .wfc-sublit .wfc-sublink {
   stroke: var(--accent);
   animation: wfc-dash 0.7s linear infinite;
 }
-@keyframes wfc-dash { to { stroke-dashoffset: -16; } }
+@keyframes wfc-dash {
+  to {
+    stroke-dashoffset: -16;
+  }
+}
 
 .wfc-subnode {
   opacity: 0;
   transform: translateY(8px);
   transform-box: fill-box;
-  transition: opacity 0.45s ease var(--d, 0ms), transform 0.45s ease var(--d, 0ms);
+  transition:
+    opacity 0.45s ease var(--d, 0ms),
+    transform 0.45s ease var(--d, 0ms);
 }
-.wfc-live .wfc-subnode { opacity: 1; transform: none; }
-.wfc-subnode-title { fill: #d8d8de; font-size: 11.5px; font-weight: 600; }
-.wfc-subnode-sub { fill: #a0a0ad; font-size: 10px; }
-.wfc-svg--v .wfc-subnode-title { font-size: 12.5px; }
-.wfc-svg--v .wfc-subnode-sub { font-size: 11px; }
+.wfc-live .wfc-subnode {
+  opacity: 1;
+  transform: none;
+}
+.wfc-subnode-title {
+  fill: #d8d8de;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+.wfc-subnode-sub {
+  fill: #a0a0ad;
+  font-size: 10px;
+}
+.wfc-svg--v .wfc-subnode-title {
+  font-size: 12.5px;
+}
+.wfc-svg--v .wfc-subnode-sub {
+  font-size: 11px;
+}
 
-.wfc-port { fill: #24242b; stroke: #7a7a88; stroke-width: 1.4; }
-[data-flow-pulse] { pointer-events: none; }
+.wfc-port {
+  fill: #24242b;
+  stroke: #7a7a88;
+  stroke-width: 1.4;
+}
+[data-flow-pulse] {
+  pointer-events: none;
+}
 
 /* --- Accessibilité : état statique final si l'utilisateur réduit les animations --- */
 @media (prefers-reduced-motion: reduce) {
-  .wfc-node, .wfc-subnode, .wfc-sublink {
+  .wfc-node,
+  .wfc-subnode,
+  .wfc-sublink {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
   }
-  .wfc-edge { stroke-dashoffset: 0 !important; transition: none !important; }
-  .wfc-sublit .wfc-sublink { animation: none; }
+  .wfc-edge {
+    stroke-dashoffset: 0 !important;
+    transition: none !important;
+  }
+  .wfc-sublit .wfc-sublink {
+    animation: none;
+  }
+}
+
+/* Réaccord du canvas sur le bleu nuit de la page /agents-ia.
+   Seules les surfaces changent : la logique du schéma reste identique. */
+.ai-page .wfc-frame {
+  background-color: oklch(0.19 0.038 264);
+  border-color: oklch(0.98 0.01 300 / 0.12);
+  border-radius: 14px;
+}
+.ai-page .wfc-tab {
+  border-color: oklch(0.98 0.01 300 / 0.16);
+  color: oklch(0.76 0.025 258);
+}
+.ai-page .wfc-tab:hover {
+  border-color: oklch(0.98 0.01 300 / 0.34);
+  color: #fff;
+}
+.ai-page .wfc-tab[aria-selected="true"] {
+  background: oklch(0.74 0.18 300 / 0.16);
+  border-color: oklch(0.74 0.18 300 / 0.55);
+  color: #fff;
+}
+.ai-page .wfc-blurb {
+  color: oklch(0.76 0.025 258);
+}
+.ai-page .wfc-node-box {
+  fill: oklch(0.25 0.042 264);
+  stroke: oklch(0.98 0.01 300 / 0.16);
+}
+.ai-page .wfc-node:hover .wfc-node-box,
+.ai-page .wfc-node.wfc-lit .wfc-node-box {
+  stroke: var(--ai-accent);
+  filter: drop-shadow(0 0 8px oklch(0.74 0.18 300 / 0.55));
+}
+.ai-page .wfc-edge {
+  stroke: oklch(0.98 0.01 300 / 0.3);
+}
+.ai-page .wfc-sublink {
+  stroke: oklch(0.98 0.01 300 / 0.24);
+}
+.ai-page .wfc-port {
+  fill: oklch(0.19 0.038 264);
+  stroke: oklch(0.98 0.01 300 / 0.42);
 }
