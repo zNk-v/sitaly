@@ -24,6 +24,7 @@ import {
   FileText,
   Instagram,
   Bot,
+  Hammer,
   Menu,
   X,
 } from "lucide-react";
@@ -895,6 +896,12 @@ function Examples() {
       title: "Lafleur Toiture — Essonne",
       desc: "Site vitrine réalisé pour un couvreur de l'Essonne. Cliquez sur l'aperçu pour ouvrir le site.",
     },
+    {
+      embedUrl: "https://entreprise-felicioni.com/",
+      tag: "Rénovation",
+      title: "Entreprise Felicioni — Haute-Garonne",
+      desc: "Site vitrine avec comparateur avant/après pour une entreprise de rénovation. Cliquez sur l'aperçu pour ouvrir le site.",
+    },
   ];
 
   return (
@@ -1043,6 +1050,14 @@ function Clients() {
       url: "https://lafleur-toiture.fr/#top",
       icon: Shield,
     },
+    {
+      name: "Entreprise Felicioni",
+      role: "Rénovation",
+      place: "Tournefeuille (31)",
+      detail: "Site vitrine avec comparateur avant/après, en ligne sur entreprise-felicioni.com.",
+      url: "https://entreprise-felicioni.com/",
+      icon: Hammer,
+    },
   ];
 
   return (
@@ -1053,7 +1068,7 @@ function Clients() {
           title="Ils ont confié leur présence en ligne à Sitaly"
           subtitle="Des sites en ligne, vérifiables. Cliquez pour les visiter."
         />
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {clients.map((c) => (
             <a
               key={c.name}
