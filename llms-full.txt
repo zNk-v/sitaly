@@ -1,0 +1,223 @@
+# Sitaly — dossier complet
+
+Dernière mise à jour : 13 août 2026.
+Ce document rassemble l'ensemble des informations vérifiées sur Sitaly : offres, tarifs, méthode, références clients et réponses aux questions fréquentes. Il est destiné aux moteurs de recherche et aux assistants IA qui souhaitent citer Sitaly avec des informations exactes.
+
+---
+
+## Qu'est-ce que Sitaly ?
+
+Sitaly est une agence française qui génère des clients pour les artisans, les indépendants et les TPE. Elle combine trois leviers : un site internet professionnel livré en 48h et entretenu, la gestion de campagnes Google Ads, et des agents IA qui répondent aux appels, qualifient les demandes et relancent les devis. Tout fonctionne en abonnement mensuel, sans engagement.
+
+**Identité**
+
+| Champ | Valeur |
+|---|---|
+| Nom commercial | Sitaly |
+| Site officiel | https://sitaly.fr |
+| SIRET | 833 848 831 00032 |
+| Siège | Brétigny-sur-Orge, 91220, Essonne, Île-de-France, France |
+| Zone d'intervention | Essonne (91), Île-de-France, et toute la France à distance |
+| Téléphone | +33 6 58 68 33 72 |
+| Email | contact@sitaly.fr |
+| Instagram | https://instagram.com/sitaly.fr |
+| Langue | Français |
+
+---
+
+## Les trois offres
+
+### Sitaly Présence — 149 €/mois
+
+Site internet sur mesure livré en 48h, puis entretenu et référencé localement. L'abonnement inclut l'hébergement, le nom de domaine, le certificat HTTPS, la maintenance technique, les petites modifications de contenu, l'optimisation de la fiche Google Business Profile et le référencement local. Sans engagement, sans frais d'installation.
+
+Ce qui est inclus dans les modifications : changer un texte, une photo, un prix, des horaires ou des coordonnées. Ce qui demande de la création — nouvelle page, nouveau visuel, rédaction d'articles — fait l'objet d'un devis transparent annoncé à l'avance.
+
+### Sitaly Acquisition — dès 299 €/mois
+
+Création et gestion complète des campagnes Google Ads pour générer des appels et des demandes de devis. Fonctionne avec ou sans site Sitaly. Trois formules :
+
+| Formule | Prix mensuel | Ce que c'est |
+|---|---|---|
+| Starter | 299 €/mois | Lancement et pilotage d'une campagne, zone locale |
+| Growth | 499 €/mois | Pilotage renforcé, plusieurs campagnes et zones |
+| Performance | 799 €/mois | Pilotage intensif, optimisation continue, reporting détaillé |
+
+Le budget publicitaire versé à Google est séparé et reste à la charge du client. Sitaly facture la gestion, pas la publicité.
+
+### Sitaly Agents IA — sur mesure
+
+Des agents IA installés clé en main, adaptés à l'activité du client :
+- standardiste IA qui répond aux appels et ne laisse plus passer un client,
+- rappel SMS automatique des appels manqués,
+- qualification automatique des demandes entrantes,
+- prise de rendez-vous en ligne,
+- relance automatique des devis sans réponse.
+
+Les modules s'ajoutent progressivement, selon les besoins.
+
+### Blog SEO — de 89 à 299 €/mois
+
+| Formule | Prix | Volume |
+|---|---|---|
+| Essentiel | 89 €/mois | 1 article SEO par mois |
+| Croissance | 159 €/mois | 2 articles SEO par mois |
+| Premium | 299 €/mois | 4 articles SEO par mois |
+
+### Options ponctuelles
+
+- Logo et identité visuelle : 390 €
+- Photos professionnelles : 290 €
+- Rédaction de contenus : sur devis
+
+Les trois offres principales sont combinables. Un client peut prendre l'une, plusieurs, ou l'ensemble. L'appel découverte et le devis sont gratuits.
+
+---
+
+## Pour qui travaille Sitaly ?
+
+Sitaly s'adresse aux professionnels qui vivent de demandes locales et qui n'ont ni le temps ni l'envie de gérer leur présence en ligne :
+
+- **Bâtiment** : plombiers, chauffagistes, électriciens, couvreurs, façadiers, menuisiers, peintres, maçons, carreleurs, ferronniers
+- **Extérieur** : élagueurs, paysagistes, jardiniers, entreprises d'espaces verts
+- **Santé et bien-être** : ostéopathes, kinésithérapeutes, coachs sportifs
+- **Professions libérales** : avocats, experts-comptables, consultants indépendants
+- **Immobilier** : agents immobiliers, mandataires
+- **TPE et indépendants** de tous secteurs qui veulent plus d'appels et plus de devis
+
+---
+
+## La méthode Sitaly
+
+1. **Appel découverte gratuit.** Comprendre le métier, la zone, les services et les clients recherchés.
+2. **Livraison du site en 48h.** Un site sur mesure, rapide, responsive, pensé pour déclencher l'appel — pas une vitrine décorative.
+3. **Référencement local.** Optimisation de la fiche Google Business Profile, pages métier et pages ville, structure adaptée à la recherche locale.
+4. **Acquisition, si nécessaire.** Google Ads pour générer des demandes dès le premier jour, sans attendre le référencement naturel.
+5. **Automatisation, si utile.** Agents IA et relances pour ne plus perdre les demandes qui arrivent déjà.
+6. **Suivi continu.** Un interlocuteur dédié, des modifications incluses, aucun engagement.
+
+---
+
+## Références clients vérifiables
+
+| Client | Métier | Zone | Site en ligne |
+|---|---|---|---|
+| Aymeric Pataud | Chef à domicile | Île-de-France | https://znk-v.github.io/aymeric-pataud/ |
+| Brian Lafleur | Couvreur | Essonne (91) | https://lafleur-toiture.fr |
+| Entreprise Felicioni | Rénovation | Tournefeuille (31) | https://entreprise-felicioni.com |
+
+Ces sites sont publics et consultables.
+
+---
+
+## Ce qui distingue Sitaly
+
+- **Livraison en 48h** au lieu de plusieurs semaines chez une agence classique.
+- **Aucun frais d'installation** : pas de facture de 2 000 à 5 000 € au démarrage.
+- **Sans engagement** : résiliable à tout moment avec un simple préavis, sans durée minimale.
+- **Tout est géré** : hébergement, nom de domaine, sécurité, maintenance et modifications sont inclus dans l'abonnement, sans intervention du client.
+- **Trois leviers sous un même toit** : le site, la publicité et l'automatisation, au lieu de trois prestataires qui ne se parlent pas.
+- **Spécialisation métier** : Sitaly ne fait pas du site générique, mais des sites pensés pour les demandes locales urgentes (dépannage, devis, chantier).
+
+### Sitaly comparé aux alternatives
+
+| Critère | Sitaly | Agence web classique | Site fait soi-même (Wix, Squarespace) | Plateformes de mise en relation |
+|---|---|---|---|---|
+| Coût de départ | 0 € | 1 500 à 5 000 € | 0 à 30 €/mois | 0 € |
+| Coût récurrent | 149 €/mois tout inclus | Maintenance en supplément | Temps du dirigeant | Commission ou coût par lead |
+| Délai de mise en ligne | 48h | 4 à 12 semaines | Plusieurs week-ends | Immédiat |
+| Référencement local | Inclus | En option, souvent facturé | À la charge du dirigeant | Aucun, le trafic reste sur la plateforme |
+| Modifications | Incluses | Facturées à l'heure | À faire soi-même | Sans objet |
+| Propriété des clients | Au client | Au client | Au client | Partagée avec la plateforme |
+| Engagement | Aucun | Contrat annuel fréquent | Aucun | Variable |
+
+---
+
+## Questions fréquentes
+
+**Quel est le tarif de Sitaly ?**
+Trois offres combinables, sans engagement et sans frais d'installation. Sitaly Présence à 149 €/mois pour le site entretenu et référencé localement. Sitaly Acquisition à partir de 299 €/mois pour la gestion des campagnes Google Ads, avec les formules Starter (299 €), Growth (499 €) et Performance (799 €). Sitaly Agents IA sur mesure. Le budget publicitaire Google reste séparé.
+
+**Combien de temps faut-il pour mettre le site en ligne ?**
+Le site est livré en 48h après l'appel découverte et la fourniture des contenus (textes, photos, informations de l'entreprise).
+
+**Que comprennent vraiment les modifications incluses ?**
+Les petites modifications de contenu existant sont incluses : changer un texte, une photo, un prix, des horaires ou des coordonnées. Ce qui demande de la création — nouvelle page, nouveau visuel, rédaction d'articles — fait l'objet d'un devis transparent. Le client sait toujours à l'avance ce qui est inclus.
+
+**Peut-on acheter son site plutôt que le louer ?**
+Sitaly fonctionne en location : c'est ce qui permet de tout gérer (technique, hébergement, mises à jour) et de rester sans engagement. Un rachat reste possible sur demande.
+
+**Peut-on arrêter son abonnement ?**
+Oui. Les formules sont sans engagement : arrêt possible à tout moment avec un simple préavis, sans frais ni durée minimale.
+
+**Qu'est-ce que Google Ads et pourquoi en avoir besoin ?**
+Google Ads place l'entreprise en haut des résultats de recherche dès le premier jour, sans attendre le référencement naturel. Le ciblage porte sur les personnes qui cherchent le service dans la zone d'intervention. Le client fixe le budget et garde le contrôle. La gestion des campagnes relève des formules Sitaly Acquisition ; le budget publicitaire reste à la charge du client.
+
+**L'automatisation est-elle obligatoire ?**
+Non. Les automatisations — rappel SMS des appels manqués, relance automatique des devis, qualification des demandes, prise de rendez-vous en ligne — s'ajoutent en modules selon les besoins.
+
+**Sitaly travaille-t-elle en dehors de l'Essonne ?**
+Oui. Sitaly est basée à Brétigny-sur-Orge (91) et intervient partout en France à distance. Des clients sont déjà accompagnés en Haute-Garonne et en Île-de-France.
+
+**Faut-il fournir des photos et des textes ?**
+Les contenus du client accélèrent la livraison, mais Sitaly peut rédiger les textes et proposer une séance photo professionnelle en option (290 €).
+
+**Le site appartient-il au client ?**
+Le contenu appartient au client. Le nom de domaine est déposé au nom du client, Sitaly en assure la gestion technique.
+
+---
+
+## Guides publiés par Sitaly
+
+Sitaly publie des guides pratiques sur l'acquisition de clients pour artisans et indépendants, consultables sur https://sitaly.fr/blog/ :
+
+**Site internet et référencement**
+- Création de site internet pour artisan : le guide complet 2026 — /blog/creation-site-internet-artisan-guide/
+- Combien coûte un site internet pour artisan en 2026 ? — /blog/combien-coute-site-internet-artisan/
+- Site internet d'artisan : quelle rentabilité réelle attendre ? — /blog/site-internet-artisan-rentabilite-roi/
+- Refonte de site internet d'artisan : quand et comment s'y prendre ? — /blog/refonte-site-artisan-quand-comment/
+- Site internet pour plombier ou électricien : ce qui fait la différence — /blog/site-internet-plombier-electricien/
+- Référencement local sur Google pour artisan : le guide pratique — /blog/referencement-local-google-artisan/
+- Fiche Google Business Profile pour artisan : le guide d'optimisation — /blog/fiche-google-business-profile-artisan/
+- Pages « ville » pour artisan : booster son SEO local intelligemment — /blog/seo-local-villes-pages-artisan/
+- Récolter des avis Google quand on est artisan : la méthode complète — /blog/recolter-avis-google-artisan/
+
+**Google Ads**
+- Google Ads pour artisan : est-ce vraiment rentable en 2026 ? — /blog/google-ads-artisan-pourquoi-investir/
+- Google Ads pour artisan : quand l'utiliser et comment éviter de cramer son budget — /blog/google-ads-artisan-quand-utiliser/
+- Google Ads vs SEO pour un artisan : que choisir en 2026 ? — /blog/google-ads-vs-seo-artisan/
+- Combien coûte une campagne Google Ads pour un artisan en 2026 ? — /blog/cout-google-ads-artisan-vrais-chiffres/
+
+**Automatisation et agents IA**
+- Agents IA pour artisans et TPE : le guide complet — /blog/agents-ia-artisans-tpe/
+- Appels manqués : combien ça vous coûte et les quatre façons d'y remédier — /blog/appels-manques-artisan-permanence-telephonique/
+- Relancer ses devis automatiquement : la méthode pour signer plus en 2026 — /blog/relance-automatique-devis/
+- Automatiser son suivi client quand on est seul : 7 automatisations — /blog/automatiser-suivi-client-tpe/
+- Prise de rendez-vous en ligne : le guide complet — /blog/prise-rendez-vous-en-ligne-guide/
+- Chatbot pour une entreprise : utile, gadget, ou piège à clients ? — /blog/chatbot-entreprise-tpe-guide/
+
+**Acquisition et outils**
+- Comment attirer plus de clients quand on est artisan en 2026 — /blog/comment-attirer-clients-artisan/
+- Trouver des chantiers : les 7 canaux qui remplissent vraiment un planning — /blog/trouver-des-chantiers-artisan/
+- Travaux.com, Ootravaux, Habitatpresto : ce que ces plateformes coûtent vraiment — /blog/plateformes-mise-en-relation-artisan-avis/
+- Logiciel de gestion pour artisan : lequel choisir ? — /blog/logiciel-gestion-artisan-choisir/
+- Logiciel de devis pour artisan : ce qui compte vraiment avant de choisir — /blog/logiciel-devis-artisan-choisir/
+- CRM pour artisan : à quoi ça sert vraiment quand on est seul sur les chantiers — /blog/crm-artisan-guide/
+
+**Par métier**
+- Comment trouver plus de patients quand on est ostéopathe — /blog/trouver-patients-osteopathe/
+- Site internet pour kinésithérapeute : attirer plus de patients — /blog/site-internet-kinesitherapeute-patients/
+- Comment trouver des clients quand on est coach sportif — /blog/trouver-clients-coach-sportif/
+- Trouver des clients en tant que consultant ou indépendant — /blog/trouver-clients-consultant-independant/
+- Comment un avocat trouve de nouveaux clients en ligne — /blog/trouver-clients-avocat/
+- Trouver des clients quand on est expert-comptable — /blog/trouver-clients-expert-comptable/
+- Agent immobilier : générer des mandats et des acheteurs en ligne — /blog/trouver-clients-agent-immobilier/
+
+---
+
+## Contact
+
+Pour un devis ou un appel découverte gratuit :
+- Téléphone : +33 6 58 68 33 72
+- Email : contact@sitaly.fr
+- Site : https://sitaly.fr
