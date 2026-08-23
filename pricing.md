@@ -2,16 +2,12 @@
 
 Sitaly est une agence d'acquisition : sites internet, Google Ads, ChatGPT Ads et agents IA pour PME, TPE, entreprises de services et artisans. Zone d'intervention : Brétigny-sur-Orge, Essonne (91), Île-de-France, et toute la France à distance. Devis et appel découverte gratuits. Site livré en 48h.
 
-## Création de site (paiement unique)
-- Prix : 790 € TTC, une seule fois
-- Inclut : site vitrine sur mesure, responsive (mobile/tablette/ordinateur), optimisé pour Google et le référencement local, formulaire de contact, mise en ligne
+## Site internet — Sitaly Présence (abonnement)
+- Prix : 149 €/mois
+- Inclut : site internet sur mesure livré en 48h, hébergement, nom de domaine, sécurité (HTTPS), maintenance technique, petites modifications de contenu (textes, photos, prix, horaires, coordonnées), optimisation de la fiche Google Business Profile et référencement local
 - Délai : livré en 48h après l'appel découverte et la fourniture des contenus
-- Propriété : le contenu du site vous appartient
-
-## Site + maintenance (abonnement)
-- Prix : 99 €/mois
-- Inclut : création du site, hébergement, nom de domaine, sécurité (HTTPS), mises à jour, petites modifications (textes, photos, infos), support avec interlocuteur dédié
-- Engagement : sans engagement, résiliable à tout moment avec préavis
+- Engagement : sans engagement, sans frais d'installation, résiliable à tout moment avec préavis
+- Hors forfait : la création de pages ou de visuels supplémentaires et la rédaction d'articles font l'objet d'un devis annoncé à l'avance
 
 ## Google Ads — Sitaly Acquisition (abonnement)
 - Prix : dès 299 €/mois — Starter 299 €/mois, Growth 499 €/mois, Performance 799 €/mois
