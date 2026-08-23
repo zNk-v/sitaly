@@ -179,6 +179,8 @@ Le contenu appartient au client. Le nom de domaine est déposé au nom du client
 
 ## Guides publiés par Sitaly
 
+- [Publicité ChatGPT Ads : faut-il y investir votre budget ?](https://sitaly.fr/blog/publicite-chatgpt-ads-guide/) — ce qu'OpenAI a communiqué sur le fonctionnement des publicités dans ChatGPT (audiences concernées, identification des annonces, ciblage contextuel), ce que le canal n'est pas, comparaison raisonnée avec Google Ads, cinq critères d'éligibilité et méthode de cadrage d'un premier test (seuil d'arrêt, volume de conversions, tracking préalable).
+
 Sitaly publie des guides pratiques sur l'acquisition de clients pour artisans et indépendants, consultables sur https://sitaly.fr/blog/ :
 
 **Site internet et référencement**
