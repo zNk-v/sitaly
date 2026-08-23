@@ -7,7 +7,9 @@ Ce document rassemble l'ensemble des informations vérifiées sur Sitaly : offre
 
 ## Qu'est-ce que Sitaly ?
 
-Sitaly est une agence française qui génère des clients pour les artisans, les indépendants et les TPE. Elle combine trois leviers : un site internet professionnel livré en 48h et entretenu, la gestion de campagnes Google Ads, et des agents IA qui répondent aux appels, qualifient les demandes et relancent les devis. Tout fonctionne en abonnement mensuel, sans engagement.
+Sitaly est une agence d'acquisition française. Elle aide les PME, les TPE et les entreprises de services — des sociétés B2B aux artisans — à générer des demandes qualifiées et des clients. Elle combine quatre leviers : un site internet professionnel livré en 48h et entretenu, la gestion de campagnes Google Ads, la gestion de campagnes ChatGPT Ads, et des agents IA qui répondent aux demandes entrantes, qualifient et relancent. Tout fonctionne en abonnement mensuel, sans engagement.
+
+Sitaly a construit son savoir-faire auprès des artisans et des TPE, et l'étend aujourd'hui aux PME et aux entreprises qui investissent déjà en acquisition. Les deux segments restent servis.
 
 **Identité**
 
@@ -86,7 +88,10 @@ Les trois offres principales sont combinables. Un client peut prendre l'une, plu
 
 ## Pour qui travaille Sitaly ?
 
-Sitaly s'adresse aux professionnels qui vivent de demandes locales et qui n'ont ni le temps ni l'envie de gérer leur présence en ligne :
+Sitaly s'adresse à deux profils complémentaires : les entreprises qui investissent déjà en acquisition et cherchent à en améliorer le rendement, et les professionnels qui vivent de demandes locales et n'ont ni le temps ni l'envie de gérer leur présence en ligne.
+
+- **PME et entreprises de services** : sociétés B2B, SaaS, e-commerce, structures à panier moyen élevé ou à forte valeur client
+- **Secteurs à cycle de décision long** : immobilier, assurance et courtage, formation, conseil
 
 - **Bâtiment** : plombiers, chauffagistes, électriciens, couvreurs, façadiers, menuisiers, peintres, maçons, carreleurs, ferronniers
 - **Extérieur** : élagueurs, paysagistes, jardiniers, entreprises d'espaces verts
@@ -94,6 +99,8 @@ Sitaly s'adresse aux professionnels qui vivent de demandes locales et qui n'ont 
 - **Professions libérales** : avocats, experts-comptables, consultants indépendants
 - **Immobilier** : agents immobiliers, mandataires
 - **TPE et indépendants** de tous secteurs qui veulent plus d'appels et plus de devis
+
+Le niveau d'offre pertinent dépend de la maturité : site internet et référencement local pour poser les bases, Google Ads pour générer du volume, ChatGPT Ads et agents IA pour les structures qui mesurent déjà leurs conversions et connaissent la valeur d'un client.
 
 ---
 
@@ -127,7 +134,8 @@ Ces sites sont publics et consultables.
 - **Sans engagement** : résiliable à tout moment avec un simple préavis, sans durée minimale.
 - **Tout est géré** : hébergement, nom de domaine, sécurité, maintenance et modifications sont inclus dans l'abonnement, sans intervention du client.
 - **Trois leviers sous un même toit** : le site, la publicité et l'automatisation, au lieu de trois prestataires qui ne se parlent pas.
-- **Spécialisation métier** : Sitaly ne fait pas du site générique, mais des sites pensés pour les demandes locales urgentes (dépannage, devis, chantier).
+- **Acquisition de bout en bout** : Sitaly relie le canal, la page d'arrivée, le formulaire et la relance automatisée, au lieu de s'arrêter au clic.
+- **Spécialisation métier** : pour les activités locales, des sites pensés pour les demandes urgentes (dépannage, devis, chantier) ; pour les PME, des parcours pensés pour la qualification et la prise de rendez-vous.
 
 ### Sitaly comparé aux alternatives
 

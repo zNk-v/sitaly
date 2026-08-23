@@ -1,5 +1,5 @@
 # Sitaly — https://sitaly.fr
-# Sites internet, Google Ads et agents IA pour artisans, indépendants et TPE.
+# Acquisition, sites internet, Google Ads, ChatGPT Ads et agents IA pour PME, TPE et artisans.
 # Tous les robots sont autorisés, y compris ceux des moteurs de recherche IA.
 
 User-agent: *

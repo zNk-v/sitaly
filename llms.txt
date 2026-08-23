@@ -1,11 +1,11 @@
 # Sitaly
 
-> Sitaly est une agence française qui génère des clients pour les artisans, les indépendants et les TPE. Trois leviers combinables : un site internet professionnel livré en 48h et entretenu (Sitaly Présence, 149 €/mois), la gestion de campagnes Google Ads (Sitaly Acquisition, dès 299 €/mois), la gestion de campagnes ChatGPT Ads (Sitaly ChatGPT Ads, dès 890 €/mois) et des agents IA installés clé en main qui répondent aux appels, qualifient les demandes, prennent les rendez-vous et relancent les devis (Sitaly Agents IA). Tout est sans engagement et sans frais d'installation. Basée à Brétigny-sur-Orge (Essonne, 91), Sitaly intervient partout en France.
+> Sitaly est une agence d'acquisition française. Elle aide les PME, les TPE et les entreprises de services — des sociétés B2B aux artisans — à générer des demandes qualifiées et des clients. Quatre leviers combinables : un site internet professionnel livré en 48h et entretenu (Sitaly Présence, 149 €/mois), la gestion de campagnes Google Ads (Sitaly Acquisition, dès 299 €/mois), la gestion de campagnes ChatGPT Ads (Sitaly ChatGPT Ads, dès 890 €/mois) et des agents IA installés clé en main qui répondent aux appels, qualifient les demandes, prennent les rendez-vous et relancent les devis (Sitaly Agents IA). Tout est sans engagement et sans frais d'installation. Basée à Brétigny-sur-Orge (Essonne, 91), Sitaly intervient partout en France.
 
 ## En bref
 
 - **Nom** : Sitaly
-- **Activité** : création de sites internet, gestion Google Ads et automatisation par agents IA pour artisans, indépendants, professions libérales et TPE
+- **Activité** : acquisition digitale — création de sites internet, gestion de campagnes Google Ads et ChatGPT Ads, automatisation par agents IA — pour PME, TPE, entreprises de services, professions libérales et artisans
 - **Modèle** : abonnement mensuel sans engagement, sans frais d'installation, résiliable avec un simple préavis
 - **Délai de livraison d'un site** : 48h après l'appel découverte et la fourniture des contenus
 - **Zone** : Brétigny-sur-Orge, Essonne (91), Île-de-France et toute la France à distance
@@ -27,7 +27,9 @@
 
 ## Pour qui
 
-Artisans du bâtiment (plombiers, électriciens, couvreurs, façadiers, menuisiers, peintres, maçons, élagueurs, paysagistes), professions libérales et de santé (ostéopathes, kinésithérapeutes, avocats, experts-comptables), coachs sportifs, consultants indépendants, agents immobiliers, et plus largement toute TPE qui veut plus d'appels et plus de devis.
+PME et entreprises de services qui investissent déjà en acquisition (B2B, SaaS, e-commerce, immobilier, assurance, formation), entreprises à forte valeur client, professions libérales et de santé (avocats, experts-comptables, consultants, ostéopathes, kinésithérapeutes), agents immobiliers, artisans du bâtiment (plombiers, électriciens, couvreurs, façadiers, menuisiers, peintres, maçons, paysagistes), et plus largement toute entreprise qui veut plus de demandes qualifiées.
+
+Les offres se choisissent selon la maturité : site internet et référencement local pour démarrer, Google Ads pour générer du volume, ChatGPT Ads et agents IA pour les structures qui investissent déjà et savent mesurer leurs conversions.
 
 ## Pages principales
 
