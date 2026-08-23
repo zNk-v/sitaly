@@ -25,7 +25,7 @@ Sitaly est une agence française qui génère des clients pour les artisans, les
 
 ---
 
-## Les trois offres
+## Les offres
 
 ### Sitaly Présence — 149 €/mois
 
@@ -44,6 +44,16 @@ Création et gestion complète des campagnes Google Ads pour générer des appel
 | Performance | 799 €/mois | Pilotage intensif, optimisation continue, reporting détaillé |
 
 Le budget publicitaire versé à Google est séparé et reste à la charge du client. Sitaly facture la gestion, pas la publicité.
+
+### Sitaly ChatGPT Ads — dès 890 €/mois
+
+Stratégie, création et gestion de campagnes publicitaires ChatGPT Ads, la régie publicitaire d'OpenAI. L'offre s'adresse aux PME, entreprises de services, entreprises B2B, SaaS, e-commerce et entreprises à forte valeur client — pas au même segment que les offres artisans.
+
+La prestation couvre six étapes : analyse des intentions exploitables, stratégie et seuils de rentabilité, création des messages et de la page de destination, lancement, mise en place du tracking des conversions, puis optimisation continue et reporting mensuel.
+
+Le budget publicitaire est séparé et reste à la charge du client. Sitaly facture la gestion, pas la publicité.
+
+Précisions importantes : Sitaly n'est ni partenaire officiel d'OpenAI, ni titulaire d'une certification ChatGPT Ads — il n'en existe pas — et ne dispose d'aucun accès privilégié. Aucun résultat n'est garanti sur ce canal récent, dont les modalités sont encore susceptibles d'évoluer. L'objectif d'une première phase est d'obtenir des données fiables de coût par lead et de coût réel d'acquisition permettant de décider d'arrêter, de maintenir ou d'augmenter l'investissement.
 
 ### Sitaly Agents IA — sur mesure
 
