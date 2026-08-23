@@ -7,7 +7,7 @@
 <!-- ============================================================
      Sitaly ChatGPT Ads — landing page
      Prix affiché : voir le bloc marqué [TARIF] dans la section OFFRE.
-     Formulaire : voir la constante FORM_ENDPOINT dans le <script> en bas.
+     Formulaire : envoi par mailto vers CONTACT_EMAIL (<script> en bas).
      ============================================================ -->
 
 <title>Agence ChatGPT Ads en France — Publicité dans ChatGPT | Sitaly</title>
@@ -829,13 +829,15 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
         <div class="cg-num" style="width:3rem;height:3rem;margin:0 auto;background:var(--success);color:var(--success-foreground)">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
         </div>
-        <h3 class="font-bold tracking-tight" style="font-size:1.35rem;margin-top:1.25rem">Demande envoyée</h3>
+        <h3 class="font-bold tracking-tight" style="font-size:1.35rem;margin-top:1.25rem">Votre message est prêt</h3>
         <p style="margin-top:.75rem;font-size:.95rem;line-height:1.65;color:var(--muted-foreground)">
-          Merci. Nous revenons vers vous sous 48 h ouvrées avec une première lecture de votre situation.
+          Votre logiciel de messagerie s'est ouvert avec votre demande pré-remplie.
+          Il ne reste qu'à l'envoyer — nous répondons sous 48 h ouvrées.
         </p>
-        <p style="margin-top:1.25rem;font-size:.925rem">
-          Besoin d'échanger plus vite ?
-          <a href="tel:+33658683372" style="color:var(--accent);font-weight:600">06 58 68 33 72</a>
+        <p style="margin-top:1.25rem;font-size:.925rem;line-height:1.7">
+          Rien ne s'est ouvert ? Écrivez-nous à
+          <a href="mailto:contact@sitaly.fr" style="color:var(--accent);font-weight:600">contact@sitaly.fr</a><br/>
+          ou appelez le <a href="tel:+33658683372" style="color:var(--accent);font-weight:600">06 58 68 33 72</a>.
         </p>
       </div>
     </div>
@@ -872,14 +874,7 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
 (function () {
   "use strict";
 
-  /* ------------------------------------------------------------------
-     ENDPOINT DU FORMULAIRE
-     Renseignez ici l'URL de votre service de réception (Formspree, Make,
-     n8n, Zapier, API interne…). Elle doit accepter un POST JSON.
-     Tant que la valeur reste vide, le formulaire bascule automatiquement
-     sur un envoi par email pré-rempli vers contact@sitaly.fr.
-     ------------------------------------------------------------------ */
-  var FORM_ENDPOINT = "";
+  /* Adresse de réception des demandes. */
   var CONTACT_EMAIL = "contact@sitaly.fr";
 
   /* --- Menu mobile --- */
@@ -900,16 +895,15 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
     });
   }
 
-  /* --- Formulaire --- */
+  /* --- Formulaire : composition d'un email pré-rempli --- */
   var form = document.getElementById("cg-form");
   if (!form) return;
-  var submit = document.getElementById("cg-submit");
   var errorBox = document.getElementById("cg-error");
   var success = document.getElementById("cg-success");
 
   var LABELS = {
     nom: "Nom", entreprise: "Entreprise", email: "Email", telephone: "Téléphone",
-    site: "Site web", secteur: "Secteur", budget: "Budget acquisition",
+    site: "Site web", secteur: "Secteur", budget: "Budget acquisition mensuel",
     objectif: "Objectif", message: "Message"
   };
 
@@ -918,42 +912,16 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
     errorBox.removeAttribute("hidden");
   }
 
-  function collect() {
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    errorBox.setAttribute("hidden", "");
+
     var data = {};
     Object.keys(LABELS).forEach(function (k) {
       var el = form.elements[k];
       data[k] = el ? String(el.value || "").trim() : "";
     });
-    return data;
-  }
 
-  function mailtoFallback(data) {
-    var body = Object.keys(LABELS).map(function (k) {
-      return LABELS[k] + " : " + (data[k] || "—");
-    }).join("\n");
-    var subject = "Demande d'analyse ChatGPT Ads — " + (data.entreprise || data.nom);
-    window.location.href = "mailto:" + CONTACT_EMAIL +
-      "?subject=" + encodeURIComponent(subject) +
-      "&body=" + encodeURIComponent(body);
-  }
-
-  function done() {
-    form.setAttribute("hidden", "");
-    success.removeAttribute("hidden");
-    success.scrollIntoView({ behavior: "smooth", block: "center" });
-    if (typeof window.gtag === "function") {
-      window.gtag("event", "generate_lead", { form: "chatgpt_ads_analyse" });
-    }
-    if (window.dataLayer) {
-      window.dataLayer.push({ event: "chatgpt_ads_lead" });
-    }
-  }
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    errorBox.setAttribute("hidden", "");
-
-    var data = collect();
     var required = ["nom", "entreprise", "email", "telephone", "secteur", "budget", "objectif"];
     var missing = required.filter(function (k) { return !data[k]; });
     if (missing.length) {
@@ -968,28 +936,23 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
       return;
     }
 
-    data.page = "chatgpt-ads";
-    data.envoye_le = new Date().toISOString();
+    var body = "Demande d'analyse ChatGPT Ads\n\n" + Object.keys(LABELS).map(function (k) {
+      return LABELS[k] + " : " + (data[k] || "—");
+    }).join("\n");
+    var subject = "Demande d'analyse ChatGPT Ads — " + (data.entreprise || data.nom);
 
-    if (!FORM_ENDPOINT) { mailtoFallback(data); done(); return; }
+    window.location.href = "mailto:" + CONTACT_EMAIL +
+      "?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(body);
 
-    submit.disabled = true;
-    submit.textContent = "Envoi en cours…";
+    form.setAttribute("hidden", "");
+    success.removeAttribute("hidden");
+    success.scrollIntoView({ behavior: "smooth", block: "center" });
 
-    fetch(FORM_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify(data)
-    })
-      .then(function (r) {
-        if (!r.ok) throw new Error("HTTP " + r.status);
-        done();
-      })
-      .catch(function () {
-        submit.disabled = false;
-        submit.textContent = "Demander une analyse";
-        showError("L'envoi a échoué. Réessayez, ou écrivez-nous à " + CONTACT_EMAIL + ".");
-      });
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "generate_lead", { form: "chatgpt_ads_analyse" });
+    }
+    if (window.dataLayer) { window.dataLayer.push({ event: "chatgpt_ads_lead" }); }
   });
 })();
 </script>
