@@ -50,6 +50,8 @@ Les offres se choisissent selon la maturité : site internet et référencement 
 ## Blog — guides de référence
 
 - [Publicité ChatGPT Ads : faut-il y investir votre budget ?](https://sitaly.fr/blog/publicite-chatgpt-ads-guide/) : fonctionnement de la publicité dans ChatGPT, comparaison avec Google Ads, critères de décision et cadrage d'un premier test.
+- [Combien coûte ChatGPT Ads ? Ce qu'on peut dire honnêtement](https://sitaly.fr/blog/cout-chatgpt-ads/) : structure de coût, pourquoi aucun CPA de référence n'existe en France, et méthode de calcul du seuil de rentabilité.
+- [ChatGPT Ads : quels secteurs en tirent réellement quelque chose](https://sitaly.fr/blog/chatgpt-ads-secteurs-pme/) : secteurs avantagés, secteurs à écarter, et test pour vérifier son propre cas.
 - [Blog Sitaly](https://sitaly.fr/blog/) : guides sur la création de site, le référencement local, Google Ads, l'automatisation et l'acquisition de clients.
 - [Création de site internet pour artisan : le guide complet 2026](https://sitaly.fr/blog/creation-site-internet-artisan-guide/)
 - [Combien coûte un site internet pour artisan en 2026 ?](https://sitaly.fr/blog/combien-coute-site-internet-artisan/)

@@ -188,6 +188,8 @@ Le contenu appartient au client. Le nom de domaine est déposé au nom du client
 ## Guides publiés par Sitaly
 
 - [Publicité ChatGPT Ads : faut-il y investir votre budget ?](https://sitaly.fr/blog/publicite-chatgpt-ads-guide/) — ce qu'OpenAI a communiqué sur le fonctionnement des publicités dans ChatGPT (audiences concernées, identification des annonces, ciblage contextuel), ce que le canal n'est pas, comparaison raisonnée avec Google Ads, cinq critères d'éligibilité et méthode de cadrage d'un premier test (seuil d'arrêt, volume de conversions, tracking préalable).
+- [Combien coûte ChatGPT Ads ? Ce qu'on peut dire honnêtement](https://sitaly.fr/blog/cout-chatgpt-ads/) — aucun tarif de référence n'existe pour la France ; l'article détaille les trois postes de coût (budget diffusé, honoraires de pilotage, coût du parcours après le clic), explique pourquoi les montants observés sur d'autres marchés ne se transposent pas, et donne la méthode de calcul du coût par demande acceptable à partir de la marge client et du taux de transformation.
+- [ChatGPT Ads : quels secteurs en tirent réellement quelque chose](https://sitaly.fr/blog/chatgpt-ads-secteurs-pme/) — le critère déterminant est la formulation du besoin (situation décrite plutôt que produit cherché) ; secteurs favorables (SaaS et logiciel B2B, services B2B, immobilier, assurance, formation, e-commerce à panier élevé), secteurs à manier avec prudence (santé et professions réglementées, local à ticket élevé), secteurs à écarter, et test pratique de vérification.
 
 Sitaly publie des guides pratiques sur l'acquisition de clients pour artisans et indépendants, consultables sur https://sitaly.fr/blog/ :
 

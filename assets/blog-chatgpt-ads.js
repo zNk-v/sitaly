@@ -9,11 +9,35 @@
 (function () {
   "use strict";
 
-  var HREF = "/blog/publicite-chatgpt-ads-guide/";
-  var TITRE = "Publicité ChatGPT Ads : faut-il y investir votre budget ?";
-  var CHAPO =
-    "La publicité arrive dans ChatGPT. Ce qu'on sait de son fonctionnement, ce que ça change " +
-    "par rapport à Google Ads, et cinq critères pour décider si ce canal mérite votre budget.";
+  var POSTS = [
+    {
+      href: "/blog/publicite-chatgpt-ads-guide/",
+      date: "23 août 2026",
+      read: "9 min",
+      titre: "Publicité ChatGPT Ads : faut-il y investir votre budget ?",
+      chapo:
+        "La publicité arrive dans ChatGPT. Ce qu'on sait de son fonctionnement, ce que ça change " +
+        "par rapport à Google Ads, et cinq critères pour décider si ce canal mérite votre budget."
+    },
+    {
+      href: "/blog/cout-chatgpt-ads/",
+      date: "23 août 2026",
+      read: "8 min",
+      titre: "Combien coûte ChatGPT Ads ? Ce qu'on peut dire honnêtement",
+      chapo:
+        "Aucun tarif de référence n'existe encore en France. Comment se décompose réellement le " +
+        "coût, et comment calculer le seuil de rentabilité qui vaut pour votre entreprise."
+    },
+    {
+      href: "/blog/chatgpt-ads-secteurs-pme/",
+      date: "23 août 2026",
+      read: "9 min",
+      titre: "ChatGPT Ads : quels secteurs en tirent réellement quelque chose",
+      chapo:
+        "SaaS, B2B, immobilier, assurance, formation, e-commerce : les activités structurellement " +
+        "avantagées, celles qui n'y gagnent rien, et un test simple pour trancher votre cas."
+    }
+  ];
   var MARK = "data-sitaly-cga";
 
   var ICON_CAL =
@@ -32,14 +56,33 @@
     ' class="h-4 w-4" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>';
 
   /* Force une vraie navigation : la page est statique, hors du routeur React. */
-  function bind(a) {
+  function bind(a, href) {
     a.addEventListener("click", function (e) {
       if (e.defaultPrevented || e.button !== 0) return;
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       e.preventDefault();
       e.stopPropagation();
-      window.location.assign(HREF);
+      window.location.assign(href);
     });
+  }
+
+  function card(p) {
+    return (
+      '<article class="group rounded-2xl border border-border bg-card p-6 shadow-soft transition hover:shadow-elevated sm:p-8">' +
+        '<div class="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">' +
+          '<span class="rounded-full bg-accent/10 px-3 py-1 font-semibold text-accent">Publicité IA</span>' +
+          '<span class="inline-flex items-center gap-1.5">' + ICON_CAL + p.date + '</span>' +
+          '<span class="inline-flex items-center gap-1.5">' + ICON_CLOCK + p.read + '</span>' +
+        '</div>' +
+        '<h3 class="mt-4 font-display text-2xl font-bold leading-tight tracking-tight sm:text-3xl">' +
+          '<a href="' + p.href + '" class="transition group-hover:text-accent">' + p.titre + '</a>' +
+        '</h3>' +
+        '<p class="mt-3 text-[15px] text-muted-foreground sm:text-base">' + p.chapo + '</p>' +
+        '<a href="' + p.href + '" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline">' +
+          "Lire l'article" + ICON_ARROW +
+        '</a>' +
+      '</article>'
+    );
   }
 
   function build() {
@@ -54,23 +97,14 @@
         'Les nouveaux canaux publicitaires liés aux assistants conversationnels, et comment décider ' +
         's\'ils méritent votre budget.</p>' +
       '</div>' +
-      '<div class="mt-8 grid gap-6 sm:gap-8">' +
-        '<article class="group rounded-2xl border border-border bg-card p-6 shadow-soft transition hover:shadow-elevated sm:p-8">' +
-          '<div class="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">' +
-            '<span class="rounded-full bg-accent/10 px-3 py-1 font-semibold text-accent">Publicité IA</span>' +
-            '<span class="inline-flex items-center gap-1.5">' + ICON_CAL + '23 août 2026</span>' +
-            '<span class="inline-flex items-center gap-1.5">' + ICON_CLOCK + '9 min</span>' +
-          '</div>' +
-          '<h3 class="mt-4 font-display text-2xl font-bold leading-tight tracking-tight sm:text-3xl">' +
-            '<a href="' + HREF + '" class="transition group-hover:text-accent">' + TITRE + '</a>' +
-          '</h3>' +
-          '<p class="mt-3 text-[15px] text-muted-foreground sm:text-base">' + CHAPO + '</p>' +
-          '<a href="' + HREF + '" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline">' +
-            "Lire l'article" + ICON_ARROW +
-          '</a>' +
-        '</article>' +
-      '</div>';
-    Array.prototype.forEach.call(sec.querySelectorAll('a[href="' + HREF + '"]'), bind);
+      '<div class="mt-8 grid gap-6 sm:gap-8">' + POSTS.map(card).join("") + '</div>';
+
+    POSTS.forEach(function (p) {
+      Array.prototype.forEach.call(
+        sec.querySelectorAll('a[href="' + p.href + '"]'),
+        function (a) { bind(a, p.href); }
+      );
+    });
     return sec;
   }
 
