@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charSet="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<!-- ============================================================
+     Sitaly Agents IA — landing page dédiée au trafic ChatGPT Ads
+     URL : https://sitaly.fr/agents-ia/chatgpt/
+     Page autonome (pas de bundle React) : réutilise la feuille de
+     styles compilée du site et ses variables de design.
+     Formulaire : envoi par mailto vers CONTACT_EMAIL (script en bas de page).
+     Les UTM sont capturés, mémorisés puis repris dans l'e-mail,
+     les liens internes et le lien de réservation.
+     ============================================================ -->
+
+<title>Agent IA pour entreprise : automatisez vos demandes | Sitaly</title>
+<meta name="description" content="Sitaly déploie des agents IA qui répondent à vos prospects, qualifient les demandes, prennent les rendez-vous et relancent les devis. Diagnostic gratuit."/>
+<link rel="canonical" href="https://sitaly.fr/agents-ia/chatgpt/"/>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Sitaly"/>
+<meta property="og:locale" content="fr_FR"/>
+<meta property="og:url" content="https://sitaly.fr/agents-ia/chatgpt/"/>
+<meta property="og:title" content="Agent IA pour entreprise : automatisez vos demandes | Sitaly"/>
+<meta property="og:description" content="Répondre, qualifier, prendre les rendez-vous et relancer les devis, même en dehors des horaires. Sitaly installe et pilote vos agents IA."/>
+<meta property="og:image" content="https://sitaly.fr/og-agents-ia.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="Sitaly Agents IA"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Agent IA pour entreprise : automatisez vos demandes | Sitaly"/>
+<meta name="twitter:description" content="Répondre, qualifier, prendre les rendez-vous et relancer les devis, même en dehors des horaires. Sitaly installe et pilote vos agents IA."/>
+<meta name="twitter:image" content="https://sitaly.fr/og-agents-ia.jpg"/>
+
+<link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin.woff2" crossorigin="anonymous"/>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/plus-jakarta-sans-latin.woff2" crossorigin="anonymous"/>
+<link rel="preload" as="image" href="/assets/sitaly-logo-DZbGGEWG.png"/>
+<link rel="stylesheet" href="/assets/styles-BHYgca1p.css"/>
+
+<style>
+/* Utilitaires propres à cette page — préfixe ci- (chatgpt / intelligence artificielle).
+   Les polices sont déjà servies en @font-face par la feuille de styles du site :
+   aucune requête vers un service de polices externe. */
+
+:root{--ci-r-lg:.6rem;--ci-r-xl:.9rem;--ci-r-2xl:1.25rem}
+
+.ci-wrap{margin-inline:auto;max-width:80rem;padding-inline:1rem}
+@media(min-width:640px){.ci-wrap{padding-inline:1.5rem}}
+.ci-narrow{margin-inline:auto;max-width:48rem}
+.ci-sec{padding:3.5rem 0}
+@media(min-width:640px){.ci-sec{padding:5rem 0}}
+.ci-alt{background:var(--secondary)}
+
+.ci-h1{font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;font-size:1.75rem;line-height:1.15;margin:0}
+@media(min-width:400px){.ci-h1{font-size:1.9rem}}
+@media(min-width:640px){.ci-h1{font-size:2.6rem}}
+@media(min-width:1024px){.ci-h1{font-size:3rem}}
+.ci-h2{font-family:var(--font-display);font-weight:700;letter-spacing:-.02em;font-size:1.65rem;line-height:1.2;margin:0}
+@media(min-width:640px){.ci-h2{font-size:2.1rem}}
+.ci-h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.01em;font-size:1.075rem;line-height:1.3;margin:0}
+.ci-lead{margin:1rem 0 0;font-size:1.0125rem;line-height:1.7;color:var(--muted-foreground)}
+@media(min-width:640px){.ci-lead{font-size:1.075rem}}
+.ci-body{margin:.6rem 0 0;font-size:.9375rem;line-height:1.65;color:var(--muted-foreground)}
+.ci-note{font-size:.8125rem;line-height:1.6;color:var(--muted-foreground)}
+.ci-center{text-align:center}
+.ci-head{margin-inline:auto;max-width:48rem;text-align:center;margin-bottom:2.5rem}
+
+.ci-eyebrow{display:inline-flex;align-items:center;gap:.5rem;border-radius:9999px;border:1px solid var(--border);
+  background:var(--card);padding:.4rem .85rem;font-size:.75rem;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--muted-foreground)}
+.ci-dot{width:.45rem;height:.45rem;border-radius:9999px;background:var(--accent);flex-shrink:0}
+
+.ci-grid2{display:grid;grid-template-columns:1fr;gap:1.25rem}
+@media(min-width:768px){.ci-grid2{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem}}
+.ci-grid3{display:grid;grid-template-columns:1fr;gap:1.25rem}
+@media(min-width:640px){.ci-grid3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1024px){.ci-grid3{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}}
+.ci-grid4{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:640px){.ci-grid4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1024px){.ci-grid4{grid-template-columns:repeat(4,minmax(0,1fr));gap:1.25rem}}
+
+.ci-card{background:var(--card);border:1px solid var(--border);border-radius:var(--ci-r-xl);padding:1.4rem;
+  box-shadow:var(--shadow-soft);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+@media(min-width:640px){.ci-card{padding:1.6rem}}
+.ci-card:hover{transform:translateY(-2px);border-color:color-mix(in oklch,var(--accent) 35%,var(--border));
+  box-shadow:var(--shadow-elevated)}
+@media(prefers-reduced-motion:reduce){.ci-card,.ci-card:hover{transform:none;transition:none}}
+.ci-card-accent{border-color:color-mix(in oklch,var(--accent) 35%,var(--border))}
+
+.ci-ico{display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;
+  border-radius:var(--ci-r-lg);background:color-mix(in oklch,var(--accent) 12%,transparent);color:var(--accent)}
+.ci-ico svg{width:1.15rem;height:1.15rem}
+.ci-num{display:inline-flex;align-items:center;justify-content:center;width:2.4rem;height:2.4rem;flex-shrink:0;
+  border-radius:var(--ci-r-lg);background:var(--gradient-primary);color:var(--primary-foreground);
+  font-family:var(--font-display);font-weight:700;font-size:.9rem}
+
+.ci-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:3rem;
+  padding:0 1.35rem;border-radius:var(--ci-r-lg);border:1px solid transparent;font-family:var(--font-sans);
+  font-size:.9375rem;font-weight:600;text-decoration:none;cursor:pointer;transition:opacity .2s ease,border-color .2s ease,color .2s ease}
+.ci-btn svg{width:1rem;height:1rem;flex-shrink:0}
+.ci-btn-primary{background:var(--gradient-primary);color:var(--primary-foreground);box-shadow:var(--shadow-elevated)}
+.ci-btn-primary:hover{opacity:.92}
+.ci-btn-ghost{background:var(--card);color:var(--foreground);border-color:var(--border);box-shadow:var(--shadow-soft)}
+.ci-btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.ci-btn-block{width:100%}
+.ci-cta-row{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
+@media(max-width:479px){.ci-cta-row .ci-btn{width:100%}}
+
+.ci-li{display:flex;gap:.6rem;align-items:flex-start;font-size:.9375rem;line-height:1.6}
+.ci-ul{display:flex;flex-direction:column;gap:.65rem;list-style:none;padding:0;margin:1rem 0 0}
+.ci-check{width:1.1rem;height:1.1rem;flex-shrink:0;color:var(--success);margin-top:.18rem}
+.ci-cross{width:1.1rem;height:1.1rem;flex-shrink:0;color:var(--muted-foreground);margin-top:.18rem}
+
+/* Interfaces de conversation */
+.ci-chat{background:var(--card);border:1px solid var(--border);border-radius:var(--ci-r-2xl);
+  box-shadow:var(--shadow-elevated);overflow:hidden}
+.ci-chat-top{display:flex;align-items:center;gap:.6rem;padding:.85rem 1rem;border-bottom:1px solid var(--border);
+  background:var(--muted)}
+.ci-chat-av{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border-radius:9999px;
+  background:var(--gradient-accent);color:var(--accent-foreground);font-size:.7rem;font-weight:700;flex-shrink:0}
+.ci-chat-av svg{width:.95rem;height:.95rem}
+.ci-chat-name{font-family:var(--font-display);font-weight:700;font-size:.8125rem;line-height:1.2;margin:0}
+.ci-chat-sub{font-size:.75rem;line-height:1.3;margin:.1rem 0 0;color:var(--muted-foreground)}
+.ci-chat-body{padding:1rem;display:flex;flex-direction:column;gap:.6rem}
+.ci-msg{max-width:88%;padding:.7rem .9rem;font-size:.875rem;line-height:1.55;border-radius:1rem}
+.ci-in{align-self:flex-start;background:var(--muted);color:var(--foreground);border-bottom-left-radius:.35rem}
+.ci-out{align-self:flex-end;background:var(--gradient-primary);color:var(--primary-foreground);border-bottom-right-radius:.35rem}
+.ci-time{font-size:.7rem;color:var(--muted-foreground);align-self:center}
+.ci-kv{display:flex;justify-content:space-between;gap:1rem;font-size:.8125rem;padding:.4rem 0;border-bottom:1px dashed var(--border)}
+.ci-kv:last-child{border-bottom:0}
+.ci-kv span:first-child{color:var(--muted-foreground)}
+.ci-kv span:last-child{font-weight:600;text-align:right}
+.ci-panel{margin:.25rem 1rem 1rem;padding:.85rem 1rem;border-radius:var(--ci-r-lg);
+  border:1px solid color-mix(in oklch,var(--accent) 28%,var(--border));
+  background:linear-gradient(180deg,color-mix(in oklch,var(--accent) 7%,transparent),transparent)}
+.ci-label{font-size:.6875rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted-foreground)}
+.ci-done{display:flex;align-items:center;gap:.5rem;padding:.7rem 1rem;margin:0 1rem 1rem;border-radius:var(--ci-r-lg);
+  background:color-mix(in oklch,var(--success) 14%,transparent);font-size:.8125rem;font-weight:600}
+.ci-done svg{width:1rem;height:1rem;color:var(--success);flex-shrink:0}
+
+.ci-pill{display:inline-flex;align-items:center;gap:.4rem;border-radius:9999px;border:1px solid var(--border);
+  background:var(--card);padding:.3rem .7rem;font-size:.75rem;font-weight:600;color:var(--muted-foreground)}
+.ci-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}
+
+/* Avant / après */
+.ci-ba{border-radius:var(--ci-r-xl);border:1px solid var(--border);padding:1.4rem;background:var(--card)}
+.ci-ba-before{background:var(--muted)}
+.ci-ba-after{border-color:color-mix(in oklch,var(--accent) 35%,var(--border));box-shadow:var(--shadow-elevated)}
+
+/* FAQ */
+.ci-faq{border:1px solid var(--border);border-radius:var(--ci-r-xl);background:var(--card);
+  padding:1rem 1.2rem;margin-bottom:.7rem}
+.ci-faq summary{cursor:pointer;font-family:var(--font-display);font-weight:600;font-size:.9375rem;list-style:none;
+  display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.ci-faq summary::-webkit-details-marker{display:none}
+.ci-faq summary::after{content:"+";font-size:1.3rem;color:var(--accent);line-height:1;flex-shrink:0}
+.ci-faq[open] summary::after{content:"\2212"}
+.ci-faq p{margin:.7rem 0 0;font-size:.9rem;line-height:1.65;color:var(--muted-foreground)}
+
+/* Formulaire */
+.ci-formgrid{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:640px){.ci-formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ci-span2{grid-column:1/-1}
+.ci-lab{display:block;font-size:.8125rem;font-weight:600;margin-bottom:.35rem}
+.ci-req{color:var(--accent)}
+.ci-field{width:100%;height:3rem;border-radius:var(--ci-r-lg);border:1px solid var(--input);
+  background:var(--background);padding:0 .85rem;font-size:1rem;color:var(--foreground);font-family:inherit}
+textarea.ci-field{height:auto;min-height:6.5rem;padding:.75rem .85rem;resize:vertical;line-height:1.55}
+select.ci-field{appearance:none;padding-right:2.2rem;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b6478' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .7rem center;background-size:1.05rem}
+.ci-field:focus{outline:2px solid var(--ring);outline-offset:1px;border-color:var(--ring)}
+
+/* Barre d'action mobile */
+.ci-bar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;gap:.5rem;padding:.6rem .75rem;
+  padding-bottom:calc(.6rem + env(safe-area-inset-bottom));border-top:1px solid var(--border);
+  background:color-mix(in oklch,var(--background) 92%,transparent);backdrop-filter:blur(8px)}
+.ci-bar .ci-btn{min-height:2.9rem;font-size:.875rem;padding:0 .9rem}
+.ci-bar-cta{flex:1}
+@media(min-width:768px){.ci-bar{display:none}}
+@media(max-width:767px){body{padding-bottom:4.5rem}}
+
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+section[id]{scroll-margin-top:4.5rem}
+.ci-hero-pad{padding-top:2rem;padding-bottom:2.5rem}
+@media(min-width:640px){.ci-hero-pad{padding-top:3rem;padding-bottom:3.5rem}}
+.ci-navpos{top:4rem}
+.ci-skip{position:absolute;left:-9999px;top:0;z-index:60}
+.ci-skip:focus{left:1rem;top:1rem;width:auto;height:auto;padding:.6rem 1rem;border-radius:var(--ci-r-lg);
+  background:var(--primary);color:var(--primary-foreground);font-size:.875rem;font-weight:600}
+[hidden]{display:none !important}
+img,svg{max-width:100%}
+</style>
+
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+window.gtag = gtag;
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
+/* Reprise du choix déjà exprimé sur le site (même clé que la bannière de consentement). */
+try{var c=localStorage.getItem('sitaly_cookie_consent');
+if(c==='granted'||c==='denied'){gtag('consent','update',{ad_storage:c,ad_user_data:c,ad_personalization:c,analytics_storage:c});}}catch(e){}
+gtag('js',new Date());
+gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H4Z6HZLE3S"></script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5LZDMNC5');</script>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5LZDMNC5" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
+
+<div class="min-h-screen bg-background text-foreground">
+
+<a href="#contenu" class="ci-skip">Aller au contenu</a>
+
+<header class="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
+  <div class="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
+    <a aria-label="Retour à sitaly.fr" href="/" class="flex items-center">
+      <img src="/assets/sitaly-logo-DZbGGEWG.png" alt="Sitaly" width="414" height="108" class="h-6 w-auto sm:h-7"/>
+    </a>
+    <div class="flex items-center gap-2">
+      <a href="tel:+33658683372" data-track="tel" class="inline-flex h-11 shrink-0 items-center gap-2 border border-border bg-card px-3 text-sm font-semibold text-foreground shadow-soft transition hover:border-accent hover:text-accent sm:px-4 rounded-lg" aria-label="Appeler Sitaly au 06 58 68 33 72">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>
+        <span class="hidden lg:inline">06 58 68 33 72</span><span class="lg:hidden">Appeler</span>
+      </a>
+      <a href="#diagnostic" data-cta="header" class="hidden h-11 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90 sm:inline-flex">
+        Demander un diagnostic
+      </a>
+      <button type="button" id="menu-btn" class="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-border bg-card text-foreground shadow-soft transition hover:border-accent md:hidden rounded-lg" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu-mobile">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
+      </button>
+    </div>
+    <nav id="menu-mobile" hidden class="absolute left-0 right-0 ci-navpos border-b border-border bg-background px-4 py-4 shadow-elevated md:hidden">
+      <a href="#solution" class="block py-2 text-sm font-medium text-foreground">Ce que fait l'agent</a>
+      <a href="#exemples" class="block py-2 text-sm font-medium text-foreground">Exemples</a>
+      <a href="#fonctionnement" class="block py-2 text-sm font-medium text-foreground">Comment ça marche</a>
+      <a href="#faq" class="block py-2 text-sm font-medium text-foreground">Questions fréquentes</a>
+      <a href="#diagnostic" data-cta="menu" class="mt-3 ci-btn ci-btn-primary ci-btn-block">Demander un diagnostic</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+
+<!-- ================= 1. HERO ================= -->
+<section class="hero-bg">
+  <div class="ci-wrap ci-hero-pad">
+    <div class="ci-grid2" style="align-items:center;gap:2.5rem">
+      <div>
+        <span class="ci-eyebrow"><span class="ci-dot"></span>Agent IA pour entreprises</span>
+        <h1 class="ci-h1" style="margin-top:1.25rem">
+          Vos prospects obtiennent une réponse <span class="gradient-text">immédiate</span>. Même quand personne n'est disponible.
+        </h1>
+        <p class="ci-lead">
+          Sitaly installe des agents IA qui répondent à vos demandes entrantes, qualifient les prospects,
+          proposent des rendez-vous et relancent les devis restés sans réponse — sur vos appels, vos formulaires,
+          vos e-mails et WhatsApp. Un humain reprend la main dès que la situation le demande.
+        </p>
+        <div class="ci-cta-row">
+          <a href="#diagnostic" data-cta="hero" class="ci-btn ci-btn-primary">
+            Demander un diagnostic gratuit
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </a>
+          <a href="#fonctionnement" data-cta="hero_secondaire" class="ci-btn ci-btn-ghost">Voir comment ça fonctionne</a>
+        </div>
+        <p class="ci-note" style="margin-top:1rem">
+          Sans engagement — un échange de 20 à 30 minutes suffit pour savoir ce qui est automatisable chez vous.
+        </p>
+        <div class="ci-pills">
+          <span class="ci-pill">Appels</span>
+          <span class="ci-pill">Formulaires</span>
+          <span class="ci-pill">WhatsApp</span>
+          <span class="ci-pill">E-mails</span>
+          <span class="ci-pill">Prise de rendez-vous</span>
+          <span class="ci-pill">Relances</span>
+        </div>
+      </div>
+
+      <div>
+        <figure style="margin:0">
+          <div class="ci-chat">
+            <div class="ci-chat-top">
+              <span class="ci-chat-av" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>
+              </span>
+              <div>
+                <p class="ci-chat-name">Agent d'accueil</p>
+                <p class="ci-chat-sub">Appel entrant · 19 h 12 · hors horaires</p>
+              </div>
+            </div>
+            <div class="ci-chat-body">
+              <p class="ci-msg ci-in" style="margin:0">« Bonjour, j'aurais besoin d'un devis. Vous intervenez sur Massy&nbsp;? »</p>
+              <p class="ci-msg ci-out" style="margin:0">« Oui, nous intervenons à Massy. Deux questions rapides et je vous propose un créneau. »</p>
+              <span class="ci-time">Réponse en 2 secondes</span>
+            </div>
+            <div class="ci-panel">
+              <span class="ci-label">Qualification</span>
+              <div style="margin-top:.5rem">
+                <div class="ci-kv"><span>Nature de la demande</span><span>Devis</span></div>
+                <div class="ci-kv"><span>Zone</span><span>Massy (91)</span></div>
+                <div class="ci-kv"><span>Échéance</span><span>Sous 15 jours</span></div>
+              </div>
+            </div>
+            <div class="ci-done">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+              Rendez-vous proposé, résumé envoyé à l'équipe
+            </div>
+          </div>
+          <figcaption class="ci-note" style="margin-top:.75rem;text-align:center">
+            Exemple de parcours. Les règles, le vocabulaire et les cas de transfert humain sont définis avec vous.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 2. LE PROBLÈME ================= -->
+<section class="ci-sec ci-alt">
+  <div class="ci-wrap">
+    <div class="ci-head">
+      <span class="ci-eyebrow"><span class="ci-dot"></span>Le point de départ</span>
+      <h2 class="ci-h2" style="margin-top:1rem">Combien de demandes perdez-vous simplement parce que personne n'était disponible&nbsp;?</h2>
+      <p class="ci-lead">
+        Dans la plupart des entreprises, le problème n'est pas le manque de prospects.
+        C'est le délai entre le moment où quelqu'un vous contacte et le moment où quelqu'un lui répond.
+      </p>
+    </div>
+
+    <div class="ci-grid4">
+      <div class="ci-card">
+        <span class="ci-ico" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l.71-.71a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.87.55 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-3.33-2.67"></path><path d="M22 2 2 22"></path><path d="M4.9 4.9A19.68 19.68 0 0 0 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .55 2.87 2 2 0 0 1-.45 2.11L8 10"></path></svg>
+        </span>
+        <h3 class="ci-h3" style="margin-top:1rem">Les appels qui ne sont pas décrochés</h3>
+        <p class="ci-body">Pendant une intervention, un rendez-vous ou après 18 h. Le prospect appelle le concurrent suivant dans la liste.</p>
+      </div>
+      <div class="ci-card">
+        <span class="ci-ico" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M9 15h6"></path><path d="M9 11h2"></path></svg>
+        </span>
+        <h3 class="ci-h3" style="margin-top:1rem">Les demandes de devis sans réponse rapide</h3>
+        <p class="ci-body">La demande arrive le soir, la réponse part le surlendemain. Entre-temps, la décision est prise ailleurs.</p>
+      </div>
+      <div class="ci-card">
+        <span class="ci-ico" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        </span>
+        <h3 class="ci-h3" style="margin-top:1rem">Les messages qui s'accumulent</h3>
+        <p class="ci-body">Boîte mail, formulaire du site, WhatsApp, réseaux sociaux : les demandes arrivent de partout et se traitent au fil de l'eau.</p>
+      </div>
+      <div class="ci-card">
+        <span class="ci-ico" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M12 7v5l4 2"></path></svg>
+        </span>
+        <h3 class="ci-h3" style="margin-top:1rem">Les relances que personne ne fait</h3>
+        <p class="ci-body">Le devis part, puis plus rien. La relance dépend de la mémoire et de la disponibilité de celui qui l'a envoyé.</p>
+      </div>
+    </div>
+
+    <p class="ci-narrow ci-note ci-center" style="margin-top:2rem">
+      À cela s'ajoutent les tâches répétitives : répondre dix fois à la même question, ressaisir les mêmes
+      informations d'un outil à l'autre, caler un rendez-vous par échanges de messages.
+    </p>
+  </div>
+</section>
+
+<!-- ================= 3. LA SOLUTION ================= -->
+<section class="ci-sec" id="solution">
+  <div class="ci-wrap">
+    <div class="ci-head">
+      <span class="ci-eyebrow"><span class="ci-dot"></span>La solution</span>
+      <h2 class="ci-h2" style="margin-top:1rem">Un agent IA qui travaille pendant que vous travaillez sur votre entreprise</h2>
+      <p class="ci-lead">
+        Ce n'est pas une fenêtre de discussion posée sur votre site. C'est un agent branché à vos canaux et à vos
+        outils, qui traite une demande de bout en bout selon les règles que vous définissez.
+      </p>
+    </div>
+
+    <div class="ci-grid3">
+      <div class="ci-card">
+        <span class="ci-ico" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z"></path><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"></path></svg>
+        </span>
+        <h3 class="ci-h3" style="margin-top:1rem">Répondre</h3>
+        <p class="ci-body">
+          Il répond aux appels, aux messages WhatsApp, aux formulaires et aux e-mails, sur le canal utilisé par le
+          client, y compris aux questions qui reviennent tous les jours.
+        </p>
+      </div>
+      <div class="ci-card">
+        <span class="ci-ico" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+        </span>
+        <h3 class="ci-h3" style="margin-top:1rem">Qualifier</h3>
+        <p class="ci-body">
+          Il pose les questions que vos commerciaux poseraient — zone, nature du besoin, budget, délai — et écarte
+          les demandes hors périmètre avant qu'elles n'occupent votre équipe.
+        </p>
+      </div>
+      <div class="ci-card">
+        <span class="ci-ico" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path><path d="m9 16 2 2 4-4"></path></svg>
+        </span>
+        <h3 class="ci-h3" style="margin-top:1rem">Prendre des rendez-vous</h3>
+        <p class="ci-body">
+          Il propose des créneaux réellement disponibles dans vos agendas, confirme le rendez-vous et envoie les
+          rappels pour limiter les absences.
+        </p>
+      </div>
+      <div class="ci-card">
+        <span class="ci-ico" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+        </span>
+        <h3 class="ci-h3" style="margin-top:1rem">Traiter les demandes de devis</h3>
+        <p class="ci-body">
+          Il collecte les informations nécessaires au chiffrage, réclame les pièces manquantes et transmet un
+          dossier complet plutôt qu'un simple « rappelez-moi ».
+        </p>
+      </div>
+      <div class="ci-card">
+        <span class="ci-ico" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 3 3 9-3 9 19-9Z"></path><path d="M6 12h16"></path></svg>
+        </span>
+        <h3 class="ci-h3" style="margin-top:1rem">Relancer</h3>
+        <p class="ci-body">
+          Il suit les devis et les propositions restés sans réponse, relance selon vos délais et arrête la séquence
+          dès que le client répond.
+        </p>
+      </div>
+      <div class="ci-card ci-card-accent">
+        <span class="ci-ico" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+        </span>
+        <h3 class="ci-h3" style="margin-top:1rem">Disponible 24h/24</h3>
+        <p class="ci-body">
+          Le soir, le week-end, pendant les congés ou les périodes de rush : l'agent ne dépend pas de vos horaires
+          d'ouverture ni de la charge de votre équipe.
+        </p>
+      </div>
+    </div>
+
+    <div class="ci-card ci-narrow" style="margin-top:2rem;background:var(--muted);box-shadow:none">
+      <div style="display:flex;gap:.85rem;align-items:flex-start">
+        <span class="ci-ico" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 21a6 6 0 0 0-12 0"></path><circle cx="12" cy="11" r="4"></circle><circle cx="12" cy="12" r="10"></circle></svg>
+        </span>
+        <div>
+          <h3 class="ci-h3">L'humain reste dans la boucle</h3>
+          <p class="ci-body">
+            Urgence, litige, client existant, montant important, demande hors périmètre : les situations que vous
+            désignez déclenchent une reprise humaine, avec le contexte déjà collecté. L'agent ne décide jamais
+            au-delà du cadre que vous avez fixé.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4. COMMENT ÇA FONCTIONNE ================= -->
+<section class="ci-sec ci-alt" id="fonctionnement">
+  <div class="ci-wrap">
+    <div class="ci-head">
+      <span class="ci-eyebrow"><span class="ci-dot"></span>Comment ça fonctionne</span>
+      <h2 class="ci-h2" style="margin-top:1rem">Trois étapes, dans cet ordre</h2>
+      <p class="ci-lead">
+        On ne configure rien avant d'avoir regardé comment vos demandes circulent aujourd'hui.
+      </p>
+    </div>
+
+    <div class="ci-grid3">
+      <div class="ci-card">
+        <div class="ci-num">01</div>
+        <h3 class="ci-h3" style="margin-top:1rem">Analyse</h3>
+        <p class="ci-body">
+          Nous partons de vos demandes réelles : d'où elles viennent, combien il y en a, où elles se perdent et
+          quelles tâches reviennent chaque semaine. Nous en tirons le premier processus rentable à automatiser.
+        </p>
+      </div>
+      <div class="ci-card">
+        <div class="ci-num">02</div>
+        <h3 class="ci-h3" style="margin-top:1rem">Configuration</h3>
+        <p class="ci-body">
+          L'agent est configuré avec vos informations, vos règles de qualification, votre vocabulaire, vos horaires
+          et les cas qui doivent remonter à un humain. Puis il est testé avant toute mise en ligne.
+        </p>
+      </div>
+      <div class="ci-card">
+        <div class="ci-num">03</div>
+        <h3 class="ci-h3" style="margin-top:1rem">Déploiement</h3>
+        <p class="ci-body">
+          L'agent est connecté à vos canaux et à vos outils compatibles — téléphonie, agenda, CRM, messagerie —
+          puis mis en production progressivement, avec votre équipe formée.
+        </p>
+      </div>
+    </div>
+
+    <div class="ci-card ci-narrow" style="margin-top:1.5rem">
+      <div style="display:flex;gap:.85rem;align-items:flex-start">
+        <span class="ci-ico" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"></path><path d="m19 9-5 5-4-4-3 3"></path></svg>
+        </span>
+        <div>
+          <h3 class="ci-h3">Puis le pilotage</h3>
+          <p class="ci-body">
+            Les conversations sont relues, les règles corrigées, les cas mal traités réduits, et le périmètre étendu
+            une fois le premier processus stabilisé. Un agent utile est un agent ajusté, pas un agent installé.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ci-center" style="margin-top:2rem">
+      <a href="#diagnostic" data-cta="fonctionnement" class="ci-btn ci-btn-primary">Demander un diagnostic gratuit</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5. EXEMPLES CONCRETS ================= -->
+<section class="ci-sec" id="exemples">
+  <div class="ci-wrap">
+    <div class="ci-head">
+      <span class="ci-eyebrow"><span class="ci-dot"></span>Exemples concrets</span>
+      <h2 class="ci-h2" style="margin-top:1rem">Voici ce que votre agent IA peut faire</h2>
+      <p class="ci-lead">
+        Trois situations que vous reconnaîtrez. Le principe est le même à chaque fois : répondre tout de suite,
+        collecter ce qui est utile, puis passer la main au bon moment.
+      </p>
+    </div>
+
+    <div class="ci-grid3">
+
+      <!-- Scénario 1 : artisan -->
+      <div>
+        <div class="ci-chat">
+          <div class="ci-chat-top">
+            <span class="ci-chat-av" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            </span>
+            <div>
+              <p class="ci-chat-name">Artisan · demande de devis</p>
+              <p class="ci-chat-sub">WhatsApp · 20 h 47</p>
+            </div>
+          </div>
+          <div class="ci-chat-body">
+            <p class="ci-msg ci-in" style="margin:0">« Bonjour, j'aimerais obtenir un devis pour refaire ma toiture. »</p>
+            <p class="ci-msg ci-out" style="margin:0">« Bonjour, je m'en occupe. Quelle est la commune du chantier, et connaissez-vous la surface approximative&nbsp;? »</p>
+            <p class="ci-msg ci-in" style="margin:0">« Palaiseau, environ 90 m². Il y a des tuiles cassées depuis la tempête. »</p>
+            <p class="ci-msg ci-out" style="margin:0">« Merci. S'agit-il d'une réfection complète ou d'une réparation&nbsp;? Et souhaitez-vous passer par l'assurance&nbsp;? »</p>
+          </div>
+          <div class="ci-panel">
+            <span class="ci-label">Transmis à l'équipe</span>
+            <div style="margin-top:.5rem">
+              <div class="ci-kv"><span>Commune</span><span>Palaiseau (91)</span></div>
+              <div class="ci-kv"><span>Surface</span><span>≈ 90 m²</span></div>
+              <div class="ci-kv"><span>Nature</span><span>Réfection après sinistre</span></div>
+              <div class="ci-kv"><span>Assurance</span><span>Déclaration en cours</span></div>
+            </div>
+          </div>
+          <div class="ci-done">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            Visite technique proposée jeudi 9 h
+          </div>
+        </div>
+        <p class="ci-note" style="margin-top:.75rem">
+          Le devis est chiffré par vous, sur un dossier complet. L'agent ne s'engage jamais sur un prix.
+        </p>
+      </div>
+
+      <!-- Scénario 2 : cabinet -->
+      <div>
+        <div class="ci-chat">
+          <div class="ci-chat-top">
+            <span class="ci-chat-av" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+            </span>
+            <div>
+              <p class="ci-chat-name">Cabinet · prise de rendez-vous</p>
+              <p class="ci-chat-sub">Appel entrant · 12 h 05</p>
+            </div>
+          </div>
+          <div class="ci-chat-body">
+            <p class="ci-msg ci-in" style="margin:0">« Bonjour, je voudrais un rendez-vous, si possible cette semaine. »</p>
+            <p class="ci-msg ci-out" style="margin:0">« Bien sûr. Est-ce une première consultation ou un suivi&nbsp;? »</p>
+            <p class="ci-msg ci-in" style="margin:0">« Une première consultation. »</p>
+            <p class="ci-msg ci-out" style="margin:0">« J'ai jeudi 11 h 30 ou vendredi 14 h. Lequel vous convient&nbsp;? »</p>
+            <span class="ci-time">Ligne occupée pendant les consultations</span>
+          </div>
+          <div class="ci-done">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            Rendez-vous posé dans l'agenda + rappel programmé
+          </div>
+        </div>
+        <p class="ci-note" style="margin-top:.75rem">
+          Les créneaux proposés proviennent de votre agenda. Les cas urgents ou sensibles sont transférés
+          immédiatement.
+        </p>
+      </div>
+
+      <!-- Scénario 3 : PME -->
+      <div>
+        <div class="ci-chat">
+          <div class="ci-chat-top">
+            <span class="ci-chat-av" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"></path><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg>
+            </span>
+            <div>
+              <p class="ci-chat-name">PME · question récurrente</p>
+              <p class="ci-chat-sub">Chat du site · 03 h 18</p>
+            </div>
+          </div>
+          <div class="ci-chat-body">
+            <p class="ci-msg ci-in" style="margin:0">« Où en est ma commande&nbsp;? Je l'ai passée mardi. »</p>
+            <p class="ci-msg ci-out" style="margin:0">« Votre commande est expédiée depuis hier. Livraison prévue jeudi, voici le lien de suivi. »</p>
+            <p class="ci-msg ci-in" style="margin:0">« Et si je veux modifier l'adresse&nbsp;? »</p>
+            <p class="ci-msg ci-out" style="margin:0">« Je transmets à l'équipe logistique, elle vous répond dès l'ouverture demain matin. »</p>
+          </div>
+          <div class="ci-done">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            Réponse immédiate, ticket créé pour le cas non couvert
+          </div>
+        </div>
+        <p class="ci-note" style="margin-top:.75rem">
+          Les questions fréquentes sont traitées sans intervention humaine. Le reste remonte avec l'historique.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= 6. POUR QUI ================= -->
+<section class="ci-sec ci-alt" id="pour-qui">
+  <div class="ci-wrap">
+    <div class="ci-head">
+      <span class="ci-eyebrow"><span class="ci-dot"></span>Pour qui</span>
+      <h2 class="ci-h2" style="margin-top:1rem">Votre entreprise est-elle compatible avec un agent IA&nbsp;?</h2>
+      <p class="ci-lead">
+        Ce qui change d'un métier à l'autre, ce sont les règles et le vocabulaire. Le principe, lui, ne change pas.
+      </p>
+    </div>
+
+    <div class="ci-grid3">
+      <div class="ci-card">
+        <h3 class="ci-h3">Artisans et bâtiment</h3>
+        <p class="ci-body">Les appels arrivent pendant les chantiers et les devis partent sans être relancés.</p>
+      </div>
+      <div class="ci-card">
+        <h3 class="ci-h3">TPE et commerces</h3>
+        <p class="ci-body">Une équipe réduite, beaucoup de questions pratiques, et personne de dédié au téléphone.</p>
+      </div>
+      <div class="ci-card">
+        <h3 class="ci-h3">PME et e-commerce</h3>
+        <p class="ci-body">Un volume de messages avant et après achat qui dépasse ce que le service client absorbe.</p>
+      </div>
+      <div class="ci-card">
+        <h3 class="ci-h3">Entreprises de services</h3>
+        <p class="ci-body">Trop de demandes hors budget ou hors périmètre occupent le temps des commerciaux.</p>
+      </div>
+      <div class="ci-card">
+        <h3 class="ci-h3">Cabinets et professions libérales</h3>
+        <p class="ci-body">Le téléphone sonne pendant les rendez-vous et les créneaux annulés restent vides.</p>
+      </div>
+      <div class="ci-card">
+        <h3 class="ci-h3">Toute entreprise à fort volume entrant</h3>
+        <p class="ci-body">Immobilier, formation, santé, automobile, agences : dès que les demandes arrivent en nombre.</p>
+      </div>
+    </div>
+
+    <div class="ci-grid2" style="margin-top:2rem">
+      <div class="ci-ba ci-ba-after">
+        <span class="ci-label">Particulièrement pertinent si</span>
+        <ul class="ci-ul">
+          <li class="ci-li"><svg class="ci-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Vous recevez régulièrement des demandes entrantes</li>
+          <li class="ci-li"><svg class="ci-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Des appels restent sans réponse dans la journée</li>
+          <li class="ci-li"><svg class="ci-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Vous répondez souvent aux mêmes questions</li>
+          <li class="ci-li"><svg class="ci-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Vous prenez beaucoup de rendez-vous à la main</li>
+          <li class="ci-li"><svg class="ci-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Vous traitez un flux régulier de demandes de devis</li>
+          <li class="ci-li"><svg class="ci-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Vous voulez rester joignable en dehors des horaires</li>
+        </ul>
+      </div>
+      <div class="ci-ba ci-ba-before">
+        <span class="ci-label">Moins pertinent si</span>
+        <ul class="ci-ul">
+          <li class="ci-li"><svg class="ci-cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>Vous recevez trop peu de demandes pour qu'un processus se justifie</li>
+          <li class="ci-li"><svg class="ci-cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>Vous cherchez un chatbot à installer vous-même pour quelques euros par mois</li>
+          <li class="ci-li"><svg class="ci-cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>Vous ne souhaitez ni définir de règles ni relire les conversations</li>
+        </ul>
+        <p class="ci-note" style="margin-top:1rem">
+          Nous préférons le dire avant le déploiement plutôt qu'après.
+        </p>
+      </div>
+    </div>
+
+    <p class="ci-narrow ci-note ci-center" style="margin-top:1.5rem">
+      Votre métier n'est pas dans la liste&nbsp;? Le diagnostic part de vos demandes réelles, pas d'un modèle préétabli.
+    </p>
+  </div>
+</section>
+
+<!-- ================= 7. AVANT / APRÈS ================= -->
+<section class="ci-sec">
+  <div class="ci-wrap">
+    <div class="ci-head">
+      <span class="ci-eyebrow"><span class="ci-dot"></span>Avant / après</span>
+      <h2 class="ci-h2" style="margin-top:1rem">Ce qui change dans le quotidien de vos équipes</h2>
+      <p class="ci-lead">
+        Aucun chiffre promis ici : les gains dépendent de votre volume de demandes et du périmètre déployé.
+      </p>
+    </div>
+
+    <div class="ci-grid2">
+      <div class="ci-ba ci-ba-before">
+        <span class="ci-label">Avant</span>
+        <h3 class="ci-h3" style="margin-top:.5rem">Aujourd'hui</h3>
+        <ul class="ci-ul">
+          <li class="ci-li"><svg class="ci-cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>Appels manqués pendant les interventions et hors horaires</li>
+          <li class="ci-li"><svg class="ci-cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>Messages en attente dans trois boîtes différentes</li>
+          <li class="ci-li"><svg class="ci-cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>Réponses écrites à la main, souvent les mêmes</li>
+          <li class="ci-li"><svg class="ci-cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>Relances oubliées, quand quelqu'un y pense</li>
+          <li class="ci-li"><svg class="ci-cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>Temps administratif : ressaisie, prise de rendez-vous, suivi</li>
+        </ul>
+      </div>
+      <div class="ci-ba ci-ba-after">
+        <span class="ci-label" style="color:var(--accent)">Après</span>
+        <h3 class="ci-h3" style="margin-top:.5rem">Avec un agent Sitaly</h3>
+        <ul class="ci-ul">
+          <li class="ci-li"><svg class="ci-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Réponse immédiate sur chaque canal traité, 24h/24</li>
+          <li class="ci-li"><svg class="ci-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Prospects qualifiés selon vos critères avant d'arriver à l'équipe</li>
+          <li class="ci-li"><svg class="ci-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Rendez-vous proposés, confirmés et rappelés automatiquement</li>
+          <li class="ci-li"><svg class="ci-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Informations centralisées et transmises à vos outils</li>
+          <li class="ci-li"><svg class="ci-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Relances systématiques, arrêtées dès que le client répond</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 8. POURQUOI SITALY ================= -->
+<section class="ci-sec ci-alt">
+  <div class="ci-wrap">
+    <div class="ci-head">
+      <span class="ci-eyebrow"><span class="ci-dot"></span>Pourquoi Sitaly</span>
+      <h2 class="ci-h2" style="margin-top:1rem">Un système d'automatisation commerciale, pas une démonstration technologique</h2>
+    </div>
+
+    <div class="ci-grid2">
+      <div class="ci-card">
+        <h3 class="ci-h3">Configuré sur vos processus</h3>
+        <p class="ci-body">
+          Vos critères de qualification, votre zone d'intervention, vos horaires, votre vocabulaire et vos cas
+          particuliers sont définis avec vous, puis figés dans la configuration de l'agent. Ce n'est pas un modèle
+          générique auquel vous devez vous adapter.
+        </p>
+      </div>
+      <div class="ci-card">
+        <h3 class="ci-h3">Pas un chatbot posé sur un site</h3>
+        <p class="ci-body">
+          Un chatbot répond dans une fenêtre et s'arrête là. Un agent traite la demande de bout en bout : il
+          comprend le motif, applique vos règles, propose un créneau, enregistre les informations et transmet le
+          contexte à votre équipe.
+        </p>
+      </div>
+      <div class="ci-card">
+        <h3 class="ci-h3">Mise en place accompagnée</h3>
+        <p class="ci-body">
+          Sitaly réalise le diagnostic, la configuration, les connexions, les tests et la formation de l'équipe.
+          Vous n'avez ni outil à apprendre, ni scénario à écrire, ni intégration à développer.
+        </p>
+      </div>
+      <div class="ci-card">
+        <h3 class="ci-h3">Un périmètre qui évolue</h3>
+        <p class="ci-body">
+          On démarre par le point de perte le plus coûteux, on mesure, puis on étend une fois le premier processus
+          stabilisé. Les règles sont ajustées au fil des conversations relues.
+        </p>
+      </div>
+    </div>
+
+    <p class="ci-narrow ci-note ci-center" style="margin-top:1.5rem">
+      Sitaly est une agence d'acquisition française : sites internet, Google Ads, ChatGPT Ads et agents IA.
+      L'automatisation n'est utile que si elle produit des demandes traitées et des rendez-vous tenus.
+    </p>
+  </div>
+</section>
+
+<!-- ================= 9. DÉMONSTRATION / CTA INTERMÉDIAIRE ================= -->
+<section class="ci-sec">
+  <div class="ci-wrap">
+    <div class="ci-card ci-narrow ci-center" style="padding:2rem 1.5rem;background:var(--gradient-hero)">
+      <span class="ci-eyebrow"><span class="ci-dot"></span>Diagnostic</span>
+      <h2 class="ci-h2" style="margin-top:1rem">Découvrez ce qu'un agent IA pourrait automatiser dans votre entreprise</h2>
+      <p class="ci-lead">
+        Nous analysons votre fonctionnement actuel et identifions les tâches qui peuvent être automatisées —
+        en commençant par celles qui vous coûtent le plus de demandes.
+      </p>
+      <div class="ci-cta-row" style="justify-content:center">
+        <a href="#diagnostic" data-cta="milieu" class="ci-btn ci-btn-primary">Demander mon diagnostic gratuit</a>
+      </div>
+      <p class="ci-note" style="margin-top:1rem">Sans engagement — aucune installation avant votre validation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 10. FAQ ================= -->
+<section class="ci-sec ci-alt" id="faq">
+  <div class="ci-wrap">
+    <div class="ci-head">
+      <span class="ci-eyebrow"><span class="ci-dot"></span>Questions fréquentes</span>
+      <h2 class="ci-h2" style="margin-top:1rem">Les questions posées avant de démarrer</h2>
+    </div>
+
+    <div class="ci-narrow">
+      <details class="ci-faq"><summary>Qu'est-ce qu'un agent IA&nbsp;?</summary>
+        <p>Un agent IA est un programme qui traite une demande de bout en bout à votre place : il comprend le motif du contact, pose les questions utiles, applique les règles que vous avez définies, effectue une action — proposer un créneau, enregistrer une information, transmettre un dossier — puis passe la main à votre équipe quand c'est prévu. Il travaille sur vos canaux existants : téléphone, formulaire, e-mail, WhatsApp, chat.</p>
+      </details>
+      <details class="ci-faq"><summary>Quelle différence avec un chatbot classique&nbsp;?</summary>
+        <p>Un chatbot suit un arbre de réponses préécrites dans une fenêtre de discussion, et s'arrête dès que la question sort du script. Un agent comprend une demande formulée librement, applique vos critères métier, agit dans vos outils et sait quand transmettre à un humain. Son périmètre est défini avec vous avant le déploiement, pas laissé à l'improvisation.</p>
+      </details>
+      <details class="ci-faq"><summary>L'agent peut-il vraiment répondre à mes clients&nbsp;?</summary>
+        <p>Oui, dans le périmètre défini avec vous : questions fréquentes, informations pratiques, suivi de commande, prise d'informations avant devis, orientation vers le bon interlocuteur. Ce qu'il peut dire et proposer est cadré dans sa configuration. Tout ce qui sort de ce cadre est transféré.</p>
+      </details>
+      <details class="ci-faq"><summary>Peut-il prendre des rendez-vous&nbsp;?</summary>
+        <p>Oui, lorsque vos agendas sont connectés. L'agent propose des créneaux réellement disponibles, confirme le rendez-vous, envoie les rappels et gère les déplacements ou annulations selon vos règles.</p>
+      </details>
+      <details class="ci-faq"><summary>Peut-il traiter les demandes de devis&nbsp;?</summary>
+        <p>Il collecte les informations nécessaires au chiffrage — nature du besoin, zone, volume, délai, pièces à fournir — qualifie la demande selon vos critères et transmet un dossier complet à votre équipe. Le chiffrage et l'engagement commercial restent de votre côté : l'agent ne fixe pas de prix.</p>
+      </details>
+      <details class="ci-faq"><summary>Fonctionne-t-il vraiment 24h/24&nbsp;?</summary>
+        <p>Oui. C'est souvent la première raison de le déployer : les demandes qui arrivent le soir, le week-end ou pendant les périodes de forte activité obtiennent une réponse au lieu d'attendre l'ouverture. Vous choisissez ce que l'agent traite hors horaires et ce qu'il met en attente pour votre équipe.</p>
+      </details>
+      <details class="ci-faq"><summary>L'agent peut-il être personnalisé&nbsp;?</summary>
+        <p>Il est entièrement configuré à partir de votre activité : vos informations, votre vocabulaire, vos critères de qualification, vos horaires, vos zones et les situations qui doivent déclencher une reprise humaine. Deux entreprises du même métier n'ont pas le même agent.</p>
+      </details>
+      <details class="ci-faq"><summary>Avec quels outils peut-il être connecté&nbsp;?</summary>
+        <p>Cela dépend de vos outils. Un logiciel qui expose une API ou des webhooks — CRM, agenda, téléphonie, messagerie, outil e-commerce — se connecte directement. Pour les autres, on passe par des relais comme l'e-mail, un fichier partagé ou un formulaire. Chaque connexion est vérifiée pendant le diagnostic : vous savez ce qui est réellement faisable avant de vous engager.</p>
+      </details>
+      <details class="ci-faq"><summary>Combien coûte un agent IA&nbsp;?</summary>
+        <p>Le projet se facture en deux parties : le déploiement initial, chiffré après le diagnostic selon le périmètre et les connexions à réaliser, puis un abonnement mensuel qui couvre le pilotage, les corrections et l'évolution des règles. Rien n'est chiffré avant le diagnostic, car le prix dépend de ce qui est réellement à automatiser chez vous.</p>
+      </details>
+      <details class="ci-faq"><summary>Combien de temps faut-il pour le mettre en place&nbsp;?</summary>
+        <p>Le délai dépend du périmètre retenu et des outils à connecter. Un premier processus — par exemple la réponse aux appels manqués et la prise de rendez-vous — se met en place nettement plus vite qu'un système complet. Le diagnostic fixe le calendrier et les étapes avant le démarrage.</p>
+      </details>
+      <details class="ci-faq"><summary>Est-ce adapté à une petite entreprise&nbsp;?</summary>
+        <p>Oui, à condition qu'il y ait un flux régulier de demandes et de la valeur commerciale en jeu. Un artisan qui perd des appels chaque semaine ou un cabinet dont la ligne sonne pendant les rendez-vous sont des cas typiques. En dessous d'un certain volume, une bonne organisation coûte moins cher qu'un système automatisé, et nous vous le dirons.</p>
+      </details>
+      <details class="ci-faq"><summary>Que se passe-t-il si l'agent ne sait pas répondre&nbsp;?</summary>
+        <p>Il ne devine pas. Il reformule une fois, puis bascule vers votre équipe avec le résumé de l'échange si la demande sort de son périmètre. Ces conversations sont relues pendant la phase de pilotage pour corriger les règles et réduire les cas mal traités.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 11. CTA FINAL + FORMULAIRE ================= -->
+<section class="ci-sec" id="diagnostic">
+  <div class="ci-wrap">
+    <div class="ci-head">
+      <span class="ci-eyebrow"><span class="ci-dot"></span>Diagnostic gratuit</span>
+      <h2 class="ci-h2" style="margin-top:1rem">Votre prochain prospect est peut-être déjà en train d'essayer de vous joindre</h2>
+      <p class="ci-lead">
+        Dites-nous comment vos demandes arrivent aujourd'hui. Nous identifions ce qui peut être automatisé,
+        ce que cela suppose côté outils — ou pourquoi ce n'est pas encore le bon moment.
+      </p>
+    </div>
+
+    <div class="ci-card ci-narrow" style="padding:1.5rem">
+      <form id="ci-form" novalidate>
+        <div class="ci-formgrid">
+          <div>
+            <label class="ci-lab" for="f-nom">Prénom et nom <span class="ci-req">*</span></label>
+            <input class="ci-field" type="text" id="f-nom" name="nom" required autocomplete="name"/>
+          </div>
+          <div>
+            <label class="ci-lab" for="f-entreprise">Entreprise <span class="ci-req">*</span></label>
+            <input class="ci-field" type="text" id="f-entreprise" name="entreprise" required autocomplete="organization"/>
+          </div>
+          <div>
+            <label class="ci-lab" for="f-email">E-mail professionnel <span class="ci-req">*</span></label>
+            <input class="ci-field" type="email" id="f-email" name="email" required autocomplete="email" inputmode="email"/>
+          </div>
+          <div>
+            <label class="ci-lab" for="f-tel">Téléphone <span class="ci-req">*</span></label>
+            <input class="ci-field" type="tel" id="f-tel" name="telephone" required autocomplete="tel" inputmode="tel"/>
+          </div>
+          <div class="ci-span2">
+            <label class="ci-lab" for="f-activite">Activité <span class="ci-req">*</span></label>
+            <select class="ci-field" id="f-activite" name="activite" required>
+              <option value="">Sélectionner…</option>
+              <option>Artisan / bâtiment</option>
+              <option>E-commerce et vente en ligne</option>
+              <option>Santé et cabinets de soins</option>
+              <option>Professions libérales et juridique</option>
+              <option>Immobilier</option>
+              <option>Agences, conseil et services</option>
+              <option>Commerce et distribution</option>
+              <option>Automobile</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="ci-span2">
+            <label class="ci-lab" for="f-besoin">Que souhaitez-vous automatiser&nbsp;? <span class="ci-req">*</span></label>
+            <textarea class="ci-field" id="f-besoin" name="besoin" required placeholder="Ex. : répondre aux appels manqués, qualifier les demandes de devis, prendre les rendez-vous, relancer les devis en attente…"></textarea>
+          </div>
+        </div>
+
+        <div id="ci-error" hidden role="alert" style="margin-top:1rem;font-size:.875rem;color:var(--destructive);font-weight:600"></div>
+
+        <button type="submit" id="ci-submit" class="ci-btn ci-btn-primary ci-btn-block" style="margin-top:1.5rem">
+          Demander mon diagnostic gratuit
+        </button>
+
+        <p class="ci-note ci-center" style="margin-top:1rem">
+          Sans engagement — un échange de 20 à 30 minutes. Vos informations servent uniquement à préparer le
+          diagnostic, voir notre <a href="/politique-confidentialite/" data-keep-utm="1" style="color:var(--accent);font-weight:600">politique de confidentialité</a>.
+        </p>
+      </form>
+
+      <div id="ci-success" hidden style="text-align:center;padding:1.5rem 0">
+        <div class="ci-num" style="width:3rem;height:3rem;margin:0 auto;background:var(--success);color:var(--success-foreground)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1.3rem;height:1.3rem"><path d="M20 6 9 17l-5-5"></path></svg>
+        </div>
+        <h3 class="ci-h3" style="font-size:1.3rem;margin-top:1.25rem">Votre demande est prête</h3>
+        <p class="ci-body">
+          Votre logiciel de messagerie s'est ouvert avec le récapitulatif pré-rempli.
+          Il ne reste qu'à l'envoyer — nous revenons vers vous rapidement.
+        </p>
+        <p style="margin-top:1.25rem;font-size:.925rem;line-height:1.7">
+          Rien ne s'est ouvert&nbsp;? Écrivez-nous à
+          <a href="mailto:contact@sitaly.fr" style="color:var(--accent);font-weight:600">contact@sitaly.fr</a><br/>
+          ou appelez le <a href="tel:+33658683372" data-track="tel" style="color:var(--accent);font-weight:600">06 58 68 33 72</a>.
+        </p>
+      </div>
+    </div>
+
+    <p class="ci-narrow ci-note ci-center" style="margin-top:1.5rem">
+      Vous préférez en parler de vive voix&nbsp;?
+      <a id="ci-booking" href="https://calendly.com/contact-sitaly/decouverte-de-votre-projet-web" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:600">Réservez un créneau en ligne</a>
+      ou appelez le <a href="tel:+33658683372" data-track="tel" style="color:var(--accent);font-weight:600">06 58 68 33 72</a>.
+    </p>
+
+    <p class="ci-narrow ci-note ci-center" style="margin-top:.75rem">
+      Pour aller plus loin : <a href="/agents-ia/" data-keep-utm="1" style="color:var(--accent);font-weight:600">le détail complet de l'offre Agents IA</a>.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer class="border-t border-border">
+  <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-8 text-sm text-muted-foreground sm:flex-row sm:px-6">
+    <img src="/assets/sitaly-logo-DZbGGEWG.png" alt="Sitaly" width="414" height="108" class="h-6 w-auto sm:h-7 scale-90" loading="lazy"/>
+    <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+      <a href="/" class="hover:text-foreground">Accueil</a>
+      <a href="/agents-ia/" data-keep-utm="1" class="hover:text-foreground">Agents IA</a>
+      <a href="/acquisition/" class="hover:text-foreground">Google Ads</a>
+      <a href="/chatgpt-ads/" class="hover:text-foreground">ChatGPT Ads</a>
+      <a href="/mentions-legales/" class="hover:text-foreground">Mentions légales</a>
+      <a href="/politique-confidentialite/" class="hover:text-foreground">Confidentialité</a>
+      <a href="/cgv/" class="hover:text-foreground">CGV</a>
+      <a href="https://www.linkedin.com/in/vidalozzi" target="_blank" rel="noopener noreferrer" aria-label="Sitaly sur LinkedIn" title="Sitaly sur LinkedIn" class="inline-flex h-10 w-10 items-center justify-center rounded-full border transition border-border text-muted-foreground hover:border-accent hover:text-accent h-9 w-9">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-[18px] w-[18px]" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<!-- Barre d'action permanente sur mobile -->
+<div class="ci-bar">
+  <a href="tel:+33658683372" data-track="tel" class="ci-btn ci-btn-ghost" aria-label="Appeler Sitaly au 06 58 68 33 72">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>
+    Appeler
+  </a>
+  <a href="#diagnostic" data-cta="barre_mobile" class="ci-btn ci-btn-primary ci-bar-cta">Diagnostic gratuit</a>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* Adresse de réception des demandes. */
+  var CONTACT_EMAIL = "contact@sitaly.fr";
+  var STORE_KEY = "sitaly_campaign_params";
+  var UTM_KEYS = ["utm_source","utm_medium","utm_campaign","utm_term","utm_content","gclid","gbraid","wbraid","msclkid"];
+
+  function track(name, params) {
+    try {
+      if (typeof window.gtag === "function") { window.gtag("event", name, params || {}); }
+      if (window.dataLayer) {
+        var payload = { event: name };
+        for (var k in (params || {})) { payload[k] = params[k]; }
+        window.dataLayer.push(payload);
+      }
+    } catch (e) {}
+  }
+
+  /* --- Campagne : capture des UTM, mémorisation puis propagation --- */
+  var campaign = {};
+  try {
+    var search = new URLSearchParams(window.location.search);
+    UTM_KEYS.forEach(function (k) {
+      var v = search.get(k);
+      if (v) { campaign[k] = v.slice(0, 120); }
+    });
+    if (Object.keys(campaign).length) {
+      sessionStorage.setItem(STORE_KEY, JSON.stringify(campaign));
+    } else {
+      var saved = sessionStorage.getItem(STORE_KEY);
+      if (saved) { campaign = JSON.parse(saved) || {}; }
+    }
+  } catch (e) { campaign = campaign || {}; }
+
+  var campaignKeys = Object.keys(campaign);
+  if (campaignKeys.length) {
+    /* Les liens marqués conservent les paramètres jusqu'à la conversion. */
+    Array.prototype.forEach.call(document.querySelectorAll('a[data-keep-utm="1"]'), function (a) {
+      try {
+        var url = new URL(a.getAttribute("href"), window.location.origin);
+        campaignKeys.forEach(function (k) { if (!url.searchParams.has(k)) { url.searchParams.set(k, campaign[k]); } });
+        a.setAttribute("href", url.pathname + url.search + url.hash);
+      } catch (e) {}
+    });
+    /* Calendly accepte nativement les paramètres utm_*. */
+    var booking = document.getElementById("ci-booking");
+    if (booking) {
+      try {
+        var b = new URL(booking.href);
+        campaignKeys.forEach(function (k) { if (k.indexOf("utm_") === 0) { b.searchParams.set(k, campaign[k]); } });
+        booking.href = b.toString();
+      } catch (e) {}
+    }
+  }
+
+  track("page_view_landing", { page_type: "landing", landing: "agents_ia_chatgpt", utm_source: campaign.utm_source || "", utm_campaign: campaign.utm_campaign || "" });
+
+  /* --- Menu mobile --- */
+  var btn = document.getElementById("menu-btn");
+  var nav = document.getElementById("menu-mobile");
+  if (btn && nav) {
+    btn.addEventListener("click", function () {
+      var open = nav.hasAttribute("hidden");
+      if (open) { nav.removeAttribute("hidden"); } else { nav.setAttribute("hidden", ""); }
+      btn.setAttribute("aria-expanded", String(open));
+      btn.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
+    });
+    nav.addEventListener("click", function (e) {
+      if (e.target.closest("a")) {
+        nav.setAttribute("hidden", "");
+        btn.setAttribute("aria-expanded", "false");
+        btn.setAttribute("aria-label", "Ouvrir le menu");
+      }
+    });
+  }
+
+  /* --- Clics sur les appels à l'action --- */
+  document.addEventListener("click", function (e) {
+    if (!e.target || typeof e.target.closest !== "function") return;
+    var cta = e.target.closest("[data-cta]");
+    if (cta) { track("cta_click", { cta_location: cta.getAttribute("data-cta"), landing: "agents_ia_chatgpt" }); return; }
+    var tel = e.target.closest('[data-track="tel"]');
+    if (tel) { track("tel_click", { landing: "agents_ia_chatgpt" }); return; }
+    var book = e.target.closest("#ci-booking");
+    if (book) { track("booking_click", { landing: "agents_ia_chatgpt" }); }
+  });
+
+  /* --- Formulaire : composition d'un e-mail pré-rempli --- */
+  var form = document.getElementById("ci-form");
+  if (!form) return;
+  var errorBox = document.getElementById("ci-error");
+  var success = document.getElementById("ci-success");
+
+  var LABELS = {
+    nom: "Prénom et nom",
+    entreprise: "Entreprise",
+    telephone: "Téléphone",
+    email: "E-mail",
+    activite: "Activité"
+  };
+
+  var started = false;
+  form.addEventListener("input", function () {
+    if (started) return;
+    started = true;
+    track("form_start", { form_id: "agents_ia_chatgpt_diagnostic" });
+  }, true);
+
+  function showError(msg, field) {
+    errorBox.textContent = msg;
+    errorBox.removeAttribute("hidden");
+    if (field && form.elements[field]) { form.elements[field].focus(); }
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    errorBox.setAttribute("hidden", "");
+
+    var data = {};
+    ["nom","entreprise","telephone","email","activite","besoin"].forEach(function (k) {
+      var el = form.elements[k];
+      data[k] = el ? String(el.value || "").trim() : "";
+    });
+
+    var missing = ["nom","entreprise","telephone","email","activite","besoin"].filter(function (k) { return !data[k]; });
+    if (missing.length) { showError("Merci de compléter les champs obligatoires.", missing[0]); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) { showError("L'adresse e-mail ne semble pas valide.", "email"); return; }
+
+    var lines = Object.keys(LABELS).map(function (k) { return LABELS[k] + " : " + data[k]; });
+    lines.push("", "Ce qu'il souhaite automatiser :", data.besoin);
+    if (campaignKeys.length) {
+      lines.push("", "— Origine de la demande —");
+      campaignKeys.forEach(function (k) { lines.push(k + " : " + campaign[k]); });
+    }
+    lines.push("", "Page : " + window.location.origin + window.location.pathname);
+
+    var subject = "Demande de diagnostic — Agents IA (ChatGPT Ads) — " + (data.entreprise || data.nom);
+    var mailto = "mailto:" + CONTACT_EMAIL +
+      "?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(lines.join("\n"));
+
+    track("form_submit", { form_id: "agents_ia_chatgpt_diagnostic" });
+    track("generate_lead", {
+      form_id: "agents_ia_chatgpt_diagnostic",
+      landing: "agents_ia_chatgpt",
+      activite: data.activite,
+      utm_source: campaign.utm_source || "",
+      utm_campaign: campaign.utm_campaign || ""
+    });
+
+    window.location.href = mailto;
+
+    form.setAttribute("hidden", "");
+    success.removeAttribute("hidden");
+    success.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Service","@id":"https://sitaly.fr/agents-ia/chatgpt/#service",
+"name":"Agent IA pour entreprise — automatisation des demandes clients",
+"serviceType":"Déploiement d'agents IA pour l'automatisation commerciale",
+"description":"Sitaly installe et pilote des agents IA qui répondent aux demandes entrantes, qualifient les prospects, prennent les rendez-vous, traitent les demandes de devis et relancent, sur les appels, formulaires, e-mails et WhatsApp.",
+"url":"https://sitaly.fr/agents-ia/chatgpt/",
+"areaServed":{"@type":"Country","name":"France"},
+"audience":{"@type":"BusinessAudience","name":"Artisans, TPE, PME, cabinets et entreprises de services"},
+"provider":{"@type":"ProfessionalService","name":"Sitaly","url":"https://sitaly.fr","telephone":"+33658683372","email":"contact@sitaly.fr"},
+"offers":{"@type":"Offer","priceSpecification":{"@type":"PriceSpecification","priceCurrency":"EUR","description":"Déploiement sur mesure puis abonnement mensuel, chiffrés après le diagnostic."},"availability":"https://schema.org/InStock","url":"https://sitaly.fr/agents-ia/chatgpt/#diagnostic"}},
+{"@type":"BreadcrumbList","@id":"https://sitaly.fr/agents-ia/chatgpt/#breadcrumb","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Accueil","item":"https://sitaly.fr/"},
+{"@type":"ListItem","position":2,"name":"Agents IA","item":"https://sitaly.fr/agents-ia/"},
+{"@type":"ListItem","position":3,"name":"Agent IA pour entreprise","item":"https://sitaly.fr/agents-ia/chatgpt/"}]},
+{"@type":"FAQPage","@id":"https://sitaly.fr/agents-ia/chatgpt/#faq","mainEntity":[
+{"@type":"Question","name":"Qu'est-ce qu'un agent IA ?","acceptedAnswer":{"@type":"Answer","text":"Un agent IA est un programme qui traite une demande de bout en bout : il comprend le motif du contact, pose les questions utiles, applique les règles définies avec l'entreprise, effectue une action — proposer un créneau, enregistrer une information, transmettre un dossier — puis passe la main à l'équipe quand c'est prévu. Il travaille sur les canaux existants : téléphone, formulaire, e-mail, WhatsApp, chat."}},
+{"@type":"Question","name":"Quelle différence avec un chatbot classique ?","acceptedAnswer":{"@type":"Answer","text":"Un chatbot suit un arbre de réponses préécrites dans une fenêtre de discussion et s'arrête dès que la question sort du script. Un agent comprend une demande formulée librement, applique les critères métier, agit dans les outils de l'entreprise et sait quand transmettre à un humain. Son périmètre est défini avant le déploiement."}},
+{"@type":"Question","name":"L'agent peut-il répondre aux clients ?","acceptedAnswer":{"@type":"Answer","text":"Oui, dans le périmètre défini avec l'entreprise : questions fréquentes, informations pratiques, suivi de commande, prise d'informations avant devis, orientation vers le bon interlocuteur. Ce qu'il peut dire et proposer est cadré dans sa configuration, et tout ce qui sort de ce cadre est transféré à un humain."}},
+{"@type":"Question","name":"Peut-il prendre des rendez-vous ?","acceptedAnswer":{"@type":"Answer","text":"Oui, lorsque les agendas sont connectés. L'agent propose des créneaux réellement disponibles, confirme le rendez-vous, envoie les rappels et gère les déplacements ou annulations selon les règles définies."}},
+{"@type":"Question","name":"Peut-il traiter les demandes de devis ?","acceptedAnswer":{"@type":"Answer","text":"Il collecte les informations nécessaires au chiffrage — nature du besoin, zone, volume, délai, pièces à fournir — qualifie la demande selon vos critères et transmet un dossier complet à l'équipe. Le chiffrage et l'engagement commercial restent du côté de l'entreprise : l'agent ne fixe pas de prix."}},
+{"@type":"Question","name":"Peut-il fonctionner 24h/24 ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Les demandes qui arrivent le soir, le week-end ou pendant les périodes de forte activité obtiennent une réponse au lieu d'attendre l'ouverture. L'entreprise choisit ce que l'agent traite hors horaires et ce qu'il met en attente pour l'équipe."}},
+{"@type":"Question","name":"L'agent peut-il être personnalisé ?","acceptedAnswer":{"@type":"Answer","text":"Il est entièrement configuré à partir de l'activité : informations, vocabulaire, critères de qualification, horaires, zones et situations qui doivent déclencher une reprise humaine. Deux entreprises du même métier n'ont pas le même agent."}},
+{"@type":"Question","name":"Avec quels outils peut-il être connecté ?","acceptedAnswer":{"@type":"Answer","text":"Un logiciel qui expose une API ou des webhooks — CRM, agenda, téléphonie, messagerie, outil e-commerce — se connecte directement. Pour les autres, on passe par des relais comme l'e-mail, un fichier partagé ou un formulaire. Chaque connexion est vérifiée pendant le diagnostic."}},
+{"@type":"Question","name":"Combien coûte un agent IA ?","acceptedAnswer":{"@type":"Answer","text":"Le projet se facture en deux parties : le déploiement initial, chiffré après le diagnostic selon le périmètre et les connexions à réaliser, puis un abonnement mensuel qui couvre le pilotage, les corrections et l'évolution des règles. Rien n'est chiffré avant le diagnostic."}},
+{"@type":"Question","name":"Combien de temps faut-il pour le mettre en place ?","acceptedAnswer":{"@type":"Answer","text":"Le délai dépend du périmètre retenu et des outils à connecter. Un premier processus, comme la réponse aux appels manqués et la prise de rendez-vous, se met en place nettement plus vite qu'un système complet. Le diagnostic fixe le calendrier avant le démarrage."}},
+{"@type":"Question","name":"Est-ce adapté à une petite entreprise ?","acceptedAnswer":{"@type":"Answer","text":"Oui, à condition qu'il y ait un flux régulier de demandes et de la valeur commerciale en jeu. Un artisan qui perd des appels chaque semaine ou un cabinet dont la ligne sonne pendant les rendez-vous sont des cas typiques. En dessous d'un certain volume, une bonne organisation coûte moins cher qu'un système automatisé."}},
+{"@type":"Question","name":"Que se passe-t-il si l'agent ne sait pas répondre ?","acceptedAnswer":{"@type":"Answer","text":"Il ne devine pas. Il reformule une fois, puis bascule vers l'équipe avec le résumé de l'échange si la demande sort de son périmètre. Ces conversations sont relues pendant la phase de pilotage pour corriger les règles."}}]}]}
+</script>
+
+</body>
+</html>
