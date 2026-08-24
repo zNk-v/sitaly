@@ -221,7 +221,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   "@type": "Offer",
                   name: "Sitaly ChatGPT Ads",
                   description:
-                    "Stratégie, création et gestion de vos campagnes publicitaires dans ChatGPT : cartographie des intentions, messages, tracking des conversions et optimisation. À partir de 890 €/mois, budget publicitaire non inclus.",
+                    "Stratégie, création et gestion de vos campagnes publicitaires dans ChatGPT : cartographie des intentions, messages, tracking des conversions et optimisation. 890 €/mois plus 10 % du budget publicitaire, budget publicitaire non inclus.",
                   price: "890",
                   priceCurrency: "EUR",
                   category: "Publicité ChatGPT Ads",

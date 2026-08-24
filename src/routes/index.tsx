@@ -41,7 +41,7 @@ import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 const FAQ_ITEMS = [
   {
     q: "Quel est le tarif ?",
-    a: "Trois offres combinables, sans engagement et sans frais d'installation. Sitaly Présence (149€/mois) : votre site entretenu et bien référencé localement. Sitaly Acquisition : la gestion de vos campagnes publicitaires, indépendamment du site — Google Ads à 299€/mois plus 15 % du budget publicitaire, ou ChatGPT Ads à partir de 890€/mois. Sitaly Agents IA : des agents installés clé en main qui répondent, qualifient, prennent vos rendez-vous et relancent vos devis. Vous prenez l'une, plusieurs, ou tout. Le budget publicitaire versé aux régies reste séparé.",
+    a: "Trois offres combinables, sans engagement et sans frais d'installation. Sitaly Présence (149€/mois) : votre site entretenu et bien référencé localement. Sitaly Acquisition : la gestion de vos campagnes publicitaires, indépendamment du site — Google Ads à 299€/mois plus 15 % du budget publicitaire, ou ChatGPT Ads à 890€/mois plus 10 % du budget publicitaire. Sitaly Agents IA : des agents installés clé en main qui répondent, qualifient, prennent vos rendez-vous et relancent vos devis. Vous prenez l'une, plusieurs, ou tout. Le budget publicitaire versé aux régies reste séparé.",
   },
   {
     q: "Que comprennent vraiment les modifications incluses ?",
@@ -679,7 +679,7 @@ const PRICING_TIERS: PricingTier[] = [
         label: "ChatGPT Ads",
         price: "890€",
         period: "/mois",
-        setup: "à partir de — hors budget publicitaire",
+        setup: "+ 10 % du budget publicitaire",
         objective: "Apparaissez dans ChatGPT quand un futur client décrit son besoin.",
         inherits: "Canal récent, piloté par la mesure",
         features: [
@@ -688,7 +688,7 @@ const PRICING_TIERS: PricingTier[] = [
           "Tracking des conversions avant toute dépense",
           "Optimisation continue et reporting mensuel",
         ],
-        note: "Budget publicitaire séparé. Sitaly n'est ni partenaire ni certifiée OpenAI.",
+        note: "Budget publicitaire séparé, versé à la régie. Sitaly n'est ni partenaire ni certifiée OpenAI.",
         cta: { label: "Découvrir ChatGPT Ads", href: "/chatgpt-ads/" },
       },
     ],
@@ -767,6 +767,32 @@ function PricingCard({ tier, featured }: { tier: PricingTier; featured: boolean 
         </div>
       )}
 
+      {/* Sélecteur de canal, posé sur le bord haut comme le badge « Recommandé ». */}
+      {tier.channels && (
+        <div
+          role="tablist"
+          aria-label="Choisir le canal publicitaire"
+          className="absolute -top-4 left-1/2 flex -translate-x-1/2 gap-1 rounded-full bg-accent p-1 shadow-elevated"
+        >
+          {tier.channels.map((c, i) => (
+            <button
+              key={c.key}
+              type="button"
+              role="tab"
+              aria-selected={i === channel}
+              onClick={() => setChannel(i)}
+              className={`whitespace-nowrap rounded-full px-3.5 py-1 text-xs font-bold uppercase tracking-wider transition ${
+                i === channel
+                  ? "bg-card text-accent shadow-soft"
+                  : "text-accent-foreground/80 hover:text-accent-foreground"
+              }`}
+            >
+              {c.label}
+            </button>
+          ))}
+        </div>
+      )}
+
       <div className="flex items-center justify-between">
         <div
           className={`grid h-11 w-11 place-items-center rounded-xl ${
@@ -786,32 +812,7 @@ function PricingCard({ tier, featured }: { tier: PricingTier; featured: boolean 
 
       <h3 className="mt-5 text-xl font-bold">{tier.name}</h3>
 
-      {tier.channels && (
-        <div
-          role="tablist"
-          aria-label="Choisir le canal publicitaire"
-          className="mt-4 grid grid-cols-2 gap-1 rounded-xl border border-border bg-secondary/60 p-1"
-        >
-          {tier.channels.map((c, i) => (
-            <button
-              key={c.key}
-              type="button"
-              role="tab"
-              aria-selected={i === channel}
-              onClick={() => setChannel(i)}
-              className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${
-                i === channel
-                  ? "bg-card text-foreground shadow-soft"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {c.label}
-            </button>
-          ))}
-        </div>
-      )}
-
-      <p className="mt-3 text-sm text-muted-foreground">{view.objective}</p>
+      <p className="mt-1 text-sm text-muted-foreground">{view.objective}</p>
 
       <div className="mt-5 flex items-baseline gap-1">
         <span className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">

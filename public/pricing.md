@@ -15,7 +15,7 @@ Sitaly est une agence d'acquisition : sites internet, Google Ads, ChatGPT Ads et
 - Budget publicitaire : séparé, versé à Google, à la charge du client
 
 ## ChatGPT Ads — Sitaly ChatGPT Ads (abonnement)
-- Prix : à partir de 890 €/mois, tarif indicatif ajusté selon le périmètre
+- Prix : 890 €/mois, majorés de 10 % du budget publicitaire dépensé
 - Inclut : stratégie et cartographie des intentions, création des messages, tracking des conversions, optimisation et reporting mensuel
 - Budget publicitaire : séparé et à la charge du client
 - Précision : Sitaly n'est ni partenaire officiel ni certifiée par OpenAI, et ne garantit aucun résultat sur ce canal récent

@@ -616,7 +616,7 @@ function Confiance() {
             <span className="font-semibold text-foreground">
               Vos clients cherchent aussi dans ChatGPT ?
             </span>{" "}
-            Nous pilotons également des campagnes ChatGPT Ads, à partir de 890 €/mois.
+            Nous pilotons également des campagnes ChatGPT Ads, à 890 €/mois + 10 % du budget publicitaire.
           </p>
           <a
             href="/chatgpt-ads/"

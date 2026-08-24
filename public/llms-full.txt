@@ -43,7 +43,7 @@ La prestation couvre la création et le paramétrage des campagnes, le ciblage d
 
 Le budget publicitaire versé à Google est séparé et reste à la charge du client. Sitaly facture la gestion, pas la publicité.
 
-### Sitaly ChatGPT Ads — dès 890 €/mois
+### Sitaly ChatGPT Ads — 890 €/mois + 10 % du budget publicitaire
 
 Stratégie, création et gestion de campagnes publicitaires ChatGPT Ads, la régie publicitaire d'OpenAI. L'offre s'adresse aux PME, entreprises de services, entreprises B2B, SaaS, e-commerce et entreprises à forte valeur client — pas au même segment que les offres artisans.
 
@@ -150,7 +150,7 @@ Ces sites sont publics et consultables.
 ## Questions fréquentes
 
 **Quel est le tarif de Sitaly ?**
-Des offres combinables, sans engagement et sans frais d'installation. Sitaly Présence à 149 €/mois pour le site entretenu et référencé localement. Sitaly Acquisition à 299 €/mois plus 15 % du budget publicitaire pour la gestion des campagnes Google Ads. Sitaly ChatGPT Ads à partir de 890 €/mois. Sitaly Agents IA sur mesure. Le budget publicitaire versé aux régies reste séparé.
+Des offres combinables, sans engagement et sans frais d'installation. Sitaly Présence à 149 €/mois pour le site entretenu et référencé localement. Sitaly Acquisition à 299 €/mois plus 15 % du budget publicitaire pour la gestion des campagnes Google Ads. Sitaly ChatGPT Ads à 890 €/mois plus 10 % du budget publicitaire. Sitaly Agents IA sur mesure. Le budget publicitaire versé aux régies reste séparé.
 
 **Combien de temps faut-il pour mettre le site en ligne ?**
 Le site est livré en 48h après l'appel découverte et la fourniture des contenus (textes, photos, informations de l'entreprise).
