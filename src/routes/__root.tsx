@@ -78,17 +78,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Site web & Google Ads pour artisans et TPE | Sitaly" },
-      { name: "description", content: "Site internet livré en 48h, Google Ads et automatisation pour artisans, indépendants et PME. Dès 149€/mois, sans engagement. Plus d'appels, plus de devis." },
-      { property: "og:title", content: "Site web & Google Ads pour artisans et TPE | Sitaly" },
-      { property: "og:description", content: "Site internet livré en 48h, Google Ads et automatisation pour artisans, indépendants et PME. Dès 149€/mois, sans engagement. Plus d'appels, plus de devis." },
+      { title: "Site web, Google Ads & IA pour PME, TPE et artisans | Sitaly" },
+      { name: "description", content: "Sites internet, Google Ads, ChatGPT Ads et automatisation IA pour PME, TPE et artisans. Dès 149€/mois, sans engagement. Plus de demandes, plus de clients." },
+      { property: "og:title", content: "Site web, Google Ads & IA pour PME, TPE et artisans | Sitaly" },
+      { property: "og:description", content: "Sites internet, Google Ads, ChatGPT Ads et automatisation IA pour PME, TPE et artisans. Dès 149€/mois, sans engagement. Plus de demandes, plus de clients." },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Sitaly" },
       { property: "og:url", content: "https://sitaly.fr" },
       { property: "og:image", content: "https://sitaly.fr/og-image.png" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "Sitaly — sites internet pour artisans et TPE" },
+      { property: "og:image:alt", content: "Sitaly — acquisition et automatisation pour PME, TPE et artisans" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: "https://sitaly.fr/og-image.png" },
       { name: "google-site-verification", content: "Yk4vxjL9oYYQ2TOB095PmXc-hZfT_4g5AzHSIllMfSA" },
@@ -153,7 +153,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               url: "https://sitaly.fr",
               image: "https://sitaly.fr/og-image.png",
               description:
-                "Sitaly crée des sites internet professionnels pour artisans et TPE en Essonne et en Île-de-France. Site sur mesure livré en 48h, en location à partir de 149€/mois tout inclus (hébergement, maintenance, modifications), sans engagement et sans frais d'installation.",
+                "Sitaly est une agence d'acquisition qui accompagne PME, TPE et artisans, en Essonne, en Île-de-France et partout en France à distance. Site sur mesure livré en 48h, en location à partir de 149€/mois tout inclus (hébergement, maintenance, modifications), sans engagement et sans frais d'installation.",
               telephone: "+33658683372",
               email: "contact@sitaly.fr",
               priceRange: "€€",
@@ -173,6 +173,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 { "@type": "Country", name: "France" },
               ],
               knowsLanguage: "fr",
+              // sameAs relie l'entreprise à ses profils officiels : c'est le signal
+              // qui permet à Google et aux moteurs IA de traiter Sitaly, le profil
+              // LinkedIn et le compte Instagram comme une seule et même entité.
+              sameAs: [
+                "https://www.linkedin.com/in/vidalozzi",
+                "https://instagram.com/sitaly.fr",
+              ],
+              founder: {
+                "@type": "Person",
+                name: "Teddy Vidal",
+                url: "https://www.linkedin.com/in/vidalozzi",
+                sameAs: ["https://www.linkedin.com/in/vidalozzi"],
+              },
               makesOffer: [
                 {
                   "@type": "Offer",
@@ -191,15 +204,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 },
                 {
                   "@type": "Offer",
-                  name: "Sitaly Acquisition",
+                  name: "Sitaly Acquisition — Google Ads",
                   description:
-                    "Création et gestion complète de vos campagnes Google Ads pour générer des appels et des devis, avec ou sans site. Budget publicitaire non inclus. Sans engagement.",
+                    "Création et gestion complète de vos campagnes Google Ads pour générer des demandes qualifiées, avec ou sans site. 299 €/mois plus 15 % du budget publicitaire. Budget publicitaire non inclus. Sans engagement.",
                   price: "299",
                   priceCurrency: "EUR",
                   category: "Publicité Google Ads",
                   priceSpecification: {
                     "@type": "UnitPriceSpecification",
                     price: "299",
+                    priceCurrency: "EUR",
+                    unitCode: "MON",
+                  },
+                },
+                {
+                  "@type": "Offer",
+                  name: "Sitaly ChatGPT Ads",
+                  description:
+                    "Stratégie, création et gestion de vos campagnes publicitaires dans ChatGPT : cartographie des intentions, messages, tracking des conversions et optimisation. À partir de 890 €/mois, budget publicitaire non inclus.",
+                  price: "890",
+                  priceCurrency: "EUR",
+                  category: "Publicité ChatGPT Ads",
+                  priceSpecification: {
+                    "@type": "UnitPriceSpecification",
+                    price: "890",
                     priceCurrency: "EUR",
                     unitCode: "MON",
                   },

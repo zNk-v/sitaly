@@ -1,6 +1,10 @@
 @import "./fonts.css";
 @import "tailwindcss" source(none);
 @source "../src";
+/* Landings statiques servies depuis public/ (hors routeur React) : leurs classes
+   utilitaires doivent survivre à la purge, elles n'apparaissent nulle part dans src/. */
+@source "../public/chatgpt-ads/index.html";
+@source "../public/agents-ia/chatgpt/index.html";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -156,46 +160,23 @@
 }
 
 /* ============================================================
-   Thème sombre local — page /agents-ia
-   Redéfinit les tokens de couleur sur `.ai-page` uniquement : les
-   utilitaires Tailwind (bg-card, text-muted-foreground, border-border…)
-   basculent en sombre sans toucher au reste du site.
-
-   Teinte 300 partout : c'est le violet du logo Sitaly, simplement
-   éclairci pour rester lisible sur fond sombre. Le fond garde une
-   pointe de la même teinte, très désaturée, plutôt qu'un gris neutre.
+   Habillage local — page /agents-ia
+   La page reprend les tokens clairs du site (:root) : mêmes surfaces,
+   mêmes contrastes que l'accueil. Seules les déclinaisons d'accent et
+   les effets propres à la page (halo, grille, cartes) sont définis ici.
    ============================================================ */
 
 .ai-page {
-  --background: oklch(0.16 0.03 300);
-  --foreground: oklch(0.97 0.008 300);
-  --card: oklch(0.2 0.038 300);
-  --card-foreground: oklch(0.97 0.008 300);
-  --popover: oklch(0.2 0.038 300);
-  --popover-foreground: oklch(0.97 0.008 300);
-  --primary: oklch(0.72 0.19 300);
-  --primary-foreground: oklch(0.15 0.04 300);
-  --secondary: oklch(0.24 0.042 300);
-  --secondary-foreground: oklch(0.97 0.008 300);
-  --muted: oklch(0.24 0.042 300);
-  --muted-foreground: oklch(0.77 0.028 300);
-  --accent: oklch(0.74 0.18 300);
-  --accent-foreground: oklch(0.15 0.04 300);
-  --success: oklch(0.78 0.15 172);
-  --success-foreground: oklch(0.15 0.04 300);
-  --destructive: oklch(0.68 0.18 25);
-  --border: oklch(0.98 0.01 300 / 0.14);
-  --input: oklch(0.98 0.01 300 / 0.2);
-  --ring: oklch(0.74 0.18 300);
-
   /* Déclinaisons de l'accent, du plus clair au plus profond.
      Nommées par rôle et non par couleur : la teinte peut évoluer. */
-  --ai-accent: oklch(0.74 0.18 300);
-  --ai-accent-soft: oklch(0.82 0.13 322);
-  --ai-accent-deep: oklch(0.63 0.19 288);
+  --ai-accent: var(--accent);
+  --ai-accent-soft: oklch(0.7 0.15 320);
+  --ai-accent-deep: oklch(0.45 0.18 297);
 
-  /* Couleurs internes du canvas workflow, réaccordées au thème */
-  --wfc-dot: oklch(0.98 0.01 300 / 0.1);
+  /* Vert un cran plus foncé que celui du site : ici il sert à de petits
+     libellés (11-12px) posés sur blanc, où le vert clair passait sous le
+     seuil de lisibilité. */
+  --success: oklch(0.5 0.13 170);
 
   background-color: var(--background);
   color: var(--foreground);
@@ -207,8 +188,8 @@
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(oklch(0.98 0.01 300 / 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(0.98 0.01 300 / 0.035) 1px, transparent 1px);
+    linear-gradient(oklch(0.24 0.07 300 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.24 0.07 300 / 0.05) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 75%);
   -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 75%);
@@ -220,11 +201,11 @@
 .ai-halo {
   position: absolute;
   pointer-events: none;
-  opacity: 0.4;
+  opacity: 0.55;
   background: radial-gradient(
     closest-side,
-    oklch(0.74 0.18 300 / 0.55),
-    oklch(0.82 0.13 322 / 0.22) 45%,
+    oklch(0.6 0.2 300 / 0.18),
+    oklch(0.7 0.15 320 / 0.08) 45%,
     transparent 78%
   );
 }
@@ -232,20 +213,21 @@
 /* Carte technique : surface translucide sur fond opaque, sans backdrop-filter
    (aucun gain visuel ici, et un coût GPU réel multiplié par le nombre de cartes). */
 .ai-card {
-  background: oklch(0.98 0.01 300 / 0.04);
-  border: 1px solid oklch(0.98 0.01 300 / 0.12);
+  background: var(--card);
+  border: 1px solid var(--border);
   border-radius: 14px;
+  box-shadow: var(--shadow-soft);
 }
 .ai-card-hover {
   transition:
     border-color 0.25s,
-    background-color 0.25s,
+    box-shadow 0.25s,
     transform 0.25s;
 }
 @media (hover: hover) {
   .ai-card-hover:hover {
-    border-color: oklch(0.74 0.18 300 / 0.5);
-    background: oklch(0.98 0.01 300 / 0.07);
+    border-color: oklch(0.6 0.2 300 / 0.45);
+    box-shadow: var(--shadow-elevated);
     transform: translateY(-2px);
   }
 }
@@ -263,8 +245,8 @@
 /* CTA principal */
 .ai-cta {
   background: linear-gradient(135deg, var(--ai-accent), var(--ai-accent-deep));
-  color: oklch(0.14 0.03 264);
-  box-shadow: 0 10px 30px -12px oklch(0.74 0.18 300 / 0.65);
+  color: var(--accent-foreground);
+  box-shadow: 0 10px 30px -12px oklch(0.6 0.2 300 / 0.5);
   transition:
     box-shadow 0.25s,
     transform 0.15s,
@@ -272,14 +254,14 @@
 }
 .ai-cta:hover {
   filter: brightness(1.06);
-  box-shadow: 0 14px 40px -12px oklch(0.74 0.18 300 / 0.8);
+  box-shadow: 0 14px 40px -12px oklch(0.6 0.2 300 / 0.6);
 }
 .ai-cta:active {
   transform: translateY(1px);
 }
 
 .ai-page :is(a, button, input, select, textarea, [tabindex]):focus-visible {
-  outline: 2px solid var(--ai-accent-soft);
+  outline: 2px solid var(--ai-accent);
   outline-offset: 2px;
   border-radius: 6px;
 }
@@ -345,8 +327,8 @@
   background: linear-gradient(
     180deg,
     var(--ai-accent) 0%,
-    oklch(0.98 0.01 300 / 0.14) 45%,
-    oklch(0.98 0.01 300 / 0.14) 100%
+    oklch(0.24 0.07 300 / 0.14) 45%,
+    oklch(0.24 0.07 300 / 0.14) 100%
   );
   background-size: 100% 220%;
   animation: ai-rail-flow 3.2s linear infinite;
@@ -382,8 +364,8 @@
     background: linear-gradient(
       90deg,
       var(--ai-accent) 0%,
-      oklch(0.98 0.01 300 / 0.14) 45%,
-      oklch(0.98 0.01 300 / 0.14) 100%
+      oklch(0.24 0.07 300 / 0.14) 45%,
+      oklch(0.24 0.07 300 / 0.14) 100%
     );
     background-size: 220% 100%;
     animation: ai-rail-flow-h 3.2s linear infinite;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Calendar, Menu, Phone, Sparkles, X } from "lucide-react";
+import { Calendar, Menu, MessageSquare, Phone, Sparkles, X } from "lucide-react";
 import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 /**
@@ -86,7 +86,7 @@ export function MobileMenu({
               </span>
             ) : (
               <Link
-                to="/agents-ia"
+                to="/agents-ia/"
                 onClick={() => setOpen(false)}
                 className="flex items-center gap-2 border-b border-border/60 py-3.5 text-base font-semibold text-accent"
               >
@@ -94,6 +94,16 @@ export function MobileMenu({
                 Agents IA
               </Link>
             )}
+
+            {/* Page statique hors routeur React : lien classique, pas de <Link>. */}
+            <a
+              href="/chatgpt-ads/"
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-2 border-b border-border/60 py-3.5 text-base font-semibold text-accent"
+            >
+              <MessageSquare className="h-4 w-4" />
+              ChatGPT Ads
+            </a>
 
             {!onHome && (
               <Link to="/" onClick={() => setOpen(false)} className={itemClass}>
@@ -112,7 +122,7 @@ export function MobileMenu({
                 Blog
               </span>
             ) : (
-              <Link to="/blog" onClick={() => setOpen(false)} className={itemClass}>
+              <Link to="/blog/" onClick={() => setOpen(false)} className={itemClass}>
                 Blog
               </Link>
             )}

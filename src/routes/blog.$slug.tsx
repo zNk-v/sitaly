@@ -10,6 +10,8 @@ import {
 } from "@/data/blog-posts";
 import { SitalyLogo } from "@/components/SitalyLogo";
 import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
+import { LinkedinLink } from "@/components/LinkedinLink";
+import { MetierLinksStrip } from "@/components/MetierLinks";
 import { CALENDLY_URL } from "@/lib/config";
 
 export const Route = createFileRoute("/blog/$slug")({
@@ -121,7 +123,7 @@ export const Route = createFileRoute("/blog/$slug")({
           Cet article n'existe pas ou a été déplacé.
         </p>
         <Link
-          to="/blog"
+          to="/blog/"
           className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
         >
           <ArrowLeft className="h-4 w-4" />
@@ -153,7 +155,7 @@ function BlogPostPage() {
 
       <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
         <Link
-          to="/blog"
+          to="/blog/"
           className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
         >
           <ArrowLeft className="h-4 w-4" />
@@ -234,7 +236,7 @@ function BlogPostPage() {
               {relatedPosts.map((p) => (
                 <Link
                   key={p.slug}
-                  to="/blog/$slug"
+                  to="/blog/$slug/"
                   params={{ slug: p.slug }}
                   className="group rounded-xl border border-border bg-card p-5 shadow-soft transition hover:shadow-elevated"
                 >
@@ -256,11 +258,16 @@ function BlogPostPage() {
         </section>
       )}
 
+      <MetierLinksStrip />
+
       <footer className="border-t border-border bg-background">
         <div className="mx-auto max-w-7xl px-4 py-10 text-center text-sm text-muted-foreground sm:px-6">
+          <div className="mb-5 flex justify-center">
+            <LinkedinLink />
+          </div>
           © {new Date().getFullYear()} Sitaly — Création de sites internet pour artisans.
           {" — "}
-          <Link to="/blog" className="underline-offset-2 hover:underline">
+          <Link to="/blog/" className="underline-offset-2 hover:underline">
             Tous les articles
           </Link>
         </div>
@@ -408,7 +415,7 @@ function PostNav() {
           <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-foreground">
             Accueil
           </Link>
-          <Link to="/blog" className="text-sm font-medium text-foreground">
+          <Link to="/blog/" className="text-sm font-medium text-foreground">
             Blog
           </Link>
         </nav>

@@ -41,9 +41,9 @@ function MentionsLegales() {
       <h2>2. Hébergement</h2>
       <p>
         Le site est hébergé par :
-        <br /><strong>Lovable / Cloudflare, Inc.</strong>
-        <br />101 Townsend Street, San Francisco, CA 94107, États-Unis
-        <br />Site : <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer">cloudflare.com</a>
+        <br /><strong>GitHub, Inc.</strong> (GitHub Pages)
+        <br />88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis
+        <br />Site : <a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com</a>
       </p>
 
       <h2>3. Propriété intellectuelle</h2>

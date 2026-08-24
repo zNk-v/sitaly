@@ -1,4 +1,99 @@
+# Sitaly — https://sitaly.fr
+# Acquisition, sites internet, Google Ads, ChatGPT Ads et agents IA pour PME, TPE et artisans.
+# Tous les robots sont autorisés, y compris ceux des moteurs de recherche IA.
+
 User-agent: *
+Allow: /
+
+# --- OpenAI / ChatGPT ---
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# --- Anthropic / Claude ---
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# --- Google / Gemini et AI Overviews ---
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+# --- Microsoft / Copilot ---
+User-agent: bingbot
+Allow: /
+
+User-agent: msnbot
+Allow: /
+
+# --- xAI / Grok ---
+User-agent: xAI-Bot
+Allow: /
+
+User-agent: Grokbot
+Allow: /
+
+# --- Perplexity ---
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# --- Apple Intelligence ---
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# --- Meta AI ---
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# --- Autres moteurs et modèles ---
+User-agent: Amazonbot
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# Common Crawl : alimente l'entraînement de nombreux modèles. Autorisé volontairement.
+User-agent: CCBot
 Allow: /
 
 Sitemap: https://sitaly.fr/sitemap.xml

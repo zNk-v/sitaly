@@ -3,11 +3,24 @@ import { ArrowRight, Calendar, Clock } from "lucide-react";
 import { BLOG_POSTS, formatDate } from "@/data/blog-posts";
 import { SitalyLogo } from "@/components/SitalyLogo";
 import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
+import { LinkedinLink } from "@/components/LinkedinLink";
 import { CALENDLY_URL } from "@/lib/config";
 
 // Rubriques du blog, dans l'ordre d'affichage. `key` doit correspondre au champ
 // `category` des articles (src/data/blog-posts.ts).
 const RUBRIQUES: { key: string; id: string; label: string; desc: string }[] = [
+  {
+    key: "Trouver des chantiers",
+    id: "trouver-des-chantiers",
+    label: "Trouver des chantiers",
+    desc: "Les canaux qui remplissent un planning, ce que coûtent les plateformes, et comment ne plus perdre un appel.",
+  },
+  {
+    key: "Outils & logiciels",
+    id: "outils-logiciels",
+    label: "Outils & logiciels",
+    desc: "CRM, devis, chatbot : ce que chaque outil règle vraiment, et celui par lequel commencer.",
+  },
   {
     key: "Acquisition de clients",
     id: "clients-par-metier",
@@ -25,6 +38,12 @@ const RUBRIQUES: { key: string; id: string; label: string; desc: string }[] = [
     id: "referencement",
     label: "Référencement local",
     desc: "Être trouvé sur Google : fiche Google Business, avis clients et SEO local.",
+  },
+  {
+    key: "Publicité IA",
+    id: "publicite-ia",
+    label: "Publicité IA",
+    desc: "Les nouveaux canaux publicitaires liés aux assistants conversationnels, et comment décider s'ils méritent votre budget.",
   },
   {
     key: "Acquisition payante",
@@ -59,14 +78,14 @@ export const Route = createFileRoute("/blog/")({
       {
         name: "description",
         content:
-          "Guides pratiques pour artisans, indépendants et PME : site internet, référencement Google local, Google Ads et automatisation. Trouvez plus de clients.",
+          "Guides pratiques pour PME, TPE et artisans : acquisition, site internet, référencement local, Google Ads, ChatGPT Ads et automatisation.",
       },
       { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large" },
       { property: "og:title", content: "Blog Sitaly — Plus de clients : site web, Google Ads & automatisation" },
       {
         property: "og:description",
         content:
-          "Guides pratiques pour générer plus de clients : site internet, référencement Google local, Google Ads et automatisation. Pour artisans, indépendants et PME de services.",
+          "Guides pratiques pour générer plus de clients : site internet, référencement Google local, Google Ads et automatisation. Pour PME, TPE et artisans.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://sitaly.fr/blog/" },
@@ -77,7 +96,7 @@ export const Route = createFileRoute("/blog/")({
       {
         name: "twitter:description",
         content:
-          "Guides pratiques pour générer plus de clients : site internet, référencement Google local, Google Ads et automatisation. Pour artisans, indépendants et PME de services.",
+          "Guides pratiques pour générer plus de clients : site internet, référencement Google local, Google Ads et automatisation. Pour PME, TPE et artisans.",
       },
     ],
     links: [{ rel: "canonical", href: "https://sitaly.fr/blog/" }],
@@ -91,7 +110,7 @@ export const Route = createFileRoute("/blog/")({
           url: "https://sitaly.fr/blog/",
           inLanguage: "fr-FR",
           description:
-            "Guides pour générer plus de clients : site internet, référencement Google local, Google Ads et automatisation. Pour artisans, indépendants et PME de services.",
+            "Guides pour générer plus de clients : site internet, référencement Google local, Google Ads et automatisation. Pour PME, TPE et artisans.",
           publisher: {
             "@type": "Organization",
             name: "Sitaly",
@@ -137,9 +156,9 @@ function BlogIndex() {
             Générer <span className="gradient-text">plus de clients</span>, quel que soit votre métier
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-            Site internet, référencement Google local, Google Ads et automatisation : les guides
-            pratiques pour artisans, indépendants et PME de services qui veulent développer leur
-            activité en 2026.
+            Site internet, référencement local, Google Ads, ChatGPT Ads et automatisation : les
+            guides pratiques pour les PME, TPE et artisans qui veulent développer leur activité
+            en 2026.
           </p>
         </div>
       </header>
@@ -233,7 +252,7 @@ function PostCard({ post }: { post: (typeof BLOG_POSTS)[number] }) {
       </div>
       <h3 className="mt-4 font-display text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
         <Link
-          to="/blog/$slug"
+          to="/blog/$slug/"
           params={{ slug: post.slug }}
           className="transition group-hover:text-accent"
         >
@@ -242,7 +261,7 @@ function PostCard({ post }: { post: (typeof BLOG_POSTS)[number] }) {
       </h3>
       <p className="mt-3 text-[15px] text-muted-foreground sm:text-base">{post.excerpt}</p>
       <Link
-        to="/blog/$slug"
+        to="/blog/$slug/"
         params={{ slug: post.slug }}
         className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline"
       >
@@ -265,7 +284,7 @@ function BlogNav() {
             Accueil
           </Link>
           <Link
-            to="/blog"
+            to="/blog/"
             className="text-sm font-medium text-foreground"
             activeProps={{ className: "text-sm font-medium text-foreground" }}
           >
@@ -293,6 +312,9 @@ function BlogFooter() {
   return (
     <footer className="border-t border-border bg-secondary/30">
       <div className="mx-auto max-w-7xl px-4 py-10 text-center text-sm text-muted-foreground sm:px-6">
+        <div className="mb-5 flex justify-center">
+          <LinkedinLink />
+        </div>
         © {new Date().getFullYear()} Sitaly — Création de sites internet pour artisans.{" "}
         <Link to="/" className="font-medium text-foreground hover:text-accent">
           Retour à l'accueil

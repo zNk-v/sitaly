@@ -72,7 +72,7 @@ export function CookieConsent() {
             <p className="mt-1 text-muted-foreground">
               Nous utilisons des cookies pour analyser l'audience du site (Google Analytics).
               Vous pouvez accepter ou refuser. Voir notre{" "}
-              <Link to="/politique-confidentialite" className="underline hover:text-primary">
+              <Link to="/politique-confidentialite/" className="underline hover:text-primary">
                 politique de confidentialité
               </Link>
               .

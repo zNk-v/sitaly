@@ -10,15 +10,24 @@ import {
   Star,
 } from "lucide-react";
 import { SitalyLogo } from "@/components/SitalyLogo";
+import { LinkedinLink } from "@/components/LinkedinLink";
 import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
+import { MetierFooterLinks, MetierLinksSection } from "@/components/MetierLinks";
+import type { MetierLink } from "@/lib/metiers";
 import { CALENDLY_URL } from "@/lib/config";
 
 export interface MetierLandingProps {
   metier: string; // "plombier"
   metierCapitalized: string; // "Plombier"
+  /** Route de la page, pour exclure le métier courant du maillage interne. */
+  route: MetierLink["to"];
   h1: string;
   intro: string;
   benefits: { title: string; desc: string }[];
+  /** Détail de la prestation, propre à chaque métier (contenu unique = pas de duplicate content). */
+  included: { title: string; desc: string }[];
+  /** Bloc de fond sur le référencement local du métier. */
+  localSeo: { title: string; paragraphs: string[] };
   example?: {
     label: string;
     description: string;
@@ -31,7 +40,19 @@ export interface MetierLandingProps {
 }
 
 export function MetierLanding(props: MetierLandingProps) {
-  const { metier, metierCapitalized, h1, intro, benefits, example, faq, testimonial } = props;
+  const {
+    metier,
+    metierCapitalized,
+    route,
+    h1,
+    intro,
+    benefits,
+    included,
+    localSeo,
+    example,
+    faq,
+    testimonial,
+  } = props;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -109,9 +130,33 @@ export function MetierLanding(props: MetierLandingProps) {
         </div>
       </section>
 
+      {/* Ce qui est inclus */}
+      <section className="border-t border-border bg-secondary/30 py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+            Ce que comprend votre site {metier}
+          </h2>
+          <p className="mt-3 max-w-2xl text-muted-foreground">
+            Tout est inclus dans l'abonnement. Vous n'achetez ni hébergement, ni nom de domaine, ni
+            plugin, et vous n'avez rien à gérer.
+          </p>
+          <div className="mt-10 grid gap-x-10 gap-y-7 md:grid-cols-2">
+            {included.map((it) => (
+              <div key={it.title} className="flex gap-3.5">
+                <Check className="mt-1 h-5 w-5 flex-shrink-0 text-accent" />
+                <div>
+                  <h3 className="font-display text-base font-bold">{it.title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{it.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Example */}
       {example && (
-        <section className="border-y border-border bg-secondary/30 py-16 sm:py-20">
+        <section className="border-y border-border bg-background py-16 sm:py-20">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
               <div className="overflow-hidden rounded-2xl border border-border bg-background shadow-elevated">
@@ -143,6 +188,44 @@ export function MetierLanding(props: MetierLandingProps) {
         </section>
       )}
 
+      {/* SEO local */}
+      <section className="border-t border-border bg-secondary/30 py-16 sm:py-20">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+          <span className="text-xs font-semibold uppercase tracking-widest text-accent">
+            Référencement local
+          </span>
+          <h2 className="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">
+            {localSeo.title}
+          </h2>
+          <div className="mt-6 space-y-5">
+            {localSeo.paragraphs.map((p, i) => (
+              <p key={i} className="leading-relaxed text-foreground/85">
+                {p}
+              </p>
+            ))}
+          </div>
+          <p className="mt-6 text-sm text-muted-foreground">
+            Pour comprendre la méthode en détail, lisez notre guide{" "}
+            <Link
+              to="/blog/$slug/"
+              params={{ slug: "referencement-local-google-artisan" }}
+              className="font-semibold text-accent hover:underline"
+            >
+              référencement local artisan
+            </Link>{" "}
+            et notre article sur les{" "}
+            <Link
+              to="/blog/$slug/"
+              params={{ slug: "seo-local-villes-pages-artisan" }}
+              className="font-semibold text-accent hover:underline"
+            >
+              pages par ville
+            </Link>
+            .
+          </p>
+        </div>
+      </section>
+
       {/* Pricing */}
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -168,12 +251,12 @@ export function MetierLanding(props: MetierLandingProps) {
               },
               {
                 name: "Sitaly Acquisition",
-                price: "Dès 299€",
+                price: "299€",
                 featured: false,
                 features: [
                   "Campagnes Google Ads gérées",
                   "Indépendant de votre site",
-                  "3 formules selon vos besoins",
+                  "+ 15 % du budget publicitaire",
                   "Reporting mensuel",
                 ],
                 note: "Budget publicitaire Google non inclus.",
@@ -225,7 +308,7 @@ export function MetierLanding(props: MetierLandingProps) {
           </div>
           <p className="mt-6 text-center text-sm text-muted-foreground">
             Besoin de plus de clients ?{" "}
-            <Link to="/acquisition" className="font-semibold text-accent hover:underline">
+            <Link to="/acquisition/" className="font-semibold text-accent hover:underline">
               Découvrez les formules Sitaly Acquisition
             </Link>
             .
@@ -271,6 +354,14 @@ export function MetierLanding(props: MetierLandingProps) {
         </div>
       </section>
 
+      {/* Maillage vers les autres métiers */}
+      <MetierLinksSection
+        exclude={route}
+        tone="muted"
+        title="Vous exercez un autre métier ?"
+        subtitle="Les mêmes fondations, adaptées aux urgences et aux mots-clés de chaque activité."
+      />
+
       {/* Final CTA */}
       <section className="bg-primary py-16 text-primary-foreground sm:py-20">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
@@ -293,8 +384,31 @@ export function MetierLanding(props: MetierLandingProps) {
       </section>
 
       <footer className="border-t border-border bg-background">
-        <div className="mx-auto max-w-7xl px-4 py-10 text-center text-sm text-muted-foreground sm:px-6">
-          © {new Date().getFullYear()} Sitaly — Création de sites internet pour artisans.
+        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+          <MetierFooterLinks
+            className="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm text-muted-foreground"
+            linkClassName="block py-2.5 hover:text-foreground"
+          />
+          <div className="mt-5 flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm text-muted-foreground">
+            <Link to="/" className="py-2.5 hover:text-foreground">
+              Accueil
+            </Link>
+            <Link to="/acquisition/" className="py-2.5 hover:text-foreground">
+              Google Ads
+            </Link>
+            <Link to="/agents-ia/" className="py-2.5 hover:text-foreground">
+              Agents IA
+            </Link>
+            <Link to="/blog/" className="py-2.5 hover:text-foreground">
+              Blog
+            </Link>
+          </div>
+          <div className="mt-6 flex justify-center">
+            <LinkedinLink />
+          </div>
+          <div className="mt-6 text-center text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Sitaly — Création de sites internet pour artisans.
+          </div>
         </div>
       </footer>
     </div>
@@ -312,7 +426,7 @@ function LandingNav() {
           <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-foreground">
             Accueil
           </Link>
-          <Link to="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+          <Link to="/blog/" className="text-sm font-medium text-muted-foreground hover:text-foreground">
             Blog
           </Link>
         </nav>

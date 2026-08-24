@@ -22,7 +22,271 @@ export interface BlogPost {
   content: BlogSection[];
 }
 
-export const BLOG_POSTS: BlogPost[] = [
+/**
+ * Tous les articles rédigés, y compris ceux dont la date de publication est à venir.
+ * Ne pas consommer directement : utiliser BLOG_POSTS, qui filtre les articles programmés.
+ */
+const ALL_BLOG_POSTS: BlogPost[] = [
+  {
+    slug: "publicite-chatgpt-ads-guide",
+    title:
+      "Publicité ChatGPT Ads : faut-il y investir votre budget ?",
+    metaTitle: "Publicité ChatGPT Ads : faut-il y investir votre budget ?",
+    metaDescription:
+      "Comment fonctionne la publicité dans ChatGPT, ce qu'elle change par rapport à Google Ads, et cinq critères concrets pour décider si ce canal mérite votre budget.",
+    excerpt:
+      "La publicité arrive dans ChatGPT. Voici ce qu'on sait de son fonctionnement, ce que ça change vraiment par rapport à Google Ads, et cinq critères pour décider si ce canal mérite une ligne dans votre budget — ou pas encore.",
+    category: "Publicité IA",
+    readingTime: "9 min",
+    publishedAt: "2026-08-23",
+    author: "L'équipe Sitaly",
+    keyword: "publicité ChatGPT Ads",
+    content: [
+      { type: "p", text: "Pendant vingt ans, chercher une solution voulait dire taper trois mots dans un moteur et comparer des liens. Ce réflexe n'a pas disparu, mais il s'est dédoublé : une partie des décisions d'achat commence désormais par une question posée à un assistant, en langage courant, avec du contexte. OpenAI a commencé à insérer de la publicité dans ces échanges." },
+      { type: "p", text: "Pour une entreprise qui investit déjà en acquisition, la question n'est pas de savoir si c'est « l'avenir ». Elle est beaucoup plus prosaïque : est-ce que ce canal peut produire des demandes qualifiées à un coût acceptable, et comment le vérifier sans gaspiller un trimestre de budget ? Cet article donne des éléments de réponse, sans promettre de miracle." },
+      { type: "h2", text: "Quand la recherche devient une conversation" },
+      { type: "p", text: "La différence entre une requête et une conversation n'est pas cosmétique. Elle change la quantité d'information disponible au moment où la personne cherche." },
+      { type: "p", text: "Comparez ces deux formulations pour un même besoin :" },
+      { type: "ul", items: [
+        "Dans un moteur : « logiciel gestion projet PME »",
+        "Dans une conversation : « On est 30, on utilise Jira mais l'équipe trouve ça trop lourd. Il nous faut quelque chose de plus simple, qui se connecte à Slack, avec un budget raisonnable. Vous conseillez quoi ? »",
+      ] },
+      { type: "p", text: "La deuxième formulation contient l'effectif, l'outil actuel, le motif d'insatisfaction, une contrainte technique et une indication de budget. Un commercial qui reçoit ce brief sait déjà quoi proposer. C'est le type de contexte qu'une conversation expose et qu'une requête de trois mots ne dit pas." },
+      { type: "p", text: "À retenir : ce n'est pas que l'intention est « meilleure » dans ChatGPT. C'est qu'elle y est plus explicite. Ce qui change ce que vous pouvez lui adresser comme message." },
+      { type: "h2", text: "Ce qu'on sait du fonctionnement" },
+      { type: "p", text: "Le canal est récent et ses modalités évoluent encore. Voici les éléments qu'OpenAI a communiqués publiquement — à considérer comme un état des lieux, pas comme une documentation figée." },
+      { type: "h3", text: "Qui voit les publicités" },
+      { type: "p", text: "Les publicités concernent les utilisateurs de la formule gratuite et de l'abonnement Go. Les formules Plus, Pro et Enterprise restent sans publicité. Conséquence directe et souvent négligée : une partie de l'audience de ChatGPT n'est pas exposée, et cette partie inclut probablement une proportion notable d'utilisateurs professionnels intensifs. Si votre cible est très majoritairement composée de gros utilisateurs payants, l'audience atteignable est plus étroite que le nombre d'utilisateurs total ne le laisse croire." },
+      { type: "h3", text: "Comment elles apparaissent" },
+      { type: "p", text: "Les publicités sont identifiées comme telles et présentées séparément de la réponse, sous forme de contenus sponsorisés distincts du texte généré. OpenAI indique qu'elles n'influencent pas le contenu des réponses : le modèle ne recommande pas un annonceur parce qu'il paie." },
+      { type: "h3", text: "Sur quoi repose le ciblage" },
+      { type: "p", text: "Le ciblage s'appuie sur le contexte de la conversation en cours plutôt que sur un profil publicitaire constitué au fil du temps. OpenAI précise que les annonceurs n'ont pas accès aux conversations des utilisateurs, et que ces derniers peuvent gérer la personnalisation, comprendre pourquoi une publicité leur est montrée et supprimer leurs données publicitaires." },
+      { type: "p", text: "Ces informations reflètent l'état des annonces publiques d'OpenAI à la date de cet article. Sur un canal aussi jeune, vérifiez les modalités en vigueur avant tout engagement budgétaire." },
+      { type: "h2", text: "Ce que ChatGPT Ads n'est pas" },
+      { type: "p", text: "Trois confusions reviennent systématiquement dans les conversations qu'on a sur le sujet. Autant les régler tout de suite." },
+      { type: "h3", text: "Ce n'est pas « être recommandé par ChatGPT »" },
+      { type: "p", text: "Acheter de la publicité ne fait pas apparaître votre entreprise dans les réponses du modèle. Ce sont deux choses séparées, et c'est précisément ce qu'OpenAI met en avant. Apparaître dans les réponses relève d'un tout autre travail — éditorial, structurel, de réputation — qui ne s'achète pas." },
+      { type: "h3", text: "Ce n'est pas une garantie de présence" },
+      { type: "p", text: "Aucune agence ne peut vous garantir une apparition sur une formulation précise, ni dans toutes les conversations d'un sujet donné. La diffusion dépend du contexte, du format, de l'audience et des règles de la régie. Toute promesse contraire devrait vous alerter." },
+      { type: "h3", text: "Ce n'est pas un canal à référentiels connus" },
+      { type: "p", text: "Sur Google Ads, vous savez à peu près à quoi vous attendre selon votre secteur. Ici, les coûts par clic, les taux de conversion et les coûts d'acquisition sont encore en train de se former. Toute personne qui vous annonce aujourd'hui un « CPA moyen ChatGPT Ads » par secteur invente un chiffre. C'est une raison de tester avec méthode, pas une raison de s'abstenir." },
+      { type: "h2", text: "Google Ads ou ChatGPT Ads : la mauvaise question" },
+      { type: "p", text: "La comparaison est tentante, mais elle mène à une décision absurde : arbitrer entre un canal qui produit déjà des demandes qualifiées et un canal dont vous ne connaissez pas encore le rendement." },
+      {
+        type: "table",
+        headers: ["", "Google Ads", "ChatGPT Ads"],
+        rows: [
+          ["Forme de l'intention", "Requête de quelques mots", "Besoin décrit en langage naturel"],
+          ["Contexte disponible", "Mots-clés, zone, appareil", "Situation exposée sur plusieurs échanges"],
+          ["Maturité", "Canal mature, repères connus", "Canal récent, repères à construire"],
+          ["Concurrence", "Installée, enchères tendues", "Encore peu dense"],
+          ["Prévisibilité", "Élevée", "Faible à ce stade"],
+        ],
+      },
+      { type: "p", text: "Lue ainsi, la table ne dit pas « remplacez ». Elle dit : un canal sert de socle, l'autre sert d'exploration. Couper le socle pour financer l'exploration, c'est échanger un résultat connu contre une hypothèse. Si vous n'avez pas de marge budgétaire pour explorer, la bonne décision est d'attendre — pas de sacrifier ce qui marche." },
+      { type: "h2", text: "Cinq critères pour décider" },
+      { type: "p", text: "Voici la grille qu'on applique avant de recommander ce canal à une entreprise. Si vous cochez les cinq, le test se défend. S'il vous en manque deux ou plus, il est probablement prématuré." },
+      { type: "h3", text: "1. Un client vous rapporte beaucoup" },
+      { type: "p", text: "Panier moyen élevé, contrat récurrent, ou valeur vie client significative. Sur un canal dont le coût par acquisition est inconnu, une marge confortable absorbe l'incertitude. Avec un produit à 40 € vendu une fois, la moindre dérive de coût rend l'opération perdante avant même que vous ayez de quoi conclure." },
+      { type: "h3", text: "2. Vous mesurez déjà vos conversions" },
+      { type: "p", text: "C'est le critère le plus discriminant, et le plus souvent négligé. Si vous ne savez pas aujourd'hui combien de demandes vous rapporte votre budget Google Ads, vous ne saurez pas davantage ce que produit un nouveau canal. Vous aurez dépensé de l'argent et récolté une impression. Le tracking se met en place avant, pas après." },
+      { type: "h3", text: "3. Votre offre est stabilisée" },
+      { type: "p", text: "Tester un canal d'acquisition pendant que votre positionnement, votre cible ou votre tarification bougent encore produit des résultats ininterprétables : vous ne saurez jamais si l'échec vient du canal ou du message. Stabilisez d'abord ce que vous vendez et à qui." },
+      { type: "h3", text: "4. Vos prospects décrivent un problème, pas un produit" },
+      { type: "p", text: "C'est le critère spécifique à ce canal. Si vos clients arrivent en cherchant votre nom ou une référence produit précise, la conversation apporte peu. Si en revanche ils arrivent en décrivant une situation — « comment gérer X », « quel prestataire pour Y », « on a tel problème » — alors le format conversationnel joue en votre faveur." },
+      { type: "h3", text: "5. Vous avez de quoi financer une phase sans résultat" },
+      { type: "p", text: "Un test sérieux comporte une période où vous payez pour apprendre. Si ce budget doit être pris sur ce qui alimente votre pipeline actuel, ce n'est pas le moment." },
+      { type: "h2", text: "Comment cadrer un premier test" },
+      { type: "p", text: "La méthode ne diffère pas fondamentalement de ce qu'on applique sur un canal mature. C'est la discipline qui compte davantage, précisément parce qu'il n'y a pas de repère extérieur pour corriger vos erreurs de jugement." },
+      { type: "ul", items: [
+        "Écrivez le seuil d'arrêt avant de lancer. « Au-delà de X € par demande qualifiée, on arrête. » Décidé à froid, ce seuil vous évitera de prolonger par entêtement.",
+        "Fixez un volume, pas une durée. « Trois mois » ne veut rien dire. « Jusqu'à 50 conversions » permet de conclure. En dessous de quelques dizaines de conversions, vos chiffres relèvent du hasard.",
+        "Vérifiez le tracking avant la première dépense. Faites une conversion de test vous-même et retrouvez-la dans vos outils. C'est dix minutes qui sauvent un budget.",
+        "Préparez plusieurs angles de message. Un seul message ne vous apprend rien : s'il échoue, vous ne saurez pas si le canal ou la formulation est en cause.",
+        "Soignez la page d'arrivée. Une intention bien captée qui atterrit sur une page générique se perd. La cohérence entre le besoin exprimé et la page compte autant que le ciblage.",
+        "Mesurez la qualité, pas seulement le volume. Cinquante demandes hors cible coûtent plus cher que cinq demandes qualifiées, en temps commercial comme en moral d'équipe.",
+      ] },
+      { type: "h2", text: "Les erreurs classiques sur un canal neuf" },
+      { type: "p", text: "Elles se répètent à chaque ouverture de canal — c'était vrai pour Facebook Ads en 2013, pour TikTok en 2021, ce sera vrai ici." },
+      { type: "ul", items: [
+        "Y aller « pour voir » sans objectif. Sans seuil ni indicateur défini, tout résultat sera interprété selon l'humeur du moment.",
+        "Confondre nouveauté et performance. Un canal récent est moins encombré ; ça ne le rend pas automatiquement rentable pour votre activité.",
+        "Arrêter trop tôt, ou beaucoup trop tard. Les deux coûtent cher. Le volume de données fixé à l'avance protège des deux.",
+        "Transposer ses annonces Google telles quelles. Un message pensé pour trois mots-clés répond mal à un besoin exprimé en trois phrases.",
+        "Négliger ce qui se passe après le clic. Un canal d'acquisition ne vaut que par le traitement des demandes qu'il génère. Un lead non rappelé sous 24 h est souvent un lead perdu, quel que soit le canal qui l'a produit.",
+      ] },
+      { type: "h2", text: "Questions fréquentes" },
+      {
+        type: "faq",
+        items: [
+          { q: "Les publicités apparaissent-elles pour tous les utilisateurs ?", a: "Non. OpenAI a indiqué que les publicités concernent les formules gratuites et l'abonnement Go. Les formules Plus, Pro et Enterprise restent sans publicité. Une partie de l'audience n'est donc pas exposée." },
+          { q: "Les publicités influencent-elles les réponses de ChatGPT ?", a: "Non, selon OpenAI. Elles sont identifiées comme telles et présentées séparément de la réponse, dont elles ne modifient pas le contenu. Les annonceurs n'ont pas accès aux conversations des utilisateurs." },
+          { q: "Faut-il arrêter Google Ads pour financer un test ?", a: "Non. Google Ads reste un canal mature et prévisible. Financer une exploration en coupant ce qui produit vos demandes revient à échanger un résultat connu contre une hypothèse. Un test se finance sur un budget additionnel." },
+          { q: "Quel budget faut-il pour tester ?", a: "Il n'existe pas de montant universel. Le budget pertinent est celui qui permet d'accumuler assez de conversions pour conclure — plusieurs dizaines sur la période de test. En dessous, les chiffres obtenus ne sont pas exploitables." },
+          { q: "Combien de temps avant de savoir si ça fonctionne ?", a: "Cela dépend de votre volume, pas du calendrier. Le bon critère est le nombre de conversions accumulées, pas le nombre de semaines écoulées. Fixez le volume cible et le seuil d'arrêt avant de lancer." },
+          { q: "Est-ce que ça remplace le référencement ?", a: "Non. La publicité s'achète et s'arrête avec le budget ; le référencement se construit et persiste. Apparaître dans les réponses des moteurs IA relève d'un travail éditorial distinct, qui ne s'achète pas." },
+        ],
+      },
+      { type: "h2", text: "Ce qu'il faut retenir" },
+      { type: "p", text: "ChatGPT Ads est un canal à évaluer sérieusement, pas une révolution à embrasser les yeux fermés. Son intérêt réel tient à la richesse du contexte au moment où le besoin s'exprime, et au fait que la concurrence y est encore peu dense. Sa limite tient à l'absence de repères : personne ne peut vous dire aujourd'hui ce que ça coûtera de gagner un client chez vous." },
+      { type: "p", text: "D'où la seule position défendable : tester avec un budget que vous acceptez de perdre, un tracking qui fonctionne, un seuil d'arrêt écrit à l'avance — et conserver intact ce qui alimente déjà votre activité. Les entreprises qui apprennent tôt sur un canal neuf accumulent une avance réelle. Celles qui s'y précipitent sans mesure financent surtout l'apprentissage des autres." },
+    ],
+  },
+  {
+    slug: "cout-chatgpt-ads",
+    title:
+      "Combien coûte ChatGPT Ads ? Ce qu'on peut dire honnêtement",
+    metaTitle: "Combien coûte ChatGPT Ads ? Prix, budget et calcul du seuil",
+    metaDescription:
+      "Aucun CPA fiable n'existe encore sur ChatGPT Ads en France. Voici la structure de coût, pourquoi s'en méfier des chiffres qui circulent, et comment calculer votre propre seuil.",
+    excerpt:
+      "Aucun tarif de référence n'existe encore sur ce canal en France. Plutôt qu'inventer un chiffre, voici comment se décompose le coût et comment calculer le seuil qui a du sens pour votre entreprise.",
+    category: "Publicité IA",
+    readingTime: "8 min",
+    publishedAt: "2026-08-23",
+    author: "L'équipe Sitaly",
+    keyword: "coût ChatGPT Ads",
+    content: [
+      { type: "p", text: "C'est la première question posée dès qu'on évoque la publicité dans ChatGPT, et la seule réponse honnête aujourd'hui est inconfortable : personne ne peut vous donner un coût d'acquisition fiable sur ce canal en France. Pas parce que l'information est cachée, mais parce qu'elle n'existe pas encore." },
+      { type: "p", text: "Cet article ne va donc pas inventer un chiffre. Il explique ce qui compose réellement le coût, pourquoi les montants qui circulent doivent être maniés avec précaution, et surtout comment calculer le budget qui a du sens pour vous — méthode qui reste valable quels que soient les tarifs qui se stabiliseront." },
+      { type: "h2", text: "Pourquoi personne ne peut vous donner un CPA" },
+      { type: "p", text: "Un coût par acquisition n'est pas une propriété du canal. C'est le résultat d'une chaîne : combien coûte un clic, combien de clics deviennent une demande, combien de demandes deviennent un client. Sur Google Ads, chaque maillon dispose de dizaines de milliers d'observations par secteur, accumulées sur vingt ans. Sur ChatGPT Ads en France, le canal vient d'ouvrir." },
+      { type: "p", text: "Deux éléments manquent encore, et ils sont déterminants. D'abord la densité concurrentielle : tant que peu d'annonceurs sont présents, les enchères restent basses — et rien ne dit qu'elles le resteront. Ensuite le comportement réel des utilisateurs : on ignore encore quel taux de clic produit un contenu sponsorisé placé sous une réponse, et surtout quelle proportion de ces clics se transforme en demande sérieuse." },
+      { type: "p", text: "Méfiez-vous par principe de tout article annonçant un « CPA moyen ChatGPT Ads » par secteur en France. À ce stade, ces chiffres sont soit extrapolés d'un autre marché, soit inventés." },
+      { type: "h2", text: "Ce qui compose réellement le coût" },
+      { type: "p", text: "À défaut de montants, la structure, elle, est connue. Votre coût total se décompose en trois postes qu'il faut distinguer, parce qu'ils ne se pilotent pas de la même façon." },
+      { type: "h3", text: "1. Le budget publicitaire" },
+      { type: "p", text: "C'est ce que vous versez à la régie. Il est directement proportionnel à la diffusion : plus vous payez, plus vous êtes vu. C'est le poste variable, celui qu'on augmente ou coupe selon les résultats." },
+      { type: "h3", text: "2. Les honoraires de gestion" },
+      { type: "p", text: "Ce que coûte le pilotage : cadrage, rédaction des messages, mise en place du suivi, arbitrages, analyse. C'est un poste fixe, indépendant du budget diffusé — et c'est aussi lui qui détermine si votre budget publicitaire est bien dépensé ou gaspillé." },
+      { type: "h3", text: "3. Le coût invisible : ce qui se passe après le clic" },
+      { type: "p", text: "Celui-là n'apparaît sur aucune facture et il est pourtant souvent le plus lourd. Une page d'arrivée qui convertit mal double mécaniquement votre coût par demande. Des demandes non rappelées sous 24 h font disparaître une partie de ce que vous avez payé. Une campagne techniquement irréprochable branchée sur un parcours défaillant produit des factures, pas des clients." },
+      { type: "h2", text: "Les chiffres qui circulent, et ce qu'ils valent" },
+      { type: "p", text: "Des montants apparaissent dans la presse spécialisée depuis l'ouverture du canal aux États-Unis : coûts pour mille impressions, seuils d'engagement minimum. Trois précautions avant de les reprendre à votre compte." },
+      { type: "ul", items: [
+        "Ils concernent d'autres marchés. Un tarif observé aux États-Unis ne se transpose pas en France : audience, concurrence et maturité diffèrent.",
+        "Ils décrivent souvent l'accès grands comptes. En France, l'achat passe pour l'instant par un nombre restreint de groupes de communication, et un guichet en libre-service est annoncé. Les conditions de l'un ne préjugent pas de celles de l'autre.",
+        "Ils bougent vite. Sur un canal qui se déploie marché par marché, un tarif de lancement n'est pas un tarif d'équilibre.",
+      ] },
+      { type: "p", text: "Autrement dit : traitez ces chiffres comme des indices de contexte, jamais comme une base de calcul pour votre budget." },
+      { type: "h2", text: "Calculez à partir de votre marge, pas d'un benchmark" },
+      { type: "p", text: "La bonne nouvelle, c'est que vous n'avez pas besoin du CPA du marché pour décider. Vous avez besoin du vôtre — et celui-là, vous pouvez le calculer aujourd'hui avec vos propres chiffres." },
+      { type: "p", text: "Trois données suffisent :" },
+      {
+        type: "table",
+        headers: ["Donnée", "Comment l'obtenir"],
+        rows: [
+          ["Valeur d'un client", "Marge réelle sur la durée de la relation, pas le chiffre d'affaires de la première vente"],
+          ["Taux de transformation", "Sur 10 demandes entrantes, combien deviennent clients ? Vos commerciaux le savent"],
+          ["Part acceptable", "Quelle fraction de cette marge acceptez-vous de consacrer à l'acquisition ?"],
+        ],
+      },
+      { type: "p", text: "Le calcul : votre coût par demande acceptable = (valeur d'un client × part acceptable) × taux de transformation. Une entreprise dont un client rapporte 4 000 € de marge, qui transforme une demande sur cinq et accepte d'y consacrer 20 %, peut payer jusqu'à 160 € une demande qualifiée. C'est son seuil. Il ne dépend d'aucun benchmark, et il reste vrai quel que soit le canal." },
+      { type: "p", text: "Ce seuil est l'information la plus utile que vous puissiez apporter à une agence. Une prestation sérieuse commence par le calculer avec vous — pas par vous annoncer un CPA cible sorti d'un tableau." },
+      { type: "h2", text: "Combien prévoir pour un test qui conclut" },
+      { type: "p", text: "La vraie question budgétaire n'est pas « combien ça coûte par mois », mais « combien faut-il dépenser pour savoir ». Un test qui s'arrête avant d'avoir produit assez de données coûte la totalité de son budget pour un enseignement nul." },
+      { type: "p", text: "La règle est indépendante du canal : il faut accumuler plusieurs dizaines de conversions avant de pouvoir conclure quoi que ce soit. En dessous, vos écarts relèvent du hasard statistique, pas de la performance." },
+      { type: "p", text: "D'où la méthode : estimez votre coût par demande acceptable (le calcul ci-dessus), multipliez par le nombre de conversions nécessaires, et vous obtenez l'ordre de grandeur de l'enveloppe de test. Si ce montant vous paraît insupportable, la conclusion n'est pas « testons avec moins » — c'est « ce n'est pas le moment ». Un test sous-financé ne donne pas une petite réponse : il n'en donne aucune." },
+      { type: "h2", text: "Ce que coûte la gestion" },
+      { type: "p", text: "Les honoraires de pilotage se justifient par une chose : l'écart entre un budget dépensé au hasard et un budget dépensé avec méthode. Sur un canal mature, cet écart est mesurable. Sur un canal neuf, où il n'existe aucun réglage par défaut ni aucun repère public, il est plus grand encore." },
+      { type: "p", text: "Chez Sitaly, la gestion ChatGPT Ads démarre à 890 €/mois, budget publicitaire exclu et facturé séparément. Ce montant couvre la cartographie des intentions, la rédaction des messages, la mise en place du suivi des conversions, les arbitrages et un point mensuel qui se conclut par une recommandation nette : arrêter, maintenir ou augmenter." },
+      { type: "p", text: "Quelle que soit l'agence retenue, vérifiez deux points : que le budget publicitaire est bien séparé des honoraires, et qu'un seuil d'arrêt est écrit avant le lancement. Une prestation qui refuse de définir à l'avance les conditions de son propre échec vous engage sans filet." },
+      { type: "h2", text: "Ce qu'il faut retenir" },
+      { type: "p", text: "Il n'existe pas de tarif de référence pour ChatGPT Ads en France, et quiconque vous en annonce un aujourd'hui extrapole. En revanche, votre seuil de rentabilité, lui, est calculable dès maintenant à partir de la valeur d'un client, de votre taux de transformation et de la part de marge que vous acceptez d'y consacrer." },
+      { type: "p", text: "C'est ce chiffre-là qui doit piloter la décision — pas un benchmark de marché qui n'existe pas encore. Et c'est aussi lui qui vous dira, dans quelques mois, si ce canal mérite de rester dans votre plan ou pas." },
+      { type: "h2", text: "Questions fréquentes" },
+      {
+        type: "faq",
+        items: [
+          { q: "Existe-t-il un prix officiel pour ChatGPT Ads en France ?", a: "Aucun tarif public de référence n'est établi pour le marché français à ce stade. Des montants circulent pour d'autres marchés, mais ils ne se transposent pas : audience, concurrence et maturité diffèrent. Tout CPA sectoriel annoncé aujourd'hui pour la France est une extrapolation." },
+          { q: "Le budget publicitaire est-il inclus dans les honoraires d'une agence ?", a: "Il ne devrait jamais l'être. Le budget diffusé et les honoraires de pilotage sont deux postes distincts : le premier est variable et vous appartient, le second est fixe et rémunère la méthode. Une offre qui les mélange rend impossible le calcul de votre coût d'acquisition réel." },
+          { q: "Comment calculer ce que je peux payer une demande entrante ?", a: "Multipliez la marge réelle qu'un client vous rapporte sur la durée de la relation par la part que vous acceptez de consacrer à l'acquisition, puis par votre taux de transformation des demandes en clients. Le résultat est votre coût par demande acceptable, indépendant de tout benchmark." },
+          { q: "Quel budget minimum pour un test sérieux ?", a: "Il n'y a pas de montant universel : le bon budget est celui qui permet d'accumuler plusieurs dizaines de conversions. En dessous, les écarts observés relèvent du hasard statistique et ne permettent aucune décision. Un test sous-financé ne donne pas une réponse partielle, il n'en donne aucune." },
+          { q: "Pourquoi payer une agence sur un canal que personne ne maîtrise ?", a: "Précisément parce qu'aucun réglage par défaut n'existe. Sur un canal mature, une campagne mal pilotée reste médiocre ; sur un canal neuf, sans repère public ni seuil d'arrêt défini, elle peut consommer un budget entier sans produire le moindre enseignement exploitable." },
+          { q: "Les coûts vont-ils augmenter avec le temps ?", a: "C'est le scénario le plus probable : sur tous les canaux publicitaires, les enchères montent à mesure que les annonceurs affluent. C'est l'argument principal en faveur d'un test précoce — apprendre pendant que l'espace est peu disputé — mais ce n'est pas une garantie de rentabilité pour autant." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "chatgpt-ads-secteurs-pme",
+    title:
+      "ChatGPT Ads : quels secteurs en tirent réellement quelque chose",
+    metaTitle: "ChatGPT Ads : quels secteurs et quelles PME en tirent parti",
+    metaDescription:
+      "SaaS, B2B, immobilier, assurance, formation, e-commerce : quels secteurs bénéficient vraiment de la publicité dans ChatGPT, lesquels n'y gagnent rien, et comment le vérifier.",
+    excerpt:
+      "Le secteur compte moins que la façon dont vos prospects formulent leur besoin. Voici les activités structurellement avantagées, celles à manier avec prudence, et un test simple pour trancher votre cas.",
+    category: "Publicité IA",
+    readingTime: "9 min",
+    publishedAt: "2026-08-23",
+    author: "L'équipe Sitaly",
+    keyword: "ChatGPT Ads secteurs",
+    content: [
+      { type: "p", text: "« Est-ce que ça marche pour mon secteur ? » La réponse dépend beaucoup moins du secteur lui-même que d'une seule chose : la façon dont vos clients formulent leur besoin quand ils ne connaissent pas encore la solution." },
+      { type: "p", text: "Certaines activités bénéficient d'un avantage structurel dans un contexte conversationnel. D'autres n'y gagnent rien, quelle que soit la qualité de la campagne. Voici comment faire la différence, secteur par secteur." },
+      { type: "h2", text: "Le critère qui décide vraiment" },
+      { type: "p", text: "Un secteur est compatible avec ce canal quand ses prospects arrivent en décrivant une situation plutôt qu'en cherchant un produit." },
+      { type: "p", text: "Quelqu'un qui tape « iPhone 17 pas cher » sait exactement ce qu'il veut : il compare des prix, une conversation ne lui apporte rien. Quelqu'un qui écrit « on est 30, notre outil actuel est trop lourd, il nous faudrait quelque chose de plus simple connecté à Slack » ne sait pas quoi acheter — il décrit un problème et attend une orientation. C'est là que la publicité contextuelle a une valeur que le mot-clé n'a pas." },
+      { type: "p", text: "À ce critère principal s'ajoutent deux conditions économiques :" },
+      { type: "ul", items: [
+        "Une valeur client suffisante pour absorber l'incertitude d'un canal sans repère de coût.",
+        "Un cycle de décision assez long pour qu'une orientation en amont pèse sur le choix final.",
+      ] },
+      { type: "h2", text: "Les secteurs les mieux placés" },
+      { type: "h3", text: "SaaS et logiciel B2B" },
+      { type: "p", text: "« Quel outil pour gérer les congés dans une PME de 50 personnes, sans passer par un SIRH complet ? »" },
+      { type: "p", text: "Le secteur le plus naturellement compatible. L'acheteur décrit un effectif, un périmètre, un budget et souvent l'outil qu'il veut remplacer : tout le brief de qualification tient dans sa question. Le cycle de décision se compte en semaines, l'abonnement récurrent donne une valeur client élevée, et le marché est encombré au point que la recommandation en amont a un poids réel." },
+      { type: "h3", text: "Services B2B et conseil" },
+      { type: "p", text: "« Quelle agence peut reprendre notre acquisition alors qu'on gère déjà du Google Ads en interne ? »" },
+      { type: "p", text: "Une demande de prestataire formulée par une entreprise qui investit déjà : l'intention est haute et le prospect est solvable. Ces requêtes migrent particulièrement vite du moteur classique vers l'assistant, parce qu'elles appellent une réponse argumentée plutôt qu'une liste de liens." },
+      { type: "h3", text: "Immobilier" },
+      { type: "p", text: "« Comment vendre un bien locatif sans perdre l'avantage fiscal ? »" },
+      { type: "p", text: "Question technique posée par quelqu'un qui détient déjà le bien et envisage une opération. Le ticket est élevé, le cycle long, et le besoin de conseil considérable. Attention toutefois : la dimension locale reste déterminante, et le canal ne cible pas la géographie aussi finement qu'un moteur de recherche." },
+      { type: "h3", text: "Assurance et courtage" },
+      { type: "p", text: "« Quelle couverture prévoir pour une société de 15 salariés en déplacement à l'étranger ? »" },
+      { type: "p", text: "Effectif, contexte d'usage, besoin précis : le profil est presque entièrement défini par la question. Secteur à forte valeur vie client et à cycle de décision long. La contrainte réelle est réglementaire — les messages publicitaires y sont encadrés et doivent être validés avant diffusion." },
+      { type: "h3", text: "Formation professionnelle" },
+      { type: "p", text: "« Quelle certification suivre pour évoluer vers un poste de data analyst en un an ? »" },
+      { type: "p", text: "Objectif professionnel, horizon de temps, niveau de départ implicite. Le prospect est engagé dans une démarche, pas en train de flâner. Le panier est souvent élevé, surtout en formation financée." },
+      { type: "h3", text: "E-commerce à panier élevé" },
+      { type: "p", text: "« Quel équipement pour un premier home-studio avec un budget de 2 000 € ? »" },
+      { type: "p", text: "Budget annoncé, univers délimité, besoin de conseil : intention d'achat structurée. La nuance compte — l'e-commerce de produits courants n'a rien à y gagner, celui qui vend du conseil autant que du produit, si." },
+      { type: "h2", text: "Les secteurs à manier avec prudence" },
+      { type: "h3", text: "Santé et professions réglementées" },
+      { type: "p", text: "Le besoin est souvent exprimé de façon parfaitement conversationnelle — c'est même l'un des usages les plus fréquents des assistants. Mais la publicité y est strictement encadrée en France, et la déontologie de nombreuses professions interdit ou limite fortement la promotion. Avant toute campagne, la question à trancher est juridique, pas marketing." },
+      { type: "h3", text: "Entreprises locales à ticket élevé" },
+      { type: "p", text: "Un architecte d'intérieur, un cuisiniste haut de gamme ou un rénovateur global peuvent fonctionner, à deux conditions : que le ticket moyen justifie l'investissement, et que la zone soit assez dense. Pour un artisan de dépannage à quinze kilomètres à la ronde, Google Ads en référencement local reste nettement plus efficace et beaucoup moins cher." },
+      { type: "h2", text: "Les secteurs où ça n'a pas de sens" },
+      { type: "p", text: "Autant le dire franchement — c'est l'information la plus utile de cet article pour une partie des lecteurs." },
+      { type: "ul", items: [
+        "L'achat d'impulsion à faible marge. Personne ne consulte un assistant avant d'acheter un accessoire à 15 €.",
+        "Les marques déjà connues du prospect. Si vos clients arrivent en cherchant votre nom, vous payez pour une demande que vous auriez eue gratuitement.",
+        "L'urgence immédiate. Une fuite d'eau à 22 h ne passe pas par une conversation : elle passe par une recherche locale et un appel dans la minute.",
+        "Les produits purement comparés sur le prix. Là où la décision se joue au centime, le conseil n'a aucune valeur ajoutée.",
+        "Les entreprises sans mesure de conversion. Ce n'est pas un secteur, c'est une situation — et elle disqualifie plus sûrement que n'importe quel marché.",
+      ] },
+      { type: "h2", text: "Comment vérifier pour votre cas" },
+      { type: "p", text: "Un test simple, gratuit, à faire en dix minutes avant d'engager le moindre euro : listez les dix dernières demandes entrantes que vous avez reçues, et pour chacune, écrivez la question que ce prospect aurait posée à un assistant avant de vous trouver." },
+      { type: "p", text: "Si vous obtenez des questions riches, situées, décrivant un problème — votre marché est compatible. Si vous obtenez surtout des formulations courtes de type « nom du produit + prix » ou « métier + ville », le canal conversationnel n'apportera pas grand-chose : vos budgets sont mieux placés ailleurs." },
+      { type: "p", text: "Cet exercice a un bénéfice secondaire : les questions que vous aurez écrites constituent exactement la matière première d'une stratégie éditoriale — et celle-là sert tous vos canaux, y compris ceux qui ne coûtent rien." },
+      { type: "h2", text: "Ce qu'il faut retenir" },
+      { type: "p", text: "Le découpage sectoriel classique est une mauvaise grille de lecture pour ce canal. Deux entreprises du même secteur peuvent avoir des résultats opposés selon que leurs prospects arrivent en décrivant un problème ou en cherchant une référence produit." },
+      { type: "p", text: "Les activités les mieux placées cumulent trois traits : un besoin qui s'exprime en situation, une valeur client élevée, et un cycle de décision assez long pour qu'un conseil en amont pèse. Le SaaS B2B, les services aux entreprises, l'immobilier, l'assurance et la formation cochent généralement les trois. Si votre activité n'en coche qu'un, gardez vos budgets là où ils produisent déjà." },
+      { type: "h2", text: "Questions fréquentes" },
+      {
+        type: "faq",
+        items: [
+          { q: "Mon secteur n'est pas cité, est-ce disqualifiant ?", a: "Non. Le découpage sectoriel est une grille de lecture imparfaite pour ce canal. Le vrai critère est la façon dont vos prospects formulent leur besoin : s'ils décrivent une situation plutôt qu'un produit, si un client vous rapporte beaucoup et si la décision prend du temps, votre activité est probablement compatible quel que soit son secteur." },
+          { q: "Est-ce que ça fonctionne pour le B2C ?", a: "Cela dépend entièrement du panier et du besoin de conseil. Un achat impliquant, comparé et accompagné d'une recherche préalable peut fonctionner. Un achat courant ou d'impulsion, non : personne ne consulte un assistant avant d'acheter un produit à quinze euros." },
+          { q: "Et pour une entreprise locale ?", a: "C'est possible à deux conditions : un ticket moyen élevé et une zone suffisamment dense. Pour du dépannage ou de l'intervention urgente, Google Ads en référencement local reste plus efficace et bien moins cher — la conversation n'a pas sa place dans l'urgence." },
+          { q: "Puis-je cibler un secteur d'activité précis ?", a: "Le ciblage repose sur le contexte de la conversation plutôt que sur un profil constitué à l'avance. On ne sélectionne donc pas une audience sectorielle comme sur LinkedIn : on travaille les situations et les formulations dans lesquelles votre offre est pertinente." },
+          { q: "Comment savoir si mes prospects utilisent déjà ChatGPT ?", a: "Vous ne pouvez pas le mesurer directement, mais vous pouvez l'approcher : reprenez vos dix dernières demandes entrantes et écrivez la question que chaque prospect aurait posée à un assistant avant de vous trouver. La richesse de ces questions vous indique le potentiel." },
+          { q: "Faut-il un site adapté avant de lancer ?", a: "Une page d'arrivée cohérente avec le besoin exprimé est indispensable. Une intention bien captée qui atterrit sur une page d'accueil générique se perd, et double mécaniquement votre coût par demande. C'est souvent le premier chantier avant toute campagne." },
+        ],
+      },
+    ],
+  },
   {
     slug: "logiciel-gestion-artisan-choisir",
     title: "Logiciel de gestion pour artisan : lequel choisir pour vraiment développer votre activité ?",
@@ -1710,8 +1974,599 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "p", text: "Standardiste qui ne rate plus un appel, prise de rendez-vous, relance de devis, réponse aux messages : Sitaly installe pour vous des agents IA clé en main, pensés pour les artisans et les TPE. Vous ne configurez rien, on branche tout. Réservez un appel gratuit de 20 minutes pour identifier l'agent qui vous fera gagner le plus de clients." },
     ],
   },
+
+  {
+    slug: "trouver-des-chantiers-artisan",
+    title: "Trouver des chantiers : les 7 canaux qui remplissent vraiment un planning",
+    metaTitle: "Trouver des chantiers : 7 canaux classés par rentabilité",
+    metaDescription:
+      "Fiche Google, site internet, plateformes, Ads, bouche-à-oreille : ce que chaque canal rapporte vraiment à un artisan, ce qu'il coûte, et par lequel commencer selon votre situation.",
+    excerpt:
+      "Tous les canaux ne se valent pas. Certains vous coûtent 20 % du chantier à vie, d'autres vous appartiennent pour toujours. Voici les sept façons de trouver des chantiers, classées par ce qu'elles rapportent réellement.",
+    category: "Trouver des chantiers",
+    readingTime: "11 min",
+    publishedAt: "2026-08-13",
+    author: "L'équipe Sitaly",
+    keyword: "trouver des chantiers",
+    content: [
+      { type: "p", text: "Un planning qui se vide dans trois semaines, ça ne se règle pas en trois semaines. C'est le problème de fond quand on cherche des chantiers : on s'en préoccupe au moment où il est déjà tard, et on se rabat sur le canal le plus rapide, qui est presque toujours le plus cher. Cet article passe en revue les sept canaux qui amènent des chantiers à un artisan, avec ce que chacun coûte, ce qu'il rapporte et le délai avant les premiers résultats. L'objectif : que vous sachiez lequel actionner selon l'état de votre carnet." },
+
+      { type: "h2", text: "La question à se poser avant de choisir un canal" },
+      { type: "p", text: "Il y a deux familles de canaux, et les confondre coûte cher. Les canaux qu'on loue vous amènent des chantiers tant que vous payez, et s'arrêtent net dès que vous coupez le robinet. Les canaux qu'on possède mettent des mois à démarrer, puis continuent de produire sans coût variable." },
+      { type: "p", text: "La plupart des artisans construisent leur activité à 100 % sur des canaux loués, généralement les plateformes de mise en relation. Ça marche, jusqu'au jour où la plateforme augmente ses tarifs, change son algorithme ou envoie le même lead à cinq concurrents. Un carnet de commandes solide combine les deux familles." },
+      {
+        type: "table",
+        caption: "Ce que rapporte chaque canal pour un artisan",
+        headers: ["Canal", "Délai avant résultats", "Coût par chantier", "Vous appartient"],
+        rows: [
+          ["Fiche Google Business Profile", "2 à 8 semaines", "Nul", "Oui"],
+          ["Site internet et SEO local", "3 à 6 mois", "Coût fixe mensuel", "Oui"],
+          ["Bouche-à-oreille organisé", "Immédiat", "Nul", "Oui"],
+          ["Google Ads", "48 heures", "Budget publicitaire", "Non"],
+          ["Réseaux entre artisans", "1 à 3 mois", "Nul", "Partiellement"],
+          ["Plateformes de mise en relation", "Immédiat", "10 à 20 % du chantier", "Non"],
+          ["Prospection locale directe", "2 à 6 semaines", "Votre temps", "Oui"],
+        ],
+      },
+
+      { type: "h2", text: "1. La fiche Google Business Profile" },
+      { type: "p", text: "C'est le canal le plus rentable qui existe pour un artisan, et le plus souvent négligé. Quand quelqu'un cherche « couvreur » ou « plombier » près de chez lui, Google affiche trois fiches locales avant tout le reste. Sortir dans ce bloc de trois vaut plus que n'importe quelle position en dessous, et ça ne coûte rien." },
+      { type: "p", text: "Trois leviers décident du classement : la distance entre le client et votre adresse, la complétude de votre fiche, et le volume d'avis récents. Vous ne pouvez rien à la distance. Sur les deux autres, tout est entre vos mains. Une fiche avec vingt-cinq avis et des photos de chantiers écrase une fiche à quatre avis créée il y a trois ans et jamais retouchée." },
+      { type: "p", text: "L'erreur classique consiste à créer la fiche puis à l'oublier. Une fiche vivante, avec des photos ajoutées chaque mois et des réponses aux avis, envoie à Google un signal d'activité que la concurrence endormie n'envoie pas." },
+
+      { type: "h2", text: "2. Le site internet et le référencement local" },
+      { type: "p", text: "La fiche Google capte les recherches courtes du type « plombier + ville ». Le site capte tout le reste : « remplacement chauffe-eau + commune », « devis ravalement maison ancienne », « menuisier sur mesure dressing ». Ces recherches ont moins de volume, mais celui qui les tape sait ce qu'il veut et compare deux ou trois artisans avant d'appeler." },
+      { type: "p", text: "Un site qui fonctionne n'est pas une brochure en ligne. C'est un ensemble de pages, une par prestation et une par commune desservie, chacune écrite pour une recherche précise. Un artisan qui n'a qu'une page d'accueil se limite à sa commune et à son métier générique. Avec quinze pages, il couvre son vrai rayon d'intervention." },
+      { type: "p", text: "Comptez trois à six mois avant que les premières pages remontent. C'est long quand le planning est vide, et c'est exactement pour ça qu'il faut lancer ce canal quand le carnet est plein." },
+
+      { type: "h2", text: "3. Le bouche-à-oreille, mais organisé" },
+      { type: "p", text: "Tous les artisans disent travailler au bouche-à-oreille. Presque aucun ne l'organise. La différence tient à trois habitudes : demander un avis Google à chaque fin de chantier, reprendre contact avec les clients d'il y a deux ans, et laisser une trace physique sur place." },
+      { type: "p", text: "Un point que beaucoup ignorent : le bouche-à-oreille passe par Google avant d'aboutir. On vous recommande, la personne tape votre nom, et ce qu'elle trouve décide de l'appel. Si elle ne trouve qu'un annuaire et deux avis, la recommandation se perd. Le bouche-à-oreille et la présence en ligne ne sont pas deux canaux séparés, c'est le même." },
+
+      { type: "h2", text: "4. Google Ads" },
+      { type: "p", text: "C'est le seul canal qui produit des appels en quarante-huit heures. Vous payez pour apparaître en haut des résultats sur les recherches de votre métier dans votre zone, et vous coupez quand le planning se remplit. Cette souplesse en fait l'outil idéal pour combler un trou ou lancer une nouvelle prestation." },
+      { type: "p", text: "Le revers : chaque euro cesse de produire dès que vous arrêtez de payer. Un artisan qui ne fait que du Ads pendant trois ans a construit zéro actif. La bonne façon de s'en servir, c'est en complément du référencement naturel : les annonces couvrent les mois pendant lesquels le SEO se met en place." },
+
+      { type: "h2", text: "5. Les réseaux entre artisans" },
+      { type: "p", text: "Un plombier qui connaît trois carreleurs et deux électriciens reçoit des chantiers sans rien dépenser. Sur une rénovation complète, l'artisan déjà sur place est en position de recommander tous les autres corps de métier. C'est un canal lent à construire et durable une fois établi." },
+      { type: "p", text: "Concrètement : identifiez les cinq artisans complémentaires de votre secteur qui travaillent proprement, proposez-leur un échange de recommandations, et tenez votre part. Cinq relations solides valent mieux que cinquante contacts dans un groupe Facebook." },
+
+      { type: "h2", text: "6. Les plateformes de mise en relation" },
+      { type: "p", text: "Travaux.com, Ootravaux, Habitatpresto et les autres promettent des demandes qualifiées sans effort. Elles en fournissent réellement, et c'est ce qui rend le calcul trompeur. Vous payez soit à la mise en relation, soit un pourcentage du chantier, et vous êtes mis en concurrence directe avec trois ou quatre confrères sur le même lead, ce qui tire les prix vers le bas." },
+      { type: "p", text: "Le problème n'est pas d'y être. Le problème, c'est de n'être que là. Un artisan dont 100 % des chantiers viennent d'une plateforme n'a pas d'entreprise, il a un abonnement. Le jour où la plateforme change ses règles, il repart de zéro." },
+
+      { type: "h2", text: "7. La prospection locale directe" },
+      { type: "p", text: "Peu séduisant, souvent efficace. Syndics de copropriété, agences immobilières, gestionnaires de biens et entreprises générales cherchent en permanence des artisans fiables et disponibles. Un seul syndic conquis peut représenter plusieurs chantiers par an, chaque année." },
+      { type: "p", text: "Le ticket d'entrée : être joignable et répondre vite. Un gestionnaire qui appelle trois artisans retient celui qui décroche. C'est aussi pour ça que les appels manqués coûtent bien plus cher qu'on ne l'imagine." },
+
+      { type: "h2", text: "Le calcul que personne ne fait" },
+      { type: "p", text: "Prenez un artisan qui réalise trente chantiers par an à 4 000 € en moyenne, soit 120 000 € de chiffre d'affaires. S'il passe intégralement par une plateforme prélevant 15 %, il verse 18 000 € par an. Le même artisan avec un site, une fiche Google entretenue et un budget publicitaire mesuré dépense entre 3 000 et 6 000 € par an, et il garde ses canaux le jour où il coupe." },
+      { type: "p", text: "L'écart ne vient pas du prix affiché de chaque canal. Il vient du fait que l'un se paie sur chaque chantier, indéfiniment, quand l'autre se paie à coût fixe et se rentabilise à mesure que le volume augmente." },
+
+      { type: "h2", text: "Par où commencer selon votre situation" },
+      {
+        type: "ul",
+        items: [
+          "Planning vide dans les deux semaines : Google Ads pour l'urgence, plus la remise à niveau de votre fiche Google le même jour.",
+          "Planning correct mais irrégulier : fiche Google, récolte d'avis systématique et site avec pages par prestation.",
+          "Planning plein plusieurs mois : c'est le meilleur moment pour construire le site et le référencement, qui produiront quand le creux arrivera.",
+          "Dépendance à une plateforme : gardez-la, et lancez en parallèle vos canaux à vous pour réduire la part de la plateforme d'un tiers par an.",
+        ],
+      },
+
+      { type: "quote", text: "Un canal qu'on loue remplit le planning de ce mois-ci. Un canal qu'on possède remplit celui des cinq prochaines années." },
+
+      {
+        type: "faq",
+        items: [
+          { q: "Comment trouver des chantiers rapidement quand le planning est vide ?", a: "Google Ads est le seul canal qui produit des appels sous quarante-huit heures : vous ciblez votre métier et votre zone, et vous coupez quand le carnet se remplit. En parallèle, remettez à niveau votre fiche Google Business Profile le jour même, car c'est gratuit et ça produit sous quelques semaines." },
+          { q: "Les plateformes de mise en relation valent-elles le coup pour un artisan ?", a: "Elles fournissent de vraies demandes, mais vous coûtent entre 10 et 20 % du chantier et vous mettent en concurrence directe sur le prix. Elles conviennent en complément, pas comme unique source. Un artisan dont tous les chantiers viennent d'une plateforme repart de zéro le jour où elle change ses règles." },
+          { q: "Combien de temps pour que le référencement amène des chantiers ?", a: "Comptez trois à six mois pour qu'un site avec des pages par prestation et par commune commence à remonter sur Google, selon la concurrence locale. La fiche Google Business Profile, elle, produit des résultats en deux à huit semaines." },
+          { q: "Faut-il un site internet quand on travaille au bouche-à-oreille ?", a: "Oui, parce que le bouche-à-oreille passe par Google avant d'aboutir. On vous recommande, la personne tape votre nom, et ce qu'elle trouve décide de l'appel. Sans site, elle tombe sur des annuaires et sur des concurrents qui payent pour apparaître sur votre nom." },
+          { q: "Quel est le canal le moins cher pour trouver des chantiers ?", a: "La fiche Google Business Profile ne coûte rien et place votre entreprise dans le bloc de trois fiches locales affiché avant tous les autres résultats. Le levier principal est le volume d'avis récents, qu'on obtient en sollicitant chaque client en fin d'intervention." },
+          { q: "Comment trouver des chantiers auprès des professionnels ?", a: "Syndics de copropriété, agences immobilières et entreprises générales cherchent en permanence des artisans fiables. Un seul syndic conquis représente plusieurs chantiers par an. La condition d'entrée est d'être joignable : un gestionnaire qui appelle trois artisans retient celui qui décroche." },
+        ],
+      },
+
+      { type: "h2", text: "Construisez les canaux qui vous appartiennent" },
+      { type: "p", text: "Sitaly met en place les canaux que vous gardez : site optimisé pour votre métier et votre zone, fiche Google entretenue, récolte d'avis automatisée, campagnes Google Ads pour combler les creux. Tout est géré, vous ne touchez à rien. Réservez un appel gratuit de 20 minutes pour faire le point sur vos canaux actuels." },
+    ],
+  },
+
+  {
+    slug: "plateformes-mise-en-relation-artisan-avis",
+    title: "Travaux.com, Ootravaux, Habitatpresto : ce que ces plateformes coûtent vraiment",
+    metaTitle: "Avis Travaux.com et plateformes artisans : le vrai coût",
+    metaDescription:
+      "Combien coûtent réellement les plateformes de mise en relation pour un artisan, comment fonctionne la revente de leads, et à partir de quand il devient rentable de s'en passer.",
+    excerpt:
+      "Les plateformes livrent de vraies demandes, personne ne le conteste. La question est ailleurs : combien vous coûte un chantier obtenu ainsi, et que vous reste-t-il le jour où vous arrêtez de payer ?",
+    category: "Trouver des chantiers",
+    readingTime: "10 min",
+    publishedAt: "2026-08-13",
+    author: "L'équipe Sitaly",
+    keyword: "travaux.com avis",
+    content: [
+      { type: "p", text: "Avant de s'inscrire sur une plateforme de mise en relation, tout artisan tape le nom du service suivi de « avis ». Il trouve alors deux discours opposés : les pages officielles qui promettent des demandes qualifiées, et les fils de forum où des artisans racontent avoir payé pour des contacts injoignables. La vérité se situe entre les deux, et elle dépend surtout de la façon dont vous utilisez ces plateformes. Voici comment elles fonctionnent réellement, ce qu'elles coûtent, et à quel moment il devient rentable de réduire votre dépendance." },
+
+      { type: "h2", text: "Comment fonctionne une plateforme de mise en relation" },
+      { type: "p", text: "Le modèle est le même partout, à quelques variantes près. La plateforme achète de la visibilité sur Google, capte un particulier qui a un projet, lui fait remplir un formulaire, puis revend cette demande à des artisans. Vous ne payez pas la plateforme pour vous apporter des clients. Vous lui payez le droit de recontacter quelqu'un qui a rempli un formulaire." },
+      { type: "p", text: "La nuance change tout. Ce même formulaire est en général vendu à trois, quatre ou cinq artisans du secteur. Le particulier reçoit donc quatre appels dans l'heure et compare quatre devis. Vous ne vendez plus votre savoir-faire, vous vendez un prix face à trois confrères qui ont payé pour le même contact." },
+      {
+        type: "table",
+        caption: "Les trois modèles de facturation des plateformes",
+        headers: ["Modèle", "Ce que vous payez", "Le risque"],
+        rows: [
+          ["Paiement au lead", "Un forfait par contact transmis", "Vous payez même si le contact ne répond jamais"],
+          ["Abonnement mensuel", "Un montant fixe pour un volume de contacts", "Vous payez les mois creux comme les autres"],
+          ["Commission sur chantier", "Un pourcentage du montant signé", "Le coût augmente avec la taille du chantier"],
+        ],
+      },
+
+      { type: "h2", text: "Ce que rapportent réellement ces plateformes" },
+      { type: "p", text: "Soyons justes : elles fonctionnent. Un artisan qui démarre, sans avis Google ni réseau, obtient ses premiers chantiers plus vite par ce canal que par n'importe quel autre. Pour combler un trou de planning ou tester une nouvelle prestation, c'est utile." },
+      { type: "p", text: "Le point de vigilance est le taux de transformation. Sur dix contacts payés, une partie ne décroche jamais, une autre a déjà signé ailleurs, une autre cherchait juste un ordre de prix. Il reste deux ou trois demandes sérieuses, et vous êtes en concurrence sur chacune. Le coût réel d'un chantier obtenu n'est donc pas le prix d'un lead, c'est le prix de tous les leads qu'il a fallu payer pour en signer un." },
+
+      { type: "h2", text: "Le calcul à faire avec vos propres chiffres" },
+      { type: "p", text: "Prenez vos trois derniers mois et posez quatre chiffres : le total versé à la plateforme, le nombre de contacts reçus, le nombre de devis envoyés, le nombre de chantiers signés. Divisez le total versé par le nombre de chantiers signés. Vous obtenez votre coût d'acquisition réel, celui que la plateforme n'affiche nulle part." },
+      { type: "p", text: "La plupart des artisans qui font ce calcul pour la première fois découvrent un montant deux à quatre fois supérieur au prix affiché du lead. Ce n'est pas un scandale, c'est le fonctionnement normal d'un canal où le contact est partagé. Mais c'est le chiffre à comparer aux autres canaux, et personne ne le calcule." },
+      { type: "p", text: "Rapportez ensuite ce coût au montant moyen de vos chantiers. Sur une intervention à 400 €, un coût d'acquisition à 90 € pèse lourd. Sur une réfection de toiture à 14 000 €, le même montant est indolore. C'est ce ratio qui doit décider de votre usage, pas l'avis d'un confrère sur un forum." },
+
+      { type: "h2", text: "Le vrai problème : vous ne construisez rien" },
+      { type: "p", text: "Un chantier obtenu par plateforme se termine et disparaît. Le client appartient à la plateforme, pas à vous. Il ne trouvera pas votre site parce que vous n'en avez pas, il ne laissera pas d'avis sur votre fiche parce qu'on ne le lui a pas demandé, et l'année suivante il repassera par le même formulaire, où il tombera peut-être sur un autre artisan." },
+      { type: "p", text: "Au bout de trois ans, deux artisans qui ont réalisé le même nombre de chantiers se retrouvent dans des situations opposées. Celui qui a tout passé par la plateforme repart chaque matin de zéro. Celui qui a demandé un avis à chaque client, entretenu sa fiche et laissé son site remonter sur Google reçoit maintenant des appels directs qui ne lui coûtent rien." },
+
+      { type: "h2", text: "La bonne façon de les utiliser" },
+      { type: "p", text: "Rien n'oblige à quitter les plateformes. La sortie brutale est même une mauvaise idée si elles représentent aujourd'hui l'essentiel de votre activité. Quatre règles permettent de les garder sans en dépendre." },
+      {
+        type: "ul",
+        items: [
+          "Traitez chaque contact comme un client à conserver : demandez un avis Google en fin de chantier, laissez une carte, envoyez un message six mois plus tard.",
+          "Suivez votre coût d'acquisition réel chaque trimestre, et refusez les catégories de leads qui ne se transforment jamais.",
+          "Fixez-vous un objectif de réduction : faire passer la part de la plateforme de 80 à 50 % du chiffre d'affaires en un an.",
+          "Investissez la marge dégagée dans les canaux qui vous appartiennent, plutôt que d'augmenter le budget de la plateforme quand le planning se creuse.",
+        ],
+      },
+
+      { type: "h2", text: "Ce qui remplace une plateforme, et en combien de temps" },
+      { type: "p", text: "Aucun canal ne se substitue à une plateforme du jour au lendemain, et c'est honnêtement le point que les prestataires web passent sous silence. Voici les ordres de grandeur réels." },
+      {
+        type: "table",
+        caption: "Délai de montée en puissance des canaux qui vous appartiennent",
+        headers: ["Canal", "Premiers résultats", "Régime de croisière"],
+        rows: [
+          ["Fiche Google entretenue et avis", "2 à 8 semaines", "4 à 6 mois"],
+          ["Site avec pages par prestation et par ville", "3 à 6 mois", "9 à 12 mois"],
+          ["Google Ads", "48 heures", "2 à 4 semaines d'optimisation"],
+          ["Réseau d'artisans et prescripteurs", "1 à 3 mois", "1 an"],
+        ],
+      },
+      { type: "p", text: "La stratégie qui fonctionne consiste donc à faire tourner les deux en parallèle pendant six à douze mois. Les plateformes financent l'activité pendant que vos canaux se mettent en place, puis leur part diminue d'elle-même à mesure que les appels directs augmentent." },
+
+      { type: "quote", text: "Une plateforme vous loue un client pour un chantier. Une fiche Google et un site vous en donnent un pour dix ans." },
+
+      {
+        type: "faq",
+        items: [
+          { q: "Travaux.com est-il fiable pour un artisan ?", a: "La plateforme transmet de vraies demandes, mais chaque contact est en général vendu à plusieurs artisans du même secteur, ce qui vous met en concurrence directe sur le prix. Elle convient pour démarrer ou combler un creux, moins comme source unique de chantiers sur la durée." },
+          { q: "Combien coûte réellement un chantier obtenu via une plateforme ?", a: "Divisez le total versé sur trois mois par le nombre de chantiers effectivement signés sur la même période. La plupart des artisans obtiennent un montant deux à quatre fois supérieur au prix affiché d'un lead, parce qu'il faut payer plusieurs contacts pour en transformer un." },
+          { q: "Pourquoi les prospects des plateformes ne répondent-ils pas ?", a: "Le formulaire est transmis à plusieurs artisans en même temps, souvent dans l'heure. Le particulier reçoit donc plusieurs appels d'affilée, retient les premiers et cesse de répondre aux suivants. Rappeler dans les cinq minutes change nettement le taux de réponse." },
+          { q: "Faut-il quitter les plateformes de mise en relation ?", a: "Pas brutalement si elles représentent l'essentiel de votre activité. La bonne approche consiste à les garder pendant six à douze mois tout en construisant vos propres canaux, puis à réduire leur part à mesure que les appels directs augmentent." },
+          { q: "Comment transformer un client de plateforme en client à moi ?", a: "Demandez un avis Google en fin de chantier, laissez une carte ou un magnet, et reprenez contact six mois plus tard. Un client acquis via une plateforme ne vous appartient qu'à partir du moment où il peut vous retrouver sans passer par elle." },
+          { q: "Quelle alternative aux plateformes pour trouver des chantiers ?", a: "La combinaison qui remplace durablement une plateforme : une fiche Google Business Profile entretenue avec des avis récents, un site avec une page par prestation et par commune desservie, et des campagnes Google Ads pour les périodes creuses. Comptez six à douze mois de montée en puissance." },
+        ],
+      },
+
+      { type: "h2", text: "Réduisez votre dépendance, sans couper du jour au lendemain" },
+      { type: "p", text: "Sitaly construit les canaux qui vous appartiennent pendant que vos plateformes continuent de tourner : site optimisé pour votre métier et vos communes, fiche Google entretenue, récolte d'avis à chaque chantier, campagnes Ads en appoint. Réservez un appel gratuit de 20 minutes, on calcule ensemble votre coût d'acquisition réel." },
+    ],
+  },
+
+  {
+    slug: "appels-manques-artisan-permanence-telephonique",
+    title: "Appels manqués : combien ça vous coûte, et les quatre façons d'y remédier",
+    metaTitle: "Appels manqués artisan : permanence téléphonique ou agent IA ?",
+    metaDescription:
+      "Un artisan rate 20 à 30 % de ses appels. Répondeur, secrétariat externalisé, permanence téléphonique, agent IA : ce que chaque solution coûte et laquelle choisir.",
+    excerpt:
+      "Six appels manqués par jour, deux qui ne rappelleront jamais, et un client parti chez le concurrent. Voici le calcul exact de ce que ça représente sur une année, et les quatre solutions possibles.",
+    category: "Trouver des chantiers",
+    readingTime: "10 min",
+    publishedAt: "2026-08-13",
+    author: "L'équipe Sitaly",
+    keyword: "permanence téléphonique",
+    content: [
+      { type: "p", text: "Vous êtes sous un évier, les mains dans le siphon. Le téléphone sonne dans la poche arrière. Vous le laissez sonner. À l'autre bout, un particulier avec une fuite passe au numéro suivant de sa liste, et vous n'aurez jamais su qu'il existait. Ce scénario se répète tous les jours dans presque toutes les entreprises artisanales, et il représente la fuite la plus coûteuse d'une activité de services. Voici comment la chiffrer sur votre propre entreprise, et les quatre façons de la colmater." },
+
+      { type: "h2", text: "Le calcul, avec vos chiffres" },
+      { type: "p", text: "Prenez le nombre d'appels entrants que vous recevez par jour, et estimez la part que vous ne décrochez pas. Un artisan seul sur ses chantiers se situe généralement entre 20 et 30 %. Sur quinze appels par jour, cela représente trois à cinq appels manqués quotidiens." },
+      { type: "p", text: "Ajoutez maintenant le comportement des appelants. La majorité des personnes qui tombent sur un répondeur ne laissent pas de message : elles appellent le suivant. Sur vos quatre appels manqués du jour, comptez qu'un seul rappellera ou laissera un message. Trois disparaissent sans laisser de trace." },
+      {
+        type: "table",
+        caption: "Ce que représentent les appels manqués sur une année",
+        headers: ["", "Artisan seul", "Petite équipe"],
+        rows: [
+          ["Appels entrants par jour", "12 à 18", "25 à 40"],
+          ["Part non décrochée", "20 à 30 %", "15 à 25 %"],
+          ["Appels perdus par semaine", "15 à 20", "25 à 40"],
+          ["Sur un an, à 220 jours travaillés", "660 à 880 appels", "1 100 à 1 800 appels"],
+        ],
+      },
+      { type: "p", text: "Tous ces appels ne sont pas des clients. Il y a des démarcheurs, des erreurs, des fournisseurs. Retenez malgré tout qu'un appel sur cinq est un prospect sérieux, et que votre taux de transformation habituel s'applique. Sur 700 appels perdus dans l'année, cela fait plus d'une centaine de prospects réels et plusieurs dizaines de chantiers qui sont partis ailleurs. Multipliez par votre panier moyen : le montant obtenu dépasse presque toujours ce que coûte n'importe quelle solution de cet article." },
+
+      { type: "h2", text: "Pourquoi le rappel du soir ne suffit pas" },
+      { type: "p", text: "La réponse instinctive consiste à rappeler tout le monde en fin de journée. Ça vaut mieux que rien, et ça rate l'essentiel : entre le moment où le particulier a appelé et 19 heures, il a joint deux autres artisans et pris rendez-vous avec l'un d'eux. Sur du dépannage, la fenêtre se compte en minutes, pas en heures." },
+      { type: "p", text: "S'ajoute le coût invisible : le rappel du soir empiète sur votre vie personnelle, se fait dans la fatigue, et se transforme vite en corvée qu'on repousse. Les demandes s'empilent et la moitié n'est jamais traitée." },
+
+      { type: "h2", text: "Les quatre solutions, comparées" },
+      { type: "h3", text: "1. Le répondeur avec message soigné" },
+      { type: "p", text: "Le minimum absolu, et vous le faites sûrement déjà. Un message qui annonce un délai de rappel précis vaut mieux qu'une messagerie opérateur anonyme. Ça ne règle rien sur le fond : la grande majorité des appelants ne laisse pas de message, quel que soit le message d'accueil." },
+      { type: "h3", text: "2. Le SMS automatique après appel manqué" },
+      { type: "p", text: "Dès qu'un appel n'aboutit pas, un SMS part automatiquement : « Je suis en intervention, décrivez-moi votre besoin par message, je vous rappelle avant ce soir. » C'est simple, peu coûteux, et ça récupère une partie des appels. Le prospect a une réponse immédiate et un moyen de vous laisser sa demande sans parler à un répondeur. Ça reste un pansement : le rendez-vous n'est pas pris, et il faut toujours rappeler." },
+      { type: "h3", text: "3. La permanence téléphonique ou le secrétariat externalisé" },
+      { type: "p", text: "Une personne décroche à votre nom, prend le message et vous le transmet. La qualité est bonne, la voix humaine rassure, et les formules démarrent en général à un forfait mensuel auquel s'ajoute un coût par appel traité. Deux limites à connaître : les horaires, souvent limités aux heures de bureau alors qu'une part de vos appels arrive le soir et le week-end, et le fait que l'opérateur ne connaît pas votre métier. Il prend un message, il ne qualifie pas une urgence de chaudière." },
+      { type: "h3", text: "4. L'agent vocal IA" },
+      { type: "p", text: "Un agent décroche à votre place, se présente au nom de votre entreprise, répond aux questions courantes, distingue une urgence d'une demande de devis, et propose un créneau dans votre agenda. Il fonctionne 24 heures sur 24, y compris le dimanche soir, et il coûte moins cher qu'une permanence humaine parce qu'il ne facture pas à l'appel." },
+      { type: "p", text: "Ses limites méritent d'être dites. Sur une conversation très technique ou un client en colère, il vaut mieux transférer à un humain, et un agent bien réglé le fait. Le paramétrage initial demande du soin : c'est là que se joue la différence entre un agent qui rassure et un agent qui agace." },
+      {
+        type: "table",
+        caption: "Comparatif des solutions face aux appels manqués",
+        headers: ["", "SMS auto", "Permanence téléphonique", "Agent vocal IA"],
+        rows: [
+          ["Disponibilité", "24h/24", "Heures de bureau", "24h/24"],
+          ["Prend un rendez-vous", "Non", "Parfois", "Oui"],
+          ["Qualifie l'urgence", "Non", "Partiellement", "Oui"],
+          ["Coût", "Très faible", "Forfait plus coût par appel", "Abonnement fixe"],
+          ["Le prospect parle à quelqu'un", "Non", "Oui", "Oui"],
+        ],
+      },
+
+      { type: "h2", text: "Ce qui compte plus que la solution choisie" },
+      { type: "p", text: "Quelle que soit l'option retenue, deux paramètres décident du résultat. Le premier est le délai : une demande traitée dans les cinq minutes se transforme bien mieux qu'une demande traitée deux heures plus tard, et cet écart pèse plus lourd que le choix de l'outil. Le second est ce qui se passe après : un message pris et posé sur un carnet ne vaut rien si personne ne rappelle. Une solution qui prend directement le rendez-vous supprime ce risque." },
+      { type: "p", text: "Un troisième point, souvent négligé : votre numéro doit être visible et cliquable partout, sur votre fiche Google comme en haut de chaque page de votre site. Traiter les appels manqués sans travailler la visibilité revient à colmater un tuyau qui n'est pas alimenté." },
+
+      { type: "h2", text: "Par où commencer" },
+      {
+        type: "ul",
+        items: [
+          "Cette semaine : activez le SMS automatique après appel manqué, c'est immédiat et presque gratuit.",
+          "Ce mois-ci : mesurez votre volume réel d'appels manqués sur dix jours, avec le relevé de votre opérateur.",
+          "Si le chiffre dépasse trois appels par jour : passez à une solution qui décroche, permanence ou agent vocal.",
+          "Dans tous les cas : vérifiez que votre numéro est cliquable sur mobile en haut de chaque page de votre site et sur votre fiche Google.",
+        ],
+      },
+
+      { type: "quote", text: "Le client qui n'a pas eu de réponse ne se plaint jamais. Il appelle simplement le suivant, et vous ne saurez jamais qu'il a existé." },
+
+      {
+        type: "faq",
+        items: [
+          { q: "Combien d'appels un artisan rate-t-il par jour ?", a: "Un artisan seul sur ses chantiers ne décroche pas 20 à 30 % de ses appels entrants, soit trois à cinq appels par jour. Sur une année de 220 jours travaillés, cela représente entre 660 et 880 appels perdus, dont une partie sont de vrais prospects." },
+          { q: "Combien coûte une permanence téléphonique ?", a: "Les formules combinent en général un forfait mensuel et un coût par appel traité, ce qui rend la facture variable selon votre volume. La principale limite tient aux horaires : la plupart des services couvrent les heures de bureau, alors qu'une part des appels d'artisans arrive le soir et le week-end." },
+          { q: "Permanence téléphonique ou agent vocal IA, que choisir ?", a: "La permanence apporte une voix humaine sur les heures de bureau, avec un coût qui augmente avec le volume d'appels. L'agent vocal IA fonctionne 24h/24 à coût fixe, qualifie l'urgence et prend directement le rendez-vous, mais demande un paramétrage soigné au départ." },
+          { q: "Le SMS automatique après appel manqué est-il efficace ?", a: "Il récupère une partie des appels perdus en donnant au prospect une réponse immédiate et un moyen de laisser sa demande. Il ne prend pas le rendez-vous et vous devez toujours rappeler, ce qui en fait une première étape utile plutôt qu'une solution complète." },
+          { q: "Les clients acceptent-ils de parler à un agent vocal IA ?", a: "Les agents récents tiennent une conversation fluide et transfèrent à un humain sur les cas sensibles. Dans la pratique, la plupart des appelants préfèrent une réponse immédiate et un rendez-vous obtenu à un répondeur vide un dimanche soir. Ce qui agace un client, c'est de ne joindre personne." },
+          { q: "En combien de temps faut-il rappeler un prospect ?", a: "Le plus vite possible, et idéalement dans les cinq minutes. Une demande traitée dans ce délai se transforme nettement mieux qu'une demande rappelée deux heures plus tard, parce que le particulier a entre-temps joint deux autres artisans et souvent pris rendez-vous avec l'un d'eux." },
+        ],
+      },
+
+      { type: "h2", text: "Ne perdez plus un appel" },
+      { type: "p", text: "Sitaly installe des agents IA clé en main pour les artisans et les TPE : un standardiste qui décroche 24h/24, qualifie la demande et remplit votre agenda pendant que vous travaillez. Vous ne configurez rien. Réservez un appel gratuit de 20 minutes pour chiffrer ce que vos appels manqués vous coûtent." },
+    ],
+  },
+
+  {
+    slug: "crm-artisan-guide",
+    title: "CRM pour artisan : à quoi ça sert vraiment quand on est seul sur les chantiers",
+    metaTitle: "CRM artisan : lequel choisir et comment s'en servir",
+    metaDescription:
+      "Un CRM pour artisan ne sert pas à faire des tableaux. Il sert à ne perdre aucun devis en attente. Ce qu'il faut suivre, les outils possibles, et par quoi commencer.",
+    excerpt:
+      "La plupart des artisans pilotent leur suivi client avec un carnet et leur mémoire. Ça tient jusqu'à quinze devis en cours. Au-delà, les oublis coûtent plus cher que n'importe quel logiciel.",
+    category: "Outils & logiciels",
+    readingTime: "10 min",
+    publishedAt: "2026-08-18",
+    author: "L'équipe Sitaly",
+    keyword: "crm artisan",
+    content: [
+      { type: "p", text: "Trois lettres qui font fuir la moitié des artisans. CRM, ça sonne grande entreprise, formation de deux jours et tableaux de bord que personne ne regarde. Dans les faits, un CRM d'artisan répond à une question très simple : qui attend une réponse de moi en ce moment ? Si vous avez déjà retrouvé un devis de six semaines au fond d'une boîte mail, oublié de rappeler quelqu'un qui était prêt à signer, ou cherché le numéro d'un client dans trois applications, vous avez déjà eu besoin d'un CRM. Voici ce qu'il fait réellement, ce qu'il ne fait pas, et comment démarrer sans y passer vos soirées." },
+
+      { type: "h2", text: "Ce qu'un CRM fait, et ce que la plupart des gens croient qu'il fait" },
+      { type: "p", text: "CRM signifie gestion de la relation client. Le mot évoque un logiciel commercial complexe. Pour une entreprise artisanale, l'objet est plus étroit et beaucoup plus utile : une liste de toutes les personnes qui vous ont contacté, avec l'état de chacune et la prochaine action à mener." },
+      { type: "p", text: "Ce n'est pas un logiciel de facturation. Ce n'est pas un agenda. Ce n'est pas un outil de comptabilité. Ces trois-là gèrent ce qui est déjà signé. Un CRM gère ce qui ne l'est pas encore, c'est-à-dire l'endroit exact où l'argent se perd." },
+      {
+        type: "table",
+        caption: "Ce que chaque outil couvre réellement",
+        headers: ["Outil", "Ce qu'il gère", "Ce qu'il ne gère pas"],
+        rows: [
+          ["Logiciel de facturation", "Devis édités, factures, comptabilité", "Les prospects qui n'ont pas encore répondu"],
+          ["Agenda", "Ce qui est déjà calé", "Les demandes en attente de rendez-vous"],
+          ["Boîte mail", "L'historique des échanges", "Ce qui exige une action aujourd'hui"],
+          ["CRM", "Qui attend quoi, et depuis combien de temps", "L'exécution du chantier"],
+        ],
+      },
+
+      { type: "h2", text: "Le moment où le carnet ne suffit plus" },
+      { type: "p", text: "Tant que vous avez cinq ou six affaires en cours, votre mémoire fait le travail. Le basculement se produit vers quinze à vingt devis en attente. À ce stade, votre suivi ne repose plus sur une méthode mais sur votre fatigue du jour, et les demandes reçues le mardi soir passent à la trappe le mercredi matin." },
+      { type: "p", text: "Les signes qui montrent que le seuil est franchi : vous retrouvez des devis anciens sans savoir s'ils ont été relancés, un client vous rappelle en disant qu'il attendait votre retour, vous cherchez un numéro dans vos SMS, ou vous ne savez pas dire combien d'euros de devis sont en attente en ce moment. Si deux de ces situations vous parlent, le problème n'est plus l'organisation, c'est l'outil." },
+
+      { type: "h2", text: "Les quatre informations qui suffisent" },
+      { type: "p", text: "Un CRM d'artisan qui fonctionne tient en quatre colonnes. Tout le reste est du confort, et souvent la raison pour laquelle les outils finissent abandonnés." },
+      {
+        type: "ul",
+        items: [
+          "Le contact : nom, téléphone, commune, et par quel canal il est arrivé.",
+          "L'état : nouveau contact, devis envoyé, en attente de réponse, signé, perdu.",
+          "La date du dernier échange, qui indique en un coup d'œil ce qui dort depuis trop longtemps.",
+          "La prochaine action et sa date : rappeler, envoyer le devis, relancer.",
+        ],
+      },
+      { type: "p", text: "La quatrième colonne est celle que tout le monde oublie, et c'est la seule qui produit du chiffre d'affaires. Une liste de contacts sans prochaine action n'est qu'un annuaire. Une liste avec une prochaine action datée devient une liste de tâches qui se remplit toute seule." },
+
+      { type: "h2", text: "Suivre l'origine de chaque contact change vos décisions" },
+      { type: "p", text: "Une colonne coûte trente secondes à remplir et vaut de l'or au bout de six mois : d'où vient ce contact ? Fiche Google, site internet, plateforme, recommandation, Google Ads. Au bout d'un trimestre, vous savez lesquels de vos canaux amènent des chantiers signés, et non simplement des appels." },
+      { type: "p", text: "C'est souvent une surprise. Beaucoup d'artisans découvrent que la plateforme qui leur coûte le plus produit surtout des demandes non transformées, pendant que leur fiche Google, gratuite, amène les clients qui signent. Sans ce suivi, la décision se prend au ressenti, et le ressenti retient les appels les plus récents." },
+
+      { type: "h2", text: "Quel outil choisir" },
+      { type: "h3", text: "Le tableur, pour commencer" },
+      { type: "p", text: "Un simple tableau avec les quatre colonnes citées plus haut fait déjà 80 % du travail, et il ne coûte rien. C'est le bon point de départ si vous n'avez jamais rien structuré. Sa limite arrive vite : il n'est pas pratique sur un téléphone, entre deux chantiers, avec des gants." },
+      { type: "h3", text: "Le CRM généraliste" },
+      { type: "p", text: "Les grands noms du marché sont puissants et pensés pour des équipes commerciales. Pour un artisan seul, ils demandent un paramétrage long et affichent quantité de fonctions inutiles. Le risque n'est pas le prix, c'est l'abandon au bout de trois semaines." },
+      { type: "h3", text: "Le logiciel métier bâtiment" },
+      { type: "p", text: "Certains outils du bâtiment intègrent un suivi de prospects à leur module de devis. C'est cohérent quand vous utilisez déjà l'outil pour vos chiffrages. Vérifiez un point avant de vous engager : gère-t-il les demandes qui n'ont pas encore de devis ? Beaucoup ne suivent que les affaires déjà chiffrées, donc trop tard." },
+      { type: "h3", text: "Le CRM léger connecté à votre site" },
+      { type: "p", text: "La formule la plus efficace quand les demandes arrivent par votre site et votre fiche Google : chaque nouvelle demande entre automatiquement dans la liste, sans ressaisie, avec son origine déjà renseignée. Vous ne remplissez rien, vous traitez." },
+      { type: "p", text: "Sur le choix d'un outil de gestion au sens large, devis et facturation compris, notre guide des logiciels de gestion pour artisan détaille les familles d'outils et leurs usages." },
+
+      { type: "h2", text: "La relance : là où le CRM se rembourse" },
+      { type: "p", text: "Un devis sur deux reste sans réponse, et le prix n'est pas la raison principale. Le client a demandé trois devis, il a rangé le vôtre dans un coin, la vie a continué. Une relance à sept jours puis à trois semaines récupère une part significative de ces dossiers, à condition qu'une liste vous rappelle qui relancer." },
+      { type: "p", text: "Faites le calcul sur vos propres chiffres. Si vous avez vingt devis en attente à 3 000 € en moyenne, cela représente 60 000 € en suspens. Récupérer deux dossiers grâce à une relance au bon moment paie plusieurs années d'abonnement à n'importe quel outil." },
+
+      { type: "h2", text: "Comment démarrer cette semaine" },
+      {
+        type: "ul",
+        items: [
+          "Listez toutes les affaires en attente à ce jour, même les vieilles. La plupart des artisans en trouvent plus qu'ils ne pensaient.",
+          "Attribuez à chacune un état et une prochaine action datée. Les dossiers sans action à mener passent en perdu, sans état d'âme.",
+          "Bloquez un créneau fixe de vingt minutes par semaine pour passer la liste en revue. Le vendredi matin fonctionne bien.",
+          "Ajoutez la colonne d'origine dès maintenant, pour disposer de trois mois de données au prochain arbitrage budgétaire.",
+        ],
+      },
+
+      { type: "quote", text: "Un CRM ne vous apporte pas de nouveaux clients. Il vous empêche de perdre ceux que vous avez déjà." },
+
+      {
+        type: "faq",
+        items: [
+          { q: "Qu'est-ce qu'un CRM pour un artisan ?", a: "C'est la liste de toutes les personnes qui vous ont contacté, avec l'état de chaque affaire et la prochaine action à mener. Contrairement à un logiciel de facturation, qui gère ce qui est déjà signé, un CRM suit ce qui ne l'est pas encore : les devis en attente et les demandes sans réponse." },
+          { q: "À partir de quand un artisan a-t-il besoin d'un CRM ?", a: "Le basculement se situe autour de quinze à vingt devis en attente. En dessous, la mémoire et un carnet suffisent. Au-delà, le suivi dépend de votre fatigue du jour et les oublis deviennent réguliers, en particulier sur les demandes reçues en soirée." },
+          { q: "Un logiciel de facturation peut-il servir de CRM ?", a: "Rarement, parce qu'il ne suit en général que les affaires déjà chiffrées. Or les demandes se perdent le plus souvent avant l'édition du devis, entre le premier appel et l'envoi. Vérifiez si votre outil gère les contacts sans devis avant de vous en contenter." },
+          { q: "Quel CRM choisir quand on est artisan seul ?", a: "Le plus simple que vous utiliserez vraiment. Un tableur à quatre colonnes fait déjà l'essentiel, mais reste pénible sur un téléphone. Un CRM léger connecté à votre site évite la ressaisie : chaque demande entre automatiquement avec son origine." },
+          { q: "Combien coûte un CRM pour une entreprise artisanale ?", a: "De zéro pour un tableur à quelques dizaines d'euros par mois pour un outil connecté. Le bon repère n'est pas le prix mais le montant de vos devis en attente : vingt devis à 3 000 € représentent 60 000 € en suspens, et deux dossiers récupérés paient plusieurs années d'abonnement." },
+          { q: "Pourquoi suivre l'origine de chaque contact ?", a: "Parce qu'au bout d'un trimestre vous savez quels canaux amènent des chantiers signés, et non simplement des appels. Beaucoup d'artisans découvrent alors que la plateforme la plus coûteuse transforme mal, pendant que leur fiche Google, gratuite, amène les clients qui signent." },
+        ],
+      },
+
+      { type: "h2", text: "Un suivi client qui se remplit tout seul" },
+      { type: "p", text: "Sitaly connecte votre site, votre fiche Google et vos formulaires à un suivi simple : chaque demande arrive avec son origine, son état et sa prochaine action, sans ressaisie. Les relances de devis partent automatiquement au bon moment. Réservez un appel gratuit de 20 minutes pour voir ce que ça donne sur votre activité." },
+    ],
+  },
+
+  {
+    slug: "chatbot-entreprise-tpe-guide",
+    title: "Chatbot pour une entreprise : utile, gadget, ou piège à clients ?",
+    metaTitle: "Chatbot entreprise : quand ça sert, quand ça fait fuir",
+    metaDescription:
+      "Ce qu'un chatbot apporte réellement à une TPE, la différence avec un agent IA, les cas où il fait fuir les clients, et combien ça coûte à mettre en place.",
+    excerpt:
+      "Un chatbot mal réglé fait plus de dégâts que pas de chatbot du tout. Voici les trois situations où il rapporte vraiment, celles où il vous coûte des clients, et ce qui a changé avec l'IA.",
+    category: "Outils & logiciels",
+    readingTime: "11 min",
+    publishedAt: "2026-08-25",
+    author: "L'équipe Sitaly",
+    keyword: "chatbot entreprise",
+    content: [
+      { type: "p", text: "Vous avez sûrement déjà pesté contre une petite bulle en bas à droite d'un site, qui vous répond « je n'ai pas compris votre demande » pour la troisième fois. C'est l'image que beaucoup de dirigeants ont du chatbot, et elle explique pourquoi ils n'en veulent pas. Elle est en partie datée : les outils de 2026 n'ont plus grand-chose à voir avec les arbres de décision d'il y a cinq ans. Reste que le mauvais chatbot existe toujours, et qu'il coûte des clients. Cet article sépare les cas où l'outil rapporte de ceux où il nuit." },
+
+      { type: "h2", text: "Chatbot, agent IA : ce n'est plus la même chose" },
+      { type: "p", text: "Le mot chatbot recouvre aujourd'hui deux technologies très différentes, et c'est la source de la plupart des déceptions." },
+      { type: "p", text: "Le chatbot classique fonctionne par scénarios. Un humain a prévu à l'avance une liste de questions et les réponses correspondantes. Tant que le visiteur reste dans le cadre, ça marche. Dès qu'il formule sa demande autrement, l'outil bloque et répète qu'il n'a pas compris." },
+      { type: "p", text: "L'agent conversationnel adossé à un modèle de langage comprend une demande formulée librement, s'appuie sur vos informations réelles pour répondre, et poursuit un objectif, comme obtenir un numéro de téléphone ou caler un rendez-vous. Il ne suit pas un script, il mène une conversation." },
+      {
+        type: "table",
+        caption: "Chatbot scénarisé et agent conversationnel",
+        headers: ["", "Chatbot scénarisé", "Agent conversationnel IA"],
+        rows: [
+          ["Fonctionnement", "Arbre de questions prévues", "Comprend et reformule librement"],
+          ["Hors sujet", "Bloque", "S'adapte ou transfère"],
+          ["Mise en place", "Rapide, mais à maintenir", "Nécessite de fournir vos informations"],
+          ["Effet sur l'image", "Souvent négatif", "Neutre à positif si bien réglé"],
+          ["Coût", "Faible", "Abonnement plus élevé"],
+        ],
+      },
+
+      { type: "h2", text: "Les trois cas où un chatbot rapporte vraiment" },
+      { type: "h3", text: "1. Vous recevez beaucoup de questions identiques" },
+      { type: "p", text: "Délais, zone d'intervention, tarifs d'un déplacement, prestations couvertes, modalités de paiement. Si vous répondez dix fois par semaine à la même chose, un agent qui traite ces demandes vous rend des heures et donne au visiteur une réponse immédiate à minuit un dimanche." },
+      { type: "h3", text: "2. Vos visiteurs partent sans laisser de trace" },
+      { type: "p", text: "C'est le cas le plus rentable. Une majorité de visiteurs ne remplit jamais un formulaire de contact, et ne téléphone pas non plus. Un agent qui engage la conversation au bon moment capte une partie de ces départs, souvent en trois échanges, avec un numéro de téléphone à la clé." },
+      { type: "h3", text: "3. Vos demandes arrivent hors des heures ouvrées" },
+      { type: "p", text: "Regardez vos statistiques : une part importante des visites de sites de services se produit le soir et le week-end, quand le particulier a enfin le temps. Personne ne répond à ce moment-là. Un agent qui prend le relais transforme ces visites en demandes qualifiées le lendemain matin." },
+
+      { type: "h2", text: "Les trois cas où il vous coûte des clients" },
+      { type: "p", text: "Il faut le dire aussi franchement : dans certaines situations, un chatbot fait du mal." },
+      {
+        type: "ul",
+        items: [
+          "Quand il s'ouvre de force au bout de deux secondes et masque le contenu de la page sur un téléphone. Le visiteur ferme le site, pas la bulle.",
+          "Quand il remplace un numéro de téléphone visible. Sur une urgence de plomberie ou de toiture, le client veut appeler, pas taper.",
+          "Quand il ne sait pas passer la main. Un visiteur agacé qui ne trouve aucun moyen de joindre un humain devient un avis négatif.",
+        ],
+      },
+      { type: "p", text: "La règle est simple : l'agent doit être une porte de plus, jamais une porte à la place d'une autre. Le téléphone reste en haut de page, cliquable, quoi qu'il arrive." },
+
+      { type: "h2", text: "Ce qu'il faut lui donner pour qu'il soit bon" },
+      { type: "p", text: "La qualité d'un agent conversationnel dépend moins de la technologie que de ce qu'on lui fournit. Un agent branché sans préparation invente ou reste vague, et c'est exactement l'effet redouté." },
+      {
+        type: "ul",
+        items: [
+          "Vos informations concrètes : prestations, zone d'intervention, délais habituels, horaires, ce que vous ne faites pas.",
+          "Vos ordres de grandeur tarifaires, même approximatifs. C'est la première question posée, et l'esquiver fait fuir.",
+          "L'objectif à atteindre : obtenir un numéro, proposer un créneau, ou faire décrire le besoin.",
+          "La limite claire à partir de laquelle il transfère à un humain, urgence comprise.",
+        ],
+      },
+
+      { type: "h2", text: "Chatbot écrit ou agent au téléphone ?" },
+      { type: "p", text: "Pour une entreprise de services locale, la question mérite d'être posée dans cet ordre. Vos prospects vous joignent-ils davantage par téléphone ou par le site ? Dans le bâtiment et les services à domicile, le téléphone domine largement, et un agent vocal qui décroche à votre place produit plus qu'un chatbot écrit." },
+      { type: "p", text: "Dans les services aux entreprises, le conseil ou les métiers où le projet se prépare longtemps à l'avance, le rapport s'inverse : le prospect préfère écrire, en dehors des heures, sans engager de conversation. Le chatbot y prend tout son sens. Notre article sur les appels manqués détaille le versant téléphonique." },
+
+      { type: "h2", text: "Combien ça coûte" },
+      { type: "p", text: "Trois postes composent la facture, et seul le premier est affiché sur les sites des éditeurs. Il y a l'abonnement à l'outil, le paramétrage initial, et l'entretien. Le deuxième est celui qu'on sous-estime : c'est là que se joue la différence entre un agent qui convertit et un agent qui répète qu'il n'a pas compris." },
+      { type: "p", text: "Beaucoup de solutions se vendent en libre-service. Vous payez un abonnement modeste, puis vous passez des heures à écrire les réponses, tester et corriger. Pour un dirigeant de TPE qui n'a pas ce temps, le résultat habituel est un outil installé, mal réglé, puis désactivé au bout de deux mois. Le mode clé en main coûte plus cher à l'abonnement et supprime ce risque." },
+
+      { type: "h2", text: "Comment savoir s'il sert à quelque chose" },
+      { type: "p", text: "Un seul indicateur compte : le nombre de conversations qui débouchent sur un contact exploitable, numéro de téléphone ou rendez-vous. Ni le nombre de conversations ouvertes, ni le nombre de messages échangés. Si sur cent conversations aucune n'a produit de contact, l'agent occupe le visiteur au lieu de le convertir." },
+      { type: "p", text: "Fixez-vous un point de contrôle à un mois. Relisez une trentaine de conversations réelles. Vous verrez immédiatement les questions auxquelles l'agent répond mal, et une heure de corrections suffit en général à redresser le résultat." },
+
+      { type: "quote", text: "Un chatbot ne remplace pas un commercial. Il remplace le silence, qui est ce qui vous coûte le plus." },
+
+      {
+        type: "faq",
+        items: [
+          { q: "Un chatbot est-il utile pour une petite entreprise ?", a: "Il l'est dans trois situations : quand vous répondez sans cesse aux mêmes questions, quand vos visiteurs quittent le site sans laisser de coordonnées, et quand vos demandes arrivent le soir et le week-end. En dehors de ces cas, l'effort de paramétrage dépasse souvent le gain." },
+          { q: "Quelle différence entre un chatbot et un agent IA ?", a: "Un chatbot scénarisé suit un arbre de questions prévues à l'avance et bloque dès qu'on en sort. Un agent IA comprend une demande formulée librement, s'appuie sur vos informations réelles et poursuit un objectif concret, comme obtenir un numéro ou proposer un créneau." },
+          { q: "Un chatbot peut-il faire fuir des clients ?", a: "Oui, dans trois cas : s'il s'ouvre de force et masque la page sur mobile, s'il remplace un numéro de téléphone visible alors que le client a une urgence, ou s'il ne sait pas transférer à un humain. Il doit rester une porte supplémentaire, jamais un remplacement." },
+          { q: "Combien coûte un chatbot pour une entreprise ?", a: "La facture comprend l'abonnement, le paramétrage initial et l'entretien. Seul l'abonnement est affiché par les éditeurs. Le paramétrage est le poste décisif : c'est lui qui sépare un agent qui convertit d'un agent qui répète qu'il n'a pas compris." },
+          { q: "Faut-il un chatbot écrit ou un agent vocal au téléphone ?", a: "Cela dépend du canal par lequel vos prospects vous joignent. Dans le bâtiment et les services à domicile, le téléphone domine et un agent vocal produit davantage. Dans les services aux entreprises et le conseil, le prospect préfère écrire, souvent hors des heures ouvrées." },
+          { q: "Comment mesurer si un chatbot est rentable ?", a: "En comptant les conversations qui débouchent sur un contact exploitable, numéro ou rendez-vous, et rien d'autre. Le nombre de conversations ouvertes ne veut rien dire. Prévoyez un point à un mois et relisez une trentaine d'échanges réels pour corriger les réponses faibles." },
+        ],
+      },
+
+      { type: "h2", text: "Un agent réglé pour votre métier, pas un gadget" },
+      { type: "p", text: "Sitaly installe des agents conversationnels et vocaux clé en main, nourris de vos vraies informations : prestations, zone, délais, tarifs indicatifs. Ils qualifient la demande, obtiennent un numéro et passent la main quand il le faut. Vous ne paramétrez rien. Réservez un appel gratuit de 20 minutes." },
+    ],
+  },
+
+  {
+    slug: "logiciel-devis-artisan-choisir",
+    title: "Logiciel de devis pour artisan : ce qui compte vraiment avant de choisir",
+    metaTitle: "Logiciel de devis artisan : comment choisir sans se tromper",
+    metaDescription:
+      "Bibliothèque d'ouvrages, devis sur mobile, signature en ligne, relance automatique : les critères qui font gagner du temps et ceux qui n'en font perdre.",
+    excerpt:
+      "Le meilleur logiciel de devis n'est pas celui qui a le plus de fonctions. C'est celui qui vous fait envoyer le devis le jour même plutôt que trois semaines plus tard.",
+    category: "Outils & logiciels",
+    readingTime: "11 min",
+    publishedAt: "2026-09-01",
+    author: "L'équipe Sitaly",
+    keyword: "logiciel devis artisan",
+    content: [
+      { type: "p", text: "Le classement des logiciels de devis n'est pas le sujet. Le vrai sujet, c'est le délai entre la visite chez le client et l'envoi du devis. Chez beaucoup d'artisans, ce délai se compte en semaines, parce que le chiffrage se fait le soir, après la journée de chantier, quand l'énergie manque. Pendant ce temps, deux concurrents ont envoyé le leur. Un bon logiciel de devis se juge à sa capacité de raccourcir ce délai, pas à la longueur de sa liste de fonctions. Voici les critères qui comptent." },
+
+      { type: "h2", text: "Pourquoi le délai décide plus souvent que le prix" },
+      { type: "p", text: "Sur un marché local, le particulier demande deux ou trois devis. Le premier arrivé installe la référence : c'est lui qui fixe le cadre, explique le déroulé et occupe le terrain. Les suivants sont comparés à lui. Arriver troisième avec un devis meilleur ne compense pas toujours ce désavantage, surtout si le client a déjà eu une bonne conversation avec le premier." },
+      { type: "p", text: "L'écart entre un artisan qui envoie sous quarante-huit heures et un artisan qui envoie en trois semaines pèse plus lourd sur le taux de signature que quelques pour cent de prix. C'est là que se trouve le retour sur investissement d'un logiciel de devis, et non dans la beauté du document." },
+
+      { type: "h2", text: "Les cinq critères qui comptent vraiment" },
+      { type: "h3", text: "1. La bibliothèque d'ouvrages" },
+      { type: "p", text: "C'est le critère numéro un et le plus mal évalué. Une bibliothèque contient vos prestations déjà décrites et chiffrées, avec la main-d'œuvre et les fournitures. Un devis se compose alors en assemblant des lignes existantes plutôt qu'en repartant d'une page blanche. C'est ce qui fait passer un chiffrage d'une heure à dix minutes." },
+      { type: "p", text: "Vérifiez deux choses avant de choisir : la bibliothèque fournie couvre-t-elle réellement votre corps de métier, et pouvez-vous créer vos propres ouvrages facilement ? Une bibliothèque générique qu'il faut réécrire entièrement ne fait gagner aucun temps." },
+      { type: "h3", text: "2. L'usage réel sur téléphone" },
+      { type: "p", text: "Presque tous les éditeurs annoncent une application mobile. Peu permettent de composer un devis complet depuis un téléphone, dans une cage d'escalier, sans clavier. Testez ce point pendant la période d'essai, sur un vrai devis, pas sur une démonstration. Un artisan qui chiffre chez le client repart avec l'affaire beaucoup plus souvent." },
+      { type: "h3", text: "3. La signature électronique" },
+      { type: "p", text: "Un devis signé en ligne d'un clic depuis un téléphone se transforme mieux qu'un document à imprimer, signer, scanner et renvoyer. Chaque étape supplémentaire fait perdre des dossiers, surtout chez les clients qui n'ont pas d'imprimante, c'est-à-dire la majorité." },
+      { type: "h3", text: "4. La relance automatique" },
+      { type: "p", text: "La fonction la plus rentable et la moins regardée à l'achat. Le logiciel relance seul les devis sans réponse au bout de sept jours, puis de trois semaines. Sachant qu'un devis sur deux reste sans réponse faute de relance et non à cause du prix, c'est la fonction qui rembourse l'abonnement le plus vite." },
+      { type: "h3", text: "5. La récupération de vos données" },
+      { type: "p", text: "Le critère qu'on regrette de ne pas avoir vérifié. Pouvez-vous exporter vos clients, vos devis et votre bibliothèque si vous changez d'outil dans deux ans ? Certains éditeurs rendent la sortie pénible. Posez la question avant de vous engager, pas après." },
+      {
+        type: "table",
+        caption: "Poids réel de chaque critère sur votre chiffre d'affaires",
+        headers: ["Critère", "Effet", "Souvent regardé ?"],
+        rows: [
+          ["Bibliothèque d'ouvrages", "Divise le temps de chiffrage", "Mal évalué"],
+          ["Devis complet sur mobile", "Permet de chiffrer sur place", "Annoncé, rarement testé"],
+          ["Signature électronique", "Réduit les abandons", "Oui"],
+          ["Relance automatique", "Récupère des devis perdus", "Presque jamais"],
+          ["Export des données", "Évite l'enfermement", "Jamais, puis regretté"],
+        ],
+      },
+
+      { type: "h2", text: "Ce qu'un logiciel de devis ne fera jamais" },
+      { type: "p", text: "Il ne vous amènera pas un seul client. C'est une évidence, et pourtant de nombreux artisans investissent dans un excellent outil de chiffrage alors que leur problème se situe en amont : trop peu de demandes entrantes. Un logiciel qui produit de beaux devis en dix minutes ne sert à rien si vous ne recevez que trois demandes par mois." },
+      { type: "p", text: "Il ne suit pas non plus les prospects qui n'ont pas encore de devis. La demande reçue lundi et jamais chiffrée n'existe pas pour lui. C'est le rôle d'un suivi client, que notre article sur le CRM pour artisan détaille, et beaucoup de fuites se situent précisément là." },
+      { type: "p", text: "Posez-vous donc la question dans le bon ordre. Si votre planning est vide, le problème est la visibilité. Si votre planning est plein mais que vos devis partent en retard et sans relance, le problème est l'outil." },
+
+      { type: "h2", text: "Les obligations à respecter sur un devis" },
+      { type: "p", text: "Quel que soit l'outil, certaines mentions sont obligatoires et un logiciel sérieux les intègre par défaut. Vérifiez que les vôtres y sont." },
+      {
+        type: "ul",
+        items: [
+          "Vos coordonnées complètes, numéro SIRET et forme juridique.",
+          "Les coordonnées du client et le lieu d'exécution des travaux.",
+          "Le détail des prestations, avec quantités, prix unitaires et main-d'œuvre distinguée.",
+          "La durée de validité de l'offre et les conditions de règlement.",
+          "Les mentions d'assurance : décennale, coordonnées de l'assureur et zone couverte.",
+          "La mention du caractère gratuit ou payant du devis lui-même.",
+        ],
+      },
+      { type: "p", text: "Un devis complet et clair fait aussi office d'argument commercial. Sur un chantier à plusieurs milliers d'euros, le document qui détaille les postes rassure davantage qu'un montant global sur une page." },
+
+      { type: "h2", text: "Comment tester sans perdre trois mois" },
+      { type: "p", text: "La période d'essai gratuite ne sert à rien si vous vous contentez de cliquer dans les menus. Faites l'inverse : prenez un devis réel que vous devez envoyer cette semaine, et refaites-le entièrement dans chaque outil candidat. Chronométrez." },
+      {
+        type: "ul",
+        items: [
+          "Le temps de saisie du premier devis, bibliothèque vide, qui reflète le coût de démarrage.",
+          "Le temps du deuxième devis similaire, qui reflète le gain réel une fois l'outil nourri.",
+          "La faisabilité de l'opération entière depuis un téléphone.",
+          "Le rendu du document reçu côté client, en vous l'envoyant à vous-même.",
+        ],
+      },
+
+      { type: "quote", text: "Le meilleur logiciel de devis est celui qui vous fait envoyer le devis avant vos concurrents, pas celui qui a le plus de boutons." },
+
+      {
+        type: "faq",
+        items: [
+          { q: "Quel logiciel de devis choisir quand on est artisan ?", a: "Celui dont la bibliothèque d'ouvrages couvre réellement votre corps de métier et qui permet de composer un devis complet depuis un téléphone. Ces deux critères font passer un chiffrage d'une heure à dix minutes et permettent de repartir de chez le client avec le devis envoyé." },
+          { q: "Pourquoi le délai d'envoi d'un devis est-il si important ?", a: "Sur un marché local, le particulier demande deux ou trois devis et le premier arrivé installe la référence : il fixe le cadre et explique le déroulé. L'écart entre un envoi sous quarante-huit heures et un envoi en trois semaines pèse plus lourd sur le taux de signature que quelques pour cent de prix." },
+          { q: "Un logiciel de devis fait-il gagner des clients ?", a: "Non, il n'amène aucune demande entrante. Il raccourcit le délai d'envoi et récupère des devis grâce aux relances automatiques. Si votre planning est vide, le problème est la visibilité et non l'outil de chiffrage." },
+          { q: "Quelles mentions sont obligatoires sur un devis d'artisan ?", a: "Vos coordonnées et votre SIRET, celles du client et le lieu des travaux, le détail des prestations avec quantités et prix unitaires, la main-d'œuvre distinguée, la durée de validité, les conditions de règlement, les mentions d'assurance décennale et le caractère gratuit ou payant du devis." },
+          { q: "La relance automatique des devis vaut-elle le coup ?", a: "C'est la fonction la plus rentable et la moins regardée à l'achat. Un devis sur deux reste sans réponse faute de relance plutôt qu'à cause du prix. Une relance à sept jours puis à trois semaines récupère une part significative de ces dossiers sans effort de votre part." },
+          { q: "Comment tester un logiciel de devis efficacement ?", a: "Ne cliquez pas dans les menus : reprenez un devis réel à envoyer cette semaine et refaites-le entièrement dans chaque outil, chronomètre en main. Mesurez le premier devis bibliothèque vide, puis un deuxième devis similaire, et tentez l'opération complète depuis un téléphone." },
+        ],
+      },
+
+      { type: "h2", text: "Le problème est peut-être en amont" },
+      { type: "p", text: "Si vos devis partent vite mais que les demandes manquent, aucun logiciel n'y changera rien. Sitaly travaille l'amont : site optimisé pour votre métier et vos communes, fiche Google entretenue, relance automatique des devis en attente. Réservez un appel gratuit de 20 minutes pour situer où se trouve votre vraie fuite." },
+    ],
+  },
 ];
 
+
+/**
+ * Publication différée. Un article dont `publishedAt` est dans le futur reste dans le
+ * dépôt mais disparaît du blog, du sitemap et du prérendu : il n'existe pas en ligne.
+ * Il apparaît au premier déploiement effectué à partir de sa date.
+ *
+ * Le filtre s'évalue au moment du build. Sans nouveau déploiement, rien ne se publie
+ * tout seul : les dates de publication sont doublées de déploiements programmés.
+ */
+function isPublished(post: BlogPost, today: string): boolean {
+  return post.publishedAt <= today;
+}
+
+export const BLOG_POSTS: BlogPost[] = (() => {
+  const today = new Date().toISOString().slice(0, 10);
+  return ALL_BLOG_POSTS.filter((p) => isPublished(p, today));
+})();
+
+/** Articles rédigés mais pas encore publiés, pour vérification en local. */
+export const SCHEDULED_POSTS: BlogPost[] = ALL_BLOG_POSTS.filter(
+  (p) => !BLOG_POSTS.includes(p),
+);
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((p) => p.slug === slug);

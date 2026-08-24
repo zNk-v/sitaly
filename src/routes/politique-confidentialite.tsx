@@ -29,7 +29,7 @@ function PolitiqueConfidentialite() {
       <h2>1. Responsable du traitement</h2>
       <p>
         Le responsable du traitement est <strong>Sitaly</strong>, auto-entrepreneur, dont le siège
-        social est situé 25 allée des jardins, 91220 Brétigny-Sur-Orge, immatriculée sous le numéro
+        social est situé à Brétigny-sur-Orge (91220), immatriculée sous le numéro
         SIRET 83384883100032.
         <br />Contact : <a href="mailto:contact@sitaly.fr">contact@sitaly.fr</a>
       </p>
@@ -51,7 +51,7 @@ function PolitiqueConfidentialite() {
           lui-même dans l'application au sujet de ses propres clients et prospects. L'utilisateur
           reste le responsable de traitement de ces données ; Sitaly les traite uniquement pour son
           compte et selon ses instructions (voir les{" "}
-          <a href="/cgv">conditions générales</a>).
+          <a href="/cgv/">conditions générales</a>).
         </li>
       </ul>
 
@@ -127,7 +127,7 @@ function PolitiqueConfidentialite() {
         <li>Compte utilisateur et données associées : pendant toute la durée du compte, puis supprimées ou anonymisées dans un délai raisonnable après sa clôture.</li>
         <li>Données saisies par l'utilisateur sur ses clients : conservées tant qu'il les conserve dans l'application ; supprimées à sa demande ou à la clôture de son compte.</li>
         <li>Données comptables et factures : <strong>10 ans</strong> conformément aux obligations légales.</li>
-        <li>Données de connexion : <strong>13 mois</strong> maximum. Cookies : voir la <a href="/cookies">politique cookies</a>.</li>
+        <li>Données de connexion : <strong>13 mois</strong> maximum. Cookies : voir la <a href="/cookies/">politique cookies</a>.</li>
       </ul>
 
       <h2>9. Vos droits</h2>

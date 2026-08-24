@@ -12,6 +12,12 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
     // Pré-génère chaque page en HTML statique (site vitrine → hébergeable sans serveur)
-    prerender: { enabled: true, crawlLinks: true },
+    prerender: {
+      enabled: true,
+      crawlLinks: true,
+      // Les landings ChatGPT Ads sont des fichiers statiques servis depuis public/ :
+      // elles n'existent pas dans le routeur, le prérendu doit les ignorer.
+      filter: (page: { path: string }) => !page.path.startsWith("/chatgpt-ads"),
+    },
   },
 });

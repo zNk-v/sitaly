@@ -23,6 +23,7 @@ import {
   MessageSquare,
   FileText,
   Instagram,
+  Linkedin,
   Bot,
   Hammer,
   Menu,
@@ -32,13 +33,15 @@ import exampleRenovation from "@/assets/example-renovation.jpg";
 import examplePlombier from "@/assets/example-plombier.jpg";
 import exampleElectricien from "@/assets/example-electricien.jpg";
 import { SitalyLogo } from "@/components/SitalyLogo";
+import { LinkedinLink } from "@/components/LinkedinLink";
 import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
+import { MetierFooterLinks, MetierLinksSection } from "@/components/MetierLinks";
 import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 const FAQ_ITEMS = [
   {
     q: "Quel est le tarif ?",
-    a: "Trois offres combinables, sans engagement et sans frais d'installation. Sitaly Présence (149€/mois) : votre site entretenu et bien référencé localement. Sitaly Acquisition (dès 299€/mois) : la gestion de vos campagnes Google Ads pour générer des clients, indépendamment du site, avec trois formules Starter (299€), Growth (499€) et Performance (799€). Sitaly Agents IA : des agents installés clé en main qui répondent, qualifient, prennent vos rendez-vous et relancent vos devis. Vous prenez l'une, plusieurs, ou tout. Le budget publicitaire Google reste séparé.",
+    a: "Trois offres combinables, sans engagement et sans frais d'installation. Sitaly Présence (149€/mois) : votre site entretenu et bien référencé localement. Sitaly Acquisition : la gestion de vos campagnes publicitaires, indépendamment du site — Google Ads à 299€/mois plus 15 % du budget publicitaire, ou ChatGPT Ads à partir de 890€/mois. Sitaly Agents IA : des agents installés clé en main qui répondent, qualifient, prennent vos rendez-vous et relancent vos devis. Vous prenez l'une, plusieurs, ou tout. Le budget publicitaire versé aux régies reste séparé.",
   },
   {
     q: "Que comprennent vraiment les modifications incluses ?",
@@ -69,16 +72,16 @@ const FAQ_ITEMS = [
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Site web & Google Ads pour artisans et TPE | Sitaly" },
+      { title: "Site web, Google Ads & IA pour PME, TPE et artisans | Sitaly" },
       {
         name: "description",
         content:
-          "Site internet livré en 48h, Google Ads et automatisation pour artisans, indépendants et PME. Dès 149€/mois, sans engagement. Plus d'appels, plus de devis.",
+          "Sites internet, Google Ads, ChatGPT Ads et automatisation IA pour PME, TPE et artisans. Dès 149€/mois, sans engagement. Plus de demandes, plus de clients.",
       },
-      { property: "og:title", content: "Site web & Google Ads pour artisans et TPE | Sitaly" },
+      { property: "og:title", content: "Site web, Google Ads & IA pour PME, TPE et artisans | Sitaly" },
       {
         property: "og:description",
-        content: "Site internet livré en 48h, Google Ads et automatisation pour artisans, indépendants et PME. Dès 149€/mois, sans engagement. Plus d'appels, plus de devis.",
+        content: "Sites internet, Google Ads, ChatGPT Ads et automatisation IA pour PME, TPE et artisans. Dès 149€/mois, sans engagement. Plus de demandes, plus de clients.",
       },
       { property: "og:url", content: "https://sitaly.fr/" },
     ],
@@ -116,6 +119,7 @@ function SitalyHome() {
       <BlogOption />
       <Options />
       <Examples />
+      <MetierLinksSection />
       <Process />
       <Clients />
       <Faq />
@@ -135,13 +139,18 @@ function Nav() {
         </a>
         <nav className="hidden items-center gap-8 md:flex">
           <a href="#offre" className="text-sm font-medium text-muted-foreground hover:text-foreground">Offres</a>
-          <Link to="/agents-ia" className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:opacity-80">
+          <Link to="/agents-ia/" className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:opacity-80">
             <Sparkles className="h-3.5 w-3.5" />
             Agents IA
           </Link>
+          {/* Page statique hors routeur : lien classique, pas de <Link>. */}
+          <a href="/chatgpt-ads/" className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:opacity-80">
+            <MessageSquare className="h-3.5 w-3.5" />
+            ChatGPT Ads
+          </a>
           <a href="#exemples" className="text-sm font-medium text-muted-foreground hover:text-foreground">Exemples</a>
           <a href="#process" className="text-sm font-medium text-muted-foreground hover:text-foreground">Process</a>
-          <Link to="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground">Blog</Link>
+          <Link to="/blog/" className="text-sm font-medium text-muted-foreground hover:text-foreground">Blog</Link>
           <a href="#faq" className="text-sm font-medium text-muted-foreground hover:text-foreground">FAQ</a>
         </nav>
 
@@ -576,7 +585,36 @@ function Automation() {
 }
 
 /* ---------------- PRICING ---------------- */
-const PRICING_TIERS = [
+/**
+ * Offres de la page d'accueil.
+ *
+ * Une offre peut proposer plusieurs canaux (`channels`) : la carte affiche alors
+ * deux boutons et bascule prix, contenu et bouton d'action selon le canal choisi.
+ * C'est le cas de Sitaly Acquisition (Google Ads / ChatGPT Ads).
+ */
+type PricingCta = { label: string; to?: string; href?: string };
+
+interface PricingView {
+  price: string;
+  period: string;
+  setup: string | null;
+  objective: string;
+  inherits: string | null;
+  features: readonly string[];
+  note: string | null;
+  cta: PricingCta;
+}
+
+interface PricingTier extends PricingView {
+  name: string;
+  badge: string;
+  icon: React.ComponentType<{ className?: string }>;
+  promise: string;
+  featured: boolean;
+  channels?: readonly (PricingView & { key: string; label: string })[];
+}
+
+const PRICING_TIERS: PricingTier[] = [
   {
     name: "Sitaly Présence",
     badge: "Le tout-en-un",
@@ -595,28 +633,65 @@ const PRICING_TIERS = [
     ],
     note: null,
     promise: "Une présence pro qui reste à jour, sans gérer la technique.",
-    cta: { label: "Réserver un appel", calendly: true },
+    cta: { label: "Réserver un appel" },
     featured: true,
   },
   {
     name: "Sitaly Acquisition",
-    badge: "Plus de clients",
+    badge: "Publicité en ligne",
     icon: Megaphone,
-    price: "Dès 299€",
+    promise: "Attirez de nouveaux clients, à votre rythme.",
+    featured: false,
+    // Valeurs par défaut = premier canal (Google Ads).
+    price: "299€",
     period: "/mois",
-    setup: null,
-    objective: "Des appels et des devis via Google Ads. Avec ou sans site.",
+    setup: "+ 15 % du budget publicitaire",
+    objective: "Des demandes qualifiées par la publicité. Avec ou sans site.",
     inherits: "Indépendant de votre site",
     features: [
-      "3 formules : Starter, Growth, Performance",
-      "Création & gestion des campagnes",
-      "Optimisation & suivi des conversions",
-      "Reporting mensuel",
+      "Création & gestion de vos campagnes",
+      "Ciblage de votre zone d'intervention",
+      "Suivi des conversions (appels, formulaires)",
+      "Optimisation et reporting mensuel",
     ],
-    note: "Budget publicitaire Google non inclus.",
-    promise: "Attirez de nouveaux clients, à votre rythme.",
-    cta: { label: "Voir les formules", to: "/acquisition" },
-    featured: false,
+    note: "Budget publicitaire versé à Google, non inclus.",
+    cta: { label: "Voir l'offre Google Ads", to: "/acquisition/" },
+    channels: [
+      {
+        key: "google-ads",
+        label: "Google Ads",
+        price: "299€",
+        period: "/mois",
+        setup: "+ 15 % du budget publicitaire",
+        objective: "Des demandes qualifiées par la publicité. Avec ou sans site.",
+        inherits: "Indépendant de votre site",
+        features: [
+          "Création & gestion de vos campagnes",
+          "Ciblage de votre zone d'intervention",
+          "Suivi des conversions (appels, formulaires)",
+          "Optimisation et reporting mensuel",
+        ],
+        note: "Budget publicitaire versé à Google, non inclus.",
+        cta: { label: "Voir l'offre Google Ads", to: "/acquisition/" },
+      },
+      {
+        key: "chatgpt-ads",
+        label: "ChatGPT Ads",
+        price: "890€",
+        period: "/mois",
+        setup: "à partir de — hors budget publicitaire",
+        objective: "Apparaissez dans ChatGPT quand un futur client décrit son besoin.",
+        inherits: "Canal récent, piloté par la mesure",
+        features: [
+          "Cartographie des intentions à couvrir",
+          "Rédaction des messages & page de destination",
+          "Tracking des conversions avant toute dépense",
+          "Optimisation continue et reporting mensuel",
+        ],
+        note: "Budget publicitaire séparé. Sitaly n'est ni partenaire ni certifiée OpenAI.",
+        cta: { label: "Découvrir ChatGPT Ads", href: "/chatgpt-ads/" },
+      },
+    ],
   },
   {
     name: "Sitaly Agents IA",
@@ -635,10 +710,10 @@ const PRICING_TIERS = [
     ],
     note: null,
     promise: "Vous ne configurez rien, on branche tout.",
-    cta: { label: "Découvrir les agents", to: "/agents-ia" },
+    cta: { label: "Découvrir les agents", to: "/agents-ia/" },
     featured: false,
   },
-] as const;
+];
 
 function Pricing() {
   return (
@@ -647,7 +722,7 @@ function Pricing() {
         <SectionHeader
           eyebrow="Tarifs"
           title="Choisissez le niveau d'accompagnement adapté à votre activité"
-          subtitle="Votre présence en ligne avec Présence, plus de clients avec Acquisition. Combinables, sans engagement."
+          subtitle="Votre présence en ligne avec Présence, vos campagnes Google Ads ou ChatGPT Ads avec Acquisition. Combinables, sans engagement."
         />
 
         <p className="mx-auto mt-10 max-w-3xl rounded-full border border-border bg-secondary/60 px-5 py-3 text-center text-sm font-semibold text-foreground/80">
@@ -668,9 +743,16 @@ function Pricing() {
   );
 }
 
-type Tier = (typeof PRICING_TIERS)[number];
+function PricingCard({ tier, featured }: { tier: PricingTier; featured: boolean }) {
+  // Canal actif pour les offres à plusieurs canaux (Google Ads / ChatGPT Ads).
+  const [channel, setChannel] = useState(0);
+  const view: PricingView = tier.channels ? tier.channels[channel] : tier;
+  const ctaClass = `mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-base font-semibold transition ${
+    featured
+      ? "bg-accent text-accent-foreground shadow-elevated hover:opacity-90"
+      : "border border-border bg-secondary text-secondary-foreground hover:bg-muted"
+  }`;
 
-function PricingCard({ tier, featured }: { tier: Tier; featured: boolean }) {
   return (
     <div
       className={`relative flex h-full flex-col rounded-3xl bg-card p-7 sm:p-8 ${
@@ -703,27 +785,53 @@ function PricingCard({ tier, featured }: { tier: Tier; featured: boolean }) {
       </div>
 
       <h3 className="mt-5 text-xl font-bold">{tier.name}</h3>
-      <p className="mt-1 text-sm text-muted-foreground">{tier.objective}</p>
+
+      {tier.channels && (
+        <div
+          role="tablist"
+          aria-label="Choisir le canal publicitaire"
+          className="mt-4 grid grid-cols-2 gap-1 rounded-xl border border-border bg-secondary/60 p-1"
+        >
+          {tier.channels.map((c, i) => (
+            <button
+              key={c.key}
+              type="button"
+              role="tab"
+              aria-selected={i === channel}
+              onClick={() => setChannel(i)}
+              className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${
+                i === channel
+                  ? "bg-card text-foreground shadow-soft"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {c.label}
+            </button>
+          ))}
+        </div>
+      )}
+
+      <p className="mt-3 text-sm text-muted-foreground">{view.objective}</p>
 
       <div className="mt-5 flex items-baseline gap-1">
         <span className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
-          {tier.price}
+          {view.price}
         </span>
-        <span className="text-muted-foreground">{tier.period}</span>
+        <span className="text-muted-foreground">{view.period}</span>
       </div>
-      {tier.setup && (
-        <p className="mt-1 text-sm font-medium text-foreground/70">{tier.setup}</p>
+      {view.setup && (
+        <p className="mt-1 text-sm font-medium text-foreground/70">{view.setup}</p>
       )}
 
       <div className="mt-7 space-y-3">
-        {tier.inherits && (
+        {view.inherits && (
           <div className="flex items-center gap-2 text-sm font-semibold text-accent">
             <Check className="h-5 w-5 shrink-0" />
-            {tier.inherits}
+            {view.inherits}
           </div>
         )}
         <ul className="space-y-3">
-          {tier.features.map((f) => (
+          {view.features.map((f) => (
             <li key={f} className="flex items-start gap-3 text-[15px]">
               <Check
                 className={`mt-0.5 h-5 w-5 shrink-0 ${
@@ -749,10 +857,10 @@ function PricingCard({ tier, featured }: { tier: Tier; featured: boolean }) {
             </li>
           ))}
         </ul>
-        {tier.note && (
+        {view.note && (
           <p className="flex items-start gap-1.5 pt-1 text-xs text-muted-foreground">
             <span aria-hidden="true">*</span>
-            {tier.note}
+            {view.note}
           </p>
         )}
       </div>
@@ -761,31 +869,21 @@ function PricingCard({ tier, featured }: { tier: Tier; featured: boolean }) {
         {tier.promise}
       </p>
 
-      {"to" in tier.cta && tier.cta.to ? (
-        <Link
-          to={tier.cta.to}
-          className={`mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-base font-semibold transition ${
-            featured
-              ? "bg-accent text-accent-foreground shadow-elevated hover:opacity-90"
-              : "border border-border bg-secondary text-secondary-foreground hover:bg-muted"
-          }`}
-        >
-          {tier.cta.label}
+      {view.cta.to ? (
+        <Link to={view.cta.to} className={ctaClass}>
+          {view.cta.label}
           <ArrowRight className="h-5 w-5" />
         </Link>
+      ) : view.cta.href ? (
+        /* Page statique hors routeur React : lien classique, pas de <Link>. */
+        <a href={view.cta.href} className={ctaClass}>
+          {view.cta.label}
+          <ArrowRight className="h-5 w-5" />
+        </a>
       ) : (
-        <a
-          href={CALENDLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-base font-semibold transition ${
-            featured
-              ? "bg-accent text-accent-foreground shadow-elevated hover:opacity-90"
-              : "border border-border bg-secondary text-secondary-foreground hover:bg-muted"
-          }`}
-        >
+        <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className={ctaClass}>
           <Calendar className="h-5 w-5" />
-          {tier.cta.label}
+          {view.cta.label}
         </a>
       )}
     </div>
@@ -1321,24 +1419,32 @@ function Footer() {
   return (
     <footer className="border-t border-border bg-primary py-12 text-primary-foreground">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-2">
               <SitalyLogo />
             </div>
             <p className="mt-3 text-sm text-primary-foreground/70">
-              Plus de clients pour les artisans, indépendants et PME : site internet, Google Ads et automatisation.
+              Plus de clients pour les PME, TPE et artisans : site internet, Google Ads, ChatGPT Ads et automatisation.
             </p>
+            <div className="mt-4">
+              <LinkedinLink variant="clair" />
+            </div>
+          </div>
+          <div>
+            <div className="text-sm font-semibold">Sites par métier</div>
+            <MetierFooterLinks className="mt-3 space-y-1 text-sm text-primary-foreground/70" />
           </div>
           <div>
             <div className="text-sm font-semibold">Navigation</div>
             <ul className="mt-3 space-y-1 text-sm text-primary-foreground/70">
               <li><a href="#offre" className="block py-2.5 hover:text-primary-foreground">Offres</a></li>
-              <li><Link to="/agents-ia" className="block py-2.5 hover:text-primary-foreground">Agents IA</Link></li>
+              <li><Link to="/agents-ia/" className="block py-2.5 hover:text-primary-foreground">Agents IA</Link></li>
+              <li><a href="/chatgpt-ads/" className="block py-2.5 hover:text-primary-foreground">ChatGPT Ads</a></li>
               <li><a href="#exemples" className="block py-2.5 hover:text-primary-foreground">Exemples</a></li>
               <li><a href="#process" className="block py-2.5 hover:text-primary-foreground">Process</a></li>
               <li><a href="#faq" className="block py-2.5 hover:text-primary-foreground">FAQ</a></li>
-              <li><Link to="/blog" className="block py-2.5 hover:text-primary-foreground">Blog</Link></li>
+              <li><Link to="/blog/" className="block py-2.5 hover:text-primary-foreground">Blog</Link></li>
             </ul>
           </div>
           <div>
@@ -1363,6 +1469,16 @@ function Footer() {
               <li className="flex items-center gap-2 py-2.5"><Globe className="h-4 w-4" /> sitaly.fr</li>
               <li>
                 <a
+                  href="https://www.linkedin.com/in/vidalozzi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 py-2.5 hover:text-primary-foreground"
+                >
+                  <Linkedin className="h-4 w-4" /> Teddy Vidal
+                </a>
+              </li>
+              <li>
+                <a
                   href="https://instagram.com/sitaly.fr"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -1377,10 +1493,10 @@ function Footer() {
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-primary-foreground/60 sm:flex-row">
           <div>© {new Date().getFullYear()} Sitaly. Tous droits réservés.</div>
           <div className="flex flex-wrap justify-center gap-x-5 gap-y-1">
-            <Link to="/mentions-legales" className="inline-block py-2.5 hover:text-primary-foreground">Mentions légales</Link>
-            <Link to="/politique-confidentialite" className="inline-block py-2.5 hover:text-primary-foreground">Confidentialité</Link>
-            <Link to="/cgv" className="inline-block py-2.5 hover:text-primary-foreground">CGV</Link>
-            <Link to="/cookies" className="inline-block py-2.5 hover:text-primary-foreground">Cookies</Link>
+            <Link to="/mentions-legales/" className="inline-block py-2.5 hover:text-primary-foreground">Mentions légales</Link>
+            <Link to="/politique-confidentialite/" className="inline-block py-2.5 hover:text-primary-foreground">Confidentialité</Link>
+            <Link to="/cgv/" className="inline-block py-2.5 hover:text-primary-foreground">CGV</Link>
+            <Link to="/cookies/" className="inline-block py-2.5 hover:text-primary-foreground">Cookies</Link>
           </div>
         </div>
       </div>

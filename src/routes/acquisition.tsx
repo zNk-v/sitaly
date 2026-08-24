@@ -1,32 +1,32 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
+  ArrowRight,
   Calendar,
   Check,
   Megaphone,
   Target,
-  BarChart3,
-  Rocket,
   ShieldCheck,
 } from "lucide-react";
 import { SitalyLogo } from "@/components/SitalyLogo";
 import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
+import { LinkedinLink } from "@/components/LinkedinLink";
 import { CALENDLY_URL } from "@/lib/config";
 
 export const Route = createFileRoute("/acquisition")({
   head: () => ({
     meta: [
-      { title: "Sitaly Acquisition — Google Ads pour artisans | Dès 299€/mois" },
+      { title: "Sitaly Acquisition — Gestion Google Ads | 299€/mois" },
       {
         name: "description",
         content:
-          "Générez des appels et des devis grâce à Google Ads, avec ou sans site internet. Gestion complète de vos campagnes par Sitaly. Trois formules dès 299€/mois.",
+          "Générez des demandes qualifiées grâce à Google Ads, avec ou sans site internet. Gestion complète de vos campagnes par Sitaly : 299€/mois plus 15 % du budget publicitaire.",
       },
       { name: "robots", content: "index,follow" },
       { property: "og:title", content: "Sitaly Acquisition — Google Ads pour artisans" },
       {
         property: "og:description",
         content:
-          "La gestion de vos campagnes Google Ads pour attirer des clients. Indépendant de votre site. Dès 299€/mois.",
+          "La gestion de vos campagnes Google Ads pour attirer des clients. Indépendant de votre site. 299€/mois + 15 % du budget publicitaire.",
       },
       { property: "og:url", content: "https://sitaly.fr/acquisition/" },
     ],
@@ -42,9 +42,7 @@ export const Route = createFileRoute("/acquisition")({
           provider: { "@type": "Organization", name: "Sitaly", url: "https://sitaly.fr" },
           areaServed: "FR",
           offers: [
-            { "@type": "Offer", name: "Acquisition Starter", price: "299", priceCurrency: "EUR" },
-            { "@type": "Offer", name: "Acquisition Growth", price: "499", priceCurrency: "EUR" },
-            { "@type": "Offer", name: "Acquisition Performance", price: "799", priceCurrency: "EUR" },
+            { "@type": "Offer", name: "Gestion Google Ads", price: "299", priceCurrency: "EUR" },
           ],
         }),
       },
@@ -53,48 +51,28 @@ export const Route = createFileRoute("/acquisition")({
   component: AcquisitionPage,
 });
 
-const TIERS = [
-  {
-    name: "Starter",
-    icon: Target,
-    price: "299€",
-    objective: "Lancer votre acquisition sur Google, proprement.",
-    features: [
-      "Création de vos campagnes Google Ads",
-      "Ciblage de votre zone d'intervention",
-      "Optimisation mensuelle",
-      "Reporting clair",
-    ],
-    featured: false,
-  },
-  {
-    name: "Growth",
-    icon: BarChart3,
-    price: "499€",
-    objective: "Monter en puissance et suivre vos conversions.",
-    features: [
-      "Plusieurs campagnes",
-      "Optimisation avancée",
-      "Suivi des conversions (appels, formulaires)",
-      "Analyse des performances",
-    ],
-    featured: true,
-  },
-  {
-    name: "Performance",
-    icon: Rocket,
-    price: "799€",
-    objective: "Une stratégie d'acquisition complète, pilotée avec vous.",
-    features: [
-      "Stratégie d'acquisition sur mesure",
-      "Optimisation du tunnel de conversion",
-      "Création de landing pages",
-      "Analyse de conversion",
-      "Accompagnement stratégique",
-    ],
-    featured: false,
-  },
-] as const;
+/**
+ * Offre unique : la gestion est facturée 299 €/mois, plus un pourcentage du budget
+ * publicitaire confié. Les anciens paliers Growth (499 €) et Performance (799 €) ont
+ * été retirés le 24/08/2026 — un seul tarif affiché, ajusté au budget réel.
+ */
+const COMMISSION = "15 %";
+
+const OFFRE = {
+  name: "Gestion Google Ads",
+  icon: Target,
+  price: "299€",
+  commission: `+ ${COMMISSION} du budget publicitaire`,
+  objective: "Vos campagnes créées, pilotées et optimisées, du premier euro au dernier.",
+  features: [
+    "Création et paramétrage de vos campagnes",
+    "Ciblage précis de votre zone d'intervention",
+    "Suivi des conversions : appels, formulaires, messages",
+    "Optimisation continue et arbitrage des enchères",
+    "Reporting mensuel clair : dépense, demandes, coût réel",
+    "Un interlocuteur unique, joignable",
+  ],
+} as const;
 
 const STEPS = [
   { n: "1", title: "Appel découverte", text: "On comprend votre métier, votre zone, vos objectifs et votre budget." },
@@ -164,66 +142,73 @@ function AcquisitionPage() {
       {/* Formules */}
       <section id="formules" className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-bold tracking-widest text-accent">LES FORMULES</p>
+          <p className="text-xs font-bold tracking-widest text-accent">LE TARIF</p>
           <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
-            Le tarif dépend de l'accompagnement, pas de votre budget pub
+            Une seule offre, un tarif qui suit votre budget
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Vous choisissez le niveau, vous gardez la main sur le budget publicitaire.
+            Un forfait de gestion fixe, plus un pourcentage du budget publicitaire que vous nous
+            confiez. Vous gardez la main sur ce budget, et notre rémunération suit vos ambitions.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-3">
-          {TIERS.map((t) => (
-            <div
-              key={t.name}
-              className={`relative flex flex-col rounded-3xl bg-card p-7 sm:p-8 ${
-                t.featured ? "border-2 border-accent shadow-glow" : "border border-border shadow-soft"
-              }`}
-            >
-              {t.featured && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-accent px-4 py-1 text-xs font-bold uppercase tracking-wider text-accent-foreground shadow-elevated">
-                  Le plus choisi
-                </div>
-              )}
-              <div
-                className={`grid h-11 w-11 place-items-center rounded-xl ${
-                  t.featured ? "bg-accent/15 text-accent" : "bg-secondary text-foreground/70"
-                }`}
-              >
-                <t.icon className="h-5 w-5" />
+        <div className="mx-auto mt-12 max-w-3xl rounded-3xl border-2 border-accent bg-card p-7 shadow-glow sm:p-9">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <div className="grid h-11 w-11 place-items-center rounded-xl bg-accent/15 text-accent">
+                <OFFRE.icon className="h-5 w-5" />
               </div>
-              <h3 className="mt-5 text-xl font-bold">Acquisition {t.name}</h3>
-              <p className="mt-1 text-sm text-muted-foreground">{t.objective}</p>
-              <div className="mt-5 flex items-baseline gap-1">
-                <span className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
-                  {t.price}
-                </span>
-                <span className="text-muted-foreground">/mois</span>
-              </div>
-              <ul className="mt-7 flex-1 space-y-3">
-                {t.features.map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-[15px]">
-                    <Check className={`mt-0.5 h-5 w-5 shrink-0 ${t.featured ? "text-accent" : "text-success"}`} />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-              <a
-                href={CALENDLY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-base font-semibold transition ${
-                  t.featured
-                    ? "bg-accent text-accent-foreground shadow-elevated hover:opacity-90"
-                    : "border border-border bg-secondary text-secondary-foreground hover:bg-muted"
-                }`}
-              >
-                <Calendar className="h-5 w-5" />
-                En parler
-              </a>
+              <h3 className="mt-5 text-xl font-bold">{OFFRE.name}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{OFFRE.objective}</p>
             </div>
-          ))}
+            <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">
+              Sans engagement
+            </span>
+          </div>
+
+          <div className="mt-6 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+            <span className="font-display text-5xl font-extrabold tracking-tight">{OFFRE.price}</span>
+            <span className="text-muted-foreground">/mois</span>
+            <span className="text-lg font-semibold text-accent">{OFFRE.commission}</span>
+          </div>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Le budget publicitaire est versé directement à Google : il ne transite pas par nous et
+            reste votre propriété.
+          </p>
+
+          <ul className="mt-7 grid gap-3 sm:grid-cols-2">
+            {OFFRE.features.map((f) => (
+              <li key={f} className="flex items-start gap-3 text-[15px]">
+                <Check className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+                <span>{f}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-base font-semibold text-accent-foreground shadow-elevated transition hover:opacity-90"
+          >
+            <Calendar className="h-5 w-5" />
+            En parler
+          </a>
+        </div>
+
+        {/* Passerelle vers l'autre canal publicitaire. Page statique : lien classique. */}
+        <div className="mx-auto mt-6 flex max-w-3xl flex-col items-center justify-between gap-3 rounded-2xl border border-border bg-secondary/40 px-5 py-4 sm:flex-row">
+          <p className="text-sm text-muted-foreground">
+            <span className="font-semibold text-foreground">Vos clients cherchent aussi dans ChatGPT ?</span>{" "}
+            Nous pilotons également des campagnes ChatGPT Ads, à partir de 890 €/mois.
+          </p>
+          <a
+            href="/chatgpt-ads/"
+            className="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-accent hover:underline"
+          >
+            Voir ChatGPT Ads
+            <ArrowRight className="h-4 w-4" />
+          </a>
         </div>
 
         <div className="mx-auto mt-8 flex max-w-3xl flex-col gap-3 sm:flex-row">
@@ -286,9 +271,11 @@ function AcquisitionPage() {
           <SitalyLogo className="scale-90" />
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             <Link to="/" className="hover:text-foreground">Accueil</Link>
-            <Link to="/agents-ia" className="hover:text-foreground">Agents IA</Link>
-            <Link to="/mentions-legales" className="hover:text-foreground">Mentions légales</Link>
-            <Link to="/cgv" className="hover:text-foreground">CGV</Link>
+            <Link to="/agents-ia/" className="hover:text-foreground">Agents IA</Link>
+            <a href="/chatgpt-ads/" className="hover:text-foreground">ChatGPT Ads</a>
+            <Link to="/mentions-legales/" className="hover:text-foreground">Mentions légales</Link>
+            <Link to="/cgv/" className="hover:text-foreground">CGV</Link>
+            <LinkedinLink className="h-9 w-9" />
           </div>
         </div>
       </footer>

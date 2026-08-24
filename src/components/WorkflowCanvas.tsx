@@ -59,25 +59,25 @@ const WORKFLOWS: Workflow[] = [
     tab: "Réceptionniste vocal 24/7",
     offer: "Offre Performance",
     blurb:
-      "Un client appelle pendant que vous êtes sur un chantier : l'agent décroche, répond, cale le rendez-vous et vous prévient par SMS.",
+      "Un client appelle pendant que vous êtes en rendez-vous ou en intervention : l'agent décroche, répond, cale le rendez-vous et vous prévient par SMS.",
     nodes: [
       { title: "Appel entrant", subtitle: "Ligne dédiée 24/7", icon: "phone", color: "#e2574c", kind: "trigger" },
       { title: "Agent IA", subtitle: "Le cerveau du workflow", icon: "bot", color: "", kind: "agent" },
       { title: "Décision", subtitle: "Selon la demande", icon: "branch", color: "#3aa7b8" },
       { title: "Réponse vocale", subtitle: "Voix naturelle", icon: "wave", color: "#14b8a6" },
       { title: "Prise de RDV", subtitle: "Agenda synchronisé", icon: "calendar", color: "#5b7bd5" },
-      { title: "SMS à l'artisan", subtitle: "Notification instantanée", icon: "message", color: "#e2574c" },
+      { title: "SMS à l'équipe", subtitle: "Notification instantanée", icon: "message", color: "#e2574c" },
     ],
     subs: [SUB_CLAUDE, SUB_SUPABASE, { title: "Tools", subtitle: "Agenda & outils", icon: "wrench", color: "#5b7bd5" }],
   },
   {
     id: "relance-devis",
-    tab: "Relance devis auto",
+    tab: "Relance devis & propositions",
     offer: "Offre Acquisition",
     blurb:
-      "48 h après l'envoi d'un devis resté sans réponse, l'agent rédige une relance personnalisée, l'envoie et la consigne dans votre CRM.",
+      "48 h après un devis ou une proposition restée sans réponse, l'agent rédige une relance personnalisée, l'envoie et la consigne dans votre CRM.",
     nodes: [
-      { title: "Devis envoyé", subtitle: "Déclencheur automatique", icon: "bolt", color: "#6d7cff", kind: "trigger" },
+      { title: "Devis ou proposition", subtitle: "Déclencheur automatique", icon: "bolt", color: "#6d7cff", kind: "trigger" },
       { title: "Attente 48 h", subtitle: "Minuteur", icon: "clock", color: "#8a8f9d" },
       { title: "Agent IA", subtitle: "Le cerveau du workflow", icon: "bot", color: "", kind: "agent" },
       { title: "Message personnalisé", subtitle: "Rédigé par l'IA", icon: "pen", color: "#d97757" },
@@ -112,9 +112,39 @@ const WORKFLOWS: Workflow[] = [
       { title: "Agent IA", subtitle: "Le cerveau du workflow", icon: "bot", color: "", kind: "agent" },
       { title: "SMS immédiat", subtitle: "Envoyé au prospect", icon: "message", color: "#e2574c" },
       { title: "Créneau proposé", subtitle: "Agenda synchronisé", icon: "calendar", color: "#5b7bd5" },
-      { title: "Artisan prévenu", subtitle: "Notification SMS", icon: "bell", color: "#f0a63a" },
+      { title: "Équipe prévenue", subtitle: "Notification SMS", icon: "bell", color: "#f0a63a" },
     ],
     subs: [SUB_CLAUDE],
+  },
+  {
+    id: "whatsapp",
+    tab: "Agent WhatsApp",
+    offer: "En option",
+    blurb:
+      "Un client écrit sur votre WhatsApp professionnel : l'agent répond dans la conversation, qualifie la demande, propose un créneau et passe la main à votre équipe avec l'historique.",
+    nodes: [
+      { title: "Message WhatsApp", subtitle: "Numéro professionnel", icon: "message", color: "#25d366", kind: "trigger" },
+      { title: "Agent IA", subtitle: "Le cerveau du workflow", icon: "bot", color: "", kind: "agent" },
+      { title: "Réponse instantanée", subtitle: "Dans la conversation", icon: "send", color: "#14b8a6" },
+      { title: "Prise de RDV", subtitle: "Agenda synchronisé", icon: "calendar", color: "#5b7bd5" },
+      { title: "Passage à l'équipe", subtitle: "Historique complet", icon: "branch", color: "#f0a63a" },
+    ],
+    subs: [SUB_CLAUDE, SUB_SUPABASE],
+  },
+  {
+    id: "suivi-commande",
+    tab: "Suivi de commande",
+    offer: "En option",
+    blurb:
+      "Un client demande où en est sa commande : l'agent retrouve le dossier, répond avec le statut réel et n'appelle un humain qu'en cas de litige.",
+    nodes: [
+      { title: "Message client", subtitle: "WhatsApp, e-mail ou chat", icon: "mail", color: "#5b8def", kind: "trigger" },
+      { title: "Agent IA", subtitle: "Le cerveau du workflow", icon: "bot", color: "", kind: "agent" },
+      { title: "Recherche du dossier", subtitle: "Commande et livraison", icon: "database", color: "#3ecf8e" },
+      { title: "Réponse envoyée", subtitle: "Statut et prochaine étape", icon: "send", color: "#14b8a6" },
+      { title: "Litige au support", subtitle: "Reprise humaine", icon: "branch", color: "#e2574c" },
+    ],
+    subs: [SUB_CLAUDE, SUB_SUPABASE, { title: "Tools", subtitle: "Commandes & livraison", icon: "wrench", color: "#5b7bd5" }],
   },
 ];
 

@@ -23,7 +23,55 @@ const FAQ = [
     q: "Que faire avec mes aides MaPrimeRénov' / CEE ?",
     a: "On intègre un bloc dédié aux aides (MaPrimeRénov', CEE, éco-PTZ) avec un formulaire de simulation rapide. Très efficace pour capter les recherches 'aides ravalement + ville'.",
   },
+  {
+    q: "Mon activité est saisonnière, le site sert-il en hiver ?",
+    a: "L'hiver amène les fuites, les tuiles arrachées et le démoussage, l'été les ravalements et les réfections complètes. Le site couvre les deux saisons avec des pages différentes. C'est aussi en basse saison qu'on prépare les demandes de devis du printemps, quand les particuliers commencent à se renseigner.",
+  },
+  {
+    q: "Comment rassurer sur un devis de 15 000 € ?",
+    a: "Par la preuve. Décennale et assurance affichées, photos avant-après de vos chantiers réels, avis Google datés, déroulé précis des étapes et des délais. Un particulier qui engage le prix d'une voiture veut vérifier avant d'appeler, et il vérifie sur votre site.",
+  },
+  {
+    q: "Mes concurrents passent par des apporteurs d'affaires, c'est mieux ?",
+    a: "Un apporteur prend entre 10 et 20 % du chantier, sur chaque chantier, indéfiniment. Un site coûte le même montant chaque mois quel que soit le volume. Sur une année à quelques chantiers de toiture, l'écart devient difficile à ignorer.",
+  },
 ];
+
+const INCLUDED = [
+  {
+    title: "Galerie de chantiers avant-après",
+    desc: "Vos photos de toitures, ravalements et démoussages, recadrées et légendées par type de chantier. C'est ce que les particuliers regardent en premier et ce qui justifie votre prix.",
+  },
+  {
+    title: "Une page par prestation",
+    desc: "Réfection de toiture, zinguerie, démoussage, ravalement de façade, isolation par l'extérieur, dépannage après tempête. Chacune vise sa recherche et son type de client.",
+  },
+  {
+    title: "Page dédiée aux aides",
+    desc: "MaPrimeRénov', CEE, éco-PTZ, TVA réduite, avec un simulateur simple. Les recherches d'aides amènent des propriétaires déjà décidés à faire des travaux.",
+  },
+  {
+    title: "Zone d'intervention cartographiée",
+    desc: "Les communes que vous couvrez, chacune avec sa page. Un couvreur qui n'apparaît que sur sa commune se prive des trois quarts de son rayon d'action réel.",
+  },
+  {
+    title: "Assurances et garanties en évidence",
+    desc: "Décennale, RGE, SIRET, garantie de parfait achèvement. Sur des montants à cinq chiffres, ce bloc fait la différence entre un devis demandé et un onglet fermé.",
+  },
+  {
+    title: "Hébergement, maintenance et modifications",
+    desc: "Domaine, SSL, sauvegardes et vos demandes de changement. Un chantier à ajouter dans la galerie, une nouvelle commune à couvrir : envoyez les photos, on publie.",
+  },
+];
+
+const LOCAL_SEO = {
+  title: "Deux saisons, deux façons d'être trouvé",
+  paragraphs: [
+    "L'urgence et le projet ne se cherchent pas de la même manière. Après une tempête, on tape « couvreur urgence » sur son téléphone et on appelle le premier numéro visible : là, ce sont la fiche Google et la vitesse d'affichage du site qui décident. Pour un ravalement, on compare pendant trois semaines, on lit les avis, on regarde les photos, on demande trois devis : là, c'est le contenu et la preuve qui décident.",
+    "Un site de couvreur doit tenir les deux rôles. On construit donc une page de dépannage taillée pour le mobile et l'appel immédiat, et des pages de projet plus fournies, avec les étapes, les matériaux, les délais et les aides. Les deux se nourrissent : les appels d'urgence génèrent des avis, et les avis font remonter les pages de projet.",
+    "Reste la couverture géographique. Vous intervenez sur vingt ou trente communes, mais Google ne vous associe qu'à celle de votre adresse tant que rien ne lui indique le reste. Les pages par ville, la zone desservie renseignée dans la fiche et des mentions cohérentes ailleurs sur le web étendent progressivement votre visibilité à votre vrai rayon d'intervention.",
+  ],
+};
 
 export const Route = createFileRoute("/site-internet-couvreur")({
   head: () =>
@@ -42,6 +90,9 @@ function CouvreurLanding() {
     <MetierLanding
       metier="couvreur"
       metierCapitalized="Couvreur / Façadier"
+      route="/site-internet-couvreur/"
+      included={INCLUDED}
+      localSeo={LOCAL_SEO}
       h1="Site internet couvreur-façadier pour capter les chantiers locaux"
       intro="Un site rapide, optimisé pour les urgences toiture et les recherches ravalement, qui vous fait remonter en 1ère page Google sur votre zone."
       benefits={[

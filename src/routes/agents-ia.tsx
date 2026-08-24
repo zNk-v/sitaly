@@ -5,6 +5,8 @@ import {
   BarChart3,
   Bell,
   Bot,
+  Briefcase,
+  Building2,
   CalendarCheck,
   CalendarClock,
   Check,
@@ -13,18 +15,24 @@ import {
   Compass,
   Eye,
   FileWarning,
+  FileText,
   Filter,
+  HardHat,
   Inbox,
   LineChart,
   ListChecks,
+  MessageCircle,
   MessageSquare,
   Phone,
   PhoneMissed,
   Repeat,
+  Scale,
   Send,
   ShieldCheck,
+  ShoppingCart,
   SlidersHorizontal,
   Sparkles,
+  Stethoscope,
   UserCheck,
   Users,
   X,
@@ -35,6 +43,7 @@ import { WorkflowCanvas } from "@/components/WorkflowCanvas";
 import { AiFlowRail, type FlowStep } from "@/components/AiFlowRail";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
+import { LinkedinLink } from "@/components/LinkedinLink";
 
 const CONTACT_EMAIL = "contact@sitaly.fr";
 
@@ -89,9 +98,12 @@ const HERO_FLOW: FlowStep[] = [
 const CAPABILITIES = [
   { label: "Appels", icon: Phone },
   { label: "Formulaires", icon: ClipboardList },
+  { label: "WhatsApp", icon: MessageCircle },
   { label: "Messages", icon: MessageSquare },
   { label: "Prise de rendez-vous", icon: CalendarCheck },
+  { label: "E-mails", icon: Send },
   { label: "Relance", icon: Repeat },
+  { label: "Mise à jour de vos outils", icon: FileText },
   { label: "Transfert humain", icon: UserCheck },
   { label: "Suivi des conversions", icon: BarChart3 },
 ];
@@ -100,7 +112,7 @@ const LEAKS = [
   {
     icon: PhoneMissed,
     title: "Appels manqués",
-    text: "Personne ne décroche pendant une intervention, une réunion ou en dehors des horaires. Le prospect appelle le suivant.",
+    text: "Personne ne décroche pendant un rendez-vous, une intervention ou en dehors des horaires. Le client appelle le suivant.",
   },
   {
     icon: Clock,
@@ -119,8 +131,8 @@ const LEAKS = [
   },
   {
     icon: FileWarning,
-    title: "Devis oubliés",
-    text: "Le devis part, puis plus rien. La relance dépend de la mémoire de celui qui l'a envoyé.",
+    title: "Propositions sans suite",
+    text: "Le devis, la proposition ou le dossier part, puis plus rien. La relance dépend de la mémoire de celui qui l'a envoyé.",
   },
   {
     icon: Eye,
@@ -130,7 +142,7 @@ const LEAKS = [
 ];
 
 const JOURNEY = [
-  { step: "01", text: "Un prospect appelle ou envoie une demande." },
+  { step: "01", text: "Un client appelle, écrit ou remplit un formulaire." },
   { step: "02", text: "L'agent répond immédiatement, sur le canal utilisé." },
   { step: "03", text: "Il recueille les informations utiles au traitement." },
   { step: "04", text: "Il qualifie la demande selon vos règles métier." },
@@ -192,14 +204,150 @@ const AGENT_BLOCKS: AgentBlock[] = [
     icon: Repeat,
     pitch: "Il suit ce qui reste en attente, sans dépendre de la mémoire de personne.",
     does: [
-      "Suit les demandes et les devis en attente",
+      "Suit les devis, les propositions et les dossiers en attente",
       "Relance selon les règles et les délais définis",
       "Arrête la séquence dès qu'une réponse arrive",
       "Fait remonter les opportunités prioritaires",
     ],
-    changes: "Les devis envoyés sont relancés au bon moment, chaque semaine, sans y penser.",
+    changes: "Ce qui a été envoyé est relancé au bon moment, chaque semaine, sans y penser.",
     handover:
       "Dès qu'un prospect répond ou demande à parler à quelqu'un, la séquence s'arrête et l'équipe prend le relais.",
+  },
+];
+
+/* Un même système, décliné par métier : chaque carte donne des exemples
+   concrets pour que le visiteur se reconnaisse sans avoir à transposer. */
+const SECTOR_CASES = [
+  {
+    icon: ShoppingCart,
+    name: "E-commerce et vente en ligne",
+    context: "Beaucoup de messages, peu de temps, et des questions qui reviennent avant et après l'achat.",
+    items: [
+      "Questions avant achat sur WhatsApp, chat ou e-mail : stock, délais, tailles",
+      "Suivi de commande, retours et remboursements",
+      "Relance des paniers et des devis professionnels",
+      "Demande d'avis quelques jours après la livraison",
+    ],
+  },
+  {
+    icon: Stethoscope,
+    name: "Santé et cabinets de soins",
+    context: "Le téléphone sonne pendant les consultations et les créneaux annulés restent vides.",
+    items: [
+      "Prise, déplacement et annulation de rendez-vous",
+      "Rappels de rendez-vous par SMS ou WhatsApp pour limiter les absences",
+      "Questions pratiques : horaires, accès, documents à apporter",
+      "Urgences et cas sensibles transmis directement au praticien",
+    ],
+  },
+  {
+    icon: Scale,
+    name: "Avocats et professions libérales",
+    context: "Le premier échange consomme du temps facturable avant même de savoir si le dossier est recevable.",
+    items: [
+      "Premier contact et qualification de la demande",
+      "Vérification du domaine traité avant la prise de rendez-vous",
+      "Collecte des pièces avant le rendez-vous",
+      "Relance des dossiers en attente et des honoraires impayés",
+    ],
+  },
+  {
+    icon: HardHat,
+    name: "Artisans et bâtiment",
+    context: "Les appels arrivent pendant les interventions et les devis partent sans jamais être relancés.",
+    items: [
+      "Réponse aux appels reçus pendant les chantiers",
+      "Qualification : zone, nature des travaux, budget, délai",
+      "Relance des devis restés sans réponse",
+      "SMS immédiat au client après un appel manqué",
+    ],
+  },
+  {
+    icon: Building2,
+    name: "Immobilier et gestion",
+    context: "Les demandes de visite arrivent par cinq canaux différents et se traitent au fil de l'eau.",
+    items: [
+      "Qualification des demandes de visite et de location",
+      "Prise de rendez-vous synchronisée avec les agendas",
+      "Suivi des demandes locataires et des interventions",
+      "Relance des dossiers incomplets",
+    ],
+  },
+  {
+    icon: Briefcase,
+    name: "Agences, conseil et services",
+    context: "Trop de demandes hors budget occupent le temps des commerciaux.",
+    items: [
+      "Qualification selon le budget et le périmètre",
+      "Prise de rendez-vous de cadrage avec le contexte préparé",
+      "Relance des propositions commerciales",
+      "Démarrage client : documents, accès et informations à récupérer",
+    ],
+  },
+];
+
+/* Le catalogue va au-delà des trois agents : il montre l'étendue de ce qui
+   se traite une fois les outils connectés. */
+const AUTOMATION_FAMILIES = [
+  {
+    icon: Inbox,
+    title: "Demandes entrantes",
+    items: [
+      "Réponse aux appels, aux messages WhatsApp, aux formulaires et aux e-mails",
+      "Tri et transmission à la bonne personne",
+      "Réponses aux questions fréquentes",
+      "Détection des demandes urgentes ou sensibles",
+    ],
+  },
+  {
+    icon: CalendarCheck,
+    title: "Rendez-vous et agendas",
+    items: [
+      "Prise, déplacement et annulation de rendez-vous",
+      "Confirmation et rappels automatiques",
+      "Collecte des informations utiles avant le rendez-vous",
+      "Proposition des créneaux libérés à d'autres clients",
+    ],
+  },
+  {
+    icon: Repeat,
+    title: "Relance et suivi",
+    items: [
+      "Relance des devis, propositions et paniers abandonnés",
+      "Séquences qui s'arrêtent dès qu'une réponse arrive",
+      "Relance des documents et pièces manquantes",
+      "Rappel des factures impayées",
+    ],
+  },
+  {
+    icon: MessageSquare,
+    title: "Après-vente et satisfaction",
+    items: [
+      "Suivi de commande, de livraison et de retour, y compris sur WhatsApp",
+      "Demande d'avis au bon moment",
+      "Réponse aux avis publiés en ligne",
+      "Alerte immédiate en cas de client mécontent",
+    ],
+  },
+  {
+    icon: FileText,
+    title: "Administratif et documents",
+    items: [
+      "Création et mise à jour des fiches clients",
+      "Préparation des devis et des documents types",
+      "Collecte, classement et vérification des pièces",
+      "Transfert des informations d'un outil à l'autre",
+    ],
+  },
+  {
+    icon: BarChart3,
+    title: "Pilotage",
+    items: [
+      "Suivi des demandes reçues, traitées et perdues",
+      "Rapport hebdomadaire envoyé automatiquement",
+      "Contrôle des délais de réponse",
+      "Alerte quand un indicateur décroche",
+    ],
   },
 ];
 
@@ -294,7 +442,7 @@ const GUARDRAILS = [
 ];
 
 const FIT = [
-  "Un volume régulier d'appels, de formulaires ou de demandes de devis",
+  "Un volume régulier d'appels, de messages, de commandes ou de demandes de rendez-vous",
   "Une valeur commerciale importante par demande traitée",
   "Une équipe qui perd du temps sur la qualification et la relance",
   "Des outils existants à connecter au parcours",
@@ -310,20 +458,20 @@ const NOT_FIT = [
 export const Route = createFileRoute("/agents-ia")({
   head: () => ({
     meta: [
-      { title: "Agents IA pour qualifier vos prospects et relancer vos devis | Sitaly" },
+      { title: "Agents IA et automatisation pour TPE, PME et cabinets | Sitaly" },
       {
         name: "description",
         content:
-          "Sitaly installe et pilote des agents IA qui répondent à vos demandes, qualifient vos prospects, prennent vos rendez-vous et relancent vos devis.",
+          "Sitaly installe et pilote des agents IA qui répondent aux demandes, qualifient, prennent les rendez-vous et relancent : e-commerce, cabinets, artisans, agences.",
       },
       {
         property: "og:title",
-        content: "Agents IA pour qualifier vos prospects et relancer vos devis | Sitaly",
+        content: "Agents IA et automatisation pour TPE, PME et cabinets | Sitaly",
       },
       {
         property: "og:description",
         content:
-          "Sitaly installe et pilote des agents IA qui répondent à vos demandes, qualifient vos prospects, prennent vos rendez-vous et relancent vos devis, avec une reprise humaine dès qu'elle est nécessaire.",
+          "Sitaly installe et pilote des agents IA qui répondent aux demandes, qualifient, prennent les rendez-vous, relancent et mettent vos outils à jour, avec une reprise humaine dès qu'elle est nécessaire.",
       },
       { property: "og:url", content: "https://sitaly.fr/agents-ia/" },
       { property: "og:image", content: "https://sitaly.fr/og-agents-ia.jpg" },
@@ -363,8 +511,10 @@ function AgentsIA() {
         <Hero />
         <Capabilities />
         <Problem />
+        <Sectors />
         <System />
         <Agents />
+        <Automations />
         <BeforeAfter />
         <Deployment />
         <Control />
@@ -399,13 +549,19 @@ function Nav() {
             Agents IA
           </span>
           <a
+            href="#metiers"
+            className="rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition hover:bg-secondary hover:text-foreground"
+          >
+            Métiers
+          </a>
+          <a
             href="#systeme"
             className="rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition hover:bg-secondary hover:text-foreground"
           >
             Le système
           </a>
           <Link
-            to="/blog"
+            to="/blog/"
             className="rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition hover:bg-secondary hover:text-foreground"
           >
             Blog
@@ -440,17 +596,18 @@ function Hero() {
           <div data-reveal>
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground">
               <Sparkles className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
-              Sitaly Agents IA — Système commercial intelligent
+              Sitaly Agents IA — Automatisation sur mesure
             </div>
             <h1 className="mt-6 font-display text-[2.1rem] font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.4rem]">
-              Chaque appel traité.{" "}
-              <span className="ai-gradient-text">Chaque prospect qualifié.</span> Chaque devis
-              relancé.
+              Chaque demande traitée.{" "}
+              <span className="ai-gradient-text">Chaque client qualifié.</span> Chaque relance
+              envoyée.
             </h1>
             <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-muted-foreground sm:text-lg">
-              Sitaly installe et pilote les agents IA qui répondent à vos demandes, qualifient vos
-              prospects, prennent vos rendez-vous et relancent vos devis, avec une reprise humaine
-              dès qu'elle est nécessaire.
+              Que vous vendiez en ligne, receviez des patients ou interveniez chez vos clients,
+              Sitaly installe et pilote les agents IA qui répondent, qualifient, prennent vos
+              rendez-vous et relancent ce qui reste en attente. Un humain reprend la main dès que
+              la situation le demande.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -508,11 +665,11 @@ function HeroConsole() {
 
         <div className="space-y-3 p-5">
           <div className="max-w-[85%] rounded-xl rounded-tl-sm bg-secondary px-3.5 py-2.5 text-sm text-foreground/85">
-            « Bonjour, je cherche quelqu'un pour un chantier à Massy, plutôt avant la fin du mois. »
+            « Bonjour, je voudrais un rendez-vous, si possible avant la fin de la semaine. »
           </div>
           <div className="ml-auto max-w-[88%] rounded-xl rounded-tr-sm border border-accent/25 bg-accent/10 px-3.5 py-2.5 text-sm">
-            « Nous intervenons sur ce secteur. Deux questions rapides, puis je vous propose un
-            créneau avec l'un de nos responsables. »
+            « Bien sûr. Deux questions rapides, puis je vous propose un créneau avec la bonne
+            personne. »
           </div>
           <div className="rounded-xl border border-border bg-secondary/50 p-3.5">
             <div className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
@@ -520,9 +677,9 @@ function HeroConsole() {
             </div>
             <dl className="mt-2 space-y-1.5 text-[13px]">
               {[
-                ["Zone", "Massy (91)"],
-                ["Type de demande", "Chantier"],
-                ["Échéance", "Ce mois-ci"],
+                ["Motif", "Première demande"],
+                ["Type de client", "Nouveau"],
+                ["Échéance", "Cette semaine"],
               ].map(([label, value]) => (
                 <div key={label} className="flex items-center justify-between gap-3">
                   <dt className="text-muted-foreground">{label}</dt>
@@ -696,6 +853,96 @@ function Agents() {
               </div>
             </article>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- MÉTIERS ---------------- */
+function Sectors() {
+  return (
+    <section id="metiers" className="scroll-mt-24 py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div data-reveal>
+          <SectionHeader
+            eyebrow="Selon votre activité"
+            title="Le même système, des métiers différents"
+            subtitle="Ce qui change d'un métier à l'autre, ce sont les règles et le vocabulaire. Le principe reste le même : répondre tout de suite, qualifier selon vos critères, puis passer la main au bon moment."
+          />
+        </div>
+
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {SECTOR_CASES.map((sector) => (
+            <div key={sector.name} data-reveal className="ai-card ai-card-hover flex flex-col p-6">
+              <div className="grid h-11 w-11 place-items-center rounded-xl bg-accent/12 text-accent">
+                <sector.icon className="h-5 w-5" aria-hidden="true" />
+              </div>
+              <h3 className="mt-4 text-base font-bold">{sector.name}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{sector.context}</p>
+              <ul className="mt-5 space-y-2.5 border-t border-border pt-5">
+                {sector.items.map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-[13.5px] leading-relaxed">
+                    <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" aria-hidden="true" />
+                    <span className="text-foreground/90">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <p
+          data-reveal
+          className="mx-auto mt-10 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground"
+        >
+          Votre métier n'est pas dans la liste ? Le diagnostic part de vos demandes réelles, pas
+          d'un modèle préétabli.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- CATALOGUE D'AUTOMATISATIONS ---------------- */
+function Automations() {
+  return (
+    <section id="automatisations" className="scroll-mt-24 py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div data-reveal>
+          <SectionHeader
+            eyebrow="Le périmètre"
+            title="Ce qui peut être automatisé, au-delà des trois agents"
+            subtitle="Une fois vos outils connectés, la même mécanique traite bien plus que les demandes entrantes. Voici ce qui se met en place le plus souvent, par famille."
+          />
+        </div>
+
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {AUTOMATION_FAMILIES.map((family) => (
+            <div key={family.title} data-reveal className="ai-card ai-card-hover p-6">
+              <div className="flex items-center gap-3">
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-secondary text-accent">
+                  <family.icon className="h-5 w-5" aria-hidden="true" />
+                </div>
+                <h3 className="text-base font-bold">{family.title}</h3>
+              </div>
+              <ul className="mt-5 space-y-2.5">
+                {family.items.map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-[13.5px] leading-relaxed">
+                    <span
+                      className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                      aria-hidden="true"
+                    />
+                    <span className="text-foreground/90">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 text-center" data-reveal>
+          <PrimaryCta />
         </div>
       </div>
     </section>
@@ -991,12 +1238,14 @@ function FinalCta() {
 }
 
 const SECTORS = [
+  "E-commerce et vente en ligne",
+  "Santé et cabinets de soins",
+  "Professions libérales et juridique",
   "Bâtiment et travaux",
-  "Services aux entreprises",
-  "Santé et bien-être",
   "Immobilier",
-  "Automobile",
+  "Agences, conseil et services",
   "Commerce et distribution",
+  "Automobile",
   "Autre",
 ];
 
@@ -1192,7 +1441,7 @@ function Footer() {
             <a href="/#offre" className="inline-block py-2.5 transition hover:text-foreground">
               Offres
             </a>
-            <Link to="/blog" className="inline-block py-2.5 transition hover:text-foreground">
+            <Link to="/blog/" className="inline-block py-2.5 transition hover:text-foreground">
               Blog
             </Link>
             <a
@@ -1203,21 +1452,22 @@ function Footer() {
             >
               Réserver un appel
             </a>
+            <LinkedinLink className="h-9 w-9" />
           </nav>
         </div>
         <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row">
           <div>© {new Date().getFullYear()} Sitaly. Tous droits réservés.</div>
           <div className="flex flex-wrap justify-center gap-x-5">
-            <Link to="/mentions-legales" className="inline-block py-2.5 hover:text-foreground">
+            <Link to="/mentions-legales/" className="inline-block py-2.5 hover:text-foreground">
               Mentions légales
             </Link>
             <Link
-              to="/politique-confidentialite"
+              to="/politique-confidentialite/"
               className="inline-block py-2.5 hover:text-foreground"
             >
               Confidentialité
             </Link>
-            <Link to="/cgv" className="inline-block py-2.5 hover:text-foreground">
+            <Link to="/cgv/" className="inline-block py-2.5 hover:text-foreground">
               CGV
             </Link>
           </div>

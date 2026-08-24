@@ -55,7 +55,7 @@ function CGV() {
       <p>Les services Sitaly sont proposés selon plusieurs formules, combinables, sans engagement et sans frais d'installation :</p>
       <ul>
         <li><strong>Sitaly Présence</strong> : abonnement mensuel (à partir de 149 €/mois) comprenant la création et l'hébergement d'un site internet, sa maintenance, les modifications de contenu incluses, la fiche Google Business, le référencement local et l'accès à l'application Sitaly ;</li>
-        <li><strong>Sitaly Acquisition</strong> : abonnement mensuel (à partir de 299 €/mois) portant sur la création et la gestion de campagnes de publicité en ligne (Google Ads), indépendamment du site. Le budget publicitaire versé aux régies n'est pas compris dans l'abonnement ;</li>
+        <li><strong>Sitaly Acquisition</strong> : abonnement mensuel portant sur la création et la gestion de campagnes de publicité en ligne, indépendamment du site. Deux canaux au choix : Google Ads (299 €/mois, majorés de 15 % du budget publicitaire confié) ou ChatGPT Ads (à partir de 890 €/mois). Le budget publicitaire versé aux régies n'est pas compris dans l'abonnement ;</li>
         <li><strong>Sitaly Agents IA</strong> : mise en place et entretien d'agents d'intelligence artificielle (accueil téléphonique, prise de rendez-vous, relance de devis, réponse aux messages), facturés selon un montant d'installation et un abonnement mensuel définis sur devis en fonction du périmètre.</li>
       </ul>
       <p>
@@ -121,7 +121,7 @@ function CGV() {
         <strong>sous-traitant</strong>, agissant sur les seules instructions de l'Utilisateur. Le
         Prestataire s'engage à mettre en œuvre des mesures de sécurité appropriées et à ne pas
         utiliser ces données à d'autres fins. Les traitements sont détaillés dans la{" "}
-        <a href="/politique-confidentialite">politique de confidentialité</a>.
+        <a href="/politique-confidentialite/">politique de confidentialité</a>.
       </p>
 
       <h2>9. Services tiers</h2>

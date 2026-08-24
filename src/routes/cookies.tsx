@@ -40,15 +40,52 @@ function Cookies() {
       </p>
       <h3>Cookies de mesure d'audience</h3>
       <p>
-        Le site peut utiliser des outils statistiques pour mesurer la fréquentation et améliorer
-        son contenu. Ces cookies ne sont déposés qu'après votre consentement, sauf s'ils sont
-        exemptés (conformément à la recommandation CNIL).
+        Le site utilise <strong>Google Analytics 4</strong>, déployé via{" "}
+        <strong>Google Tag Manager</strong> (Google Ireland Limited), pour mesurer la fréquentation
+        et comprendre quelles pages sont consultées. Ces traceurs ne sont activés qu'après votre
+        consentement : tant que vous n'avez pas accepté, le mode Consentement de Google est réglé sur
+        « refusé » et aucun cookie de mesure d'audience n'est déposé.
       </p>
+      <div className="overflow-x-auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Traceur</th>
+              <th>Éditeur</th>
+              <th>Finalité</th>
+              <th>Durée</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>_ga</td>
+              <td>Google Analytics 4</td>
+              <td>Distinguer les visiteurs</td>
+              <td>13 mois</td>
+            </tr>
+            <tr>
+              <td>_ga_&lt;ID&gt;</td>
+              <td>Google Analytics 4</td>
+              <td>Maintenir l'état de la session</td>
+              <td>13 mois</td>
+            </tr>
+            <tr>
+              <td>sitaly_cookie_consent</td>
+              <td>Sitaly</td>
+              <td>
+                Mémoriser votre choix. Enregistré dans le stockage local du navigateur
+                (localStorage), pas sous forme de cookie. Traceur nécessaire.
+              </td>
+              <td>Jusqu'à effacement par vos soins</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <h3>Cookies tiers</h3>
       <p>
-        Aucun cookie publicitaire n'est utilisé sur le site. Certains contenus intégrés (cartes,
-        vidéos) peuvent déposer leurs propres cookies, soumis aux politiques de leurs éditeurs
-        respectifs.
+        Aucun cookie publicitaire n'est utilisé sur le site. Certains contenus intégrés (aperçus de
+        sites clients, module de prise de rendez-vous Calendly) peuvent déposer leurs propres
+        cookies, soumis aux politiques de leurs éditeurs respectifs.
       </p>
 
       <h2>3. Durée de conservation</h2>
