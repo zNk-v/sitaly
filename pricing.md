@@ -10,7 +10,7 @@ Sitaly est une agence d'acquisition : sites internet, Google Ads, ChatGPT Ads et
 - Hors forfait : la création de pages ou de visuels supplémentaires et la rédaction d'articles font l'objet d'un devis annoncé à l'avance
 
 ## Google Ads — Sitaly Acquisition (abonnement)
-- Prix : dès 299 €/mois — Starter 299 €/mois, Growth 499 €/mois, Performance 799 €/mois
+- Prix : 299 €/mois, majorés de 15 % du budget publicitaire confié — offre unique, les anciennes formules Growth et Performance ont été supprimées
 - Inclut : création et gestion complète des campagnes, avec ou sans site Sitaly
 - Budget publicitaire : séparé, versé à Google, à la charge du client
 

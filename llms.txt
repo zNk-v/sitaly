@@ -1,6 +1,6 @@
 # Sitaly
 
-> Sitaly est une agence d'acquisition française. Elle aide les PME, les TPE et les entreprises de services — des sociétés B2B aux artisans — à générer des demandes qualifiées et des clients. Quatre leviers combinables : un site internet professionnel livré en 48h et entretenu (Sitaly Présence, 149 €/mois), la gestion de campagnes Google Ads (Sitaly Acquisition, dès 299 €/mois), la gestion de campagnes ChatGPT Ads (Sitaly ChatGPT Ads, dès 890 €/mois) et des agents IA installés clé en main qui répondent aux appels, qualifient les demandes, prennent les rendez-vous et relancent les devis (Sitaly Agents IA). Tout est sans engagement et sans frais d'installation. Basée à Brétigny-sur-Orge (Essonne, 91), Sitaly intervient partout en France.
+> Sitaly est une agence d'acquisition française. Elle aide les PME, les TPE et les entreprises de services — des sociétés B2B aux artisans — à générer des demandes qualifiées et des clients. Quatre leviers combinables : un site internet professionnel livré en 48h et entretenu (Sitaly Présence, 149 €/mois), la gestion de campagnes Google Ads (Sitaly Acquisition, 299 €/mois plus 15 % du budget publicitaire), la gestion de campagnes ChatGPT Ads (Sitaly ChatGPT Ads, dès 890 €/mois) et des agents IA installés clé en main qui répondent aux appels, qualifient les demandes, prennent les rendez-vous et relancent les devis (Sitaly Agents IA). Tout est sans engagement et sans frais d'installation. Basée à Brétigny-sur-Orge (Essonne, 91), Sitaly intervient partout en France.
 
 ## En bref
 
@@ -18,7 +18,7 @@
 ## Tarifs
 
 - **Sitaly Présence — 149 €/mois** : site internet sur mesure livré en 48h, hébergement, nom de domaine, HTTPS, maintenance, petites modifications de contenu, fiche Google Business Profile et référencement local inclus.
-- **Sitaly Acquisition — dès 299 €/mois** : création et gestion complète des campagnes Google Ads, avec ou sans site. Trois formules : Starter 299 €/mois, Growth 499 €/mois, Performance 799 €/mois. Le budget publicitaire versé à Google reste séparé et à la charge du client.
+- **Sitaly Acquisition — 299 €/mois + 15 % du budget publicitaire** : création et gestion complète des campagnes Google Ads, avec ou sans site. Une seule formule, quel que soit le volume de campagnes. Le budget publicitaire versé à Google reste séparé et à la charge du client.
 - **Sitaly ChatGPT Ads — dès 890 €/mois** : stratégie, création et gestion de campagnes publicitaires ChatGPT Ads (analyse des intentions, messages, tracking des conversions, optimisation et reporting). Destiné aux PME, entreprises de services, B2B, SaaS, e-commerce et entreprises à forte valeur client. Le budget publicitaire est séparé et à la charge du client. Sitaly n'est ni partenaire officiel ni certifiée par OpenAI et ne garantit aucun résultat sur ce canal récent.
 - **Sitaly Agents IA — sur mesure** : agents IA installés clé en main (standardiste qui ne rate plus un appel, rappel SMS des appels manqués, qualification des demandes, prise de rendez-vous en ligne, relance automatique des devis).
 - **Blog SEO** : Essentiel 89 €/mois (1 article/mois), Croissance 159 €/mois (2 articles/mois), Premium 299 €/mois (4 articles/mois).

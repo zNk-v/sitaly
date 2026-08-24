@@ -35,15 +35,11 @@ Site internet sur mesure livré en 48h, puis entretenu et référencé localemen
 
 Ce qui est inclus dans les modifications : changer un texte, une photo, un prix, des horaires ou des coordonnées. Ce qui demande de la création — nouvelle page, nouveau visuel, rédaction d'articles — fait l'objet d'un devis transparent annoncé à l'avance.
 
-### Sitaly Acquisition — dès 299 €/mois
+### Sitaly Acquisition — 299 €/mois + 15 % du budget publicitaire
 
-Création et gestion complète des campagnes Google Ads pour générer des appels et des demandes de devis. Fonctionne avec ou sans site Sitaly. Trois formules :
+Création et gestion complète des campagnes Google Ads pour générer des appels et des demandes de devis. Fonctionne avec ou sans site Sitaly. Une offre unique : un forfait de gestion de 299 €/mois, majoré de 15 % du budget publicitaire confié. Les anciennes formules Starter, Growth et Performance ont été supprimées le 24 août 2026.
 
-| Formule | Prix mensuel | Ce que c'est |
-|---|---|---|
-| Starter | 299 €/mois | Lancement et pilotage d'une campagne, zone locale |
-| Growth | 499 €/mois | Pilotage renforcé, plusieurs campagnes et zones |
-| Performance | 799 €/mois | Pilotage intensif, optimisation continue, reporting détaillé |
+La prestation couvre la création et le paramétrage des campagnes, le ciblage de la zone d'intervention, le suivi des conversions (appels, formulaires, messages), l'optimisation continue des enchères et un reporting mensuel détaillant la dépense, les demandes reçues et le coût réel par demande.
 
 Le budget publicitaire versé à Google est séparé et reste à la charge du client. Sitaly facture la gestion, pas la publicité.
 
@@ -154,7 +150,7 @@ Ces sites sont publics et consultables.
 ## Questions fréquentes
 
 **Quel est le tarif de Sitaly ?**
-Trois offres combinables, sans engagement et sans frais d'installation. Sitaly Présence à 149 €/mois pour le site entretenu et référencé localement. Sitaly Acquisition à partir de 299 €/mois pour la gestion des campagnes Google Ads, avec les formules Starter (299 €), Growth (499 €) et Performance (799 €). Sitaly Agents IA sur mesure. Le budget publicitaire Google reste séparé.
+Des offres combinables, sans engagement et sans frais d'installation. Sitaly Présence à 149 €/mois pour le site entretenu et référencé localement. Sitaly Acquisition à 299 €/mois plus 15 % du budget publicitaire pour la gestion des campagnes Google Ads. Sitaly ChatGPT Ads à partir de 890 €/mois. Sitaly Agents IA sur mesure. Le budget publicitaire versé aux régies reste séparé.
 
 **Combien de temps faut-il pour mettre le site en ligne ?**
 Le site est livré en 48h après l'appel découverte et la fourniture des contenus (textes, photos, informations de l'entreprise).
