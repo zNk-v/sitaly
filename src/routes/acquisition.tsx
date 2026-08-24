@@ -61,7 +61,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Puis-je arrêter l'accompagnement ?",
-    a: "Oui. L'abonnement est sans engagement de durée, à durée indéterminée, résiliable par simple email à contact@sitaly.fr avec un préavis d'un mois. Vos campagnes et votre compte Google Ads vous appartiennent : vous les gardez.",
+    a: "Oui. L'abonnement est sans engagement de durée : il est prélevé d'avance chaque mois et vous pouvez le résilier à tout moment, par simple email à contact@sitaly.fr. La résiliation prend effet à la fin du mois en cours. Vos campagnes et votre compte Google Ads vous appartiennent : vous les gardez.",
   },
   {
     q: "Dois-je déjà avoir un site internet ?",
