@@ -185,6 +185,18 @@ select.ci-field{appearance:none;padding-right:2.2rem;
 @media(min-width:768px){.ci-bar{display:none}}
 @media(max-width:767px){body{padding-bottom:4.5rem}}
 
+/* Bannière de consentement — reprend le texte et le comportement de celle du site */
+.ci-consent{position:fixed;inset-inline:0;bottom:0;z-index:100;padding:1rem}
+@media(min-width:640px){.ci-consent{padding:1.5rem}}
+.ci-consent-box{margin-inline:auto;max-width:48rem;border:1px solid var(--border);border-radius:var(--ci-r-2xl);
+  background:color-mix(in oklch,var(--background) 96%,transparent);backdrop-filter:blur(10px);padding:1.25rem;
+  box-shadow:0 24px 48px -12px oklch(.25 .08 300/.25);display:flex;flex-direction:column;gap:1rem}
+@media(min-width:640px){.ci-consent-box{flex-direction:row;align-items:center;justify-content:space-between}}
+.ci-consent-actions{display:flex;gap:.5rem;flex-shrink:0}
+.ci-consent-actions .ci-btn{min-height:2.75rem;font-size:.875rem;flex:1}
+@media(min-width:640px){.ci-consent-actions .ci-btn{flex:none}}
+body.ci-consent-open .ci-bar{display:none}
+
 html{scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 section[id]{scroll-margin-top:4.5rem}
@@ -199,15 +211,44 @@ img,svg{max-width:100%}
 </style>
 
 <script>
+/* ============================================================
+   CONFIGURATION DU TRACKING
+   Seul bloc à modifier pour brancher les conversions publicitaires.
+   Laisser une valeur vide désactive proprement la balise concernée.
+   ============================================================ */
+window.SITALY_TRACKING = {
+  ga4Id: 'G-H4Z6HZLE3S',
+  gtmId: 'GTM-5LZDMNC5',
+
+  /* Google Ads — identifiant de compte, ex. 'AW-123456789' */
+  googleAdsId: '',
+  /* Étiquettes de conversion Google Ads, ex. 'AbC-D_efGhIjK' */
+  googleAdsLabels: { lead: '', call: '', booking: '' },
+
+  /* Valeur attribuée à un lead. 0 = pas de valeur transmise. */
+  leadValue: 0,
+  currency: 'EUR',
+
+  /* Conversions améliorées Google Ads : transmet e-mail et téléphone
+     hachés par Google, uniquement si le visiteur a accepté. */
+  enhancedConversions: true
+};
+
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 window.gtag = gtag;
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
-/* Reprise du choix déjà exprimé sur le site (même clé que la bannière de consentement). */
+
+/* Consentement refusé par défaut tant que le visiteur n'a pas répondu. */
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
+/* Reprise du choix déjà exprimé ailleurs sur le site (même clé que la bannière du site). */
 try{var c=localStorage.getItem('sitaly_cookie_consent');
 if(c==='granted'||c==='denied'){gtag('consent','update',{ad_storage:c,ad_user_data:c,ad_personalization:c,analytics_storage:c});}}catch(e){}
+
 gtag('js',new Date());
-gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
+gtag('config',window.SITALY_TRACKING.ga4Id,{anonymize_ip:true});
+if(window.SITALY_TRACKING.googleAdsId){
+  gtag('config',window.SITALY_TRACKING.googleAdsId,{allow_enhanced_conversions:window.SITALY_TRACKING.enhancedConversions});
+}
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-H4Z6HZLE3S"></script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5LZDMNC5');</script>
@@ -973,6 +1014,24 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
 
 </div>
 
+<!-- Consentement : sans réponse, aucune mesure publicitaire n'est possible -->
+<div id="ci-consent" class="ci-consent" role="dialog" aria-live="polite" aria-label="Consentement aux cookies" hidden>
+  <div class="ci-consent-box">
+    <div style="font-size:.875rem">
+      <p style="margin:0;font-weight:600">Cookies &amp; mesure d'audience</p>
+      <p class="ci-body" style="margin-top:.25rem">
+        Nous utilisons des cookies pour analyser l'audience du site et mesurer nos campagnes
+        (Google Analytics, Google Ads). Vous pouvez accepter ou refuser. Voir notre
+        <a href="/politique-confidentialite/" data-keep-utm="1" style="color:var(--accent);font-weight:600">politique de confidentialité</a>.
+      </p>
+    </div>
+    <div class="ci-consent-actions">
+      <button type="button" id="ci-consent-no" class="ci-btn ci-btn-ghost">Refuser</button>
+      <button type="button" id="ci-consent-yes" class="ci-btn ci-btn-primary">Accepter</button>
+    </div>
+  </div>
+</div>
+
 <!-- Barre d'action permanente sur mobile -->
 <div class="ci-bar">
   <a href="tel:+33658683372" data-track="tel" class="ci-btn ci-btn-ghost" aria-label="Appeler Sitaly au 06 58 68 33 72">
@@ -991,6 +1050,11 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
   var STORE_KEY = "sitaly_campaign_params";
   var UTM_KEYS = ["utm_source","utm_medium","utm_campaign","utm_term","utm_content","gclid","gbraid","wbraid","msclkid"];
 
+  var CFG = window.SITALY_TRACKING || {};
+  var CONSENT_KEY = "sitaly_cookie_consent";
+
+  /* Un seul point d'envoi : GA4 par gtag, GTM par le dataLayer.
+     Aucun système de mesure concurrent n'est ajouté. */
   function track(name, params) {
     try {
       if (typeof window.gtag === "function") { window.gtag("event", name, params || {}); }
@@ -1000,6 +1064,45 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
         window.dataLayer.push(payload);
       }
     } catch (e) {}
+  }
+
+  function consentState() {
+    try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; }
+  }
+
+  /* Conversion Google Ads. Sans identifiant ni étiquette configurés,
+     l'appel est ignoré : la page reste fonctionnelle. */
+  function adsConversion(kind, extra) {
+    var label = (CFG.googleAdsLabels || {})[kind];
+    if (!CFG.googleAdsId || !label || typeof window.gtag !== "function") return;
+    var payload = { send_to: CFG.googleAdsId + "/" + label };
+    if (CFG.currency) { payload.currency = CFG.currency; }
+    if (typeof CFG.leadValue === "number" && CFG.leadValue > 0) { payload.value = CFG.leadValue; }
+    for (var k in (extra || {})) { payload[k] = extra[k]; }
+    window.gtag("event", "conversion", payload);
+  }
+
+  /* Numéro au format international attendu par les conversions améliorées. */
+  function toE164(raw) {
+    var d = String(raw || "").replace(/[^0-9+]/g, "");
+    if (d.indexOf("+") === 0) return d;
+    d = d.replace(/\D/g, "");
+    if (d.indexOf("33") === 0 && d.length >= 11) return "+" + d;
+    if (d.indexOf("0") === 0) return "+33" + d.slice(1);
+    return d ? "+33" + d : "";
+  }
+
+  /* Conversions améliorées : les données ne partent que si le visiteur
+     a explicitement accepté. Google les hache avant envoi. */
+  function setUserData(data) {
+    if (!CFG.enhancedConversions || consentState() !== "granted") return;
+    if (typeof window.gtag !== "function") return;
+    var ud = {};
+    if (data.email) { ud.email = String(data.email).trim().toLowerCase(); }
+    var tel = toE164(data.telephone);
+    if (tel) { ud.phone_number = tel; }
+    if (!Object.keys(ud).length) return;
+    window.gtag("set", "user_data", ud);
   }
 
   /* --- Campagne : capture des UTM, mémorisation puis propagation --- */
@@ -1041,6 +1144,31 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
 
   track("page_view_landing", { page_type: "landing", landing: "agents_ia_chatgpt", utm_source: campaign.utm_source || "", utm_campaign: campaign.utm_campaign || "" });
 
+  /* --- Bannière de consentement --- */
+  (function () {
+    var box = document.getElementById("ci-consent");
+    if (!box) return;
+    if (consentState() === "granted" || consentState() === "denied") return;
+
+    box.removeAttribute("hidden");
+    document.body.classList.add("ci-consent-open");
+
+    function choose(value) {
+      try { localStorage.setItem(CONSENT_KEY, value); } catch (e) {}
+      if (typeof window.gtag === "function") {
+        window.gtag("consent", "update", {
+          ad_storage: value, ad_user_data: value, ad_personalization: value, analytics_storage: value
+        });
+      }
+      box.setAttribute("hidden", "");
+      document.body.classList.remove("ci-consent-open");
+      track("consent_update", { consent_state: value });
+    }
+
+    document.getElementById("ci-consent-yes").addEventListener("click", function () { choose("granted"); });
+    document.getElementById("ci-consent-no").addEventListener("click", function () { choose("denied"); });
+  })();
+
   /* --- Menu mobile --- */
   var btn = document.getElementById("menu-btn");
   var nav = document.getElementById("menu-mobile");
@@ -1066,9 +1194,9 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
     var cta = e.target.closest("[data-cta]");
     if (cta) { track("cta_click", { cta_location: cta.getAttribute("data-cta"), landing: "agents_ia_chatgpt" }); return; }
     var tel = e.target.closest('[data-track="tel"]');
-    if (tel) { track("tel_click", { landing: "agents_ia_chatgpt" }); return; }
+    if (tel) { track("tel_click", { landing: "agents_ia_chatgpt" }); adsConversion("call"); return; }
     var book = e.target.closest("#ci-booking");
-    if (book) { track("booking_click", { landing: "agents_ia_chatgpt" }); }
+    if (book) { track("booking_click", { landing: "agents_ia_chatgpt" }); adsConversion("booking"); }
   });
 
   /* --- Formulaire : composition d'un e-mail pré-rempli --- */
@@ -1084,6 +1212,21 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
     email: "E-mail",
     activite: "Activité"
   };
+
+  /* Formulaire affiché à l'écran : signal intermédiaire utile à l'optimisation. */
+  if ("IntersectionObserver" in window) {
+    var seen = false;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && !seen) {
+          seen = true;
+          track("form_view", { form_id: "agents_ia_chatgpt_diagnostic" });
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+    io.observe(form);
+  }
 
   var started = false;
   form.addEventListener("input", function () {
@@ -1126,13 +1269,20 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
       "&body=" + encodeURIComponent(lines.join("\n"));
 
     track("form_submit", { form_id: "agents_ia_chatgpt_diagnostic" });
-    track("generate_lead", {
+
+    setUserData(data);
+
+    var lead = {
       form_id: "agents_ia_chatgpt_diagnostic",
       landing: "agents_ia_chatgpt",
       activite: data.activite,
       utm_source: campaign.utm_source || "",
       utm_campaign: campaign.utm_campaign || ""
-    });
+    };
+    if (CFG.currency) { lead.currency = CFG.currency; }
+    if (typeof CFG.leadValue === "number" && CFG.leadValue > 0) { lead.value = CFG.leadValue; }
+    track("generate_lead", lead);
+    adsConversion("lead");
 
     window.location.href = mailto;
 
