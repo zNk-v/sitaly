@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charSet="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<!-- ============================================================
+     Sitaly ChatGPT Ads — landing page
+     Prix affiché : voir le bloc marqué [TARIF] dans la section OFFRE.
+     Formulaire : envoi par mailto vers CONTACT_EMAIL (<script> en bas).
+     ============================================================ -->
+
+<title>Agence ChatGPT Ads en France — Publicité dans ChatGPT | Sitaly</title>
+<meta name="description" content="Sitaly conçoit et pilote vos campagnes ChatGPT Ads : analyse des intentions, messages, tracking des conversions et optimisation du coût d'acquisition."/>
+<link rel="canonical" href="https://sitaly.fr/chatgpt-ads/"/>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Sitaly"/>
+<meta property="og:url" content="https://sitaly.fr/chatgpt-ads/"/>
+<meta property="og:title" content="Agence ChatGPT Ads en France — Publicité dans ChatGPT | Sitaly"/>
+<meta property="og:description" content="Analyse des intentions, création des campagnes, tracking des conversions, optimisation du coût d'acquisition. Sitaly vous aide à évaluer ChatGPT Ads."/>
+<meta property="og:image" content="https://sitaly.fr/og-image.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="Sitaly — agence ChatGPT Ads"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://sitaly.fr/og-image.png"/>
+
+<link rel="stylesheet" href="/static/sitaly.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"/>
+
+<style>
+/* Utilitaires absents du bundle Tailwind compilé — définis ici pour rester autonome. */
+.cg-h1{font-size:2.25rem;line-height:1.1}
+@media(min-width:640px){.cg-h1{font-size:3rem}}
+@media(min-width:1024px){.cg-h1{font-size:3.5rem}}
+.cg-mb4{margin-bottom:1rem}
+.cg-mb2{margin-bottom:.5rem}
+.cg-mb6{margin-bottom:1.5rem}
+.cg-grid2{display:grid;grid-template-columns:1fr;gap:1.5rem}
+@media(min-width:768px){.cg-grid2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cg-grid3{display:grid;grid-template-columns:1fr;gap:1.5rem}
+@media(min-width:768px){.cg-grid3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1024px){.cg-grid3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.cg-grid4{display:grid;grid-template-columns:1fr;gap:1.25rem}
+@media(min-width:640px){.cg-grid4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1024px){.cg-grid4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.cg-formgrid{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:640px){.cg-formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cg-span2{grid-column:1/-1}
+
+.cg-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:1.5rem;
+  box-shadow:0 16px 24px -12px oklch(.25 .08 300/.07),0 2px 4px oklch(.25 .08 300/.04);
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.cg-card:hover{transform:translateY(-3px);border-color:color-mix(in oklch,var(--accent) 35%,var(--border));
+  box-shadow:0 28px 40px -18px oklch(.25 .08 300/.14)}
+@media(prefers-reduced-motion:reduce){.cg-card,.cg-card:hover{transform:none;transition:none}}
+
+.cg-eyebrow{display:inline-flex;align-items:center;gap:.5rem;border-radius:9999px;border:1px solid var(--border);
+  background:var(--card);padding:.4rem .85rem;font-size:.75rem;font-weight:600;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--muted-foreground)}
+.cg-dot{width:.45rem;height:.45rem;border-radius:9999px;background:var(--accent)}
+
+.cg-num{display:inline-flex;align-items:center;justify-content:center;width:2.25rem;height:2.25rem;
+  border-radius:.7rem;background:var(--gradient-primary);color:var(--primary-foreground);
+  font-family:var(--font-display);font-weight:700;font-size:.95rem;flex-shrink:0}
+
+.cg-sec{padding:4rem 0}
+@media(min-width:640px){.cg-sec{padding:5.5rem 0}}
+.cg-wrap{margin-inline:auto;max-width:80rem;padding-inline:1rem}
+@media(min-width:640px){.cg-wrap{padding-inline:1.5rem}}
+.cg-narrow{margin-inline:auto;max-width:48rem}
+
+.cg-chat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-2xl);padding:1.25rem;
+  box-shadow:var(--shadow-elevated)}
+.cg-bubble{background:var(--muted);border-radius:1rem;padding:.85rem 1rem;font-size:.925rem;line-height:1.5}
+.cg-ansline{height:.55rem;border-radius:9999px;background:var(--muted)}
+.cg-spons{border:1px solid color-mix(in oklch,var(--accent) 30%,var(--border));border-radius:1rem;
+  padding:.9rem 1rem;background:linear-gradient(180deg,color-mix(in oklch,var(--accent) 7%,transparent),transparent)}
+.cg-label{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-foreground)}
+
+.cg-field{width:100%;height:2.9rem;border-radius:var(--radius-lg);border:1px solid var(--input);
+  background:var(--background);padding:0 .85rem;font-size:.925rem;color:var(--foreground);font-family:inherit}
+textarea.cg-field{height:auto;min-height:7rem;padding:.75rem .85rem;resize:vertical}
+select.cg-field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b6478' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .7rem center;background-size:1.1rem;padding-right:2.4rem}
+.cg-field:focus{outline:none;border-color:var(--ring);box-shadow:0 0 0 3px color-mix(in oklch,var(--ring) 22%,transparent)}
+.cg-lab{display:block;font-size:.8rem;font-weight:600;margin-bottom:.35rem;color:var(--foreground)}
+.cg-req{color:var(--accent)}
+
+.cg-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;height:3rem;padding:0 1.4rem;
+  border-radius:var(--radius-lg);font-size:.95rem;font-weight:600;font-family:inherit;cursor:pointer;
+  transition:opacity .2s ease,border-color .2s ease,color .2s ease;text-decoration:none;border:1px solid transparent}
+.cg-btn-primary{background:var(--gradient-primary);color:var(--primary-foreground);box-shadow:var(--shadow-elevated)}
+.cg-btn-primary:hover{opacity:.92}
+.cg-btn-ghost{background:var(--card);color:var(--foreground);border-color:var(--border);box-shadow:var(--shadow-soft)}
+.cg-btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+.cg-faq{border:1px solid var(--border);border-radius:var(--radius-xl);background:var(--card);
+  padding:1.05rem 1.25rem;margin-bottom:.75rem}
+.cg-faq summary{cursor:pointer;font-weight:600;font-family:var(--font-display);list-style:none;
+  display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.cg-faq summary::-webkit-details-marker{display:none}
+.cg-faq summary::after{content:"+";font-size:1.35rem;color:var(--accent);line-height:1;flex-shrink:0}
+.cg-faq[open] summary::after{content:"\2212"}
+.cg-faq p{margin-top:.7rem;font-size:.925rem;line-height:1.65;color:var(--muted-foreground)}
+
+.cg-check{width:1.15rem;height:1.15rem;flex-shrink:0;color:var(--success);margin-top:.15rem}
+.cg-li{display:flex;gap:.65rem;align-items:flex-start;font-size:.95rem;line-height:1.6}
+.cg-note{font-size:.8rem;line-height:1.6;color:var(--muted-foreground)}
+.cg-navpos{top:4rem}
+@media(min-width:768px){.cg-hero{grid-template-columns:1.1fr .9fr}}
+.cg-skip{position:absolute;left:-9999px;top:0;z-index:60}
+.cg-skip:focus{left:1rem;top:1rem;width:auto;height:auto;padding:.6rem 1rem;border-radius:var(--radius-lg);
+  background:var(--primary);color:var(--primary-foreground);font-size:.875rem;font-weight:600}
+[hidden]{display:none !important}
+</style>
+
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+window.gtag = gtag;
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
+gtag('js',new Date());
+gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H4Z6HZLE3S"></script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5LZDMNC5');</script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Service","@id":"https://sitaly.fr/chatgpt-ads/#service",
+"name":"Gestion de campagnes ChatGPT Ads",
+"serviceType":"Publicité ChatGPT Ads",
+"description":"Conception, lancement, mesure et optimisation de campagnes publicitaires ChatGPT Ads pour PME, entreprises de services, B2B, SaaS et e-commerce.",
+"url":"https://sitaly.fr/chatgpt-ads/",
+"areaServed":{"@type":"Country","name":"France"},
+"audience":{"@type":"BusinessAudience","name":"PME, entreprises B2B, SaaS, e-commerce"},
+"provider":{"@type":"ProfessionalService","name":"Sitaly","url":"https://sitaly.fr","telephone":"+33658683372","email":"contact@sitaly.fr"}},
+{"@type":"BreadcrumbList","@id":"https://sitaly.fr/chatgpt-ads/#breadcrumb","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Accueil","item":"https://sitaly.fr/"},
+{"@type":"ListItem","position":2,"name":"ChatGPT Ads","item":"https://sitaly.fr/chatgpt-ads/"}]},
+{"@type":"FAQPage","@id":"https://sitaly.fr/chatgpt-ads/#faq","mainEntity":[
+{"@type":"Question","name":"Qu'est-ce que ChatGPT Ads ?","acceptedAnswer":{"@type":"Answer","text":"ChatGPT Ads est la régie publicitaire d'OpenAI. Elle permet à des annonceurs de diffuser des messages publicitaires au sein de ChatGPT. Les publicités sont identifiées comme telles, présentées séparément de la réponse, et n'influencent pas le contenu des réponses générées par le modèle."}},
+{"@type":"Question","name":"En quoi ChatGPT Ads est différent de Google Ads ?","acceptedAnswer":{"@type":"Answer","text":"Google Ads répond à une intention exprimée sous forme de requête dans un moteur de recherche. ChatGPT Ads s'inscrit dans une conversation : l'utilisateur décrit son contexte, ses contraintes et son besoin sur plusieurs échanges. Les deux canaux sont complémentaires, ils ne se remplacent pas."}},
+{"@type":"Question","name":"Est-ce que Sitaly est partenaire officiel ou certifié OpenAI ?","acceptedAnswer":{"@type":"Answer","text":"Non. Sitaly n'est ni partenaire officiel, ni certifié par OpenAI, et ne revendique aucun accès privilégié. Sitaly est une agence indépendante d'acquisition qui se positionne tôt sur ce canal et applique la même rigueur que sur ses campagnes Google Ads."}},
+{"@type":"Question","name":"Est-ce que mes publicités apparaîtront dans toutes les conversations ?","acceptedAnswer":{"@type":"Answer","text":"Non. La diffusion dépend du contexte de la conversation, du format, de l'audience concernée et des règles fixées par OpenAI. Aucune agence ne peut garantir une présence dans toutes les conversations, ni sur une requête précise."}},
+{"@type":"Question","name":"Quels résultats puis-je attendre ?","acceptedAnswer":{"@type":"Answer","text":"Aucun résultat ne peut être garanti sur un canal récent. L'objectif d'une première phase est d'obtenir des données fiables : coût par clic, coût par lead, qualité des demandes et coût réel d'acquisition. Ces données permettent ensuite de décider d'arrêter, de maintenir ou d'augmenter l'investissement."}},
+{"@type":"Question","name":"Quel budget prévoir pour tester ChatGPT Ads ?","acceptedAnswer":{"@type":"Answer","text":"Le budget publicitaire est distinct des honoraires de gestion et vous est facturé directement par la régie. Le montant pertinent dépend de votre secteur, de votre panier moyen et du volume de données nécessaire pour conclure. Nous le définissons ensemble lors de l'analyse préalable."}},
+{"@type":"Question","name":"Faut-il déjà faire de la publicité pour se lancer ?","acceptedAnswer":{"@type":"Answer","text":"Ce n'est pas obligatoire, mais c'est préférable. Les entreprises qui mesurent déjà leurs conversions et connaissent la valeur d'un client tirent des conclusions beaucoup plus vite. Si votre tracking n'est pas en place, nous commençons par là."}}]}]}
+</script>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5LZDMNC5" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
+
+<div class="min-h-screen bg-background text-foreground">
+
+<a href="#contenu" class="cg-skip">Aller au contenu</a>
+
+<header class="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
+  <div class="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
+    <a aria-label="Retour à sitaly.fr" href="/" class="flex items-center">
+      <img src="/static/sitaly-logo.png" alt="Sitaly" width="414" height="108" class="h-6 w-auto sm:h-7"/>
+    </a>
+    <div class="flex items-center gap-2">
+      <a href="tel:+33658683372" class="inline-flex h-11 shrink-0 items-center gap-2 border border-border bg-card px-3 text-sm font-semibold text-foreground shadow-soft transition hover:border-accent hover:text-accent sm:px-4 rounded-lg" aria-label="Appeler Sitaly au 06 58 68 33 72">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>
+        <span class="hidden lg:inline">06 58 68 33 72</span><span class="lg:hidden">Appeler</span>
+      </a>
+      <a href="#analyse" class="hidden h-11 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90 sm:inline-flex">
+        Demander une analyse
+      </a>
+      <button type="button" id="menu-btn" class="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-border bg-card text-foreground shadow-soft transition hover:border-accent md:hidden rounded-lg" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu-mobile">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
+      </button>
+    </div>
+    <nav id="menu-mobile" hidden class="absolute left-0 right-0 cg-navpos border-b border-border bg-background px-4 py-4 shadow-elevated md:hidden">
+      <a href="/" class="block py-2 text-sm font-medium text-foreground">Accueil</a>
+      <a href="/acquisition/" class="block py-2 text-sm font-medium text-foreground">Google Ads</a>
+      <a href="/agents-ia/" class="block py-2 text-sm font-medium text-foreground">Agents IA</a>
+      <a href="/chatgpt-ads/" class="block py-2 text-sm font-semibold text-accent">ChatGPT Ads</a>
+      <a href="/blog/" class="block py-2 text-sm font-medium text-foreground">Blog</a>
+      <a href="#analyse" class="mt-3 cg-btn cg-btn-primary w-full">Demander une analyse</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+
+<!-- ================= 1. HERO ================= -->
+<section class="hero-bg">
+  <div class="cg-wrap" style="padding-top:3.5rem;padding-bottom:3.5rem">
+    <div class="cg-grid2 cg-hero" style="align-items:center;gap:3rem">
+      <div>
+        <span class="cg-eyebrow"><span class="cg-dot"></span>Nouveau canal d'acquisition</span>
+        <h1 class="cg-h1 font-bold tracking-tight" style="margin-top:1.25rem">
+          Apparaissez dans <span class="gradient-text">ChatGPT</span> au moment où vos futurs clients cherchent une solution.
+        </h1>
+        <p class="cg-mb6" style="margin-top:1.25rem;font-size:1.075rem;line-height:1.7;color:var(--muted-foreground)">
+          Des millions de décisions d'achat commencent désormais par une conversation plutôt que par une requête.
+          Sitaly conçoit, lance et optimise vos campagnes <strong class="text-foreground">ChatGPT Ads</strong> —
+          et mesure ce qu'elles rapportent réellement.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:.75rem">
+          <a href="#analyse" class="cg-btn cg-btn-primary">
+            Demander une analyse ChatGPT Ads
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </a>
+          <a href="#methode" class="cg-btn cg-btn-ghost">Voir comment ça fonctionne</a>
+        </div>
+        <p class="cg-note" style="margin-top:1.25rem">
+          Agence indépendante d'acquisition. Sitaly n'est ni partenaire officiel ni certifiée par OpenAI.
+        </p>
+      </div>
+
+      <div>
+        <figure style="margin:0">
+          <div class="cg-chat">
+            <div style="display:flex;justify-content:flex-end;margin-bottom:1rem">
+              <p class="cg-bubble" style="max-width:88%;margin:0">
+                Quel prestataire choisir pour refondre le CRM d'une PME de 40 personnes ?
+              </p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.1rem">
+              <div class="cg-ansline" style="width:96%"></div>
+              <div class="cg-ansline" style="width:88%"></div>
+              <div class="cg-ansline" style="width:72%"></div>
+            </div>
+            <div class="cg-spons">
+              <span class="cg-label">Sponsorisé</span>
+              <p style="margin:.4rem 0 0;font-family:var(--font-display);font-weight:700;font-size:.95rem">Votre entreprise</p>
+              <p style="margin:.2rem 0 0;font-size:.85rem;line-height:1.5;color:var(--muted-foreground)">
+                Votre proposition de valeur, au moment exact où le besoin est formulé.
+              </p>
+            </div>
+          </div>
+          <figcaption class="cg-note" style="margin-top:.75rem;text-align:center">
+            Illustration du principe. Les publicités sont identifiées et présentées séparément de la réponse.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 2. LE NOUVEAU CANAL ================= -->
+<section class="cg-sec">
+  <div class="cg-wrap">
+    <div class="cg-narrow" style="text-align:center">
+      <span class="cg-eyebrow"><span class="cg-dot"></span>Le nouveau canal</span>
+      <h2 class="cg-h1 font-bold tracking-tight" style="font-size:2rem;margin-top:1rem">
+        La recherche ne s'arrête plus à une requête
+      </h2>
+      <p style="margin-top:1rem;font-size:1.05rem;line-height:1.7;color:var(--muted-foreground)">
+        Une requête tient en trois mots. Une conversation, elle, contient le budget, les contraintes,
+        la taille de l'entreprise, les solutions déjà écartées et le délai. C'est une intention beaucoup
+        plus complète — et souvent beaucoup plus proche de la décision.
+      </p>
+    </div>
+
+    <div class="cg-grid2" style="margin-top:3rem">
+      <div class="cg-card">
+        <span class="cg-label">Recherche classique</span>
+        <h3 class="font-bold tracking-tight cg-mb4" style="font-size:1.25rem;margin-top:.5rem">Google Ads</h3>
+        <p style="font-size:.95rem;line-height:1.65;color:var(--muted-foreground)" class="cg-mb4">
+          Un canal mature, mesurable et toujours indispensable. L'utilisateur formule une requête courte,
+          compare des résultats, puis choisit. Sitaly y pilote déjà des budgets tous les mois.
+        </p>
+        <ul style="display:flex;flex-direction:column;gap:.6rem;list-style:none;padding:0;margin:0">
+          <li class="cg-li"><span style="color:var(--muted-foreground)">•</span> Intention exprimée en mots-clés</li>
+          <li class="cg-li"><span style="color:var(--muted-foreground)">•</span> Volumes connus, enchères matures</li>
+          <li class="cg-li"><span style="color:var(--muted-foreground)">•</span> Concurrence installée, coûts en hausse</li>
+        </ul>
+      </div>
+
+      <div class="cg-card" style="border-color:color-mix(in oklch,var(--accent) 35%,var(--border))">
+        <span class="cg-label" style="color:var(--accent)">Recherche conversationnelle</span>
+        <h3 class="font-bold tracking-tight cg-mb4" style="font-size:1.25rem;margin-top:.5rem">ChatGPT Ads</h3>
+        <p style="font-size:.95rem;line-height:1.65;color:var(--muted-foreground)" class="cg-mb4">
+          Un canal émergent. L'utilisateur décrit une situation, affine son besoin sur plusieurs échanges
+          et attend une recommandation. Le contexte publicitaire est plus riche — et encore peu exploité.
+        </p>
+        <ul style="display:flex;flex-direction:column;gap:.6rem;list-style:none;padding:0;margin:0">
+          <li class="cg-li"><span style="color:var(--accent)">•</span> Intention exprimée en langage naturel</li>
+          <li class="cg-li"><span style="color:var(--accent)">•</span> Contexte détaillé sur plusieurs messages</li>
+          <li class="cg-li"><span style="color:var(--accent)">•</span> Canal récent, référentiels à construire</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="cg-narrow cg-note" style="margin-top:2rem;text-align:center">
+      Les deux canaux ne s'opposent pas. Google Ads reste le socle de la plupart des stratégies d'acquisition ;
+      ChatGPT Ads est un canal supplémentaire à évaluer avec la même exigence de mesure.
+    </p>
+  </div>
+</section>
+
+<!-- ================= 3. LE PROBLÈME ================= -->
+<section class="cg-sec" style="background:var(--secondary)">
+  <div class="cg-wrap">
+    <div class="cg-narrow" style="text-align:center">
+      <span class="cg-eyebrow"><span class="cg-dot"></span>Le contexte</span>
+      <h2 class="font-bold tracking-tight" style="font-size:2rem;margin-top:1rem">
+        Vos budgets sont déjà engagés. Un canal vient de s'ouvrir à côté.
+      </h2>
+      <p style="margin-top:1rem;font-size:1.05rem;line-height:1.7;color:var(--muted-foreground)">
+        Sur Google, Meta ou LinkedIn, vous arrivez après des années d'optimisation par vos concurrents.
+        Sur un canal qui démarre, personne n'a encore d'avance — et l'apprentissage coûte moins cher.
+      </p>
+    </div>
+
+    <div class="cg-grid3" style="margin-top:3rem">
+      <div class="cg-card">
+        <div class="cg-num">1</div>
+        <h3 class="font-bold tracking-tight" style="font-size:1.1rem;margin-top:1rem">Les canaux actuels se renchérissent</h3>
+        <p style="margin-top:.6rem;font-size:.925rem;line-height:1.65;color:var(--muted-foreground)">
+          Sur les segments concurrentiels, le coût par lead progresse d'année en année. Optimiser encore
+          rapporte, mais chaque point gagné se paie plus cher que le précédent.
+        </p>
+      </div>
+      <div class="cg-card">
+        <div class="cg-num">2</div>
+        <h3 class="font-bold tracking-tight" style="font-size:1.1rem;margin-top:1rem">Les usages se déplacent</h3>
+        <p style="margin-top:.6rem;font-size:.925rem;line-height:1.65;color:var(--muted-foreground)">
+          Une partie des recherches de prestataires, de logiciels et de solutions passe désormais par un
+          assistant conversationnel. Ce trafic ne se retrouve pas dans vos rapports habituels.
+        </p>
+      </div>
+      <div class="cg-card">
+        <div class="cg-num">3</div>
+        <h3 class="font-bold tracking-tight" style="font-size:1.1rem;margin-top:1rem">L'avance se construit maintenant</h3>
+        <p style="margin-top:.6rem;font-size:.925rem;line-height:1.65;color:var(--muted-foreground)">
+          Les entreprises qui testent tôt accumulent des données, des messages validés et des repères de coût
+          pendant que le canal est encore peu encombré. C'est un capital difficile à rattraper ensuite.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4. COMMENT ÇA FONCTIONNE ================= -->
+<section class="cg-sec" id="methode">
+  <div class="cg-wrap">
+    <div class="cg-narrow" style="text-align:center">
+      <span class="cg-eyebrow"><span class="cg-dot"></span>La méthode</span>
+      <h2 class="font-bold tracking-tight" style="font-size:2rem;margin-top:1rem">
+        Six étapes, aucune improvisation
+      </h2>
+      <p style="margin-top:1rem;font-size:1.05rem;line-height:1.7;color:var(--muted-foreground)">
+        La même discipline que nous appliquons à Google Ads, transposée à un canal conversationnel.
+      </p>
+    </div>
+
+    <div class="cg-grid3" style="margin-top:3rem">
+      <div class="cg-card">
+        <div class="cg-num">01</div>
+        <h3 class="font-bold tracking-tight" style="font-size:1.1rem;margin-top:1rem">Analyse</h3>
+        <p style="margin-top:.6rem;font-size:.925rem;line-height:1.65;color:var(--muted-foreground)">
+          Nous cartographions les situations dans lesquelles un prospect décrirait un besoin que votre offre
+          résout : formulations, contextes, alternatives citées, moment du parcours. C'est la base de tout le reste.
+        </p>
+      </div>
+      <div class="cg-card">
+        <div class="cg-num">02</div>
+        <h3 class="font-bold tracking-tight" style="font-size:1.1rem;margin-top:1rem">Stratégie</h3>
+        <p style="margin-top:.6rem;font-size:.925rem;line-height:1.65;color:var(--muted-foreground)">
+          Nous définissons les audiences et contextes à couvrir en priorité, l'objectif de la campagne,
+          le budget de test et le seuil de coût d'acquisition au-delà duquel nous arrêtons.
+        </p>
+      </div>
+      <div class="cg-card">
+        <div class="cg-num">03</div>
+        <h3 class="font-bold tracking-tight" style="font-size:1.1rem;margin-top:1rem">Création</h3>
+        <p style="margin-top:.6rem;font-size:.925rem;line-height:1.65;color:var(--muted-foreground)">
+          Nous écrivons plusieurs angles de message et préparons la page de destination. Un message vu dans
+          une conversation doit être précis et utile, pas un slogan.
+        </p>
+      </div>
+      <div class="cg-card">
+        <div class="cg-num">04</div>
+        <h3 class="font-bold tracking-tight" style="font-size:1.1rem;margin-top:1rem">Lancement</h3>
+        <p style="margin-top:.6rem;font-size:.925rem;line-height:1.65;color:var(--muted-foreground)">
+          Mise en ligne progressive, budget maîtrisé, structure de campagne pensée pour isoler ce qui
+          fonctionne de ce qui ne fonctionne pas.
+        </p>
+      </div>
+      <div class="cg-card">
+        <div class="cg-num">05</div>
+        <h3 class="font-bold tracking-tight" style="font-size:1.1rem;margin-top:1rem">Tracking</h3>
+        <p style="margin-top:.6rem;font-size:.925rem;line-height:1.65;color:var(--muted-foreground)">
+          Conversions, formulaires, appels, rendez-vous. Sans mesure fiable, un canal récent ne produit que
+          des impressions — et aucune décision. Nous branchons le suivi avant de dépenser.
+        </p>
+      </div>
+      <div class="cg-card">
+        <div class="cg-num">06</div>
+        <h3 class="font-bold tracking-tight" style="font-size:1.1rem;margin-top:1rem">Optimisation</h3>
+        <p style="margin-top:.6rem;font-size:.925rem;line-height:1.65;color:var(--muted-foreground)">
+          Arbitrages hebdomadaires, tests de messages, calcul du coût réel d'acquisition et recommandation
+          claire : arrêter, maintenir, ou augmenter.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5. POUR QUI ================= -->
+<section class="cg-sec" style="background:var(--secondary)">
+  <div class="cg-wrap">
+    <div class="cg-narrow" style="text-align:center">
+      <span class="cg-eyebrow"><span class="cg-dot"></span>Pour qui</span>
+      <h2 class="font-bold tracking-tight" style="font-size:2rem;margin-top:1rem">
+        Ce canal n'est pas pertinent pour tout le monde
+      </h2>
+      <p style="margin-top:1rem;font-size:1.05rem;line-height:1.7;color:var(--muted-foreground)">
+        Nous préférons le dire avant de vous facturer quoi que ce soit.
+      </p>
+    </div>
+
+    <div class="cg-grid2" style="margin-top:3rem;align-items:start">
+      <div class="cg-card">
+        <h3 class="font-bold tracking-tight cg-mb4" style="font-size:1.15rem">C'est pertinent si…</h3>
+        <ul style="display:flex;flex-direction:column;gap:.85rem;list-style:none;padding:0;margin:0">
+          <li class="cg-li">
+            <svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span><strong class="text-foreground">Un client vaut cher.</strong> Panier moyen élevé, contrat récurrent ou valeur vie client significative.</span>
+          </li>
+          <li class="cg-li">
+            <svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span><strong class="text-foreground">Vous avez un besoin d'acquisition réel.</strong> Vous cherchez du volume, pas seulement de la notoriété.</span>
+          </li>
+          <li class="cg-li">
+            <svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span><strong class="text-foreground">Votre offre est validée.</strong> Vous savez déjà qui achète, pourquoi, et à quel prix.</span>
+          </li>
+          <li class="cg-li">
+            <svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span><strong class="text-foreground">Vous savez mesurer.</strong> Vos conversions sont suivies, ou vous acceptez qu'on les mette en place.</span>
+          </li>
+          <li class="cg-li">
+            <svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span><strong class="text-foreground">Vous investissez déjà.</strong> Un budget d'acquisition existe, et vous cherchez à le diversifier.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="cg-card">
+        <h3 class="font-bold tracking-tight cg-mb4" style="font-size:1.15rem">C'est prématuré si…</h3>
+        <ul style="display:flex;flex-direction:column;gap:.85rem;list-style:none;padding:0;margin:0">
+          <li class="cg-li"><span style="color:var(--muted-foreground);margin-top:.1rem">—</span> <span>Votre offre change encore tous les mois et votre positionnement n'est pas stable.</span></li>
+          <li class="cg-li"><span style="color:var(--muted-foreground);margin-top:.1rem">—</span> <span>Vous ne savez pas ce que vous rapporte un nouveau client.</span></li>
+          <li class="cg-li"><span style="color:var(--muted-foreground);margin-top:.1rem">—</span> <span>Votre budget d'acquisition ne permet pas d'absorber une phase de test sans résultat garanti.</span></li>
+          <li class="cg-li"><span style="color:var(--muted-foreground);margin-top:.1rem">—</span> <span>Vos campagnes Google Ads existantes présentent encore des marges de progression évidentes.</span></li>
+        </ul>
+        <p class="cg-note" style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border)">
+          Dans ce cas, nous vous le disons — et nous vous orientons vers
+          <a href="/acquisition/" style="color:var(--accent);font-weight:600">ce qui aura le plus d'impact</a> à court terme.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 6. CAS D'USAGE ================= -->
+<section class="cg-sec">
+  <div class="cg-wrap">
+    <div class="cg-narrow" style="text-align:center">
+      <span class="cg-eyebrow"><span class="cg-dot"></span>Cas d'usage</span>
+      <h2 class="font-bold tracking-tight" style="font-size:2rem;margin-top:1rem">
+        À quoi ressemble une intention exploitable
+      </h2>
+      <p style="margin-top:1rem;font-size:1.05rem;line-height:1.7;color:var(--muted-foreground)">
+        Quelques exemples de situations où une conversation révèle un besoin qualifié.
+        Les formulations ci-dessous sont illustratives.
+      </p>
+    </div>
+
+    <div class="cg-grid3" style="margin-top:3rem">
+      <div class="cg-card">
+        <span class="cg-label" style="color:var(--accent)">SaaS &amp; logiciel</span>
+        <p style="margin:.75rem 0 0;font-size:.95rem;line-height:1.6;font-style:italic">
+          « Quel outil de gestion de projet pour une équipe de 30 personnes qui trouve Jira trop lourd ? »
+        </p>
+        <p style="margin-top:.85rem;font-size:.875rem;line-height:1.6;color:var(--muted-foreground)">
+          Taille d'équipe, concurrent écarté, critère de choix : trois signaux de qualification en une phrase.
+        </p>
+      </div>
+      <div class="cg-card">
+        <span class="cg-label" style="color:var(--accent)">Immobilier</span>
+        <p style="margin:.75rem 0 0;font-size:.95rem;line-height:1.6;font-style:italic">
+          « Comment vendre un bien locatif sans perdre l'avantage fiscal ? »
+        </p>
+        <p style="margin-top:.85rem;font-size:.875rem;line-height:1.6;color:var(--muted-foreground)">
+          Une question technique posée par quelqu'un qui possède déjà le bien et envisage une opération.
+        </p>
+      </div>
+      <div class="cg-card">
+        <span class="cg-label" style="color:var(--accent)">Assurance &amp; courtage</span>
+        <p style="margin:.75rem 0 0;font-size:.95rem;line-height:1.6;font-style:italic">
+          « Quelle couverture prévoir pour une société de 15 salariés en déplacement à l'étranger ? »
+        </p>
+        <p style="margin-top:.85rem;font-size:.875rem;line-height:1.6;color:var(--muted-foreground)">
+          Effectif, contexte d'usage et besoin précis : le profil est presque entièrement défini.
+        </p>
+      </div>
+      <div class="cg-card">
+        <span class="cg-label" style="color:var(--accent)">Services B2B</span>
+        <p style="margin:.75rem 0 0;font-size:.95rem;line-height:1.6;font-style:italic">
+          « Quelle agence peut reprendre notre acquisition alors qu'on a déjà un budget Google Ads en interne ? »
+        </p>
+        <p style="margin-top:.85rem;font-size:.875rem;line-height:1.6;color:var(--muted-foreground)">
+          Une demande de prestataire formulée par une entreprise qui investit déjà. Intention haute.
+        </p>
+      </div>
+      <div class="cg-card">
+        <span class="cg-label" style="color:var(--accent)">Formation</span>
+        <p style="margin:.75rem 0 0;font-size:.95rem;line-height:1.6;font-style:italic">
+          « Quelle certification suivre pour évoluer vers un poste de data analyst en un an ? »
+        </p>
+        <p style="margin-top:.85rem;font-size:.875rem;line-height:1.6;color:var(--muted-foreground)">
+          Objectif professionnel, horizon de temps, niveau de départ implicite : un prospect déjà engagé.
+        </p>
+      </div>
+      <div class="cg-card">
+        <span class="cg-label" style="color:var(--accent)">E-commerce</span>
+        <p style="margin:.75rem 0 0;font-size:.95rem;line-height:1.6;font-style:italic">
+          « Quel équipement choisir pour un premier home-studio avec un budget de 2 000 € ? »
+        </p>
+        <p style="margin-top:.85rem;font-size:.875rem;line-height:1.6;color:var(--muted-foreground)">
+          Budget annoncé, univers produit délimité, besoin de conseil : une intention d'achat structurée.
+        </p>
+      </div>
+    </div>
+
+    <div class="cg-card" style="margin-top:1.5rem;background:var(--secondary)">
+      <span class="cg-label" style="color:var(--accent)">Entreprises locales premium</span>
+      <p style="margin:.75rem 0 0;font-size:.95rem;line-height:1.6;font-style:italic">
+        « Quel architecte d'intérieur pour rénover un appartement haussmannien à Paris ? »
+      </p>
+      <p style="margin-top:.85rem;font-size:.875rem;line-height:1.6;color:var(--muted-foreground);max-width:52rem">
+        Le local à forte valeur fonctionne aussi — à condition que le ticket moyen justifie l'investissement
+        publicitaire et que la zone soit suffisamment dense.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 7. POURQUOI SITALY ================= -->
+<section class="cg-sec" style="background:var(--secondary)">
+  <div class="cg-wrap">
+    <div class="cg-narrow" style="text-align:center">
+      <span class="cg-eyebrow"><span class="cg-dot"></span>Pourquoi Sitaly</span>
+      <h2 class="font-bold tracking-tight" style="font-size:2rem;margin-top:1rem">
+        Une agence d'acquisition, pas un revendeur de nouveauté
+      </h2>
+    </div>
+
+    <div class="cg-grid4" style="margin-top:3rem">
+      <div class="cg-card">
+        <h3 class="font-bold tracking-tight" style="font-size:1.05rem">Culture performance</h3>
+        <p style="margin-top:.6rem;font-size:.9rem;line-height:1.65;color:var(--muted-foreground)">
+          Nous raisonnons en coût par lead et en coût d'acquisition, pas en impressions. Un canal qui ne
+          convertit pas est arrêté.
+        </p>
+      </div>
+      <div class="cg-card">
+        <h3 class="font-bold tracking-tight" style="font-size:1.05rem">Acquisition payante</h3>
+        <p style="margin-top:.6rem;font-size:.9rem;line-height:1.65;color:var(--muted-foreground)">
+          Nous pilotons déjà des campagnes <a href="/acquisition/" style="color:var(--accent);font-weight:600">Google&nbsp;Ads</a>
+          pour nos clients. ChatGPT Ads s'ajoute à cette pratique, il ne la remplace pas.
+        </p>
+      </div>
+      <div class="cg-card">
+        <h3 class="font-bold tracking-tight" style="font-size:1.05rem">Automatisation IA</h3>
+        <p style="margin-top:.6rem;font-size:.9rem;line-height:1.65;color:var(--muted-foreground)">
+          Nos <a href="/agents-ia/" style="color:var(--accent);font-weight:600">agents IA</a> qualifient les demandes
+          entrantes, relancent et prennent les rendez-vous. Un lead capté n'est pas un lead perdu.
+        </p>
+      </div>
+      <div class="cg-card">
+        <h3 class="font-bold tracking-tight" style="font-size:1.05rem">Parcours complet</h3>
+        <p style="margin-top:.6rem;font-size:.9rem;line-height:1.65;color:var(--muted-foreground)">
+          Message, page de destination, formulaire, relance, prise de rendez-vous : nous travaillons la
+          chaîne entière, pas seulement le clic.
+        </p>
+      </div>
+    </div>
+
+    <div class="cg-card cg-narrow" style="margin-top:2rem;text-align:center;background:var(--card)">
+      <p style="font-size:.95rem;line-height:1.7;color:var(--muted-foreground);margin:0">
+        <strong class="text-foreground">Ce que nous ne prétendons pas.</strong>
+        Sitaly n'est pas partenaire officiel d'OpenAI, n'est titulaire d'aucune certification ChatGPT Ads —
+        il n'en existe pas — et ne dispose d'aucun accès privilégié. Nous ne garantissons aucun résultat
+        sur un canal récent. Ce que nous apportons, c'est une méthode d'acquisition éprouvée et la rigueur
+        de mesure qui va avec.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 8. OFFRE ================= -->
+<section class="cg-sec" id="offre">
+  <div class="cg-wrap">
+    <div class="cg-narrow" style="text-align:center">
+      <span class="cg-eyebrow"><span class="cg-dot"></span>L'offre</span>
+      <h2 class="font-bold tracking-tight" style="font-size:2rem;margin-top:1rem">
+        Un accompagnement complet, budget publicitaire séparé
+      </h2>
+      <p style="margin-top:1rem;font-size:1.05rem;line-height:1.7;color:var(--muted-foreground)">
+        Vous payez la stratégie et le pilotage. Le budget publicitaire reste le vôtre, et il est distinct
+        de nos honoraires.
+      </p>
+    </div>
+
+    <div class="cg-grid2" style="margin-top:3rem;align-items:start;gap:2rem">
+      <div class="cg-card">
+        <h3 class="font-bold tracking-tight cg-mb4" style="font-size:1.2rem">Ce qui est inclus</h3>
+        <ul style="display:flex;flex-direction:column;gap:.85rem;list-style:none;padding:0;margin:0">
+          <li class="cg-li">
+            <svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span><strong class="text-foreground">Stratégie</strong> — cartographie des intentions, audiences prioritaires, objectifs et seuils de rentabilité.</span>
+          </li>
+          <li class="cg-li">
+            <svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span><strong class="text-foreground">Création &amp; gestion</strong> — rédaction des messages, structure des campagnes, mise en ligne et suivi opérationnel.</span>
+          </li>
+          <li class="cg-li">
+            <svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span><strong class="text-foreground">Tracking</strong> — mise en place et vérification du suivi des conversions avant toute dépense.</span>
+          </li>
+          <li class="cg-li">
+            <svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span><strong class="text-foreground">Optimisation</strong> — tests de messages, arbitrages de budget, ajustement des audiences.</span>
+          </li>
+          <li class="cg-li">
+            <svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span><strong class="text-foreground">Reporting</strong> — un point mensuel lisible : dépense, conversions, coût réel d'acquisition, décision recommandée.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="cg-card" style="border-color:color-mix(in oklch,var(--accent) 40%,var(--border));box-shadow:var(--shadow-glow)">
+        <!-- [TARIF] — Modifier le montant ci-dessous pour changer le prix affiché sur la page. -->
+        <span class="cg-label" style="color:var(--accent)">Gestion ChatGPT Ads</span>
+        <p style="margin:.75rem 0 0;display:flex;align-items:baseline;gap:.5rem">
+          <span class="font-bold tracking-tight" style="font-family:var(--font-display);font-size:2.5rem;line-height:1">890&nbsp;€</span>
+          <span style="font-size:.95rem;color:var(--muted-foreground)">/ mois</span>
+        </p>
+        <p style="margin:.6rem 0 0;font-size:1.05rem;font-weight:700;color:var(--accent)">
+          + 10&nbsp;% du budget publicitaire dépensé
+        </p>
+        <p class="cg-note" style="margin-top:.5rem">
+          Hors budget publicitaire, qui reste versé à la régie. Les 10&nbsp;% sont calculés sur le montant réellement dépensé sur le mois.
+        </p>
+
+        <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <p style="font-size:.9rem;line-height:1.65;color:var(--muted-foreground);margin:0">
+            <strong class="text-foreground">Budget publicitaire séparé.</strong> Il dépend de votre secteur,
+            de votre panier moyen et du volume de données nécessaire pour conclure. Nous le définissons
+            ensemble avant le lancement — et nous vous disons franchement si le montant envisagé est
+            insuffisant pour obtenir un enseignement fiable.
+          </p>
+        </div>
+
+        <a href="#analyse" class="cg-btn cg-btn-primary" style="width:100%;margin-top:1.5rem">Demander une analyse</a>
+        <p class="cg-note" style="margin-top:.85rem;text-align:center">
+          Sans engagement de durée, comme le reste de nos offres.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 9. FAQ ================= -->
+<section class="cg-sec" style="background:var(--secondary)">
+  <div class="cg-wrap">
+    <div class="cg-narrow" style="text-align:center">
+      <span class="cg-eyebrow"><span class="cg-dot"></span>Questions fréquentes</span>
+      <h2 class="font-bold tracking-tight" style="font-size:2rem;margin-top:1rem">
+        Ce qu'il faut savoir sur la publicité dans ChatGPT
+      </h2>
+    </div>
+
+    <div class="cg-narrow" style="margin-top:2.5rem">
+      <details class="cg-faq">
+        <summary>Qu'est-ce que ChatGPT Ads ?</summary>
+        <p>ChatGPT Ads est la régie publicitaire d'OpenAI. Elle permet à des annonceurs de diffuser des messages publicitaires au sein de ChatGPT. Les publicités sont identifiées comme telles, présentées séparément de la réponse, et n'influencent pas le contenu des réponses générées par le modèle.</p>
+      </details>
+      <details class="cg-faq">
+        <summary>En quoi est-ce différent de Google Ads ?</summary>
+        <p>Google Ads répond à une intention exprimée sous forme de requête dans un moteur de recherche. ChatGPT Ads s'inscrit dans une conversation : l'utilisateur décrit son contexte, ses contraintes et son besoin sur plusieurs échanges. Les deux canaux sont complémentaires — nous ne recommandons jamais de couper Google Ads pour financer un test ChatGPT Ads.</p>
+      </details>
+      <details class="cg-faq">
+        <summary>Sitaly est-elle partenaire officiel ou certifiée OpenAI ?</summary>
+        <p>Non. Sitaly n'est ni partenaire officiel, ni certifiée par OpenAI, et ne revendique aucun accès privilégié. Il n'existe d'ailleurs pas de certification ChatGPT Ads à ce jour. Sitaly est une agence indépendante d'acquisition qui se positionne tôt sur ce canal et y applique la même rigueur que sur ses campagnes Google Ads.</p>
+      </details>
+      <details class="cg-faq">
+        <summary>Mes publicités apparaîtront-elles dans toutes les conversations ?</summary>
+        <p>Non. La diffusion dépend du contexte de la conversation, du format, de l'audience concernée et des règles fixées par OpenAI. Aucune agence ne peut garantir une présence dans toutes les conversations, ni sur une formulation précise. Les modalités de ce canal sont encore susceptibles d'évoluer.</p>
+      </details>
+      <details class="cg-faq">
+        <summary>Quels résultats puis-je attendre ?</summary>
+        <p>Aucun résultat ne peut être garanti sur un canal récent, et nous nous y refusons. L'objectif d'une première phase est d'obtenir des données fiables : coût par clic, coût par lead, qualité des demandes et coût réel d'acquisition. Ces données permettent ensuite de décider d'arrêter, de maintenir ou d'augmenter l'investissement.</p>
+      </details>
+      <details class="cg-faq">
+        <summary>Quel budget publicitaire prévoir ?</summary>
+        <p>Le budget publicitaire est distinct de nos honoraires de gestion. Le montant pertinent dépend de votre secteur, de votre panier moyen et du volume de données nécessaire pour conclure quelque chose de solide. Nous le définissons ensemble lors de l'analyse préalable, et nous vous disons si le montant envisagé est trop faible pour être concluant.</p>
+      </details>
+      <details class="cg-faq">
+        <summary>Faut-il déjà investir en publicité pour se lancer ?</summary>
+        <p>Ce n'est pas obligatoire, mais c'est préférable. Les entreprises qui mesurent déjà leurs conversions et connaissent la valeur d'un client tirent des conclusions beaucoup plus vite. Si votre tracking n'est pas en place, nous commençons par là — cela sert aussi tous vos autres canaux.</p>
+      </details>
+      <details class="cg-faq">
+        <summary>Peut-on combiner ChatGPT Ads et vos agents IA ?</summary>
+        <p>Oui, et c'est souvent pertinent. Un canal d'acquisition ne vaut que par ce qui se passe après le clic. Nos <a href="/agents-ia/" style="color:var(--accent);font-weight:600">agents IA</a> qualifient les demandes entrantes, répondent hors horaires et prennent les rendez-vous, ce qui améliore mécaniquement le rendement du budget publicitaire.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 10. CTA FINAL + FORMULAIRE ================= -->
+<section class="cg-sec" id="analyse">
+  <div class="cg-wrap">
+    <div class="cg-narrow" style="text-align:center">
+      <span class="cg-eyebrow"><span class="cg-dot"></span>Analyse ChatGPT Ads</span>
+      <h2 class="font-bold tracking-tight" style="font-size:2rem;margin-top:1rem">
+        Découvrez si ChatGPT Ads peut devenir un nouveau canal d'acquisition pour votre entreprise.
+      </h2>
+      <p style="margin-top:1rem;font-size:1.05rem;line-height:1.7;color:var(--muted-foreground)">
+        Décrivez votre activité et vos objectifs. Nous revenons vers vous avec une lecture honnête :
+        le potentiel que nous voyons, le budget que cela suppose — ou la raison pour laquelle ce n'est
+        pas le bon moment.
+      </p>
+    </div>
+
+    <div class="cg-card cg-narrow" style="margin-top:2.5rem;padding:1.75rem">
+      <form id="cg-form" novalidate>
+        <div class="cg-formgrid">
+          <div>
+            <label class="cg-lab" for="f-nom">Nom et prénom <span class="cg-req">*</span></label>
+            <input class="cg-field" type="text" id="f-nom" name="nom" required autocomplete="name"/>
+          </div>
+          <div>
+            <label class="cg-lab" for="f-entreprise">Entreprise <span class="cg-req">*</span></label>
+            <input class="cg-field" type="text" id="f-entreprise" name="entreprise" required autocomplete="organization"/>
+          </div>
+          <div>
+            <label class="cg-lab" for="f-email">Email professionnel <span class="cg-req">*</span></label>
+            <input class="cg-field" type="email" id="f-email" name="email" required autocomplete="email"/>
+          </div>
+          <div>
+            <label class="cg-lab" for="f-tel">Téléphone <span class="cg-req">*</span></label>
+            <input class="cg-field" type="tel" id="f-tel" name="telephone" required autocomplete="tel"/>
+          </div>
+          <div>
+            <label class="cg-lab" for="f-site">Site web</label>
+            <input class="cg-field" type="url" id="f-site" name="site" placeholder="https://" autocomplete="url"/>
+          </div>
+          <div>
+            <label class="cg-lab" for="f-secteur">Secteur d'activité <span class="cg-req">*</span></label>
+            <select class="cg-field" id="f-secteur" name="secteur" required>
+              <option value="">Sélectionnez…</option>
+              <option>SaaS / Logiciel</option>
+              <option>Services B2B</option>
+              <option>E-commerce</option>
+              <option>Immobilier</option>
+              <option>Assurance / Finance</option>
+              <option>Formation / Éducation</option>
+              <option>Santé / Bien-être</option>
+              <option>Industrie / BTP</option>
+              <option>Entreprise locale premium</option>
+              <option>Autre</option>
+            </select>
+          </div>
+
+          <div class="cg-span2">
+            <label class="cg-lab" for="f-budget">Budget mensuel actuel consacré à l'acquisition <span class="cg-req">*</span></label>
+            <select class="cg-field" id="f-budget" name="budget" required>
+              <option value="">Sélectionnez une fourchette…</option>
+              <option>Aucun budget pour l'instant</option>
+              <option>Moins de 1 000 € / mois</option>
+              <option>1 000 € – 3 000 € / mois</option>
+              <option>3 000 € – 10 000 € / mois</option>
+              <option>10 000 € – 30 000 € / mois</option>
+              <option>Plus de 30 000 € / mois</option>
+            </select>
+            <p class="cg-note" style="margin-top:.4rem">
+              Cette information nous sert uniquement à évaluer la pertinence du canal pour vous. Elle n'est pas contractuelle.
+            </p>
+          </div>
+
+          <div class="cg-span2">
+            <label class="cg-lab" for="f-objectif">Objectif d'acquisition <span class="cg-req">*</span></label>
+            <select class="cg-field" id="f-objectif" name="objectif" required>
+              <option value="">Sélectionnez…</option>
+              <option>Générer des leads qualifiés</option>
+              <option>Obtenir des demandes de démonstration</option>
+              <option>Prendre des rendez-vous commerciaux</option>
+              <option>Générer des ventes en ligne</option>
+              <option>Diversifier mes canaux d'acquisition</option>
+              <option>Réduire mon coût d'acquisition actuel</option>
+              <option>Autre / à définir</option>
+            </select>
+          </div>
+
+          <div class="cg-span2">
+            <label class="cg-lab" for="f-message">Votre besoin en quelques lignes</label>
+            <textarea class="cg-field" id="f-message" name="message" placeholder="Votre offre, votre cible, ce que vous avez déjà testé, votre valeur client moyenne…"></textarea>
+          </div>
+        </div>
+
+        <div id="cg-error" hidden role="alert" style="margin-top:1rem;font-size:.875rem;color:var(--destructive);font-weight:600"></div>
+
+        <button type="submit" id="cg-submit" class="cg-btn cg-btn-primary" style="width:100%;margin-top:1.5rem">
+          Demander une analyse
+        </button>
+
+        <p class="cg-note" style="margin-top:1rem;text-align:center">
+          Réponse sous 48 h ouvrées. Vos données servent uniquement à traiter votre demande —
+          voir notre <a href="/politique-confidentialite/" style="color:var(--accent);font-weight:600">politique de confidentialité</a>.
+        </p>
+      </form>
+
+      <div id="cg-success" hidden style="text-align:center;padding:2rem 0">
+        <div class="cg-num" style="width:3rem;height:3rem;margin:0 auto;background:var(--success);color:var(--success-foreground)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+        </div>
+        <h3 class="font-bold tracking-tight" style="font-size:1.35rem;margin-top:1.25rem">Votre message est prêt</h3>
+        <p style="margin-top:.75rem;font-size:.95rem;line-height:1.65;color:var(--muted-foreground)">
+          Votre logiciel de messagerie s'est ouvert avec votre demande pré-remplie.
+          Il ne reste qu'à l'envoyer — nous répondons sous 48 h ouvrées.
+        </p>
+        <p style="margin-top:1.25rem;font-size:.925rem;line-height:1.7">
+          Rien ne s'est ouvert ? Écrivez-nous à
+          <a href="mailto:contact@sitaly.fr" style="color:var(--accent);font-weight:600">contact@sitaly.fr</a><br/>
+          ou appelez le <a href="tel:+33658683372" style="color:var(--accent);font-weight:600">06 58 68 33 72</a>.
+        </p>
+      </div>
+    </div>
+
+    <p class="cg-narrow cg-note" style="margin-top:1.5rem;text-align:center">
+      Pour aller plus loin :
+      <a href="/blog/publicite-chatgpt-ads-guide/" style="color:var(--accent);font-weight:600">notre guide complet</a>,
+      <a href="/blog/cout-chatgpt-ads/" style="color:var(--accent);font-weight:600">ce que coûte réellement le canal</a>
+      et <a href="/blog/chatgpt-ads-secteurs-pme/" style="color:var(--accent);font-weight:600">les secteurs qui en tirent quelque chose</a>.
+    </p>
+
+    <p class="cg-narrow cg-note" style="margin-top:.75rem;text-align:center">
+      Vous préférez en parler de vive voix ?
+      <a href="https://calendly.com/contact-sitaly/decouverte-de-votre-projet-web" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:600">Réservez un appel de découverte</a>.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer class="border-t border-border">
+  <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-8 text-sm text-muted-foreground sm:flex-row sm:px-6">
+    <img src="/static/sitaly-logo.png" alt="Sitaly" width="414" height="108" class="h-6 w-auto sm:h-7 scale-90"/>
+    <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+      <a href="/" class="hover:text-foreground">Accueil</a>
+      <a href="/acquisition/" class="hover:text-foreground">Google Ads</a>
+      <a href="/chatgpt-ads/" class="hover:text-foreground">ChatGPT Ads</a>
+      <a href="/agents-ia/" class="hover:text-foreground">Agents IA</a>
+      <a href="/mentions-legales/" class="hover:text-foreground">Mentions légales</a>
+      <a href="/cgv/" class="hover:text-foreground">CGV</a>
+      <a href="https://www.linkedin.com/in/vidalozzi" target="_blank" rel="noopener noreferrer" aria-label="Sitaly sur LinkedIn" title="Sitaly sur LinkedIn" class="inline-flex h-10 w-10 items-center justify-center rounded-full border transition border-border text-muted-foreground hover:border-accent hover:text-accent h-9 w-9">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-[18px] w-[18px]" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* Adresse de réception des demandes. */
+  var CONTACT_EMAIL = "contact@sitaly.fr";
+
+  /* --- Menu mobile --- */
+  var btn = document.getElementById("menu-btn");
+  var nav = document.getElementById("menu-mobile");
+  if (btn && nav) {
+    btn.addEventListener("click", function () {
+      var open = nav.hasAttribute("hidden");
+      if (open) { nav.removeAttribute("hidden"); } else { nav.setAttribute("hidden", ""); }
+      btn.setAttribute("aria-expanded", String(open));
+      btn.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
+    });
+    nav.addEventListener("click", function (e) {
+      if (e.target.tagName === "A") {
+        nav.setAttribute("hidden", "");
+        btn.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
+  /* --- Formulaire : composition d'un email pré-rempli --- */
+  var form = document.getElementById("cg-form");
+  if (!form) return;
+  var errorBox = document.getElementById("cg-error");
+  var success = document.getElementById("cg-success");
+
+  var LABELS = {
+    nom: "Nom", entreprise: "Entreprise", email: "Email", telephone: "Téléphone",
+    site: "Site web", secteur: "Secteur", budget: "Budget acquisition mensuel",
+    objectif: "Objectif", message: "Message"
+  };
+
+  function showError(msg) {
+    errorBox.textContent = msg;
+    errorBox.removeAttribute("hidden");
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    errorBox.setAttribute("hidden", "");
+
+    var data = {};
+    Object.keys(LABELS).forEach(function (k) {
+      var el = form.elements[k];
+      data[k] = el ? String(el.value || "").trim() : "";
+    });
+
+    var required = ["nom", "entreprise", "email", "telephone", "secteur", "budget", "objectif"];
+    var missing = required.filter(function (k) { return !data[k]; });
+    if (missing.length) {
+      showError("Merci de compléter les champs obligatoires.");
+      var first = form.elements[missing[0]];
+      if (first) first.focus();
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+      showError("L'adresse email ne semble pas valide.");
+      form.elements.email.focus();
+      return;
+    }
+
+    var body = "Demande d'analyse ChatGPT Ads\n\n" + Object.keys(LABELS).map(function (k) {
+      return LABELS[k] + " : " + (data[k] || "—");
+    }).join("\n");
+    var subject = "Demande d'analyse ChatGPT Ads — " + (data.entreprise || data.nom);
+
+    window.location.href = "mailto:" + CONTACT_EMAIL +
+      "?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(body);
+
+    form.setAttribute("hidden", "");
+    success.removeAttribute("hidden");
+    success.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "generate_lead", { form: "chatgpt_ads_analyse" });
+    }
+    if (window.dataLayer) { window.dataLayer.push({ event: "chatgpt_ads_lead" }); }
+  });
+})();
+</script>
+
+</body>
+</html>

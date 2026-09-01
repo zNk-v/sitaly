@@ -1,12 +1,24 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 import { BLOG_POSTS, formatDate } from "@/data/blog-posts";
-import { SitalyLogo } from "@/components/SitalyLogo";
+import { SiteHeader } from "@/components/SiteHeader";
 import { CALENDLY_URL } from "@/lib/config";
 
 // Rubriques du blog, dans l'ordre d'affichage. `key` doit correspondre au champ
 // `category` des articles (src/data/blog-posts.ts).
 const RUBRIQUES: { key: string; id: string; label: string; desc: string }[] = [
+  {
+    key: "Trouver des chantiers",
+    id: "trouver-des-chantiers",
+    label: "Trouver des chantiers",
+    desc: "Les canaux qui remplissent un planning, ce que coûtent les plateformes, et comment ne plus perdre un appel.",
+  },
+  {
+    key: "Outils & logiciels",
+    id: "outils-logiciels",
+    label: "Outils & logiciels",
+    desc: "CRM, devis, chatbot : ce que chaque outil règle vraiment, et celui par lequel commencer.",
+  },
   {
     key: "Acquisition de clients",
     id: "clients-par-metier",
@@ -24,6 +36,12 @@ const RUBRIQUES: { key: string; id: string; label: string; desc: string }[] = [
     id: "referencement",
     label: "Référencement local",
     desc: "Être trouvé sur Google : fiche Google Business, avis clients et SEO local.",
+  },
+  {
+    key: "Publicité IA",
+    id: "publicite-ia",
+    label: "Publicité IA",
+    desc: "Les nouveaux canaux publicitaires liés aux assistants conversationnels, et comment décider s'ils méritent votre budget.",
   },
   {
     key: "Acquisition payante",
@@ -136,9 +154,9 @@ function BlogIndex() {
             Générer <span className="gradient-text">plus de clients</span>, quel que soit votre métier
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-            Site internet, référencement Google local, Google Ads et automatisation : les guides
-            pratiques pour artisans, indépendants et PME de services qui veulent développer leur
-            activité en 2026.
+            Site internet, référencement local, Google Ads, ChatGPT Ads et automatisation : les
+            guides pratiques pour les PME, TPE et artisans qui veulent développer leur activité en
+            2026.
           </p>
         </div>
       </header>
@@ -254,33 +272,12 @@ function PostCard({ post }: { post: (typeof BLOG_POSTS)[number] }) {
 
 function BlogNav() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link to="/" className="flex items-center" aria-label="Sitaly — accueil">
-          <SitalyLogo />
-        </Link>
-        <nav className="hidden items-center gap-8 md:flex">
-          <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-            Accueil
-          </Link>
-          <Link
-            to="/blog"
-            className="text-sm font-medium text-foreground"
-            activeProps={{ className: "text-sm font-medium text-foreground" }}
-          >
-            Blog
-          </Link>
-        </nav>
-        <a
-          href={CALENDLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
-        >
-          Réserver un appel
-        </a>
-      </div>
-    </header>
+    <SiteHeader
+      links={[
+        { label: "Accueil", to: "/" },
+        { label: "Blog", to: "/blog", current: true },
+      ]}
+    />
   );
 }
 

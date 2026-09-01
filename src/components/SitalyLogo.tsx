@@ -1,13 +1,16 @@
-import { ChevronsRight } from "lucide-react";
+import logoSitaly from "@/assets/logo-sitaly.png";
 
-/* Logo Sitaly — double chevron + nom dans la typographie du hero (font-display, dégradé). */
+/* Logo Sitaly. width/height sont portés sur la balise pour réserver la place
+ * avant le chargement de l'image : sans eux le header saute au premier paint
+ * (CLS) puisque le logo est le seul élément de hauteur variable de la barre. */
 export function SitalyLogo({ className = "" }: { className?: string }) {
   return (
-    <span className={`flex items-center gap-1 ${className}`}>
-      <ChevronsRight className="h-7 w-7 text-accent" strokeWidth={3} aria-hidden />
-      <span className="font-display text-2xl font-extrabold tracking-tight gradient-text">
-        Sitaly
-      </span>
-    </span>
+    <img
+      src={logoSitaly}
+      alt="Sitaly"
+      width={414}
+      height={108}
+      className={`h-6 w-auto sm:h-7 ${className}`}
+    />
   );
 }

@@ -29,7 +29,7 @@ function PolitiqueConfidentialite() {
       <h2>1. Responsable du traitement</h2>
       <p>
         Le responsable du traitement est <strong>Sitaly</strong>, auto-entrepreneur, dont le siège
-        social est situé 25 allée des jardins, 91220 Brétigny-Sur-Orge, immatriculée sous le numéro
+        social est situé à Brétigny-sur-Orge (91220), immatriculée sous le numéro
         SIRET 83384883100032.
         <br />Contact : <a href="mailto:contact@sitaly.fr">contact@sitaly.fr</a>
       </p>

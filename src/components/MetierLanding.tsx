@@ -9,12 +9,20 @@ import {
   Sparkles,
   Star,
 } from "lucide-react";
-import { SitalyLogo } from "@/components/SitalyLogo";
+import { LinkedInBadge } from "@/components/LinkedInBadge";
+import { SiteHeader } from "@/components/SiteHeader";
+import { METIER_PAGES } from "@/lib/metiers";
 import { CALENDLY_URL } from "@/lib/config";
 
 export interface MetierLandingProps {
   metier: string; // "plombier"
   metierCapitalized: string; // "Plombier"
+  /** Chemin de la page, pour exclure le métier courant des liens croisés. */
+  route: string;
+  /** Détail de la prestation, rédigé avec le vocabulaire du métier. */
+  included: { title: string; desc: string }[];
+  /** Argumentaire SEO local propre au métier. */
+  localSeo: { title: string; paragraphs: string[] };
   h1: string;
   intro: string;
   benefits: { title: string; desc: string }[];
@@ -30,11 +38,17 @@ export interface MetierLandingProps {
 }
 
 export function MetierLanding(props: MetierLandingProps) {
-  const { metier, metierCapitalized, h1, intro, benefits, example, faq, testimonial } = props;
+  const { metier, metierCapitalized, route, included, localSeo, h1, intro, benefits, example, faq, testimonial } = props;
+  const autresMetiers = METIER_PAGES.filter((m) => m.href !== route);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <LandingNav />
+      <SiteHeader
+        links={[
+          { label: "Accueil", to: "/" },
+          { label: "Blog", to: "/blog" },
+        ]}
+      />
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-border bg-gradient-to-b from-secondary/50 to-background">
@@ -108,6 +122,30 @@ export function MetierLanding(props: MetierLandingProps) {
         </div>
       </section>
 
+      {/* Détail de la prestation, dans le vocabulaire du métier */}
+      <section className="border-t border-border bg-secondary/30 py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+            Ce que comprend votre site {metier}
+          </h2>
+          <p className="mt-3 max-w-2xl text-muted-foreground">
+            Tout est inclus dans l'abonnement. Vous n'achetez ni hébergement, ni nom de domaine, ni
+            plugin, et vous n'avez rien à gérer.
+          </p>
+          <div className="mt-10 grid gap-x-10 gap-y-7 md:grid-cols-2">
+            {included.map((it) => (
+              <div key={it.title} className="flex gap-3.5">
+                <Check className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+                <div>
+                  <h3 className="font-display text-base font-bold">{it.title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{it.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Example */}
       {example && (
         <section className="border-y border-border bg-secondary/30 py-16 sm:py-20">
@@ -142,6 +180,42 @@ export function MetierLanding(props: MetierLandingProps) {
         </section>
       )}
 
+      {/* Argumentaire SEO local : c'est la requête qui amène les appels */}
+      <section className="py-16 sm:py-20">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+          <span className="text-xs font-semibold uppercase tracking-widest text-accent">
+            Référencement local
+          </span>
+          <h2 className="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">
+            {localSeo.title}
+          </h2>
+          <div className="mt-6 space-y-5">
+            {localSeo.paragraphs.map((para, i) => (
+              <p key={i} className="leading-relaxed text-foreground/85">
+                {para}
+              </p>
+            ))}
+          </div>
+          <p className="mt-6 text-sm text-muted-foreground">
+            Pour comprendre la méthode en détail, lisez notre guide{" "}
+            <a
+              href="/blog/referencement-local-google-artisan/"
+              className="font-semibold text-accent hover:underline"
+            >
+              référencement local artisan
+            </a>{" "}
+            et notre article sur les{" "}
+            <a
+              href="/blog/seo-local-villes-pages-artisan/"
+              className="font-semibold text-accent hover:underline"
+            >
+              pages par ville
+            </a>
+            .
+          </p>
+        </div>
+      </section>
+
       {/* Pricing */}
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -167,12 +241,12 @@ export function MetierLanding(props: MetierLandingProps) {
               },
               {
                 name: "Sitaly Acquisition",
-                price: "Dès 299€",
+                price: "299€",
                 featured: false,
                 features: [
                   "Campagnes Google Ads gérées",
                   "Indépendant de votre site",
-                  "3 formules selon vos besoins",
+                  "+ 15 % du budget publicitaire",
                   "Reporting mensuel",
                 ],
                 note: "Budget publicitaire Google non inclus.",
@@ -270,6 +344,52 @@ export function MetierLanding(props: MetierLandingProps) {
         </div>
       </section>
 
+      {/* Maillage entre pages métier : un couvreur qui atterrit ici doit
+          trouver sa page en un clic plutôt que de repartir sur Google. */}
+      <section className="border-y border-border bg-secondary/30 py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="text-xs font-semibold uppercase tracking-wider text-accent">
+              Par métier
+            </div>
+            <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
+              Vous exercez un autre métier ?
+            </h2>
+            <p className="mt-4 text-muted-foreground sm:text-lg">
+              Les mêmes fondations, adaptées aux urgences et aux mots-clés de chaque activité.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {autresMetiers.map((m) => (
+              <a
+                key={m.href}
+                href={m.href}
+                className="group rounded-2xl border border-border bg-card p-6 shadow-soft transition hover:shadow-elevated"
+              >
+                <div className="grid h-10 w-10 place-items-center rounded-lg bg-accent/10 text-accent">
+                  <m.icon className="h-5 w-5" />
+                </div>
+                <h3 className="mt-4 font-display text-lg font-bold leading-snug transition group-hover:text-accent">
+                  {m.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.desc}</p>
+                <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-accent">
+                  Voir la page
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </span>
+              </a>
+            ))}
+          </div>
+          <p className="mt-8 text-center text-sm text-muted-foreground">
+            Votre métier n'est pas listé ?{" "}
+            <a href="/#contact" className="font-semibold text-accent hover:underline">
+              Dites-nous lequel
+            </a>
+            , on construit la même chose pour vous.
+          </p>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="bg-primary py-16 text-primary-foreground sm:py-20">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
@@ -292,41 +412,42 @@ export function MetierLanding(props: MetierLandingProps) {
       </section>
 
       <footer className="border-t border-border bg-background">
-        <div className="mx-auto max-w-7xl px-4 py-10 text-center text-sm text-muted-foreground sm:px-6">
-          © {new Date().getFullYear()} Sitaly — Création de sites internet pour artisans.
+        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+          <ul className="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm text-muted-foreground">
+            {METIER_PAGES.map((m) => (
+              <li key={m.href}>
+                <a href={m.href} className="block py-2.5 hover:text-foreground">
+                  {m.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-5 flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm text-muted-foreground">
+            <Link to="/" className="py-2.5 hover:text-foreground">
+              Accueil
+            </Link>
+            <Link to="/acquisition" className="py-2.5 hover:text-foreground">
+              Google Ads
+            </Link>
+            <Link to="/agents-ia" className="py-2.5 hover:text-foreground">
+              Agents IA
+            </Link>
+            <Link to="/blog" className="py-2.5 hover:text-foreground">
+              Blog
+            </Link>
+          </div>
+          <div className="mt-6 flex justify-center">
+            <LinkedInBadge />
+          </div>
+          <div className="mt-6 text-center text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Sitaly — Création de sites internet pour artisans.
+          </div>
         </div>
       </footer>
     </div>
   );
 }
 
-function LandingNav() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link to="/" className="flex items-center" aria-label="Sitaly — accueil">
-          <SitalyLogo />
-        </Link>
-        <nav className="hidden items-center gap-8 md:flex">
-          <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-            Accueil
-          </Link>
-          <Link to="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-            Blog
-          </Link>
-        </nav>
-        <a
-          href={CALENDLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
-        >
-          Réserver un appel
-        </a>
-      </div>
-    </header>
-  );
-}
 
 export function buildMetierMeta(opts: {
   title: string;

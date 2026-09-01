@@ -8,7 +8,7 @@ import {
   slugifyHeading,
   type BlogSection,
 } from "@/data/blog-posts";
-import { SitalyLogo } from "@/components/SitalyLogo";
+import { SiteHeader } from "@/components/SiteHeader";
 import { CALENDLY_URL } from "@/lib/config";
 
 export const Route = createFileRoute("/blog/$slug")({
@@ -255,6 +255,8 @@ function BlogPostPage() {
         </section>
       )}
 
+      <MetiersLinks />
+
       <footer className="border-t border-border bg-background">
         <div className="mx-auto max-w-7xl px-4 py-10 text-center text-sm text-muted-foreground sm:px-6">
           © {new Date().getFullYear()} Sitaly — Création de sites internet pour artisans.
@@ -396,31 +398,48 @@ function FinalCTA() {
   );
 }
 
+const METIERS = [
+  { to: "/site-internet-plombier", label: "Site internet plombier" },
+  { to: "/site-internet-electricien", label: "Site internet électricien" },
+  { to: "/site-internet-couvreur", label: "Site internet couvreur" },
+  { to: "/site-internet-menuisier", label: "Site internet menuisier" },
+] as const;
+
+/**
+ * Maillage interne en bas d'article : le blog capte la recherche informationnelle,
+ * ces liens redirigent vers les pages qui convertissent (une par métier).
+ */
+function MetiersLinks() {
+  return (
+    <section className="border-t border-border bg-background py-10">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+        <h2 className="font-display text-lg font-bold">Nos sites par métier</h2>
+        <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+          {METIERS.map((m) => (
+            <li key={m.to}>
+              <Link
+                to={m.to}
+                className="inline-flex items-center gap-1.5 font-medium text-accent hover:underline"
+              >
+                {m.label}
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
 function PostNav() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link to="/" className="flex items-center" aria-label="Sitaly — accueil">
-          <SitalyLogo />
-        </Link>
-        <nav className="hidden items-center gap-8 md:flex">
-          <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-            Accueil
-          </Link>
-          <Link to="/blog" className="text-sm font-medium text-foreground">
-            Blog
-          </Link>
-        </nav>
-        <a
-          href={CALENDLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
-        >
-          Réserver un appel
-        </a>
-      </div>
-    </header>
+    <SiteHeader
+      links={[
+        { label: "Accueil", to: "/" },
+        { label: "Blog", to: "/blog", current: true },
+      ]}
+    />
   );
 }
 
