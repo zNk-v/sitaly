@@ -29,7 +29,9 @@ export function MetierLinksSection({
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
-          <div className="text-xs font-semibold uppercase tracking-wider text-accent">Par métier</div>
+          <div className="text-xs font-semibold uppercase tracking-wider text-accent">
+            Par métier
+          </div>
           <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
             {title}
           </h2>

@@ -5,10 +5,18 @@ export const Route = createFileRoute("/cookies")({
   head: () => ({
     meta: [
       { title: "Politique cookies — Sitaly" },
-      { name: "description", content: "Politique de gestion des cookies du site Sitaly conformément à la réglementation CNIL." },
+      {
+        name: "description",
+        content:
+          "Politique de gestion des cookies du site Sitaly conformément à la réglementation CNIL.",
+      },
       { name: "robots", content: "index,follow" },
       { property: "og:title", content: "Politique cookies — Sitaly" },
-      { property: "og:description", content: "Comment Sitaly utilise et gère les cookies, conformément au RGPD et aux recommandations de la CNIL." },
+      {
+        property: "og:description",
+        content:
+          "Comment Sitaly utilise et gère les cookies, conformément au RGPD et aux recommandations de la CNIL.",
+      },
       { property: "og:url", content: "https://sitaly.fr/cookies/" },
     ],
     links: [{ rel: "canonical", href: "https://sitaly.fr/cookies/" }],
@@ -34,8 +42,8 @@ function Cookies() {
       <h2>2. Cookies utilisés sur le site</h2>
       <h3>Cookies strictement nécessaires</h3>
       <p>
-        Ces cookies sont indispensables au fonctionnement du site (sécurité, équilibrage de
-        charge, mémorisation de votre choix concernant les cookies). Ils ne nécessitent pas votre
+        Ces cookies sont indispensables au fonctionnement du site (sécurité, équilibrage de charge,
+        mémorisation de votre choix concernant les cookies). Ils ne nécessitent pas votre
         consentement.
       </p>
       <h3>Cookies de mesure d'audience</h3>
@@ -43,8 +51,8 @@ function Cookies() {
         Le site utilise <strong>Google Analytics 4</strong>, déployé via{" "}
         <strong>Google Tag Manager</strong> (Google Ireland Limited), pour mesurer la fréquentation
         et comprendre quelles pages sont consultées. Ces traceurs ne sont activés qu'après votre
-        consentement : tant que vous n'avez pas accepté, le mode Consentement de Google est réglé sur
-        « refusé » et aucun cookie de mesure d'audience n'est déposé.
+        consentement : tant que vous n'avez pas accepté, le mode Consentement de Google est réglé
+        sur « refusé » et aucun cookie de mesure d'audience n'est déposé.
       </p>
       <div className="overflow-x-auto">
         <table>
@@ -91,29 +99,66 @@ function Cookies() {
       <h2>3. Durée de conservation</h2>
       <p>
         Conformément aux recommandations de la CNIL, la durée de vie des cookies n'excède pas
-        <strong> 13 mois</strong>. Votre choix concernant les cookies est conservé pendant la
-        même durée.
+        <strong> 13 mois</strong>. Votre choix concernant les cookies est conservé pendant la même
+        durée.
       </p>
 
       <h2>4. Gestion de vos préférences</h2>
       <p>
         Vous pouvez à tout moment accepter, refuser ou retirer votre consentement aux cookies non
-        essentiels. Vous pouvez également configurer votre navigateur pour bloquer ou supprimer
-        les cookies :
+        essentiels. Vous pouvez également configurer votre navigateur pour bloquer ou supprimer les
+        cookies :
       </p>
       <ul>
-        <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer">Google Chrome</a></li>
-        <li><a href="https://support.mozilla.org/fr/kb/cookies-informations-sites-enregistrent" target="_blank" rel="noopener noreferrer">Mozilla Firefox</a></li>
-        <li><a href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">Safari</a></li>
-        <li><a href="https://support.microsoft.com/fr-fr/microsoft-edge" target="_blank" rel="noopener noreferrer">Microsoft Edge</a></li>
+        <li>
+          <a
+            href="https://support.google.com/chrome/answer/95647"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Google Chrome
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://support.mozilla.org/fr/kb/cookies-informations-sites-enregistrent"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Mozilla Firefox
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Safari
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://support.microsoft.com/fr-fr/microsoft-edge"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Microsoft Edge
+          </a>
+        </li>
       </ul>
 
       <h2>5. Pour en savoir plus</h2>
       <p>
         Pour plus d'informations sur les cookies et vos droits, consultez le site de la CNIL :{" "}
-        <a href="https://www.cnil.fr/fr/cookies-et-traceurs" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://www.cnil.fr/fr/cookies-et-traceurs"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           cnil.fr/fr/cookies-et-traceurs
-        </a>.
+        </a>
+        .
       </p>
     </LegalLayout>
   );

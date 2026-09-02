@@ -19,9 +19,7 @@ export function LegalLayout({
             ← Retour à l'accueil
           </Link>
           {updated && (
-            <span className="text-xs text-muted-foreground">
-              Dernière mise à jour : {updated}
-            </span>
+            <span className="text-xs text-muted-foreground">Dernière mise à jour : {updated}</span>
           )}
         </div>
       </header>
@@ -37,10 +35,21 @@ export function LegalLayout({
             <LinkedinLink />
           </div>
           © {new Date().getFullYear()} Sitaly —{" "}
-          <Link to="/mentions-legales/" className="hover:underline">Mentions légales</Link> ·{" "}
-          <Link to="/politique-confidentialite/" className="hover:underline">Confidentialité</Link> ·{" "}
-          <Link to="/cgv/" className="hover:underline">CGV</Link> ·{" "}
-          <Link to="/cookies/" className="hover:underline">Cookies</Link>
+          <Link to="/mentions-legales/" className="hover:underline">
+            Mentions légales
+          </Link>{" "}
+          ·{" "}
+          <Link to="/politique-confidentialite/" className="hover:underline">
+            Confidentialité
+          </Link>{" "}
+          ·{" "}
+          <Link to="/cgv/" className="hover:underline">
+            CGV
+          </Link>{" "}
+          ·{" "}
+          <Link to="/cookies/" className="hover:underline">
+            Cookies
+          </Link>
         </div>
       </footer>
     </div>

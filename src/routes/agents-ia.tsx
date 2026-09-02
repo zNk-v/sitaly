@@ -221,7 +221,8 @@ const SECTOR_CASES = [
   {
     icon: ShoppingCart,
     name: "E-commerce et vente en ligne",
-    context: "Beaucoup de messages, peu de temps, et des questions qui reviennent avant et après l'achat.",
+    context:
+      "Beaucoup de messages, peu de temps, et des questions qui reviennent avant et après l'achat.",
     items: [
       "Questions avant achat sur WhatsApp, chat ou e-mail : stock, délais, tailles",
       "Suivi de commande, retours et remboursements",
@@ -243,7 +244,8 @@ const SECTOR_CASES = [
   {
     icon: Scale,
     name: "Avocats et professions libérales",
-    context: "Le premier échange consomme du temps facturable avant même de savoir si le dossier est recevable.",
+    context:
+      "Le premier échange consomme du temps facturable avant même de savoir si le dossier est recevable.",
     items: [
       "Premier contact et qualification de la demande",
       "Vérification du domaine traité avant la prise de rendez-vous",
@@ -254,7 +256,8 @@ const SECTOR_CASES = [
   {
     icon: HardHat,
     name: "Artisans et bâtiment",
-    context: "Les appels arrivent pendant les interventions et les devis partent sans jamais être relancés.",
+    context:
+      "Les appels arrivent pendant les interventions et les devis partent sans jamais être relancés.",
     items: [
       "Réponse aux appels reçus pendant les chantiers",
       "Qualification : zone, nature des travaux, budget, délai",
@@ -265,7 +268,8 @@ const SECTOR_CASES = [
   {
     icon: Building2,
     name: "Immobilier et gestion",
-    context: "Les demandes de visite arrivent par cinq canaux différents et se traitent au fil de l'eau.",
+    context:
+      "Les demandes de visite arrivent par cinq canaux différents et se traitent au fil de l'eau.",
     items: [
       "Qualification des demandes de visite et de location",
       "Prise de rendez-vous synchronisée avec les agendas",
@@ -606,8 +610,8 @@ function Hero() {
             <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-muted-foreground sm:text-lg">
               Que vous vendiez en ligne, receviez des patients ou interveniez chez vos clients,
               Sitaly installe et pilote les agents IA qui répondent, qualifient, prennent vos
-              rendez-vous et relancent ce qui reste en attente. Un humain reprend la main dès que
-              la situation le demande.
+              rendez-vous et relancent ce qui reste en attente. Un humain reprend la main dès que la
+              situation le demande.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">

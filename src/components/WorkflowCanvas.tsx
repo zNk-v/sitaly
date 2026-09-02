@@ -50,8 +50,18 @@ type Workflow = {
   subs: WfSub[]; // sub-nodes rattachés à l'Agent IA (Chat Model / Memory / Tools)
 };
 
-const SUB_CLAUDE: WfSub = { title: "Chat Model", subtitle: "Modèle IA", icon: "spark", color: "#d97757" };
-const SUB_SUPABASE: WfSub = { title: "Memory", subtitle: "Historique client", icon: "database", color: "#3ecf8e" };
+const SUB_CLAUDE: WfSub = {
+  title: "Chat Model",
+  subtitle: "Modèle IA",
+  icon: "spark",
+  color: "#d97757",
+};
+const SUB_SUPABASE: WfSub = {
+  title: "Memory",
+  subtitle: "Historique client",
+  icon: "database",
+  color: "#3ecf8e",
+};
 
 const WORKFLOWS: Workflow[] = [
   {
@@ -61,14 +71,35 @@ const WORKFLOWS: Workflow[] = [
     blurb:
       "Un client appelle pendant que vous êtes en rendez-vous ou en intervention : l'agent décroche, répond, cale le rendez-vous et vous prévient par SMS.",
     nodes: [
-      { title: "Appel entrant", subtitle: "Ligne dédiée 24/7", icon: "phone", color: "#e2574c", kind: "trigger" },
-      { title: "Agent IA", subtitle: "Le cerveau du workflow", icon: "bot", color: "", kind: "agent" },
+      {
+        title: "Appel entrant",
+        subtitle: "Ligne dédiée 24/7",
+        icon: "phone",
+        color: "#e2574c",
+        kind: "trigger",
+      },
+      {
+        title: "Agent IA",
+        subtitle: "Le cerveau du workflow",
+        icon: "bot",
+        color: "",
+        kind: "agent",
+      },
       { title: "Décision", subtitle: "Selon la demande", icon: "branch", color: "#3aa7b8" },
       { title: "Réponse vocale", subtitle: "Voix naturelle", icon: "wave", color: "#14b8a6" },
       { title: "Prise de RDV", subtitle: "Agenda synchronisé", icon: "calendar", color: "#5b7bd5" },
-      { title: "SMS à l'équipe", subtitle: "Notification instantanée", icon: "message", color: "#e2574c" },
+      {
+        title: "SMS à l'équipe",
+        subtitle: "Notification instantanée",
+        icon: "message",
+        color: "#e2574c",
+      },
     ],
-    subs: [SUB_CLAUDE, SUB_SUPABASE, { title: "Tools", subtitle: "Agenda & outils", icon: "wrench", color: "#5b7bd5" }],
+    subs: [
+      SUB_CLAUDE,
+      SUB_SUPABASE,
+      { title: "Tools", subtitle: "Agenda & outils", icon: "wrench", color: "#5b7bd5" },
+    ],
   },
   {
     id: "relance-devis",
@@ -77,12 +108,29 @@ const WORKFLOWS: Workflow[] = [
     blurb:
       "48 h après un devis ou une proposition restée sans réponse, l'agent rédige une relance personnalisée, l'envoie et la consigne dans votre CRM.",
     nodes: [
-      { title: "Devis ou proposition", subtitle: "Déclencheur automatique", icon: "bolt", color: "#6d7cff", kind: "trigger" },
+      {
+        title: "Devis ou proposition",
+        subtitle: "Déclencheur automatique",
+        icon: "bolt",
+        color: "#6d7cff",
+        kind: "trigger",
+      },
       { title: "Attente 48 h", subtitle: "Minuteur", icon: "clock", color: "#8a8f9d" },
-      { title: "Agent IA", subtitle: "Le cerveau du workflow", icon: "bot", color: "", kind: "agent" },
+      {
+        title: "Agent IA",
+        subtitle: "Le cerveau du workflow",
+        icon: "bot",
+        color: "",
+        kind: "agent",
+      },
       { title: "Message personnalisé", subtitle: "Rédigé par l'IA", icon: "pen", color: "#d97757" },
       { title: "Envoi SMS / Email", subtitle: "Au bon moment", icon: "mail", color: "#5b8def" },
-      { title: "Suivi dans le CRM", subtitle: "Fiche client à jour", icon: "doc", color: "#b3aca2" },
+      {
+        title: "Suivi dans le CRM",
+        subtitle: "Fiche client à jour",
+        icon: "doc",
+        color: "#b3aca2",
+      },
     ],
     subs: [SUB_CLAUDE, SUB_SUPABASE],
   },
@@ -93,8 +141,20 @@ const WORKFLOWS: Workflow[] = [
     blurb:
       "À chaque avis reçu, l'agent rédige une réponse adaptée au ton du client, la publie et vous alerte si l'avis est négatif.",
     nodes: [
-      { title: "Nouvel avis Google", subtitle: "Veille automatique", icon: "star", color: "#f5b301", kind: "trigger" },
-      { title: "Agent IA", subtitle: "Le cerveau du workflow", icon: "bot", color: "", kind: "agent" },
+      {
+        title: "Nouvel avis Google",
+        subtitle: "Veille automatique",
+        icon: "star",
+        color: "#f5b301",
+        kind: "trigger",
+      },
+      {
+        title: "Agent IA",
+        subtitle: "Le cerveau du workflow",
+        icon: "bot",
+        color: "",
+        kind: "agent",
+      },
       { title: "Réponse sur mesure", subtitle: "Adaptée au ton", icon: "pen", color: "#d97757" },
       { title: "Publication", subtitle: "Réponse en ligne", icon: "send", color: "#4285f4" },
       { title: "Alerte avis négatif", subtitle: "SMS immédiat", icon: "message", color: "#e2574c" },
@@ -108,10 +168,27 @@ const WORKFLOWS: Workflow[] = [
     blurb:
       "Un appel vous échappe ? Le prospect reçoit un SMS immédiat avec une proposition de créneau, et vous êtes prévenu dans la foulée.",
     nodes: [
-      { title: "Appel manqué", subtitle: "Détection instantanée", icon: "phoneMissed", color: "#e2574c", kind: "trigger" },
-      { title: "Agent IA", subtitle: "Le cerveau du workflow", icon: "bot", color: "", kind: "agent" },
+      {
+        title: "Appel manqué",
+        subtitle: "Détection instantanée",
+        icon: "phoneMissed",
+        color: "#e2574c",
+        kind: "trigger",
+      },
+      {
+        title: "Agent IA",
+        subtitle: "Le cerveau du workflow",
+        icon: "bot",
+        color: "",
+        kind: "agent",
+      },
       { title: "SMS immédiat", subtitle: "Envoyé au prospect", icon: "message", color: "#e2574c" },
-      { title: "Créneau proposé", subtitle: "Agenda synchronisé", icon: "calendar", color: "#5b7bd5" },
+      {
+        title: "Créneau proposé",
+        subtitle: "Agenda synchronisé",
+        icon: "calendar",
+        color: "#5b7bd5",
+      },
       { title: "Équipe prévenue", subtitle: "Notification SMS", icon: "bell", color: "#f0a63a" },
     ],
     subs: [SUB_CLAUDE],
@@ -123,11 +200,33 @@ const WORKFLOWS: Workflow[] = [
     blurb:
       "Un client écrit sur votre WhatsApp professionnel : l'agent répond dans la conversation, qualifie la demande, propose un créneau et passe la main à votre équipe avec l'historique.",
     nodes: [
-      { title: "Message WhatsApp", subtitle: "Numéro professionnel", icon: "message", color: "#25d366", kind: "trigger" },
-      { title: "Agent IA", subtitle: "Le cerveau du workflow", icon: "bot", color: "", kind: "agent" },
-      { title: "Réponse instantanée", subtitle: "Dans la conversation", icon: "send", color: "#14b8a6" },
+      {
+        title: "Message WhatsApp",
+        subtitle: "Numéro professionnel",
+        icon: "message",
+        color: "#25d366",
+        kind: "trigger",
+      },
+      {
+        title: "Agent IA",
+        subtitle: "Le cerveau du workflow",
+        icon: "bot",
+        color: "",
+        kind: "agent",
+      },
+      {
+        title: "Réponse instantanée",
+        subtitle: "Dans la conversation",
+        icon: "send",
+        color: "#14b8a6",
+      },
       { title: "Prise de RDV", subtitle: "Agenda synchronisé", icon: "calendar", color: "#5b7bd5" },
-      { title: "Passage à l'équipe", subtitle: "Historique complet", icon: "branch", color: "#f0a63a" },
+      {
+        title: "Passage à l'équipe",
+        subtitle: "Historique complet",
+        icon: "branch",
+        color: "#f0a63a",
+      },
     ],
     subs: [SUB_CLAUDE, SUB_SUPABASE],
   },
@@ -138,13 +237,39 @@ const WORKFLOWS: Workflow[] = [
     blurb:
       "Un client demande où en est sa commande : l'agent retrouve le dossier, répond avec le statut réel et n'appelle un humain qu'en cas de litige.",
     nodes: [
-      { title: "Message client", subtitle: "WhatsApp, e-mail ou chat", icon: "mail", color: "#5b8def", kind: "trigger" },
-      { title: "Agent IA", subtitle: "Le cerveau du workflow", icon: "bot", color: "", kind: "agent" },
-      { title: "Recherche du dossier", subtitle: "Commande et livraison", icon: "database", color: "#3ecf8e" },
-      { title: "Réponse envoyée", subtitle: "Statut et prochaine étape", icon: "send", color: "#14b8a6" },
+      {
+        title: "Message client",
+        subtitle: "WhatsApp, e-mail ou chat",
+        icon: "mail",
+        color: "#5b8def",
+        kind: "trigger",
+      },
+      {
+        title: "Agent IA",
+        subtitle: "Le cerveau du workflow",
+        icon: "bot",
+        color: "",
+        kind: "agent",
+      },
+      {
+        title: "Recherche du dossier",
+        subtitle: "Commande et livraison",
+        icon: "database",
+        color: "#3ecf8e",
+      },
+      {
+        title: "Réponse envoyée",
+        subtitle: "Statut et prochaine étape",
+        icon: "send",
+        color: "#14b8a6",
+      },
       { title: "Litige au support", subtitle: "Reprise humaine", icon: "branch", color: "#e2574c" },
     ],
-    subs: [SUB_CLAUDE, SUB_SUPABASE, { title: "Tools", subtitle: "Commandes & livraison", icon: "wrench", color: "#5b7bd5" }],
+    subs: [
+      SUB_CLAUDE,
+      SUB_SUPABASE,
+      { title: "Tools", subtitle: "Commandes & livraison", icon: "wrench", color: "#5b7bd5" },
+    ],
   },
 ];
 
@@ -230,7 +355,15 @@ const ICONS: Record<IconId, React.ReactNode> = {
 /* Layout : positionne nodes, sub-nodes, connexions et ports           */
 /* ------------------------------------------------------------------ */
 
-type Laid = WfNode & { x: number; y: number; w: number; h: number; cx: number; cy: number; lines: string[] };
+type Laid = WfNode & {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  cx: number;
+  cy: number;
+  lines: string[];
+};
 type LaidSub = WfSub & { cx: number; y: number };
 type Layout = {
   vb: { w: number; h: number };
@@ -270,7 +403,16 @@ function layoutH(wf: Workflow): Layout {
     const w = widths[i];
     const h = n.kind === "agent" ? 72 : 62;
     const cy = baseCY + stagger[i % stagger.length];
-    const laid: Laid = { ...n, x, y: cy - h / 2, w, h, cx: x + w / 2, cy, lines: wrapTitle(n.title, n.kind === "agent" ? 22 : 16) };
+    const laid: Laid = {
+      ...n,
+      x,
+      y: cy - h / 2,
+      w,
+      h,
+      cx: x + w / 2,
+      cy,
+      lines: wrapTitle(n.title, n.kind === "agent" ? 22 : 16),
+    };
     x += w + gap;
     return laid;
   });
@@ -315,7 +457,16 @@ function layoutV(wf: Workflow): Layout {
   let y = 12;
   const nodes: Laid[] = wf.nodes.map((n) => {
     const h = n.kind === "agent" ? 72 : 62;
-    const laid: Laid = { ...n, x: X, y, w: NODE_W, h, cx: VB_W / 2, cy: y + h / 2, lines: wrapTitle(n.title, 28) };
+    const laid: Laid = {
+      ...n,
+      x: X,
+      y,
+      w: NODE_W,
+      h,
+      cx: VB_W / 2,
+      cy: y + h / 2,
+      lines: wrapTitle(n.title, 28),
+    };
     y += h + GAP;
     if (n.kind === "agent") y += SUBZONE;
     return laid;
@@ -337,12 +488,16 @@ function layoutV(wf: Workflow): Layout {
     if (a.kind === "agent") {
       // Le flux contourne les sub-nodes par la gauche
       const x1 = a.x;
-      edges.push(`M ${x1} ${a.cy} C ${x1 - 34} ${a.cy + 50}, ${a.x - 34} ${b.y - 50}, ${b.cx} ${b.y}`);
+      edges.push(
+        `M ${x1} ${a.cy} C ${x1 - 34} ${a.cy + 50}, ${a.x - 34} ${b.y - 50}, ${b.cx} ${b.y}`,
+      );
       ports.push({ x: x1, y: a.cy }, { x: b.cx, y: b.y });
     } else {
       const bow = i % 2 === 0 ? 22 : -22;
       const y1 = a.y + a.h;
-      edges.push(`M ${a.cx} ${y1} C ${a.cx + bow} ${y1 + 18}, ${b.cx + bow} ${b.y - 18}, ${b.cx} ${b.y}`);
+      edges.push(
+        `M ${a.cx} ${y1} C ${a.cx + bow} ${y1 + 18}, ${b.cx + bow} ${b.y - 18}, ${b.cx} ${b.y}`,
+      );
       ports.push({ x: a.cx, y: y1 }, { x: b.cx, y: b.y });
     }
   }
@@ -377,7 +532,19 @@ function triggerPath(x: number, y: number, w: number, h: number): string {
 /* Rendu SVG d'un node                                                 */
 /* ------------------------------------------------------------------ */
 
-function NodeIcon({ icon, color, x, y, size }: { icon: IconId; color: string; x: number; y: number; size: number }) {
+function NodeIcon({
+  icon,
+  color,
+  x,
+  y,
+  size,
+}: {
+  icon: IconId;
+  color: string;
+  x: number;
+  y: number;
+  size: number;
+}) {
   const glyph = size * 0.6;
   const pad = (size - glyph) / 2;
   return (
@@ -416,19 +583,42 @@ function CanvasNode({ node, order }: { node: Laid; order: number }) {
       {isTrigger ? (
         <path className="wfc-node-box" d={triggerPath(node.x, node.y, node.w, node.h)} />
       ) : (
-        <rect className="wfc-node-box" x={node.x} y={node.y} width={node.w} height={node.h} rx={8} />
+        <rect
+          className="wfc-node-box"
+          x={node.x}
+          y={node.y}
+          width={node.w}
+          height={node.h}
+          rx={8}
+        />
       )}
-      <NodeIcon icon={node.icon} color={node.color} x={iconX} y={node.cy - iconSize / 2} size={iconSize} />
+      <NodeIcon
+        icon={node.icon}
+        color={node.color}
+        x={iconX}
+        y={node.cy - iconSize / 2}
+        size={iconSize}
+      />
       {twoLines ? (
         <>
-          <text className="wfc-title" x={textX} y={node.cy - 8}>{node.lines[0]}</text>
-          <text className="wfc-title" x={textX} y={node.cy + 6}>{node.lines[1]}</text>
-          <text className="wfc-sub" x={textX} y={node.cy + 21}>{node.subtitle}</text>
+          <text className="wfc-title" x={textX} y={node.cy - 8}>
+            {node.lines[0]}
+          </text>
+          <text className="wfc-title" x={textX} y={node.cy + 6}>
+            {node.lines[1]}
+          </text>
+          <text className="wfc-sub" x={textX} y={node.cy + 21}>
+            {node.subtitle}
+          </text>
         </>
       ) : (
         <>
-          <text className="wfc-title" x={textX} y={node.cy - 2}>{node.lines[0]}</text>
-          <text className="wfc-sub" x={textX} y={node.cy + 15}>{node.subtitle}</text>
+          <text className="wfc-title" x={textX} y={node.cy - 2}>
+            {node.lines[0]}
+          </text>
+          <text className="wfc-sub" x={textX} y={node.cy + 15}>
+            {node.subtitle}
+          </text>
         </>
       )}
     </g>
@@ -514,7 +704,9 @@ export function WorkflowCanvas() {
         ))}
       </div>
 
-      <p className="wfc-blurb" aria-live="polite">{wf.blurb}</p>
+      <p className="wfc-blurb" aria-live="polite">
+        {wf.blurb}
+      </p>
 
       {/* Canvas */}
       <div role="tabpanel" id={`wfc-panel-${wf.id}`} aria-labelledby={`wfc-tab-${wf.id}`}>
@@ -576,8 +768,12 @@ export function WorkflowCanvas() {
               style={{ "--d": `${agentOrder * 120 + 300 + i * 90}ms` } as React.CSSProperties}
             >
               <NodeIcon icon={s.icon} color={s.color} x={s.cx - 19} y={s.y} size={38} />
-              <text className="wfc-subnode-title" x={s.cx} y={s.y + 54} textAnchor="middle">{s.title}</text>
-              <text className="wfc-subnode-sub" x={s.cx} y={s.y + 68} textAnchor="middle">{s.subtitle}</text>
+              <text className="wfc-subnode-title" x={s.cx} y={s.y + 54} textAnchor="middle">
+                {s.title}
+              </text>
+              <text className="wfc-subnode-sub" x={s.cx} y={s.y + 68} textAnchor="middle">
+                {s.subtitle}
+              </text>
             </g>
           ))}
 

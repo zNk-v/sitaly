@@ -70,8 +70,8 @@ export function CookieConsent() {
           <div className="text-sm text-foreground">
             <p className="font-semibold">Cookies & mesure d'audience</p>
             <p className="mt-1 text-muted-foreground">
-              Nous utilisons des cookies pour analyser l'audience du site (Google Analytics).
-              Vous pouvez accepter ou refuser. Voir notre{" "}
+              Nous utilisons des cookies pour analyser l'audience du site (Google Analytics). Vous
+              pouvez accepter ou refuser. Voir notre{" "}
               <Link to="/politique-confidentialite/" className="underline hover:text-primary">
                 politique de confidentialité
               </Link>

@@ -237,8 +237,8 @@ export function MetierLanding(props: MetierLandingProps) {
             Ce que comprend un site internet <span className="accent-word">{metier}</span>
           </h2>
           <p className="measure mt-4 text-sm font-semibold text-foreground/80">
-            En abonnement mensuel, sans engagement de durée et sans frais d'installation.
-            Tout est géré, vous ne touchez à rien.
+            En abonnement mensuel, sans engagement de durée et sans frais d'installation. Tout est
+            géré, vous ne touchez à rien.
           </p>
           <div className="mx-auto mt-8 grid max-w-3xl gap-5 md:grid-cols-2">
             {[
@@ -304,9 +304,7 @@ export function MetierLanding(props: MetierLandingProps) {
                     </li>
                   ))}
                 </ul>
-                {tier.note && (
-                  <p className="mt-4 text-xs text-muted-foreground">* {tier.note}</p>
-                )}
+                {tier.note && <p className="mt-4 text-xs text-muted-foreground">* {tier.note}</p>}
               </article>
             ))}
           </div>
@@ -430,7 +428,10 @@ function LandingNav() {
           <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-foreground">
             Accueil
           </Link>
-          <Link to="/blog/" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+          <Link
+            to="/blog/"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground"
+          >
             Blog
           </Link>
         </nav>
@@ -488,9 +489,21 @@ export function buildMetierMeta(opts: {
             url: "https://sitaly.fr",
           },
           areaServed: { "@type": "Country", name: "France" },
+          // Les offres gardent leur périmètre, elles perdent leurs montants :
+          // le balisage ne doit pas annoncer un prix que la page ne dit plus.
           offers: [
-            { "@type": "Offer", name: "Sitaly Présence", price: "149", priceCurrency: "EUR", priceSpecification: { "@type": "UnitPriceSpecification", price: "149", priceCurrency: "EUR", unitCode: "MON" } },
-            { "@type": "Offer", name: "Sitaly Acquisition", price: "299", priceCurrency: "EUR", priceSpecification: { "@type": "UnitPriceSpecification", price: "299", priceCurrency: "EUR", unitCode: "MON" } },
+            {
+              "@type": "Offer",
+              name: "Sitaly Présence",
+              description:
+                "Site internet professionnel livré en 48h, hébergement, maintenance, modifications et référencement local inclus. Abonnement mensuel sans engagement de durée.",
+            },
+            {
+              "@type": "Offer",
+              name: "Sitaly Acquisition",
+              description:
+                "Création et gestion de campagnes publicitaires, avec ou sans site. Forfait mensuel de gestion majoré d'une part du budget publicitaire, budget versé directement à la régie.",
+            },
           ],
           url,
         }),

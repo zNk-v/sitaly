@@ -6,7 +6,11 @@ import { Hammer, HardHat, Wrench, Zap } from "lucide-react";
  */
 export interface MetierLink {
   /** Chemin de route TanStack (le slash final est ajouté par le router). */
-  to: "/site-internet-plombier/" | "/site-internet-electricien/" | "/site-internet-couvreur/" | "/site-internet-menuisier/";
+  to:
+    | "/site-internet-plombier/"
+    | "/site-internet-electricien/"
+    | "/site-internet-couvreur/"
+    | "/site-internet-menuisier/";
   /** Nom du métier au singulier, minuscule. */
   metier: string;
   /** Libellé court affiché dans les liens et les cartes. */

@@ -30,10 +30,21 @@ export const Route = createFileRoute("/blog/$slug")({
     const url = `https://sitaly.fr/blog/${post.slug}/`;
     const faqSection = post.content.find((s) => s.type === "faq");
     const wordCount = post.content.reduce((acc, s) => {
-      if (s.type === "p" || s.type === "h2" || s.type === "h3" || s.type === "quote") return acc + s.text.split(/\s+/).length;
+      if (s.type === "p" || s.type === "h2" || s.type === "h3" || s.type === "quote")
+        return acc + s.text.split(/\s+/).length;
       if (s.type === "ul") return acc + s.items.join(" ").split(/\s+/).length;
-      if (s.type === "faq") return acc + s.items.map((i) => `${i.q} ${i.a}`).join(" ").split(/\s+/).length;
-      if (s.type === "table") return acc + [s.caption ?? "", ...s.headers, ...s.rows.flat()].join(" ").split(/\s+/).length;
+      if (s.type === "faq")
+        return (
+          acc +
+          s.items
+            .map((i) => `${i.q} ${i.a}`)
+            .join(" ")
+            .split(/\s+/).length
+        );
+      if (s.type === "table")
+        return (
+          acc + [s.caption ?? "", ...s.headers, ...s.rows.flat()].join(" ").split(/\s+/).length
+        );
       return acc;
     }, 0);
     const scripts: { type: string; children: string }[] = [
@@ -119,9 +130,7 @@ export const Route = createFileRoute("/blog/$slug")({
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="font-display text-4xl font-bold">Article introuvable</h1>
-        <p className="mt-3 text-muted-foreground">
-          Cet article n'existe pas ou a été déplacé.
-        </p>
+        <p className="mt-3 text-muted-foreground">Cet article n'existe pas ou a été déplacé.</p>
         <Link
           to="/blog/"
           className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
@@ -318,7 +327,10 @@ function RenderSection({ section }: { section: BlogSection }) {
             <thead className="bg-secondary/60">
               <tr>
                 {section.headers.map((h, i) => (
-                  <th key={i} className="border-b border-border px-3 py-2.5 text-left font-semibold text-foreground">
+                  <th
+                    key={i}
+                    className="border-b border-border px-3 py-2.5 text-left font-semibold text-foreground"
+                  >
                     {h}
                   </th>
                 ))}
@@ -328,7 +340,10 @@ function RenderSection({ section }: { section: BlogSection }) {
               {section.rows.map((row, ri) => (
                 <tr key={ri} className="odd:bg-background even:bg-secondary/20">
                   {row.map((cell, ci) => (
-                    <td key={ci} className="border-b border-border/60 px-3 py-2.5 align-top text-foreground/90">
+                    <td
+                      key={ci}
+                      className="border-b border-border/60 px-3 py-2.5 align-top text-foreground/90"
+                    >
                       {cell}
                     </td>
                   ))}
@@ -337,7 +352,9 @@ function RenderSection({ section }: { section: BlogSection }) {
             </tbody>
           </table>
           {section.caption && (
-            <figcaption className="px-3 py-2 text-xs text-muted-foreground">{section.caption}</figcaption>
+            <figcaption className="px-3 py-2 text-xs text-muted-foreground">
+              {section.caption}
+            </figcaption>
           )}
         </figure>
       );
@@ -366,7 +383,8 @@ function InlineCTA() {
         Vous voulez appliquer tout ça sans y passer 40 heures ?
       </h3>
       <p className="mt-2 text-foreground/80">
-        Site artisan livré en 48h, optimisé pour le SEO local. En abonnement mensuel, sans engagement.
+        Site artisan livré en 48h, optimisé pour le SEO local. En abonnement mensuel, sans
+        engagement.
       </p>
       <a
         href={CALENDLY_URL}
@@ -384,12 +402,10 @@ function InlineCTA() {
 function FinalCTA() {
   return (
     <div className="mt-12 rounded-2xl border border-accent/30 bg-accent/5 p-7 sm:p-8">
-      <h2 className="font-display text-xl font-bold sm:text-2xl">
-        Et si on créait votre site ?
-      </h2>
+      <h2 className="font-display text-xl font-bold sm:text-2xl">Et si on créait votre site ?</h2>
       <p className="mt-2 text-muted-foreground">
-        Sitaly s'occupe de tout : création, référencement local, mise en ligne en 48h.
-        En abonnement mensuel, tout inclus et sans engagement.
+        Sitaly s'occupe de tout : création, référencement local, mise en ligne en 48h. En abonnement
+        mensuel, tout inclus et sans engagement.
       </p>
       <a
         href={CALENDLY_URL}

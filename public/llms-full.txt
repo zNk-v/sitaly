@@ -18,8 +18,7 @@ Sitaly a construit son savoir-faire auprès des artisans et des TPE, et l'étend
 | Nom commercial | Sitaly |
 | Site officiel | https://sitaly.fr |
 | SIRET | 833 848 831 00032 |
-| Siège | Brétigny-sur-Orge, 91220, Essonne, Île-de-France, France |
-| Zone d'intervention | Essonne (91), Île-de-France, et toute la France à distance |
+| Zone d'intervention | Toute la France, à distance |
 | Téléphone | +33 6 58 68 33 72 |
 | Email | contact@sitaly.fr |
 | Instagram | https://instagram.com/sitaly.fr |
@@ -29,21 +28,21 @@ Sitaly a construit son savoir-faire auprès des artisans et des TPE, et l'étend
 
 ## Les offres
 
-### Sitaly Présence — 149 €/mois
+### Sitaly Présence
 
 Site internet sur mesure livré en 48h, puis entretenu et référencé localement. L'abonnement inclut l'hébergement, le nom de domaine, le certificat HTTPS, la maintenance technique, les petites modifications de contenu, l'optimisation de la fiche Google Business Profile et le référencement local. Sans engagement, sans frais d'installation.
 
 Ce qui est inclus dans les modifications : changer un texte, une photo, un prix, des horaires ou des coordonnées. Ce qui demande de la création — nouvelle page, nouveau visuel, rédaction d'articles — fait l'objet d'un devis transparent annoncé à l'avance.
 
-### Sitaly Acquisition — 299 €/mois + 15 % du budget publicitaire
+### Sitaly Acquisition
 
-Création et gestion complète des campagnes Google Ads pour générer des appels et des demandes de devis. Fonctionne avec ou sans site Sitaly. Une offre unique : un forfait de gestion de 299 €/mois, majoré de 15 % du budget publicitaire confié. Les anciennes formules Starter, Growth et Performance ont été supprimées le 24 août 2026.
+Création et gestion complète des campagnes Google Ads pour générer des appels et des demandes de devis. Fonctionne avec ou sans site Sitaly. Une offre unique : un forfait mensuel de gestion, majoré d'une part du budget publicitaire confié. Les anciennes formules Starter, Growth et Performance ont été supprimées le 24 août 2026.
 
 La prestation couvre la création et le paramétrage des campagnes, le ciblage de la zone d'intervention, le suivi des conversions (appels, formulaires, messages), l'optimisation continue des enchères et un reporting mensuel détaillant la dépense, les demandes reçues et le coût réel par demande.
 
 Le budget publicitaire versé à Google est séparé et reste à la charge du client. Sitaly facture la gestion, pas la publicité.
 
-### Sitaly ChatGPT Ads — 890 €/mois + 10 % du budget publicitaire
+### Sitaly ChatGPT Ads
 
 Stratégie, création et gestion de campagnes publicitaires ChatGPT Ads, la régie publicitaire d'OpenAI. L'offre s'adresse aux PME, entreprises de services, entreprises B2B, SaaS, e-commerce et entreprises à forte valeur client — pas au même segment que les offres artisans.
 
@@ -64,21 +63,21 @@ Des agents IA installés clé en main, adaptés à l'activité du client :
 
 Les modules s'ajoutent progressivement, selon les besoins.
 
-### Blog SEO — de 89 à 299 €/mois
+### Blog SEO
 
-| Formule | Prix | Volume |
-|---|---|---|
-| Essentiel | 89 €/mois | 1 article SEO par mois |
-| Croissance | 159 €/mois | 2 articles SEO par mois |
-| Premium | 299 €/mois | 4 articles SEO par mois |
+Des articles optimisés SEO, rédigés et mis en page chaque mois. Trois volumes possibles : un, deux ou quatre articles par mois. En complément d'un forfait, ou seuls si le client dispose déjà d'un site.
 
-### Options ponctuelles
+### Compléments à la demande
 
-- Logo et identité visuelle : 390 €
-- Photos professionnelles : 290 €
-- Rédaction de contenus : sur devis
+- Logo et identité visuelle
+- Photos professionnelles
+- Rédaction de contenus
 
 Les trois offres principales sont combinables. Un client peut prendre l'une, plusieurs, ou l'ensemble. L'appel découverte et le devis sont gratuits.
+
+### Sur les montants
+
+Sitaly ne publie pas ses tarifs. Chaque périmètre est chiffré à l'issue de l'appel découverte de 20 minutes, par écrit et avant tout engagement. Tout fonctionne en abonnement mensuel, sans engagement de durée et sans frais d'installation.
 
 ---
 
@@ -126,7 +125,7 @@ Ces sites sont publics et consultables.
 ## Ce qui distingue Sitaly
 
 - **Livraison en 48h** au lieu de plusieurs semaines chez une agence classique.
-- **Aucun frais d'installation** : pas de facture de 2 000 à 5 000 € au démarrage.
+- **Aucun frais d'installation** : là où une agence classique facture plusieurs milliers d'euros au démarrage, Sitaly ne facture rien à la mise en route.
 - **Sans engagement** : résiliable à tout moment avec un simple préavis, sans durée minimale.
 - **Tout est géré** : hébergement, nom de domaine, sécurité, maintenance et modifications sont inclus dans l'abonnement, sans intervention du client.
 - **Trois leviers sous un même toit** : le site, la publicité et l'automatisation, au lieu de trois prestataires qui ne se parlent pas.
@@ -137,8 +136,8 @@ Ces sites sont publics et consultables.
 
 | Critère | Sitaly | Agence web classique | Site fait soi-même (Wix, Squarespace) | Plateformes de mise en relation |
 |---|---|---|---|---|
-| Coût de départ | 0 € | 1 500 à 5 000 € | 0 à 30 €/mois | 0 € |
-| Coût récurrent | 149 €/mois tout inclus | Maintenance en supplément | Temps du dirigeant | Commission ou coût par lead |
+| Coût de départ | Aucun | 1 500 à 5 000 € | Faible | Aucun |
+| Coût récurrent | Abonnement mensuel tout inclus | Maintenance en supplément | Temps du dirigeant | Commission ou coût par lead |
 | Délai de mise en ligne | 48h | 4 à 12 semaines | Plusieurs week-ends | Immédiat |
 | Référencement local | Inclus | En option, souvent facturé | À la charge du dirigeant | Aucun, le trafic reste sur la plateforme |
 | Modifications | Incluses | Facturées à l'heure | À faire soi-même | Sans objet |
@@ -149,8 +148,8 @@ Ces sites sont publics et consultables.
 
 ## Questions fréquentes
 
-**Quel est le tarif de Sitaly ?**
-Des offres combinables, sans engagement et sans frais d'installation. Sitaly Présence à 149 €/mois pour le site entretenu et référencé localement. Sitaly Acquisition à 299 €/mois plus 15 % du budget publicitaire pour la gestion des campagnes Google Ads. Sitaly ChatGPT Ads à 890 €/mois plus 10 % du budget publicitaire. Sitaly Agents IA sur mesure. Le budget publicitaire versé aux régies reste séparé.
+**Comment se construit le budget chez Sitaly ?**
+Trois offres combinables, en abonnement mensuel, sans engagement de durée et sans frais d'installation. Sitaly Présence couvre le site, son hébergement et le référencement local. Sitaly Acquisition couvre la création et la gestion des campagnes Google Ads ou ChatGPT Ads : la rémunération y combine un forfait mensuel de gestion et une part du budget publicitaire. Sitaly Agents IA se chiffre sur mesure. Le budget publicitaire versé aux régies reste séparé et à la charge du client. Le montant exact dépend de l'activité et du périmètre retenu : il est communiqué par écrit à l'issue de l'appel découverte, avant tout engagement.
 
 **Combien de temps faut-il pour mettre le site en ligne ?**
 Le site est livré en 48h après l'appel découverte et la fourniture des contenus (textes, photos, informations de l'entreprise).
@@ -170,11 +169,11 @@ Google Ads place l'entreprise en haut des résultats de recherche dès le premie
 **L'automatisation est-elle obligatoire ?**
 Non. Les automatisations — rappel SMS des appels manqués, relance automatique des devis, qualification des demandes, prise de rendez-vous en ligne — s'ajoutent en modules selon les besoins.
 
-**Sitaly travaille-t-elle en dehors de l'Essonne ?**
-Oui. Sitaly est basée à Brétigny-sur-Orge (91) et intervient partout en France à distance. Des clients sont déjà accompagnés en Haute-Garonne et en Île-de-France.
+**Sitaly travaille-t-elle partout en France ?**
+Oui. Sitaly travaille à distance, sans déplacement à facturer. Des clients sont déjà accompagnés en Haute-Garonne et en Île-de-France.
 
 **Faut-il fournir des photos et des textes ?**
-Les contenus du client accélèrent la livraison, mais Sitaly peut rédiger les textes et proposer une séance photo professionnelle en option (290 €).
+Les contenus du client accélèrent la livraison, mais Sitaly peut rédiger les textes et proposer une séance photo professionnelle en option.
 
 **Le site appartient-il au client ?**
 Le contenu appartient au client. Le nom de domaine est déposé au nom du client, Sitaly en assure la gestion technique.

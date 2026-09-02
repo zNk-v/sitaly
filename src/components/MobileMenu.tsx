@@ -55,8 +55,7 @@ export function MobileMenu({
       ? "absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-3xl border border-border/70 bg-background shadow-elevated md:hidden"
       : "absolute left-0 right-0 top-full z-50 border-b border-border bg-background shadow-elevated md:hidden";
 
-  const itemClass =
-    "border-b border-border/60 py-3.5 text-base font-medium text-foreground";
+  const itemClass = "border-b border-border/60 py-3.5 text-base font-medium text-foreground";
 
   return (
     <>

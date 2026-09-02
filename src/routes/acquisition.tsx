@@ -32,24 +32,19 @@ import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
  *    partout où un montant apparaît — c'est la question n°1 des prospects.
  */
 
-const PRIX = 299;
-const COMMISSION_PCT = 15;
-const EXEMPLE_BUDGET = 1000;
-const EXEMPLE_VARIABLE = (EXEMPLE_BUDGET * COMMISSION_PCT) / 100;
-const EXEMPLE_TOTAL = PRIX + EXEMPLE_VARIABLE + EXEMPLE_BUDGET;
-
-/** Format français fiable : toLocaleString dépend des données ICU du build. */
-const euro = (n: number) =>
-  `${String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "\u202f")}\u00a0€`;
+/* Les montants ont quitté le site (DESIGN.md §8). Cette page défendait la
+   transparence tarifaire par un exemple chiffré : elle défend désormais la
+   même chose par la structure — ce qui est fixe, ce qui suit la dépense, et
+   ce qui ne passe jamais par Sitaly. */
 
 const FAQ_ITEMS = [
   {
-    q: "Les 299 € comprennent-ils le budget Google Ads ?",
-    a: "Non. Les 299 € couvrent l'accompagnement et la gestion de vos campagnes : stratégie, création, suivi des conversions, optimisation et reporting. Le budget publicitaire est payé séparément, directement à Google, depuis un compte qui reste le vôtre.",
+    q: "Le forfait comprend-il le budget Google Ads ?",
+    a: "Non. Le forfait couvre l'accompagnement et la gestion de vos campagnes : stratégie, création, suivi des conversions, optimisation et reporting. Le budget publicitaire est payé séparément, directement à Google, depuis un compte qui reste le vôtre.",
   },
   {
-    q: "Pourquoi 15 % en plus du forfait ?",
-    a: `Les ${COMMISSION_PCT} % correspondent à la part variable de la gestion. Piloter 500 € de publicité et en piloter 5 000 € ne demande pas le même travail : plus de campagnes à surveiller, plus de mots-clés à arbitrer, plus de données à analyser. Ce pourcentage se calcule sur le montant réellement dépensé en publicité sur le mois, pas sur un budget prévisionnel.`,
+    q: "Pourquoi une part variable en plus du forfait ?",
+    a: "Elle correspond à la charge réelle de gestion. Piloter 500 € de publicité et en piloter 5 000 € ne demande pas le même travail : plus de campagnes à surveiller, plus de mots-clés à arbitrer, plus de données à analyser. Cette part se calcule sur le montant réellement dépensé en publicité sur le mois, pas sur un budget prévisionnel.",
   },
   {
     q: "Combien dois-je investir en publicité ?",
@@ -65,7 +60,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Dois-je déjà avoir un site internet ?",
-    a: "Un site aide, parce que la publicité doit envoyer les visiteurs quelque part de convaincant. Mais l'offre est indépendante : si vous avez déjà un site, nous travaillons avec. Si vous n'en avez pas, l'offre Sitaly Présence (149 €/mois) inclut un site professionnel livré en 48h, et les deux se combinent.",
+    a: "Un site aide, parce que la publicité doit envoyer les visiteurs quelque part de convaincant. Mais l'offre est indépendante : si vous avez déjà un site, nous travaillons avec. Si vous n'en avez pas, l'offre Sitaly Présence inclut un site professionnel livré en 48h, et les deux se combinent.",
   },
   {
     q: "Qui est propriétaire du compte Google Ads ?",
@@ -210,18 +205,18 @@ const CONFIANCE = [
 export const Route = createFileRoute("/acquisition")({
   head: () => ({
     meta: [
-      { title: "Agence Google Ads pour PME et artisans — Gestion à 299€/mois | Sitaly" },
+      { title: "Agence Google Ads pour PME, TPE et artisans | Sitaly" },
       {
         name: "description",
         content:
-          "Sitaly crée, pilote et optimise vos campagnes Google Ads pour générer des demandes qualifiées. Gestion à 299 €/mois + 15 % du budget publicitaire, budget Google séparé.",
+          "Sitaly crée, pilote et optimise vos campagnes Google Ads pour générer des demandes qualifiées. Forfait de gestion mensuel, budget Google séparé et sans engagement de durée.",
       },
       { name: "robots", content: "index,follow" },
       { property: "og:title", content: "Agence Google Ads pour PME et artisans | Sitaly" },
       {
         property: "og:description",
         content:
-          "Création, gestion et optimisation de vos campagnes Google Ads. 299 €/mois + 15 % du budget publicitaire. Votre budget Google reste séparé et vous appartient.",
+          "Création, gestion et optimisation de vos campagnes Google Ads. Forfait de gestion mensuel, sans engagement. Votre budget Google reste séparé et vous appartient.",
       },
       { property: "og:url", content: "https://sitaly.fr/acquisition/" },
     ],
@@ -235,21 +230,17 @@ export const Route = createFileRoute("/acquisition")({
           name: "Sitaly Acquisition — gestion de campagnes Google Ads",
           serviceType: "Gestion de campagnes Google Ads",
           description:
-            "Création, gestion et optimisation de campagnes Google Ads pour PME, TPE et artisans : stratégie, mots-clés, annonces, suivi des conversions, optimisation et reporting. Honoraires de 299 €/mois majorés de 15 % du budget publicitaire dépensé. Le budget publicitaire est payé directement à Google et n'est pas inclus.",
+            "Création, gestion et optimisation de campagnes Google Ads pour PME, TPE et artisans : stratégie, mots-clés, annonces, suivi des conversions, optimisation et reporting. Honoraires mensuels de gestion, majorés d'une part du budget publicitaire dépensé. Le budget publicitaire est payé directement à Google et n'est pas inclus.",
           provider: { "@type": "Organization", name: "Sitaly", url: "https://sitaly.fr" },
           areaServed: "FR",
           offers: [
             {
               "@type": "Offer",
               name: "Gestion Google Ads",
-              price: "299",
-              priceCurrency: "EUR",
               description:
-                "299 €/mois d'honoraires de gestion, plus 15 % du budget publicitaire réellement dépensé. Budget publicitaire Google non inclus.",
+                "Honoraires mensuels de gestion, plus une part du budget publicitaire réellement dépensé. Budget publicitaire Google non inclus.",
               priceSpecification: {
                 "@type": "UnitPriceSpecification",
-                price: "299",
-                priceCurrency: "EUR",
                 unitCode: "MON",
               },
             },
@@ -343,7 +334,7 @@ function Hero() {
           </a>
         </div>
         <p className="mt-6 text-sm text-muted-foreground">
-          299 €/mois + {COMMISSION_PCT} % du budget publicitaire. Sans engagement de durée.
+          Un forfait mensuel plus une part de la publicité dépensée. Sans engagement de durée.
         </p>
       </div>
     </section>
@@ -458,22 +449,21 @@ function Tarif() {
             </span>
           </div>
 
-          <div className="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <span className="font-display text-5xl font-extrabold tracking-tight sm:text-6xl">
-              {PRIX} €
+          <div className="mt-6">
+            <span className="display-section">
+              Un forfait mensuel, <span className="accent-word">et rien d'autre de fixe</span>
             </span>
-            <span className="text-lg text-muted-foreground">/ mois</span>
           </div>
-          <p className="mt-2 text-lg font-semibold text-accent">
-            + {COMMISSION_PCT} % du budget publicitaire dépensé
+          <p className="mt-4 text-lg font-semibold text-brand-ink">
+            + une part variable, calculée sur la publicité réellement dépensée
           </p>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Les {COMMISSION_PCT} % sont calculés sur le montant réellement dépensé en publicité sur
-            le mois, jamais sur un budget prévisionnel.
+          <p className="measure mt-2 text-sm text-muted-foreground">
+            La part variable suit le montant effectivement dépensé sur le mois, jamais un budget
+            prévisionnel. Vous dépensez moins, elle baisse d'autant.
           </p>
 
           <div className="mt-7 border-t border-border pt-6">
-            <div className="text-sm font-semibold">Inclus dans les {PRIX} € :</div>
+            <div className="text-sm font-semibold">Ce que couvre le forfait :</div>
             <ul className="mt-4 grid gap-3 sm:grid-cols-2">
               {INCLUS.map((f) => (
                 <li key={f} className="flex items-start gap-3 text-[15px]">
@@ -502,14 +492,13 @@ function Tarif() {
           </div>
           <p className="mt-4 text-[15px] leading-relaxed text-foreground/85">
             Le budget Google Ads est défini avec vous et payé <strong>directement à Google</strong>,
-            depuis un compte ouvert à votre nom. Il n'est pas inclus dans les {PRIX} €, il ne
-            transite pas par Sitaly, et le compte reste le vôtre si nous arrêtons de travailler
-            ensemble.
+            depuis un compte ouvert à votre nom. Il ne transite jamais par Sitaly, et le compte
+            reste le vôtre si nous arrêtons de travailler ensemble.
           </p>
         </div>
       </div>
 
-      <ExempleChiffre />
+      <StructureBudget />
 
       <div className="mx-auto mt-8 flex max-w-4xl justify-center">
         <CtaPrincipal />
@@ -518,71 +507,68 @@ function Tarif() {
   );
 }
 
-/* ---------------- EXEMPLE CHIFFRÉ ---------------- */
-function ExempleChiffre() {
+/* ---------------- STRUCTURE DU BUDGET ---------------- */
+/**
+ * Remplace l'ancien exemple chiffré. La question n°1 des prospects reste la
+ * même — « qu'est-ce que je paie exactement ? » — et la réponse aussi : trois
+ * lignes, dont une seule est facturée par Sitaly de façon fixe.
+ */
+function StructureBudget() {
   const lignes = [
     {
       label: "Accompagnement Sitaly",
-      detail: "Forfait de gestion mensuel",
-      montant: PRIX,
+      detail: "Forfait mensuel de gestion, identique d'un mois sur l'autre",
+      nature: "Fixe",
       accent: true,
     },
     {
       label: "Gestion variable",
-      detail: `${COMMISSION_PCT} % de ${euro(EXEMPLE_BUDGET)} dépensés`,
-      montant: EXEMPLE_VARIABLE,
+      detail: "Une part de la publicité réellement dépensée sur le mois",
+      nature: "Suit la dépense",
       accent: true,
     },
     {
       label: "Budget publicitaire Google",
-      detail: "Versé directement à Google, pas à Sitaly",
-      montant: EXEMPLE_BUDGET,
+      detail: "Versé directement à Google, depuis votre compte, pas à Sitaly",
+      nature: "Vous le fixez",
       accent: false,
     },
   ];
 
   return (
     <div className="mx-auto mt-6 max-w-4xl rounded-3xl border border-border bg-card p-7 shadow-soft sm:p-9">
-      <div className="text-xs font-semibold uppercase tracking-wider text-accent">Exemple</div>
-      <h3 className="mt-1 font-display text-xl font-bold tracking-tight sm:text-2xl">
-        Vous investissez {euro(EXEMPLE_BUDGET)} de publicité dans le mois
+      <div className="rail-label text-brand-ink">Ce que vous payez</div>
+      <h3 className="display-section mt-3 text-2xl sm:text-3xl">
+        Trois lignes, <span className="accent-word">et vous savez laquelle bouge</span>
       </h3>
 
-      <ul className="mt-6 space-y-3">
+      <ul className="mt-7 space-y-3">
         {lignes.map((l) => (
           <li
             key={l.label}
-            className={`flex flex-wrap items-center justify-between gap-2 rounded-xl border px-4 py-3.5 ${
-              l.accent ? "border-accent/30 bg-accent/5" : "border-border bg-secondary/40"
+            className={`flex flex-wrap items-center justify-between gap-3 rounded-xl border px-4 py-3.5 ${
+              l.accent ? "border-accent/30 bg-accent/5" : "border-border bg-paper-sunk"
             }`}
           >
             <div>
               <div className="font-semibold">{l.label}</div>
               <div className="text-sm text-muted-foreground">{l.detail}</div>
             </div>
-            <div className="font-display text-xl font-extrabold tracking-tight">
-              {euro(l.montant)}
-            </div>
+            <span
+              className={`rail-label shrink-0 rounded-full px-3 py-1 ${
+                l.accent ? "bg-accent/10 text-brand-ink" : "bg-background text-muted-foreground"
+              }`}
+            >
+              {l.nature}
+            </span>
           </li>
         ))}
       </ul>
 
-      <div className="mt-5 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-5">
-        <div>
-          <div className="font-display text-lg font-bold">Coût total du mois</div>
-          <div className="text-sm text-muted-foreground">
-            Dont {euro(PRIX + EXEMPLE_VARIABLE)} pour Sitaly et {euro(EXEMPLE_BUDGET)} pour Google
-          </div>
-        </div>
-        <div className="font-display text-3xl font-extrabold tracking-tight">
-          {euro(EXEMPLE_TOTAL)}
-        </div>
-      </div>
-
-      <p className="mt-5 flex items-start gap-2 rounded-xl border border-border bg-secondary/40 px-4 py-3 text-sm text-muted-foreground">
-        <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-        Si vous dépensez moins en publicité un mois, la part variable baisse d'autant. Elle suit
-        toujours la dépense réelle.
+      <p className="mt-6 flex items-start gap-2 rounded-xl border border-border bg-paper-sunk px-4 py-3 text-sm text-muted-foreground">
+        <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-signal-ink" />
+        Le chiffrage exact vous est donné par écrit à l'issue de l'appel découverte, avant tout
+        engagement. Sans engagement de durée, résiliable avec un simple préavis.
       </p>
     </div>
   );
@@ -616,7 +602,8 @@ function Confiance() {
             <span className="font-semibold text-foreground">
               Vos clients cherchent aussi dans ChatGPT ?
             </span>{" "}
-            Nous pilotons également des campagnes ChatGPT Ads, à 890 €/mois + 10 % du budget publicitaire.
+            Nous pilotons également des campagnes ChatGPT Ads, sur le même principe : un forfait de
+            gestion et une part du budget publicitaire.
           </p>
           <a
             href="/chatgpt-ads/"

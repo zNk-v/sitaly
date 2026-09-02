@@ -79,10 +79,14 @@ export const Route = createFileRoute("/")({
         content:
           "Agence web pour PME, TPE et artisans : site internet, Google Ads, ChatGPT Ads et agents IA. Sans engagement, site livré en 48h. Plus de demandes, plus de clients.",
       },
-      { property: "og:title", content: "Site web, Google Ads & IA pour PME, TPE et artisans | Sitaly" },
+      {
+        property: "og:title",
+        content: "Site web, Google Ads & IA pour PME, TPE et artisans | Sitaly",
+      },
       {
         property: "og:description",
-        content: "Agence web pour PME, TPE et artisans : site internet, Google Ads, ChatGPT Ads et agents IA. Sans engagement, site livré en 48h. Plus de demandes, plus de clients.",
+        content:
+          "Agence web pour PME, TPE et artisans : site internet, Google Ads, ChatGPT Ads et agents IA. Sans engagement, site livré en 48h. Plus de demandes, plus de clients.",
       },
       { property: "og:url", content: "https://sitaly.fr/" },
     ],
@@ -141,20 +145,48 @@ function Nav() {
           <SitalyLogo />
         </a>
         <nav className="hidden items-center gap-8 md:flex">
-          <a href="#offre" className="text-sm font-medium text-white/70 transition hover:text-white">Offres</a>
-          <Link to="/agents-ia/" className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand transition hover:text-white">
+          <a
+            href="#offre"
+            className="text-sm font-medium text-white/70 transition hover:text-white"
+          >
+            Offres
+          </a>
+          <Link
+            to="/agents-ia/"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand transition hover:text-white"
+          >
             <Sparkles className="h-3.5 w-3.5" />
             Agents IA
           </Link>
           {/* Page statique hors routeur : lien classique, pas de <Link>. */}
-          <a href="/chatgpt-ads/" className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand transition hover:text-white">
+          <a
+            href="/chatgpt-ads/"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand transition hover:text-white"
+          >
             <MessageSquare className="h-3.5 w-3.5" />
             ChatGPT Ads
           </a>
-          <a href="#exemples" className="text-sm font-medium text-white/70 transition hover:text-white">Exemples</a>
-          <a href="#process" className="text-sm font-medium text-white/70 transition hover:text-white">Process</a>
-          <Link to="/blog/" className="text-sm font-medium text-white/70 transition hover:text-white">Blog</Link>
-          <a href="#faq" className="text-sm font-medium text-white/70 transition hover:text-white">FAQ</a>
+          <a
+            href="#exemples"
+            className="text-sm font-medium text-white/70 transition hover:text-white"
+          >
+            Exemples
+          </a>
+          <a
+            href="#process"
+            className="text-sm font-medium text-white/70 transition hover:text-white"
+          >
+            Process
+          </a>
+          <Link
+            to="/blog/"
+            className="text-sm font-medium text-white/70 transition hover:text-white"
+          >
+            Blog
+          </Link>
+          <a href="#faq" className="text-sm font-medium text-white/70 transition hover:text-white">
+            FAQ
+          </a>
         </nav>
 
         <div className="flex items-center gap-2">
@@ -193,8 +225,8 @@ function Hero() {
               <span className="accent-word text-brand">Moins de temps perdu.</span>
             </h1>
             <p className="measure mt-6 text-lg text-white/70 sm:text-xl">
-              Sitaly construit et pilote votre présence en ligne : site internet, Google Ads,
-              agents IA. Vous gardez votre métier, on prend le reste.
+              Sitaly construit et pilote votre présence en ligne : site internet, Google Ads, agents
+              IA. Vous gardez votre métier, on prend le reste.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -442,11 +474,7 @@ function HowItWorks() {
       icon: Target,
       title: "Convertir",
       benefit: "Transformer les visiteurs en demandes",
-      points: [
-        "Pages optimisées",
-        "Formulaires performants",
-        "Appels à l'action efficaces",
-      ],
+      points: ["Pages optimisées", "Formulaires performants", "Appels à l'action efficaces"],
     },
     {
       n: "03",
@@ -487,7 +515,9 @@ function HowItWorks() {
                 <div className="grid h-12 w-12 place-items-center rounded-xl bg-brand/15 text-brand">
                   <s.icon className="h-6 w-6" />
                 </div>
-                <span className="rail-num font-display text-3xl font-extrabold text-white/20">{s.n}</span>
+                <span className="rail-num font-display text-3xl font-extrabold text-white/20">
+                  {s.n}
+                </span>
               </div>
               <h3 className="mt-5 text-xl font-bold">{s.title}</h3>
               <p className="mt-1 text-[15px] font-medium text-white/60">{s.benefit}</p>
@@ -545,12 +575,14 @@ function GoogleAds() {
               Soyez visible <span className="accent-word text-brand-ink">immédiatement</span>
             </h2>
             <p className="measure mt-5 text-muted-foreground sm:text-lg">
-              Le référencement naturel prend du temps. Google Ads vous place en tête des recherches dès aujourd'hui, et vous apporte des demandes pendant que votre visibilité naturelle se construit.
+              Le référencement naturel prend du temps. Google Ads vous place en tête des recherches
+              dès aujourd'hui, et vous apporte des demandes pendant que votre visibilité naturelle
+              se construit.
             </p>
             <a
               href={CALENDLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-base font-semibold text-accent-foreground transition hover:brightness-110"
             >
               <Calendar className="h-5 w-5" />
@@ -559,7 +591,10 @@ function GoogleAds() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {points.map((p) => (
-              <div key={p.title} className="rounded-2xl border border-border bg-card p-6 shadow-soft">
+              <div
+                key={p.title}
+                className="rounded-2xl border border-border bg-card p-6 shadow-soft"
+              >
                 <div className="grid h-11 w-11 place-items-center rounded-xl bg-accent/12 text-accent">
                   <p.icon className="h-5 w-5" />
                 </div>
@@ -610,7 +645,8 @@ function Automation() {
           ))}
         </div>
         <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-muted-foreground">
-          Ces automatisations sont proposées en option, selon les besoins réels de votre entreprise. Rien d'imposé.
+          Ces automatisations sont proposées en option, selon les besoins réels de votre entreprise.
+          Rien d'imposé.
         </p>
       </div>
     </section>
@@ -715,7 +751,8 @@ const PRICING_TIERS: PricingTier[] = [
     name: "Sitaly Agents IA",
     badge: "Automatisation",
     icon: Bot,
-    objective: "Des agents IA qui répondent, qualifient et prennent vos rendez-vous. Installés clé en main.",
+    objective:
+      "Des agents IA qui répondent, qualifient et prennent vos rendez-vous. Installés clé en main.",
     inherits: "Se greffe sur n'importe quelle offre",
     features: [
       "Agent standardiste — ne rate plus un appel",
@@ -776,9 +813,7 @@ function PricingCard({ tier, featured }: { tier: PricingTier; featured: boolean 
   return (
     <div
       className={`relative flex h-full flex-col rounded-3xl bg-card p-7 sm:p-8 ${
-        featured
-          ? "border-2 border-accent shadow-glow"
-          : "border border-border shadow-soft"
+        featured ? "border-2 border-accent shadow-glow" : "border border-border shadow-soft"
       }`}
     >
       {featured && (
@@ -845,9 +880,7 @@ function PricingCard({ tier, featured }: { tier: PricingTier; featured: boolean 
           {view.features.map((f) => (
             <li key={f} className="flex items-start gap-3 text-[15px]">
               <Check
-                className={`mt-0.5 h-5 w-5 shrink-0 ${
-                  featured ? "text-accent" : "text-success"
-                }`}
+                className={`mt-0.5 h-5 w-5 shrink-0 ${featured ? "text-accent" : "text-success"}`}
               />
               <span>
                 {f.endsWith("*") ? (
@@ -1028,12 +1061,8 @@ function Examples() {
                 <span className="inline-block w-fit rounded-full bg-accent/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest text-accent sm:text-xs">
                   {it.tag}
                 </span>
-                <h3 className="mt-2 text-lg font-bold text-foreground sm:text-xl">
-                  {it.title}
-                </h3>
-                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                  {it.desc}
-                </p>
+                <h3 className="mt-2 text-lg font-bold text-foreground sm:text-xl">{it.title}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{it.desc}</p>
                 <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent transition-all group-hover:gap-2.5">
                   Ouvrir le site
                   <ArrowRight className="h-4 w-4" />
@@ -1064,10 +1093,7 @@ function EmbedPreview({ url, title }: { url: string; title: string }) {
   }, []);
 
   return (
-    <div
-      ref={wrapRef}
-      className="relative aspect-[16/9] w-full overflow-hidden bg-white"
-    >
+    <div ref={wrapRef} className="relative aspect-[16/9] w-full overflow-hidden bg-white">
       <iframe
         src={url}
         title={`Aperçu du site ${title}`}
@@ -1097,7 +1123,11 @@ function Process() {
     { n: "01", t: "Appel découverte", d: "On comprend votre activité et vos besoins (20 min)." },
     { n: "02", t: "Création du site", d: "Votre site est conçu sur mesure, sans gabarit revendu." },
     { n: "03", t: "Validation", d: "Vous validez le rendu, on ajuste si besoin." },
-    { n: "04", t: "Mise en ligne", d: "Hébergement, nom de domaine, SEO local : on s'occupe de tout." },
+    {
+      n: "04",
+      t: "Mise en ligne",
+      d: "Hébergement, nom de domaine, SEO local : on s'occupe de tout.",
+    },
     { n: "05", t: "Suivi mensuel", d: "Maintenance, mises à jour et modifications incluses." },
   ];
   return (
@@ -1224,9 +1254,7 @@ function Clients() {
 }
 
 /* ---------------- FAQ ---------------- */
-const FAQ_MODIF_INDEX = FAQ_ITEMS.findIndex((it) =>
-  it.q.includes("modifications incluses"),
-);
+const FAQ_MODIF_INDEX = FAQ_ITEMS.findIndex((it) => it.q.includes("modifications incluses"));
 
 function Faq() {
   const items = FAQ_ITEMS;
@@ -1275,7 +1303,9 @@ function Faq() {
                 />
               </button>
               {open === i && (
-                <div className="px-5 pb-5 text-[15px] leading-relaxed text-muted-foreground">{it.a}</div>
+                <div className="px-5 pb-5 text-[15px] leading-relaxed text-muted-foreground">
+                  {it.a}
+                </div>
               )}
             </div>
           ))}
@@ -1315,9 +1345,9 @@ function Founder() {
             </h2>
             <div className="measure mt-6 space-y-4 text-lg text-white/70">
               <p>
-                Sitaly, c'est moi. Je conçois les sites, je pilote les campagnes et je branche
-                les agents IA. Vous n'aurez pas un commercial à l'appel découverte et un stagiaire
-                sur votre projet.
+                Sitaly, c'est moi. Je conçois les sites, je pilote les campagnes et je branche les
+                agents IA. Vous n'aurez pas un commercial à l'appel découverte et un stagiaire sur
+                votre projet.
               </p>
               <p>
                 Je travaille à distance, partout en France. Pas de déplacement à facturer, pas de
@@ -1359,7 +1389,8 @@ function Contact() {
             Discutons de votre projet
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Laissez-nous vos coordonnées, on vous rappelle sous 24h pour un échange simple et sans engagement.
+            Laissez-nous vos coordonnées, on vous rappelle sous 24h pour un échange simple et sans
+            engagement.
           </p>
           <ul className="mt-8 space-y-4 text-[15px]">
             <li className="flex items-center gap-3">
@@ -1421,7 +1452,8 @@ function Contact() {
               </div>
               <h3 className="mt-4 font-display text-xl font-bold">Merci !</h3>
               <p className="mt-2 text-muted-foreground">
-                Votre application de messagerie s'ouvre avec votre message pré-rempli. Il ne vous reste plus qu'à l'envoyer.
+                Votre application de messagerie s'ouvre avec votre message pré-rempli. Il ne vous
+                reste plus qu'à l'envoyer.
               </p>
             </div>
           ) : (
@@ -1433,7 +1465,9 @@ function Contact() {
                 <Field label="Entreprise" name="company" />
               </div>
               <div className="mt-4">
-                <label htmlFor="contact-message" className="text-sm font-medium">Message</label>
+                <label htmlFor="contact-message" className="text-sm font-medium">
+                  Message
+                </label>
                 <textarea
                   id="contact-message"
                   name="message"
@@ -1501,7 +1535,8 @@ function Footer() {
               <SitalyLogo />
             </div>
             <p className="mt-3 text-sm text-primary-foreground/70">
-              Plus de clients pour les PME, TPE et artisans : site internet, Google Ads, ChatGPT Ads et automatisation.
+              Plus de clients pour les PME, TPE et artisans : site internet, Google Ads, ChatGPT Ads
+              et automatisation.
             </p>
             <div className="mt-4">
               <LinkedinLink variant="clair" />
@@ -1514,13 +1549,41 @@ function Footer() {
           <div>
             <div className="text-sm font-semibold">Navigation</div>
             <ul className="mt-3 space-y-1 text-sm text-primary-foreground/70">
-              <li><a href="#offre" className="block py-2.5 hover:text-primary-foreground">Offres</a></li>
-              <li><Link to="/agents-ia/" className="block py-2.5 hover:text-primary-foreground">Agents IA</Link></li>
-              <li><a href="/chatgpt-ads/" className="block py-2.5 hover:text-primary-foreground">ChatGPT Ads</a></li>
-              <li><a href="#exemples" className="block py-2.5 hover:text-primary-foreground">Exemples</a></li>
-              <li><a href="#process" className="block py-2.5 hover:text-primary-foreground">Process</a></li>
-              <li><a href="#faq" className="block py-2.5 hover:text-primary-foreground">FAQ</a></li>
-              <li><Link to="/blog/" className="block py-2.5 hover:text-primary-foreground">Blog</Link></li>
+              <li>
+                <a href="#offre" className="block py-2.5 hover:text-primary-foreground">
+                  Offres
+                </a>
+              </li>
+              <li>
+                <Link to="/agents-ia/" className="block py-2.5 hover:text-primary-foreground">
+                  Agents IA
+                </Link>
+              </li>
+              <li>
+                <a href="/chatgpt-ads/" className="block py-2.5 hover:text-primary-foreground">
+                  ChatGPT Ads
+                </a>
+              </li>
+              <li>
+                <a href="#exemples" className="block py-2.5 hover:text-primary-foreground">
+                  Exemples
+                </a>
+              </li>
+              <li>
+                <a href="#process" className="block py-2.5 hover:text-primary-foreground">
+                  Process
+                </a>
+              </li>
+              <li>
+                <a href="#faq" className="block py-2.5 hover:text-primary-foreground">
+                  FAQ
+                </a>
+              </li>
+              <li>
+                <Link to="/blog/" className="block py-2.5 hover:text-primary-foreground">
+                  Blog
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
@@ -1542,7 +1605,9 @@ function Footer() {
                   <Mail className="h-4 w-4" /> contact@sitaly.fr
                 </a>
               </li>
-              <li className="flex items-center gap-2 py-2.5"><Globe className="h-4 w-4" /> sitaly.fr</li>
+              <li className="flex items-center gap-2 py-2.5">
+                <Globe className="h-4 w-4" /> sitaly.fr
+              </li>
               <li>
                 <a
                   href="https://www.linkedin.com/in/vidalozzi"
@@ -1569,10 +1634,24 @@ function Footer() {
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-primary-foreground/60 sm:flex-row">
           <div>© {new Date().getFullYear()} Sitaly. Tous droits réservés.</div>
           <div className="flex flex-wrap justify-center gap-x-5 gap-y-1">
-            <Link to="/mentions-legales/" className="inline-block py-2.5 hover:text-primary-foreground">Mentions légales</Link>
-            <Link to="/politique-confidentialite/" className="inline-block py-2.5 hover:text-primary-foreground">Confidentialité</Link>
-            <Link to="/cgv/" className="inline-block py-2.5 hover:text-primary-foreground">CGV</Link>
-            <Link to="/cookies/" className="inline-block py-2.5 hover:text-primary-foreground">Cookies</Link>
+            <Link
+              to="/mentions-legales/"
+              className="inline-block py-2.5 hover:text-primary-foreground"
+            >
+              Mentions légales
+            </Link>
+            <Link
+              to="/politique-confidentialite/"
+              className="inline-block py-2.5 hover:text-primary-foreground"
+            >
+              Confidentialité
+            </Link>
+            <Link to="/cgv/" className="inline-block py-2.5 hover:text-primary-foreground">
+              CGV
+            </Link>
+            <Link to="/cookies/" className="inline-block py-2.5 hover:text-primary-foreground">
+              Cookies
+            </Link>
           </div>
         </div>
       </div>

@@ -81,7 +81,10 @@ export const Route = createFileRoute("/blog/")({
           "Guides pratiques pour PME, TPE et artisans : acquisition, site internet, référencement local, Google Ads, ChatGPT Ads et automatisation.",
       },
       { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large" },
-      { property: "og:title", content: "Blog Sitaly — Plus de clients : site web, Google Ads & automatisation" },
+      {
+        property: "og:title",
+        content: "Blog Sitaly — Plus de clients : site web, Google Ads & automatisation",
+      },
       {
         property: "og:description",
         content:
@@ -92,7 +95,10 @@ export const Route = createFileRoute("/blog/")({
       { property: "og:site_name", content: "Sitaly" },
       { property: "og:locale", content: "fr_FR" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Blog Sitaly — Plus de clients : site web, Google Ads & automatisation" },
+      {
+        name: "twitter:title",
+        content: "Blog Sitaly — Plus de clients : site web, Google Ads & automatisation",
+      },
       {
         name: "twitter:description",
         content:
@@ -153,12 +159,13 @@ function BlogIndex() {
         <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20">
           <p className="text-sm font-medium uppercase tracking-wider text-accent">Le blog Sitaly</p>
           <h1 className="mt-3 font-display text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
-            Générer <span className="gradient-text">plus de clients</span>, quel que soit votre métier
+            Générer <span className="gradient-text">plus de clients</span>, quel que soit votre
+            métier
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
             Site internet, référencement local, Google Ads, ChatGPT Ads et automatisation : les
-            guides pratiques pour les PME, TPE et artisans qui veulent développer leur activité
-            en 2026.
+            guides pratiques pour les PME, TPE et artisans qui veulent développer leur activité en
+            2026.
           </p>
         </div>
       </header>
@@ -214,8 +221,8 @@ function BlogIndex() {
             Prêt à générer plus de clients ?
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-            Site internet, Google Ads et automatisation, en abonnement mensuel et sans
-            engagement. Réservez un appel gratuit de 15 minutes.
+            Site internet, Google Ads et automatisation, en abonnement mensuel et sans engagement.
+            Réservez un appel gratuit de 15 minutes.
           </p>
           <a
             href={CALENDLY_URL}
