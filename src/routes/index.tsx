@@ -256,22 +256,50 @@ function Hero() {
     <section ref={sectionRef} id="top" className="hero-bg hero-halo relative overflow-hidden">
       <div className="dot-grid pointer-events-none absolute inset-0" aria-hidden="true" />
       <div className="relative mx-auto max-w-7xl px-4 pb-28 pt-16 sm:px-6 sm:pt-24 lg:pb-36">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-8">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-muted-foreground">
               <Sparkles className="h-3.5 w-3.5 text-brand-ink" />
               Agence web · Artisans, indépendants & PME de services
             </div>
-            {/* Le fragment final bascule en serif italique plutôt qu'en couleur :
-                la tension vient du dessin de la lettre. Voir DESIGN.md §4. */}
-            <h1 data-split className="display-hero mt-6">
-              Plus de clients. Plus d'appels.{" "}
-              <span className="accent-word text-brand-ink">Moins de temps perdu.</span>
+            {/* Le titre monte d'un cran en échelle : c'est le levier le plus
+                direct pour donner de la présence, avant tout effet. Le dernier
+                fragment prend le dégradé de la triade plutôt qu'une teinte
+                unique. */}
+            <h1
+              data-split
+              className="mt-6 font-display text-[clamp(2.9rem,6.4vw,5.6rem)] font-extrabold leading-[0.95] tracking-[-0.045em]"
+            >
+              Plus de clients.
+              <br />
+              Plus d'appels.
+              <br />
+              <span className="brand-gradient-text accent-word">Moins de temps perdu.</span>
             </h1>
-            <p className="mt-6 text-lg font-medium sm:text-xl">
+
+            {/* Annotation et sa flèche, tracées à la main, posées dans le flux.
+                À l'intérieur du titre elles étaient rognées par l'overflow de la
+                section. Elles reprennent l'italique déjà chargé plutôt que
+                d'imposer une quatrième famille de caractères. */}
+            <div aria-hidden="true" className="mt-5 flex items-center gap-3 text-muted-foreground">
+              <svg
+                viewBox="0 0 88 46"
+                className="h-9 w-20 shrink-0 text-brand-ink/45"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
+                <path d="M84 42C68 16 44 4 6 6" />
+                <path d="M6 6l17 8M6 6l11 13" />
+              </svg>
+              <span className="accent-word -rotate-2 text-xl">et zéro prise de tête</span>
+            </div>
+
+            <p className="mt-7 text-lg font-medium sm:text-xl">
               Sitaly s'occupe de{" "}
               <RotatingWords
-                className="font-display font-extrabold text-brand-ink"
+                className="brand-gradient-text font-display font-extrabold"
                 words={[
                   "votre site internet",
                   "vos campagnes Google Ads",
@@ -281,7 +309,7 @@ function Hero() {
                 ]}
               />
             </p>
-            <p className="measure mt-4 text-lg text-muted-foreground">
+            <p className="measure mt-3 text-lg text-muted-foreground">
               Vous gardez votre métier, on prend le reste.
             </p>
 
@@ -307,28 +335,25 @@ function Hero() {
             {/* Les preuves passent en ligne sous les boutons plutôt que dans un
                 bandeau séparé, qui répétait la même chose vingt pixels plus bas
                 et affichait « Sans » comme s'il s'agissait d'un chiffre. */}
-            <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-border pt-7 sm:grid-cols-4">
+            <dl className="mt-10 grid grid-cols-3 gap-x-6 border-t border-border pt-7">
               {[
                 { v: "48h", l: "Mise en ligne" },
                 { v: "24h", l: "Délai de réponse" },
                 { v: "0€", l: "Frais d'installation" },
               ].map((s) => (
                 <div key={s.l}>
-                  <dt className="brand-gradient-text rail-num font-display text-2xl font-extrabold leading-none tracking-tight sm:text-3xl">
+                  <dt className="brand-gradient-text rail-num font-display text-3xl font-extrabold leading-none tracking-tight sm:text-4xl">
                     {s.v}
                   </dt>
-                  <dd className="mt-1.5 text-xs text-muted-foreground sm:text-sm">{s.l}</dd>
+                  <dd className="mt-2 text-xs text-muted-foreground sm:text-sm">{s.l}</dd>
                 </div>
               ))}
-              <div>
-                <dt className="font-display text-2xl font-extrabold leading-none tracking-tight sm:text-3xl">
-                  <span className="accent-word">sans</span>
-                </dt>
-                <dd className="mt-1.5 text-xs text-muted-foreground sm:text-sm">
-                  Engagement de durée
-                </dd>
-              </div>
             </dl>
+            {/* « sans » n'est pas un chiffre : il sort de la rangée et redevient
+                une phrase, au lieu de s'aligner avec 48h et 0€. */}
+            <p className="mt-5 text-sm text-muted-foreground">
+              Sans engagement de durée, résiliable à tout moment.
+            </p>
           </div>
 
           <div className="drift relative">

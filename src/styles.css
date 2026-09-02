@@ -46,6 +46,9 @@
   --color-paper-sunk: var(--paper-sunk);
   --color-ink: var(--ink);
   --color-ink-deep: var(--ink-deep);
+  --color-blue: var(--blue);
+  --color-violet: var(--violet);
+  --color-pink: var(--pink);
   --color-brand: var(--brand);
   --color-brand-deep: var(--brand-deep);
   --color-brand-ink: var(--brand-ink);
@@ -69,26 +72,33 @@
   --ink: oklch(0.165 0.045 302);
   --ink-deep: oklch(0.115 0.032 302);
 
-  /* Marque : les deux chevrons du logo, au pixel près.
-     --brand rend #bf84fd, --brand-deep rend #d946a8. */
+  /* Triade bleu / violet / rose. Le violet et le rose sont ceux du logo ;
+     le bleu les prolonge d'un cran. Toutes les valeurs de section, de titre
+     et de voile sont dérivées de ces trois-là et d'elles seules. */
+  --blue: oklch(0.5 0.19 258);
+  --violet: oklch(0.48 0.22 300);
+  --pink: oklch(0.52 0.22 350);
+
+  /* Versions claires, pour l'ornement sur surface sombre. */
   --brand: oklch(0.722 0.177 305);
   --brand-deep: oklch(0.631 0.208 344);
-  /* Version texte, assez sombre pour porter un titre sur papier (11.9:1). */
-  --brand-ink: oklch(0.34 0.13 305);
+  /* Version texte sur papier : 7:1, elle porte un titre sans le noyer. */
+  --brand-ink: var(--violet);
 
   /* Signal : réservé au vérifiable (site en ligne, délai tenu, client nommé).
      Deux valeurs, car le vert clair passe sous le seuil sur fond papier. */
-  /* Voile de section. Dégradé à l'intérieur du violet seul : du clair vers un
-     violet un peu plus dense, sans jamais atteindre le rose. Le magenta du
-     second chevron du logo a été écarté des grandes surfaces, il ne tient pas
-     à cette échelle. Bornes de teinte : 298 à 312, jamais au-delà. */
-  --wash-from: oklch(0.955 0.035 300);
-  --wash-to: oklch(0.925 0.062 310);
+  /* Voile de section : la triade en très clair. Chaque arrêt porte du texte
+     encre à plus de 15:1, donc le fond colore sans jamais gêner la lecture. */
+  --wash-from: oklch(0.955 0.03 255);
+  --wash-via: oklch(0.95 0.038 300);
+  --wash-to: oklch(0.95 0.038 350);
 
-  /* Même intervalle, assombri, pour le texte : les gros chiffres gardent la
-     saturation que le fond a perdue. Les deux extrémités passent 7.8:1 sur blanc. */
-  --brand-grad-from: oklch(0.46 0.19 298);
-  --brand-grad-to: oklch(0.4 0.2 312);
+  /* La même triade en pleine saturation, pour le texte. Les trois arrêts
+     passent au-dessus de 5.9:1 sur papier : le dégradé reste lisible sur
+     toute sa longueur, y compris au point le plus clair. */
+  --brand-grad-from: var(--blue);
+  --brand-grad-via: var(--violet);
+  --brand-grad-to: var(--pink);
 
   --signal: oklch(0.72 0.17 165);
   --signal-ink: oklch(0.48 0.13 165);
@@ -107,9 +117,9 @@
   --secondary-foreground: var(--brand-ink);
   --muted: var(--paper-sunk);
   --muted-foreground: oklch(0.48 0.03 302);
-  /* Accent d'action : un cran plus sombre que le logo pour porter du blanc
-     à 5.7:1. Le violet du logo sert à l'ornement, pas aux boutons. */
-  --accent: oklch(0.54 0.22 320);
+  /* Accent d'action : le bleu de la triade, 6.2:1 avec le blanc de son
+     libellé. Le violet et le rose restent à l'ornement et au texte. */
+  --accent: var(--blue);
   --accent-foreground: oklch(0.99 0 0);
   --success: var(--signal-ink);
   --success-foreground: oklch(0.99 0 0);
@@ -117,18 +127,21 @@
   --destructive-foreground: oklch(0.99 0 0);
   --border: oklch(0.92 0.008 302);
   --input: oklch(0.92 0.008 302);
-  --ring: oklch(0.54 0.22 320);
+  --ring: var(--blue);
 
   /* Le dégradé de marque va du violet au rose, jamais vers le bleu.
      Il habille du texte, des filets et des bordures, jamais une nappe de fond. */
-  --gradient-brand: linear-gradient(120deg, var(--brand), var(--brand-deep));
+  --gradient-brand: linear-gradient(115deg, var(--blue), var(--violet) 52%, var(--pink));
   /* Hero en clair. La nappe violette est un voile posé en haut, pas une nappe
      de fond : elle se dissout dans le papier chaud avant le milieu de la
      section. C'est ce qui la distingue du lavande froid et uniforme de Linov. */
+  /* Trois foyers, un par couleur de la triade, qui se dissolvent tous avant
+     le milieu de la section. Le papier chaud reprend la main en bas. */
   --gradient-hero:
-    radial-gradient(ellipse 100% 62% at 50% -8%, oklch(0.72 0.177 305 / 0.2), transparent 62%),
-    radial-gradient(ellipse 60% 40% at 88% 8%, oklch(0.6 0.19 300 / 0.1), transparent 60%),
-    linear-gradient(180deg, oklch(0.972 0.014 305), var(--paper) 62%);
+    radial-gradient(ellipse 70% 55% at 12% -5%, oklch(0.55 0.19 258 / 0.18), transparent 62%),
+    radial-gradient(ellipse 65% 50% at 52% -8%, oklch(0.55 0.22 300 / 0.16), transparent 60%),
+    radial-gradient(ellipse 60% 45% at 90% 2%, oklch(0.6 0.2 350 / 0.15), transparent 60%),
+    linear-gradient(180deg, oklch(0.975 0.012 300), var(--paper) 58%);
   --gradient-primary: linear-gradient(135deg, var(--ink), oklch(0.28 0.1 305));
   --gradient-accent: var(--gradient-brand);
 }
@@ -189,7 +202,7 @@
   pointer-events: none;
   background: radial-gradient(
     24rem 24rem at var(--mx, 50%) var(--my, 12%),
-    oklch(0.6 0.19 302 / 0.11),
+    oklch(0.55 0.2 288 / 0.12),
     transparent 68%
   );
   transition: opacity 0.4s ease;
@@ -199,14 +212,19 @@
    le fond reste assez clair pour que l'encre et le violet de marque tiennent
    tels quels. Seuls les filets se teintent, pour ne pas trancher sur le voile. */
 @utility on-wash {
-  background: linear-gradient(115deg, var(--wash-from), var(--wash-to));
-  --border: oklch(0.45 0.2 305 / 0.16);
+  background: linear-gradient(115deg, var(--wash-from), var(--wash-via) 50%, var(--wash-to));
+  --border: oklch(0.48 0.2 300 / 0.16);
 }
 
 /* Texte en dégradé sur l'axe du logo, réservé aux très grandes tailles :
    c'est là que la couleur remplace la masse. */
 @utility brand-gradient-text {
-  background: linear-gradient(115deg, var(--brand-grad-from), var(--brand-grad-to));
+  background: linear-gradient(
+    100deg,
+    var(--brand-grad-from),
+    var(--brand-grad-via) 48%,
+    var(--brand-grad-to)
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -434,7 +452,7 @@
 /* Trame de points du hero. Motif CSS pur, masqué en fondu pour qu'il
    disparaisse avant le bas de la section : une texture, pas un damier. */
 @utility dot-grid {
-  background-image: radial-gradient(oklch(0.45 0.2 305 / 0.22) 1px, transparent 1px);
+  background-image: radial-gradient(oklch(0.48 0.2 285 / 0.2) 1px, transparent 1px);
   background-size: 26px 26px;
   mask-image: radial-gradient(ellipse 85% 65% at 50% 0%, #000 25%, transparent 78%);
   -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 0%, #000 25%, transparent 78%);

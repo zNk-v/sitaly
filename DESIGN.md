@@ -19,10 +19,19 @@ La grammaire se reprend. La signature chromatique et le rythme, non.
 - Carrousel de réalisations, bloc témoignages nominatifs, blog en page d'accueil.
 
 **Ce qu'on refuse**
-- Le bleu. Linov s'identifie par son `#0033FF`. Aucune valeur du site ne descend
-  sous la teinte 300 en OKLCH. Sitaly vit entre 300 et 345, du violet au rose.
 - Le fond lavande uniforme. Voir §3.
 - Le surlignage coloré des mots-clés. Voir §4.
+
+**Révision du 2 septembre 2026 — le bleu entre dans la palette.** Cette note
+excluait le bleu, au motif que Linov s'identifie par son `#0033FF`. Le client a
+demandé le contraire : bleu, violet et rose. Il faut le dire clairement, c'est
+la triade de Linov. La différenciation chromatique avec eux, qui était le point
+de départ de ce document, n'existe donc plus. Ce qui distingue encore les deux
+sites tient désormais entièrement à la forme : les mots basculés en serif
+italique, la colonne de repères numérotée, le papier chaud contre leur lavande
+froid, l'empilement collant des offres, et surtout des réalisations réelles et
+vérifiables là où ils montrent des vignettes. Ces leviers suffisent, mais ils
+portent seuls.
 
 ---
 
@@ -30,7 +39,7 @@ La grammaire se reprend. La signature chromatique et le rythme, non.
 
 | Levier | Linov | Sitaly |
 |---|---|---|
-| Fond | Lavande froid uniforme sur toute la page | Papier chaud, voile violet dissous en haut de hero |
+| Fond | Lavande froid uniforme sur toute la page | Papier chaud, voile tricolore dissous en haut de hero |
 | Accent des mots | Surlignage violet dans le texte | Bascule en serif italique |
 | Couleur secondaire | Aucune, tout est dans le violet-bleu-magenta | Vert signal, réservé à la preuve |
 | Grille | Centrée, plaquette d'agence | Ancrée à gauche, colonne de repères |
@@ -61,7 +70,7 @@ Valeurs en OKLCH, cohérentes avec le fichier de tokens existant.
 | `--ink` | `oklch(0.165 0.045 302)` | Pied de page uniquement. Violet profond, pas un gris neutre. |
 | `--ink-deep` | `oklch(0.115 0.032 302)` | Réserve, pour les fonds de carte sur surface sombre. |
 
-| `--wash-from` / `--wash-to` | `oklch(0.955 0.035 300)` → `oklch(0.925 0.062 310)` | Voile de section, violet seul |
+| `--wash-from` / `--via` / `--to` | bleu → violet → rose, en très clair | Voile de section, 15:1 avec l'encre |
 
 Le rythme vient de l'alternance papier / papier en retrait / voile, jamais d'un
 basculement en sombre. L'encre ne subsiste qu'au pied de page, où elle sert
@@ -75,13 +84,22 @@ tailles, via `brand-gradient-text` : les chiffres et les numéros d'étape
 reçoivent le dégradé profond, à près de 8:1 sur blanc. La couleur passe du fond
 vers le texte.
 
-**Le magenta reste au logo.** Le second chevron du logo est un magenta
-(`#d946a8`, teinte 344). Étendu à une surface, il a été refusé. Règle qui en
-découle : **les grandes surfaces restent entre les teintes 298 et 312**, du
-violet et rien d'autre. Le magenta ne subsiste que dans le logo lui-même, où il
-occupe quelques centaines de pixels. Cela vaut pour les voiles de section, le
-dégradé du hero, le halo du curseur et la barre de progression, tous ramenés
-dans cet intervalle.
+**La triade, et rien d'autre.** Trois valeurs gouvernent toute la couleur du
+site. Le violet et le rose sont ceux du logo ; le bleu les prolonge d'un cran.
+
+| Token | Valeur | Rôle |
+|---|---|---|
+| `--blue` | `oklch(0.5 0.19 258)` | Action. 6,2:1 avec le blanc de son libellé. |
+| `--violet` | `oklch(0.48 0.22 300)` | Texte d'accent sur papier, 7:1. |
+| `--pink` | `oklch(0.52 0.22 350)` | Fin du dégradé, 5,9:1 sur papier. |
+
+Tout le reste en dérive : le voile de section est cette triade en très clair,
+le dégradé de titre la parcourt en pleine saturation, le hero pose un foyer par
+couleur. Les trois arrêts passant au-dessus de 5,9:1 sur papier, un dégradé
+peut porter du texte sur toute sa longueur — c'est ce qui autorise les titres
+en dégradé, impossibles avec une palette moins disciplinée.
+
+L'aplat saturé reste proscrit : refusé une fois, trop péremptoire.
 
 ### Marque
 
