@@ -449,8 +449,7 @@ function ProfessionsMarquee() {
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
         <div className="rail-label text-brand-ink">Pour qui</div>
         <h2 className="mt-3 font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
-          Plus de clients pour votre activité,{" "}
-          <Surligne variante="sweep">quel que soit votre métier</Surligne>
+          Plus de clients pour votre activité, <Surligne>quel que soit votre métier</Surligne>
         </h2>
       </div>
       <div className="marquee marquee-mask group relative mt-12 flex overflow-hidden sm:mt-14">
@@ -686,7 +685,7 @@ function Realisations() {
           eyebrow="Réalisations"
           title={
             <>
-              Des sites <Surligne variante="trait">réellement en ligne</Surligne>
+              Des sites <Surligne>réellement en ligne</Surligne>
             </>
           }
           subtitle="Trois métiers, trois logiques différentes. Chaque projet a sa page : ce qui a été livré, pourquoi le site est construit comme ça, et ce qu'on voit en l'ouvrant."
@@ -1024,7 +1023,7 @@ function Founder() {
             <div className="rail-label text-brand-ink">Qui est derrière</div>
             <h2 className="display-section mt-3">
               Un seul interlocuteur,{" "}
-              <Surligne variante="trait">celui qui construit votre site</Surligne>
+              <span className="accent-word text-brand-ink">celui qui construit votre site</span>
             </h2>
             <div className="measure mt-6 space-y-4 text-lg text-muted-foreground">
               <p>

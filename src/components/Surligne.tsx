@@ -1,19 +1,22 @@
 import type { ReactNode } from "react";
 
 /**
- * Surlignage tracé à la main derrière un mot.
+ * Trait tracé à la main sous un mot.
  *
- * Le trait est un chemin SVG volontairement irrégulier, épais et à bouts
- * ronds : il imite un feutre passé d'un geste, pas un rectangle de couleur.
- * Il se dessine au défilement via `animation-timeline`, donc sans JavaScript
- * ni observateur — le tracé vit sur le fil de composition.
+ * Le geste passe **sous** le mot et ne le recouvre jamais : un surlignage qui
+ * traverse le texte le rend moins lisible et n'est pas ce que fait la
+ * référence. La courbe descend légèrement au centre, comme un trait posé d'un
+ * seul mouvement, et déborde des deux côtés.
  *
- * Le SVG est posé derrière le texte et étiré en `preserveAspectRatio="none"` :
- * il s'adapte à la longueur du mot sans qu'on ait à mesurer quoi que ce soit.
+ * Le trait se dessine au défilement via `animation-timeline`, donc sans
+ * JavaScript ni observateur : il vit sur le fil de composition. Là où ce n'est
+ * pas supporté, il est simplement déjà tracé.
  *
- * `variante` change la forme du geste :
- * - `trait` : un passage de feutre sous le mot, le plus discret
- * - `sweep` : deux passages qui couvrent la hauteur du mot
+ * Le SVG est étiré en `preserveAspectRatio="none"` : il s'adapte à la longueur
+ * du mot sans qu'on ait à mesurer quoi que ce soit.
+ *
+ * `variante` :
+ * - `trait` : un passage sous le mot, le geste par défaut
  * - `cercle` : un entourage, pour un mot isolé qu'on veut désigner
  */
 export function Surligne({
@@ -22,44 +25,33 @@ export function Surligne({
   className = "",
 }: {
   children: ReactNode;
-  variante?: "trait" | "sweep" | "cercle";
+  variante?: "trait" | "cercle";
   className?: string;
 }) {
   return (
     <span className={`relative inline-block ${className}`}>
+      <span className="relative">{children}</span>
       <svg
         aria-hidden="true"
         preserveAspectRatio="none"
-        viewBox="0 0 100 32"
+        viewBox="0 0 100 24"
         className={`mark-svg mark-${variante}`}
         fill="none"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        {variante === "trait" && (
-          /* Un seul geste, qui déborde légèrement des deux côtés et
-             ne suit pas tout à fait l'horizontale. */
-          <path className="mark-draw" d="M1.5 25.5C22 21.4 58 20.2 98.5 23.8" strokeWidth="7" />
-        )}
-        {variante === "sweep" && (
-          <>
-            <path className="mark-draw" d="M2 12C26 8.2 62 7.4 98 10.5" strokeWidth="12" />
-            <path
-              className="mark-draw mark-draw-2"
-              d="M97 23C70 26.4 34 27 2.5 24.2"
-              strokeWidth="11"
-            />
-          </>
-        )}
-        {variante === "cercle" && (
+        {variante === "trait" ? (
+          /* Une courbe qui creuse au centre et remonte à droite, tracée d'un
+             seul geste. Elle dépasse du mot des deux côtés. */
+          <path className="mark-draw" d="M2 5C22 20 62 22.5 98 8" strokeWidth="9" />
+        ) : (
           <path
             className="mark-draw"
-            d="M52 2.5C24 1.5 3 8 3.5 16.5 4 25.5 28 30.5 54 30 78 29.5 96 24 96.5 16 97 8.5 78 3 58 2.2"
+            d="M52 2C24 1 3 6 3.5 12 4 19 28 22.5 54 22 78 21.5 96 17 96.5 11.5 97 6 78 2.5 58 2"
             strokeWidth="3"
           />
         )}
       </svg>
-      <span className="relative">{children}</span>
     </span>
   );
 }

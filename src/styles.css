@@ -479,37 +479,32 @@
   }
 }
 
-/* ---- Surlignage tracé à la main ----
-   Le SVG est étiré derrière le mot et n'intercepte rien. Le trait se dessine
-   au défilement quand le navigateur sait le faire ; sinon il est simplement
-   déjà tracé, ce qui reste correct. */
+/* ---- Trait tracé à la main ----
+   Posé sous le mot, jamais dessus. Couleur pleine et assumée : à demi-opacité
+   le geste passait pour une ombre, il doit se voir comme un trait de feutre. */
 .mark-svg {
   position: absolute;
-  inset-inline: -0.18em;
+  inset-inline: -0.14em;
   pointer-events: none;
-  /* Pas de z-index négatif : sans contexte d'empilement propre, il ferait
-     passer le trait derrière le fond de la section. Le SVG vient avant le
-     texte dans le DOM et les deux sont positionnés, l'ordre de peinture
-     suffit donc à le placer dessous. */
-  width: calc(100% + 0.36em);
-  stroke: var(--pink);
-  opacity: 0.32;
+  width: calc(100% + 0.28em);
+  stroke: oklch(0.6 0.25 304);
 }
 .mark-trait {
-  bottom: -0.12em;
-  height: 0.55em;
-}
-.mark-sweep {
-  bottom: 0.02em;
-  height: 0.86em;
+  top: 100%;
+  /* Assez bas pour passer sous les jambages du q et du p, assez haut pour
+     rester rattaché au mot. */
+  margin-top: -0.14em;
+  /* Épaisseur effective du trait : (strokeWidth / hauteur du viewBox) × height,
+     soit (9 / 24) × 0.46em ≈ 0.17em. C'est ce qu'il faut pour qu'il se voie
+     comme un feutre et non comme un soulignement de traitement de texte. */
+  height: 0.46em;
 }
 .mark-cercle {
-  bottom: -0.16em;
-  height: 1.32em;
-  inset-inline: -0.42em;
-  width: calc(100% + 0.84em);
-  opacity: 0.5;
-  stroke: var(--blue);
+  top: -0.16em;
+  height: 1.34em;
+  inset-inline: -0.4em;
+  width: calc(100% + 0.8em);
+  stroke-width: 2.5;
 }
 
 @supports (animation-timeline: view()) {
@@ -527,10 +522,6 @@
       animation: mark-stroke linear both;
       animation-timeline: view();
       animation-range: entry 35% cover 48%;
-    }
-    /* Le second passage part un peu après le premier : deux gestes, pas un. */
-    .mark-draw-2 {
-      animation-range: entry 48% cover 62%;
     }
   }
 }
