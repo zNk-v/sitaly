@@ -159,6 +159,25 @@
   --secondary: oklch(1 0 0 / 0.06);
   --secondary-foreground: oklch(0.99 0 0);
 }
+/* Halo du hero : une nappe radiale posée sur le dégradé, centrée sur les
+   coordonnées écrites par le pointeur. Repli au centre haut tant qu'aucun
+   mouvement n'a eu lieu, pour que la section ne soit jamais plate. */
+@utility hero-halo {
+  position: relative;
+}
+.hero-halo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    22rem 22rem at var(--mx, 50%) var(--my, 12%),
+    oklch(0.722 0.177 305 / 0.16),
+    transparent 70%
+  );
+  transition: opacity 0.4s ease;
+}
+
 @utility gradient-text {
   background: var(--gradient-accent);
   -webkit-background-clip: text;
@@ -229,6 +248,132 @@
 @utility rail-line {
   background: linear-gradient(180deg, currentColor, transparent);
   opacity: 0.35;
+}
+
+/* ---- Cascade de mots sur les titres ----
+   Chaque mot monte depuis sous une ligne de masque. Le décalage se calcule
+   à partir de --w, l'index posé par le hook : aucune classe par mot, donc
+   aucun coût de compilation Tailwind. */
+.is-split .word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+.is-split:not(.is-shown) .word {
+  opacity: 0;
+  transform: translateY(0.42em) rotate(1.2deg);
+}
+.is-split .word {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.62s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--w, 0) * 42ms);
+}
+
+/* ---- Animations pilotées par le scroll ----
+   `animation-timeline` fait tourner ces effets sur le fil de composition :
+   pas de listener, pas de recalcul de mise en page, et rien à nettoyer.
+   Là où ce n'est pas supporté, l'élément reste simplement à son état final. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* Parallaxe douce : l'élément dérive plus lentement que la page. */
+    @keyframes drift-up {
+      from {
+        transform: translateY(2.2rem);
+      }
+      to {
+        transform: translateY(-2.2rem);
+      }
+    }
+    .drift {
+      animation: drift-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+      will-change: transform;
+    }
+
+    /* Montée en douceur avec léger agrandissement, pour les visuels. */
+    @keyframes rise-in {
+      from {
+        opacity: 0;
+        transform: translateY(3rem) scale(0.965);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    .rise {
+      animation: rise-in linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 34%;
+    }
+
+    /* Filet de section qui se dessine à mesure que la section défile. */
+    @keyframes draw-line {
+      from {
+        transform: scaleY(0);
+      }
+      to {
+        transform: scaleY(1);
+      }
+    }
+    .draw {
+      transform-origin: top;
+      animation: draw-line linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 45%;
+    }
+
+    /* Barre de progression de lecture, collée sous le bandeau. */
+    @keyframes progress-grow {
+      from {
+        transform: scaleX(0);
+      }
+      to {
+        transform: scaleX(1);
+      }
+    }
+    .scroll-progress {
+      transform-origin: left;
+      animation: progress-grow linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+}
+
+/* ---- Réaction au survol des cartes ----
+   Élévation, filet qui se teinte et halo de marque. Uniquement sur pointeur
+   fin : au doigt, un état de survol reste collé après le tap. */
+@media (hover: hover) and (pointer: fine) {
+  .lift {
+    transition:
+      transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.28s ease,
+      box-shadow 0.28s ease;
+  }
+  .lift:hover {
+    transform: translateY(-4px);
+    border-color: oklch(0.54 0.22 320 / 0.45);
+    box-shadow: 0 18px 40px -18px oklch(0.54 0.22 320 / 0.45);
+  }
+  .lift-ink:hover {
+    border-color: oklch(0.722 0.177 305 / 0.5);
+    box-shadow: 0 18px 40px -18px oklch(0.722 0.177 305 / 0.35);
+  }
+  /* Aperçus de réalisations : l'image respire, le cadre ne bouge pas. */
+  .zoom-frame {
+    overflow: hidden;
+  }
+  .zoom-frame img,
+  .zoom-frame .zoom-target {
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .zoom-frame:hover img,
+  .zoom-frame:hover .zoom-target {
+    transform: scale(1.04);
+  }
 }
 
 /* Mesure de lecture plafonnée (DESIGN.md §4). */

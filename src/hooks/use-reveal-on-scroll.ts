@@ -17,7 +17,10 @@ export function useRevealOnScroll(containerRef: RefObject<HTMLElement | null>) {
     const targets = Array.from(root.querySelectorAll<HTMLElement>("[data-reveal]"));
     if (!targets.length) return;
 
-    const viewportHeight = window.innerHeight;
+    // Même garde que pour le découpage des titres : sans hauteur de viewport
+    // mesurable, l'état masqué ne serait jamais levé.
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    if (!viewportHeight) return;
     for (const el of targets) {
       if (el.getBoundingClientRect().top < viewportHeight) el.classList.add("is-in");
     }

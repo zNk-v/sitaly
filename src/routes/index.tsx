@@ -42,6 +42,7 @@ import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
 import { MetierFooterLinks, MetierLinksSection } from "@/components/MetierLinks";
 import { SectionHeader } from "@/components/SectionHeader";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
+import { useSplitWords } from "@/hooks/use-split-words";
 import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 const FAQ_ITEMS = [
@@ -119,6 +120,7 @@ function SitalyHome() {
      c'est le hook qui installe l'état masqué, après hydratation seulement. */
   const rootRef = useRef<HTMLDivElement>(null);
   useRevealOnScroll(rootRef);
+  useSplitWords(rootRef);
 
   return (
     <div ref={rootRef} className="min-h-screen bg-background text-foreground">
@@ -151,6 +153,12 @@ function Nav() {
     /* Bandeau en encre : il prolonge le hero sans couture, et reste lisible
        au-dessus des sections papier une fois le scroll engagé. DESIGN.md §3. */
     <header className="sticky top-0 z-50 border-b border-white/10 bg-ink/90 backdrop-blur-md">
+      {/* Progression de lecture. Pilotée par la timeline de scroll, donc
+          aucun listener : la barre vit sur le fil de composition. */}
+      <div
+        className="scroll-progress absolute inset-x-0 bottom-0 h-px origin-left bg-gradient-to-r from-brand to-brand-deep"
+        aria-hidden="true"
+      />
       <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <a href="#top" className="flex items-center" aria-label="Sitaly — accueil">
           <SitalyLogo />
@@ -220,8 +228,40 @@ function Nav() {
 
 /* ---------------- HERO ---------------- */
 function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  /* Halo qui suit le curseur. Écrit deux variables CSS au rythme de l'écran,
+     jamais de style calculé en JS : le rendu reste au compositeur. Pointeur
+     fin uniquement, donc rien ne tourne au doigt sur mobile. */
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let frame = 0;
+    let x = 0;
+    let y = 0;
+    const onMove = (e: PointerEvent) => {
+      const r = el.getBoundingClientRect();
+      x = e.clientX - r.left;
+      y = e.clientY - r.top;
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        el.style.setProperty("--mx", `${x}px`);
+        el.style.setProperty("--my", `${y}px`);
+      });
+    };
+    el.addEventListener("pointermove", onMove, { passive: true });
+    return () => {
+      el.removeEventListener("pointermove", onMove);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return (
-    <section id="top" className="hero-bg relative overflow-hidden">
+    <section ref={sectionRef} id="top" className="hero-bg hero-halo relative overflow-hidden">
       {/* Boucle générée, posée en accent sur le dégradé et non à sa place.
           preload="none" et aucune dimension intrinsèque à charger : le LCP
           reste le titre, la vidéo arrive après. Masquée sous md et sous
@@ -247,7 +287,7 @@ function Hero() {
             </div>
             {/* Le fragment final bascule en serif italique plutôt qu'en couleur :
                 la tension vient du dessin de la lettre. Voir DESIGN.md §4. */}
-            <h1 className="display-hero mt-6 text-white">
+            <h1 data-split className="display-hero mt-6 text-white">
               Plus de clients. Plus d'appels.{" "}
               <span className="accent-word text-brand">Moins de temps perdu.</span>
             </h1>
@@ -288,7 +328,7 @@ function Hero() {
           </div>
 
           {/* Visual mock */}
-          <div className="relative">
+          <div className="drift relative">
             <HeroMock />
           </div>
         </div>
@@ -468,7 +508,7 @@ function Problem() {
               key={it.title}
               data-reveal
               style={{ "--i": i } as React.CSSProperties}
-              className="rounded-2xl border border-border bg-card p-7 shadow-soft transition hover:shadow-elevated"
+              className="lift rounded-2xl border border-border bg-card p-7 shadow-soft"
             >
               <div className="grid h-12 w-12 place-items-center rounded-xl bg-destructive/10 text-destructive">
                 <it.icon className="h-6 w-6" />
@@ -540,7 +580,7 @@ function HowItWorks() {
               key={s.title}
               data-reveal
               style={{ "--i": i } as React.CSSProperties}
-              className="rounded-2xl border border-white/12 bg-white/[0.04] p-7 transition hover:border-brand/40 hover:bg-white/[0.07]"
+              className="lift lift-ink rounded-2xl border border-white/12 bg-white/[0.04] p-7"
             >
               <div className="flex items-center justify-between">
                 <div className="grid h-12 w-12 place-items-center rounded-xl bg-brand/15 text-brand">
@@ -669,7 +709,7 @@ function Automation() {
         <div className="mt-14 grid items-center gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
           {/* Visuel abstrait, généré. Il n'illustre ni un chantier, ni un client,
               ni un local : c'est une forme, pas un témoignage. DESIGN.md §7. */}
-          <div data-reveal className="overflow-hidden rounded-2xl border border-white/12">
+          <div className="rise zoom-frame rounded-2xl border border-white/12">
             <img
               src={visuelAuto800}
               srcSet={`${visuelAuto800} 800w, ${visuelAuto1400} 1400w`}
@@ -690,7 +730,7 @@ function Automation() {
                 key={e.t}
                 data-reveal
                 style={{ "--i": i } as React.CSSProperties}
-                className="flex items-center gap-3 rounded-xl border border-white/12 bg-white/[0.04] px-5 py-4 transition hover:border-brand/40 hover:bg-white/[0.07]"
+                className="lift lift-ink flex items-center gap-3 rounded-xl border border-white/12 bg-white/[0.04] px-5 py-4"
               >
                 <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-brand/15 text-brand">
                   <e.icon className="h-5 w-5" />
@@ -1040,7 +1080,7 @@ function Extras() {
               key={o.name}
               data-reveal
               style={{ "--i": i } as React.CSSProperties}
-              className="flex gap-4 rounded-2xl border border-border bg-card p-6 shadow-soft transition hover:border-accent/40 hover:shadow-elevated"
+              className="lift flex gap-4 rounded-2xl border border-border bg-card p-6 shadow-soft"
             >
               <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent/10 text-accent">
                 <o.icon className="h-5 w-5" />
@@ -1209,7 +1249,7 @@ function Process() {
               key={s.n}
               data-reveal
               style={{ "--i": i } as React.CSSProperties}
-              className="relative rounded-2xl border border-white/12 bg-white/[0.04] p-6"
+              className="lift lift-ink relative rounded-2xl border border-white/12 bg-white/[0.04] p-6"
             >
               <div className="rail-num font-display text-3xl font-extrabold text-brand">{s.n}</div>
               <div className="mt-3 font-bold">{s.t}</div>
@@ -1490,8 +1530,8 @@ function Founder() {
     <section className="bg-ink py-20 text-white sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid items-center gap-12 lg:grid-cols-[auto_1fr] lg:gap-16">
-          <div data-reveal className="mx-auto w-full max-w-[260px] lg:mx-0">
-            <div className="relative overflow-hidden rounded-2xl border border-white/12">
+          <div className="rise mx-auto w-full max-w-[260px] lg:mx-0">
+            <div className="zoom-frame relative rounded-2xl border border-white/12">
               <img
                 src={teddy448}
                 srcSet={`${teddy448} 448w, ${teddy672} 672w`}
