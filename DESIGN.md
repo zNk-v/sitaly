@@ -61,19 +61,27 @@ Valeurs en OKLCH, cohérentes avec le fichier de tokens existant.
 | `--ink` | `oklch(0.165 0.045 302)` | Pied de page uniquement. Violet profond, pas un gris neutre. |
 | `--ink-deep` | `oklch(0.115 0.032 302)` | Réserve, pour les fonds de carte sur surface sombre. |
 
-| `--wash-from` / `--wash-to` | `oklch(0.945 0.045 305)` → `oklch(0.935 0.052 344)` | Voile de section, sur l'axe du logo |
+| `--wash-from` / `--wash-to` | `oklch(0.955 0.035 300)` → `oklch(0.925 0.062 310)` | Voile de section, violet seul |
 
 Le rythme vient de l'alternance papier / papier en retrait / voile, jamais d'un
 basculement en sombre. L'encre ne subsiste qu'au pied de page, où elle sert
 d'ancre en fin de parcours.
 
 **Le voile plutôt que l'aplat.** Une première tentative posait des sections en
-aplat violet saturé. Refusée : trop péremptoire. Le voile la remplace, sur le
-même axe que le logo, du violet au rose. Il est assez clair pour porter du texte
-encre à 15:1, donc il colore la page sans jamais crier. La saturation qu'il perd
-est reportée sur les très grandes tailles, via `brand-gradient-text` : les
-chiffres et les numéros d'étape reçoivent le dégradé profond du même axe, à 8:1
-sur blanc. La couleur passe du fond vers le texte.
+aplat violet saturé. Refusée : trop péremptoire. Le voile la remplace. Il est
+assez clair pour porter du texte encre à 15:1, donc il colore la page sans
+jamais crier. La saturation qu'il perd est reportée sur les très grandes
+tailles, via `brand-gradient-text` : les chiffres et les numéros d'étape
+reçoivent le dégradé profond, à près de 8:1 sur blanc. La couleur passe du fond
+vers le texte.
+
+**Le magenta reste au logo.** Le second chevron du logo est un magenta
+(`#d946a8`, teinte 344). Étendu à une surface, il a été refusé. Règle qui en
+découle : **les grandes surfaces restent entre les teintes 298 et 312**, du
+violet et rien d'autre. Le magenta ne subsiste que dans le logo lui-même, où il
+occupe quelques centaines de pixels. Cela vaut pour les voiles de section, le
+dégradé du hero, le halo du curseur et la barre de progression, tous ramenés
+dans cet intervalle.
 
 ### Marque
 

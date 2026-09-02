@@ -78,16 +78,17 @@
 
   /* Signal : réservé au vérifiable (site en ligne, délai tenu, client nommé).
      Deux valeurs, car le vert clair passe sous le seuil sur fond papier. */
-  /* Voile de section, sur l'axe du logo : violet vers rose, jamais vers le
-     bleu. Assez clair pour porter du texte encre à 15:1, donc la section
-     colore sans crier. L'aplat saturé a été refusé, trop péremptoire. */
-  --wash-from: oklch(0.945 0.045 305);
-  --wash-to: oklch(0.935 0.052 344);
+  /* Voile de section. Dégradé à l'intérieur du violet seul : du clair vers un
+     violet un peu plus dense, sans jamais atteindre le rose. Le magenta du
+     second chevron du logo a été écarté des grandes surfaces, il ne tient pas
+     à cette échelle. Bornes de teinte : 298 à 312, jamais au-delà. */
+  --wash-from: oklch(0.955 0.035 300);
+  --wash-to: oklch(0.925 0.062 310);
 
-  /* Même axe, assombri, pour le texte : les gros chiffres gardent la
-     saturation que le fond a perdue. Les deux extrémités passent 8:1 sur blanc. */
-  --brand-grad-from: oklch(0.45 0.2 305);
-  --brand-grad-to: oklch(0.42 0.21 344);
+  /* Même intervalle, assombri, pour le texte : les gros chiffres gardent la
+     saturation que le fond a perdue. Les deux extrémités passent 7.8:1 sur blanc. */
+  --brand-grad-from: oklch(0.46 0.19 298);
+  --brand-grad-to: oklch(0.4 0.2 312);
 
   --signal: oklch(0.72 0.17 165);
   --signal-ink: oklch(0.48 0.13 165);
@@ -126,7 +127,7 @@
      section. C'est ce qui la distingue du lavande froid et uniforme de Linov. */
   --gradient-hero:
     radial-gradient(ellipse 100% 62% at 50% -8%, oklch(0.72 0.177 305 / 0.2), transparent 62%),
-    radial-gradient(ellipse 60% 40% at 88% 8%, oklch(0.631 0.208 344 / 0.1), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 88% 8%, oklch(0.6 0.19 300 / 0.1), transparent 60%),
     linear-gradient(180deg, oklch(0.972 0.014 305), var(--paper) 62%);
   --gradient-primary: linear-gradient(135deg, var(--ink), oklch(0.28 0.1 305));
   --gradient-accent: var(--gradient-brand);
@@ -188,7 +189,7 @@
   pointer-events: none;
   background: radial-gradient(
     24rem 24rem at var(--mx, 50%) var(--my, 12%),
-    oklch(0.631 0.208 344 / 0.1),
+    oklch(0.6 0.19 302 / 0.11),
     transparent 68%
   );
   transition: opacity 0.4s ease;
@@ -199,7 +200,7 @@
    tels quels. Seuls les filets se teintent, pour ne pas trancher sur le voile. */
 @utility on-wash {
   background: linear-gradient(115deg, var(--wash-from), var(--wash-to));
-  --border: oklch(0.45 0.2 320 / 0.16);
+  --border: oklch(0.45 0.2 305 / 0.16);
 }
 
 /* Texte en dégradé sur l'axe du logo, réservé aux très grandes tailles :

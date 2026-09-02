@@ -18,7 +18,7 @@ export function SiteChrome({ children }: { children: ReactNode }) {
     <>
       <header className="sticky top-0 z-50 border-b border-border bg-paper/85 backdrop-blur-md">
         <div
-          className="scroll-progress absolute inset-x-0 bottom-0 h-px origin-left bg-gradient-to-r from-brand to-brand-deep"
+          className="scroll-progress absolute inset-x-0 bottom-0 h-px origin-left bg-gradient-to-r from-brand to-accent"
           aria-hidden="true"
         />
         <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
