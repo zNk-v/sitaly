@@ -201,25 +201,6 @@
   --secondary: oklch(1 0 0 / 0.06);
   --secondary-foreground: oklch(0.99 0 0);
 }
-/* Halo du hero : une nappe radiale posée sur le dégradé, centrée sur les
-   coordonnées écrites par le pointeur. Repli au centre haut tant qu'aucun
-   mouvement n'a eu lieu, pour que la section ne soit jamais plate. */
-@utility hero-halo {
-  position: relative;
-}
-.hero-halo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    24rem 24rem at var(--mx, 50%) var(--my, 12%),
-    oklch(0.55 0.2 288 / 0.12),
-    transparent 68%
-  );
-  transition: opacity 0.4s ease;
-}
-
 /* Section voilée. Contrairement à .on-ink, aucun jeton de texte ne bascule :
    le fond reste assez clair pour que l'encre et le violet de marque tiennent
    tels quels. Seuls les filets se teintent, pour ne pas trancher sur le voile. */
@@ -229,8 +210,8 @@
   --border: oklch(0.48 0.2 300 / 0.16);
 }
 
-/* Texte en dégradé sur l'axe du logo, réservé aux très grandes tailles :
-   c'est là que la couleur remplace la masse. */
+/* Texte en dégradé sur la triade, réservé aux très grandes tailles : c'est là
+   que la couleur remplace la masse. Interpolation oklch, voir --gradient-brand. */
 @utility brand-gradient-text {
   background: linear-gradient(
     100deg,
@@ -463,80 +444,52 @@
   }
 }
 
-/* Trame de points du hero. Motif CSS pur, masqué en fondu pour qu'il
-   disparaisse avant le bas de la section : une texture, pas un damier. */
-@utility dot-grid {
-  background-image: radial-gradient(oklch(0.48 0.2 285 / 0.2) 1px, transparent 1px);
-  background-size: 26px 26px;
-  mask-image: radial-gradient(ellipse 85% 65% at 50% 0%, #000 25%, transparent 78%);
-  -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 0%, #000 25%, transparent 78%);
-}
-
-/* Flottement décalé des cartes du collage. Le délai est porté par --f pour
-   que les trois captures ne montent pas et ne redescendent pas ensemble. */
-@keyframes float-card {
-  0%,
-  100% {
-    transform: translateY(0) rotate(var(--r, 0deg));
-  }
-  50% {
-    transform: translateY(-10px) rotate(var(--r, 0deg));
-  }
-}
-@utility float-card {
-  animation: float-card 7s ease-in-out infinite;
-  animation-delay: calc(var(--f, 0) * 1.1s);
-}
-@media (prefers-reduced-motion: reduce) {
-  .float-card {
-    animation: none;
-  }
-}
-
-/* ---- Trait tracé à la main ----
-   Posé sous le mot, jamais dessus. Couleur pleine et assumée : à demi-opacité
-   le geste passait pour une ombre, il doit se voir comme un trait de feutre. */
-.mark-svg {
-  position: absolute;
-  inset-inline: -0.14em;
-  pointer-events: none;
-  width: calc(100% + 0.28em);
-  stroke: oklch(0.6 0.25 304);
-}
-.mark-trait {
-  top: 100%;
-  /* Assez bas pour passer sous les jambages du q et du p, assez haut pour
-     rester rattaché au mot. */
-  margin-top: -0.14em;
-  /* Épaisseur effective du trait : (strokeWidth / hauteur du viewBox) × height,
-     soit (9 / 24) × 0.46em ≈ 0.17em. C'est ce qu'il faut pour qu'il se voie
-     comme un feutre et non comme un soulignement de traitement de texte. */
-  height: 0.46em;
-}
-.mark-cercle {
-  top: -0.16em;
-  height: 1.34em;
-  inset-inline: -0.4em;
-  width: calc(100% + 0.8em);
-  stroke-width: 2.5;
-}
-
+/* ---- Zoom du nom au défilement ----
+   Le nom grandit à mesure que le hero remonte. Piloté par la timeline de
+   scroll, donc aucun écouteur : l'échelle vit sur le fil de composition.
+   `transform-origin` au centre haut pour que le mot pousse vers le bas et
+   ne sorte pas par le haut de la section. */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    @keyframes mark-stroke {
+    @keyframes zoom-nom {
       from {
-        stroke-dashoffset: 240;
+        transform: scale(0.86);
+        letter-spacing: 0.34em;
+        opacity: 0.55;
       }
       to {
-        stroke-dashoffset: 0;
+        transform: scale(1);
+        letter-spacing: 0.2em;
+        opacity: 1;
       }
     }
-    .mark-draw {
-      stroke-dasharray: 240;
-      animation: mark-stroke linear both;
+    .zoom-scroll {
+      transform-origin: 50% 0;
+      animation: zoom-nom linear both;
       animation-timeline: view();
-      animation-range: entry 35% cover 48%;
+      animation-range: entry 0% cover 38%;
+      will-change: transform;
     }
+  }
+}
+
+/* ---- Ligne qui se trace de gauche à droite ----
+   Un fondu dit « ça apparaît ». Un dévoilement latéral dit « ça s'écrit ».
+   La règle neutralise la translation et l'opacité de la révélation standard :
+   les deux ensemble brouilleraient le geste. */
+.ai-anim [data-reveal].wipe {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ai-anim [data-reveal].wipe.is-in {
+  clip-path: inset(0 0 0 0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ai-anim [data-reveal].wipe {
+    clip-path: none;
+    transition: none;
   }
 }
 

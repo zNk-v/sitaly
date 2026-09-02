@@ -114,6 +114,7 @@ function SitalyHome() {
     <div ref={rootRef} className="min-h-screen bg-background text-foreground">
       <Nav />
       <Hero />
+      <CeQuOnFait />
       <ProfessionsMarquee />
       <Problem />
       <HowItWorks />
@@ -169,64 +170,31 @@ function Nav() {
 
 /* ---------------- HERO ---------------- */
 function Hero() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  /* Halo qui suit le curseur. Écrit deux variables CSS au rythme de l'écran,
-     jamais de style calculé en JS : le rendu reste au compositeur. Pointeur
-     fin uniquement, donc rien ne tourne au doigt sur mobile. */
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    if (!window.matchMedia("(pointer: fine)").matches) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    let frame = 0;
-    let x = 0;
-    let y = 0;
-    const onMove = (e: PointerEvent) => {
-      const r = el.getBoundingClientRect();
-      x = e.clientX - r.left;
-      y = e.clientY - r.top;
-      if (frame) return;
-      frame = requestAnimationFrame(() => {
-        frame = 0;
-        el.style.setProperty("--mx", `${x}px`);
-        el.style.setProperty("--my", `${y}px`);
-      });
-    };
-    el.addEventListener("pointermove", onMove, { passive: true });
-    return () => {
-      el.removeEventListener("pointermove", onMove);
-      if (frame) cancelAnimationFrame(frame);
-    };
-  }, []);
-
   return (
-    <section ref={sectionRef} id="top" className="hero-bg hero-halo relative overflow-hidden">
-      <div className="dot-grid pointer-events-none absolute inset-0" aria-hidden="true" />
-
-      <div className="relative mx-auto max-w-6xl px-4 pt-16 text-center sm:px-6 sm:pt-24">
-        {/* Le nom de la marque vit dans la phrase et en porte le graphisme,
-            comme « LINOV digitalise votre entreprise » chez la référence. Le
-            titre remplace à lui seul la pastille, la ligne défilante et le
-            sous-titre qui l'encombraient. */}
-        <h1 className="font-display font-extrabold leading-[1.06] tracking-[-0.03em]">
-          <span className="block text-[clamp(1.15rem,2.4vw,2rem)] text-muted-foreground">
+    <section id="top" className="hero-bg relative overflow-hidden">
+      <div className="relative mx-auto max-w-6xl px-4 py-24 text-center sm:px-6 sm:py-32 lg:py-40">
+        {/* Le nom de la marque vit dans la phrase et en porte le graphisme.
+            Jakarta pour la structure, Instrument Serif pour le verbe : le
+            mélange des deux familles fait la tension du titre, la couleur ne
+            fait que la souligner. */}
+        <h1 className="font-display font-extrabold leading-[1.06]">
+          <span className="block text-[clamp(1.05rem,2vw,1.6rem)] tracking-[0.08em] text-muted-foreground">
             Agence web pour artisans, indépendants et PME,
           </span>
-          <span className="mt-2 block text-[clamp(2.6rem,8.2vw,7rem)] leading-[0.92]">
-            <span className="tracking-[0.14em]">SITALY</span>{" "}
-            <span className="brand-gradient-text">fait sonner</span>
+
+          <span className="zoom-scroll mt-4 block text-[clamp(2.4rem,7.6vw,6.4rem)] leading-[0.94] tracking-[0.2em]">
+            SITALY
           </span>
-          <span className="mt-1 block text-[clamp(1.5rem,3.6vw,3.1rem)] leading-tight">
-            votre téléphone
+
+          <span className="mt-2 block text-[clamp(2rem,5.4vw,4.6rem)] leading-[1.02]">
+            <span className="brand-gradient-text accent-word tracking-normal">fait sonner</span>{" "}
+            <span className="tracking-[0.02em]">votre téléphone</span>
           </span>
         </h1>
 
-        {/* Annotation tracée à la main, sous le titre et centrée. */}
         <div
           aria-hidden="true"
-          className="mt-6 flex items-center justify-center gap-3 text-muted-foreground"
+          className="mt-8 flex items-center justify-center gap-3 text-muted-foreground"
         >
           <svg
             viewBox="0 0 88 46"
@@ -242,7 +210,7 @@ function Hero() {
           <span className="accent-word -rotate-2 text-xl">et zéro prise de tête</span>
         </div>
 
-        <div className="mt-9 flex justify-center">
+        <div className="mt-10 flex justify-center">
           <a
             href={CALENDLY_URL}
             target="_blank"
@@ -254,102 +222,90 @@ function Hero() {
           </a>
         </div>
       </div>
-
-      <HeroPreuve />
     </section>
   );
 }
 
+/* ---------------- CE QU'ON FAIT ---------------- */
 /**
- * Les trois sites livrés, en bande large sous le titre.
+ * Trois promesses en très grand, qui se tracent l'une après l'autre.
  *
- * La référence pose une photo pleine largeur coupée par le bas du pli : on
- * devine qu'il y a une suite, ce qui invite à défiler. Même principe ici, mais
- * avec de vrais sites plutôt qu'une image d'illustration. Les captures sont
- * cliquables et portent leur nom de domaine.
+ * Chaque ligne se dévoile de gauche à droite par un `clip-path` animé, comme
+ * une phrase qu'on écrit, et non par un simple fondu. Le décalage entre les
+ * lignes vient de `--i`, posé sur chaque élément.
+ *
+ * La référence pose ce moment sur du noir. Ici il vit sur le papier : le fond
+ * sombre a été écarté pour l'ensemble du site.
  */
-function HeroPreuve() {
-  const [principal, ...secondaires] = REALISATIONS;
-  const gauche = secondaires[0];
-  const droite = secondaires[1];
+function CeQuOnFait() {
+  const promesses = [
+    { texte: "Plus de clients.", accent: false },
+    { texte: "Plus d'appels.", accent: true },
+    { texte: "Moins de temps perdu.", accent: false },
+  ];
 
   return (
-    <div className="relative mt-14 sm:mt-20">
-      {/* Halo derrière la bande, pour décoller les cartes du fond. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-[12%] top-8 h-56 rounded-[4rem] bg-brand/12 blur-3xl"
-      />
+    <section className="bg-paper-sunk py-24 sm:py-32">
+      <div className="mx-auto max-w-6xl px-4 text-center sm:px-6">
+        <p data-reveal className="rail-label text-brand-ink">
+          Ce qu'on fait chez Sitaly
+        </p>
 
-      <div className="relative mx-auto flex max-w-6xl items-end justify-center gap-4 px-4 sm:px-6">
-        <a
-          href={gauche.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ "--r": "-4deg", "--f": 1 } as React.CSSProperties}
-          className="zoom-frame float-card relative hidden w-[26%] shrink-0 overflow-hidden rounded-2xl border border-border bg-card shadow-elevated lg:block"
-        >
-          <img
-            src={gauche.capture.small}
-            alt={`Page d'accueil du site de ${gauche.client}`}
-            loading="lazy"
-            decoding="async"
-            className="block h-auto w-full"
-          />
-          <span className="absolute inset-x-0 bottom-0 bg-ink/80 px-2 py-1 text-center text-[11px] font-semibold text-white">
-            {gauche.domaine}
-          </span>
-        </a>
+        <p data-reveal className="measure mx-auto mt-6 text-lg text-muted-foreground sm:text-xl">
+          Avec Sitaly, votre présence en ligne cesse d'être une case à cocher et devient le canal
+          qui remplit votre agenda.
+        </p>
 
-        <a
-          href={principal.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ "--r": "0deg", "--f": 0 } as React.CSSProperties}
-          className="zoom-frame float-card relative w-full shrink-0 overflow-hidden rounded-2xl border border-border bg-card shadow-elevated lg:w-[44%]"
-        >
-          <img
-            src={principal.capture.large}
-            srcSet={`${principal.capture.small} 720w, ${principal.capture.large} 1200w`}
-            sizes="(min-width: 1024px) 44vw, 92vw"
-            alt={`Page d'accueil du site de ${principal.client}`}
-            width={720}
-            height={500}
-            decoding="async"
-            className="block h-auto w-full"
-          />
-          <span className="absolute bottom-3 left-3 rounded-full bg-ink/85 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-            {principal.domaine}
-          </span>
-        </a>
+        <ul className="stagger mt-16 space-y-4 sm:space-y-6">
+          {promesses.map((p, i) => (
+            <li
+              key={p.texte}
+              data-reveal
+              style={{ "--i": i, "--stagger-step": "260ms" } as React.CSSProperties}
+              className="wipe flex items-center justify-center gap-4 sm:gap-6"
+            >
+              {/* Chevron repris du logo, en marqueur de ligne. */}
+              {/* Taillé sur la même échelle que le texte : en `em`, le chevron
+                  se serait calé sur la taille du `li` et non sur celle du mot. */}
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                className={`h-[clamp(1.5rem,4.6vw,3.4rem)] w-[clamp(1.5rem,4.6vw,3.4rem)] shrink-0 ${
+                  p.accent ? "text-brand-ink" : "text-foreground/25"
+                }`}
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M8 4l8 8-8 8" />
+              </svg>
+              <span
+                className={`font-display text-[clamp(1.9rem,6vw,4.4rem)] font-extrabold leading-none tracking-[-0.02em] ${
+                  p.accent ? "brand-gradient-text" : ""
+                }`}
+              >
+                {p.texte}
+              </span>
+            </li>
+          ))}
+        </ul>
 
-        <a
-          href={droite.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ "--r": "3.5deg", "--f": 2 } as React.CSSProperties}
-          className="zoom-frame float-card relative hidden w-[26%] shrink-0 overflow-hidden rounded-2xl border border-border bg-card shadow-elevated lg:block"
-        >
-          <img
-            src={droite.capture.small}
-            alt={`Page d'accueil du site de ${droite.client}`}
-            loading="lazy"
-            decoding="async"
-            className="block h-auto w-full"
-          />
-          <span className="absolute inset-x-0 bottom-0 bg-ink/80 px-2 py-1 text-center text-[11px] font-semibold text-white">
-            {droite.domaine}
-          </span>
-        </a>
+        <div data-reveal className="mt-16">
+          <a
+            href="#offre"
+            className="group inline-flex items-baseline gap-3 font-display text-[clamp(1.6rem,4vw,3rem)] font-extrabold tracking-tight text-brand-ink"
+          >
+            découvrir
+            <span className="accent-word text-[0.62em] font-normal text-muted-foreground">
+              nos offres
+            </span>
+            <ArrowRight className="h-[0.7em] w-[0.7em] self-center transition-transform group-hover:translate-x-2" />
+          </a>
+        </div>
       </div>
-
-      {/* Le bas des captures se fond dans le papier : la bande est coupée par
-          le pli plutôt que posée dessus, ce qui donne envie de descendre. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-background"
-      />
-    </div>
+    </section>
   );
 }
 
