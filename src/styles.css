@@ -431,6 +431,36 @@
   }
 }
 
+/* Trame de points du hero. Motif CSS pur, masqué en fondu pour qu'il
+   disparaisse avant le bas de la section : une texture, pas un damier. */
+@utility dot-grid {
+  background-image: radial-gradient(oklch(0.45 0.2 305 / 0.22) 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(ellipse 85% 65% at 50% 0%, #000 25%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 0%, #000 25%, transparent 78%);
+}
+
+/* Flottement décalé des cartes du collage. Le délai est porté par --f pour
+   que les trois captures ne montent pas et ne redescendent pas ensemble. */
+@keyframes float-card {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--r, 0deg));
+  }
+  50% {
+    transform: translateY(-10px) rotate(var(--r, 0deg));
+  }
+}
+@utility float-card {
+  animation: float-card 7s ease-in-out infinite;
+  animation-delay: calc(var(--f, 0) * 1.1s);
+}
+@media (prefers-reduced-motion: reduce) {
+  .float-card {
+    animation: none;
+  }
+}
+
 /* Mesure de lecture plafonnée (DESIGN.md §4). */
 @utility measure {
   max-width: 34rem;

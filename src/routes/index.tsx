@@ -120,7 +120,6 @@ function SitalyHome() {
       <Nav />
       <Hero />
       <ProfessionsMarquee />
-      <TrustBar />
       <Problem />
       <HowItWorks />
       <StackedOffers />
@@ -255,6 +254,7 @@ function Hero() {
 
   return (
     <section ref={sectionRef} id="top" className="hero-bg hero-halo relative overflow-hidden">
+      <div className="dot-grid pointer-events-none absolute inset-0" aria-hidden="true" />
       <div className="relative mx-auto max-w-7xl px-4 pb-28 pt-16 sm:px-6 sm:pt-24 lg:pb-36">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
           <div>
@@ -304,16 +304,31 @@ function Hero() {
               </a>
             </div>
 
-            {/* Ce que le prix affiché portait — clarté et absence d'engagement —
-                reste dit ici, sans montant. Voir DESIGN.md §8. */}
-            <ul className="mt-9 grid grid-cols-2 gap-x-6 gap-y-3 text-sm sm:grid-cols-3 sm:text-[15px]">
-              {["Sans engagement", "Sans frais d'installation", "Réponse sous 24h"].map((t) => (
-                <li key={t} className="flex items-center gap-2 text-foreground/80">
-                  <Check className="h-4 w-4 shrink-0 text-signal-ink" />
-                  {t}
-                </li>
+            {/* Les preuves passent en ligne sous les boutons plutôt que dans un
+                bandeau séparé, qui répétait la même chose vingt pixels plus bas
+                et affichait « Sans » comme s'il s'agissait d'un chiffre. */}
+            <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-border pt-7 sm:grid-cols-4">
+              {[
+                { v: "48h", l: "Mise en ligne" },
+                { v: "24h", l: "Délai de réponse" },
+                { v: "0€", l: "Frais d'installation" },
+              ].map((s) => (
+                <div key={s.l}>
+                  <dt className="brand-gradient-text rail-num font-display text-2xl font-extrabold leading-none tracking-tight sm:text-3xl">
+                    {s.v}
+                  </dt>
+                  <dd className="mt-1.5 text-xs text-muted-foreground sm:text-sm">{s.l}</dd>
+                </div>
               ))}
-            </ul>
+              <div>
+                <dt className="font-display text-2xl font-extrabold leading-none tracking-tight sm:text-3xl">
+                  <span className="accent-word">sans</span>
+                </dt>
+                <dd className="mt-1.5 text-xs text-muted-foreground sm:text-sm">
+                  Engagement de durée
+                </dd>
+              </div>
+            </dl>
           </div>
 
           <div className="drift relative">
@@ -335,12 +350,19 @@ function Hero() {
 function HeroPreuve() {
   const [principal, ...secondaires] = REALISATIONS;
   return (
-    <div className="relative mx-auto w-full max-w-xl">
+    <div className="relative mx-auto w-full max-w-xl pb-16 pt-6 sm:pb-24">
+      {/* Halo derrière le collage, pour décoller les cartes du fond. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-6 -z-10 rounded-[3rem] bg-brand/12 blur-3xl"
+      />
+
       <a
         href={principal.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="zoom-frame group block rounded-2xl border border-border bg-card shadow-elevated"
+        style={{ "--r": "-1.5deg", "--f": 0 } as React.CSSProperties}
+        className="zoom-frame float-card relative block rounded-2xl border border-border bg-card shadow-elevated"
       >
         <img
           src={principal.capture.small}
@@ -357,30 +379,38 @@ function HeroPreuve() {
         </span>
       </a>
 
-      {/* Les deux autres, décalés, pour dire qu'il y en a plusieurs sans
-          encombrer. Masqués sous sm, où la place manque. */}
-      <div className="pointer-events-none absolute -bottom-14 -left-2 hidden gap-4 sm:flex">
-        {secondaires.map((r, i) => (
-          <a
-            key={r.slug}
-            href={r.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ transform: `rotate(${i === 0 ? -2.5 : 1.5}deg)` }}
-            className="pointer-events-auto w-[150px] overflow-hidden rounded-xl border border-border bg-card shadow-elevated transition hover:-translate-y-1"
-          >
-            <img
-              src={r.capture.small}
-              alt={`Page d'accueil du site de ${r.client}`}
-              loading="lazy"
-              decoding="async"
-              className="block h-auto w-full"
-            />
-          </a>
-        ))}
-      </div>
+      {/* Les deux autres, dispersées de part et d'autre plutôt qu'alignées :
+          l'alignement faisait une pile bien rangée, pas un portfolio. */}
+      {secondaires.map((r, i) => (
+        <a
+          key={r.slug}
+          href={r.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={
+            {
+              "--r": i === 0 ? "-4deg" : "3.5deg",
+              "--f": i + 1,
+            } as React.CSSProperties
+          }
+          className={`zoom-frame float-card absolute hidden w-[168px] overflow-hidden rounded-xl border border-border bg-card shadow-elevated transition-shadow hover:shadow-glow sm:block ${
+            i === 0 ? "-bottom-2 -left-10" : "-right-8 bottom-10"
+          }`}
+        >
+          <img
+            src={r.capture.small}
+            alt={`Page d'accueil du site de ${r.client}`}
+            loading="lazy"
+            decoding="async"
+            className="block h-auto w-full"
+          />
+          <span className="absolute inset-x-0 bottom-0 bg-ink/80 px-2 py-1 text-center text-[10px] font-semibold text-white">
+            {r.domaine}
+          </span>
+        </a>
+      ))}
 
-      <div className="animate-float absolute -right-4 -top-4 hidden items-center gap-2.5 rounded-xl border border-border bg-card px-3.5 py-2.5 shadow-elevated sm:flex">
+      <div className="animate-float absolute -right-2 -top-2 hidden items-center gap-2.5 rounded-xl border border-border bg-card px-3.5 py-2.5 shadow-elevated sm:flex">
         <span className="grid h-9 w-9 place-items-center rounded-lg bg-signal-ink/12 text-signal-ink">
           <Check className="h-4 w-4" />
         </span>
@@ -441,31 +471,6 @@ function ProfessionsMarquee() {
         </div>
       </div>
     </section>
-  );
-}
-
-function TrustBar() {
-  /* Le montant a quitté la page (DESIGN.md §8). Ce qu'il portait — un cadre
-     clair et sans piège — est repris ici en engagements vérifiables. */
-  const items = [
-    { v: "48h", l: "Mise en ligne" },
-    { v: "24h", l: "Réponse à votre demande" },
-    { v: "0€", l: "Frais d'installation" },
-    { v: "Sans", l: "Engagement de durée" },
-  ];
-  return (
-    <div className="border-y border-border bg-paper-sunk">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-y divide-border/70 md:grid-cols-4 md:divide-y-0">
-        {items.map((i) => (
-          <div key={i.l} className="px-5 py-7">
-            <div className="rail-num font-display text-2xl font-extrabold tracking-tight text-brand-ink sm:text-3xl">
-              {i.v}
-            </div>
-            <div className="mt-1 text-xs text-muted-foreground sm:text-sm">{i.l}</div>
-          </div>
-        ))}
-      </div>
-    </div>
   );
 }
 
