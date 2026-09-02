@@ -29,6 +29,8 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import teddy448 from "@/assets/teddy-vidal-448.jpg";
+import teddy672 from "@/assets/teddy-vidal-672.jpg";
 import exampleRenovation from "@/assets/example-renovation.jpg";
 import examplePlombier from "@/assets/example-plombier.jpg";
 import exampleElectricien from "@/assets/example-electricien.jpg";
@@ -1335,19 +1337,28 @@ function Faq() {
  * effectif, ni équipe, ni adresse : elle montre la personne qui fait le travail.
  * C'est la promesse qu'aucune agence à effectif ne peut tenir. Voir DESIGN.md §9.
  *
- * La photo réelle n'est pas encore fournie : le monogramme sert de tenant-lieu
- * et doit être remplacé, pas complété par une image générée.
+ * Photo réelle de Teddy Vidal (shooting @louiss_photography), recadrée en 4:5
+ * avec le visage au tiers supérieur. Deux largeurs servies en srcset : le
+ * cadre fait 260px au maximum, le 672 couvre les écrans à densité double.
  */
 function Founder() {
   return (
     <section className="bg-ink py-20 text-white sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid items-center gap-12 lg:grid-cols-[auto_1fr] lg:gap-16">
-          <div className="mx-auto w-full max-w-[260px] lg:mx-0">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/12 bg-white/[0.04]">
-              <div className="absolute inset-0 grid place-items-center">
-                <span className="font-display text-6xl font-extrabold text-white/15">TV</span>
-              </div>
+          <div data-reveal className="mx-auto w-full max-w-[260px] lg:mx-0">
+            <div className="relative overflow-hidden rounded-2xl border border-white/12">
+              <img
+                src={teddy448}
+                srcSet={`${teddy448} 448w, ${teddy672} 672w`}
+                sizes="260px"
+                width={448}
+                height={560}
+                loading="lazy"
+                decoding="async"
+                alt="Teddy Vidal, fondateur de Sitaly"
+                className="block h-auto w-full"
+              />
             </div>
           </div>
 
