@@ -263,20 +263,21 @@ function Ouverture() {
  * sombre a été écarté pour l'ensemble du site.
  */
 function CeQuOnFait() {
-  /* Trois temps qui racontent une séquence plutôt que trois fois la même
-     promesse commerciale : on vous trouve, on vous choisit, rien ne se perd.
-     Ils correspondent aux trois familles d'offres. */
-  const promesses = [
-    { texte: "Être trouvé.", accent: false },
-    { texte: "Être choisi.", accent: true },
-    { texte: "Ne rien laisser filer.", accent: false },
+  /* Ce que le mot laisse voir, ce sont les prestations réelles, pas des
+     formules : le visiteur regarde à l'intérieur de Sitaly et y trouve
+     l'offre. Chaque ligne mène à sa page, ce qui sert aussi le maillage. */
+  const prestations = [
+    { texte: "création de site internet", to: "/realisations/", accent: false },
+    { texte: "campagnes Google Ads", to: "/acquisition/", accent: true },
+    { texte: "campagnes ChatGPT Ads", href: "/chatgpt-ads/", accent: false },
+    { texte: "agents IA & automatisations", to: "/agents-ia/", accent: false },
   ];
 
   return (
     <section className="on-panel flex min-h-full w-full items-center py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-4 text-center sm:px-6">
         <p data-reveal className="rail-label text-white/70">
-          Ce que change Sitaly
+          Ce que fait Sitaly
         </p>
 
         <p data-reveal className="measure mx-auto mt-6 text-lg text-white/80 sm:text-xl">
@@ -284,40 +285,57 @@ function CeQuOnFait() {
           demandes que vous recevez comme sur votre organisation quotidienne.
         </p>
 
-        <ul className="stagger mt-16 space-y-4 sm:space-y-6">
-          {promesses.map((p, i) => (
-            <li
-              key={p.texte}
-              data-reveal
-              style={{ "--i": i, "--stagger-step": "260ms" } as React.CSSProperties}
-              className="wipe flex items-center justify-center gap-4 sm:gap-6"
-            >
-              {/* Chevron repris du logo, en marqueur de ligne. */}
-              {/* Taillé sur la même échelle que le texte : en `em`, le chevron
-                  se serait calé sur la taille du `li` et non sur celle du mot. */}
-              <svg
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                className={`h-[clamp(1.5rem,4.6vw,3.4rem)] w-[clamp(1.5rem,4.6vw,3.4rem)] shrink-0 ${
-                  p.accent ? "text-white" : "text-white/35"
-                }`}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+        <ul className="stagger mt-16 space-y-3 sm:space-y-5">
+          {prestations.map((p, i) => {
+            const contenu = (
+              <>
+                {/* Taillé sur la même échelle que le texte : en `em`, le chevron
+                    se serait calé sur la taille du `li` et non sur celle du mot. */}
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  className={`h-[clamp(1.2rem,3.4vw,2.6rem)] w-[clamp(1.2rem,3.4vw,2.6rem)] shrink-0 transition-transform group-hover:translate-x-1 ${
+                    p.accent ? "text-white" : "text-white/35"
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M8 4l8 8-8 8" />
+                </svg>
+                <span
+                  className={`font-display text-[clamp(1.5rem,4.6vw,3.6rem)] font-extrabold leading-none tracking-[-0.02em] ${
+                    p.accent ? "text-white" : "text-white/80"
+                  }`}
+                >
+                  {p.texte}
+                </span>
+              </>
+            );
+            const classe =
+              "wipe group flex items-center justify-center gap-4 transition-opacity hover:opacity-100 sm:gap-6";
+            return (
+              <li
+                key={p.texte}
+                data-reveal
+                style={{ "--i": i, "--stagger-step": "220ms" } as React.CSSProperties}
+                className={classe}
               >
-                <path d="M8 4l8 8-8 8" />
-              </svg>
-              <span
-                className={`font-display text-[clamp(1.9rem,6vw,4.4rem)] font-extrabold leading-none tracking-[-0.02em] ${
-                  p.accent ? "text-white" : "text-white/80"
-                }`}
-              >
-                {p.texte}
-              </span>
-            </li>
-          ))}
+                {p.to ? (
+                  <Link to={p.to} className="flex items-center gap-4 sm:gap-6">
+                    {contenu}
+                  </Link>
+                ) : (
+                  /* Landing statique hors routeur : lien classique. */
+                  <a href={p.href} className="flex items-center gap-4 sm:gap-6">
+                    {contenu}
+                  </a>
+                )}
+              </li>
+            );
+          })}
         </ul>
 
         <div data-reveal className="mt-16">
