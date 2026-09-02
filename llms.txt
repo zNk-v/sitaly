@@ -1,72 +1,28 @@
 # Sitaly
 
-> Sitaly est une agence d'acquisition française. Elle aide les PME, les TPE et les entreprises de services — des sociétés B2B aux artisans — à générer des demandes qualifiées et des clients. Quatre leviers combinables : un site internet professionnel livré en 48h et entretenu (Sitaly Présence, 149 €/mois), la gestion de campagnes Google Ads (Sitaly Acquisition, 299 €/mois plus 15 % du budget publicitaire), la gestion de campagnes ChatGPT Ads (Sitaly ChatGPT Ads, 890 €/mois plus 10 % du budget publicitaire) et des agents IA installés clé en main qui répondent aux appels, qualifient les demandes, prennent les rendez-vous et relancent les devis (Sitaly Agents IA). Tout est sans engagement et sans frais d'installation. Basée à Brétigny-sur-Orge (Essonne, 91), Sitaly intervient partout en France.
-
-## En bref
-
-- **Nom** : Sitaly
-- **Activité** : acquisition digitale — création de sites internet, gestion de campagnes Google Ads et ChatGPT Ads, automatisation par agents IA — pour PME, TPE, entreprises de services, professions libérales et artisans
-- **Modèle** : abonnement mensuel sans engagement, sans frais d'installation, résiliable avec un simple préavis
-- **Délai de livraison d'un site** : 48h après l'appel découverte et la fourniture des contenus
-- **Zone** : Brétigny-sur-Orge, Essonne (91), Île-de-France et toute la France à distance
-- **SIRET** : 83384883100032
-- **Téléphone** : +33 6 58 68 33 72
-- **Email** : contact@sitaly.fr
-- **Site** : https://sitaly.fr
-- **Instagram** : https://instagram.com/sitaly.fr
+> Sitaly crée des sites internet professionnels pour artisans et TPE. Zone : Brétigny-sur-Orge, Essonne (91) et Île-de-France. Création à 790€ en paiement unique, ou 99€/mois avec hébergement et maintenance inclus. Site livré en 48h.
 
 ## Tarifs
-
-- **Sitaly Présence — 149 €/mois** : site internet sur mesure livré en 48h, hébergement, nom de domaine, HTTPS, maintenance, petites modifications de contenu, fiche Google Business Profile et référencement local inclus.
-- **Sitaly Acquisition — 299 €/mois + 15 % du budget publicitaire** : création et gestion complète des campagnes Google Ads, avec ou sans site. Une seule formule, quel que soit le volume de campagnes. Le budget publicitaire versé à Google reste séparé et à la charge du client.
-- **Sitaly ChatGPT Ads — 890 €/mois + 10 % du budget publicitaire** : stratégie, création et gestion de campagnes publicitaires ChatGPT Ads (analyse des intentions, messages, tracking des conversions, optimisation et reporting). Destiné aux PME, entreprises de services, B2B, SaaS, e-commerce et entreprises à forte valeur client. Le budget publicitaire est séparé et à la charge du client. Sitaly n'est ni partenaire officiel ni certifiée par OpenAI et ne garantit aucun résultat sur ce canal récent.
-- **Sitaly Agents IA — sur mesure** : agents IA installés clé en main (standardiste qui ne rate plus un appel, rappel SMS des appels manqués, qualification des demandes, prise de rendez-vous en ligne, relance automatique des devis).
-- **Blog SEO** : Essentiel 89 €/mois (1 article/mois), Croissance 159 €/mois (2 articles/mois), Premium 299 €/mois (4 articles/mois).
-- **Options ponctuelles** : logo et identité visuelle 390 €, photos professionnelles 290 €, rédaction de contenus sur devis.
-- Appel découverte et devis gratuits. Détail complet : [/pricing.md](https://sitaly.fr/pricing.md)
+- Création (paiement unique) : 790€ TTC, site vitrine sur mesure livré en 48h, optimisé référencement local.
+- Site + maintenance : 99€/mois, inclut hébergement, nom de domaine, sécurité, mises à jour, petites modifications et support. Sans engagement.
+- Devis et appel découverte gratuits.
 
 ## Pour qui
+Artisans (plombiers, électriciens, couvreurs, façadiers, menuisiers, peintres, maçons) et TPE en Essonne et Île-de-France.
 
-PME et entreprises de services qui investissent déjà en acquisition (B2B, SaaS, e-commerce, immobilier, assurance, formation), entreprises à forte valeur client, professions libérales et de santé (avocats, experts-comptables, consultants, ostéopathes, kinésithérapeutes), agents immobiliers, artisans du bâtiment (plombiers, électriciens, couvreurs, façadiers, menuisiers, peintres, maçons, paysagistes), et plus largement toute entreprise qui veut plus de demandes qualifiées.
+## Contact
+- Téléphone : +33 6 58 68 33 72
+- Email : contact@sitaly.fr
 
-Les offres se choisissent selon la maturité : site internet et référencement local pour démarrer, Google Ads pour générer du volume, ChatGPT Ads et agents IA pour les structures qui investissent déjà et savent mesurer leurs conversions.
-
-## Pages principales
-
-- [Accueil](https://sitaly.fr/) : les trois offres, exemples de sites réalisés, process, FAQ et contact.
-- [Sitaly Acquisition — Google Ads](https://sitaly.fr/acquisition/) : comment Sitaly génère des demandes de devis via Google Ads, formules et méthode.
-- [Sitaly ChatGPT Ads](https://sitaly.fr/chatgpt-ads/) : gestion de campagnes publicitaires dans ChatGPT — méthode, cas d'usage par secteur, offre et FAQ.
-- [Sitaly Agents IA](https://sitaly.fr/agents-ia/) : les agents IA installés clé en main pour ne plus perdre un client.
-- [Tarifs détaillés (markdown)](https://sitaly.fr/pricing.md) : toutes les offres et ce qu'elles incluent.
-- [Contexte complet (markdown)](https://sitaly.fr/llms-full.txt) : présentation détaillée, méthode, FAQ intégrale et références.
-
-## Pages métier
-
-- [Site internet pour plombier](https://sitaly.fr/site-internet-plombier/)
-- [Site internet pour électricien](https://sitaly.fr/site-internet-electricien/)
-- [Site internet pour menuisier](https://sitaly.fr/site-internet-menuisier/)
-- [Site internet pour couvreur](https://sitaly.fr/site-internet-couvreur/)
-
-## Blog — guides de référence
-
-- [Publicité ChatGPT Ads : faut-il y investir votre budget ?](https://sitaly.fr/blog/publicite-chatgpt-ads-guide/) : fonctionnement de la publicité dans ChatGPT, comparaison avec Google Ads, critères de décision et cadrage d'un premier test.
-- [Combien coûte ChatGPT Ads ? Ce qu'on peut dire honnêtement](https://sitaly.fr/blog/cout-chatgpt-ads/) : structure de coût, pourquoi aucun CPA de référence n'existe en France, et méthode de calcul du seuil de rentabilité.
-- [ChatGPT Ads : quels secteurs en tirent réellement quelque chose](https://sitaly.fr/blog/chatgpt-ads-secteurs-pme/) : secteurs avantagés, secteurs à écarter, et test pour vérifier son propre cas.
-- [Blog Sitaly](https://sitaly.fr/blog/) : guides sur la création de site, le référencement local, Google Ads, l'automatisation et l'acquisition de clients.
-- [Création de site internet pour artisan : le guide complet 2026](https://sitaly.fr/blog/creation-site-internet-artisan-guide/)
-- [Combien coûte un site internet pour artisan en 2026 ?](https://sitaly.fr/blog/combien-coute-site-internet-artisan/)
-- [Référencement local sur Google pour artisan : le guide pratique](https://sitaly.fr/blog/referencement-local-google-artisan/)
-- [Fiche Google Business Profile pour artisan : le guide d'optimisation](https://sitaly.fr/blog/fiche-google-business-profile-artisan/)
-- [Google Ads vs SEO pour un artisan : que choisir en 2026 ?](https://sitaly.fr/blog/google-ads-vs-seo-artisan/)
-- [Combien coûte une campagne Google Ads pour un artisan en 2026 ?](https://sitaly.fr/blog/cout-google-ads-artisan-vrais-chiffres/)
-- [Agents IA pour artisans et TPE : le guide complet](https://sitaly.fr/blog/agents-ia-artisans-tpe/)
-- [Trouver des chantiers : les 7 canaux qui remplissent vraiment un planning](https://sitaly.fr/blog/trouver-des-chantiers-artisan/)
-- [Appels manqués : combien ça vous coûte et comment y remédier](https://sitaly.fr/blog/appels-manques-artisan-permanence-telephonique/)
-- [Récolter des avis Google quand on est artisan : la méthode complète](https://sitaly.fr/blog/recolter-avis-google-artisan/)
+## Pages
+- [Accueil](/): Offre, exemples, process, FAQ et contact.
+- [Tarifs détaillés](/pricing.md): Détail des offres 790€ et 99€/mois.
+- [Exemple K.S Artisan](/exemples/ks-artisan): Site d'un couvreur-façadier en Essonne réalisé par Sitaly.
+- [Exemple Menuiserie](/exemples/menuiserie): Site d'un menuisier en Île-de-France réalisé par Sitaly.
+- [Blog](/blog): Guides sur la création de site, le référencement local et l'acquisition de clients pour artisans.
 
 ## Optional
-
-- [CGV](https://sitaly.fr/cgv/)
-- [Mentions légales](https://sitaly.fr/mentions-legales/)
-- [Politique de confidentialité](https://sitaly.fr/politique-confidentialite/)
-- [Cookies](https://sitaly.fr/cookies/)
+- [CGV](/cgv): Conditions générales de vente.
+- [Mentions légales](/mentions-legales): Éditeur et hébergeur.
+- [Politique de confidentialité](/politique-confidentialite): RGPD.
+- [Cookies](/cookies): Gestion des cookies.

@@ -27,18 +27,29 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "publicite-chatgpt-ads-guide",
     title: "Publicité ChatGPT Ads : faut-il y investir votre budget ?",
     metaTitle: "Publicité ChatGPT Ads : faut-il y investir votre budget ?",
-    metaDescription: "Comment fonctionne la publicité dans ChatGPT, ce qu'elle change par rapport à Google Ads, et cinq critères concrets pour décider si ce canal mérite votre budget.",
-    excerpt: "La publicité arrive dans ChatGPT. Voici ce qu'on sait de son fonctionnement, ce que ça change vraiment par rapport à Google Ads, et cinq critères pour décider si ce canal mérite une ligne dans votre budget — ou pas encore.",
+    metaDescription:
+      "Comment fonctionne la publicité dans ChatGPT, ce qu'elle change par rapport à Google Ads, et cinq critères concrets pour décider si ce canal mérite votre budget.",
+    excerpt:
+      "La publicité arrive dans ChatGPT. Voici ce qu'on sait de son fonctionnement, ce que ça change vraiment par rapport à Google Ads, et cinq critères pour décider si ce canal mérite une ligne dans votre budget — ou pas encore.",
     category: "Publicité IA",
     readingTime: "9 min",
     publishedAt: "2026-08-23",
     author: "L'équipe Sitaly",
     keyword: "publicité ChatGPT Ads",
     content: [
-      { type: "p", text: "Pendant vingt ans, chercher une solution voulait dire taper trois mots dans un moteur et comparer des liens. Ce réflexe n'a pas disparu, mais il s'est dédoublé : une partie des décisions d'achat commence désormais par une question posée à un assistant, en langage courant, avec du contexte. OpenAI a commencé à insérer de la publicité dans ces échanges." },
-      { type: "p", text: "Pour une entreprise qui investit déjà en acquisition, la question n'est pas de savoir si c'est « l'avenir ». Elle est beaucoup plus prosaïque : est-ce que ce canal peut produire des demandes qualifiées à un coût acceptable, et comment le vérifier sans gaspiller un trimestre de budget ? Cet article donne des éléments de réponse, sans promettre de miracle." },
+      {
+        type: "p",
+        text: "Pendant vingt ans, chercher une solution voulait dire taper trois mots dans un moteur et comparer des liens. Ce réflexe n'a pas disparu, mais il s'est dédoublé : une partie des décisions d'achat commence désormais par une question posée à un assistant, en langage courant, avec du contexte. OpenAI a commencé à insérer de la publicité dans ces échanges.",
+      },
+      {
+        type: "p",
+        text: "Pour une entreprise qui investit déjà en acquisition, la question n'est pas de savoir si c'est « l'avenir ». Elle est beaucoup plus prosaïque : est-ce que ce canal peut produire des demandes qualifiées à un coût acceptable, et comment le vérifier sans gaspiller un trimestre de budget ? Cet article donne des éléments de réponse, sans promettre de miracle.",
+      },
       { type: "h2", text: "Quand la recherche devient une conversation" },
-      { type: "p", text: "La différence entre une requête et une conversation n'est pas cosmétique. Elle change la quantité d'information disponible au moment où la personne cherche." },
+      {
+        type: "p",
+        text: "La différence entre une requête et une conversation n'est pas cosmétique. Elle change la quantité d'information disponible au moment où la personne cherche.",
+      },
       { type: "p", text: "Comparez ces deux formulations pour un même besoin :" },
       {
         type: "ul",
@@ -47,53 +58,117 @@ export const BLOG_POSTS: BlogPost[] = [
           "Dans une conversation : « On est 30, on utilise Jira mais l'équipe trouve ça trop lourd. Il nous faut quelque chose de plus simple, qui se connecte à Slack, avec un budget raisonnable. Vous conseillez quoi ? »",
         ],
       },
-      { type: "p", text: "La deuxième formulation contient l'effectif, l'outil actuel, le motif d'insatisfaction, une contrainte technique et une indication de budget. Un commercial qui reçoit ce brief sait déjà quoi proposer. C'est le type de contexte qu'une conversation expose et qu'une requête de trois mots ne dit pas." },
-      { type: "p", text: "À retenir : ce n'est pas que l'intention est « meilleure » dans ChatGPT. C'est qu'elle y est plus explicite. Ce qui change ce que vous pouvez lui adresser comme message." },
+      {
+        type: "p",
+        text: "La deuxième formulation contient l'effectif, l'outil actuel, le motif d'insatisfaction, une contrainte technique et une indication de budget. Un commercial qui reçoit ce brief sait déjà quoi proposer. C'est le type de contexte qu'une conversation expose et qu'une requête de trois mots ne dit pas.",
+      },
+      {
+        type: "p",
+        text: "À retenir : ce n'est pas que l'intention est « meilleure » dans ChatGPT. C'est qu'elle y est plus explicite. Ce qui change ce que vous pouvez lui adresser comme message.",
+      },
       { type: "h2", text: "Ce qu'on sait du fonctionnement" },
-      { type: "p", text: "Le canal est récent et ses modalités évoluent encore. Voici les éléments qu'OpenAI a communiqués publiquement — à considérer comme un état des lieux, pas comme une documentation figée." },
+      {
+        type: "p",
+        text: "Le canal est récent et ses modalités évoluent encore. Voici les éléments qu'OpenAI a communiqués publiquement — à considérer comme un état des lieux, pas comme une documentation figée.",
+      },
       { type: "h3", text: "Qui voit les publicités" },
-      { type: "p", text: "Les publicités concernent les utilisateurs de la formule gratuite et de l'abonnement Go. Les formules Plus, Pro et Enterprise restent sans publicité. Conséquence directe et souvent négligée : une partie de l'audience de ChatGPT n'est pas exposée, et cette partie inclut probablement une proportion notable d'utilisateurs professionnels intensifs. Si votre cible est très majoritairement composée de gros utilisateurs payants, l'audience atteignable est plus étroite que le nombre d'utilisateurs total ne le laisse croire." },
+      {
+        type: "p",
+        text: "Les publicités concernent les utilisateurs de la formule gratuite et de l'abonnement Go. Les formules Plus, Pro et Enterprise restent sans publicité. Conséquence directe et souvent négligée : une partie de l'audience de ChatGPT n'est pas exposée, et cette partie inclut probablement une proportion notable d'utilisateurs professionnels intensifs. Si votre cible est très majoritairement composée de gros utilisateurs payants, l'audience atteignable est plus étroite que le nombre d'utilisateurs total ne le laisse croire.",
+      },
       { type: "h3", text: "Comment elles apparaissent" },
-      { type: "p", text: "Les publicités sont identifiées comme telles et présentées séparément de la réponse, sous forme de contenus sponsorisés distincts du texte généré. OpenAI indique qu'elles n'influencent pas le contenu des réponses : le modèle ne recommande pas un annonceur parce qu'il paie." },
+      {
+        type: "p",
+        text: "Les publicités sont identifiées comme telles et présentées séparément de la réponse, sous forme de contenus sponsorisés distincts du texte généré. OpenAI indique qu'elles n'influencent pas le contenu des réponses : le modèle ne recommande pas un annonceur parce qu'il paie.",
+      },
       { type: "h3", text: "Sur quoi repose le ciblage" },
-      { type: "p", text: "Le ciblage s'appuie sur le contexte de la conversation en cours plutôt que sur un profil publicitaire constitué au fil du temps. OpenAI précise que les annonceurs n'ont pas accès aux conversations des utilisateurs, et que ces derniers peuvent gérer la personnalisation, comprendre pourquoi une publicité leur est montrée et supprimer leurs données publicitaires." },
-      { type: "p", text: "Ces informations reflètent l'état des annonces publiques d'OpenAI à la date de cet article. Sur un canal aussi jeune, vérifiez les modalités en vigueur avant tout engagement budgétaire." },
+      {
+        type: "p",
+        text: "Le ciblage s'appuie sur le contexte de la conversation en cours plutôt que sur un profil publicitaire constitué au fil du temps. OpenAI précise que les annonceurs n'ont pas accès aux conversations des utilisateurs, et que ces derniers peuvent gérer la personnalisation, comprendre pourquoi une publicité leur est montrée et supprimer leurs données publicitaires.",
+      },
+      {
+        type: "p",
+        text: "Ces informations reflètent l'état des annonces publiques d'OpenAI à la date de cet article. Sur un canal aussi jeune, vérifiez les modalités en vigueur avant tout engagement budgétaire.",
+      },
       { type: "h2", text: "Ce que ChatGPT Ads n'est pas" },
-      { type: "p", text: "Trois confusions reviennent systématiquement dans les conversations qu'on a sur le sujet. Autant les régler tout de suite." },
+      {
+        type: "p",
+        text: "Trois confusions reviennent systématiquement dans les conversations qu'on a sur le sujet. Autant les régler tout de suite.",
+      },
       { type: "h3", text: "Ce n'est pas « être recommandé par ChatGPT »" },
-      { type: "p", text: "Acheter de la publicité ne fait pas apparaître votre entreprise dans les réponses du modèle. Ce sont deux choses séparées, et c'est précisément ce qu'OpenAI met en avant. Apparaître dans les réponses relève d'un tout autre travail — éditorial, structurel, de réputation — qui ne s'achète pas." },
+      {
+        type: "p",
+        text: "Acheter de la publicité ne fait pas apparaître votre entreprise dans les réponses du modèle. Ce sont deux choses séparées, et c'est précisément ce qu'OpenAI met en avant. Apparaître dans les réponses relève d'un tout autre travail — éditorial, structurel, de réputation — qui ne s'achète pas.",
+      },
       { type: "h3", text: "Ce n'est pas une garantie de présence" },
-      { type: "p", text: "Aucune agence ne peut vous garantir une apparition sur une formulation précise, ni dans toutes les conversations d'un sujet donné. La diffusion dépend du contexte, du format, de l'audience et des règles de la régie. Toute promesse contraire devrait vous alerter." },
+      {
+        type: "p",
+        text: "Aucune agence ne peut vous garantir une apparition sur une formulation précise, ni dans toutes les conversations d'un sujet donné. La diffusion dépend du contexte, du format, de l'audience et des règles de la régie. Toute promesse contraire devrait vous alerter.",
+      },
       { type: "h3", text: "Ce n'est pas un canal à référentiels connus" },
-      { type: "p", text: "Sur Google Ads, vous savez à peu près à quoi vous attendre selon votre secteur. Ici, les coûts par clic, les taux de conversion et les coûts d'acquisition sont encore en train de se former. Toute personne qui vous annonce aujourd'hui un « CPA moyen ChatGPT Ads » par secteur invente un chiffre. C'est une raison de tester avec méthode, pas une raison de s'abstenir." },
+      {
+        type: "p",
+        text: "Sur Google Ads, vous savez à peu près à quoi vous attendre selon votre secteur. Ici, les coûts par clic, les taux de conversion et les coûts d'acquisition sont encore en train de se former. Toute personne qui vous annonce aujourd'hui un « CPA moyen ChatGPT Ads » par secteur invente un chiffre. C'est une raison de tester avec méthode, pas une raison de s'abstenir.",
+      },
       { type: "h2", text: "Google Ads ou ChatGPT Ads : la mauvaise question" },
-      { type: "p", text: "La comparaison est tentante, mais elle mène à une décision absurde : arbitrer entre un canal qui produit déjà des demandes qualifiées et un canal dont vous ne connaissez pas encore le rendement." },
+      {
+        type: "p",
+        text: "La comparaison est tentante, mais elle mène à une décision absurde : arbitrer entre un canal qui produit déjà des demandes qualifiées et un canal dont vous ne connaissez pas encore le rendement.",
+      },
       {
         type: "table",
         headers: ["", "Google Ads", "ChatGPT Ads"],
         rows: [
           ["Forme de l'intention", "Requête de quelques mots", "Besoin décrit en langage naturel"],
-          ["Contexte disponible", "Mots-clés, zone, appareil", "Situation exposée sur plusieurs échanges"],
+          [
+            "Contexte disponible",
+            "Mots-clés, zone, appareil",
+            "Situation exposée sur plusieurs échanges",
+          ],
           ["Maturité", "Canal mature, repères connus", "Canal récent, repères à construire"],
           ["Concurrence", "Installée, enchères tendues", "Encore peu dense"],
           ["Prévisibilité", "Élevée", "Faible à ce stade"],
         ],
       },
-      { type: "p", text: "Lue ainsi, la table ne dit pas « remplacez ». Elle dit : un canal sert de socle, l'autre sert d'exploration. Couper le socle pour financer l'exploration, c'est échanger un résultat connu contre une hypothèse. Si vous n'avez pas de marge budgétaire pour explorer, la bonne décision est d'attendre — pas de sacrifier ce qui marche." },
+      {
+        type: "p",
+        text: "Lue ainsi, la table ne dit pas « remplacez ». Elle dit : un canal sert de socle, l'autre sert d'exploration. Couper le socle pour financer l'exploration, c'est échanger un résultat connu contre une hypothèse. Si vous n'avez pas de marge budgétaire pour explorer, la bonne décision est d'attendre — pas de sacrifier ce qui marche.",
+      },
       { type: "h2", text: "Cinq critères pour décider" },
-      { type: "p", text: "Voici la grille qu'on applique avant de recommander ce canal à une entreprise. Si vous cochez les cinq, le test se défend. S'il vous en manque deux ou plus, il est probablement prématuré." },
+      {
+        type: "p",
+        text: "Voici la grille qu'on applique avant de recommander ce canal à une entreprise. Si vous cochez les cinq, le test se défend. S'il vous en manque deux ou plus, il est probablement prématuré.",
+      },
       { type: "h3", text: "1. Un client vous rapporte beaucoup" },
-      { type: "p", text: "Panier moyen élevé, contrat récurrent, ou valeur vie client significative. Sur un canal dont le coût par acquisition est inconnu, une marge confortable absorbe l'incertitude. Avec un produit à 40 € vendu une fois, la moindre dérive de coût rend l'opération perdante avant même que vous ayez de quoi conclure." },
+      {
+        type: "p",
+        text: "Panier moyen élevé, contrat récurrent, ou valeur vie client significative. Sur un canal dont le coût par acquisition est inconnu, une marge confortable absorbe l'incertitude. Avec un produit à 40 € vendu une fois, la moindre dérive de coût rend l'opération perdante avant même que vous ayez de quoi conclure.",
+      },
       { type: "h3", text: "2. Vous mesurez déjà vos conversions" },
-      { type: "p", text: "C'est le critère le plus discriminant, et le plus souvent négligé. Si vous ne savez pas aujourd'hui combien de demandes vous rapporte votre budget Google Ads, vous ne saurez pas davantage ce que produit un nouveau canal. Vous aurez dépensé de l'argent et récolté une impression. Le tracking se met en place avant, pas après." },
+      {
+        type: "p",
+        text: "C'est le critère le plus discriminant, et le plus souvent négligé. Si vous ne savez pas aujourd'hui combien de demandes vous rapporte votre budget Google Ads, vous ne saurez pas davantage ce que produit un nouveau canal. Vous aurez dépensé de l'argent et récolté une impression. Le tracking se met en place avant, pas après.",
+      },
       { type: "h3", text: "3. Votre offre est stabilisée" },
-      { type: "p", text: "Tester un canal d'acquisition pendant que votre positionnement, votre cible ou votre tarification bougent encore produit des résultats ininterprétables : vous ne saurez jamais si l'échec vient du canal ou du message. Stabilisez d'abord ce que vous vendez et à qui." },
+      {
+        type: "p",
+        text: "Tester un canal d'acquisition pendant que votre positionnement, votre cible ou votre tarification bougent encore produit des résultats ininterprétables : vous ne saurez jamais si l'échec vient du canal ou du message. Stabilisez d'abord ce que vous vendez et à qui.",
+      },
       { type: "h3", text: "4. Vos prospects décrivent un problème, pas un produit" },
-      { type: "p", text: "C'est le critère spécifique à ce canal. Si vos clients arrivent en cherchant votre nom ou une référence produit précise, la conversation apporte peu. Si en revanche ils arrivent en décrivant une situation — « comment gérer X », « quel prestataire pour Y », « on a tel problème » — alors le format conversationnel joue en votre faveur." },
+      {
+        type: "p",
+        text: "C'est le critère spécifique à ce canal. Si vos clients arrivent en cherchant votre nom ou une référence produit précise, la conversation apporte peu. Si en revanche ils arrivent en décrivant une situation — « comment gérer X », « quel prestataire pour Y », « on a tel problème » — alors le format conversationnel joue en votre faveur.",
+      },
       { type: "h3", text: "5. Vous avez de quoi financer une phase sans résultat" },
-      { type: "p", text: "Un test sérieux comporte une période où vous payez pour apprendre. Si ce budget doit être pris sur ce qui alimente votre pipeline actuel, ce n'est pas le moment." },
+      {
+        type: "p",
+        text: "Un test sérieux comporte une période où vous payez pour apprendre. Si ce budget doit être pris sur ce qui alimente votre pipeline actuel, ce n'est pas le moment.",
+      },
       { type: "h2", text: "Comment cadrer un premier test" },
-      { type: "p", text: "La méthode ne diffère pas fondamentalement de ce qu'on applique sur un canal mature. C'est la discipline qui compte davantage, précisément parce qu'il n'y a pas de repère extérieur pour corriger vos erreurs de jugement." },
+      {
+        type: "p",
+        text: "La méthode ne diffère pas fondamentalement de ce qu'on applique sur un canal mature. C'est la discipline qui compte davantage, précisément parce qu'il n'y a pas de repère extérieur pour corriger vos erreurs de jugement.",
+      },
       {
         type: "ul",
         items: [
@@ -106,7 +181,10 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
       { type: "h2", text: "Les erreurs classiques sur un canal neuf" },
-      { type: "p", text: "Elles se répètent à chaque ouverture de canal — c'était vrai pour Facebook Ads en 2013, pour TikTok en 2021, ce sera vrai ici." },
+      {
+        type: "p",
+        text: "Elles se répètent à chaque ouverture de canal — c'était vrai pour Facebook Ads en 2013, pour TikTok en 2021, ce sera vrai ici.",
+      },
       {
         type: "ul",
         items: [
@@ -121,47 +199,103 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         type: "faq",
         items: [
-          { q: "Les publicités apparaissent-elles pour tous les utilisateurs ?", a: "Non. OpenAI a indiqué que les publicités concernent les formules gratuites et l'abonnement Go. Les formules Plus, Pro et Enterprise restent sans publicité. Une partie de l'audience n'est donc pas exposée." },
-          { q: "Les publicités influencent-elles les réponses de ChatGPT ?", a: "Non, selon OpenAI. Elles sont identifiées comme telles et présentées séparément de la réponse, dont elles ne modifient pas le contenu. Les annonceurs n'ont pas accès aux conversations des utilisateurs." },
-          { q: "Faut-il arrêter Google Ads pour financer un test ?", a: "Non. Google Ads reste un canal mature et prévisible. Financer une exploration en coupant ce qui produit vos demandes revient à échanger un résultat connu contre une hypothèse. Un test se finance sur un budget additionnel." },
-          { q: "Quel budget faut-il pour tester ?", a: "Il n'existe pas de montant universel. Le budget pertinent est celui qui permet d'accumuler assez de conversions pour conclure — plusieurs dizaines sur la période de test. En dessous, les chiffres obtenus ne sont pas exploitables." },
-          { q: "Combien de temps avant de savoir si ça fonctionne ?", a: "Cela dépend de votre volume, pas du calendrier. Le bon critère est le nombre de conversions accumulées, pas le nombre de semaines écoulées. Fixez le volume cible et le seuil d'arrêt avant de lancer." },
-          { q: "Est-ce que ça remplace le référencement ?", a: "Non. La publicité s'achète et s'arrête avec le budget ; le référencement se construit et persiste. Apparaître dans les réponses des moteurs IA relève d'un travail éditorial distinct, qui ne s'achète pas." },
+          {
+            q: "Les publicités apparaissent-elles pour tous les utilisateurs ?",
+            a: "Non. OpenAI a indiqué que les publicités concernent les formules gratuites et l'abonnement Go. Les formules Plus, Pro et Enterprise restent sans publicité. Une partie de l'audience n'est donc pas exposée.",
+          },
+          {
+            q: "Les publicités influencent-elles les réponses de ChatGPT ?",
+            a: "Non, selon OpenAI. Elles sont identifiées comme telles et présentées séparément de la réponse, dont elles ne modifient pas le contenu. Les annonceurs n'ont pas accès aux conversations des utilisateurs.",
+          },
+          {
+            q: "Faut-il arrêter Google Ads pour financer un test ?",
+            a: "Non. Google Ads reste un canal mature et prévisible. Financer une exploration en coupant ce qui produit vos demandes revient à échanger un résultat connu contre une hypothèse. Un test se finance sur un budget additionnel.",
+          },
+          {
+            q: "Quel budget faut-il pour tester ?",
+            a: "Il n'existe pas de montant universel. Le budget pertinent est celui qui permet d'accumuler assez de conversions pour conclure — plusieurs dizaines sur la période de test. En dessous, les chiffres obtenus ne sont pas exploitables.",
+          },
+          {
+            q: "Combien de temps avant de savoir si ça fonctionne ?",
+            a: "Cela dépend de votre volume, pas du calendrier. Le bon critère est le nombre de conversions accumulées, pas le nombre de semaines écoulées. Fixez le volume cible et le seuil d'arrêt avant de lancer.",
+          },
+          {
+            q: "Est-ce que ça remplace le référencement ?",
+            a: "Non. La publicité s'achète et s'arrête avec le budget ; le référencement se construit et persiste. Apparaître dans les réponses des moteurs IA relève d'un travail éditorial distinct, qui ne s'achète pas.",
+          },
         ],
       },
       { type: "h2", text: "Ce qu'il faut retenir" },
-      { type: "p", text: "ChatGPT Ads est un canal à évaluer sérieusement, pas une révolution à embrasser les yeux fermés. Son intérêt réel tient à la richesse du contexte au moment où le besoin s'exprime, et au fait que la concurrence y est encore peu dense. Sa limite tient à l'absence de repères : personne ne peut vous dire aujourd'hui ce que ça coûtera de gagner un client chez vous." },
-      { type: "p", text: "D'où la seule position défendable : tester avec un budget que vous acceptez de perdre, un tracking qui fonctionne, un seuil d'arrêt écrit à l'avance — et conserver intact ce qui alimente déjà votre activité. Les entreprises qui apprennent tôt sur un canal neuf accumulent une avance réelle. Celles qui s'y précipitent sans mesure financent surtout l'apprentissage des autres." },
+      {
+        type: "p",
+        text: "ChatGPT Ads est un canal à évaluer sérieusement, pas une révolution à embrasser les yeux fermés. Son intérêt réel tient à la richesse du contexte au moment où le besoin s'exprime, et au fait que la concurrence y est encore peu dense. Sa limite tient à l'absence de repères : personne ne peut vous dire aujourd'hui ce que ça coûtera de gagner un client chez vous.",
+      },
+      {
+        type: "p",
+        text: "D'où la seule position défendable : tester avec un budget que vous acceptez de perdre, un tracking qui fonctionne, un seuil d'arrêt écrit à l'avance — et conserver intact ce qui alimente déjà votre activité. Les entreprises qui apprennent tôt sur un canal neuf accumulent une avance réelle. Celles qui s'y précipitent sans mesure financent surtout l'apprentissage des autres.",
+      },
     ],
   },
   {
     slug: "cout-chatgpt-ads",
     title: "Combien coûte ChatGPT Ads ? Ce qu'on peut dire honnêtement",
     metaTitle: "Combien coûte ChatGPT Ads ? Prix, budget et calcul du seuil",
-    metaDescription: "Aucun CPA fiable n'existe encore sur ChatGPT Ads en France. Voici la structure de coût, pourquoi s'en méfier des chiffres qui circulent, et comment calculer votre propre seuil.",
-    excerpt: "Aucun tarif de référence n'existe encore sur ce canal en France. Plutôt qu'inventer un chiffre, voici comment se décompose le coût et comment calculer le seuil qui a du sens pour votre entreprise.",
+    metaDescription:
+      "Aucun CPA fiable n'existe encore sur ChatGPT Ads en France. Voici la structure de coût, pourquoi s'en méfier des chiffres qui circulent, et comment calculer votre propre seuil.",
+    excerpt:
+      "Aucun tarif de référence n'existe encore sur ce canal en France. Plutôt qu'inventer un chiffre, voici comment se décompose le coût et comment calculer le seuil qui a du sens pour votre entreprise.",
     category: "Publicité IA",
     readingTime: "8 min",
     publishedAt: "2026-08-23",
     author: "L'équipe Sitaly",
     keyword: "coût ChatGPT Ads",
     content: [
-      { type: "p", text: "C'est la première question posée dès qu'on évoque la publicité dans ChatGPT, et la seule réponse honnête aujourd'hui est inconfortable : personne ne peut vous donner un coût d'acquisition fiable sur ce canal en France. Pas parce que l'information est cachée, mais parce qu'elle n'existe pas encore." },
-      { type: "p", text: "Cet article ne va donc pas inventer un chiffre. Il explique ce qui compose réellement le coût, pourquoi les montants qui circulent doivent être maniés avec précaution, et surtout comment calculer le budget qui a du sens pour vous — méthode qui reste valable quels que soient les tarifs qui se stabiliseront." },
+      {
+        type: "p",
+        text: "C'est la première question posée dès qu'on évoque la publicité dans ChatGPT, et la seule réponse honnête aujourd'hui est inconfortable : personne ne peut vous donner un coût d'acquisition fiable sur ce canal en France. Pas parce que l'information est cachée, mais parce qu'elle n'existe pas encore.",
+      },
+      {
+        type: "p",
+        text: "Cet article ne va donc pas inventer un chiffre. Il explique ce qui compose réellement le coût, pourquoi les montants qui circulent doivent être maniés avec précaution, et surtout comment calculer le budget qui a du sens pour vous — méthode qui reste valable quels que soient les tarifs qui se stabiliseront.",
+      },
       { type: "h2", text: "Pourquoi personne ne peut vous donner un CPA" },
-      { type: "p", text: "Un coût par acquisition n'est pas une propriété du canal. C'est le résultat d'une chaîne : combien coûte un clic, combien de clics deviennent une demande, combien de demandes deviennent un client. Sur Google Ads, chaque maillon dispose de dizaines de milliers d'observations par secteur, accumulées sur vingt ans. Sur ChatGPT Ads en France, le canal vient d'ouvrir." },
-      { type: "p", text: "Deux éléments manquent encore, et ils sont déterminants. D'abord la densité concurrentielle : tant que peu d'annonceurs sont présents, les enchères restent basses — et rien ne dit qu'elles le resteront. Ensuite le comportement réel des utilisateurs : on ignore encore quel taux de clic produit un contenu sponsorisé placé sous une réponse, et surtout quelle proportion de ces clics se transforme en demande sérieuse." },
-      { type: "p", text: "Méfiez-vous par principe de tout article annonçant un « CPA moyen ChatGPT Ads » par secteur en France. À ce stade, ces chiffres sont soit extrapolés d'un autre marché, soit inventés." },
+      {
+        type: "p",
+        text: "Un coût par acquisition n'est pas une propriété du canal. C'est le résultat d'une chaîne : combien coûte un clic, combien de clics deviennent une demande, combien de demandes deviennent un client. Sur Google Ads, chaque maillon dispose de dizaines de milliers d'observations par secteur, accumulées sur vingt ans. Sur ChatGPT Ads en France, le canal vient d'ouvrir.",
+      },
+      {
+        type: "p",
+        text: "Deux éléments manquent encore, et ils sont déterminants. D'abord la densité concurrentielle : tant que peu d'annonceurs sont présents, les enchères restent basses — et rien ne dit qu'elles le resteront. Ensuite le comportement réel des utilisateurs : on ignore encore quel taux de clic produit un contenu sponsorisé placé sous une réponse, et surtout quelle proportion de ces clics se transforme en demande sérieuse.",
+      },
+      {
+        type: "p",
+        text: "Méfiez-vous par principe de tout article annonçant un « CPA moyen ChatGPT Ads » par secteur en France. À ce stade, ces chiffres sont soit extrapolés d'un autre marché, soit inventés.",
+      },
       { type: "h2", text: "Ce qui compose réellement le coût" },
-      { type: "p", text: "À défaut de montants, la structure, elle, est connue. Votre coût total se décompose en trois postes qu'il faut distinguer, parce qu'ils ne se pilotent pas de la même façon." },
+      {
+        type: "p",
+        text: "À défaut de montants, la structure, elle, est connue. Votre coût total se décompose en trois postes qu'il faut distinguer, parce qu'ils ne se pilotent pas de la même façon.",
+      },
       { type: "h3", text: "1. Le budget publicitaire" },
-      { type: "p", text: "C'est ce que vous versez à la régie. Il est directement proportionnel à la diffusion : plus vous payez, plus vous êtes vu. C'est le poste variable, celui qu'on augmente ou coupe selon les résultats." },
+      {
+        type: "p",
+        text: "C'est ce que vous versez à la régie. Il est directement proportionnel à la diffusion : plus vous payez, plus vous êtes vu. C'est le poste variable, celui qu'on augmente ou coupe selon les résultats.",
+      },
       { type: "h3", text: "2. Les honoraires de gestion" },
-      { type: "p", text: "Ce que coûte le pilotage : cadrage, rédaction des messages, mise en place du suivi, arbitrages, analyse. C'est un poste fixe, indépendant du budget diffusé — et c'est aussi lui qui détermine si votre budget publicitaire est bien dépensé ou gaspillé." },
+      {
+        type: "p",
+        text: "Ce que coûte le pilotage : cadrage, rédaction des messages, mise en place du suivi, arbitrages, analyse. C'est un poste fixe, indépendant du budget diffusé — et c'est aussi lui qui détermine si votre budget publicitaire est bien dépensé ou gaspillé.",
+      },
       { type: "h3", text: "3. Le coût invisible : ce qui se passe après le clic" },
-      { type: "p", text: "Celui-là n'apparaît sur aucune facture et il est pourtant souvent le plus lourd. Une page d'arrivée qui convertit mal double mécaniquement votre coût par demande. Des demandes non rappelées sous 24 h font disparaître une partie de ce que vous avez payé. Une campagne techniquement irréprochable branchée sur un parcours défaillant produit des factures, pas des clients." },
+      {
+        type: "p",
+        text: "Celui-là n'apparaît sur aucune facture et il est pourtant souvent le plus lourd. Une page d'arrivée qui convertit mal double mécaniquement votre coût par demande. Des demandes non rappelées sous 24 h font disparaître une partie de ce que vous avez payé. Une campagne techniquement irréprochable branchée sur un parcours défaillant produit des factures, pas des clients.",
+      },
       { type: "h2", text: "Les chiffres qui circulent, et ce qu'ils valent" },
-      { type: "p", text: "Des montants apparaissent dans la presse spécialisée depuis l'ouverture du canal aux États-Unis : coûts pour mille impressions, seuils d'engagement minimum. Trois précautions avant de les reprendre à votre compte." },
+      {
+        type: "p",
+        text: "Des montants apparaissent dans la presse spécialisée depuis l'ouverture du canal aux États-Unis : coûts pour mille impressions, seuils d'engagement minimum. Trois précautions avant de les reprendre à votre compte.",
+      },
       {
         type: "ul",
         items: [
@@ -170,42 +304,105 @@ export const BLOG_POSTS: BlogPost[] = [
           "Ils bougent vite. Sur un canal qui se déploie marché par marché, un tarif de lancement n'est pas un tarif d'équilibre.",
         ],
       },
-      { type: "p", text: "Autrement dit : traitez ces chiffres comme des indices de contexte, jamais comme une base de calcul pour votre budget." },
+      {
+        type: "p",
+        text: "Autrement dit : traitez ces chiffres comme des indices de contexte, jamais comme une base de calcul pour votre budget.",
+      },
       { type: "h2", text: "Calculez à partir de votre marge, pas d'un benchmark" },
-      { type: "p", text: "La bonne nouvelle, c'est que vous n'avez pas besoin du CPA du marché pour décider. Vous avez besoin du vôtre — et celui-là, vous pouvez le calculer aujourd'hui avec vos propres chiffres." },
+      {
+        type: "p",
+        text: "La bonne nouvelle, c'est que vous n'avez pas besoin du CPA du marché pour décider. Vous avez besoin du vôtre — et celui-là, vous pouvez le calculer aujourd'hui avec vos propres chiffres.",
+      },
       { type: "p", text: "Trois données suffisent :" },
       {
         type: "table",
         headers: ["Donnée", "Comment l'obtenir"],
         rows: [
-          ["Valeur d'un client", "Marge réelle sur la durée de la relation, pas le chiffre d'affaires de la première vente"],
-          ["Taux de transformation", "Sur 10 demandes entrantes, combien deviennent clients ? Vos commerciaux le savent"],
-          ["Part acceptable", "Quelle fraction de cette marge acceptez-vous de consacrer à l'acquisition ?"],
+          [
+            "Valeur d'un client",
+            "Marge réelle sur la durée de la relation, pas le chiffre d'affaires de la première vente",
+          ],
+          [
+            "Taux de transformation",
+            "Sur 10 demandes entrantes, combien deviennent clients ? Vos commerciaux le savent",
+          ],
+          [
+            "Part acceptable",
+            "Quelle fraction de cette marge acceptez-vous de consacrer à l'acquisition ?",
+          ],
         ],
       },
-      { type: "p", text: "Le calcul : votre coût par demande acceptable = (valeur d'un client × part acceptable) × taux de transformation. Une entreprise dont un client rapporte 4 000 € de marge, qui transforme une demande sur cinq et accepte d'y consacrer 20 %, peut payer jusqu'à 160 € une demande qualifiée. C'est son seuil. Il ne dépend d'aucun benchmark, et il reste vrai quel que soit le canal." },
-      { type: "p", text: "Ce seuil est l'information la plus utile que vous puissiez apporter à une agence. Une prestation sérieuse commence par le calculer avec vous — pas par vous annoncer un CPA cible sorti d'un tableau." },
+      {
+        type: "p",
+        text: "Le calcul : votre coût par demande acceptable = (valeur d'un client × part acceptable) × taux de transformation. Une entreprise dont un client rapporte 4 000 € de marge, qui transforme une demande sur cinq et accepte d'y consacrer 20 %, peut payer jusqu'à 160 € une demande qualifiée. C'est son seuil. Il ne dépend d'aucun benchmark, et il reste vrai quel que soit le canal.",
+      },
+      {
+        type: "p",
+        text: "Ce seuil est l'information la plus utile que vous puissiez apporter à une agence. Une prestation sérieuse commence par le calculer avec vous — pas par vous annoncer un CPA cible sorti d'un tableau.",
+      },
       { type: "h2", text: "Combien prévoir pour un test qui conclut" },
-      { type: "p", text: "La vraie question budgétaire n'est pas « combien ça coûte par mois », mais « combien faut-il dépenser pour savoir ». Un test qui s'arrête avant d'avoir produit assez de données coûte la totalité de son budget pour un enseignement nul." },
-      { type: "p", text: "La règle est indépendante du canal : il faut accumuler plusieurs dizaines de conversions avant de pouvoir conclure quoi que ce soit. En dessous, vos écarts relèvent du hasard statistique, pas de la performance." },
-      { type: "p", text: "D'où la méthode : estimez votre coût par demande acceptable (le calcul ci-dessus), multipliez par le nombre de conversions nécessaires, et vous obtenez l'ordre de grandeur de l'enveloppe de test. Si ce montant vous paraît insupportable, la conclusion n'est pas « testons avec moins » — c'est « ce n'est pas le moment ». Un test sous-financé ne donne pas une petite réponse : il n'en donne aucune." },
+      {
+        type: "p",
+        text: "La vraie question budgétaire n'est pas « combien ça coûte par mois », mais « combien faut-il dépenser pour savoir ». Un test qui s'arrête avant d'avoir produit assez de données coûte la totalité de son budget pour un enseignement nul.",
+      },
+      {
+        type: "p",
+        text: "La règle est indépendante du canal : il faut accumuler plusieurs dizaines de conversions avant de pouvoir conclure quoi que ce soit. En dessous, vos écarts relèvent du hasard statistique, pas de la performance.",
+      },
+      {
+        type: "p",
+        text: "D'où la méthode : estimez votre coût par demande acceptable (le calcul ci-dessus), multipliez par le nombre de conversions nécessaires, et vous obtenez l'ordre de grandeur de l'enveloppe de test. Si ce montant vous paraît insupportable, la conclusion n'est pas « testons avec moins » — c'est « ce n'est pas le moment ». Un test sous-financé ne donne pas une petite réponse : il n'en donne aucune.",
+      },
       { type: "h2", text: "Ce que coûte la gestion" },
-      { type: "p", text: "Les honoraires de pilotage se justifient par une chose : l'écart entre un budget dépensé au hasard et un budget dépensé avec méthode. Sur un canal mature, cet écart est mesurable. Sur un canal neuf, où il n'existe aucun réglage par défaut ni aucun repère public, il est plus grand encore." },
-      { type: "p", text: "Chez Sitaly, la gestion ChatGPT Ads est facturée 890 €/mois plus 10 % du budget publicitaire, budget publicitaire exclu et facturé séparément. Ce montant couvre la cartographie des intentions, la rédaction des messages, la mise en place du suivi des conversions, les arbitrages et un point mensuel qui se conclut par une recommandation nette : arrêter, maintenir ou augmenter." },
-      { type: "p", text: "Quelle que soit l'agence retenue, vérifiez deux points : que le budget publicitaire est bien séparé des honoraires, et qu'un seuil d'arrêt est écrit avant le lancement. Une prestation qui refuse de définir à l'avance les conditions de son propre échec vous engage sans filet." },
+      {
+        type: "p",
+        text: "Les honoraires de pilotage se justifient par une chose : l'écart entre un budget dépensé au hasard et un budget dépensé avec méthode. Sur un canal mature, cet écart est mesurable. Sur un canal neuf, où il n'existe aucun réglage par défaut ni aucun repère public, il est plus grand encore.",
+      },
+      {
+        type: "p",
+        text: "Chez Sitaly, la gestion ChatGPT Ads est facturée 890 €/mois plus 10 % du budget publicitaire, budget publicitaire exclu et facturé séparément. Ce montant couvre la cartographie des intentions, la rédaction des messages, la mise en place du suivi des conversions, les arbitrages et un point mensuel qui se conclut par une recommandation nette : arrêter, maintenir ou augmenter.",
+      },
+      {
+        type: "p",
+        text: "Quelle que soit l'agence retenue, vérifiez deux points : que le budget publicitaire est bien séparé des honoraires, et qu'un seuil d'arrêt est écrit avant le lancement. Une prestation qui refuse de définir à l'avance les conditions de son propre échec vous engage sans filet.",
+      },
       { type: "h2", text: "Ce qu'il faut retenir" },
-      { type: "p", text: "Il n'existe pas de tarif de référence pour ChatGPT Ads en France, et quiconque vous en annonce un aujourd'hui extrapole. En revanche, votre seuil de rentabilité, lui, est calculable dès maintenant à partir de la valeur d'un client, de votre taux de transformation et de la part de marge que vous acceptez d'y consacrer." },
-      { type: "p", text: "C'est ce chiffre-là qui doit piloter la décision — pas un benchmark de marché qui n'existe pas encore. Et c'est aussi lui qui vous dira, dans quelques mois, si ce canal mérite de rester dans votre plan ou pas." },
+      {
+        type: "p",
+        text: "Il n'existe pas de tarif de référence pour ChatGPT Ads en France, et quiconque vous en annonce un aujourd'hui extrapole. En revanche, votre seuil de rentabilité, lui, est calculable dès maintenant à partir de la valeur d'un client, de votre taux de transformation et de la part de marge que vous acceptez d'y consacrer.",
+      },
+      {
+        type: "p",
+        text: "C'est ce chiffre-là qui doit piloter la décision — pas un benchmark de marché qui n'existe pas encore. Et c'est aussi lui qui vous dira, dans quelques mois, si ce canal mérite de rester dans votre plan ou pas.",
+      },
       { type: "h2", text: "Questions fréquentes" },
       {
         type: "faq",
         items: [
-          { q: "Existe-t-il un prix officiel pour ChatGPT Ads en France ?", a: "Aucun tarif public de référence n'est établi pour le marché français à ce stade. Des montants circulent pour d'autres marchés, mais ils ne se transposent pas : audience, concurrence et maturité diffèrent. Tout CPA sectoriel annoncé aujourd'hui pour la France est une extrapolation." },
-          { q: "Le budget publicitaire est-il inclus dans les honoraires d'une agence ?", a: "Il ne devrait jamais l'être. Le budget diffusé et les honoraires de pilotage sont deux postes distincts : le premier est variable et vous appartient, le second est fixe et rémunère la méthode. Une offre qui les mélange rend impossible le calcul de votre coût d'acquisition réel." },
-          { q: "Comment calculer ce que je peux payer une demande entrante ?", a: "Multipliez la marge réelle qu'un client vous rapporte sur la durée de la relation par la part que vous acceptez de consacrer à l'acquisition, puis par votre taux de transformation des demandes en clients. Le résultat est votre coût par demande acceptable, indépendant de tout benchmark." },
-          { q: "Quel budget minimum pour un test sérieux ?", a: "Il n'y a pas de montant universel : le bon budget est celui qui permet d'accumuler plusieurs dizaines de conversions. En dessous, les écarts observés relèvent du hasard statistique et ne permettent aucune décision. Un test sous-financé ne donne pas une réponse partielle, il n'en donne aucune." },
-          { q: "Pourquoi payer une agence sur un canal que personne ne maîtrise ?", a: "Précisément parce qu'aucun réglage par défaut n'existe. Sur un canal mature, une campagne mal pilotée reste médiocre ; sur un canal neuf, sans repère public ni seuil d'arrêt défini, elle peut consommer un budget entier sans produire le moindre enseignement exploitable." },
-          { q: "Les coûts vont-ils augmenter avec le temps ?", a: "C'est le scénario le plus probable : sur tous les canaux publicitaires, les enchères montent à mesure que les annonceurs affluent. C'est l'argument principal en faveur d'un test précoce — apprendre pendant que l'espace est peu disputé — mais ce n'est pas une garantie de rentabilité pour autant." },
+          {
+            q: "Existe-t-il un prix officiel pour ChatGPT Ads en France ?",
+            a: "Aucun tarif public de référence n'est établi pour le marché français à ce stade. Des montants circulent pour d'autres marchés, mais ils ne se transposent pas : audience, concurrence et maturité diffèrent. Tout CPA sectoriel annoncé aujourd'hui pour la France est une extrapolation.",
+          },
+          {
+            q: "Le budget publicitaire est-il inclus dans les honoraires d'une agence ?",
+            a: "Il ne devrait jamais l'être. Le budget diffusé et les honoraires de pilotage sont deux postes distincts : le premier est variable et vous appartient, le second est fixe et rémunère la méthode. Une offre qui les mélange rend impossible le calcul de votre coût d'acquisition réel.",
+          },
+          {
+            q: "Comment calculer ce que je peux payer une demande entrante ?",
+            a: "Multipliez la marge réelle qu'un client vous rapporte sur la durée de la relation par la part que vous acceptez de consacrer à l'acquisition, puis par votre taux de transformation des demandes en clients. Le résultat est votre coût par demande acceptable, indépendant de tout benchmark.",
+          },
+          {
+            q: "Quel budget minimum pour un test sérieux ?",
+            a: "Il n'y a pas de montant universel : le bon budget est celui qui permet d'accumuler plusieurs dizaines de conversions. En dessous, les écarts observés relèvent du hasard statistique et ne permettent aucune décision. Un test sous-financé ne donne pas une réponse partielle, il n'en donne aucune.",
+          },
+          {
+            q: "Pourquoi payer une agence sur un canal que personne ne maîtrise ?",
+            a: "Précisément parce qu'aucun réglage par défaut n'existe. Sur un canal mature, une campagne mal pilotée reste médiocre ; sur un canal neuf, sans repère public ni seuil d'arrêt défini, elle peut consommer un budget entier sans produire le moindre enseignement exploitable.",
+          },
+          {
+            q: "Les coûts vont-ils augmenter avec le temps ?",
+            a: "C'est le scénario le plus probable : sur tous les canaux publicitaires, les enchères montent à mesure que les annonceurs affluent. C'est l'argument principal en faveur d'un test précoce — apprendre pendant que l'espace est peu disputé — mais ce n'est pas une garantie de rentabilité pour autant.",
+          },
         ],
       },
     ],
@@ -214,19 +411,33 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "chatgpt-ads-secteurs-pme",
     title: "ChatGPT Ads : quels secteurs en tirent réellement quelque chose",
     metaTitle: "ChatGPT Ads : quels secteurs et quelles PME en tirent parti",
-    metaDescription: "SaaS, B2B, immobilier, assurance, formation, e-commerce : quels secteurs bénéficient vraiment de la publicité dans ChatGPT, lesquels n'y gagnent rien, et comment le vérifier.",
-    excerpt: "Le secteur compte moins que la façon dont vos prospects formulent leur besoin. Voici les activités structurellement avantagées, celles à manier avec prudence, et un test simple pour trancher votre cas.",
+    metaDescription:
+      "SaaS, B2B, immobilier, assurance, formation, e-commerce : quels secteurs bénéficient vraiment de la publicité dans ChatGPT, lesquels n'y gagnent rien, et comment le vérifier.",
+    excerpt:
+      "Le secteur compte moins que la façon dont vos prospects formulent leur besoin. Voici les activités structurellement avantagées, celles à manier avec prudence, et un test simple pour trancher votre cas.",
     category: "Publicité IA",
     readingTime: "9 min",
     publishedAt: "2026-08-23",
     author: "L'équipe Sitaly",
     keyword: "ChatGPT Ads secteurs",
     content: [
-      { type: "p", text: "« Est-ce que ça marche pour mon secteur ? » La réponse dépend beaucoup moins du secteur lui-même que d'une seule chose : la façon dont vos clients formulent leur besoin quand ils ne connaissent pas encore la solution." },
-      { type: "p", text: "Certaines activités bénéficient d'un avantage structurel dans un contexte conversationnel. D'autres n'y gagnent rien, quelle que soit la qualité de la campagne. Voici comment faire la différence, secteur par secteur." },
+      {
+        type: "p",
+        text: "« Est-ce que ça marche pour mon secteur ? » La réponse dépend beaucoup moins du secteur lui-même que d'une seule chose : la façon dont vos clients formulent leur besoin quand ils ne connaissent pas encore la solution.",
+      },
+      {
+        type: "p",
+        text: "Certaines activités bénéficient d'un avantage structurel dans un contexte conversationnel. D'autres n'y gagnent rien, quelle que soit la qualité de la campagne. Voici comment faire la différence, secteur par secteur.",
+      },
       { type: "h2", text: "Le critère qui décide vraiment" },
-      { type: "p", text: "Un secteur est compatible avec ce canal quand ses prospects arrivent en décrivant une situation plutôt qu'en cherchant un produit." },
-      { type: "p", text: "Quelqu'un qui tape « iPhone 17 pas cher » sait exactement ce qu'il veut : il compare des prix, une conversation ne lui apporte rien. Quelqu'un qui écrit « on est 30, notre outil actuel est trop lourd, il nous faudrait quelque chose de plus simple connecté à Slack » ne sait pas quoi acheter — il décrit un problème et attend une orientation. C'est là que la publicité contextuelle a une valeur que le mot-clé n'a pas." },
+      {
+        type: "p",
+        text: "Un secteur est compatible avec ce canal quand ses prospects arrivent en décrivant une situation plutôt qu'en cherchant un produit.",
+      },
+      {
+        type: "p",
+        text: "Quelqu'un qui tape « iPhone 17 pas cher » sait exactement ce qu'il veut : il compare des prix, une conversation ne lui apporte rien. Quelqu'un qui écrit « on est 30, notre outil actuel est trop lourd, il nous faudrait quelque chose de plus simple connecté à Slack » ne sait pas quoi acheter — il décrit un problème et attend une orientation. C'est là que la publicité contextuelle a une valeur que le mot-clé n'a pas.",
+      },
       { type: "p", text: "À ce critère principal s'ajoutent deux conditions économiques :" },
       {
         type: "ul",
@@ -237,30 +448,72 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       { type: "h2", text: "Les secteurs les mieux placés" },
       { type: "h3", text: "SaaS et logiciel B2B" },
-      { type: "p", text: "« Quel outil pour gérer les congés dans une PME de 50 personnes, sans passer par un SIRH complet ? »" },
-      { type: "p", text: "Le secteur le plus naturellement compatible. L'acheteur décrit un effectif, un périmètre, un budget et souvent l'outil qu'il veut remplacer : tout le brief de qualification tient dans sa question. Le cycle de décision se compte en semaines, l'abonnement récurrent donne une valeur client élevée, et le marché est encombré au point que la recommandation en amont a un poids réel." },
+      {
+        type: "p",
+        text: "« Quel outil pour gérer les congés dans une PME de 50 personnes, sans passer par un SIRH complet ? »",
+      },
+      {
+        type: "p",
+        text: "Le secteur le plus naturellement compatible. L'acheteur décrit un effectif, un périmètre, un budget et souvent l'outil qu'il veut remplacer : tout le brief de qualification tient dans sa question. Le cycle de décision se compte en semaines, l'abonnement récurrent donne une valeur client élevée, et le marché est encombré au point que la recommandation en amont a un poids réel.",
+      },
       { type: "h3", text: "Services B2B et conseil" },
-      { type: "p", text: "« Quelle agence peut reprendre notre acquisition alors qu'on gère déjà du Google Ads en interne ? »" },
-      { type: "p", text: "Une demande de prestataire formulée par une entreprise qui investit déjà : l'intention est haute et le prospect est solvable. Ces requêtes migrent particulièrement vite du moteur classique vers l'assistant, parce qu'elles appellent une réponse argumentée plutôt qu'une liste de liens." },
+      {
+        type: "p",
+        text: "« Quelle agence peut reprendre notre acquisition alors qu'on gère déjà du Google Ads en interne ? »",
+      },
+      {
+        type: "p",
+        text: "Une demande de prestataire formulée par une entreprise qui investit déjà : l'intention est haute et le prospect est solvable. Ces requêtes migrent particulièrement vite du moteur classique vers l'assistant, parce qu'elles appellent une réponse argumentée plutôt qu'une liste de liens.",
+      },
       { type: "h3", text: "Immobilier" },
       { type: "p", text: "« Comment vendre un bien locatif sans perdre l'avantage fiscal ? »" },
-      { type: "p", text: "Question technique posée par quelqu'un qui détient déjà le bien et envisage une opération. Le ticket est élevé, le cycle long, et le besoin de conseil considérable. Attention toutefois : la dimension locale reste déterminante, et le canal ne cible pas la géographie aussi finement qu'un moteur de recherche." },
+      {
+        type: "p",
+        text: "Question technique posée par quelqu'un qui détient déjà le bien et envisage une opération. Le ticket est élevé, le cycle long, et le besoin de conseil considérable. Attention toutefois : la dimension locale reste déterminante, et le canal ne cible pas la géographie aussi finement qu'un moteur de recherche.",
+      },
       { type: "h3", text: "Assurance et courtage" },
-      { type: "p", text: "« Quelle couverture prévoir pour une société de 15 salariés en déplacement à l'étranger ? »" },
-      { type: "p", text: "Effectif, contexte d'usage, besoin précis : le profil est presque entièrement défini par la question. Secteur à forte valeur vie client et à cycle de décision long. La contrainte réelle est réglementaire — les messages publicitaires y sont encadrés et doivent être validés avant diffusion." },
+      {
+        type: "p",
+        text: "« Quelle couverture prévoir pour une société de 15 salariés en déplacement à l'étranger ? »",
+      },
+      {
+        type: "p",
+        text: "Effectif, contexte d'usage, besoin précis : le profil est presque entièrement défini par la question. Secteur à forte valeur vie client et à cycle de décision long. La contrainte réelle est réglementaire — les messages publicitaires y sont encadrés et doivent être validés avant diffusion.",
+      },
       { type: "h3", text: "Formation professionnelle" },
-      { type: "p", text: "« Quelle certification suivre pour évoluer vers un poste de data analyst en un an ? »" },
-      { type: "p", text: "Objectif professionnel, horizon de temps, niveau de départ implicite. Le prospect est engagé dans une démarche, pas en train de flâner. Le panier est souvent élevé, surtout en formation financée." },
+      {
+        type: "p",
+        text: "« Quelle certification suivre pour évoluer vers un poste de data analyst en un an ? »",
+      },
+      {
+        type: "p",
+        text: "Objectif professionnel, horizon de temps, niveau de départ implicite. Le prospect est engagé dans une démarche, pas en train de flâner. Le panier est souvent élevé, surtout en formation financée.",
+      },
       { type: "h3", text: "E-commerce à panier élevé" },
-      { type: "p", text: "« Quel équipement pour un premier home-studio avec un budget de 2 000 € ? »" },
-      { type: "p", text: "Budget annoncé, univers délimité, besoin de conseil : intention d'achat structurée. La nuance compte — l'e-commerce de produits courants n'a rien à y gagner, celui qui vend du conseil autant que du produit, si." },
+      {
+        type: "p",
+        text: "« Quel équipement pour un premier home-studio avec un budget de 2 000 € ? »",
+      },
+      {
+        type: "p",
+        text: "Budget annoncé, univers délimité, besoin de conseil : intention d'achat structurée. La nuance compte — l'e-commerce de produits courants n'a rien à y gagner, celui qui vend du conseil autant que du produit, si.",
+      },
       { type: "h2", text: "Les secteurs à manier avec prudence" },
       { type: "h3", text: "Santé et professions réglementées" },
-      { type: "p", text: "Le besoin est souvent exprimé de façon parfaitement conversationnelle — c'est même l'un des usages les plus fréquents des assistants. Mais la publicité y est strictement encadrée en France, et la déontologie de nombreuses professions interdit ou limite fortement la promotion. Avant toute campagne, la question à trancher est juridique, pas marketing." },
+      {
+        type: "p",
+        text: "Le besoin est souvent exprimé de façon parfaitement conversationnelle — c'est même l'un des usages les plus fréquents des assistants. Mais la publicité y est strictement encadrée en France, et la déontologie de nombreuses professions interdit ou limite fortement la promotion. Avant toute campagne, la question à trancher est juridique, pas marketing.",
+      },
       { type: "h3", text: "Entreprises locales à ticket élevé" },
-      { type: "p", text: "Un architecte d'intérieur, un cuisiniste haut de gamme ou un rénovateur global peuvent fonctionner, à deux conditions : que le ticket moyen justifie l'investissement, et que la zone soit assez dense. Pour un artisan de dépannage à quinze kilomètres à la ronde, Google Ads en référencement local reste nettement plus efficace et beaucoup moins cher." },
+      {
+        type: "p",
+        text: "Un architecte d'intérieur, un cuisiniste haut de gamme ou un rénovateur global peuvent fonctionner, à deux conditions : que le ticket moyen justifie l'investissement, et que la zone soit assez dense. Pour un artisan de dépannage à quinze kilomètres à la ronde, Google Ads en référencement local reste nettement plus efficace et beaucoup moins cher.",
+      },
       { type: "h2", text: "Les secteurs où ça n'a pas de sens" },
-      { type: "p", text: "Autant le dire franchement — c'est l'information la plus utile de cet article pour une partie des lecteurs." },
+      {
+        type: "p",
+        text: "Autant le dire franchement — c'est l'information la plus utile de cet article pour une partie des lecteurs.",
+      },
       {
         type: "ul",
         items: [
@@ -272,29 +525,63 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
       { type: "h2", text: "Comment vérifier pour votre cas" },
-      { type: "p", text: "Un test simple, gratuit, à faire en dix minutes avant d'engager le moindre euro : listez les dix dernières demandes entrantes que vous avez reçues, et pour chacune, écrivez la question que ce prospect aurait posée à un assistant avant de vous trouver." },
-      { type: "p", text: "Si vous obtenez des questions riches, situées, décrivant un problème — votre marché est compatible. Si vous obtenez surtout des formulations courtes de type « nom du produit + prix » ou « métier + ville », le canal conversationnel n'apportera pas grand-chose : vos budgets sont mieux placés ailleurs." },
-      { type: "p", text: "Cet exercice a un bénéfice secondaire : les questions que vous aurez écrites constituent exactement la matière première d'une stratégie éditoriale — et celle-là sert tous vos canaux, y compris ceux qui ne coûtent rien." },
+      {
+        type: "p",
+        text: "Un test simple, gratuit, à faire en dix minutes avant d'engager le moindre euro : listez les dix dernières demandes entrantes que vous avez reçues, et pour chacune, écrivez la question que ce prospect aurait posée à un assistant avant de vous trouver.",
+      },
+      {
+        type: "p",
+        text: "Si vous obtenez des questions riches, situées, décrivant un problème — votre marché est compatible. Si vous obtenez surtout des formulations courtes de type « nom du produit + prix » ou « métier + ville », le canal conversationnel n'apportera pas grand-chose : vos budgets sont mieux placés ailleurs.",
+      },
+      {
+        type: "p",
+        text: "Cet exercice a un bénéfice secondaire : les questions que vous aurez écrites constituent exactement la matière première d'une stratégie éditoriale — et celle-là sert tous vos canaux, y compris ceux qui ne coûtent rien.",
+      },
       { type: "h2", text: "Ce qu'il faut retenir" },
-      { type: "p", text: "Le découpage sectoriel classique est une mauvaise grille de lecture pour ce canal. Deux entreprises du même secteur peuvent avoir des résultats opposés selon que leurs prospects arrivent en décrivant un problème ou en cherchant une référence produit." },
-      { type: "p", text: "Les activités les mieux placées cumulent trois traits : un besoin qui s'exprime en situation, une valeur client élevée, et un cycle de décision assez long pour qu'un conseil en amont pèse. Le SaaS B2B, les services aux entreprises, l'immobilier, l'assurance et la formation cochent généralement les trois. Si votre activité n'en coche qu'un, gardez vos budgets là où ils produisent déjà." },
+      {
+        type: "p",
+        text: "Le découpage sectoriel classique est une mauvaise grille de lecture pour ce canal. Deux entreprises du même secteur peuvent avoir des résultats opposés selon que leurs prospects arrivent en décrivant un problème ou en cherchant une référence produit.",
+      },
+      {
+        type: "p",
+        text: "Les activités les mieux placées cumulent trois traits : un besoin qui s'exprime en situation, une valeur client élevée, et un cycle de décision assez long pour qu'un conseil en amont pèse. Le SaaS B2B, les services aux entreprises, l'immobilier, l'assurance et la formation cochent généralement les trois. Si votre activité n'en coche qu'un, gardez vos budgets là où ils produisent déjà.",
+      },
       { type: "h2", text: "Questions fréquentes" },
       {
         type: "faq",
         items: [
-          { q: "Mon secteur n'est pas cité, est-ce disqualifiant ?", a: "Non. Le découpage sectoriel est une grille de lecture imparfaite pour ce canal. Le vrai critère est la façon dont vos prospects formulent leur besoin : s'ils décrivent une situation plutôt qu'un produit, si un client vous rapporte beaucoup et si la décision prend du temps, votre activité est probablement compatible quel que soit son secteur." },
-          { q: "Est-ce que ça fonctionne pour le B2C ?", a: "Cela dépend entièrement du panier et du besoin de conseil. Un achat impliquant, comparé et accompagné d'une recherche préalable peut fonctionner. Un achat courant ou d'impulsion, non : personne ne consulte un assistant avant d'acheter un produit à quinze euros." },
-          { q: "Et pour une entreprise locale ?", a: "C'est possible à deux conditions : un ticket moyen élevé et une zone suffisamment dense. Pour du dépannage ou de l'intervention urgente, Google Ads en référencement local reste plus efficace et bien moins cher — la conversation n'a pas sa place dans l'urgence." },
-          { q: "Puis-je cibler un secteur d'activité précis ?", a: "Le ciblage repose sur le contexte de la conversation plutôt que sur un profil constitué à l'avance. On ne sélectionne donc pas une audience sectorielle comme sur LinkedIn : on travaille les situations et les formulations dans lesquelles votre offre est pertinente." },
-          { q: "Comment savoir si mes prospects utilisent déjà ChatGPT ?", a: "Vous ne pouvez pas le mesurer directement, mais vous pouvez l'approcher : reprenez vos dix dernières demandes entrantes et écrivez la question que chaque prospect aurait posée à un assistant avant de vous trouver. La richesse de ces questions vous indique le potentiel." },
-          { q: "Faut-il un site adapté avant de lancer ?", a: "Une page d'arrivée cohérente avec le besoin exprimé est indispensable. Une intention bien captée qui atterrit sur une page d'accueil générique se perd, et double mécaniquement votre coût par demande. C'est souvent le premier chantier avant toute campagne." },
+          {
+            q: "Mon secteur n'est pas cité, est-ce disqualifiant ?",
+            a: "Non. Le découpage sectoriel est une grille de lecture imparfaite pour ce canal. Le vrai critère est la façon dont vos prospects formulent leur besoin : s'ils décrivent une situation plutôt qu'un produit, si un client vous rapporte beaucoup et si la décision prend du temps, votre activité est probablement compatible quel que soit son secteur.",
+          },
+          {
+            q: "Est-ce que ça fonctionne pour le B2C ?",
+            a: "Cela dépend entièrement du panier et du besoin de conseil. Un achat impliquant, comparé et accompagné d'une recherche préalable peut fonctionner. Un achat courant ou d'impulsion, non : personne ne consulte un assistant avant d'acheter un produit à quinze euros.",
+          },
+          {
+            q: "Et pour une entreprise locale ?",
+            a: "C'est possible à deux conditions : un ticket moyen élevé et une zone suffisamment dense. Pour du dépannage ou de l'intervention urgente, Google Ads en référencement local reste plus efficace et bien moins cher — la conversation n'a pas sa place dans l'urgence.",
+          },
+          {
+            q: "Puis-je cibler un secteur d'activité précis ?",
+            a: "Le ciblage repose sur le contexte de la conversation plutôt que sur un profil constitué à l'avance. On ne sélectionne donc pas une audience sectorielle comme sur LinkedIn : on travaille les situations et les formulations dans lesquelles votre offre est pertinente.",
+          },
+          {
+            q: "Comment savoir si mes prospects utilisent déjà ChatGPT ?",
+            a: "Vous ne pouvez pas le mesurer directement, mais vous pouvez l'approcher : reprenez vos dix dernières demandes entrantes et écrivez la question que chaque prospect aurait posée à un assistant avant de vous trouver. La richesse de ces questions vous indique le potentiel.",
+          },
+          {
+            q: "Faut-il un site adapté avant de lancer ?",
+            a: "Une page d'arrivée cohérente avec le besoin exprimé est indispensable. Une intention bien captée qui atterrit sur une page d'accueil générique se perd, et double mécaniquement votre coût par demande. C'est souvent le premier chantier avant toute campagne.",
+          },
         ],
       },
     ],
   },
   {
     slug: "logiciel-gestion-artisan-choisir",
-    title: "Logiciel de gestion pour artisan : lequel choisir pour vraiment développer votre activité ?",
+    title:
+      "Logiciel de gestion pour artisan : lequel choisir pour vraiment développer votre activité ?",
     metaTitle: "Logiciel de gestion pour artisan : lequel choisir en 2026",
     metaDescription:
       "Facturation, clients, avis Google, visibilité : tous les logiciels pour artisan ne servent pas à la même chose. Le guide pour choisir le bon outil et remplir votre planning.",
@@ -306,29 +593,51 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "logiciel de gestion pour artisan",
     content: [
-      { type: "p", text: "Vous avez peut-être déjà un logiciel de devis. Pourtant le carnet de commandes ne se remplit pas tout seul, vos avis Google stagnent à trois, et deux prospects sur cinq ne rappellent jamais. Le souci n'est pas votre outil de facturation : il n'a jamais été conçu pour vous apporter des clients. Choisir un logiciel de gestion quand on est artisan, ça commence par savoir ce qu'on attend vraiment de lui. Ce guide fait le tri et vous aide à trouver l'outil qui remplit le planning, pas seulement celui qui édite les factures." },
+      {
+        type: "p",
+        text: "Vous avez peut-être déjà un logiciel de devis. Pourtant le carnet de commandes ne se remplit pas tout seul, vos avis Google stagnent à trois, et deux prospects sur cinq ne rappellent jamais. Le souci n'est pas votre outil de facturation : il n'a jamais été conçu pour vous apporter des clients. Choisir un logiciel de gestion quand on est artisan, ça commence par savoir ce qu'on attend vraiment de lui. Ce guide fait le tri et vous aide à trouver l'outil qui remplit le planning, pas seulement celui qui édite les factures.",
+      },
 
       { type: "h2", text: "Deux familles de logiciels à ne pas confondre" },
-      { type: "p", text: "Quand un artisan tape « logiciel de gestion » sur Google, il tombe sur des dizaines d'outils qui promettent tous de « tout gérer ». En réalité, ils se répartissent en deux familles très différentes. Les confondre, c'est payer pour un outil qui ne règle pas votre vrai problème." },
+      {
+        type: "p",
+        text: "Quand un artisan tape « logiciel de gestion » sur Google, il tombe sur des dizaines d'outils qui promettent tous de « tout gérer ». En réalité, ils se répartissent en deux familles très différentes. Les confondre, c'est payer pour un outil qui ne règle pas votre vrai problème.",
+      },
       { type: "h3", text: "1. Les logiciels de facturation et de chantier" },
-      { type: "p", text: "Axonaut, Extrabat, Tolteck, Obat, Sellsy : ces solutions gèrent vos devis, vos factures, votre comptabilité et le suivi de vos chantiers. Elles sont utiles, souvent indispensables pour la paperasse et les obligations légales. Mais elles s'arrêtent là. Elles pilotent l'argent qui rentre, pas les clients qui frappent à la porte. Un excellent logiciel de facturation ne vous apportera jamais un seul appel de plus." },
+      {
+        type: "p",
+        text: "Axonaut, Extrabat, Tolteck, Obat, Sellsy : ces solutions gèrent vos devis, vos factures, votre comptabilité et le suivi de vos chantiers. Elles sont utiles, souvent indispensables pour la paperasse et les obligations légales. Mais elles s'arrêtent là. Elles pilotent l'argent qui rentre, pas les clients qui frappent à la porte. Un excellent logiciel de facturation ne vous apportera jamais un seul appel de plus.",
+      },
       { type: "h3", text: "2. Les outils pour trouver et fidéliser des clients" },
-      { type: "p", text: "Suivi des prospects, récolte d'avis Google, relances au bon moment, réponse rapide aux demandes, visibilité en ligne : c'est la brique que la plupart des artisans négligent. C'est pourtant celle qui décide si votre planning est plein ou à moitié vide. La bonne nouvelle, c'est qu'elle ne demande ni comptable ni compétences techniques, juste le bon outil et une routine simple." },
+      {
+        type: "p",
+        text: "Suivi des prospects, récolte d'avis Google, relances au bon moment, réponse rapide aux demandes, visibilité en ligne : c'est la brique que la plupart des artisans négligent. C'est pourtant celle qui décide si votre planning est plein ou à moitié vide. La bonne nouvelle, c'est qu'elle ne demande ni comptable ni compétences techniques, juste le bon outil et une routine simple.",
+      },
       {
         type: "table",
         caption: "Les deux familles d'outils pour artisans",
         headers: ["", "Logiciels de facturation", "Outils de développement client"],
         rows: [
-          ["À quoi ça sert", "Éditer devis, factures, compta", "Trouver, suivre et fidéliser des clients"],
+          [
+            "À quoi ça sert",
+            "Éditer devis, factures, compta",
+            "Trouver, suivre et fidéliser des clients",
+          ],
           ["Exemples", "Axonaut, Extrabat, Tolteck", "CRM léger, avis Google, agents IA"],
           ["Ce que ça règle", "La paperasse et le légal", "Le carnet de commandes"],
           ["Impact sur le CA", "Indirect (gain de temps)", "Direct (plus d'appels, plus de devis)"],
         ],
       },
-      { type: "p", text: "La plupart des artisans équipés d'un logiciel de facturation n'ont rien pour la seconde famille. C'est exactement là que se joue leur croissance." },
+      {
+        type: "p",
+        text: "La plupart des artisans équipés d'un logiciel de facturation n'ont rien pour la seconde famille. C'est exactement là que se joue leur croissance.",
+      },
 
       { type: "h2", text: "Ce qu'un bon outil doit vous faire gagner" },
-      { type: "p", text: "Avant de comparer des marques, listez ce que vous attendez concrètement. Un outil de développement client digne de ce nom doit vous permettre de :" },
+      {
+        type: "p",
+        text: "Avant de comparer des marques, listez ce que vous attendez concrètement. Un outil de développement client digne de ce nom doit vous permettre de :",
+      },
       {
         type: "ul",
         items: [
@@ -343,21 +652,42 @@ export const BLOG_POSTS: BlogPost[] = [
 
       { type: "h2", text: "Les 5 critères pour bien choisir" },
       { type: "h3", text: "La simplicité avant tout" },
-      { type: "p", text: "Un artisan n'a pas le temps de suivre une formation de trois jours. Si l'outil demande un mode d'emploi, il finira au placard. Cherchez une prise en main en quelques minutes, un vocabulaire clair, zéro jargon." },
+      {
+        type: "p",
+        text: "Un artisan n'a pas le temps de suivre une formation de trois jours. Si l'outil demande un mode d'emploi, il finira au placard. Cherchez une prise en main en quelques minutes, un vocabulaire clair, zéro jargon.",
+      },
       { type: "h3", text: "Pensé pour le mobile" },
-      { type: "p", text: "Votre bureau, c'est votre camionnette. L'outil doit fonctionner parfaitement sur téléphone, pas seulement sur ordinateur." },
+      {
+        type: "p",
+        text: "Votre bureau, c'est votre camionnette. L'outil doit fonctionner parfaitement sur téléphone, pas seulement sur ordinateur.",
+      },
       { type: "h3", text: "Français et bien accompagné" },
-      { type: "p", text: "Un support en français, qui comprend les réalités du terrain, fait toute la différence le jour où vous bloquez." },
+      {
+        type: "p",
+        text: "Un support en français, qui comprend les réalités du terrain, fait toute la différence le jour où vous bloquez.",
+      },
       { type: "h3", text: "Un prix clair, sans engagement" },
-      { type: "p", text: "Fuyez les devis opaques et les engagements de douze mois. Un tarif mensuel affiché, résiliable quand vous voulez, vous garde libre." },
+      {
+        type: "p",
+        text: "Fuyez les devis opaques et les engagements de douze mois. Un tarif mensuel affiché, résiliable quand vous voulez, vous garde libre.",
+      },
       { type: "h3", text: "Un accompagnement à la mise en place" },
-      { type: "p", text: "Le meilleur logiciel du monde ne sert à rien s'il reste à moitié configuré. Pour un artisan qui n'a pas le temps, l'idéal n'est pas seulement d'essayer : c'est qu'on installe et paramètre l'outil pour vous, connecté à votre fiche Google et à vos clients. Vous démarrez avec quelque chose qui fonctionne, pas avec un formulaire vide." },
+      {
+        type: "p",
+        text: "Le meilleur logiciel du monde ne sert à rien s'il reste à moitié configuré. Pour un artisan qui n'a pas le temps, l'idéal n'est pas seulement d'essayer : c'est qu'on installe et paramètre l'outil pour vous, connecté à votre fiche Google et à vos clients. Vous démarrez avec quelque chose qui fonctionne, pas avec un formulaire vide.",
+      },
 
       { type: "h2", text: "Un carnet et un tableur, ça ne suffit pas ?" },
-      { type: "p", text: "Pour vos cinq premiers clients, oui. Au-delà, le carnet devient un trou noir : vous oubliez de relancer, vous perdez un numéro, vous ne savez plus qui a reçu son devis. Un tableur Excel fait illusion un temps, mais il ne vous rappellera jamais d'appeler M. Diallo aujourd'hui, et il n'enverra jamais une demande d'avis à votre place. Le passage à un vrai outil, c'est le moment où vous arrêtez de gérer de tête et où vous arrêtez de perdre des clients par simple oubli." },
+      {
+        type: "p",
+        text: "Pour vos cinq premiers clients, oui. Au-delà, le carnet devient un trou noir : vous oubliez de relancer, vous perdez un numéro, vous ne savez plus qui a reçu son devis. Un tableur Excel fait illusion un temps, mais il ne vous rappellera jamais d'appeler M. Diallo aujourd'hui, et il n'enverra jamais une demande d'avis à votre place. Le passage à un vrai outil, c'est le moment où vous arrêtez de gérer de tête et où vous arrêtez de perdre des clients par simple oubli.",
+      },
 
       { type: "h2", text: "Sitaly : la brique développement client, gérée pour vous" },
-      { type: "p", text: "Sitaly ne remplace pas votre logiciel de facturation. Sitaly s'occupe de la seconde famille, celle qui vous manque : être trouvé sur Google, récolter des avis, relancer au bon moment et ne rater aucun appel. La différence, c'est qu'on ne vous livre pas un énième outil à configurer seul. On met en place cette brique et on la fait tourner à votre place." },
+      {
+        type: "p",
+        text: "Sitaly ne remplace pas votre logiciel de facturation. Sitaly s'occupe de la seconde famille, celle qui vous manque : être trouvé sur Google, récolter des avis, relancer au bon moment et ne rater aucun appel. La différence, c'est qu'on ne vous livre pas un énième outil à configurer seul. On met en place cette brique et on la fait tourner à votre place.",
+      },
       {
         type: "ul",
         items: [
@@ -368,8 +698,14 @@ export const BLOG_POSTS: BlogPost[] = [
           "Un interlocuteur unique qui ajuste tout ça au fil des mois",
         ],
       },
-      { type: "p", text: "Sitaly se concentre sur ce qui remplit votre planning et laisse la facturation aux outils qui font ça très bien : les deux sont complémentaires. Vous gardez votre logiciel de devis, on branche la partie qui vous apporte des clients." },
-      { type: "p", text: "Concrètement, ça tient en deux offres sans engagement : Sitaly Présence (à partir de 149 €/mois) pour votre site, votre visibilité locale et votre fiche Google, et Sitaly Agents IA pour automatiser relances, avis et appels manqués. On installe et on connecte tout à votre place. Vous ne partez pas d'une page blanche, vous démarrez avec un système déjà prêt pour votre métier." },
+      {
+        type: "p",
+        text: "Sitaly se concentre sur ce qui remplit votre planning et laisse la facturation aux outils qui font ça très bien : les deux sont complémentaires. Vous gardez votre logiciel de devis, on branche la partie qui vous apporte des clients.",
+      },
+      {
+        type: "p",
+        text: "Concrètement, ça tient en deux offres sans engagement : Sitaly Présence (à partir de 149 €/mois) pour votre site, votre visibilité locale et votre fiche Google, et Sitaly Agents IA pour automatiser relances, avis et appels manqués. On installe et on connecte tout à votre place. Vous ne partez pas d'une page blanche, vous démarrez avec un système déjà prêt pour votre métier.",
+      },
 
       { type: "h2", text: "Comment on met ça en place pour vous" },
       {
@@ -382,20 +718,41 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
 
-      { type: "quote", text: "Le meilleur logiciel n'est pas celui qui a le plus de boutons, c'est celui que vous ouvrez vraiment tous les jours." },
+      {
+        type: "quote",
+        text: "Le meilleur logiciel n'est pas celui qui a le plus de boutons, c'est celui que vous ouvrez vraiment tous les jours.",
+      },
 
       {
         type: "faq",
         items: [
-          { q: "C'est quoi un logiciel de gestion pour artisan ?", a: "C'est un outil qui centralise et automatise une partie de votre activité. Attention : certains gèrent la facturation et les chantiers (devis, factures, compta), d'autres gèrent le développement client (suivi des prospects, avis Google, relances, visibilité). Les deux sont utiles mais ne règlent pas le même problème." },
-          { q: "Existe-t-il un logiciel gratuit pour artisan ?", a: "Plusieurs outils de facturation proposent une version gratuite ou un essai. Côté développement client (avis Google, relances, appels manqués), Sitaly met ces automatisations en place pour vous via ses offres Présence et Agents IA, plutôt que de vous laisser un outil à configurer seul. Réservez un appel pour voir ce qui correspond à votre situation." },
-          { q: "Un CRM est-il vraiment utile pour un artisan seul ?", a: "Surtout pour un artisan seul. Quand personne ne gère les relances à votre place, un outil qui vous rappelle qui contacter et quand vous évite de perdre des devis par simple oubli. C'est du chiffre d'affaires récupéré sans aucun budget publicitaire." },
-          { q: "Sitaly remplace-t-il mon logiciel de facturation ?", a: "Non, et c'est volontaire. Sitaly se concentre sur les clients, les avis et la visibilité. Vous gardez votre outil de devis et de facture : les deux fonctionnent très bien ensemble." },
-          { q: "Faut-il être à l'aise avec l'informatique ?", a: "Non. Comme Sitaly installe et fait tourner les outils à votre place, vous n'avez rien à configurer. Vous recevez les appels et les demandes de devis, on s'occupe de la technique." },
+          {
+            q: "C'est quoi un logiciel de gestion pour artisan ?",
+            a: "C'est un outil qui centralise et automatise une partie de votre activité. Attention : certains gèrent la facturation et les chantiers (devis, factures, compta), d'autres gèrent le développement client (suivi des prospects, avis Google, relances, visibilité). Les deux sont utiles mais ne règlent pas le même problème.",
+          },
+          {
+            q: "Existe-t-il un logiciel gratuit pour artisan ?",
+            a: "Plusieurs outils de facturation proposent une version gratuite ou un essai. Côté développement client (avis Google, relances, appels manqués), Sitaly met ces automatisations en place pour vous via ses offres Présence et Agents IA, plutôt que de vous laisser un outil à configurer seul. Réservez un appel pour voir ce qui correspond à votre situation.",
+          },
+          {
+            q: "Un CRM est-il vraiment utile pour un artisan seul ?",
+            a: "Surtout pour un artisan seul. Quand personne ne gère les relances à votre place, un outil qui vous rappelle qui contacter et quand vous évite de perdre des devis par simple oubli. C'est du chiffre d'affaires récupéré sans aucun budget publicitaire.",
+          },
+          {
+            q: "Sitaly remplace-t-il mon logiciel de facturation ?",
+            a: "Non, et c'est volontaire. Sitaly se concentre sur les clients, les avis et la visibilité. Vous gardez votre outil de devis et de facture : les deux fonctionnent très bien ensemble.",
+          },
+          {
+            q: "Faut-il être à l'aise avec l'informatique ?",
+            a: "Non. Comme Sitaly installe et fait tourner les outils à votre place, vous n'avez rien à configurer. Vous recevez les appels et les demandes de devis, on s'occupe de la technique.",
+          },
         ],
       },
 
-      { type: "p", text: "Le bon logiciel de gestion, pour un artisan, n'est pas celui qui fait le plus de choses. C'est celui qui vous fait gagner des clients sans vous voler du temps, et qui est déjà prêt quand vous l'ouvrez. Réservez un appel gratuit de 20 minutes : on regarde votre situation et on met en place l'outil qui remplit votre planning, sans que vous ayez à le configurer." },
+      {
+        type: "p",
+        text: "Le bon logiciel de gestion, pour un artisan, n'est pas celui qui fait le plus de choses. C'est celui qui vous fait gagner des clients sans vous voler du temps, et qui est déjà prêt quand vous l'ouvrez. Réservez un appel gratuit de 20 minutes : on regarde votre situation et on met en place l'outil qui remplit votre planning, sans que vous ayez à le configurer.",
+      },
     ],
   },
   {
@@ -412,79 +769,171 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "avis google artisan",
     content: [
-      { type: "p", text: "Deux artisans, même métier, mêmes tarifs, même ville. L'un affiche 42 avis Google à 4,9 étoiles, l'autre en a 3. Devinez lequel décroche l'appel. Les avis sont devenus le premier réflexe de confiance d'un client local : avant de composer votre numéro, il regarde votre note et lit les trois derniers commentaires. Bonne nouvelle : récolter des avis ne demande ni budget ni talent commercial, juste une méthode simple appliquée après chaque chantier. Voici comment passer d'une poignée d'avis à une réputation qui travaille pour vous." },
+      {
+        type: "p",
+        text: "Deux artisans, même métier, mêmes tarifs, même ville. L'un affiche 42 avis Google à 4,9 étoiles, l'autre en a 3. Devinez lequel décroche l'appel. Les avis sont devenus le premier réflexe de confiance d'un client local : avant de composer votre numéro, il regarde votre note et lit les trois derniers commentaires. Bonne nouvelle : récolter des avis ne demande ni budget ni talent commercial, juste une méthode simple appliquée après chaque chantier. Voici comment passer d'une poignée d'avis à une réputation qui travaille pour vous.",
+      },
       { type: "h2", text: "Pourquoi les avis Google pèsent autant sur vos chantiers" },
-      { type: "p", text: "Les avis jouent sur deux plans à la fois. D'abord la confiance : d'après l'étude BrightLocal 2025, 87 % des consommateurs lisent les avis en ligne pour les entreprises locales, et la majorité écarte d'emblée une entreprise notée sous 4 étoiles. Ensuite le référencement : le nombre d'avis, la note moyenne et leur régularité font partie des critères que Google utilise pour classer les fiches dans le « pack local » (les trois entreprises affichées sur la carte en haut des résultats)." },
-      { type: "p", text: "Concrètement, une fiche qui reçoit un nouvel avis chaque semaine envoie à Google un signal d'activité et de fiabilité. Elle remonte dans le classement local, apparaît sur plus de recherches, et convertit mieux les personnes qui la voient. C'est un cercle vertueux : plus d'avis, plus de visibilité, plus d'appels, donc plus de chantiers et de nouveaux avis." },
+      {
+        type: "p",
+        text: "Les avis jouent sur deux plans à la fois. D'abord la confiance : d'après l'étude BrightLocal 2025, 87 % des consommateurs lisent les avis en ligne pour les entreprises locales, et la majorité écarte d'emblée une entreprise notée sous 4 étoiles. Ensuite le référencement : le nombre d'avis, la note moyenne et leur régularité font partie des critères que Google utilise pour classer les fiches dans le « pack local » (les trois entreprises affichées sur la carte en haut des résultats).",
+      },
+      {
+        type: "p",
+        text: "Concrètement, une fiche qui reçoit un nouvel avis chaque semaine envoie à Google un signal d'activité et de fiabilité. Elle remonte dans le classement local, apparaît sur plus de recherches, et convertit mieux les personnes qui la voient. C'est un cercle vertueux : plus d'avis, plus de visibilité, plus d'appels, donc plus de chantiers et de nouveaux avis.",
+      },
       { type: "h2", text: "Combien d'avis faut-il vraiment ?" },
-      { type: "p", text: "Il n'y a pas de chiffre magique, mais des seuils qui rassurent. En dessous de 10 avis, un client hésite. Entre 20 et 50 avis avec une note supérieure à 4,7, vous êtes crédible face à la plupart des concurrents locaux. L'objectif réaliste pour un artisan : viser 1 à 2 nouveaux avis par semaine, ce qui suffit à dépasser 30 avis en moins de six mois." },
-      { type: "table", caption: "Ce que votre profil d'avis inspire à un client local", headers: ["Nombre d'avis", "Note", "Perception du client"], rows: [
-        ["0 à 3", "—", "Doute : « Est-ce sérieux ? » Beaucoup passent au suivant"],
-        ["4 à 15", "4,5+", "Rassurant, mais on compare encore"],
-        ["20 à 50", "4,7+", "Référence locale, choix par défaut"],
-        ["50+", "4,8+", "Autorité : on vous appelle sans comparer"],
-      ] },
-      { type: "p", text: "Un détail compte autant que le volume : la fraîcheur. Vingt avis dont le plus récent date de deux ans inspirent moins de confiance que huit avis étalés sur les trois derniers mois. La régularité prime sur l'accumulation ancienne." },
+      {
+        type: "p",
+        text: "Il n'y a pas de chiffre magique, mais des seuils qui rassurent. En dessous de 10 avis, un client hésite. Entre 20 et 50 avis avec une note supérieure à 4,7, vous êtes crédible face à la plupart des concurrents locaux. L'objectif réaliste pour un artisan : viser 1 à 2 nouveaux avis par semaine, ce qui suffit à dépasser 30 avis en moins de six mois.",
+      },
+      {
+        type: "table",
+        caption: "Ce que votre profil d'avis inspire à un client local",
+        headers: ["Nombre d'avis", "Note", "Perception du client"],
+        rows: [
+          ["0 à 3", "—", "Doute : « Est-ce sérieux ? » Beaucoup passent au suivant"],
+          ["4 à 15", "4,5+", "Rassurant, mais on compare encore"],
+          ["20 à 50", "4,7+", "Référence locale, choix par défaut"],
+          ["50+", "4,8+", "Autorité : on vous appelle sans comparer"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Un détail compte autant que le volume : la fraîcheur. Vingt avis dont le plus récent date de deux ans inspirent moins de confiance que huit avis étalés sur les trois derniers mois. La régularité prime sur l'accumulation ancienne.",
+      },
       { type: "h2", text: "Le socle : une fiche prête à recevoir des avis" },
-      { type: "p", text: "Avant de demander des avis, vérifiez que votre fiche Google Business Profile est complète et vérifiée. Une fiche bâclée décourage les clients d'écrire, et donne moins de poids à leurs avis aux yeux de Google." },
-      { type: "ul", items: [
-        "Fiche vérifiée (le fameux code par courrier ou par vidéo)",
-        "Nom, catégorie principale, téléphone et zone d'intervention exacts",
-        "Horaires à jour, y compris les jours fériés",
-        "Au moins 15 photos récentes de vos chantiers",
-        "Une description claire de vos prestations",
-      ] },
+      {
+        type: "p",
+        text: "Avant de demander des avis, vérifiez que votre fiche Google Business Profile est complète et vérifiée. Une fiche bâclée décourage les clients d'écrire, et donne moins de poids à leurs avis aux yeux de Google.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Fiche vérifiée (le fameux code par courrier ou par vidéo)",
+          "Nom, catégorie principale, téléphone et zone d'intervention exacts",
+          "Horaires à jour, y compris les jours fériés",
+          "Au moins 15 photos récentes de vos chantiers",
+          "Une description claire de vos prestations",
+        ],
+      },
       { type: "h2", text: "La méthode en 5 étapes pour récolter des avis régulièrement" },
       { type: "h3", text: "1. Créez votre lien d'avis direct" },
-      { type: "p", text: "Le principal frein, ce n'est pas la mauvaise volonté du client, c'est l'effort. Personne n'a envie de chercher votre entreprise sur Google, de faire défiler, puis de trouver le bouton « Donner un avis ». La solution : le lien direct qui ouvre la fenêtre d'avis en un clic. Rendez-vous sur votre fiche dans Google Business Profile, cliquez sur « Demander des avis », et copiez le lien court fourni (du type g.page/r/...). C'est ce lien que vous enverrez à chaque client." },
+      {
+        type: "p",
+        text: "Le principal frein, ce n'est pas la mauvaise volonté du client, c'est l'effort. Personne n'a envie de chercher votre entreprise sur Google, de faire défiler, puis de trouver le bouton « Donner un avis ». La solution : le lien direct qui ouvre la fenêtre d'avis en un clic. Rendez-vous sur votre fiche dans Google Business Profile, cliquez sur « Demander des avis », et copiez le lien court fourni (du type g.page/r/...). C'est ce lien que vous enverrez à chaque client.",
+      },
       { type: "h3", text: "2. Demandez au bon moment" },
-      { type: "p", text: "Le meilleur moment pour demander un avis, c'est juste après un chantier réussi, quand le client vient de constater le résultat et vous remercie. Attendez trois jours et l'élan est retombé. Prenez l'habitude de demander l'avis à la fin de l'intervention, à l'oral, puis d'envoyer le lien dans la foulée par SMS le soir même." },
+      {
+        type: "p",
+        text: "Le meilleur moment pour demander un avis, c'est juste après un chantier réussi, quand le client vient de constater le résultat et vous remercie. Attendez trois jours et l'élan est retombé. Prenez l'habitude de demander l'avis à la fin de l'intervention, à l'oral, puis d'envoyer le lien dans la foulée par SMS le soir même.",
+      },
       { type: "h3", text: "3. Utilisez un script SMS simple" },
-      { type: "p", text: "Un SMS court, personnalisé, avec le lien direct : c'est le combo qui obtient le meilleur taux de réponse. Évitez le message impersonnel envoyé en masse. Voici un modèle qui fonctionne bien :" },
-      { type: "quote", text: "Bonjour Monsieur Martin, merci pour votre confiance sur le remplacement de votre chauffe-eau. Si vous êtes satisfait, un avis Google m'aiderait beaucoup à faire connaître mon travail. Ça prend 30 secondes ici : [votre lien]. Merci et belle journée. Julien" },
+      {
+        type: "p",
+        text: "Un SMS court, personnalisé, avec le lien direct : c'est le combo qui obtient le meilleur taux de réponse. Évitez le message impersonnel envoyé en masse. Voici un modèle qui fonctionne bien :",
+      },
+      {
+        type: "quote",
+        text: "Bonjour Monsieur Martin, merci pour votre confiance sur le remplacement de votre chauffe-eau. Si vous êtes satisfait, un avis Google m'aiderait beaucoup à faire connaître mon travail. Ça prend 30 secondes ici : [votre lien]. Merci et belle journée. Julien",
+      },
       { type: "h3", text: "4. Facilitez au maximum" },
-      { type: "p", text: "Plus l'action est simple, plus vous obtenez d'avis. En complément du SMS, imprimez un petit carton avec un QR code qui pointe vers votre lien d'avis, à laisser au client en fin de chantier ou sur le comptoir. Certains artisans l'ajoutent même au dos de leur facture ou de leur carte de visite." },
+      {
+        type: "p",
+        text: "Plus l'action est simple, plus vous obtenez d'avis. En complément du SMS, imprimez un petit carton avec un QR code qui pointe vers votre lien d'avis, à laisser au client en fin de chantier ou sur le comptoir. Certains artisans l'ajoutent même au dos de leur facture ou de leur carte de visite.",
+      },
       { type: "h3", text: "5. Répondez à chaque avis" },
-      { type: "p", text: "Répondre montre au client suivant que vous êtes présent et professionnel, et Google valorise les fiches actives. Une réponse de deux lignes suffit. Ne laissez jamais un avis, même un simple « Merci », sans réponse." },
+      {
+        type: "p",
+        text: "Répondre montre au client suivant que vous êtes présent et professionnel, et Google valorise les fiches actives. Une réponse de deux lignes suffit. Ne laissez jamais un avis, même un simple « Merci », sans réponse.",
+      },
       { type: "h2", text: "3 scripts prêts à copier" },
-      { type: "p", text: "Adaptez le prénom, la prestation et votre signature. Un message personnalisé double le taux de réponse par rapport à un texte générique." },
-      { type: "ul", items: [
-        "SMS (le plus efficace) : « Bonjour [prénom], merci pour votre confiance sur [prestation]. Un avis Google m'aiderait vraiment à développer mon activité, ça prend 30 secondes : [lien]. Merci ! [signature] »",
-        "E-mail : objet « Un petit avis pour [entreprise] ? ». Corps : rappel du chantier réalisé, phrase de remerciement, bouton ou lien vers l'avis, et une ligne pour rester disponible en cas de besoin.",
-        "En main propre : « Si le travail vous convient, le plus utile pour moi, c'est un avis Google. Je vous envoie le lien ce soir, vous n'aurez qu'à cliquer. »",
-      ] },
+      {
+        type: "p",
+        text: "Adaptez le prénom, la prestation et votre signature. Un message personnalisé double le taux de réponse par rapport à un texte générique.",
+      },
+      {
+        type: "ul",
+        items: [
+          "SMS (le plus efficace) : « Bonjour [prénom], merci pour votre confiance sur [prestation]. Un avis Google m'aiderait vraiment à développer mon activité, ça prend 30 secondes : [lien]. Merci ! [signature] »",
+          "E-mail : objet « Un petit avis pour [entreprise] ? ». Corps : rappel du chantier réalisé, phrase de remerciement, bouton ou lien vers l'avis, et une ligne pour rester disponible en cas de besoin.",
+          "En main propre : « Si le travail vous convient, le plus utile pour moi, c'est un avis Google. Je vous envoie le lien ce soir, vous n'aurez qu'à cliquer. »",
+        ],
+      },
       { type: "h2", text: "Comment répondre aux avis, positifs comme négatifs" },
-      { type: "p", text: "Un avis négatif bien géré rassure parfois plus qu'un avis positif. Le futur client regarde comment vous réagissez sous pression. La règle : rester courtois, ne jamais se justifier de façon agressive, proposer de régler le problème hors ligne." },
-      { type: "ul", items: [
-        "Avis positif : remerciez, citez le chantier ou le prénom, ajoutez une touche humaine. Exemple : « Merci Sophie, ravi que la pose de votre parquet vous plaise. À bientôt. »",
-        "Avis négatif justifié : reconnaissez, excusez-vous, proposez une solution concrète et un contact direct.",
-        "Avis négatif injuste ou faux : répondez calmement les faits, sans polémique, puis signalez-le à Google s'il enfreint les règles (avis d'un non-client, propos injurieux, concurrent).",
-        "Ne répondez jamais à chaud : relisez à froid avant de publier.",
-      ] },
+      {
+        type: "p",
+        text: "Un avis négatif bien géré rassure parfois plus qu'un avis positif. Le futur client regarde comment vous réagissez sous pression. La règle : rester courtois, ne jamais se justifier de façon agressive, proposer de régler le problème hors ligne.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Avis positif : remerciez, citez le chantier ou le prénom, ajoutez une touche humaine. Exemple : « Merci Sophie, ravi que la pose de votre parquet vous plaise. À bientôt. »",
+          "Avis négatif justifié : reconnaissez, excusez-vous, proposez une solution concrète et un contact direct.",
+          "Avis négatif injuste ou faux : répondez calmement les faits, sans polémique, puis signalez-le à Google s'il enfreint les règles (avis d'un non-client, propos injurieux, concurrent).",
+          "Ne répondez jamais à chaud : relisez à froid avant de publier.",
+        ],
+      },
       { type: "h2", text: "Les erreurs qui peuvent vous coûter cher" },
-      { type: "p", text: "Certaines pratiques semblent malignes mais se retournent contre vous. Google détecte les schémas anormaux (pic d'avis, appareils identiques, comptes récents) et peut filtrer ou supprimer les avis suspects, voire pénaliser la fiche." },
-      { type: "ul", items: [
-        "Acheter de faux avis : interdit par la loi française et par Google. En France, la DGCCRF sanctionne les faux avis, avec des amendes qui peuvent atteindre 300 000 € pour une entreprise, et Google supprime les avis frauduleux.",
-        "Offrir une réduction ou un cadeau contre un avis : contraire aux règles de Google, qui interdit les avis incités. Vous risquez la suppression des avis concernés.",
-        "Demander des avis à des gens qui ne sont pas clients : c'est de la fraude, facilement repérable.",
-        "Installer une borne au bureau où tout le monde note depuis la même adresse IP : Google filtre ces avis en masse.",
-        "Ne demander qu'aux clients mécontents un « retour direct » et rediriger les contents vers Google : cette pratique de filtrage (review gating) est également interdite par Google.",
-      ] },
+      {
+        type: "p",
+        text: "Certaines pratiques semblent malignes mais se retournent contre vous. Google détecte les schémas anormaux (pic d'avis, appareils identiques, comptes récents) et peut filtrer ou supprimer les avis suspects, voire pénaliser la fiche.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Acheter de faux avis : interdit par la loi française et par Google. En France, la DGCCRF sanctionne les faux avis, avec des amendes qui peuvent atteindre 300 000 € pour une entreprise, et Google supprime les avis frauduleux.",
+          "Offrir une réduction ou un cadeau contre un avis : contraire aux règles de Google, qui interdit les avis incités. Vous risquez la suppression des avis concernés.",
+          "Demander des avis à des gens qui ne sont pas clients : c'est de la fraude, facilement repérable.",
+          "Installer une borne au bureau où tout le monde note depuis la même adresse IP : Google filtre ces avis en masse.",
+          "Ne demander qu'aux clients mécontents un « retour direct » et rediriger les contents vers Google : cette pratique de filtrage (review gating) est également interdite par Google.",
+        ],
+      },
       { type: "h2", text: "Exemple : Karim, électricien, de 3 à 34 avis en 5 mois" },
-      { type: "p", text: "Karim, électricien à Massy, plafonnait à 3 avis en deux ans. Il a mis en place une routine simple : demande orale en fin de chantier, puis SMS avec son lien direct le soir même, et un QR code au dos de ses factures. Résultat sur 5 mois : 31 nouveaux avis, une note stabilisée à 4,9, et une remontée dans le pack local sur « électricien Massy ». Il estime ses appels entrants en hausse d'environ 40 %, sans avoir dépensé un euro de publicité. Le seul changement : demander systématiquement, au bon moment, avec un lien qui rend l'action évidente." },
+      {
+        type: "p",
+        text: "Karim, électricien à Massy, plafonnait à 3 avis en deux ans. Il a mis en place une routine simple : demande orale en fin de chantier, puis SMS avec son lien direct le soir même, et un QR code au dos de ses factures. Résultat sur 5 mois : 31 nouveaux avis, une note stabilisée à 4,9, et une remontée dans le pack local sur « électricien Massy ». Il estime ses appels entrants en hausse d'environ 40 %, sans avoir dépensé un euro de publicité. Le seul changement : demander systématiquement, au bon moment, avec un lien qui rend l'action évidente.",
+      },
       { type: "h2", text: "Automatiser la collecte pour ne plus y penser" },
-      { type: "p", text: "Le vrai obstacle n'est pas la méthode, c'est la régularité. Après une grosse journée, envoyer le SMS passe à la trappe. C'est là qu'une automatisation change tout : dès qu'un chantier est marqué terminé, un SMS de demande d'avis part automatiquement avec votre lien, le prénom du client et votre signature. Vous ne gérez plus rien, les avis rentrent tout seuls. Chez Sitaly, cette relance d'avis fait partie des automatisations que nous mettons en place, aux côtés de la relance de devis et de la prise de rendez-vous en ligne." },
+      {
+        type: "p",
+        text: "Le vrai obstacle n'est pas la méthode, c'est la régularité. Après une grosse journée, envoyer le SMS passe à la trappe. C'est là qu'une automatisation change tout : dès qu'un chantier est marqué terminé, un SMS de demande d'avis part automatiquement avec votre lien, le prénom du client et votre signature. Vous ne gérez plus rien, les avis rentrent tout seuls. Chez Sitaly, cette relance d'avis fait partie des automatisations que nous mettons en place, aux côtés de la relance de devis et de la prise de rendez-vous en ligne.",
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "Peut-on demander un avis à un client sans risque ?", a: "Oui, demander un avis à un vrai client satisfait est parfaitement autorisé et encouragé par Google. Ce qui est interdit, c'est d'acheter des avis, d'en offrir en échange d'une contrepartie, ou de filtrer pour n'envoyer que les clients contents vers Google." },
-        { q: "Comment obtenir mon lien d'avis Google direct ?", a: "Connectez-vous à votre fiche Google Business Profile, cliquez sur « Demander des avis » ou « Obtenir plus d'avis », et copiez le lien court proposé. Ce lien ouvre directement la fenêtre de notation, ce qui supprime toutes les étapes intermédiaires pour le client." },
-        { q: "Que faire d'un avis négatif ?", a: "Répondez calmement et sans agressivité, reconnaissez le point s'il est justifié, et proposez de régler la situation par téléphone. Si l'avis est faux ou injurieux, signalez-le à Google. Un avis négatif bien géré rassure souvent les futurs clients sur votre professionnalisme." },
-        { q: "Un client peut-il laisser un avis sans compte Google ?", a: "Il faut un compte Google pour publier un avis, mais la quasi-totalité des utilisateurs de smartphone Android en possède déjà un, et beaucoup d'utilisateurs iPhone aussi via Gmail. Le lien direct détecte le compte connecté et simplifie l'opération." },
-        { q: "Faut-il répondre à tous les avis, même positifs ?", a: "Oui. Répondre aux avis positifs montre votre présence, renforce la relation, et Google valorise les fiches actives. Une réponse courte et personnalisée suffit." },
-        { q: "En combien de temps voit-on l'effet sur le référencement ?", a: "Les premiers effets sur la visibilité locale apparaissent en général en 1 à 3 mois de collecte régulière. L'important est la constance : mieux vaut 1 à 2 avis par semaine sur la durée qu'un pic isolé de 20 avis." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Peut-on demander un avis à un client sans risque ?",
+            a: "Oui, demander un avis à un vrai client satisfait est parfaitement autorisé et encouragé par Google. Ce qui est interdit, c'est d'acheter des avis, d'en offrir en échange d'une contrepartie, ou de filtrer pour n'envoyer que les clients contents vers Google.",
+          },
+          {
+            q: "Comment obtenir mon lien d'avis Google direct ?",
+            a: "Connectez-vous à votre fiche Google Business Profile, cliquez sur « Demander des avis » ou « Obtenir plus d'avis », et copiez le lien court proposé. Ce lien ouvre directement la fenêtre de notation, ce qui supprime toutes les étapes intermédiaires pour le client.",
+          },
+          {
+            q: "Que faire d'un avis négatif ?",
+            a: "Répondez calmement et sans agressivité, reconnaissez le point s'il est justifié, et proposez de régler la situation par téléphone. Si l'avis est faux ou injurieux, signalez-le à Google. Un avis négatif bien géré rassure souvent les futurs clients sur votre professionnalisme.",
+          },
+          {
+            q: "Un client peut-il laisser un avis sans compte Google ?",
+            a: "Il faut un compte Google pour publier un avis, mais la quasi-totalité des utilisateurs de smartphone Android en possède déjà un, et beaucoup d'utilisateurs iPhone aussi via Gmail. Le lien direct détecte le compte connecté et simplifie l'opération.",
+          },
+          {
+            q: "Faut-il répondre à tous les avis, même positifs ?",
+            a: "Oui. Répondre aux avis positifs montre votre présence, renforce la relation, et Google valorise les fiches actives. Une réponse courte et personnalisée suffit.",
+          },
+          {
+            q: "En combien de temps voit-on l'effet sur le référencement ?",
+            a: "Les premiers effets sur la visibilité locale apparaissent en général en 1 à 3 mois de collecte régulière. L'important est la constance : mieux vaut 1 à 2 avis par semaine sur la durée qu'un pic isolé de 20 avis.",
+          },
+        ],
+      },
       { type: "h2", text: "Passez à l'action" },
-      { type: "p", text: "Vous n'avez pas besoin d'un outil compliqué pour commencer : récupérez votre lien d'avis direct, et envoyez-le à vos trois prochains clients satisfaits dès ce soir. Si vous voulez que la collecte tourne toute seule, Sitaly met en place l'automatisation (SMS d'avis après chaque chantier), optimise votre fiche Google et votre site pour convertir cette visibilité en appels. Réservez un appel gratuit de 15 minutes pour en discuter." },
+      {
+        type: "p",
+        text: "Vous n'avez pas besoin d'un outil compliqué pour commencer : récupérez votre lien d'avis direct, et envoyez-le à vos trois prochains clients satisfaits dès ce soir. Si vous voulez que la collecte tourne toute seule, Sitaly met en place l'automatisation (SMS d'avis après chaque chantier), optimise votre fiche Google et votre site pour convertir cette visibilité en appels. Réservez un appel gratuit de 15 minutes pour en discuter.",
+      },
     ],
   },
   {
@@ -501,65 +950,130 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "création site internet artisan",
     content: [
-      { type: "p", text: "En 2026, plus de 8 clients sur 10 vérifient l'existence d'un site internet avant de contacter un artisan. Sans site, vous êtes invisible — et vos concurrents récupèrent les appels. Ce guide vous explique précisément comment réussir la création de votre site internet d'artisan : ce qu'il doit contenir, combien ça coûte réellement, et les erreurs qui plombent la rentabilité de la majorité des sites artisans." },
+      {
+        type: "p",
+        text: "En 2026, plus de 8 clients sur 10 vérifient l'existence d'un site internet avant de contacter un artisan. Sans site, vous êtes invisible — et vos concurrents récupèrent les appels. Ce guide vous explique précisément comment réussir la création de votre site internet d'artisan : ce qu'il doit contenir, combien ça coûte réellement, et les erreurs qui plombent la rentabilité de la majorité des sites artisans.",
+      },
       { type: "h2", text: "Pourquoi un artisan a vraiment besoin d'un site internet" },
-      { type: "p", text: "Le bouche-à-oreille reste précieux, mais il ne suffit plus. Quand un voisin vous recommande, le futur client tape votre nom sur Google avant d'appeler. S'il ne trouve rien, ou s'il tombe sur une page Facebook sans avis ni horaires, il passe au prestataire suivant. D'après une étude BVA-Solocal de 2025, 78 % des Français consultent un site web avant de contacter une entreprise locale, et 64 % renoncent à appeler si le site paraît douteux ou daté." },
-      { type: "p", text: "Un site internet d'artisan bien conçu remplit trois rôles : rassurer (photos de réalisations, avis clients, mentions légales), convertir (téléphone cliquable, formulaire court, prise de rendez-vous) et être trouvé sur Google grâce au référencement local." },
+      {
+        type: "p",
+        text: "Le bouche-à-oreille reste précieux, mais il ne suffit plus. Quand un voisin vous recommande, le futur client tape votre nom sur Google avant d'appeler. S'il ne trouve rien, ou s'il tombe sur une page Facebook sans avis ni horaires, il passe au prestataire suivant. D'après une étude BVA-Solocal de 2025, 78 % des Français consultent un site web avant de contacter une entreprise locale, et 64 % renoncent à appeler si le site paraît douteux ou daté.",
+      },
+      {
+        type: "p",
+        text: "Un site internet d'artisan bien conçu remplit trois rôles : rassurer (photos de réalisations, avis clients, mentions légales), convertir (téléphone cliquable, formulaire court, prise de rendez-vous) et être trouvé sur Google grâce au référencement local.",
+      },
       { type: "h2", text: "Les fonctionnalités indispensables d'un site d'artisan" },
-      { type: "ul", items: [
-        "Un numéro de téléphone visible en haut de chaque page, cliquable sur mobile",
-        "Une galerie de réalisations avec photos avant/après",
-        "La liste précise des prestations et zones d'intervention",
-        "Les avis Google intégrés ou retranscrits",
-        "Un formulaire de demande de devis court (3 à 5 champs maximum)",
-        "Une carte Google Maps centrée sur votre zone",
-        "Des mentions légales, CGV et politique de confidentialité conformes RGPD",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Un numéro de téléphone visible en haut de chaque page, cliquable sur mobile",
+          "Une galerie de réalisations avec photos avant/après",
+          "La liste précise des prestations et zones d'intervention",
+          "Les avis Google intégrés ou retranscrits",
+          "Un formulaire de demande de devis court (3 à 5 champs maximum)",
+          "Une carte Google Maps centrée sur votre zone",
+          "Des mentions légales, CGV et politique de confidentialité conformes RGPD",
+        ],
+      },
       { type: "h2", text: "Combien coûte la création d'un site internet artisan ?" },
-      { type: "p", text: "Les prix du marché vont de 500€ à plus de 5 000€. La fourchette saine pour un artisan se situe entre 700€ et 1 500€ pour un site clé en main, ou 80€ à 120€/mois pour une formule avec maintenance et hébergement inclus." },
-      { type: "p", text: "Méfiez-vous des sites à 99€ : ils sont souvent générés à la chaîne, sans optimisation pour Google. À l'inverse, payer 4 000€ pour 5 pages est rarement justifié quand on est artisan local. Chez Sitaly, nous fonctionnons en location à partir de 149€/mois tout inclus, sans frais d'installation et sans engagement, pour rester accessible sans rogner sur la qualité." },
+      {
+        type: "p",
+        text: "Les prix du marché vont de 500€ à plus de 5 000€. La fourchette saine pour un artisan se situe entre 700€ et 1 500€ pour un site clé en main, ou 80€ à 120€/mois pour une formule avec maintenance et hébergement inclus.",
+      },
+      {
+        type: "p",
+        text: "Méfiez-vous des sites à 99€ : ils sont souvent générés à la chaîne, sans optimisation pour Google. À l'inverse, payer 4 000€ pour 5 pages est rarement justifié quand on est artisan local. Chez Sitaly, nous fonctionnons en location à partir de 149€/mois tout inclus, sans frais d'installation et sans engagement, pour rester accessible sans rogner sur la qualité.",
+      },
       { type: "h2", text: "Comparatif des grandes options du marché" },
-      { type: "table", caption: "Comparaison des solutions de site pour artisan (prix moyens 2026)", headers: ["Solution", "Coût initial", "Coût mensuel", "Délai", "SEO local"], rows: [
-        ["DIY Wix / Webador", "0 à 200€", "15 à 30€", "30 à 80 h de travail", "Faible"],
-        ["Sitaly en location", "0€ (sans frais d'installation)", "149€/mois tout inclus", "48 à 72 h", "Inclus de base"],
-        ["Freelance", "1 200 à 3 000€", "0 à 20€ (hébergement)", "3 à 8 semaines", "Variable"],
-        ["Agence digitale", "3 500 à 12 000€", "50 à 200€", "6 à 12 semaines", "Avancé"],
-      ] },
+      {
+        type: "table",
+        caption: "Comparaison des solutions de site pour artisan (prix moyens 2026)",
+        headers: ["Solution", "Coût initial", "Coût mensuel", "Délai", "SEO local"],
+        rows: [
+          ["DIY Wix / Webador", "0 à 200€", "15 à 30€", "30 à 80 h de travail", "Faible"],
+          [
+            "Sitaly en location",
+            "0€ (sans frais d'installation)",
+            "149€/mois tout inclus",
+            "48 à 72 h",
+            "Inclus de base",
+          ],
+          ["Freelance", "1 200 à 3 000€", "0 à 20€ (hébergement)", "3 à 8 semaines", "Variable"],
+          ["Agence digitale", "3 500 à 12 000€", "50 à 200€", "6 à 12 semaines", "Avancé"],
+        ],
+      },
       { type: "h2", text: "Combien de temps pour mettre en ligne un site d'artisan ?" },
-      { type: "p", text: "Un site d'artisan classique (5 à 7 pages) peut être livré en 48 à 72 heures si vous fournissez rapidement vos photos et textes. Les agences traditionnelles annoncent 4 à 8 semaines parce qu'elles partent d'une page blanche et multiplient les allers-retours. Demandez systématiquement un délai contractuel avant de signer." },
+      {
+        type: "p",
+        text: "Un site d'artisan classique (5 à 7 pages) peut être livré en 48 à 72 heures si vous fournissez rapidement vos photos et textes. Les agences traditionnelles annoncent 4 à 8 semaines parce qu'elles partent d'une page blanche et multiplient les allers-retours. Demandez systématiquement un délai contractuel avant de signer.",
+      },
       { type: "h2", text: "Exemple chiffré : le site de Marc, plombier à Avignon" },
-      { type: "p", text: "Marc, plombier indépendant à Avignon, n'avait qu'une page Facebook. Après le lancement d'un site Sitaly à 149€/mois couplé à sa fiche Google optimisée, il a constaté en 4 mois : trafic mensuel passé de 0 à 420 visiteurs, 12 appels qualifiés/mois en plus, 4 chantiers signés en moyenne (panier moyen 850€). Sur 12 mois, cela représente 40 800€ de CA additionnel pour 1 788€ investis sur l'année, soit un retour plus de 20 fois supérieur à la mise." },
+      {
+        type: "p",
+        text: "Marc, plombier indépendant à Avignon, n'avait qu'une page Facebook. Après le lancement d'un site Sitaly à 149€/mois couplé à sa fiche Google optimisée, il a constaté en 4 mois : trafic mensuel passé de 0 à 420 visiteurs, 12 appels qualifiés/mois en plus, 4 chantiers signés en moyenne (panier moyen 850€). Sur 12 mois, cela représente 40 800€ de CA additionnel pour 1 788€ investis sur l'année, soit un retour plus de 20 fois supérieur à la mise.",
+      },
       { type: "h2", text: "Les 5 erreurs qui plombent les sites d'artisans" },
-      { type: "ul", items: [
-        "Site non responsive : illisible sur mobile, alors que 70 % du trafic vient de smartphones",
-        "Absence de référencement local : invisible sur 'plombier + ville'",
-        "Photos de banque d'images au lieu de vos propres réalisations",
-        "Formulaire de contact trop long qui décourage les prospects",
-        "Pas de maintenance : le site tombe en panne, les plugins se cassent, Google déréférence",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Site non responsive : illisible sur mobile, alors que 70 % du trafic vient de smartphones",
+          "Absence de référencement local : invisible sur 'plombier + ville'",
+          "Photos de banque d'images au lieu de vos propres réalisations",
+          "Formulaire de contact trop long qui décourage les prospects",
+          "Pas de maintenance : le site tombe en panne, les plugins se cassent, Google déréférence",
+        ],
+      },
       { type: "h2", text: "Site sur mesure ou template : que choisir ?" },
-      { type: "p", text: "Pour un artisan local, un site sur mesure léger reste l'option la plus rentable : design propre, chargement rapide, structure pensée pour le SEO local. Les templates WordPress génériques nécessitent souvent autant de travail de personnalisation que partir de zéro, et finissent plus lents — un site WordPress moyen charge en 4,2 secondes sur mobile contre 1,3 seconde pour un site statique bien conçu, selon HTTP Archive 2025." },
+      {
+        type: "p",
+        text: "Pour un artisan local, un site sur mesure léger reste l'option la plus rentable : design propre, chargement rapide, structure pensée pour le SEO local. Les templates WordPress génériques nécessitent souvent autant de travail de personnalisation que partir de zéro, et finissent plus lents — un site WordPress moyen charge en 4,2 secondes sur mobile contre 1,3 seconde pour un site statique bien conçu, selon HTTP Archive 2025.",
+      },
       { type: "h2", text: "Checklist : le site d'artisan prêt à convertir" },
-      { type: "ul", items: [
-        "Score PageSpeed mobile > 85",
-        "Téléphone visible sans scroller en moins de 1 seconde",
-        "Au moins 15 photos personnelles de chantiers",
-        "1 page par service principal + 1 page par ville cible",
-        "Avis Google affichés directement",
-        "Formulaire < 5 champs avec upload photo",
-        "Mentions légales et politique RGPD à jour",
-        "Schema.org LocalBusiness intégré",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Score PageSpeed mobile > 85",
+          "Téléphone visible sans scroller en moins de 1 seconde",
+          "Au moins 15 photos personnelles de chantiers",
+          "1 page par service principal + 1 page par ville cible",
+          "Avis Google affichés directement",
+          "Formulaire < 5 champs avec upload photo",
+          "Mentions légales et politique RGPD à jour",
+          "Schema.org LocalBusiness intégré",
+        ],
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "Faut-il refaire son site tous les combien d'années ?", a: "Tous les 3 à 5 ans en moyenne. Au-delà, le design vieillit visuellement, les standards techniques (mobile, vitesse, sécurité) évoluent, et Google déclasse les sites lents. Une refonte tous les 4 ans est un bon rythme pour la majorité des artisans." },
-        { q: "Puis-je créer mon site moi-même avec Wix ou Webador ?", a: "Techniquement oui, mais comptez 30 à 80 heures de travail pour un résultat moyen, sans optimisation SEO sérieuse. Si vous facturez votre heure 45€, votre site DIY vous a coûté 1 350 à 3 600€ en temps — souvent plus cher qu'un prestataire spécialisé." },
-        { q: "Combien de pages doit avoir mon site ?", a: "Pour un artisan local, 5 à 8 pages suffisent largement : accueil, prestations, réalisations, à propos, contact, et 1 à 3 pages 'ville'. Au-delà, vous diluez votre référencement sans gain de conversion." },
-        { q: "Le site est-il obligatoire si j'ai déjà une fiche Google ?", a: "Non, mais sans site vous plafonnez votre conversion. La fiche Google sert d'aimant ; le site rassure et convertit. Les deux combinés génèrent typiquement 2 à 3 fois plus d'appels que la fiche seule." },
-        { q: "Quel est le délai pour apparaître sur Google après la mise en ligne ?", a: "Le site est indexé en 2 à 7 jours. Pour apparaître dans le top 10 sur 'métier + ville', comptez 2 à 6 mois selon la concurrence locale, à condition d'avoir un référencement local correctement configuré." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Faut-il refaire son site tous les combien d'années ?",
+            a: "Tous les 3 à 5 ans en moyenne. Au-delà, le design vieillit visuellement, les standards techniques (mobile, vitesse, sécurité) évoluent, et Google déclasse les sites lents. Une refonte tous les 4 ans est un bon rythme pour la majorité des artisans.",
+          },
+          {
+            q: "Puis-je créer mon site moi-même avec Wix ou Webador ?",
+            a: "Techniquement oui, mais comptez 30 à 80 heures de travail pour un résultat moyen, sans optimisation SEO sérieuse. Si vous facturez votre heure 45€, votre site DIY vous a coûté 1 350 à 3 600€ en temps — souvent plus cher qu'un prestataire spécialisé.",
+          },
+          {
+            q: "Combien de pages doit avoir mon site ?",
+            a: "Pour un artisan local, 5 à 8 pages suffisent largement : accueil, prestations, réalisations, à propos, contact, et 1 à 3 pages 'ville'. Au-delà, vous diluez votre référencement sans gain de conversion.",
+          },
+          {
+            q: "Le site est-il obligatoire si j'ai déjà une fiche Google ?",
+            a: "Non, mais sans site vous plafonnez votre conversion. La fiche Google sert d'aimant ; le site rassure et convertit. Les deux combinés génèrent typiquement 2 à 3 fois plus d'appels que la fiche seule.",
+          },
+          {
+            q: "Quel est le délai pour apparaître sur Google après la mise en ligne ?",
+            a: "Le site est indexé en 2 à 7 jours. Pour apparaître dans le top 10 sur 'métier + ville', comptez 2 à 6 mois selon la concurrence locale, à condition d'avoir un référencement local correctement configuré.",
+          },
+        ],
+      },
       { type: "h2", text: "Prêt à lancer votre site internet d'artisan ?" },
-      { type: "p", text: "Si vous voulez gagner du temps, Sitaly s'occupe de tout : design sur mesure, contenu rédigé, référencement local, mise en ligne en 48 heures. Et pour générer plus de clients, on peut aussi gérer vos campagnes Google Ads et mettre en place des automatisations (relance des devis, prise de rendez-vous, réponse automatique aux demandes). Réservez un appel gratuit de 15 minutes pour voir si l'offre vous correspond." },
+      {
+        type: "p",
+        text: "Si vous voulez gagner du temps, Sitaly s'occupe de tout : design sur mesure, contenu rédigé, référencement local, mise en ligne en 48 heures. Et pour générer plus de clients, on peut aussi gérer vos campagnes Google Ads et mettre en place des automatisations (relance des devis, prise de rendez-vous, réponse automatique aux demandes). Réservez un appel gratuit de 15 minutes pour voir si l'offre vous correspond.",
+      },
     ],
   },
   {
@@ -576,48 +1090,107 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "attirer clients artisan",
     content: [
-      { type: "p", text: "La majorité des artisans français passent par des hauts et des bas : quelques mois pleins, puis un trou dans le planning. Le bouche-à-oreille seul ne suffit plus, et les plateformes type Travaux.com prennent une marge énorme. Voici neuf leviers concrets, classés du plus simple au plus puissant, pour attirer plus de clients sans dépendre du hasard." },
+      {
+        type: "p",
+        text: "La majorité des artisans français passent par des hauts et des bas : quelques mois pleins, puis un trou dans le planning. Le bouche-à-oreille seul ne suffit plus, et les plateformes type Travaux.com prennent une marge énorme. Voici neuf leviers concrets, classés du plus simple au plus puissant, pour attirer plus de clients sans dépendre du hasard.",
+      },
       { type: "h2", text: "1. Soignez votre fiche Google Business Profile" },
-      { type: "p", text: "C'est gratuit, et c'est le levier le plus rentable de tous. Une fiche complète (photos, horaires, prestations, zone, numéro) avec une dizaine d'avis 5 étoiles peut générer 3 à 10 appels par semaine, surtout quand les concurrents locaux sont mal référencés." },
+      {
+        type: "p",
+        text: "C'est gratuit, et c'est le levier le plus rentable de tous. Une fiche complète (photos, horaires, prestations, zone, numéro) avec une dizaine d'avis 5 étoiles peut générer 3 à 10 appels par semaine, surtout quand les concurrents locaux sont mal référencés.",
+      },
       { type: "h2", text: "2. Collectez systématiquement des avis Google" },
-      { type: "p", text: "À la fin de chaque chantier satisfaisant, envoyez un SMS au client avec le lien direct vers votre fiche Google. Un artisan qui a 30 avis 4,8/5 sera contacté avant celui qui en a 2, même si ses tarifs sont supérieurs." },
+      {
+        type: "p",
+        text: "À la fin de chaque chantier satisfaisant, envoyez un SMS au client avec le lien direct vers votre fiche Google. Un artisan qui a 30 avis 4,8/5 sera contacté avant celui qui en a 2, même si ses tarifs sont supérieurs.",
+      },
       { type: "h2", text: "3. Créez un site internet professionnel" },
-      { type: "p", text: "Un client qui vous a vu sur Google ou qui vient en recommandation va systématiquement chercher votre site. Sans site, ou avec un site daté, vous perdez environ 1 prospect sur 3. Un site simple, clair, mobile, avec vos réalisations et un téléphone cliquable, change la donne. Lire aussi : le guide complet de la création de site internet pour artisan." },
+      {
+        type: "p",
+        text: "Un client qui vous a vu sur Google ou qui vient en recommandation va systématiquement chercher votre site. Sans site, ou avec un site daté, vous perdez environ 1 prospect sur 3. Un site simple, clair, mobile, avec vos réalisations et un téléphone cliquable, change la donne. Lire aussi : le guide complet de la création de site internet pour artisan.",
+      },
       { type: "h2", text: "4. Soyez visible sur les recherches 'métier + ville'" },
-      { type: "p", text: "Quand quelqu'un tape 'plombier Nîmes' ou 'électricien Avignon', Google affiche trois fiches locales et dix sites. Si vous n'êtes ni dans les trois, ni dans le top dix, vous n'existez pas. Le référencement local (SEO local) consiste à optimiser votre site et votre fiche Google pour apparaître sur ces requêtes." },
+      {
+        type: "p",
+        text: "Quand quelqu'un tape 'plombier Nîmes' ou 'électricien Avignon', Google affiche trois fiches locales et dix sites. Si vous n'êtes ni dans les trois, ni dans le top dix, vous n'existez pas. Le référencement local (SEO local) consiste à optimiser votre site et votre fiche Google pour apparaître sur ces requêtes.",
+      },
       { type: "h2", text: "5. Publiez régulièrement des photos de chantiers" },
-      { type: "p", text: "Sur votre site, votre Google Business Profile et éventuellement Instagram. Les photos avant/après réelles convertissent infiniment mieux que n'importe quel slogan marketing. Visez 1 publication par chantier terminé." },
+      {
+        type: "p",
+        text: "Sur votre site, votre Google Business Profile et éventuellement Instagram. Les photos avant/après réelles convertissent infiniment mieux que n'importe quel slogan marketing. Visez 1 publication par chantier terminé.",
+      },
       { type: "h2", text: "6. Activez vos anciens clients" },
-      { type: "p", text: "Un SMS une fois par an à vos anciens clients (entretien chaudière, vérification toiture, contrôle électrique) rappelle votre existence et génère du chiffre récurrent. Coût : zéro. Rentabilité : exceptionnelle." },
+      {
+        type: "p",
+        text: "Un SMS une fois par an à vos anciens clients (entretien chaudière, vérification toiture, contrôle électrique) rappelle votre existence et génère du chiffre récurrent. Coût : zéro. Rentabilité : exceptionnelle.",
+      },
       { type: "h2", text: "7. Nouez des partenariats locaux" },
-      { type: "p", text: "Agents immobiliers, syndics, architectes d'intérieur, magasins de bricolage : chacun d'eux croise des dizaines de clients par mois qui ont besoin d'un artisan de confiance. Une commission de 5 à 10 % les motive à vous recommander." },
+      {
+        type: "p",
+        text: "Agents immobiliers, syndics, architectes d'intérieur, magasins de bricolage : chacun d'eux croise des dizaines de clients par mois qui ont besoin d'un artisan de confiance. Une commission de 5 à 10 % les motive à vous recommander.",
+      },
       { type: "h2", text: "8. Évitez la dépendance aux plateformes" },
-      { type: "p", text: "Travaux.com, IZI by EDF, Frizbiz : ces plateformes peuvent dépanner au démarrage, mais elles prennent 10 à 20 % de marge et vous mettent en compétition frontale sur le prix. Utilisez-les pour combler les trous, jamais comme canal principal." },
+      {
+        type: "p",
+        text: "Travaux.com, IZI by EDF, Frizbiz : ces plateformes peuvent dépanner au démarrage, mais elles prennent 10 à 20 % de marge et vous mettent en compétition frontale sur le prix. Utilisez-les pour combler les trous, jamais comme canal principal.",
+      },
       { type: "h2", text: "9. Investissez dans Google Ads avec parcimonie" },
-      { type: "p", text: "Quand le SEO local met du temps à monter, quelques euros par jour sur Google Ads ciblés 'urgence plombier + ville' peuvent ramener des appels immédiats. Comptez 5 à 15 € par appel qualifié selon le métier et la ville." },
+      {
+        type: "p",
+        text: "Quand le SEO local met du temps à monter, quelques euros par jour sur Google Ads ciblés 'urgence plombier + ville' peuvent ramener des appels immédiats. Comptez 5 à 15 € par appel qualifié selon le métier et la ville.",
+      },
       { type: "h2", text: "Comparatif coût / délai / rentabilité des 9 leviers" },
-      { type: "table", caption: "Quel canal pour quel besoin (estimations 2026 pour un artisan local)", headers: ["Levier", "Coût mensuel", "Délai 1ers résultats", "Appels/mois espérés"], rows: [
-        ["Fiche Google Business", "0€", "2 à 4 semaines", "3 à 15"],
-        ["Avis clients", "0€", "1 mois", "+30 % conversion"],
-        ["Site internet", "100 à 200€", "1 à 3 mois", "5 à 30"],
-        ["SEO local 'métier + ville'", "0 à 200€", "3 à 6 mois", "10 à 40"],
-        ["Anciens clients (SMS)", "0 à 20€", "1 semaine", "2 à 8"],
-        ["Partenariats locaux", "5 à 10 % CA", "1 à 2 mois", "3 à 12"],
-        ["Plateformes (Travaux.com)", "10 à 20 % CA", "Immédiat", "5 à 20"],
-        ["Google Ads", "300 à 800€", "24 à 48 h", "10 à 50"],
-      ] },
+      {
+        type: "table",
+        caption: "Quel canal pour quel besoin (estimations 2026 pour un artisan local)",
+        headers: ["Levier", "Coût mensuel", "Délai 1ers résultats", "Appels/mois espérés"],
+        rows: [
+          ["Fiche Google Business", "0€", "2 à 4 semaines", "3 à 15"],
+          ["Avis clients", "0€", "1 mois", "+30 % conversion"],
+          ["Site internet", "100 à 200€", "1 à 3 mois", "5 à 30"],
+          ["SEO local 'métier + ville'", "0 à 200€", "3 à 6 mois", "10 à 40"],
+          ["Anciens clients (SMS)", "0 à 20€", "1 semaine", "2 à 8"],
+          ["Partenariats locaux", "5 à 10 % CA", "1 à 2 mois", "3 à 12"],
+          ["Plateformes (Travaux.com)", "10 à 20 % CA", "Immédiat", "5 à 20"],
+          ["Google Ads", "300 à 800€", "24 à 48 h", "10 à 50"],
+        ],
+      },
       { type: "h2", text: "Cas concret : Julien, électricien à Nîmes" },
-      { type: "p", text: "Julien était à 60 % de planning rempli en moyenne. Il a appliqué 4 leviers en 3 mois : fiche Google passée de 6 à 28 avis, site internet refait, 2 pages 'ville' (Nîmes + Alès), et 200€/mois de Google Ads. Résultat à 6 mois : planning rempli à 95 %, refus de chantiers, et embauche d'un apprenti. CA additionnel mensuel : environ 4 800€, pour un investissement de 448€/mois (Sitaly Présence pour le site + Sitaly Acquisition pour la gestion Google Ads) plus 200€/mois de budget publicitaire." },
+      {
+        type: "p",
+        text: "Julien était à 60 % de planning rempli en moyenne. Il a appliqué 4 leviers en 3 mois : fiche Google passée de 6 à 28 avis, site internet refait, 2 pages 'ville' (Nîmes + Alès), et 200€/mois de Google Ads. Résultat à 6 mois : planning rempli à 95 %, refus de chantiers, et embauche d'un apprenti. CA additionnel mensuel : environ 4 800€, pour un investissement de 448€/mois (Sitaly Présence pour le site + Sitaly Acquisition pour la gestion Google Ads) plus 200€/mois de budget publicitaire.",
+      },
       { type: "h2", text: "Par où commencer concrètement ?" },
-      { type: "p", text: "Si vous n'avez ni site ni fiche Google optimisée, commencez par là — c'est la base. Un site propre + une fiche Google bien remplie + 10 avis clients suffisent souvent à doubler le volume d'appels en quelques mois. Sitaly s'occupe du site internet et du référencement local à partir de 149€/mois en location, sans engagement, et peut gérer vos campagnes Google Ads et vos automatisations (relance des devis, prise de rendez-vous) pour passer à la vitesse supérieure." },
+      {
+        type: "p",
+        text: "Si vous n'avez ni site ni fiche Google optimisée, commencez par là — c'est la base. Un site propre + une fiche Google bien remplie + 10 avis clients suffisent souvent à doubler le volume d'appels en quelques mois. Sitaly s'occupe du site internet et du référencement local à partir de 149€/mois en location, sans engagement, et peut gérer vos campagnes Google Ads et vos automatisations (relance des devis, prise de rendez-vous) pour passer à la vitesse supérieure.",
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "Combien de temps pour voir le téléphone sonner davantage ?", a: "1 à 2 mois pour la fiche Google et les anciens clients réactivés, 3 à 6 mois pour le SEO local, 24 à 48h pour Google Ads. La règle d'or : combiner un canal rapide (Ads ou réseau) et un canal long terme (SEO)." },
-        { q: "Les plateformes type Travaux.com valent-elles le coup ?", a: "Pour démarrer ou combler un trou ponctuel, oui. Comme canal principal, non : elles prennent 10 à 20 % et vous habituent à la concurrence sur le prix. Visez à ne pas en dépendre au-delà de 20 % de votre CA." },
-        { q: "Faut-il être actif sur Instagram ou TikTok ?", a: "Utile pour la notoriété et les chantiers premium (cuisine, salle de bain, rénovation complète). Pas indispensable pour un artisan urgentiste. Mieux vaut 0 publication que 3 mois actif puis abandonné." },
-        { q: "Combien d'avis Google sont nécessaires pour faire la différence ?", a: "À partir de 10 avis 4,5+/5, vous décollez. À partir de 30, vous dominez souvent la concurrence locale. Visez 1 nouvel avis par semaine de manière constante." },
-        { q: "Faut-il un budget marketing dès la création de l'entreprise ?", a: "Oui, mais petit. Comptez 100 à 300€/mois la première année (site + Google Ads ciblés). Au-delà, c'est rarement rentable tant que la fiche Google et le site n'ont pas atteint leur maturité SEO." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Combien de temps pour voir le téléphone sonner davantage ?",
+            a: "1 à 2 mois pour la fiche Google et les anciens clients réactivés, 3 à 6 mois pour le SEO local, 24 à 48h pour Google Ads. La règle d'or : combiner un canal rapide (Ads ou réseau) et un canal long terme (SEO).",
+          },
+          {
+            q: "Les plateformes type Travaux.com valent-elles le coup ?",
+            a: "Pour démarrer ou combler un trou ponctuel, oui. Comme canal principal, non : elles prennent 10 à 20 % et vous habituent à la concurrence sur le prix. Visez à ne pas en dépendre au-delà de 20 % de votre CA.",
+          },
+          {
+            q: "Faut-il être actif sur Instagram ou TikTok ?",
+            a: "Utile pour la notoriété et les chantiers premium (cuisine, salle de bain, rénovation complète). Pas indispensable pour un artisan urgentiste. Mieux vaut 0 publication que 3 mois actif puis abandonné.",
+          },
+          {
+            q: "Combien d'avis Google sont nécessaires pour faire la différence ?",
+            a: "À partir de 10 avis 4,5+/5, vous décollez. À partir de 30, vous dominez souvent la concurrence locale. Visez 1 nouvel avis par semaine de manière constante.",
+          },
+          {
+            q: "Faut-il un budget marketing dès la création de l'entreprise ?",
+            a: "Oui, mais petit. Comptez 100 à 300€/mois la première année (site + Google Ads ciblés). Au-delà, c'est rarement rentable tant que la fiche Google et le site n'ont pas atteint leur maturité SEO.",
+          },
+        ],
+      },
     ],
   },
   {
@@ -634,57 +1207,111 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "référencement local artisan",
     content: [
-      { type: "p", text: "Le référencement local, c'est l'art d'apparaître dans les premiers résultats Google sur les recherches géolocalisées : 'plombier Avignon', 'électricien Nîmes', 'menuisier Aix-en-Provence'. Pour un artisan, c'est de très loin le canal d'acquisition le plus rentable. Voici comment fonctionne Google localement et ce qu'il faut faire concrètement." },
+      {
+        type: "p",
+        text: "Le référencement local, c'est l'art d'apparaître dans les premiers résultats Google sur les recherches géolocalisées : 'plombier Avignon', 'électricien Nîmes', 'menuisier Aix-en-Provence'. Pour un artisan, c'est de très loin le canal d'acquisition le plus rentable. Voici comment fonctionne Google localement et ce qu'il faut faire concrètement.",
+      },
       { type: "h2", text: "Comment Google choisit les artisans qu'il met en avant" },
-      { type: "p", text: "Sur les recherches 'métier + ville', Google affiche d'abord trois fiches locales (le 'Local Pack' avec la carte), puis les résultats classiques. L'algorithme classe sur trois critères : la pertinence (votre activité correspond-elle à la recherche ?), la distance (êtes-vous proche du chercheur ?), et la notoriété (avis, citations, ancienneté)." },
+      {
+        type: "p",
+        text: "Sur les recherches 'métier + ville', Google affiche d'abord trois fiches locales (le 'Local Pack' avec la carte), puis les résultats classiques. L'algorithme classe sur trois critères : la pertinence (votre activité correspond-elle à la recherche ?), la distance (êtes-vous proche du chercheur ?), et la notoriété (avis, citations, ancienneté).",
+      },
       { type: "h2", text: "Étape 1 : optimiser votre fiche Google Business Profile" },
-      { type: "ul", items: [
-        "Nom exact de votre entreprise, sans mots-clés ajoutés (sinon Google sanctionne)",
-        "Catégorie principale précise : 'Plombier', 'Électricien', etc.",
-        "Adresse et zone d'intervention complètes",
-        "Horaires à jour, y compris jours fériés",
-        "10 à 20 photos minimum : équipe, véhicule, chantiers",
-        "Description de 750 caractères contenant vos services et villes",
-        "Liste des prestations avec prix indicatifs quand c'est possible",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Nom exact de votre entreprise, sans mots-clés ajoutés (sinon Google sanctionne)",
+          "Catégorie principale précise : 'Plombier', 'Électricien', etc.",
+          "Adresse et zone d'intervention complètes",
+          "Horaires à jour, y compris jours fériés",
+          "10 à 20 photos minimum : équipe, véhicule, chantiers",
+          "Description de 750 caractères contenant vos services et villes",
+          "Liste des prestations avec prix indicatifs quand c'est possible",
+        ],
+      },
       { type: "h2", text: "Étape 2 : collecter des avis Google régulièrement" },
-      { type: "p", text: "Les avis sont le signal n°1 pour le Local Pack. Visez au moins 1 nouvel avis par semaine. La méthode qui marche : envoyer un SMS au client le lendemain du chantier avec le lien direct vers votre fiche, et un mot personnalisé. Taux de retour observé : 30 à 50 %." },
+      {
+        type: "p",
+        text: "Les avis sont le signal n°1 pour le Local Pack. Visez au moins 1 nouvel avis par semaine. La méthode qui marche : envoyer un SMS au client le lendemain du chantier avec le lien direct vers votre fiche, et un mot personnalisé. Taux de retour observé : 30 à 50 %.",
+      },
       { type: "h2", text: "Étape 3 : avoir un site internet optimisé localement" },
-      { type: "p", text: "Votre site doit indiquer clairement vos villes d'intervention. L'idéal est de créer une page par grande ville desservie : '/plombier-avignon', '/plombier-nimes', etc. Chacune avec un titre, un h1 et un contenu spécifiques à la ville, pas du copier-coller." },
+      {
+        type: "p",
+        text: "Votre site doit indiquer clairement vos villes d'intervention. L'idéal est de créer une page par grande ville desservie : '/plombier-avignon', '/plombier-nimes', etc. Chacune avec un titre, un h1 et un contenu spécifiques à la ville, pas du copier-coller.",
+      },
       { type: "h2", text: "Étape 4 : obtenir des citations locales" },
-      { type: "p", text: "Inscrivez votre entreprise sur les annuaires de référence : Pages Jaunes, Yelp, Mappy, annuaire de votre chambre de métiers, annuaires sectoriels (FFB, CAPEB). Utilisez exactement le même nom, la même adresse et le même numéro partout (NAP cohérent)." },
+      {
+        type: "p",
+        text: "Inscrivez votre entreprise sur les annuaires de référence : Pages Jaunes, Yelp, Mappy, annuaire de votre chambre de métiers, annuaires sectoriels (FFB, CAPEB). Utilisez exactement le même nom, la même adresse et le même numéro partout (NAP cohérent).",
+      },
       { type: "h2", text: "Étape 5 : surveiller et améliorer en continu" },
-      { type: "p", text: "Vérifiez chaque mois votre positionnement sur vos 5 requêtes principales depuis un navigateur en navigation privée. Notez votre position. Si vous n'êtes pas dans le top 3 après 3 à 6 mois, c'est souvent qu'il manque des avis ou que votre site n'est pas optimisé." },
+      {
+        type: "p",
+        text: "Vérifiez chaque mois votre positionnement sur vos 5 requêtes principales depuis un navigateur en navigation privée. Notez votre position. Si vous n'êtes pas dans le top 3 après 3 à 6 mois, c'est souvent qu'il manque des avis ou que votre site n'est pas optimisé.",
+      },
       { type: "h2", text: "Poids des facteurs SEO local en 2026" },
-      { type: "table", caption: "Poids estimé des principaux facteurs de classement local (source : agrégation études Whitespark / Moz / BrightLocal)", headers: ["Facteur", "Poids Local Pack", "Poids résultats classiques"], rows: [
-        ["Avis Google (volume + note)", "16 %", "6 %"],
-        ["Optimisation fiche GBP", "32 %", "8 %"],
-        ["Signaux sur site (pages ville, schema)", "19 %", "34 %"],
-        ["Backlinks / autorité du domaine", "11 %", "29 %"],
-        ["Citations / annuaires", "7 %", "5 %"],
-        ["Signaux comportementaux (clics, appels)", "10 %", "11 %"],
-        ["Personnalisation utilisateur", "5 %", "7 %"],
-      ] },
+      {
+        type: "table",
+        caption:
+          "Poids estimé des principaux facteurs de classement local (source : agrégation études Whitespark / Moz / BrightLocal)",
+        headers: ["Facteur", "Poids Local Pack", "Poids résultats classiques"],
+        rows: [
+          ["Avis Google (volume + note)", "16 %", "6 %"],
+          ["Optimisation fiche GBP", "32 %", "8 %"],
+          ["Signaux sur site (pages ville, schema)", "19 %", "34 %"],
+          ["Backlinks / autorité du domaine", "11 %", "29 %"],
+          ["Citations / annuaires", "7 %", "5 %"],
+          ["Signaux comportementaux (clics, appels)", "10 %", "11 %"],
+          ["Personnalisation utilisateur", "5 %", "7 %"],
+        ],
+      },
       { type: "h2", text: "Exemple chiffré : impact d'une optimisation locale" },
-      { type: "p", text: "Sandrine, couvreuse à Aix-en-Provence : avant optimisation, 1 200 impressions Google/mois, 18 appels. Après 4 mois (fiche GBP refaite, 22 nouveaux avis, 3 pages 'ville' créées, schema LocalBusiness ajouté) : 7 800 impressions/mois, 64 appels. Soit ×3,5 sur les appels pour 0€ de dépense média." },
+      {
+        type: "p",
+        text: "Sandrine, couvreuse à Aix-en-Provence : avant optimisation, 1 200 impressions Google/mois, 18 appels. Après 4 mois (fiche GBP refaite, 22 nouveaux avis, 3 pages 'ville' créées, schema LocalBusiness ajouté) : 7 800 impressions/mois, 64 appels. Soit ×3,5 sur les appels pour 0€ de dépense média.",
+      },
       { type: "h2", text: "Erreurs fréquentes qui sabotent le SEO local" },
-      { type: "ul", items: [
-        "Adresse différente sur le site et sur la fiche Google",
-        "Site sans mention des villes desservies",
-        "Catégorie Google mal choisie ('Entreprise' au lieu de 'Plombier')",
-        "Pas d'avis depuis plus de 6 mois",
-        "Site lent ou non responsive (Google déclasse)",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Adresse différente sur le site et sur la fiche Google",
+          "Site sans mention des villes desservies",
+          "Catégorie Google mal choisie ('Entreprise' au lieu de 'Plombier')",
+          "Pas d'avis depuis plus de 6 mois",
+          "Site lent ou non responsive (Google déclasse)",
+        ],
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "En combien de temps peut-on apparaître dans le top 3 local ?", a: "2 à 6 mois pour une ville de taille moyenne avec concurrence raisonnable. Jusqu'à 12 mois sur des grandes villes très concurrentielles type Paris, Lyon ou Marseille." },
-        { q: "Faut-il une adresse physique pour bien ranker localement ?", a: "Oui, une adresse réelle dans la ville cible aide énormément. Si vous intervenez sans local commercial, déclarez l'adresse du siège (peut être votre domicile) et masquez-la depuis l'interface GBP — vous restez classé localement." },
-        { q: "Le SEO local concurrence-t-il les annuaires type PagesJaunes ?", a: "Oui — et il les bat. Une fiche Google bien classée + un site optimisé génèrent 5 à 10x plus d'appels qu'une présence PagesJaunes payante, gratuitement." },
-        { q: "Peut-on faire son SEO local soi-même ?", a: "Oui pour la fiche GBP et les avis (à la portée de tout artisan). Plus technique pour les pages 'ville', le schema LocalBusiness et le maillage interne — souvent confié à un prestataire." },
-        { q: "Pourquoi mes concurrents avec un site moins beau passent-ils devant moi ?", a: "Trois causes habituelles : ils ont plus d'avis Google, une fiche GBP plus complète, ou une ancienneté de domaine supérieure. Le design joue très peu dans le classement local." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "En combien de temps peut-on apparaître dans le top 3 local ?",
+            a: "2 à 6 mois pour une ville de taille moyenne avec concurrence raisonnable. Jusqu'à 12 mois sur des grandes villes très concurrentielles type Paris, Lyon ou Marseille.",
+          },
+          {
+            q: "Faut-il une adresse physique pour bien ranker localement ?",
+            a: "Oui, une adresse réelle dans la ville cible aide énormément. Si vous intervenez sans local commercial, déclarez l'adresse du siège (peut être votre domicile) et masquez-la depuis l'interface GBP — vous restez classé localement.",
+          },
+          {
+            q: "Le SEO local concurrence-t-il les annuaires type PagesJaunes ?",
+            a: "Oui — et il les bat. Une fiche Google bien classée + un site optimisé génèrent 5 à 10x plus d'appels qu'une présence PagesJaunes payante, gratuitement.",
+          },
+          {
+            q: "Peut-on faire son SEO local soi-même ?",
+            a: "Oui pour la fiche GBP et les avis (à la portée de tout artisan). Plus technique pour les pages 'ville', le schema LocalBusiness et le maillage interne — souvent confié à un prestataire.",
+          },
+          {
+            q: "Pourquoi mes concurrents avec un site moins beau passent-ils devant moi ?",
+            a: "Trois causes habituelles : ils ont plus d'avis Google, une fiche GBP plus complète, ou une ancienneté de domaine supérieure. Le design joue très peu dans le classement local.",
+          },
+        ],
+      },
       { type: "h2", text: "En résumé" },
-      { type: "p", text: "Le référencement local n'est pas magique : c'est un travail méthodique de fiche Google, d'avis et de pages localisées. Bien fait, il peut transformer durablement votre activité. Sitaly intègre le référencement local de base dans chaque site livré." },
+      {
+        type: "p",
+        text: "Le référencement local n'est pas magique : c'est un travail méthodique de fiche Google, d'avis et de pages localisées. Bien fait, il peut transformer durablement votre activité. Sitaly intègre le référencement local de base dans chaque site livré.",
+      },
     ],
   },
   {
@@ -701,57 +1328,114 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "prix site internet artisan",
     content: [
-      { type: "p", text: "C'est la première question que pose tout artisan qui envisage de faire son site : combien ça coûte ? Et c'est aussi la question avec les pires réponses, parce que les écarts vont de 99€ à plus de 10 000€ pour ce qui ressemble au même site. Voici un panorama honnête des prix pratiqués en 2026, et de ce qu'ils incluent vraiment." },
+      {
+        type: "p",
+        text: "C'est la première question que pose tout artisan qui envisage de faire son site : combien ça coûte ? Et c'est aussi la question avec les pires réponses, parce que les écarts vont de 99€ à plus de 10 000€ pour ce qui ressemble au même site. Voici un panorama honnête des prix pratiqués en 2026, et de ce qu'ils incluent vraiment.",
+      },
       { type: "h2", text: "Les 4 grandes fourchettes de prix" },
       { type: "h3", text: "0 à 200€ : les solutions DIY (Wix, Webador, etc.)" },
-      { type: "p", text: "Vous construisez vous-même votre site via un éditeur en ligne. Prix imbattable, mais vous y passerez 30 à 80 heures, le résultat sera générique, et le référencement Google sera médiocre. À envisager seulement si vous avez vraiment du temps et un peu de fibre technique." },
+      {
+        type: "p",
+        text: "Vous construisez vous-même votre site via un éditeur en ligne. Prix imbattable, mais vous y passerez 30 à 80 heures, le résultat sera générique, et le référencement Google sera médiocre. À envisager seulement si vous avez vraiment du temps et un peu de fibre technique.",
+      },
       { type: "h3", text: "500 à 1 500€ : les solutions clé en main" },
-      { type: "p", text: "C'est la zone de prix la plus adaptée à 90 % des artisans. Un site sur mesure, livré en quelques jours, avec un design propre et un référencement local de base. Sitaly se positionne ici en location à partir de 149€/mois tout inclus (hébergement, maintenance, modifications, support), sans frais d'installation ni engagement." },
+      {
+        type: "p",
+        text: "C'est la zone de prix la plus adaptée à 90 % des artisans. Un site sur mesure, livré en quelques jours, avec un design propre et un référencement local de base. Sitaly se positionne ici en location à partir de 149€/mois tout inclus (hébergement, maintenance, modifications, support), sans frais d'installation ni engagement.",
+      },
       { type: "h3", text: "1 500 à 4 000€ : les freelances et petites agences" },
-      { type: "p", text: "Un freelance ou une petite agence va passer plus de temps sur la personnalisation, les contenus rédigés, le SEO approfondi. Justifié si vous avez besoin de plus de 10 pages, d'un site multilingue, ou d'un système de prise de rendez-vous complexe. Comptez 4 à 8 semaines de délai." },
+      {
+        type: "p",
+        text: "Un freelance ou une petite agence va passer plus de temps sur la personnalisation, les contenus rédigés, le SEO approfondi. Justifié si vous avez besoin de plus de 10 pages, d'un site multilingue, ou d'un système de prise de rendez-vous complexe. Comptez 4 à 8 semaines de délai.",
+      },
       { type: "h3", text: "4 000 à 15 000€+ : les agences digitales" },
-      { type: "p", text: "Réservé aux artisans avec plusieurs équipes, plusieurs agences, ou un budget marketing important. Au-delà de 5 000€ pour un artisan seul, on est souvent dans le sur-dimensionné." },
+      {
+        type: "p",
+        text: "Réservé aux artisans avec plusieurs équipes, plusieurs agences, ou un budget marketing important. Au-delà de 5 000€ pour un artisan seul, on est souvent dans le sur-dimensionné.",
+      },
       { type: "h2", text: "Tableau comparatif détaillé sur 3 ans" },
-      { type: "table", caption: "Coût total réel sur 36 mois (création + hébergement + maintenance + modifications)", headers: ["Solution", "Création", "Hébergement 3 ans", "Maintenance 3 ans", "Total 3 ans"], rows: [
-        ["DIY Wix Pro", "0€", "540€", "0€ (vous)", "540€ + ~60h de votre temps"],
-        ["Sitaly en location 149€/mois", "0€", "Inclus", "Inclus", "5 364€"],
-        ["Freelance", "1 800€", "360€", "600€", "2 760€"],
-        ["Agence", "5 500€", "1 800€", "2 400€", "9 700€"],
-      ] },
+      {
+        type: "table",
+        caption:
+          "Coût total réel sur 36 mois (création + hébergement + maintenance + modifications)",
+        headers: ["Solution", "Création", "Hébergement 3 ans", "Maintenance 3 ans", "Total 3 ans"],
+        rows: [
+          ["DIY Wix Pro", "0€", "540€", "0€ (vous)", "540€ + ~60h de votre temps"],
+          ["Sitaly en location 149€/mois", "0€", "Inclus", "Inclus", "5 364€"],
+          ["Freelance", "1 800€", "360€", "600€", "2 760€"],
+          ["Agence", "5 500€", "1 800€", "2 400€", "9 700€"],
+        ],
+      },
       { type: "h2", text: "Acheter ou louer son site ?" },
-      { type: "p", text: "Acheter son site en paiement unique semble moins cher la première année, mais le prix d'achat n'inclut généralement ni l'hébergement (8 à 15 €/mois ailleurs), ni la maintenance, ni le support, ni les petites modifications. La location tout inclus regroupe tout dans une seule mensualité, sans grosse dépense de départ et sans engagement : vous lissez le coût et vous évitez la prise de tête technique. C'est le modèle que Sitaly a choisi, à partir de 149€/mois." },
+      {
+        type: "p",
+        text: "Acheter son site en paiement unique semble moins cher la première année, mais le prix d'achat n'inclut généralement ni l'hébergement (8 à 15 €/mois ailleurs), ni la maintenance, ni le support, ni les petites modifications. La location tout inclus regroupe tout dans une seule mensualité, sans grosse dépense de départ et sans engagement : vous lissez le coût et vous évitez la prise de tête technique. C'est le modèle que Sitaly a choisi, à partir de 149€/mois.",
+      },
       { type: "h2", text: "Ce qui doit toujours être inclus" },
-      { type: "ul", items: [
-        "L'hébergement la première année (sinon facturé en plus)",
-        "Le nom de domaine (vous devez en être propriétaire)",
-        "Le certificat HTTPS (gratuit, mais à activer)",
-        "Le site responsive mobile",
-        "Un minimum de référencement local",
-        "Un formulaire de contact",
-        "La conformité RGPD (mentions légales, politique de confidentialité)",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "L'hébergement la première année (sinon facturé en plus)",
+          "Le nom de domaine (vous devez en être propriétaire)",
+          "Le certificat HTTPS (gratuit, mais à activer)",
+          "Le site responsive mobile",
+          "Un minimum de référencement local",
+          "Un formulaire de contact",
+          "La conformité RGPD (mentions légales, politique de confidentialité)",
+        ],
+      },
       { type: "h2", text: "Les pièges à éviter" },
-      { type: "ul", items: [
-        "Les sites à 99€ générés par IA, sans accompagnement, et sans optimisation SEO",
-        "Les contrats sans clause de propriété : vous payez et vous ne récupérez ni le code ni le contenu",
-        "Les engagements de 12, 24 ou 48 mois : privilégiez une formule sans engagement, que vous pouvez arrêter quand vous voulez",
-        "Les surfacturations à la modification (50€ pour changer un numéro de téléphone, c'est non)",
-        "L'absence d'accès à votre fiche Google Business Profile",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Les sites à 99€ générés par IA, sans accompagnement, et sans optimisation SEO",
+          "Les contrats sans clause de propriété : vous payez et vous ne récupérez ni le code ni le contenu",
+          "Les engagements de 12, 24 ou 48 mois : privilégiez une formule sans engagement, que vous pouvez arrêter quand vous voulez",
+          "Les surfacturations à la modification (50€ pour changer un numéro de téléphone, c'est non)",
+          "L'absence d'accès à votre fiche Google Business Profile",
+        ],
+      },
       { type: "h2", text: "Combien rapporte vraiment un site d'artisan ?" },
-      { type: "p", text: "Un site bien fait + une fiche Google optimisée génèrent typiquement 5 à 30 appels qualifiés par mois pour un artisan local. Si votre panier moyen est de 800€ et votre taux de conversion devis/chantier de 30 %, c'est 1 200 à 7 200 € de chiffre supplémentaire par mois. À ce niveau, le débat sur le prix exact du site devient secondaire." },
+      {
+        type: "p",
+        text: "Un site bien fait + une fiche Google optimisée génèrent typiquement 5 à 30 appels qualifiés par mois pour un artisan local. Si votre panier moyen est de 800€ et votre taux de conversion devis/chantier de 30 %, c'est 1 200 à 7 200 € de chiffre supplémentaire par mois. À ce niveau, le débat sur le prix exact du site devient secondaire.",
+      },
       { type: "h2", text: "Exemple chiffré : retour sur investissement sur 12 mois" },
-      { type: "p", text: "Coût de la formule : 149€/mois, soit 1 788€ sur l'année. Appels supplémentaires générés : 12/mois. Taux de conversion 30 % = 3,6 chantiers/mois. Panier moyen 750€. CA mensuel additionnel : 2 700€. Marge nette 32 % : 864€/mois. Sur 12 mois : 10 368€ de marge supplémentaire pour 1 788€ investis, soit un ROI d'environ 5,8x." },
+      {
+        type: "p",
+        text: "Coût de la formule : 149€/mois, soit 1 788€ sur l'année. Appels supplémentaires générés : 12/mois. Taux de conversion 30 % = 3,6 chantiers/mois. Panier moyen 750€. CA mensuel additionnel : 2 700€. Marge nette 32 % : 864€/mois. Sur 12 mois : 10 368€ de marge supplémentaire pour 1 788€ investis, soit un ROI d'environ 5,8x.",
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "Pourquoi un site à 99€ n'est pas une bonne affaire ?", a: "Parce qu'il est généré automatiquement sans optimisation SEO, sans accompagnement et sans personnalisation. Vous obtenez une vitrine que personne ne voit. Coût réel à l'usage : énorme (zéro client ramené)." },
-        { q: "Le nom de domaine est-il toujours inclus dans le prix ?", a: "Pas systématiquement. Vérifiez deux points : (1) le domaine est bien à votre nom (pas celui du prestataire), (2) il est inclus la première année. Comptez ensuite 10 à 15€/an de renouvellement." },
-        { q: "Que se passe-t-il si je veux changer de prestataire ?", a: "Si le contrat est sain, vous récupérez le code, les contenus et le domaine. Si vous êtes sur Wix, Webador ou une plateforme propriétaire fermée, vous repartez à zéro. C'est LA question à poser avant de signer." },
-        { q: "La location d'un site est-elle un piège ?", a: "Non, à condition que (1) la formule soit sans engagement, (2) vous restiez propriétaire de votre nom de domaine, (3) un export du contenu reste possible en cas de départ. Sitaly respecte ces 3 règles : sans engagement, domaine à votre nom, et vous arrêtez quand vous voulez." },
-        { q: "Comment éviter les surprises sur la facture finale ?", a: "Demandez un devis détaillé écrit, ligne par ligne : création, hébergement, modifications incluses/an, hors-forfait. Et un délai contractuel de livraison avec pénalités si dépassement." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Pourquoi un site à 99€ n'est pas une bonne affaire ?",
+            a: "Parce qu'il est généré automatiquement sans optimisation SEO, sans accompagnement et sans personnalisation. Vous obtenez une vitrine que personne ne voit. Coût réel à l'usage : énorme (zéro client ramené).",
+          },
+          {
+            q: "Le nom de domaine est-il toujours inclus dans le prix ?",
+            a: "Pas systématiquement. Vérifiez deux points : (1) le domaine est bien à votre nom (pas celui du prestataire), (2) il est inclus la première année. Comptez ensuite 10 à 15€/an de renouvellement.",
+          },
+          {
+            q: "Que se passe-t-il si je veux changer de prestataire ?",
+            a: "Si le contrat est sain, vous récupérez le code, les contenus et le domaine. Si vous êtes sur Wix, Webador ou une plateforme propriétaire fermée, vous repartez à zéro. C'est LA question à poser avant de signer.",
+          },
+          {
+            q: "La location d'un site est-elle un piège ?",
+            a: "Non, à condition que (1) la formule soit sans engagement, (2) vous restiez propriétaire de votre nom de domaine, (3) un export du contenu reste possible en cas de départ. Sitaly respecte ces 3 règles : sans engagement, domaine à votre nom, et vous arrêtez quand vous voulez.",
+          },
+          {
+            q: "Comment éviter les surprises sur la facture finale ?",
+            a: "Demandez un devis détaillé écrit, ligne par ligne : création, hébergement, modifications incluses/an, hors-forfait. Et un délai contractuel de livraison avec pénalités si dépassement.",
+          },
+        ],
+      },
       { type: "h2", text: "Notre recommandation" },
-      { type: "p", text: "Pour un artisan seul ou en TPE, visez une solution clé en main entre 800€ et 1 500€ à l'achat, ou une location tout compris autour de 150€/mois. Au-delà, demandez-vous précisément ce que vous payez en plus. Réservez un appel gratuit avec Sitaly pour voir si notre location à partir de 149€/mois colle à vos besoins." },
+      {
+        type: "p",
+        text: "Pour un artisan seul ou en TPE, visez une solution clé en main entre 800€ et 1 500€ à l'achat, ou une location tout compris autour de 150€/mois. Au-delà, demandez-vous précisément ce que vous payez en plus. Réservez un appel gratuit avec Sitaly pour voir si notre location à partir de 149€/mois colle à vos besoins.",
+      },
     ],
   },
   {
@@ -768,59 +1452,115 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "google business profile artisan",
     content: [
-      { type: "p", text: "Pour un artisan local, la fiche Google Business Profile (ex-Google My Business) est l'outil marketing le plus rentable au monde : elle est gratuite, elle se classe avant les résultats naturels, et une fiche bien optimisée peut générer 3 à 10 appels qualifiés par semaine. Voici exactement comment la configurer." },
+      {
+        type: "p",
+        text: "Pour un artisan local, la fiche Google Business Profile (ex-Google My Business) est l'outil marketing le plus rentable au monde : elle est gratuite, elle se classe avant les résultats naturels, et une fiche bien optimisée peut générer 3 à 10 appels qualifiés par semaine. Voici exactement comment la configurer.",
+      },
       { type: "h2", text: "Créer ou revendiquer sa fiche" },
-      { type: "p", text: "Rendez-vous sur google.com/business avec un compte Google professionnel (pas votre compte perso). Si une fiche existe déjà à votre nom, revendiquez-la — sinon créez-la. Google vous demandera une validation par courrier postal (carte reçue sous 5 à 14 jours) ou par téléphone selon le métier." },
+      {
+        type: "p",
+        text: "Rendez-vous sur google.com/business avec un compte Google professionnel (pas votre compte perso). Si une fiche existe déjà à votre nom, revendiquez-la — sinon créez-la. Google vous demandera une validation par courrier postal (carte reçue sous 5 à 14 jours) ou par téléphone selon le métier.",
+      },
       { type: "h2", text: "Renseigner les informations qui comptent" },
-      { type: "ul", items: [
-        "Nom exact de l'entreprise, sans mots-clés (Google sanctionne les 'Plomberie Dupont - Plombier Avignon')",
-        "Catégorie principale ultra-précise : 'Plombier', 'Électricien', 'Couvreur'",
-        "Catégories secondaires : 2 à 3 pertinentes pour vos services annexes",
-        "Adresse réelle (siège ou atelier) — masquable si vous intervenez uniquement chez le client",
-        "Zone d'intervention : listez 5 à 10 villes maximum, les plus proches d'abord",
-        "Horaires précis, y compris jours fériés et fermetures estivales",
-        "Site internet et numéro de téléphone identiques à ceux de votre site",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Nom exact de l'entreprise, sans mots-clés (Google sanctionne les 'Plomberie Dupont - Plombier Avignon')",
+          "Catégorie principale ultra-précise : 'Plombier', 'Électricien', 'Couvreur'",
+          "Catégories secondaires : 2 à 3 pertinentes pour vos services annexes",
+          "Adresse réelle (siège ou atelier) — masquable si vous intervenez uniquement chez le client",
+          "Zone d'intervention : listez 5 à 10 villes maximum, les plus proches d'abord",
+          "Horaires précis, y compris jours fériés et fermetures estivales",
+          "Site internet et numéro de téléphone identiques à ceux de votre site",
+        ],
+      },
       { type: "h2", text: "Photos : la règle du minimum 20" },
-      { type: "p", text: "Les fiches avec moins de 10 photos sont presque toujours sous le top 3. Visez 20 à 50 photos : votre équipe, vos véhicules floqués, vos outils, des chantiers terminés (avant/après), votre showroom si vous en avez un. Ajoutez 1 à 2 photos par mois pour signaler à Google que la fiche est active." },
+      {
+        type: "p",
+        text: "Les fiches avec moins de 10 photos sont presque toujours sous le top 3. Visez 20 à 50 photos : votre équipe, vos véhicules floqués, vos outils, des chantiers terminés (avant/après), votre showroom si vous en avez un. Ajoutez 1 à 2 photos par mois pour signaler à Google que la fiche est active.",
+      },
       { type: "h2", text: "La description : 750 caractères à ne pas gâcher" },
-      { type: "p", text: "Mentionnez votre métier, vos spécialités, vos zones d'intervention, votre ancienneté, vos certifications (RGE, Qualibat, etc.). Restez naturel — pas de bourrage de mots-clés. Cette description influence votre référencement local et rassure les prospects qui hésitent à appeler." },
+      {
+        type: "p",
+        text: "Mentionnez votre métier, vos spécialités, vos zones d'intervention, votre ancienneté, vos certifications (RGE, Qualibat, etc.). Restez naturel — pas de bourrage de mots-clés. Cette description influence votre référencement local et rassure les prospects qui hésitent à appeler.",
+      },
       { type: "h2", text: "Activer les services et les attributs" },
-      { type: "p", text: "Listez tous vos services avec une description courte et un prix indicatif quand c'est possible. Cochez les attributs pertinents : 'Devis gratuit', 'Sur rendez-vous', 'Entreprise locale', 'Service en français', etc. Ces éléments apparaissent dans les filtres Google et améliorent la conversion." },
+      {
+        type: "p",
+        text: "Listez tous vos services avec une description courte et un prix indicatif quand c'est possible. Cochez les attributs pertinents : 'Devis gratuit', 'Sur rendez-vous', 'Entreprise locale', 'Service en français', etc. Ces éléments apparaissent dans les filtres Google et améliorent la conversion.",
+      },
       { type: "h2", text: "La fonction 'Posts' : sous-utilisée et puissante" },
-      { type: "p", text: "Vous pouvez publier des actualités sur votre fiche, comme sur un réseau social : nouvelle prestation, chantier en cours, offre spéciale. Ces posts apparaissent dans les résultats de recherche et renforcent le signal d'activité. Visez 1 post toutes les 2 semaines." },
+      {
+        type: "p",
+        text: "Vous pouvez publier des actualités sur votre fiche, comme sur un réseau social : nouvelle prestation, chantier en cours, offre spéciale. Ces posts apparaissent dans les résultats de recherche et renforcent le signal d'activité. Visez 1 post toutes les 2 semaines.",
+      },
       { type: "h2", text: "Avis : la mécanique à mettre en place" },
-      { type: "p", text: "Récupérez votre lien d'avis court (g.page/r/...) depuis le tableau de bord. Envoyez systématiquement un SMS au client le lendemain du chantier avec ce lien et un mot personnalisé. Répondez à chaque avis sous 48h, même négatif — Google valorise les fiches actives dans les conversations." },
+      {
+        type: "p",
+        text: "Récupérez votre lien d'avis court (g.page/r/...) depuis le tableau de bord. Envoyez systématiquement un SMS au client le lendemain du chantier avec ce lien et un mot personnalisé. Répondez à chaque avis sous 48h, même négatif — Google valorise les fiches actives dans les conversations.",
+      },
       { type: "h2", text: "Avant / après : ce que change une fiche optimisée" },
-      { type: "table", caption: "Évolution typique sur 6 mois après optimisation complète d'une fiche GBP", headers: ["Indicateur", "Avant", "Après 6 mois", "Évolution"], rows: [
-        ["Photos sur la fiche", "3", "32", "+967 %"],
-        ["Avis Google", "5", "28", "+460 %"],
-        ["Note moyenne", "4,2", "4,8", "+0,6"],
-        ["Impressions Google / mois", "1 200", "6 800", "+467 %"],
-        ["Clics vers site / mois", "18", "112", "+522 %"],
-        ["Appels directs / mois", "9", "47", "+422 %"],
-        ["Demandes d'itinéraire / mois", "4", "23", "+475 %"],
-      ] },
+      {
+        type: "table",
+        caption: "Évolution typique sur 6 mois après optimisation complète d'une fiche GBP",
+        headers: ["Indicateur", "Avant", "Après 6 mois", "Évolution"],
+        rows: [
+          ["Photos sur la fiche", "3", "32", "+967 %"],
+          ["Avis Google", "5", "28", "+460 %"],
+          ["Note moyenne", "4,2", "4,8", "+0,6"],
+          ["Impressions Google / mois", "1 200", "6 800", "+467 %"],
+          ["Clics vers site / mois", "18", "112", "+522 %"],
+          ["Appels directs / mois", "9", "47", "+422 %"],
+          ["Demandes d'itinéraire / mois", "4", "23", "+475 %"],
+        ],
+      },
       { type: "h2", text: "Exemple chiffré : un chauffagiste à Montpellier" },
-      { type: "p", text: "Un chauffagiste accompagné par Sitaly avait une fiche presque vide (3 photos, 5 avis, description vide). Après 3 mois d'optimisation suivant cette méthode : 28 nouveaux avis (4,9/5), 24 photos ajoutées, 12 posts publiés, description retravaillée. Résultat mesuré dans GBP Insights : 47 appels/mois en moyenne contre 9 auparavant — une multiplication par 5,2 sans dépenser un euro." },
+      {
+        type: "p",
+        text: "Un chauffagiste accompagné par Sitaly avait une fiche presque vide (3 photos, 5 avis, description vide). Après 3 mois d'optimisation suivant cette méthode : 28 nouveaux avis (4,9/5), 24 photos ajoutées, 12 posts publiés, description retravaillée. Résultat mesuré dans GBP Insights : 47 appels/mois en moyenne contre 9 auparavant — une multiplication par 5,2 sans dépenser un euro.",
+      },
       { type: "h2", text: "Les erreurs qui sabotent une fiche" },
-      { type: "ul", items: [
-        "Nom de l'entreprise différent sur le site, la fiche et les factures",
-        "Adresse inexistante ou boîte postale (Google ferme les fiches sans préavis)",
-        "Catégorie générique 'Entreprise' au lieu du métier précis",
-        "Photos issues de banques d'images",
-        "Pas de réponse aux avis",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Nom de l'entreprise différent sur le site, la fiche et les factures",
+          "Adresse inexistante ou boîte postale (Google ferme les fiches sans préavis)",
+          "Catégorie générique 'Entreprise' au lieu du métier précis",
+          "Photos issues de banques d'images",
+          "Pas de réponse aux avis",
+        ],
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "Combien d'avis Google faut-il pour être dans le top 3 local ?", a: "Pas de seuil absolu, mais en pratique le top 3 dans une ville moyenne a 20 à 60 avis, avec une note ≥ 4,5/5. En dessous de 10 avis, le décollage est très rare." },
-        { q: "Faut-il répondre aux avis négatifs ?", a: "Absolument oui, sous 48h, sans jamais s'énerver. Une réponse calme et factuelle à un avis négatif rassure davantage les futurs lecteurs qu'une fiche sans aucun avis négatif." },
-        { q: "Puis-je masquer mon adresse personnelle ?", a: "Oui, en cochant 'Je livre mes biens et services aux clients' et en désactivant l'affichage de l'adresse. Vous gardez le bénéfice du classement local sans exposer votre domicile." },
-        { q: "Une fiche suffit-elle ou faut-il aussi un site internet ?", a: "Le combo fiche + site convertit 2 à 3x mieux que la fiche seule. La fiche attire, le site rassure et permet d'expliquer. Les deux sont complémentaires." },
-        { q: "Faut-il publier régulièrement sur la fiche ?", a: "Oui — un post toutes les 2 semaines signale à Google que la fiche est active, et ces posts apparaissent directement dans la recherche, augmentant la visibilité." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Combien d'avis Google faut-il pour être dans le top 3 local ?",
+            a: "Pas de seuil absolu, mais en pratique le top 3 dans une ville moyenne a 20 à 60 avis, avec une note ≥ 4,5/5. En dessous de 10 avis, le décollage est très rare.",
+          },
+          {
+            q: "Faut-il répondre aux avis négatifs ?",
+            a: "Absolument oui, sous 48h, sans jamais s'énerver. Une réponse calme et factuelle à un avis négatif rassure davantage les futurs lecteurs qu'une fiche sans aucun avis négatif.",
+          },
+          {
+            q: "Puis-je masquer mon adresse personnelle ?",
+            a: "Oui, en cochant 'Je livre mes biens et services aux clients' et en désactivant l'affichage de l'adresse. Vous gardez le bénéfice du classement local sans exposer votre domicile.",
+          },
+          {
+            q: "Une fiche suffit-elle ou faut-il aussi un site internet ?",
+            a: "Le combo fiche + site convertit 2 à 3x mieux que la fiche seule. La fiche attire, le site rassure et permet d'expliquer. Les deux sont complémentaires.",
+          },
+          {
+            q: "Faut-il publier régulièrement sur la fiche ?",
+            a: "Oui — un post toutes les 2 semaines signale à Google que la fiche est active, et ces posts apparaissent directement dans la recherche, augmentant la visibilité.",
+          },
+        ],
+      },
       { type: "h2", text: "Pour aller plus loin" },
-      { type: "p", text: "Une fiche optimisée fonctionne encore mieux quand elle pointe vers un site internet rapide, mobile et localisé. Sitaly intègre la connexion entre votre fiche Google et votre site pour maximiser le référencement local — réservez un appel gratuit pour en discuter." },
+      {
+        type: "p",
+        text: "Une fiche optimisée fonctionne encore mieux quand elle pointe vers un site internet rapide, mobile et localisé. Sitaly intègre la connexion entre votre fiche Google et votre site pour maximiser le référencement local — réservez un appel gratuit pour en discuter.",
+      },
     ],
   },
   {
@@ -837,51 +1577,107 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "site internet plombier",
     content: [
-      { type: "p", text: "Plombier, électricien, chauffagiste, serrurier : ces métiers partagent une particularité forte — une bonne partie de leurs clients appellent en urgence, depuis leur smartphone, après une recherche Google de 30 secondes. Cela change radicalement la conception du site internet idéal. Voici ce qu'il faut prévoir." },
+      {
+        type: "p",
+        text: "Plombier, électricien, chauffagiste, serrurier : ces métiers partagent une particularité forte — une bonne partie de leurs clients appellent en urgence, depuis leur smartphone, après une recherche Google de 30 secondes. Cela change radicalement la conception du site internet idéal. Voici ce qu'il faut prévoir.",
+      },
       { type: "h2", text: "Le bouton d'appel en tête de page, toujours" },
-      { type: "p", text: "Pour un plombier ou un électricien, le visiteur ne veut pas lire votre histoire — il veut un numéro à appeler immédiatement. Le numéro doit être cliquable, visible sans scroller, en gros caractères, avec une mention 'Devis gratuit' ou 'Intervention 7j/7'. Toute friction supplémentaire fait perdre 20 à 40 % d'appels." },
+      {
+        type: "p",
+        text: "Pour un plombier ou un électricien, le visiteur ne veut pas lire votre histoire — il veut un numéro à appeler immédiatement. Le numéro doit être cliquable, visible sans scroller, en gros caractères, avec une mention 'Devis gratuit' ou 'Intervention 7j/7'. Toute friction supplémentaire fait perdre 20 à 40 % d'appels.",
+      },
       { type: "h2", text: "Mentionner l'urgence et les délais" },
-      { type: "p", text: "Si vous intervenez en urgence, dites-le explicitement : 'Intervention sous 1 heure', '24h/24 et 7j/7', 'Devis gratuit sur place'. Si vous n'intervenez qu'en semaine, dites-le aussi — vous évitez les appels inutiles et vous gagnez en clarté." },
+      {
+        type: "p",
+        text: "Si vous intervenez en urgence, dites-le explicitement : 'Intervention sous 1 heure', '24h/24 et 7j/7', 'Devis gratuit sur place'. Si vous n'intervenez qu'en semaine, dites-le aussi — vous évitez les appels inutiles et vous gagnez en clarté.",
+      },
       { type: "h2", text: "Lister précisément les prestations" },
-      { type: "p", text: "Un visiteur qui cherche 'remplacement chauffe-eau' veut voir ces mots exacts sur votre site. Listez 10 à 20 prestations précises plutôt que 'Tous travaux de plomberie'. Cela améliore aussi le référencement sur les requêtes longues type 'recherche fuite encastrée Avignon'." },
+      {
+        type: "p",
+        text: "Un visiteur qui cherche 'remplacement chauffe-eau' veut voir ces mots exacts sur votre site. Listez 10 à 20 prestations précises plutôt que 'Tous travaux de plomberie'. Cela améliore aussi le référencement sur les requêtes longues type 'recherche fuite encastrée Avignon'.",
+      },
       { type: "h2", text: "Les zones d'intervention détaillées" },
-      { type: "p", text: "Créez une page par grande ville desservie ('/plombier-avignon', '/plombier-le-pontet', etc.) avec un contenu spécifique : quartiers couverts, délai d'intervention, exemples de chantiers. Google adore, et vos prospects voient immédiatement que vous travaillez chez eux." },
+      {
+        type: "p",
+        text: "Créez une page par grande ville desservie ('/plombier-avignon', '/plombier-le-pontet', etc.) avec un contenu spécifique : quartiers couverts, délai d'intervention, exemples de chantiers. Google adore, et vos prospects voient immédiatement que vous travaillez chez eux.",
+      },
       { type: "h2", text: "Tarifs indicatifs : transparent ou pas ?" },
-      { type: "p", text: "Indiquer une fourchette ('Recherche de fuite à partir de 150€', 'Diagnostic électrique 90€') rassure et qualifie. Vous recevrez moins d'appels mais des appels plus sérieux. À éviter seulement si vos prix sont très variables ou si vous êtes positionné en haut de gamme assumée." },
+      {
+        type: "p",
+        text: "Indiquer une fourchette ('Recherche de fuite à partir de 150€', 'Diagnostic électrique 90€') rassure et qualifie. Vous recevrez moins d'appels mais des appels plus sérieux. À éviter seulement si vos prix sont très variables ou si vous êtes positionné en haut de gamme assumée.",
+      },
       { type: "h2", text: "Certifications et garanties à afficher" },
-      { type: "ul", items: [
-        "RGE QualiPAC pour les pompes à chaleur",
-        "Qualibat pour la rénovation",
-        "Qualifelec pour l'électricité",
-        "Assurance décennale (numéro + assureur)",
-        "Mention 'Garantie 2 ans' ou 'Pièces et main d'œuvre'",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "RGE QualiPAC pour les pompes à chaleur",
+          "Qualibat pour la rénovation",
+          "Qualifelec pour l'électricité",
+          "Assurance décennale (numéro + assureur)",
+          "Mention 'Garantie 2 ans' ou 'Pièces et main d'œuvre'",
+        ],
+      },
       { type: "h2", text: "Le formulaire de devis ultra-court" },
-      { type: "p", text: "3 à 4 champs maximum : nom, téléphone, ville, courte description du problème. Chaque champ supplémentaire fait baisser le taux de complétion de 10 à 15 %. Ajoutez la possibilité d'uploader une photo du problème — pour un plombier ou un électricien, ça accélère énormément le diagnostic." },
+      {
+        type: "p",
+        text: "3 à 4 champs maximum : nom, téléphone, ville, courte description du problème. Chaque champ supplémentaire fait baisser le taux de complétion de 10 à 15 %. Ajoutez la possibilité d'uploader une photo du problème — pour un plombier ou un électricien, ça accélère énormément le diagnostic.",
+      },
       { type: "h2", text: "Vitesse du site : critique en urgence" },
-      { type: "p", text: "Un client qui a une fuite d'eau n'attendra pas 5 secondes que votre site charge. Visez moins de 2 secondes sur mobile (testez sur PageSpeed Insights). Cela passe par des images optimisées, peu de plugins, un hébergement rapide." },
+      {
+        type: "p",
+        text: "Un client qui a une fuite d'eau n'attendra pas 5 secondes que votre site charge. Visez moins de 2 secondes sur mobile (testez sur PageSpeed Insights). Cela passe par des images optimisées, peu de plugins, un hébergement rapide.",
+      },
       { type: "h2", text: "Plombier vs électricien : ce qui change vraiment" },
-      { type: "table", caption: "Spécificités d'un site selon le métier (urgentiste vs prévu)", headers: ["Critère", "Plombier urgentiste", "Électricien rénovation"], rows: [
-        ["Part d'appels en urgence", "60 à 80 %", "10 à 25 %"],
-        ["Numéro visible nécessaire", "Critique (haut de page)", "Important"],
-        ["Formulaire devis", "Court (3 champs)", "Détaillé (6-8 champs)"],
-        ["Photos clés", "Avant/après dégâts des eaux", "Tableaux, domotique, rénovation"],
-        ["Tarifs à afficher", "Forfaits urgence", "Devis sur mesure"],
-        ["Pages 'ville' utiles", "5 à 8 villes proches", "3 à 5 villes principales"],
-        ["Disponibilité affichée", "24h/24 - 7j/7", "Lun-Ven 8h-18h"],
-      ] },
+      {
+        type: "table",
+        caption: "Spécificités d'un site selon le métier (urgentiste vs prévu)",
+        headers: ["Critère", "Plombier urgentiste", "Électricien rénovation"],
+        rows: [
+          ["Part d'appels en urgence", "60 à 80 %", "10 à 25 %"],
+          ["Numéro visible nécessaire", "Critique (haut de page)", "Important"],
+          ["Formulaire devis", "Court (3 champs)", "Détaillé (6-8 champs)"],
+          ["Photos clés", "Avant/après dégâts des eaux", "Tableaux, domotique, rénovation"],
+          ["Tarifs à afficher", "Forfaits urgence", "Devis sur mesure"],
+          ["Pages 'ville' utiles", "5 à 8 villes proches", "3 à 5 villes principales"],
+          ["Disponibilité affichée", "24h/24 - 7j/7", "Lun-Ven 8h-18h"],
+        ],
+      },
       { type: "h2", text: "Exemple chiffré : impact d'un téléphone bien placé" },
-      { type: "p", text: "Test A/B mené sur 30 jours pour un plombier à Lyon : version A (numéro en pied de page) — 312 visites, 9 appels (taux 2,9 %). Version B (numéro en haut, bouton bleu, mention '24h/24') — 318 visites, 41 appels (taux 12,9 %). Soit ×4,5 sur les appels pour 0€ supplémentaire dépensé." },
+      {
+        type: "p",
+        text: "Test A/B mené sur 30 jours pour un plombier à Lyon : version A (numéro en pied de page) — 312 visites, 9 appels (taux 2,9 %). Version B (numéro en haut, bouton bleu, mention '24h/24') — 318 visites, 41 appels (taux 12,9 %). Soit ×4,5 sur les appels pour 0€ supplémentaire dépensé.",
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "Faut-il un site séparé pour chaque service (plomberie, chauffage, dépannage) ?", a: "Non — un seul site avec une page par service principal suffit et concentre votre autorité SEO. Plusieurs sites diluent le référencement et multiplient les coûts de maintenance." },
-        { q: "Faut-il afficher ses tarifs en ligne ?", a: "Pour un plombier ou électricien, oui à minima sous forme de fourchettes ('à partir de'). Vous filtrez les appels non qualifiés et vous rassurez sur la transparence. Aucune obligation légale, mais 73 % des prospects préfèrent." },
-        { q: "Le numéro de téléphone doit-il être un fixe ou un mobile ?", a: "Mobile cliquable, sans hésiter. Plus de 70 % des recherches 'plombier urgence' se font sur smartphone : un fixe non cliquable double le temps d'appel et fait perdre des prospects." },
-        { q: "Faut-il proposer la prise de rendez-vous en ligne ?", a: "Utile pour les interventions planifiables (diagnostic, devis rénovation), pas pour l'urgence. Calendly ou un module dédié converti 15 à 25 % des visiteurs hésitant à appeler." },
-        { q: "Quels mots-clés viser en priorité ?", a: "Les requêtes 'métier + ville' (volume modéré, conversion élevée) et 'urgence métier + ville' (volume plus faible mais conversion très haute). Évitez les mots-clés trop génériques type 'plomberie'." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Faut-il un site séparé pour chaque service (plomberie, chauffage, dépannage) ?",
+            a: "Non — un seul site avec une page par service principal suffit et concentre votre autorité SEO. Plusieurs sites diluent le référencement et multiplient les coûts de maintenance.",
+          },
+          {
+            q: "Faut-il afficher ses tarifs en ligne ?",
+            a: "Pour un plombier ou électricien, oui à minima sous forme de fourchettes ('à partir de'). Vous filtrez les appels non qualifiés et vous rassurez sur la transparence. Aucune obligation légale, mais 73 % des prospects préfèrent.",
+          },
+          {
+            q: "Le numéro de téléphone doit-il être un fixe ou un mobile ?",
+            a: "Mobile cliquable, sans hésiter. Plus de 70 % des recherches 'plombier urgence' se font sur smartphone : un fixe non cliquable double le temps d'appel et fait perdre des prospects.",
+          },
+          {
+            q: "Faut-il proposer la prise de rendez-vous en ligne ?",
+            a: "Utile pour les interventions planifiables (diagnostic, devis rénovation), pas pour l'urgence. Calendly ou un module dédié converti 15 à 25 % des visiteurs hésitant à appeler.",
+          },
+          {
+            q: "Quels mots-clés viser en priorité ?",
+            a: "Les requêtes 'métier + ville' (volume modéré, conversion élevée) et 'urgence métier + ville' (volume plus faible mais conversion très haute). Évitez les mots-clés trop génériques type 'plomberie'.",
+          },
+        ],
+      },
       { type: "h2", text: "Notre approche chez Sitaly" },
-      { type: "p", text: "Nous livrons des sites pour plombiers et électriciens en 48h, avec téléphone cliquable, formulaire court, pages par ville et chargement sous 2 secondes. À partir de 149€/mois en location, sans engagement, avec en option la gestion Google Ads et des automatisations pour générer et suivre vos demandes. Réservez un appel gratuit pour voir un exemple." },
+      {
+        type: "p",
+        text: "Nous livrons des sites pour plombiers et électriciens en 48h, avec téléphone cliquable, formulaire court, pages par ville et chargement sous 2 secondes. À partir de 149€/mois en location, sans engagement, avec en option la gestion Google Ads et des automatisations pour générer et suivre vos demandes. Réservez un appel gratuit pour voir un exemple.",
+      },
     ],
   },
   {
@@ -898,61 +1694,117 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "seo local artisan villes",
     content: [
-      { type: "p", text: "Quand vous intervenez dans 10 villes différentes, vous voulez logiquement apparaître sur 'plombier + chaque ville'. La technique la plus efficace est de créer une page dédiée par ville. Mais mal faite, elle peut vous faire pénaliser par Google. Voici la méthode propre." },
+      {
+        type: "p",
+        text: "Quand vous intervenez dans 10 villes différentes, vous voulez logiquement apparaître sur 'plombier + chaque ville'. La technique la plus efficace est de créer une page dédiée par ville. Mais mal faite, elle peut vous faire pénaliser par Google. Voici la méthode propre.",
+      },
       { type: "h2", text: "Pourquoi les pages 'ville' fonctionnent" },
-      { type: "p", text: "Google associe chaque page à une intention de recherche précise. Une page '/plombier-avignon' a beaucoup plus de chances de ranker sur 'plombier Avignon' qu'une page d'accueil générique qui mentionne 12 villes en bas. Les artisans qui appliquent cette méthode multiplient souvent leur trafic SEO local par 3 à 5 en quelques mois." },
+      {
+        type: "p",
+        text: "Google associe chaque page à une intention de recherche précise. Une page '/plombier-avignon' a beaucoup plus de chances de ranker sur 'plombier Avignon' qu'une page d'accueil générique qui mentionne 12 villes en bas. Les artisans qui appliquent cette méthode multiplient souvent leur trafic SEO local par 3 à 5 en quelques mois.",
+      },
       { type: "h2", text: "Le piège du 'doorway' : à éviter absolument" },
-      { type: "p", text: "Une 'doorway page' est une page créée uniquement pour Google, identique à 10 autres avec juste le nom de la ville modifié. Google les détecte et déclasse l'ensemble du site. Cas réels observés : -60 % de trafic en un mois. C'est l'erreur n°1 à éviter." },
+      {
+        type: "p",
+        text: "Une 'doorway page' est une page créée uniquement pour Google, identique à 10 autres avec juste le nom de la ville modifié. Google les détecte et déclasse l'ensemble du site. Cas réels observés : -60 % de trafic en un mois. C'est l'erreur n°1 à éviter.",
+      },
       { type: "h2", text: "Page légitime vs page doorway : la comparaison" },
-      { type: "table", caption: "Différences concrètes entre une page locale propre et une doorway page", headers: ["Critère", "Page 'ville' propre", "Doorway page (à éviter)"], rows: [
-        ["Longueur de contenu unique", "400 à 800 mots", "< 150 mots ou copié"],
-        ["Photos", "Chantiers réalisés sur place", "Banque d'images génériques"],
-        ["Témoignages", "Clients de la ville cités", "Aucun ou inventés"],
-        ["Informations locales", "Quartiers, contraintes, type bâti", "Aucune"],
-        ["URL", "/plombier-avignon", "/page-12 ou /ville12"],
-        ["Risque Google", "Aucun", "Pénalité Panda / déclassement"],
-        ["ROI à 6 mois", "Top 5 sur la ville", "Sortie de l'index"],
-      ] },
+      {
+        type: "table",
+        caption: "Différences concrètes entre une page locale propre et une doorway page",
+        headers: ["Critère", "Page 'ville' propre", "Doorway page (à éviter)"],
+        rows: [
+          ["Longueur de contenu unique", "400 à 800 mots", "< 150 mots ou copié"],
+          ["Photos", "Chantiers réalisés sur place", "Banque d'images génériques"],
+          ["Témoignages", "Clients de la ville cités", "Aucun ou inventés"],
+          ["Informations locales", "Quartiers, contraintes, type bâti", "Aucune"],
+          ["URL", "/plombier-avignon", "/page-12 ou /ville12"],
+          ["Risque Google", "Aucun", "Pénalité Panda / déclassement"],
+          ["ROI à 6 mois", "Top 5 sur la ville", "Sortie de l'index"],
+        ],
+      },
       { type: "h2", text: "Ce qui rend une page 'ville' légitime" },
-      { type: "ul", items: [
-        "Contenu unique de 400 mots minimum, vraiment différent",
-        "Photos de chantiers réalisés dans cette ville",
-        "Témoignages de clients de cette ville",
-        "Quartiers et communes limitrophes desservis depuis cette ville",
-        "Spécificités locales : type de bâti, problèmes fréquents, contraintes",
-        "Délais d'intervention réels depuis votre base vers cette ville",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Contenu unique de 400 mots minimum, vraiment différent",
+          "Photos de chantiers réalisés dans cette ville",
+          "Témoignages de clients de cette ville",
+          "Quartiers et communes limitrophes desservis depuis cette ville",
+          "Spécificités locales : type de bâti, problèmes fréquents, contraintes",
+          "Délais d'intervention réels depuis votre base vers cette ville",
+        ],
+      },
       { type: "h2", text: "Combien de pages 'ville' créer ?" },
-      { type: "p", text: "Commencez par 3 à 5 villes principales — celles où vous avez déjà des chantiers réalisés et où vous voulez vraiment vous développer. Mieux vaut 5 pages excellentes que 30 pages médiocres. Vous pourrez en ajouter ensuite au fil des chantiers." },
+      {
+        type: "p",
+        text: "Commencez par 3 à 5 villes principales — celles où vous avez déjà des chantiers réalisés et où vous voulez vraiment vous développer. Mieux vaut 5 pages excellentes que 30 pages médiocres. Vous pourrez en ajouter ensuite au fil des chantiers.",
+      },
       { type: "h2", text: "Structure type d'une page 'ville' efficace" },
-      { type: "ul", items: [
-        "H1 explicite : 'Plombier à Avignon - Intervention rapide'",
-        "Paragraphe d'intro local (mentionne la ville, votre ancienneté locale)",
-        "Vos prestations dans la ville (avec quelques tarifs)",
-        "3 à 5 photos de chantiers réalisés sur place",
-        "2 à 3 avis clients de la ville (avec prénom + quartier)",
-        "Bloc 'Quartiers desservis'",
-        "Carte avec votre zone d'intervention",
-        "Formulaire de devis et téléphone cliquable",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "H1 explicite : 'Plombier à Avignon - Intervention rapide'",
+          "Paragraphe d'intro local (mentionne la ville, votre ancienneté locale)",
+          "Vos prestations dans la ville (avec quelques tarifs)",
+          "3 à 5 photos de chantiers réalisés sur place",
+          "2 à 3 avis clients de la ville (avec prénom + quartier)",
+          "Bloc 'Quartiers desservis'",
+          "Carte avec votre zone d'intervention",
+          "Formulaire de devis et téléphone cliquable",
+        ],
+      },
       { type: "h2", text: "Exemple chiffré : 4 pages 'ville' bien construites" },
-      { type: "p", text: "Cas d'un électricien à Avignon créant 4 pages 'ville' (Avignon, Le Pontet, Sorgues, Carpentras) avec 600 mots uniques, 4 photos locales et 3 avis ciblés par page. Trafic SEO local avant : 95 visites/mois. Après 5 mois : 412 visites/mois (+334 %). Appels mensuels supplémentaires : 11. CA additionnel estimé : 2 800€/mois. Temps de production des 4 pages : ~18 heures." },
+      {
+        type: "p",
+        text: "Cas d'un électricien à Avignon créant 4 pages 'ville' (Avignon, Le Pontet, Sorgues, Carpentras) avec 600 mots uniques, 4 photos locales et 3 avis ciblés par page. Trafic SEO local avant : 95 visites/mois. Après 5 mois : 412 visites/mois (+334 %). Appels mensuels supplémentaires : 11. CA additionnel estimé : 2 800€/mois. Temps de production des 4 pages : ~18 heures.",
+      },
       { type: "h2", text: "Optimisations techniques" },
-      { type: "p", text: "Chaque page doit avoir son propre title (60 caractères), sa meta description (150 caractères), une URL propre (/plombier-avignon, pas /page12), et un balisage Schema.org LocalBusiness avec l'adresse et les coordonnées. Ces détails techniques font 30 à 40 % de différence sur le positionnement." },
+      {
+        type: "p",
+        text: "Chaque page doit avoir son propre title (60 caractères), sa meta description (150 caractères), une URL propre (/plombier-avignon, pas /page12), et un balisage Schema.org LocalBusiness avec l'adresse et les coordonnées. Ces détails techniques font 30 à 40 % de différence sur le positionnement.",
+      },
       { type: "h2", text: "Maillage interne entre les pages" },
-      { type: "p", text: "Liez chaque page 'ville' à 2 ou 3 autres villes voisines, et à votre page de prestations principale. Cela aide Google à comprendre votre zone et répartit le 'jus SEO' entre vos pages." },
+      {
+        type: "p",
+        text: "Liez chaque page 'ville' à 2 ou 3 autres villes voisines, et à votre page de prestations principale. Cela aide Google à comprendre votre zone et répartit le 'jus SEO' entre vos pages.",
+      },
       { type: "h2", text: "Mesurer les résultats" },
-      { type: "p", text: "Comptez 2 à 4 mois pour voir les premières remontées dans Google. Suivez chaque mois votre position sur 'métier + ville' depuis une navigation privée. Si une page ne décolle pas après 6 mois, retravaillez le contenu plutôt que d'en créer de nouvelles." },
+      {
+        type: "p",
+        text: "Comptez 2 à 4 mois pour voir les premières remontées dans Google. Suivez chaque mois votre position sur 'métier + ville' depuis une navigation privée. Si une page ne décolle pas après 6 mois, retravaillez le contenu plutôt que d'en créer de nouvelles.",
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "Combien de pages 'ville' Google tolère-t-il sans pénalité ?", a: "Il n'y a pas de quota officiel. Ce qui compte c'est la qualité : 30 pages réellement uniques et utiles sont mieux tolérées que 5 pages quasi-identiques. Pour un artisan, restez sous 15 pages 'ville' au début." },
-        { q: "Puis-je créer une page pour chaque village limitrophe ?", a: "Non : pour les villages de moins de 3 000 habitants, regroupez-les dans la page de la ville principale (section 'Quartiers et communes desservis'). Une page dédiée par village serait du contenu vide aux yeux de Google." },
-        { q: "Faut-il payer un rédacteur pour ces pages ?", a: "Souvent oui : 80 à 150€ par page bien rédigée, ce qui se rentabilise en 1 à 2 chantiers. Faire soi-même est possible si vous prenez 2-3h par page sans bâcler." },
-        { q: "Les pages 'ville' fonctionnent-elles aussi pour des métiers de niche ?", a: "Oui, et parfois encore mieux car la concurrence locale est faible. Un cordonnier ou un tapissier qui crée 3 pages 'ville' atteint souvent le top 1 en 2 mois." },
-        { q: "Que faire si une page 'ville' ne décolle pas après 6 mois ?", a: "Allongez le contenu (passez de 400 à 800 mots), ajoutez 2-3 témoignages locaux supplémentaires, créez 2-3 backlinks locaux (annuaires de la ville) et patientez encore 2 mois. Si rien ne bouge, supprimez la page." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Combien de pages 'ville' Google tolère-t-il sans pénalité ?",
+            a: "Il n'y a pas de quota officiel. Ce qui compte c'est la qualité : 30 pages réellement uniques et utiles sont mieux tolérées que 5 pages quasi-identiques. Pour un artisan, restez sous 15 pages 'ville' au début.",
+          },
+          {
+            q: "Puis-je créer une page pour chaque village limitrophe ?",
+            a: "Non : pour les villages de moins de 3 000 habitants, regroupez-les dans la page de la ville principale (section 'Quartiers et communes desservis'). Une page dédiée par village serait du contenu vide aux yeux de Google.",
+          },
+          {
+            q: "Faut-il payer un rédacteur pour ces pages ?",
+            a: "Souvent oui : 80 à 150€ par page bien rédigée, ce qui se rentabilise en 1 à 2 chantiers. Faire soi-même est possible si vous prenez 2-3h par page sans bâcler.",
+          },
+          {
+            q: "Les pages 'ville' fonctionnent-elles aussi pour des métiers de niche ?",
+            a: "Oui, et parfois encore mieux car la concurrence locale est faible. Un cordonnier ou un tapissier qui crée 3 pages 'ville' atteint souvent le top 1 en 2 mois.",
+          },
+          {
+            q: "Que faire si une page 'ville' ne décolle pas après 6 mois ?",
+            a: "Allongez le contenu (passez de 400 à 800 mots), ajoutez 2-3 témoignages locaux supplémentaires, créez 2-3 backlinks locaux (annuaires de la ville) et patientez encore 2 mois. Si rien ne bouge, supprimez la page.",
+          },
+        ],
+      },
       { type: "h2", text: "Vous voulez qu'on s'en charge ?" },
-      { type: "p", text: "Sitaly inclut 1 à 3 pages 'ville' optimisées dans les sites livrés, avec contenu rédigé sur mesure. Réservez un appel pour voir comment l'appliquer à votre métier et vos zones." },
+      {
+        type: "p",
+        text: "Sitaly inclut 1 à 3 pages 'ville' optimisées dans les sites livrés, avec contenu rédigé sur mesure. Réservez un appel pour voir comment l'appliquer à votre métier et vos zones.",
+      },
     ],
   },
   {
@@ -969,54 +1821,111 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "rentabilité site internet artisan",
     content: [
-      { type: "p", text: "Beaucoup d'artisans hésitent à investir dans un site internet par peur de ne pas le rentabiliser. C'est une question légitime — et la bonne nouvelle, c'est qu'avec une méthode simple, vous pouvez calculer votre retour sur investissement avant même de signer. Voici les chiffres réels et la formule à utiliser." },
+      {
+        type: "p",
+        text: "Beaucoup d'artisans hésitent à investir dans un site internet par peur de ne pas le rentabiliser. C'est une question légitime — et la bonne nouvelle, c'est qu'avec une méthode simple, vous pouvez calculer votre retour sur investissement avant même de signer. Voici les chiffres réels et la formule à utiliser.",
+      },
       { type: "h2", text: "La formule du ROI d'un site d'artisan" },
-      { type: "p", text: "ROI mensuel = (Appels qualifiés × Taux de conversion en chantier × Panier moyen × Marge) - Coût mensuel du site. Si le résultat est positif, le site est rentable. La plupart des artisans atteignent la rentabilité en 2 à 4 mois." },
+      {
+        type: "p",
+        text: "ROI mensuel = (Appels qualifiés × Taux de conversion en chantier × Panier moyen × Marge) - Coût mensuel du site. Si le résultat est positif, le site est rentable. La plupart des artisans atteignent la rentabilité en 2 à 4 mois.",
+      },
       { type: "h2", text: "Combien d'appels par mois espérer ?" },
-      { type: "p", text: "Un site bien fait + une fiche Google optimisée + un minimum de SEO local génèrent typiquement, en régime de croisière (après 3 à 6 mois) :" },
-      { type: "ul", items: [
-        "Petite ville (< 30 000 hab) : 3 à 8 appels qualifiés par mois",
-        "Ville moyenne (30 000 à 100 000 hab) : 8 à 20 appels par mois",
-        "Grande ville (> 100 000 hab) : 15 à 50 appels par mois",
-        "Artisan urgentiste (plombier, serrurier) : multipliez par 1,5 à 2",
-      ] },
+      {
+        type: "p",
+        text: "Un site bien fait + une fiche Google optimisée + un minimum de SEO local génèrent typiquement, en régime de croisière (après 3 à 6 mois) :",
+      },
+      {
+        type: "ul",
+        items: [
+          "Petite ville (< 30 000 hab) : 3 à 8 appels qualifiés par mois",
+          "Ville moyenne (30 000 à 100 000 hab) : 8 à 20 appels par mois",
+          "Grande ville (> 100 000 hab) : 15 à 50 appels par mois",
+          "Artisan urgentiste (plombier, serrurier) : multipliez par 1,5 à 2",
+        ],
+      },
       { type: "h2", text: "Du téléphone au chantier signé : les taux de conversion" },
-      { type: "p", text: "En moyenne, sur 10 appels qualifiés, vous donnerez 6 à 8 devis, et vous signerez 2 à 4 chantiers. Soit un taux de conversion appel → chantier de 20 à 40 % selon votre approche commerciale et la concurrence locale." },
+      {
+        type: "p",
+        text: "En moyenne, sur 10 appels qualifiés, vous donnerez 6 à 8 devis, et vous signerez 2 à 4 chantiers. Soit un taux de conversion appel → chantier de 20 à 40 % selon votre approche commerciale et la concurrence locale.",
+      },
       { type: "h2", text: "ROI estimé par métier" },
-      { type: "table", caption: "Estimation de ROI annuel pour un site en location à 149€/mois dans une ville moyenne", headers: ["Métier", "Appels/mois", "Conv. chantier", "Panier moyen", "CA annuel ajouté"], rows: [
-        ["Plombier urgentiste", "18", "30 %", "650€", "42 100€"],
-        ["Électricien", "12", "35 %", "900€", "45 400€"],
-        ["Chauffagiste", "10", "40 %", "1 800€", "86 400€"],
-        ["Menuisier", "6", "35 %", "3 200€", "80 600€"],
-        ["Couvreur", "8", "30 %", "4 500€", "129 600€"],
-        ["Maçon", "5", "30 %", "5 800€", "104 400€"],
-        ["Peintre / Plaquiste", "9", "35 %", "1 400€", "52 900€"],
-      ] },
+      {
+        type: "table",
+        caption:
+          "Estimation de ROI annuel pour un site en location à 149€/mois dans une ville moyenne",
+        headers: ["Métier", "Appels/mois", "Conv. chantier", "Panier moyen", "CA annuel ajouté"],
+        rows: [
+          ["Plombier urgentiste", "18", "30 %", "650€", "42 100€"],
+          ["Électricien", "12", "35 %", "900€", "45 400€"],
+          ["Chauffagiste", "10", "40 %", "1 800€", "86 400€"],
+          ["Menuisier", "6", "35 %", "3 200€", "80 600€"],
+          ["Couvreur", "8", "30 %", "4 500€", "129 600€"],
+          ["Maçon", "5", "30 %", "5 800€", "104 400€"],
+          ["Peintre / Plaquiste", "9", "35 %", "1 400€", "52 900€"],
+        ],
+      },
       { type: "h2", text: "Exemple concret : un plombier à Avignon" },
-      { type: "p", text: "Coût site : 149€/mois. Appels générés : 15 par mois. Taux de conversion : 30 % = 4,5 chantiers/mois. Panier moyen : 800€. CA mensuel généré : 3 600€. Marge nette estimée à 35 % : 1 260€. ROI mensuel : 1 111€. Le site se rentabilise en moins de 3 semaines de chantiers." },
+      {
+        type: "p",
+        text: "Coût site : 149€/mois. Appels générés : 15 par mois. Taux de conversion : 30 % = 4,5 chantiers/mois. Panier moyen : 800€. CA mensuel généré : 3 600€. Marge nette estimée à 35 % : 1 260€. ROI mensuel : 1 111€. Le site se rentabilise en moins de 3 semaines de chantiers.",
+      },
       { type: "h2", text: "Exemple concret : un menuisier en zone rurale" },
-      { type: "p", text: "Coût site : 149€/mois. Appels générés : 4 par mois. Taux de conversion : 35 % = 1,4 chantier/mois. Panier moyen : 3 500€. CA mensuel : 4 900€. Marge nette à 25 % : 1 225€. Le site se rentabilise dès le premier chantier signé, et continue à produire les mois suivants." },
+      {
+        type: "p",
+        text: "Coût site : 149€/mois. Appels générés : 4 par mois. Taux de conversion : 35 % = 1,4 chantier/mois. Panier moyen : 3 500€. CA mensuel : 4 900€. Marge nette à 25 % : 1 225€. Le site se rentabilise dès le premier chantier signé, et continue à produire les mois suivants.",
+      },
       { type: "h2", text: "Combien de temps avant les premiers résultats ?" },
-      { type: "ul", items: [
-        "Semaine 1 à 2 : trafic direct (vos clients existants vérifient votre site)",
-        "Mois 1 à 2 : premiers appels via Google Business Profile",
-        "Mois 3 à 6 : montée en puissance du SEO local (pages 'ville', avis)",
-        "Mois 6 à 12 : régime de croisière, trafic stabilisé",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Semaine 1 à 2 : trafic direct (vos clients existants vérifient votre site)",
+          "Mois 1 à 2 : premiers appels via Google Business Profile",
+          "Mois 3 à 6 : montée en puissance du SEO local (pages 'ville', avis)",
+          "Mois 6 à 12 : régime de croisière, trafic stabilisé",
+        ],
+      },
       { type: "h2", text: "Quand un site ne se rentabilise pas" },
-      { type: "p", text: "Trois cas principaux : pas de fiche Google associée, pas de référencement local, ou design qui ne donne pas confiance (téléphone caché, photos de banque d'images, formulaire trop long). Dans 90 % des cas, c'est récupérable en quelques semaines." },
+      {
+        type: "p",
+        text: "Trois cas principaux : pas de fiche Google associée, pas de référencement local, ou design qui ne donne pas confiance (téléphone caché, photos de banque d'images, formulaire trop long). Dans 90 % des cas, c'est récupérable en quelques semaines.",
+      },
       { type: "h2", text: "Mesurer concrètement votre ROI" },
-      { type: "p", text: "Demandez systématiquement à chaque nouveau client : 'Comment nous avez-vous trouvés ?'. Notez les réponses dans un tableur simple. Au bout de 3 mois, vous aurez un calcul réel de votre ROI — et de l'impact concret du site." },
+      {
+        type: "p",
+        text: "Demandez systématiquement à chaque nouveau client : 'Comment nous avez-vous trouvés ?'. Notez les réponses dans un tableur simple. Au bout de 3 mois, vous aurez un calcul réel de votre ROI — et de l'impact concret du site.",
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "Au bout de combien de temps un site est-il rentabilisé en moyenne ?", a: "Pour une formule à 149€/mois avec un panier moyen > 500€, la rentabilité est généralement atteinte dès le premier ou le deuxième chantier signé. Au-delà de 6 mois sans retour, il y a un problème (SEO, conversion ou positionnement)." },
-        { q: "Un site est-il rentable même pour un artisan rural ?", a: "Oui, et souvent davantage car la concurrence locale est faible. Un menuisier rural avec 2-3 chantiers/mois de 3 000€ rentabilise un site en quelques semaines." },
-        { q: "Faut-il combiner site + Google Ads pour rentabiliser plus vite ?", a: "Oui, c'est la combinaison la plus efficace : Ads pour les 3 premiers mois (trafic immédiat), SEO local en parallèle pour prendre le relais. ROI accéléré d'environ 2 mois." },
-        { q: "Comment savoir si mes appels viennent du site ?", a: "Trois méthodes : (1) demander systématiquement, (2) installer un numéro de tracking dédié, (3) consulter Google Search Console + GBP Insights. La plus simple : la question au client." },
-        { q: "Et si mon métier a très peu de volume Google (ex : ferronnier d'art) ?", a: "Le ROI vient alors moins du SEO local (peu de recherches) et plus de la conversion des prospects référés ou venant de réseaux sociaux. Un site reste utile, mais le calcul de ROI doit intégrer ces canaux." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Au bout de combien de temps un site est-il rentabilisé en moyenne ?",
+            a: "Pour une formule à 149€/mois avec un panier moyen > 500€, la rentabilité est généralement atteinte dès le premier ou le deuxième chantier signé. Au-delà de 6 mois sans retour, il y a un problème (SEO, conversion ou positionnement).",
+          },
+          {
+            q: "Un site est-il rentable même pour un artisan rural ?",
+            a: "Oui, et souvent davantage car la concurrence locale est faible. Un menuisier rural avec 2-3 chantiers/mois de 3 000€ rentabilise un site en quelques semaines.",
+          },
+          {
+            q: "Faut-il combiner site + Google Ads pour rentabiliser plus vite ?",
+            a: "Oui, c'est la combinaison la plus efficace : Ads pour les 3 premiers mois (trafic immédiat), SEO local en parallèle pour prendre le relais. ROI accéléré d'environ 2 mois.",
+          },
+          {
+            q: "Comment savoir si mes appels viennent du site ?",
+            a: "Trois méthodes : (1) demander systématiquement, (2) installer un numéro de tracking dédié, (3) consulter Google Search Console + GBP Insights. La plus simple : la question au client.",
+          },
+          {
+            q: "Et si mon métier a très peu de volume Google (ex : ferronnier d'art) ?",
+            a: "Le ROI vient alors moins du SEO local (peu de recherches) et plus de la conversion des prospects référés ou venant de réseaux sociaux. Un site reste utile, mais le calcul de ROI doit intégrer ces canaux.",
+          },
+        ],
+      },
       { type: "h2", text: "Estimer votre cas avec Sitaly" },
-      { type: "p", text: "Lors de l'appel découverte gratuit, nous estimons ensemble le nombre d'appels que vous pouvez espérer selon votre métier, votre ville et votre concurrence. Sans engagement." },
+      {
+        type: "p",
+        text: "Lors de l'appel découverte gratuit, nous estimons ensemble le nombre d'appels que vous pouvez espérer selon votre métier, votre ville et votre concurrence. Sans engagement.",
+      },
     ],
   },
   {
@@ -1033,72 +1942,128 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "google ads artisan",
     content: [
-      { type: "p", text: "Le SEO local met 3 à 6 mois à porter ses fruits. Quand vous avez besoin d'appels immédiatement, Google Ads peut être la solution — à condition d'éviter les erreurs qui font cramer le budget en quelques jours. Voici les règles essentielles." },
+      {
+        type: "p",
+        text: "Le SEO local met 3 à 6 mois à porter ses fruits. Quand vous avez besoin d'appels immédiatement, Google Ads peut être la solution — à condition d'éviter les erreurs qui font cramer le budget en quelques jours. Voici les règles essentielles.",
+      },
       { type: "h2", text: "Quand Google Ads est pertinent pour un artisan" },
-      { type: "ul", items: [
-        "Démarrage d'activité : pas encore de réputation locale ni de SEO",
-        "Trou dans le planning à combler rapidement",
-        "Nouveau service à lancer",
-        "Saisonnalité forte (chauffagiste avant l'hiver, climatisation avant l'été)",
-        "Concurrence locale très forte sur le SEO naturel",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Démarrage d'activité : pas encore de réputation locale ni de SEO",
+          "Trou dans le planning à combler rapidement",
+          "Nouveau service à lancer",
+          "Saisonnalité forte (chauffagiste avant l'hiver, climatisation avant l'été)",
+          "Concurrence locale très forte sur le SEO naturel",
+        ],
+      },
       { type: "h2", text: "Quand Google Ads est une mauvaise idée" },
-      { type: "p", text: "Si votre site convertit mal (téléphone pas visible, formulaire trop long), Google Ads va simplement vous faire payer plus cher des visiteurs qui ne vous appelleront pas. Avant de lancer Ads, vérifiez d'abord que votre site convertit correctement le trafic organique." },
+      {
+        type: "p",
+        text: "Si votre site convertit mal (téléphone pas visible, formulaire trop long), Google Ads va simplement vous faire payer plus cher des visiteurs qui ne vous appelleront pas. Avant de lancer Ads, vérifiez d'abord que votre site convertit correctement le trafic organique.",
+      },
       { type: "h2", text: "Combien coûte un appel via Google Ads ?" },
       { type: "p", text: "Coût par clic moyen en France pour les métiers artisans :" },
-      { type: "ul", items: [
-        "Plombier urgence : 8 à 20€ par clic, 25 à 60€ par appel",
-        "Électricien : 5 à 12€ par clic, 15 à 35€ par appel",
-        "Serrurier urgence : 10 à 30€ par clic, 30 à 80€ par appel",
-        "Couvreur : 4 à 10€ par clic, 12 à 30€ par appel",
-        "Maçon / menuisier : 3 à 8€ par clic, 10 à 25€ par appel",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Plombier urgence : 8 à 20€ par clic, 25 à 60€ par appel",
+          "Électricien : 5 à 12€ par clic, 15 à 35€ par appel",
+          "Serrurier urgence : 10 à 30€ par clic, 30 à 80€ par appel",
+          "Couvreur : 4 à 10€ par clic, 12 à 30€ par appel",
+          "Maçon / menuisier : 3 à 8€ par clic, 10 à 25€ par appel",
+        ],
+      },
       { type: "h2", text: "Rentabilité Google Ads par métier" },
-      { type: "table", caption: "Estimation du ROI Google Ads pour un budget mensuel de 500€", headers: ["Métier", "Coût/appel", "Appels/mois", "Chantiers", "CA généré", "ROI"], rows: [
-        ["Plombier urgence", "40€", "12", "4", "3 200€", "+540 %"],
-        ["Serrurier urgence", "55€", "9", "3", "2 100€", "+320 %"],
-        ["Électricien", "25€", "20", "7", "6 300€", "+1 160 %"],
-        ["Couvreur", "20€", "25", "7", "31 500€", "+6 200 %"],
-        ["Maçon", "18€", "27", "8", "46 400€", "+9 180 %"],
-        ["Climaticien (saisonnier)", "30€", "16", "5", "9 000€", "+1 700 %"],
-      ] },
+      {
+        type: "table",
+        caption: "Estimation du ROI Google Ads pour un budget mensuel de 500€",
+        headers: ["Métier", "Coût/appel", "Appels/mois", "Chantiers", "CA généré", "ROI"],
+        rows: [
+          ["Plombier urgence", "40€", "12", "4", "3 200€", "+540 %"],
+          ["Serrurier urgence", "55€", "9", "3", "2 100€", "+320 %"],
+          ["Électricien", "25€", "20", "7", "6 300€", "+1 160 %"],
+          ["Couvreur", "20€", "25", "7", "31 500€", "+6 200 %"],
+          ["Maçon", "18€", "27", "8", "46 400€", "+9 180 %"],
+          ["Climaticien (saisonnier)", "30€", "16", "5", "9 000€", "+1 700 %"],
+        ],
+      },
       { type: "h2", text: "Le calcul de rentabilité" },
-      { type: "p", text: "Si un appel coûte 30€ et que votre taux de conversion appel → chantier est de 30 % avec un panier moyen de 800€ à 35 % de marge, vous gagnez 280€ par chantier pour 100€ dépensés en pub. ROI confortable. Si votre panier est de 200€, c'est beaucoup plus serré." },
+      {
+        type: "p",
+        text: "Si un appel coûte 30€ et que votre taux de conversion appel → chantier est de 30 % avec un panier moyen de 800€ à 35 % de marge, vous gagnez 280€ par chantier pour 100€ dépensés en pub. ROI confortable. Si votre panier est de 200€, c'est beaucoup plus serré.",
+      },
       { type: "h2", text: "Configuration d'une campagne efficace" },
-      { type: "ul", items: [
-        "Type de campagne : Recherche (pas Display, pas Performance Max au début)",
-        "Ciblage géographique : votre vraie zone d'intervention, rien de plus",
-        "Mots-clés en correspondance exacte ou expression : [plombier avignon], \"recherche fuite\"",
-        "Mots-clés négatifs : gratuit, formation, emploi, école, prix moyen",
-        "Extensions d'appel : indispensables pour permettre l'appel direct",
-        "Pages de destination : une page dédiée par service, pas l'accueil",
-        "Horaires de diffusion : seulement quand vous pouvez répondre",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Type de campagne : Recherche (pas Display, pas Performance Max au début)",
+          "Ciblage géographique : votre vraie zone d'intervention, rien de plus",
+          'Mots-clés en correspondance exacte ou expression : [plombier avignon], "recherche fuite"',
+          "Mots-clés négatifs : gratuit, formation, emploi, école, prix moyen",
+          "Extensions d'appel : indispensables pour permettre l'appel direct",
+          "Pages de destination : une page dédiée par service, pas l'accueil",
+          "Horaires de diffusion : seulement quand vous pouvez répondre",
+        ],
+      },
       { type: "h2", text: "Les erreurs qui font cramer 500€ en 3 jours" },
-      { type: "ul", items: [
-        "Mots-clés en correspondance large (Google diffuse sur n'importe quoi)",
-        "Aucune liste de mots-clés négatifs",
-        "Campagne 24h/24 alors que personne ne répond la nuit",
-        "Budget journalier trop élevé sans plafond sécurité",
-        "Pas de suivi des conversions configuré",
-        "Renvoi vers la page d'accueil au lieu d'une page dédiée",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Mots-clés en correspondance large (Google diffuse sur n'importe quoi)",
+          "Aucune liste de mots-clés négatifs",
+          "Campagne 24h/24 alors que personne ne répond la nuit",
+          "Budget journalier trop élevé sans plafond sécurité",
+          "Pas de suivi des conversions configuré",
+          "Renvoi vers la page d'accueil au lieu d'une page dédiée",
+        ],
+      },
       { type: "h2", text: "Exemple chiffré : test de 4 semaines pour un serrurier" },
-      { type: "p", text: "Budget : 600€/mois. Configuration propre (mots-clés exacts, 35 mots-clés négatifs, horaires 7h-22h, page dédiée 'serrurier urgence + ville'). Résultats : 14 appels qualifiés, 6 interventions signées, panier moyen 280€ = 1 680€ de CA pour 600€ de pub. ROI net après marge : +480€. Mois 2 après optimisation : 19 appels pour le même budget." },
+      {
+        type: "p",
+        text: "Budget : 600€/mois. Configuration propre (mots-clés exacts, 35 mots-clés négatifs, horaires 7h-22h, page dédiée 'serrurier urgence + ville'). Résultats : 14 appels qualifiés, 6 interventions signées, panier moyen 280€ = 1 680€ de CA pour 600€ de pub. ROI net après marge : +480€. Mois 2 après optimisation : 19 appels pour le même budget.",
+      },
       { type: "h2", text: "Combien budgéter pour démarrer ?" },
-      { type: "p", text: "Comptez 300 à 600€/mois pour tester sérieusement votre marché pendant 4 à 6 semaines. En dessous, le volume de données est trop faible pour optimiser. Si vous voulez moins risquer, commencez avec un consultant Google Ads (200 à 400€ de mise en place) plutôt que de tâtonner seul." },
+      {
+        type: "p",
+        text: "Comptez 300 à 600€/mois pour tester sérieusement votre marché pendant 4 à 6 semaines. En dessous, le volume de données est trop faible pour optimiser. Si vous voulez moins risquer, commencez avec un consultant Google Ads (200 à 400€ de mise en place) plutôt que de tâtonner seul.",
+      },
       { type: "h2", text: "L'alternative gagnante : Ads + SEO en parallèle" },
-      { type: "p", text: "La stratégie la plus rentable : Google Ads pendant 3 à 6 mois pour générer du chiffre immédiat, en parallèle d'un travail SEO de fond (site optimisé, fiche Google, avis, pages ville). Au bout de 6 mois, vous baissez Ads progressivement et le SEO prend le relais." },
+      {
+        type: "p",
+        text: "La stratégie la plus rentable : Google Ads pendant 3 à 6 mois pour générer du chiffre immédiat, en parallèle d'un travail SEO de fond (site optimisé, fiche Google, avis, pages ville). Au bout de 6 mois, vous baissez Ads progressivement et le SEO prend le relais.",
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "Quel budget minimum pour tester Google Ads ?", a: "300€/mois pendant 4 semaines minimum. En dessous, vous n'aurez pas assez de données pour optimiser et vous risquez de mal interpréter les résultats." },
-        { q: "Performance Max ou campagne Recherche : que choisir ?", a: "Pour un artisan local, toujours Recherche au début. Performance Max diffuse partout (YouTube, Gmail, Display) et peut cramer le budget sur du trafic non qualifié. À envisager seulement après 6 mois de Recherche maîtrisée." },
-        { q: "Faut-il un consultant Google Ads ou peut-on faire seul ?", a: "Pour < 500€/mois, faire seul est OK avec un peu d'apprentissage. Au-delà, un consultant à 200-400€/mois s'autofinance par les optimisations qu'il apporte." },
-        { q: "Les Ads sur les marques concurrentes sont-ils efficaces ?", a: "Légal mais souvent peu rentable pour un artisan local : CTR faible, conversion médiocre. Concentrez votre budget sur les requêtes 'métier + ville' génériques." },
-        { q: "Comment éviter les clics frauduleux ?", a: "Google filtre automatiquement la majorité. Pour les protections supplémentaires : exclure les pays/régions hors zone, surveiller les pics anormaux, et envisager un outil comme ClickCease (~50€/mois) si vous dépensez > 800€/mois." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Quel budget minimum pour tester Google Ads ?",
+            a: "300€/mois pendant 4 semaines minimum. En dessous, vous n'aurez pas assez de données pour optimiser et vous risquez de mal interpréter les résultats.",
+          },
+          {
+            q: "Performance Max ou campagne Recherche : que choisir ?",
+            a: "Pour un artisan local, toujours Recherche au début. Performance Max diffuse partout (YouTube, Gmail, Display) et peut cramer le budget sur du trafic non qualifié. À envisager seulement après 6 mois de Recherche maîtrisée.",
+          },
+          {
+            q: "Faut-il un consultant Google Ads ou peut-on faire seul ?",
+            a: "Pour < 500€/mois, faire seul est OK avec un peu d'apprentissage. Au-delà, un consultant à 200-400€/mois s'autofinance par les optimisations qu'il apporte.",
+          },
+          {
+            q: "Les Ads sur les marques concurrentes sont-ils efficaces ?",
+            a: "Légal mais souvent peu rentable pour un artisan local : CTR faible, conversion médiocre. Concentrez votre budget sur les requêtes 'métier + ville' génériques.",
+          },
+          {
+            q: "Comment éviter les clics frauduleux ?",
+            a: "Google filtre automatiquement la majorité. Pour les protections supplémentaires : exclure les pays/régions hors zone, surveiller les pics anormaux, et envisager un outil comme ClickCease (~50€/mois) si vous dépensez > 800€/mois.",
+          },
+        ],
+      },
       { type: "h2", text: "Et un site qui convertit ?" },
-      { type: "p", text: "Aucune campagne Ads ne sera rentable si votre site ne convertit pas. Sitaly conçoit chaque site pour maximiser le taux de conversion : téléphone cliquable visible, formulaire ultra-court, chargement sous 2 secondes. Le socle indispensable avant tout investissement publicitaire." },
+      {
+        type: "p",
+        text: "Aucune campagne Ads ne sera rentable si votre site ne convertit pas. Sitaly conçoit chaque site pour maximiser le taux de conversion : téléphone cliquable visible, formulaire ultra-court, chargement sous 2 secondes. Le socle indispensable avant tout investissement publicitaire.",
+      },
     ],
   },
   {
@@ -1115,68 +2080,148 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "refonte site internet artisan",
     content: [
-      { type: "p", text: "Un site internet a une durée de vie utile de 3 à 5 ans. Au-delà, le design vieillit, les standards techniques évoluent, et Google déclasse progressivement. Si vous sentez que votre site ne 'tire' plus comme avant, c'est probablement le moment de refondre. Voici comment savoir, et comment ne pas perdre votre référencement existant." },
+      {
+        type: "p",
+        text: "Un site internet a une durée de vie utile de 3 à 5 ans. Au-delà, le design vieillit, les standards techniques évoluent, et Google déclasse progressivement. Si vous sentez que votre site ne 'tire' plus comme avant, c'est probablement le moment de refondre. Voici comment savoir, et comment ne pas perdre votre référencement existant.",
+      },
       { type: "h2", text: "Les 8 signes qu'il faut refondre" },
-      { type: "ul", items: [
-        "Le site n'est pas (ou mal) responsive sur mobile",
-        "Le chargement dépasse 3 secondes sur smartphone",
-        "Le design fait clairement 'années 2010' (gros sliders, polices datées)",
-        "Vous ne pouvez plus modifier le contenu vous-même",
-        "Le téléphone n'est pas cliquable, pas en évidence",
-        "Aucune intégration avec votre fiche Google Business Profile",
-        "Le trafic Google a baissé de plus de 30 % sur 12 mois",
-        "Votre prestataire d'origine a disparu ou ne répond plus",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Le site n'est pas (ou mal) responsive sur mobile",
+          "Le chargement dépasse 3 secondes sur smartphone",
+          "Le design fait clairement 'années 2010' (gros sliders, polices datées)",
+          "Vous ne pouvez plus modifier le contenu vous-même",
+          "Le téléphone n'est pas cliquable, pas en évidence",
+          "Aucune intégration avec votre fiche Google Business Profile",
+          "Le trafic Google a baissé de plus de 30 % sur 12 mois",
+          "Votre prestataire d'origine a disparu ou ne répond plus",
+        ],
+      },
       { type: "h2", text: "Refonte ou retouches : comment trancher ?" },
-      { type: "p", text: "Si vous avez 1 ou 2 signes parmi ceux ci-dessus, des retouches ciblées suffisent souvent (300 à 600€). Si vous en avez 4 ou plus, une refonte complète sera plus rentable que de rafistoler. La règle simple : si refondre coûte moins de 6 mois de retouches, refondez." },
+      {
+        type: "p",
+        text: "Si vous avez 1 ou 2 signes parmi ceux ci-dessus, des retouches ciblées suffisent souvent (300 à 600€). Si vous en avez 4 ou plus, une refonte complète sera plus rentable que de rafistoler. La règle simple : si refondre coûte moins de 6 mois de retouches, refondez.",
+      },
       { type: "h2", text: "Refonte vs retouches vs création neuve" },
-      { type: "table", caption: "Comparaison des trois options selon l'état actuel du site", headers: ["Option", "Coût", "Délai", "Risque SEO", "Recommandé si"], rows: [
-        ["Retouches ciblées", "300 à 800€", "1 à 2 semaines", "Faible", "1 à 2 signes problématiques"],
-        ["Refonte (URLs préservées)", "700 à 1 500€", "2 à 4 semaines", "Modéré (gérable)", "3 à 5 signes, structure correcte"],
-        ["Création neuve", "800 à 2 000€", "1 à 3 semaines", "Élevé (nouveau domaine)", "6+ signes ou site catastrophique"],
-        ["Migration plateforme (WP → headless)", "1 500 à 3 500€", "3 à 6 semaines", "Élevé (à très bien gérer)", "Performances ou maintenance critiques"],
-      ] },
+      {
+        type: "table",
+        caption: "Comparaison des trois options selon l'état actuel du site",
+        headers: ["Option", "Coût", "Délai", "Risque SEO", "Recommandé si"],
+        rows: [
+          [
+            "Retouches ciblées",
+            "300 à 800€",
+            "1 à 2 semaines",
+            "Faible",
+            "1 à 2 signes problématiques",
+          ],
+          [
+            "Refonte (URLs préservées)",
+            "700 à 1 500€",
+            "2 à 4 semaines",
+            "Modéré (gérable)",
+            "3 à 5 signes, structure correcte",
+          ],
+          [
+            "Création neuve",
+            "800 à 2 000€",
+            "1 à 3 semaines",
+            "Élevé (nouveau domaine)",
+            "6+ signes ou site catastrophique",
+          ],
+          [
+            "Migration plateforme (WP → headless)",
+            "1 500 à 3 500€",
+            "3 à 6 semaines",
+            "Élevé (à très bien gérer)",
+            "Performances ou maintenance critiques",
+          ],
+        ],
+      },
       { type: "h2", text: "Le risque n°1 d'une refonte : perdre Google" },
-      { type: "p", text: "Une refonte mal préparée peut faire chuter le trafic Google de 50 à 80 % pendant des mois. Les causes : URL changées sans redirections, contenu raccourci, balises titre dégradées, structure cassée. Récupérer prend ensuite 6 à 18 mois. Cette étape doit être gérée par quelqu'un qui maîtrise le SEO." },
+      {
+        type: "p",
+        text: "Une refonte mal préparée peut faire chuter le trafic Google de 50 à 80 % pendant des mois. Les causes : URL changées sans redirections, contenu raccourci, balises titre dégradées, structure cassée. Récupérer prend ensuite 6 à 18 mois. Cette étape doit être gérée par quelqu'un qui maîtrise le SEO.",
+      },
       { type: "h2", text: "La checklist pour ne pas perdre son référencement" },
-      { type: "ul", items: [
-        "Exporter la liste des URL actuelles avant la refonte",
-        "Mettre en place des redirections 301 pour chaque URL qui change",
-        "Conserver ou améliorer (jamais raccourcir) le contenu existant qui ranke",
-        "Garder les balises title et h1 des pages qui rankent (ou les améliorer)",
-        "Vérifier le fichier robots.txt et le sitemap XML après mise en ligne",
-        "Soumettre le nouveau sitemap dans Google Search Console",
-        "Surveiller la Search Console les 4 à 6 semaines suivantes",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Exporter la liste des URL actuelles avant la refonte",
+          "Mettre en place des redirections 301 pour chaque URL qui change",
+          "Conserver ou améliorer (jamais raccourcir) le contenu existant qui ranke",
+          "Garder les balises title et h1 des pages qui rankent (ou les améliorer)",
+          "Vérifier le fichier robots.txt et le sitemap XML après mise en ligne",
+          "Soumettre le nouveau sitemap dans Google Search Console",
+          "Surveiller la Search Console les 4 à 6 semaines suivantes",
+        ],
+      },
       { type: "h2", text: "Étapes type d'une refonte propre" },
-      { type: "ul", items: [
-        "Audit du site existant (pages qui rankent, trafic, conversions)",
-        "Définition des objectifs (plus d'appels, nouveau service, nouvelle zone)",
-        "Maquette du nouveau design (1 à 2 allers-retours)",
-        "Rédaction ou reprise des contenus",
-        "Développement et intégration",
-        "Recette : tests sur mobile, vitesse, formulaires, redirections",
-        "Mise en ligne + soumission Search Console",
-        "Suivi 4 à 8 semaines pour ajustements",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Audit du site existant (pages qui rankent, trafic, conversions)",
+          "Définition des objectifs (plus d'appels, nouveau service, nouvelle zone)",
+          "Maquette du nouveau design (1 à 2 allers-retours)",
+          "Rédaction ou reprise des contenus",
+          "Développement et intégration",
+          "Recette : tests sur mobile, vitesse, formulaires, redirections",
+          "Mise en ligne + soumission Search Console",
+          "Suivi 4 à 8 semaines pour ajustements",
+        ],
+      },
       { type: "h2", text: "Exemple chiffré : refonte d'un site de couvreur" },
-      { type: "p", text: "Site WordPress de 2018, 14 pages, 380 visites SEO/mois, 6 appels/mois. Refonte complète à 1 200€ avec redirections 301 et conservation des titres performants. Mois 1 post-refonte : -18 % de trafic (normal). Mois 3 : retour au niveau d'avant. Mois 6 : 720 visites/mois (+89 %) et 14 appels/mois (+133 %). ROI atteint en 4 mois grâce aux chantiers additionnels." },
+      {
+        type: "p",
+        text: "Site WordPress de 2018, 14 pages, 380 visites SEO/mois, 6 appels/mois. Refonte complète à 1 200€ avec redirections 301 et conservation des titres performants. Mois 1 post-refonte : -18 % de trafic (normal). Mois 3 : retour au niveau d'avant. Mois 6 : 720 visites/mois (+89 %) et 14 appels/mois (+133 %). ROI atteint en 4 mois grâce aux chantiers additionnels.",
+      },
       { type: "h2", text: "Combien coûte une refonte ?" },
-      { type: "p", text: "Pour un site d'artisan classique, comptez 800 à 1 500€ à l'achat pour une refonte complète clé en main, ou environ 150€/mois en location tout inclus. Si vous avez beaucoup de contenu à reprendre (10+ pages), prévoyez 30 à 50 % en plus pour la partie rédaction." },
+      {
+        type: "p",
+        text: "Pour un site d'artisan classique, comptez 800 à 1 500€ à l'achat pour une refonte complète clé en main, ou environ 150€/mois en location tout inclus. Si vous avez beaucoup de contenu à reprendre (10+ pages), prévoyez 30 à 50 % en plus pour la partie rédaction.",
+      },
       { type: "h2", text: "Combien de temps prévoir ?" },
-      { type: "p", text: "Une refonte propre prend 2 à 6 semaines selon la complexité et la réactivité aux validations. Méfiez-vous des promesses de '48 heures pour une refonte complète' — c'est compatible avec un site neuf, pas avec une refonte qui doit préserver le référencement existant." },
+      {
+        type: "p",
+        text: "Une refonte propre prend 2 à 6 semaines selon la complexité et la réactivité aux validations. Méfiez-vous des promesses de '48 heures pour une refonte complète' — c'est compatible avec un site neuf, pas avec une refonte qui doit préserver le référencement existant.",
+      },
       { type: "h2", text: "Faire le bon choix de prestataire" },
-      { type: "p", text: "Posez 3 questions : 'Comment gérez-vous les redirections SEO ?', 'Puis-je voir 2 ou 3 refontes que vous avez faites pour des artisans ?', 'Que se passe-t-il si je veux changer de prestataire dans 2 ans ?'. Les réponses à ces 3 questions vous diront 90 % de ce que vous devez savoir." },
+      {
+        type: "p",
+        text: "Posez 3 questions : 'Comment gérez-vous les redirections SEO ?', 'Puis-je voir 2 ou 3 refontes que vous avez faites pour des artisans ?', 'Que se passe-t-il si je veux changer de prestataire dans 2 ans ?'. Les réponses à ces 3 questions vous diront 90 % de ce que vous devez savoir.",
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "Combien de temps pour récupérer son trafic SEO après refonte ?", a: "Avec une refonte bien menée (redirections 301, contenu préservé) : 4 à 12 semaines de léger creux puis dépassement. Avec une refonte bâclée : 6 à 18 mois pour revenir au niveau initial." },
-        { q: "Peut-on refondre sans changer de nom de domaine ?", a: "Oui, et c'est même fortement recommandé : conserver le domaine préserve l'historique SEO et la confiance Google. Le changement de domaine n'a de sens qu'en cas de renommage de l'entreprise." },
-        { q: "Faut-il prévenir Google d'une refonte ?", a: "Oui : soumettre le nouveau sitemap XML dans Google Search Console et marquer les URLs supprimées. Aucune notification 'officielle' à Google ; les bons signaux techniques suffisent." },
-        { q: "Combien d'années avant la prochaine refonte ?", a: "3 à 5 ans en moyenne. Les sites maintenus régulièrement (1-2 améliorations/an) tiennent jusqu'à 7 ans. Sans maintenance, 2-3 ans suffisent à devenir obsolète." },
-        { q: "Garder l'ancien hébergeur ou changer ?", a: "À évaluer : si l'hébergement actuel est lent (TTFB > 800 ms) ou peu fiable, profitez de la refonte pour migrer. Un changement d'hébergeur n'a aucun impact SEO négatif s'il est bien fait." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Combien de temps pour récupérer son trafic SEO après refonte ?",
+            a: "Avec une refonte bien menée (redirections 301, contenu préservé) : 4 à 12 semaines de léger creux puis dépassement. Avec une refonte bâclée : 6 à 18 mois pour revenir au niveau initial.",
+          },
+          {
+            q: "Peut-on refondre sans changer de nom de domaine ?",
+            a: "Oui, et c'est même fortement recommandé : conserver le domaine préserve l'historique SEO et la confiance Google. Le changement de domaine n'a de sens qu'en cas de renommage de l'entreprise.",
+          },
+          {
+            q: "Faut-il prévenir Google d'une refonte ?",
+            a: "Oui : soumettre le nouveau sitemap XML dans Google Search Console et marquer les URLs supprimées. Aucune notification 'officielle' à Google ; les bons signaux techniques suffisent.",
+          },
+          {
+            q: "Combien d'années avant la prochaine refonte ?",
+            a: "3 à 5 ans en moyenne. Les sites maintenus régulièrement (1-2 améliorations/an) tiennent jusqu'à 7 ans. Sans maintenance, 2-3 ans suffisent à devenir obsolète.",
+          },
+          {
+            q: "Garder l'ancien hébergeur ou changer ?",
+            a: "À évaluer : si l'hébergement actuel est lent (TTFB > 800 ms) ou peu fiable, profitez de la refonte pour migrer. Un changement d'hébergeur n'a aucun impact SEO négatif s'il est bien fait.",
+          },
+        ],
+      },
       { type: "h2", text: "Sitaly, refonte clé en main" },
-      { type: "p", text: "Nous gérons aussi les refontes : audit gratuit, conservation du SEO, livraison sous 2 à 3 semaines. À partir de 149€/mois en location, sans engagement. Réservez un appel pour un diagnostic gratuit de votre site actuel." },
+      {
+        type: "p",
+        text: "Nous gérons aussi les refontes : audit gratuit, conservation du SEO, livraison sous 2 à 3 semaines. À partir de 149€/mois en location, sans engagement. Réservez un appel pour un diagnostic gratuit de votre site actuel.",
+      },
     ],
   },
   {
@@ -1193,26 +2238,54 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "google ads artisan rentable",
     content: [
-      { type: "p", text: "En 2026, attendre 6 mois que le référencement naturel décolle est un luxe que peu d'artisans peuvent se permettre. Pendant ce temps, les concurrents qui paient Google captent les demandes urgentes, les premiers contacts, les chantiers qui font tourner l'entreprise. Google Ads n'est pas une option marketing parmi d'autres pour un artisan : c'est le levier le plus rapide pour transformer un site neuf en machine à appels. À condition de ne pas tomber dans les pièges classiques." },
+      {
+        type: "p",
+        text: "En 2026, attendre 6 mois que le référencement naturel décolle est un luxe que peu d'artisans peuvent se permettre. Pendant ce temps, les concurrents qui paient Google captent les demandes urgentes, les premiers contacts, les chantiers qui font tourner l'entreprise. Google Ads n'est pas une option marketing parmi d'autres pour un artisan : c'est le levier le plus rapide pour transformer un site neuf en machine à appels. À condition de ne pas tomber dans les pièges classiques.",
+      },
       { type: "h2", text: "Pourquoi Google Ads change tout pour un artisan" },
-      { type: "p", text: "Le référencement naturel est un marathon : 3 à 6 mois pour apparaître dans le top 10, 6 à 12 mois pour viser le top 3 local sur les requêtes concurrentielles. Google Ads est un sprint : votre annonce peut être en ligne en 48 heures et générer son premier appel dans la semaine. Pour un artisan qui démarre, qui sort d'une mauvaise saison, ou qui lance une nouvelle prestation, c'est le seul levier capable de générer du chiffre d'affaires immédiat." },
-      { type: "p", text: "Plus important encore : Google Ads cible l'intention. Quand quelqu'un tape « plombier urgence Lyon 7 », il ne fait pas de la veille, il a une fuite. Vous payez quelques euros pour apparaître devant un prospect qui veut signer aujourd'hui. C'est radicalement différent de Facebook Ads, où vous interrompez quelqu'un qui scrolle son fil d'actualité." },
+      {
+        type: "p",
+        text: "Le référencement naturel est un marathon : 3 à 6 mois pour apparaître dans le top 10, 6 à 12 mois pour viser le top 3 local sur les requêtes concurrentielles. Google Ads est un sprint : votre annonce peut être en ligne en 48 heures et générer son premier appel dans la semaine. Pour un artisan qui démarre, qui sort d'une mauvaise saison, ou qui lance une nouvelle prestation, c'est le seul levier capable de générer du chiffre d'affaires immédiat.",
+      },
+      {
+        type: "p",
+        text: "Plus important encore : Google Ads cible l'intention. Quand quelqu'un tape « plombier urgence Lyon 7 », il ne fait pas de la veille, il a une fuite. Vous payez quelques euros pour apparaître devant un prospect qui veut signer aujourd'hui. C'est radicalement différent de Facebook Ads, où vous interrompez quelqu'un qui scrolle son fil d'actualité.",
+      },
       { type: "h2", text: "Les 4 cas où Google Ads est indispensable" },
-      { type: "ul", items: [
-        "Vous venez de lancer votre activité et le SEO mettra plusieurs mois à porter ses fruits",
-        "Vous voulez tester une nouvelle prestation (IRVE, isolation, dressing sur mesure...) avant d'investir en SEO dessus",
-        "Votre activité est saisonnière (climatisation, chauffage, terrasse) et vous voulez capter le pic à l'instant T",
-        "Vous voulez sortir d'une zone de bouche-à-oreille et conquérir un nouveau secteur géographique",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Vous venez de lancer votre activité et le SEO mettra plusieurs mois à porter ses fruits",
+          "Vous voulez tester une nouvelle prestation (IRVE, isolation, dressing sur mesure...) avant d'investir en SEO dessus",
+          "Votre activité est saisonnière (climatisation, chauffage, terrasse) et vous voulez capter le pic à l'instant T",
+          "Vous voulez sortir d'une zone de bouche-à-oreille et conquérir un nouveau secteur géographique",
+        ],
+      },
       { type: "h2", text: "Le préalable que tout le monde oublie : un bon site" },
-      { type: "p", text: "Voici la règle d'or que 90 % des artisans découvrent trop tard : Google Ads sans un bon site, c'est jeter son argent. Si votre annonce génère 100 clics à 2€ pièce mais que votre site convertit seulement 1 % des visiteurs (parce qu'il rame, qu'il n'est pas mobile, ou que le numéro est introuvable), vous avez payé 200€ pour 1 appel. Avec un site bien conçu qui convertit à 8 %, ces mêmes 100 clics rapportent 8 appels — soit un coût par appel divisé par 8." },
-      { type: "p", text: "C'est précisément pour cette raison que Sitaly insiste pour livrer d'abord un site optimisé conversion avant de lancer la moindre campagne Google Ads. Faire l'inverse, c'est se condamner à un ROI catastrophique et conclure à tort que « Google Ads ne marche pas »." },
-      { type: "quote", text: "Lancer Google Ads sans un site qui convertit, c'est comme remplir une baignoire sans bouchon — l'argent s'écoule en temps réel." },
+      {
+        type: "p",
+        text: "Voici la règle d'or que 90 % des artisans découvrent trop tard : Google Ads sans un bon site, c'est jeter son argent. Si votre annonce génère 100 clics à 2€ pièce mais que votre site convertit seulement 1 % des visiteurs (parce qu'il rame, qu'il n'est pas mobile, ou que le numéro est introuvable), vous avez payé 200€ pour 1 appel. Avec un site bien conçu qui convertit à 8 %, ces mêmes 100 clics rapportent 8 appels — soit un coût par appel divisé par 8.",
+      },
+      {
+        type: "p",
+        text: "C'est précisément pour cette raison que Sitaly insiste pour livrer d'abord un site optimisé conversion avant de lancer la moindre campagne Google Ads. Faire l'inverse, c'est se condamner à un ROI catastrophique et conclure à tort que « Google Ads ne marche pas ».",
+      },
+      {
+        type: "quote",
+        text: "Lancer Google Ads sans un site qui convertit, c'est comme remplir une baignoire sans bouchon — l'argent s'écoule en temps réel.",
+      },
       { type: "h2", text: "Exemple chiffré : un menuisier en région parisienne" },
-      { type: "p", text: "Un menuisier accompagné par Sitaly (formule Acquisition : site optimisé + gestion Google Ads) a lancé une campagne à 400€/mois de budget sur les requêtes « dressing sur mesure + ville ». Résultat sur 90 jours : 87 clics, taux de conversion 9 %, 8 demandes de devis, 4 chantiers signés à 4 200€ en moyenne. Soit 16 800€ de CA pour 1 200€ de budget publicitaire sur le trimestre, un retour sur investissement de 14x, mesuré et reproductible." },
-      { type: "p", text: "Sans le site refait au préalable, le même budget aurait probablement généré 2 à 3 fois moins de devis, et le menuisier aurait conclu à tort que Google Ads ne fonctionne pas dans son secteur." },
+      {
+        type: "p",
+        text: "Un menuisier accompagné par Sitaly (formule Acquisition : site optimisé + gestion Google Ads) a lancé une campagne à 400€/mois de budget sur les requêtes « dressing sur mesure + ville ». Résultat sur 90 jours : 87 clics, taux de conversion 9 %, 8 demandes de devis, 4 chantiers signés à 4 200€ en moyenne. Soit 16 800€ de CA pour 1 200€ de budget publicitaire sur le trimestre, un retour sur investissement de 14x, mesuré et reproductible.",
+      },
+      {
+        type: "p",
+        text: "Sans le site refait au préalable, le même budget aurait probablement généré 2 à 3 fois moins de devis, et le menuisier aurait conclu à tort que Google Ads ne fonctionne pas dans son secteur.",
+      },
       { type: "h2", text: "SEO vs Google Ads : ce qu'ils apportent vraiment" },
-      { type: "table",
+      {
+        type: "table",
         headers: ["Critère", "SEO (référencement naturel)", "Google Ads (SEA)"],
         rows: [
           ["Délai pour les 1ers appels", "3 à 6 mois", "24 à 72 heures"],
@@ -1224,32 +2297,74 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
       { type: "h2", text: "Combien investir au démarrage ?" },
-      { type: "p", text: "Pour un artisan, un budget de démarrage cohérent se situe entre 300 et 600€/mois sur les 3 premiers mois. C'est suffisant pour collecter de la donnée, identifier les mots-clés qui convertissent et écarter ceux qui brûlent du budget. En dessous de 200€/mois, Google manque de signaux pour optimiser la campagne — vous payez sans apprendre." },
-      { type: "p", text: "Au-delà de 3 mois, le budget s'ajuste sur la base du ROI mesuré. Si chaque euro investi rapporte 5€ de CA, vous pouvez monter à 1 000 ou 2 000€/mois sereinement. Si le ROI est inférieur à 2x, on optimise ou on coupe — pas de fuite en avant." },
+      {
+        type: "p",
+        text: "Pour un artisan, un budget de démarrage cohérent se situe entre 300 et 600€/mois sur les 3 premiers mois. C'est suffisant pour collecter de la donnée, identifier les mots-clés qui convertissent et écarter ceux qui brûlent du budget. En dessous de 200€/mois, Google manque de signaux pour optimiser la campagne — vous payez sans apprendre.",
+      },
+      {
+        type: "p",
+        text: "Au-delà de 3 mois, le budget s'ajuste sur la base du ROI mesuré. Si chaque euro investi rapporte 5€ de CA, vous pouvez monter à 1 000 ou 2 000€/mois sereinement. Si le ROI est inférieur à 2x, on optimise ou on coupe — pas de fuite en avant.",
+      },
       { type: "h2", text: "Les 5 erreurs qui ruinent une campagne Google Ads d'artisan" },
-      { type: "ul", items: [
-        "Lancer en mode « campagne intelligente » sans surveillance — Google dépense large sur des requêtes peu qualifiées",
-        "Diriger les annonces vers la page d'accueil au lieu d'une page dédiée à la prestation",
-        "Ne pas exclure les mots-clés négatifs (gratuit, formation, emploi, DIY...) — 30 à 50 % du budget peut partir là-dedans",
-        "Ne pas mesurer les appels (suivi téléphonique non configuré) — impossible de savoir ce qui marche",
-        "Vouloir gérer soi-même sans formation, perdre 2 à 3 mois et 1 500€ avant d'appeler un pro",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Lancer en mode « campagne intelligente » sans surveillance — Google dépense large sur des requêtes peu qualifiées",
+          "Diriger les annonces vers la page d'accueil au lieu d'une page dédiée à la prestation",
+          "Ne pas exclure les mots-clés négatifs (gratuit, formation, emploi, DIY...) — 30 à 50 % du budget peut partir là-dedans",
+          "Ne pas mesurer les appels (suivi téléphonique non configuré) — impossible de savoir ce qui marche",
+          "Vouloir gérer soi-même sans formation, perdre 2 à 3 mois et 1 500€ avant d'appeler un pro",
+        ],
+      },
       { type: "h2", text: "Faut-il gérer ses Ads soi-même ou faire appel à un pro ?" },
-      { type: "p", text: "Techniquement, créer une campagne Google Ads est à la portée de n'importe qui en 30 minutes. La rendre rentable demande plusieurs années d'expérience. Un compte mal optimisé brûle typiquement 40 à 60 % du budget en clics non qualifiés. Au tarif moyen de 1 à 3€ le clic en BTP, sur un budget de 500€/mois, ce sont 200 à 300€ qui partent en pure perte chaque mois — soit 2 400 à 3 600€/an." },
-      { type: "p", text: "Un prestataire spécialisé coûte généralement 200 à 500€/mois de gestion. Si vous récupérez ne serait-ce que 30 % d'efficacité, l'opération est rentable dès le premier mois. La vraie question n'est pas « est-ce que ça vaut le coût ? » mais « combien je perds chaque mois sans ? »." },
+      {
+        type: "p",
+        text: "Techniquement, créer une campagne Google Ads est à la portée de n'importe qui en 30 minutes. La rendre rentable demande plusieurs années d'expérience. Un compte mal optimisé brûle typiquement 40 à 60 % du budget en clics non qualifiés. Au tarif moyen de 1 à 3€ le clic en BTP, sur un budget de 500€/mois, ce sont 200 à 300€ qui partent en pure perte chaque mois — soit 2 400 à 3 600€/an.",
+      },
+      {
+        type: "p",
+        text: "Un prestataire spécialisé coûte généralement 200 à 500€/mois de gestion. Si vous récupérez ne serait-ce que 30 % d'efficacité, l'opération est rentable dès le premier mois. La vraie question n'est pas « est-ce que ça vaut le coût ? » mais « combien je perds chaque mois sans ? ».",
+      },
       { type: "h2", text: "Comment Sitaly gère vos campagnes Google Ads" },
-      { type: "p", text: "Notre approche est radicalement différente : nous ne lançons jamais Google Ads sans avoir d'abord vérifié (ou refait) le site. Un site rapide, mobile, avec un téléphone cliquable et un formulaire court convertit 3 à 5 fois mieux qu'un site moyen. C'est là que se joue la rentabilité d'une campagne." },
-      { type: "p", text: "Ensuite, nous configurons des campagnes étroitement géolocalisées, avec un suivi des appels précis, des mots-clés négatifs musclés et des pages d'atterrissage dédiées par prestation. Chaque mois, vous recevez un rapport clair : combien dépensé, combien d'appels, quel coût par appel, quel CA attribué. Pas de boîte noire — vous voyez exactement où va chaque euro." },
+      {
+        type: "p",
+        text: "Notre approche est radicalement différente : nous ne lançons jamais Google Ads sans avoir d'abord vérifié (ou refait) le site. Un site rapide, mobile, avec un téléphone cliquable et un formulaire court convertit 3 à 5 fois mieux qu'un site moyen. C'est là que se joue la rentabilité d'une campagne.",
+      },
+      {
+        type: "p",
+        text: "Ensuite, nous configurons des campagnes étroitement géolocalisées, avec un suivi des appels précis, des mots-clés négatifs musclés et des pages d'atterrissage dédiées par prestation. Chaque mois, vous recevez un rapport clair : combien dépensé, combien d'appels, quel coût par appel, quel CA attribué. Pas de boîte noire — vous voyez exactement où va chaque euro.",
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "Combien de temps avant de voir les premiers appels Google Ads ?", a: "24 à 72 heures après la mise en ligne de la campagne. Le 1er appel arrive souvent dès la 1ère semaine. La phase d'optimisation prend 4 à 8 semaines pour stabiliser le coût par appel." },
-        { q: "Quel budget minimum pour un artisan ?", a: "300€/mois est le plancher pour collecter assez de données. 500€/mois est un démarrage confortable. En dessous de 200€, vous payez sans apprendre." },
-        { q: "Google Ads marche aussi pour les artisans en zone rurale ?", a: "Oui, et c'est souvent plus rentable qu'en grande ville : moins de concurrence, donc clics moins chers (parfois 0,30 à 0,80€ contre 2 à 4€ à Paris). Idéal pour un artisan local." },
-        { q: "Peut-on cumuler Google Ads et SEO ?", a: "C'est même la stratégie la plus rentable : Ads pour les appels immédiats, SEO pour construire un actif long terme. Sitaly travaille les deux en parallèle dès le départ." },
-        { q: "Que se passe-t-il si j'arrête Google Ads ?", a: "Les appels payants s'arrêtent immédiatement. C'est pour ça qu'il faut investir en parallèle dans le SEO pour ne pas dépendre à 100 % du robinet payant." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Combien de temps avant de voir les premiers appels Google Ads ?",
+            a: "24 à 72 heures après la mise en ligne de la campagne. Le 1er appel arrive souvent dès la 1ère semaine. La phase d'optimisation prend 4 à 8 semaines pour stabiliser le coût par appel.",
+          },
+          {
+            q: "Quel budget minimum pour un artisan ?",
+            a: "300€/mois est le plancher pour collecter assez de données. 500€/mois est un démarrage confortable. En dessous de 200€, vous payez sans apprendre.",
+          },
+          {
+            q: "Google Ads marche aussi pour les artisans en zone rurale ?",
+            a: "Oui, et c'est souvent plus rentable qu'en grande ville : moins de concurrence, donc clics moins chers (parfois 0,30 à 0,80€ contre 2 à 4€ à Paris). Idéal pour un artisan local.",
+          },
+          {
+            q: "Peut-on cumuler Google Ads et SEO ?",
+            a: "C'est même la stratégie la plus rentable : Ads pour les appels immédiats, SEO pour construire un actif long terme. Sitaly travaille les deux en parallèle dès le départ.",
+          },
+          {
+            q: "Que se passe-t-il si j'arrête Google Ads ?",
+            a: "Les appels payants s'arrêtent immédiatement. C'est pour ça qu'il faut investir en parallèle dans le SEO pour ne pas dépendre à 100 % du robinet payant.",
+          },
+        ],
+      },
       { type: "h2", text: "Sitaly : site + Google Ads, le combo gagnant" },
-      { type: "p", text: "Site sur mesure livré en 48h, optimisé pour la conversion, puis campagnes Google Ads gérées par nos soins avec reporting mensuel transparent. C'est la combinaison qui transforme un artisan invisible en référence locale sur 6 à 12 mois. Réservez un appel gratuit pour qu'on étudie ensemble votre potentiel sur votre zone." },
+      {
+        type: "p",
+        text: "Site sur mesure livré en 48h, optimisé pour la conversion, puis campagnes Google Ads gérées par nos soins avec reporting mensuel transparent. C'est la combinaison qui transforme un artisan invisible en référence locale sur 6 à 12 mois. Réservez un appel gratuit pour qu'on étudie ensemble votre potentiel sur votre zone.",
+      },
     ],
   },
   {
@@ -1266,63 +2381,132 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "google ads vs seo",
     content: [
-      { type: "p", text: "C'est la question que tout artisan se pose à un moment ou un autre : « Je dois investir dans le SEO ou plutôt payer Google Ads ? ». La réponse courte : ça dépend de votre horizon, de votre trésorerie et de votre objectif. La réponse longue — et honnête — c'est qu'opposer les deux est une erreur. Les artisans qui réussissent le mieux combinent les deux intelligemment. On vous explique pourquoi, et comment arbitrer si vous devez choisir." },
+      {
+        type: "p",
+        text: "C'est la question que tout artisan se pose à un moment ou un autre : « Je dois investir dans le SEO ou plutôt payer Google Ads ? ». La réponse courte : ça dépend de votre horizon, de votre trésorerie et de votre objectif. La réponse longue — et honnête — c'est qu'opposer les deux est une erreur. Les artisans qui réussissent le mieux combinent les deux intelligemment. On vous explique pourquoi, et comment arbitrer si vous devez choisir.",
+      },
       { type: "h2", text: "SEO et Google Ads : deux logiques opposées" },
-      { type: "p", text: "Le référencement naturel (SEO) consiste à optimiser votre site pour qu'il apparaisse dans les résultats gratuits de Google sur des requêtes du type « plombier Lyon 3 ». Vous ne payez rien à Google par clic — l'investissement initial finance la création du site, son optimisation technique, son contenu et son maillage local. Une fois en place, chaque appel est quasi gratuit." },
-      { type: "p", text: "Google Ads (le SEA) consiste à payer Google pour apparaître en haut des résultats sous forme d'annonces sponsorisées. Vous payez chaque clic, généralement entre 1 et 4€ pour un artisan. Avantage : la visibilité est immédiate. Inconvénient : si vous coupez le robinet, tout s'arrête en 24h." },
+      {
+        type: "p",
+        text: "Le référencement naturel (SEO) consiste à optimiser votre site pour qu'il apparaisse dans les résultats gratuits de Google sur des requêtes du type « plombier Lyon 3 ». Vous ne payez rien à Google par clic — l'investissement initial finance la création du site, son optimisation technique, son contenu et son maillage local. Une fois en place, chaque appel est quasi gratuit.",
+      },
+      {
+        type: "p",
+        text: "Google Ads (le SEA) consiste à payer Google pour apparaître en haut des résultats sous forme d'annonces sponsorisées. Vous payez chaque clic, généralement entre 1 et 4€ pour un artisan. Avantage : la visibilité est immédiate. Inconvénient : si vous coupez le robinet, tout s'arrête en 24h.",
+      },
       { type: "h2", text: "Tableau comparatif SEO vs Google Ads pour artisan" },
-      { type: "table",
+      {
+        type: "table",
         headers: ["Critère", "SEO", "Google Ads"],
         rows: [
           ["Visibilité immédiate", "Non (3 à 6 mois)", "Oui (24 à 72h)"],
           ["Coût initial", "1 500 à 4 000€ (site + SEO)", "Faible (200 à 500€ test)"],
-          ["Coût récurrent", "Faible (hébergement, maintenance)", "300 à 2 000€/mois selon ambition"],
+          [
+            "Coût récurrent",
+            "Faible (hébergement, maintenance)",
+            "300 à 2 000€/mois selon ambition",
+          ],
           ["Coût par appel après 12 mois", "1 à 5€ en moyenne", "15 à 40€ en moyenne"],
           ["Pérennité (si on coupe)", "Trafic continue plusieurs années", "Tout s'arrête en 24h"],
           ["Maîtrise fine du ciblage", "Limitée", "Très précise (mots-clés, horaires, villes)"],
           ["Adapté aux urgences", "Oui (top 3 local)", "Excellent (top 1 garanti)"],
           ["Capacité à pivoter rapidement", "Lente (mois)", "Immédiate (heures)"],
-          ["Confiance perçue par le client", "Élevée (résultats organiques)", "Moyenne (annonces sponsorisées)"],
+          [
+            "Confiance perçue par le client",
+            "Élevée (résultats organiques)",
+            "Moyenne (annonces sponsorisées)",
+          ],
         ],
       },
       { type: "h2", text: "Quand privilégier le SEO" },
-      { type: "ul", items: [
-        "Vous êtes patient et vous voulez construire un actif long terme qui rapporte pendant des années",
-        "Votre trésorerie ne permet pas de mettre 500€/mois en publicité",
-        "Votre zone géographique est peu concurrentielle (campagne, petite ville)",
-        "Vous voulez maîtriser votre image de marque et la confiance perçue",
-        "Vous avez déjà du bouche-à-oreille — le SEO consolide votre notoriété locale",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Vous êtes patient et vous voulez construire un actif long terme qui rapporte pendant des années",
+          "Votre trésorerie ne permet pas de mettre 500€/mois en publicité",
+          "Votre zone géographique est peu concurrentielle (campagne, petite ville)",
+          "Vous voulez maîtriser votre image de marque et la confiance perçue",
+          "Vous avez déjà du bouche-à-oreille — le SEO consolide votre notoriété locale",
+        ],
+      },
       { type: "h2", text: "Quand privilégier Google Ads" },
-      { type: "ul", items: [
-        "Vous venez de démarrer et vous avez besoin d'appels dès demain",
-        "Vous lancez une nouvelle prestation à tester (IRVE, isolation, dressing) avant d'y investir en SEO",
-        "Votre activité est saisonnière et vous voulez capter le pic d'intérêt à l'instant T",
-        "Vos concurrents dominent le SEO local et vous ne pouvez pas attendre 12 mois",
-        "Vous voulez tester un nouveau secteur géographique avant d'y ouvrir un bureau",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Vous venez de démarrer et vous avez besoin d'appels dès demain",
+          "Vous lancez une nouvelle prestation à tester (IRVE, isolation, dressing) avant d'y investir en SEO",
+          "Votre activité est saisonnière et vous voulez capter le pic d'intérêt à l'instant T",
+          "Vos concurrents dominent le SEO local et vous ne pouvez pas attendre 12 mois",
+          "Vous voulez tester un nouveau secteur géographique avant d'y ouvrir un bureau",
+        ],
+      },
       { type: "h2", text: "La vraie réponse : combiner les deux" },
-      { type: "p", text: "Les artisans les plus rentables que nous accompagnons font les deux. Pourquoi ? Parce que SEO et Google Ads ne s'adressent pas tout à fait au même prospect au même moment. Google Ads capte les requêtes ultra-commerciales (« plombier urgence Lyon ») où être premier garantit l'appel. Le SEO capte les recherches plus larges (« comment réparer fuite chasse d'eau », « refaire toiture ardoise prix ») où vous construisez votre crédibilité et récupérez du trafic au coût marginal zéro." },
-      { type: "p", text: "Sur 12 mois, la stratégie combinée donne typiquement ce profil : 60 à 70 % des appels viennent du SEO (gratuits), 30 à 40 % viennent de Google Ads (payants mais immédiats). Le mois 1, c'est 90 % Ads / 10 % SEO. Le mois 12, c'est inversé. Pendant tout ce temps, votre chiffre d'affaires ne s'arrête jamais." },
+      {
+        type: "p",
+        text: "Les artisans les plus rentables que nous accompagnons font les deux. Pourquoi ? Parce que SEO et Google Ads ne s'adressent pas tout à fait au même prospect au même moment. Google Ads capte les requêtes ultra-commerciales (« plombier urgence Lyon ») où être premier garantit l'appel. Le SEO capte les recherches plus larges (« comment réparer fuite chasse d'eau », « refaire toiture ardoise prix ») où vous construisez votre crédibilité et récupérez du trafic au coût marginal zéro.",
+      },
+      {
+        type: "p",
+        text: "Sur 12 mois, la stratégie combinée donne typiquement ce profil : 60 à 70 % des appels viennent du SEO (gratuits), 30 à 40 % viennent de Google Ads (payants mais immédiats). Le mois 1, c'est 90 % Ads / 10 % SEO. Le mois 12, c'est inversé. Pendant tout ce temps, votre chiffre d'affaires ne s'arrête jamais.",
+      },
       { type: "h2", text: "Exemple chiffré sur 12 mois : un électricien à Nantes" },
-      { type: "p", text: "Investissement total année 1 : Sitaly Présence + Sitaly Acquisition à 448€/mois (site + gestion Google Ads) plus 500€/mois de budget publicitaire, soit 11 376€ sur l'année. Résultat mesuré : 78 appels SEO sur l'année (presque tous arrivés au S2 après que le site soit bien référencé), 142 appels Google Ads (réguliers tout au long de l'année). Total : 220 appels qualifiés, dont 88 chantiers signés à 1 850€ de marge moyenne. CA généré : 162 800€. ROI : 14x." },
-      { type: "p", text: "Sans Google Ads, l'électricien aurait fait probablement 80 appels SEO sur l'année — mais 0 le 1er trimestre, période critique pour sa trésorerie de démarrage. Sans SEO, il aurait dépensé 6 000€ en Ads pour 142 appels, soit un coût par appel de 42€ — viable mais beaucoup moins rentable que la stratégie combinée." },
+      {
+        type: "p",
+        text: "Investissement total année 1 : Sitaly Présence + Sitaly Acquisition à 448€/mois (site + gestion Google Ads) plus 500€/mois de budget publicitaire, soit 11 376€ sur l'année. Résultat mesuré : 78 appels SEO sur l'année (presque tous arrivés au S2 après que le site soit bien référencé), 142 appels Google Ads (réguliers tout au long de l'année). Total : 220 appels qualifiés, dont 88 chantiers signés à 1 850€ de marge moyenne. CA généré : 162 800€. ROI : 14x.",
+      },
+      {
+        type: "p",
+        text: "Sans Google Ads, l'électricien aurait fait probablement 80 appels SEO sur l'année — mais 0 le 1er trimestre, période critique pour sa trésorerie de démarrage. Sans SEO, il aurait dépensé 6 000€ en Ads pour 142 appels, soit un coût par appel de 42€ — viable mais beaucoup moins rentable que la stratégie combinée.",
+      },
       { type: "h2", text: "Le préalable absolu : un site qui convertit" },
-      { type: "p", text: "Que vous choisissiez SEO, Ads ou les deux, le facteur multiplicateur (ou divisor) reste le même : votre site. Avec un site qui convertit à 8 % au lieu de 1,5 %, vous générez 5 fois plus d'appels pour la même visibilité. Investir dans Google Ads sur un mauvais site, c'est payer pour amener des prospects qui repartent immédiatement. Investir dans le SEO sur un mauvais site, c'est attendre 6 mois pour découvrir que ça ne convertit pas." },
-      { type: "quote", text: "Le site est l'usine. Le SEO et Google Ads sont les routes qui y amènent les clients. Sans usine, peu importe les routes." },
+      {
+        type: "p",
+        text: "Que vous choisissiez SEO, Ads ou les deux, le facteur multiplicateur (ou divisor) reste le même : votre site. Avec un site qui convertit à 8 % au lieu de 1,5 %, vous générez 5 fois plus d'appels pour la même visibilité. Investir dans Google Ads sur un mauvais site, c'est payer pour amener des prospects qui repartent immédiatement. Investir dans le SEO sur un mauvais site, c'est attendre 6 mois pour découvrir que ça ne convertit pas.",
+      },
+      {
+        type: "quote",
+        text: "Le site est l'usine. Le SEO et Google Ads sont les routes qui y amènent les clients. Sans usine, peu importe les routes.",
+      },
       { type: "h2", text: "Comment Sitaly orchestre les deux" },
-      { type: "p", text: "Notre méthode : on commence systématiquement par le site (livré en 48h, optimisé conversion et SEO local). Dès la mise en ligne, on active une campagne Google Ads ciblée pour générer du chiffre d'affaires immédiat pendant que le SEO monte en puissance. Au bout de 6 à 12 mois, le SEO prend le relais sur 60 à 70 % des appels et le budget Ads peut être réduit ou réinvesti sur de nouvelles prestations." },
-      { type: "p", text: "C'est cette articulation qui fait toute la différence : ni 100 % SEO (trop lent), ni 100 % Ads (trop fragile), mais une stratégie qui maximise le ROI sur 12 mois et au-delà." },
+      {
+        type: "p",
+        text: "Notre méthode : on commence systématiquement par le site (livré en 48h, optimisé conversion et SEO local). Dès la mise en ligne, on active une campagne Google Ads ciblée pour générer du chiffre d'affaires immédiat pendant que le SEO monte en puissance. Au bout de 6 à 12 mois, le SEO prend le relais sur 60 à 70 % des appels et le budget Ads peut être réduit ou réinvesti sur de nouvelles prestations.",
+      },
+      {
+        type: "p",
+        text: "C'est cette articulation qui fait toute la différence : ni 100 % SEO (trop lent), ni 100 % Ads (trop fragile), mais une stratégie qui maximise le ROI sur 12 mois et au-delà.",
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "Si je n'ai qu'un seul budget, je choisis quoi ?", a: "Si vous démarrez et avez besoin d'appels rapidement : Google Ads en priorité. Si vous avez déjà du bouche-à-oreille et voulez construire long terme : SEO en priorité. Idéalement, on fait les deux." },
-        { q: "Combien de temps avant que le SEO compense le coût des Ads ?", a: "En moyenne 6 à 9 mois pour un artisan local. À partir de là, vous pouvez réduire progressivement le budget Ads sans perdre de chiffre d'affaires." },
-        { q: "Les annonces Google Ads ne font-elles pas fuir les clients méfiants ?", a: "Une minorité de prospects préfèrent les résultats organiques. Mais sur les requêtes d'urgence (« plombier urgence »), 60 à 70 % cliquent sur les 3 premières annonces sans distinguer. Le risque est mineur." },
-        { q: "Google Ads améliore-t-il mon SEO ?", a: "Indirectement : Google Ads génère du trafic, des appels, des avis, des recherches de marque. Tous ces signaux renforcent votre SEO local sur 6 à 12 mois. Mais ce n'est pas un effet direct sur le classement." },
-        { q: "Quel budget global mensuel viser pour un artisan ?", a: "Pour un artisan qui veut vraiment décoller : Sitaly Présence + Sitaly Acquisition à partir de 448€/mois (site + gestion Google Ads) plus 300 à 500€/mois de budget publicitaire. ROI typique 10 à 25x sur 12 mois si le site convertit bien." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Si je n'ai qu'un seul budget, je choisis quoi ?",
+            a: "Si vous démarrez et avez besoin d'appels rapidement : Google Ads en priorité. Si vous avez déjà du bouche-à-oreille et voulez construire long terme : SEO en priorité. Idéalement, on fait les deux.",
+          },
+          {
+            q: "Combien de temps avant que le SEO compense le coût des Ads ?",
+            a: "En moyenne 6 à 9 mois pour un artisan local. À partir de là, vous pouvez réduire progressivement le budget Ads sans perdre de chiffre d'affaires.",
+          },
+          {
+            q: "Les annonces Google Ads ne font-elles pas fuir les clients méfiants ?",
+            a: "Une minorité de prospects préfèrent les résultats organiques. Mais sur les requêtes d'urgence (« plombier urgence »), 60 à 70 % cliquent sur les 3 premières annonces sans distinguer. Le risque est mineur.",
+          },
+          {
+            q: "Google Ads améliore-t-il mon SEO ?",
+            a: "Indirectement : Google Ads génère du trafic, des appels, des avis, des recherches de marque. Tous ces signaux renforcent votre SEO local sur 6 à 12 mois. Mais ce n'est pas un effet direct sur le classement.",
+          },
+          {
+            q: "Quel budget global mensuel viser pour un artisan ?",
+            a: "Pour un artisan qui veut vraiment décoller : Sitaly Présence + Sitaly Acquisition à partir de 448€/mois (site + gestion Google Ads) plus 300 à 500€/mois de budget publicitaire. ROI typique 10 à 25x sur 12 mois si le site convertit bien.",
+          },
+        ],
+      },
       { type: "h2", text: "Sitaly : site + SEO + Google Ads, le trio gagnant" },
-      { type: "p", text: "Nous concevons votre site (à partir de 149€/mois en location), optimisons votre SEO local et gérons vos campagnes Google Ads de A à Z. Une seule équipe, une stratégie cohérente, un reporting clair. Réservez un appel gratuit pour qu'on cadre votre stratégie acquisition sur les 12 prochains mois." },
+      {
+        type: "p",
+        text: "Nous concevons votre site (à partir de 149€/mois en location), optimisons votre SEO local et gérons vos campagnes Google Ads de A à Z. Une seule équipe, une stratégie cohérente, un reporting clair. Réservez un appel gratuit pour qu'on cadre votre stratégie acquisition sur les 12 prochains mois.",
+      },
     ],
   },
   {
@@ -1339,13 +2523,24 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "coût google ads artisan",
     content: [
-      { type: "p", text: "« Combien ça coûte vraiment Google Ads pour un artisan ? ». C'est la question la plus posée — et la moins bien répondue sur le web. La plupart des articles donnent des fourchettes floues du type « entre 200€ et 5 000€/mois » qui n'aident personne. Cet article donne les vrais chiffres : coût par clic par métier, budget mensuel cohérent selon votre objectif, coût par appel observé, frais cachés et exemples chiffrés concrets. À la fin, vous saurez précisément à quoi vous attendre." },
+      {
+        type: "p",
+        text: "« Combien ça coûte vraiment Google Ads pour un artisan ? ». C'est la question la plus posée — et la moins bien répondue sur le web. La plupart des articles donnent des fourchettes floues du type « entre 200€ et 5 000€/mois » qui n'aident personne. Cet article donne les vrais chiffres : coût par clic par métier, budget mensuel cohérent selon votre objectif, coût par appel observé, frais cachés et exemples chiffrés concrets. À la fin, vous saurez précisément à quoi vous attendre.",
+      },
       { type: "h2", text: "Comment Google Ads vous facture" },
-      { type: "p", text: "Google Ads fonctionne au CPC (coût par clic). Vous ne payez que lorsqu'un internaute clique sur votre annonce. Le prix de chaque clic dépend de la concurrence sur le mot-clé visé, de la qualité de votre annonce et de votre page de destination. Pour un artisan en France, le CPC moyen oscille entre 0,80€ (zones rurales, métiers peu concurrentiels) et 6€ (urgences en grande ville, métiers très demandés)." },
-      { type: "p", text: "À cela s'ajoutent éventuellement des frais de gestion si vous confiez vos campagnes à un prestataire (entre 200 et 600€/mois selon le périmètre). Le « budget total Google Ads » se décompose donc en deux : budget média (ce que vous donnez à Google) + frais de gestion (ce que vous donnez au prestataire). On les détaille séparément." },
+      {
+        type: "p",
+        text: "Google Ads fonctionne au CPC (coût par clic). Vous ne payez que lorsqu'un internaute clique sur votre annonce. Le prix de chaque clic dépend de la concurrence sur le mot-clé visé, de la qualité de votre annonce et de votre page de destination. Pour un artisan en France, le CPC moyen oscille entre 0,80€ (zones rurales, métiers peu concurrentiels) et 6€ (urgences en grande ville, métiers très demandés).",
+      },
+      {
+        type: "p",
+        text: "À cela s'ajoutent éventuellement des frais de gestion si vous confiez vos campagnes à un prestataire (entre 200 et 600€/mois selon le périmètre). Le « budget total Google Ads » se décompose donc en deux : budget média (ce que vous donnez à Google) + frais de gestion (ce que vous donnez au prestataire). On les détaille séparément.",
+      },
       { type: "h2", text: "Coût par clic moyen par métier d'artisan" },
-      { type: "table",
-        caption: "CPC moyens observés en France métropolitaine, hors grandes métropoles (multiplier par 1,5 à 2x à Paris, Lyon, Marseille).",
+      {
+        type: "table",
+        caption:
+          "CPC moyens observés en France métropolitaine, hors grandes métropoles (multiplier par 1,5 à 2x à Paris, Lyon, Marseille).",
         headers: ["Métier", "CPC bas", "CPC moyen", "CPC haut (urgences)"],
         rows: [
           ["Plombier", "1,20€", "2,40€", "5,50€"],
@@ -1359,11 +2554,24 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
       { type: "h2", text: "Combien d'appels pour un budget donné ?" },
-      { type: "p", text: "Avec un CPC moyen de 2€ et un taux de conversion site de 6 % (ce qu'on vise avec un site Sitaly), un budget de 300€/mois génère 150 clics → 9 demandes/appels. Un budget de 600€/mois génère 300 clics → 18 demandes/appels. Pour un artisan dont la marge moyenne par chantier est de 800€, signer 3 à 4 chantiers sur ces 18 demandes rentabilise très largement l'investissement." },
-      { type: "p", text: "Attention : sans un bon site (taux de conversion 1,5 % au lieu de 6 %), ces mêmes 300 clics ne génèrent plus que 4 appels au lieu de 18. Soit 4 fois moins de chiffre d'affaires pour le même budget Ads. C'est pour ça qu'on insiste : la rentabilité d'une campagne se joue d'abord sur le site." },
+      {
+        type: "p",
+        text: "Avec un CPC moyen de 2€ et un taux de conversion site de 6 % (ce qu'on vise avec un site Sitaly), un budget de 300€/mois génère 150 clics → 9 demandes/appels. Un budget de 600€/mois génère 300 clics → 18 demandes/appels. Pour un artisan dont la marge moyenne par chantier est de 800€, signer 3 à 4 chantiers sur ces 18 demandes rentabilise très largement l'investissement.",
+      },
+      {
+        type: "p",
+        text: "Attention : sans un bon site (taux de conversion 1,5 % au lieu de 6 %), ces mêmes 300 clics ne génèrent plus que 4 appels au lieu de 18. Soit 4 fois moins de chiffre d'affaires pour le même budget Ads. C'est pour ça qu'on insiste : la rentabilité d'une campagne se joue d'abord sur le site.",
+      },
       { type: "h2", text: "Budget mensuel conseillé selon votre objectif" },
-      { type: "table",
-        headers: ["Objectif", "Budget média/mois", "Frais gestion", "Total mensuel", "Appels attendus"],
+      {
+        type: "table",
+        headers: [
+          "Objectif",
+          "Budget média/mois",
+          "Frais gestion",
+          "Total mensuel",
+          "Appels attendus",
+        ],
         rows: [
           ["Tester le canal sur 1 prestation", "300€", "150€", "450€", "8 à 12"],
           ["Démarrer sérieusement (artisan local)", "500€", "250€", "750€", "15 à 22"],
@@ -1372,32 +2580,74 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
       { type: "h2", text: "Les coûts cachés à anticiper" },
-      { type: "ul", items: [
-        "Page d'atterrissage dédiée (si non incluse) : 200 à 600€ par prestation pour optimiser la conversion",
-        "Suivi des appels (call tracking) : 30 à 80€/mois selon le volume — indispensable pour mesurer le ROI",
-        "Création des annonces et visuels : généralement inclus si gestion confiée à un prestataire",
-        "TVA sur Google Ads : 20 % en plus si vous êtes en France (déductible si vous êtes assujetti)",
-        "Période d'apprentissage : 4 à 8 semaines de moindre rendement avant stabilisation",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Page d'atterrissage dédiée (si non incluse) : 200 à 600€ par prestation pour optimiser la conversion",
+          "Suivi des appels (call tracking) : 30 à 80€/mois selon le volume — indispensable pour mesurer le ROI",
+          "Création des annonces et visuels : généralement inclus si gestion confiée à un prestataire",
+          "TVA sur Google Ads : 20 % en plus si vous êtes en France (déductible si vous êtes assujetti)",
+          "Période d'apprentissage : 4 à 8 semaines de moindre rendement avant stabilisation",
+        ],
+      },
       { type: "h2", text: "Exemple chiffré : un plombier à Bordeaux" },
-      { type: "p", text: "Budget média : 500€/mois. Gestion par un prestataire : 250€/mois. Total : 750€/mois (900€ TTC). CPC moyen observé sur les 90 premiers jours : 2,30€. Soit 217 clics/mois. Taux de conversion du site (récent, optimisé) : 7,2 %. Soit 15,6 appels qualifiés par mois. Sur ces 15,6 appels, 5,4 chantiers signés en moyenne, marge moyenne 1 100€ = 5 940€ de marge mensuelle générée." },
-      { type: "p", text: "ROI net : (5 940 - 900) / 900 = 5,6x après gestion et TVA. Soit 6,5x le budget média seul. Mesuré et reproductible mois après mois — pas une étude de cas miraculeuse, mais le profil typique d'un compte bien tenu." },
+      {
+        type: "p",
+        text: "Budget média : 500€/mois. Gestion par un prestataire : 250€/mois. Total : 750€/mois (900€ TTC). CPC moyen observé sur les 90 premiers jours : 2,30€. Soit 217 clics/mois. Taux de conversion du site (récent, optimisé) : 7,2 %. Soit 15,6 appels qualifiés par mois. Sur ces 15,6 appels, 5,4 chantiers signés en moyenne, marge moyenne 1 100€ = 5 940€ de marge mensuelle générée.",
+      },
+      {
+        type: "p",
+        text: "ROI net : (5 940 - 900) / 900 = 5,6x après gestion et TVA. Soit 6,5x le budget média seul. Mesuré et reproductible mois après mois — pas une étude de cas miraculeuse, mais le profil typique d'un compte bien tenu.",
+      },
       { type: "h2", text: "Faire soi-même vs confier à un prestataire" },
-      { type: "p", text: "Faire soi-même semble économiser 200 à 500€/mois de gestion. Dans les faits, un compte mal géré gaspille 40 à 60 % du budget en clics non qualifiés (mauvais mots-clés, pas d'enchères ajustées, pas de mots-clés négatifs, pas d'optimisation horaire). Sur 500€/mois, ce sont 200 à 300€ qui partent en fumée. Coût « caché » du DIY : 2 400 à 3 600€/an. Sans compter votre temps : 5 à 10 heures par mois pour s'en occuper sérieusement." },
-      { type: "p", text: "Un prestataire compétent coûte 200 à 500€/mois mais récupère typiquement 30 à 50 % d'efficacité. L'opération est positive dès les 2 à 3 premiers mois. La question n'est pas « est-ce que ça vaut le coût ? » mais « combien je perds en faisant moi-même ? »." },
+      {
+        type: "p",
+        text: "Faire soi-même semble économiser 200 à 500€/mois de gestion. Dans les faits, un compte mal géré gaspille 40 à 60 % du budget en clics non qualifiés (mauvais mots-clés, pas d'enchères ajustées, pas de mots-clés négatifs, pas d'optimisation horaire). Sur 500€/mois, ce sont 200 à 300€ qui partent en fumée. Coût « caché » du DIY : 2 400 à 3 600€/an. Sans compter votre temps : 5 à 10 heures par mois pour s'en occuper sérieusement.",
+      },
+      {
+        type: "p",
+        text: "Un prestataire compétent coûte 200 à 500€/mois mais récupère typiquement 30 à 50 % d'efficacité. L'opération est positive dès les 2 à 3 premiers mois. La question n'est pas « est-ce que ça vaut le coût ? » mais « combien je perds en faisant moi-même ? ».",
+      },
       { type: "h2", text: "Comment Sitaly facture la prestation Google Ads" },
-      { type: "p", text: "Notre tarification est volontairement simple : un forfait mensuel de gestion (à partir de 250€/mois) couvrant la création, l'optimisation continue, le suivi des appels et un rapport mensuel. Le budget média que vous fixez (à partir de 300€/mois) est versé directement à Google — nous ne prenons pas de commission dessus, par éthique et par transparence. Vous voyez exactement ce qui va à Google et ce qui va à Sitaly." },
-      { type: "p", text: "Prérequis absolu : un site qui convertit. Si votre site n'est pas au niveau, nous proposons d'abord de le refaire (à partir de 149€/mois en location), puis de lancer les campagnes. C'est la seule façon de garantir un ROI sain." },
+      {
+        type: "p",
+        text: "Notre tarification est volontairement simple : un forfait mensuel de gestion (à partir de 250€/mois) couvrant la création, l'optimisation continue, le suivi des appels et un rapport mensuel. Le budget média que vous fixez (à partir de 300€/mois) est versé directement à Google — nous ne prenons pas de commission dessus, par éthique et par transparence. Vous voyez exactement ce qui va à Google et ce qui va à Sitaly.",
+      },
+      {
+        type: "p",
+        text: "Prérequis absolu : un site qui convertit. Si votre site n'est pas au niveau, nous proposons d'abord de le refaire (à partir de 149€/mois en location), puis de lancer les campagnes. C'est la seule façon de garantir un ROI sain.",
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "Quel budget minimum réaliste pour un artisan ?", a: "300€/mois de budget média est le plancher pour collecter assez de données. En dessous, Google manque de signaux pour optimiser. Avec frais de gestion, comptez 450 à 500€/mois minimum." },
-        { q: "Combien je dois facturer pour rentabiliser Google Ads ?", a: "Avec un coût par appel moyen de 30 à 50€ et un taux de conversion appel → chantier de 30 à 50 %, un chantier vous coûte 60 à 170€ d'acquisition. À partir de 500€ de marge par chantier, vous êtes très largement rentable." },
-        { q: "Le CPC est-il fixe ?", a: "Non, il évolue en temps réel selon la concurrence. On observe souvent une hausse de 20 à 40 % sur les pics saisonniers (canicule pour la clim, grand froid pour le chauffage, printemps pour la rénovation extérieure)." },
-        { q: "Faut-il payer Google Ads à l'avance ?", a: "Non, Google facture en fin de mois ou par seuils (à partir de 500€ dépensés). Vous configurez un mode de paiement, Google débite ensuite. Pas d'avance de trésorerie." },
-        { q: "Combien de temps pour amortir un site avec Google Ads ?", a: "Avec une formule à 149€/mois, un budget Ads de 500€/mois et un ROI moyen de 5x, l'ensemble est amorti en moins de 30 jours. C'est l'effet combiné site + Ads qui crée le levier le plus puissant." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Quel budget minimum réaliste pour un artisan ?",
+            a: "300€/mois de budget média est le plancher pour collecter assez de données. En dessous, Google manque de signaux pour optimiser. Avec frais de gestion, comptez 450 à 500€/mois minimum.",
+          },
+          {
+            q: "Combien je dois facturer pour rentabiliser Google Ads ?",
+            a: "Avec un coût par appel moyen de 30 à 50€ et un taux de conversion appel → chantier de 30 à 50 %, un chantier vous coûte 60 à 170€ d'acquisition. À partir de 500€ de marge par chantier, vous êtes très largement rentable.",
+          },
+          {
+            q: "Le CPC est-il fixe ?",
+            a: "Non, il évolue en temps réel selon la concurrence. On observe souvent une hausse de 20 à 40 % sur les pics saisonniers (canicule pour la clim, grand froid pour le chauffage, printemps pour la rénovation extérieure).",
+          },
+          {
+            q: "Faut-il payer Google Ads à l'avance ?",
+            a: "Non, Google facture en fin de mois ou par seuils (à partir de 500€ dépensés). Vous configurez un mode de paiement, Google débite ensuite. Pas d'avance de trésorerie.",
+          },
+          {
+            q: "Combien de temps pour amortir un site avec Google Ads ?",
+            a: "Avec une formule à 149€/mois, un budget Ads de 500€/mois et un ROI moyen de 5x, l'ensemble est amorti en moins de 30 jours. C'est l'effet combiné site + Ads qui crée le levier le plus puissant.",
+          },
+        ],
+      },
       { type: "h2", text: "Sitaly : un budget maîtrisé, un ROI mesuré" },
-      { type: "p", text: "Pas de boîte noire, pas de promesses irréalistes. On chiffre ensemble votre potentiel sur votre zone (CPC, volumes, concurrence), on cadre un budget cohérent et on mesure tout. Réservez un appel gratuit : 20 minutes pour savoir si Google Ads peut transformer votre activité." },
+      {
+        type: "p",
+        text: "Pas de boîte noire, pas de promesses irréalistes. On chiffre ensemble votre potentiel sur votre zone (CPC, volumes, concurrence), on cadre un budget cohérent et on mesure tout. Réservez un appel gratuit : 20 minutes pour savoir si Google Ads peut transformer votre activité.",
+      },
     ],
   },
   {
@@ -1414,40 +2664,84 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "relance devis automatique",
     content: [
-      { type: "p", text: "Vous envoyez un devis, le client dit « je vous rappelle »… et le silence s'installe. Ce n'est pas un refus : dans la majorité des cas, le prospect a simplement été happé par son quotidien. D'après plusieurs études sur les TPE de services, 6 devis sur 10 ne reçoivent jamais de relance, alors qu'une relance bien menée transforme 20 à 30 % de ces devis « oubliés » en chantiers signés. Le problème n'est pas commercial, il est organisationnel : vous n'avez pas le temps de relancer. La solution s'appelle la relance automatique des devis." },
+      {
+        type: "p",
+        text: "Vous envoyez un devis, le client dit « je vous rappelle »… et le silence s'installe. Ce n'est pas un refus : dans la majorité des cas, le prospect a simplement été happé par son quotidien. D'après plusieurs études sur les TPE de services, 6 devis sur 10 ne reçoivent jamais de relance, alors qu'une relance bien menée transforme 20 à 30 % de ces devis « oubliés » en chantiers signés. Le problème n'est pas commercial, il est organisationnel : vous n'avez pas le temps de relancer. La solution s'appelle la relance automatique des devis.",
+      },
       { type: "h2", text: "Pourquoi vos devis non relancés vous coûtent une fortune" },
-      { type: "p", text: "Faites le calcul. Si vous envoyez 15 devis par mois, que 8 restent sans réponse, et qu'une relance en récupère 25 %, ce sont 2 chantiers supplémentaires chaque mois. À 1 200€ de panier moyen, cela représente près de 29 000€ de chiffre d'affaires par an perdus faute d'une simple relance. La relance n'est pas une corvée commerciale : c'est le levier le plus rentable de votre activité, parce que le prospect vous connaît déjà et a déjà reçu votre prix." },
+      {
+        type: "p",
+        text: "Faites le calcul. Si vous envoyez 15 devis par mois, que 8 restent sans réponse, et qu'une relance en récupère 25 %, ce sont 2 chantiers supplémentaires chaque mois. À 1 200€ de panier moyen, cela représente près de 29 000€ de chiffre d'affaires par an perdus faute d'une simple relance. La relance n'est pas une corvée commerciale : c'est le levier le plus rentable de votre activité, parce que le prospect vous connaît déjà et a déjà reçu votre prix.",
+      },
       { type: "h2", text: "Le bon timing pour relancer un devis" },
-      { type: "p", text: "Un prospect prend rarement sa décision le jour J. La séquence qui fonctionne le mieux pour relancer un devis sans paraître insistant suit trois temps : un premier rappel court à J+2 (« vous avez bien reçu le devis ? »), une relance à valeur ajoutée à J+7 (une précision, une disponibilité de chantier, un avis client), puis une dernière relance à J+15 qui crée une légère urgence (planning qui se remplit, offre valable jusqu'à telle date)." },
-      { type: "table", caption: "Séquence de relance de devis recommandée", headers: ["Moment", "Canal", "Objectif", "Taux de réponse moyen"], rows: [
-        ["J+2", "SMS", "Confirmer la bonne réception", "30 à 45 %"],
-        ["J+7", "Email ou SMS", "Lever un frein, rassurer", "15 à 25 %"],
-        ["J+15", "SMS", "Créer une urgence douce", "10 à 20 %"],
-      ] },
+      {
+        type: "p",
+        text: "Un prospect prend rarement sa décision le jour J. La séquence qui fonctionne le mieux pour relancer un devis sans paraître insistant suit trois temps : un premier rappel court à J+2 (« vous avez bien reçu le devis ? »), une relance à valeur ajoutée à J+7 (une précision, une disponibilité de chantier, un avis client), puis une dernière relance à J+15 qui crée une légère urgence (planning qui se remplit, offre valable jusqu'à telle date).",
+      },
+      {
+        type: "table",
+        caption: "Séquence de relance de devis recommandée",
+        headers: ["Moment", "Canal", "Objectif", "Taux de réponse moyen"],
+        rows: [
+          ["J+2", "SMS", "Confirmer la bonne réception", "30 à 45 %"],
+          ["J+7", "Email ou SMS", "Lever un frein, rassurer", "15 à 25 %"],
+          ["J+15", "SMS", "Créer une urgence douce", "10 à 20 %"],
+        ],
+      },
       { type: "h2", text: "Manuelle ou automatique : pourquoi automatiser change tout" },
-      { type: "p", text: "Tout le monde sait qu'il faut relancer. Personne ne le fait, parce que cela suppose de noter chaque devis, de programmer chaque rappel, de réécrire chaque message. La relance automatique supprime cette friction : dès que vous marquez un devis comme « envoyé », le système déclenche tout seul les SMS et emails aux bons moments, avec votre nom et le bon montant. Vous ne pensez plus à relancer — le système le fait pour vous, et s'arrête automatiquement dès que le client répond ou signe." },
+      {
+        type: "p",
+        text: "Tout le monde sait qu'il faut relancer. Personne ne le fait, parce que cela suppose de noter chaque devis, de programmer chaque rappel, de réécrire chaque message. La relance automatique supprime cette friction : dès que vous marquez un devis comme « envoyé », le système déclenche tout seul les SMS et emails aux bons moments, avec votre nom et le bon montant. Vous ne pensez plus à relancer — le système le fait pour vous, et s'arrête automatiquement dès que le client répond ou signe.",
+      },
       { type: "h2", text: "Deux modèles de messages prêts à l'emploi" },
       { type: "h3", text: "SMS de relance à J+2" },
-      { type: "quote", text: "Bonjour {Prénom}, c'est {Votre nom}. Je voulais m'assurer que vous aviez bien reçu le devis envoyé lundi. Je reste dispo si vous avez la moindre question. Bonne journée !" },
+      {
+        type: "quote",
+        text: "Bonjour {Prénom}, c'est {Votre nom}. Je voulais m'assurer que vous aviez bien reçu le devis envoyé lundi. Je reste dispo si vous avez la moindre question. Bonne journée !",
+      },
       { type: "h3", text: "SMS de relance à J+15 (urgence douce)" },
-      { type: "quote", text: "Bonjour {Prénom}, mon planning de {mois} se remplit vite. Si vous souhaitez être positionné, je peux encore vous réserver un créneau cette semaine. Voulez-vous que je bloque une date ?" },
+      {
+        type: "quote",
+        text: "Bonjour {Prénom}, mon planning de {mois} se remplit vite. Si vous souhaitez être positionné, je peux encore vous réserver un créneau cette semaine. Voulez-vous que je bloque une date ?",
+      },
       { type: "h2", text: "Ce que la relance automatique permet de gagner" },
-      { type: "ul", items: [
-        "Plus aucun devis oublié dans un coin de boîte mail",
-        "20 à 30 % de devis signés en plus sans démarchage supplémentaire",
-        "Un suivi professionnel qui rassure le client et vous différencie",
-        "Zéro temps passé à noter et programmer les rappels",
-        "L'arrêt automatique de la séquence dès que le client répond",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Plus aucun devis oublié dans un coin de boîte mail",
+          "20 à 30 % de devis signés en plus sans démarchage supplémentaire",
+          "Un suivi professionnel qui rassure le client et vous différencie",
+          "Zéro temps passé à noter et programmer les rappels",
+          "L'arrêt automatique de la séquence dès que le client répond",
+        ],
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "La relance automatique, ce n'est pas trop impersonnel ?", a: "Au contraire, bien réglée elle paraît plus humaine qu'un silence. Les messages reprennent votre nom, le prénom du client et le montant du devis. Le client a l'impression d'un suivi soigné, pas d'un robot." },
-        { q: "Combien de fois faut-il relancer un devis ?", a: "Trois relances étalées sur deux semaines est l'optimum. Au-delà, le rendement chute et vous risquez d'agacer. Une séquence J+2, J+7, J+15 couvre l'immense majorité des cas." },
-        { q: "Faut-il un logiciel compliqué pour automatiser ses relances ?", a: "Non. Sitaly met en place une automatisation simple, branchée sur votre façon de travailler (SMS et email), sans logiciel lourd à apprendre. Vous marquez un devis comme envoyé, le reste se fait tout seul." },
-        { q: "Est-ce que ça marche pour tous les métiers ?", a: "Oui : artisans, ostéopathes, coachs, consultants, agents immobiliers… Dès que vous envoyez des devis ou des propositions, la relance automatique s'applique et augmente votre taux de signature." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "La relance automatique, ce n'est pas trop impersonnel ?",
+            a: "Au contraire, bien réglée elle paraît plus humaine qu'un silence. Les messages reprennent votre nom, le prénom du client et le montant du devis. Le client a l'impression d'un suivi soigné, pas d'un robot.",
+          },
+          {
+            q: "Combien de fois faut-il relancer un devis ?",
+            a: "Trois relances étalées sur deux semaines est l'optimum. Au-delà, le rendement chute et vous risquez d'agacer. Une séquence J+2, J+7, J+15 couvre l'immense majorité des cas.",
+          },
+          {
+            q: "Faut-il un logiciel compliqué pour automatiser ses relances ?",
+            a: "Non. Sitaly met en place une automatisation simple, branchée sur votre façon de travailler (SMS et email), sans logiciel lourd à apprendre. Vous marquez un devis comme envoyé, le reste se fait tout seul.",
+          },
+          {
+            q: "Est-ce que ça marche pour tous les métiers ?",
+            a: "Oui : artisans, ostéopathes, coachs, consultants, agents immobiliers… Dès que vous envoyez des devis ou des propositions, la relance automatique s'applique et augmente votre taux de signature.",
+          },
+        ],
+      },
       { type: "h2", text: "Automatisez vos relances avec Sitaly" },
-      { type: "p", text: "La relance automatique des devis fait partie des automatisations que Sitaly met en place, en option, selon vos besoins. On part de votre façon de travailler et on installe un système simple qui relance à votre place, au bon moment. Réservez un appel gratuit de 15 minutes pour voir combien de chantiers vous laissez aujourd'hui sur la table." },
+      {
+        type: "p",
+        text: "La relance automatique des devis fait partie des automatisations que Sitaly met en place, en option, selon vos besoins. On part de votre façon de travailler et on installe un système simple qui relance à votre place, au bon moment. Réservez un appel gratuit de 15 minutes pour voir combien de chantiers vous laissez aujourd'hui sur la table.",
+      },
     ],
   },
   {
@@ -1464,41 +2758,80 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "prise de rendez-vous en ligne",
     content: [
-      { type: "p", text: "Vous êtes en consultation, en chantier ou en rendez-vous, et le téléphone sonne dans le vide. Le prospect, lui, ne laisse pas toujours de message : il appelle le concurrent suivant qui, lui, propose de réserver en ligne en deux clics. La prise de rendez-vous en ligne n'est plus un confort, c'est devenu un standard que vos futurs clients attendent — surtout les ostéopathes, kinésithérapeutes, coachs et indépendants dont l'activité repose sur l'agenda." },
+      {
+        type: "p",
+        text: "Vous êtes en consultation, en chantier ou en rendez-vous, et le téléphone sonne dans le vide. Le prospect, lui, ne laisse pas toujours de message : il appelle le concurrent suivant qui, lui, propose de réserver en ligne en deux clics. La prise de rendez-vous en ligne n'est plus un confort, c'est devenu un standard que vos futurs clients attendent — surtout les ostéopathes, kinésithérapeutes, coachs et indépendants dont l'activité repose sur l'agenda.",
+      },
       { type: "h2", text: "Pourquoi la prise de rendez-vous en ligne fait gagner des clients" },
-      { type: "p", text: "Une part importante des demandes arrive en dehors de vos heures de disponibilité : le soir, le week-end, pendant vos rendez-vous. Sans réservation en ligne, ces demandes se perdent. Avec, le client réserve seul, 24h/24, choisit un créneau réellement disponible, et reçoit une confirmation immédiate. Vous remplissez votre agenda pendant que vous travaillez ou que vous dormez, et vous supprimez le ping-pong de SMS pour trouver un créneau." },
+      {
+        type: "p",
+        text: "Une part importante des demandes arrive en dehors de vos heures de disponibilité : le soir, le week-end, pendant vos rendez-vous. Sans réservation en ligne, ces demandes se perdent. Avec, le client réserve seul, 24h/24, choisit un créneau réellement disponible, et reçoit une confirmation immédiate. Vous remplissez votre agenda pendant que vous travaillez ou que vous dormez, et vous supprimez le ping-pong de SMS pour trouver un créneau.",
+      },
       { type: "h2", text: "Les bénéfices concrets, au-delà du gain de temps" },
-      { type: "ul", items: [
-        "Zéro appel manqué transformé en client perdu",
-        "Un agenda qui se remplit même quand vous êtes indisponible",
-        "Moins de rendez-vous oubliés grâce aux rappels automatiques",
-        "Une image moderne et professionnelle qui rassure",
-        "Fini les allers-retours par téléphone pour caler une heure",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Zéro appel manqué transformé en client perdu",
+          "Un agenda qui se remplit même quand vous êtes indisponible",
+          "Moins de rendez-vous oubliés grâce aux rappels automatiques",
+          "Une image moderne et professionnelle qui rassure",
+          "Fini les allers-retours par téléphone pour caler une heure",
+        ],
+      },
       { type: "h2", text: "Le levier anti-lapin : les rappels automatiques" },
-      { type: "p", text: "Le vrai coût d'un rendez-vous, ce n'est pas de le prendre, c'est de le voir annulé au dernier moment. Les rendez-vous non honorés représentent souvent 10 à 20 % de l'agenda d'un thérapeute. Un système de prise de rendez-vous en ligne couplé à des rappels automatiques par SMS (la veille et le matin) réduit ce taux de moitié. Chaque créneau récupéré, c'est un revenu qui ne s'évapore plus." },
-      { type: "table", caption: "Avec ou sans prise de rendez-vous en ligne", headers: ["Critère", "Sans réservation en ligne", "Avec réservation en ligne"], rows: [
-        ["Demandes hors horaires", "Perdues", "Captées 24h/24"],
-        ["Temps passé au téléphone", "Élevé", "Quasi nul"],
-        ["Rendez-vous non honorés", "10 à 20 %", "5 à 10 % (avec rappels)"],
-        ["Image perçue", "Artisanale", "Professionnelle et moderne"],
-      ] },
+      {
+        type: "p",
+        text: "Le vrai coût d'un rendez-vous, ce n'est pas de le prendre, c'est de le voir annulé au dernier moment. Les rendez-vous non honorés représentent souvent 10 à 20 % de l'agenda d'un thérapeute. Un système de prise de rendez-vous en ligne couplé à des rappels automatiques par SMS (la veille et le matin) réduit ce taux de moitié. Chaque créneau récupéré, c'est un revenu qui ne s'évapore plus.",
+      },
+      {
+        type: "table",
+        caption: "Avec ou sans prise de rendez-vous en ligne",
+        headers: ["Critère", "Sans réservation en ligne", "Avec réservation en ligne"],
+        rows: [
+          ["Demandes hors horaires", "Perdues", "Captées 24h/24"],
+          ["Temps passé au téléphone", "Élevé", "Quasi nul"],
+          ["Rendez-vous non honorés", "10 à 20 %", "5 à 10 % (avec rappels)"],
+          ["Image perçue", "Artisanale", "Professionnelle et moderne"],
+        ],
+      },
       { type: "h2", text: "Comment l'intégrer à votre site internet" },
-      { type: "p", text: "L'idéal est un bouton « Prendre rendez-vous » visible sur chaque page de votre site, qui ouvre un agenda synchronisé avec le vôtre. Le client voit uniquement vos vraies disponibilités, réserve, et l'événement s'ajoute automatiquement à votre calendrier. Pas de double saisie, pas de risque de double réservation. C'est exactement ce type de parcours qui transforme un visiteur hésitant en rendez-vous confirmé." },
+      {
+        type: "p",
+        text: "L'idéal est un bouton « Prendre rendez-vous » visible sur chaque page de votre site, qui ouvre un agenda synchronisé avec le vôtre. Le client voit uniquement vos vraies disponibilités, réserve, et l'événement s'ajoute automatiquement à votre calendrier. Pas de double saisie, pas de risque de double réservation. C'est exactement ce type de parcours qui transforme un visiteur hésitant en rendez-vous confirmé.",
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "La prise de rendez-vous en ligne est-elle adaptée à mon métier ?", a: "Si votre activité repose sur des créneaux (ostéopathe, kiné, coach, consultant, esthéticienne, formateur…), oui, c'est l'un des leviers les plus rentables. Pour les métiers de devis (artisans), on l'utilise plutôt pour caler l'appel ou la visite technique." },
-        { q: "Mes créneaux risquent-ils d'être réservés alors que je ne suis pas dispo ?", a: "Non. L'agenda en ligne est synchronisé avec votre calendrier : seuls vos vrais créneaux libres sont proposés, et tout rendez-vous personnel bloque automatiquement la plage correspondante." },
-        { q: "Et si je préfère valider chaque demande moi-même ?", a: "C'est possible : on peut configurer une réservation « sur demande » où le client propose un créneau que vous confirmez en un clic. Vous gardez la main tout en évitant les appels." },
-        { q: "Faut-il un logiciel séparé ?", a: "Pas forcément. Sitaly intègre la prise de rendez-vous directement à votre site et la connecte à votre agenda, avec rappels SMS automatiques. Un seul outil, branché sur votre façon de travailler." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "La prise de rendez-vous en ligne est-elle adaptée à mon métier ?",
+            a: "Si votre activité repose sur des créneaux (ostéopathe, kiné, coach, consultant, esthéticienne, formateur…), oui, c'est l'un des leviers les plus rentables. Pour les métiers de devis (artisans), on l'utilise plutôt pour caler l'appel ou la visite technique.",
+          },
+          {
+            q: "Mes créneaux risquent-ils d'être réservés alors que je ne suis pas dispo ?",
+            a: "Non. L'agenda en ligne est synchronisé avec votre calendrier : seuls vos vrais créneaux libres sont proposés, et tout rendez-vous personnel bloque automatiquement la plage correspondante.",
+          },
+          {
+            q: "Et si je préfère valider chaque demande moi-même ?",
+            a: "C'est possible : on peut configurer une réservation « sur demande » où le client propose un créneau que vous confirmez en un clic. Vous gardez la main tout en évitant les appels.",
+          },
+          {
+            q: "Faut-il un logiciel séparé ?",
+            a: "Pas forcément. Sitaly intègre la prise de rendez-vous directement à votre site et la connecte à votre agenda, avec rappels SMS automatiques. Un seul outil, branché sur votre façon de travailler.",
+          },
+        ],
+      },
       { type: "h2", text: "Mettez en place votre prise de rendez-vous en ligne avec Sitaly" },
-      { type: "p", text: "La réservation en ligne et les rappels automatiques font partie des automatisations proposées par Sitaly, en option selon votre activité. On l'intègre proprement à votre site pour que votre agenda se remplisse tout seul. Réservez un appel gratuit de 15 minutes pour en parler." },
+      {
+        type: "p",
+        text: "La réservation en ligne et les rappels automatiques font partie des automatisations proposées par Sitaly, en option selon votre activité. On l'intègre proprement à votre site pour que votre agenda se remplisse tout seul. Réservez un appel gratuit de 15 minutes pour en parler.",
+      },
     ],
   },
   {
     slug: "automatiser-suivi-client-tpe",
-    title: "Automatiser son suivi client quand on est seul : 7 automatisations qui font gagner des heures",
+    title:
+      "Automatiser son suivi client quand on est seul : 7 automatisations qui font gagner des heures",
     metaTitle: "Automatiser son suivi client en TPE : 7 idées concrètes",
     metaDescription:
       "7 automatisations simples pour une TPE ou un indépendant : relances, rappels, réponses automatiques, demandes d'avis. Gagnez des heures et ne perdez plus aucun client.",
@@ -1510,39 +2843,77 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "automatisation TPE suivi client",
     content: [
-      { type: "p", text: "Quand on dirige une TPE ou qu'on travaille en indépendant, on porte toutes les casquettes : la production, les devis, la compta, le téléphone. Le suivi client, lui, passe systématiquement en dernier — et c'est là qu'on perd des clients sans même s'en rendre compte. L'automatisation n'a rien de réservé aux grandes entreprises : quelques automatisations simples, bien choisies, suffisent à récupérer plusieurs heures par semaine et à ne plus laisser aucune demande sans réponse." },
+      {
+        type: "p",
+        text: "Quand on dirige une TPE ou qu'on travaille en indépendant, on porte toutes les casquettes : la production, les devis, la compta, le téléphone. Le suivi client, lui, passe systématiquement en dernier — et c'est là qu'on perd des clients sans même s'en rendre compte. L'automatisation n'a rien de réservé aux grandes entreprises : quelques automatisations simples, bien choisies, suffisent à récupérer plusieurs heures par semaine et à ne plus laisser aucune demande sans réponse.",
+      },
       { type: "h2", text: "Pourquoi automatiser quand on est une petite structure" },
-      { type: "p", text: "Vous n'avez pas d'assistant, donc chaque tâche répétitive est du temps pris sur votre métier. Répondre aux mêmes questions, relancer, envoyer des rappels, demander un avis : ces gestes valent de l'argent, mais ils sont chronophages et faciles à oublier. Les automatiser, c'est confier ces tâches à un système qui ne dort jamais et n'oublie rien, pour vous concentrer sur ce qui demande vraiment votre savoir-faire." },
+      {
+        type: "p",
+        text: "Vous n'avez pas d'assistant, donc chaque tâche répétitive est du temps pris sur votre métier. Répondre aux mêmes questions, relancer, envoyer des rappels, demander un avis : ces gestes valent de l'argent, mais ils sont chronophages et faciles à oublier. Les automatiser, c'est confier ces tâches à un système qui ne dort jamais et n'oublie rien, pour vous concentrer sur ce qui demande vraiment votre savoir-faire.",
+      },
       { type: "h2", text: "7 automatisations simples et rentables pour une TPE" },
-      { type: "ul", items: [
-        "Réponse automatique aux demandes entrantes : tout prospect reçoit un accusé immédiat, même quand vous êtes occupé",
-        "Relance automatique des devis : la séquence se déclenche seule et récupère les devis oubliés",
-        "Rappels de rendez-vous par SMS : moins de lapins, un agenda mieux rempli",
-        "Demande d'avis Google automatique après chaque prestation : votre réputation se construit toute seule",
-        "Qualification des demandes : un mini-formulaire trie les prospects sérieux avant qu'ils vous contactent",
-        "Confirmation et facture envoyées automatiquement à la signature",
-        "Relance des clients inactifs depuis 6 ou 12 mois pour générer du réachat",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Réponse automatique aux demandes entrantes : tout prospect reçoit un accusé immédiat, même quand vous êtes occupé",
+          "Relance automatique des devis : la séquence se déclenche seule et récupère les devis oubliés",
+          "Rappels de rendez-vous par SMS : moins de lapins, un agenda mieux rempli",
+          "Demande d'avis Google automatique après chaque prestation : votre réputation se construit toute seule",
+          "Qualification des demandes : un mini-formulaire trie les prospects sérieux avant qu'ils vous contactent",
+          "Confirmation et facture envoyées automatiquement à la signature",
+          "Relance des clients inactifs depuis 6 ou 12 mois pour générer du réachat",
+        ],
+      },
       { type: "h2", text: "Par où commencer sans se compliquer la vie" },
-      { type: "p", text: "Inutile de tout automatiser d'un coup. Commencez par les deux automatisations au meilleur rapport effort/résultat : la réponse automatique aux demandes (vous ne perdez plus aucun contact) et la relance des devis (vous signez plus). Une fois ces deux-là en place et rentabilisées, ajoutez les rappels de rendez-vous et la demande d'avis. C'est cette logique progressive qui évite l'usine à gaz." },
-      { type: "table", caption: "Quelles automatisations prioriser ?", headers: ["Automatisation", "Effort de mise en place", "Impact"], rows: [
-        ["Réponse automatique aux demandes", "Faible", "Élevé (zéro contact perdu)"],
-        ["Relance des devis", "Faible", "Très élevé (plus de signatures)"],
-        ["Rappels de rendez-vous", "Faible", "Élevé (moins d'annulations)"],
-        ["Demande d'avis Google", "Faible", "Élevé (réputation locale)"],
-        ["Relance clients inactifs", "Moyen", "Moyen (réachat)"],
-      ] },
+      {
+        type: "p",
+        text: "Inutile de tout automatiser d'un coup. Commencez par les deux automatisations au meilleur rapport effort/résultat : la réponse automatique aux demandes (vous ne perdez plus aucun contact) et la relance des devis (vous signez plus). Une fois ces deux-là en place et rentabilisées, ajoutez les rappels de rendez-vous et la demande d'avis. C'est cette logique progressive qui évite l'usine à gaz.",
+      },
+      {
+        type: "table",
+        caption: "Quelles automatisations prioriser ?",
+        headers: ["Automatisation", "Effort de mise en place", "Impact"],
+        rows: [
+          ["Réponse automatique aux demandes", "Faible", "Élevé (zéro contact perdu)"],
+          ["Relance des devis", "Faible", "Très élevé (plus de signatures)"],
+          ["Rappels de rendez-vous", "Faible", "Élevé (moins d'annulations)"],
+          ["Demande d'avis Google", "Faible", "Élevé (réputation locale)"],
+          ["Relance clients inactifs", "Moyen", "Moyen (réachat)"],
+        ],
+      },
       { type: "h2", text: "Le piège à éviter : automatiser sans personnaliser" },
-      { type: "p", text: "Une automatisation réussie ne se voit pas. Le client doit avoir l'impression d'un suivi attentionné, pas d'un robot. La clé est de personnaliser chaque message (prénom, prestation, montant) et de prévoir un point de sortie : dès que le client répond, l'automatisation s'arrête et c'est vous qui prenez le relais. Automatiser le déclenchement, garder l'humain dans la conversation : c'est l'équilibre gagnant." },
+      {
+        type: "p",
+        text: "Une automatisation réussie ne se voit pas. Le client doit avoir l'impression d'un suivi attentionné, pas d'un robot. La clé est de personnaliser chaque message (prénom, prestation, montant) et de prévoir un point de sortie : dès que le client répond, l'automatisation s'arrête et c'est vous qui prenez le relais. Automatiser le déclenchement, garder l'humain dans la conversation : c'est l'équilibre gagnant.",
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "L'automatisation demande-t-elle des compétences techniques ?", a: "Non, si c'est bien accompagné. Sitaly met en place les automatisations pour vous, branchées sur vos outils (SMS, email, agenda). Vous n'avez rien à coder ni à paramétrer." },
-        { q: "Combien de temps peut-on réellement gagner ?", a: "Une TPE qui automatise réponses, relances et rappels récupère couramment 3 à 5 heures par semaine, tout en augmentant son taux de signature et sa réputation." },
-        { q: "Est-ce que ça coûte cher ?", a: "Les automatisations sont proposées en option, selon vos besoins, et se rentabilisent vite : un seul devis récupéré ou un seul rendez-vous sauvé couvre souvent le coût mensuel." },
-        { q: "Faut-il changer tous mes outils actuels ?", a: "Non. On part de votre fonctionnement existant et on ajoute les automatisations par-dessus, sans tout bouleverser." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "L'automatisation demande-t-elle des compétences techniques ?",
+            a: "Non, si c'est bien accompagné. Sitaly met en place les automatisations pour vous, branchées sur vos outils (SMS, email, agenda). Vous n'avez rien à coder ni à paramétrer.",
+          },
+          {
+            q: "Combien de temps peut-on réellement gagner ?",
+            a: "Une TPE qui automatise réponses, relances et rappels récupère couramment 3 à 5 heures par semaine, tout en augmentant son taux de signature et sa réputation.",
+          },
+          {
+            q: "Est-ce que ça coûte cher ?",
+            a: "Les automatisations sont proposées en option, selon vos besoins, et se rentabilisent vite : un seul devis récupéré ou un seul rendez-vous sauvé couvre souvent le coût mensuel.",
+          },
+          {
+            q: "Faut-il changer tous mes outils actuels ?",
+            a: "Non. On part de votre fonctionnement existant et on ajoute les automatisations par-dessus, sans tout bouleverser.",
+          },
+        ],
+      },
       { type: "h2", text: "Gagnez du temps avec les automatisations Sitaly" },
-      { type: "p", text: "Réponse automatique, relance des devis, rappels de rendez-vous, demande d'avis : Sitaly met en place les automatisations adaptées à votre activité, en option et sans complexité. On commence simple, on mesure le temps gagné, on ajoute au fur et à mesure. Réservez un appel gratuit de 15 minutes pour identifier vos deux automatisations prioritaires." },
+      {
+        type: "p",
+        text: "Réponse automatique, relance des devis, rappels de rendez-vous, demande d'avis : Sitaly met en place les automatisations adaptées à votre activité, en option et sans complexité. On commence simple, on mesure le temps gagné, on ajoute au fur et à mesure. Réservez un appel gratuit de 15 minutes pour identifier vos deux automatisations prioritaires.",
+      },
     ],
   },
   {
@@ -1559,39 +2930,83 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "trouver des patients ostéopathe",
     content: [
-      { type: "p", text: "Le marché de l'ostéopathie est saturé : on compte aujourd'hui plus de 35 000 praticiens en France, et chaque année de nouvelles promotions arrivent. Résultat, le bouche-à-oreille seul ne suffit plus à remplir un agenda, surtout en début d'installation. La bonne nouvelle : la grande majorité de vos confrères sont très mal visibles sur internet. En soignant quelques leviers simples, vous pouvez capter les patients qui cherchent un ostéopathe dans votre ville — et ils sont nombreux à chercher chaque mois sur Google." },
+      {
+        type: "p",
+        text: "Le marché de l'ostéopathie est saturé : on compte aujourd'hui plus de 35 000 praticiens en France, et chaque année de nouvelles promotions arrivent. Résultat, le bouche-à-oreille seul ne suffit plus à remplir un agenda, surtout en début d'installation. La bonne nouvelle : la grande majorité de vos confrères sont très mal visibles sur internet. En soignant quelques leviers simples, vous pouvez capter les patients qui cherchent un ostéopathe dans votre ville — et ils sont nombreux à chercher chaque mois sur Google.",
+      },
       { type: "h2", text: "Comment les patients cherchent un ostéopathe aujourd'hui" },
-      { type: "p", text: "Quand quelqu'un a mal au dos ou au cou, son premier réflexe n'est plus de demander à un voisin : il tape « ostéopathe + ville » sur Google, regarde les premiers résultats, lit les avis, et prend rendez-vous chez celui qui inspire confiance et propose la réservation en ligne. Toute votre acquisition de patients se joue dans cette poignée de secondes. Si vous n'apparaissez pas, ou si votre fiche est vide, le patient va chez le confrère mieux référencé." },
+      {
+        type: "p",
+        text: "Quand quelqu'un a mal au dos ou au cou, son premier réflexe n'est plus de demander à un voisin : il tape « ostéopathe + ville » sur Google, regarde les premiers résultats, lit les avis, et prend rendez-vous chez celui qui inspire confiance et propose la réservation en ligne. Toute votre acquisition de patients se joue dans cette poignée de secondes. Si vous n'apparaissez pas, ou si votre fiche est vide, le patient va chez le confrère mieux référencé.",
+      },
       { type: "h2", text: "1. Votre fiche Google Business Profile, la priorité absolue" },
-      { type: "p", text: "C'est gratuit et c'est le levier numéro un pour un ostéopathe. Une fiche Google complète (adresse, horaires, photos du cabinet, prestations, lien de réservation) avec une vingtaine d'avis 5 étoiles vous fait apparaître dans le « pack local » de Google, juste sous la carte. Pour beaucoup de cabinets, la fiche Google génère à elle seule la moitié des nouveaux patients. Commencez par la remplir intégralement et demandez systématiquement un avis après chaque consultation." },
+      {
+        type: "p",
+        text: "C'est gratuit et c'est le levier numéro un pour un ostéopathe. Une fiche Google complète (adresse, horaires, photos du cabinet, prestations, lien de réservation) avec une vingtaine d'avis 5 étoiles vous fait apparaître dans le « pack local » de Google, juste sous la carte. Pour beaucoup de cabinets, la fiche Google génère à elle seule la moitié des nouveaux patients. Commencez par la remplir intégralement et demandez systématiquement un avis après chaque consultation.",
+      },
       { type: "h2", text: "2. Un site internet qui rassure et convertit" },
-      { type: "p", text: "Un patient hésite toujours un peu avant une première séance. Un site clair lève ses doutes : votre parcours, votre approche, les motifs de consultation traités, vos tarifs, l'accès et le parking, et surtout un bouton de prise de rendez-vous visible. Un site professionnel transforme un visiteur curieux en patient confirmé, là où une simple page Facebook laisse le doute s'installer." },
+      {
+        type: "p",
+        text: "Un patient hésite toujours un peu avant une première séance. Un site clair lève ses doutes : votre parcours, votre approche, les motifs de consultation traités, vos tarifs, l'accès et le parking, et surtout un bouton de prise de rendez-vous visible. Un site professionnel transforme un visiteur curieux en patient confirmé, là où une simple page Facebook laisse le doute s'installer.",
+      },
       { type: "h2", text: "3. La prise de rendez-vous en ligne, indispensable" },
-      { type: "p", text: "Une grande partie des recherches d'ostéopathe se font le soir ou le week-end, quand votre cabinet est fermé. Sans réservation en ligne, ces demandes se perdent. Avec un agenda en ligne, le patient réserve un vrai créneau en deux clics, à toute heure, et reçoit des rappels automatiques qui réduisent les rendez-vous non honorés. C'est l'un des leviers les plus rentables pour un thérapeute." },
+      {
+        type: "p",
+        text: "Une grande partie des recherches d'ostéopathe se font le soir ou le week-end, quand votre cabinet est fermé. Sans réservation en ligne, ces demandes se perdent. Avec un agenda en ligne, le patient réserve un vrai créneau en deux clics, à toute heure, et reçoit des rappels automatiques qui réduisent les rendez-vous non honorés. C'est l'un des leviers les plus rentables pour un thérapeute.",
+      },
       { type: "h2", text: "4 à 7. Les autres leviers qui remplissent un cabinet" },
-      { type: "ul", items: [
-        "Collecter les avis Google en continu : 30 avis récents valent mieux que 5 anciens",
-        "Google Ads local pour être visible immédiatement à l'installation, le temps que le référencement naturel monte",
-        "Le référencement local sur « ostéopathe + ville » et « ostéopathe + quartier »",
-        "Un partenariat avec les médecins, kinés, coachs et salles de sport de votre secteur",
-      ] },
-      { type: "table", caption: "Les leviers d'acquisition de patients en ostéopathie", headers: ["Levier", "Coût", "Délai 1ers patients", "Rentabilité"], rows: [
-        ["Fiche Google Business Profile", "Gratuit", "2 à 6 semaines", "Très élevée"],
-        ["Site internet + réservation en ligne", "À partir de 149€/mois", "1 à 3 mois", "Élevée"],
-        ["Google Ads local", "300 à 500€/mois", "Quelques jours", "Élevée au démarrage"],
-        ["Avis Google réguliers", "Gratuit", "Continu", "Très élevée"],
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Collecter les avis Google en continu : 30 avis récents valent mieux que 5 anciens",
+          "Google Ads local pour être visible immédiatement à l'installation, le temps que le référencement naturel monte",
+          "Le référencement local sur « ostéopathe + ville » et « ostéopathe + quartier »",
+          "Un partenariat avec les médecins, kinés, coachs et salles de sport de votre secteur",
+        ],
+      },
+      {
+        type: "table",
+        caption: "Les leviers d'acquisition de patients en ostéopathie",
+        headers: ["Levier", "Coût", "Délai 1ers patients", "Rentabilité"],
+        rows: [
+          ["Fiche Google Business Profile", "Gratuit", "2 à 6 semaines", "Très élevée"],
+          ["Site internet + réservation en ligne", "À partir de 149€/mois", "1 à 3 mois", "Élevée"],
+          ["Google Ads local", "300 à 500€/mois", "Quelques jours", "Élevée au démarrage"],
+          ["Avis Google réguliers", "Gratuit", "Continu", "Très élevée"],
+        ],
+      },
       { type: "h2", text: "Combien de nouveaux patients espérer ?" },
-      { type: "p", text: "Un cabinet d'ostéopathie qui combine une fiche Google optimisée, un site avec réservation en ligne et une collecte d'avis régulière génère couramment 15 à 40 nouveaux patients par mois en zone urbaine, une fois la mécanique en place. À une moyenne de 55 à 70€ la séance et avec le réachat (un patient revient souvent 2 à 4 fois par an), le retour sur investissement d'une présence en ligne sérieuse se mesure en semaines, pas en années." },
+      {
+        type: "p",
+        text: "Un cabinet d'ostéopathie qui combine une fiche Google optimisée, un site avec réservation en ligne et une collecte d'avis régulière génère couramment 15 à 40 nouveaux patients par mois en zone urbaine, une fois la mécanique en place. À une moyenne de 55 à 70€ la séance et avec le réachat (un patient revient souvent 2 à 4 fois par an), le retour sur investissement d'une présence en ligne sérieuse se mesure en semaines, pas en années.",
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "Faut-il un site internet quand on a déjà une fiche Google ?", a: "Oui, les deux sont complémentaires. La fiche Google attire et fait apparaître sur la carte ; le site rassure, présente votre approche et permet de réserver. Ensemble, ils génèrent 2 à 3 fois plus de rendez-vous que la fiche seule." },
-        { q: "La publicité Google Ads est-elle autorisée pour un ostéopathe ?", a: "Oui, Google Ads est utilisable pour promouvoir un cabinet d'ostéopathie. Il faut rester factuel dans les annonces (pas de promesses thérapeutiques) — c'est précisément le rôle d'un accompagnement de cadrer cela proprement." },
-        { q: "Combien de temps pour remplir son agenda en s'installant ?", a: "Avec Google Ads dès l'ouverture pour la visibilité immédiate, puis la montée du référencement naturel et des avis, comptez 3 à 6 mois pour stabiliser un flux régulier de nouveaux patients." },
-        { q: "Je n'ai pas le temps de gérer tout ça, est-ce délégable ?", a: "Oui. Sitaly s'occupe du site, de la réservation en ligne, du référencement local et, en option, de vos campagnes Google Ads et de la collecte automatique d'avis. Vous vous concentrez sur vos consultations." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Faut-il un site internet quand on a déjà une fiche Google ?",
+            a: "Oui, les deux sont complémentaires. La fiche Google attire et fait apparaître sur la carte ; le site rassure, présente votre approche et permet de réserver. Ensemble, ils génèrent 2 à 3 fois plus de rendez-vous que la fiche seule.",
+          },
+          {
+            q: "La publicité Google Ads est-elle autorisée pour un ostéopathe ?",
+            a: "Oui, Google Ads est utilisable pour promouvoir un cabinet d'ostéopathie. Il faut rester factuel dans les annonces (pas de promesses thérapeutiques) — c'est précisément le rôle d'un accompagnement de cadrer cela proprement.",
+          },
+          {
+            q: "Combien de temps pour remplir son agenda en s'installant ?",
+            a: "Avec Google Ads dès l'ouverture pour la visibilité immédiate, puis la montée du référencement naturel et des avis, comptez 3 à 6 mois pour stabiliser un flux régulier de nouveaux patients.",
+          },
+          {
+            q: "Je n'ai pas le temps de gérer tout ça, est-ce délégable ?",
+            a: "Oui. Sitaly s'occupe du site, de la réservation en ligne, du référencement local et, en option, de vos campagnes Google Ads et de la collecte automatique d'avis. Vous vous concentrez sur vos consultations.",
+          },
+        ],
+      },
       { type: "h2", text: "Remplissez votre cabinet avec Sitaly" },
-      { type: "p", text: "Site internet pensé pour les thérapeutes, prise de rendez-vous en ligne, référencement local et, si besoin, Google Ads et automatisations : Sitaly met en place le système qui vous apporte des patients régulièrement. Réservez un appel gratuit de 15 minutes pour voir votre potentiel sur votre ville." },
+      {
+        type: "p",
+        text: "Site internet pensé pour les thérapeutes, prise de rendez-vous en ligne, référencement local et, si besoin, Google Ads et automatisations : Sitaly met en place le système qui vous apporte des patients régulièrement. Réservez un appel gratuit de 15 minutes pour voir votre potentiel sur votre ville.",
+      },
     ],
   },
   {
@@ -1608,39 +3023,80 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "site internet kinésithérapeute",
     content: [
-      { type: "p", text: "Pendant longtemps, un kinésithérapeute n'avait pas à se soucier de marketing : la prescription médicale et le bouche-à-oreille suffisaient. Mais le paysage change — multiplication des cabinets, patients plus autonomes qui choisissent leur praticien sur Google, montée de la prise de rendez-vous en ligne. Aujourd'hui, un kiné visible et facile à contacter remplit son agenda et choisit ses créneaux ; un kiné invisible subit les trous et les annulations. Voici comment vous positionner du bon côté." },
+      {
+        type: "p",
+        text: "Pendant longtemps, un kinésithérapeute n'avait pas à se soucier de marketing : la prescription médicale et le bouche-à-oreille suffisaient. Mais le paysage change — multiplication des cabinets, patients plus autonomes qui choisissent leur praticien sur Google, montée de la prise de rendez-vous en ligne. Aujourd'hui, un kiné visible et facile à contacter remplit son agenda et choisit ses créneaux ; un kiné invisible subit les trous et les annulations. Voici comment vous positionner du bon côté.",
+      },
       { type: "h2", text: "Pourquoi un kiné a besoin d'être visible en ligne" },
-      { type: "p", text: "Même avec une patientèle établie, votre activité fuit en permanence : déménagements, fins de traitement, patients qui ne reviennent pas. Pour compenser et grandir, il faut un flux régulier de nouveaux patients. Or ces patients cherchent désormais « kiné + ville », « kinésithérapeute + quartier » ou « rééducation + spécialité » sur Google. Sans présence sérieuse, vous laissez ces recherches au cabinet d'en face." },
+      {
+        type: "p",
+        text: "Même avec une patientèle établie, votre activité fuit en permanence : déménagements, fins de traitement, patients qui ne reviennent pas. Pour compenser et grandir, il faut un flux régulier de nouveaux patients. Or ces patients cherchent désormais « kiné + ville », « kinésithérapeute + quartier » ou « rééducation + spécialité » sur Google. Sans présence sérieuse, vous laissez ces recherches au cabinet d'en face.",
+      },
       { type: "h2", text: "Le site internet : votre cabinet ouvert 24h/24" },
-      { type: "p", text: "Un bon site de kinésithérapeute fait trois choses : il rassure (présentation, spécialités, matériel, accès et parking), il référence votre cabinet sur Google grâce au SEO local, et il convertit grâce à la prise de rendez-vous en ligne. C'est particulièrement utile pour mettre en avant vos spécialités (kiné du sport, rééducation périnéale, respiratoire, drainage…) et capter les patients qui cherchent précisément ce que vous proposez." },
+      {
+        type: "p",
+        text: "Un bon site de kinésithérapeute fait trois choses : il rassure (présentation, spécialités, matériel, accès et parking), il référence votre cabinet sur Google grâce au SEO local, et il convertit grâce à la prise de rendez-vous en ligne. C'est particulièrement utile pour mettre en avant vos spécialités (kiné du sport, rééducation périnéale, respiratoire, drainage…) et capter les patients qui cherchent précisément ce que vous proposez.",
+      },
       { type: "h2", text: "Les éléments indispensables de votre site" },
-      { type: "ul", items: [
-        "Un bouton de prise de rendez-vous en ligne visible sur chaque page",
-        "Vos spécialités et techniques détaillées, avec une page par spécialité",
-        "Les informations pratiques : horaires, accès, parking, conventionnement",
-        "Les avis de vos patients, intégrés ou retranscrits",
-        "Un téléphone cliquable sur mobile et un accès handicapé précisé",
-        "Une fiche Google Business Profile reliée au site",
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Un bouton de prise de rendez-vous en ligne visible sur chaque page",
+          "Vos spécialités et techniques détaillées, avec une page par spécialité",
+          "Les informations pratiques : horaires, accès, parking, conventionnement",
+          "Les avis de vos patients, intégrés ou retranscrits",
+          "Un téléphone cliquable sur mobile et un accès handicapé précisé",
+          "Une fiche Google Business Profile reliée au site",
+        ],
+      },
       { type: "h2", text: "Fiche Google et avis : le duo qui fait la différence" },
-      { type: "p", text: "Comme pour tous les professionnels de santé de proximité, la fiche Google Business Profile est déterminante. Un cabinet avec 40 avis récents à 4,9/5 inspire immédiatement plus confiance qu'un cabinet sans avis. Mettez en place une demande d'avis automatique en fin de traitement : votre réputation se construit alors toute seule et nourrit votre référencement local mois après mois." },
-      { type: "table", caption: "Priorités pour développer sa patientèle de kiné", headers: ["Action", "Effort", "Impact sur la patientèle"], rows: [
-        ["Fiche Google optimisée + avis", "Faible", "Très élevé"],
-        ["Site avec réservation en ligne", "Moyen", "Élevé"],
-        ["Pages par spécialité (SEO)", "Moyen", "Élevé sur le long terme"],
-        ["Google Ads (nouvelle installation)", "Faible", "Élevé au démarrage"],
-      ] },
+      {
+        type: "p",
+        text: "Comme pour tous les professionnels de santé de proximité, la fiche Google Business Profile est déterminante. Un cabinet avec 40 avis récents à 4,9/5 inspire immédiatement plus confiance qu'un cabinet sans avis. Mettez en place une demande d'avis automatique en fin de traitement : votre réputation se construit alors toute seule et nourrit votre référencement local mois après mois.",
+      },
+      {
+        type: "table",
+        caption: "Priorités pour développer sa patientèle de kiné",
+        headers: ["Action", "Effort", "Impact sur la patientèle"],
+        rows: [
+          ["Fiche Google optimisée + avis", "Faible", "Très élevé"],
+          ["Site avec réservation en ligne", "Moyen", "Élevé"],
+          ["Pages par spécialité (SEO)", "Moyen", "Élevé sur le long terme"],
+          ["Google Ads (nouvelle installation)", "Faible", "Élevé au démarrage"],
+        ],
+      },
       { type: "h2", text: "Et si vous débutez ou changez de ville ?" },
-      { type: "p", text: "À l'installation, vous n'avez ni avis, ni notoriété, ni référencement. C'est le moment idéal pour Google Ads : une campagne locale bien réglée vous rend visible dès le premier jour sur « kiné + ville » pendant que votre fiche Google et votre site montent en puissance. On coupe ou on réduit ensuite, une fois la patientèle lancée. C'est la façon la plus rapide de remplir un agenda neuf." },
+      {
+        type: "p",
+        text: "À l'installation, vous n'avez ni avis, ni notoriété, ni référencement. C'est le moment idéal pour Google Ads : une campagne locale bien réglée vous rend visible dès le premier jour sur « kiné + ville » pendant que votre fiche Google et votre site montent en puissance. On coupe ou on réduit ensuite, une fois la patientèle lancée. C'est la façon la plus rapide de remplir un agenda neuf.",
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "Un kiné conventionné a-t-il vraiment besoin de marketing ?", a: "Oui, de plus en plus. La prescription remplit moins automatiquement qu'avant, et les patients choisissent leur praticien. Être visible et facile à contacter sécurise votre activité et vous permet de mieux remplir vos créneaux." },
-        { q: "La prise de rendez-vous en ligne convient-elle à un cabinet de kiné ?", a: "Tout à fait. Elle réduit le temps au téléphone, capte les demandes hors horaires et diminue les rendez-vous non honorés grâce aux rappels automatiques. C'est l'un des meilleurs investissements pour un cabinet." },
-        { q: "Combien coûte un site internet pour kinésithérapeute ?", a: "Chez Sitaly, à partir de 149€/mois tout inclus (site, hébergement, maintenance, modifications, support), en location sans engagement. Les options Google Ads et automatisation s'ajoutent selon vos besoins." },
-        { q: "Puis-je tout déléguer ?", a: "Oui. Sitaly met en place le site, la réservation en ligne, le référencement local et, en option, Google Ads et la collecte d'avis. Vous restez concentré sur vos soins." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Un kiné conventionné a-t-il vraiment besoin de marketing ?",
+            a: "Oui, de plus en plus. La prescription remplit moins automatiquement qu'avant, et les patients choisissent leur praticien. Être visible et facile à contacter sécurise votre activité et vous permet de mieux remplir vos créneaux.",
+          },
+          {
+            q: "La prise de rendez-vous en ligne convient-elle à un cabinet de kiné ?",
+            a: "Tout à fait. Elle réduit le temps au téléphone, capte les demandes hors horaires et diminue les rendez-vous non honorés grâce aux rappels automatiques. C'est l'un des meilleurs investissements pour un cabinet.",
+          },
+          {
+            q: "Combien coûte un site internet pour kinésithérapeute ?",
+            a: "Chez Sitaly, à partir de 149€/mois tout inclus (site, hébergement, maintenance, modifications, support), en location sans engagement. Les options Google Ads et automatisation s'ajoutent selon vos besoins.",
+          },
+          {
+            q: "Puis-je tout déléguer ?",
+            a: "Oui. Sitaly met en place le site, la réservation en ligne, le référencement local et, en option, Google Ads et la collecte d'avis. Vous restez concentré sur vos soins.",
+          },
+        ],
+      },
       { type: "h2", text: "Développez votre patientèle avec Sitaly" },
-      { type: "p", text: "Un site internet pensé pour les kinésithérapeutes, avec prise de rendez-vous en ligne, référencement local, et en option Google Ads et automatisations : Sitaly construit le système qui vous apporte des patients régulièrement. Réservez un appel gratuit de 15 minutes pour en parler." },
+      {
+        type: "p",
+        text: "Un site internet pensé pour les kinésithérapeutes, avec prise de rendez-vous en ligne, référencement local, et en option Google Ads et automatisations : Sitaly construit le système qui vous apporte des patients régulièrement. Réservez un appel gratuit de 15 minutes pour en parler.",
+      },
     ],
   },
   {
@@ -1657,38 +3113,79 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "trouver des clients coach sportif",
     content: [
-      { type: "p", text: "La plupart des coachs sportifs misent tout sur les réseaux sociaux. C'est utile pour la notoriété, mais c'est fragile : l'algorithme change, la portée chute, et un compte qui marche aujourd'hui peut être invisible demain. Pendant ce temps, des dizaines de personnes tapent chaque mois « coach sportif + ville », « coach perte de poids + ville » ou « coaching à domicile » sur Google… et tombent sur vos concurrents. Voici comment construire un système d'acquisition de clients stable, qui ne dépend pas du bon vouloir d'un réseau social." },
+      {
+        type: "p",
+        text: "La plupart des coachs sportifs misent tout sur les réseaux sociaux. C'est utile pour la notoriété, mais c'est fragile : l'algorithme change, la portée chute, et un compte qui marche aujourd'hui peut être invisible demain. Pendant ce temps, des dizaines de personnes tapent chaque mois « coach sportif + ville », « coach perte de poids + ville » ou « coaching à domicile » sur Google… et tombent sur vos concurrents. Voici comment construire un système d'acquisition de clients stable, qui ne dépend pas du bon vouloir d'un réseau social.",
+      },
       { type: "h2", text: "Le problème de l'acquisition 100 % réseaux sociaux" },
-      { type: "p", text: "Instagram et TikTok demandent un effort permanent : poster, filmer, suivre les tendances. Le jour où vous arrêtez, les demandes s'arrêtent. Surtout, les abonnés ne sont pas des clients : un compte à 10 000 abonnés peut générer moins de rendez-vous qu'une page Google bien référencée. L'idéal n'est pas d'abandonner les réseaux, mais de les compléter par des canaux que vous contrôlez : votre site, votre fiche Google, vos avis." },
+      {
+        type: "p",
+        text: "Instagram et TikTok demandent un effort permanent : poster, filmer, suivre les tendances. Le jour où vous arrêtez, les demandes s'arrêtent. Surtout, les abonnés ne sont pas des clients : un compte à 10 000 abonnés peut générer moins de rendez-vous qu'une page Google bien référencée. L'idéal n'est pas d'abandonner les réseaux, mais de les compléter par des canaux que vous contrôlez : votre site, votre fiche Google, vos avis.",
+      },
       { type: "h2", text: "1. Un site internet qui transforme l'intérêt en réservation" },
-      { type: "p", text: "Votre site est le seul endroit où vous maîtrisez tout : votre offre, vos tarifs, vos résultats clients, et surtout l'appel à l'action. Un bon site de coach sportif présente vos formules (à domicile, en salle, en visio, en petit groupe), affiche des témoignages et des transformations, et propose un bouton « Réserver une séance découverte » visible partout. C'est lui qui convertit un curieux en client, là où un post Instagram se contente de générer un like." },
+      {
+        type: "p",
+        text: "Votre site est le seul endroit où vous maîtrisez tout : votre offre, vos tarifs, vos résultats clients, et surtout l'appel à l'action. Un bon site de coach sportif présente vos formules (à domicile, en salle, en visio, en petit groupe), affiche des témoignages et des transformations, et propose un bouton « Réserver une séance découverte » visible partout. C'est lui qui convertit un curieux en client, là où un post Instagram se contente de générer un like.",
+      },
       { type: "h2", text: "2. Google : être trouvé par ceux qui cherchent déjà un coach" },
-      { type: "p", text: "Quelqu'un qui tape « coach sportif + ville » est bien plus chaud qu'un internaute qui scrolle son fil. Il cherche activement. Pour capter ces prospects, deux leviers : une fiche Google Business Profile complète avec des avis, et le référencement local de votre site sur vos prestations et votre zone. Ajoutez Google Ads si vous voulez des résultats immédiats, notamment au lancement de votre activité." },
+      {
+        type: "p",
+        text: "Quelqu'un qui tape « coach sportif + ville » est bien plus chaud qu'un internaute qui scrolle son fil. Il cherche activement. Pour capter ces prospects, deux leviers : une fiche Google Business Profile complète avec des avis, et le référencement local de votre site sur vos prestations et votre zone. Ajoutez Google Ads si vous voulez des résultats immédiats, notamment au lancement de votre activité.",
+      },
       { type: "h2", text: "3 à 7. Les autres leviers d'un coach qui ne manque pas de clients" },
-      { type: "ul", items: [
-        "La prise de rendez-vous en ligne pour réserver une séance découverte 24h/24",
-        "Les avis Google et témoignages clients, preuve sociale décisive pour un coaching",
-        "Une offre d'appel ou de séance découverte gratuite pour amorcer la relation",
-        "La relance automatique des prospects qui ont demandé un renseignement sans réserver",
-        "Les partenariats locaux : kinés, ostéos, nutritionnistes, salles, entreprises",
-      ] },
-      { type: "table", caption: "Canaux d'acquisition pour un coach sportif", headers: ["Canal", "Contrôle", "Délai", "Stabilité"], rows: [
-        ["Réseaux sociaux", "Faible (algorithme)", "Variable", "Fragile"],
-        ["Fiche Google + avis", "Élevé", "2 à 6 semaines", "Solide"],
-        ["Site + réservation en ligne", "Total", "1 à 3 mois", "Solide"],
-        ["Google Ads local", "Élevé", "Quelques jours", "Pilotable"],
-      ] },
+      {
+        type: "ul",
+        items: [
+          "La prise de rendez-vous en ligne pour réserver une séance découverte 24h/24",
+          "Les avis Google et témoignages clients, preuve sociale décisive pour un coaching",
+          "Une offre d'appel ou de séance découverte gratuite pour amorcer la relation",
+          "La relance automatique des prospects qui ont demandé un renseignement sans réserver",
+          "Les partenariats locaux : kinés, ostéos, nutritionnistes, salles, entreprises",
+        ],
+      },
+      {
+        type: "table",
+        caption: "Canaux d'acquisition pour un coach sportif",
+        headers: ["Canal", "Contrôle", "Délai", "Stabilité"],
+        rows: [
+          ["Réseaux sociaux", "Faible (algorithme)", "Variable", "Fragile"],
+          ["Fiche Google + avis", "Élevé", "2 à 6 semaines", "Solide"],
+          ["Site + réservation en ligne", "Total", "1 à 3 mois", "Solide"],
+          ["Google Ads local", "Élevé", "Quelques jours", "Pilotable"],
+        ],
+      },
       { type: "h2", text: "Le levier sous-estimé : la relance automatique" },
-      { type: "p", text: "Beaucoup de prospects demandent un renseignement puis disparaissent — non par désintérêt, mais parce que la vie reprend le dessus. Une relance automatique par SMS ou email, deux ou trois jours après une demande restée sans suite, récupère une part significative de ces clients perdus. C'est l'une des automatisations les plus rentables pour un coach, et elle tourne toute seule pendant que vous donnez vos séances." },
+      {
+        type: "p",
+        text: "Beaucoup de prospects demandent un renseignement puis disparaissent — non par désintérêt, mais parce que la vie reprend le dessus. Une relance automatique par SMS ou email, deux ou trois jours après une demande restée sans suite, récupère une part significative de ces clients perdus. C'est l'une des automatisations les plus rentables pour un coach, et elle tourne toute seule pendant que vous donnez vos séances.",
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "Faut-il arrêter Instagram si on a un site ?", a: "Non. Les réseaux servent à se faire connaître et à montrer votre personnalité ; le site et Google servent à convertir et à capter ceux qui cherchent activement. La combinaison est bien plus puissante que les réseaux seuls." },
-        { q: "Google Ads vaut-il le coup pour un coach sportif ?", a: "Oui, surtout au démarrage ou pour une nouvelle offre : vous apparaissez immédiatement sur « coach sportif + ville » pendant que votre référencement naturel se construit. Avec un budget maîtrisé et une page dédiée, le retour est souvent rapide." },
-        { q: "Combien coûte un site pour coach sportif ?", a: "Chez Sitaly, à partir de 149€/mois tout inclus, en location sans engagement. Les options Google Ads, prise de rendez-vous en ligne et automatisations s'ajoutent selon vos besoins." },
-        { q: "Je débute, par où commencer ?", a: "Par une fiche Google complète et un site simple avec réservation en ligne et une offre découverte. Ajoutez Google Ads pour accélérer, puis les automatisations de relance une fois les premiers clients arrivés." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Faut-il arrêter Instagram si on a un site ?",
+            a: "Non. Les réseaux servent à se faire connaître et à montrer votre personnalité ; le site et Google servent à convertir et à capter ceux qui cherchent activement. La combinaison est bien plus puissante que les réseaux seuls.",
+          },
+          {
+            q: "Google Ads vaut-il le coup pour un coach sportif ?",
+            a: "Oui, surtout au démarrage ou pour une nouvelle offre : vous apparaissez immédiatement sur « coach sportif + ville » pendant que votre référencement naturel se construit. Avec un budget maîtrisé et une page dédiée, le retour est souvent rapide.",
+          },
+          {
+            q: "Combien coûte un site pour coach sportif ?",
+            a: "Chez Sitaly, à partir de 149€/mois tout inclus, en location sans engagement. Les options Google Ads, prise de rendez-vous en ligne et automatisations s'ajoutent selon vos besoins.",
+          },
+          {
+            q: "Je débute, par où commencer ?",
+            a: "Par une fiche Google complète et un site simple avec réservation en ligne et une offre découverte. Ajoutez Google Ads pour accélérer, puis les automatisations de relance une fois les premiers clients arrivés.",
+          },
+        ],
+      },
       { type: "h2", text: "Construisez votre système d'acquisition avec Sitaly" },
-      { type: "p", text: "Site internet orienté conversion, prise de rendez-vous en ligne, référencement local, et en option Google Ads et relance automatique des prospects : Sitaly met en place le système qui remplit votre planning sans dépendre des réseaux sociaux. Réservez un appel gratuit de 15 minutes pour en parler." },
+      {
+        type: "p",
+        text: "Site internet orienté conversion, prise de rendez-vous en ligne, référencement local, et en option Google Ads et relance automatique des prospects : Sitaly met en place le système qui remplit votre planning sans dépendre des réseaux sociaux. Réservez un appel gratuit de 15 minutes pour en parler.",
+      },
     ],
   },
   {
@@ -1705,38 +3202,82 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "trouver des clients consultant",
     content: [
-      { type: "p", text: "La hantise de tout consultant ou indépendant : l'alternance entre les périodes surchargées et les trous d'activité où le téléphone ne sonne plus. Le problème, c'est de ne dépendre que de son réseau et du bouche-à-oreille — deux canaux imprévisibles. Pour trouver des clients de façon régulière, il faut un système : un positionnement clair, une présence en ligne qui inspire confiance, et des mécaniques d'acquisition qui tournent même quand vous êtes en mission. Voici comment le construire." },
+      {
+        type: "p",
+        text: "La hantise de tout consultant ou indépendant : l'alternance entre les périodes surchargées et les trous d'activité où le téléphone ne sonne plus. Le problème, c'est de ne dépendre que de son réseau et du bouche-à-oreille — deux canaux imprévisibles. Pour trouver des clients de façon régulière, il faut un système : un positionnement clair, une présence en ligne qui inspire confiance, et des mécaniques d'acquisition qui tournent même quand vous êtes en mission. Voici comment le construire.",
+      },
       { type: "h2", text: "1. Un positionnement clair avant tout" },
-      { type: "p", text: "Un consultant qui « fait un peu de tout » n'est mémorisé par personne. Le premier levier d'acquisition n'est pas un outil, c'est la clarté : à qui vous vous adressez, quel problème précis vous résolvez, et quel résultat vous apportez. Un positionnement net rend tout le reste plus efficace — votre site, vos annonces, votre bouche-à-oreille. Les gens recommandent et trouvent facilement ce qu'ils comprennent en une phrase." },
+      {
+        type: "p",
+        text: "Un consultant qui « fait un peu de tout » n'est mémorisé par personne. Le premier levier d'acquisition n'est pas un outil, c'est la clarté : à qui vous vous adressez, quel problème précis vous résolvez, et quel résultat vous apportez. Un positionnement net rend tout le reste plus efficace — votre site, vos annonces, votre bouche-à-oreille. Les gens recommandent et trouvent facilement ce qu'ils comprennent en une phrase.",
+      },
       { type: "h2", text: "2. Un site qui installe votre crédibilité" },
-      { type: "p", text: "Avant de vous contacter, un prospect vous cherche sur Google et LinkedIn. S'il ne trouve qu'un profil vide, le doute s'installe. Un site professionnel joue le rôle de preuve : votre offre, vos références et études de cas, vos résultats chiffrés, vos témoignages clients, et un moyen simple de prendre rendez-vous. Pour un consultant, le site n'est pas une vitrine décorative : c'est l'outil qui transforme une recommandation ou une recherche en appel de cadrage." },
+      {
+        type: "p",
+        text: "Avant de vous contacter, un prospect vous cherche sur Google et LinkedIn. S'il ne trouve qu'un profil vide, le doute s'installe. Un site professionnel joue le rôle de preuve : votre offre, vos références et études de cas, vos résultats chiffrés, vos témoignages clients, et un moyen simple de prendre rendez-vous. Pour un consultant, le site n'est pas une vitrine décorative : c'est l'outil qui transforme une recommandation ou une recherche en appel de cadrage.",
+      },
       { type: "h2", text: "3. Être visible sur Google quand on cherche votre expertise" },
-      { type: "p", text: "Selon votre métier, des prospects cherchent activement « consultant {votre spécialité} », « expert {domaine} + secteur » ou une problématique précise. Le référencement local et thématique de votre site, complété par Google Ads sur les requêtes les plus qualifiées, vous place devant ces prospects au moment exact où ils ont besoin de vous. C'est de l'acquisition à forte intention : ils cherchent déjà une solution." },
-      { type: "h2", text: "4. Le contenu et l'automatisation pour ne plus courir après les clients" },
-      { type: "ul", items: [
-        "Des pages ou articles qui répondent aux questions de vos clients cibles et vous référencent sur Google",
-        "Une prise de rendez-vous en ligne pour réserver un appel de cadrage sans échange de mails",
-        "La relance automatique des prospects et des propositions commerciales restées sans réponse",
-        "Une réponse automatique aux demandes entrantes pour ne jamais laisser un prospect attendre",
-        "Un suivi automatisé des clients passés pour générer des missions récurrentes",
-      ] },
-      { type: "table", caption: "Le système d'acquisition d'un consultant indépendant", headers: ["Brique", "Rôle", "Effet"], rows: [
-        ["Positionnement", "Clarifier l'offre", "Tout le reste devient plus efficace"],
-        ["Site crédible", "Convertir et rassurer", "Plus d'appels de cadrage"],
-        ["Google / Ads", "Capter la demande active", "Flux de prospects qualifiés"],
-        ["Automatisation", "Relancer et suivre", "Moins de clients perdus, plus de réachat"],
-      ] },
+      {
+        type: "p",
+        text: "Selon votre métier, des prospects cherchent activement « consultant {votre spécialité} », « expert {domaine} + secteur » ou une problématique précise. Le référencement local et thématique de votre site, complété par Google Ads sur les requêtes les plus qualifiées, vous place devant ces prospects au moment exact où ils ont besoin de vous. C'est de l'acquisition à forte intention : ils cherchent déjà une solution.",
+      },
+      {
+        type: "h2",
+        text: "4. Le contenu et l'automatisation pour ne plus courir après les clients",
+      },
+      {
+        type: "ul",
+        items: [
+          "Des pages ou articles qui répondent aux questions de vos clients cibles et vous référencent sur Google",
+          "Une prise de rendez-vous en ligne pour réserver un appel de cadrage sans échange de mails",
+          "La relance automatique des prospects et des propositions commerciales restées sans réponse",
+          "Une réponse automatique aux demandes entrantes pour ne jamais laisser un prospect attendre",
+          "Un suivi automatisé des clients passés pour générer des missions récurrentes",
+        ],
+      },
+      {
+        type: "table",
+        caption: "Le système d'acquisition d'un consultant indépendant",
+        headers: ["Brique", "Rôle", "Effet"],
+        rows: [
+          ["Positionnement", "Clarifier l'offre", "Tout le reste devient plus efficace"],
+          ["Site crédible", "Convertir et rassurer", "Plus d'appels de cadrage"],
+          ["Google / Ads", "Capter la demande active", "Flux de prospects qualifiés"],
+          ["Automatisation", "Relancer et suivre", "Moins de clients perdus, plus de réachat"],
+        ],
+      },
       { type: "h2", text: "Sortir de la dépendance au bouche-à-oreille" },
-      { type: "p", text: "Le bouche-à-oreille restera précieux, mais il ne se commande pas. En ajoutant une présence en ligne solide et quelques automatisations, vous transformez un flux aléatoire en flux pilotable : vous savez d'où viennent vos clients, vous pouvez ouvrir ou fermer le robinet Google Ads selon votre charge, et vous ne laissez plus filer les prospects faute de relance. C'est la différence entre subir son activité et la piloter." },
+      {
+        type: "p",
+        text: "Le bouche-à-oreille restera précieux, mais il ne se commande pas. En ajoutant une présence en ligne solide et quelques automatisations, vous transformez un flux aléatoire en flux pilotable : vous savez d'où viennent vos clients, vous pouvez ouvrir ou fermer le robinet Google Ads selon votre charge, et vous ne laissez plus filer les prospects faute de relance. C'est la différence entre subir son activité et la piloter.",
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "Le démarchage à froid n'est-il pas plus rapide ?", a: "Il peut compléter, mais il s'épuise vite et offre un mauvais taux de retour. Un système qui attire des prospects déjà en recherche (Google, contenu, recommandations outillées) génère des clients plus qualifiés et plus durables, sans l'usure du cold call." },
-        { q: "Un consultant a-t-il vraiment besoin d'un site ?", a: "Oui. C'est le premier réflexe de vérification d'un prospect. Un site clair avec études de cas et prise de rendez-vous augmente nettement votre taux de transformation, même quand le contact vient d'une recommandation." },
-        { q: "Google Ads fonctionne-t-il pour des prestations intellectuelles ?", a: "Oui, sur les requêtes à forte intention et avec une page dédiée bien conçue. Le ciblage fin de Google Ads permet d'apparaître exactement sur les recherches de votre clientèle idéale, avec un budget maîtrisé." },
-        { q: "Puis-je déléguer la mise en place ?", a: "Oui. Sitaly construit le site, le référencement et, en option, les campagnes Google Ads et les automatisations de relance. Vous gardez votre énergie pour vos missions." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Le démarchage à froid n'est-il pas plus rapide ?",
+            a: "Il peut compléter, mais il s'épuise vite et offre un mauvais taux de retour. Un système qui attire des prospects déjà en recherche (Google, contenu, recommandations outillées) génère des clients plus qualifiés et plus durables, sans l'usure du cold call.",
+          },
+          {
+            q: "Un consultant a-t-il vraiment besoin d'un site ?",
+            a: "Oui. C'est le premier réflexe de vérification d'un prospect. Un site clair avec études de cas et prise de rendez-vous augmente nettement votre taux de transformation, même quand le contact vient d'une recommandation.",
+          },
+          {
+            q: "Google Ads fonctionne-t-il pour des prestations intellectuelles ?",
+            a: "Oui, sur les requêtes à forte intention et avec une page dédiée bien conçue. Le ciblage fin de Google Ads permet d'apparaître exactement sur les recherches de votre clientèle idéale, avec un budget maîtrisé.",
+          },
+          {
+            q: "Puis-je déléguer la mise en place ?",
+            a: "Oui. Sitaly construit le site, le référencement et, en option, les campagnes Google Ads et les automatisations de relance. Vous gardez votre énergie pour vos missions.",
+          },
+        ],
+      },
       { type: "h2", text: "Mettez en place votre système d'acquisition avec Sitaly" },
-      { type: "p", text: "Site professionnel orienté crédibilité et conversion, référencement, prise de rendez-vous en ligne, et en option Google Ads et automatisations de relance : Sitaly aide les consultants et indépendants à transformer un flux de clients aléatoire en système pilotable. Réservez un appel gratuit de 15 minutes pour en parler." },
+      {
+        type: "p",
+        text: "Site professionnel orienté crédibilité et conversion, référencement, prise de rendez-vous en ligne, et en option Google Ads et automatisations de relance : Sitaly aide les consultants et indépendants à transformer un flux de clients aléatoire en système pilotable. Réservez un appel gratuit de 15 minutes pour en parler.",
+      },
     ],
   },
   {
@@ -1753,37 +3294,81 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "trouver des clients avocat",
     content: [
-      { type: "p", text: "Le réflexe d'un particulier ou d'un dirigeant confronté à un litige a changé : avant d'appeler une connaissance, il tape sa question sur Google — « avocat divorce + ville », « avocat droit du travail + ville », « avocat licenciement ». Celui qui apparaît, qui inspire confiance et qui est facile à contacter récupère le rendez-vous. Développer sa clientèle d'avocat passe désormais par une présence en ligne maîtrisée, parfaitement compatible avec la déontologie, à condition de respecter quelques règles." },
+      {
+        type: "p",
+        text: "Le réflexe d'un particulier ou d'un dirigeant confronté à un litige a changé : avant d'appeler une connaissance, il tape sa question sur Google — « avocat divorce + ville », « avocat droit du travail + ville », « avocat licenciement ». Celui qui apparaît, qui inspire confiance et qui est facile à contacter récupère le rendez-vous. Développer sa clientèle d'avocat passe désormais par une présence en ligne maîtrisée, parfaitement compatible avec la déontologie, à condition de respecter quelques règles.",
+      },
       { type: "h2", text: "Communication oui, sollicitation non : le cadre déontologique" },
-      { type: "p", text: "Depuis 2014, un avocat a le droit de communiquer et de faire de la publicité fonctionnelle : site internet, référencement, présence sur Google. Ce qui reste encadré, c'est la sollicitation personnalisée (démarcher nommément une personne précise pour une affaire donnée). Une présence en ligne qui informe, présente vos domaines d'intervention et permet d'être trouvé est non seulement autorisée mais attendue. Tout l'enjeu est de communiquer avec dignité et sans démarchage individualisé." },
+      {
+        type: "p",
+        text: "Depuis 2014, un avocat a le droit de communiquer et de faire de la publicité fonctionnelle : site internet, référencement, présence sur Google. Ce qui reste encadré, c'est la sollicitation personnalisée (démarcher nommément une personne précise pour une affaire donnée). Une présence en ligne qui informe, présente vos domaines d'intervention et permet d'être trouvé est non seulement autorisée mais attendue. Tout l'enjeu est de communiquer avec dignité et sans démarchage individualisé.",
+      },
       { type: "h2", text: "1. Un site qui inspire confiance et autorité" },
-      { type: "p", text: "Le choix d'un avocat est un choix de confiance. Votre site doit asseoir votre crédibilité : vos domaines d'intervention détaillés (une page par domaine), votre parcours, votre barreau, votre approche, et un moyen de prise de contact simple. Un site sobre, clair et rassurant transforme un visiteur inquiet en prise de rendez-vous, là où une fiche annuaire impersonnelle laisse le doute s'installer." },
+      {
+        type: "p",
+        text: "Le choix d'un avocat est un choix de confiance. Votre site doit asseoir votre crédibilité : vos domaines d'intervention détaillés (une page par domaine), votre parcours, votre barreau, votre approche, et un moyen de prise de contact simple. Un site sobre, clair et rassurant transforme un visiteur inquiet en prise de rendez-vous, là où une fiche annuaire impersonnelle laisse le doute s'installer.",
+      },
       { type: "h2", text: "2. Le référencement local et thématique" },
-      { type: "p", text: "Vos futurs clients cherchent par domaine et par ville. Une page dédiée et optimisée par domaine d'expertise (droit de la famille, droit du travail, droit des affaires, droit pénal…) vous permet d'apparaître précisément sur les recherches correspondantes. Couplée à une fiche Google Business Profile complète et à des avis, cette stratégie de référencement local vous rend visible au moment où le besoin juridique apparaît." },
-      { type: "h2", text: "3. Google Ads : visibilité immédiate sur les requêtes à forte intention" },
-      { type: "p", text: "Quelqu'un qui tape « avocat licenciement + ville » a un besoin immédiat et une valeur de dossier élevée. Google Ads, autorisé pour les avocats dans le respect de la déontologie, permet d'apparaître en tête sur ces requêtes dès aujourd'hui, sans attendre des mois de référencement naturel. Avec une page dédiée par domaine et un budget maîtrisé, le coût d'acquisition d'un client reste largement absorbé par la valeur d'un seul dossier." },
+      {
+        type: "p",
+        text: "Vos futurs clients cherchent par domaine et par ville. Une page dédiée et optimisée par domaine d'expertise (droit de la famille, droit du travail, droit des affaires, droit pénal…) vous permet d'apparaître précisément sur les recherches correspondantes. Couplée à une fiche Google Business Profile complète et à des avis, cette stratégie de référencement local vous rend visible au moment où le besoin juridique apparaît.",
+      },
+      {
+        type: "h2",
+        text: "3. Google Ads : visibilité immédiate sur les requêtes à forte intention",
+      },
+      {
+        type: "p",
+        text: "Quelqu'un qui tape « avocat licenciement + ville » a un besoin immédiat et une valeur de dossier élevée. Google Ads, autorisé pour les avocats dans le respect de la déontologie, permet d'apparaître en tête sur ces requêtes dès aujourd'hui, sans attendre des mois de référencement naturel. Avec une page dédiée par domaine et un budget maîtrisé, le coût d'acquisition d'un client reste largement absorbé par la valeur d'un seul dossier.",
+      },
       { type: "h2", text: "Les leviers complémentaires" },
-      { type: "ul", items: [
-        "Les avis clients (dans le respect du secret professionnel) qui rassurent et renforcent le référencement",
-        "La prise de rendez-vous en ligne pour un premier rendez-vous, qui réduit les appels manqués",
-        "Du contenu juridique vulgarisé qui répond aux questions fréquentes et vous référence",
-        "La réponse automatique aux demandes entrantes pour ne jamais laisser un prospect sans réponse",
-      ] },
-      { type: "table", caption: "Acquisition de clients pour un cabinet d'avocat", headers: ["Levier", "Conformité déontologie", "Délai", "Valeur"], rows: [
-        ["Site + pages par domaine", "Communication autorisée", "1 à 3 mois", "Élevée"],
-        ["Référencement local + avis", "Autorisé", "2 à 4 mois", "Élevée"],
-        ["Google Ads", "Autorisé (publicité encadrée)", "Quelques jours", "Très élevée"],
-        ["Démarchage nominatif", "Interdit", "—", "—"],
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Les avis clients (dans le respect du secret professionnel) qui rassurent et renforcent le référencement",
+          "La prise de rendez-vous en ligne pour un premier rendez-vous, qui réduit les appels manqués",
+          "Du contenu juridique vulgarisé qui répond aux questions fréquentes et vous référence",
+          "La réponse automatique aux demandes entrantes pour ne jamais laisser un prospect sans réponse",
+        ],
+      },
+      {
+        type: "table",
+        caption: "Acquisition de clients pour un cabinet d'avocat",
+        headers: ["Levier", "Conformité déontologie", "Délai", "Valeur"],
+        rows: [
+          ["Site + pages par domaine", "Communication autorisée", "1 à 3 mois", "Élevée"],
+          ["Référencement local + avis", "Autorisé", "2 à 4 mois", "Élevée"],
+          ["Google Ads", "Autorisé (publicité encadrée)", "Quelques jours", "Très élevée"],
+          ["Démarchage nominatif", "Interdit", "—", "—"],
+        ],
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "Un avocat a-t-il le droit de faire de la publicité Google Ads ?", a: "Oui. Depuis 2014, la publicité fonctionnelle est autorisée pour les avocats, Google Ads compris, tant qu'elle reste digne, loyale et qu'elle ne constitue pas une sollicitation personnalisée. Le cadrage des annonces doit respecter la déontologie." },
-        { q: "Quels domaines bénéficient le plus d'une présence en ligne ?", a: "Les domaines où les particuliers cherchent eux-mêmes : droit de la famille, droit du travail, droit pénal, droit immobilier, droit de la consommation. Ce sont des requêtes à fort volume et forte intention." },
-        { q: "Le site doit-il respecter des mentions particulières ?", a: "Oui : mention du barreau, respect du secret professionnel, communication loyale et non trompeuse. Un accompagnement habitué aux professions réglementées sécurise ces aspects." },
-        { q: "Puis-je déléguer la mise en place sans risque déontologique ?", a: "Oui, à condition que le prestataire respecte votre cadre. Sitaly met en place site, référencement et, en option, Google Ads en restant dans les limites de la communication autorisée. Vous validez les contenus." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Un avocat a-t-il le droit de faire de la publicité Google Ads ?",
+            a: "Oui. Depuis 2014, la publicité fonctionnelle est autorisée pour les avocats, Google Ads compris, tant qu'elle reste digne, loyale et qu'elle ne constitue pas une sollicitation personnalisée. Le cadrage des annonces doit respecter la déontologie.",
+          },
+          {
+            q: "Quels domaines bénéficient le plus d'une présence en ligne ?",
+            a: "Les domaines où les particuliers cherchent eux-mêmes : droit de la famille, droit du travail, droit pénal, droit immobilier, droit de la consommation. Ce sont des requêtes à fort volume et forte intention.",
+          },
+          {
+            q: "Le site doit-il respecter des mentions particulières ?",
+            a: "Oui : mention du barreau, respect du secret professionnel, communication loyale et non trompeuse. Un accompagnement habitué aux professions réglementées sécurise ces aspects.",
+          },
+          {
+            q: "Puis-je déléguer la mise en place sans risque déontologique ?",
+            a: "Oui, à condition que le prestataire respecte votre cadre. Sitaly met en place site, référencement et, en option, Google Ads en restant dans les limites de la communication autorisée. Vous validez les contenus.",
+          },
+        ],
+      },
       { type: "h2", text: "Développez votre cabinet avec Sitaly" },
-      { type: "p", text: "Site sobre et crédible, pages par domaine d'expertise, référencement local et, en option, Google Ads conforme à la déontologie : Sitaly aide les avocats à être trouvés par des clients qualifiés au bon moment. Réservez un appel gratuit de 15 minutes pour en parler." },
+      {
+        type: "p",
+        text: "Site sobre et crédible, pages par domaine d'expertise, référencement local et, en option, Google Ads conforme à la déontologie : Sitaly aide les avocats à être trouvés par des clients qualifiés au bon moment. Réservez un appel gratuit de 15 minutes pour en parler.",
+      },
     ],
   },
   {
@@ -1800,36 +3385,74 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "trouver des clients expert-comptable",
     content: [
-      { type: "p", text: "La relation avec un expert-comptable est durable et récurrente : gagner un client, c'est souvent un revenu sur plusieurs années. C'est ce qui rend l'acquisition digitale particulièrement rentable pour un cabinet. Or les dirigeants, créateurs d'entreprise et indépendants choisissent de plus en plus leur cabinet en ligne : ils tapent « expert-comptable + ville », « comptable création d'entreprise », « cabinet comptable + secteur » sur Google. Voici comment capter ces prospects à forte valeur." },
+      {
+        type: "p",
+        text: "La relation avec un expert-comptable est durable et récurrente : gagner un client, c'est souvent un revenu sur plusieurs années. C'est ce qui rend l'acquisition digitale particulièrement rentable pour un cabinet. Or les dirigeants, créateurs d'entreprise et indépendants choisissent de plus en plus leur cabinet en ligne : ils tapent « expert-comptable + ville », « comptable création d'entreprise », « cabinet comptable + secteur » sur Google. Voici comment capter ces prospects à forte valeur.",
+      },
       { type: "h2", text: "Pourquoi l'acquisition en ligne est très rentable pour un cabinet" },
-      { type: "p", text: "Contrairement à une prestation ponctuelle, un client en expertise comptable représente une mission récurrente et une valeur vie élevée. Même un coût d'acquisition de plusieurs centaines d'euros se rentabilise en quelques mois d'honoraires. C'est pourquoi un cabinet visible sur Google, avec un site crédible et un suivi automatisé, dispose d'un avantage concurrentiel durable sur les confrères qui comptent encore uniquement sur le bouche-à-oreille." },
+      {
+        type: "p",
+        text: "Contrairement à une prestation ponctuelle, un client en expertise comptable représente une mission récurrente et une valeur vie élevée. Même un coût d'acquisition de plusieurs centaines d'euros se rentabilise en quelques mois d'honoraires. C'est pourquoi un cabinet visible sur Google, avec un site crédible et un suivi automatisé, dispose d'un avantage concurrentiel durable sur les confrères qui comptent encore uniquement sur le bouche-à-oreille.",
+      },
       { type: "h2", text: "1. Un site qui rassure des dirigeants exigeants" },
-      { type: "p", text: "Un dirigeant confie ses chiffres : il veut un cabinet fiable, moderne et accessible. Votre site doit refléter ce sérieux : vos services (création d'entreprise, tenue, paie, conseil, fiscalité), vos secteurs de prédilection, votre équipe, et un moyen simple de prendre rendez-vous. Mettre en avant votre spécialisation (TPE, professions libérales, e-commerce, restauration…) vous différencie et attire exactement la clientèle que vous visez." },
+      {
+        type: "p",
+        text: "Un dirigeant confie ses chiffres : il veut un cabinet fiable, moderne et accessible. Votre site doit refléter ce sérieux : vos services (création d'entreprise, tenue, paie, conseil, fiscalité), vos secteurs de prédilection, votre équipe, et un moyen simple de prendre rendez-vous. Mettre en avant votre spécialisation (TPE, professions libérales, e-commerce, restauration…) vous différencie et attire exactement la clientèle que vous visez.",
+      },
       { type: "h2", text: "2. Le référencement local pour capter les créateurs d'entreprise" },
-      { type: "p", text: "Les créations d'entreprise sont un flux constant de prospects. Une page optimisée sur « expert-comptable création d'entreprise + ville », couplée à une fiche Google Business Profile soignée et à des avis, vous positionne au moment précis où un futur dirigeant cherche un cabinet. Le référencement local est un actif qui travaille pour vous en continu, sans coût par contact." },
+      {
+        type: "p",
+        text: "Les créations d'entreprise sont un flux constant de prospects. Une page optimisée sur « expert-comptable création d'entreprise + ville », couplée à une fiche Google Business Profile soignée et à des avis, vous positionne au moment précis où un futur dirigeant cherche un cabinet. Le référencement local est un actif qui travaille pour vous en continu, sans coût par contact.",
+      },
       { type: "h2", text: "3. Google Ads et automatisation pour accélérer" },
-      { type: "ul", items: [
-        "Google Ads sur les requêtes à forte intention (« comptable création SASU + ville ») pour une visibilité immédiate",
-        "Une page d'atterrissage dédiée par service, qui convertit le clic en demande de rendez-vous",
-        "La réponse automatique aux demandes pour traiter chaque prospect sans délai",
-        "La relance automatique des devis et propositions de mission restés sans réponse",
-        "La prise de rendez-vous en ligne pour un premier entretien sans échanges de mails",
-      ] },
-      { type: "table", caption: "Leviers d'acquisition pour un cabinet comptable", headers: ["Levier", "Cible", "Délai", "Rentabilité"], rows: [
-        ["Site + pages par service", "Dirigeants, créateurs", "1 à 3 mois", "Élevée"],
-        ["Référencement local + avis", "Recherche locale", "2 à 4 mois", "Très élevée"],
-        ["Google Ads", "Intention immédiate", "Quelques jours", "Élevée (valeur client haute)"],
-        ["Automatisation", "Suivi prospects", "Immédiat", "Élevée"],
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Google Ads sur les requêtes à forte intention (« comptable création SASU + ville ») pour une visibilité immédiate",
+          "Une page d'atterrissage dédiée par service, qui convertit le clic en demande de rendez-vous",
+          "La réponse automatique aux demandes pour traiter chaque prospect sans délai",
+          "La relance automatique des devis et propositions de mission restés sans réponse",
+          "La prise de rendez-vous en ligne pour un premier entretien sans échanges de mails",
+        ],
+      },
+      {
+        type: "table",
+        caption: "Leviers d'acquisition pour un cabinet comptable",
+        headers: ["Levier", "Cible", "Délai", "Rentabilité"],
+        rows: [
+          ["Site + pages par service", "Dirigeants, créateurs", "1 à 3 mois", "Élevée"],
+          ["Référencement local + avis", "Recherche locale", "2 à 4 mois", "Très élevée"],
+          ["Google Ads", "Intention immédiate", "Quelques jours", "Élevée (valeur client haute)"],
+          ["Automatisation", "Suivi prospects", "Immédiat", "Élevée"],
+        ],
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "Un cabinet comptable a-t-il le droit de faire de la publicité ?", a: "Oui. La profession peut communiquer et recourir à la publicité dans le respect de son cadre déontologique (information loyale, dignité, confraternité). Site internet, référencement et Google Ads sont des leviers parfaitement utilisables." },
-        { q: "Quel est le meilleur levier pour attirer des créateurs d'entreprise ?", a: "Le couple référencement local et Google Ads sur les requêtes de création (SASU, SAS, micro-entreprise…). Ce sont des prospects à forte intention, au tout début d'une relation potentiellement longue." },
-        { q: "L'automatisation est-elle utile pour un expert-comptable ?", a: "Oui : réponse immédiate aux demandes, relance des propositions de mission et prise de rendez-vous en ligne évitent de perdre des prospects à forte valeur faute de réactivité." },
-        { q: "Combien coûte la présence en ligne d'un cabinet ?", a: "Chez Sitaly, à partir de 149€/mois tout inclus pour le site, en location sans engagement. Google Ads et automatisations s'ajoutent en option selon vos objectifs de développement." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Un cabinet comptable a-t-il le droit de faire de la publicité ?",
+            a: "Oui. La profession peut communiquer et recourir à la publicité dans le respect de son cadre déontologique (information loyale, dignité, confraternité). Site internet, référencement et Google Ads sont des leviers parfaitement utilisables.",
+          },
+          {
+            q: "Quel est le meilleur levier pour attirer des créateurs d'entreprise ?",
+            a: "Le couple référencement local et Google Ads sur les requêtes de création (SASU, SAS, micro-entreprise…). Ce sont des prospects à forte intention, au tout début d'une relation potentiellement longue.",
+          },
+          {
+            q: "L'automatisation est-elle utile pour un expert-comptable ?",
+            a: "Oui : réponse immédiate aux demandes, relance des propositions de mission et prise de rendez-vous en ligne évitent de perdre des prospects à forte valeur faute de réactivité.",
+          },
+          {
+            q: "Combien coûte la présence en ligne d'un cabinet ?",
+            a: "Chez Sitaly, à partir de 149€/mois tout inclus pour le site, en location sans engagement. Google Ads et automatisations s'ajoutent en option selon vos objectifs de développement.",
+          },
+        ],
+      },
       { type: "h2", text: "Développez votre cabinet comptable avec Sitaly" },
-      { type: "p", text: "Site crédible pensé pour rassurer les dirigeants, référencement local, et en option Google Ads et automatisations : Sitaly aide les experts-comptables à attirer des clients récurrents à forte valeur. Réservez un appel gratuit de 15 minutes pour en parler." },
+      {
+        type: "p",
+        text: "Site crédible pensé pour rassurer les dirigeants, référencement local, et en option Google Ads et automatisations : Sitaly aide les experts-comptables à attirer des clients récurrents à forte valeur. Réservez un appel gratuit de 15 minutes pour en parler.",
+      },
     ],
   },
   {
@@ -1846,38 +3469,79 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "trouver des clients agent immobilier",
     content: [
-      { type: "p", text: "En immobilier, tout commence par le mandat. Et le vendeur qui veut estimer son bien commence, lui, sur Google : « estimation maison + ville », « agence immobilière + ville », « vendre appartement + quartier ». L'agent qui apparaît, propose une estimation en ligne et inspire confiance décroche le rendez-vous d'estimation — donc le mandat. Pour un agent indépendant ou un mandataire, une présence en ligne efficace n'est pas un luxe : c'est la principale source de mandats rentrés." },
+      {
+        type: "p",
+        text: "En immobilier, tout commence par le mandat. Et le vendeur qui veut estimer son bien commence, lui, sur Google : « estimation maison + ville », « agence immobilière + ville », « vendre appartement + quartier ». L'agent qui apparaît, propose une estimation en ligne et inspire confiance décroche le rendez-vous d'estimation — donc le mandat. Pour un agent indépendant ou un mandataire, une présence en ligne efficace n'est pas un luxe : c'est la principale source de mandats rentrés.",
+      },
       { type: "h2", text: "Le mandat se gagne en ligne, avant même le premier appel" },
-      { type: "p", text: "Un propriétaire qui envisage de vendre compare plusieurs agents. Il regarde leur site, leurs avis, leur connaissance du secteur, leurs biens vendus. Celui qui présente une image professionnelle et facilite le premier pas (estimation en ligne, prise de rendez-vous) part avec une longueur d'avance. À l'inverse, un agent sans site ni avis peine à se distinguer des dizaines de concurrents de sa ville." },
+      {
+        type: "p",
+        text: "Un propriétaire qui envisage de vendre compare plusieurs agents. Il regarde leur site, leurs avis, leur connaissance du secteur, leurs biens vendus. Celui qui présente une image professionnelle et facilite le premier pas (estimation en ligne, prise de rendez-vous) part avec une longueur d'avance. À l'inverse, un agent sans site ni avis peine à se distinguer des dizaines de concurrents de sa ville.",
+      },
       { type: "h2", text: "1. Un site avec estimation en ligne pour capter les vendeurs" },
-      { type: "p", text: "L'outil le plus efficace pour générer des mandats est l'estimation en ligne : le vendeur saisit son bien, vous récupérez un contact qualifié et chaud, prêt pour un rendez-vous d'estimation. Couplé à des pages par secteur (« agent immobilier + quartier »), à vos biens et à vos ventes réalisées, votre site devient une machine à rentrer des contacts vendeurs — la ressource la plus précieuse de votre métier." },
+      {
+        type: "p",
+        text: "L'outil le plus efficace pour générer des mandats est l'estimation en ligne : le vendeur saisit son bien, vous récupérez un contact qualifié et chaud, prêt pour un rendez-vous d'estimation. Couplé à des pages par secteur (« agent immobilier + quartier »), à vos biens et à vos ventes réalisées, votre site devient une machine à rentrer des contacts vendeurs — la ressource la plus précieuse de votre métier.",
+      },
       { type: "h2", text: "2. Google et avis : la confiance locale" },
-      { type: "p", text: "L'immobilier est un marché de réputation locale. Une fiche Google Business Profile complète avec de nombreux avis de clients vendeurs et acheteurs vous positionne comme la référence de votre secteur. Les avis pèsent énormément dans le choix d'un mandat : un propriétaire confie plus volontiers son bien à l'agent que ses voisins recommandent à 5 étoiles. Mettez en place une demande d'avis automatique après chaque transaction." },
+      {
+        type: "p",
+        text: "L'immobilier est un marché de réputation locale. Une fiche Google Business Profile complète avec de nombreux avis de clients vendeurs et acheteurs vous positionne comme la référence de votre secteur. Les avis pèsent énormément dans le choix d'un mandat : un propriétaire confie plus volontiers son bien à l'agent que ses voisins recommandent à 5 étoiles. Mettez en place une demande d'avis automatique après chaque transaction.",
+      },
       { type: "h2", text: "3. Google Ads pour les vendeurs et acheteurs à forte intention" },
-      { type: "ul", items: [
-        "Google Ads sur « estimation + ville » et « vendre + type de bien + ville » pour capter les vendeurs immédiatement",
-        "Une page d'estimation dédiée qui transforme le clic en contact vendeur qualifié",
-        "La relance automatique des contacts d'estimation qui n'ont pas encore signé de mandat",
-        "La réponse automatique aux demandes sur vos annonces pour ne perdre aucun acheteur",
-        "La prise de rendez-vous en ligne pour les visites et les estimations",
-      ] },
-      { type: "table", caption: "Générer des mandats : les leviers d'un agent immobilier", headers: ["Levier", "Cible", "Délai", "Impact mandats"], rows: [
-        ["Site + estimation en ligne", "Vendeurs", "1 à 3 mois", "Très élevé"],
-        ["Fiche Google + avis", "Vendeurs & acheteurs", "2 à 6 semaines", "Élevé"],
-        ["Google Ads estimation", "Vendeurs chauds", "Quelques jours", "Très élevé"],
-        ["Relance automatique", "Contacts tièdes", "Immédiat", "Élevé"],
-      ] },
+      {
+        type: "ul",
+        items: [
+          "Google Ads sur « estimation + ville » et « vendre + type de bien + ville » pour capter les vendeurs immédiatement",
+          "Une page d'estimation dédiée qui transforme le clic en contact vendeur qualifié",
+          "La relance automatique des contacts d'estimation qui n'ont pas encore signé de mandat",
+          "La réponse automatique aux demandes sur vos annonces pour ne perdre aucun acheteur",
+          "La prise de rendez-vous en ligne pour les visites et les estimations",
+        ],
+      },
+      {
+        type: "table",
+        caption: "Générer des mandats : les leviers d'un agent immobilier",
+        headers: ["Levier", "Cible", "Délai", "Impact mandats"],
+        rows: [
+          ["Site + estimation en ligne", "Vendeurs", "1 à 3 mois", "Très élevé"],
+          ["Fiche Google + avis", "Vendeurs & acheteurs", "2 à 6 semaines", "Élevé"],
+          ["Google Ads estimation", "Vendeurs chauds", "Quelques jours", "Très élevé"],
+          ["Relance automatique", "Contacts tièdes", "Immédiat", "Élevé"],
+        ],
+      },
       { type: "h2", text: "Le levier qui change tout : relancer les estimations" },
-      { type: "p", text: "Beaucoup de propriétaires demandent une estimation plusieurs semaines, voire plusieurs mois, avant de se décider à vendre. Sans relance, ces contacts s'évaporent et finissent chez le concurrent qui, lui, a recontacté. La relance automatique des contacts d'estimation maintient le lien et vous place en première position le jour où le propriétaire passe à l'action. C'est l'une des automatisations les plus rentables du métier." },
+      {
+        type: "p",
+        text: "Beaucoup de propriétaires demandent une estimation plusieurs semaines, voire plusieurs mois, avant de se décider à vendre. Sans relance, ces contacts s'évaporent et finissent chez le concurrent qui, lui, a recontacté. La relance automatique des contacts d'estimation maintient le lien et vous place en première position le jour où le propriétaire passe à l'action. C'est l'une des automatisations les plus rentables du métier.",
+      },
       { type: "h2", text: "Questions fréquentes" },
-      { type: "faq", items: [
-        { q: "L'estimation en ligne ne dévalorise-t-elle pas mon expertise ?", a: "Au contraire : elle sert d'amorce. Le vendeur obtient une fourchette, vous obtenez un contact qualifié, et c'est votre rendez-vous d'estimation physique qui apporte la vraie valeur et décroche le mandat. L'outil génère l'opportunité, votre expertise la transforme." },
-        { q: "Google Ads est-il rentable pour un agent indépendant ?", a: "Oui, surtout ciblé sur les requêtes vendeurs (« estimation + ville »). La valeur d'un seul mandat couvre très largement le budget publicitaire de plusieurs mois. C'est l'un des canaux les plus directs pour rentrer des mandats." },
-        { q: "Et si je dépends d'un réseau qui me fournit déjà un site ?", a: "Les sites de réseau se ressemblent tous et vous noient dans la masse. Un site personnel, à votre nom, avec votre secteur et vos avis, vous différencie et capte les contacts qui, sinon, partiraient vers la marque plutôt que vers vous." },
-        { q: "Puis-je tout déléguer ?", a: "Oui. Sitaly met en place le site avec estimation en ligne, le référencement local et, en option, Google Ads et la relance automatique des contacts. Vous vous concentrez sur les rendez-vous et les ventes." },
-      ] },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "L'estimation en ligne ne dévalorise-t-elle pas mon expertise ?",
+            a: "Au contraire : elle sert d'amorce. Le vendeur obtient une fourchette, vous obtenez un contact qualifié, et c'est votre rendez-vous d'estimation physique qui apporte la vraie valeur et décroche le mandat. L'outil génère l'opportunité, votre expertise la transforme.",
+          },
+          {
+            q: "Google Ads est-il rentable pour un agent indépendant ?",
+            a: "Oui, surtout ciblé sur les requêtes vendeurs (« estimation + ville »). La valeur d'un seul mandat couvre très largement le budget publicitaire de plusieurs mois. C'est l'un des canaux les plus directs pour rentrer des mandats.",
+          },
+          {
+            q: "Et si je dépends d'un réseau qui me fournit déjà un site ?",
+            a: "Les sites de réseau se ressemblent tous et vous noient dans la masse. Un site personnel, à votre nom, avec votre secteur et vos avis, vous différencie et capte les contacts qui, sinon, partiraient vers la marque plutôt que vers vous.",
+          },
+          {
+            q: "Puis-je tout déléguer ?",
+            a: "Oui. Sitaly met en place le site avec estimation en ligne, le référencement local et, en option, Google Ads et la relance automatique des contacts. Vous vous concentrez sur les rendez-vous et les ventes.",
+          },
+        ],
+      },
       { type: "h2", text: "Générez plus de mandats avec Sitaly" },
-      { type: "p", text: "Site avec estimation en ligne, référencement local, avis, et en option Google Ads et relance automatique des contacts vendeurs : Sitaly aide les agents immobiliers indépendants à rentrer plus de mandats et à convertir plus d'acheteurs. Réservez un appel gratuit de 15 minutes pour en parler." },
+      {
+        type: "p",
+        text: "Site avec estimation en ligne, référencement local, avis, et en option Google Ads et relance automatique des contacts vendeurs : Sitaly aide les agents immobiliers indépendants à rentrer plus de mandats et à convertir plus d'acheteurs. Réservez un appel gratuit de 15 minutes pour en parler.",
+      },
     ],
   },
   {
@@ -1894,42 +3558,93 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "L'équipe Sitaly",
     keyword: "agent IA",
     content: [
-      { type: "p", text: "Il est 14h, vous êtes sur un chantier, les mains prises. Votre téléphone sonne. Vous ne pouvez pas décrocher. À l'autre bout, un client prêt à réserver raccroche au bout de quatre sonneries et appelle le concurrent suivant. Ce scénario se répète des dizaines de fois par mois dans une entreprise artisanale. Un agent IA règle précisément ce problème : il décroche, répond, qualifie la demande et prend le rendez-vous à votre place, 24h/24. Ce guide vous explique ce qu'est vraiment un agent IA, ce qu'il peut faire pour votre activité, ce que ça coûte, et comment le mettre en place sans y passer vos soirées." },
+      {
+        type: "p",
+        text: "Il est 14h, vous êtes sur un chantier, les mains prises. Votre téléphone sonne. Vous ne pouvez pas décrocher. À l'autre bout, un client prêt à réserver raccroche au bout de quatre sonneries et appelle le concurrent suivant. Ce scénario se répète des dizaines de fois par mois dans une entreprise artisanale. Un agent IA règle précisément ce problème : il décroche, répond, qualifie la demande et prend le rendez-vous à votre place, 24h/24. Ce guide vous explique ce qu'est vraiment un agent IA, ce qu'il peut faire pour votre activité, ce que ça coûte, et comment le mettre en place sans y passer vos soirées.",
+      },
 
       { type: "h2", text: "Qu'est-ce qu'un agent IA, concrètement ?" },
-      { type: "p", text: "Un agent IA est un programme capable de comprendre une demande formulée en langage naturel, de raisonner, puis d'agir pour la traiter du début à la fin. Là où un répondeur ou un menu à touches se contente d'enregistrer, l'agent IA tient une vraie conversation : il écoute, pose les bonnes questions, comprend les réponses et déclenche une action concrète, comme réserver un créneau dans votre agenda ou envoyer un SMS de confirmation." },
-      { type: "p", text: "Pour un artisan ou une TPE, un agent IA prend trois formes principales : un standardiste vocal qui répond au téléphone, un agent conversationnel qui traite vos messages, ou un assistant qui relance vos devis tout seul. Il travaille pendant que vous êtes ailleurs, sans pause, sans oubli, et sans mauvaise humeur le lundi matin." },
+      {
+        type: "p",
+        text: "Un agent IA est un programme capable de comprendre une demande formulée en langage naturel, de raisonner, puis d'agir pour la traiter du début à la fin. Là où un répondeur ou un menu à touches se contente d'enregistrer, l'agent IA tient une vraie conversation : il écoute, pose les bonnes questions, comprend les réponses et déclenche une action concrète, comme réserver un créneau dans votre agenda ou envoyer un SMS de confirmation.",
+      },
+      {
+        type: "p",
+        text: "Pour un artisan ou une TPE, un agent IA prend trois formes principales : un standardiste vocal qui répond au téléphone, un agent conversationnel qui traite vos messages, ou un assistant qui relance vos devis tout seul. Il travaille pendant que vous êtes ailleurs, sans pause, sans oubli, et sans mauvaise humeur le lundi matin.",
+      },
 
       { type: "h2", text: "Agent IA, chatbot, automatisation : quelle différence ?" },
-      { type: "p", text: "On confond souvent ces trois termes. La différence tient à l'autonomie et à la capacité à gérer l'imprévu." },
+      {
+        type: "p",
+        text: "On confond souvent ces trois termes. La différence tient à l'autonomie et à la capacité à gérer l'imprévu.",
+      },
       {
         type: "table",
         caption: "Agent IA, chatbot et automatisation classique",
         headers: ["", "Automatisation classique", "Chatbot", "Agent IA"],
         rows: [
-          ["Fonctionnement", "Règles fixes (si X, alors Y)", "Réponses scriptées aux questions prévues", "Comprend, raisonne et agit en autonomie"],
+          [
+            "Fonctionnement",
+            "Règles fixes (si X, alors Y)",
+            "Réponses scriptées aux questions prévues",
+            "Comprend, raisonne et agit en autonomie",
+          ],
           ["Conversation", "Aucune", "Limitée, vite hors sujet", "Naturelle, s'adapte au client"],
-          ["Exemple", "SMS auto après un appel manqué", "FAQ sur un site web", "Standardiste qui prend un rendez-vous au téléphone"],
-          ["Quand ça coince", "Dès que le cas n'est pas prévu", "Répète « je n'ai pas compris »", "Reformule ou passe le relais à l'humain"],
+          [
+            "Exemple",
+            "SMS auto après un appel manqué",
+            "FAQ sur un site web",
+            "Standardiste qui prend un rendez-vous au téléphone",
+          ],
+          [
+            "Quand ça coince",
+            "Dès que le cas n'est pas prévu",
+            "Répète « je n'ai pas compris »",
+            "Reformule ou passe le relais à l'humain",
+          ],
         ],
       },
-      { type: "p", text: "Un chatbot suit un script. Un agent IA poursuit un objectif. C'est ce qui lui permet de gérer un vrai client, avec ses hésitations et ses questions imprévues, sans le frustrer." },
+      {
+        type: "p",
+        text: "Un chatbot suit un script. Un agent IA poursuit un objectif. C'est ce qui lui permet de gérer un vrai client, avec ses hésitations et ses questions imprévues, sans le frustrer.",
+      },
 
       { type: "h2", text: "Ce qu'un agent IA peut faire pour votre entreprise" },
-      { type: "p", text: "Voici les usages les plus rentables pour une entreprise de services, du plus demandé au plus spécialisé." },
+      {
+        type: "p",
+        text: "Voici les usages les plus rentables pour une entreprise de services, du plus demandé au plus spécialisé.",
+      },
       { type: "h3", text: "Le standardiste IA : ne plus jamais rater un appel" },
-      { type: "p", text: "C'est l'agent le plus réclamé, et le plus rentable. Un agent IA téléphonique décroche à votre place quand vous êtes occupé, en intervention ou en dehors des horaires. Il se présente au nom de votre entreprise, répond aux questions courantes (« vous intervenez sur ma commune ? », « quel est votre délai ? »), qualifie l'urgence et propose un créneau. Un appel manqué qui devient un rendez-vous confirmé, c'est du chiffre d'affaires récupéré sans lever le petit doigt." },
+      {
+        type: "p",
+        text: "C'est l'agent le plus réclamé, et le plus rentable. Un agent IA téléphonique décroche à votre place quand vous êtes occupé, en intervention ou en dehors des horaires. Il se présente au nom de votre entreprise, répond aux questions courantes (« vous intervenez sur ma commune ? », « quel est votre délai ? »), qualifie l'urgence et propose un créneau. Un appel manqué qui devient un rendez-vous confirmé, c'est du chiffre d'affaires récupéré sans lever le petit doigt.",
+      },
       { type: "h3", text: "La prise de rendez-vous automatique" },
-      { type: "p", text: "L'agent consulte vos disponibilités, propose deux ou trois créneaux, confirme le rendez-vous et envoie un rappel la veille. Fini les dix allers-retours de SMS pour caler une date. Votre agenda se remplit pendant que vous travaillez." },
+      {
+        type: "p",
+        text: "L'agent consulte vos disponibilités, propose deux ou trois créneaux, confirme le rendez-vous et envoie un rappel la veille. Fini les dix allers-retours de SMS pour caler une date. Votre agenda se remplit pendant que vous travaillez.",
+      },
       { type: "h3", text: "La relance de devis" },
-      { type: "p", text: "La moitié des devis restent sans réponse, non pas parce que le client a dit non, mais parce que personne n'a relancé. Un agent IA relance vos devis en attente au bon moment, avec le bon ton, et vous prévient dès qu'un client réagit. C'est souvent l'agent qui rembourse son coût le plus vite." },
+      {
+        type: "p",
+        text: "La moitié des devis restent sans réponse, non pas parce que le client a dit non, mais parce que personne n'a relancé. Un agent IA relance vos devis en attente au bon moment, avec le bon ton, et vous prévient dès qu'un client réagit. C'est souvent l'agent qui rembourse son coût le plus vite.",
+      },
       { type: "h3", text: "La réponse aux messages et aux réseaux" },
-      { type: "p", text: "Formulaire du site, WhatsApp, Instagram, e-mail : les demandes arrivent de partout et s'accumulent le soir. Un agent conversationnel répond en quelques secondes, qualifie le besoin et bascule vers un rendez-vous. Une réponse immédiate donne une image sérieuse, là où un silence de deux jours fait fuir le prospect." },
+      {
+        type: "p",
+        text: "Formulaire du site, WhatsApp, Instagram, e-mail : les demandes arrivent de partout et s'accumulent le soir. Un agent conversationnel répond en quelques secondes, qualifie le besoin et bascule vers un rendez-vous. Une réponse immédiate donne une image sérieuse, là où un silence de deux jours fait fuir le prospect.",
+      },
       { type: "h3", text: "La collecte et la réponse aux avis Google" },
-      { type: "p", text: "L'agent sollicite un avis après chaque intervention et rédige une réponse à chaque avis reçu. Plus d'avis et une fiche active, c'est un meilleur classement local et plus d'appels entrants." },
+      {
+        type: "p",
+        text: "L'agent sollicite un avis après chaque intervention et rédige une réponse à chaque avis reçu. Plus d'avis et une fiche active, c'est un meilleur classement local et plus d'appels entrants.",
+      },
 
       { type: "h2", text: "Combien de clients perdez-vous sans agent IA ?" },
-      { type: "p", text: "Le coût d'un agent IA se juge en regard de ce qu'il vous fait récupérer. Faites le calcul avec vos propres chiffres." },
+      {
+        type: "p",
+        text: "Le coût d'un agent IA se juge en regard de ce qu'il vous fait récupérer. Faites le calcul avec vos propres chiffres.",
+      },
       {
         type: "ul",
         items: [
@@ -1939,62 +3654,127 @@ export const BLOG_POSTS: BlogPost[] = [
           "Une demande laissée sans réponse plus d'une heure a deux fois moins de chances de se transformer en client.",
         ],
       },
-      { type: "p", text: "Si vous manquez ne serait-ce que deux appels qualifiés par semaine, et qu'un client vaut plusieurs centaines d'euros, vous laissez filer des milliers d'euros par an. Un agent IA transforme une partie de ces pertes en rendez-vous." },
+      {
+        type: "p",
+        text: "Si vous manquez ne serait-ce que deux appels qualifiés par semaine, et qu'un client vaut plusieurs centaines d'euros, vous laissez filer des milliers d'euros par an. Un agent IA transforme une partie de ces pertes en rendez-vous.",
+      },
 
       { type: "h2", text: "Un exemple concret" },
-      { type: "p", text: "Prenons Karim, plombier chauffagiste en Essonne, seul sur ses chantiers. Avant, il ratait 8 à 10 appels par jour et rappelait le soir, souvent trop tard. Il met en place un standardiste IA qui décroche à sa place, qualifie l'urgence et réserve les interventions non urgentes dans son agenda. Résultat sur le premier mois : 32 appels pris en charge qui seraient partis à la concurrence, 11 nouveaux rendez-vous, et deux dépannages urgents détectés et transférés aussitôt sur son portable. Le coût de l'agent a été couvert par le premier chantier signé." },
+      {
+        type: "p",
+        text: "Prenons Karim, plombier chauffagiste en Essonne, seul sur ses chantiers. Avant, il ratait 8 à 10 appels par jour et rappelait le soir, souvent trop tard. Il met en place un standardiste IA qui décroche à sa place, qualifie l'urgence et réserve les interventions non urgentes dans son agenda. Résultat sur le premier mois : 32 appels pris en charge qui seraient partis à la concurrence, 11 nouveaux rendez-vous, et deux dépannages urgents détectés et transférés aussitôt sur son portable. Le coût de l'agent a été couvert par le premier chantier signé.",
+      },
 
       { type: "h2", text: "Combien coûte un agent IA ?" },
-      { type: "p", text: "Deux idées reçues à écarter. Non, il ne faut pas être une grande entreprise pour s'offrir un agent IA. Non, ce n'est pas un budget à cinq chiffres. Pour une TPE ou un artisan, un agent se compose en général d'une installation unique, puis d'un abonnement mensuel qui dépend du périmètre : un seul agent simple, ou plusieurs agents connectés à vos outils." },
-      { type: "p", text: "Le vrai piège n'est pas le prix, c'est le temps. Beaucoup d'outils « agent IA » se vendent en libre-service : vous payez, puis vous passez des heures à tout configurer, brancher, tester et corriger. Pour un artisan qui n'a pas une minute, c'est le meilleur moyen de laisser l'outil au placard. La bonne approche, c'est le clé en main : quelqu'un installe, paramètre et entretient l'agent pour vous. Vous achetez un résultat, pas un logiciel de plus à apprendre." },
+      {
+        type: "p",
+        text: "Deux idées reçues à écarter. Non, il ne faut pas être une grande entreprise pour s'offrir un agent IA. Non, ce n'est pas un budget à cinq chiffres. Pour une TPE ou un artisan, un agent se compose en général d'une installation unique, puis d'un abonnement mensuel qui dépend du périmètre : un seul agent simple, ou plusieurs agents connectés à vos outils.",
+      },
+      {
+        type: "p",
+        text: "Le vrai piège n'est pas le prix, c'est le temps. Beaucoup d'outils « agent IA » se vendent en libre-service : vous payez, puis vous passez des heures à tout configurer, brancher, tester et corriger. Pour un artisan qui n'a pas une minute, c'est le meilleur moyen de laisser l'outil au placard. La bonne approche, c'est le clé en main : quelqu'un installe, paramètre et entretient l'agent pour vous. Vous achetez un résultat, pas un logiciel de plus à apprendre.",
+      },
 
       { type: "h2", text: "Les objections les plus fréquentes" },
       { type: "h3", text: "« Un agent IA va remplacer le contact humain »" },
-      { type: "p", text: "Non. Un bon agent IA prend le relais quand vous ne pouvez pas répondre, pas à votre place quand vous le pouvez. Il évite le pire scénario, celui du client qui n'a personne au bout du fil. Sur les cas sensibles, il sait passer la main et vous transférer l'appel." },
+      {
+        type: "p",
+        text: "Non. Un bon agent IA prend le relais quand vous ne pouvez pas répondre, pas à votre place quand vous le pouvez. Il évite le pire scénario, celui du client qui n'a personne au bout du fil. Sur les cas sensibles, il sait passer la main et vous transférer l'appel.",
+      },
       { type: "h3", text: "« Mes clients vont détester parler à une machine »" },
-      { type: "p", text: "Les agents vocaux récents tiennent une conversation fluide et polie. La plupart des clients préfèrent une réponse immédiate et un rendez-vous obtenu à un répondeur vide un dimanche soir. Ce qui agace un client, ce n'est pas l'IA, c'est de ne joindre personne." },
+      {
+        type: "p",
+        text: "Les agents vocaux récents tiennent une conversation fluide et polie. La plupart des clients préfèrent une réponse immédiate et un rendez-vous obtenu à un répondeur vide un dimanche soir. Ce qui agace un client, ce n'est pas l'IA, c'est de ne joindre personne.",
+      },
       { type: "h3", text: "« C'est trop compliqué pour moi »" },
-      { type: "p", text: "En clé en main, vous n'ouvrez aucun logiciel et vous ne configurez rien. Vous fournissez vos informations une fois (horaires, zone, questions à poser), et l'agent tourne. Si vous savez répondre au téléphone, vous savez travailler avec un agent IA." },
+      {
+        type: "p",
+        text: "En clé en main, vous n'ouvrez aucun logiciel et vous ne configurez rien. Vous fournissez vos informations une fois (horaires, zone, questions à poser), et l'agent tourne. Si vous savez répondre au téléphone, vous savez travailler avec un agent IA.",
+      },
 
       { type: "h2", text: "Par où commencer" },
-      { type: "p", text: "Ne cherchez pas à tout automatiser d'un coup. Repérez d'abord la fuite la plus coûteuse dans votre activité. Vous ratez trop d'appels ? Commencez par le standardiste IA. Vos devis dorment sans réponse ? Commencez par l'agent de relance. Vous croulez sous les messages ? Commencez par l'agent conversationnel. Un seul agent bien installé rapporte déjà, et vous en ajoutez d'autres quand ils vous font gagner du temps." },
-      { type: "p", text: "C'est exactement l'approche de Sitaly : on identifie avec vous l'agent qui change la donne, on l'installe clé en main pour votre métier, et on l'entretient. Vous ne configurez rien. Pour en discuter, réservez un appel de 20 minutes, sans engagement." },
+      {
+        type: "p",
+        text: "Ne cherchez pas à tout automatiser d'un coup. Repérez d'abord la fuite la plus coûteuse dans votre activité. Vous ratez trop d'appels ? Commencez par le standardiste IA. Vos devis dorment sans réponse ? Commencez par l'agent de relance. Vous croulez sous les messages ? Commencez par l'agent conversationnel. Un seul agent bien installé rapporte déjà, et vous en ajoutez d'autres quand ils vous font gagner du temps.",
+      },
+      {
+        type: "p",
+        text: "C'est exactement l'approche de Sitaly : on identifie avec vous l'agent qui change la donne, on l'installe clé en main pour votre métier, et on l'entretient. Vous ne configurez rien. Pour en discuter, réservez un appel de 20 minutes, sans engagement.",
+      },
 
-      { type: "quote", text: "La vraie question n'est pas de savoir si l'IA va décrocher à votre place. C'est de savoir combien de clients vous perdez chaque semaine en attendant de vous décider." },
+      {
+        type: "quote",
+        text: "La vraie question n'est pas de savoir si l'IA va décrocher à votre place. C'est de savoir combien de clients vous perdez chaque semaine en attendant de vous décider.",
+      },
 
       {
         type: "faq",
         items: [
-          { q: "Qu'est-ce qu'un agent IA ?", a: "Un agent IA est un programme qui comprend une demande en langage naturel, raisonne et agit pour la traiter de bout en bout. Pour une entreprise, il prend la forme d'un standardiste vocal, d'un agent qui répond aux messages ou d'un assistant qui relance les devis, en autonomie et 24h/24." },
-          { q: "Un agent IA peut-il vraiment répondre au téléphone ?", a: "Oui. Un agent IA téléphonique, ou standardiste IA, décroche, se présente au nom de votre entreprise, répond aux questions courantes, qualifie la demande et prend un rendez-vous. Sur un cas urgent ou sensible, il transfère l'appel à un humain." },
-          { q: "Quelle est la différence entre un agent IA et un chatbot ?", a: "Un chatbot suit un script et répond à des questions prévues à l'avance ; il bloque dès qu'on sort du cadre. Un agent IA comprend, s'adapte et poursuit un objectif concret, comme réserver un créneau, même face à des questions imprévues." },
-          { q: "Combien coûte un agent IA pour une petite entreprise ?", a: "Pour une TPE ou un artisan, un agent IA se compose d'une installation unique puis d'un abonnement mensuel, selon le périmètre. Ce n'est pas réservé aux grandes entreprises. Le point de vigilance n'est pas le prix mais le temps de configuration, que le mode clé en main supprime." },
-          { q: "Un agent IA remplace-t-il un salarié ?", a: "Non. Il prend en charge les tâches répétitives et les moments où vous n'êtes pas disponible : appels manqués, soir, week-end. Il évite les clients perdus et libère votre temps, sans remplacer la relation humaine sur les sujets qui comptent." },
-          { q: "Comment mettre en place un agent IA dans mon entreprise ?", a: "Le plus simple est le clé en main : un prestataire installe, paramètre et connecte l'agent à vos outils (téléphone, agenda, fiche Google). Vous fournissez vos informations une fois et l'agent tourne. Commencez par un seul agent, sur votre fuite la plus coûteuse, puis ajoutez-en d'autres." },
-          { q: "Existe-t-il des agents IA gratuits ?", a: "Il existe des outils gratuits ou en libre-service, mais ils demandent un long paramétrage et un entretien réguliers, rarement compatibles avec le quotidien d'un artisan. Un agent installé et entretenu pour vous coûte un abonnement, mais il fonctionne vraiment dès le premier jour." },
+          {
+            q: "Qu'est-ce qu'un agent IA ?",
+            a: "Un agent IA est un programme qui comprend une demande en langage naturel, raisonne et agit pour la traiter de bout en bout. Pour une entreprise, il prend la forme d'un standardiste vocal, d'un agent qui répond aux messages ou d'un assistant qui relance les devis, en autonomie et 24h/24.",
+          },
+          {
+            q: "Un agent IA peut-il vraiment répondre au téléphone ?",
+            a: "Oui. Un agent IA téléphonique, ou standardiste IA, décroche, se présente au nom de votre entreprise, répond aux questions courantes, qualifie la demande et prend un rendez-vous. Sur un cas urgent ou sensible, il transfère l'appel à un humain.",
+          },
+          {
+            q: "Quelle est la différence entre un agent IA et un chatbot ?",
+            a: "Un chatbot suit un script et répond à des questions prévues à l'avance ; il bloque dès qu'on sort du cadre. Un agent IA comprend, s'adapte et poursuit un objectif concret, comme réserver un créneau, même face à des questions imprévues.",
+          },
+          {
+            q: "Combien coûte un agent IA pour une petite entreprise ?",
+            a: "Pour une TPE ou un artisan, un agent IA se compose d'une installation unique puis d'un abonnement mensuel, selon le périmètre. Ce n'est pas réservé aux grandes entreprises. Le point de vigilance n'est pas le prix mais le temps de configuration, que le mode clé en main supprime.",
+          },
+          {
+            q: "Un agent IA remplace-t-il un salarié ?",
+            a: "Non. Il prend en charge les tâches répétitives et les moments où vous n'êtes pas disponible : appels manqués, soir, week-end. Il évite les clients perdus et libère votre temps, sans remplacer la relation humaine sur les sujets qui comptent.",
+          },
+          {
+            q: "Comment mettre en place un agent IA dans mon entreprise ?",
+            a: "Le plus simple est le clé en main : un prestataire installe, paramètre et connecte l'agent à vos outils (téléphone, agenda, fiche Google). Vous fournissez vos informations une fois et l'agent tourne. Commencez par un seul agent, sur votre fuite la plus coûteuse, puis ajoutez-en d'autres.",
+          },
+          {
+            q: "Existe-t-il des agents IA gratuits ?",
+            a: "Il existe des outils gratuits ou en libre-service, mais ils demandent un long paramétrage et un entretien réguliers, rarement compatibles avec le quotidien d'un artisan. Un agent installé et entretenu pour vous coûte un abonnement, mais il fonctionne vraiment dès le premier jour.",
+          },
         ],
       },
 
       { type: "h2", text: "Installez votre premier agent IA avec Sitaly" },
-      { type: "p", text: "Standardiste qui ne rate plus un appel, prise de rendez-vous, relance de devis, réponse aux messages : Sitaly installe pour vous des agents IA clé en main, pensés pour les artisans et les TPE. Vous ne configurez rien, on branche tout. Réservez un appel gratuit de 20 minutes pour identifier l'agent qui vous fera gagner le plus de clients." },
+      {
+        type: "p",
+        text: "Standardiste qui ne rate plus un appel, prise de rendez-vous, relance de devis, réponse aux messages : Sitaly installe pour vous des agents IA clé en main, pensés pour les artisans et les TPE. Vous ne configurez rien, on branche tout. Réservez un appel gratuit de 20 minutes pour identifier l'agent qui vous fera gagner le plus de clients.",
+      },
     ],
   },
   {
     slug: "trouver-des-chantiers-artisan",
     title: "Trouver des chantiers : les 7 canaux qui remplissent vraiment un planning",
     metaTitle: "Trouver des chantiers : 7 canaux classés par rentabilité",
-    metaDescription: "Fiche Google, site internet, plateformes, Ads, bouche-à-oreille : ce que chaque canal rapporte vraiment à un artisan, ce qu'il coûte, et par lequel commencer selon votre situation.",
-    excerpt: "Tous les canaux ne se valent pas. Certains vous coûtent 20 % du chantier à vie, d'autres vous appartiennent pour toujours. Voici les sept façons de trouver des chantiers, classées par ce qu'elles rapportent réellement.",
+    metaDescription:
+      "Fiche Google, site internet, plateformes, Ads, bouche-à-oreille : ce que chaque canal rapporte vraiment à un artisan, ce qu'il coûte, et par lequel commencer selon votre situation.",
+    excerpt:
+      "Tous les canaux ne se valent pas. Certains vous coûtent 20 % du chantier à vie, d'autres vous appartiennent pour toujours. Voici les sept façons de trouver des chantiers, classées par ce qu'elles rapportent réellement.",
     category: "Trouver des chantiers",
     readingTime: "11 min",
     publishedAt: "2026-08-13",
     author: "L'équipe Sitaly",
     keyword: "trouver des chantiers",
     content: [
-      { type: "p", text: "Un planning qui se vide dans trois semaines, ça ne se règle pas en trois semaines. C'est le problème de fond quand on cherche des chantiers : on s'en préoccupe au moment où il est déjà tard, et on se rabat sur le canal le plus rapide, qui est presque toujours le plus cher. Cet article passe en revue les sept canaux qui amènent des chantiers à un artisan, avec ce que chacun coûte, ce qu'il rapporte et le délai avant les premiers résultats. L'objectif : que vous sachiez lequel actionner selon l'état de votre carnet." },
+      {
+        type: "p",
+        text: "Un planning qui se vide dans trois semaines, ça ne se règle pas en trois semaines. C'est le problème de fond quand on cherche des chantiers : on s'en préoccupe au moment où il est déjà tard, et on se rabat sur le canal le plus rapide, qui est presque toujours le plus cher. Cet article passe en revue les sept canaux qui amènent des chantiers à un artisan, avec ce que chacun coûte, ce qu'il rapporte et le délai avant les premiers résultats. L'objectif : que vous sachiez lequel actionner selon l'état de votre carnet.",
+      },
       { type: "h2", text: "La question à se poser avant de choisir un canal" },
-      { type: "p", text: "Il y a deux familles de canaux, et les confondre coûte cher. Les canaux qu'on loue vous amènent des chantiers tant que vous payez, et s'arrêtent net dès que vous coupez le robinet. Les canaux qu'on possède mettent des mois à démarrer, puis continuent de produire sans coût variable." },
-      { type: "p", text: "La plupart des artisans construisent leur activité à 100 % sur des canaux loués, généralement les plateformes de mise en relation. Ça marche, jusqu'au jour où la plateforme augmente ses tarifs, change son algorithme ou envoie le même lead à cinq concurrents. Un carnet de commandes solide combine les deux familles." },
+      {
+        type: "p",
+        text: "Il y a deux familles de canaux, et les confondre coûte cher. Les canaux qu'on loue vous amènent des chantiers tant que vous payez, et s'arrêtent net dès que vous coupez le robinet. Les canaux qu'on possède mettent des mois à démarrer, puis continuent de produire sans coût variable.",
+      },
+      {
+        type: "p",
+        text: "La plupart des artisans construisent leur activité à 100 % sur des canaux loués, généralement les plateformes de mise en relation. Ça marche, jusqu'au jour où la plateforme augmente ses tarifs, change son algorithme ou envoie le même lead à cinq concurrents. Un carnet de commandes solide combine les deux familles.",
+      },
       {
         type: "table",
         caption: "Ce que rapporte chaque canal pour un artisan",
@@ -2010,31 +3790,85 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
       { type: "h2", text: "1. La fiche Google Business Profile" },
-      { type: "p", text: "C'est le canal le plus rentable qui existe pour un artisan, et le plus souvent négligé. Quand quelqu'un cherche « couvreur » ou « plombier » près de chez lui, Google affiche trois fiches locales avant tout le reste. Sortir dans ce bloc de trois vaut plus que n'importe quelle position en dessous, et ça ne coûte rien." },
-      { type: "p", text: "Trois leviers décident du classement : la distance entre le client et votre adresse, la complétude de votre fiche, et le volume d'avis récents. Vous ne pouvez rien à la distance. Sur les deux autres, tout est entre vos mains. Une fiche avec vingt-cinq avis et des photos de chantiers écrase une fiche à quatre avis créée il y a trois ans et jamais retouchée." },
-      { type: "p", text: "L'erreur classique consiste à créer la fiche puis à l'oublier. Une fiche vivante, avec des photos ajoutées chaque mois et des réponses aux avis, envoie à Google un signal d'activité que la concurrence endormie n'envoie pas." },
+      {
+        type: "p",
+        text: "C'est le canal le plus rentable qui existe pour un artisan, et le plus souvent négligé. Quand quelqu'un cherche « couvreur » ou « plombier » près de chez lui, Google affiche trois fiches locales avant tout le reste. Sortir dans ce bloc de trois vaut plus que n'importe quelle position en dessous, et ça ne coûte rien.",
+      },
+      {
+        type: "p",
+        text: "Trois leviers décident du classement : la distance entre le client et votre adresse, la complétude de votre fiche, et le volume d'avis récents. Vous ne pouvez rien à la distance. Sur les deux autres, tout est entre vos mains. Une fiche avec vingt-cinq avis et des photos de chantiers écrase une fiche à quatre avis créée il y a trois ans et jamais retouchée.",
+      },
+      {
+        type: "p",
+        text: "L'erreur classique consiste à créer la fiche puis à l'oublier. Une fiche vivante, avec des photos ajoutées chaque mois et des réponses aux avis, envoie à Google un signal d'activité que la concurrence endormie n'envoie pas.",
+      },
       { type: "h2", text: "2. Le site internet et le référencement local" },
-      { type: "p", text: "La fiche Google capte les recherches courtes du type « plombier + ville ». Le site capte tout le reste : « remplacement chauffe-eau + commune », « devis ravalement maison ancienne », « menuisier sur mesure dressing ». Ces recherches ont moins de volume, mais celui qui les tape sait ce qu'il veut et compare deux ou trois artisans avant d'appeler." },
-      { type: "p", text: "Un site qui fonctionne n'est pas une brochure en ligne. C'est un ensemble de pages, une par prestation et une par commune desservie, chacune écrite pour une recherche précise. Un artisan qui n'a qu'une page d'accueil se limite à sa commune et à son métier générique. Avec quinze pages, il couvre son vrai rayon d'intervention." },
-      { type: "p", text: "Comptez trois à six mois avant que les premières pages remontent. C'est long quand le planning est vide, et c'est exactement pour ça qu'il faut lancer ce canal quand le carnet est plein." },
+      {
+        type: "p",
+        text: "La fiche Google capte les recherches courtes du type « plombier + ville ». Le site capte tout le reste : « remplacement chauffe-eau + commune », « devis ravalement maison ancienne », « menuisier sur mesure dressing ». Ces recherches ont moins de volume, mais celui qui les tape sait ce qu'il veut et compare deux ou trois artisans avant d'appeler.",
+      },
+      {
+        type: "p",
+        text: "Un site qui fonctionne n'est pas une brochure en ligne. C'est un ensemble de pages, une par prestation et une par commune desservie, chacune écrite pour une recherche précise. Un artisan qui n'a qu'une page d'accueil se limite à sa commune et à son métier générique. Avec quinze pages, il couvre son vrai rayon d'intervention.",
+      },
+      {
+        type: "p",
+        text: "Comptez trois à six mois avant que les premières pages remontent. C'est long quand le planning est vide, et c'est exactement pour ça qu'il faut lancer ce canal quand le carnet est plein.",
+      },
       { type: "h2", text: "3. Le bouche-à-oreille, mais organisé" },
-      { type: "p", text: "Tous les artisans disent travailler au bouche-à-oreille. Presque aucun ne l'organise. La différence tient à trois habitudes : demander un avis Google à chaque fin de chantier, reprendre contact avec les clients d'il y a deux ans, et laisser une trace physique sur place." },
-      { type: "p", text: "Un point que beaucoup ignorent : le bouche-à-oreille passe par Google avant d'aboutir. On vous recommande, la personne tape votre nom, et ce qu'elle trouve décide de l'appel. Si elle ne trouve qu'un annuaire et deux avis, la recommandation se perd. Le bouche-à-oreille et la présence en ligne ne sont pas deux canaux séparés, c'est le même." },
+      {
+        type: "p",
+        text: "Tous les artisans disent travailler au bouche-à-oreille. Presque aucun ne l'organise. La différence tient à trois habitudes : demander un avis Google à chaque fin de chantier, reprendre contact avec les clients d'il y a deux ans, et laisser une trace physique sur place.",
+      },
+      {
+        type: "p",
+        text: "Un point que beaucoup ignorent : le bouche-à-oreille passe par Google avant d'aboutir. On vous recommande, la personne tape votre nom, et ce qu'elle trouve décide de l'appel. Si elle ne trouve qu'un annuaire et deux avis, la recommandation se perd. Le bouche-à-oreille et la présence en ligne ne sont pas deux canaux séparés, c'est le même.",
+      },
       { type: "h2", text: "4. Google Ads" },
-      { type: "p", text: "C'est le seul canal qui produit des appels en quarante-huit heures. Vous payez pour apparaître en haut des résultats sur les recherches de votre métier dans votre zone, et vous coupez quand le planning se remplit. Cette souplesse en fait l'outil idéal pour combler un trou ou lancer une nouvelle prestation." },
-      { type: "p", text: "Le revers : chaque euro cesse de produire dès que vous arrêtez de payer. Un artisan qui ne fait que du Ads pendant trois ans a construit zéro actif. La bonne façon de s'en servir, c'est en complément du référencement naturel : les annonces couvrent les mois pendant lesquels le SEO se met en place." },
+      {
+        type: "p",
+        text: "C'est le seul canal qui produit des appels en quarante-huit heures. Vous payez pour apparaître en haut des résultats sur les recherches de votre métier dans votre zone, et vous coupez quand le planning se remplit. Cette souplesse en fait l'outil idéal pour combler un trou ou lancer une nouvelle prestation.",
+      },
+      {
+        type: "p",
+        text: "Le revers : chaque euro cesse de produire dès que vous arrêtez de payer. Un artisan qui ne fait que du Ads pendant trois ans a construit zéro actif. La bonne façon de s'en servir, c'est en complément du référencement naturel : les annonces couvrent les mois pendant lesquels le SEO se met en place.",
+      },
       { type: "h2", text: "5. Les réseaux entre artisans" },
-      { type: "p", text: "Un plombier qui connaît trois carreleurs et deux électriciens reçoit des chantiers sans rien dépenser. Sur une rénovation complète, l'artisan déjà sur place est en position de recommander tous les autres corps de métier. C'est un canal lent à construire et durable une fois établi." },
-      { type: "p", text: "Concrètement : identifiez les cinq artisans complémentaires de votre secteur qui travaillent proprement, proposez-leur un échange de recommandations, et tenez votre part. Cinq relations solides valent mieux que cinquante contacts dans un groupe Facebook." },
+      {
+        type: "p",
+        text: "Un plombier qui connaît trois carreleurs et deux électriciens reçoit des chantiers sans rien dépenser. Sur une rénovation complète, l'artisan déjà sur place est en position de recommander tous les autres corps de métier. C'est un canal lent à construire et durable une fois établi.",
+      },
+      {
+        type: "p",
+        text: "Concrètement : identifiez les cinq artisans complémentaires de votre secteur qui travaillent proprement, proposez-leur un échange de recommandations, et tenez votre part. Cinq relations solides valent mieux que cinquante contacts dans un groupe Facebook.",
+      },
       { type: "h2", text: "6. Les plateformes de mise en relation" },
-      { type: "p", text: "Travaux.com, Ootravaux, Habitatpresto et les autres promettent des demandes qualifiées sans effort. Elles en fournissent réellement, et c'est ce qui rend le calcul trompeur. Vous payez soit à la mise en relation, soit un pourcentage du chantier, et vous êtes mis en concurrence directe avec trois ou quatre confrères sur le même lead, ce qui tire les prix vers le bas." },
-      { type: "p", text: "Le problème n'est pas d'y être. Le problème, c'est de n'être que là. Un artisan dont 100 % des chantiers viennent d'une plateforme n'a pas d'entreprise, il a un abonnement. Le jour où la plateforme change ses règles, il repart de zéro." },
+      {
+        type: "p",
+        text: "Travaux.com, Ootravaux, Habitatpresto et les autres promettent des demandes qualifiées sans effort. Elles en fournissent réellement, et c'est ce qui rend le calcul trompeur. Vous payez soit à la mise en relation, soit un pourcentage du chantier, et vous êtes mis en concurrence directe avec trois ou quatre confrères sur le même lead, ce qui tire les prix vers le bas.",
+      },
+      {
+        type: "p",
+        text: "Le problème n'est pas d'y être. Le problème, c'est de n'être que là. Un artisan dont 100 % des chantiers viennent d'une plateforme n'a pas d'entreprise, il a un abonnement. Le jour où la plateforme change ses règles, il repart de zéro.",
+      },
       { type: "h2", text: "7. La prospection locale directe" },
-      { type: "p", text: "Peu séduisant, souvent efficace. Syndics de copropriété, agences immobilières, gestionnaires de biens et entreprises générales cherchent en permanence des artisans fiables et disponibles. Un seul syndic conquis peut représenter plusieurs chantiers par an, chaque année." },
-      { type: "p", text: "Le ticket d'entrée : être joignable et répondre vite. Un gestionnaire qui appelle trois artisans retient celui qui décroche. C'est aussi pour ça que les appels manqués coûtent bien plus cher qu'on ne l'imagine." },
+      {
+        type: "p",
+        text: "Peu séduisant, souvent efficace. Syndics de copropriété, agences immobilières, gestionnaires de biens et entreprises générales cherchent en permanence des artisans fiables et disponibles. Un seul syndic conquis peut représenter plusieurs chantiers par an, chaque année.",
+      },
+      {
+        type: "p",
+        text: "Le ticket d'entrée : être joignable et répondre vite. Un gestionnaire qui appelle trois artisans retient celui qui décroche. C'est aussi pour ça que les appels manqués coûtent bien plus cher qu'on ne l'imagine.",
+      },
       { type: "h2", text: "Le calcul que personne ne fait" },
-      { type: "p", text: "Prenez un artisan qui réalise trente chantiers par an à 4 000 € en moyenne, soit 120 000 € de chiffre d'affaires. S'il passe intégralement par une plateforme prélevant 15 %, il verse 18 000 € par an. Le même artisan avec un site, une fiche Google entretenue et un budget publicitaire mesuré dépense entre 3 000 et 6 000 € par an, et il garde ses canaux le jour où il coupe." },
-      { type: "p", text: "L'écart ne vient pas du prix affiché de chaque canal. Il vient du fait que l'un se paie sur chaque chantier, indéfiniment, quand l'autre se paie à coût fixe et se rentabilise à mesure que le volume augmente." },
+      {
+        type: "p",
+        text: "Prenez un artisan qui réalise trente chantiers par an à 4 000 € en moyenne, soit 120 000 € de chiffre d'affaires. S'il passe intégralement par une plateforme prélevant 15 %, il verse 18 000 € par an. Le même artisan avec un site, une fiche Google entretenue et un budget publicitaire mesuré dépense entre 3 000 et 6 000 € par an, et il garde ses canaux le jour où il coupe.",
+      },
+      {
+        type: "p",
+        text: "L'écart ne vient pas du prix affiché de chaque canal. Il vient du fait que l'un se paie sur chaque chantier, indéfiniment, quand l'autre se paie à coût fixe et se rentabilise à mesure que le volume augmente.",
+      },
       { type: "h2", text: "Par où commencer selon votre situation" },
       {
         type: "ul",
@@ -2045,60 +3879,131 @@ export const BLOG_POSTS: BlogPost[] = [
           "Dépendance à une plateforme : gardez-la, et lancez en parallèle vos canaux à vous pour réduire la part de la plateforme d'un tiers par an.",
         ],
       },
-      { type: "quote", text: "Un canal qu'on loue remplit le planning de ce mois-ci. Un canal qu'on possède remplit celui des cinq prochaines années." },
+      {
+        type: "quote",
+        text: "Un canal qu'on loue remplit le planning de ce mois-ci. Un canal qu'on possède remplit celui des cinq prochaines années.",
+      },
       {
         type: "faq",
         items: [
-          { q: "Comment trouver des chantiers rapidement quand le planning est vide ?", a: "Google Ads est le seul canal qui produit des appels sous quarante-huit heures : vous ciblez votre métier et votre zone, et vous coupez quand le carnet se remplit. En parallèle, remettez à niveau votre fiche Google Business Profile le jour même, car c'est gratuit et ça produit sous quelques semaines." },
-          { q: "Les plateformes de mise en relation valent-elles le coup pour un artisan ?", a: "Elles fournissent de vraies demandes, mais vous coûtent entre 10 et 20 % du chantier et vous mettent en concurrence directe sur le prix. Elles conviennent en complément, pas comme unique source. Un artisan dont tous les chantiers viennent d'une plateforme repart de zéro le jour où elle change ses règles." },
-          { q: "Combien de temps pour que le référencement amène des chantiers ?", a: "Comptez trois à six mois pour qu'un site avec des pages par prestation et par commune commence à remonter sur Google, selon la concurrence locale. La fiche Google Business Profile, elle, produit des résultats en deux à huit semaines." },
-          { q: "Faut-il un site internet quand on travaille au bouche-à-oreille ?", a: "Oui, parce que le bouche-à-oreille passe par Google avant d'aboutir. On vous recommande, la personne tape votre nom, et ce qu'elle trouve décide de l'appel. Sans site, elle tombe sur des annuaires et sur des concurrents qui payent pour apparaître sur votre nom." },
-          { q: "Quel est le canal le moins cher pour trouver des chantiers ?", a: "La fiche Google Business Profile ne coûte rien et place votre entreprise dans le bloc de trois fiches locales affiché avant tous les autres résultats. Le levier principal est le volume d'avis récents, qu'on obtient en sollicitant chaque client en fin d'intervention." },
-          { q: "Comment trouver des chantiers auprès des professionnels ?", a: "Syndics de copropriété, agences immobilières et entreprises générales cherchent en permanence des artisans fiables. Un seul syndic conquis représente plusieurs chantiers par an. La condition d'entrée est d'être joignable : un gestionnaire qui appelle trois artisans retient celui qui décroche." },
+          {
+            q: "Comment trouver des chantiers rapidement quand le planning est vide ?",
+            a: "Google Ads est le seul canal qui produit des appels sous quarante-huit heures : vous ciblez votre métier et votre zone, et vous coupez quand le carnet se remplit. En parallèle, remettez à niveau votre fiche Google Business Profile le jour même, car c'est gratuit et ça produit sous quelques semaines.",
+          },
+          {
+            q: "Les plateformes de mise en relation valent-elles le coup pour un artisan ?",
+            a: "Elles fournissent de vraies demandes, mais vous coûtent entre 10 et 20 % du chantier et vous mettent en concurrence directe sur le prix. Elles conviennent en complément, pas comme unique source. Un artisan dont tous les chantiers viennent d'une plateforme repart de zéro le jour où elle change ses règles.",
+          },
+          {
+            q: "Combien de temps pour que le référencement amène des chantiers ?",
+            a: "Comptez trois à six mois pour qu'un site avec des pages par prestation et par commune commence à remonter sur Google, selon la concurrence locale. La fiche Google Business Profile, elle, produit des résultats en deux à huit semaines.",
+          },
+          {
+            q: "Faut-il un site internet quand on travaille au bouche-à-oreille ?",
+            a: "Oui, parce que le bouche-à-oreille passe par Google avant d'aboutir. On vous recommande, la personne tape votre nom, et ce qu'elle trouve décide de l'appel. Sans site, elle tombe sur des annuaires et sur des concurrents qui payent pour apparaître sur votre nom.",
+          },
+          {
+            q: "Quel est le canal le moins cher pour trouver des chantiers ?",
+            a: "La fiche Google Business Profile ne coûte rien et place votre entreprise dans le bloc de trois fiches locales affiché avant tous les autres résultats. Le levier principal est le volume d'avis récents, qu'on obtient en sollicitant chaque client en fin d'intervention.",
+          },
+          {
+            q: "Comment trouver des chantiers auprès des professionnels ?",
+            a: "Syndics de copropriété, agences immobilières et entreprises générales cherchent en permanence des artisans fiables. Un seul syndic conquis représente plusieurs chantiers par an. La condition d'entrée est d'être joignable : un gestionnaire qui appelle trois artisans retient celui qui décroche.",
+          },
         ],
       },
       { type: "h2", text: "Construisez les canaux qui vous appartiennent" },
-      { type: "p", text: "Sitaly met en place les canaux que vous gardez : site optimisé pour votre métier et votre zone, fiche Google entretenue, récolte d'avis automatisée, campagnes Google Ads pour combler les creux. Tout est géré, vous ne touchez à rien. Réservez un appel gratuit de 20 minutes pour faire le point sur vos canaux actuels." },
+      {
+        type: "p",
+        text: "Sitaly met en place les canaux que vous gardez : site optimisé pour votre métier et votre zone, fiche Google entretenue, récolte d'avis automatisée, campagnes Google Ads pour combler les creux. Tout est géré, vous ne touchez à rien. Réservez un appel gratuit de 20 minutes pour faire le point sur vos canaux actuels.",
+      },
     ],
   },
   {
     slug: "plateformes-mise-en-relation-artisan-avis",
     title: "Travaux.com, Ootravaux, Habitatpresto : ce que ces plateformes coûtent vraiment",
     metaTitle: "Avis Travaux.com et plateformes artisans : le vrai coût",
-    metaDescription: "Combien coûtent réellement les plateformes de mise en relation pour un artisan, comment fonctionne la revente de leads, et à partir de quand il devient rentable de s'en passer.",
-    excerpt: "Les plateformes livrent de vraies demandes, personne ne le conteste. La question est ailleurs : combien vous coûte un chantier obtenu ainsi, et que vous reste-t-il le jour où vous arrêtez de payer ?",
+    metaDescription:
+      "Combien coûtent réellement les plateformes de mise en relation pour un artisan, comment fonctionne la revente de leads, et à partir de quand il devient rentable de s'en passer.",
+    excerpt:
+      "Les plateformes livrent de vraies demandes, personne ne le conteste. La question est ailleurs : combien vous coûte un chantier obtenu ainsi, et que vous reste-t-il le jour où vous arrêtez de payer ?",
     category: "Trouver des chantiers",
     readingTime: "10 min",
     publishedAt: "2026-08-13",
     author: "L'équipe Sitaly",
     keyword: "travaux.com avis",
     content: [
-      { type: "p", text: "Avant de s'inscrire sur une plateforme de mise en relation, tout artisan tape le nom du service suivi de « avis ». Il trouve alors deux discours opposés : les pages officielles qui promettent des demandes qualifiées, et les fils de forum où des artisans racontent avoir payé pour des contacts injoignables. La vérité se situe entre les deux, et elle dépend surtout de la façon dont vous utilisez ces plateformes. Voici comment elles fonctionnent réellement, ce qu'elles coûtent, et à quel moment il devient rentable de réduire votre dépendance." },
+      {
+        type: "p",
+        text: "Avant de s'inscrire sur une plateforme de mise en relation, tout artisan tape le nom du service suivi de « avis ». Il trouve alors deux discours opposés : les pages officielles qui promettent des demandes qualifiées, et les fils de forum où des artisans racontent avoir payé pour des contacts injoignables. La vérité se situe entre les deux, et elle dépend surtout de la façon dont vous utilisez ces plateformes. Voici comment elles fonctionnent réellement, ce qu'elles coûtent, et à quel moment il devient rentable de réduire votre dépendance.",
+      },
       { type: "h2", text: "Comment fonctionne une plateforme de mise en relation" },
-      { type: "p", text: "Le modèle est le même partout, à quelques variantes près. La plateforme achète de la visibilité sur Google, capte un particulier qui a un projet, lui fait remplir un formulaire, puis revend cette demande à des artisans. Vous ne payez pas la plateforme pour vous apporter des clients. Vous lui payez le droit de recontacter quelqu'un qui a rempli un formulaire." },
-      { type: "p", text: "La nuance change tout. Ce même formulaire est en général vendu à trois, quatre ou cinq artisans du secteur. Le particulier reçoit donc quatre appels dans l'heure et compare quatre devis. Vous ne vendez plus votre savoir-faire, vous vendez un prix face à trois confrères qui ont payé pour le même contact." },
+      {
+        type: "p",
+        text: "Le modèle est le même partout, à quelques variantes près. La plateforme achète de la visibilité sur Google, capte un particulier qui a un projet, lui fait remplir un formulaire, puis revend cette demande à des artisans. Vous ne payez pas la plateforme pour vous apporter des clients. Vous lui payez le droit de recontacter quelqu'un qui a rempli un formulaire.",
+      },
+      {
+        type: "p",
+        text: "La nuance change tout. Ce même formulaire est en général vendu à trois, quatre ou cinq artisans du secteur. Le particulier reçoit donc quatre appels dans l'heure et compare quatre devis. Vous ne vendez plus votre savoir-faire, vous vendez un prix face à trois confrères qui ont payé pour le même contact.",
+      },
       {
         type: "table",
         caption: "Les trois modèles de facturation des plateformes",
         headers: ["Modèle", "Ce que vous payez", "Le risque"],
         rows: [
-          ["Paiement au lead", "Un forfait par contact transmis", "Vous payez même si le contact ne répond jamais"],
-          ["Abonnement mensuel", "Un montant fixe pour un volume de contacts", "Vous payez les mois creux comme les autres"],
-          ["Commission sur chantier", "Un pourcentage du montant signé", "Le coût augmente avec la taille du chantier"],
+          [
+            "Paiement au lead",
+            "Un forfait par contact transmis",
+            "Vous payez même si le contact ne répond jamais",
+          ],
+          [
+            "Abonnement mensuel",
+            "Un montant fixe pour un volume de contacts",
+            "Vous payez les mois creux comme les autres",
+          ],
+          [
+            "Commission sur chantier",
+            "Un pourcentage du montant signé",
+            "Le coût augmente avec la taille du chantier",
+          ],
         ],
       },
       { type: "h2", text: "Ce que rapportent réellement ces plateformes" },
-      { type: "p", text: "Soyons justes : elles fonctionnent. Un artisan qui démarre, sans avis Google ni réseau, obtient ses premiers chantiers plus vite par ce canal que par n'importe quel autre. Pour combler un trou de planning ou tester une nouvelle prestation, c'est utile." },
-      { type: "p", text: "Le point de vigilance est le taux de transformation. Sur dix contacts payés, une partie ne décroche jamais, une autre a déjà signé ailleurs, une autre cherchait juste un ordre de prix. Il reste deux ou trois demandes sérieuses, et vous êtes en concurrence sur chacune. Le coût réel d'un chantier obtenu n'est donc pas le prix d'un lead, c'est le prix de tous les leads qu'il a fallu payer pour en signer un." },
+      {
+        type: "p",
+        text: "Soyons justes : elles fonctionnent. Un artisan qui démarre, sans avis Google ni réseau, obtient ses premiers chantiers plus vite par ce canal que par n'importe quel autre. Pour combler un trou de planning ou tester une nouvelle prestation, c'est utile.",
+      },
+      {
+        type: "p",
+        text: "Le point de vigilance est le taux de transformation. Sur dix contacts payés, une partie ne décroche jamais, une autre a déjà signé ailleurs, une autre cherchait juste un ordre de prix. Il reste deux ou trois demandes sérieuses, et vous êtes en concurrence sur chacune. Le coût réel d'un chantier obtenu n'est donc pas le prix d'un lead, c'est le prix de tous les leads qu'il a fallu payer pour en signer un.",
+      },
       { type: "h2", text: "Le calcul à faire avec vos propres chiffres" },
-      { type: "p", text: "Prenez vos trois derniers mois et posez quatre chiffres : le total versé à la plateforme, le nombre de contacts reçus, le nombre de devis envoyés, le nombre de chantiers signés. Divisez le total versé par le nombre de chantiers signés. Vous obtenez votre coût d'acquisition réel, celui que la plateforme n'affiche nulle part." },
-      { type: "p", text: "La plupart des artisans qui font ce calcul pour la première fois découvrent un montant deux à quatre fois supérieur au prix affiché du lead. Ce n'est pas un scandale, c'est le fonctionnement normal d'un canal où le contact est partagé. Mais c'est le chiffre à comparer aux autres canaux, et personne ne le calcule." },
-      { type: "p", text: "Rapportez ensuite ce coût au montant moyen de vos chantiers. Sur une intervention à 400 €, un coût d'acquisition à 90 € pèse lourd. Sur une réfection de toiture à 14 000 €, le même montant est indolore. C'est ce ratio qui doit décider de votre usage, pas l'avis d'un confrère sur un forum." },
+      {
+        type: "p",
+        text: "Prenez vos trois derniers mois et posez quatre chiffres : le total versé à la plateforme, le nombre de contacts reçus, le nombre de devis envoyés, le nombre de chantiers signés. Divisez le total versé par le nombre de chantiers signés. Vous obtenez votre coût d'acquisition réel, celui que la plateforme n'affiche nulle part.",
+      },
+      {
+        type: "p",
+        text: "La plupart des artisans qui font ce calcul pour la première fois découvrent un montant deux à quatre fois supérieur au prix affiché du lead. Ce n'est pas un scandale, c'est le fonctionnement normal d'un canal où le contact est partagé. Mais c'est le chiffre à comparer aux autres canaux, et personne ne le calcule.",
+      },
+      {
+        type: "p",
+        text: "Rapportez ensuite ce coût au montant moyen de vos chantiers. Sur une intervention à 400 €, un coût d'acquisition à 90 € pèse lourd. Sur une réfection de toiture à 14 000 €, le même montant est indolore. C'est ce ratio qui doit décider de votre usage, pas l'avis d'un confrère sur un forum.",
+      },
       { type: "h2", text: "Le vrai problème : vous ne construisez rien" },
-      { type: "p", text: "Un chantier obtenu par plateforme se termine et disparaît. Le client appartient à la plateforme, pas à vous. Il ne trouvera pas votre site parce que vous n'en avez pas, il ne laissera pas d'avis sur votre fiche parce qu'on ne le lui a pas demandé, et l'année suivante il repassera par le même formulaire, où il tombera peut-être sur un autre artisan." },
-      { type: "p", text: "Au bout de trois ans, deux artisans qui ont réalisé le même nombre de chantiers se retrouvent dans des situations opposées. Celui qui a tout passé par la plateforme repart chaque matin de zéro. Celui qui a demandé un avis à chaque client, entretenu sa fiche et laissé son site remonter sur Google reçoit maintenant des appels directs qui ne lui coûtent rien." },
+      {
+        type: "p",
+        text: "Un chantier obtenu par plateforme se termine et disparaît. Le client appartient à la plateforme, pas à vous. Il ne trouvera pas votre site parce que vous n'en avez pas, il ne laissera pas d'avis sur votre fiche parce qu'on ne le lui a pas demandé, et l'année suivante il repassera par le même formulaire, où il tombera peut-être sur un autre artisan.",
+      },
+      {
+        type: "p",
+        text: "Au bout de trois ans, deux artisans qui ont réalisé le même nombre de chantiers se retrouvent dans des situations opposées. Celui qui a tout passé par la plateforme repart chaque matin de zéro. Celui qui a demandé un avis à chaque client, entretenu sa fiche et laissé son site remonter sur Google reçoit maintenant des appels directs qui ne lui coûtent rien.",
+      },
       { type: "h2", text: "La bonne façon de les utiliser" },
-      { type: "p", text: "Rien n'oblige à quitter les plateformes. La sortie brutale est même une mauvaise idée si elles représentent aujourd'hui l'essentiel de votre activité. Quatre règles permettent de les garder sans en dépendre." },
+      {
+        type: "p",
+        text: "Rien n'oblige à quitter les plateformes. La sortie brutale est même une mauvaise idée si elles représentent aujourd'hui l'essentiel de votre activité. Quatre règles permettent de les garder sans en dépendre.",
+      },
       {
         type: "ul",
         items: [
@@ -2109,7 +4014,10 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
       { type: "h2", text: "Ce qui remplace une plateforme, et en combien de temps" },
-      { type: "p", text: "Aucun canal ne se substitue à une plateforme du jour au lendemain, et c'est honnêtement le point que les prestataires web passent sous silence. Voici les ordres de grandeur réels." },
+      {
+        type: "p",
+        text: "Aucun canal ne se substitue à une plateforme du jour au lendemain, et c'est honnêtement le point que les prestataires web passent sous silence. Voici les ordres de grandeur réels.",
+      },
       {
         type: "table",
         caption: "Délai de montée en puissance des canaux qui vous appartiennent",
@@ -2121,39 +4029,77 @@ export const BLOG_POSTS: BlogPost[] = [
           ["Réseau d'artisans et prescripteurs", "1 à 3 mois", "1 an"],
         ],
       },
-      { type: "p", text: "La stratégie qui fonctionne consiste donc à faire tourner les deux en parallèle pendant six à douze mois. Les plateformes financent l'activité pendant que vos canaux se mettent en place, puis leur part diminue d'elle-même à mesure que les appels directs augmentent." },
-      { type: "quote", text: "Une plateforme vous loue un client pour un chantier. Une fiche Google et un site vous en donnent un pour dix ans." },
+      {
+        type: "p",
+        text: "La stratégie qui fonctionne consiste donc à faire tourner les deux en parallèle pendant six à douze mois. Les plateformes financent l'activité pendant que vos canaux se mettent en place, puis leur part diminue d'elle-même à mesure que les appels directs augmentent.",
+      },
+      {
+        type: "quote",
+        text: "Une plateforme vous loue un client pour un chantier. Une fiche Google et un site vous en donnent un pour dix ans.",
+      },
       {
         type: "faq",
         items: [
-          { q: "Travaux.com est-il fiable pour un artisan ?", a: "La plateforme transmet de vraies demandes, mais chaque contact est en général vendu à plusieurs artisans du même secteur, ce qui vous met en concurrence directe sur le prix. Elle convient pour démarrer ou combler un creux, moins comme source unique de chantiers sur la durée." },
-          { q: "Combien coûte réellement un chantier obtenu via une plateforme ?", a: "Divisez le total versé sur trois mois par le nombre de chantiers effectivement signés sur la même période. La plupart des artisans obtiennent un montant deux à quatre fois supérieur au prix affiché d'un lead, parce qu'il faut payer plusieurs contacts pour en transformer un." },
-          { q: "Pourquoi les prospects des plateformes ne répondent-ils pas ?", a: "Le formulaire est transmis à plusieurs artisans en même temps, souvent dans l'heure. Le particulier reçoit donc plusieurs appels d'affilée, retient les premiers et cesse de répondre aux suivants. Rappeler dans les cinq minutes change nettement le taux de réponse." },
-          { q: "Faut-il quitter les plateformes de mise en relation ?", a: "Pas brutalement si elles représentent l'essentiel de votre activité. La bonne approche consiste à les garder pendant six à douze mois tout en construisant vos propres canaux, puis à réduire leur part à mesure que les appels directs augmentent." },
-          { q: "Comment transformer un client de plateforme en client à moi ?", a: "Demandez un avis Google en fin de chantier, laissez une carte ou un magnet, et reprenez contact six mois plus tard. Un client acquis via une plateforme ne vous appartient qu'à partir du moment où il peut vous retrouver sans passer par elle." },
-          { q: "Quelle alternative aux plateformes pour trouver des chantiers ?", a: "La combinaison qui remplace durablement une plateforme : une fiche Google Business Profile entretenue avec des avis récents, un site avec une page par prestation et par commune desservie, et des campagnes Google Ads pour les périodes creuses. Comptez six à douze mois de montée en puissance." },
+          {
+            q: "Travaux.com est-il fiable pour un artisan ?",
+            a: "La plateforme transmet de vraies demandes, mais chaque contact est en général vendu à plusieurs artisans du même secteur, ce qui vous met en concurrence directe sur le prix. Elle convient pour démarrer ou combler un creux, moins comme source unique de chantiers sur la durée.",
+          },
+          {
+            q: "Combien coûte réellement un chantier obtenu via une plateforme ?",
+            a: "Divisez le total versé sur trois mois par le nombre de chantiers effectivement signés sur la même période. La plupart des artisans obtiennent un montant deux à quatre fois supérieur au prix affiché d'un lead, parce qu'il faut payer plusieurs contacts pour en transformer un.",
+          },
+          {
+            q: "Pourquoi les prospects des plateformes ne répondent-ils pas ?",
+            a: "Le formulaire est transmis à plusieurs artisans en même temps, souvent dans l'heure. Le particulier reçoit donc plusieurs appels d'affilée, retient les premiers et cesse de répondre aux suivants. Rappeler dans les cinq minutes change nettement le taux de réponse.",
+          },
+          {
+            q: "Faut-il quitter les plateformes de mise en relation ?",
+            a: "Pas brutalement si elles représentent l'essentiel de votre activité. La bonne approche consiste à les garder pendant six à douze mois tout en construisant vos propres canaux, puis à réduire leur part à mesure que les appels directs augmentent.",
+          },
+          {
+            q: "Comment transformer un client de plateforme en client à moi ?",
+            a: "Demandez un avis Google en fin de chantier, laissez une carte ou un magnet, et reprenez contact six mois plus tard. Un client acquis via une plateforme ne vous appartient qu'à partir du moment où il peut vous retrouver sans passer par elle.",
+          },
+          {
+            q: "Quelle alternative aux plateformes pour trouver des chantiers ?",
+            a: "La combinaison qui remplace durablement une plateforme : une fiche Google Business Profile entretenue avec des avis récents, un site avec une page par prestation et par commune desservie, et des campagnes Google Ads pour les périodes creuses. Comptez six à douze mois de montée en puissance.",
+          },
         ],
       },
       { type: "h2", text: "Réduisez votre dépendance, sans couper du jour au lendemain" },
-      { type: "p", text: "Sitaly construit les canaux qui vous appartiennent pendant que vos plateformes continuent de tourner : site optimisé pour votre métier et vos communes, fiche Google entretenue, récolte d'avis à chaque chantier, campagnes Ads en appoint. Réservez un appel gratuit de 20 minutes, on calcule ensemble votre coût d'acquisition réel." },
+      {
+        type: "p",
+        text: "Sitaly construit les canaux qui vous appartiennent pendant que vos plateformes continuent de tourner : site optimisé pour votre métier et vos communes, fiche Google entretenue, récolte d'avis à chaque chantier, campagnes Ads en appoint. Réservez un appel gratuit de 20 minutes, on calcule ensemble votre coût d'acquisition réel.",
+      },
     ],
   },
   {
     slug: "appels-manques-artisan-permanence-telephonique",
     title: "Appels manqués : combien ça vous coûte, et les quatre façons d'y remédier",
     metaTitle: "Appels manqués artisan : permanence téléphonique ou agent IA ?",
-    metaDescription: "Un artisan rate 20 à 30 % de ses appels. Répondeur, secrétariat externalisé, permanence téléphonique, agent IA : ce que chaque solution coûte et laquelle choisir.",
-    excerpt: "Six appels manqués par jour, deux qui ne rappelleront jamais, et un client parti chez le concurrent. Voici le calcul exact de ce que ça représente sur une année, et les quatre solutions possibles.",
+    metaDescription:
+      "Un artisan rate 20 à 30 % de ses appels. Répondeur, secrétariat externalisé, permanence téléphonique, agent IA : ce que chaque solution coûte et laquelle choisir.",
+    excerpt:
+      "Six appels manqués par jour, deux qui ne rappelleront jamais, et un client parti chez le concurrent. Voici le calcul exact de ce que ça représente sur une année, et les quatre solutions possibles.",
     category: "Trouver des chantiers",
     readingTime: "10 min",
     publishedAt: "2026-08-13",
     author: "L'équipe Sitaly",
     keyword: "permanence téléphonique",
     content: [
-      { type: "p", text: "Vous êtes sous un évier, les mains dans le siphon. Le téléphone sonne dans la poche arrière. Vous le laissez sonner. À l'autre bout, un particulier avec une fuite passe au numéro suivant de sa liste, et vous n'aurez jamais su qu'il existait. Ce scénario se répète tous les jours dans presque toutes les entreprises artisanales, et il représente la fuite la plus coûteuse d'une activité de services. Voici comment la chiffrer sur votre propre entreprise, et les quatre façons de la colmater." },
+      {
+        type: "p",
+        text: "Vous êtes sous un évier, les mains dans le siphon. Le téléphone sonne dans la poche arrière. Vous le laissez sonner. À l'autre bout, un particulier avec une fuite passe au numéro suivant de sa liste, et vous n'aurez jamais su qu'il existait. Ce scénario se répète tous les jours dans presque toutes les entreprises artisanales, et il représente la fuite la plus coûteuse d'une activité de services. Voici comment la chiffrer sur votre propre entreprise, et les quatre façons de la colmater.",
+      },
       { type: "h2", text: "Le calcul, avec vos chiffres" },
-      { type: "p", text: "Prenez le nombre d'appels entrants que vous recevez par jour, et estimez la part que vous ne décrochez pas. Un artisan seul sur ses chantiers se situe généralement entre 20 et 30 %. Sur quinze appels par jour, cela représente trois à cinq appels manqués quotidiens." },
-      { type: "p", text: "Ajoutez maintenant le comportement des appelants. La majorité des personnes qui tombent sur un répondeur ne laissent pas de message : elles appellent le suivant. Sur vos quatre appels manqués du jour, comptez qu'un seul rappellera ou laissera un message. Trois disparaissent sans laisser de trace." },
+      {
+        type: "p",
+        text: "Prenez le nombre d'appels entrants que vous recevez par jour, et estimez la part que vous ne décrochez pas. Un artisan seul sur ses chantiers se situe généralement entre 20 et 30 %. Sur quinze appels par jour, cela représente trois à cinq appels manqués quotidiens.",
+      },
+      {
+        type: "p",
+        text: "Ajoutez maintenant le comportement des appelants. La majorité des personnes qui tombent sur un répondeur ne laissent pas de message : elles appellent le suivant. Sur vos quatre appels manqués du jour, comptez qu'un seul rappellera ou laissera un message. Trois disparaissent sans laisser de trace.",
+      },
       {
         type: "table",
         caption: "Ce que représentent les appels manqués sur une année",
@@ -2165,20 +4111,44 @@ export const BLOG_POSTS: BlogPost[] = [
           ["Sur un an, à 220 jours travaillés", "660 à 880 appels", "1 100 à 1 800 appels"],
         ],
       },
-      { type: "p", text: "Tous ces appels ne sont pas des clients. Il y a des démarcheurs, des erreurs, des fournisseurs. Retenez malgré tout qu'un appel sur cinq est un prospect sérieux, et que votre taux de transformation habituel s'applique. Sur 700 appels perdus dans l'année, cela fait plus d'une centaine de prospects réels et plusieurs dizaines de chantiers qui sont partis ailleurs. Multipliez par votre panier moyen : le montant obtenu dépasse presque toujours ce que coûte n'importe quelle solution de cet article." },
+      {
+        type: "p",
+        text: "Tous ces appels ne sont pas des clients. Il y a des démarcheurs, des erreurs, des fournisseurs. Retenez malgré tout qu'un appel sur cinq est un prospect sérieux, et que votre taux de transformation habituel s'applique. Sur 700 appels perdus dans l'année, cela fait plus d'une centaine de prospects réels et plusieurs dizaines de chantiers qui sont partis ailleurs. Multipliez par votre panier moyen : le montant obtenu dépasse presque toujours ce que coûte n'importe quelle solution de cet article.",
+      },
       { type: "h2", text: "Pourquoi le rappel du soir ne suffit pas" },
-      { type: "p", text: "La réponse instinctive consiste à rappeler tout le monde en fin de journée. Ça vaut mieux que rien, et ça rate l'essentiel : entre le moment où le particulier a appelé et 19 heures, il a joint deux autres artisans et pris rendez-vous avec l'un d'eux. Sur du dépannage, la fenêtre se compte en minutes, pas en heures." },
-      { type: "p", text: "S'ajoute le coût invisible : le rappel du soir empiète sur votre vie personnelle, se fait dans la fatigue, et se transforme vite en corvée qu'on repousse. Les demandes s'empilent et la moitié n'est jamais traitée." },
+      {
+        type: "p",
+        text: "La réponse instinctive consiste à rappeler tout le monde en fin de journée. Ça vaut mieux que rien, et ça rate l'essentiel : entre le moment où le particulier a appelé et 19 heures, il a joint deux autres artisans et pris rendez-vous avec l'un d'eux. Sur du dépannage, la fenêtre se compte en minutes, pas en heures.",
+      },
+      {
+        type: "p",
+        text: "S'ajoute le coût invisible : le rappel du soir empiète sur votre vie personnelle, se fait dans la fatigue, et se transforme vite en corvée qu'on repousse. Les demandes s'empilent et la moitié n'est jamais traitée.",
+      },
       { type: "h2", text: "Les quatre solutions, comparées" },
       { type: "h3", text: "1. Le répondeur avec message soigné" },
-      { type: "p", text: "Le minimum absolu, et vous le faites sûrement déjà. Un message qui annonce un délai de rappel précis vaut mieux qu'une messagerie opérateur anonyme. Ça ne règle rien sur le fond : la grande majorité des appelants ne laisse pas de message, quel que soit le message d'accueil." },
+      {
+        type: "p",
+        text: "Le minimum absolu, et vous le faites sûrement déjà. Un message qui annonce un délai de rappel précis vaut mieux qu'une messagerie opérateur anonyme. Ça ne règle rien sur le fond : la grande majorité des appelants ne laisse pas de message, quel que soit le message d'accueil.",
+      },
       { type: "h3", text: "2. Le SMS automatique après appel manqué" },
-      { type: "p", text: "Dès qu'un appel n'aboutit pas, un SMS part automatiquement : « Je suis en intervention, décrivez-moi votre besoin par message, je vous rappelle avant ce soir. » C'est simple, peu coûteux, et ça récupère une partie des appels. Le prospect a une réponse immédiate et un moyen de vous laisser sa demande sans parler à un répondeur. Ça reste un pansement : le rendez-vous n'est pas pris, et il faut toujours rappeler." },
+      {
+        type: "p",
+        text: "Dès qu'un appel n'aboutit pas, un SMS part automatiquement : « Je suis en intervention, décrivez-moi votre besoin par message, je vous rappelle avant ce soir. » C'est simple, peu coûteux, et ça récupère une partie des appels. Le prospect a une réponse immédiate et un moyen de vous laisser sa demande sans parler à un répondeur. Ça reste un pansement : le rendez-vous n'est pas pris, et il faut toujours rappeler.",
+      },
       { type: "h3", text: "3. La permanence téléphonique ou le secrétariat externalisé" },
-      { type: "p", text: "Une personne décroche à votre nom, prend le message et vous le transmet. La qualité est bonne, la voix humaine rassure, et les formules démarrent en général à un forfait mensuel auquel s'ajoute un coût par appel traité. Deux limites à connaître : les horaires, souvent limités aux heures de bureau alors qu'une part de vos appels arrive le soir et le week-end, et le fait que l'opérateur ne connaît pas votre métier. Il prend un message, il ne qualifie pas une urgence de chaudière." },
+      {
+        type: "p",
+        text: "Une personne décroche à votre nom, prend le message et vous le transmet. La qualité est bonne, la voix humaine rassure, et les formules démarrent en général à un forfait mensuel auquel s'ajoute un coût par appel traité. Deux limites à connaître : les horaires, souvent limités aux heures de bureau alors qu'une part de vos appels arrive le soir et le week-end, et le fait que l'opérateur ne connaît pas votre métier. Il prend un message, il ne qualifie pas une urgence de chaudière.",
+      },
       { type: "h3", text: "4. L'agent vocal IA" },
-      { type: "p", text: "Un agent décroche à votre place, se présente au nom de votre entreprise, répond aux questions courantes, distingue une urgence d'une demande de devis, et propose un créneau dans votre agenda. Il fonctionne 24 heures sur 24, y compris le dimanche soir, et il coûte moins cher qu'une permanence humaine parce qu'il ne facture pas à l'appel." },
-      { type: "p", text: "Ses limites méritent d'être dites. Sur une conversation très technique ou un client en colère, il vaut mieux transférer à un humain, et un agent bien réglé le fait. Le paramétrage initial demande du soin : c'est là que se joue la différence entre un agent qui rassure et un agent qui agace." },
+      {
+        type: "p",
+        text: "Un agent décroche à votre place, se présente au nom de votre entreprise, répond aux questions courantes, distingue une urgence d'une demande de devis, et propose un créneau dans votre agenda. Il fonctionne 24 heures sur 24, y compris le dimanche soir, et il coûte moins cher qu'une permanence humaine parce qu'il ne facture pas à l'appel.",
+      },
+      {
+        type: "p",
+        text: "Ses limites méritent d'être dites. Sur une conversation très technique ou un client en colère, il vaut mieux transférer à un humain, et un agent bien réglé le fait. Le paramétrage initial demande du soin : c'est là que se joue la différence entre un agent qui rassure et un agent qui agace.",
+      },
       {
         type: "table",
         caption: "Comparatif des solutions face aux appels manqués",
@@ -2192,8 +4162,14 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
       { type: "h2", text: "Ce qui compte plus que la solution choisie" },
-      { type: "p", text: "Quelle que soit l'option retenue, deux paramètres décident du résultat. Le premier est le délai : une demande traitée dans les cinq minutes se transforme bien mieux qu'une demande traitée deux heures plus tard, et cet écart pèse plus lourd que le choix de l'outil. Le second est ce qui se passe après : un message pris et posé sur un carnet ne vaut rien si personne ne rappelle. Une solution qui prend directement le rendez-vous supprime ce risque." },
-      { type: "p", text: "Un troisième point, souvent négligé : votre numéro doit être visible et cliquable partout, sur votre fiche Google comme en haut de chaque page de votre site. Traiter les appels manqués sans travailler la visibilité revient à colmater un tuyau qui n'est pas alimenté." },
+      {
+        type: "p",
+        text: "Quelle que soit l'option retenue, deux paramètres décident du résultat. Le premier est le délai : une demande traitée dans les cinq minutes se transforme bien mieux qu'une demande traitée deux heures plus tard, et cet écart pèse plus lourd que le choix de l'outil. Le second est ce qui se passe après : un message pris et posé sur un carnet ne vaut rien si personne ne rappelle. Une solution qui prend directement le rendez-vous supprime ce risque.",
+      },
+      {
+        type: "p",
+        text: "Un troisième point, souvent négligé : votre numéro doit être visible et cliquable partout, sur votre fiche Google comme en haut de chaque page de votre site. Traiter les appels manqués sans travailler la visibilité revient à colmater un tuyau qui n'est pas alimenté.",
+      },
       { type: "h2", text: "Par où commencer" },
       {
         type: "ul",
@@ -2204,54 +4180,102 @@ export const BLOG_POSTS: BlogPost[] = [
           "Dans tous les cas : vérifiez que votre numéro est cliquable sur mobile en haut de chaque page de votre site et sur votre fiche Google.",
         ],
       },
-      { type: "quote", text: "Le client qui n'a pas eu de réponse ne se plaint jamais. Il appelle simplement le suivant, et vous ne saurez jamais qu'il a existé." },
+      {
+        type: "quote",
+        text: "Le client qui n'a pas eu de réponse ne se plaint jamais. Il appelle simplement le suivant, et vous ne saurez jamais qu'il a existé.",
+      },
       {
         type: "faq",
         items: [
-          { q: "Combien d'appels un artisan rate-t-il par jour ?", a: "Un artisan seul sur ses chantiers ne décroche pas 20 à 30 % de ses appels entrants, soit trois à cinq appels par jour. Sur une année de 220 jours travaillés, cela représente entre 660 et 880 appels perdus, dont une partie sont de vrais prospects." },
-          { q: "Combien coûte une permanence téléphonique ?", a: "Les formules combinent en général un forfait mensuel et un coût par appel traité, ce qui rend la facture variable selon votre volume. La principale limite tient aux horaires : la plupart des services couvrent les heures de bureau, alors qu'une part des appels d'artisans arrive le soir et le week-end." },
-          { q: "Permanence téléphonique ou agent vocal IA, que choisir ?", a: "La permanence apporte une voix humaine sur les heures de bureau, avec un coût qui augmente avec le volume d'appels. L'agent vocal IA fonctionne 24h/24 à coût fixe, qualifie l'urgence et prend directement le rendez-vous, mais demande un paramétrage soigné au départ." },
-          { q: "Le SMS automatique après appel manqué est-il efficace ?", a: "Il récupère une partie des appels perdus en donnant au prospect une réponse immédiate et un moyen de laisser sa demande. Il ne prend pas le rendez-vous et vous devez toujours rappeler, ce qui en fait une première étape utile plutôt qu'une solution complète." },
-          { q: "Les clients acceptent-ils de parler à un agent vocal IA ?", a: "Les agents récents tiennent une conversation fluide et transfèrent à un humain sur les cas sensibles. Dans la pratique, la plupart des appelants préfèrent une réponse immédiate et un rendez-vous obtenu à un répondeur vide un dimanche soir. Ce qui agace un client, c'est de ne joindre personne." },
-          { q: "En combien de temps faut-il rappeler un prospect ?", a: "Le plus vite possible, et idéalement dans les cinq minutes. Une demande traitée dans ce délai se transforme nettement mieux qu'une demande rappelée deux heures plus tard, parce que le particulier a entre-temps joint deux autres artisans et souvent pris rendez-vous avec l'un d'eux." },
+          {
+            q: "Combien d'appels un artisan rate-t-il par jour ?",
+            a: "Un artisan seul sur ses chantiers ne décroche pas 20 à 30 % de ses appels entrants, soit trois à cinq appels par jour. Sur une année de 220 jours travaillés, cela représente entre 660 et 880 appels perdus, dont une partie sont de vrais prospects.",
+          },
+          {
+            q: "Combien coûte une permanence téléphonique ?",
+            a: "Les formules combinent en général un forfait mensuel et un coût par appel traité, ce qui rend la facture variable selon votre volume. La principale limite tient aux horaires : la plupart des services couvrent les heures de bureau, alors qu'une part des appels d'artisans arrive le soir et le week-end.",
+          },
+          {
+            q: "Permanence téléphonique ou agent vocal IA, que choisir ?",
+            a: "La permanence apporte une voix humaine sur les heures de bureau, avec un coût qui augmente avec le volume d'appels. L'agent vocal IA fonctionne 24h/24 à coût fixe, qualifie l'urgence et prend directement le rendez-vous, mais demande un paramétrage soigné au départ.",
+          },
+          {
+            q: "Le SMS automatique après appel manqué est-il efficace ?",
+            a: "Il récupère une partie des appels perdus en donnant au prospect une réponse immédiate et un moyen de laisser sa demande. Il ne prend pas le rendez-vous et vous devez toujours rappeler, ce qui en fait une première étape utile plutôt qu'une solution complète.",
+          },
+          {
+            q: "Les clients acceptent-ils de parler à un agent vocal IA ?",
+            a: "Les agents récents tiennent une conversation fluide et transfèrent à un humain sur les cas sensibles. Dans la pratique, la plupart des appelants préfèrent une réponse immédiate et un rendez-vous obtenu à un répondeur vide un dimanche soir. Ce qui agace un client, c'est de ne joindre personne.",
+          },
+          {
+            q: "En combien de temps faut-il rappeler un prospect ?",
+            a: "Le plus vite possible, et idéalement dans les cinq minutes. Une demande traitée dans ce délai se transforme nettement mieux qu'une demande rappelée deux heures plus tard, parce que le particulier a entre-temps joint deux autres artisans et souvent pris rendez-vous avec l'un d'eux.",
+          },
         ],
       },
       { type: "h2", text: "Ne perdez plus un appel" },
-      { type: "p", text: "Sitaly installe des agents IA clé en main pour les artisans et les TPE : un standardiste qui décroche 24h/24, qualifie la demande et remplit votre agenda pendant que vous travaillez. Vous ne configurez rien. Réservez un appel gratuit de 20 minutes pour chiffrer ce que vos appels manqués vous coûtent." },
+      {
+        type: "p",
+        text: "Sitaly installe des agents IA clé en main pour les artisans et les TPE : un standardiste qui décroche 24h/24, qualifie la demande et remplit votre agenda pendant que vous travaillez. Vous ne configurez rien. Réservez un appel gratuit de 20 minutes pour chiffrer ce que vos appels manqués vous coûtent.",
+      },
     ],
   },
   {
     slug: "crm-artisan-guide",
     title: "CRM pour artisan : à quoi ça sert vraiment quand on est seul sur les chantiers",
     metaTitle: "CRM artisan : lequel choisir et comment s'en servir",
-    metaDescription: "Un CRM pour artisan ne sert pas à faire des tableaux. Il sert à ne perdre aucun devis en attente. Ce qu'il faut suivre, les outils possibles, et par quoi commencer.",
-    excerpt: "La plupart des artisans pilotent leur suivi client avec un carnet et leur mémoire. Ça tient jusqu'à quinze devis en cours. Au-delà, les oublis coûtent plus cher que n'importe quel logiciel.",
+    metaDescription:
+      "Un CRM pour artisan ne sert pas à faire des tableaux. Il sert à ne perdre aucun devis en attente. Ce qu'il faut suivre, les outils possibles, et par quoi commencer.",
+    excerpt:
+      "La plupart des artisans pilotent leur suivi client avec un carnet et leur mémoire. Ça tient jusqu'à quinze devis en cours. Au-delà, les oublis coûtent plus cher que n'importe quel logiciel.",
     category: "Outils & logiciels",
     readingTime: "10 min",
     publishedAt: "2026-08-18",
     author: "L'équipe Sitaly",
     keyword: "crm artisan",
     content: [
-      { type: "p", text: "Trois lettres qui font fuir la moitié des artisans. CRM, ça sonne grande entreprise, formation de deux jours et tableaux de bord que personne ne regarde. Dans les faits, un CRM d'artisan répond à une question très simple : qui attend une réponse de moi en ce moment ? Si vous avez déjà retrouvé un devis de six semaines au fond d'une boîte mail, oublié de rappeler quelqu'un qui était prêt à signer, ou cherché le numéro d'un client dans trois applications, vous avez déjà eu besoin d'un CRM. Voici ce qu'il fait réellement, ce qu'il ne fait pas, et comment démarrer sans y passer vos soirées." },
+      {
+        type: "p",
+        text: "Trois lettres qui font fuir la moitié des artisans. CRM, ça sonne grande entreprise, formation de deux jours et tableaux de bord que personne ne regarde. Dans les faits, un CRM d'artisan répond à une question très simple : qui attend une réponse de moi en ce moment ? Si vous avez déjà retrouvé un devis de six semaines au fond d'une boîte mail, oublié de rappeler quelqu'un qui était prêt à signer, ou cherché le numéro d'un client dans trois applications, vous avez déjà eu besoin d'un CRM. Voici ce qu'il fait réellement, ce qu'il ne fait pas, et comment démarrer sans y passer vos soirées.",
+      },
       { type: "h2", text: "Ce qu'un CRM fait, et ce que la plupart des gens croient qu'il fait" },
-      { type: "p", text: "CRM signifie gestion de la relation client. Le mot évoque un logiciel commercial complexe. Pour une entreprise artisanale, l'objet est plus étroit et beaucoup plus utile : une liste de toutes les personnes qui vous ont contacté, avec l'état de chacune et la prochaine action à mener." },
-      { type: "p", text: "Ce n'est pas un logiciel de facturation. Ce n'est pas un agenda. Ce n'est pas un outil de comptabilité. Ces trois-là gèrent ce qui est déjà signé. Un CRM gère ce qui ne l'est pas encore, c'est-à-dire l'endroit exact où l'argent se perd." },
+      {
+        type: "p",
+        text: "CRM signifie gestion de la relation client. Le mot évoque un logiciel commercial complexe. Pour une entreprise artisanale, l'objet est plus étroit et beaucoup plus utile : une liste de toutes les personnes qui vous ont contacté, avec l'état de chacune et la prochaine action à mener.",
+      },
+      {
+        type: "p",
+        text: "Ce n'est pas un logiciel de facturation. Ce n'est pas un agenda. Ce n'est pas un outil de comptabilité. Ces trois-là gèrent ce qui est déjà signé. Un CRM gère ce qui ne l'est pas encore, c'est-à-dire l'endroit exact où l'argent se perd.",
+      },
       {
         type: "table",
         caption: "Ce que chaque outil couvre réellement",
         headers: ["Outil", "Ce qu'il gère", "Ce qu'il ne gère pas"],
         rows: [
-          ["Logiciel de facturation", "Devis édités, factures, comptabilité", "Les prospects qui n'ont pas encore répondu"],
+          [
+            "Logiciel de facturation",
+            "Devis édités, factures, comptabilité",
+            "Les prospects qui n'ont pas encore répondu",
+          ],
           ["Agenda", "Ce qui est déjà calé", "Les demandes en attente de rendez-vous"],
           ["Boîte mail", "L'historique des échanges", "Ce qui exige une action aujourd'hui"],
           ["CRM", "Qui attend quoi, et depuis combien de temps", "L'exécution du chantier"],
         ],
       },
       { type: "h2", text: "Le moment où le carnet ne suffit plus" },
-      { type: "p", text: "Tant que vous avez cinq ou six affaires en cours, votre mémoire fait le travail. Le basculement se produit vers quinze à vingt devis en attente. À ce stade, votre suivi ne repose plus sur une méthode mais sur votre fatigue du jour, et les demandes reçues le mardi soir passent à la trappe le mercredi matin." },
-      { type: "p", text: "Les signes qui montrent que le seuil est franchi : vous retrouvez des devis anciens sans savoir s'ils ont été relancés, un client vous rappelle en disant qu'il attendait votre retour, vous cherchez un numéro dans vos SMS, ou vous ne savez pas dire combien d'euros de devis sont en attente en ce moment. Si deux de ces situations vous parlent, le problème n'est plus l'organisation, c'est l'outil." },
+      {
+        type: "p",
+        text: "Tant que vous avez cinq ou six affaires en cours, votre mémoire fait le travail. Le basculement se produit vers quinze à vingt devis en attente. À ce stade, votre suivi ne repose plus sur une méthode mais sur votre fatigue du jour, et les demandes reçues le mardi soir passent à la trappe le mercredi matin.",
+      },
+      {
+        type: "p",
+        text: "Les signes qui montrent que le seuil est franchi : vous retrouvez des devis anciens sans savoir s'ils ont été relancés, un client vous rappelle en disant qu'il attendait votre retour, vous cherchez un numéro dans vos SMS, ou vous ne savez pas dire combien d'euros de devis sont en attente en ce moment. Si deux de ces situations vous parlent, le problème n'est plus l'organisation, c'est l'outil.",
+      },
       { type: "h2", text: "Les quatre informations qui suffisent" },
-      { type: "p", text: "Un CRM d'artisan qui fonctionne tient en quatre colonnes. Tout le reste est du confort, et souvent la raison pour laquelle les outils finissent abandonnés." },
+      {
+        type: "p",
+        text: "Un CRM d'artisan qui fonctionne tient en quatre colonnes. Tout le reste est du confort, et souvent la raison pour laquelle les outils finissent abandonnés.",
+      },
       {
         type: "ul",
         items: [
@@ -2261,23 +4285,53 @@ export const BLOG_POSTS: BlogPost[] = [
           "La prochaine action et sa date : rappeler, envoyer le devis, relancer.",
         ],
       },
-      { type: "p", text: "La quatrième colonne est celle que tout le monde oublie, et c'est la seule qui produit du chiffre d'affaires. Une liste de contacts sans prochaine action n'est qu'un annuaire. Une liste avec une prochaine action datée devient une liste de tâches qui se remplit toute seule." },
+      {
+        type: "p",
+        text: "La quatrième colonne est celle que tout le monde oublie, et c'est la seule qui produit du chiffre d'affaires. Une liste de contacts sans prochaine action n'est qu'un annuaire. Une liste avec une prochaine action datée devient une liste de tâches qui se remplit toute seule.",
+      },
       { type: "h2", text: "Suivre l'origine de chaque contact change vos décisions" },
-      { type: "p", text: "Une colonne coûte trente secondes à remplir et vaut de l'or au bout de six mois : d'où vient ce contact ? Fiche Google, site internet, plateforme, recommandation, Google Ads. Au bout d'un trimestre, vous savez lesquels de vos canaux amènent des chantiers signés, et non simplement des appels." },
-      { type: "p", text: "C'est souvent une surprise. Beaucoup d'artisans découvrent que la plateforme qui leur coûte le plus produit surtout des demandes non transformées, pendant que leur fiche Google, gratuite, amène les clients qui signent. Sans ce suivi, la décision se prend au ressenti, et le ressenti retient les appels les plus récents." },
+      {
+        type: "p",
+        text: "Une colonne coûte trente secondes à remplir et vaut de l'or au bout de six mois : d'où vient ce contact ? Fiche Google, site internet, plateforme, recommandation, Google Ads. Au bout d'un trimestre, vous savez lesquels de vos canaux amènent des chantiers signés, et non simplement des appels.",
+      },
+      {
+        type: "p",
+        text: "C'est souvent une surprise. Beaucoup d'artisans découvrent que la plateforme qui leur coûte le plus produit surtout des demandes non transformées, pendant que leur fiche Google, gratuite, amène les clients qui signent. Sans ce suivi, la décision se prend au ressenti, et le ressenti retient les appels les plus récents.",
+      },
       { type: "h2", text: "Quel outil choisir" },
       { type: "h3", text: "Le tableur, pour commencer" },
-      { type: "p", text: "Un simple tableau avec les quatre colonnes citées plus haut fait déjà 80 % du travail, et il ne coûte rien. C'est le bon point de départ si vous n'avez jamais rien structuré. Sa limite arrive vite : il n'est pas pratique sur un téléphone, entre deux chantiers, avec des gants." },
+      {
+        type: "p",
+        text: "Un simple tableau avec les quatre colonnes citées plus haut fait déjà 80 % du travail, et il ne coûte rien. C'est le bon point de départ si vous n'avez jamais rien structuré. Sa limite arrive vite : il n'est pas pratique sur un téléphone, entre deux chantiers, avec des gants.",
+      },
       { type: "h3", text: "Le CRM généraliste" },
-      { type: "p", text: "Les grands noms du marché sont puissants et pensés pour des équipes commerciales. Pour un artisan seul, ils demandent un paramétrage long et affichent quantité de fonctions inutiles. Le risque n'est pas le prix, c'est l'abandon au bout de trois semaines." },
+      {
+        type: "p",
+        text: "Les grands noms du marché sont puissants et pensés pour des équipes commerciales. Pour un artisan seul, ils demandent un paramétrage long et affichent quantité de fonctions inutiles. Le risque n'est pas le prix, c'est l'abandon au bout de trois semaines.",
+      },
       { type: "h3", text: "Le logiciel métier bâtiment" },
-      { type: "p", text: "Certains outils du bâtiment intègrent un suivi de prospects à leur module de devis. C'est cohérent quand vous utilisez déjà l'outil pour vos chiffrages. Vérifiez un point avant de vous engager : gère-t-il les demandes qui n'ont pas encore de devis ? Beaucoup ne suivent que les affaires déjà chiffrées, donc trop tard." },
+      {
+        type: "p",
+        text: "Certains outils du bâtiment intègrent un suivi de prospects à leur module de devis. C'est cohérent quand vous utilisez déjà l'outil pour vos chiffrages. Vérifiez un point avant de vous engager : gère-t-il les demandes qui n'ont pas encore de devis ? Beaucoup ne suivent que les affaires déjà chiffrées, donc trop tard.",
+      },
       { type: "h3", text: "Le CRM léger connecté à votre site" },
-      { type: "p", text: "La formule la plus efficace quand les demandes arrivent par votre site et votre fiche Google : chaque nouvelle demande entre automatiquement dans la liste, sans ressaisie, avec son origine déjà renseignée. Vous ne remplissez rien, vous traitez." },
-      { type: "p", text: "Sur le choix d'un outil de gestion au sens large, devis et facturation compris, notre guide des logiciels de gestion pour artisan détaille les familles d'outils et leurs usages." },
+      {
+        type: "p",
+        text: "La formule la plus efficace quand les demandes arrivent par votre site et votre fiche Google : chaque nouvelle demande entre automatiquement dans la liste, sans ressaisie, avec son origine déjà renseignée. Vous ne remplissez rien, vous traitez.",
+      },
+      {
+        type: "p",
+        text: "Sur le choix d'un outil de gestion au sens large, devis et facturation compris, notre guide des logiciels de gestion pour artisan détaille les familles d'outils et leurs usages.",
+      },
       { type: "h2", text: "La relance : là où le CRM se rembourse" },
-      { type: "p", text: "Un devis sur deux reste sans réponse, et le prix n'est pas la raison principale. Le client a demandé trois devis, il a rangé le vôtre dans un coin, la vie a continué. Une relance à sept jours puis à trois semaines récupère une part significative de ces dossiers, à condition qu'une liste vous rappelle qui relancer." },
-      { type: "p", text: "Faites le calcul sur vos propres chiffres. Si vous avez vingt devis en attente à 3 000 € en moyenne, cela représente 60 000 € en suspens. Récupérer deux dossiers grâce à une relance au bon moment paie plusieurs années d'abonnement à n'importe quel outil." },
+      {
+        type: "p",
+        text: "Un devis sur deux reste sans réponse, et le prix n'est pas la raison principale. Le client a demandé trois devis, il a rangé le vôtre dans un coin, la vie a continué. Une relance à sept jours puis à trois semaines récupère une part significative de ces dossiers, à condition qu'une liste vous rappelle qui relancer.",
+      },
+      {
+        type: "p",
+        text: "Faites le calcul sur vos propres chiffres. Si vous avez vingt devis en attente à 3 000 € en moyenne, cela représente 60 000 € en suspens. Récupérer deux dossiers grâce à une relance au bon moment paie plusieurs années d'abonnement à n'importe quel outil.",
+      },
       { type: "h2", text: "Comment démarrer cette semaine" },
       {
         type: "ul",
@@ -2288,39 +4342,77 @@ export const BLOG_POSTS: BlogPost[] = [
           "Ajoutez la colonne d'origine dès maintenant, pour disposer de trois mois de données au prochain arbitrage budgétaire.",
         ],
       },
-      { type: "quote", text: "Un CRM ne vous apporte pas de nouveaux clients. Il vous empêche de perdre ceux que vous avez déjà." },
+      {
+        type: "quote",
+        text: "Un CRM ne vous apporte pas de nouveaux clients. Il vous empêche de perdre ceux que vous avez déjà.",
+      },
       {
         type: "faq",
         items: [
-          { q: "Qu'est-ce qu'un CRM pour un artisan ?", a: "C'est la liste de toutes les personnes qui vous ont contacté, avec l'état de chaque affaire et la prochaine action à mener. Contrairement à un logiciel de facturation, qui gère ce qui est déjà signé, un CRM suit ce qui ne l'est pas encore : les devis en attente et les demandes sans réponse." },
-          { q: "À partir de quand un artisan a-t-il besoin d'un CRM ?", a: "Le basculement se situe autour de quinze à vingt devis en attente. En dessous, la mémoire et un carnet suffisent. Au-delà, le suivi dépend de votre fatigue du jour et les oublis deviennent réguliers, en particulier sur les demandes reçues en soirée." },
-          { q: "Un logiciel de facturation peut-il servir de CRM ?", a: "Rarement, parce qu'il ne suit en général que les affaires déjà chiffrées. Or les demandes se perdent le plus souvent avant l'édition du devis, entre le premier appel et l'envoi. Vérifiez si votre outil gère les contacts sans devis avant de vous en contenter." },
-          { q: "Quel CRM choisir quand on est artisan seul ?", a: "Le plus simple que vous utiliserez vraiment. Un tableur à quatre colonnes fait déjà l'essentiel, mais reste pénible sur un téléphone. Un CRM léger connecté à votre site évite la ressaisie : chaque demande entre automatiquement avec son origine." },
-          { q: "Combien coûte un CRM pour une entreprise artisanale ?", a: "De zéro pour un tableur à quelques dizaines d'euros par mois pour un outil connecté. Le bon repère n'est pas le prix mais le montant de vos devis en attente : vingt devis à 3 000 € représentent 60 000 € en suspens, et deux dossiers récupérés paient plusieurs années d'abonnement." },
-          { q: "Pourquoi suivre l'origine de chaque contact ?", a: "Parce qu'au bout d'un trimestre vous savez quels canaux amènent des chantiers signés, et non simplement des appels. Beaucoup d'artisans découvrent alors que la plateforme la plus coûteuse transforme mal, pendant que leur fiche Google, gratuite, amène les clients qui signent." },
+          {
+            q: "Qu'est-ce qu'un CRM pour un artisan ?",
+            a: "C'est la liste de toutes les personnes qui vous ont contacté, avec l'état de chaque affaire et la prochaine action à mener. Contrairement à un logiciel de facturation, qui gère ce qui est déjà signé, un CRM suit ce qui ne l'est pas encore : les devis en attente et les demandes sans réponse.",
+          },
+          {
+            q: "À partir de quand un artisan a-t-il besoin d'un CRM ?",
+            a: "Le basculement se situe autour de quinze à vingt devis en attente. En dessous, la mémoire et un carnet suffisent. Au-delà, le suivi dépend de votre fatigue du jour et les oublis deviennent réguliers, en particulier sur les demandes reçues en soirée.",
+          },
+          {
+            q: "Un logiciel de facturation peut-il servir de CRM ?",
+            a: "Rarement, parce qu'il ne suit en général que les affaires déjà chiffrées. Or les demandes se perdent le plus souvent avant l'édition du devis, entre le premier appel et l'envoi. Vérifiez si votre outil gère les contacts sans devis avant de vous en contenter.",
+          },
+          {
+            q: "Quel CRM choisir quand on est artisan seul ?",
+            a: "Le plus simple que vous utiliserez vraiment. Un tableur à quatre colonnes fait déjà l'essentiel, mais reste pénible sur un téléphone. Un CRM léger connecté à votre site évite la ressaisie : chaque demande entre automatiquement avec son origine.",
+          },
+          {
+            q: "Combien coûte un CRM pour une entreprise artisanale ?",
+            a: "De zéro pour un tableur à quelques dizaines d'euros par mois pour un outil connecté. Le bon repère n'est pas le prix mais le montant de vos devis en attente : vingt devis à 3 000 € représentent 60 000 € en suspens, et deux dossiers récupérés paient plusieurs années d'abonnement.",
+          },
+          {
+            q: "Pourquoi suivre l'origine de chaque contact ?",
+            a: "Parce qu'au bout d'un trimestre vous savez quels canaux amènent des chantiers signés, et non simplement des appels. Beaucoup d'artisans découvrent alors que la plateforme la plus coûteuse transforme mal, pendant que leur fiche Google, gratuite, amène les clients qui signent.",
+          },
         ],
       },
       { type: "h2", text: "Un suivi client qui se remplit tout seul" },
-      { type: "p", text: "Sitaly connecte votre site, votre fiche Google et vos formulaires à un suivi simple : chaque demande arrive avec son origine, son état et sa prochaine action, sans ressaisie. Les relances de devis partent automatiquement au bon moment. Réservez un appel gratuit de 20 minutes pour voir ce que ça donne sur votre activité." },
+      {
+        type: "p",
+        text: "Sitaly connecte votre site, votre fiche Google et vos formulaires à un suivi simple : chaque demande arrive avec son origine, son état et sa prochaine action, sans ressaisie. Les relances de devis partent automatiquement au bon moment. Réservez un appel gratuit de 20 minutes pour voir ce que ça donne sur votre activité.",
+      },
     ],
   },
   {
     slug: "chatbot-entreprise-tpe-guide",
     title: "Chatbot pour une entreprise : utile, gadget, ou piège à clients ?",
     metaTitle: "Chatbot entreprise : quand ça sert, quand ça fait fuir",
-    metaDescription: "Ce qu'un chatbot apporte réellement à une TPE, la différence avec un agent IA, les cas où il fait fuir les clients, et combien ça coûte à mettre en place.",
-    excerpt: "Un chatbot mal réglé fait plus de dégâts que pas de chatbot du tout. Voici les trois situations où il rapporte vraiment, celles où il vous coûte des clients, et ce qui a changé avec l'IA.",
+    metaDescription:
+      "Ce qu'un chatbot apporte réellement à une TPE, la différence avec un agent IA, les cas où il fait fuir les clients, et combien ça coûte à mettre en place.",
+    excerpt:
+      "Un chatbot mal réglé fait plus de dégâts que pas de chatbot du tout. Voici les trois situations où il rapporte vraiment, celles où il vous coûte des clients, et ce qui a changé avec l'IA.",
     category: "Outils & logiciels",
     readingTime: "11 min",
     publishedAt: "2026-08-25",
     author: "L'équipe Sitaly",
     keyword: "chatbot entreprise",
     content: [
-      { type: "p", text: "Vous avez sûrement déjà pesté contre une petite bulle en bas à droite d'un site, qui vous répond « je n'ai pas compris votre demande » pour la troisième fois. C'est l'image que beaucoup de dirigeants ont du chatbot, et elle explique pourquoi ils n'en veulent pas. Elle est en partie datée : les outils de 2026 n'ont plus grand-chose à voir avec les arbres de décision d'il y a cinq ans. Reste que le mauvais chatbot existe toujours, et qu'il coûte des clients. Cet article sépare les cas où l'outil rapporte de ceux où il nuit." },
+      {
+        type: "p",
+        text: "Vous avez sûrement déjà pesté contre une petite bulle en bas à droite d'un site, qui vous répond « je n'ai pas compris votre demande » pour la troisième fois. C'est l'image que beaucoup de dirigeants ont du chatbot, et elle explique pourquoi ils n'en veulent pas. Elle est en partie datée : les outils de 2026 n'ont plus grand-chose à voir avec les arbres de décision d'il y a cinq ans. Reste que le mauvais chatbot existe toujours, et qu'il coûte des clients. Cet article sépare les cas où l'outil rapporte de ceux où il nuit.",
+      },
       { type: "h2", text: "Chatbot, agent IA : ce n'est plus la même chose" },
-      { type: "p", text: "Le mot chatbot recouvre aujourd'hui deux technologies très différentes, et c'est la source de la plupart des déceptions." },
-      { type: "p", text: "Le chatbot classique fonctionne par scénarios. Un humain a prévu à l'avance une liste de questions et les réponses correspondantes. Tant que le visiteur reste dans le cadre, ça marche. Dès qu'il formule sa demande autrement, l'outil bloque et répète qu'il n'a pas compris." },
-      { type: "p", text: "L'agent conversationnel adossé à un modèle de langage comprend une demande formulée librement, s'appuie sur vos informations réelles pour répondre, et poursuit un objectif, comme obtenir un numéro de téléphone ou caler un rendez-vous. Il ne suit pas un script, il mène une conversation." },
+      {
+        type: "p",
+        text: "Le mot chatbot recouvre aujourd'hui deux technologies très différentes, et c'est la source de la plupart des déceptions.",
+      },
+      {
+        type: "p",
+        text: "Le chatbot classique fonctionne par scénarios. Un humain a prévu à l'avance une liste de questions et les réponses correspondantes. Tant que le visiteur reste dans le cadre, ça marche. Dès qu'il formule sa demande autrement, l'outil bloque et répète qu'il n'a pas compris.",
+      },
+      {
+        type: "p",
+        text: "L'agent conversationnel adossé à un modèle de langage comprend une demande formulée librement, s'appuie sur vos informations réelles pour répondre, et poursuit un objectif, comme obtenir un numéro de téléphone ou caler un rendez-vous. Il ne suit pas un script, il mène une conversation.",
+      },
       {
         type: "table",
         caption: "Chatbot scénarisé et agent conversationnel",
@@ -2335,13 +4427,25 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       { type: "h2", text: "Les trois cas où un chatbot rapporte vraiment" },
       { type: "h3", text: "1. Vous recevez beaucoup de questions identiques" },
-      { type: "p", text: "Délais, zone d'intervention, tarifs d'un déplacement, prestations couvertes, modalités de paiement. Si vous répondez dix fois par semaine à la même chose, un agent qui traite ces demandes vous rend des heures et donne au visiteur une réponse immédiate à minuit un dimanche." },
+      {
+        type: "p",
+        text: "Délais, zone d'intervention, tarifs d'un déplacement, prestations couvertes, modalités de paiement. Si vous répondez dix fois par semaine à la même chose, un agent qui traite ces demandes vous rend des heures et donne au visiteur une réponse immédiate à minuit un dimanche.",
+      },
       { type: "h3", text: "2. Vos visiteurs partent sans laisser de trace" },
-      { type: "p", text: "C'est le cas le plus rentable. Une majorité de visiteurs ne remplit jamais un formulaire de contact, et ne téléphone pas non plus. Un agent qui engage la conversation au bon moment capte une partie de ces départs, souvent en trois échanges, avec un numéro de téléphone à la clé." },
+      {
+        type: "p",
+        text: "C'est le cas le plus rentable. Une majorité de visiteurs ne remplit jamais un formulaire de contact, et ne téléphone pas non plus. Un agent qui engage la conversation au bon moment capte une partie de ces départs, souvent en trois échanges, avec un numéro de téléphone à la clé.",
+      },
       { type: "h3", text: "3. Vos demandes arrivent hors des heures ouvrées" },
-      { type: "p", text: "Regardez vos statistiques : une part importante des visites de sites de services se produit le soir et le week-end, quand le particulier a enfin le temps. Personne ne répond à ce moment-là. Un agent qui prend le relais transforme ces visites en demandes qualifiées le lendemain matin." },
+      {
+        type: "p",
+        text: "Regardez vos statistiques : une part importante des visites de sites de services se produit le soir et le week-end, quand le particulier a enfin le temps. Personne ne répond à ce moment-là. Un agent qui prend le relais transforme ces visites en demandes qualifiées le lendemain matin.",
+      },
       { type: "h2", text: "Les trois cas où il vous coûte des clients" },
-      { type: "p", text: "Il faut le dire aussi franchement : dans certaines situations, un chatbot fait du mal." },
+      {
+        type: "p",
+        text: "Il faut le dire aussi franchement : dans certaines situations, un chatbot fait du mal.",
+      },
       {
         type: "ul",
         items: [
@@ -2350,9 +4454,15 @@ export const BLOG_POSTS: BlogPost[] = [
           "Quand il ne sait pas passer la main. Un visiteur agacé qui ne trouve aucun moyen de joindre un humain devient un avis négatif.",
         ],
       },
-      { type: "p", text: "La règle est simple : l'agent doit être une porte de plus, jamais une porte à la place d'une autre. Le téléphone reste en haut de page, cliquable, quoi qu'il arrive." },
+      {
+        type: "p",
+        text: "La règle est simple : l'agent doit être une porte de plus, jamais une porte à la place d'une autre. Le téléphone reste en haut de page, cliquable, quoi qu'il arrive.",
+      },
       { type: "h2", text: "Ce qu'il faut lui donner pour qu'il soit bon" },
-      { type: "p", text: "La qualité d'un agent conversationnel dépend moins de la technologie que de ce qu'on lui fournit. Un agent branché sans préparation invente ou reste vague, et c'est exactement l'effet redouté." },
+      {
+        type: "p",
+        text: "La qualité d'un agent conversationnel dépend moins de la technologie que de ce qu'on lui fournit. Un agent branché sans préparation invente ou reste vague, et c'est exactement l'effet redouté.",
+      },
       {
         type: "ul",
         items: [
@@ -2363,58 +4473,129 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
       { type: "h2", text: "Chatbot écrit ou agent au téléphone ?" },
-      { type: "p", text: "Pour une entreprise de services locale, la question mérite d'être posée dans cet ordre. Vos prospects vous joignent-ils davantage par téléphone ou par le site ? Dans le bâtiment et les services à domicile, le téléphone domine largement, et un agent vocal qui décroche à votre place produit plus qu'un chatbot écrit." },
-      { type: "p", text: "Dans les services aux entreprises, le conseil ou les métiers où le projet se prépare longtemps à l'avance, le rapport s'inverse : le prospect préfère écrire, en dehors des heures, sans engager de conversation. Le chatbot y prend tout son sens. Notre article sur les appels manqués détaille le versant téléphonique." },
+      {
+        type: "p",
+        text: "Pour une entreprise de services locale, la question mérite d'être posée dans cet ordre. Vos prospects vous joignent-ils davantage par téléphone ou par le site ? Dans le bâtiment et les services à domicile, le téléphone domine largement, et un agent vocal qui décroche à votre place produit plus qu'un chatbot écrit.",
+      },
+      {
+        type: "p",
+        text: "Dans les services aux entreprises, le conseil ou les métiers où le projet se prépare longtemps à l'avance, le rapport s'inverse : le prospect préfère écrire, en dehors des heures, sans engager de conversation. Le chatbot y prend tout son sens. Notre article sur les appels manqués détaille le versant téléphonique.",
+      },
       { type: "h2", text: "Combien ça coûte" },
-      { type: "p", text: "Trois postes composent la facture, et seul le premier est affiché sur les sites des éditeurs. Il y a l'abonnement à l'outil, le paramétrage initial, et l'entretien. Le deuxième est celui qu'on sous-estime : c'est là que se joue la différence entre un agent qui convertit et un agent qui répète qu'il n'a pas compris." },
-      { type: "p", text: "Beaucoup de solutions se vendent en libre-service. Vous payez un abonnement modeste, puis vous passez des heures à écrire les réponses, tester et corriger. Pour un dirigeant de TPE qui n'a pas ce temps, le résultat habituel est un outil installé, mal réglé, puis désactivé au bout de deux mois. Le mode clé en main coûte plus cher à l'abonnement et supprime ce risque." },
+      {
+        type: "p",
+        text: "Trois postes composent la facture, et seul le premier est affiché sur les sites des éditeurs. Il y a l'abonnement à l'outil, le paramétrage initial, et l'entretien. Le deuxième est celui qu'on sous-estime : c'est là que se joue la différence entre un agent qui convertit et un agent qui répète qu'il n'a pas compris.",
+      },
+      {
+        type: "p",
+        text: "Beaucoup de solutions se vendent en libre-service. Vous payez un abonnement modeste, puis vous passez des heures à écrire les réponses, tester et corriger. Pour un dirigeant de TPE qui n'a pas ce temps, le résultat habituel est un outil installé, mal réglé, puis désactivé au bout de deux mois. Le mode clé en main coûte plus cher à l'abonnement et supprime ce risque.",
+      },
       { type: "h2", text: "Comment savoir s'il sert à quelque chose" },
-      { type: "p", text: "Un seul indicateur compte : le nombre de conversations qui débouchent sur un contact exploitable, numéro de téléphone ou rendez-vous. Ni le nombre de conversations ouvertes, ni le nombre de messages échangés. Si sur cent conversations aucune n'a produit de contact, l'agent occupe le visiteur au lieu de le convertir." },
-      { type: "p", text: "Fixez-vous un point de contrôle à un mois. Relisez une trentaine de conversations réelles. Vous verrez immédiatement les questions auxquelles l'agent répond mal, et une heure de corrections suffit en général à redresser le résultat." },
-      { type: "quote", text: "Un chatbot ne remplace pas un commercial. Il remplace le silence, qui est ce qui vous coûte le plus." },
+      {
+        type: "p",
+        text: "Un seul indicateur compte : le nombre de conversations qui débouchent sur un contact exploitable, numéro de téléphone ou rendez-vous. Ni le nombre de conversations ouvertes, ni le nombre de messages échangés. Si sur cent conversations aucune n'a produit de contact, l'agent occupe le visiteur au lieu de le convertir.",
+      },
+      {
+        type: "p",
+        text: "Fixez-vous un point de contrôle à un mois. Relisez une trentaine de conversations réelles. Vous verrez immédiatement les questions auxquelles l'agent répond mal, et une heure de corrections suffit en général à redresser le résultat.",
+      },
+      {
+        type: "quote",
+        text: "Un chatbot ne remplace pas un commercial. Il remplace le silence, qui est ce qui vous coûte le plus.",
+      },
       {
         type: "faq",
         items: [
-          { q: "Un chatbot est-il utile pour une petite entreprise ?", a: "Il l'est dans trois situations : quand vous répondez sans cesse aux mêmes questions, quand vos visiteurs quittent le site sans laisser de coordonnées, et quand vos demandes arrivent le soir et le week-end. En dehors de ces cas, l'effort de paramétrage dépasse souvent le gain." },
-          { q: "Quelle différence entre un chatbot et un agent IA ?", a: "Un chatbot scénarisé suit un arbre de questions prévues à l'avance et bloque dès qu'on en sort. Un agent IA comprend une demande formulée librement, s'appuie sur vos informations réelles et poursuit un objectif concret, comme obtenir un numéro ou proposer un créneau." },
-          { q: "Un chatbot peut-il faire fuir des clients ?", a: "Oui, dans trois cas : s'il s'ouvre de force et masque la page sur mobile, s'il remplace un numéro de téléphone visible alors que le client a une urgence, ou s'il ne sait pas transférer à un humain. Il doit rester une porte supplémentaire, jamais un remplacement." },
-          { q: "Combien coûte un chatbot pour une entreprise ?", a: "La facture comprend l'abonnement, le paramétrage initial et l'entretien. Seul l'abonnement est affiché par les éditeurs. Le paramétrage est le poste décisif : c'est lui qui sépare un agent qui convertit d'un agent qui répète qu'il n'a pas compris." },
-          { q: "Faut-il un chatbot écrit ou un agent vocal au téléphone ?", a: "Cela dépend du canal par lequel vos prospects vous joignent. Dans le bâtiment et les services à domicile, le téléphone domine et un agent vocal produit davantage. Dans les services aux entreprises et le conseil, le prospect préfère écrire, souvent hors des heures ouvrées." },
-          { q: "Comment mesurer si un chatbot est rentable ?", a: "En comptant les conversations qui débouchent sur un contact exploitable, numéro ou rendez-vous, et rien d'autre. Le nombre de conversations ouvertes ne veut rien dire. Prévoyez un point à un mois et relisez une trentaine d'échanges réels pour corriger les réponses faibles." },
+          {
+            q: "Un chatbot est-il utile pour une petite entreprise ?",
+            a: "Il l'est dans trois situations : quand vous répondez sans cesse aux mêmes questions, quand vos visiteurs quittent le site sans laisser de coordonnées, et quand vos demandes arrivent le soir et le week-end. En dehors de ces cas, l'effort de paramétrage dépasse souvent le gain.",
+          },
+          {
+            q: "Quelle différence entre un chatbot et un agent IA ?",
+            a: "Un chatbot scénarisé suit un arbre de questions prévues à l'avance et bloque dès qu'on en sort. Un agent IA comprend une demande formulée librement, s'appuie sur vos informations réelles et poursuit un objectif concret, comme obtenir un numéro ou proposer un créneau.",
+          },
+          {
+            q: "Un chatbot peut-il faire fuir des clients ?",
+            a: "Oui, dans trois cas : s'il s'ouvre de force et masque la page sur mobile, s'il remplace un numéro de téléphone visible alors que le client a une urgence, ou s'il ne sait pas transférer à un humain. Il doit rester une porte supplémentaire, jamais un remplacement.",
+          },
+          {
+            q: "Combien coûte un chatbot pour une entreprise ?",
+            a: "La facture comprend l'abonnement, le paramétrage initial et l'entretien. Seul l'abonnement est affiché par les éditeurs. Le paramétrage est le poste décisif : c'est lui qui sépare un agent qui convertit d'un agent qui répète qu'il n'a pas compris.",
+          },
+          {
+            q: "Faut-il un chatbot écrit ou un agent vocal au téléphone ?",
+            a: "Cela dépend du canal par lequel vos prospects vous joignent. Dans le bâtiment et les services à domicile, le téléphone domine et un agent vocal produit davantage. Dans les services aux entreprises et le conseil, le prospect préfère écrire, souvent hors des heures ouvrées.",
+          },
+          {
+            q: "Comment mesurer si un chatbot est rentable ?",
+            a: "En comptant les conversations qui débouchent sur un contact exploitable, numéro ou rendez-vous, et rien d'autre. Le nombre de conversations ouvertes ne veut rien dire. Prévoyez un point à un mois et relisez une trentaine d'échanges réels pour corriger les réponses faibles.",
+          },
         ],
       },
       { type: "h2", text: "Un agent réglé pour votre métier, pas un gadget" },
-      { type: "p", text: "Sitaly installe des agents conversationnels et vocaux clé en main, nourris de vos vraies informations : prestations, zone, délais, tarifs indicatifs. Ils qualifient la demande, obtiennent un numéro et passent la main quand il le faut. Vous ne paramétrez rien. Réservez un appel gratuit de 20 minutes." },
+      {
+        type: "p",
+        text: "Sitaly installe des agents conversationnels et vocaux clé en main, nourris de vos vraies informations : prestations, zone, délais, tarifs indicatifs. Ils qualifient la demande, obtiennent un numéro et passent la main quand il le faut. Vous ne paramétrez rien. Réservez un appel gratuit de 20 minutes.",
+      },
     ],
   },
   {
     slug: "logiciel-devis-artisan-choisir",
     title: "Logiciel de devis pour artisan : ce qui compte vraiment avant de choisir",
     metaTitle: "Logiciel de devis artisan : comment choisir sans se tromper",
-    metaDescription: "Bibliothèque d'ouvrages, devis sur mobile, signature en ligne, relance automatique : les critères qui font gagner du temps et ceux qui n'en font perdre.",
-    excerpt: "Le meilleur logiciel de devis n'est pas celui qui a le plus de fonctions. C'est celui qui vous fait envoyer le devis le jour même plutôt que trois semaines plus tard.",
+    metaDescription:
+      "Bibliothèque d'ouvrages, devis sur mobile, signature en ligne, relance automatique : les critères qui font gagner du temps et ceux qui n'en font perdre.",
+    excerpt:
+      "Le meilleur logiciel de devis n'est pas celui qui a le plus de fonctions. C'est celui qui vous fait envoyer le devis le jour même plutôt que trois semaines plus tard.",
     category: "Outils & logiciels",
     readingTime: "11 min",
     publishedAt: "2026-09-01",
     author: "L'équipe Sitaly",
     keyword: "logiciel devis artisan",
     content: [
-      { type: "p", text: "Le classement des logiciels de devis n'est pas le sujet. Le vrai sujet, c'est le délai entre la visite chez le client et l'envoi du devis. Chez beaucoup d'artisans, ce délai se compte en semaines, parce que le chiffrage se fait le soir, après la journée de chantier, quand l'énergie manque. Pendant ce temps, deux concurrents ont envoyé le leur. Un bon logiciel de devis se juge à sa capacité de raccourcir ce délai, pas à la longueur de sa liste de fonctions. Voici les critères qui comptent." },
+      {
+        type: "p",
+        text: "Le classement des logiciels de devis n'est pas le sujet. Le vrai sujet, c'est le délai entre la visite chez le client et l'envoi du devis. Chez beaucoup d'artisans, ce délai se compte en semaines, parce que le chiffrage se fait le soir, après la journée de chantier, quand l'énergie manque. Pendant ce temps, deux concurrents ont envoyé le leur. Un bon logiciel de devis se juge à sa capacité de raccourcir ce délai, pas à la longueur de sa liste de fonctions. Voici les critères qui comptent.",
+      },
       { type: "h2", text: "Pourquoi le délai décide plus souvent que le prix" },
-      { type: "p", text: "Sur un marché local, le particulier demande deux ou trois devis. Le premier arrivé installe la référence : c'est lui qui fixe le cadre, explique le déroulé et occupe le terrain. Les suivants sont comparés à lui. Arriver troisième avec un devis meilleur ne compense pas toujours ce désavantage, surtout si le client a déjà eu une bonne conversation avec le premier." },
-      { type: "p", text: "L'écart entre un artisan qui envoie sous quarante-huit heures et un artisan qui envoie en trois semaines pèse plus lourd sur le taux de signature que quelques pour cent de prix. C'est là que se trouve le retour sur investissement d'un logiciel de devis, et non dans la beauté du document." },
+      {
+        type: "p",
+        text: "Sur un marché local, le particulier demande deux ou trois devis. Le premier arrivé installe la référence : c'est lui qui fixe le cadre, explique le déroulé et occupe le terrain. Les suivants sont comparés à lui. Arriver troisième avec un devis meilleur ne compense pas toujours ce désavantage, surtout si le client a déjà eu une bonne conversation avec le premier.",
+      },
+      {
+        type: "p",
+        text: "L'écart entre un artisan qui envoie sous quarante-huit heures et un artisan qui envoie en trois semaines pèse plus lourd sur le taux de signature que quelques pour cent de prix. C'est là que se trouve le retour sur investissement d'un logiciel de devis, et non dans la beauté du document.",
+      },
       { type: "h2", text: "Les cinq critères qui comptent vraiment" },
       { type: "h3", text: "1. La bibliothèque d'ouvrages" },
-      { type: "p", text: "C'est le critère numéro un et le plus mal évalué. Une bibliothèque contient vos prestations déjà décrites et chiffrées, avec la main-d'œuvre et les fournitures. Un devis se compose alors en assemblant des lignes existantes plutôt qu'en repartant d'une page blanche. C'est ce qui fait passer un chiffrage d'une heure à dix minutes." },
-      { type: "p", text: "Vérifiez deux choses avant de choisir : la bibliothèque fournie couvre-t-elle réellement votre corps de métier, et pouvez-vous créer vos propres ouvrages facilement ? Une bibliothèque générique qu'il faut réécrire entièrement ne fait gagner aucun temps." },
+      {
+        type: "p",
+        text: "C'est le critère numéro un et le plus mal évalué. Une bibliothèque contient vos prestations déjà décrites et chiffrées, avec la main-d'œuvre et les fournitures. Un devis se compose alors en assemblant des lignes existantes plutôt qu'en repartant d'une page blanche. C'est ce qui fait passer un chiffrage d'une heure à dix minutes.",
+      },
+      {
+        type: "p",
+        text: "Vérifiez deux choses avant de choisir : la bibliothèque fournie couvre-t-elle réellement votre corps de métier, et pouvez-vous créer vos propres ouvrages facilement ? Une bibliothèque générique qu'il faut réécrire entièrement ne fait gagner aucun temps.",
+      },
       { type: "h3", text: "2. L'usage réel sur téléphone" },
-      { type: "p", text: "Presque tous les éditeurs annoncent une application mobile. Peu permettent de composer un devis complet depuis un téléphone, dans une cage d'escalier, sans clavier. Testez ce point pendant la période d'essai, sur un vrai devis, pas sur une démonstration. Un artisan qui chiffre chez le client repart avec l'affaire beaucoup plus souvent." },
+      {
+        type: "p",
+        text: "Presque tous les éditeurs annoncent une application mobile. Peu permettent de composer un devis complet depuis un téléphone, dans une cage d'escalier, sans clavier. Testez ce point pendant la période d'essai, sur un vrai devis, pas sur une démonstration. Un artisan qui chiffre chez le client repart avec l'affaire beaucoup plus souvent.",
+      },
       { type: "h3", text: "3. La signature électronique" },
-      { type: "p", text: "Un devis signé en ligne d'un clic depuis un téléphone se transforme mieux qu'un document à imprimer, signer, scanner et renvoyer. Chaque étape supplémentaire fait perdre des dossiers, surtout chez les clients qui n'ont pas d'imprimante, c'est-à-dire la majorité." },
+      {
+        type: "p",
+        text: "Un devis signé en ligne d'un clic depuis un téléphone se transforme mieux qu'un document à imprimer, signer, scanner et renvoyer. Chaque étape supplémentaire fait perdre des dossiers, surtout chez les clients qui n'ont pas d'imprimante, c'est-à-dire la majorité.",
+      },
       { type: "h3", text: "4. La relance automatique" },
-      { type: "p", text: "La fonction la plus rentable et la moins regardée à l'achat. Le logiciel relance seul les devis sans réponse au bout de sept jours, puis de trois semaines. Sachant qu'un devis sur deux reste sans réponse faute de relance et non à cause du prix, c'est la fonction qui rembourse l'abonnement le plus vite." },
+      {
+        type: "p",
+        text: "La fonction la plus rentable et la moins regardée à l'achat. Le logiciel relance seul les devis sans réponse au bout de sept jours, puis de trois semaines. Sachant qu'un devis sur deux reste sans réponse faute de relance et non à cause du prix, c'est la fonction qui rembourse l'abonnement le plus vite.",
+      },
       { type: "h3", text: "5. La récupération de vos données" },
-      { type: "p", text: "Le critère qu'on regrette de ne pas avoir vérifié. Pouvez-vous exporter vos clients, vos devis et votre bibliothèque si vous changez d'outil dans deux ans ? Certains éditeurs rendent la sortie pénible. Posez la question avant de vous engager, pas après." },
+      {
+        type: "p",
+        text: "Le critère qu'on regrette de ne pas avoir vérifié. Pouvez-vous exporter vos clients, vos devis et votre bibliothèque si vous changez d'outil dans deux ans ? Certains éditeurs rendent la sortie pénible. Posez la question avant de vous engager, pas après.",
+      },
       {
         type: "table",
         caption: "Poids réel de chaque critère sur votre chiffre d'affaires",
@@ -2428,11 +4609,23 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
       { type: "h2", text: "Ce qu'un logiciel de devis ne fera jamais" },
-      { type: "p", text: "Il ne vous amènera pas un seul client. C'est une évidence, et pourtant de nombreux artisans investissent dans un excellent outil de chiffrage alors que leur problème se situe en amont : trop peu de demandes entrantes. Un logiciel qui produit de beaux devis en dix minutes ne sert à rien si vous ne recevez que trois demandes par mois." },
-      { type: "p", text: "Il ne suit pas non plus les prospects qui n'ont pas encore de devis. La demande reçue lundi et jamais chiffrée n'existe pas pour lui. C'est le rôle d'un suivi client, que notre article sur le CRM pour artisan détaille, et beaucoup de fuites se situent précisément là." },
-      { type: "p", text: "Posez-vous donc la question dans le bon ordre. Si votre planning est vide, le problème est la visibilité. Si votre planning est plein mais que vos devis partent en retard et sans relance, le problème est l'outil." },
+      {
+        type: "p",
+        text: "Il ne vous amènera pas un seul client. C'est une évidence, et pourtant de nombreux artisans investissent dans un excellent outil de chiffrage alors que leur problème se situe en amont : trop peu de demandes entrantes. Un logiciel qui produit de beaux devis en dix minutes ne sert à rien si vous ne recevez que trois demandes par mois.",
+      },
+      {
+        type: "p",
+        text: "Il ne suit pas non plus les prospects qui n'ont pas encore de devis. La demande reçue lundi et jamais chiffrée n'existe pas pour lui. C'est le rôle d'un suivi client, que notre article sur le CRM pour artisan détaille, et beaucoup de fuites se situent précisément là.",
+      },
+      {
+        type: "p",
+        text: "Posez-vous donc la question dans le bon ordre. Si votre planning est vide, le problème est la visibilité. Si votre planning est plein mais que vos devis partent en retard et sans relance, le problème est l'outil.",
+      },
       { type: "h2", text: "Les obligations à respecter sur un devis" },
-      { type: "p", text: "Quel que soit l'outil, certaines mentions sont obligatoires et un logiciel sérieux les intègre par défaut. Vérifiez que les vôtres y sont." },
+      {
+        type: "p",
+        text: "Quel que soit l'outil, certaines mentions sont obligatoires et un logiciel sérieux les intègre par défaut. Vérifiez que les vôtres y sont.",
+      },
       {
         type: "ul",
         items: [
@@ -2444,9 +4637,15 @@ export const BLOG_POSTS: BlogPost[] = [
           "La mention du caractère gratuit ou payant du devis lui-même.",
         ],
       },
-      { type: "p", text: "Un devis complet et clair fait aussi office d'argument commercial. Sur un chantier à plusieurs milliers d'euros, le document qui détaille les postes rassure davantage qu'un montant global sur une page." },
+      {
+        type: "p",
+        text: "Un devis complet et clair fait aussi office d'argument commercial. Sur un chantier à plusieurs milliers d'euros, le document qui détaille les postes rassure davantage qu'un montant global sur une page.",
+      },
       { type: "h2", text: "Comment tester sans perdre trois mois" },
-      { type: "p", text: "La période d'essai gratuite ne sert à rien si vous vous contentez de cliquer dans les menus. Faites l'inverse : prenez un devis réel que vous devez envoyer cette semaine, et refaites-le entièrement dans chaque outil candidat. Chronométrez." },
+      {
+        type: "p",
+        text: "La période d'essai gratuite ne sert à rien si vous vous contentez de cliquer dans les menus. Faites l'inverse : prenez un devis réel que vous devez envoyer cette semaine, et refaites-le entièrement dans chaque outil candidat. Chronométrez.",
+      },
       {
         type: "ul",
         items: [
@@ -2456,24 +4655,47 @@ export const BLOG_POSTS: BlogPost[] = [
           "Le rendu du document reçu côté client, en vous l'envoyant à vous-même.",
         ],
       },
-      { type: "quote", text: "Le meilleur logiciel de devis est celui qui vous fait envoyer le devis avant vos concurrents, pas celui qui a le plus de boutons." },
+      {
+        type: "quote",
+        text: "Le meilleur logiciel de devis est celui qui vous fait envoyer le devis avant vos concurrents, pas celui qui a le plus de boutons.",
+      },
       {
         type: "faq",
         items: [
-          { q: "Quel logiciel de devis choisir quand on est artisan ?", a: "Celui dont la bibliothèque d'ouvrages couvre réellement votre corps de métier et qui permet de composer un devis complet depuis un téléphone. Ces deux critères font passer un chiffrage d'une heure à dix minutes et permettent de repartir de chez le client avec le devis envoyé." },
-          { q: "Pourquoi le délai d'envoi d'un devis est-il si important ?", a: "Sur un marché local, le particulier demande deux ou trois devis et le premier arrivé installe la référence : il fixe le cadre et explique le déroulé. L'écart entre un envoi sous quarante-huit heures et un envoi en trois semaines pèse plus lourd sur le taux de signature que quelques pour cent de prix." },
-          { q: "Un logiciel de devis fait-il gagner des clients ?", a: "Non, il n'amène aucune demande entrante. Il raccourcit le délai d'envoi et récupère des devis grâce aux relances automatiques. Si votre planning est vide, le problème est la visibilité et non l'outil de chiffrage." },
-          { q: "Quelles mentions sont obligatoires sur un devis d'artisan ?", a: "Vos coordonnées et votre SIRET, celles du client et le lieu des travaux, le détail des prestations avec quantités et prix unitaires, la main-d'œuvre distinguée, la durée de validité, les conditions de règlement, les mentions d'assurance décennale et le caractère gratuit ou payant du devis." },
-          { q: "La relance automatique des devis vaut-elle le coup ?", a: "C'est la fonction la plus rentable et la moins regardée à l'achat. Un devis sur deux reste sans réponse faute de relance plutôt qu'à cause du prix. Une relance à sept jours puis à trois semaines récupère une part significative de ces dossiers sans effort de votre part." },
-          { q: "Comment tester un logiciel de devis efficacement ?", a: "Ne cliquez pas dans les menus : reprenez un devis réel à envoyer cette semaine et refaites-le entièrement dans chaque outil, chronomètre en main. Mesurez le premier devis bibliothèque vide, puis un deuxième devis similaire, et tentez l'opération complète depuis un téléphone." },
+          {
+            q: "Quel logiciel de devis choisir quand on est artisan ?",
+            a: "Celui dont la bibliothèque d'ouvrages couvre réellement votre corps de métier et qui permet de composer un devis complet depuis un téléphone. Ces deux critères font passer un chiffrage d'une heure à dix minutes et permettent de repartir de chez le client avec le devis envoyé.",
+          },
+          {
+            q: "Pourquoi le délai d'envoi d'un devis est-il si important ?",
+            a: "Sur un marché local, le particulier demande deux ou trois devis et le premier arrivé installe la référence : il fixe le cadre et explique le déroulé. L'écart entre un envoi sous quarante-huit heures et un envoi en trois semaines pèse plus lourd sur le taux de signature que quelques pour cent de prix.",
+          },
+          {
+            q: "Un logiciel de devis fait-il gagner des clients ?",
+            a: "Non, il n'amène aucune demande entrante. Il raccourcit le délai d'envoi et récupère des devis grâce aux relances automatiques. Si votre planning est vide, le problème est la visibilité et non l'outil de chiffrage.",
+          },
+          {
+            q: "Quelles mentions sont obligatoires sur un devis d'artisan ?",
+            a: "Vos coordonnées et votre SIRET, celles du client et le lieu des travaux, le détail des prestations avec quantités et prix unitaires, la main-d'œuvre distinguée, la durée de validité, les conditions de règlement, les mentions d'assurance décennale et le caractère gratuit ou payant du devis.",
+          },
+          {
+            q: "La relance automatique des devis vaut-elle le coup ?",
+            a: "C'est la fonction la plus rentable et la moins regardée à l'achat. Un devis sur deux reste sans réponse faute de relance plutôt qu'à cause du prix. Une relance à sept jours puis à trois semaines récupère une part significative de ces dossiers sans effort de votre part.",
+          },
+          {
+            q: "Comment tester un logiciel de devis efficacement ?",
+            a: "Ne cliquez pas dans les menus : reprenez un devis réel à envoyer cette semaine et refaites-le entièrement dans chaque outil, chronomètre en main. Mesurez le premier devis bibliothèque vide, puis un deuxième devis similaire, et tentez l'opération complète depuis un téléphone.",
+          },
         ],
       },
       { type: "h2", text: "Le problème est peut-être en amont" },
-      { type: "p", text: "Si vos devis partent vite mais que les demandes manquent, aucun logiciel n'y changera rien. Sitaly travaille l'amont : site optimisé pour votre métier et vos communes, fiche Google entretenue, relance automatique des devis en attente. Réservez un appel gratuit de 20 minutes pour situer où se trouve votre vraie fuite." },
+      {
+        type: "p",
+        text: "Si vos devis partent vite mais que les demandes manquent, aucun logiciel n'y changera rien. Sitaly travaille l'amont : site optimisé pour votre métier et vos communes, fiche Google entretenue, relance automatique des devis en attente. Réservez un appel gratuit de 20 minutes pour situer où se trouve votre vraie fuite.",
+      },
     ],
   },
 ];
-
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((p) => p.slug === slug);
@@ -2482,12 +4704,8 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
 export function getRelatedPosts(slug: string, limit = 3): BlogPost[] {
   const current = getPostBySlug(slug);
   if (!current) return BLOG_POSTS.slice(0, limit);
-  const sameCategory = BLOG_POSTS.filter(
-    (p) => p.slug !== slug && p.category === current.category,
-  );
-  const others = BLOG_POSTS.filter(
-    (p) => p.slug !== slug && p.category !== current.category,
-  );
+  const sameCategory = BLOG_POSTS.filter((p) => p.slug !== slug && p.category === current.category);
+  const others = BLOG_POSTS.filter((p) => p.slug !== slug && p.category !== current.category);
   return [...sameCategory, ...others].slice(0, limit);
 }
 

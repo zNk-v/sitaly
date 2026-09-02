@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 import { BLOG_POSTS, formatDate } from "@/data/blog-posts";
+import { LinkedInBadge } from "@/components/LinkedInBadge";
 import { SiteHeader } from "@/components/SiteHeader";
 import { CALENDLY_URL } from "@/lib/config";
 
@@ -76,28 +77,34 @@ export const Route = createFileRoute("/blog/")({
       {
         name: "description",
         content:
-          "Le blog Sitaly : guides pratiques pour artisans, indépendants et PME qui veulent générer plus de clients — site internet, référencement Google local, Google Ads et automatisation.",
+          "Guides pratiques pour PME, TPE et artisans : acquisition, site internet, référencement local, Google Ads, ChatGPT Ads et automatisation.",
       },
       { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large" },
-      { property: "og:title", content: "Blog Sitaly — Plus de clients : site web, Google Ads & automatisation" },
+      {
+        property: "og:title",
+        content: "Blog Sitaly — Plus de clients : site web, Google Ads & automatisation",
+      },
       {
         property: "og:description",
         content:
-          "Guides pratiques pour générer plus de clients : site internet, référencement Google local, Google Ads et automatisation. Pour artisans, indépendants et PME de services.",
+          "Guides pratiques pour générer plus de clients : site internet, référencement Google local, Google Ads et automatisation. Pour PME, TPE et artisans.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://sitaly.fr/blog" },
+      { property: "og:url", content: "https://sitaly.fr/blog/" },
       { property: "og:site_name", content: "Sitaly" },
       { property: "og:locale", content: "fr_FR" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Blog Sitaly — Plus de clients : site web, Google Ads & automatisation" },
+      {
+        name: "twitter:title",
+        content: "Blog Sitaly — Plus de clients : site web, Google Ads & automatisation",
+      },
       {
         name: "twitter:description",
         content:
-          "Guides pratiques pour générer plus de clients : site internet, référencement Google local, Google Ads et automatisation. Pour artisans, indépendants et PME de services.",
+          "Guides pratiques pour générer plus de clients : site internet, référencement Google local, Google Ads et automatisation. Pour PME, TPE et artisans.",
       },
     ],
-    links: [{ rel: "canonical", href: "https://sitaly.fr/blog" }],
+    links: [{ rel: "canonical", href: "https://sitaly.fr/blog/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -105,10 +112,10 @@ export const Route = createFileRoute("/blog/")({
           "@context": "https://schema.org",
           "@type": "Blog",
           name: "Blog Sitaly",
-          url: "https://sitaly.fr/blog",
+          url: "https://sitaly.fr/blog/",
           inLanguage: "fr-FR",
           description:
-            "Guides pour générer plus de clients : site internet, référencement Google local, Google Ads et automatisation. Pour artisans, indépendants et PME de services.",
+            "Guides pour générer plus de clients : site internet, référencement Google local, Google Ads et automatisation. Pour PME, TPE et artisans.",
           publisher: {
             "@type": "Organization",
             name: "Sitaly",
@@ -134,7 +141,7 @@ export const Route = createFileRoute("/blog/")({
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Accueil", item: "https://sitaly.fr" },
-            { "@type": "ListItem", position: 2, name: "Blog", item: "https://sitaly.fr/blog" },
+            { "@type": "ListItem", position: 2, name: "Blog", item: "https://sitaly.fr/blog/" },
           ],
         }),
       },
@@ -151,7 +158,8 @@ function BlogIndex() {
         <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20">
           <p className="text-sm font-medium uppercase tracking-wider text-accent">Le blog Sitaly</p>
           <h1 className="mt-3 font-display text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
-            Générer <span className="gradient-text">plus de clients</span>, quel que soit votre métier
+            Générer <span className="gradient-text">plus de clients</span>, quel que soit votre
+            métier
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
             Site internet, référencement local, Google Ads, ChatGPT Ads et automatisation : les
@@ -212,8 +220,8 @@ function BlogIndex() {
             Prêt à générer plus de clients ?
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-            Site internet, Google Ads et automatisation : à partir de 149€/mois en location,
-            sans engagement. Réservez un appel gratuit de 15 minutes.
+            Site internet, Google Ads et automatisation : à partir de 149€/mois en location, sans
+            engagement. Réservez un appel gratuit de 15 minutes.
           </p>
           <a
             href={CALENDLY_URL}
@@ -273,6 +281,7 @@ function PostCard({ post }: { post: (typeof BLOG_POSTS)[number] }) {
 function BlogNav() {
   return (
     <SiteHeader
+      ctaIcon={false}
       links={[
         { label: "Accueil", to: "/" },
         { label: "Blog", to: "/blog", current: true },
@@ -285,6 +294,9 @@ function BlogFooter() {
   return (
     <footer className="border-t border-border bg-secondary/30">
       <div className="mx-auto max-w-7xl px-4 py-10 text-center text-sm text-muted-foreground sm:px-6">
+        <div className="mb-5 flex justify-center">
+          <LinkedInBadge />
+        </div>
         © {new Date().getFullYear()} Sitaly — Création de sites internet pour artisans.{" "}
         <Link to="/" className="font-medium text-foreground hover:text-accent">
           Retour à l'accueil

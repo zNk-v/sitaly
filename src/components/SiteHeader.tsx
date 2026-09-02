@@ -45,11 +45,17 @@ export function SiteHeader({
   links,
   logoHash,
   logoLabel = "Sitaly — accueil",
+  surfaceClassName = "bg-background/80",
+  ctaIcon = true,
 }: {
   links: HeaderLink[];
   /** Sur l'accueil, le logo remonte en haut de page plutôt que de recharger la route. */
   logoHash?: string;
   logoLabel?: string;
+  /** Opacité du fond translucide, réglée par page. */
+  surfaceClassName?: string;
+  /** Les pages métier montrent le CTA sans icône, pour alléger une barre déjà chargée. */
+  ctaIcon?: boolean;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -89,7 +95,9 @@ export function SiteHeader({
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
+    <header
+      className={`sticky top-0 z-50 border-b border-border/60 ${surfaceClassName} backdrop-blur-md`}
+    >
       <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         {logoHash ? (
           <a href={logoHash} className="flex items-center" aria-label={logoLabel}>
@@ -111,7 +119,7 @@ export function SiteHeader({
             rel="noopener noreferrer"
             className="hidden h-11 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90 sm:inline-flex"
           >
-            <Calendar className="h-4 w-4" />
+            {ctaIcon && <Calendar className="h-4 w-4" />}
             Réserver un appel
           </a>
           <button

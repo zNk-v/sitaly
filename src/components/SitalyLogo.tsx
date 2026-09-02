@@ -1,4 +1,4 @@
-import logoSitaly from "@/assets/logo-sitaly.png";
+import logoSitaly from "@/assets/sitaly-logo.png";
 
 /* Logo Sitaly. width/height sont portés sur la balise pour réserver la place
  * avant le chargement de l'image : sans eux le header saute au premier paint

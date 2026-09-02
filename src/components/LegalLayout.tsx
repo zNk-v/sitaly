@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
+import { LinkedInBadge } from "@/components/LinkedInBadge";
+
 export function LegalLayout({
   title,
   updated,
@@ -18,25 +20,37 @@ export function LegalLayout({
             ← Retour à l'accueil
           </Link>
           {updated && (
-            <span className="text-xs text-muted-foreground">
-              Dernière mise à jour : {updated}
-            </span>
+            <span className="text-xs text-muted-foreground">Dernière mise à jour : {updated}</span>
           )}
         </div>
       </header>
       <main className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h1>
-        <div className="prose prose-neutral mt-8 max-w-none text-sm leading-7 text-foreground/90 [&_h2]:mt-10 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-foreground [&_h3]:mt-6 [&_h3]:text-base [&_h3]:font-semibold [&_p]:mt-3 [&_ul]:mt-3 [&_ul]:list-disc [&_ul]:pl-6 [&_li]:mt-1 [&_a]:text-primary [&_a]:underline">
+        <div className="prose prose-neutral mt-8 max-w-none text-sm leading-7 text-foreground/90 [&_h2]:mt-10 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-foreground [&_h3]:mt-6 [&_h3]:text-base [&_h3]:font-semibold [&_p]:mt-3 [&_ul]:mt-3 [&_ul]:list-disc [&_ul]:pl-6 [&_li]:mt-1 [&_a]:text-primary [&_a]:underline [&_table]:mt-4 [&_table]:w-full [&_table]:border-collapse [&_table]:text-left [&_th]:border [&_th]:border-border [&_th]:bg-secondary/50 [&_th]:px-3 [&_th]:py-2 [&_th]:font-semibold [&_td]:border [&_td]:border-border [&_td]:px-3 [&_td]:py-2 [&_td]:align-top">
           {children}
         </div>
       </main>
       <footer className="border-t border-border py-8 text-center text-xs text-muted-foreground">
         <div className="mx-auto max-w-3xl px-4">
+          <div className="mb-5 flex justify-center">
+            <LinkedInBadge />
+          </div>
           © {new Date().getFullYear()} Sitaly —{" "}
-          <Link to="/mentions-legales" className="hover:underline">Mentions légales</Link> ·{" "}
-          <Link to="/politique-confidentialite" className="hover:underline">Confidentialité</Link> ·{" "}
-          <Link to="/cgv" className="hover:underline">CGV</Link> ·{" "}
-          <Link to="/cookies" className="hover:underline">Cookies</Link>
+          <Link to="/mentions-legales" className="hover:underline">
+            Mentions légales
+          </Link>{" "}
+          ·{" "}
+          <Link to="/politique-confidentialite" className="hover:underline">
+            Confidentialité
+          </Link>{" "}
+          ·{" "}
+          <Link to="/cgv" className="hover:underline">
+            CGV
+          </Link>{" "}
+          ·{" "}
+          <Link to="/cookies" className="hover:underline">
+            Cookies
+          </Link>
         </div>
       </footer>
     </div>

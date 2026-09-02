@@ -79,16 +79,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Site web, Google Ads & IA pour PME, TPE et artisans | Sitaly" },
-      { name: "description", content: "Sites internet, Google Ads, ChatGPT Ads et automatisation IA pour PME, TPE et artisans. Dès 149€/mois, sans engagement. Plus de demandes, plus de clients." },
-      { property: "og:title", content: "Site web, Google Ads & IA pour PME, TPE et artisans | Sitaly" },
-      { property: "og:description", content: "Sites internet, Google Ads, ChatGPT Ads et automatisation IA pour PME, TPE et artisans. Dès 149€/mois, sans engagement. Plus de demandes, plus de clients." },
+      {
+        name: "description",
+        content:
+          "Sites internet, Google Ads, ChatGPT Ads et automatisation IA pour PME, TPE et artisans. Dès 149€/mois, sans engagement. Plus de demandes, plus de clients.",
+      },
+      {
+        property: "og:title",
+        content: "Site web, Google Ads & IA pour PME, TPE et artisans | Sitaly",
+      },
+      {
+        property: "og:description",
+        content:
+          "Sites internet, Google Ads, ChatGPT Ads et automatisation IA pour PME, TPE et artisans. Dès 149€/mois, sans engagement. Plus de demandes, plus de clients.",
+      },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Sitaly" },
       { property: "og:url", content: "https://sitaly.fr" },
       { property: "og:image", content: "https://sitaly.fr/og-image.png" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "Sitaly — acquisition et automatisation pour PME, TPE et artisans" },
+      {
+        property: "og:image:alt",
+        content: "Sitaly — acquisition et automatisation pour PME, TPE et artisans",
+      },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: "https://sitaly.fr/og-image.png" },
       { name: "google-site-verification", content: "Yk4vxjL9oYYQ2TOB095PmXc-hZfT_4g5AzHSIllMfSA" },
@@ -100,8 +114,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       // navigateur n'ouvre plus de connexion vers fonts.googleapis.com avant de
       // pouvoir peindre le texte. Seul le sous-ensemble latin est préchargé,
       // latin-ext se charge à la demande via son unicode-range.
-      { rel: "preload", as: "font", type: "font/woff2", href: "/fonts/inter-latin.woff2", crossOrigin: "anonymous" },
-      { rel: "preload", as: "font", type: "font/woff2", href: "/fonts/plus-jakarta-sans-latin.woff2", crossOrigin: "anonymous" },
+      {
+        rel: "preload",
+        as: "font",
+        type: "font/woff2",
+        href: "/fonts/inter-latin.woff2",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "preload",
+        as: "font",
+        type: "font/woff2",
+        href: "/fonts/plus-jakarta-sans-latin.woff2",
+        crossOrigin: "anonymous",
+      },
     ],
     scripts: [
       {
@@ -149,7 +175,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               email: "contact@sitaly.fr",
               priceRange: "€€",
               currenciesAccepted: "EUR",
-              identifier: { "@type": "PropertyValue", propertyID: "SIRET", value: "83384883100032" },
+              identifier: {
+                "@type": "PropertyValue",
+                propertyID: "SIRET",
+                value: "83384883100032",
+              },
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Brétigny-sur-Orge",

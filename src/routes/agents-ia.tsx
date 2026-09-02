@@ -1,81 +1,574 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  Phone,
-  Calendar,
-  Check,
-  Minus,
   ArrowRight,
-  PhoneMissed,
-  CalendarClock,
-  MessageSquare,
-  Star,
+  Bell,
   Bot,
-  Users,
-  Rocket,
-  ClipboardCheck,
+  Briefcase,
+  Building2,
+  CalendarCheck,
+  CalendarClock,
+  ChartColumn,
+  ChartLine,
+  Check,
+  ClipboardList,
+  Clock,
+  Compass,
+  Eye,
+  FileExclamationPoint,
+  FileText,
+  Funnel,
+  HardHat,
+  Inbox,
+  ListChecks,
+  Menu,
+  MessageCircle,
+  MessageSquare,
+  Phone,
+  PhoneMissed,
+  Repeat,
+  Scale,
+  Send,
+  ShieldCheck,
+  ShoppingCart,
+  SlidersHorizontal,
   Sparkles,
+  Stethoscope,
+  UserCheck,
+  Users,
+  X,
 } from "lucide-react";
+import { useEffect, useRef, useState, type RefObject } from "react";
+
+import { LinkedInBadge } from "@/components/LinkedInBadge";
 import { SitalyLogo } from "@/components/SitalyLogo";
-import { CALENDLY_URL } from "@/lib/config";
+import { WorkflowChart } from "@/components/WorkflowChart";
+import { CALENDLY_URL, PHONE_DISPLAY, PHONE_TEL } from "@/lib/config";
 
-/* Ombres bleutées très subtiles à la Wiza (≤ 32px de flou, ~6-8% d'opacité, teinte bleu-nuit) */
-// Cartes & panneaux : pile en couches, flottement "ensoleillé" sans bordure lourde
-const FRAME_SHADOW =
-  "shadow-[0_32px_24px_-12px_rgba(20,40,92,0.08),0_6px_4px_-2px_rgba(20,40,92,0.03),0_3px_3px_rgba(20,40,92,0.03),0_1px_1px_rgba(20,40,92,0.04)]";
-// Cartes standard
-const CARD_SHADOW = "shadow-[0_16px_24px_-12px_rgba(20,40,92,0.07),0_2px_4px_rgba(20,40,92,0.04)]";
-// Boutons & éléments de nav
-const SOFT_SHADOW =
-  "shadow-[0_2px_4px_rgba(20,40,92,0.08),0_1px_1px_rgba(20,40,92,0.04),0_0_0_1px_rgba(20,40,92,0.04)]";
+const CONTACT_EMAIL = "contact@sitaly.fr";
+const CTA_HREF = "#diagnostic";
+const CTA_LABEL = "Demander un diagnostic";
 
-const FAQ_ITEMS = [
+const RAIL = [
   {
-    q: "Je dois configurer quelque chose ?",
-    a: "Non. Sitaly installe et paramètre chaque agent pour votre activité : numéro, messages, horaires, questions à poser. Vous nous confiez les informations une seule fois, on branche tout et l'agent tourne. Vous n'ouvrez aucun logiciel.",
+    icon: Inbox,
+    label: "Demande entrante",
+    detail: "Appel, formulaire ou message",
   },
   {
-    q: "Un pack ou des agents à l'unité ?",
-    a: "Un pack revient moins cher qu'additionner les agents un par un, et couvre un besoin complet dès le départ. Si vous avez un seul besoin précis, prenez l'agent qui y répond : vous ajouterez les autres plus tard, à votre rythme.",
+    icon: Bot,
+    label: "Agent IA",
+    detail: "Répond immédiatement",
   },
   {
-    q: "L'agent va-t-il remplacer le contact humain ?",
-    a: "Non. L'agent prend le relais quand vous ne pouvez pas répondre : appel manqué, soir, chantier, week-end, pour ne perdre aucune demande. Vous gardez la main et rappelez vos clients quand vous le souhaitez.",
+    icon: ListChecks,
+    label: "Qualification",
+    detail: "Vos critères, vos règles",
   },
   {
-    q: "Combien de temps pour la mise en service ?",
-    a: "Comptez quelques jours entre l'appel de cadrage et la mise en service. On installe le pack ou l'agent choisi, on teste, puis ça tourne. Vous n'avez rien à faire pendant l'installation.",
+    icon: CalendarCheck,
+    label: "Rendez-vous",
+    detail: "Créneau proposé et confirmé",
   },
   {
-    q: "Et si je veux arrêter ?",
-    a: "Sans engagement, comme le reste de Sitaly. Vous pouvez retirer un agent ou un pack à tout moment avec un simple préavis, sans frais ni durée minimale.",
+    icon: Users,
+    label: "Équipe humaine",
+    detail: "Reprise avec le contexte",
   },
-];
+  {
+    icon: ChartLine,
+    label: "Suivi",
+    detail: "Relance et résultats mesurés",
+  },
+] as const;
+
+const CANAUX = [
+  {
+    icon: Phone,
+    label: "Appels",
+  },
+  {
+    icon: ClipboardList,
+    label: "Formulaires",
+  },
+  {
+    icon: MessageCircle,
+    label: "WhatsApp",
+  },
+  {
+    icon: MessageSquare,
+    label: "Messages",
+  },
+  {
+    icon: CalendarCheck,
+    label: "Prise de rendez-vous",
+  },
+  {
+    icon: Send,
+    label: "E-mails",
+  },
+  {
+    icon: Repeat,
+    label: "Relance",
+  },
+  {
+    icon: FileText,
+    label: "Mise à jour de vos outils",
+  },
+  {
+    icon: UserCheck,
+    label: "Transfert humain",
+  },
+  {
+    icon: ChartColumn,
+    label: "Suivi des conversions",
+  },
+] as const;
+
+const PERTES = [
+  {
+    icon: PhoneMissed,
+    title: "Appels manqués",
+    text: "Personne ne décroche pendant un rendez-vous, une intervention ou en dehors des horaires. Le client appelle le suivant.",
+  },
+  {
+    icon: Clock,
+    title: "Réponses trop tardives",
+    text: "La demande arrive le soir, la réponse part le surlendemain. Entre les deux, la décision est déjà prise ailleurs.",
+  },
+  {
+    icon: Funnel,
+    title: "Prospects mal qualifiés",
+    text: "Vos équipes passent autant de temps sur une demande hors zone ou hors budget que sur une affaire sérieuse.",
+  },
+  {
+    icon: CalendarClock,
+    title: "Rendez-vous non confirmés",
+    text: "Un créneau posé sans rappel ni confirmation devient un déplacement pour rien ou un créneau perdu.",
+  },
+  {
+    icon: FileExclamationPoint,
+    title: "Propositions sans suite",
+    text: "Le devis, la proposition ou le dossier part, puis plus rien. La relance dépend de la mémoire de celui qui l'a envoyé.",
+  },
+  {
+    icon: Eye,
+    title: "Aucune visibilité",
+    text: "Impossible de dire combien de demandes sont arrivées, combien ont abouti, et à quelle étape les autres se sont arrêtées.",
+  },
+] as const;
+
+const ETAPES = [
+  {
+    step: "01",
+    text: "Un client appelle, écrit ou remplit un formulaire.",
+  },
+  {
+    step: "02",
+    text: "L'agent répond immédiatement, sur le canal utilisé.",
+  },
+  {
+    step: "03",
+    text: "Il recueille les informations utiles au traitement.",
+  },
+  {
+    step: "04",
+    text: "Il qualifie la demande selon vos règles métier.",
+  },
+  {
+    step: "05",
+    text: "Il propose un rendez-vous ou transfère à un humain.",
+  },
+  {
+    step: "06",
+    text: "Il enregistre les informations dans vos outils.",
+  },
+  {
+    step: "07",
+    text: "Il relance quand la demande reste sans suite.",
+  },
+  {
+    step: "08",
+    text: "Vous suivez les résultats étape par étape.",
+  },
+] as const;
+
+const AGENTS = [
+  {
+    icon: Phone,
+    index: "01",
+    name: "Agent d'accueil",
+    pitch: "Il traite la demande au moment où elle arrive, quel que soit le canal.",
+    does: [
+      "Répond aux appels et aux demandes écrites",
+      "Comprend le motif du contact",
+      "Collecte les informations importantes",
+      "Identifie les situations sensibles ou complexes",
+    ],
+    changes:
+      "Plus aucune demande ne reste sans réponse pendant que votre équipe est occupée ailleurs.",
+    handover:
+      "Urgence, litige, client existant ou demande hors périmètre : l'agent passe la main immédiatement.",
+  },
+  {
+    icon: ListChecks,
+    index: "02",
+    name: "Agent de qualification et rendez-vous",
+    pitch: "Il applique vos critères avant que la demande n'arrive sur le bureau d'un commercial.",
+    does: [
+      "Applique les critères définis avec vous",
+      "Écarte les demandes hors zone, hors métier ou hors budget",
+      "Propose un créneau réellement disponible",
+      "Transmet un résumé structuré à l'équipe",
+    ],
+    changes: "Vos équipes ouvrent leur agenda sur des rendez-vous préparés, pas sur des inconnues.",
+    handover:
+      "Un cas limite ou un critère ambigu remonte à un humain plutôt que d'être tranché par l'agent.",
+  },
+  {
+    icon: Repeat,
+    index: "03",
+    name: "Agent de relance",
+    pitch: "Il suit ce qui reste en attente, sans dépendre de la mémoire de personne.",
+    does: [
+      "Suit les devis, les propositions et les dossiers en attente",
+      "Relance selon les règles et les délais définis",
+      "Arrête la séquence dès qu'une réponse arrive",
+      "Fait remonter les opportunités prioritaires",
+    ],
+    changes: "Ce qui a été envoyé est relancé au bon moment, chaque semaine, sans y penser.",
+    handover:
+      "Dès qu'un prospect répond ou demande à parler à quelqu'un, la séquence s'arrête et l'équipe prend le relais.",
+  },
+] as const;
+
+const METIERS = [
+  {
+    icon: ShoppingCart,
+    name: "E-commerce et vente en ligne",
+    context:
+      "Beaucoup de messages, peu de temps, et des questions qui reviennent avant et après l'achat.",
+    items: [
+      "Questions avant achat sur WhatsApp, chat ou e-mail : stock, délais, tailles",
+      "Suivi de commande, retours et remboursements",
+      "Relance des paniers et des devis professionnels",
+      "Demande d'avis quelques jours après la livraison",
+    ],
+  },
+  {
+    icon: Stethoscope,
+    name: "Santé et cabinets de soins",
+    context: "Le téléphone sonne pendant les consultations et les créneaux annulés restent vides.",
+    items: [
+      "Prise, déplacement et annulation de rendez-vous",
+      "Rappels de rendez-vous par SMS ou WhatsApp pour limiter les absences",
+      "Questions pratiques : horaires, accès, documents à apporter",
+      "Urgences et cas sensibles transmis directement au praticien",
+    ],
+  },
+  {
+    icon: Scale,
+    name: "Avocats et professions libérales",
+    context:
+      "Le premier échange consomme du temps facturable avant même de savoir si le dossier est recevable.",
+    items: [
+      "Premier contact et qualification de la demande",
+      "Vérification du domaine traité avant la prise de rendez-vous",
+      "Collecte des pièces avant le rendez-vous",
+      "Relance des dossiers en attente et des honoraires impayés",
+    ],
+  },
+  {
+    icon: HardHat,
+    name: "Artisans et bâtiment",
+    context:
+      "Les appels arrivent pendant les interventions et les devis partent sans jamais être relancés.",
+    items: [
+      "Réponse aux appels reçus pendant les chantiers",
+      "Qualification : zone, nature des travaux, budget, délai",
+      "Relance des devis restés sans réponse",
+      "SMS immédiat au client après un appel manqué",
+    ],
+  },
+  {
+    icon: Building2,
+    name: "Immobilier et gestion",
+    context:
+      "Les demandes de visite arrivent par cinq canaux différents et se traitent au fil de l'eau.",
+    items: [
+      "Qualification des demandes de visite et de location",
+      "Prise de rendez-vous synchronisée avec les agendas",
+      "Suivi des demandes locataires et des interventions",
+      "Relance des dossiers incomplets",
+    ],
+  },
+  {
+    icon: Briefcase,
+    name: "Agences, conseil et services",
+    context: "Trop de demandes hors budget occupent le temps des commerciaux.",
+    items: [
+      "Qualification selon le budget et le périmètre",
+      "Prise de rendez-vous de cadrage avec le contexte préparé",
+      "Relance des propositions commerciales",
+      "Démarrage client : documents, accès et informations à récupérer",
+    ],
+  },
+] as const;
+
+const PERIMETRE = [
+  {
+    icon: Inbox,
+    title: "Demandes entrantes",
+    items: [
+      "Réponse aux appels, aux messages WhatsApp, aux formulaires et aux e-mails",
+      "Tri et transmission à la bonne personne",
+      "Réponses aux questions fréquentes",
+      "Détection des demandes urgentes ou sensibles",
+    ],
+  },
+  {
+    icon: CalendarCheck,
+    title: "Rendez-vous et agendas",
+    items: [
+      "Prise, déplacement et annulation de rendez-vous",
+      "Confirmation et rappels automatiques",
+      "Collecte des informations utiles avant le rendez-vous",
+      "Proposition des créneaux libérés à d'autres clients",
+    ],
+  },
+  {
+    icon: Repeat,
+    title: "Relance et suivi",
+    items: [
+      "Relance des devis, propositions et paniers abandonnés",
+      "Séquences qui s'arrêtent dès qu'une réponse arrive",
+      "Relance des documents et pièces manquantes",
+      "Rappel des factures impayées",
+    ],
+  },
+  {
+    icon: MessageSquare,
+    title: "Après-vente et satisfaction",
+    items: [
+      "Suivi de commande, de livraison et de retour, y compris sur WhatsApp",
+      "Demande d'avis au bon moment",
+      "Réponse aux avis publiés en ligne",
+      "Alerte immédiate en cas de client mécontent",
+    ],
+  },
+  {
+    icon: FileText,
+    title: "Administratif et documents",
+    items: [
+      "Création et mise à jour des fiches clients",
+      "Préparation des devis et des documents types",
+      "Collecte, classement et vérification des pièces",
+      "Transfert des informations d'un outil à l'autre",
+    ],
+  },
+  {
+    icon: ChartColumn,
+    title: "Pilotage",
+    items: [
+      "Suivi des demandes reçues, traitées et perdues",
+      "Rapport hebdomadaire envoyé automatiquement",
+      "Contrôle des délais de réponse",
+      "Alerte quand un indicateur décroche",
+    ],
+  },
+] as const;
+
+const AUJOURDHUI = [
+  "Informations dispersées entre boîte mail, téléphone et carnet",
+  "Appels sans réponse en dehors des heures de bureau",
+  "Ressaisie manuelle des mêmes informations",
+  "Relances irrégulières, quand quelqu'un y pense",
+  "Aucune vision globale sur les demandes reçues",
+] as const;
+
+const AVEC_SITALY = [
+  "Réponse immédiate sur chaque canal traité",
+  "Informations structurées au même endroit",
+  "Rendez-vous préparés avec le contexte de la demande",
+  "Relances systématiques selon vos règles",
+  "Équipe concentrée sur les demandes importantes",
+] as const;
+
+const DEPLOIEMENT = [
+  {
+    icon: Compass,
+    step: "01",
+    title: "Diagnostic",
+    items: [
+      "Analyse de vos demandes entrantes",
+      "Identification des pertes et des tâches répétitives",
+      "Définition des règles métier",
+      "Choix du premier périmètre rentable",
+    ],
+  },
+  {
+    icon: SlidersHorizontal,
+    step: "02",
+    title: "Déploiement",
+    items: [
+      "Configuration des agents",
+      "Connexion aux outils compatibles",
+      "Création des scénarios et tests",
+      "Formation de l'équipe et mise en production progressive",
+    ],
+  },
+  {
+    icon: ChartLine,
+    step: "03",
+    title: "Pilotage",
+    items: [
+      "Analyse des conversations",
+      "Correction des erreurs constatées",
+      "Amélioration des règles",
+      "Suivi des résultats et extension du périmètre",
+    ],
+  },
+] as const;
+
+const CONTROLE = [
+  {
+    icon: SlidersHorizontal,
+    title: "Vos règles, pas les nôtres",
+    text: "Ce que l'agent peut dire, proposer et décider est défini avec vous, puis figé dans sa configuration.",
+  },
+  {
+    icon: UserCheck,
+    title: "Transfert vers un humain",
+    text: "Les situations que vous désignez déclenchent une reprise humaine, avec le contexte déjà collecté.",
+  },
+  {
+    icon: ClipboardList,
+    title: "Historique des actions",
+    text: "Chaque conversation et chaque action réalisée par l'agent restent consultables.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Périmètre limité",
+    text: "L'agent n'accède qu'aux outils et aux données nécessaires aux tâches qui lui sont confiées.",
+  },
+  {
+    icon: Check,
+    title: "Validation humaine",
+    text: "Les situations sensibles passent par une validation de votre équipe avant toute action engageante.",
+  },
+  {
+    icon: Repeat,
+    title: "Amélioration continue",
+    text: "Les échanges sont relus régulièrement pour corriger les règles et réduire les cas mal traités.",
+  },
+  {
+    icon: Bell,
+    title: "Gestion responsable des données",
+    text: "Nous documentons avec vous les données collectées, leur emplacement et leur durée de conservation.",
+  },
+] as const;
+
+const BON_PROFIL = [
+  "Un volume régulier d'appels, de messages, de commandes ou de demandes de rendez-vous",
+  "Une valeur commerciale importante par demande traitée",
+  "Une équipe qui perd du temps sur la qualification et la relance",
+  "Des outils existants à connecter au parcours",
+  "La volonté de mesurer les résultats et d'ajuster",
+] as const;
+
+const PAS_POUR_VOUS = [
+  "Vous cherchez un chatbot à installer vous-même pour quelques euros par mois",
+  "Vous recevez trop peu de demandes pour qu'un processus se justifie",
+  "Vous ne souhaitez ni définir de règles ni relire les conversations",
+] as const;
+
+const SECTEURS = [
+  "E-commerce et vente en ligne",
+  "Santé et cabinets de soins",
+  "Professions libérales et juridique",
+  "Bâtiment et travaux",
+  "Immobilier",
+  "Agences, conseil et services",
+  "Commerce et distribution",
+  "Automobile",
+  "Autre",
+] as const;
+
+const VOLUMES = [
+  "Moins de 50 demandes par mois",
+  "50 à 150 demandes par mois",
+  "150 à 500 demandes par mois",
+  "Plus de 500 demandes par mois",
+] as const;
+
+const FAQ = [
+  {
+    q: "Est-ce un simple chatbot ?",
+    a: "Non. Un chatbot répond dans une fenêtre de discussion et s'arrête là. Un agent traite la demande de bout en bout : il comprend le motif, applique vos règles, propose un créneau, enregistre les informations et transmet à votre équipe. Son périmètre est défini avec vous avant le déploiement.",
+  },
+  {
+    q: "L'agent peut-il transférer vers un humain ?",
+    a: "Oui, et le transfert fait partie de la configuration. Vous décidez des situations qui déclenchent une reprise humaine : demande sensible, client existant, montant important, urgence, ou simple demande du prospect. L'agent transmet alors le contexte déjà collecté pour éviter de tout redemander.",
+  },
+  {
+    q: "Peut-il se connecter à nos outils ?",
+    a: "Cela dépend de vos outils. Un logiciel qui expose une API ou des webhooks se connecte directement. Pour les autres, on passe par des relais comme l'e-mail, un fichier partagé ou un formulaire. Chaque connexion est vérifiée pendant le diagnostic : vous savez ce qui est réellement faisable avant de vous engager.",
+  },
+  {
+    q: "Que se passe-t-il lorsqu'il ne comprend pas ?",
+    a: "Il ne devine pas. Il reformule une fois, puis bascule vers votre équipe avec le résumé de l'échange si la demande sort de son périmètre. Ces conversations sont relues pendant la phase de pilotage pour corriger les règles.",
+  },
+  {
+    q: "Combien de temps prend le déploiement ?",
+    a: "Le délai dépend du périmètre retenu et des outils à connecter. Un premier processus se met en place nettement plus vite qu'un système complet. Le diagnostic fixe le calendrier et les étapes avant le démarrage.",
+  },
+  {
+    q: "Comment les données sont-elles traitées ?",
+    a: "Les agents accèdent uniquement aux données nécessaires au périmètre défini. Les échanges sont conservés pour permettre le suivi et l'amélioration des règles. Nous documentons avec vous ce qui est collecté, où c'est stocké et pendant combien de temps.",
+  },
+  {
+    q: "Peut-on commencer par un seul processus ?",
+    a: "C'est la méthode que nous recommandons. On démarre par le point de perte le plus coûteux, on mesure les résultats, puis on étend le périmètre une fois le premier processus stabilisé.",
+  },
+  {
+    q: "Comment le projet est-il facturé ?",
+    a: "En deux parties : le déploiement initial, chiffré après le diagnostic selon le périmètre et les connexions à réaliser, puis un suivi mensuel qui couvre le pilotage, les corrections et l'évolution des règles. Rien n'est chiffré avant le diagnostic.",
+  },
+] as const;
 
 export const Route = createFileRoute("/agents-ia")({
   head: () => ({
     meta: [
-      { title: "Agents IA pour artisans & TPE | Sitaly" },
+      { title: "Agents IA et automatisation pour TPE, PME et cabinets | Sitaly" },
       {
         name: "description",
         content:
-          "Une équipe d'agents IA installés clé en main par Sitaly : standardiste, prise de rendez-vous, relance de devis, messages. Des packs pensés pour les artisans et TPE, ou des agents à l'unité. Réservez un appel.",
+          "Sitaly installe et pilote des agents IA qui répondent aux demandes, qualifient, prennent les rendez-vous et relancent : e-commerce, cabinets, artisans, agences.",
       },
-      { property: "og:title", content: "Agents IA pour artisans & TPE | Sitaly" },
+      {
+        property: "og:title",
+        content: "Agents IA et automatisation pour TPE, PME et cabinets | Sitaly",
+      },
       {
         property: "og:description",
         content:
-          "Des agents IA installés clé en main : packs prêts à l'emploi ou agents à l'unité. Ils répondent, qualifient, relancent et prennent les rendez-vous à votre place. Réservez un appel.",
+          "Sitaly installe et pilote des agents IA qui répondent aux demandes, qualifient, prennent les rendez-vous, relancent et mettent vos outils à jour, avec une reprise humaine dès qu'elle est nécessaire.",
       },
-      { property: "og:url", content: "https://sitaly.fr/agents-ia" },
+      { property: "og:url", content: "https://sitaly.fr/agents-ia/" },
+      { property: "og:image", content: "https://sitaly.fr/og-agents-ia.jpg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Sitaly Agents IA" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "https://sitaly.fr/og-agents-ia.jpg" },
     ],
-    links: [{ rel: "canonical", href: "https://sitaly.fr/agents-ia" }],
+    links: [{ rel: "canonical", href: "https://sitaly.fr/agents-ia/" }],
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FAQPage",
-          mainEntity: FAQ_ITEMS.map((it) => ({
+          mainEntity: FAQ.map((it) => ({
             "@type": "Question",
             name: it.q,
             acceptedAnswer: { "@type": "Answer", text: it.a },
@@ -84,34 +577,86 @@ export const Route = createFileRoute("/agents-ia")({
       },
     ],
   }),
-  component: AgentsIA,
+  component: AgentsIaPage,
 });
 
-function AgentsIA() {
+/**
+ * Apparition au défilement. Les blocs marqués `data-reveal` partent décalés et
+ * remontent quand ils entrent dans le champ ; ceux déjà visibles au chargement
+ * sont affichés immédiatement, sinon le haut de page resterait vide. La classe
+ * `ai-anim` n'est posée qu'ici : sans JavaScript, rien n'est masqué.
+ */
+function useRevealOnScroll(root: RefObject<HTMLElement | null>) {
+  useEffect(() => {
+    const el = root.current;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const targets = Array.from(el.querySelectorAll<HTMLElement>("[data-reveal]"));
+    if (!targets.length) return;
+
+    const fold = window.innerHeight;
+    for (const t of targets) {
+      if (t.getBoundingClientRect().top < fold) t.classList.add("is-in");
+    }
+    el.classList.add("ai-anim");
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add("is-in");
+          io.unobserve(entry.target);
+        }
+      },
+      { rootMargin: "0px 0px -12% 0px", threshold: 0.1 },
+    );
+    for (const t of targets) io.observe(t);
+    return () => io.disconnect();
+  }, [root]);
+}
+
+function AgentsIaPage() {
+  const root = useRef<HTMLDivElement>(null);
+  useRevealOnScroll(root);
+
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Nav />
-      <Hero />
-      <Packs />
-      <Comparatif />
-      <AgentsUnit />
-      <Faq />
-      <FinalCta />
-      <Footer />
+    <div ref={root} className="ai-page min-h-screen">
+      <AiNav />
+      <main>
+        <Hero />
+        <Canaux />
+        <Pertes />
+        <Metiers />
+        <Systeme />
+        <Composants />
+        <Perimetre />
+        <AvantApres />
+        <Deploiement />
+        <Controle />
+        <Profil />
+        <Faq />
+        <Diagnostic />
+      </main>
+      <AiFooter />
     </div>
   );
 }
 
-/* ---------------- NAV (flottante, blanche, sticky) ---------------- */
-function Nav() {
+/* ---------------- EN-TÊTE ---------------- */
+function AiNav() {
+  const [open, setOpen] = useState(false);
+  const links = [
+    { label: "Offres", href: "/#offre" },
+    { label: "Métiers", href: "#metiers" },
+    { label: "Le système", href: "#systeme" },
+  ];
+
   return (
     <div className="sticky top-0 z-50 px-4 pt-3 sm:px-6 sm:pt-4">
-      <header
-        className={`mx-auto flex h-16 max-w-6xl items-center justify-between rounded-full border border-border/70 bg-background/80 px-4 backdrop-blur-md sm:px-6 ${SOFT_SHADOW}`}
-      >
-        <Link to="/" className="flex items-center" aria-label="Sitaly — accueil">
+      <header className="relative mx-auto flex h-16 max-w-6xl items-center justify-between rounded-full border border-border bg-background/80 px-4 backdrop-blur-md sm:px-6">
+        <Link to="/" aria-label="Sitaly — accueil" className="flex items-center py-3">
           <SitalyLogo />
         </Link>
+
         <nav className="hidden items-center gap-1 md:flex">
           <a
             href="/#offre"
@@ -119,17 +664,24 @@ function Nav() {
           >
             Offres
           </a>
+          {/* Page courante : un lien vers soi-même n'aide personne. */}
           <span
             aria-current="page"
-            className="rounded-full bg-accent/10 px-4 py-2 text-sm font-semibold text-accent"
+            className="rounded-full bg-accent/15 px-4 py-2 text-sm font-semibold text-accent"
           >
             Agents IA
           </span>
           <a
-            href="/#exemples"
+            href="#metiers"
             className="rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition hover:bg-secondary hover:text-foreground"
           >
-            Exemples
+            Métiers
+          </a>
+          <a
+            href="#systeme"
+            className="rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition hover:bg-secondary hover:text-foreground"
+          >
+            Le système
           </a>
           <Link
             to="/blog"
@@ -138,467 +690,642 @@ function Nav() {
             Blog
           </Link>
         </nav>
-        <a
-          href={CALENDLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:opacity-90 ${SOFT_SHADOW}`}
-        >
-          <Calendar className="h-4 w-4" />
-          Réserver un appel
-        </a>
+
+        <div className="flex items-center gap-2">
+          <a
+            href={`tel:${PHONE_TEL}`}
+            className="inline-flex h-11 shrink-0 items-center gap-2 rounded-full border border-border bg-card px-3 text-sm font-semibold text-foreground shadow-soft transition hover:border-accent hover:text-accent sm:px-4"
+            aria-label={`Appeler Sitaly au ${PHONE_DISPLAY}`}
+          >
+            <Phone className="h-4 w-4" />
+            <span className="hidden lg:inline">{PHONE_DISPLAY}</span>
+            <span className="lg:hidden">Appeler</span>
+          </a>
+          <a
+            href={CTA_HREF}
+            className="ai-cta hidden h-11 items-center gap-2 rounded-full px-5 text-sm font-semibold sm:inline-flex"
+          >
+            {CTA_LABEL}
+          </a>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-soft transition hover:border-accent md:hidden"
+            aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={open}
+            aria-controls="menu-mobile"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+
+        {open && (
+          <div
+            id="menu-mobile"
+            className="absolute inset-x-0 top-full mt-2 rounded-3xl border border-border bg-background p-4 shadow-elevated md:hidden"
+          >
+            <nav className="flex flex-col">
+              {links.map((l) => (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className="border-b border-border/70 py-3 text-sm font-medium text-muted-foreground"
+                >
+                  {l.label}
+                </a>
+              ))}
+              <Link
+                to="/blog"
+                onClick={() => setOpen(false)}
+                className="py-3 text-sm font-medium text-muted-foreground"
+              >
+                Blog
+              </Link>
+            </nav>
+            <a
+              href={CTA_HREF}
+              onClick={() => setOpen(false)}
+              className="ai-cta mt-4 inline-flex h-11 w-full items-center justify-center gap-2 rounded-full px-5 text-sm font-semibold"
+            >
+              {CTA_LABEL}
+            </a>
+          </div>
+        )}
       </header>
     </div>
+  );
+}
+
+/* ---------------- EN-TÊTE DE SECTION ---------------- */
+function SectionIntro({ eyebrow, title, text }: { eyebrow: string; title: string; text?: string }) {
+  return (
+    <div data-reveal>
+      <div className="mx-auto max-w-2xl text-center">
+        <span className="inline-flex items-center rounded-full border border-accent/25 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-accent">
+          {eyebrow}
+        </span>
+        <h2 className="mt-5 font-display text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl">
+          {title}
+        </h2>
+        {text && (
+          <p className="mt-4 text-[16px] leading-relaxed text-muted-foreground sm:text-lg">
+            {text}
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function CtaButton({ className = "px-8 py-4 text-base" }: { className?: string }) {
+  return (
+    <a
+      href={CTA_HREF}
+      className={`ai-cta inline-flex shrink-0 items-center justify-center gap-2 rounded-[10px] font-semibold ${className}`}
+    >
+      {CTA_LABEL}
+      <ArrowRight className="h-5 w-5" />
+    </a>
   );
 }
 
 /* ---------------- HERO ---------------- */
 function Hero() {
   return (
-    <section className="hero-bg relative overflow-hidden">
-      <div className="mx-auto max-w-6xl px-4 pb-20 pt-16 sm:px-6 sm:pt-20 lg:pb-28">
-        <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_1fr]">
-          <div>
-            <div
-              className={`inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground ${SOFT_SHADOW}`}
-            >
+    <section className="relative overflow-hidden pb-16 pt-14 sm:pb-20 sm:pt-20">
+      <div className="ai-grid" aria-hidden="true" />
+      <div
+        className="ai-halo left-1/2 top-[-140px] h-[420px] w-[720px] -translate-x-1/2"
+        aria-hidden="true"
+      />
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+          <div data-reveal>
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground">
               <Sparkles className="h-3.5 w-3.5 text-accent" />
-              Nouveau — Une équipe IA installée clé en main
+              Sitaly Agents IA — Automatisation sur mesure
             </div>
-            <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl lg:text-6xl">
-              Une équipe d'agents IA à votre service.{" "}
-              <span className="gradient-text">Pendant que vous travaillez.</span>
+            <h1 className="mt-6 font-display text-[2.1rem] font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.4rem]">
+              Chaque demande traitée.{" "}
+              <span className="ai-gradient-text">Chaque client qualifié.</span> Chaque relance
+              envoyée.
             </h1>
-            <p className="mt-6 max-w-xl text-lg text-muted-foreground sm:text-xl">
-              De vrais collaborateurs virtuels pour votre activité : ils décrochent quand vous êtes
-              sur un chantier, prennent vos rendez-vous et relancent vos devis.{" "}
-              <strong className="text-foreground">Vous ne configurez rien</strong>, on branche tout.
+            <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-muted-foreground sm:text-lg">
+              Que vous vendiez en ligne, receviez des patients ou interveniez chez vos clients,
+              Sitaly installe et pilote les agents IA qui répondent, qualifient, prennent vos
+              rendez-vous et relancent ce qui reste en attente. Un humain reprend la main dès que la
+              situation le demande.
             </p>
-
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
-                href="#packs"
-                className={`inline-flex items-center justify-center gap-2 rounded-[8px] bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground transition hover:opacity-90 ${CARD_SHADOW}`}
+                href={CTA_HREF}
+                className="ai-cta inline-flex items-center justify-center gap-2 rounded-[10px] px-7 py-4 text-base font-semibold"
               >
-                Voir les packs
+                {CTA_LABEL}
                 <ArrowRight className="h-5 w-5" />
               </a>
               <a
-                href={CALENDLY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-[8px] border border-border bg-card px-6 py-3.5 text-base font-semibold text-foreground transition hover:bg-secondary"
+                href="#systeme"
+                className="inline-flex items-center justify-center gap-2 rounded-[10px] border border-border bg-card px-7 py-4 text-base font-semibold text-foreground transition hover:border-accent/50 hover:bg-secondary"
               >
-                <Calendar className="h-5 w-5" />
-                Réserver un appel
+                Voir le système en action
               </a>
             </div>
-
-            <ul className="mt-9 grid grid-cols-2 gap-x-6 gap-y-3 text-sm sm:text-[15px]">
-              {["Zéro appel manqué", "Installé pour vous", "Sans engagement", "Réponses 24/7"].map(
-                (t) => (
-                  <li key={t} className="flex items-center gap-2 text-foreground/90">
-                    <Check className="h-4 w-4 shrink-0 text-success" />
-                    {t}
-                  </li>
-                ),
-              )}
-            </ul>
           </div>
 
-          <div className="relative">
-            <HeroMock />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function HeroMock() {
-  return (
-    <div className="relative mx-auto w-full max-w-md">
-      <div className="absolute -inset-4 rounded-[16px] bg-gradient-to-br from-accent/15 to-primary/15 blur-2xl" />
-      <div className={`relative overflow-hidden rounded-[8px] bg-card ${FRAME_SHADOW}`}>
-        <div className="flex items-center gap-3 border-b border-border bg-secondary/60 px-5 py-4">
-          <div className="grid h-10 w-10 place-items-center rounded-full bg-accent/12 text-accent">
-            <Bot className="h-5 w-5" />
-          </div>
-          <div>
-            <div className="text-sm font-semibold">Agent standardiste</div>
-            <div className="flex items-center gap-1.5 text-xs text-success">
-              <span className="h-1.5 w-1.5 rounded-full bg-success" />
-              En ligne · répond en 2 sonneries
+          {/* Conversation type plutôt qu'une promesse : on montre ce que l'agent
+              collecte et ce qu'il transmet, pas un slogan sur l'IA. */}
+          <div data-reveal>
+            <div className="relative mx-auto w-full max-w-md">
+              <div className="ai-halo -inset-6 opacity-25" aria-hidden="true" />
+              <div className="ai-card relative overflow-hidden">
+                <div className="flex items-center gap-3 border-b border-border bg-secondary/40 px-5 py-4">
+                  <div className="grid h-10 w-10 place-items-center rounded-xl bg-accent/15 text-accent">
+                    <Bot className="h-5 w-5" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-sm font-semibold">Agent d'accueil</div>
+                    <div className="flex items-center gap-1.5 text-xs text-success">
+                      <span className="h-1.5 w-1.5 rounded-full bg-success" aria-hidden="true" />
+                      Appel entrant · 14 h 32
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-3 p-5">
+                  <div className="max-w-[85%] rounded-xl rounded-tl-sm bg-secondary px-3.5 py-2.5 text-sm text-foreground/85">
+                    « Bonjour, je voudrais un rendez-vous, si possible avant la fin de la semaine. »
+                  </div>
+                  <div className="ml-auto max-w-[88%] rounded-xl rounded-tr-sm border border-accent/25 bg-accent/10 px-3.5 py-2.5 text-sm">
+                    « Bien sûr. Deux questions rapides, puis je vous propose un créneau avec la
+                    bonne personne. »
+                  </div>
+                  <div className="rounded-xl border border-border bg-secondary/50 p-3.5">
+                    <div className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                      Qualification
+                    </div>
+                    <dl className="mt-2 space-y-1.5 text-[13px]">
+                      {[
+                        ["Motif", "Première demande"],
+                        ["Type de client", "Nouveau"],
+                        ["Échéance", "Cette semaine"],
+                      ].map(([k, v]) => (
+                        <div key={k} className="flex items-center justify-between gap-3">
+                          <dt className="text-muted-foreground">{k}</dt>
+                          <dd className="font-medium">{v}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+                  <div className="flex items-center gap-2 rounded-xl border border-success/30 bg-success/10 px-3.5 py-2.5 text-sm font-medium">
+                    <CalendarCheck className="h-4 w-4 shrink-0 text-success" />
+                    Rendez-vous confirmé, résumé transmis à l'équipe
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div className="space-y-3 p-5">
-          <div className="max-w-[80%] rounded-[8px] rounded-tl-none bg-secondary px-3.5 py-2.5 text-sm text-foreground/80">
-            « Bonjour, avez-vous une dispo cette semaine pour un dépannage ? »
+
+        <div className="ai-card mt-14 p-6 sm:p-8" data-reveal>
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            Le parcours d'une demande entrante
           </div>
-          <div className="ml-auto max-w-[85%] rounded-[8px] rounded-tr-none bg-accent/10 px-3.5 py-2.5 text-sm text-foreground">
-            « Bien sûr. Je vous propose jeudi 14h ou vendredi 9h. Quel créneau vous arrange ? »
-          </div>
-          <div className="max-w-[60%] rounded-[8px] rounded-tl-none bg-secondary px-3.5 py-2.5 text-sm text-foreground/80">
-            « Jeudi 14h, parfait. »
-          </div>
-          <div className="flex items-center gap-2 rounded-[8px] border border-success/30 bg-success/10 px-3.5 py-2.5 text-sm font-medium text-foreground">
-            <CalendarClock className="h-4 w-4 shrink-0 text-success" />
-            Rendez-vous confirmé · jeudi 14h
-          </div>
-        </div>
-      </div>
-
-      <div
-        className={`animate-float absolute -bottom-6 -left-6 hidden rounded-[8px] border border-border bg-card p-3 sm:flex sm:items-center sm:gap-3 ${CARD_SHADOW}`}
-      >
-        <div className="grid h-10 w-10 place-items-center rounded-full bg-success/15 text-success">
-          <Phone className="h-5 w-5" />
-        </div>
-        <div>
-          <div className="text-xs text-muted-foreground">Appel pris en charge</div>
-          <div className="text-sm font-semibold">1 rendez-vous en plus</div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* ---------------- PACKS ---------------- */
-type Pack = {
-  name: string;
-  badge: string;
-  featured: boolean;
-  icon: typeof Bot;
-  desc: string;
-  features: string[];
-  install: string;
-  monthly: string;
-};
-
-const PACKS: Pack[] = [
-  {
-    name: "Pack Essentiel",
-    badge: "Le plus simple",
-    featured: false,
-    icon: Bot,
-    desc: "Automatisez votre accueil client et ne perdez plus aucun contact.",
-    features: ["Agent Standardiste", "Agent Prise de rendez-vous", "Agent Appels manqués"],
-    install: "990 €",
-    monthly: "149 €",
-  },
-  {
-    name: "Pack Performance",
-    badge: "Le plus populaire",
-    featured: true,
-    icon: Users,
-    desc: "Automatisez votre accueil et votre suivi commercial.",
-    features: [
-      "Agent Standardiste",
-      "Agent Prise de rendez-vous",
-      "Agent Relance de devis",
-      "Agent Appels manqués",
-    ],
-    install: "1 490 €",
-    monthly: "249 €",
-  },
-  {
-    name: "Pack Croissance",
-    badge: "Automatisation complète",
-    featured: false,
-    icon: Rocket,
-    desc: "Confiez la majorité des tâches répétitives à votre équipe IA.",
-    features: ["Tous les agents IA", "Optimisations continues", "Support prioritaire"],
-    install: "1 990 €",
-    monthly: "349 €",
-  },
-];
-
-function CardPack({ pack }: { pack: Pack }) {
-  const { featured } = pack;
-  return (
-    <div
-      className={`relative flex h-full flex-col rounded-[8px] bg-card p-7 sm:p-8 ${
-        featured
-          ? "shadow-glow border-2 border-accent lg:z-10 lg:scale-[1.03]"
-          : `border border-border ${CARD_SHADOW}`
-      }`}
-    >
-      {featured && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-accent px-4 py-1 text-xs font-bold uppercase tracking-wider text-accent-foreground shadow-elevated">
-          {pack.badge}
-        </div>
-      )}
-
-      <div className="flex items-center justify-between">
-        <div className="grid h-12 w-12 place-items-center rounded-full bg-accent/12 text-accent">
-          <pack.icon className="h-6 w-6" />
-        </div>
-        {!featured && (
-          <span className="rounded-full bg-secondary px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-            {pack.badge}
-          </span>
-        )}
-      </div>
-
-      <h3 className="mt-5 text-xl font-bold">{pack.name}</h3>
-      <p className="mt-2 text-[15px] text-muted-foreground">{pack.desc}</p>
-
-      <div className="mt-6 flex items-baseline gap-1">
-        <span className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
-          {pack.monthly}
-        </span>
-        <span className="text-muted-foreground">/mois</span>
-      </div>
-      <p className="mt-1 text-sm font-medium text-foreground/70">+ {pack.install} d'installation</p>
-
-      <ul className="mt-6 space-y-3">
-        {pack.features.map((f) => (
-          <li key={f} className="flex items-start gap-3 text-[15px]">
-            <Check className={`mt-0.5 h-5 w-5 shrink-0 ${featured ? "text-accent" : "text-success"}`} />
-            <span>{f}</span>
-          </li>
-        ))}
-      </ul>
-
-      <div className="mt-auto pt-8">
-        <a
-          href={CALENDLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`inline-flex w-full items-center justify-center gap-2 rounded-[8px] px-6 py-3.5 text-base font-semibold transition ${
-            featured
-              ? `bg-accent text-accent-foreground hover:opacity-90 ${CARD_SHADOW}`
-              : "border border-border bg-secondary text-secondary-foreground hover:bg-muted"
-          }`}
-        >
-          <Calendar className="h-5 w-5" />
-          Choisir ce pack
-        </a>
-      </div>
-    </div>
-  );
-}
-
-function Packs() {
-  return (
-    <section id="packs" className="py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeader
-          eyebrow="Nos Packs IA"
-          title="Une équipe IA qui travaille pour votre entreprise"
-          subtitle="Commencez avec le pack adapté à votre activité. Ajoutez de nouveaux collaborateurs IA au fur et à mesure de votre croissance."
-        />
-        <div className="mx-auto mt-16 grid max-w-5xl items-stretch gap-6 md:grid-cols-3 lg:gap-8">
-          {PACKS.map((p) => (
-            <CardPack key={p.name} pack={p} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- COMPARATIF ---------------- */
-const PACK_COLS = ["Essentiel", "Performance", "Croissance"];
-const COMPARISON: { feature: string; vals: [boolean, boolean, boolean] }[] = [
-  { feature: "Standardiste", vals: [true, true, true] },
-  { feature: "Prise de rendez-vous", vals: [true, true, true] },
-  { feature: "Relance devis", vals: [false, true, true] },
-  { feature: "Messages & Réseaux", vals: [false, false, true] },
-  { feature: "Avis Google", vals: [false, false, true] },
-  { feature: "SMS appels manqués", vals: [true, true, true] },
-  { feature: "Support prioritaire", vals: [false, false, true] },
-  { feature: "Optimisation continue", vals: [false, false, true] },
-];
-
-function PricingTable() {
-  return (
-    <div className="mx-auto mt-14 max-w-4xl">
-      <div className={`overflow-x-auto rounded-[8px] border border-border bg-card ${CARD_SHADOW}`}>
-        <table className="w-full min-w-[600px] border-collapse text-left text-sm">
-          <thead>
-            <tr className="border-b border-border">
-              <th scope="col" className="px-5 py-4 font-semibold text-muted-foreground">
-                Inclus dans le pack
-              </th>
-              {PACK_COLS.map((c, i) => (
-                <th
-                  scope="col"
-                  key={c}
-                  className={`px-5 py-4 text-center font-bold ${
-                    i === 1 ? "bg-accent/5 text-accent" : "text-foreground"
-                  }`}
-                >
-                  {c}
-                </th>
+          <div className="mt-6">
+            <ol className="ai-rail">
+              {RAIL.map((step, i) => (
+                <li key={step.label} className="ai-rail-step">
+                  <div className="relative z-10 grid h-[42px] w-[42px] shrink-0 place-items-center rounded-xl border border-border bg-card text-accent">
+                    <step.icon className="h-5 w-5" aria-hidden="true" />
+                    <span className="absolute -right-1.5 -top-1.5 grid h-5 w-5 place-items-center rounded-full bg-secondary text-[10px] font-bold text-muted-foreground">
+                      {i + 1}
+                    </span>
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-sm font-semibold leading-tight">{step.label}</div>
+                    <div className="mt-1 text-[13px] leading-snug text-muted-foreground">
+                      {step.detail}
+                    </div>
+                  </div>
+                </li>
               ))}
-            </tr>
-          </thead>
-          <tbody>
-            {COMPARISON.map((row) => (
-              <tr key={row.feature} className="border-b border-border last:border-0">
-                <th scope="row" className="px-5 py-3.5 text-left font-medium text-foreground">
-                  {row.feature}
-                </th>
-                {row.vals.map((v, i) => (
-                  <td
-                    key={i}
-                    className={`px-5 py-3.5 text-center ${i === 1 ? "bg-accent/5" : ""}`}
-                  >
-                    {v ? (
-                      <Check className="mx-auto h-5 w-5 text-accent" aria-label="Inclus" />
-                    ) : (
-                      <Minus
-                        className="mx-auto h-4 w-4 text-muted-foreground/40"
-                        aria-label="Non inclus"
-                      />
-                    )}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
-}
-
-function Comparatif() {
-  return (
-    <section className="bg-secondary/40 py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeader
-          eyebrow="Comparatif"
-          title="Ce que contient chaque pack"
-          subtitle="Trois niveaux d'automatisation. Vous montez d'un cran quand votre activité grandit."
-        />
-        <PricingTable />
+            </ol>
+          </div>
+        </div>
       </div>
     </section>
   );
 }
 
-/* ---------------- AGENTS À L'UNITÉ ---------------- */
-type Agent = {
-  icon: typeof Bot;
-  name: string;
-  desc: string;
-  outcome: string;
-  install: string;
-  monthly: string;
-};
-
-const AGENTS: Agent[] = [
-  {
-    icon: Bot,
-    name: "Agent Standardiste",
-    desc: "Il décroche à votre place, répond aux questions courantes, qualifie la demande et propose un créneau.",
-    outcome: "Plus aucun appel manqué",
-    install: "490 €",
-    monthly: "149 €",
-  },
-  {
-    icon: CalendarClock,
-    name: "Agent Prise de rendez-vous",
-    desc: "Il propose vos créneaux disponibles, confirme le rendez-vous et envoie les rappels automatiquement.",
-    outcome: "Un agenda qui se remplit seul",
-    install: "390 €",
-    monthly: "99 €",
-  },
-  {
-    icon: ClipboardCheck,
-    name: "Agent Relance de devis",
-    desc: "Il relance vos devis en attente au bon moment, avec le bon message, et vous prévient dès qu'un client répond.",
-    outcome: "Plus de devis signés",
-    install: "390 €",
-    monthly: "119 €",
-  },
-  {
-    icon: MessageSquare,
-    name: "Agent Messages & Réseaux",
-    desc: "Il répond aux messages entrants (formulaire, WhatsApp, Instagram), qualifie le besoin et bascule vers un rendez-vous.",
-    outcome: "Une réponse en quelques secondes",
-    install: "290 €",
-    monthly: "79 €",
-  },
-  {
-    icon: Star,
-    name: "Agent Avis Google",
-    desc: "Il sollicite un avis après chaque intervention et répond aux avis reçus pour renforcer votre visibilité locale.",
-    outcome: "Plus d'avis, mieux classé",
-    install: "190 €",
-    monthly: "39 €",
-  },
-  {
-    icon: PhoneMissed,
-    name: "Agent Appels manqués",
-    desc: "Dès qu'un appel est manqué, il envoie un SMS automatique pour garder le contact et proposer de rappeler ou réserver.",
-    outcome: "Le lien n'est jamais rompu",
-    install: "190 €",
-    monthly: "49 €",
-  },
-];
-
-function CardAgent({ agent }: { agent: Agent }) {
+/* ---------------- CANAUX ---------------- */
+function Canaux() {
   return (
-    <div
-      className={`flex flex-col rounded-[8px] border border-border bg-card p-5 transition hover:-translate-y-1 ${CARD_SHADOW}`}
+    <section
+      className="border-y border-border bg-secondary/20 py-8"
+      aria-label="Canaux et fonctions traités"
     >
-      <div className="flex items-center gap-3">
-        <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-accent/12 text-accent">
-          <agent.icon className="h-5 w-5" />
-        </div>
-        <h3 className="text-base font-bold leading-tight">{agent.name}</h3>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <ul className="flex flex-wrap items-center justify-center gap-x-3 gap-y-3 sm:gap-x-4">
+          {CANAUX.map((c) => (
+            <li
+              key={c.label}
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-[13px] font-medium text-foreground/90 sm:text-sm"
+            >
+              <c.icon className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+              {c.label}
+            </li>
+          ))}
+        </ul>
       </div>
-      <p className="mt-3 flex-1 text-sm text-muted-foreground">{agent.desc}</p>
-      <div className="mt-3 flex items-center gap-1.5 text-sm font-semibold text-accent">
-        <Check className="h-4 w-4 shrink-0" />
-        {agent.outcome}
-      </div>
-      <div className="mt-4 flex items-baseline gap-1 border-t border-border pt-4">
-        <span className="font-display text-2xl font-extrabold">{agent.monthly}</span>
-        <span className="text-sm text-muted-foreground">/mois</span>
-      </div>
-      <p className="mt-0.5 text-xs text-muted-foreground">+ {agent.install} d'installation</p>
-      <a
-        href={CALENDLY_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-4 inline-flex w-full items-center justify-center gap-1.5 rounded-[8px] border border-border bg-card px-4 py-2.5 text-sm font-semibold text-foreground transition hover:bg-secondary"
-      >
-        Découvrir
-        <ArrowRight className="h-4 w-4" />
-      </a>
-    </div>
+    </section>
   );
 }
 
-function AgentsUnit() {
+/* ---------------- LE POINT DE DÉPART ---------------- */
+function Pertes() {
   return (
-    <section id="agents" className="py-20 sm:py-28">
+    <section className="py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeader
-          eyebrow="À la carte"
-          title="Vous avez seulement besoin d'un agent ?"
-          subtitle="Commencez avec un seul collaborateur IA et faites évoluer votre automatisation à votre rythme."
+        <SectionIntro
+          eyebrow="Le point de départ"
+          title="Les demandes arrivent. Mais combien deviennent réellement des clients ?"
+          text="Le problème n'est pas le manque d'intelligence artificielle. Ce sont les opportunités qui se perdent entre le moment où un prospect vous contacte et celui où l'affaire se signe."
         />
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {AGENTS.map((a) => (
-            <CardAgent key={a.name} agent={a} />
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {PERTES.map((p) => (
+            <div key={p.title} data-reveal className="ai-card ai-card-hover flex flex-col p-6">
+              <div className="grid h-11 w-11 place-items-center rounded-xl bg-destructive/12 text-destructive">
+                <p.icon className="h-5 w-5" aria-hidden="true" />
+              </div>
+              <h3 className="mt-4 text-base font-bold">{p.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.text}</p>
+            </div>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
 
-        <div className="mx-auto mt-10 max-w-3xl rounded-[8px] border border-border bg-secondary/40 p-6 text-center">
-          <p className="text-sm font-medium text-foreground/80">
-            Toutes les offres incluent la configuration personnalisée, les tests, la mise en service,
-            les mises à jour, la maintenance et un volume d'utilisation mensuel.
-          </p>
-          <p className="mt-2 text-xs text-muted-foreground">
-            Les consommations dépassant le forfait inclus (appels, SMS ou conversations IA) peuvent
-            faire l'objet d'une facturation complémentaire.
-          </p>
+/* ---------------- MÉTIERS ---------------- */
+function Metiers() {
+  return (
+    <section id="metiers" className="scroll-mt-24 py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <SectionIntro
+          eyebrow="Selon votre activité"
+          title="Le même système, des métiers différents"
+          text="Ce qui change d'un métier à l'autre, ce sont les règles et le vocabulaire. Le principe reste le même : répondre tout de suite, qualifier selon vos critères, puis passer la main au bon moment."
+        />
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {METIERS.map((m) => (
+            <div key={m.name} data-reveal className="ai-card ai-card-hover flex flex-col p-6">
+              <div className="grid h-11 w-11 place-items-center rounded-xl bg-accent/12 text-accent">
+                <m.icon className="h-5 w-5" aria-hidden="true" />
+              </div>
+              <h3 className="mt-4 text-base font-bold">{m.name}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.context}</p>
+              <ul className="mt-5 space-y-2.5 border-t border-border pt-5">
+                {m.items.map((it) => (
+                  <li key={it} className="flex items-start gap-2.5 text-[13.5px] leading-relaxed">
+                    <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" aria-hidden="true" />
+                    <span className="text-foreground/90">{it}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p
+          data-reveal
+          className="mx-auto mt-10 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground"
+        >
+          Votre métier n'est pas dans la liste ? Le diagnostic part de vos demandes réelles, pas
+          d'un modèle préétabli.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- LE SYSTÈME ---------------- */
+function Systeme() {
+  return (
+    <section id="systeme" className="scroll-mt-24 py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <SectionIntro
+          eyebrow="Le système Sitaly"
+          title="Un système connecté à chaque étape de votre parcours commercial"
+          text="Chaque agent est un scénario branché à vos outils : téléphonie, agenda, CRM, messagerie. Choisissez un scénario pour voir le trajet complet d'une demande."
+        />
+        <div className="mt-14" data-reveal>
+          <WorkflowChart />
+        </div>
+        <ol className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {ETAPES.map((e) => (
+            <li key={e.step} data-reveal className="ai-card p-5">
+              <div className="font-display text-sm font-extrabold text-accent">{e.step}</div>
+              <p className="mt-2 text-sm leading-relaxed text-foreground/90">{e.text}</p>
+            </li>
+          ))}
+        </ol>
+        <div className="mt-12 text-center" data-reveal>
+          <CtaButton />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- LES COMPOSANTS ---------------- */
+function Composants() {
+  return (
+    <section
+      id="agents"
+      className="scroll-mt-24 border-y border-border bg-secondary/20 py-20 sm:py-28"
+    >
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <SectionIntro
+          eyebrow="Les composants"
+          title="Trois agents, un seul système"
+          text="Ils ne fonctionnent pas isolément : chacun prend le relais du précédent et passe la main à votre équipe au moment prévu."
+        />
+        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+          {AGENTS.map((a) => (
+            <article
+              key={a.name}
+              data-reveal
+              className="ai-card ai-topline ai-card-hover relative flex flex-col p-7"
+            >
+              <div className="flex items-center justify-between gap-3">
+                <div className="grid h-12 w-12 place-items-center rounded-xl bg-accent/15 text-accent">
+                  <a.icon className="h-6 w-6" aria-hidden="true" />
+                </div>
+                <span className="font-display text-2xl font-extrabold text-muted-foreground/40">
+                  {a.index}
+                </span>
+              </div>
+              <h3 className="mt-5 text-lg font-bold leading-tight">{a.name}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{a.pitch}</p>
+              <div className="mt-6 border-t border-border pt-5">
+                <div className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                  Ce qu'il fait
+                </div>
+                <ul className="mt-3 space-y-2.5">
+                  {a.does.map((d) => (
+                    <li key={d} className="flex items-start gap-2.5 text-sm">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                      <span className="text-foreground/90">{d}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-5 rounded-xl border border-success/25 bg-success/8 p-4">
+                <div className="text-[11px] font-semibold uppercase tracking-wider text-success">
+                  Ce que ça change
+                </div>
+                <p className="mt-1.5 text-sm leading-relaxed text-foreground/90">{a.changes}</p>
+              </div>
+              {/* La reprise humaine est annoncée sur chaque agent : c'est la
+                  première objection, autant y répondre au même endroit. */}
+              <div className="mt-4 flex items-start gap-2.5 rounded-xl border border-border bg-secondary/50 p-4">
+                <UserCheck
+                  className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground"
+                  aria-hidden="true"
+                />
+                <div>
+                  <div className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                    Reprise humaine
+                  </div>
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{a.handover}</p>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- LE PÉRIMÈTRE ---------------- */
+function Perimetre() {
+  return (
+    <section id="automatisations" className="scroll-mt-24 py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <SectionIntro
+          eyebrow="Le périmètre"
+          title="Ce qui peut être automatisé, au-delà des trois agents"
+          text="Une fois vos outils connectés, la même mécanique traite bien plus que les demandes entrantes. Voici ce qui se met en place le plus souvent, par famille."
+        />
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {PERIMETRE.map((f) => (
+            <div key={f.title} data-reveal className="ai-card ai-card-hover p-6">
+              <div className="flex items-center gap-3">
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-secondary text-accent">
+                  <f.icon className="h-5 w-5" aria-hidden="true" />
+                </div>
+                <h3 className="text-base font-bold">{f.title}</h3>
+              </div>
+              <ul className="mt-5 space-y-2.5">
+                {f.items.map((it) => (
+                  <li key={it} className="flex items-start gap-2.5 text-[13.5px] leading-relaxed">
+                    <span
+                      className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                      aria-hidden="true"
+                    />
+                    <span className="text-foreground/90">{it}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <div className="mt-12 text-center" data-reveal>
+          <CtaButton />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- AVANT / APRÈS ---------------- */
+function AvantApres() {
+  return (
+    <section className="py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <SectionIntro
+          eyebrow="Avant / après"
+          title="Ce qui change dans le quotidien de vos équipes"
+          text="Aucun chiffre promis ici : les gains dépendent de votre volume de demandes et du périmètre déployé."
+        />
+        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+          <div data-reveal className="ai-card p-7">
+            <div className="flex items-center gap-3">
+              <div className="grid h-10 w-10 place-items-center rounded-xl bg-destructive/12 text-destructive">
+                <X className="h-5 w-5" aria-hidden="true" />
+              </div>
+              <h3 className="text-lg font-bold">Aujourd'hui</h3>
+            </div>
+            <ul className="mt-6 space-y-4">
+              {AUJOURDHUI.map((t) => (
+                <li key={t} className="flex items-start gap-3 text-[15px]">
+                  <X className="mt-0.5 h-4 w-4 shrink-0 text-destructive" aria-hidden="true" />
+                  <span className="text-muted-foreground">{t}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div
+            data-reveal
+            className="ai-card ai-topline relative border-accent/30 p-7"
+            style={{ background: "oklch(0.74 0.18 300 / 0.07)" }}
+          >
+            <div className="flex items-center gap-3">
+              <div className="grid h-10 w-10 place-items-center rounded-xl bg-accent/15 text-accent">
+                <Check className="h-5 w-5" aria-hidden="true" />
+              </div>
+              <h3 className="text-lg font-bold">Avec Sitaly</h3>
+            </div>
+            <ul className="mt-6 space-y-4">
+              {AVEC_SITALY.map((t) => (
+                <li key={t} className="flex items-start gap-3 text-[15px]">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                  <span className="text-foreground/90">{t}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- DÉPLOIEMENT ---------------- */
+function Deploiement() {
+  return (
+    <section
+      id="deploiement"
+      className="scroll-mt-24 border-y border-border bg-secondary/20 py-20 sm:py-28"
+    >
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <SectionIntro
+          eyebrow="Déploiement"
+          title="Une installation adaptée à votre entreprise, pas un agent générique"
+          text="Trois phases, dans cet ordre. On ne configure rien avant d'avoir regardé comment vos demandes circulent aujourd'hui."
+        />
+        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+          {DEPLOIEMENT.map((phase) => (
+            <div key={phase.step} data-reveal className="ai-card ai-card-hover flex flex-col p-7">
+              <div className="flex items-center gap-4">
+                <span className="font-display text-3xl font-extrabold text-accent">
+                  {phase.step}
+                </span>
+                <div className="grid h-11 w-11 place-items-center rounded-xl border border-border bg-secondary text-accent">
+                  <phase.icon className="h-5 w-5" aria-hidden="true" />
+                </div>
+              </div>
+              <h3 className="mt-5 text-lg font-bold">{phase.title}</h3>
+              <ul className="mt-5 space-y-3">
+                {phase.items.map((it) => (
+                  <li key={it} className="flex items-start gap-2.5 text-sm">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                    <span className="text-muted-foreground">{it}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        {/* Pas de grille tarifaire : le périmètre n'existe qu'après le diagnostic,
+            annoncer un prix avant reviendrait à vendre un forfait générique. */}
+        <div
+          data-reveal
+          className="ai-card mx-auto mt-10 flex max-w-3xl flex-col items-center gap-4 p-6 text-center sm:flex-row sm:justify-between sm:text-left"
+        >
+          <div>
+            <div className="font-display text-lg font-bold">
+              Déploiement sur mesure après diagnostic
+            </div>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Le périmètre, le calendrier et le budget sont chiffrés une fois vos demandes entrantes
+              analysées.
+            </p>
+          </div>
+          <CtaButton className="px-6 py-3.5 text-[15px]" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- CONTRÔLE ---------------- */
+function Controle() {
+  return (
+    <section id="controle" className="relative scroll-mt-24 overflow-hidden py-20 sm:py-28">
+      <div
+        className="ai-halo left-1/2 top-10 h-[300px] w-[600px] -translate-x-1/2 opacity-20"
+        aria-hidden="true"
+      />
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+        <SectionIntro
+          eyebrow="Contrôle"
+          title="L'IA agit. Votre équipe garde le contrôle."
+          text="Un agent n'est ni autonome ni infaillible. Il travaille dans un cadre que vous définissez, et ce cadre reste modifiable à tout moment."
+        />
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {CONTROLE.map((c) => (
+            <div key={c.title} data-reveal className="ai-card ai-card-hover flex gap-4 p-6">
+              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent/15 text-accent">
+                <c.icon className="h-5 w-5" aria-hidden="true" />
+              </div>
+              <div>
+                <h3 className="text-[15px] font-bold leading-tight">{c.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{c.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- À QUI ÇA S'ADRESSE ---------------- */
+function Profil() {
+  return (
+    <section className="border-y border-border bg-secondary/20 py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <SectionIntro
+          eyebrow="À qui ça s'adresse"
+          title="Conçu pour les entreprises qui ont déjà des demandes à traiter"
+          text="Un système commercial se justifie quand il y a du volume et de la valeur en jeu. En dessous, une bonne organisation suffit."
+        />
+        <div className="mt-14 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+          <div data-reveal className="ai-card ai-topline relative border-accent/30 p-7">
+            <h3 className="text-lg font-bold">Le bon profil</h3>
+            <ul className="mt-6 space-y-4">
+              {BON_PROFIL.map((t) => (
+                <li key={t} className="flex items-start gap-3 text-[15px]">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                  <span className="text-foreground/90">{t}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          {/* Dire à qui ça ne s'adresse pas évite des rendez-vous perdus des deux côtés. */}
+          <div data-reveal className="ai-card p-7">
+            <h3 className="text-lg font-bold text-muted-foreground">Ce n'est pas pour vous si</h3>
+            <ul className="mt-6 space-y-4">
+              {PAS_POUR_VOUS.map((t) => (
+                <li key={t} className="flex items-start gap-3 text-[15px]">
+                  <X className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />
+                  <span className="text-muted-foreground">{t}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -608,19 +1335,23 @@ function AgentsUnit() {
 /* ---------------- FAQ ---------------- */
 function Faq() {
   return (
-    <section className="bg-secondary/40 py-20 sm:py-28">
+    <section id="faq" className="scroll-mt-24 py-20 sm:py-28">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
-        <SectionHeader
-          eyebrow="FAQ"
-          title="Les questions qu'on nous pose"
-          subtitle="Et si vous en avez d'autres, on y répond de vive voix pendant l'appel."
-        />
-        <div className="mt-12 space-y-4">
-          {FAQ_ITEMS.map((it) => (
-            <div key={it.q} className={`rounded-[8px] border border-border bg-card p-6 ${SOFT_SHADOW}`}>
-              <h3 className="font-semibold">{it.q}</h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{it.a}</p>
-            </div>
+        <SectionIntro eyebrow="FAQ" title="Les questions posées avant de démarrer" />
+        <div className="mt-12 space-y-3">
+          {FAQ.map((it) => (
+            <details key={it.q} data-reveal className="ai-card group p-0">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-[15px] font-semibold marker:hidden">
+                {it.q}
+                <span
+                  className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-border text-accent transition group-open:rotate-45"
+                  aria-hidden="true"
+                >
+                  <span className="text-lg leading-none">+</span>
+                </span>
+              </summary>
+              <p className="px-6 pb-6 text-[15px] leading-relaxed text-muted-foreground">{it.a}</p>
+            </details>
           ))}
         </div>
       </div>
@@ -628,90 +1359,279 @@ function Faq() {
   );
 }
 
-/* ---------------- FINAL CTA ---------------- */
-function FinalCta() {
+/* ---------------- DIAGNOSTIC ---------------- */
+function Diagnostic() {
   return (
-    <section className="relative overflow-hidden py-20 sm:py-28">
-      <div className="absolute inset-0 -z-10 hero-bg" />
-      <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-        <h2 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
-          Prêt à ne plus rien laisser passer ?
-        </h2>
-        <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
-          Réservez un appel de 20 minutes. On identifie ensemble le pack ou l'agent à installer et ce
-          qu'il vous rapporte. Sans engagement, ni démarchage.
-        </p>
-        <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`inline-flex items-center justify-center gap-2 rounded-[8px] bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition hover:opacity-90 ${CARD_SHADOW}`}
-          >
-            <Calendar className="h-5 w-5" />
-            Réserver un appel
-          </a>
-          <a
-            href="tel:+33658683372"
-            className="inline-flex items-center justify-center gap-2 rounded-[8px] border border-border bg-card px-8 py-4 text-base font-semibold text-foreground transition hover:bg-secondary"
-          >
-            <Phone className="h-5 w-5" />
-            06 58 68 33 72
-          </a>
+    <section id="diagnostic" className="relative scroll-mt-24 overflow-hidden py-20 sm:py-28">
+      <div className="ai-grid" aria-hidden="true" />
+      <div
+        className="ai-halo left-1/2 top-0 h-[360px] w-[700px] -translate-x-1/2"
+        aria-hidden="true"
+      />
+      <div className="relative mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+        <div data-reveal>
+          <h2 className="font-display text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
+            Où perdez-vous aujourd'hui le plus de demandes ?
+          </h2>
+          <p className="mt-5 text-[17px] leading-relaxed text-muted-foreground">
+            Nous analysons votre parcours actuel, identifions le premier processus rentable à
+            automatiser et définissons un périmètre de déploiement réaliste.
+          </p>
+          <ul className="mt-8 space-y-3.5 text-[15px]">
+            {[
+              "Analyse de vos demandes entrantes et de vos points de perte",
+              "Un périmètre de départ chiffré, pas un devis global",
+              "Aucune installation avant votre validation",
+            ].map((t) => (
+              <li key={t} className="flex items-start gap-3">
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                <span className="text-foreground/90">{t}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="ai-card mt-8 p-5">
+            <div className="text-sm text-muted-foreground">Vous préférez parler directement ?</div>
+            <a
+              href={`tel:${PHONE_TEL}`}
+              className="mt-1 inline-flex items-center gap-2.5 py-1.5 font-display text-2xl font-extrabold tracking-tight transition hover:text-accent"
+            >
+              <Phone className="h-5 w-5 text-accent" />
+              {PHONE_DISPLAY}
+            </a>
+            <div className="mt-2">
+              <a
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block py-2 text-sm font-semibold text-accent underline-offset-4 hover:underline"
+              >
+                Réserver un créneau en ligne
+              </a>
+            </div>
+          </div>
+        </div>
+        <div data-reveal>
+          <DiagnosticForm />
         </div>
       </div>
     </section>
   );
 }
 
-/* ---------------- FOOTER ---------------- */
-function Footer() {
+function Field({
+  label,
+  name,
+  type = "text",
+  autoComplete,
+  required,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  autoComplete?: string;
+  required?: boolean;
+}) {
   return (
-    <footer className="border-t border-border bg-primary py-12 text-primary-foreground">
+    <div>
+      <label htmlFor={`ai-${name}`} className="text-sm font-medium">
+        {label} {required && <span className="text-destructive">*</span>}
+      </label>
+      <input
+        id={`ai-${name}`}
+        name={name}
+        type={type}
+        autoComplete={autoComplete}
+        required={required}
+        maxLength={150}
+        className="mt-1.5 h-12 w-full rounded-[10px] border border-input bg-background px-3.5 text-[15px] text-foreground outline-none transition focus:border-accent"
+      />
+    </div>
+  );
+}
+
+function SelectField({
+  label,
+  name,
+  options,
+  required,
+}: {
+  label: string;
+  name: string;
+  options: readonly string[];
+  required?: boolean;
+}) {
+  return (
+    <div>
+      <label htmlFor={`ai-${name}`} className="text-sm font-medium">
+        {label} {required && <span className="text-destructive">*</span>}
+      </label>
+      <select
+        id={`ai-${name}`}
+        name={name}
+        required={required}
+        defaultValue=""
+        className="mt-1.5 h-12 w-full rounded-[10px] border border-input bg-background px-3 text-[15px] text-foreground outline-none transition focus:border-accent"
+      >
+        <option value="" disabled>
+          Sélectionner
+        </option>
+        {options.map((o) => (
+          <option key={o} value={o}>
+            {o}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+/**
+ * Le formulaire n'envoie rien lui-même : il compose un e-mail pré-rempli et
+ * ouvre la messagerie du visiteur. Pas de service tiers à faire consentir,
+ * pas de serveur à maintenir pour un site statique, et la demande arrive
+ * depuis l'adresse du prospect — donc directement répondable.
+ */
+function DiagnosticForm() {
+  const [sent, setSent] = useState(false);
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const value = (k: string) => String(data.get(k) || "").trim();
+    const body = [
+      `Prénom et nom : ${value("fullName")}`,
+      `Entreprise : ${value("company")}`,
+      `Téléphone : ${value("phone")}`,
+      `E-mail : ${value("email")}`,
+      `Secteur : ${value("sector")}`,
+      `Volume de demandes : ${value("volume")}`,
+      ``,
+      `Principal problème à résoudre :`,
+      value("problem"),
+    ].join("\n");
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=Demande%20de%20diagnostic%20%E2%80%94%20Agents%20IA&body=${encodeURIComponent(body)}`;
+    setSent(true);
+  }
+
+  if (sent) {
+    return (
+      <div className="ai-card p-8 text-center sm:p-10">
+        <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-success/15 text-success">
+          <Check className="h-6 w-6" aria-hidden="true" />
+        </div>
+        <h3 className="mt-5 font-display text-xl font-bold">Votre demande est prête</h3>
+        <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
+          Votre messagerie s'ouvre avec le récapitulatif pré-rempli. Envoyez-le et nous revenons
+          vers vous sous 24 heures ouvrées.
+        </p>
+        <p className="mt-4 text-sm text-muted-foreground">
+          Rien ne s'est ouvert ?{" "}
+          <a
+            href={`mailto:${CONTACT_EMAIL}`}
+            className="font-semibold text-accent underline-offset-4 hover:underline"
+          >
+            {CONTACT_EMAIL}
+          </a>
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="ai-card p-6 sm:p-8">
+      <h3 className="font-display text-xl font-bold">{CTA_LABEL}</h3>
+      <p className="mt-2 text-sm text-muted-foreground">
+        Sept champs, deux minutes. Nous préparons l'échange à partir de vos réponses.
+      </p>
+      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+        <Field label="Prénom et nom" name="fullName" autoComplete="name" required />
+        <Field label="Entreprise" name="company" autoComplete="organization" required />
+        <Field label="Téléphone" name="phone" type="tel" autoComplete="tel" required />
+        <Field
+          label="E-mail professionnel"
+          name="email"
+          type="email"
+          autoComplete="email"
+          required
+        />
+        <SelectField label="Secteur d'activité" name="sector" options={SECTEURS} required />
+        <SelectField label="Demandes par mois" name="volume" options={VOLUMES} required />
+      </div>
+      <div className="mt-4">
+        <label htmlFor="ai-problem" className="text-sm font-medium">
+          Principal problème à résoudre <span className="text-destructive">*</span>
+        </label>
+        <textarea
+          id="ai-problem"
+          name="problem"
+          rows={4}
+          required
+          maxLength={800}
+          placeholder="Par exemple : nous manquons des appels en journée et nos devis ne sont pas relancés."
+          className="mt-1.5 w-full rounded-[10px] border border-input bg-background px-3.5 py-2.5 text-[15px] text-foreground outline-none transition placeholder:text-muted-foreground/70 focus:border-accent"
+        />
+      </div>
+      <button
+        type="submit"
+        className="ai-cta mt-6 inline-flex w-full items-center justify-center gap-2 rounded-[10px] px-6 py-3.5 text-base font-semibold"
+      >
+        {CTA_LABEL}
+        <ArrowRight className="h-4 w-4" />
+      </button>
+      <p className="mt-3 text-center text-xs leading-relaxed text-muted-foreground">
+        L'envoi ouvre votre messagerie avec le récapitulatif pré-rempli. Vos informations ne sont
+        utilisées que pour préparer le diagnostic.
+      </p>
+    </form>
+  );
+}
+
+/* ---------------- PIED DE PAGE ---------------- */
+function AiFooter() {
+  return (
+    <footer className="border-t border-border bg-secondary/30 py-12">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
           <SitalyLogo />
-          <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-primary-foreground/70">
-            <Link to="/" className="transition hover:text-primary-foreground">Accueil</Link>
-            <a href="/#offre" className="transition hover:text-primary-foreground">Offres</a>
-            <Link to="/blog" className="transition hover:text-primary-foreground">Blog</Link>
-            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="transition hover:text-primary-foreground">
+          <nav className="flex flex-wrap items-center justify-center gap-x-6 text-sm text-muted-foreground">
+            <Link to="/" className="inline-block py-2.5 transition hover:text-foreground">
+              Accueil
+            </Link>
+            <a href="/#offre" className="inline-block py-2.5 transition hover:text-foreground">
+              Offres
+            </a>
+            <Link to="/blog" className="inline-block py-2.5 transition hover:text-foreground">
+              Blog
+            </Link>
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block py-2.5 transition hover:text-foreground"
+            >
               Réserver un appel
             </a>
+            <LinkedInBadge className="h-9 w-9" />
           </nav>
         </div>
-        <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-primary-foreground/60 sm:flex-row">
+        <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row">
           <div>© {new Date().getFullYear()} Sitaly. Tous droits réservés.</div>
-          <div className="flex flex-wrap justify-center gap-5">
-            <Link to="/mentions-legales" className="hover:text-primary-foreground">Mentions légales</Link>
-            <Link to="/politique-confidentialite" className="hover:text-primary-foreground">Confidentialité</Link>
-            <Link to="/cgv" className="hover:text-primary-foreground">CGV</Link>
+          <div className="flex flex-wrap justify-center gap-x-5">
+            <Link to="/mentions-legales" className="inline-block py-2.5 hover:text-foreground">
+              Mentions légales
+            </Link>
+            <Link
+              to="/politique-confidentialite"
+              className="inline-block py-2.5 hover:text-foreground"
+            >
+              Confidentialité
+            </Link>
+            <Link to="/cgv" className="inline-block py-2.5 hover:text-foreground">
+              CGV
+            </Link>
           </div>
         </div>
       </div>
     </footer>
-  );
-}
-
-/* ---------------- SHARED ---------------- */
-function SectionHeader({
-  eyebrow,
-  title,
-  subtitle,
-}: {
-  eyebrow: string;
-  title: string;
-  subtitle?: string;
-}) {
-  return (
-    <div className="mx-auto max-w-2xl text-center">
-      <span className="inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
-        {eyebrow}
-      </span>
-      <h2 className="mt-4 font-display text-3xl font-extrabold leading-[1.02] tracking-tight sm:text-4xl">
-        {title}
-      </h2>
-      {subtitle && <p className="mt-4 text-muted-foreground sm:text-lg">{subtitle}</p>}
-    </div>
   );
 }

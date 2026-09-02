@@ -9,6 +9,7 @@ import {
   FileText,
   Gauge,
   MessageSquare,
+  Menu,
   Phone,
   Search,
   ShieldCheck,
@@ -16,6 +17,7 @@ import {
   TrendingUp,
   Users,
   Wallet,
+  X,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -42,11 +44,26 @@ function eur(n: number) {
 }
 
 const CONSTATS = [
-  { icon: Eye, text: "Votre site existe, il est correct, mais il ne génère presque aucune demande." },
-  { icon: Users, text: "Votre activité repose sur le bouche-à-oreille, et elle s'arrête quand il s'arrête." },
-  { icon: TrendingUp, text: "Vos concurrents apparaissent avant vous quand un client tape votre métier sur Google." },
-  { icon: ChartColumn, text: "Vous avez déjà essayé Google Ads sans jamais savoir si vos campagnes étaient rentables." },
-  { icon: Gauge, text: "Vous n'avez ni le temps ni l'envie de surveiller des enchères entre deux chantiers." },
+  {
+    icon: Eye,
+    text: "Votre site existe, il est correct, mais il ne génère presque aucune demande.",
+  },
+  {
+    icon: Users,
+    text: "Votre activité repose sur le bouche-à-oreille, et elle s'arrête quand il s'arrête.",
+  },
+  {
+    icon: TrendingUp,
+    text: "Vos concurrents apparaissent avant vous quand un client tape votre métier sur Google.",
+  },
+  {
+    icon: ChartColumn,
+    text: "Vous avez déjà essayé Google Ads sans jamais savoir si vos campagnes étaient rentables.",
+  },
+  {
+    icon: Gauge,
+    text: "Vous n'avez ni le temps ni l'envie de surveiller des enchères entre deux chantiers.",
+  },
 ];
 
 const PRESTATIONS = [
@@ -455,10 +472,10 @@ function AcquisitionPage() {
               </div>
             </div>
             <p className="mt-4 text-[15px] leading-relaxed text-foreground/85">
-              Le budget Google Ads est défini avec vous et payé <strong>directement à Google</strong>
-              , depuis un compte ouvert à votre nom. Il n'est pas inclus dans les {FEE} €, il ne
-              transite pas par Sitaly, et le compte reste le vôtre si nous arrêtons de travailler
-              ensemble.
+              Le budget Google Ads est défini avec vous et payé{" "}
+              <strong>directement à Google</strong>, depuis un compte ouvert à votre nom. Il n'est
+              pas inclus dans les {FEE} €, il ne transite pas par Sitaly, et le compte reste le
+              vôtre si nous arrêtons de travailler ensemble.
             </p>
           </div>
         </div>
@@ -551,7 +568,10 @@ function AcquisitionPage() {
           </div>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {RAISONS.map((r) => (
-              <div key={r.title} className="rounded-2xl border border-border bg-card p-6 shadow-soft">
+              <div
+                key={r.title}
+                className="rounded-2xl border border-border bg-card p-6 shadow-soft"
+              >
                 <div className="grid h-11 w-11 place-items-center rounded-xl bg-accent/10 text-accent">
                   <r.icon className="h-5 w-5" />
                 </div>
@@ -669,6 +689,8 @@ function AcquisitionPage() {
  * l'appel et le CTA.
  */
 function AcquisitionNav() {
+  const [open, setOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
@@ -686,7 +708,48 @@ function AcquisitionNav() {
             <Calendar className="h-4 w-4" />
             Demander un accompagnement
           </a>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border bg-card text-foreground shadow-soft transition hover:border-accent md:hidden"
+            aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={open}
+            aria-controls="menu-mobile"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
+
+        {open && (
+          <div
+            id="menu-mobile"
+            className="absolute inset-x-0 top-full border-b border-border bg-background px-4 pb-5 shadow-elevated md:hidden sm:px-6"
+          >
+            <nav className="flex flex-col divide-y divide-border/70 text-sm font-medium text-muted-foreground">
+              <a href="#prestations" onClick={() => setOpen(false)} className="py-3">
+                Ce que nous prenons en charge
+              </a>
+              <a href="#fonctionnement" onClick={() => setOpen(false)} className="py-3">
+                Comment ça marche
+              </a>
+              <a href="#tarif" onClick={() => setOpen(false)} className="py-3">
+                Tarif
+              </a>
+              <a href="#faq" onClick={() => setOpen(false)} className="py-3">
+                FAQ
+              </a>
+            </nav>
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
+            >
+              <Calendar className="h-4 w-4" />
+              Demander un accompagnement
+            </a>
+          </div>
+        )}
       </div>
     </header>
   );

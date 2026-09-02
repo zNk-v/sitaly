@@ -76,10 +76,14 @@ export const Route = createFileRoute("/")({
         content:
           "Sites internet, Google Ads, ChatGPT Ads et automatisation IA pour PME, TPE et artisans. Dès 149€/mois, sans engagement. Plus de demandes, plus de clients.",
       },
-      { property: "og:title", content: "Site web, Google Ads & IA pour PME, TPE et artisans | Sitaly" },
+      {
+        property: "og:title",
+        content: "Site web, Google Ads & IA pour PME, TPE et artisans | Sitaly",
+      },
       {
         property: "og:description",
-        content: "Sites internet, Google Ads, ChatGPT Ads et automatisation IA pour PME, TPE et artisans. Dès 149€/mois, sans engagement. Plus de demandes, plus de clients.",
+        content:
+          "Sites internet, Google Ads, ChatGPT Ads et automatisation IA pour PME, TPE et artisans. Dès 149€/mois, sans engagement. Plus de demandes, plus de clients.",
       },
       { property: "og:url", content: "https://sitaly.fr/" },
     ],
@@ -158,17 +162,22 @@ function Hero() {
               Pour artisans, indépendants & PME de services
             </div>
             <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-              Plus de clients. Plus d'appels. <span className="gradient-text">Moins de temps perdu.</span>
+              Plus de clients. Plus d'appels.{" "}
+              <span className="gradient-text">Moins de temps perdu.</span>
             </h1>
             <p className="mt-5 text-lg text-muted-foreground sm:text-xl">
-              Sitaly met en place les outils qui vous apportent des clients : un <strong className="text-foreground">site internet performant</strong>, <strong className="text-foreground">Google Ads</strong> et des <strong className="text-foreground">automatisations</strong>. Votre site livré en <strong className="text-foreground">48h</strong>.
+              Sitaly met en place les outils qui vous apportent des clients : un{" "}
+              <strong className="text-foreground">site internet performant</strong>,{" "}
+              <strong className="text-foreground">Google Ads</strong> et des{" "}
+              <strong className="text-foreground">automatisations</strong>. Votre site livré en{" "}
+              <strong className="text-foreground">48h</strong>.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href={CALENDLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground shadow-elevated transition hover:opacity-90"
               >
                 <Calendar className="h-5 w-5" />
@@ -184,17 +193,14 @@ function Hero() {
             </div>
 
             <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-3 text-sm sm:grid-cols-4 sm:text-[15px]">
-              {[
-                "Plus d'appels",
-                "Plus de devis",
-                "Visible sur Google",
-                "Zéro temps perdu",
-              ].map((t) => (
-                <li key={t} className="flex items-center gap-2 text-foreground/90">
-                  <Check className="h-4 w-4 shrink-0 text-success" />
-                  {t}
-                </li>
-              ))}
+              {["Plus d'appels", "Plus de devis", "Visible sur Google", "Zéro temps perdu"].map(
+                (t) => (
+                  <li key={t} className="flex items-center gap-2 text-foreground/90">
+                    <Check className="h-4 w-4 shrink-0 text-success" />
+                    {t}
+                  </li>
+                ),
+              )}
             </ul>
           </div>
 
@@ -403,11 +409,7 @@ function HowItWorks() {
       icon: Target,
       title: "Convertir",
       benefit: "Transformer les visiteurs en demandes",
-      points: [
-        "Pages optimisées",
-        "Formulaires performants",
-        "Appels à l'action efficaces",
-      ],
+      points: ["Pages optimisées", "Formulaires performants", "Appels à l'action efficaces"],
     },
     {
       n: "03",
@@ -432,7 +434,10 @@ function HowItWorks() {
         />
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {steps.map((s) => (
-            <div key={s.title} className="rounded-2xl border border-border bg-card p-7 shadow-soft transition hover:shadow-elevated">
+            <div
+              key={s.title}
+              className="rounded-2xl border border-border bg-card p-7 shadow-soft transition hover:shadow-elevated"
+            >
               <div className="flex items-center justify-between">
                 <div className="grid h-12 w-12 place-items-center rounded-xl bg-accent/12 text-accent">
                   <s.icon className="h-6 w-6" />
@@ -486,17 +491,21 @@ function GoogleAds() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr]">
           <div>
-            <div className="text-xs font-semibold uppercase tracking-wider text-accent">Google Ads</div>
+            <div className="text-xs font-semibold uppercase tracking-wider text-accent">
+              Google Ads
+            </div>
             <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
               Soyez visible <span className="gradient-text">immédiatement</span>
             </h2>
             <p className="mt-4 text-muted-foreground sm:text-lg">
-              Le référencement naturel prend du temps. Google Ads vous place en tête des recherches dès aujourd'hui, et vous apporte des demandes pendant que votre visibilité naturelle se construit.
+              Le référencement naturel prend du temps. Google Ads vous place en tête des recherches
+              dès aujourd'hui, et vous apporte des demandes pendant que votre visibilité naturelle
+              se construit.
             </p>
             <a
               href={CALENDLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground shadow-elevated transition hover:opacity-90"
             >
               <Calendar className="h-5 w-5" />
@@ -505,7 +514,10 @@ function GoogleAds() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {points.map((p) => (
-              <div key={p.title} className="rounded-2xl border border-border bg-card p-6 shadow-soft">
+              <div
+                key={p.title}
+                className="rounded-2xl border border-border bg-card p-6 shadow-soft"
+              >
                 <div className="grid h-11 w-11 place-items-center rounded-xl bg-accent/12 text-accent">
                   <p.icon className="h-5 w-5" />
                 </div>
@@ -551,7 +563,8 @@ function Automation() {
           ))}
         </div>
         <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-muted-foreground">
-          Ces automatisations sont proposées en option, selon les besoins réels de votre entreprise. Rien d'imposé.
+          Ces automatisations sont proposées en option, selon les besoins réels de votre entreprise.
+          Rien d'imposé.
         </p>
       </div>
     </section>
@@ -648,7 +661,8 @@ const PRICING_TIERS = [
     price: "Sur mesure",
     period: "",
     setup: null,
-    objective: "Des agents IA qui répondent, qualifient et prennent vos rendez-vous. Installés clé en main.",
+    objective:
+      "Des agents IA qui répondent, qualifient et prennent vos rendez-vous. Installés clé en main.",
     inherits: "Se greffe sur n'importe quelle offre",
     features: [
       "Agent standardiste — ne rate plus un appel",
@@ -709,9 +723,7 @@ function PricingCard({ tier, featured }: { tier: Tier; featured: boolean }) {
   return (
     <div
       className={`relative flex h-full flex-col rounded-3xl bg-card p-7 sm:p-8 ${
-        featured
-          ? "border-2 border-accent shadow-glow"
-          : "border border-border shadow-soft"
+        featured ? "border-2 border-accent shadow-glow" : "border border-border shadow-soft"
       }`}
     >
       {featured && (
@@ -771,9 +783,7 @@ function PricingCard({ tier, featured }: { tier: Tier; featured: boolean }) {
         </span>
         <span className="text-muted-foreground">{view.period}</span>
       </div>
-      {view.setup && (
-        <p className="mt-1 text-sm font-medium text-foreground/70">{view.setup}</p>
-      )}
+      {view.setup && <p className="mt-1 text-sm font-medium text-foreground/70">{view.setup}</p>}
 
       <div className="mt-7 space-y-3">
         {view.inherits && (
@@ -786,9 +796,7 @@ function PricingCard({ tier, featured }: { tier: Tier; featured: boolean }) {
           {view.features.map((f) => (
             <li key={f} className="flex items-start gap-3 text-[15px]">
               <Check
-                className={`mt-0.5 h-5 w-5 shrink-0 ${
-                  featured ? "text-accent" : "text-success"
-                }`}
+                className={`mt-0.5 h-5 w-5 shrink-0 ${featured ? "text-accent" : "text-success"}`}
               />
               <span>
                 {f.endsWith("*") ? (
@@ -863,7 +871,9 @@ function BlogOption() {
             <div
               key={t.name}
               className={`relative flex flex-col rounded-2xl bg-card p-6 shadow-soft transition ${
-                t.featured ? "border-2 border-accent shadow-glow" : "border border-border hover:border-accent/40"
+                t.featured
+                  ? "border-2 border-accent shadow-glow"
+                  : "border border-border hover:border-accent/40"
               }`}
             >
               {t.featured && (
@@ -982,12 +992,8 @@ function Examples() {
                 <span className="inline-block w-fit rounded-full bg-accent/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest text-accent sm:text-xs">
                   {it.tag}
                 </span>
-                <h3 className="mt-2 text-lg font-bold text-foreground sm:text-xl">
-                  {it.title}
-                </h3>
-                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                  {it.desc}
-                </p>
+                <h3 className="mt-2 text-lg font-bold text-foreground sm:text-xl">{it.title}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{it.desc}</p>
                 <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent transition-all group-hover:gap-2.5">
                   Ouvrir le site
                   <ArrowRight className="h-4 w-4" />
@@ -1033,16 +1039,16 @@ function Metiers() {
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.desc}</p>
               <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-accent">
                 Voir la page
-                <ArrowRight className="h-3.5 w-3.5" />
+                <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" />
               </span>
             </a>
           ))}
         </div>
         <p className="mt-8 text-center text-sm text-muted-foreground">
           Votre métier n'est pas listé ?{" "}
-          <a href="/#contact" className="font-semibold text-accent hover:underline">
+          <Link to="/" hash="contact" className="font-semibold text-accent hover:underline">
             Dites-nous lequel
-          </a>
+          </Link>
           , on construit la même chose pour vous.
         </p>
       </div>
@@ -1067,10 +1073,7 @@ function EmbedPreview({ url, title }: { url: string; title: string }) {
   }, []);
 
   return (
-    <div
-      ref={wrapRef}
-      className="relative aspect-[16/9] w-full overflow-hidden bg-white"
-    >
+    <div ref={wrapRef} className="relative aspect-[16/9] w-full overflow-hidden bg-white">
       <iframe
         src={url}
         title={`Aperçu du site ${title}`}
@@ -1100,7 +1103,11 @@ function Process() {
     { n: "01", t: "Appel découverte", d: "On comprend votre activité et vos besoins (20 min)." },
     { n: "02", t: "Création du site", d: "Nos équipes conçoivent votre site sur mesure." },
     { n: "03", t: "Validation", d: "Vous validez le rendu, on ajuste si besoin." },
-    { n: "04", t: "Mise en ligne", d: "Hébergement, nom de domaine, SEO local : on s'occupe de tout." },
+    {
+      n: "04",
+      t: "Mise en ligne",
+      d: "Hébergement, nom de domaine, SEO local : on s'occupe de tout.",
+    },
     { n: "05", t: "Suivi mensuel", d: "Maintenance, mises à jour et modifications incluses." },
   ];
   return (
@@ -1108,7 +1115,9 @@ function Process() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="max-w-2xl">
           <div className="text-xs font-semibold uppercase tracking-wider text-accent">Process</div>
-          <h2 className="mt-2 font-display text-3xl font-extrabold sm:text-4xl">Comment ça se passe ?</h2>
+          <h2 className="mt-2 font-display text-3xl font-extrabold sm:text-4xl">
+            Comment ça se passe ?
+          </h2>
           <p className="mt-3 text-primary-foreground/70">
             5 étapes simples pour avoir un site qui travaille pour vous.
           </p>
@@ -1221,9 +1230,7 @@ function Clients() {
 }
 
 /* ---------------- FAQ ---------------- */
-const FAQ_MODIF_INDEX = FAQ_ITEMS.findIndex((it) =>
-  it.q.includes("modifications incluses"),
-);
+const FAQ_MODIF_INDEX = FAQ_ITEMS.findIndex((it) => it.q.includes("modifications incluses"));
 
 function Faq() {
   const items = FAQ_ITEMS;
@@ -1244,7 +1251,11 @@ function Faq() {
   return (
     <section id="faq" className="bg-secondary/40 py-20 sm:py-24">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
-        <SectionHeader eyebrow="FAQ" title="Questions fréquentes" subtitle="Tout ce que vous voulez savoir, simplement." />
+        <SectionHeader
+          eyebrow="FAQ"
+          title="Questions fréquentes"
+          subtitle="Tout ce que vous voulez savoir, simplement."
+        />
         <div className="mt-10 space-y-3">
           {items.map((it, i) => (
             <div
@@ -1264,7 +1275,9 @@ function Faq() {
                 />
               </button>
               {open === i && (
-                <div className="px-5 pb-5 text-[15px] leading-relaxed text-muted-foreground">{it.a}</div>
+                <div className="px-5 pb-5 text-[15px] leading-relaxed text-muted-foreground">
+                  {it.a}
+                </div>
               )}
             </div>
           ))}
@@ -1287,7 +1300,8 @@ function Contact() {
             Discutons de votre projet
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Laissez-nous vos coordonnées, on vous rappelle sous 24h pour un échange simple et sans engagement.
+            Laissez-nous vos coordonnées, on vous rappelle sous 24h pour un échange simple et sans
+            engagement.
           </p>
           <ul className="mt-8 space-y-4 text-[15px]">
             <li className="flex items-center gap-3">
@@ -1352,7 +1366,8 @@ function Contact() {
               </div>
               <h3 className="mt-4 font-display text-xl font-bold">Merci !</h3>
               <p className="mt-2 text-muted-foreground">
-                Votre application de messagerie s'ouvre avec votre message pré-rempli. Il ne vous reste plus qu'à l'envoyer.
+                Votre application de messagerie s'ouvre avec votre message pré-rempli. Il ne vous
+                reste plus qu'à l'envoyer.
               </p>
             </div>
           ) : (
@@ -1364,7 +1379,9 @@ function Contact() {
                 <Field label="Entreprise" name="company" />
               </div>
               <div className="mt-4">
-                <label htmlFor="contact-message" className="text-sm font-medium">Message</label>
+                <label htmlFor="contact-message" className="text-sm font-medium">
+                  Message
+                </label>
                 <textarea
                   id="contact-message"
                   name="message"
@@ -1432,7 +1449,8 @@ function Footer() {
               <SitalyLogo />
             </div>
             <p className="mt-3 text-sm text-primary-foreground/70">
-              Plus de clients pour les PME, TPE et artisans : site internet, Google Ads, ChatGPT Ads et automatisation.
+              Plus de clients pour les PME, TPE et artisans : site internet, Google Ads, ChatGPT Ads
+              et automatisation.
             </p>
             <div className="mt-4">
               <LinkedInBadge tone="dark" />
@@ -1443,39 +1461,103 @@ function Footer() {
             {/* Maillage interne : ces quatre pages portent le SEO « métier + ville »
                 et reçoivent le trafic Google Ads. */}
             <ul className="mt-3 space-y-1 text-sm text-primary-foreground/70">
-              <li><Link to="/site-internet-plombier" className="block py-2.5 hover:text-primary-foreground">Site internet plombier</Link></li>
-              <li><Link to="/site-internet-electricien" className="block py-2.5 hover:text-primary-foreground">Site internet électricien</Link></li>
-              <li><Link to="/site-internet-couvreur" className="block py-2.5 hover:text-primary-foreground">Site internet couvreur</Link></li>
-              <li><Link to="/site-internet-menuisier" className="block py-2.5 hover:text-primary-foreground">Site internet menuisier</Link></li>
+              <li>
+                <Link
+                  to="/site-internet-plombier"
+                  className="block py-2.5 hover:text-primary-foreground"
+                >
+                  Site internet plombier
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/site-internet-electricien"
+                  className="block py-2.5 hover:text-primary-foreground"
+                >
+                  Site internet électricien
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/site-internet-couvreur"
+                  className="block py-2.5 hover:text-primary-foreground"
+                >
+                  Site internet couvreur
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/site-internet-menuisier"
+                  className="block py-2.5 hover:text-primary-foreground"
+                >
+                  Site internet menuisier
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
             <div className="text-sm font-semibold">Navigation</div>
             <ul className="mt-3 space-y-1 text-sm text-primary-foreground/70">
-              <li><a href="#offre" className="block py-2.5 hover:text-primary-foreground">Offres</a></li>
-              <li><Link to="/agents-ia" className="block py-2.5 hover:text-primary-foreground">Agents IA</Link></li>
-              <li><a href="/chatgpt-ads/" className="block py-2.5 hover:text-primary-foreground">ChatGPT Ads</a></li>
-              <li><a href="#exemples" className="block py-2.5 hover:text-primary-foreground">Exemples</a></li>
-              <li><a href="#process" className="block py-2.5 hover:text-primary-foreground">Process</a></li>
-              <li><a href="#faq" className="block py-2.5 hover:text-primary-foreground">FAQ</a></li>
-              <li><Link to="/blog" className="block py-2.5 hover:text-primary-foreground">Blog</Link></li>
+              <li>
+                <a href="#offre" className="block py-2.5 hover:text-primary-foreground">
+                  Offres
+                </a>
+              </li>
+              <li>
+                <Link to="/agents-ia" className="block py-2.5 hover:text-primary-foreground">
+                  Agents IA
+                </Link>
+              </li>
+              <li>
+                <a href="/chatgpt-ads/" className="block py-2.5 hover:text-primary-foreground">
+                  ChatGPT Ads
+                </a>
+              </li>
+              <li>
+                <a href="#exemples" className="block py-2.5 hover:text-primary-foreground">
+                  Exemples
+                </a>
+              </li>
+              <li>
+                <a href="#process" className="block py-2.5 hover:text-primary-foreground">
+                  Process
+                </a>
+              </li>
+              <li>
+                <a href="#faq" className="block py-2.5 hover:text-primary-foreground">
+                  FAQ
+                </a>
+              </li>
+              <li>
+                <Link to="/blog" className="block py-2.5 hover:text-primary-foreground">
+                  Blog
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
             <div className="text-sm font-semibold">Contact</div>
             <ul className="mt-3 space-y-2 text-sm text-primary-foreground/70">
               <li>
-                <a href={`tel:${PHONE_TEL}`} className="flex items-center gap-2 py-2.5 font-semibold text-primary-foreground hover:text-accent">
+                <a
+                  href={`tel:${PHONE_TEL}`}
+                  className="flex items-center gap-2 py-2.5 font-semibold text-primary-foreground hover:text-accent"
+                >
                   <Phone className="h-4 w-4" /> {PHONE_DISPLAY}
                 </a>
               </li>
               <li>
-                <a href="mailto:contact@sitaly.fr" className="flex items-center gap-2 py-2.5 hover:text-primary-foreground">
+                <a
+                  href="mailto:contact@sitaly.fr"
+                  className="flex items-center gap-2 py-2.5 hover:text-primary-foreground"
+                >
                   <Mail className="h-4 w-4" />
                   contact@sitaly.fr
                 </a>
               </li>
-              <li className="flex items-center gap-2 py-2.5"><Globe className="h-4 w-4" /> sitaly.fr</li>
+              <li className="flex items-center gap-2 py-2.5">
+                <Globe className="h-4 w-4" /> sitaly.fr
+              </li>
               <li>
                 <a
                   href={LINKEDIN_URL}
@@ -1504,10 +1586,24 @@ function Footer() {
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-primary-foreground/60 sm:flex-row">
           <div>© {new Date().getFullYear()} Sitaly. Tous droits réservés.</div>
           <div className="flex flex-wrap justify-center gap-x-5 gap-y-1">
-            <Link to="/mentions-legales" className="inline-block py-2.5 hover:text-primary-foreground">Mentions légales</Link>
-            <Link to="/politique-confidentialite" className="inline-block py-2.5 hover:text-primary-foreground">Confidentialité</Link>
-            <Link to="/cgv" className="inline-block py-2.5 hover:text-primary-foreground">CGV</Link>
-            <Link to="/cookies" className="inline-block py-2.5 hover:text-primary-foreground">Cookies</Link>
+            <Link
+              to="/mentions-legales"
+              className="inline-block py-2.5 hover:text-primary-foreground"
+            >
+              Mentions légales
+            </Link>
+            <Link
+              to="/politique-confidentialite"
+              className="inline-block py-2.5 hover:text-primary-foreground"
+            >
+              Confidentialité
+            </Link>
+            <Link to="/cgv" className="inline-block py-2.5 hover:text-primary-foreground">
+              CGV
+            </Link>
+            <Link to="/cookies" className="inline-block py-2.5 hover:text-primary-foreground">
+              Cookies
+            </Link>
           </div>
         </div>
       </div>
@@ -1528,7 +1624,9 @@ function SectionHeader({
   return (
     <div className="mx-auto max-w-2xl text-center">
       <div className="text-xs font-semibold uppercase tracking-wider text-accent">{eyebrow}</div>
-      <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight sm:text-4xl">{title}</h2>
+      <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
+        {title}
+      </h2>
       {subtitle && <p className="mt-4 text-muted-foreground sm:text-lg">{subtitle}</p>}
     </div>
   );

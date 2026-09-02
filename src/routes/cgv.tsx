@@ -5,13 +5,21 @@ export const Route = createFileRoute("/cgv")({
   head: () => ({
     meta: [
       { title: "CGV — Conditions Générales de Vente et d'Utilisation — Sitaly" },
-      { name: "description", content: "Conditions générales de vente et d'utilisation des services Sitaly : création de sites internet et plateforme SaaS pour artisans." },
+      {
+        name: "description",
+        content:
+          "Conditions générales de vente et d'utilisation des services Sitaly : création de sites internet et plateforme SaaS pour artisans.",
+      },
       { name: "robots", content: "index,follow" },
       { property: "og:title", content: "Conditions Générales de Vente et d'Utilisation — Sitaly" },
-      { property: "og:description", content: "Les conditions régissant les prestations de sites internet et l'accès à la plateforme Sitaly." },
-      { property: "og:url", content: "https://sitaly.fr/cgv" },
+      {
+        property: "og:description",
+        content:
+          "Les conditions régissant les prestations de sites internet et l'accès à la plateforme Sitaly.",
+      },
+      { property: "og:url", content: "https://sitaly.fr/cgv/" },
     ],
-    links: [{ rel: "canonical", href: "https://sitaly.fr/cgv" }],
+    links: [{ rel: "canonical", href: "https://sitaly.fr/cgv/" }],
   }),
   component: CGV,
 });
@@ -52,27 +60,46 @@ function CGV() {
       </p>
 
       <h2>3. Formules et tarifs</h2>
-      <p>Les services Sitaly sont proposés selon plusieurs formules, combinables, sans engagement et sans frais d'installation :</p>
+      <p>
+        Les services Sitaly sont proposés selon plusieurs formules, combinables, sans engagement et
+        sans frais d'installation :
+      </p>
       <ul>
-        <li><strong>Sitaly Présence</strong> : abonnement mensuel (à partir de 149 €/mois) comprenant la création et l'hébergement d'un site internet, sa maintenance, les modifications de contenu incluses, la fiche Google Business, le référencement local et l'accès à l'application Sitaly ;</li>
-        <li><strong>Sitaly Acquisition</strong> : abonnement mensuel portant sur la création et la gestion de campagnes de publicité en ligne, indépendamment du site. Deux canaux au choix : Google Ads (299 €/mois, majorés de 15 % du budget publicitaire confié) ou ChatGPT Ads (890 €/mois, majorés de 10 % du budget publicitaire confié). Le budget publicitaire versé aux régies n'est pas compris dans l'abonnement ;</li>
-        <li><strong>Sitaly Agents IA</strong> : mise en place et entretien d'agents d'intelligence artificielle (accueil téléphonique, prise de rendez-vous, relance de devis, réponse aux messages), facturés selon un montant d'installation et un abonnement mensuel définis sur devis en fonction du périmètre.</li>
+        <li>
+          <strong>Sitaly Présence</strong> : abonnement mensuel (à partir de 149 €/mois) comprenant
+          la création et l'hébergement d'un site internet, sa maintenance, les modifications de
+          contenu incluses, la fiche Google Business, le référencement local et l'accès à
+          l'application Sitaly ;
+        </li>
+        <li>
+          <strong>Sitaly Acquisition</strong> : abonnement mensuel portant sur la création et la
+          gestion de campagnes de publicité en ligne, indépendamment du site. Deux canaux au choix :
+          Google Ads (299 €/mois, majorés de 15 % du budget publicitaire confié) ou ChatGPT Ads (890
+          €/mois, majorés de 10 % du budget publicitaire confié). Le budget publicitaire versé aux
+          régies n'est pas compris dans l'abonnement ;
+        </li>
+        <li>
+          <strong>Sitaly Agents IA</strong> : mise en place et entretien d'agents d'intelligence
+          artificielle (accueil téléphonique, prise de rendez-vous, relance de devis, réponse aux
+          messages), facturés selon un montant d'installation et un abonnement mensuel définis sur
+          devis en fonction du périmètre.
+        </li>
       </ul>
       <p>
         Les prix sont indiqués en euros. La TVA est applicable selon le régime du Prestataire
-        (mention « TVA non applicable, art. 293 B du CGI » le cas échéant). Le Prestataire peut faire
-        évoluer ses tarifs ; tout changement applicable à un abonnement en cours est notifié à
+        (mention « TVA non applicable, art. 293 B du CGI » le cas échéant). Le Prestataire peut
+        faire évoluer ses tarifs ; tout changement applicable à un abonnement en cours est notifié à
         l'avance et n'entre en vigueur qu'à l'échéance suivante.
       </p>
 
       <h2>4. Paiement et durée de l'abonnement</h2>
       <p>
         Les abonnements payants sont réglés par carte bancaire via notre prestataire de paiement{" "}
-        <strong>Stripe</strong>. L'abonnement mensuel est prélevé d'avance, sans engagement de durée,
-        et se renouvelle automatiquement chaque mois jusqu'à résiliation. L'Utilisateur peut résilier
-        à tout moment depuis son espace ou par e-mail à{" "}
-        <a href="mailto:contact@sitaly.fr">contact@sitaly.fr</a> ; la résiliation prend effet à la fin
-        de la période en cours, sans remboursement du mois entamé. En cas de défaut de paiement,
+        <strong>Stripe</strong>. L'abonnement mensuel est prélevé d'avance, sans engagement de
+        durée, et se renouvelle automatiquement chaque mois jusqu'à résiliation. L'Utilisateur peut
+        résilier à tout moment depuis son espace ou par e-mail à{" "}
+        <a href="mailto:contact@sitaly.fr">contact@sitaly.fr</a> ; la résiliation prend effet à la
+        fin de la période en cours, sans remboursement du mois entamé. En cas de défaut de paiement,
         l'accès aux fonctionnalités payantes peut être suspendu.
       </p>
 
@@ -87,9 +114,9 @@ function CGV() {
 
       <h2>6. Accès à la plateforme et disponibilité</h2>
       <p>
-        Le Prestataire est tenu à une obligation de moyens quant à la disponibilité de la plateforme.
-        Il s'efforce d'assurer un accès continu mais ne garantit pas une disponibilité sans
-        interruption, notamment en cas de maintenance, de force majeure ou de défaillance d'un
+        Le Prestataire est tenu à une obligation de moyens quant à la disponibilité de la
+        plateforme. Il s'efforce d'assurer un accès continu mais ne garantit pas une disponibilité
+        sans interruption, notamment en cas de maintenance, de force majeure ou de défaillance d'un
         service tiers. Le Prestataire peut faire évoluer les fonctionnalités de la plateforme.
       </p>
 
@@ -101,8 +128,8 @@ function CGV() {
           et garantit disposer d'une base légale pour les traiter ;
         </li>
         <li>
-          il s'assure de disposer du droit d'adresser des messages (SMS, e-mails, demandes d'avis) aux
-          personnes concernées et respecte les règles applicables à la prospection ;
+          il s'assure de disposer du droit d'adresser des messages (SMS, e-mails, demandes d'avis)
+          aux personnes concernées et respecte les règles applicables à la prospection ;
         </li>
         <li>
           il respecte les règles de Google relatives aux avis, notamment l'interdiction d'acheter,
@@ -117,11 +144,11 @@ function CGV() {
       <h2>8. Protection des données et rôles des parties</h2>
       <p>
         Concernant les données que l'Utilisateur enregistre sur ses propres clients, l'Utilisateur
-        agit en qualité de <strong>responsable de traitement</strong> et le Prestataire en qualité de{" "}
-        <strong>sous-traitant</strong>, agissant sur les seules instructions de l'Utilisateur. Le
+        agit en qualité de <strong>responsable de traitement</strong> et le Prestataire en qualité
+        de <strong>sous-traitant</strong>, agissant sur les seules instructions de l'Utilisateur. Le
         Prestataire s'engage à mettre en œuvre des mesures de sécurité appropriées et à ne pas
         utiliser ces données à d'autres fins. Les traitements sont détaillés dans la{" "}
-        <a href="/politique-confidentialite">politique de confidentialité</a>.
+        <a href="/politique-confidentialite/">politique de confidentialité</a>.
       </p>
 
       <h2>9. Services tiers</h2>
@@ -135,10 +162,10 @@ function CGV() {
       <h2>10. Propriété intellectuelle</h2>
       <p>
         La plateforme, son code et ses éléments techniques restent la propriété exclusive du
-        Prestataire ; l'Utilisateur bénéficie d'un droit d'usage personnel et non exclusif pendant la
-        durée de son abonnement. Les données et contenus saisis par l'Utilisateur restent sa
-        propriété ; il peut en demander l'export ou la suppression. Pour les sites internet fournis en
-        location, les dispositions spécifiques de l'article 5 s'appliquent.
+        Prestataire ; l'Utilisateur bénéficie d'un droit d'usage personnel et non exclusif pendant
+        la durée de son abonnement. Les données et contenus saisis par l'Utilisateur restent sa
+        propriété ; il peut en demander l'export ou la suppression. Pour les sites internet fournis
+        en location, les dispositions spécifiques de l'article 5 s'appliquent.
       </p>
 
       <h2>11. Droit de rétractation</h2>
@@ -152,10 +179,11 @@ function CGV() {
 
       <h2>12. Responsabilité</h2>
       <p>
-        Le Prestataire est tenu à une obligation de moyens. Sa responsabilité ne saurait être engagée
-        en cas de force majeure, de mauvaise utilisation des services par le Client, ou d'intervention
-        d'un tiers. Elle est en tout état de cause limitée au montant des sommes effectivement versées
-        par le Client au titre des douze derniers mois pour la prestation concernée.
+        Le Prestataire est tenu à une obligation de moyens. Sa responsabilité ne saurait être
+        engagée en cas de force majeure, de mauvaise utilisation des services par le Client, ou
+        d'intervention d'un tiers. Elle est en tout état de cause limitée au montant des sommes
+        effectivement versées par le Client au titre des douze derniers mois pour la prestation
+        concernée.
       </p>
 
       <h2>13. Résiliation et suppression du compte</h2>
@@ -168,21 +196,28 @@ function CGV() {
 
       <h2>14. Médiation et règlement des litiges</h2>
       <p>
-        En cas de litige, le Client consommateur peut recourir gratuitement au service de médiation de
-        la consommation (article L.612-1 du Code de la consommation). Liste des médiateurs agréés :{" "}
-        <a href="https://www.economie.gouv.fr/mediation-conso" target="_blank" rel="noopener noreferrer">
+        En cas de litige, le Client consommateur peut recourir gratuitement au service de médiation
+        de la consommation (article L.612-1 du Code de la consommation). Liste des médiateurs agréés
+        :{" "}
+        <a
+          href="https://www.economie.gouv.fr/mediation-conso"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           economie.gouv.fr/mediation-conso
-        </a>. Plateforme européenne de règlement en ligne des litiges :{" "}
+        </a>
+        . Plateforme européenne de règlement en ligne des litiges :{" "}
         <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">
           ec.europa.eu/consumers/odr
-        </a>.
+        </a>
+        .
       </p>
 
       <h2>15. Loi applicable</h2>
       <p>
         Les présentes sont soumises au droit français. Tout litige relèvera de la compétence des
-        tribunaux du ressort du siège social du Prestataire, sous réserve des dispositions impératives
-        applicables aux consommateurs.
+        tribunaux du ressort du siège social du Prestataire, sous réserve des dispositions
+        impératives applicables aux consommateurs.
       </p>
     </LegalLayout>
   );

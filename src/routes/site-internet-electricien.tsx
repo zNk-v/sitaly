@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 
-const URL = "https://sitaly.fr/site-internet-electricien";
+const URL = "https://sitaly.fr/site-internet-electricien/";
 const TITLE = "Site internet électricien : devis & SEO local | Sitaly dès 149€/mois";
 const DESCRIPTION =
   "Site internet électricien pro livré en 48h. Devis en ligne, urgence cliquable, top Google local. Dès 149€/mois en location, sans engagement et tout inclus.";

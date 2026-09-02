@@ -38,12 +38,26 @@ export interface MetierLandingProps {
 }
 
 export function MetierLanding(props: MetierLandingProps) {
-  const { metier, metierCapitalized, route, included, localSeo, h1, intro, benefits, example, faq, testimonial } = props;
+  const {
+    metier,
+    metierCapitalized,
+    route,
+    included,
+    localSeo,
+    h1,
+    intro,
+    benefits,
+    example,
+    faq,
+    testimonial,
+  } = props;
   const autresMetiers = METIER_PAGES.filter((m) => m.href !== route);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader
+        surfaceClassName="bg-background/85"
+        ctaIcon={false}
         links={[
           { label: "Accueil", to: "/" },
           { label: "Blog", to: "/blog" },
@@ -135,7 +149,7 @@ export function MetierLanding(props: MetierLandingProps) {
           <div className="mt-10 grid gap-x-10 gap-y-7 md:grid-cols-2">
             {included.map((it) => (
               <div key={it.title} className="flex gap-3.5">
-                <Check className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+                <Check className="mt-1 h-5 w-5 flex-shrink-0 text-accent" />
                 <div>
                   <h3 className="font-display text-base font-bold">{it.title}</h3>
                   <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{it.desc}</p>
@@ -148,7 +162,7 @@ export function MetierLanding(props: MetierLandingProps) {
 
       {/* Example */}
       {example && (
-        <section className="border-y border-border bg-secondary/30 py-16 sm:py-20">
+        <section className="border-y border-border bg-background py-16 sm:py-20">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
               <div className="overflow-hidden rounded-2xl border border-border bg-background shadow-elevated">
@@ -181,7 +195,7 @@ export function MetierLanding(props: MetierLandingProps) {
       )}
 
       {/* Argumentaire SEO local : c'est la requête qui amène les appels */}
-      <section className="py-16 sm:py-20">
+      <section className="border-t border-border bg-secondary/30 py-16 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <span className="text-xs font-semibold uppercase tracking-widest text-accent">
             Référencement local
@@ -223,7 +237,8 @@ export function MetierLanding(props: MetierLandingProps) {
             Combien coûte un site internet {metier} ?
           </h2>
           <p className="mt-3 text-sm font-semibold text-foreground/80">
-            En location, sans engagement et sans frais d'installation. Tout est géré, vous ne touchez à rien.
+            En location, sans engagement et sans frais d'installation. Tout est géré, vous ne
+            touchez à rien.
           </p>
           <div className="mx-auto mt-8 grid max-w-3xl gap-5 md:grid-cols-2">
             {[
@@ -290,9 +305,7 @@ export function MetierLanding(props: MetierLandingProps) {
                     </li>
                   ))}
                 </ul>
-                {tier.note && (
-                  <p className="mt-4 text-xs text-muted-foreground">* {tier.note}</p>
-                )}
+                {tier.note && <p className="mt-4 text-xs text-muted-foreground">* {tier.note}</p>}
               </article>
             ))}
           </div>
@@ -375,7 +388,7 @@ export function MetierLanding(props: MetierLandingProps) {
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.desc}</p>
                 <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-accent">
                   Voir la page
-                  <ArrowRight className="h-3.5 w-3.5" />
+                  <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" />
                 </span>
               </a>
             ))}
@@ -416,9 +429,9 @@ export function MetierLanding(props: MetierLandingProps) {
           <ul className="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm text-muted-foreground">
             {METIER_PAGES.map((m) => (
               <li key={m.href}>
-                <a href={m.href} className="block py-2.5 hover:text-foreground">
+                <Link to={m.to} className="block py-2.5 hover:text-foreground">
                   {m.title}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -447,7 +460,6 @@ export function MetierLanding(props: MetierLandingProps) {
     </div>
   );
 }
-
 
 export function buildMetierMeta(opts: {
   title: string;
@@ -487,8 +499,30 @@ export function buildMetierMeta(opts: {
           },
           areaServed: { "@type": "Country", name: "France" },
           offers: [
-            { "@type": "Offer", name: "Sitaly Présence", price: "149", priceCurrency: "EUR", priceSpecification: { "@type": "UnitPriceSpecification", price: "149", priceCurrency: "EUR", unitCode: "MON" } },
-            { "@type": "Offer", name: "Sitaly Acquisition", price: "299", priceCurrency: "EUR", priceSpecification: { "@type": "UnitPriceSpecification", price: "299", priceCurrency: "EUR", unitCode: "MON" } },
+            {
+              "@type": "Offer",
+              name: "Sitaly Présence",
+              price: "149",
+              priceCurrency: "EUR",
+              priceSpecification: {
+                "@type": "UnitPriceSpecification",
+                price: "149",
+                priceCurrency: "EUR",
+                unitCode: "MON",
+              },
+            },
+            {
+              "@type": "Offer",
+              name: "Sitaly Acquisition",
+              price: "299",
+              priceCurrency: "EUR",
+              priceSpecification: {
+                "@type": "UnitPriceSpecification",
+                price: "299",
+                priceCurrency: "EUR",
+                unitCode: "MON",
+              },
+            },
           ],
           url,
         }),
