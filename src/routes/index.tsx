@@ -9,7 +9,6 @@ import {
   Clock,
   Frown,
   TrendingUp,
-  Shield,
   Star,
   ChevronDown,
   Sparkles,
@@ -17,20 +16,11 @@ import {
   Globe,
   Target,
   Zap,
-  Megaphone,
-  Bell,
-  Filter,
   MessageSquare,
   FileText,
   Instagram,
   Linkedin,
-  Bot,
-  Hammer,
-  Menu,
-  X,
 } from "lucide-react";
-import visuelAuto800 from "@/assets/visuel-automatisation-800.jpg";
-import visuelAuto1400 from "@/assets/visuel-automatisation-1400.jpg";
 import teddy448 from "@/assets/teddy-vidal-448.jpg";
 import teddy672 from "@/assets/teddy-vidal-672.jpg";
 import exampleRenovation from "@/assets/example-renovation.jpg";
@@ -132,8 +122,6 @@ function SitalyHome() {
       <TrustBar />
       <Problem />
       <HowItWorks />
-      <GoogleAds />
-      <Automation />
       <StackedOffers />
       <Extras />
       <Realisations />
@@ -604,148 +592,6 @@ function HowItWorks() {
             </div>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- GOOGLE ADS ---------------- */
-function GoogleAds() {
-  const points = [
-    {
-      icon: Megaphone,
-      title: "Visibilité immédiate",
-      desc: "Pourquoi attendre des mois le référencement naturel ? Apparaissez en haut de Google dès le premier jour.",
-    },
-    {
-      icon: Target,
-      title: "Des prospects qualifiés",
-      desc: "On cible les personnes qui cherchent vos services, dans votre zone, au bon moment.",
-    },
-    {
-      icon: Shield,
-      title: "Un budget maîtrisé",
-      desc: "Vous fixez le budget. Pas de mauvaise surprise, vous gardez le contrôle.",
-    },
-    {
-      icon: TrendingUp,
-      title: "Des résultats mesurables",
-      desc: "Vous savez exactement combien d'appels et de demandes vos campagnes génèrent.",
-    },
-  ];
-  return (
-    <section className="py-20 sm:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr]">
-          <div>
-            <div className="flex items-center gap-3 text-brand-ink">
-              <span className="rail-num text-sm font-bold">03</span>
-              <span className="rail-line h-px w-10 shrink-0" aria-hidden="true" />
-              <span className="rail-label text-muted-foreground">Google Ads</span>
-            </div>
-            <h2 className="display-section mt-4">
-              Soyez visible <span className="accent-word text-brand-ink">immédiatement</span>
-            </h2>
-            <p className="measure mt-5 text-muted-foreground sm:text-lg">
-              Le référencement naturel prend du temps. Google Ads vous place en tête des recherches
-              dès aujourd'hui, et vous apporte des demandes pendant que votre visibilité naturelle
-              se construit.
-            </p>
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-base font-semibold text-accent-foreground transition hover:brightness-110"
-            >
-              <Calendar className="h-5 w-5" />
-              En discuter
-            </a>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {points.map((p) => (
-              <div
-                key={p.title}
-                className="rounded-2xl border border-border bg-card p-6 shadow-soft"
-              >
-                <div className="grid h-11 w-11 place-items-center rounded-xl bg-accent/12 text-accent">
-                  <p.icon className="h-5 w-5" />
-                </div>
-                <h3 className="mt-4 font-bold">{p.title}</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground">{p.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- AUTOMATION ---------------- */
-function Automation() {
-  const examples = [
-    { icon: MessageSquare, t: "Répondre automatiquement aux demandes entrantes" },
-    { icon: Filter, t: "Qualifier les prospects avant qu'ils vous contactent" },
-    { icon: Bell, t: "Relancer les devis automatiquement" },
-    { icon: Calendar, t: "Envoyer des rappels de rendez-vous" },
-    { icon: Clock, t: "Gagner du temps sur les tâches répétitives" },
-  ];
-  return (
-    /* Section en encre : le visuel généré est sombre, il ne tiendrait pas sur
-       papier. Elle casse aussi la succession de grilles de cartes. */
-    <section className="bg-ink py-20 text-white sm:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <SectionHeader
-          index="04"
-          eyebrow="Automatisation"
-          tone="ink"
-          title={
-            <>
-              Ce qui se répète, <span className="accent-word text-brand">on l'automatise</span>
-            </>
-          }
-          subtitle="Les tâches répétitives se font toutes seules, vous restez sur votre métier."
-        />
-
-        <div className="mt-14 grid items-center gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
-          {/* Visuel abstrait, généré. Il n'illustre ni un chantier, ni un client,
-              ni un local : c'est une forme, pas un témoignage. DESIGN.md §7. */}
-          <div className="rise zoom-frame rounded-2xl border border-white/12">
-            <img
-              src={visuelAuto800}
-              srcSet={`${visuelAuto800} 800w, ${visuelAuto1400} 1400w`}
-              sizes="(min-width: 1024px) 40vw, 100vw"
-              width={800}
-              height={447}
-              loading="lazy"
-              decoding="async"
-              alt=""
-              aria-hidden="true"
-              className="block h-auto w-full"
-            />
-          </div>
-
-          <div className="stagger grid gap-3">
-            {examples.map((e, i) => (
-              <div
-                key={e.t}
-                data-reveal
-                style={{ "--i": i } as React.CSSProperties}
-                className="lift lift-ink flex items-center gap-3 rounded-xl border border-white/12 bg-white/[0.04] px-5 py-4"
-              >
-                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-brand/15 text-brand">
-                  <e.icon className="h-5 w-5" />
-                </div>
-                <span className="font-medium">{e.t}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <p className="measure mt-10 text-sm text-white/55">
-          Ces automatisations sont proposées en option, selon les besoins réels de votre entreprise.
-          Rien d'imposé.
-        </p>
       </div>
     </section>
   );
