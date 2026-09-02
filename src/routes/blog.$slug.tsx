@@ -366,7 +366,7 @@ function InlineCTA() {
         Vous voulez appliquer tout ça sans y passer 40 heures ?
       </h3>
       <p className="mt-2 text-foreground/80">
-        Site artisan livré en 48h, optimisé pour le SEO local. À partir de 149€/mois en location, sans engagement.
+        Site artisan livré en 48h, optimisé pour le SEO local. En abonnement mensuel, sans engagement.
       </p>
       <a
         href={CALENDLY_URL}
@@ -389,7 +389,7 @@ function FinalCTA() {
       </h2>
       <p className="mt-2 text-muted-foreground">
         Sitaly s'occupe de tout : création, référencement local, mise en ligne en 48h.
-        À partir de 149€/mois en location, tout inclus et sans engagement.
+        En abonnement mensuel, tout inclus et sans engagement.
       </p>
       <a
         href={CALENDLY_URL}

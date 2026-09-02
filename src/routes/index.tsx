@@ -36,12 +36,13 @@ import { SitalyLogo } from "@/components/SitalyLogo";
 import { LinkedinLink } from "@/components/LinkedinLink";
 import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
 import { MetierFooterLinks, MetierLinksSection } from "@/components/MetierLinks";
+import { SectionHeader } from "@/components/SectionHeader";
 import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 const FAQ_ITEMS = [
   {
-    q: "Quel est le tarif ?",
-    a: "Trois offres combinables, sans engagement et sans frais d'installation. Sitaly Présence (149€/mois) : votre site entretenu et bien référencé localement. Sitaly Acquisition : la gestion de vos campagnes publicitaires, indépendamment du site — Google Ads à 299€/mois plus 15 % du budget publicitaire, ou ChatGPT Ads à 890€/mois plus 10 % du budget publicitaire. Sitaly Agents IA : des agents installés clé en main qui répondent, qualifient, prennent vos rendez-vous et relancent vos devis. Vous prenez l'une, plusieurs, ou tout. Le budget publicitaire versé aux régies reste séparé.",
+    q: "Comment se construit le budget ?",
+    a: "Trois offres combinables, en abonnement mensuel, sans engagement de durée et sans frais d'installation. Sitaly Présence couvre votre site, son hébergement et votre référencement local. Sitaly Acquisition couvre la création et la gestion de vos campagnes Google Ads ou ChatGPT Ads, indépendamment du site : la rémunération y combine un forfait mensuel et une part du budget publicitaire. Sitaly Agents IA se chiffre sur mesure, selon les automatisations retenues. Le budget publicitaire lui-même est versé directement aux régies et reste séparé. Le montant exact dépend de votre activité et du périmètre choisi : il vous est donné à l'issue de l'appel découverte de 20 minutes, par écrit, avant tout engagement.",
   },
   {
     q: "Que comprennent vraiment les modifications incluses ?",
@@ -49,7 +50,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Puis-je acheter mon site ?",
-    a: "Sitaly fonctionne en location : c'est ce qui nous permet de tout gérer pour vous (technique, hébergement, mises à jour) et de rester sans engagement. Un rachat reste possible sur demande si vous le souhaitez.",
+    a: "Sitaly fonctionne en abonnement : c'est ce qui nous permet de tout gérer pour vous (technique, hébergement, mises à jour) et de rester sans engagement de durée. Un rachat reste possible sur demande si vous le souhaitez.",
   },
   {
     q: "Combien de temps pour le mettre en ligne ?",
@@ -76,12 +77,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Sites internet, Google Ads, ChatGPT Ads et automatisation IA pour PME, TPE et artisans. Dès 149€/mois, sans engagement. Plus de demandes, plus de clients.",
+          "Agence web pour PME, TPE et artisans : site internet, Google Ads, ChatGPT Ads et agents IA. Sans engagement, site livré en 48h. Plus de demandes, plus de clients.",
       },
       { property: "og:title", content: "Site web, Google Ads & IA pour PME, TPE et artisans | Sitaly" },
       {
         property: "og:description",
-        content: "Sites internet, Google Ads, ChatGPT Ads et automatisation IA pour PME, TPE et artisans. Dès 149€/mois, sans engagement. Plus de demandes, plus de clients.",
+        content: "Agence web pour PME, TPE et artisans : site internet, Google Ads, ChatGPT Ads et agents IA. Sans engagement, site livré en 48h. Plus de demandes, plus de clients.",
       },
       { property: "og:url", content: "https://sitaly.fr/" },
     ],
@@ -116,13 +117,13 @@ function SitalyHome() {
       <GoogleAds />
       <Automation />
       <Pricing />
-      <BlogOption />
-      <Options />
+      <Extras />
       <Examples />
       <MetierLinksSection />
       <Process />
       <Clients />
       <Faq />
+      <Founder />
       <Contact />
       <Footer />
     </div>
@@ -132,26 +133,28 @@ function SitalyHome() {
 /* ---------------- NAV ---------------- */
 function Nav() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
+    /* Bandeau en encre : il prolonge le hero sans couture, et reste lisible
+       au-dessus des sections papier une fois le scroll engagé. DESIGN.md §3. */
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-ink/90 backdrop-blur-md">
       <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <a href="#top" className="flex items-center" aria-label="Sitaly — accueil">
           <SitalyLogo />
         </a>
         <nav className="hidden items-center gap-8 md:flex">
-          <a href="#offre" className="text-sm font-medium text-muted-foreground hover:text-foreground">Offres</a>
-          <Link to="/agents-ia/" className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:opacity-80">
+          <a href="#offre" className="text-sm font-medium text-white/70 transition hover:text-white">Offres</a>
+          <Link to="/agents-ia/" className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand transition hover:text-white">
             <Sparkles className="h-3.5 w-3.5" />
             Agents IA
           </Link>
           {/* Page statique hors routeur : lien classique, pas de <Link>. */}
-          <a href="/chatgpt-ads/" className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:opacity-80">
+          <a href="/chatgpt-ads/" className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand transition hover:text-white">
             <MessageSquare className="h-3.5 w-3.5" />
             ChatGPT Ads
           </a>
-          <a href="#exemples" className="text-sm font-medium text-muted-foreground hover:text-foreground">Exemples</a>
-          <a href="#process" className="text-sm font-medium text-muted-foreground hover:text-foreground">Process</a>
-          <Link to="/blog/" className="text-sm font-medium text-muted-foreground hover:text-foreground">Blog</Link>
-          <a href="#faq" className="text-sm font-medium text-muted-foreground hover:text-foreground">FAQ</a>
+          <a href="#exemples" className="text-sm font-medium text-white/70 transition hover:text-white">Exemples</a>
+          <a href="#process" className="text-sm font-medium text-white/70 transition hover:text-white">Process</a>
+          <Link to="/blog/" className="text-sm font-medium text-white/70 transition hover:text-white">Blog</Link>
+          <a href="#faq" className="text-sm font-medium text-white/70 transition hover:text-white">FAQ</a>
         </nav>
 
         <div className="flex items-center gap-2">
@@ -160,7 +163,7 @@ function Nav() {
             href={CALENDLY_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden h-11 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90 sm:inline-flex"
+            className="hidden h-11 items-center gap-2 rounded-lg bg-accent px-4 text-sm font-semibold text-accent-foreground transition hover:brightness-110 sm:inline-flex"
           >
             <Calendar className="h-4 w-4" />
             Réserver un appel
@@ -179,45 +182,46 @@ function Hero() {
       <div className="mx-auto max-w-7xl px-4 pb-20 pt-16 sm:px-6 sm:pt-24 lg:pb-28">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground shadow-soft">
-              <Sparkles className="h-3.5 w-3.5 text-accent" />
-              Pour artisans, indépendants & PME de services
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-white/70">
+              <Sparkles className="h-3.5 w-3.5 text-brand" />
+              Agence web · Artisans, indépendants & PME de services
             </div>
-            <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-              Plus de clients. Plus d'appels. <span className="gradient-text">Moins de temps perdu.</span>
+            {/* Le fragment final bascule en serif italique plutôt qu'en couleur :
+                la tension vient du dessin de la lettre. Voir DESIGN.md §4. */}
+            <h1 className="display-hero mt-6 text-white">
+              Plus de clients. Plus d'appels.{" "}
+              <span className="accent-word text-brand">Moins de temps perdu.</span>
             </h1>
-            <p className="mt-5 text-lg text-muted-foreground sm:text-xl">
-              Sitaly met en place les outils qui vous apportent des clients : un <strong className="text-foreground">site internet performant</strong>, <strong className="text-foreground">Google Ads</strong> et des <strong className="text-foreground">automatisations</strong>. Votre site livré en <strong className="text-foreground">48h</strong>.
+            <p className="measure mt-6 text-lg text-white/70 sm:text-xl">
+              Sitaly construit et pilote votre présence en ligne : site internet, Google Ads,
+              agents IA. Vous gardez votre métier, on prend le reste.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
                 href={CALENDLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground shadow-elevated transition hover:opacity-90"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-base font-semibold text-accent-foreground shadow-glow transition hover:brightness-110"
               >
                 <Calendar className="h-5 w-5" />
                 Réserver un appel
               </a>
               <a
                 href="#exemples"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-card px-6 py-3.5 text-base font-semibold text-foreground transition hover:bg-secondary"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 px-6 py-3.5 text-base font-semibold text-white transition hover:bg-white/10"
               >
-                Voir des exemples
+                Voir nos réalisations
                 <ArrowRight className="h-5 w-5" />
               </a>
             </div>
 
-            <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-3 text-sm sm:grid-cols-4 sm:text-[15px]">
-              {[
-                "Plus d'appels",
-                "Plus de devis",
-                "Visible sur Google",
-                "Zéro temps perdu",
-              ].map((t) => (
-                <li key={t} className="flex items-center gap-2 text-foreground/90">
-                  <Check className="h-4 w-4 shrink-0 text-success" />
+            {/* Ce que le prix affiché portait — clarté et absence d'engagement —
+                reste dit ici, sans montant. Voir DESIGN.md §8. */}
+            <ul className="mt-9 grid grid-cols-2 gap-x-6 gap-y-3 text-sm sm:grid-cols-3 sm:text-[15px]">
+              {["Sans engagement", "Sans frais d'installation", "Réponse sous 24h"].map((t) => (
+                <li key={t} className="flex items-center gap-2 text-white/80">
+                  <Check className="h-4 w-4 shrink-0 text-signal" />
                   {t}
                 </li>
               ))}
@@ -343,19 +347,23 @@ function ProfessionsMarquee() {
 }
 
 function TrustBar() {
+  /* Le montant a quitté la page (DESIGN.md §8). Ce qu'il portait — un cadre
+     clair et sans piège — est repris ici en engagements vérifiables. */
   const items = [
-    { v: "Dès 149€", l: "par mois" },
-    { v: "Google Ads", l: "+ automatisation" },
     { v: "48h", l: "Mise en ligne" },
-    { v: "7j/7", l: "Support réactif" },
+    { v: "24h", l: "Réponse à votre demande" },
+    { v: "0€", l: "Frais d'installation" },
+    { v: "Sans", l: "Engagement de durée" },
   ];
   return (
-    <div className="border-y border-border bg-secondary/50">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px overflow-hidden md:grid-cols-4">
+    <div className="border-y border-border bg-paper-sunk">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-y divide-border/70 md:grid-cols-4 md:divide-y-0">
         {items.map((i) => (
-          <div key={i.l} className="bg-secondary/50 px-4 py-5 text-center">
-            <div className="font-display text-xl font-bold text-foreground sm:text-2xl">{i.v}</div>
-            <div className="text-xs text-muted-foreground sm:text-sm">{i.l}</div>
+          <div key={i.l} className="px-5 py-7">
+            <div className="rail-num font-display text-2xl font-extrabold tracking-tight text-brand-ink sm:text-3xl">
+              {i.v}
+            </div>
+            <div className="mt-1 text-xs text-muted-foreground sm:text-sm">{i.l}</div>
           </div>
         ))}
       </div>
@@ -386,11 +394,16 @@ function Problem() {
     <section className="py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
+          index="01"
           eyebrow="Le constat"
-          title="Votre site actuel vous fait perdre des clients"
+          title={
+            <>
+              Votre site actuel vous fait <span className="accent-word">perdre des clients</span>
+            </>
+          }
           subtitle="Aujourd'hui, 8 clients sur 10 vérifient un site web avant de vous contacter."
         />
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
           {items.map((it) => (
             <div
               key={it.title}
@@ -449,28 +462,39 @@ function HowItWorks() {
     },
   ];
   return (
-    <section className="bg-secondary/40 py-20 sm:py-24">
+    /* Première section en encre : elle installe l'alternance annoncée en
+       DESIGN.md §3 et détache la méthode du reste de la page. */
+    <section className="bg-ink py-20 text-white sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
+          index="02"
           eyebrow="Notre méthode"
-          title="Comment ça fonctionne ?"
-          subtitle="Un système simple en trois temps pour transformer votre présence en ligne en clients."
+          tone="ink"
+          title={
+            <>
+              Attirer, convertir, <span className="accent-word text-brand">automatiser</span>
+            </>
+          }
+          subtitle="Un système en trois temps pour transformer votre présence en ligne en clients."
         />
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+        <div className="mt-14 grid gap-5 md:grid-cols-3">
           {steps.map((s) => (
-            <div key={s.title} className="rounded-2xl border border-border bg-card p-7 shadow-soft transition hover:shadow-elevated">
+            <div
+              key={s.title}
+              className="rounded-2xl border border-white/12 bg-white/[0.04] p-7 transition hover:border-brand/40 hover:bg-white/[0.07]"
+            >
               <div className="flex items-center justify-between">
-                <div className="grid h-12 w-12 place-items-center rounded-xl bg-accent/12 text-accent">
+                <div className="grid h-12 w-12 place-items-center rounded-xl bg-brand/15 text-brand">
                   <s.icon className="h-6 w-6" />
                 </div>
-                <span className="font-display text-3xl font-extrabold text-accent/30">{s.n}</span>
+                <span className="rail-num font-display text-3xl font-extrabold text-white/20">{s.n}</span>
               </div>
               <h3 className="mt-5 text-xl font-bold">{s.title}</h3>
-              <p className="mt-1 text-[15px] font-medium text-muted-foreground">{s.benefit}</p>
+              <p className="mt-1 text-[15px] font-medium text-white/60">{s.benefit}</p>
               <ul className="mt-5 space-y-2.5">
                 {s.points.map((p) => (
-                  <li key={p} className="flex items-start gap-2.5 text-[15px]">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-success" />
+                  <li key={p} className="flex items-start gap-2.5 text-[15px] text-white/85">
+                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-signal" />
                     <span>{p}</span>
                   </li>
                 ))}
@@ -512,18 +536,22 @@ function GoogleAds() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr]">
           <div>
-            <div className="text-xs font-semibold uppercase tracking-wider text-accent">Google Ads</div>
-            <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
-              Soyez visible <span className="gradient-text">immédiatement</span>
+            <div className="flex items-center gap-3 text-brand-ink">
+              <span className="rail-num text-sm font-bold">03</span>
+              <span className="rail-line h-px w-10 shrink-0" aria-hidden="true" />
+              <span className="rail-label text-muted-foreground">Google Ads</span>
+            </div>
+            <h2 className="display-section mt-4">
+              Soyez visible <span className="accent-word text-brand-ink">immédiatement</span>
             </h2>
-            <p className="mt-4 text-muted-foreground sm:text-lg">
+            <p className="measure mt-5 text-muted-foreground sm:text-lg">
               Le référencement naturel prend du temps. Google Ads vous place en tête des recherches dès aujourd'hui, et vous apporte des demandes pendant que votre visibilité naturelle se construit.
             </p>
             <a
               href={CALENDLY_URL}
           target="_blank"
           rel="noopener noreferrer"
-              className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground shadow-elevated transition hover:opacity-90"
+              className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-base font-semibold text-accent-foreground transition hover:brightness-110"
             >
               <Calendar className="h-5 w-5" />
               En discuter
@@ -556,14 +584,19 @@ function Automation() {
     { icon: Clock, t: "Gagner du temps sur les tâches répétitives" },
   ];
   return (
-    <section className="bg-secondary/40 py-20 sm:py-24">
+    <section className="bg-paper-sunk py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
+          index="04"
           eyebrow="Automatisation"
-          title="Automatisation intelligente"
-          subtitle="Laissez les tâches répétitives se faire toutes seules et concentrez-vous sur votre métier."
+          title={
+            <>
+              Ce qui se répète, <span className="accent-word">on l'automatise</span>
+            </>
+          }
+          subtitle="Les tâches répétitives se font toutes seules, vous restez sur votre métier."
         />
-        <div className="mx-auto mt-12 grid max-w-4xl gap-3 sm:grid-cols-2">
+        <div className="mt-14 grid gap-3 sm:grid-cols-2">
           {examples.map((e) => (
             <div
               key={e.t}
@@ -595,9 +628,6 @@ function Automation() {
 type PricingCta = { label: string; to?: string; href?: string };
 
 interface PricingView {
-  price: string;
-  period: string;
-  setup: string | null;
   objective: string;
   inherits: string | null;
   features: readonly string[];
@@ -619,9 +649,6 @@ const PRICING_TIERS: PricingTier[] = [
     name: "Sitaly Présence",
     badge: "Le tout-en-un",
     icon: Globe,
-    price: "149€",
-    period: "/mois",
-    setup: null,
     objective: "Votre présence en ligne gérée de A à Z, sans que vous touchiez à la technique.",
     inherits: null,
     features: [
@@ -643,9 +670,6 @@ const PRICING_TIERS: PricingTier[] = [
     promise: "Attirez de nouveaux clients, à votre rythme.",
     featured: false,
     // Valeurs par défaut = premier canal (Google Ads).
-    price: "299€",
-    period: "/mois",
-    setup: "+ 15 % du budget publicitaire",
     objective: "Des demandes qualifiées par la publicité. Avec ou sans site.",
     inherits: "Indépendant de votre site",
     features: [
@@ -660,9 +684,6 @@ const PRICING_TIERS: PricingTier[] = [
       {
         key: "google-ads",
         label: "Google Ads",
-        price: "299€",
-        period: "/mois",
-        setup: "+ 15 % du budget publicitaire",
         objective: "Des demandes qualifiées par la publicité. Avec ou sans site.",
         inherits: "Indépendant de votre site",
         features: [
@@ -677,9 +698,6 @@ const PRICING_TIERS: PricingTier[] = [
       {
         key: "chatgpt-ads",
         label: "ChatGPT Ads",
-        price: "890€",
-        period: "/mois",
-        setup: "+ 10 % du budget publicitaire",
         objective: "Apparaissez dans ChatGPT quand un futur client décrit son besoin.",
         inherits: "Canal récent, piloté par la mesure",
         features: [
@@ -697,9 +715,6 @@ const PRICING_TIERS: PricingTier[] = [
     name: "Sitaly Agents IA",
     badge: "Automatisation",
     icon: Bot,
-    price: "Sur mesure",
-    period: "",
-    setup: null,
     objective: "Des agents IA qui répondent, qualifient et prennent vos rendez-vous. Installés clé en main.",
     inherits: "Se greffe sur n'importe quelle offre",
     features: [
@@ -720,15 +735,20 @@ function Pricing() {
     <section id="offre" className="py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
-          eyebrow="Tarifs"
-          title="Choisissez le niveau d'accompagnement adapté à votre activité"
-          subtitle="Votre présence en ligne avec Présence, vos campagnes Google Ads ou ChatGPT Ads avec Acquisition. Combinables, sans engagement."
+          index="05"
+          eyebrow="Nos offres"
+          title={
+            <>
+              Trois leviers, <span className="accent-word">combinables</span>
+            </>
+          }
+          subtitle="La présence en ligne, l'acquisition payante, les agents IA. Vous en prenez un, deux ou les trois. Chaque périmètre est chiffré après l'appel découverte, sur votre activité réelle."
         />
 
-        <p className="mx-auto mt-10 max-w-3xl rounded-full border border-border bg-secondary/60 px-5 py-3 text-center text-sm font-semibold text-foreground/80">
+        <p className="mt-10 inline-flex rounded-full border border-border bg-paper-sunk px-5 py-3 text-sm font-semibold text-foreground/80">
           Sans engagement · Tout est géré, vous ne touchez à rien.
         </p>
-        <div className="mx-auto mt-10 flex max-w-6xl snap-x snap-mandatory items-stretch gap-5 overflow-x-auto pb-2 pt-6 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-6 lg:grid lg:grid-cols-3 lg:overflow-visible lg:pb-0 lg:pt-0 [&::-webkit-scrollbar]:hidden">
+        <div className="mt-10 flex max-w-6xl snap-x snap-mandatory items-stretch gap-5 overflow-x-auto pb-2 pt-6 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-6 lg:grid lg:grid-cols-3 lg:overflow-visible lg:pb-0 lg:pt-0 [&::-webkit-scrollbar]:hidden">
           {PRICING_TIERS.map((t) => (
             <div
               key={t.name}
@@ -812,17 +832,7 @@ function PricingCard({ tier, featured }: { tier: PricingTier; featured: boolean 
 
       <h3 className="mt-5 text-xl font-bold">{tier.name}</h3>
 
-      <p className="mt-1 text-sm text-muted-foreground">{view.objective}</p>
-
-      <div className="mt-5 flex items-baseline gap-1">
-        <span className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
-          {view.price}
-        </span>
-        <span className="text-muted-foreground">{view.period}</span>
-      </div>
-      {view.setup && (
-        <p className="mt-1 text-sm font-medium text-foreground/70">{view.setup}</p>
-      )}
+      <p className="mt-2 text-sm text-muted-foreground">{view.objective}</p>
 
       <div className="mt-7 space-y-3">
         {view.inherits && (
@@ -891,79 +901,61 @@ function PricingCard({ tier, featured }: { tier: PricingTier; featured: boolean 
   );
 }
 
-/* ---------------- OPTION BLOG SEO ---------------- */
-const BLOG_TIERS = [
-  { name: "Essentiel", articles: "1 article SEO / mois", price: "89€", featured: false },
-  { name: "Croissance", articles: "2 articles SEO / mois", price: "159€", featured: true },
-  { name: "Premium", articles: "4 articles SEO / mois", price: "299€", featured: false },
+/* ---------------- COMPLÉMENTS ---------------- */
+/**
+ * Les deux anciennes sections tarifaires (forfaits blog SEO, options ponctuelles)
+ * fusionnent ici en une seule liste de compléments, sans montant.
+ * Voir DESIGN.md §8.
+ */
+const EXTRAS = [
+  {
+    icon: FileText,
+    name: "Blog SEO",
+    desc: "Des articles optimisés, rédigés et mis en page chaque mois. En complément de votre site, ou seul si vous en avez déjà un.",
+  },
+  {
+    icon: Sparkles,
+    name: "Logo & identité visuelle",
+    desc: "Un logo, une palette et des règles d'usage, quand la marque n'existe pas encore ou a vieilli.",
+  },
+  {
+    icon: Star,
+    name: "Photos professionnelles",
+    desc: "Vos vraies réalisations photographiées. Rien ne remplace une photo de votre travail sur votre propre site.",
+  },
+  {
+    icon: TrendingUp,
+    name: "Rédaction de contenus",
+    desc: "Pages de service, fiches métier, textes de présentation. Écrits pour vos clients et pour Google.",
+  },
 ] as const;
 
-function BlogOption() {
+function Extras() {
   return (
-    <section className="py-20 sm:py-24">
+    <section className="bg-paper-sunk py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
-          eyebrow="Option contenu"
-          title="Un blog qui vous fait monter sur Google, chaque mois"
-          subtitle="Des articles optimisés SEO, rédigés et mis en page pour vous. En option sur votre forfait, ou seul si vous avez déjà un site."
+          index="06"
+          eyebrow="Compléments"
+          title={
+            <>
+              Ce qui s'ajoute <span className="accent-word">quand c'est utile</span>
+            </>
+          }
+          subtitle="Rien d'imposé. Ces briques se greffent sur votre accompagnement, à la demande."
         />
-        <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-3">
-          {BLOG_TIERS.map((t) => (
-            <div
-              key={t.name}
-              className={`relative flex flex-col rounded-2xl bg-card p-6 shadow-soft transition ${
-                t.featured ? "border-2 border-accent shadow-glow" : "border border-border hover:border-accent/40"
-              }`}
-            >
-              {t.featured && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-accent px-3 py-0.5 text-[11px] font-bold uppercase tracking-wider text-accent-foreground">
-                  Recommandé
-                </span>
-              )}
-              <div className="grid h-9 w-9 place-items-center rounded-lg bg-accent/10 text-accent">
-                <FileText className="h-5 w-5" />
-              </div>
-              <h3 className="mt-4 font-bold">Blog SEO {t.name}</h3>
-              <p className="mt-1 text-sm text-muted-foreground">{t.articles}</p>
-              <div className="mt-4 flex items-baseline gap-1">
-                <span className="font-display text-2xl font-extrabold">{t.price}</span>
-                <span className="text-sm text-muted-foreground">/mois</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- OPTIONS SUR DEVIS ---------------- */
-function Options() {
-  const opts = [
-    { icon: Sparkles, name: "Logo / identité visuelle", price: "390€" },
-    { icon: Star, name: "Photos professionnelles", price: "290€" },
-    { icon: TrendingUp, name: "Rédaction de contenus", price: "sur devis" },
-  ];
-  return (
-    <section className="bg-secondary/40 py-20 sm:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <SectionHeader
-          eyebrow="Options ponctuelles"
-          title="Des leviers en plus, en paiement unique"
-          subtitle="Ajoutez uniquement ce qui vous est utile. Rien d'imposé."
-        />
-        <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-3 sm:grid-cols-3">
-          {opts.map((o) => (
+        <div className="mt-14 grid gap-4 sm:grid-cols-2">
+          {EXTRAS.map((o) => (
             <div
               key={o.name}
-              className="flex items-center gap-3 rounded-xl border border-border bg-card px-5 py-4 shadow-soft transition hover:border-accent/40"
+              className="flex gap-4 rounded-2xl border border-border bg-card p-6 shadow-soft transition hover:border-accent/40 hover:shadow-elevated"
             >
-              <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-accent/10 text-accent">
+              <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent/10 text-accent">
                 <o.icon className="h-5 w-5" />
               </div>
               <div className="min-w-0">
-                <span className="block font-medium">{o.name}</span>
-                <span className="text-sm text-muted-foreground">{o.price}</span>
+                <h3 className="font-bold">{o.name}</h3>
+                <p className="mt-1.5 text-[15px] text-muted-foreground">{o.desc}</p>
               </div>
             </div>
           ))}
@@ -1007,9 +999,14 @@ function Examples() {
     <section id="exemples" className="py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
-          eyebrow="Exemples"
-          title="Des sites pensés pour convertir"
-          subtitle="Quelques exemples de sites réalisés pour des artisans et indépendants. Cliquez sur un aperçu pour ouvrir le site."
+          index="07"
+          eyebrow="Réalisations"
+          title={
+            <>
+              Des sites <span className="accent-word">réellement en ligne</span>
+            </>
+          }
+          subtitle="Cliquez sur un aperçu pour ouvrir le site du client. Ce sont de vraies mises en ligne, pas des maquettes."
         />
 
         <div className="mt-16 grid gap-8 sm:mt-20 md:grid-cols-2">
@@ -1098,30 +1095,34 @@ function EmbedPreview({ url, title }: { url: string; title: string }) {
 function Process() {
   const steps = [
     { n: "01", t: "Appel découverte", d: "On comprend votre activité et vos besoins (20 min)." },
-    { n: "02", t: "Création du site", d: "Nos équipes conçoivent votre site sur mesure." },
+    { n: "02", t: "Création du site", d: "Votre site est conçu sur mesure, sans gabarit revendu." },
     { n: "03", t: "Validation", d: "Vous validez le rendu, on ajuste si besoin." },
     { n: "04", t: "Mise en ligne", d: "Hébergement, nom de domaine, SEO local : on s'occupe de tout." },
     { n: "05", t: "Suivi mensuel", d: "Maintenance, mises à jour et modifications incluses." },
   ];
   return (
-    <section id="process" className="bg-primary py-20 text-primary-foreground sm:py-28">
+    <section id="process" className="bg-ink py-20 text-white sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="max-w-2xl">
-          <div className="text-xs font-semibold uppercase tracking-wider text-accent">Process</div>
-          <h2 className="mt-2 font-display text-3xl font-extrabold sm:text-4xl">Comment ça se passe ?</h2>
-          <p className="mt-3 text-primary-foreground/70">
-            5 étapes simples pour avoir un site qui travaille pour vous.
-          </p>
-        </div>
-        <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+        <SectionHeader
+          index="08"
+          eyebrow="Process"
+          tone="ink"
+          title={
+            <>
+              Cinq étapes, <span className="accent-word text-brand">et c'est en ligne</span>
+            </>
+          }
+          subtitle="De l'appel découverte à la mise en ligne, vous savez à chaque instant où en est votre site."
+        />
+        <ol className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {steps.map((s) => (
             <li
               key={s.n}
-              className="relative rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
+              className="relative rounded-2xl border border-white/12 bg-white/[0.04] p-6"
             >
-              <div className="font-display text-3xl font-extrabold text-accent">{s.n}</div>
+              <div className="rail-num font-display text-3xl font-extrabold text-brand">{s.n}</div>
               <div className="mt-3 font-bold">{s.t}</div>
-              <div className="mt-1.5 text-sm text-primary-foreground/70">{s.d}</div>
+              <div className="mt-1.5 text-sm text-white/65">{s.d}</div>
             </li>
           ))}
         </ol>
@@ -1163,8 +1164,13 @@ function Clients() {
     <section className="py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
+          index="09"
           eyebrow="Clients"
-          title="Ils ont confié leur présence en ligne à Sitaly"
+          title={
+            <>
+              Ils ont confié leur présence en ligne <span className="accent-word">à Sitaly</span>
+            </>
+          }
           subtitle="Des sites en ligne, vérifiables. Cliquez pour les visiter."
         />
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -1239,9 +1245,17 @@ function Faq() {
   }, []);
 
   return (
-    <section id="faq" className="bg-secondary/40 py-20 sm:py-24">
+    <section id="faq" className="bg-paper-sunk py-20 sm:py-28">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
-        <SectionHeader eyebrow="FAQ" title="Questions fréquentes" subtitle="Tout ce que vous voulez savoir, simplement." />
+        <SectionHeader
+          index="10"
+          eyebrow="FAQ"
+          title={
+            <>
+              Les questions <span className="accent-word">posées avant de démarrer</span>
+            </>
+          }
+        />
         <div className="mt-10 space-y-3">
           {items.map((it, i) => (
             <div
@@ -1265,6 +1279,67 @@ function Faq() {
               )}
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- FONDATEUR ---------------- */
+/**
+ * Sitaly est une entreprise individuelle sans local. La page ne montre donc ni
+ * effectif, ni équipe, ni adresse : elle montre la personne qui fait le travail.
+ * C'est la promesse qu'aucune agence à effectif ne peut tenir. Voir DESIGN.md §9.
+ *
+ * La photo réelle n'est pas encore fournie : le monogramme sert de tenant-lieu
+ * et doit être remplacé, pas complété par une image générée.
+ */
+function Founder() {
+  return (
+    <section className="bg-ink py-20 text-white sm:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="grid items-center gap-12 lg:grid-cols-[auto_1fr] lg:gap-16">
+          <div className="mx-auto w-full max-w-[260px] lg:mx-0">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/12 bg-white/[0.04]">
+              <div className="absolute inset-0 grid place-items-center">
+                <span className="font-display text-6xl font-extrabold text-white/15">TV</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div className="rail-label text-brand">Qui est derrière</div>
+            <h2 className="display-section mt-3">
+              Un seul interlocuteur,{" "}
+              <span className="accent-word text-brand">celui qui construit votre site</span>
+            </h2>
+            <div className="measure mt-6 space-y-4 text-lg text-white/70">
+              <p>
+                Sitaly, c'est moi. Je conçois les sites, je pilote les campagnes et je branche
+                les agents IA. Vous n'aurez pas un commercial à l'appel découverte et un stagiaire
+                sur votre projet.
+              </p>
+              <p>
+                Je travaille à distance, partout en France. Pas de déplacement à facturer, pas de
+                rendez-vous à caler trois semaines à l'avance : on s'appelle vingt minutes et on
+                sait tout de suite si ça vaut le coup.
+              </p>
+            </div>
+
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <div>
+                <div className="font-display text-lg font-bold">Teddy Vidal</div>
+                <div className="text-sm text-white/55">Fondateur de Sitaly</div>
+              </div>
+              <a
+                href={`tel:${SITALY_PHONE}`}
+                className="inline-flex items-center gap-2 rounded-xl border border-white/20 px-5 py-3 text-sm font-semibold transition hover:bg-white/10"
+              >
+                <Phone className="h-4 w-4" />
+                {SITALY_PHONE_DISPLAY}
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1506,20 +1581,3 @@ function Footer() {
 }
 
 /* ---------------- SHARED ---------------- */
-function SectionHeader({
-  eyebrow,
-  title,
-  subtitle,
-}: {
-  eyebrow: string;
-  title: string;
-  subtitle?: string;
-}) {
-  return (
-    <div className="mx-auto max-w-2xl text-center">
-      <div className="text-xs font-semibold uppercase tracking-wider text-accent">{eyebrow}</div>
-      <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight sm:text-4xl">{title}</h2>
-      {subtitle && <p className="mt-4 text-muted-foreground sm:text-lg">{subtitle}</p>}
-    </div>
-  );
-}

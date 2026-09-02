@@ -229,17 +229,22 @@ export function MetierLanding(props: MetierLandingProps) {
       {/* Pricing */}
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            Combien coûte un site internet {metier} ?
+          {/* Le titre interrogeait le prix. Les montants ayant quitté le site
+              (DESIGN.md §8), la section répond désormais sur le périmètre :
+              poser la question du coût sans y répondre serait pire que ne pas
+              la poser. Arbitrage signalé au client. */}
+          <h2 className="display-section">
+            Ce que comprend un site internet <span className="accent-word">{metier}</span>
           </h2>
-          <p className="mt-3 text-sm font-semibold text-foreground/80">
-            En location, sans engagement et sans frais d'installation. Tout est géré, vous ne touchez à rien.
+          <p className="measure mt-4 text-sm font-semibold text-foreground/80">
+            En abonnement mensuel, sans engagement de durée et sans frais d'installation.
+            Tout est géré, vous ne touchez à rien.
           </p>
           <div className="mx-auto mt-8 grid max-w-3xl gap-5 md:grid-cols-2">
             {[
               {
                 name: "Sitaly Présence",
-                price: "149€",
+                claim: "Votre site, entretenu",
                 featured: true,
                 features: [
                   "Site professionnel + hébergement",
@@ -251,12 +256,12 @@ export function MetierLanding(props: MetierLandingProps) {
               },
               {
                 name: "Sitaly Acquisition",
-                price: "299€",
+                claim: "Vos campagnes, pilotées",
                 featured: false,
                 features: [
                   "Campagnes Google Ads gérées",
                   "Indépendant de votre site",
-                  "+ 15 % du budget publicitaire",
+                  "Une part du budget publicitaire",
                   "Reporting mensuel",
                 ],
                 note: "Budget publicitaire Google non inclus.",
@@ -284,9 +289,8 @@ export function MetierLanding(props: MetierLandingProps) {
                     </span>
                   )}
                 </div>
-                <div className="mt-2 flex items-baseline gap-2">
-                  <span className="font-display text-5xl font-extrabold">{tier.price}</span>
-                  <span className="text-sm text-muted-foreground">/mois</span>
+                <div className="mt-3 font-display text-2xl font-extrabold tracking-tight">
+                  {tier.claim}
                 </div>
                 <ul className="mt-5 space-y-2.5 text-sm">
                   {tier.features.map((it) => (

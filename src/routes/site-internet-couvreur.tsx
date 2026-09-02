@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 
 const URL = "https://sitaly.fr/site-internet-couvreur/";
-const TITLE = "Site internet couvreur-façadier : devis local | Sitaly dès 149€/mois";
+const TITLE = "Site internet couvreur-façadier : captez vos devis | Sitaly";
 const DESCRIPTION =
-  "Site internet couvreur ou façadier optimisé urgences (fuite, tempête) et SEO local. Livré en 48h, dès 149€/mois en location, sans engagement.";
+  "Site internet couvreur ou façadier optimisé urgences (fuite, tempête) et SEO local. Livré en 48h, en abonnement mensuel, sans engagement.";
 
 const FAQ = [
   {
