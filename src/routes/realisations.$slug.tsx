@@ -62,11 +62,11 @@ function RealisationPage() {
     <div ref={rootRef} className="min-h-screen bg-background text-foreground">
       <SiteChrome>
         {/* ---- Ouverture ---- */}
-        <section className="hero-bg on-ink relative overflow-hidden">
+        <section className="hero-bg relative overflow-hidden">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
             <Link
               to="/realisations/"
-              className="inline-flex items-center gap-2 text-sm font-medium text-white/60 transition hover:text-white"
+              className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition hover:text-foreground"
             >
               <ArrowLeft className="h-4 w-4" />
               Toutes les réalisations
@@ -74,23 +74,23 @@ function RealisationPage() {
 
             <div className="mt-8 grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center">
               <div>
-                <div className="rail-label text-brand">{r.metier}</div>
+                <div className="rail-label text-brand-ink">{r.metier}</div>
                 <h1 data-split className="display-hero mt-4">
                   {r.client}
                 </h1>
-                <p className="measure mt-6 text-lg text-white/70">{r.resume}</p>
+                <p className="measure mt-6 text-lg text-muted-foreground">{r.resume}</p>
 
                 <dl className="mt-9 grid grid-cols-2 gap-x-8 gap-y-5 sm:grid-cols-3">
                   <div>
-                    <dt className="rail-label text-white/45">Métier</dt>
+                    <dt className="rail-label text-muted-foreground">Métier</dt>
                     <dd className="mt-1.5 font-medium">{r.metier}</dd>
                   </div>
                   <div>
-                    <dt className="rail-label text-white/45">Zone</dt>
+                    <dt className="rail-label text-muted-foreground">Zone</dt>
                     <dd className="mt-1.5 font-medium">{r.zone}</dd>
                   </div>
                   <div>
-                    <dt className="rail-label text-white/45">En ligne sur</dt>
+                    <dt className="rail-label text-muted-foreground">En ligne sur</dt>
                     <dd className="mt-1.5">
                       <a
                         href={r.url}
@@ -122,7 +122,7 @@ function RealisationPage() {
                   href={r.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="zoom-frame block rounded-2xl border border-white/12 shadow-elevated"
+                  className="zoom-frame block rounded-2xl border border-border shadow-elevated"
                 >
                   <img
                     src={r.capture.small}
@@ -135,7 +135,7 @@ function RealisationPage() {
                     className="block h-auto w-full"
                   />
                 </a>
-                <figcaption className="mt-3 text-xs text-white/45">
+                <figcaption className="mt-3 text-xs text-muted-foreground">
                   Capture du site en ligne, prise le {r.captureLe}.
                 </figcaption>
               </figure>
@@ -172,15 +172,15 @@ function RealisationPage() {
         </section>
 
         {/* ---- Partis pris ---- */}
-        <section className="bg-ink py-20 text-white sm:py-28">
+        <section className="bg-paper-sunk py-20 sm:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <SectionHeader
               index="02"
               eyebrow="Partis pris"
-              tone="ink"
               title={
                 <>
-                  Pourquoi ce site est <span className="accent-word text-brand">fait comme ça</span>
+                  Pourquoi ce site est{" "}
+                  <span className="accent-word text-brand-ink">fait comme ça</span>
                 </>
               }
               subtitle="Chaque métier a ses urgences et ses objections. Un couvreur qu'on appelle pour une fuite et un chef qui vend une signature n'ont pas besoin de la même page."
@@ -191,13 +191,13 @@ function RealisationPage() {
                   key={c.titre}
                   data-reveal
                   style={{ "--i": i } as React.CSSProperties}
-                  className="lift lift-ink rounded-2xl border border-white/12 bg-white/[0.04] p-7"
+                  className="lift rounded-2xl border border-border bg-card p-7"
                 >
-                  <span className="rail-num font-display text-3xl font-extrabold text-brand">
+                  <span className="rail-num font-display text-3xl font-extrabold text-brand-ink">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <h3 className="mt-4 text-lg font-bold">{c.titre}</h3>
-                  <p className="mt-2 text-[15px] text-white/70">{c.texte}</p>
+                  <p className="mt-2 text-[15px] text-muted-foreground">{c.texte}</p>
                 </div>
               ))}
             </div>
@@ -244,7 +244,7 @@ function RealisationPage() {
               {/* Rendu mobile : c'est là que se joue la majorité du trafic
                   d'un artisan, il mérite mieux qu'une mention. */}
               <div className="rise flex justify-center">
-                <div className="w-[260px] overflow-hidden rounded-[2rem] border-8 border-ink bg-ink shadow-elevated">
+                <div className="w-[260px] overflow-hidden rounded-[2rem] border-8 border-foreground/85 bg-foreground/85 shadow-elevated">
                   <img
                     src={r.capture.mobile}
                     alt={`Le site de ${r.client} sur mobile`}
@@ -290,12 +290,12 @@ function RealisationPage() {
         </section>
 
         {/* ---- Appel final ---- */}
-        <section className="bg-ink py-20 text-white sm:py-28">
+        <section className="bg-paper-sunk py-20 sm:py-28">
           <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
             <h2 data-split className="display-section">
-              Le vôtre pourrait être <span className="accent-word text-brand">le prochain</span>
+              Le vôtre pourrait être <span className="accent-word text-brand-ink">le prochain</span>
             </h2>
-            <p className="mt-6 text-lg text-white/70">
+            <p className="mt-6 text-lg text-muted-foreground">
               Vingt minutes d'appel pour comprendre votre activité, et vous saurez si ça vaut le
               coup. Sans engagement.
             </p>

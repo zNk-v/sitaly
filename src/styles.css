@@ -110,9 +110,13 @@
   /* Le dégradé de marque va du violet au rose, jamais vers le bleu.
      Il habille du texte, des filets et des bordures, jamais une nappe de fond. */
   --gradient-brand: linear-gradient(120deg, var(--brand), var(--brand-deep));
+  /* Hero en clair. La nappe violette est un voile posé en haut, pas une nappe
+     de fond : elle se dissout dans le papier chaud avant le milieu de la
+     section. C'est ce qui la distingue du lavande froid et uniforme de Linov. */
   --gradient-hero:
-    radial-gradient(ellipse 90% 70% at 50% -10%, oklch(0.54 0.22 320 / 0.28), transparent 70%),
-    linear-gradient(180deg, var(--ink-deep), var(--ink));
+    radial-gradient(ellipse 100% 62% at 50% -8%, oklch(0.72 0.177 305 / 0.2), transparent 62%),
+    radial-gradient(ellipse 60% 40% at 88% 8%, oklch(0.631 0.208 344 / 0.1), transparent 60%),
+    linear-gradient(180deg, oklch(0.972 0.014 305), var(--paper) 62%);
   --gradient-primary: linear-gradient(135deg, var(--ink), oklch(0.28 0.1 305));
   --gradient-accent: var(--gradient-brand);
 }
@@ -144,7 +148,8 @@
   background: var(--gradient-hero);
 }
 
-/* Sections posées sur l'encre.
+/* Sections posées sur l'encre. Après le passage du site en clair, il n'en reste
+   qu'une : le pied de page, qui sert d'ancre en bas de parcours.
    Rebranche les jetons de texte et de filet en clair, pour que les utilitaires
    text-muted-foreground, border-border et consorts restent lisibles sans qu'on
    les réécrive un par un. Volontairement, --card et --accent ne bougent pas :
@@ -171,9 +176,9 @@
   inset: 0;
   pointer-events: none;
   background: radial-gradient(
-    22rem 22rem at var(--mx, 50%) var(--my, 12%),
-    oklch(0.722 0.177 305 / 0.16),
-    transparent 70%
+    24rem 24rem at var(--mx, 50%) var(--my, 12%),
+    oklch(0.631 0.208 344 / 0.1),
+    transparent 68%
   );
   transition: opacity 0.4s ease;
 }
@@ -427,11 +432,6 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee {
     animation: none;
-  }
-  /* La boucle du hero est un ornement : sous réduction des animations,
-     le dégradé seul porte la section. */
-  .hero-video {
-    display: none !important;
   }
 }
 

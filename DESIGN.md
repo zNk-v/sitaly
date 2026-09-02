@@ -30,10 +30,18 @@ La grammaire se reprend. La signature chromatique et le rythme, non.
 
 | Levier | Linov | Sitaly |
 |---|---|---|
-| Fond | Lavande froid uniforme sur toute la page | Alternance encre / papier chaud |
+| Fond | Lavande froid uniforme sur toute la page | Papier chaud, voile violet dissous en haut de hero |
 | Accent des mots | Surlignage violet dans le texte | Bascule en serif italique |
 | Couleur secondaire | Aucune, tout est dans le violet-bleu-magenta | Vert signal, réservé à la preuve |
 | Grille | Centrée, plaquette d'agence | Ancrée à gauche, colonne de repères |
+
+**Révision du 2 septembre 2026.** La première version de cette note faisait de
+l'alternance encre / papier le levier principal. Le client a tranché contre :
+trop sombre. Le site passe en clair, et la distinction chromatique repose
+désormais sur la température du fond. Linov baigne dans un lavande froid et
+uniforme ; Sitaly pose un blanc cassé chaud, avec un voile violet qui se
+dissout avant le milieu du hero. Les trois autres leviers, eux, ne bougent pas :
+ce sont eux qui portent la différence.
 
 Aucun de ces quatre leviers ne coûte en crédibilité. Ils rendent le site non
 superposable au sien, capture d'écran contre capture d'écran.
@@ -49,13 +57,13 @@ Valeurs en OKLCH, cohérentes avec le fichier de tokens existant.
 | Token | Valeur | Usage |
 |---|---|---|
 | `--paper` | `oklch(0.985 0.004 85)` | Fond par défaut. Blanc cassé légèrement chaud, jamais lavande. |
-| `--paper-sunk` | `oklch(0.965 0.008 300)` | Sections en léger retrait, alternance de rythme. |
-| `--ink` | `oklch(0.165 0.045 302)` | Sections sombres. Violet profond, pas un gris neutre. |
-| `--ink-deep` | `oklch(0.115 0.032 302)` | Pied de page, fonds de carte sur section sombre. |
+| `--paper-sunk` | `oklch(0.965 0.008 302)` | Sections en léger retrait, qui donnent le rythme vertical. |
+| `--ink` | `oklch(0.165 0.045 302)` | Pied de page uniquement. Violet profond, pas un gris neutre. |
+| `--ink-deep` | `oklch(0.115 0.032 302)` | Réserve, pour les fonds de carte sur surface sombre. |
 
-L'alternance encre / papier est la signature. Sur la page d'accueil, elle suit
-un rythme de trois : deux sections claires, une sombre. Le hero est sombre, le
-pied de page est sombre, et les deux se répondent.
+Le rythme vient de l'alternance papier / papier en retrait, jamais d'un
+basculement en sombre. L'encre ne subsiste qu'au pied de page, où elle sert
+d'ancre en fin de parcours.
 
 ### Marque
 
@@ -72,7 +80,7 @@ l'axe du logo, et c'est précisément l'axe que Linov n'occupe pas.
 
 | Token | Valeur | Usage |
 |---|---|---|
-| `--signal` | `oklch(0.72 0.17 165)` | Sur fond encre : preuves, validations, chiffres vérifiables |
+| `--signal` | `oklch(0.72 0.17 165)` | Sur surface sombre : pied de page, badges sur capture |
 | `--signal-ink` | `oklch(0.48 0.13 165)` | Sur fond papier, pour les libellés sous 14 px |
 
 Le vert ne décore pas. Il marque ce qui est vérifiable : un site réellement en
@@ -106,15 +114,16 @@ Linov surligne ses mots-clés en violet. Sitaly les fait basculer en serif itali
 
 L'italique haute-contraste dans un titre en grotesque très gras produit une
 tension immédiate, coûte un seul fichier de police, et ne dépend d'aucune couleur.
-Sur fond encre comme sur fond papier, elle tient sans réglage.
+Elle tient sans réglage sur toutes les surfaces du site.
 
-Un mot accentué par titre. Deux au maximum, jamais côte à côte.
+Un fragment accentué par titre, jamais deux côte à côte.
 
 ### Échelle
 
 Le display suit un `clamp()` continu plutôt que des paliers par point de rupture :
-`clamp(2.5rem, 7vw, 6.5rem)` pour les titres de section, `clamp(3rem, 9vw, 8rem)`
-pour le hero. Mesure de lecture plafonnée à 68 caractères.
+`clamp(2rem, 4.6vw, 3.75rem)` pour les titres de section, `clamp(2.5rem, 5.2vw, 4.75rem)`
+pour le hero, qui n'occupe qu'une colonne de moitié de largeur à partir de `lg`.
+Mesure de lecture plafonnée à 68 caractères.
 
 ---
 
@@ -141,25 +150,37 @@ n'entre dans le bundle.
 | Effet | Implémentation |
 |---|---|
 | Révélation au scroll | `IntersectionObserver` déjà présent dans `use-reveal-on-scroll.ts`, décalage de 40 ms par enfant |
-| Titres en cascade | Découpe par ligne, translation et opacité, transition CSS pure |
-| Carrousel réalisations | Embla, déjà dans les dépendances |
-| Fond animé du hero | Vidéo Higgsfield, `poster` obligatoire, `preload="none"`, coupée sous 768 px |
+| Cascade de mots | Découpe par mot des titres, 42 ms de décalage, transition CSS pure |
+| Parallaxe, montée, filets | `animation-timeline: view()`, sur le fil de composition |
+| Progression de lecture | `animation-timeline: scroll(root)`, aucun écouteur |
+| Empilement des offres | `position: sticky` à décalages croissants, bande de titre de même hauteur |
+| Halo du hero | Deux variables CSS écrites au rythme de l'écran, pointeur fin |
 | Compteur de métiers | Marquee CSS existant, conservé |
 
 Règles fermes : `transform` et `opacity` uniquement, 150 à 300 ms sur les
-micro-interactions, `prefers-reduced-motion` respecté partout, et la vidéo de hero
-ne doit jamais porter le LCP. Le texte du hero est le LCP, la vidéo arrive après.
+micro-interactions, `prefers-reduced-motion` respecté partout. Les hooks qui
+masquent avant de révéler renoncent à l'animation si la hauteur de viewport est
+nulle — onglet en arrière-plan, prérendu — plutôt que de laisser du contenu
+définitivement invisible.
 
 ---
 
-## 7. Visuels générés
+## 7. Visuels
 
-Higgsfield produit le fond animé du hero, les illustrations abstraites de section,
-le film de marque court et l'écrin des réalisations.
+Les illustrations d'offre sont construites en balisage. Les captures de sites
+clients sont réelles, prises en headless sur les sites en ligne.
 
 Frontière à ne pas franchir : rien de généré ne représente un chantier, un client,
 un local ou une équipe. Les captures des trois sites clients sont réelles et le
 restent. Le générateur habille, il ne témoigne pas.
+
+**Révision du 2 septembre 2026.** Les visuels abstraits générés ont été retirés
+du site, ainsi que la boucle vidéo du hero. Motif : trop vagues, ils ne disaient
+ni « Google Ads » ni « un agent qui répond au téléphone ». Les illustrations
+d'offre sont désormais des maquettes construites en balisage, qui montrent le
+mécanisme annoncé par le titre en face. Elles ne copient l'interface d'aucun
+produit tiers et portent une légende qui dit qu'il s'agit d'un schéma. Là où la
+preuve existe, c'est une vraie capture d'un site livré qui sert d'illustration.
 
 ---
 
@@ -203,7 +224,7 @@ site. Aucune agence à effectif ne peut le promettre.
 Si on remplace le nom et le numéro, ce site pourrait-il servir à une autre agence
 web ? Ce qui doit l'en empêcher :
 
-- L'alternance encre / papier, quand tout le secteur travaille en fond clair uniforme.
+- Le papier chaud, quand le secteur entier travaille en blanc froid ou en lavande.
 - Les mots en serif italique à l'intérieur des titres.
 - Le vert réservé au vérifiable.
 - Les trois réalisations réelles, ouvrables, avec leurs vraies captures.

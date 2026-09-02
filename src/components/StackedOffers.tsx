@@ -56,7 +56,7 @@ const LEVIERS: Levier[] = [
     maquette: (
       <div className="flex h-full w-full items-center justify-center p-6 sm:p-8">
         <div className="w-full max-w-[460px]">
-          <div className="zoom-frame overflow-hidden rounded-2xl border border-white/12 shadow-elevated">
+          <div className="zoom-frame overflow-hidden rounded-2xl border border-border shadow-elevated">
             <img
               src={captureSitePetite}
               srcSet={`${captureSitePetite} 720w, ${captureSite} 1200w`}
@@ -67,7 +67,7 @@ const LEVIERS: Levier[] = [
               className="block h-auto w-full"
             />
           </div>
-          <p className="mt-3 text-center text-xs text-white/40">
+          <p className="mt-3 text-center text-xs text-muted-foreground">
             Lafleur Toiture, couvreur en Essonne. Site réellement en ligne.
           </p>
         </div>
@@ -144,23 +144,23 @@ export function StackedOffers() {
             <article
               key={l.cle}
               style={{ top: `${DEPART + i * BANDE}rem` }}
-              className="sticky mb-8 overflow-hidden rounded-3xl border border-white/10 bg-ink text-white shadow-elevated"
+              className="sticky mb-8 overflow-hidden rounded-3xl border border-border bg-card shadow-elevated"
             >
               {/* Bande de superposition : c'est elle qui reste visible quand le
                   panneau suivant recouvre celui-ci. Hauteur = BANDE. */}
               <div
                 style={{ height: `${BANDE}rem` }}
-                className="flex items-center justify-between gap-4 border-b border-white/10 bg-ink-deep px-6 sm:px-8"
+                className="flex items-center justify-between gap-4 border-b border-border bg-paper-sunk px-6 sm:px-8"
               >
                 <div className="flex min-w-0 items-baseline gap-3 sm:gap-4">
-                  <span className="rail-num font-display text-sm font-bold text-brand">
+                  <span className="rail-num font-display text-sm font-bold text-brand-ink">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <h3 className="truncate font-display text-xl font-extrabold tracking-tight sm:text-2xl">
                     {l.categorie}
                   </h3>
                 </div>
-                <span className="hidden shrink-0 text-xs text-white/35 sm:block">
+                <span className="hidden shrink-0 text-xs text-muted-foreground sm:block">
                   {i + 1} / {LEVIERS.length}
                 </span>
               </div>
@@ -174,13 +174,13 @@ export function StackedOffers() {
                     {l.titre}
                   </p>
 
-                  <p className="measure mt-5 text-white/70">{l.texte}</p>
+                  <p className="measure mt-5 text-muted-foreground">{l.texte}</p>
 
                   <ul className="mt-7 flex flex-wrap gap-2">
                     {l.points.map((p) => (
                       <li
                         key={p}
-                        className="rounded-full border border-white/15 px-3 py-1.5 text-sm text-white/80"
+                        className="rounded-full border border-border px-3 py-1.5 text-sm text-foreground/80"
                       >
                         {p}
                       </li>
@@ -207,7 +207,7 @@ export function StackedOffers() {
                   )}
                 </div>
 
-                <div className="border-t border-white/10 bg-ink-deep/60 lg:border-l lg:border-t-0">
+                <div className="border-t border-border bg-paper-sunk/60 lg:border-l lg:border-t-0">
                   {l.maquette}
                 </div>
               </div>

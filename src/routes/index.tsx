@@ -141,7 +141,7 @@ function Nav() {
   return (
     /* Bandeau en encre : il prolonge le hero sans couture, et reste lisible
        au-dessus des sections papier une fois le scroll engagé. DESIGN.md §3. */
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-ink/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-border bg-paper/85 backdrop-blur-md">
       {/* Progression de lecture. Pilotée par la timeline de scroll, donc
           aucun listener : la barre vit sur le fil de composition. */}
       <div
@@ -155,13 +155,13 @@ function Nav() {
         <nav className="hidden items-center gap-8 md:flex">
           <a
             href="#offre"
-            className="text-sm font-medium text-white/70 transition hover:text-white"
+            className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
           >
             Offres
           </a>
           <Link
             to="/agents-ia/"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand transition hover:text-white"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand transition hover:text-foreground"
           >
             <Sparkles className="h-3.5 w-3.5" />
             Agents IA
@@ -169,30 +169,33 @@ function Nav() {
           {/* Page statique hors routeur : lien classique, pas de <Link>. */}
           <a
             href="/chatgpt-ads/"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand transition hover:text-white"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand transition hover:text-foreground"
           >
             <MessageSquare className="h-3.5 w-3.5" />
             ChatGPT Ads
           </a>
           <a
             href="#exemples"
-            className="text-sm font-medium text-white/70 transition hover:text-white"
+            className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
           >
             Exemples
           </a>
           <a
             href="#process"
-            className="text-sm font-medium text-white/70 transition hover:text-white"
+            className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
           >
             Process
           </a>
           <Link
             to="/blog/"
-            className="text-sm font-medium text-white/70 transition hover:text-white"
+            className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
           >
             Blog
           </Link>
-          <a href="#faq" className="text-sm font-medium text-white/70 transition hover:text-white">
+          <a
+            href="#faq"
+            className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
+          >
             FAQ
           </a>
         </nav>
@@ -251,36 +254,20 @@ function Hero() {
 
   return (
     <section ref={sectionRef} id="top" className="hero-bg hero-halo relative overflow-hidden">
-      {/* Boucle générée, posée en accent sur le dégradé et non à sa place.
-          preload="none" et aucune dimension intrinsèque à charger : le LCP
-          reste le titre, la vidéo arrive après. Masquée sous md et sous
-          prefers-reduced-motion, où le dégradé seul fait le travail. */}
-      <video
-        className="hero-video pointer-events-none absolute inset-0 hidden h-full w-full object-cover opacity-45 md:block"
-        src="/hero-loop.mp4"
-        poster="/hero-loop-poster.jpg"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="none"
-        aria-hidden="true"
-        tabIndex={-1}
-      />
-      <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-16 sm:px-6 sm:pt-24 lg:pb-28">
+      <div className="relative mx-auto max-w-7xl px-4 pb-28 pt-16 sm:px-6 sm:pt-24 lg:pb-36">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-white/70">
-              <Sparkles className="h-3.5 w-3.5 text-brand" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-muted-foreground">
+              <Sparkles className="h-3.5 w-3.5 text-brand-ink" />
               Agence web · Artisans, indépendants & PME de services
             </div>
             {/* Le fragment final bascule en serif italique plutôt qu'en couleur :
                 la tension vient du dessin de la lettre. Voir DESIGN.md §4. */}
-            <h1 data-split className="display-hero mt-6 text-white">
+            <h1 data-split className="display-hero mt-6">
               Plus de clients. Plus d'appels.{" "}
-              <span className="accent-word text-brand">Moins de temps perdu.</span>
+              <span className="accent-word text-brand-ink">Moins de temps perdu.</span>
             </h1>
-            <p className="measure mt-6 text-lg text-white/70 sm:text-xl">
+            <p className="measure mt-6 text-lg text-muted-foreground sm:text-xl">
               Sitaly construit et pilote votre présence en ligne : site internet, Google Ads, agents
               IA. Vous gardez votre métier, on prend le reste.
             </p>
@@ -297,7 +284,7 @@ function Hero() {
               </a>
               <a
                 href="#exemples"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 px-6 py-3.5 text-base font-semibold text-white transition hover:bg-white/10"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-card px-6 py-3.5 text-base font-semibold shadow-soft transition hover:bg-secondary"
               >
                 Voir nos réalisations
                 <ArrowRight className="h-5 w-5" />
@@ -308,17 +295,16 @@ function Hero() {
                 reste dit ici, sans montant. Voir DESIGN.md §8. */}
             <ul className="mt-9 grid grid-cols-2 gap-x-6 gap-y-3 text-sm sm:grid-cols-3 sm:text-[15px]">
               {["Sans engagement", "Sans frais d'installation", "Réponse sous 24h"].map((t) => (
-                <li key={t} className="flex items-center gap-2 text-white/80">
-                  <Check className="h-4 w-4 shrink-0 text-signal" />
+                <li key={t} className="flex items-center gap-2 text-foreground/80">
+                  <Check className="h-4 w-4 shrink-0 text-signal-ink" />
                   {t}
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Visual mock */}
           <div className="drift relative">
-            <HeroMock />
+            <HeroPreuve />
           </div>
         </div>
       </div>
@@ -326,57 +312,68 @@ function Hero() {
   );
 }
 
-function HeroMock() {
+/**
+ * Preuve en tête de page : les trois sites réellement livrés, empilés.
+ *
+ * Remplace une fausse fenêtre de navigateur affichant « votre-entreprise.fr ».
+ * Un faux site ne prouve rien et se voit ; trois vrais sites, nommés par leur
+ * domaine et cliquables, disent la même chose en étant vérifiables.
+ */
+function HeroPreuve() {
+  const [principal, ...secondaires] = REALISATIONS;
   return (
     <div className="relative mx-auto w-full max-w-xl">
-      <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-accent/20 to-primary/20 blur-2xl" />
-      <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-elevated">
-        <div className="flex items-center gap-1.5 border-b border-border bg-secondary px-4 py-3">
-          <span className="h-2.5 w-2.5 rounded-full bg-destructive/60" />
-          <span className="h-2.5 w-2.5 rounded-full bg-success/60" />
-          <span className="h-2.5 w-2.5 rounded-full bg-accent/60" />
-          <span className="ml-3 truncate rounded bg-background px-2 py-0.5 text-xs text-muted-foreground">
-            votre-entreprise.fr
-          </span>
-        </div>
-        <div className="space-y-4 p-6">
-          <div className="flex items-center justify-between">
-            <div className="h-6 w-24 rounded bg-primary/90" />
-            <div className="flex gap-2">
-              <div className="h-3 w-10 rounded bg-muted" />
-              <div className="h-3 w-10 rounded bg-muted" />
-              <div className="h-3 w-10 rounded bg-muted" />
-            </div>
-          </div>
-          <div className="space-y-2">
-            <div className="h-7 w-3/4 rounded bg-foreground/85" />
-            <div className="h-7 w-2/3 rounded bg-foreground/85" />
-            <div className="h-3 w-full rounded bg-muted" />
-            <div className="h-3 w-5/6 rounded bg-muted" />
-          </div>
-          <div className="flex gap-2 pt-1">
-            <div className="h-9 w-32 rounded-lg bg-accent" />
-            <div className="h-9 w-28 rounded-lg border border-border" />
-          </div>
-          <div className="grid grid-cols-3 gap-3 pt-3">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="rounded-lg border border-border p-3">
-                <div className="mb-2 h-6 w-6 rounded bg-accent/20" />
-                <div className="h-2 w-full rounded bg-muted" />
-                <div className="mt-1 h-2 w-2/3 rounded bg-muted" />
-              </div>
-            ))}
-          </div>
-        </div>
+      <a
+        href={principal.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="zoom-frame group block rounded-2xl border border-border bg-card shadow-elevated"
+      >
+        <img
+          src={principal.capture.small}
+          srcSet={`${principal.capture.small} 720w, ${principal.capture.large} 1200w`}
+          sizes="(min-width: 1024px) 44vw, 92vw"
+          alt={`Page d'accueil du site de ${principal.client}`}
+          width={720}
+          height={500}
+          decoding="async"
+          className="block h-auto w-full rounded-2xl"
+        />
+        <span className="absolute bottom-3 left-3 rounded-full bg-ink/85 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+          {principal.domaine}
+        </span>
+      </a>
+
+      {/* Les deux autres, décalés, pour dire qu'il y en a plusieurs sans
+          encombrer. Masqués sous sm, où la place manque. */}
+      <div className="pointer-events-none absolute -bottom-14 -left-2 hidden gap-4 sm:flex">
+        {secondaires.map((r, i) => (
+          <a
+            key={r.slug}
+            href={r.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ transform: `rotate(${i === 0 ? -2.5 : 1.5}deg)` }}
+            className="pointer-events-auto w-[150px] overflow-hidden rounded-xl border border-border bg-card shadow-elevated transition hover:-translate-y-1"
+          >
+            <img
+              src={r.capture.small}
+              alt={`Page d'accueil du site de ${r.client}`}
+              loading="lazy"
+              decoding="async"
+              className="block h-auto w-full"
+            />
+          </a>
+        ))}
       </div>
-      {/* floating card */}
-      <div className="animate-float absolute -bottom-6 -left-6 hidden rounded-xl border border-border bg-card p-3 shadow-elevated sm:flex sm:items-center sm:gap-3">
-        <div className="grid h-10 w-10 place-items-center rounded-lg bg-success/15 text-success">
-          <Phone className="h-5 w-5" />
-        </div>
+
+      <div className="animate-float absolute -right-4 -top-4 hidden items-center gap-2.5 rounded-xl border border-border bg-card px-3.5 py-2.5 shadow-elevated sm:flex">
+        <span className="grid h-9 w-9 place-items-center rounded-lg bg-signal-ink/12 text-signal-ink">
+          <Check className="h-4 w-4" />
+        </span>
         <div>
-          <div className="text-xs text-muted-foreground">Nouveau appel</div>
-          <div className="text-sm font-semibold">+ 3 devis cette semaine</div>
+          <div className="text-xs text-muted-foreground">Sites livrés</div>
+          <div className="text-sm font-semibold">Tous en ligne, vérifiables</div>
         </div>
       </div>
     </div>
@@ -407,7 +404,7 @@ function ProfessionsMarquee() {
     <ul className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>
       {metiers.map((m) => (
         <li key={m} className="flex items-center">
-          <span className="whitespace-nowrap px-6 text-base font-semibold text-white/75 sm:px-8 sm:text-lg">
+          <span className="whitespace-nowrap px-6 text-base font-semibold text-foreground/75 sm:px-8 sm:text-lg">
             {m}
           </span>
           <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand/60" aria-hidden="true" />
@@ -417,11 +414,11 @@ function ProfessionsMarquee() {
   );
 
   return (
-    <section className="border-t border-white/10 bg-ink py-12 text-white sm:py-16">
+    <section className="border-t border-border bg-paper-sunk py-12 sm:py-16">
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
         <h2 className="font-display text-xl font-bold tracking-tight sm:text-2xl">
           Plus de clients pour votre activité,{" "}
-          <span className="accent-word text-brand">quel que soit votre métier</span>
+          <span className="accent-word text-brand-ink">quel que soit votre métier</span>
         </h2>
       </div>
       <div className="marquee marquee-mask group relative mt-9 flex overflow-hidden">
@@ -550,15 +547,14 @@ function HowItWorks() {
   return (
     /* Première section en encre : elle installe l'alternance annoncée en
        DESIGN.md §3 et détache la méthode du reste de la page. */
-    <section className="bg-ink py-20 text-white sm:py-28">
+    <section className="bg-paper-sunk py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
           index="02"
           eyebrow="Notre méthode"
-          tone="ink"
           title={
             <>
-              Attirer, convertir, <span className="accent-word text-brand">automatiser</span>
+              Attirer, convertir, <span className="accent-word text-brand-ink">automatiser</span>
             </>
           }
           subtitle="Un système en trois temps pour transformer votre présence en ligne en clients."
@@ -569,22 +565,22 @@ function HowItWorks() {
               key={s.title}
               data-reveal
               style={{ "--i": i } as React.CSSProperties}
-              className="lift lift-ink rounded-2xl border border-white/12 bg-white/[0.04] p-7"
+              className="lift rounded-2xl border border-border bg-card p-7"
             >
               <div className="flex items-center justify-between">
-                <div className="grid h-12 w-12 place-items-center rounded-xl bg-brand/15 text-brand">
+                <div className="grid h-12 w-12 place-items-center rounded-xl bg-accent/10 text-brand-ink-ink">
                   <s.icon className="h-6 w-6" />
                 </div>
-                <span className="rail-num font-display text-3xl font-extrabold text-white/20">
+                <span className="rail-num font-display text-3xl font-extrabold text-muted-foreground/40">
                   {s.n}
                 </span>
               </div>
               <h3 className="mt-5 text-xl font-bold">{s.title}</h3>
-              <p className="mt-1 text-[15px] font-medium text-white/60">{s.benefit}</p>
+              <p className="mt-1 text-[15px] font-medium text-muted-foreground">{s.benefit}</p>
               <ul className="mt-5 space-y-2.5">
                 {s.points.map((p) => (
-                  <li key={p} className="flex items-start gap-2.5 text-[15px] text-white/85">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-signal" />
+                  <li key={p} className="flex items-start gap-2.5 text-[15px] text-foreground/85">
+                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-signal-ink" />
                     <span>{p}</span>
                   </li>
                 ))}
@@ -705,7 +701,7 @@ function Realisations() {
                   decoding="async"
                   className="absolute inset-0 h-full w-full object-cover object-top"
                 />
-                <span className="absolute bottom-3 left-3 rounded-full bg-ink/85 px-3 py-1 text-xs font-semibold text-white/85 backdrop-blur-sm">
+                <span className="absolute bottom-3 left-3 rounded-full bg-ink/85 px-3 py-1 text-xs font-semibold text-foreground/85 backdrop-blur-sm">
                   {r.domaine}
                 </span>
               </div>
@@ -754,15 +750,14 @@ function Process() {
     { n: "05", t: "Suivi mensuel", d: "Maintenance, mises à jour et modifications incluses." },
   ];
   return (
-    <section id="process" className="bg-ink py-20 text-white sm:py-28">
+    <section id="process" className="bg-paper-sunk py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
           index="08"
           eyebrow="Process"
-          tone="ink"
           title={
             <>
-              Cinq étapes, <span className="accent-word text-brand">et c'est en ligne</span>
+              Cinq étapes, <span className="accent-word text-brand-ink">et c'est en ligne</span>
             </>
           }
           subtitle="De l'appel découverte à la mise en ligne, vous savez à chaque instant où en est votre site."
@@ -773,11 +768,13 @@ function Process() {
               key={s.n}
               data-reveal
               style={{ "--i": i } as React.CSSProperties}
-              className="lift lift-ink relative rounded-2xl border border-white/12 bg-white/[0.04] p-6"
+              className="lift relative rounded-2xl border border-border bg-card p-6"
             >
-              <div className="rail-num font-display text-3xl font-extrabold text-brand">{s.n}</div>
+              <div className="rail-num font-display text-3xl font-extrabold text-brand-ink">
+                {s.n}
+              </div>
               <div className="mt-3 font-bold">{s.t}</div>
-              <div className="mt-1.5 text-sm text-white/65">{s.d}</div>
+              <div className="mt-1.5 text-sm text-muted-foreground">{s.d}</div>
             </li>
           ))}
         </ol>
@@ -927,7 +924,7 @@ function Temoignages() {
               style={{ "--i": i } as React.CSSProperties}
               className="flex flex-col rounded-2xl border border-border bg-card p-7 shadow-soft"
             >
-              <span aria-hidden="true" className="accent-word text-5xl leading-none text-brand">
+              <span aria-hidden="true" className="accent-word text-5xl leading-none text-brand-ink">
                 &ldquo;
               </span>
               <blockquote className="mt-3 flex-1 text-[17px] leading-relaxed text-foreground/85">
@@ -959,11 +956,11 @@ function Temoignages() {
  */
 function Founder() {
   return (
-    <section className="bg-ink py-20 text-white sm:py-28">
+    <section className="bg-paper-sunk py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid items-center gap-12 lg:grid-cols-[auto_1fr] lg:gap-16">
           <div className="rise mx-auto w-full max-w-[260px] lg:mx-0">
-            <div className="zoom-frame relative rounded-2xl border border-white/12">
+            <div className="zoom-frame relative rounded-2xl border border-border">
               <img
                 src={teddy448}
                 srcSet={`${teddy448} 448w, ${teddy672} 672w`}
@@ -979,12 +976,12 @@ function Founder() {
           </div>
 
           <div>
-            <div className="rail-label text-brand">Qui est derrière</div>
+            <div className="rail-label text-brand-ink">Qui est derrière</div>
             <h2 className="display-section mt-3">
               Un seul interlocuteur,{" "}
-              <span className="accent-word text-brand">celui qui construit votre site</span>
+              <span className="accent-word text-brand-ink">celui qui construit votre site</span>
             </h2>
-            <div className="measure mt-6 space-y-4 text-lg text-white/70">
+            <div className="measure mt-6 space-y-4 text-lg text-muted-foreground">
               <p>
                 Sitaly, c'est moi. Je conçois les sites, je pilote les campagnes et je branche les
                 agents IA. Vous n'aurez pas un commercial à l'appel découverte et un stagiaire sur
@@ -1000,11 +997,11 @@ function Founder() {
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
               <div>
                 <div className="font-display text-lg font-bold">Teddy Vidal</div>
-                <div className="text-sm text-white/55">Fondateur de Sitaly</div>
+                <div className="text-sm text-muted-foreground">Fondateur de Sitaly</div>
               </div>
               <a
                 href={`tel:${SITALY_PHONE}`}
-                className="inline-flex items-center gap-2 rounded-xl border border-white/20 px-5 py-3 text-sm font-semibold transition hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-xl border border-border px-5 py-3 text-sm font-semibold transition hover:bg-secondary"
               >
                 <Phone className="h-4 w-4" />
                 {SITALY_PHONE_DISPLAY}
@@ -1021,13 +1018,13 @@ function Founder() {
 function Contact() {
   const [sent, setSent] = useState(false);
   return (
-    <section id="contact" className="on-ink relative overflow-hidden py-20 sm:py-28">
+    <section id="contact" className="relative overflow-hidden py-20 sm:py-28">
       <div className="absolute inset-0 -z-10 hero-bg" />
       <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
         <div>
-          <div className="rail-label text-brand">Contact</div>
+          <div className="rail-label text-brand-ink">Contact</div>
           <h2 className="display-section mt-3">
-            Discutons de <span className="accent-word text-brand">votre projet</span>
+            Discutons de <span className="accent-word text-brand-ink">votre projet</span>
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Laissez-nous vos coordonnées, on vous rappelle sous 24h pour un échange simple et sans

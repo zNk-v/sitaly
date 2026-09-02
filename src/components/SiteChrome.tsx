@@ -10,14 +10,13 @@ import { CALENDLY_URL } from "@/lib/config";
  * En-tête et pied de page communs aux pages secondaires.
  *
  * L'en-tête était recopié à l'identique dans plusieurs routes, chacune ayant
- * dérivé de son côté. Il vit ici une seule fois, en encre comme celui de
- * l'accueil : une page dont le hero est sombre ne peut pas être coiffée d'un
- * bandeau clair.
+ * dérivé de son côté. Il vit ici une seule fois. Le pied de page reste la
+ * seule surface sombre du site : il sert d'ancre en fin de parcours.
  */
 export function SiteChrome({ children }: { children: ReactNode }) {
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-ink/90 backdrop-blur-md">
+      <header className="sticky top-0 z-50 border-b border-border bg-paper/85 backdrop-blur-md">
         <div
           className="scroll-progress absolute inset-x-0 bottom-0 h-px origin-left bg-gradient-to-r from-brand to-brand-deep"
           aria-hidden="true"
@@ -30,32 +29,32 @@ export function SiteChrome({ children }: { children: ReactNode }) {
           <nav className="hidden items-center gap-8 md:flex">
             <Link
               to="/realisations/"
-              className="text-sm font-medium text-white/70 transition hover:text-white"
+              className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
             >
               Réalisations
             </Link>
             <Link
               to="/acquisition/"
-              className="text-sm font-medium text-white/70 transition hover:text-white"
+              className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
             >
               Google Ads
             </Link>
             <Link
               to="/agents-ia/"
-              className="text-sm font-semibold text-brand transition hover:text-white"
+              className="text-sm font-semibold text-brand-ink transition hover:text-foreground"
             >
               Agents IA
             </Link>
             {/* Page statique hors routeur : lien classique, pas de <Link>. */}
             <a
               href="/chatgpt-ads/"
-              className="text-sm font-semibold text-brand transition hover:text-white"
+              className="text-sm font-semibold text-brand-ink transition hover:text-foreground"
             >
               ChatGPT Ads
             </a>
             <Link
               to="/blog/"
-              className="text-sm font-medium text-white/70 transition hover:text-white"
+              className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
             >
               Blog
             </Link>

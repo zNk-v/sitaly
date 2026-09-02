@@ -16,10 +16,10 @@ function Cadre({ children, legende }: { children: React.ReactNode; legende: stri
   return (
     <div className="flex h-full w-full items-center justify-center p-6 sm:p-8">
       <div className="w-full max-w-[420px]">
-        <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-elevated backdrop-blur-sm">
+        <div className="rounded-2xl border border-border bg-paper-sunk p-4 shadow-soft">
           {children}
         </div>
-        <p className="mt-3 text-center text-xs text-white/40">{legende}</p>
+        <p className="mt-3 text-center text-xs text-muted-foreground">{legende}</p>
       </div>
     </div>
   );

@@ -51,13 +51,13 @@ function RealisationsIndex() {
   return (
     <div ref={rootRef} className="min-h-screen bg-background text-foreground">
       <SiteChrome>
-        <section className="hero-bg on-ink relative overflow-hidden">
+        <section className="hero-bg relative overflow-hidden">
           <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28">
-            <div className="rail-label text-brand">Réalisations</div>
+            <div className="rail-label text-brand-ink">Réalisations</div>
             <h1 data-split className="display-hero mt-4 max-w-4xl">
-              Des sites <span className="accent-word text-brand">réellement en ligne</span>
+              Des sites <span className="accent-word text-brand-ink">réellement en ligne</span>
             </h1>
-            <p className="measure mt-6 text-lg text-white/70">
+            <p className="measure mt-6 text-lg text-muted-foreground">
               Aucune maquette, aucun projet fictif. Chaque site ci-dessous est ouvert au public :
               cliquez, vérifiez, appelez le numéro si vous voulez.
             </p>
@@ -115,12 +115,12 @@ function RealisationsIndex() {
           </div>
         </section>
 
-        <section className="bg-ink py-20 text-white sm:py-28">
+        <section className="bg-paper-sunk py-20 sm:py-28">
           <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
             <h2 data-split className="display-section">
-              Et si le prochain <span className="accent-word text-brand">était le vôtre</span>
+              Et si le prochain <span className="accent-word text-brand-ink">était le vôtre</span>
             </h2>
-            <p className="mt-6 text-lg text-white/70">
+            <p className="mt-6 text-lg text-muted-foreground">
               Vingt minutes suffisent pour savoir si on peut vous être utile. Sans engagement, sans
               démarchage derrière.
             </p>
