@@ -7,17 +7,11 @@ import {
   ArrowRight,
   Search,
   Clock,
-  Frown,
-  TrendingUp,
-  Star,
   ChevronDown,
-  Sparkles,
   Mail,
   Globe,
   Target,
   Zap,
-  MessageSquare,
-  FileText,
   Instagram,
   Linkedin,
 } from "lucide-react";
@@ -32,7 +26,6 @@ import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
 import { MetierFooterLinks, MetierLinksSection } from "@/components/MetierLinks";
 import { SectionHeader } from "@/components/SectionHeader";
 import { StackedOffers } from "@/components/StackedOffers";
-import { RotatingWords } from "@/components/RotatingWords";
 import { MainNav } from "@/components/MainNav";
 import { Surligne } from "@/components/Surligne";
 import { REALISATIONS } from "@/data/realisations";
@@ -211,195 +204,151 @@ function Hero() {
   return (
     <section ref={sectionRef} id="top" className="hero-bg hero-halo relative overflow-hidden">
       <div className="dot-grid pointer-events-none absolute inset-0" aria-hidden="true" />
-      <div className="relative mx-auto max-w-7xl px-4 pb-28 pt-16 sm:px-6 sm:pt-24 lg:pb-36">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-8">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-muted-foreground">
-              <Sparkles className="h-3.5 w-3.5 text-brand-ink" />
-              Agence web · Artisans, indépendants & PME de services
-            </div>
-            {/* Le titre monte d'un cran en échelle : c'est le levier le plus
-                direct pour donner de la présence, avant tout effet. Le dernier
-                fragment prend le dégradé de la triade plutôt qu'une teinte
-                unique. */}
-            <h1
-              data-split
-              className="mt-6 font-display text-[clamp(2.9rem,6.4vw,5.6rem)] font-extrabold leading-[0.95] tracking-[-0.045em]"
-            >
-              Plus de clients.
-              <br />
-              Plus d'appels.
-              <br />
-              <span className="brand-gradient-text accent-word">Moins de temps perdu.</span>
-            </h1>
 
-            {/* Annotation et sa flèche, tracées à la main, posées dans le flux.
-                À l'intérieur du titre elles étaient rognées par l'overflow de la
-                section. Elles reprennent l'italique déjà chargé plutôt que
-                d'imposer une quatrième famille de caractères. */}
-            <div aria-hidden="true" className="mt-5 flex items-center gap-3 text-muted-foreground">
-              <svg
-                viewBox="0 0 88 46"
-                className="h-9 w-20 shrink-0 text-brand-ink/45"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              >
-                <path d="M84 42C68 16 44 4 6 6" />
-                <path d="M6 6l17 8M6 6l11 13" />
-              </svg>
-              <span className="accent-word -rotate-2 text-xl">et zéro prise de tête</span>
-            </div>
+      <div className="relative mx-auto max-w-6xl px-4 pt-16 text-center sm:px-6 sm:pt-24">
+        {/* Le nom de la marque vit dans la phrase et en porte le graphisme,
+            comme « LINOV digitalise votre entreprise » chez la référence. Le
+            titre remplace à lui seul la pastille, la ligne défilante et le
+            sous-titre qui l'encombraient. */}
+        <h1 className="font-display font-extrabold leading-[1.06] tracking-[-0.03em]">
+          <span className="block text-[clamp(1.15rem,2.4vw,2rem)] text-muted-foreground">
+            Agence web pour artisans, indépendants et PME,
+          </span>
+          <span className="mt-2 block text-[clamp(2.6rem,8.2vw,7rem)] leading-[0.92]">
+            <span className="tracking-[0.14em]">SITALY</span>{" "}
+            <span className="brand-gradient-text">fait sonner</span>
+          </span>
+          <span className="mt-1 block text-[clamp(1.5rem,3.6vw,3.1rem)] leading-tight">
+            votre téléphone
+          </span>
+        </h1>
 
-            <p className="mt-7 text-lg font-medium sm:text-xl">
-              Sitaly s'occupe de{" "}
-              <RotatingWords
-                className="brand-gradient-text font-display font-extrabold"
-                words={[
-                  "votre site internet",
-                  "vos campagnes Google Ads",
-                  "vos campagnes ChatGPT Ads",
-                  "vos agents IA",
-                  "votre référencement local",
-                ]}
-              />
-            </p>
-            <p className="measure mt-3 text-lg text-muted-foreground">
-              Vous gardez votre métier, on prend le reste.
-            </p>
+        {/* Annotation tracée à la main, sous le titre et centrée. */}
+        <div
+          aria-hidden="true"
+          className="mt-6 flex items-center justify-center gap-3 text-muted-foreground"
+        >
+          <svg
+            viewBox="0 0 88 46"
+            className="h-8 w-16 shrink-0 -scale-x-100 text-brand-ink/45"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          >
+            <path d="M84 42C68 16 44 4 6 6" />
+            <path d="M6 6l17 8M6 6l11 13" />
+          </svg>
+          <span className="accent-word -rotate-2 text-xl">et zéro prise de tête</span>
+        </div>
 
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a
-                href={CALENDLY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-base font-semibold text-accent-foreground shadow-glow transition hover:brightness-110"
-              >
-                <Calendar className="h-5 w-5" />
-                Réserver un appel
-              </a>
-              <a
-                href="#exemples"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-card px-6 py-3.5 text-base font-semibold shadow-soft transition hover:bg-secondary"
-              >
-                Voir nos réalisations
-                <ArrowRight className="h-5 w-5" />
-              </a>
-            </div>
-
-            {/* Les preuves passent en ligne sous les boutons plutôt que dans un
-                bandeau séparé, qui répétait la même chose vingt pixels plus bas
-                et affichait « Sans » comme s'il s'agissait d'un chiffre. */}
-            <dl className="mt-10 grid grid-cols-3 gap-x-6 border-t border-border pt-7">
-              {[
-                { v: "48h", l: "Mise en ligne" },
-                { v: "24h", l: "Délai de réponse" },
-                { v: "0€", l: "Frais d'installation" },
-              ].map((s) => (
-                <div key={s.l}>
-                  <dt className="brand-gradient-text rail-num font-display text-3xl font-extrabold leading-none tracking-tight sm:text-4xl">
-                    {s.v}
-                  </dt>
-                  <dd className="mt-2 text-xs text-muted-foreground sm:text-sm">{s.l}</dd>
-                </div>
-              ))}
-            </dl>
-            {/* « sans » n'est pas un chiffre : il sort de la rangée et redevient
-                une phrase, au lieu de s'aligner avec 48h et 0€. */}
-            <p className="mt-5 text-sm text-muted-foreground">
-              Sans engagement de durée, résiliable à tout moment.
-            </p>
-          </div>
-
-          <div className="drift relative">
-            <HeroPreuve />
-          </div>
+        <div className="mt-9 flex justify-center">
+          <a
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-7 py-4 text-base font-semibold text-accent-foreground shadow-glow transition hover:brightness-110"
+          >
+            <Calendar className="h-5 w-5" />
+            Réserver un appel
+          </a>
         </div>
       </div>
+
+      <HeroPreuve />
     </section>
   );
 }
 
 /**
- * Preuve en tête de page : les trois sites réellement livrés, empilés.
+ * Les trois sites livrés, en bande large sous le titre.
  *
- * Remplace une fausse fenêtre de navigateur affichant « votre-entreprise.fr ».
- * Un faux site ne prouve rien et se voit ; trois vrais sites, nommés par leur
- * domaine et cliquables, disent la même chose en étant vérifiables.
+ * La référence pose une photo pleine largeur coupée par le bas du pli : on
+ * devine qu'il y a une suite, ce qui invite à défiler. Même principe ici, mais
+ * avec de vrais sites plutôt qu'une image d'illustration. Les captures sont
+ * cliquables et portent leur nom de domaine.
  */
 function HeroPreuve() {
   const [principal, ...secondaires] = REALISATIONS;
+  const gauche = secondaires[0];
+  const droite = secondaires[1];
+
   return (
-    <div className="relative mx-auto w-full max-w-xl pb-16 pt-6 sm:pb-24">
-      {/* Halo derrière le collage, pour décoller les cartes du fond. */}
+    <div className="relative mt-14 sm:mt-20">
+      {/* Halo derrière la bande, pour décoller les cartes du fond. */}
       <div
         aria-hidden="true"
-        className="absolute inset-6 -z-10 rounded-[3rem] bg-brand/12 blur-3xl"
+        className="pointer-events-none absolute inset-x-[12%] top-8 h-56 rounded-[4rem] bg-brand/12 blur-3xl"
       />
 
-      <a
-        href={principal.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ "--r": "-1.5deg", "--f": 0 } as React.CSSProperties}
-        className="zoom-frame float-card relative block rounded-2xl border border-border bg-card shadow-elevated"
-      >
-        <img
-          src={principal.capture.small}
-          srcSet={`${principal.capture.small} 720w, ${principal.capture.large} 1200w`}
-          sizes="(min-width: 1024px) 44vw, 92vw"
-          alt={`Page d'accueil du site de ${principal.client}`}
-          width={720}
-          height={500}
-          decoding="async"
-          className="block h-auto w-full rounded-2xl"
-        />
-        <span className="absolute bottom-3 left-3 rounded-full bg-ink/85 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-          {principal.domaine}
-        </span>
-      </a>
-
-      {/* Les deux autres, dispersées de part et d'autre plutôt qu'alignées :
-          l'alignement faisait une pile bien rangée, pas un portfolio. */}
-      {secondaires.map((r, i) => (
+      <div className="relative mx-auto flex max-w-6xl items-end justify-center gap-4 px-4 sm:px-6">
         <a
-          key={r.slug}
-          href={r.url}
+          href={gauche.url}
           target="_blank"
           rel="noopener noreferrer"
-          style={
-            {
-              "--r": i === 0 ? "-4deg" : "3.5deg",
-              "--f": i + 1,
-            } as React.CSSProperties
-          }
-          className={`zoom-frame float-card absolute hidden w-[168px] overflow-hidden rounded-xl border border-border bg-card shadow-elevated transition-shadow hover:shadow-glow sm:block ${
-            i === 0 ? "-bottom-2 -left-10" : "-right-8 bottom-10"
-          }`}
+          style={{ "--r": "-4deg", "--f": 1 } as React.CSSProperties}
+          className="zoom-frame float-card relative hidden w-[26%] shrink-0 overflow-hidden rounded-2xl border border-border bg-card shadow-elevated lg:block"
         >
           <img
-            src={r.capture.small}
-            alt={`Page d'accueil du site de ${r.client}`}
+            src={gauche.capture.small}
+            alt={`Page d'accueil du site de ${gauche.client}`}
             loading="lazy"
             decoding="async"
             className="block h-auto w-full"
           />
-          <span className="absolute inset-x-0 bottom-0 bg-ink/80 px-2 py-1 text-center text-[10px] font-semibold text-white">
-            {r.domaine}
+          <span className="absolute inset-x-0 bottom-0 bg-ink/80 px-2 py-1 text-center text-[11px] font-semibold text-white">
+            {gauche.domaine}
           </span>
         </a>
-      ))}
 
-      <div className="animate-float absolute -right-2 -top-2 hidden items-center gap-2.5 rounded-xl border border-border bg-card px-3.5 py-2.5 shadow-elevated sm:flex">
-        <span className="grid h-9 w-9 place-items-center rounded-lg bg-signal-ink/12 text-signal-ink">
-          <Check className="h-4 w-4" />
-        </span>
-        <div>
-          <div className="text-xs text-muted-foreground">Sites livrés</div>
-          <div className="text-sm font-semibold">Tous en ligne, vérifiables</div>
-        </div>
+        <a
+          href={principal.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ "--r": "0deg", "--f": 0 } as React.CSSProperties}
+          className="zoom-frame float-card relative w-full shrink-0 overflow-hidden rounded-2xl border border-border bg-card shadow-elevated lg:w-[44%]"
+        >
+          <img
+            src={principal.capture.large}
+            srcSet={`${principal.capture.small} 720w, ${principal.capture.large} 1200w`}
+            sizes="(min-width: 1024px) 44vw, 92vw"
+            alt={`Page d'accueil du site de ${principal.client}`}
+            width={720}
+            height={500}
+            decoding="async"
+            className="block h-auto w-full"
+          />
+          <span className="absolute bottom-3 left-3 rounded-full bg-ink/85 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+            {principal.domaine}
+          </span>
+        </a>
+
+        <a
+          href={droite.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ "--r": "3.5deg", "--f": 2 } as React.CSSProperties}
+          className="zoom-frame float-card relative hidden w-[26%] shrink-0 overflow-hidden rounded-2xl border border-border bg-card shadow-elevated lg:block"
+        >
+          <img
+            src={droite.capture.small}
+            alt={`Page d'accueil du site de ${droite.client}`}
+            loading="lazy"
+            decoding="async"
+            className="block h-auto w-full"
+          />
+          <span className="absolute inset-x-0 bottom-0 bg-ink/80 px-2 py-1 text-center text-[11px] font-semibold text-white">
+            {droite.domaine}
+          </span>
+        </a>
       </div>
+
+      {/* Le bas des captures se fond dans le papier : la bande est coupée par
+          le pli plutôt que posée dessus, ce qui donne envie de descendre. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-background"
+      />
     </div>
   );
 }

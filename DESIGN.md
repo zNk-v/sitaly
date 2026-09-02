@@ -192,6 +192,29 @@ Mesure de lecture plafonnée à 68 caractères.
 
 ---
 
+## 4 bis. Le hero
+
+Affirmation centrée, pas argumentaire de conversion. Quatre versions
+successives ont échoué parce qu'elles empilaient huit éléments dans une
+colonne de gauche : pastille, titre, annotation, ligne défilante, sous-titre,
+deux boutons, trois chiffres, une mention. Le visiteur ne savait pas où
+regarder.
+
+La règle qui remplace tout ça : **le hero porte une phrase, un objet graphique
+et un bouton.** Rien d'autre. Les chiffres, les garanties et la preuve
+descendent dans la page, où ils travaillent mieux.
+
+Le nom de la marque vit dans la phrase et en porte le graphisme :
+« Agence web pour artisans, indépendants et PME, **SITALY** fait sonner votre
+téléphone ». Linov applique la même construction avec son propre nom. Le verbe
+reste concret : un artisan attend que son téléphone sonne, pas qu'on
+« digitalise son entreprise ».
+
+Sous le titre, les trois sites livrés forment une bande large que le bas du pli
+coupe. Cette coupe fait deviner une suite et invite à défiler.
+
+---
+
 ## 5. Grille et rythme
 
 Ancrage à gauche, jamais de section entièrement centrée hors CTA final.
