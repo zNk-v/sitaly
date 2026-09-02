@@ -91,7 +91,21 @@ site. Le violet et le rose sont ceux du logo ; le bleu les prolonge d'un cran.
 |---|---|---|
 | `--blue` | `oklch(0.5 0.19 258)` | Action. 6,2:1 avec le blanc de son libellé. |
 | `--violet` | `oklch(0.48 0.22 300)` | Texte d'accent sur papier, 7:1. |
-| `--pink` | `oklch(0.52 0.22 350)` | Fin du dégradé, 5,9:1 sur papier. |
+| `--pink` | `oklch(0.52 0.22 350)` | Milieu du dégradé, 5,4:1 sur papier. |
+| `--red` | `oklch(0.58 0.22 28)` | **Extrémité de dégradé uniquement**, 4,6:1 sur papier. |
+
+**Le rouge ne sort jamais d'un dégradé.** Jamais en aplat, jamais sur un bouton,
+jamais seul. `--destructive` vaut `oklch(0.6 0.22 27)`, c'est-à-dire presque la
+même couleur : deux rouges qui se ressemblent dans une interface font perdre au
+second son sens d'alerte. Le rouge de marque n'existe qu'en fin de dégradé, où
+il n'est jamais confondu avec un message d'erreur.
+
+**Tout dégradé qui traverse le cercle chromatique s'interpole dans oklch.**
+En sRGB, un bleu vers rouge donne `#6f3f76` à mi-course, un violet terne dont la
+luminance CREUSE sous celle des deux extrémités — c'est la bande boueuse qu'on
+voit sur la plupart des dégradés bleu-rouge. En oklch, le chemin court passe par
+le magenta et reste vif de bout en bout : `#6d48cf`, `#a335b1`, `#cb207a`. Une
+déclaration de repli en sRGB précède systématiquement celle en oklch.
 
 Tout le reste en dérive : le voile de section est cette triade en très clair,
 le dégradé de titre la parcourt en pleine saturation, le hero pose un foyer par

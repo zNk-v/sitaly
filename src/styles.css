@@ -49,6 +49,7 @@
   --color-blue: var(--blue);
   --color-violet: var(--violet);
   --color-pink: var(--pink);
+  --color-red: var(--red);
   --color-brand: var(--brand);
   --color-brand-deep: var(--brand-deep);
   --color-brand-ink: var(--brand-ink);
@@ -78,6 +79,11 @@
   --blue: oklch(0.5 0.19 258);
   --violet: oklch(0.48 0.22 300);
   --pink: oklch(0.52 0.22 350);
+  /* Extrémité chaude du dégradé. Elle ne sert QUE d'arrivée de dégradé :
+     jamais en aplat, jamais sur un bouton, jamais seule. Le rouge plein reste
+     réservé aux erreurs, et deux rouges qui se ressemblent dans une interface
+     font perdre au second son sens d'alerte. */
+  --red: oklch(0.58 0.22 28);
 
   /* Versions claires, pour l'ornement sur surface sombre. */
   --brand: oklch(0.722 0.177 305);
@@ -90,15 +96,15 @@
   /* Voile de section : la triade en très clair. Chaque arrêt porte du texte
      encre à plus de 15:1, donc le fond colore sans jamais gêner la lecture. */
   --wash-from: oklch(0.955 0.03 255);
-  --wash-via: oklch(0.95 0.038 300);
-  --wash-to: oklch(0.95 0.038 350);
+  --wash-via: oklch(0.95 0.038 320);
+  --wash-to: oklch(0.955 0.032 25);
 
   /* La même triade en pleine saturation, pour le texte. Les trois arrêts
      passent au-dessus de 5.9:1 sur papier : le dégradé reste lisible sur
      toute sa longueur, y compris au point le plus clair. */
   --brand-grad-from: var(--blue);
-  --brand-grad-via: var(--violet);
-  --brand-grad-to: var(--pink);
+  --brand-grad-via: var(--pink);
+  --brand-grad-to: var(--red);
 
   --signal: oklch(0.72 0.17 165);
   --signal-ink: oklch(0.48 0.13 165);
@@ -131,7 +137,13 @@
 
   /* Le dégradé de marque va du violet au rose, jamais vers le bleu.
      Il habille du texte, des filets et des bordures, jamais une nappe de fond. */
-  --gradient-brand: linear-gradient(115deg, var(--blue), var(--violet) 52%, var(--pink));
+  /* Interpolation dans oklch, impérative ici : en sRGB, un bleu vers rouge
+     passe par un violet terne et sa luminance CREUSE au milieu — c'est la
+     bande boueuse qu'on voit sur la plupart des dégradés bleu-rouge. En oklch
+     le chemin court passe par le magenta et reste vif d'un bout à l'autre.
+     La première déclaration sert de repli aux navigateurs qui ne savent pas. */
+  --gradient-brand: linear-gradient(115deg, var(--blue), var(--pink) 62%, var(--red));
+  --gradient-brand: linear-gradient(115deg in oklch, var(--blue), var(--red));
   /* Hero en clair. La nappe violette est un voile posé en haut, pas une nappe
      de fond : elle se dissout dans le papier chaud avant le milieu de la
      section. C'est ce qui la distingue du lavande froid et uniforme de Linov. */
@@ -140,7 +152,7 @@
   --gradient-hero:
     radial-gradient(ellipse 70% 55% at 12% -5%, oklch(0.55 0.19 258 / 0.18), transparent 62%),
     radial-gradient(ellipse 65% 50% at 52% -8%, oklch(0.55 0.22 300 / 0.16), transparent 60%),
-    radial-gradient(ellipse 60% 45% at 90% 2%, oklch(0.6 0.2 350 / 0.15), transparent 60%),
+    radial-gradient(ellipse 60% 45% at 90% 2%, oklch(0.62 0.2 22 / 0.16), transparent 60%),
     linear-gradient(180deg, oklch(0.975 0.012 300), var(--paper) 58%);
   --gradient-primary: linear-gradient(135deg, var(--ink), oklch(0.28 0.1 305));
   --gradient-accent: var(--gradient-brand);
@@ -213,6 +225,7 @@
    tels quels. Seuls les filets se teintent, pour ne pas trancher sur le voile. */
 @utility on-wash {
   background: linear-gradient(115deg, var(--wash-from), var(--wash-via) 50%, var(--wash-to));
+  background: linear-gradient(115deg in oklch, var(--wash-from), var(--wash-to));
   --border: oklch(0.48 0.2 300 / 0.16);
 }
 
@@ -222,9 +235,10 @@
   background: linear-gradient(
     100deg,
     var(--brand-grad-from),
-    var(--brand-grad-via) 48%,
+    var(--brand-grad-via) 58%,
     var(--brand-grad-to)
   );
+  background: linear-gradient(100deg in oklch, var(--brand-grad-from), var(--brand-grad-to));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

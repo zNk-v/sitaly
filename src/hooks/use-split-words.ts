@@ -11,6 +11,23 @@ import { useEffect, type RefObject } from "react";
  * Sans JS, ou sous `prefers-reduced-motion`, le titre s'affiche normalement :
  * c'est l'ajout de `is-split` qui déclenche l'état masqué.
  */
+/**
+ * Un fragment peint en dégradé via `background-clip: text` ne survit pas au
+ * découpage : chaque mot devient un `inline-block` avec `will-change`, donc un
+ * contexte d'empilement, et le parent n'a plus aucune glyphe à découper — le
+ * texte disparaît purement et simplement. Ces fragments sont laissés entiers,
+ * ils gardent leur dégradé et le reste du titre garde sa cascade.
+ */
+function dansTexteDecoupeEnFond(node: Node, limite: HTMLElement): boolean {
+  let el = node.parentElement;
+  while (el && el !== limite.parentElement) {
+    const clip = getComputedStyle(el).webkitBackgroundClip || getComputedStyle(el).backgroundClip;
+    if (clip === "text") return true;
+    el = el.parentElement;
+  }
+  return false;
+}
+
 export function useSplitWords(containerRef: RefObject<HTMLElement | null>) {
   useEffect(() => {
     const root = containerRef.current;
@@ -36,7 +53,9 @@ export function useSplitWords(containerRef: RefObject<HTMLElement | null>) {
       const textNodes: Text[] = [];
       let node = walker.nextNode();
       while (node) {
-        if (node.textContent?.trim()) textNodes.push(node as Text);
+        if (node.textContent?.trim() && !dansTexteDecoupeEnFond(node, title)) {
+          textNodes.push(node as Text);
+        }
         node = walker.nextNode();
       }
 
