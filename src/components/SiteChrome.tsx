@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { SitalyLogo } from "@/components/SitalyLogo";
 import { LinkedinLink } from "@/components/LinkedinLink";
 import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
+import { MainNav } from "@/components/MainNav";
 import { CALENDLY_URL } from "@/lib/config";
 
 /**
@@ -26,39 +27,7 @@ export function SiteChrome({ children }: { children: ReactNode }) {
             <SitalyLogo />
           </Link>
 
-          <nav className="hidden items-center gap-8 md:flex">
-            <Link
-              to="/realisations/"
-              className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
-            >
-              Réalisations
-            </Link>
-            <Link
-              to="/acquisition/"
-              className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
-            >
-              Google Ads
-            </Link>
-            <Link
-              to="/agents-ia/"
-              className="text-sm font-semibold text-brand-ink transition hover:text-foreground"
-            >
-              Agents IA
-            </Link>
-            {/* Page statique hors routeur : lien classique, pas de <Link>. */}
-            <a
-              href="/chatgpt-ads/"
-              className="text-sm font-semibold text-brand-ink transition hover:text-foreground"
-            >
-              ChatGPT Ads
-            </a>
-            <Link
-              to="/blog/"
-              className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
-            >
-              Blog
-            </Link>
-          </nav>
+          <MainNav />
 
           <div className="flex items-center gap-2">
             <HeaderCallButton />

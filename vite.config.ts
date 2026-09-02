@@ -15,9 +15,12 @@ export default defineConfig({
     prerender: {
       enabled: true,
       crawlLinks: true,
-      // Les landings ChatGPT Ads sont des fichiers statiques servis depuis public/ :
-      // elles n'existent pas dans le routeur, le prérendu doit les ignorer.
-      filter: (page: { path: string }) => !page.path.startsWith("/chatgpt-ads"),
+      // Landings statiques servies depuis public/ : elles n'existent pas dans le
+      // routeur, donc le prérendu échoue s'il les suit. La liste doit couvrir
+      // toutes les pages statiques liées depuis la navigation, sans quoi le
+      // build casse dès qu'un lien vers l'une d'elles apparaît quelque part.
+      filter: (page: { path: string }) =>
+        !["/chatgpt-ads", "/agents-ia/chatgpt"].some((p) => page.path.startsWith(p)),
     },
   },
 });

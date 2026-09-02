@@ -479,6 +479,62 @@
   }
 }
 
+/* ---- Surlignage tracé à la main ----
+   Le SVG est étiré derrière le mot et n'intercepte rien. Le trait se dessine
+   au défilement quand le navigateur sait le faire ; sinon il est simplement
+   déjà tracé, ce qui reste correct. */
+.mark-svg {
+  position: absolute;
+  inset-inline: -0.18em;
+  pointer-events: none;
+  /* Pas de z-index négatif : sans contexte d'empilement propre, il ferait
+     passer le trait derrière le fond de la section. Le SVG vient avant le
+     texte dans le DOM et les deux sont positionnés, l'ordre de peinture
+     suffit donc à le placer dessous. */
+  width: calc(100% + 0.36em);
+  stroke: var(--pink);
+  opacity: 0.32;
+}
+.mark-trait {
+  bottom: -0.12em;
+  height: 0.55em;
+}
+.mark-sweep {
+  bottom: 0.02em;
+  height: 0.86em;
+}
+.mark-cercle {
+  bottom: -0.16em;
+  height: 1.32em;
+  inset-inline: -0.42em;
+  width: calc(100% + 0.84em);
+  opacity: 0.5;
+  stroke: var(--blue);
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes mark-stroke {
+      from {
+        stroke-dashoffset: 240;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+    .mark-draw {
+      stroke-dasharray: 240;
+      animation: mark-stroke linear both;
+      animation-timeline: view();
+      animation-range: entry 35% cover 48%;
+    }
+    /* Le second passage part un peu après le premier : deux gestes, pas un. */
+    .mark-draw-2 {
+      animation-range: entry 48% cover 62%;
+    }
+  }
+}
+
 /* Mesure de lecture plafonnée (DESIGN.md §4). */
 @utility measure {
   max-width: 34rem;

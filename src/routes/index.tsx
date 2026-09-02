@@ -33,6 +33,8 @@ import { MetierFooterLinks, MetierLinksSection } from "@/components/MetierLinks"
 import { SectionHeader } from "@/components/SectionHeader";
 import { StackedOffers } from "@/components/StackedOffers";
 import { RotatingWords } from "@/components/RotatingWords";
+import { MainNav } from "@/components/MainNav";
+import { Surligne } from "@/components/Surligne";
 import { REALISATIONS } from "@/data/realisations";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 import { useSplitWords } from "@/hooks/use-split-words";
@@ -152,53 +154,7 @@ function Nav() {
         <a href="#top" className="flex items-center" aria-label="Sitaly — accueil">
           <SitalyLogo />
         </a>
-        <nav className="hidden items-center gap-8 md:flex">
-          <a
-            href="#offre"
-            className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
-          >
-            Offres
-          </a>
-          <Link
-            to="/agents-ia/"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand transition hover:text-foreground"
-          >
-            <Sparkles className="h-3.5 w-3.5" />
-            Agents IA
-          </Link>
-          {/* Page statique hors routeur : lien classique, pas de <Link>. */}
-          <a
-            href="/chatgpt-ads/"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand transition hover:text-foreground"
-          >
-            <MessageSquare className="h-3.5 w-3.5" />
-            ChatGPT Ads
-          </a>
-          <a
-            href="#exemples"
-            className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
-          >
-            Exemples
-          </a>
-          <a
-            href="#process"
-            className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
-          >
-            Process
-          </a>
-          <Link
-            to="/blog/"
-            className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
-          >
-            Blog
-          </Link>
-          <a
-            href="#faq"
-            className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
-          >
-            FAQ
-          </a>
-        </nav>
+        <MainNav />
 
         <div className="flex items-center gap-2">
           <HeaderCallButton />
@@ -468,28 +424,36 @@ function ProfessionsMarquee() {
     "Entrepreneurs",
   ];
 
+  /* Chaque métier devient une pastille : le défilement lit comme une liste
+     d'étiquettes, pas comme une phrase interminable coupée par des points. */
   const Track = ({ hidden = false }: { hidden?: boolean }) => (
-    <ul className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>
+    <ul
+      className="flex shrink-0 items-center gap-3 pr-3 sm:gap-4 sm:pr-4"
+      aria-hidden={hidden || undefined}
+    >
       {metiers.map((m) => (
-        <li key={m} className="flex items-center">
-          <span className="whitespace-nowrap px-6 text-base font-semibold text-foreground/75 sm:px-8 sm:text-lg">
-            {m}
-          </span>
-          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand/60" aria-hidden="true" />
+        <li
+          key={m}
+          className="whitespace-nowrap rounded-full border border-border bg-card px-5 py-2.5 text-[15px] font-semibold shadow-soft sm:text-base"
+        >
+          {m}
         </li>
       ))}
     </ul>
   );
 
   return (
-    <section className="border-t border-border bg-paper-sunk py-12 sm:py-16">
+    <section className="border-y border-border bg-paper-sunk py-16 sm:py-20">
+      {/* L'intitulé respire au-dessus du bandeau au lieu de le toucher :
+          c'est le manque d'air, pas le défilement, qui faisait fouillis. */}
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-        <h2 className="font-display text-xl font-bold tracking-tight sm:text-2xl">
+        <div className="rail-label text-brand-ink">Pour qui</div>
+        <h2 className="mt-3 font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
           Plus de clients pour votre activité,{" "}
-          <span className="accent-word text-brand-ink">quel que soit votre métier</span>
+          <Surligne variante="sweep">quel que soit votre métier</Surligne>
         </h2>
       </div>
-      <div className="marquee marquee-mask group relative mt-9 flex overflow-hidden">
+      <div className="marquee marquee-mask group relative mt-12 flex overflow-hidden sm:mt-14">
         <div className="animate-marquee flex shrink-0">
           <Track />
           <Track hidden />
@@ -722,7 +686,7 @@ function Realisations() {
           eyebrow="Réalisations"
           title={
             <>
-              Des sites <span className="accent-word">réellement en ligne</span>
+              Des sites <Surligne variante="trait">réellement en ligne</Surligne>
             </>
           }
           subtitle="Trois métiers, trois logiques différentes. Chaque projet a sa page : ce qui a été livré, pourquoi le site est construit comme ça, et ce qu'on voit en l'ouvrant."
@@ -1060,7 +1024,7 @@ function Founder() {
             <div className="rail-label text-brand-ink">Qui est derrière</div>
             <h2 className="display-section mt-3">
               Un seul interlocuteur,{" "}
-              <span className="accent-word text-brand-ink">celui qui construit votre site</span>
+              <Surligne variante="trait">celui qui construit votre site</Surligne>
             </h2>
             <div className="measure mt-6 space-y-4 text-lg text-muted-foreground">
               <p>
