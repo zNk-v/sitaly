@@ -310,15 +310,15 @@ function Header() {
 /* ---------------- HERO ---------------- */
 function Hero() {
   return (
-    <section className="hero-bg">
+    <section className="hero-bg on-ink">
       <div className="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-24">
-        <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground shadow-soft">
-          <Target className="h-3.5 w-3.5 text-accent" />
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-white/70">
+          <Target className="h-3.5 w-3.5 text-brand" />
           Agence Google Ads
         </div>
         <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl">
           Transformez Google en source régulière de{" "}
-          <span className="gradient-text">nouveaux clients.</span>
+          <span className="accent-word text-brand">nouveaux clients.</span>
         </h1>
         <p className="mt-5 text-lg text-muted-foreground">
           Sitaly crée, pilote et optimise vos campagnes Google Ads pour attirer des prospects
@@ -328,7 +328,7 @@ function Hero() {
           <CtaPrincipal />
           <a
             href="#fonctionnement"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-card px-6 py-3.5 text-base font-semibold shadow-soft transition hover:bg-secondary"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 px-6 py-3.5 text-base font-semibold transition hover:bg-white/10"
           >
             Voir comment ça fonctionne
           </a>
@@ -662,11 +662,11 @@ function Faq() {
 /* ---------------- CTA FINAL ---------------- */
 function CtaFinal() {
   return (
-    <section className="hero-bg border-t border-border">
+    <section className="hero-bg on-ink border-t border-white/10">
       <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 sm:py-24">
         <h2 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
           Votre prochain client cherche peut-être déjà vos services{" "}
-          <span className="gradient-text">sur Google.</span>
+          <span className="accent-word text-brand">sur Google.</span>
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
           Mettons en place une stratégie Google Ads adaptée à votre activité et à votre budget. Un
@@ -676,15 +676,15 @@ function CtaFinal() {
           <CtaPrincipal />
           <a
             href={`tel:${SITALY_PHONE}`}
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-card px-6 py-3.5 text-base font-semibold shadow-soft transition hover:bg-secondary"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 px-6 py-3.5 text-base font-semibold transition hover:bg-white/10"
           >
-            <Phone className="h-5 w-5 text-accent" />
+            <Phone className="h-5 w-5 text-brand" />
             {SITALY_PHONE_DISPLAY}
           </a>
         </div>
         <p className="mt-6 text-sm text-muted-foreground">
           Vous préférez écrire ?{" "}
-          <Link to="/" hash="contact" className="font-semibold text-accent hover:underline">
+          <Link to="/" hash="contact" className="font-semibold text-brand hover:underline">
             Utilisez le formulaire de contact
           </Link>
           .

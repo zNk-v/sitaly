@@ -29,6 +29,8 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import visuelAuto800 from "@/assets/visuel-automatisation-800.jpg";
+import visuelAuto1400 from "@/assets/visuel-automatisation-1400.jpg";
 import teddy448 from "@/assets/teddy-vidal-448.jpg";
 import teddy672 from "@/assets/teddy-vidal-672.jpg";
 import exampleRenovation from "@/assets/example-renovation.jpg";
@@ -220,7 +222,23 @@ function Nav() {
 function Hero() {
   return (
     <section id="top" className="hero-bg relative overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 pb-20 pt-16 sm:px-6 sm:pt-24 lg:pb-28">
+      {/* Boucle générée, posée en accent sur le dégradé et non à sa place.
+          preload="none" et aucune dimension intrinsèque à charger : le LCP
+          reste le titre, la vidéo arrive après. Masquée sous md et sous
+          prefers-reduced-motion, où le dégradé seul fait le travail. */}
+      <video
+        className="hero-video pointer-events-none absolute inset-0 hidden h-full w-full object-cover opacity-45 md:block"
+        src="/hero-loop.mp4"
+        poster="/hero-loop-poster.jpg"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="none"
+        aria-hidden="true"
+        tabIndex={-1}
+      />
+      <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-16 sm:px-6 sm:pt-24 lg:pb-28">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-white/70">
@@ -632,32 +650,58 @@ function Automation() {
     { icon: Clock, t: "Gagner du temps sur les tâches répétitives" },
   ];
   return (
-    <section className="bg-paper-sunk py-20 sm:py-28">
+    /* Section en encre : le visuel généré est sombre, il ne tiendrait pas sur
+       papier. Elle casse aussi la succession de grilles de cartes. */
+    <section className="bg-ink py-20 text-white sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
           index="04"
           eyebrow="Automatisation"
+          tone="ink"
           title={
             <>
-              Ce qui se répète, <span className="accent-word">on l'automatise</span>
+              Ce qui se répète, <span className="accent-word text-brand">on l'automatise</span>
             </>
           }
           subtitle="Les tâches répétitives se font toutes seules, vous restez sur votre métier."
         />
-        <div className="mt-14 grid gap-3 sm:grid-cols-2">
-          {examples.map((e) => (
-            <div
-              key={e.t}
-              className="flex items-center gap-3 rounded-xl border border-border bg-card px-5 py-4 shadow-soft transition hover:border-accent/40"
-            >
-              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-accent/10 text-accent">
-                <e.icon className="h-5 w-5" />
+
+        <div className="mt-14 grid items-center gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
+          {/* Visuel abstrait, généré. Il n'illustre ni un chantier, ni un client,
+              ni un local : c'est une forme, pas un témoignage. DESIGN.md §7. */}
+          <div data-reveal className="overflow-hidden rounded-2xl border border-white/12">
+            <img
+              src={visuelAuto800}
+              srcSet={`${visuelAuto800} 800w, ${visuelAuto1400} 1400w`}
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              width={800}
+              height={447}
+              loading="lazy"
+              decoding="async"
+              alt=""
+              aria-hidden="true"
+              className="block h-auto w-full"
+            />
+          </div>
+
+          <div className="stagger grid gap-3">
+            {examples.map((e, i) => (
+              <div
+                key={e.t}
+                data-reveal
+                style={{ "--i": i } as React.CSSProperties}
+                className="flex items-center gap-3 rounded-xl border border-white/12 bg-white/[0.04] px-5 py-4 transition hover:border-brand/40 hover:bg-white/[0.07]"
+              >
+                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-brand/15 text-brand">
+                  <e.icon className="h-5 w-5" />
+                </div>
+                <span className="font-medium">{e.t}</span>
               </div>
-              <span className="font-medium">{e.t}</span>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-        <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-muted-foreground">
+
+        <p className="measure mt-10 text-sm text-white/55">
           Ces automatisations sont proposées en option, selon les besoins réels de votre entreprise.
           Rien d'imposé.
         </p>
@@ -1505,13 +1549,13 @@ function Founder() {
 function Contact() {
   const [sent, setSent] = useState(false);
   return (
-    <section id="contact" className="relative overflow-hidden py-20 sm:py-28">
+    <section id="contact" className="on-ink relative overflow-hidden py-20 sm:py-28">
       <div className="absolute inset-0 -z-10 hero-bg" />
       <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
         <div>
-          <div className="text-xs font-semibold uppercase tracking-wider text-accent">Contact</div>
-          <h2 className="mt-2 font-display text-3xl font-extrabold sm:text-4xl">
-            Discutons de votre projet
+          <div className="rail-label text-brand">Contact</div>
+          <h2 className="display-section mt-3">
+            Discutons de <span className="accent-word text-brand">votre projet</span>
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Laissez-nous vos coordonnées, on vous rappelle sous 24h pour un échange simple et sans

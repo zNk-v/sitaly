@@ -143,6 +143,22 @@
 @utility hero-bg {
   background: var(--gradient-hero);
 }
+
+/* Sections posées sur l'encre.
+   Rebranche les jetons de texte et de filet en clair, pour que les utilitaires
+   text-muted-foreground, border-border et consorts restent lisibles sans qu'on
+   les réécrive un par un. Volontairement, --card et --accent ne bougent pas :
+   la maquette de navigateur du hero doit rester blanche, et le violet d'action
+   doit garder son contraste de 5.7:1 avec le blanc de son libellé. */
+@utility on-ink {
+  color: oklch(0.99 0 0);
+  --foreground: oklch(0.99 0 0);
+  --muted-foreground: oklch(1 0 0 / 0.62);
+  --border: oklch(1 0 0 / 0.14);
+  --input: oklch(1 0 0 / 0.14);
+  --secondary: oklch(1 0 0 / 0.06);
+  --secondary-foreground: oklch(0.99 0 0);
+}
 @utility gradient-text {
   background: var(--gradient-accent);
   -webkit-background-clip: text;
@@ -266,6 +282,11 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee {
     animation: none;
+  }
+  /* La boucle du hero est un ornement : sous réduction des animations,
+     le dégradé seul porte la section. */
+  .hero-video {
+    display: none !important;
   }
 }
 
