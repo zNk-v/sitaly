@@ -106,6 +106,13 @@
   --brand-grad-via: var(--pink);
   --brand-grad-to: var(--red);
 
+  /* Même triade, un cran plus sombre : c'est le fond du panneau révélé par
+     l'ouverture. Les trois arrêts portent du blanc entre 6.2:1 et 7.4:1, donc
+     le texte tient sur toute la longueur du dégradé. */
+  --panel-from: oklch(0.5 0.19 258);
+  --panel-via: oklch(0.48 0.22 330);
+  --panel-to: oklch(0.5 0.21 25);
+
   --signal: oklch(0.72 0.17 165);
   --signal-ink: oklch(0.48 0.13 165);
 
@@ -204,6 +211,19 @@
 /* Section voilée. Contrairement à .on-ink, aucun jeton de texte ne bascule :
    le fond reste assez clair pour que l'encre et le violet de marque tiennent
    tels quels. Seuls les filets se teintent, pour ne pas trancher sur le voile. */
+/* Panneau plein dégradé, sur le modèle de .on-ink : les jetons de texte et de
+   filet basculent en clair pour que les utilitaires courants restent lisibles. */
+@utility on-panel {
+  background: linear-gradient(125deg, var(--panel-from), var(--panel-via) 52%, var(--panel-to));
+  background: linear-gradient(125deg in oklch, var(--panel-from), var(--panel-to));
+  color: oklch(0.99 0 0);
+  --foreground: oklch(0.99 0 0);
+  --muted-foreground: oklch(1 0 0 / 0.75);
+  --border: oklch(1 0 0 / 0.22);
+  --secondary: oklch(1 0 0 / 0.1);
+  --secondary-foreground: oklch(0.99 0 0);
+}
+
 @utility on-wash {
   background: linear-gradient(115deg, var(--wash-from), var(--wash-via) 50%, var(--wash-to));
   background: linear-gradient(115deg in oklch, var(--wash-from), var(--wash-to));
@@ -441,6 +461,156 @@
 @media (prefers-reduced-motion: reduce) {
   .word-swap {
     animation: none;
+  }
+}
+
+/* ============================================================
+   Ouverture au défilement : le nom perce l'écran
+   ============================================================
+
+   Repli d'abord. Par défaut, la scène est une simple succession de deux
+   blocs : rien n'est collé, le voile n'est pas rendu. C'est l'état que voient
+   les navigateurs sans `animation-timeline` et les visiteurs qui réduisent les
+   animations. Un voile figé à l'échelle 1 masquerait la section suivante pour
+   toujours : le repli ne peut donc pas être « l'effet, en moins bien ». */
+.zoom-cover {
+  display: none;
+}
+.zoom-behind,
+.zoom-front {
+  position: static;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .zoom-stage {
+      /* La hauteur de la scène EST la durée de l'effet : deux écrans et demi
+         de défilement pour ouvrir le mot. La timeline porte un nom, car
+         l'enfant collé ne bouge pas et ne peut pas servir de repère à sa
+         propre animation. */
+      /* La hauteur de la scène EST la durée de l'effet : l'enfant reste collé
+         tant qu'on parcourt ces 260vh. Les animations sont pilotées par le
+         défilement du document, pas par une timeline nommée : la scène ouvre
+         la page, donc les deux courses coïncident, et une course en pixels se
+         règle sans deviner ce que « cover 40 % » recouvre. */
+      /* 100vh pour l'écran collé, plus la course des animations (elles
+         s'achèvent vers 88vh de défilement). Au-delà, le panneau resterait
+         collé sans que rien ne bouge. */
+      height: 195vh;
+    }
+    .zoom-pin {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+    /* L'empilement est explicite : l'ordre du DOM sert au repli, pas à
+       l'effet. Le voile passe entre les deux couches. */
+    .zoom-behind,
+    .zoom-cover,
+    .zoom-front {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+    }
+    .zoom-behind {
+      z-index: 1;
+    }
+    .zoom-cover {
+      z-index: 2;
+    }
+    .zoom-front {
+      z-index: 3;
+    }
+    /* Le nom est découpé dans le voile : sa doublure en texte n'a plus lieu
+       d'être et ferait doublon au repos. */
+    .zoom-word-fallback {
+      display: none;
+    }
+    /* Le voile s'efface sur la fin. Sans ça, les contre-poinçons des lettres
+       restent en papier une fois le mot agrandi : le « A » garde son triangle
+       intérieur au milieu du panneau révélé. */
+    .zoom-cover {
+      pointer-events: none;
+      animation: zoom-voile linear both;
+      animation-timeline: scroll(root);
+      animation-range: 62vh 84vh;
+    }
+    @keyframes zoom-voile {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+    .zoom-front {
+      pointer-events: none;
+    }
+    .zoom-front > * {
+      pointer-events: auto;
+    }
+
+    /* Le mot découpé. `transform-box: fill-box` fait porter l'origine sur la
+       boîte du texte et non sur le repère du SVG, sans quoi le zoom part d'un
+       coin. */
+    .zoom-word {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 150px;
+      letter-spacing: 0.18em;
+      /* Le décalage compense l'interlettrage, qui ajoute une chasse après la
+         dernière lettre et déporte le mot vers la gauche. */
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: zoom-percer linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 82vh;
+      will-change: transform;
+    }
+    @keyframes zoom-percer {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(34);
+      }
+    }
+
+    /* Le texte de tête s'efface pendant le premier tiers : passé ce point, il
+       flotterait au-dessus de la section révélée. */
+    .zoom-front {
+      animation: zoom-effacer linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 30vh;
+    }
+    @keyframes zoom-effacer {
+      from {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(-2.5rem);
+      }
+    }
+
+    /* La section révélée monte légèrement pendant l'ouverture, ce qui donne la
+       sensation d'entrer dedans plutôt que de la découvrir à plat. */
+    .zoom-behind {
+      animation: zoom-approcher linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 88vh;
+    }
+    @keyframes zoom-approcher {
+      from {
+        transform: scale(0.94);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
   }
 }
 

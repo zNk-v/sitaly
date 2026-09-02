@@ -28,6 +28,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { StackedOffers } from "@/components/StackedOffers";
 import { MainNav } from "@/components/MainNav";
 import { Surligne } from "@/components/Surligne";
+import { ZoomIntro } from "@/components/ZoomIntro";
 import { REALISATIONS } from "@/data/realisations";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 import { useSplitWords } from "@/hooks/use-split-words";
@@ -113,8 +114,7 @@ function SitalyHome() {
   return (
     <div ref={rootRef} className="min-h-screen bg-background text-foreground">
       <Nav />
-      <Hero />
-      <CeQuOnFait />
+      <Ouverture />
       <ProfessionsMarquee />
       <Problem />
       <HowItWorks />
@@ -169,60 +169,72 @@ function Nav() {
 }
 
 /* ---------------- HERO ---------------- */
-function Hero() {
+/**
+ * Ouverture de la page : le nom perce l'écran et révèle les trois promesses.
+ *
+ * Le mot SITALY n'est plus écrit dans le titre, il est découpé dans le voile
+ * par ZoomIntro. Le texte de tête l'encadre donc sans le répéter.
+ */
+function Ouverture() {
   return (
-    <section id="top" className="hero-bg relative overflow-hidden">
-      <div className="relative mx-auto max-w-6xl px-4 py-24 text-center sm:px-6 sm:py-32 lg:py-40">
-        {/* Le nom de la marque vit dans la phrase et en porte le graphisme.
-            Jakarta pour la structure, Instrument Serif pour le verbe : le
-            mélange des deux familles fait la tension du titre, la couleur ne
-            fait que la souligner. */}
-        <h1 className="font-display font-extrabold leading-[1.06]">
-          <span className="block text-[clamp(1.05rem,2vw,1.6rem)] tracking-[0.08em] text-muted-foreground">
+    <ZoomIntro
+      nom="SITALY"
+      avant={
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
+          {/* Le mot est centré sur la fenêtre ; ce bloc est centré sur son
+              propre contenu. Sans cette réserve, le titre et l'annotation qui
+              suivent l'espace le tirent vers le haut et le mot chevauche la
+              ligne « fait sonner ». La réserve rétablit la symétrie. */}
+          <div className="h-[clamp(6rem,14vw,11rem)]" aria-hidden="true" />
+          <p className="font-display text-[clamp(1.05rem,2vw,1.6rem)] font-extrabold tracking-[0.08em] text-muted-foreground">
             Agence web pour artisans, indépendants et PME,
-          </span>
+          </p>
 
-          <span className="zoom-scroll mt-4 block text-[clamp(2.4rem,7.6vw,6.4rem)] leading-[0.94] tracking-[0.2em]">
+          {/* Le nom vit dans le voile, entre ces deux lignes : l'espace lui est
+              réservé. Quand l'effet ne tourne pas, la doublure ci-dessous prend
+              sa place, sans quoi le nom disparaîtrait de la page. */}
+          <div className="h-[clamp(7rem,16vw,12rem)]" aria-hidden="true" />
+          <p className="zoom-word-fallback -mt-[clamp(7rem,16vw,12rem)] flex h-[clamp(7rem,16vw,12rem)] items-center justify-center font-display text-[clamp(2.4rem,7.6vw,6.4rem)] font-extrabold leading-none tracking-[0.2em]">
             SITALY
-          </span>
+          </p>
 
-          <span className="mt-2 block text-[clamp(2rem,5.4vw,4.6rem)] leading-[1.02]">
-            <span className="brand-gradient-text accent-word tracking-normal">fait sonner</span>{" "}
+          <p className="font-display text-[clamp(1.7rem,4.6vw,3.8rem)] font-extrabold leading-[1.02]">
+            <span className="accent-word">fait sonner</span>{" "}
             <span className="tracking-[0.02em]">votre téléphone</span>
-          </span>
-        </h1>
+          </p>
 
-        <div
-          aria-hidden="true"
-          className="mt-8 flex items-center justify-center gap-3 text-muted-foreground"
-        >
-          <svg
-            viewBox="0 0 88 46"
-            className="h-8 w-16 shrink-0 -scale-x-100 text-brand-ink/45"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-          >
-            <path d="M84 42C68 16 44 4 6 6" />
-            <path d="M6 6l17 8M6 6l11 13" />
-          </svg>
-          <span className="accent-word -rotate-2 text-xl">et zéro prise de tête</span>
-        </div>
+          <div className="mt-7 flex items-center justify-center gap-3 text-muted-foreground">
+            <svg
+              viewBox="0 0 88 46"
+              aria-hidden="true"
+              className="h-8 w-16 shrink-0 -scale-x-100 text-brand-ink/45"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            >
+              <path d="M84 42C68 16 44 4 6 6" />
+              <path d="M6 6l17 8M6 6l11 13" />
+            </svg>
+            <span className="accent-word -rotate-2 text-xl">et zéro prise de tête</span>
+          </div>
 
-        <div className="mt-10 flex justify-center">
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-7 py-4 text-base font-semibold text-accent-foreground shadow-glow transition hover:brightness-110"
-          >
-            <Calendar className="h-5 w-5" />
-            Réserver un appel
-          </a>
+          <div className="mt-8 flex justify-center">
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-7 py-4 text-base font-semibold text-accent-foreground shadow-glow transition hover:brightness-110"
+            >
+              <Calendar className="h-5 w-5" />
+              Réserver un appel
+            </a>
+          </div>
         </div>
-      </div>
-    </section>
+      }
+    >
+      <CeQuOnFait />
+    </ZoomIntro>
   );
 }
 
@@ -245,9 +257,9 @@ function CeQuOnFait() {
   ];
 
   return (
-    <section className="bg-paper-sunk py-24 sm:py-32">
+    <section className="on-panel flex min-h-full w-full items-center py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-4 text-center sm:px-6">
-        <p data-reveal className="rail-label text-brand-ink">
+        <p data-reveal className="rail-label text-white/70">
           Ce qu'on fait chez Sitaly
         </p>
 
@@ -271,7 +283,7 @@ function CeQuOnFait() {
                 viewBox="0 0 24 24"
                 aria-hidden="true"
                 className={`h-[clamp(1.5rem,4.6vw,3.4rem)] w-[clamp(1.5rem,4.6vw,3.4rem)] shrink-0 ${
-                  p.accent ? "text-brand-ink" : "text-foreground/25"
+                  p.accent ? "text-white" : "text-white/35"
                 }`}
                 fill="none"
                 stroke="currentColor"
@@ -283,7 +295,7 @@ function CeQuOnFait() {
               </svg>
               <span
                 className={`font-display text-[clamp(1.9rem,6vw,4.4rem)] font-extrabold leading-none tracking-[-0.02em] ${
-                  p.accent ? "brand-gradient-text" : ""
+                  p.accent ? "text-white" : "text-white/80"
                 }`}
               >
                 {p.texte}
@@ -295,12 +307,10 @@ function CeQuOnFait() {
         <div data-reveal className="mt-16">
           <a
             href="#offre"
-            className="group inline-flex items-baseline gap-3 font-display text-[clamp(1.6rem,4vw,3rem)] font-extrabold tracking-tight text-brand-ink"
+            className="group inline-flex items-baseline gap-3 font-display text-[clamp(1.6rem,4vw,3rem)] font-extrabold tracking-tight text-white"
           >
             découvrir
-            <span className="accent-word text-[0.62em] font-normal text-muted-foreground">
-              nos offres
-            </span>
+            <span className="accent-word text-[0.62em] font-normal text-white/75">nos offres</span>
             <ArrowRight className="h-[0.7em] w-[0.7em] self-center transition-transform group-hover:translate-x-2" />
           </a>
         </div>
