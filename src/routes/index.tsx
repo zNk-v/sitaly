@@ -32,6 +32,7 @@ import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
 import { MetierFooterLinks, MetierLinksSection } from "@/components/MetierLinks";
 import { SectionHeader } from "@/components/SectionHeader";
 import { StackedOffers } from "@/components/StackedOffers";
+import { RotatingWords } from "@/components/RotatingWords";
 import { REALISATIONS } from "@/data/realisations";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 import { useSplitWords } from "@/hooks/use-split-words";
@@ -267,9 +268,21 @@ function Hero() {
               Plus de clients. Plus d'appels.{" "}
               <span className="accent-word text-brand-ink">Moins de temps perdu.</span>
             </h1>
-            <p className="measure mt-6 text-lg text-muted-foreground sm:text-xl">
-              Sitaly construit et pilote votre présence en ligne : site internet, Google Ads, agents
-              IA. Vous gardez votre métier, on prend le reste.
+            <p className="mt-6 text-lg font-medium sm:text-xl">
+              Sitaly s'occupe de{" "}
+              <RotatingWords
+                className="font-display font-extrabold text-brand-ink"
+                words={[
+                  "votre site internet",
+                  "vos campagnes Google Ads",
+                  "vos campagnes ChatGPT Ads",
+                  "vos agents IA",
+                  "votre référencement local",
+                ]}
+              />
+            </p>
+            <p className="measure mt-4 text-lg text-muted-foreground">
+              Vous gardez votre métier, on prend le reste.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -456,51 +469,56 @@ function TrustBar() {
   );
 }
 
-/* ---------------- PROBLEM ---------------- */
+/* ---------------- LE CONSTAT ---------------- */
+/**
+ * Aplat violet, énoncé unique en très grand, trois faits alignés sous un filet.
+ *
+ * La section était une grille de trois cartes, comme quatre autres avant la
+ * refonte. Elle ouvre désormais la page sur une couleur pleine : c'est le
+ * premier moment où le site cesse d'être blanc, et il tombe là où le propos
+ * est le plus dur.
+ */
 function Problem() {
-  const items = [
+  const faits = [
     {
-      icon: Search,
-      title: "Pas de site internet",
-      desc: "Vos clients vous cherchent sur Google… et trouvent vos concurrents à votre place.",
+      chiffre: "8 sur 10",
+      texte: "vérifient un site web avant de contacter une entreprise.",
     },
     {
-      icon: Frown,
-      title: "Site ancien ou amateur",
-      desc: "Un site daté donne une mauvaise première impression et fait fuir les prospects sérieux.",
+      chiffre: "Vos concurrents",
+      texte: "occupent la place que vous laissez vide sur Google.",
     },
     {
-      icon: Clock,
-      title: "Pas le temps de vous en occuper",
-      desc: "Vous êtes artisan, pas développeur. Gérer un site, c'est une perte de temps et d'énergie.",
+      chiffre: "Zéro heure",
+      texte: "c'est le temps que vous devriez passer à gérer tout ça.",
     },
   ];
   return (
-    <section className="py-20 sm:py-24">
+    <section className="on-violet py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
           index="01"
           eyebrow="Le constat"
+          tone="violet"
           title={
             <>
-              Votre site actuel vous fait <span className="accent-word">perdre des clients</span>
+              Sans site à jour, vous n'êtes pas <span className="accent-word">dans la liste</span>
             </>
           }
-          subtitle="Aujourd'hui, 8 clients sur 10 vérifient un site web avant de vous contacter."
         />
-        <div className="stagger mt-14 grid gap-6 md:grid-cols-3">
-          {items.map((it, i) => (
+
+        <div className="mt-14 grid gap-x-10 gap-y-10 border-t border-white/25 pt-10 sm:grid-cols-3">
+          {faits.map((f, i) => (
             <div
-              key={it.title}
+              key={f.chiffre}
               data-reveal
               style={{ "--i": i } as React.CSSProperties}
-              className="lift rounded-2xl border border-border bg-card p-7 shadow-soft"
+              className="border-white/20 sm:border-l sm:pl-8 sm:first:border-l-0 sm:first:pl-0"
             >
-              <div className="grid h-12 w-12 place-items-center rounded-xl bg-destructive/10 text-destructive">
-                <it.icon className="h-6 w-6" />
+              <div className="font-display text-[clamp(1.8rem,3vw,2.6rem)] font-extrabold leading-none tracking-tight">
+                {f.chiffre}
               </div>
-              <h3 className="mt-5 text-lg font-bold">{it.title}</h3>
-              <p className="mt-2 text-[15px] text-muted-foreground">{it.desc}</p>
+              <p className="mt-3 text-lg leading-relaxed text-white/75">{f.texte}</p>
             </div>
           ))}
         </div>
@@ -509,84 +527,86 @@ function Problem() {
   );
 }
 
-/* ---------------- HOW IT WORKS ---------------- */
+/* ---------------- MÉTHODE ---------------- */
+/**
+ * Frise horizontale reliée, plutôt qu'une troisième grille de cartes.
+ *
+ * Le fil qui court entre les trois temps dit la séquence : attirer, puis
+ * convertir, puis automatiser. Une grille de cartes juxtapose, elle
+ * n'enchaîne pas.
+ */
 function HowItWorks() {
   const steps = [
     {
-      n: "01",
       icon: Search,
       title: "Attirer",
       benefit: "Être trouvé par vos futurs clients",
-      points: [
-        "Site internet professionnel",
-        "Référencement local",
-        "Google Business Profile",
-        "Google Ads",
-      ],
+      points: ["Site professionnel", "Référencement local", "Google Business", "Google Ads"],
     },
     {
-      n: "02",
       icon: Target,
       title: "Convertir",
       benefit: "Transformer les visiteurs en demandes",
-      points: ["Pages optimisées", "Formulaires performants", "Appels à l'action efficaces"],
+      points: ["Pages optimisées", "Formulaires courts", "Appels à l'action clairs"],
     },
     {
-      n: "03",
       icon: Zap,
       title: "Automatiser",
       benefit: "Gagner du temps sur le suivi",
-      points: [
-        "Réponse automatique aux demandes",
-        "Qualification des prospects",
-        "Relance des devis",
-        "Prise de rendez-vous",
-      ],
+      points: ["Réponse automatique", "Qualification", "Relance des devis", "Prise de rendez-vous"],
     },
   ];
   return (
-    /* Première section en encre : elle installe l'alternance annoncée en
-       DESIGN.md §3 et détache la méthode du reste de la page. */
-    <section className="bg-paper-sunk py-20 sm:py-28">
+    <section className="py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
           index="02"
           eyebrow="Notre méthode"
           title={
             <>
-              Attirer, convertir, <span className="accent-word text-brand-ink">automatiser</span>
+              Attirer, convertir, <span className="accent-word">automatiser</span>
             </>
           }
           subtitle="Un système en trois temps pour transformer votre présence en ligne en clients."
         />
-        <div className="stagger mt-14 grid gap-5 md:grid-cols-3">
-          {steps.map((s, i) => (
-            <div
-              key={s.title}
-              data-reveal
-              style={{ "--i": i } as React.CSSProperties}
-              className="lift rounded-2xl border border-border bg-card p-7"
-            >
-              <div className="flex items-center justify-between">
-                <div className="grid h-12 w-12 place-items-center rounded-xl bg-accent/10 text-brand-ink-ink">
-                  <s.icon className="h-6 w-6" />
-                </div>
-                <span className="rail-num font-display text-3xl font-extrabold text-muted-foreground/40">
-                  {s.n}
+
+        <div className="relative mt-16">
+          {/* Le fil de la séquence. Horizontal à partir de md, vertical
+              en dessous, où les trois temps s'empilent. */}
+          <span
+            aria-hidden="true"
+            className="absolute left-6 top-6 hidden h-[calc(100%-3rem)] w-px bg-gradient-to-b from-accent via-accent/40 to-transparent sm:block md:left-0 md:top-6 md:h-px md:w-full md:bg-gradient-to-r"
+          />
+
+          <ol className="stagger relative grid gap-12 md:grid-cols-3 md:gap-10">
+            {steps.map((s, i) => (
+              <li
+                key={s.title}
+                data-reveal
+                style={{ "--i": i } as React.CSSProperties}
+                className="relative pl-20 sm:pl-0"
+              >
+                <span className="absolute left-0 top-0 grid h-12 w-12 place-items-center rounded-full border border-border bg-background text-accent shadow-soft sm:relative sm:mb-6">
+                  <s.icon className="h-5 w-5" />
                 </span>
-              </div>
-              <h3 className="mt-5 text-xl font-bold">{s.title}</h3>
-              <p className="mt-1 text-[15px] font-medium text-muted-foreground">{s.benefit}</p>
-              <ul className="mt-5 space-y-2.5">
-                {s.points.map((p) => (
-                  <li key={p} className="flex items-start gap-2.5 text-[15px] text-foreground/85">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-signal-ink" />
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+                <div className="flex items-baseline gap-3">
+                  <span className="rail-num font-display text-sm font-bold text-brand-ink">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-display text-2xl font-extrabold tracking-tight">{s.title}</h3>
+                </div>
+                <p className="mt-1.5 font-medium text-muted-foreground">{s.benefit}</p>
+                <ul className="mt-5 space-y-2">
+                  {s.points.map((p) => (
+                    <li key={p} className="flex items-start gap-2.5 text-[15px]">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-signal-ink" />
+                      <span>{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>
@@ -595,28 +615,26 @@ function HowItWorks() {
 
 /* ---------------- COMPLÉMENTS ---------------- */
 /**
- * Les deux anciennes sections tarifaires (forfaits blog SEO, options ponctuelles)
- * fusionnent ici en une seule liste de compléments, sans montant.
- * Voir DESIGN.md §8.
+ * Liste de définitions en grande typographie, sans carte.
+ *
+ * Quatre cartes à icône de plus n'apportaient rien : ces briques sont des
+ * options, pas des arguments. Une liste sobre les annonce sans leur donner
+ * le poids visuel d'une offre.
  */
 const EXTRAS = [
   {
-    icon: FileText,
     name: "Blog SEO",
     desc: "Des articles optimisés, rédigés et mis en page chaque mois. En complément de votre site, ou seul si vous en avez déjà un.",
   },
   {
-    icon: Sparkles,
     name: "Logo & identité visuelle",
     desc: "Un logo, une palette et des règles d'usage, quand la marque n'existe pas encore ou a vieilli.",
   },
   {
-    icon: Star,
     name: "Photos professionnelles",
     desc: "Vos vraies réalisations photographiées. Rien ne remplace une photo de votre travail sur votre propre site.",
   },
   {
-    icon: TrendingUp,
     name: "Rédaction de contenus",
     desc: "Pages de service, fiches métier, textes de présentation. Écrits pour vos clients et pour Google.",
   },
@@ -627,7 +645,7 @@ function Extras() {
     <section className="bg-paper-sunk py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
-          index="06"
+          index="04"
           eyebrow="Compléments"
           title={
             <>
@@ -636,24 +654,22 @@ function Extras() {
           }
           subtitle="Rien d'imposé. Ces briques se greffent sur votre accompagnement, à la demande."
         />
-        <div className="stagger mt-14 grid gap-4 sm:grid-cols-2">
+
+        <dl className="stagger mt-14 border-t border-border">
           {EXTRAS.map((o, i) => (
             <div
               key={o.name}
               data-reveal
               style={{ "--i": i } as React.CSSProperties}
-              className="lift flex gap-4 rounded-2xl border border-border bg-card p-6 shadow-soft"
+              className="grid gap-x-10 gap-y-2 border-b border-border py-6 sm:grid-cols-[18rem_1fr] sm:py-7"
             >
-              <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent/10 text-accent">
-                <o.icon className="h-5 w-5" />
-              </div>
-              <div className="min-w-0">
-                <h3 className="font-bold">{o.name}</h3>
-                <p className="mt-1.5 text-[15px] text-muted-foreground">{o.desc}</p>
-              </div>
+              <dt className="font-display text-lg font-bold tracking-tight sm:text-xl">{o.name}</dt>
+              <dd className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">
+                {o.desc}
+              </dd>
             </div>
           ))}
-        </div>
+        </dl>
       </div>
     </section>
   );
@@ -661,17 +677,19 @@ function Extras() {
 
 /* ---------------- RÉALISATIONS ---------------- */
 /**
- * Les trois clients apparaissaient deux fois sur la page, en « exemples » puis
- * en « clients », et aucun des deux blocs ne menait ailleurs qu'au site du
- * client. Un seul bloc désormais, et chaque carte ouvre son étude de cas :
- * c'est là que se raconte le travail, pas dans une vignette.
+ * Rangées alternées pleine largeur plutôt qu'une grille de vignettes.
+ *
+ * Les trois réalisations tenaient dans des cartes de 380 px, au milieu de
+ * cinq autres sections en grille de cartes. Le portfolio est l'argument le
+ * plus fort de la page : il lui faut l'échelle qui va avec, et une forme que
+ * la page n'utilise nulle part ailleurs.
  */
 function Realisations() {
   return (
     <section id="exemples" className="py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
-          index="07"
+          index="05"
           eyebrow="Réalisations"
           title={
             <>
@@ -680,101 +698,134 @@ function Realisations() {
           }
           subtitle="Trois métiers, trois logiques différentes. Chaque projet a sa page : ce qui a été livré, pourquoi le site est construit comme ça, et ce qu'on voit en l'ouvrant."
         />
+      </div>
 
-        <div className="stagger mt-14 grid gap-8 lg:grid-cols-3">
-          {REALISATIONS.map((r, i) => (
-            <Link
-              key={r.slug}
-              to="/realisations/$slug/"
-              params={{ slug: r.slug }}
-              data-reveal
-              style={{ "--i": i } as React.CSSProperties}
-              className="lift group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-soft"
-            >
-              <div className="zoom-frame relative aspect-[16/11] border-b border-border">
-                <img
-                  src={r.capture.small}
-                  srcSet={`${r.capture.small} 720w, ${r.capture.large} 1200w`}
-                  sizes="(min-width: 1024px) 30vw, 100vw"
-                  alt={`Page d'accueil du site de ${r.client}`}
-                  loading="lazy"
-                  decoding="async"
-                  className="absolute inset-0 h-full w-full object-cover object-top"
-                />
-                <span className="absolute bottom-3 left-3 rounded-full bg-ink/85 px-3 py-1 text-xs font-semibold text-foreground/85 backdrop-blur-sm">
-                  {r.domaine}
-                </span>
-              </div>
-              <div className="flex flex-1 flex-col p-6">
-                <div className="rail-label text-brand-ink">{r.metier}</div>
-                <h3 className="mt-2 font-display text-xl font-bold tracking-tight">{r.client}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{r.zone}</p>
-                <p className="mt-3 flex-1 text-[15px] text-muted-foreground">{r.resume}</p>
-                <span className="mt-5 inline-flex items-center gap-2 font-semibold text-brand-ink">
-                  Voir l'étude de cas
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
+      <div className="mt-16 space-y-20 sm:space-y-28">
+        {REALISATIONS.map((r, i) => {
+          const inverse = i % 2 === 1;
+          return (
+            <article key={r.slug} className="mx-auto max-w-7xl px-4 sm:px-6">
+              <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+                {/* L'image déborde vers le bord de l'écran, en alternance,
+                    pour que la page cesse d'être une colonne centrée. */}
+                <div className={inverse ? "lg:order-2" : ""}>
+                  <Link
+                    to="/realisations/$slug/"
+                    params={{ slug: r.slug }}
+                    className="zoom-frame group relative block overflow-hidden rounded-2xl border border-border bg-card shadow-elevated"
+                  >
+                    <img
+                      src={r.capture.large}
+                      srcSet={`${r.capture.small} 720w, ${r.capture.large} 1200w`}
+                      sizes="(min-width: 1024px) 48vw, 92vw"
+                      alt={`Page d'accueil du site de ${r.client}`}
+                      loading="lazy"
+                      decoding="async"
+                      className="block h-auto w-full"
+                    />
+                    <span className="absolute bottom-4 left-4 rounded-full bg-ink/85 px-3.5 py-1.5 text-xs font-semibold text-white backdrop-blur-sm">
+                      {r.domaine}
+                    </span>
+                  </Link>
+                </div>
 
-        <div className="mt-12 flex flex-wrap items-center gap-4">
-          <Link
-            to="/realisations/"
-            className="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3.5 font-semibold text-accent-foreground transition hover:brightness-110"
-          >
-            Toutes les réalisations
-            <ArrowRight className="h-5 w-5" />
-          </Link>
-          <span className="text-sm text-muted-foreground">
-            Chaque site est ouvert au public. Vérifiez par vous-même.
-          </span>
-        </div>
+                <div className={inverse ? "lg:order-1" : ""}>
+                  <div className="rail-num font-display text-5xl font-extrabold text-brand/35 sm:text-6xl">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <div className="rail-label mt-4 text-brand-ink">{r.metier}</div>
+                  <h3 className="display-section mt-3 text-[clamp(1.9rem,3.4vw,3rem)]">
+                    {r.client}
+                  </h3>
+                  <p className="mt-2 text-muted-foreground">{r.zone}</p>
+                  <p className="measure mt-5 text-lg text-muted-foreground">{r.resume}</p>
+
+                  <ul className="mt-7 flex flex-wrap gap-2">
+                    {r.livre.slice(0, 3).map((l) => (
+                      <li
+                        key={l}
+                        className="rounded-full border border-border bg-card px-3 py-1.5 text-sm"
+                      >
+                        {l}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Link
+                    to="/realisations/$slug/"
+                    params={{ slug: r.slug }}
+                    className="group mt-8 inline-flex items-center gap-2 text-lg font-semibold text-brand-ink"
+                  >
+                    Voir l'étude de cas
+                    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1.5" />
+                  </Link>
+                </div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
+      <div className="mx-auto mt-16 max-w-7xl px-4 sm:px-6">
+        <Link
+          to="/realisations/"
+          className="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3.5 font-semibold text-accent-foreground transition hover:brightness-110"
+        >
+          Toutes les réalisations
+          <ArrowRight className="h-5 w-5" />
+        </Link>
       </div>
     </section>
   );
 }
 
 /* ---------------- PROCESS ---------------- */
+/**
+ * Liste verticale à numéros surdimensionnés, sur aplat violet.
+ *
+ * C'était cinq cartes en grille, la cinquième forme de grille de la page.
+ * En liste, chaque étape occupe toute la largeur et le numéro devient un
+ * élément graphique à part entière plutôt qu'une étiquette dans un coin.
+ */
 function Process() {
   const steps = [
-    { n: "01", t: "Appel découverte", d: "On comprend votre activité et vos besoins (20 min)." },
-    { n: "02", t: "Création du site", d: "Votre site est conçu sur mesure, sans gabarit revendu." },
-    { n: "03", t: "Validation", d: "Vous validez le rendu, on ajuste si besoin." },
+    { t: "Appel découverte", d: "On comprend votre activité et vos besoins. Vingt minutes." },
+    { t: "Création du site", d: "Votre site est conçu sur mesure, sans gabarit revendu." },
+    { t: "Validation", d: "Vous validez le rendu, on ajuste si besoin." },
     {
-      n: "04",
       t: "Mise en ligne",
-      d: "Hébergement, nom de domaine, SEO local : on s'occupe de tout.",
+      d: "Hébergement, nom de domaine, référencement local : on s'occupe de tout.",
     },
-    { n: "05", t: "Suivi mensuel", d: "Maintenance, mises à jour et modifications incluses." },
+    { t: "Suivi mensuel", d: "Maintenance, mises à jour et modifications incluses." },
   ];
   return (
-    <section id="process" className="bg-paper-sunk py-20 sm:py-28">
+    <section id="process" className="on-violet py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
-          index="08"
+          index="06"
           eyebrow="Process"
+          tone="violet"
           title={
             <>
-              Cinq étapes, <span className="accent-word text-brand-ink">et c'est en ligne</span>
+              Cinq étapes, <span className="accent-word">et c'est en ligne</span>
             </>
           }
           subtitle="De l'appel découverte à la mise en ligne, vous savez à chaque instant où en est votre site."
         />
-        <ol className="stagger mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+
+        <ol className="stagger mt-14">
           {steps.map((s, i) => (
             <li
-              key={s.n}
+              key={s.t}
               data-reveal
               style={{ "--i": i } as React.CSSProperties}
-              className="lift relative rounded-2xl border border-border bg-card p-6"
+              className="group grid items-baseline gap-x-8 gap-y-2 border-t border-white/25 py-7 sm:grid-cols-[auto_16rem_1fr] sm:py-9"
             >
-              <div className="rail-num font-display text-3xl font-extrabold text-brand-ink">
-                {s.n}
-              </div>
-              <div className="mt-3 font-bold">{s.t}</div>
-              <div className="mt-1.5 text-sm text-muted-foreground">{s.d}</div>
+              <span className="rail-num font-display text-[clamp(2.4rem,5vw,4rem)] font-extrabold leading-none text-white/25 transition-colors group-hover:text-white/60">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 className="font-display text-xl font-bold tracking-tight sm:text-2xl">{s.t}</h3>
+              <p className="text-lg leading-relaxed text-white/70">{s.d}</p>
             </li>
           ))}
         </ol>
@@ -806,7 +857,7 @@ function Faq() {
     <section id="faq" className="bg-paper-sunk py-20 sm:py-28">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <SectionHeader
-          index="10"
+          index="07"
           eyebrow="FAQ"
           title={
             <>
@@ -899,7 +950,9 @@ function Temoignages() {
     <section className="py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
-          index="10"
+          /* Pas de numéro tant que la section reste masquée en production :
+             il manquerait dans la série vue par le visiteur. À rétablir avec
+             les vrais témoignages, la FAQ passant alors à 08. */
           eyebrow="Témoignages"
           title={
             <>

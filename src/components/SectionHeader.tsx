@@ -22,11 +22,14 @@ export function SectionHeader({
   eyebrow: string;
   title: ReactNode;
   subtitle?: ReactNode;
-  tone?: "paper" | "ink";
+  tone?: "paper" | "ink" | "violet";
   align?: "left" | "center";
 }) {
-  const dim = tone === "ink" ? "text-white/60" : "text-muted-foreground";
-  const mark = tone === "ink" ? "text-brand" : "text-brand-ink";
+  /* Sur aplat violet, le violet de marque disparaît dans le fond : le repère
+     passe en blanc. Sans ce ton, le numéro de section devient invisible. */
+  const surSombre = tone === "ink" || tone === "violet";
+  const dim = surSombre ? "text-white/70" : "text-muted-foreground";
+  const mark = tone === "violet" ? "text-white" : tone === "ink" ? "text-brand" : "text-brand-ink";
 
   if (align === "center") {
     return (
