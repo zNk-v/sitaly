@@ -134,6 +134,7 @@ function SitalyHome() {
       <MetierLinksSection />
       <Process />
       <Clients />
+      <Temoignages />
       <Founder />
       <Faq />
       <Contact />
@@ -1324,6 +1325,105 @@ function Faq() {
                 </div>
               )}
             </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- TÉMOIGNAGES ---------------- */
+/**
+ * Bloc de preuve sociale, équivalent de celui qui porte la page de Linov.
+ *
+ * TEMOIGNAGES est volontairement vide : aucun propos ne doit être attribué à
+ * un client réel sans qu'il l'ait écrit. Tant que le tableau est vide, la
+ * section ne s'affiche pas en production. En développement, un gabarit non
+ * signé montre la mise en page pour qu'elle soit prête à recevoir les textes.
+ *
+ * Pour l'activer : coller les citations réelles ci-dessous, telles qu'elles
+ * ont été écrites, avec le prénom, le nom de l'entreprise et le métier.
+ */
+type Temoignage = {
+  citation: string;
+  auteur: string;
+  entreprise: string;
+  metier: string;
+};
+
+const TEMOIGNAGES: Temoignage[] = [];
+
+const TEMOIGNAGES_GABARIT: Temoignage[] = [
+  {
+    citation:
+      "Emplacement du témoignage. Deux à quatre phrases, dans les mots du client, sans réécriture cosmétique. Ce qui convainc ici, c'est le détail concret : un délai tenu, un appel reçu, un problème réglé.",
+    auteur: "Prénom à recueillir",
+    entreprise: "Entreprise",
+    metier: "Métier",
+  },
+  {
+    citation:
+      "Deuxième emplacement. Un témoignage court et précis vaut mieux qu'un paragraphe de superlatifs. Si le client cite un chiffre qu'il a lui-même constaté, on le garde tel quel.",
+    auteur: "Prénom à recueillir",
+    entreprise: "Entreprise",
+    metier: "Métier",
+  },
+  {
+    citation:
+      "Troisième emplacement. Trois témoignages suffisent à installer la preuve : au-delà, on lit le premier et on saute les autres.",
+    auteur: "Prénom à recueillir",
+    entreprise: "Entreprise",
+    metier: "Métier",
+  },
+];
+
+function Temoignages() {
+  const reels = TEMOIGNAGES.length > 0;
+  const items = reels ? TEMOIGNAGES : import.meta.env.DEV ? TEMOIGNAGES_GABARIT : [];
+  if (items.length === 0) return null;
+
+  return (
+    <section className="py-20 sm:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <SectionHeader
+          index="10"
+          eyebrow="Témoignages"
+          title={
+            <>
+              Ce qu'ils en <span className="accent-word">disent eux-mêmes</span>
+            </>
+          }
+        />
+
+        {!reels && (
+          <p className="mt-8 rounded-xl border border-dashed border-destructive/40 bg-destructive/5 px-4 py-3 text-sm font-semibold text-destructive">
+            Gabarit visible en développement uniquement. Cette section reste masquée en production
+            tant que TEMOIGNAGES est vide. Aucun propos ne doit être attribué à un client sans qu'il
+            l'ait écrit.
+          </p>
+        )}
+
+        <div className="stagger mt-14 grid gap-5 lg:grid-cols-3">
+          {items.map((t, i) => (
+            <figure
+              key={t.auteur + i}
+              data-reveal
+              style={{ "--i": i } as React.CSSProperties}
+              className="flex flex-col rounded-2xl border border-border bg-card p-7 shadow-soft"
+            >
+              <span aria-hidden="true" className="accent-word text-5xl leading-none text-brand">
+                &ldquo;
+              </span>
+              <blockquote className="mt-3 flex-1 text-[17px] leading-relaxed text-foreground/85">
+                {t.citation}
+              </blockquote>
+              <figcaption className="mt-6 border-t border-border pt-5">
+                <div className="font-display font-bold">{t.auteur}</div>
+                <div className="text-sm text-muted-foreground">
+                  {t.metier} · {t.entreprise}
+                </div>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </div>
