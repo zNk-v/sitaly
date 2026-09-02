@@ -78,20 +78,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Site web, Google Ads & IA pour PME, TPE et artisans | Sitaly" },
+      { title: "Site internet, publicité et automatisation pour TPE et PME | Sitaly" },
       {
         name: "description",
         content:
-          "Agence web pour PME, TPE et artisans : site internet, Google Ads, ChatGPT Ads et agents IA. Sans engagement, site livré en 48h. Plus de demandes, plus de clients.",
+          "Sitaly installe et pilote votre présence en ligne : site internet, Google Ads, ChatGPT Ads et agents IA. Pour indépendants, TPE et PME. Un seul interlocuteur, sans engagement.",
       },
       {
         property: "og:title",
-        content: "Site web, Google Ads & IA pour PME, TPE et artisans | Sitaly",
+        content: "Site internet, publicité et automatisation pour TPE et PME | Sitaly",
       },
       {
         property: "og:description",
         content:
-          "Agence web pour PME, TPE et artisans : site internet, Google Ads, ChatGPT Ads et agents IA. Sans engagement, site livré en 48h. Plus de demandes, plus de clients.",
+          "Sitaly installe et pilote votre présence en ligne : site internet, Google Ads, ChatGPT Ads et agents IA. Pour indépendants, TPE et PME. Un seul interlocuteur, sans engagement.",
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Sitaly" },
@@ -167,7 +167,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               url: "https://sitaly.fr",
               image: "https://sitaly.fr/og-image.png",
               description:
-                "Sitaly est une agence d'acquisition qui accompagne PME, TPE et artisans partout en France, à distance. Site sur mesure livré en 48h, en abonnement mensuel tout inclus (hébergement, maintenance, modifications), sans engagement de durée et sans frais d'installation.",
+                "Sitaly installe et pilote la présence en ligne des indépendants, TPE et PME partout en France, à distance. Site sur mesure livré en 48h, en abonnement mensuel tout inclus (hébergement, maintenance, modifications), sans engagement de durée et sans frais d'installation.",
               telephone: "+33658683372",
               email: "contact@sitaly.fr",
               priceRange: "€€",

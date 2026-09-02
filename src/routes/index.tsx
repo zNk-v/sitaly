@@ -68,20 +68,20 @@ const FAQ_ITEMS = [
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Site web, Google Ads & IA pour PME, TPE et artisans | Sitaly" },
+      { title: "Site internet, publicité et automatisation pour TPE et PME | Sitaly" },
       {
         name: "description",
         content:
-          "Agence web pour PME, TPE et artisans : site internet, Google Ads, ChatGPT Ads et agents IA. Sans engagement, site livré en 48h. Plus de demandes, plus de clients.",
+          "Sitaly installe et pilote votre présence en ligne : site internet, Google Ads, ChatGPT Ads et agents IA. Pour indépendants, TPE et PME. Un seul interlocuteur, sans engagement.",
       },
       {
         property: "og:title",
-        content: "Site web, Google Ads & IA pour PME, TPE et artisans | Sitaly",
+        content: "Site internet, publicité et automatisation pour TPE et PME | Sitaly",
       },
       {
         property: "og:description",
         content:
-          "Agence web pour PME, TPE et artisans : site internet, Google Ads, ChatGPT Ads et agents IA. Sans engagement, site livré en 48h. Plus de demandes, plus de clients.",
+          "Sitaly installe et pilote votre présence en ligne : site internet, Google Ads, ChatGPT Ads et agents IA. Pour indépendants, TPE et PME. Un seul interlocuteur, sans engagement.",
       },
       { property: "og:url", content: "https://sitaly.fr/" },
     ],
@@ -180,54 +180,67 @@ function Ouverture() {
     <ZoomIntro
       nom="SITALY"
       avant={
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
-          {/* Le mot est centré sur la fenêtre ; ce bloc est centré sur son
-              propre contenu. Sans cette réserve, le titre et l'annotation qui
-              suivent l'espace le tirent vers le haut et le mot chevauche la
-              ligne « fait sonner ». La réserve rétablit la symétrie. */}
-          <div className="h-[clamp(6rem,14vw,11rem)]" aria-hidden="true" />
-          <p className="font-display text-[clamp(1.05rem,2vw,1.6rem)] font-extrabold tracking-[0.08em] text-muted-foreground">
-            Agence web pour artisans, indépendants et PME,
-          </p>
-
-          {/* Le nom vit dans le voile, entre ces deux lignes : l'espace lui est
-              réservé. Quand l'effet ne tourne pas, la doublure ci-dessous prend
-              sa place, sans quoi le nom disparaîtrait de la page. */}
-          <div className="h-[clamp(7rem,16vw,12rem)]" aria-hidden="true" />
-          <p className="zoom-word-fallback -mt-[clamp(7rem,16vw,12rem)] flex h-[clamp(7rem,16vw,12rem)] items-center justify-center font-display text-[clamp(2.4rem,7.6vw,6.4rem)] font-extrabold leading-none tracking-[0.2em]">
-            SITALY
-          </p>
-
-          <p className="font-display text-[clamp(1.7rem,4.6vw,3.8rem)] font-extrabold leading-[1.02]">
-            <span className="accent-word">fait sonner</span>{" "}
-            <span className="tracking-[0.02em]">votre téléphone</span>
-          </p>
-
-          <div className="mt-7 flex items-center justify-center gap-3 text-muted-foreground">
-            <svg
-              viewBox="0 0 88 46"
-              aria-hidden="true"
-              className="h-8 w-16 shrink-0 -scale-x-100 text-brand-ink/45"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            >
-              <path d="M84 42C68 16 44 4 6 6" />
-              <path d="M6 6l17 8M6 6l11 13" />
-            </svg>
-            <span className="accent-word -rotate-2 text-xl">et zéro prise de tête</span>
+        /* Calage déterministe du mot. La colonne occupe toute la hauteur, et
+           les deux moitiés portent `flex-1` : la fente centrale tombe donc
+           exactement sur l'axe vertical de la fenêtre, là où le masque dessine
+           le nom. Des réserves à valeurs fixes se désaccordaient dès qu'une
+           ligne de texte changeait de longueur.
+           Sans hauteur imposée (mode repli), la colonne s'empile simplement. */
+        <div className="flex h-full flex-col items-center justify-center px-4 text-center sm:px-6">
+          <div className="flex flex-1 items-end pb-8">
+            <p className="font-display text-[clamp(1.05rem,2vw,1.6rem)] font-extrabold tracking-[0.08em] text-muted-foreground">
+              Pour les indépendants, les TPE et les PME
+            </p>
           </div>
 
-          <div className="mt-8 flex justify-center">
+          {/* La fente du nom. La doublure ne s'affiche que si l'effet ne tourne
+              pas, sans quoi SITALY disparaîtrait de la page. */}
+          <div className="flex h-[clamp(4.5rem,11vw,9rem)] shrink-0 items-center justify-center">
+            <p className="zoom-word-fallback font-display text-[clamp(2.4rem,7.6vw,6.4rem)] font-extrabold leading-none tracking-[0.2em]">
+              SITALY
+            </p>
+          </div>
+
+          <div className="flex flex-1 flex-col items-center pt-8">
+            {/* text-wrap: balance évite le mot orphelin sur la seconde ligne
+                quand la phrase ne tient pas d'un seul tenant. */}
+            <p className="max-w-5xl text-balance font-display text-[clamp(1.4rem,3.1vw,2.6rem)] font-extrabold leading-[1.08]">
+              <span className="accent-word">installe et pilote</span>{" "}
+              <span className="tracking-[0.02em]">votre présence en ligne</span>
+            </p>
+
+            {/* La phrase qui porte le positionnement : ce qui est fait, et par
+                qui. « Une seule personne » remplace le mot agence, qui
+                promettait une équipe que Sitaly n'a pas. */}
+            <p className="measure mt-5 text-lg text-muted-foreground">
+              Le site internet, la publicité en ligne et les automatisations. Une seule personne au
+              bout du fil, celle qui construit.
+            </p>
+
+            <div className="mt-6 flex items-center gap-3 text-muted-foreground">
+              <svg
+                viewBox="0 0 88 46"
+                aria-hidden="true"
+                className="h-8 w-16 shrink-0 -scale-x-100 text-brand-ink/45"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
+                <path d="M84 42C68 16 44 4 6 6" />
+                <path d="M6 6l17 8M6 6l11 13" />
+              </svg>
+              <span className="accent-word -rotate-2 text-xl">et vous gardez la main</span>
+            </div>
+
             <a
               href={CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-7 py-4 text-base font-semibold text-accent-foreground shadow-glow transition hover:brightness-110"
+              className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-7 py-4 text-base font-semibold text-accent-foreground shadow-glow transition hover:brightness-110"
             >
               <Calendar className="h-5 w-5" />
-              Réserver un appel
+              Réserver un appel de 20 min
             </a>
           </div>
         </div>
@@ -250,22 +263,25 @@ function Ouverture() {
  * sombre a été écarté pour l'ensemble du site.
  */
 function CeQuOnFait() {
+  /* Trois temps qui racontent une séquence plutôt que trois fois la même
+     promesse commerciale : on vous trouve, on vous choisit, rien ne se perd.
+     Ils correspondent aux trois familles d'offres. */
   const promesses = [
-    { texte: "Plus de clients.", accent: false },
-    { texte: "Plus d'appels.", accent: true },
-    { texte: "Moins de temps perdu.", accent: false },
+    { texte: "Être trouvé.", accent: false },
+    { texte: "Être choisi.", accent: true },
+    { texte: "Ne rien laisser filer.", accent: false },
   ];
 
   return (
     <section className="on-panel flex min-h-full w-full items-center py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-4 text-center sm:px-6">
         <p data-reveal className="rail-label text-white/70">
-          Ce qu'on fait chez Sitaly
+          Ce que change Sitaly
         </p>
 
-        <p data-reveal className="measure mx-auto mt-6 text-lg text-muted-foreground sm:text-xl">
-          Avec Sitaly, votre présence en ligne cesse d'être une case à cocher et devient le canal
-          qui remplit votre agenda.
+        <p data-reveal className="measure mx-auto mt-6 text-lg text-white/80 sm:text-xl">
+          Avec Sitaly, votre présence en ligne devient un vrai levier, sur votre visibilité, sur les
+          demandes que vous recevez comme sur votre organisation quotidienne.
         </p>
 
         <ul className="stagger mt-16 space-y-4 sm:space-y-6">
@@ -364,7 +380,7 @@ function ProfessionsMarquee() {
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
         <div className="rail-label text-brand-ink">Pour qui</div>
         <h2 className="mt-3 font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
-          Plus de clients pour votre activité, <Surligne>quel que soit votre métier</Surligne>
+          Le même travail de fond, <Surligne>quel que soit votre métier</Surligne>
         </h2>
       </div>
       <div className="marquee marquee-mask group relative mt-12 flex overflow-hidden sm:mt-14">
@@ -1132,8 +1148,8 @@ function Footer() {
               <SitalyLogo />
             </div>
             <p className="mt-3 text-sm text-primary-foreground/70">
-              Plus de clients pour les PME, TPE et artisans : site internet, Google Ads, ChatGPT Ads
-              et automatisation.
+              La présence en ligne des indépendants, TPE et PME : site internet, Google Ads, ChatGPT
+              Ads et automatisation.
             </p>
             <div className="mt-4">
               <LinkedinLink variant="clair" />
