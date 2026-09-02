@@ -41,6 +41,8 @@ import { LinkedinLink } from "@/components/LinkedinLink";
 import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
 import { MetierFooterLinks, MetierLinksSection } from "@/components/MetierLinks";
 import { SectionHeader } from "@/components/SectionHeader";
+import { StackedOffers } from "@/components/StackedOffers";
+import { REALISATIONS } from "@/data/realisations";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 import { useSplitWords } from "@/hooks/use-split-words";
 import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
@@ -132,12 +134,11 @@ function SitalyHome() {
       <HowItWorks />
       <GoogleAds />
       <Automation />
-      <Pricing />
+      <StackedOffers />
       <Extras />
-      <Examples />
+      <Realisations />
       <MetierLinksSection />
       <Process />
-      <Clients />
       <Temoignages />
       <Founder />
       <Faq />
@@ -750,287 +751,6 @@ function Automation() {
   );
 }
 
-/* ---------------- PRICING ---------------- */
-/**
- * Offres de la page d'accueil.
- *
- * Une offre peut proposer plusieurs canaux (`channels`) : la carte affiche alors
- * deux boutons et bascule prix, contenu et bouton d'action selon le canal choisi.
- * C'est le cas de Sitaly Acquisition (Google Ads / ChatGPT Ads).
- */
-type PricingCta = { label: string; to?: string; href?: string };
-
-interface PricingView {
-  objective: string;
-  inherits: string | null;
-  features: readonly string[];
-  note: string | null;
-  cta: PricingCta;
-}
-
-interface PricingTier extends PricingView {
-  name: string;
-  badge: string;
-  icon: React.ComponentType<{ className?: string }>;
-  promise: string;
-  featured: boolean;
-  channels?: readonly (PricingView & { key: string; label: string })[];
-}
-
-const PRICING_TIERS: PricingTier[] = [
-  {
-    name: "Sitaly Présence",
-    badge: "Le tout-en-un",
-    icon: Globe,
-    objective: "Votre présence en ligne gérée de A à Z, sans que vous touchiez à la technique.",
-    inherits: null,
-    features: [
-      "Site internet professionnel",
-      "Hébergement & maintenance",
-      "Modifications*",
-      "Fiche Google Business",
-      "Référencement local",
-    ],
-    note: null,
-    promise: "Une présence pro qui reste à jour, sans gérer la technique.",
-    cta: { label: "Réserver un appel" },
-    featured: true,
-  },
-  {
-    name: "Sitaly Acquisition",
-    badge: "Publicité en ligne",
-    icon: Megaphone,
-    promise: "Attirez de nouveaux clients, à votre rythme.",
-    featured: false,
-    // Valeurs par défaut = premier canal (Google Ads).
-    objective: "Des demandes qualifiées par la publicité. Avec ou sans site.",
-    inherits: "Indépendant de votre site",
-    features: [
-      "Création & gestion de vos campagnes",
-      "Ciblage de votre zone d'intervention",
-      "Suivi des conversions (appels, formulaires)",
-      "Optimisation et reporting mensuel",
-    ],
-    note: "Budget publicitaire versé à Google, non inclus.",
-    cta: { label: "Voir l'offre Google Ads", to: "/acquisition/" },
-    channels: [
-      {
-        key: "google-ads",
-        label: "Google Ads",
-        objective: "Des demandes qualifiées par la publicité. Avec ou sans site.",
-        inherits: "Indépendant de votre site",
-        features: [
-          "Création & gestion de vos campagnes",
-          "Ciblage de votre zone d'intervention",
-          "Suivi des conversions (appels, formulaires)",
-          "Optimisation et reporting mensuel",
-        ],
-        note: "Budget publicitaire versé à Google, non inclus.",
-        cta: { label: "Voir l'offre Google Ads", to: "/acquisition/" },
-      },
-      {
-        key: "chatgpt-ads",
-        label: "ChatGPT Ads",
-        objective: "Apparaissez dans ChatGPT quand un futur client décrit son besoin.",
-        inherits: "Canal récent, piloté par la mesure",
-        features: [
-          "Cartographie des intentions à couvrir",
-          "Rédaction des messages & page de destination",
-          "Tracking des conversions avant toute dépense",
-          "Optimisation continue et reporting mensuel",
-        ],
-        note: "Budget publicitaire séparé, versé à la régie. Sitaly n'est ni partenaire ni certifiée OpenAI.",
-        cta: { label: "Découvrir ChatGPT Ads", href: "/chatgpt-ads/" },
-      },
-    ],
-  },
-  {
-    name: "Sitaly Agents IA",
-    badge: "Automatisation",
-    icon: Bot,
-    objective:
-      "Des agents IA qui répondent, qualifient et prennent vos rendez-vous. Installés clé en main.",
-    inherits: "Se greffe sur n'importe quelle offre",
-    features: [
-      "Agent standardiste — ne rate plus un appel",
-      "Prise de rendez-vous automatique",
-      "Relance des devis en attente",
-      "Réponse aux messages & réseaux",
-    ],
-    note: null,
-    promise: "Vous ne configurez rien, on branche tout.",
-    cta: { label: "Découvrir les agents", to: "/agents-ia/" },
-    featured: false,
-  },
-];
-
-function Pricing() {
-  return (
-    <section id="offre" className="py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <SectionHeader
-          index="05"
-          eyebrow="Nos offres"
-          title={
-            <>
-              Trois leviers, <span className="accent-word">combinables</span>
-            </>
-          }
-          subtitle="La présence en ligne, l'acquisition payante, les agents IA. Vous en prenez un, deux ou les trois. Chaque périmètre est chiffré après l'appel découverte, sur votre activité réelle."
-        />
-
-        <p className="mt-10 inline-flex rounded-full border border-border bg-paper-sunk px-5 py-3 text-sm font-semibold text-foreground/80">
-          Sans engagement · Tout est géré, vous ne touchez à rien.
-        </p>
-        <div className="mt-10 flex max-w-6xl snap-x snap-mandatory items-stretch gap-5 overflow-x-auto pb-2 pt-6 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-6 lg:grid lg:grid-cols-3 lg:overflow-visible lg:pb-0 lg:pt-0 [&::-webkit-scrollbar]:hidden">
-          {PRICING_TIERS.map((t) => (
-            <div
-              key={t.name}
-              className="w-[85%] shrink-0 snap-center sm:w-[60%] lg:w-auto lg:shrink"
-            >
-              <PricingCard tier={t} featured={t.featured} />
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function PricingCard({ tier, featured }: { tier: PricingTier; featured: boolean }) {
-  // Canal actif pour les offres à plusieurs canaux (Google Ads / ChatGPT Ads).
-  const [channel, setChannel] = useState(0);
-  const view: PricingView = tier.channels ? tier.channels[channel] : tier;
-  const ctaClass = `mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-base font-semibold transition ${
-    featured
-      ? "bg-accent text-accent-foreground shadow-elevated hover:opacity-90"
-      : "border border-border bg-secondary text-secondary-foreground hover:bg-muted"
-  }`;
-
-  return (
-    <div
-      className={`relative flex h-full flex-col rounded-3xl bg-card p-7 sm:p-8 ${
-        featured ? "border-2 border-accent shadow-glow" : "border border-border shadow-soft"
-      }`}
-    >
-      {featured && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-accent px-4 py-1 text-xs font-bold uppercase tracking-wider text-accent-foreground shadow-elevated">
-          Recommandé
-        </div>
-      )}
-
-      {/* Sélecteur de canal, posé sur le bord haut comme le badge « Recommandé ». */}
-      {tier.channels && (
-        <div
-          role="tablist"
-          aria-label="Choisir le canal publicitaire"
-          className="absolute -top-4 left-1/2 flex -translate-x-1/2 gap-1 rounded-full bg-accent p-1 shadow-elevated"
-        >
-          {tier.channels.map((c, i) => (
-            <button
-              key={c.key}
-              type="button"
-              role="tab"
-              aria-selected={i === channel}
-              onClick={() => setChannel(i)}
-              className={`whitespace-nowrap rounded-full px-3.5 py-1 text-xs font-bold uppercase tracking-wider transition ${
-                i === channel
-                  ? "bg-card text-accent shadow-soft"
-                  : "text-accent-foreground/80 hover:text-accent-foreground"
-              }`}
-            >
-              {c.label}
-            </button>
-          ))}
-        </div>
-      )}
-
-      <div className="flex items-center justify-between">
-        <div
-          className={`grid h-11 w-11 place-items-center rounded-xl ${
-            featured ? "bg-accent/15 text-accent" : "bg-secondary text-foreground/70"
-          }`}
-        >
-          <tier.icon className="h-5 w-5" />
-        </div>
-        <span
-          className={`rounded-full px-3 py-1 text-xs font-semibold ${
-            featured ? "bg-accent/10 text-accent" : "bg-secondary text-muted-foreground"
-          }`}
-        >
-          {tier.badge}
-        </span>
-      </div>
-
-      <h3 className="mt-5 text-xl font-bold">{tier.name}</h3>
-
-      <p className="mt-2 text-sm text-muted-foreground">{view.objective}</p>
-
-      <div className="mt-7 space-y-3">
-        {view.inherits && (
-          <div className="flex items-center gap-2 text-sm font-semibold text-accent">
-            <Check className="h-5 w-5 shrink-0" />
-            {view.inherits}
-          </div>
-        )}
-        <ul className="space-y-3">
-          {view.features.map((f) => (
-            <li key={f} className="flex items-start gap-3 text-[15px]">
-              <Check
-                className={`mt-0.5 h-5 w-5 shrink-0 ${featured ? "text-accent" : "text-success"}`}
-              />
-              <span>
-                {f.endsWith("*") ? (
-                  <>
-                    {f.slice(0, -1)}
-                    <a
-                      href="#faq-modifications"
-                      aria-label="Voir le détail des modifications incluses"
-                      className="font-semibold text-accent hover:underline"
-                    >
-                      *
-                    </a>
-                  </>
-                ) : (
-                  f
-                )}
-              </span>
-            </li>
-          ))}
-        </ul>
-        {view.note && (
-          <p className="flex items-start gap-1.5 pt-1 text-xs text-muted-foreground">
-            <span aria-hidden="true">*</span>
-            {view.note}
-          </p>
-        )}
-      </div>
-
-      <p className="mt-6 border-t border-border pt-5 text-sm font-medium text-foreground/80">
-        {tier.promise}
-      </p>
-
-      {view.cta.to ? (
-        <Link to={view.cta.to} className={ctaClass}>
-          {view.cta.label}
-          <ArrowRight className="h-5 w-5" />
-        </Link>
-      ) : view.cta.href ? (
-        /* Page statique hors routeur React : lien classique, pas de <Link>. */
-        <a href={view.cta.href} className={ctaClass}>
-          {view.cta.label}
-          <ArrowRight className="h-5 w-5" />
-        </a>
-      ) : (
-        <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className={ctaClass}>
-          <Calendar className="h-5 w-5" />
-          {view.cta.label}
-        </a>
-      )}
-    </div>
-  );
-}
-
 /* ---------------- COMPLÉMENTS ---------------- */
 /**
  * Les deux anciennes sections tarifaires (forfaits blog SEO, options ponctuelles)
@@ -1097,36 +817,14 @@ function Extras() {
   );
 }
 
-/* ---------------- EXAMPLES ---------------- */
-function Examples() {
-  type Item = {
-    embedUrl: string;
-    tag: string;
-    title: string;
-    desc: string;
-  };
-
-  const items: Item[] = [
-    {
-      embedUrl: "https://www.aymericpataud.fr/",
-      tag: "Chef à domicile",
-      title: "Aymeric Pataud — Chef expert du goût",
-      desc: "Site vitrine premium réalisé pour un chef à domicile. Cliquez sur l'aperçu pour ouvrir le site.",
-    },
-    {
-      embedUrl: "https://lafleur-toiture.fr/",
-      tag: "Couvreur",
-      title: "Lafleur Toiture — Essonne",
-      desc: "Site vitrine réalisé pour un couvreur de l'Essonne. Cliquez sur l'aperçu pour ouvrir le site.",
-    },
-    {
-      embedUrl: "https://entreprise-felicioni.com/",
-      tag: "Rénovation",
-      title: "Entreprise Felicioni — Haute-Garonne",
-      desc: "Site vitrine avec comparateur avant/après pour une entreprise de rénovation. Cliquez sur l'aperçu pour ouvrir le site.",
-    },
-  ];
-
+/* ---------------- RÉALISATIONS ---------------- */
+/**
+ * Les trois clients apparaissaient deux fois sur la page, en « exemples » puis
+ * en « clients », et aucun des deux blocs ne menait ailleurs qu'au site du
+ * client. Un seul bloc désormais, et chaque carte ouvre son étude de cas :
+ * c'est là que se raconte le travail, pas dans une vignette.
+ */
+function Realisations() {
   return (
     <section id="exemples" className="py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
@@ -1138,81 +836,61 @@ function Examples() {
               Des sites <span className="accent-word">réellement en ligne</span>
             </>
           }
-          subtitle="Cliquez sur un aperçu pour ouvrir le site du client. Ce sont de vraies mises en ligne, pas des maquettes."
+          subtitle="Trois métiers, trois logiques différentes. Chaque projet a sa page : ce qui a été livré, pourquoi le site est construit comme ça, et ce qu'on voit en l'ouvrant."
         />
 
-        <div className="mt-16 grid gap-8 sm:mt-20 md:grid-cols-2">
-          {items.map((it) => (
-            <a
-              key={it.title}
-              href={it.embedUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-elevated transition duration-300 hover:-translate-y-2 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        <div className="stagger mt-14 grid gap-8 lg:grid-cols-3">
+          {REALISATIONS.map((r, i) => (
+            <Link
+              key={r.slug}
+              to="/realisations/$slug/"
+              params={{ slug: r.slug }}
+              data-reveal
+              style={{ "--i": i } as React.CSSProperties}
+              className="lift group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-soft"
             >
-              {/* Media preview — non-interactive, the whole card opens the real site */}
-              <div className="border-b border-border bg-secondary">
-                <EmbedPreview url={it.embedUrl} title={it.title} />
+              <div className="zoom-frame relative aspect-[16/11] border-b border-border">
+                <img
+                  src={r.capture.small}
+                  srcSet={`${r.capture.small} 720w, ${r.capture.large} 1200w`}
+                  sizes="(min-width: 1024px) 30vw, 100vw"
+                  alt={`Page d'accueil du site de ${r.client}`}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover object-top"
+                />
+                <span className="absolute bottom-3 left-3 rounded-full bg-ink/85 px-3 py-1 text-xs font-semibold text-white/85 backdrop-blur-sm">
+                  {r.domaine}
+                </span>
               </div>
-
-              {/* Caption */}
               <div className="flex flex-1 flex-col p-6">
-                <span className="inline-block w-fit rounded-full bg-accent/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest text-accent sm:text-xs">
-                  {it.tag}
-                </span>
-                <h3 className="mt-2 text-lg font-bold text-foreground sm:text-xl">{it.title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{it.desc}</p>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent transition-all group-hover:gap-2.5">
-                  Ouvrir le site
-                  <ArrowRight className="h-4 w-4" />
+                <div className="rail-label text-brand-ink">{r.metier}</div>
+                <h3 className="mt-2 font-display text-xl font-bold tracking-tight">{r.client}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{r.zone}</p>
+                <p className="mt-3 flex-1 text-[15px] text-muted-foreground">{r.resume}</p>
+                <span className="mt-5 inline-flex items-center gap-2 font-semibold text-brand-ink">
+                  Voir l'étude de cas
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </span>
               </div>
-            </a>
+            </Link>
           ))}
+        </div>
+
+        <div className="mt-12 flex flex-wrap items-center gap-4">
+          <Link
+            to="/realisations/"
+            className="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3.5 font-semibold text-accent-foreground transition hover:brightness-110"
+          >
+            Toutes les réalisations
+            <ArrowRight className="h-5 w-5" />
+          </Link>
+          <span className="text-sm text-muted-foreground">
+            Chaque site est ouvert au public. Vérifiez par vous-même.
+          </span>
         </div>
       </div>
     </section>
-  );
-}
-
-/* Non-interactive, scaled-down live preview of an external site (16:9, top-cropped) */
-function EmbedPreview({ url, title }: { url: string; title: string }) {
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(0.5);
-  const DESIGN_W = 1440;
-
-  useEffect(() => {
-    const el = wrapRef.current;
-    if (!el) return;
-    const update = () => setScale(el.clientWidth / DESIGN_W);
-    update();
-    const ro = new ResizeObserver(update);
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
-
-  return (
-    <div ref={wrapRef} className="relative aspect-[16/9] w-full overflow-hidden bg-white">
-      <iframe
-        src={url}
-        title={`Aperçu du site ${title}`}
-        loading="lazy"
-        tabIndex={-1}
-        aria-hidden="true"
-        scrolling="no"
-        sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-        referrerPolicy="no-referrer-when-downgrade"
-        className="pointer-events-none absolute left-0 top-0 border-0 bg-white"
-        style={{
-          width: DESIGN_W,
-          height: 1024,
-          transform: `scale(${scale})`,
-          transformOrigin: "top left",
-        }}
-      />
-      {/* Transparent overlay: captures all pointer events, the parent <a> handles the click */}
-      <span aria-hidden className="absolute inset-0 z-10" />
-    </div>
   );
 }
 
@@ -1257,98 +935,6 @@ function Process() {
             </li>
           ))}
         </ol>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- CLIENTS ---------------- */
-function Clients() {
-  const clients = [
-    {
-      name: "Aymeric Pataud",
-      role: "Chef à domicile",
-      place: "Île-de-France",
-      detail: "Site vitrine premium, en ligne sur aymericpataud.fr.",
-      url: "https://www.aymericpataud.fr/",
-      icon: Sparkles,
-    },
-    {
-      name: "Brian Lafleur",
-      role: "Couvreur",
-      place: "Essonne (91)",
-      detail: "Site vitrine + référencement local, en ligne sur lafleur-toiture.fr.",
-      url: "https://lafleur-toiture.fr/",
-      icon: Shield,
-    },
-    {
-      name: "Entreprise Felicioni",
-      role: "Rénovation",
-      place: "Tournefeuille (31)",
-      detail: "Site vitrine avec comparateur avant/après, en ligne sur entreprise-felicioni.com.",
-      url: "https://entreprise-felicioni.com/",
-      icon: Hammer,
-    },
-  ];
-
-  return (
-    <section className="py-20 sm:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <SectionHeader
-          index="09"
-          eyebrow="Clients"
-          title={
-            <>
-              Ils ont confié leur présence en ligne <span className="accent-word">à Sitaly</span>
-            </>
-          }
-          subtitle="Des sites en ligne, vérifiables. Cliquez pour les visiter."
-        />
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {clients.map((c) => (
-            <a
-              key={c.name}
-              href={c.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col rounded-2xl border border-border bg-card p-7 shadow-soft transition hover:-translate-y-1 hover:shadow-elevated"
-            >
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                <c.icon className="h-5 w-5" />
-              </div>
-              <div className="mt-5 text-lg font-bold">{c.name}</div>
-              <div className="text-sm text-muted-foreground">
-                {c.role} — {c.place}
-              </div>
-              <p className="mt-3 flex-1 text-[15px] leading-relaxed text-foreground/90">
-                {c.detail}
-              </p>
-              <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent transition-all group-hover:gap-2.5">
-                Voir le site
-                <ArrowRight className="h-4 w-4" />
-              </span>
-            </a>
-          ))}
-
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col justify-center rounded-2xl border border-dashed border-accent/40 bg-accent/[0.04] p-7 text-center transition hover:border-accent hover:bg-accent/[0.07]"
-          >
-            <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent">
-              <Calendar className="h-5 w-5" />
-            </div>
-            <div className="mt-5 text-lg font-bold">Votre entreprise ici</div>
-            <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
-              Site livré en 48h, sans engagement. On en parle 20 minutes ?
-            </p>
-            <span className="mt-5 inline-flex items-center justify-center gap-1.5 text-sm font-semibold text-accent transition-all group-hover:gap-2.5">
-              Réserver un appel
-              <ArrowRight className="h-4 w-4" />
-            </span>
-          </a>
-        </div>
       </div>
     </section>
   );

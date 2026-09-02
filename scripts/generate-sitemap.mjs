@@ -30,6 +30,10 @@ try {
     platform: "node",
     logLevel: "silent",
     alias: { "@": join(root, "src") },
+    // Les données de réalisations importent leurs captures. Ce bundle jetable
+    // ne sert qu'à lire des slugs : les binaires sont réduits à leur chemin
+    // plutôt que d'exiger une duplication de la source de vérité.
+    loader: { ".jpg": "dataurl", ".png": "dataurl", ".webp": "dataurl" },
   });
 
   const { buildSitemapXml, SITEMAP_ENTRIES } = await import(pathToFileURL(bundlePath).href);

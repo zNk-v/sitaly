@@ -1,4 +1,5 @@
 import { BLOG_POSTS } from "@/data/blog-posts";
+import { REALISATIONS } from "@/data/realisations";
 
 export const BASE_URL = "https://sitaly.fr";
 
@@ -21,6 +22,12 @@ export const SITEMAP_ENTRIES: SitemapEntry[] = [
   { path: "/chatgpt-ads", changefreq: "weekly", priority: "0.9" },
   { path: "/agents-ia/chatgpt", changefreq: "monthly", priority: "0.6" },
   { path: "/acquisition", changefreq: "monthly", priority: "0.9" },
+  { path: "/realisations", changefreq: "monthly", priority: "0.9" },
+  ...REALISATIONS.map((r) => ({
+    path: `/realisations/${r.slug}`,
+    changefreq: "yearly" as const,
+    priority: "0.7",
+  })),
   { path: "/blog", changefreq: "weekly", priority: "0.9" },
   ...BLOG_POSTS.map((p) => ({
     path: `/blog/${p.slug}`,

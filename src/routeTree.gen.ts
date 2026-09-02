@@ -22,7 +22,9 @@ import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AgentsIaRouteImport } from './routes/agents-ia'
 import { Route as AcquisitionRouteImport } from './routes/acquisition'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RealisationsIndexRouteImport } from './routes/realisations.index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -91,10 +93,20 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RealisationsIndexRoute = RealisationsIndexRouteImport.update({
+  id: '/realisations/',
+  path: '/realisations/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => BlogRoute,
+} as any)
+const RealisationsSlugRoute = RealisationsSlugRouteImport.update({
+  id: '/realisations/$slug',
+  path: '/realisations/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/$slug',
@@ -117,7 +129,9 @@ export interface FileRoutesByFullPath {
   '/site-internet-plombier': typeof SiteInternetPlombierRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/realisations/': typeof RealisationsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -133,7 +147,9 @@ export interface FileRoutesByTo {
   '/site-internet-plombier': typeof SiteInternetPlombierRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog': typeof BlogIndexRoute
+  '/realisations': typeof RealisationsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -151,7 +167,9 @@ export interface FileRoutesById {
   '/site-internet-plombier': typeof SiteInternetPlombierRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/realisations/': typeof RealisationsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -170,7 +188,9 @@ export interface FileRouteTypes {
     | '/site-internet-plombier'
     | '/sitemap.xml'
     | '/blog/$slug'
+    | '/realisations/$slug'
     | '/blog/'
+    | '/realisations/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -186,7 +206,9 @@ export interface FileRouteTypes {
     | '/site-internet-plombier'
     | '/sitemap.xml'
     | '/blog/$slug'
+    | '/realisations/$slug'
     | '/blog'
+    | '/realisations'
   id:
     | '__root__'
     | '/'
@@ -203,7 +225,9 @@ export interface FileRouteTypes {
     | '/site-internet-plombier'
     | '/sitemap.xml'
     | '/blog/$slug'
+    | '/realisations/$slug'
     | '/blog/'
+    | '/realisations/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -220,6 +244,8 @@ export interface RootRouteChildren {
   SiteInternetMenuisierRoute: typeof SiteInternetMenuisierRoute
   SiteInternetPlombierRoute: typeof SiteInternetPlombierRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  RealisationsSlugRoute: typeof RealisationsSlugRoute
+  RealisationsIndexRoute: typeof RealisationsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -315,12 +341,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/realisations/': {
+      id: '/realisations/'
+      path: '/realisations'
+      fullPath: '/realisations/'
+      preLoaderRoute: typeof RealisationsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog/': {
       id: '/blog/'
       path: '/'
       fullPath: '/blog/'
       preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof BlogRoute
+    }
+    '/realisations/$slug': {
+      id: '/realisations/$slug'
+      path: '/realisations/$slug'
+      fullPath: '/realisations/$slug'
+      preLoaderRoute: typeof RealisationsSlugRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/blog/$slug': {
       id: '/blog/$slug'
@@ -358,6 +398,8 @@ const rootRouteChildren: RootRouteChildren = {
   SiteInternetMenuisierRoute: SiteInternetMenuisierRoute,
   SiteInternetPlombierRoute: SiteInternetPlombierRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  RealisationsSlugRoute: RealisationsSlugRoute,
+  RealisationsIndexRoute: RealisationsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
