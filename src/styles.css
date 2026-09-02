@@ -49,8 +49,6 @@
   --color-brand: var(--brand);
   --color-brand-deep: var(--brand-deep);
   --color-brand-ink: var(--brand-ink);
-  --color-violet-block: var(--violet-block);
-  --color-violet-block-deep: var(--violet-block-deep);
   --color-signal: var(--signal);
   --color-signal-ink: var(--signal-ink);
 
@@ -80,10 +78,16 @@
 
   /* Signal : réservé au vérifiable (site en ligne, délai tenu, client nommé).
      Deux valeurs, car le vert clair passe sous le seuil sur fond papier. */
-  /* Aplat de section. Assez sombre pour porter du blanc à 8:1, assez saturé
-     pour que la section claque. C'est le punch demandé, sans revenir au noir. */
-  --violet-block: oklch(0.46 0.21 315);
-  --violet-block-deep: oklch(0.4 0.19 330);
+  /* Voile de section, sur l'axe du logo : violet vers rose, jamais vers le
+     bleu. Assez clair pour porter du texte encre à 15:1, donc la section
+     colore sans crier. L'aplat saturé a été refusé, trop péremptoire. */
+  --wash-from: oklch(0.945 0.045 305);
+  --wash-to: oklch(0.935 0.052 344);
+
+  /* Même axe, assombri, pour le texte : les gros chiffres gardent la
+     saturation que le fond a perdue. Les deux extrémités passent 8:1 sur blanc. */
+  --brand-grad-from: oklch(0.45 0.2 305);
+  --brand-grad-to: oklch(0.42 0.21 344);
 
   --signal: oklch(0.72 0.17 165);
   --signal-ink: oklch(0.48 0.13 165);
@@ -190,18 +194,21 @@
   transition: opacity 0.4s ease;
 }
 
-/* Section en aplat violet. Même principe que .on-ink : les jetons de texte et
-   de filet basculent en clair pour que les utilitaires courants restent
-   lisibles. --card et --accent ne bougent pas : une carte blanche posée sur
-   l'aplat doit rester blanche. */
-@utility on-violet {
-  background: linear-gradient(135deg, var(--violet-block), var(--violet-block-deep));
-  color: oklch(0.99 0 0);
-  --foreground: oklch(0.99 0 0);
-  --muted-foreground: oklch(1 0 0 / 0.72);
-  --border: oklch(1 0 0 / 0.2);
-  --secondary: oklch(1 0 0 / 0.1);
-  --secondary-foreground: oklch(0.99 0 0);
+/* Section voilée. Contrairement à .on-ink, aucun jeton de texte ne bascule :
+   le fond reste assez clair pour que l'encre et le violet de marque tiennent
+   tels quels. Seuls les filets se teintent, pour ne pas trancher sur le voile. */
+@utility on-wash {
+  background: linear-gradient(115deg, var(--wash-from), var(--wash-to));
+  --border: oklch(0.45 0.2 320 / 0.16);
+}
+
+/* Texte en dégradé sur l'axe du logo, réservé aux très grandes tailles :
+   c'est là que la couleur remplace la masse. */
+@utility brand-gradient-text {
+  background: linear-gradient(115deg, var(--brand-grad-from), var(--brand-grad-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 @utility gradient-text {

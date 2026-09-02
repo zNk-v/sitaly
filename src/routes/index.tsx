@@ -494,12 +494,11 @@ function Problem() {
     },
   ];
   return (
-    <section className="on-violet py-20 sm:py-28">
+    <section className="on-wash py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
           index="01"
           eyebrow="Le constat"
-          tone="violet"
           title={
             <>
               Sans site à jour, vous n'êtes pas <span className="accent-word">dans la liste</span>
@@ -507,18 +506,18 @@ function Problem() {
           }
         />
 
-        <div className="mt-14 grid gap-x-10 gap-y-10 border-t border-white/25 pt-10 sm:grid-cols-3">
+        <div className="mt-14 grid gap-x-10 gap-y-10 border-t border-border pt-10 sm:grid-cols-3">
           {faits.map((f, i) => (
             <div
               key={f.chiffre}
               data-reveal
               style={{ "--i": i } as React.CSSProperties}
-              className="border-white/20 sm:border-l sm:pl-8 sm:first:border-l-0 sm:first:pl-0"
+              className="sm:border-l sm:border-border sm:pl-8 sm:first:border-l-0 sm:first:pl-0"
             >
-              <div className="font-display text-[clamp(1.8rem,3vw,2.6rem)] font-extrabold leading-none tracking-tight">
+              <div className="brand-gradient-text font-display text-[clamp(1.8rem,3vw,2.6rem)] font-extrabold leading-none tracking-tight">
                 {f.chiffre}
               </div>
-              <p className="mt-3 text-lg leading-relaxed text-white/75">{f.texte}</p>
+              <p className="mt-3 text-lg leading-relaxed text-foreground/75">{f.texte}</p>
             </div>
           ))}
         </div>
@@ -799,12 +798,11 @@ function Process() {
     { t: "Suivi mensuel", d: "Maintenance, mises à jour et modifications incluses." },
   ];
   return (
-    <section id="process" className="on-violet py-20 sm:py-28">
+    <section id="process" className="on-wash py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
           index="06"
           eyebrow="Process"
-          tone="violet"
           title={
             <>
               Cinq étapes, <span className="accent-word">et c'est en ligne</span>
@@ -819,13 +817,13 @@ function Process() {
               key={s.t}
               data-reveal
               style={{ "--i": i } as React.CSSProperties}
-              className="group grid items-baseline gap-x-8 gap-y-2 border-t border-white/25 py-7 sm:grid-cols-[auto_16rem_1fr] sm:py-9"
+              className="group grid items-baseline gap-x-8 gap-y-2 border-t border-border py-7 sm:grid-cols-[auto_16rem_1fr] sm:py-9"
             >
-              <span className="rail-num font-display text-[clamp(2.4rem,5vw,4rem)] font-extrabold leading-none text-white/25 transition-colors group-hover:text-white/60">
+              <span className="brand-gradient-text rail-num font-display text-[clamp(2.4rem,5vw,4rem)] font-extrabold leading-none opacity-45 transition-opacity group-hover:opacity-100">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <h3 className="font-display text-xl font-bold tracking-tight sm:text-2xl">{s.t}</h3>
-              <p className="text-lg leading-relaxed text-white/70">{s.d}</p>
+              <p className="text-lg leading-relaxed text-muted-foreground">{s.d}</p>
             </li>
           ))}
         </ol>
