@@ -30,7 +30,7 @@ export function SectionHeader({
 
   if (align === "center") {
     return (
-      <div className="mx-auto max-w-2xl text-center">
+      <div data-reveal className="mx-auto max-w-2xl text-center">
         <div className={`rail-label ${mark}`}>{eyebrow}</div>
         <h2 className="display-section mt-3">{title}</h2>
         {subtitle && <p className={`mt-5 text-lg ${dim}`}>{subtitle}</p>}
@@ -39,7 +39,7 @@ export function SectionHeader({
   }
 
   return (
-    <div className="grid gap-6 sm:grid-cols-[auto_1fr] sm:gap-10 lg:gap-14">
+    <div data-reveal className="grid gap-6 sm:grid-cols-[auto_1fr] sm:gap-10 lg:gap-14">
       <div className={`flex items-center gap-3 sm:flex-col sm:items-start sm:gap-4 ${mark}`}>
         {index && <span className="rail-num text-sm font-bold">{index}</span>}
         <span className="rail-line h-px w-10 shrink-0 sm:h-14 sm:w-px" aria-hidden="true" />

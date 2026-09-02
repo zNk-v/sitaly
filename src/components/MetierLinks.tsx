@@ -85,7 +85,7 @@ export function MetierLinksSection({
  */
 export function MetierLinksStrip() {
   return (
-    <section className="border-t border-border bg-background py-10">
+    <section className="border-t border-border bg-paper-sunk py-10">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <h2 className="font-display text-lg font-bold">Nos sites par métier</h2>
         <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">

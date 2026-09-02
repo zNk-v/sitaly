@@ -37,6 +37,7 @@ import { LinkedinLink } from "@/components/LinkedinLink";
 import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
 import { MetierFooterLinks, MetierLinksSection } from "@/components/MetierLinks";
 import { SectionHeader } from "@/components/SectionHeader";
+import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 const FAQ_ITEMS = [
@@ -110,8 +111,13 @@ export const Route = createFileRoute("/")({
 });
 
 function SitalyHome() {
+  /* Révélations au scroll (DESIGN.md §6). Le contenu reste visible sans JS :
+     c'est le hook qui installe l'état masqué, après hydratation seulement. */
+  const rootRef = useRef<HTMLDivElement>(null);
+  useRevealOnScroll(rootRef);
+
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div ref={rootRef} className="min-h-screen bg-background text-foreground">
       <Nav />
       <Hero />
       <ProfessionsMarquee />
@@ -126,8 +132,8 @@ function SitalyHome() {
       <MetierLinksSection />
       <Process />
       <Clients />
-      <Faq />
       <Founder />
+      <Faq />
       <Contact />
       <Footer />
     </div>
@@ -351,21 +357,21 @@ function ProfessionsMarquee() {
     <ul className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>
       {metiers.map((m) => (
         <li key={m} className="flex items-center">
-          <span className="whitespace-nowrap px-6 text-base font-semibold text-foreground/80 sm:px-8 sm:text-lg">
+          <span className="whitespace-nowrap px-6 text-base font-semibold text-white/75 sm:px-8 sm:text-lg">
             {m}
           </span>
-          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent/40" aria-hidden="true" />
+          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand/60" aria-hidden="true" />
         </li>
       ))}
     </ul>
   );
 
   return (
-    <section className="border-y border-border bg-background py-12 sm:py-16">
+    <section className="border-t border-white/10 bg-ink py-12 text-white sm:py-16">
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
         <h2 className="font-display text-xl font-bold tracking-tight sm:text-2xl">
           Plus de clients pour votre activité,{" "}
-          <span className="gradient-text">quel que soit votre métier</span>
+          <span className="accent-word text-brand">quel que soit votre métier</span>
         </h2>
       </div>
       <div className="marquee marquee-mask group relative mt-9 flex overflow-hidden">
@@ -435,10 +441,12 @@ function Problem() {
           }
           subtitle="Aujourd'hui, 8 clients sur 10 vérifient un site web avant de vous contacter."
         />
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {items.map((it) => (
+        <div className="stagger mt-14 grid gap-6 md:grid-cols-3">
+          {items.map((it, i) => (
             <div
               key={it.title}
+              data-reveal
+              style={{ "--i": i } as React.CSSProperties}
               className="rounded-2xl border border-border bg-card p-7 shadow-soft transition hover:shadow-elevated"
             >
               <div className="grid h-12 w-12 place-items-center rounded-xl bg-destructive/10 text-destructive">
@@ -505,10 +513,12 @@ function HowItWorks() {
           }
           subtitle="Un système en trois temps pour transformer votre présence en ligne en clients."
         />
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
-          {steps.map((s) => (
+        <div className="stagger mt-14 grid gap-5 md:grid-cols-3">
+          {steps.map((s, i) => (
             <div
               key={s.title}
+              data-reveal
+              style={{ "--i": i } as React.CSSProperties}
               className="rounded-2xl border border-white/12 bg-white/[0.04] p-7 transition hover:border-brand/40 hover:bg-white/[0.07]"
             >
               <div className="flex items-center justify-between">
@@ -977,10 +987,12 @@ function Extras() {
           }
           subtitle="Rien d'imposé. Ces briques se greffent sur votre accompagnement, à la demande."
         />
-        <div className="mt-14 grid gap-4 sm:grid-cols-2">
-          {EXTRAS.map((o) => (
+        <div className="stagger mt-14 grid gap-4 sm:grid-cols-2">
+          {EXTRAS.map((o, i) => (
             <div
               key={o.name}
+              data-reveal
+              style={{ "--i": i } as React.CSSProperties}
               className="flex gap-4 rounded-2xl border border-border bg-card p-6 shadow-soft transition hover:border-accent/40 hover:shadow-elevated"
             >
               <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent/10 text-accent">
@@ -1144,10 +1156,12 @@ function Process() {
           }
           subtitle="De l'appel découverte à la mise en ligne, vous savez à chaque instant où en est votre site."
         />
-        <ol className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-          {steps.map((s) => (
+        <ol className="stagger mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          {steps.map((s, i) => (
             <li
               key={s.n}
+              data-reveal
+              style={{ "--i": i } as React.CSSProperties}
               className="relative rounded-2xl border border-white/12 bg-white/[0.04] p-6"
             >
               <div className="rail-num font-display text-3xl font-extrabold text-brand">{s.n}</div>
