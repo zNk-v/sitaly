@@ -114,7 +114,7 @@ Le niveau d'offre pertinent dépend de la maturité : site internet et référen
 
 | Client | Métier | Zone | Site en ligne |
 |---|---|---|---|
-| Aymeric Pataud | Chef à domicile | Île-de-France | https://znk-v.github.io/aymeric-pataud/ |
+| Aymeric Pataud | Chef à domicile | Île-de-France | https://www.aymericpataud.fr/ |
 | Brian Lafleur | Couvreur | Essonne (91) | https://lafleur-toiture.fr |
 | Entreprise Felicioni | Rénovation | Tournefeuille (31) | https://entreprise-felicioni.com |
 

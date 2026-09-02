@@ -1021,13 +1021,13 @@ function Examples() {
 
   const items: Item[] = [
     {
-      embedUrl: "https://znk-v.github.io/aymeric-pataud/",
+      embedUrl: "https://www.aymericpataud.fr/",
       tag: "Chef à domicile",
       title: "Aymeric Pataud — Chef expert du goût",
       desc: "Site vitrine premium réalisé pour un chef à domicile. Cliquez sur l'aperçu pour ouvrir le site.",
     },
     {
-      embedUrl: "https://lafleur-toiture.fr/#top",
+      embedUrl: "https://lafleur-toiture.fr/",
       tag: "Couvreur",
       title: "Lafleur Toiture — Essonne",
       desc: "Site vitrine réalisé pour un couvreur de l'Essonne. Cliquez sur l'aperçu pour ouvrir le site.",
@@ -1182,8 +1182,8 @@ function Clients() {
       name: "Aymeric Pataud",
       role: "Chef à domicile",
       place: "Île-de-France",
-      detail: "Site vitrine premium, livré et hébergé par Sitaly.",
-      url: "https://znk-v.github.io/aymeric-pataud/",
+      detail: "Site vitrine premium, en ligne sur aymericpataud.fr.",
+      url: "https://www.aymericpataud.fr/",
       icon: Sparkles,
     },
     {
@@ -1191,7 +1191,7 @@ function Clients() {
       role: "Couvreur",
       place: "Essonne (91)",
       detail: "Site vitrine + référencement local, en ligne sur lafleur-toiture.fr.",
-      url: "https://lafleur-toiture.fr/#top",
+      url: "https://lafleur-toiture.fr/",
       icon: Shield,
     },
     {

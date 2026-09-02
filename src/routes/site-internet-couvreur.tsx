@@ -113,8 +113,8 @@ function CouvreurLanding() {
         label: "Lafleur Toiture — Essonne",
         description:
           "Site vitrine local réalisé par Sitaly pour un couvreur de l'Essonne. Pages services, galerie chantiers, formulaire devis local. Visitez l'aperçu.",
-        iframeUrl: "https://lafleur-toiture.fr/#top",
-        exempleHref: "https://lafleur-toiture.fr/#top",
+        iframeUrl: "https://lafleur-toiture.fr/",
+        exempleHref: "https://lafleur-toiture.fr/",
       }}
       faq={FAQ}
       testimonial={{
