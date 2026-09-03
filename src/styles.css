@@ -50,6 +50,10 @@
   --color-violet: var(--violet);
   --color-pink: var(--pink);
   --color-red: var(--red);
+  --color-blue-on-ink: var(--blue-on-ink);
+  --color-violet-on-ink: var(--violet-on-ink);
+  --color-pink-on-ink: var(--pink-on-ink);
+  --color-red-on-ink: var(--red-on-ink);
   --color-brand: var(--brand);
   --color-brand-deep: var(--brand-deep);
   --color-brand-ink: var(--brand-ink);
@@ -84,6 +88,15 @@
      réservé aux erreurs, et deux rouges qui se ressemblent dans une interface
      font perdre au second son sens d'alerte. */
   --red: oklch(0.58 0.22 28);
+
+  /* La même triade éclaircie, pour les surfaces sombres. Les valeurs de base
+     sont calibrées pour le papier : posées sur l'encre elles tombent entre
+     2.6:1 et 4:1, sous le seuil des éléments graphiques. Celles-ci rendent
+     entre 5.8:1 et 6.2:1. */
+  --blue-on-ink: oklch(0.66 0.17 258);
+  --violet-on-ink: oklch(0.66 0.19 300);
+  --pink-on-ink: oklch(0.68 0.2 350);
+  --red-on-ink: oklch(0.68 0.19 28);
 
   /* Versions claires, pour l'ornement sur surface sombre. */
   --brand: oklch(0.722 0.177 305);
@@ -555,11 +568,20 @@
     /* Le mot découpé. `transform-box: fill-box` fait porter l'origine sur la
        boîte du texte et non sur le repère du SVG, sans quoi le zoom part d'un
        coin. */
+    /* Le mot reprend la casse et la chasse du logo : une capitale, le reste en
+       bas de casse, sans interlettrage ajouté. Sa largeur reste sous la moitié
+       du repère, sans quoi `slice` lui coupe les extrémités sur les fenêtres
+       étroites. */
     .zoom-word {
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: 150px;
-      letter-spacing: 0.18em;
+      /* L'échelle du SVG vaut largeur/1200. La hauteur d'encre du mot vaut donc
+         fontSize x 1.05 x largeur/1200, soit 10.3 vw pour 118. La fente en
+         réserve 14 vw, sans plafond : plafonnée, elle cessait de suivre le mot
+         au-delà d'une certaine largeur et le débordement revenait. Les 3.7 vw
+         d'écart absorbent la hampe du « y », qui sort de la boîte du texte. */
+      font-size: 118px;
+      letter-spacing: -0.02em;
       /* Le décalage compense l'interlettrage, qui ajoute une chasse après la
          dernière lettre et déporte le mot vers la gauche. */
       transform-box: fill-box;

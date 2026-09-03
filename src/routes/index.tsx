@@ -178,7 +178,7 @@ function Nav() {
 function Ouverture() {
   return (
     <ZoomIntro
-      nom="SITALY"
+      nom="Sitaly"
       avant={
         /* Calage déterministe du mot. La colonne occupe toute la hauteur, et
            les deux moitiés portent `flex-1` : la fente centrale tombe donc
@@ -187,7 +187,7 @@ function Ouverture() {
            ligne de texte changeait de longueur.
            Sans hauteur imposée (mode repli), la colonne s'empile simplement. */
         <div className="flex h-full flex-col items-center justify-center px-4 text-center sm:px-6">
-          <div className="flex flex-1 items-end pb-8">
+          <div className="flex flex-1 items-end pb-10">
             <p className="font-display text-[clamp(1.05rem,2vw,1.6rem)] font-extrabold tracking-[0.08em] text-muted-foreground">
               Pour les indépendants, les TPE et les PME
             </p>
@@ -195,13 +195,15 @@ function Ouverture() {
 
           {/* La fente du nom. La doublure ne s'affiche que si l'effet ne tourne
               pas, sans quoi SITALY disparaîtrait de la page. */}
-          <div className="flex h-[clamp(4.5rem,11vw,9rem)] shrink-0 items-center justify-center">
-            <p className="zoom-word-fallback font-display text-[clamp(2.4rem,7.6vw,6.4rem)] font-extrabold leading-none tracking-[0.2em]">
-              SITALY
+          <div className="flex h-[max(5.5rem,14vw)] shrink-0 items-center justify-center">
+            <p className="zoom-word-fallback font-display text-[max(2.6rem,8.4vw)] font-extrabold leading-none tracking-[-0.02em]">
+              Sitaly
             </p>
           </div>
 
-          <div className="flex flex-1 flex-col items-center pt-8">
+          {/* Marge basse plus généreuse que la haute : la hampe du « y » descend
+              sous la fente, la ligne suivante doit lui laisser le passage. */}
+          <div className="flex flex-1 flex-col items-center pt-16">
             {/* text-wrap: balance évite le mot orphelin sur la seconde ligne
                 quand la phrase ne tient pas d'un seul tenant. */}
             <p className="max-w-5xl text-balance font-display text-[clamp(1.4rem,3.1vw,2.6rem)] font-extrabold leading-[1.08]">
@@ -242,6 +244,28 @@ function Ouverture() {
               <Calendar className="h-5 w-5" />
               Réserver un appel de 20 min
             </a>
+
+            {/* Trois repères sous le bouton. Le premier écran ne portait qu'un
+                titre et un bouton : de quoi paraître vide, et rien pour lever
+                les objections de départ. */}
+            <ul className="mt-7 flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-sm text-muted-foreground">
+              {["Mise en ligne en 48h", "Réponse sous 24h", "Sans engagement de durée"].map((t) => (
+                <li key={t} className="flex items-center gap-2">
+                  <Check className="h-4 w-4 shrink-0 text-signal-ink" />
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Repère de défilement : il annonce qu'il se passe quelque chose plus
+              bas, ce qui compte double quand le bas de page est un effet. */}
+          <div
+            aria-hidden="true"
+            className="mt-10 flex flex-col items-center gap-2 text-muted-foreground/70"
+          >
+            <span className="rail-label">Faites défiler</span>
+            <ChevronDown className="h-5 w-5 animate-bounce" />
           </div>
         </div>
       }
@@ -267,14 +291,16 @@ function CeQuOnFait() {
      formules : le visiteur regarde à l'intérieur de Sitaly et y trouve
      l'offre. Chaque ligne mène à sa page, ce qui sert aussi le maillage. */
   const prestations = [
-    { texte: "création de site internet", to: "/realisations/", accent: false },
-    { texte: "campagnes Google Ads", to: "/acquisition/", accent: true },
-    { texte: "campagnes ChatGPT Ads", href: "/chatgpt-ads/", accent: false },
-    { texte: "agents IA & automatisations", to: "/agents-ia/", accent: false },
+    { texte: "création de site internet", to: "/realisations/", coche: "text-blue-on-ink" },
+    { texte: "campagnes Google Ads", to: "/acquisition/", coche: "text-violet-on-ink" },
+    { texte: "campagnes ChatGPT Ads", href: "/chatgpt-ads/", coche: "text-pink-on-ink" },
+    { texte: "agents IA & automatisations", to: "/agents-ia/", coche: "text-red-on-ink" },
   ];
 
   return (
-    <section className="on-panel flex min-h-full w-full items-center py-24 sm:py-32">
+    /* Panneau noir. Le mot du hero étant un trou dans le voile, c'est ce fond
+       qui le colore : il apparaît noir sans qu'on ait à le peindre. */
+    <section className="flex min-h-full w-full items-center bg-ink py-24 text-white sm:py-32">
       <div className="mx-auto max-w-6xl px-4 text-center sm:px-6">
         <p data-reveal className="rail-label text-white/70">
           Ce que fait Sitaly
@@ -294,9 +320,7 @@ function CeQuOnFait() {
                 <svg
                   viewBox="0 0 24 24"
                   aria-hidden="true"
-                  className={`h-[clamp(1.2rem,3.4vw,2.6rem)] w-[clamp(1.2rem,3.4vw,2.6rem)] shrink-0 transition-transform group-hover:translate-x-1 ${
-                    p.accent ? "text-white" : "text-white/35"
-                  }`}
+                  className={`h-[clamp(1.2rem,3.4vw,2.6rem)] w-[clamp(1.2rem,3.4vw,2.6rem)] shrink-0 transition-transform group-hover:translate-x-1 ${p.coche}`}
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="4"
@@ -305,11 +329,7 @@ function CeQuOnFait() {
                 >
                   <path d="M8 4l8 8-8 8" />
                 </svg>
-                <span
-                  className={`font-display text-[clamp(1.5rem,4.6vw,3.6rem)] font-extrabold leading-none tracking-[-0.02em] ${
-                    p.accent ? "text-white" : "text-white/80"
-                  }`}
-                >
+                <span className="font-display text-[clamp(1.5rem,4.6vw,3.6rem)] font-extrabold leading-none tracking-[-0.02em] text-white">
                   {p.texte}
                 </span>
               </>

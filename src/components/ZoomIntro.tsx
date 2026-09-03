@@ -42,20 +42,32 @@ export function ZoomIntro({
         <div className="zoom-cover" aria-hidden="true">
           <svg
             className="absolute inset-0 h-full w-full"
-            viewBox="0 0 1200 700"
+            /* Repère volontairement très haut. Avec `slice`, l'échelle vaut
+               max(largeur/1200, hauteur/2400) : ce rapport fait dominer la
+               largeur dans presque tous les formats, si bien que le mot grandit
+               comme la fente qui lui est réservée, exprimée en vw. Avec un
+               repère au format paysage, la hauteur prenait le dessus et le mot
+               débordait sur la ligne du dessous. */
+            viewBox="0 0 1200 2400"
             preserveAspectRatio="xMidYMid slice"
           >
             <defs>
               <mask id="zoom-intro-mask">
-                {/* Blanc = opaque, noir = percé. */}
-                <rect width="1200" height="700" fill="white" />
+                {/* Blanc = opaque, noir = percé. Le rectangle déborde largement
+                    du repère : avec `slice`, le SVG est rogné sur un côté selon
+                    le format de la fenêtre, et un rectangle à ras laisserait
+                    passer une bande de panneau sur les bords. */}
+                <rect x="-4800" y="-4800" width="12000" height="12000" fill="white" />
                 {/* dx compense la chasse que l'interlettrage ajoute après la
                     dernière lettre et qui décale le mot vers la gauche. */}
                 <text
                   className="zoom-word"
                   x="600"
                   dx="0.09em"
-                  y="350"
+                  /* Légèrement au-dessus du centre géométrique : la hampe du
+                     « y » tire l'encre du mot vers le bas, et le centre optique
+                     ne coïncide pas avec le centre de la boîte. */
+                  y="1152"
                   textAnchor="middle"
                   dominantBaseline="central"
                   fill="black"
@@ -64,7 +76,14 @@ export function ZoomIntro({
                 </text>
               </mask>
             </defs>
-            <rect width="1200" height="700" fill="var(--paper)" mask="url(#zoom-intro-mask)" />
+            <rect
+              x="-4800"
+              y="-4800"
+              width="12000"
+              height="12000"
+              fill="var(--paper)"
+              mask="url(#zoom-intro-mask)"
+            />
           </svg>
         </div>
 
