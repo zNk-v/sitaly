@@ -3,8 +3,9 @@
  *
  * Adapté d'un hero 21st.dev (`componentry/hero-geometric`), dont l'idée tient
  * en deux couches : de larges arcs concentriques qui saignent de tous les
- * côtés, et une trame de points qui leur donne la texture d'un aplat imprimé
- * plutôt que celle d'un dégradé de synthèse. Trois écarts avec l'original :
+ * côtés. L'original y ajoute une trame de points ; elle a été retirée, elle
+ * salissait le papier plus qu'elle ne lui donnait de la matière. Trois écarts
+ * avec l'original :
  *
  * - Le fond d'origine est un shader WebGL. Ici c'est un SVG : la scène est déjà
  *   pilotée au défilement, ajouter un contexte de rendu pour un décor qui
@@ -54,15 +55,9 @@ export function HeroChamp() {
             <stop offset="100%" stopColor="var(--red)" />
           </linearGradient>
 
-          {/* La trame. Un pas de 13 unités pour un point de 2,6 : assez serré
-              pour lire comme une matière, assez lâche pour rester visible. */}
-          <pattern id="champ-trame" width="13" height="13" patternUnits="userSpaceOnUse">
-            <circle cx="6.5" cy="6.5" r="2.6" fill="var(--ink)" />
-          </pattern>
-
-          {/* Le fondu central, partagé par les arcs et la trame : au milieu de
-              la fenêtre passent le texte et le trou du mot, tous deux à laisser
-              nus. Le décor ne vit que sur les bords. */}
+          {/* Le fondu central : au milieu de la fenêtre passent le texte et le
+              trou du mot, tous deux à laisser nus. Le décor ne vit que sur les
+              bords. */}
           <radialGradient id="champ-fondu" cx="50%" cy="46%" r="72%">
             <stop offset="0%" stopColor="black" />
             <stop offset="42%" stopColor="black" />
@@ -86,14 +81,6 @@ export function HeroChamp() {
             <circle cx="-190" cy="1120" r="1320" strokeWidth="96" opacity="0.34" />
           </g>
         </g>
-
-        <rect
-          width="1440"
-          height="900"
-          fill="url(#champ-trame)"
-          mask="url(#champ-masque)"
-          opacity="0.09"
-        />
       </svg>
     </div>
   );

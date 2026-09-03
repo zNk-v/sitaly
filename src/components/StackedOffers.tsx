@@ -124,7 +124,7 @@ const LEVIERS: Levier[] = [
 
 export function StackedOffers() {
   return (
-    <section id="offre" className="py-20 sm:py-28">
+    <section id="offre" className="pt-20 pb-12 sm:pt-28 sm:pb-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
           index="03"
@@ -188,21 +188,15 @@ export function StackedOffers() {
                   </ul>
 
                   {l.cta.to ? (
-                    <Link
-                      to={l.cta.to}
-                      className="mt-9 inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3.5 font-semibold text-accent-foreground transition hover:brightness-110"
-                    >
+                    <Link to={l.cta.to} className="bouton mt-9 px-7 py-3.5">
                       {l.cta.label}
-                      <ArrowRight className="h-5 w-5" />
+                      <ArrowRight className="bouton-fleche h-5 w-5" />
                     </Link>
                   ) : (
                     /* Page statique hors routeur React : lien classique. */
-                    <a
-                      href={l.cta.href}
-                      className="mt-9 inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3.5 font-semibold text-accent-foreground transition hover:brightness-110"
-                    >
+                    <a href={l.cta.href} className="bouton mt-9 px-7 py-3.5">
                       {l.cta.label}
-                      <ArrowRight className="h-5 w-5" />
+                      <ArrowRight className="bouton-fleche h-5 w-5" />
                     </a>
                   )}
                 </div>

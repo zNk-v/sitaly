@@ -57,6 +57,9 @@
   --color-brand: var(--brand);
   --color-brand-deep: var(--brand-deep);
   --color-brand-ink: var(--brand-ink);
+  --color-blue-ink: var(--blue-ink);
+  --color-violet-ink: var(--violet-ink);
+  --color-red-ink: var(--red-ink);
   --color-signal: var(--signal);
   --color-signal-ink: var(--signal-ink);
 
@@ -126,6 +129,28 @@
   --panel-via: oklch(0.48 0.22 330);
   --panel-to: oklch(0.5 0.21 25);
 
+  /* Le dégradé porteur : ruban des métiers et boutons primaires. Clarté
+     constante à 0,46 sur toute la course, chroma maximale tenable en sRGB pour
+     chaque teinte. Le blanc y tient de 7,2 à 8,1:1, mesuré sur le rendu. La
+     clarté constante évite qu'une moitié paraisse plus lourde que l'autre. */
+  /* Encres colorées pour texte sur papier. Clarté constante à 0,47 : les trois
+     mots accentués pèsent alors le même poids, aucun ne crie plus fort que les
+     autres. Contrastes sur le papier : 6,69 / 7,49 / 7,19:1.
+
+     Le rouge est à 0,47 et non au 0,58 de `--red`. Ce dernier ne vit qu'en
+     extrémité de dégradé, et posé à plat il se confond avec `--destructive`,
+     qui est à 0,6 sur la même teinte : deux rouges voisins, l'un décoratif et
+     l'autre porteur d'alerte, se neutralisent. */
+  --blue-ink: oklch(0.47 0.166 258);
+  --violet-ink: oklch(0.47 0.238 300);
+  --red-ink: oklch(0.47 0.183 28);
+
+  --gradient-ruban: linear-gradient(
+    100deg in oklch,
+    oklch(0.46 0.162 258),
+    oklch(0.46 0.233 300) 55%,
+    oklch(0.46 0.179 28)
+  );
   --signal: oklch(0.72 0.17 165);
   --signal-ink: oklch(0.48 0.13 165);
 
@@ -783,6 +808,66 @@
   }
 }
 
+/* Bouton primaire --------------------------------------------------------- */
+
+/* Le dégradé fait deux fois la largeur du bouton et glisse au survol : la
+   couleur traverse au lieu de s'éclaircir. `brightness(1.1)`, ce qu'il y avait
+   avant, délavait un dégradé au lieu de l'animer.
+
+   Le halo n'est pas une ombre grise : il reprend la teinte du dégradé, sinon
+   il pose un cerne neutre sous une surface colorée. */
+@utility bouton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  color: white;
+  background-image: var(--gradient-ruban);
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  box-shadow:
+    0 1px 2px oklch(0.3 0.08 290 / 0.25),
+    0 10px 26px -12px oklch(0.46 0.2 290 / 0.7);
+  transition:
+    background-position 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease;
+}
+
+/* La flèche ou l'icône avance avec le dégradé. */
+@utility bouton-fleche {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) {
+  .bouton:hover {
+    background-position: 100% 50%;
+    transform: translateY(-2px);
+    box-shadow:
+      0 1px 2px oklch(0.3 0.08 290 / 0.28),
+      0 18px 36px -14px oklch(0.46 0.2 290 / 0.8);
+  }
+  .bouton:hover .bouton-fleche {
+    transform: translateX(4px);
+  }
+}
+.bouton:active {
+  transform: translateY(0);
+}
+.bouton:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bouton,
+  .bouton-fleche {
+    transition: none;
+  }
+}
+
 /* Défilement des métiers — deux rangées à contresens ---------------------- */
 
 /* Le ruban. Ses arrêts ne sont pas ceux de `--gradient-brand` : sous du blanc,
@@ -791,12 +876,7 @@
    au-delà, les arrêts sortent du gamut et le navigateur les ramène en écrasant
    la teinte. Le blanc y tient de 7,3 à 8,1:1. */
 .ruban {
-  background: linear-gradient(
-    100deg in oklch,
-    oklch(0.46 0.162 258),
-    oklch(0.46 0.233 300) 55%,
-    oklch(0.46 0.179 28)
-  );
+  background: var(--gradient-ruban);
 }
 
 /* Le losange, en réserve sur le ruban. */

@@ -35,7 +35,7 @@ export function SiteChrome({ children }: { children: ReactNode }) {
               href={CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden h-11 items-center gap-2 rounded-lg bg-accent px-4 text-sm font-semibold text-accent-foreground transition hover:brightness-110 sm:inline-flex"
+              className="bouton hidden h-11 px-5 text-sm sm:inline-flex"
             >
               <Calendar className="h-4 w-4" />
               Parler de votre projet

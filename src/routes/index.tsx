@@ -158,7 +158,7 @@ function Nav() {
             href={CALENDLY_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden h-11 items-center gap-2 rounded-lg bg-accent px-4 text-sm font-semibold text-accent-foreground transition hover:brightness-110 sm:inline-flex"
+            className="bouton hidden h-11 px-5 text-sm sm:inline-flex"
           >
             <Calendar className="h-4 w-4" />
             Parler de votre projet
@@ -194,11 +194,10 @@ function Ouverture() {
             {/* Hauteur fixe : la fente du mot doit tomber à --mot-haut de la
               tête de section, la même valeur que celle qui positionne le mot
               dans le voile. Une colonne centrée ne le garantissait pas. */}
-            <div className="flex h-[var(--mot-haut,34vh)] items-end pb-10">
-              <p className="font-display text-[clamp(1.05rem,2vw,1.6rem)] font-extrabold tracking-[0.08em] text-muted-foreground">
-                Pour les indépendants, les TPE et les PME
-              </p>
-            </div>
+            {/* Réserve vide, et c'est son seul rôle : elle cale la fente du mot
+                à --mot-haut de la tête de section, exactement là où le masque
+                du voile dessine le nom. */}
+            <div className="h-[var(--mot-haut,34vh)] shrink-0" />
 
             {/* La fente du nom. La doublure ne s'affiche que si l'effet ne tourne
               pas, sans quoi SITALY disparaîtrait de la page. */}
@@ -211,17 +210,26 @@ function Ouverture() {
             {/* Marge basse plus généreuse que la haute : la hampe du « y » descend
               sous la fente, la ligne suivante doit lui laisser le passage. */}
             <div className="flex flex-col items-center pt-8">
-              {/* text-wrap: balance évite le mot orphelin sur la seconde ligne
-                quand la phrase ne tient pas d'un seul tenant. */}
-              <p className="max-w-5xl text-balance font-display text-[clamp(1.4rem,3.1vw,2.6rem)] font-extrabold leading-[1.08]">
-                <span className="accent-word">installe et pilote</span>{" "}
-                <span className="tracking-[0.02em]">votre présence en ligne</span>
-              </p>
+              {/* Le titre occupe la largeur de la page. `data-split` le découpe
+                  en mots, que le script révèle l'un après l'autre : le balisage
+                  inline survit au découpage, les mots colorés gardent donc leur
+                  couleur et entrent dans la cascade comme les autres.
+                  Trois touches seulement, une par famille de la triade, et sur
+                  les trois mots qui portent le sens de la phrase. */}
+              <h1
+                data-split
+                className="stagger w-full text-balance font-display text-[clamp(1.9rem,5.45vw,6.5rem)] font-extrabold leading-[1.04] tracking-[-0.03em]"
+                style={{ "--stagger-step": "70ms" } as React.CSSProperties}
+              >
+                <span className="accent-word tracking-[-0.01em] text-blue-ink">installe</span> et{" "}
+                <span className="accent-word tracking-[-0.01em] text-violet-ink">pilote</span> votre{" "}
+                <span className="text-red-ink">présence</span> en ligne
+              </h1>
 
               {/* La phrase qui porte le positionnement : ce qui est fait, et par
                 qui. « Une seule personne » remplace le mot agence, qui
                 promettait une équipe que Sitaly n'a pas. */}
-              <p className="measure mt-4 text-lg text-muted-foreground">
+              <p className="measure mt-6 text-lg text-muted-foreground">
                 Le site internet, la publicité en ligne et les automatisations. Une seule personne
                 au bout du fil, celle qui construit.
               </p>
@@ -230,7 +238,7 @@ function Ouverture() {
                 href={CALENDLY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-7 py-4 text-base font-semibold text-accent-foreground shadow-glow transition hover:brightness-110"
+                className="bouton mt-7 px-8 py-4 text-base"
               >
                 <Calendar className="h-5 w-5" />
                 Parler de votre projet
@@ -392,7 +400,7 @@ function ProfessionsMarquee() {
           Le même travail de fond, <Surligne>quel que soit votre métier</Surligne>
         </h2>
       </div>
-      <MetiersDefilement className="mt-8 sm:mt-10" />
+      <MetiersDefilement className="mt-5 sm:mt-6" />
     </section>
   );
 }
@@ -569,7 +577,7 @@ const EXTRAS = [
 
 function Extras() {
   return (
-    <section className="bg-paper-sunk py-20 sm:py-28">
+    <section className="bg-paper-sunk pt-12 pb-20 sm:pt-14 sm:pb-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
           index="04"
@@ -629,12 +637,9 @@ function Realisations() {
         <RealisationsCarousel className="mt-16" />
 
         <div className="mt-14 flex justify-center">
-          <Link
-            to="/realisations/"
-            className="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3.5 font-semibold text-accent-foreground transition hover:brightness-110"
-          >
+          <Link to="/realisations/" className="bouton px-7 py-3.5">
             Toutes les réalisations
-            <ArrowRight className="h-5 w-5" />
+            <ArrowRight className="bouton-fleche h-5 w-5" />
           </Link>
         </div>
       </div>
