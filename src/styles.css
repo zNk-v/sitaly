@@ -568,22 +568,25 @@
     /* Le mot découpé. `transform-box: fill-box` fait porter l'origine sur la
        boîte du texte et non sur le repère du SVG, sans quoi le zoom part d'un
        coin. */
+    /* Position du mot et de la fente qui lui est réservée.
+       Une seule formule pour les deux, sinon ils divergent : centrer la colonne
+       de texte ne suffisait pas, le bas de colonne dépasse sa moitié et pousse
+       la fente vers le haut pendant que le mot reste au centre de la fenêtre. */
+    .zoom-stage {
+      --mot-haut: 34vh;
+      --mot-taille: 10.5vw;
+      --mot-fente: 14vw;
+    }
+
     /* Le mot reprend la casse et la chasse du logo : une capitale, le reste en
-       bas de casse, sans interlettrage ajouté. Sa largeur reste sous la moitié
-       du repère, sans quoi `slice` lui coupe les extrémités sur les fenêtres
-       étroites. */
+       bas de casse, sans interlettrage ajouté. Il est posé à y=0 puis descendu
+       par transform, ce qui permet de composer la translation avec le zoom
+       dans une même déclaration. */
     .zoom-word {
       font-family: var(--font-display);
       font-weight: 800;
-      /* L'échelle du SVG vaut largeur/1200. La hauteur d'encre du mot vaut donc
-         fontSize x 1.05 x largeur/1200, soit 10.3 vw pour 118. La fente en
-         réserve 14 vw, sans plafond : plafonnée, elle cessait de suivre le mot
-         au-delà d'une certaine largeur et le débordement revenait. Les 3.7 vw
-         d'écart absorbent la hampe du « y », qui sort de la boîte du texte. */
-      font-size: 118px;
+      font-size: var(--mot-taille);
       letter-spacing: -0.02em;
-      /* Le décalage compense l'interlettrage, qui ajoute une chasse après la
-         dernière lettre et déporte le mot vers la gauche. */
       transform-box: fill-box;
       transform-origin: center;
       animation: zoom-percer linear both;
@@ -593,10 +596,10 @@
     }
     @keyframes zoom-percer {
       from {
-        transform: scale(1);
+        transform: translateY(calc(var(--mot-haut) + var(--mot-fente) / 2)) scale(1);
       }
       to {
-        transform: scale(34);
+        transform: translateY(calc(var(--mot-haut) + var(--mot-fente) / 2)) scale(34);
       }
     }
 
@@ -615,6 +618,25 @@
       to {
         opacity: 0;
         transform: translateY(-2.5rem);
+      }
+    }
+
+    /* Le contenu du panneau n'apparaît qu'une fois l'ouverture entamée. Au
+       repos, les lettres du mot laissaient voir des fragments de titre et de
+       liste : illisibles à cette taille, ils donnaient un effet de désordre.
+       Le mot se remplit désormais d'aplat, et le texte arrive quand il y a la
+       place de le lire. */
+    .zoom-behind-content {
+      animation: zoom-contenu linear both;
+      animation-timeline: scroll(root);
+      animation-range: 26vh 62vh;
+    }
+    @keyframes zoom-contenu {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
       }
     }
 

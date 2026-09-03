@@ -76,7 +76,7 @@ export function MetierLanding(props: MetierLandingProps) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-elevated transition hover:opacity-90"
             >
-              Réserver un appel gratuit
+              Parler de votre projet gratuit
               <ArrowRight className="h-4 w-4" />
             </a>
             <Link
@@ -380,7 +380,7 @@ export function MetierLanding(props: MetierLandingProps) {
             className="mt-7 inline-flex items-center gap-2 rounded-xl bg-background px-7 py-3.5 text-sm font-semibold text-foreground shadow-elevated transition hover:opacity-95"
           >
             <Phone className="h-4 w-4" />
-            Réserver un appel gratuit
+            Parler de votre projet gratuit
           </a>
         </div>
       </section>
@@ -443,7 +443,7 @@ function LandingNav() {
             rel="noopener noreferrer"
             className="hidden h-11 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90 sm:inline-flex"
           >
-            Réserver un appel
+            Parler de votre projet
           </a>
           <MobileMenu />
         </div>

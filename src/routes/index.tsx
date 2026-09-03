@@ -159,7 +159,7 @@ function Nav() {
             className="hidden h-11 items-center gap-2 rounded-lg bg-accent px-4 text-sm font-semibold text-accent-foreground transition hover:brightness-110 sm:inline-flex"
           >
             <Calendar className="h-4 w-4" />
-            Réserver un appel
+            Parler de votre projet
           </a>
           <MobileMenu onHome />
         </div>
@@ -186,8 +186,11 @@ function Ouverture() {
            le nom. Des réserves à valeurs fixes se désaccordaient dès qu'une
            ligne de texte changeait de longueur.
            Sans hauteur imposée (mode repli), la colonne s'empile simplement. */
-        <div className="flex h-full flex-col items-center justify-center px-4 text-center sm:px-6">
-          <div className="flex flex-1 items-end pb-10">
+        <div className="flex h-full flex-col items-center px-4 text-center sm:px-6">
+          {/* Hauteur fixe : la fente du mot doit tomber à --mot-haut de la
+              tête de section, la même valeur que celle qui positionne le mot
+              dans le voile. Une colonne centrée ne le garantissait pas. */}
+          <div className="flex h-[var(--mot-haut,34vh)] items-end pb-10">
             <p className="font-display text-[clamp(1.05rem,2vw,1.6rem)] font-extrabold tracking-[0.08em] text-muted-foreground">
               Pour les indépendants, les TPE et les PME
             </p>
@@ -195,7 +198,7 @@ function Ouverture() {
 
           {/* La fente du nom. La doublure ne s'affiche que si l'effet ne tourne
               pas, sans quoi SITALY disparaîtrait de la page. */}
-          <div className="flex h-[max(5.5rem,14vw)] shrink-0 items-center justify-center">
+          <div className="flex h-[var(--mot-fente,14vw)] shrink-0 items-center justify-center">
             <p className="zoom-word-fallback font-display text-[max(2.6rem,8.4vw)] font-extrabold leading-none tracking-[-0.02em]">
               Sitaly
             </p>
@@ -203,7 +206,7 @@ function Ouverture() {
 
           {/* Marge basse plus généreuse que la haute : la hampe du « y » descend
               sous la fente, la ligne suivante doit lui laisser le passage. */}
-          <div className="flex flex-1 flex-col items-center pt-16">
+          <div className="flex flex-col items-center pt-10">
             {/* text-wrap: balance évite le mot orphelin sur la seconde ligne
                 quand la phrase ne tient pas d'un seul tenant. */}
             <p className="max-w-5xl text-balance font-display text-[clamp(1.4rem,3.1vw,2.6rem)] font-extrabold leading-[1.08]">
@@ -242,7 +245,7 @@ function Ouverture() {
               className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-7 py-4 text-base font-semibold text-accent-foreground shadow-glow transition hover:brightness-110"
             >
               <Calendar className="h-5 w-5" />
-              Réserver un appel de 20 min
+              Parler de votre projet
             </a>
 
             {/* Trois repères sous le bouton. Le premier écran ne portait qu'un
@@ -301,7 +304,7 @@ function CeQuOnFait() {
     /* Panneau noir. Le mot du hero étant un trou dans le voile, c'est ce fond
        qui le colore : il apparaît noir sans qu'on ait à le peindre. */
     <section className="flex min-h-full w-full items-center bg-ink py-24 text-white sm:py-32">
-      <div className="mx-auto max-w-6xl px-4 text-center sm:px-6">
+      <div className="zoom-behind-content mx-auto max-w-6xl px-4 text-center sm:px-6">
         <p data-reveal className="rail-label text-white/70">
           Ce que fait Sitaly
         </p>

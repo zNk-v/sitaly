@@ -230,7 +230,7 @@ function BlogIndex() {
             rel="noopener noreferrer"
             className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground shadow-elevated transition hover:opacity-90"
           >
-            Réserver un appel
+            Parler de votre projet
             <ArrowRight className="h-5 w-5" />
           </a>
         </div>
@@ -306,7 +306,7 @@ function BlogNav() {
             rel="noopener noreferrer"
             className="hidden h-11 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90 sm:inline-flex"
           >
-            Réserver un appel
+            Parler de votre projet
           </a>
           <MobileMenu current="blog" />
         </div>

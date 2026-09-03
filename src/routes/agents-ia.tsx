@@ -1454,7 +1454,7 @@ function Footer() {
               rel="noopener noreferrer"
               className="inline-block py-2.5 transition hover:text-foreground"
             >
-              Réserver un appel
+              Parler de votre projet
             </a>
             <LinkedinLink className="h-9 w-9" />
           </nav>

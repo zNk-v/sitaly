@@ -14,7 +14,8 @@ import { REALISATIONS } from "@/data/realisations";
  * Volontairement sans Radix : le menu s'ouvre au survol et au focus par CSS
  * (`group-hover`, `group-focus-within`), donc il reste accessible au clavier
  * et ne coûte aucun JavaScript. Sous `md` il n'existe pas, c'est MobileMenu
- * qui prend le relais.
+ * qui prend le relais. Le seuil est à lg et non md : les menus déroulants
+ * demandent plus de place que les liens plats qu'ils remplacent.
  */
 type Entree = { to?: string; href?: string; label: string; desc: string };
 type Famille = {
@@ -145,7 +146,7 @@ function Deroulant({
 
 export function MainNav() {
   return (
-    <nav className="hidden items-center gap-7 md:flex" aria-label="Navigation principale">
+    <nav className="hidden items-center gap-7 lg:flex" aria-label="Navigation principale">
       <Deroulant label="Expertises" large>
         <div className="grid grid-cols-3 gap-4">
           {EXPERTISES.map((f) => (

@@ -52,8 +52,8 @@ export function MobileMenu({
   // et le backdrop-filter du header parent empêche un second flou de s'appliquer ici.
   const panelClass =
     variant === "floating"
-      ? "absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-3xl border border-border/70 bg-background shadow-elevated md:hidden"
-      : "absolute left-0 right-0 top-full z-50 border-b border-border bg-background shadow-elevated md:hidden";
+      ? "absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-3xl border border-border/70 bg-background shadow-elevated lg:hidden"
+      : "absolute left-0 right-0 top-full z-50 border-b border-border bg-background shadow-elevated lg:hidden";
 
   const itemClass = "border-b border-border/60 py-3.5 text-base font-medium text-foreground";
 
@@ -62,7 +62,7 @@ export function MobileMenu({
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className={`inline-flex h-11 w-11 shrink-0 items-center justify-center border border-border bg-card text-foreground shadow-soft transition hover:border-accent md:hidden ${
+        className={`inline-flex h-11 w-11 shrink-0 items-center justify-center border border-border bg-card text-foreground shadow-soft transition hover:border-accent lg:hidden ${
           variant === "floating" ? "rounded-full" : "rounded-lg"
         }`}
         aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
@@ -147,7 +147,7 @@ export function MobileMenu({
               className="my-3 inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary text-base font-semibold text-primary-foreground shadow-soft"
             >
               <Calendar className="h-4 w-4" />
-              Réserver un appel
+              Parler de votre projet
             </a>
           </nav>
         </div>

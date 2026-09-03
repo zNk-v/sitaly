@@ -306,7 +306,7 @@ function RealisationPage() {
               className="mt-9 inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3.5 font-semibold text-accent-foreground transition hover:brightness-110"
             >
               <Calendar className="h-5 w-5" />
-              Réserver un appel
+              Parler de votre projet
             </a>
           </div>
         </section>

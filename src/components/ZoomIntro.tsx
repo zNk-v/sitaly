@@ -40,34 +40,24 @@ export function ZoomIntro({
         <div className="zoom-front">{avant}</div>
 
         <div className="zoom-cover" aria-hidden="true">
-          <svg
-            className="absolute inset-0 h-full w-full"
-            /* Repère volontairement très haut. Avec `slice`, l'échelle vaut
-               max(largeur/1200, hauteur/2400) : ce rapport fait dominer la
-               largeur dans presque tous les formats, si bien que le mot grandit
-               comme la fente qui lui est réservée, exprimée en vw. Avec un
-               repère au format paysage, la hauteur prenait le dessus et le mot
-               débordait sur la ligne du dessous. */
-            viewBox="0 0 1200 2400"
-            preserveAspectRatio="xMidYMid slice"
-          >
+          {/* Aucun viewBox, volontairement. Avec un viewBox, `slice` applique
+              un facteur d'échelle qui dépend du format de la fenêtre, alors que
+              la fente réservée au mot est exprimée en vw : les deux divergent et
+              le mot finit par mordre la ligne du dessous. Sans viewBox, une
+              unité SVG vaut un pixel CSS, la taille en vw est donc respectée au
+              pixel près et les deux suivent la même règle. */}
+          <svg className="absolute inset-0 h-full w-full">
             <defs>
               <mask id="zoom-intro-mask">
-                {/* Blanc = opaque, noir = percé. Le rectangle déborde largement
-                    du repère : avec `slice`, le SVG est rogné sur un côté selon
-                    le format de la fenêtre, et un rectangle à ras laisserait
-                    passer une bande de panneau sur les bords. */}
-                <rect x="-4800" y="-4800" width="12000" height="12000" fill="white" />
-                {/* dx compense la chasse que l'interlettrage ajoute après la
-                    dernière lettre et qui décale le mot vers la gauche. */}
+                {/* Blanc = opaque, noir = percé. */}
+                <rect width="100%" height="100%" fill="white" />
+                {/* y=0 : la position verticale vient d'une translation CSS, pour
+                    qu'elle partage la même formule que la fente réservée dans le
+                    flux. Voir --mot-haut dans la feuille de style. */}
                 <text
                   className="zoom-word"
-                  x="600"
-                  dx="0.09em"
-                  /* Légèrement au-dessus du centre géométrique : la hampe du
-                     « y » tire l'encre du mot vers le bas, et le centre optique
-                     ne coïncide pas avec le centre de la boîte. */
-                  y="1152"
+                  x="50%"
+                  y="0"
                   textAnchor="middle"
                   dominantBaseline="central"
                   fill="black"
@@ -76,14 +66,7 @@ export function ZoomIntro({
                 </text>
               </mask>
             </defs>
-            <rect
-              x="-4800"
-              y="-4800"
-              width="12000"
-              height="12000"
-              fill="var(--paper)"
-              mask="url(#zoom-intro-mask)"
-            />
+            <rect width="100%" height="100%" fill="var(--paper)" mask="url(#zoom-intro-mask)" />
           </svg>
         </div>
 

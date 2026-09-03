@@ -392,7 +392,7 @@ function InlineCTA() {
         rel="noopener noreferrer"
         className="mt-4 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
       >
-        Réserver un appel gratuit
+        Parler de votre projet gratuit
         <ArrowRight className="h-4 w-4" />
       </a>
     </aside>
@@ -413,7 +413,7 @@ function FinalCTA() {
         rel="noopener noreferrer"
         className="mt-5 inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-elevated transition hover:opacity-90"
       >
-        Réserver un appel gratuit
+        Parler de votre projet gratuit
         <ArrowRight className="h-4 w-4" />
       </a>
     </div>
@@ -443,7 +443,7 @@ function PostNav() {
             rel="noopener noreferrer"
             className="hidden h-11 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90 sm:inline-flex"
           >
-            Réserver un appel
+            Parler de votre projet
           </a>
           <MobileMenu current="blog" />
         </div>
