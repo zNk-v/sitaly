@@ -28,6 +28,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { StackedOffers } from "@/components/StackedOffers";
 import { MainNav } from "@/components/MainNav";
 import { Surligne } from "@/components/Surligne";
+import { RealisationsCarousel } from "@/components/RealisationsCarousel";
 import { ZoomIntro } from "@/components/ZoomIntro";
 import { REALISATIONS } from "@/data/realisations";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
@@ -659,82 +660,18 @@ function Realisations() {
           }
           subtitle="Trois métiers, trois logiques différentes. Chaque projet a sa page : ce qui a été livré, pourquoi le site est construit comme ça, et ce qu'on voit en l'ouvrant."
         />
-      </div>
 
-      <div className="mt-16 space-y-20 sm:space-y-28">
-        {REALISATIONS.map((r, i) => {
-          const inverse = i % 2 === 1;
-          return (
-            <article key={r.slug} className="mx-auto max-w-7xl px-4 sm:px-6">
-              <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-                {/* L'image déborde vers le bord de l'écran, en alternance,
-                    pour que la page cesse d'être une colonne centrée. */}
-                <div className={inverse ? "lg:order-2" : ""}>
-                  <Link
-                    to="/realisations/$slug/"
-                    params={{ slug: r.slug }}
-                    className="zoom-frame group relative block overflow-hidden rounded-2xl border border-border bg-card shadow-elevated"
-                  >
-                    <img
-                      src={r.capture.large}
-                      srcSet={`${r.capture.small} 720w, ${r.capture.large} 1200w`}
-                      sizes="(min-width: 1024px) 48vw, 92vw"
-                      alt={`Page d'accueil du site de ${r.client}`}
-                      loading="lazy"
-                      decoding="async"
-                      className="block h-auto w-full"
-                    />
-                    <span className="absolute bottom-4 left-4 rounded-full bg-ink/85 px-3.5 py-1.5 text-xs font-semibold text-white backdrop-blur-sm">
-                      {r.domaine}
-                    </span>
-                  </Link>
-                </div>
+        <RealisationsCarousel className="mt-16" />
 
-                <div className={inverse ? "lg:order-1" : ""}>
-                  <div className="rail-num font-display text-5xl font-extrabold text-brand/35 sm:text-6xl">
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-                  <div className="rail-label mt-4 text-brand-ink">{r.metier}</div>
-                  <h3 className="display-section mt-3 text-[clamp(1.9rem,3.4vw,3rem)]">
-                    {r.client}
-                  </h3>
-                  <p className="mt-2 text-muted-foreground">{r.zone}</p>
-                  <p className="measure mt-5 text-lg text-muted-foreground">{r.resume}</p>
-
-                  <ul className="mt-7 flex flex-wrap gap-2">
-                    {r.livre.slice(0, 3).map((l) => (
-                      <li
-                        key={l}
-                        className="rounded-full border border-border bg-card px-3 py-1.5 text-sm"
-                      >
-                        {l}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Link
-                    to="/realisations/$slug/"
-                    params={{ slug: r.slug }}
-                    className="group mt-8 inline-flex items-center gap-2 text-lg font-semibold text-brand-ink"
-                  >
-                    Voir l'étude de cas
-                    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1.5" />
-                  </Link>
-                </div>
-              </div>
-            </article>
-          );
-        })}
-      </div>
-
-      <div className="mx-auto mt-16 max-w-7xl px-4 sm:px-6">
-        <Link
-          to="/realisations/"
-          className="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3.5 font-semibold text-accent-foreground transition hover:brightness-110"
-        >
-          Toutes les réalisations
-          <ArrowRight className="h-5 w-5" />
-        </Link>
+        <div className="mt-14 flex justify-center">
+          <Link
+            to="/realisations/"
+            className="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3.5 font-semibold text-accent-foreground transition hover:brightness-110"
+          >
+            Toutes les réalisations
+            <ArrowRight className="h-5 w-5" />
+          </Link>
+        </div>
       </div>
     </section>
   );
