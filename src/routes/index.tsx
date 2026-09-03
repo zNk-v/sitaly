@@ -183,11 +183,11 @@ function Ouverture() {
                   les trois mots qui portent le sens de la phrase. */}
               <h1
                 data-split
-                className="stagger w-full text-balance font-display text-[clamp(1.9rem,5.45vw,6.5rem)] font-extrabold leading-[1.04] tracking-[-0.03em]"
+                className="stagger w-full text-balance font-display text-[clamp(1.35rem,3.5vw,3.3rem)] font-extrabold leading-[1.04] tracking-[-0.03em]"
                 style={{ "--stagger-step": "70ms" } as React.CSSProperties}
               >
-                <span className="accent-word tracking-[-0.01em] text-blue-ink">installe</span> et{" "}
-                <span className="accent-word tracking-[-0.01em] text-violet-ink">pilote</span> votre{" "}
+                <span className="text-blue-ink">installe</span> et{" "}
+                <span className="text-violet-ink">pilote</span> votre{" "}
                 <span className="text-red-ink">présence</span> en ligne
               </h1>
 

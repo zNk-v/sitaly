@@ -1,11 +1,12 @@
 /**
- * Le champ derrière le premier écran : des arcs tramés qui balayent la fenêtre.
+ * Le champ derrière le premier écran : les chevrons du logo, emboîtés.
  *
  * Adapté d'un hero 21st.dev (`componentry/hero-geometric`), dont l'idée tient
  * en deux couches : de larges arcs concentriques qui saignent de tous les
  * côtés. L'original y ajoute une trame de points ; elle a été retirée, elle
- * salissait le papier plus qu'elle ne lui donnait de la matière. Trois écarts
- * avec l'original :
+ * salissait le papier plus qu'elle ne lui donnait de la matière. Les arcs ont
+ * ensuite cédé la place aux chevrons du logo : même rythme, forme de la
+ * marque. Trois écarts avec l'original :
  *
  * - Le fond d'origine est un shader WebGL. Ici c'est un SVG : la scène est déjà
  *   pilotée au défilement, ajouter un contexte de rendu pour un décor qui
@@ -68,17 +69,49 @@ export function HeroChamp() {
           </mask>
         </defs>
 
-        {/* Les arcs. Centre posé hors cadre en bas à gauche : seule la portion
-            qui traverse la fenêtre se voit, et elle la traverse en diagonale.
-            Le masque porte sur le groupe extérieur et la dérive sur l'intérieur.
-            Sur le même groupe, le masque suivrait le mouvement et le fondu
-            central dériverait avec les arcs. */}
+        {/* Les chevrons du logo, par couples. Ils remplacent des arcs
+            concentriques : même principe de formes qui saignent des bords,
+            mais la figure est celle de la marque.
+
+            Deux tentatives ont échoué avant celle-ci, et les raisons méritent
+            d'être gardées.
+
+            Emboîtés aux rayons des arcs, ils étaient plus grands que la
+            fenêtre : on n'en voyait que les bras et la forme ne se lisait
+            plus. Puis posés par `transform`, ils sont tous devenus bleu pâle :
+            un dégradé `userSpaceOnUse` se résout dans le repère courant, donc
+            chaque groupe transformé rejouait le dégradé dans son propre
+            espace au lieu de partager le balayage de la scène. Les sommets
+            sont donc calculés en coordonnées absolues.
+
+            Ils pointent à droite, comme dans le logo. Pivotés, un chevron à
+            90° se lit comme un angle et non comme un chevron.
+
+            Ils vivent près des bords : le masque éteint le centre, où passent
+            le texte et le trou du mot. */}
         <g mask="url(#champ-masque)">
-          <g className="champ-derive" fill="none" stroke="url(#champ-triade)">
-            <circle cx="-190" cy="1120" r="560" strokeWidth="150" opacity="0.62" />
-            <circle cx="-190" cy="1120" r="800" strokeWidth="104" opacity="0.4" />
-            <circle cx="-190" cy="1120" r="1030" strokeWidth="188" opacity="0.52" />
-            <circle cx="-190" cy="1120" r="1320" strokeWidth="96" opacity="0.34" />
+          <g
+            className="champ-derive"
+            fill="none"
+            stroke="url(#champ-triade)"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            {/* Bas-gauche, le plus présent, à l'extrémité bleue. */}
+            <path d="M -30 575 L 300 905 L -30 1235" strokeWidth="96" opacity="0.58" />
+            <path d="M 175 575 L 505 905 L 175 1235" strokeWidth="96" opacity="0.58" />
+
+            {/* Gauche lointain, il saigne du bord. */}
+            <path d="M -550 -130 L -120 300 L -550 730" strokeWidth="88" opacity="0.3" />
+            <path d="M -285 -130 L 145 300 L -285 730" strokeWidth="88" opacity="0.3" />
+
+            {/* Haut-droite. */}
+            <path d="M 1145 -145 L 1395 105 L 1145 355" strokeWidth="74" opacity="0.42" />
+            <path d="M 1300 -145 L 1550 105 L 1300 355" strokeWidth="74" opacity="0.42" />
+
+            {/* Bas-droite, à l'extrémité rouge du dégradé. */}
+            <path d="M 1070 660 L 1290 880 L 1070 1100" strokeWidth="66" opacity="0.46" />
+            <path d="M 1210 660 L 1430 880 L 1210 1100" strokeWidth="66" opacity="0.46" />
           </g>
         </g>
       </svg>
