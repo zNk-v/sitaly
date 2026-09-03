@@ -354,11 +354,19 @@
   font-feature-settings: "tnum";
   letter-spacing: -0.02em;
 }
+/* 11px sur desktop, 12 en dessous de 640 : à 11px et avec 0,18em d'approche,
+   ces libellés en capitales passent sous le seuil de confort sur un téléphone,
+   où l'écran est plus proche mais plus petit. */
 @utility rail-label {
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 600;
+}
+@media (min-width: 640px) {
+  .rail-label {
+    font-size: 0.6875rem;
+  }
 }
 @utility rail-line {
   background: linear-gradient(180deg, currentColor, transparent);
@@ -637,8 +645,11 @@
          flux : l'écran collé coïncide désormais avec la fenêtre, et les 65 px
          qui débordaient sous le pli ne sont plus une réserve invisible. */
       --mot-haut: min(21vh, 11rem);
-      --mot-taille: min(13vw, 21vh);
-      --mot-fente: min(16vw, 26vh);
+      /* Le `max` garde un corps utilisable sur les écrans étroits : à 375 px,
+         13vw donnait 48 px, soit à peine plus que la ligne de sens — l'objet
+         graphique n'en était plus un. Sur desktop la borne ne mord pas. */
+      --mot-taille: min(max(13vw, 4.4rem), 21vh);
+      --mot-fente: min(max(16vw, 5.4rem), 26vh);
     }
 
     /* Le mot reprend la casse et la chasse du logo : une capitale, le reste en
@@ -947,6 +958,50 @@
 .lien-entete:focus-visible::after {
   left: 0;
   right: 0;
+}
+
+/* Deux jeux de chevrons, un par format. La découpe `slice` ne montre en
+   portrait qu'une bande centrale du dessin — 416 unités sur 1440 à 375 px de
+   large, mesuré — et les couples pensés pour le paysage y tombent hors cadre.
+   Le seuil est un rapport de forme et non une largeur : c'est lui qui commande
+   la découpe. */
+.champ-portrait {
+  display: none;
+}
+@media (max-aspect-ratio: 4 / 5) {
+  .champ-large {
+    display: none;
+  }
+  .champ-portrait {
+    display: block;
+  }
+}
+
+/* Empilement des offres : il ne tient que si une carte est plus courte que
+   l'écran. Sur un téléphone elles font 833 à 1075 px pour 812 de fenêtre,
+   mesuré : collées à 80-296 px du haut, aucune n'est jamais visible en entier
+   et l'on lit un empilement qu'on ne peut pas parcourir. Sous 900 px de large,
+   les cartes se suivent donc simplement.
+
+   Le seuil est en largeur et non en hauteur : c'est la largeur qui fait
+   grandir les cartes, en forçant leur contenu à passer sur plus de lignes. */
+@media (max-width: 900px) {
+  .offre-carte {
+    position: static;
+  }
+}
+
+/* Les points du carrousel font 10 px de côté : c'est la bonne taille à l'œil
+   et la mauvaise pour un doigt. La zone cliquable est étendue par un
+   pseudo-élément plutôt que par du rembourrage, qui aurait écarté les points
+   les uns des autres. */
+.point-carrousel {
+  position: relative;
+}
+.point-carrousel::after {
+  content: "";
+  position: absolute;
+  inset: -1rem -0.5rem;
 }
 
 /* Logo ------------------------------------------------------------------- */

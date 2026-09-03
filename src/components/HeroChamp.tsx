@@ -98,7 +98,7 @@ export function HeroChamp() {
             diagonale donne une direction, et c'est celle du dégradé. */}
         <g mask="url(#champ-masque)">
           <g
-            className="champ-derive"
+            className="champ-derive champ-large"
             fill="none"
             stroke="url(#champ-triade)"
             strokeLinecap="round"
@@ -115,6 +115,26 @@ export function HeroChamp() {
                 Il tombe sur l'extrémité rouge. */}
             <path d="M 800 -290 L 1180 90 L 800 470" strokeWidth="92" opacity="0.46" />
             <path d="M 1035 -290 L 1415 90 L 1035 470" strokeWidth="92" opacity="0.46" />
+          </g>
+
+          {/* Jeu pour les écrans en portrait. La découpe `slice` n'y montre que
+              la bande x 512..928 du dessin, mesurée : les couples ci-dessus,
+              posés à x -80..535 et 800..1415, n'y laissaient voir que des
+              queues de bras. Ceux-ci ont leurs sommets dans la bande. */}
+          <g
+            className="champ-derive champ-portrait"
+            fill="none"
+            stroke="url(#champ-triade)"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            {/* Bas, sur l'extrémité bleue. */}
+            <path d="M 420 600 L 620 800 L 420 1000" strokeWidth="86" opacity="0.58" />
+            <path d="M 580 600 L 780 800 L 580 1000" strokeWidth="86" opacity="0.58" />
+
+            {/* Haut, sur l'extrémité rouge. */}
+            <path d="M 530 -80 L 700 90 L 530 260" strokeWidth="74" opacity="0.44" />
+            <path d="M 690 -80 L 860 90 L 690 260" strokeWidth="74" opacity="0.44" />
           </g>
         </g>
       </svg>

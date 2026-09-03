@@ -86,7 +86,7 @@ export function RealisationsCarousel({ className }: { className?: string }) {
                     <Link
                       to="/realisations/$slug/"
                       params={{ slug: r.slug }}
-                      className="group inline-flex items-center gap-2 font-semibold text-brand-ink"
+                      className="group inline-flex min-h-11 items-center gap-2 font-semibold text-brand-ink"
                     >
                       Voir l'étude de cas
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -95,7 +95,7 @@ export function RealisationsCarousel({ className }: { className?: string }) {
                       href={r.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                      className="inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                     >
                       {r.domaine}
                       <ArrowUpRight className="h-4 w-4" />
@@ -127,7 +127,7 @@ export function RealisationsCarousel({ className }: { className?: string }) {
               aria-label={`Voir ${r.client}`}
               aria-current={i === index}
               className={cn(
-                "h-2.5 rounded-full transition-all",
+                "point-carrousel h-2.5 rounded-full transition-all",
                 i === index ? "w-8 bg-brand-ink" : "w-2.5 bg-border hover:bg-muted-foreground/50",
               )}
             />

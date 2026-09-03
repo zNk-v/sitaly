@@ -137,8 +137,6 @@ export function StackedOffers() {
           subtitle="Quatre leviers, combinables. Vous en prenez un, deux ou les quatre. Chaque périmètre est chiffré après l'appel découverte, sur votre activité réelle."
         />
 
-        {/* La marge basse donne au dernier panneau le temps de rester collé
-            pendant qu'on finit de le lire. */}
         {/* La réserve basse laisse la dernière carte collée le temps qu'on la
           lise. Elle valait 22vh : 266 px de vide séparaient alors la dernière
           carte de la section suivante, mesurés sur le rendu. */}
@@ -147,7 +145,7 @@ export function StackedOffers() {
             <article
               key={l.cle}
               style={{ top: `${DEPART + i * BANDE}rem` }}
-              className="sticky mb-8 overflow-hidden rounded-3xl border border-border bg-card shadow-elevated"
+              className="offre-carte sticky mb-8 overflow-hidden rounded-3xl border border-border bg-card shadow-elevated"
             >
               {/* Bande de superposition : c'est elle qui reste visible quand le
                   panneau suivant recouvre celui-ci. Hauteur = BANDE. */}
