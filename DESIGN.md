@@ -168,21 +168,6 @@ Elle tient sans réglage sur toutes les surfaces du site.
 
 Un fragment accentué par titre, jamais deux côte à côte.
 
-### Le trait tracé à la main
-
-Second procédé d'accentuation, indépendant du serif : une courbe épaisse passée
-**sous** le mot, jamais dessus — un trait qui traverse le texte le rend moins
-lisible. Violet plein, `oklch(0.6 0.25 304)`, sans transparence : à demi-opacité
-le geste passait pour une ombre au lieu d'un feutre.
-
-Épaisseur effective d'environ `0.17em`, obtenue par le rapport entre
-`strokeWidth` et la hauteur du viewBox. Le trait se dessine au défilement via
-`animation-timeline`, sans JavaScript.
-
-Discipline d'emploi : **un trait par écran, jamais deux**, et jamais sur un
-titre qui porte déjà un fragment en serif italique. Les deux procédés se
-neutralisent quand on les superpose.
-
 ### Échelle
 
 Le display suit un `clamp()` continu plutôt que des paliers par point de rupture :

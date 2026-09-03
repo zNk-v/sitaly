@@ -25,7 +25,6 @@ import { MetierFooterLinks, MetierLinksSection } from "@/components/MetierLinks"
 import { SectionHeader } from "@/components/SectionHeader";
 import { StackedOffers } from "@/components/StackedOffers";
 import { MainNav } from "@/components/MainNav";
-import { Surligne } from "@/components/Surligne";
 import { RealisationsCarousel } from "@/components/RealisationsCarousel";
 import { HeroChamp } from "@/components/HeroChamp";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -362,7 +361,7 @@ function ProfessionsMarquee() {
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
         <div className="rail-label text-brand-ink">Pour qui</div>
         <h2 className="mt-3 font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
-          Le même travail de fond, <Surligne>quel que soit votre métier</Surligne>
+          Le même travail de fond, quel que soit votre métier
         </h2>
       </div>
       <MetiersDefilement className="mt-5 sm:mt-6" />
@@ -591,11 +590,7 @@ function Realisations() {
         <SectionHeader
           index="05"
           eyebrow="Réalisations"
-          title={
-            <>
-              Des sites <Surligne>réellement en ligne</Surligne>
-            </>
-          }
+          title={<>Des sites réellement en ligne</>}
           subtitle="Trois métiers, trois logiques différentes. Chaque projet a sa page : ce qui a été livré, pourquoi le site est construit comme ça, et ce qu'on voit en l'ouvrant."
         />
 
