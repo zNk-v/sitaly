@@ -957,6 +957,61 @@
   right: 0;
 }
 
+/* Trait tracé à la main -------------------------------------------------- */
+
+/* Posé sous le mot, jamais dessus, et hors du flux. Ce bloc avait disparu dans
+   une suppression trop large : le SVG se retrouvait dans le flux, sans style,
+   ajoutant une cinquantaine de pixels de vide sous chaque titre surligné — et
+   le trait ne se dessinait plus du tout.
+
+   Couleur pleine et assumée : à demi-opacité le geste passait pour une ombre,
+   il doit se voir comme un trait de feutre. */
+.mark-svg {
+  position: absolute;
+  inset-inline: -0.14em;
+  pointer-events: none;
+  width: calc(100% + 0.28em);
+  stroke: var(--violet-ink);
+}
+.mark-trait {
+  top: 100%;
+  /* Assez bas pour passer sous les jambages du q et du p, assez haut pour
+     rester rattaché au mot. */
+  margin-top: -0.14em;
+  /* Épaisseur effective du trait : (strokeWidth / hauteur du viewBox) × height,
+     soit (9 / 24) × 0.46em ≈ 0.17em. C'est ce qu'il faut pour qu'il se voie
+     comme un feutre et non comme un soulignement de traitement de texte. */
+  height: 0.46em;
+}
+.mark-cercle {
+  top: -0.16em;
+  height: 1.34em;
+  inset-inline: -0.4em;
+  width: calc(100% + 0.8em);
+  stroke-width: 2.5;
+}
+
+/* Le trait se dessine au défilement, sans écouteur. Là où la timeline n'existe
+   pas, il est simplement déjà tracé. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes mark-stroke {
+      from {
+        stroke-dashoffset: 240;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+    .mark-draw {
+      stroke-dasharray: 240;
+      animation: mark-stroke linear both;
+      animation-timeline: view();
+      animation-range: entry 35% cover 48%;
+    }
+  }
+}
+
 /* Logo ------------------------------------------------------------------- */
 
 /* L'aspect ratio remplace les dimensions intrinsèques de l'image : sans lui,
