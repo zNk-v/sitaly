@@ -659,7 +659,7 @@
       transform-origin: 39.3% 49.8%;
       animation: zoom-percer linear both;
       animation-timeline: scroll(root);
-      animation-range: 0 82vh;
+      animation-range: 8vh 84vh;
       will-change: transform;
     }
     @keyframes zoom-percer {
@@ -671,12 +671,21 @@
       }
     }
 
-    /* Le texte de tête s'efface pendant le premier tiers : passé ce point, il
-       flotterait au-dessus de la section révélée. */
+    /* Le texte de tête s'efface tôt, et son effacement est terminé avant que
+       le contenu du panneau ne commence à apparaître. Les deux courses se
+       recouvraient sur 26vh — tête sur 0-30, panneau sur 4-22 — et pendant ce
+       recouvrement on voyait les deux textes l'un sur l'autre. Elles sont
+       désormais bout à bout : 0-10 pour la tête, 12-28 pour le panneau.
+
+       Le mot, lui, ne bouge pas pendant ce temps : sa croissance ne démarre
+       qu'à 8vh. Elle commençait à 0, et la tête se retrouvait donc posée sur
+       un mot déjà grand, en encre sur encre. Trois temps qui ne se
+       recouvrent pas : la tête s'en va, le mot grandit, le panneau se
+       découvre. */
     .zoom-front {
       animation: zoom-effacer linear both;
       animation-timeline: scroll(root);
-      animation-range: 0 30vh;
+      animation-range: 0 10vh;
     }
     @keyframes zoom-effacer {
       from {
@@ -693,15 +702,16 @@
        repos, les lettres du mot laissaient voir des fragments de titre et de
        liste : illisibles à cette taille, ils donnaient un effet de désordre.
 
-       Sa course s'achève tôt — 22vh — et non à mi-parcours. Elle courait
-       jusqu'à 62vh, si bien que le texte se révélait sur sa propre horloge,
-       sans rapport avec l'avancée du trou. Terminée tôt, elle ne fait plus
-       qu'une chose : éviter les fragments du début. Passé ce point, c'est le
-       trou seul qui décide de ce qu'on voit. */
+       Sa course commence là où celle du texte de tête s'achève, à 12vh, et
+       non à 4 : elles se recouvraient, et on lisait les deux textes l'un sur
+       l'autre. Elle courait par ailleurs jusqu'à 62vh, si bien que le panneau
+       se révélait sur sa propre horloge, sans rapport avec l'avancée du trou.
+       Bornée à 28vh, elle ne fait plus qu'une chose : éviter les fragments du
+       début. Passé ce point, c'est le trou seul qui décide de ce qu'on voit. */
     .zoom-behind-content {
       animation: zoom-contenu linear both;
       animation-timeline: scroll(root);
-      animation-range: 4vh 22vh;
+      animation-range: 12vh 28vh;
     }
     @keyframes zoom-contenu {
       from {
