@@ -333,12 +333,13 @@ function CeQuOnFait() {
           demandes que vous recevez comme sur votre organisation quotidienne.
         </p>
 
-        <ul className="stagger mt-16 space-y-3 sm:space-y-5">
+        <ul className="stagger mt-16 space-y-1 sm:space-y-0">
           {prestations.map((p, i) => {
             const contenu = (
               <>
-                {/* Taillé sur la même échelle que le texte : en `em`, le chevron
-                    se serait calé sur la taille du `li` et non sur celle du mot. */}
+                {/* Le chevron suit la même échelle que le mot. En `em` il le
+                    ferait aussi, la taille vivant désormais sur le `li`, mais
+                    la clamp explicite garde la lecture du code directe. */}
                 <svg
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -352,14 +353,14 @@ function CeQuOnFait() {
                   <path d="M8 4l8 8-8 8" />
                 </svg>
                 <span
-                  className={`font-display text-[clamp(1.5rem,4.6vw,3.6rem)] font-extrabold leading-none tracking-[-0.02em] text-white transition-colors ${p.survol}`}
+                  className={`font-display font-extrabold leading-none tracking-[-0.02em] text-white transition-colors ${p.survol}`}
                 >
                   {p.texte}
                 </span>
               </>
             );
             const classe =
-              "wipe group flex items-center justify-center gap-4 transition-opacity hover:opacity-100 sm:gap-6";
+              "wipe group flex items-center justify-center gap-4 pt-[0.06em] pb-[0.3em] text-[clamp(1.5rem,4.6vw,3.6rem)] transition-opacity hover:opacity-100 sm:gap-6";
             return (
               <li
                 key={p.texte}
