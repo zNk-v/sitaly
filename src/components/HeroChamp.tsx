@@ -38,16 +38,19 @@ export function HeroChamp() {
           {/* Interpolé en oklch : en sRGB, un bleu qui rejoint un rouge passe
               par un gris boueux au milieu du parcours. */}
           {/* En coordonnées de la scène, et non de chaque forme : par défaut,
-              chaque arc rejouerait le dégradé entier sur sa propre boîte, et
-              les quatre anneaux viraient au rouge sur leur bord extérieur au
-              lieu de composer un seul balayage en diagonale. */}
+              chaque forme rejouerait le dégradé entier sur sa propre boîte au
+              lieu de composer un seul balayage.
+              L'axe suit la diagonale des chevrons, du bas-gauche au
+              haut-droite. Sur l'autre diagonale, les deux couples tombaient
+              tous deux au milieu du parcours : ni bleu franc, ni rouge
+              franc. */}
           <linearGradient
             id="champ-triade"
             gradientUnits="userSpaceOnUse"
             x1="0"
-            y1="0"
+            y1="900"
             x2="1440"
-            y2="900"
+            y2="0"
           >
             <stop offset="0%" stopColor="var(--blue)" />
             <stop offset="28%" stopColor="var(--blue)" />
@@ -88,7 +91,11 @@ export function HeroChamp() {
             90° se lit comme un angle et non comme un chevron.
 
             Ils vivent près des bords : le masque éteint le centre, où passent
-            le texte et le trou du mot. */}
+            le texte et le trou du mot.
+
+            Deux couples seulement, en vis-à-vis sur la diagonale. Quatre
+            couples répartis dans les quatre coins ne composaient rien : la
+            diagonale donne une direction, et c'est celle du dégradé. */}
         <g mask="url(#champ-masque)">
           <g
             className="champ-derive"
@@ -97,21 +104,17 @@ export function HeroChamp() {
             strokeLinecap="round"
             strokeLinejoin="round"
           >
-            {/* Bas-gauche, le plus présent, à l'extrémité bleue. */}
-            <path d="M -30 575 L 300 905 L -30 1235" strokeWidth="96" opacity="0.58" />
-            <path d="M 175 575 L 505 905 L 175 1235" strokeWidth="96" opacity="0.58" />
+            {/* Bas-gauche : le sommet est dans le cadre, le bras du bas sort
+                par le bord inférieur. C'est donc le haut du couple qu'on voit.
+                Il tombe sur l'extrémité bleue du dégradé. */}
+            <path d="M -80 440 L 300 820 L -80 1200" strokeWidth="104" opacity="0.6" />
+            <path d="M 155 440 L 535 820 L 155 1200" strokeWidth="104" opacity="0.6" />
 
-            {/* Gauche lointain, il saigne du bord. */}
-            <path d="M -550 -130 L -120 300 L -550 730" strokeWidth="88" opacity="0.3" />
-            <path d="M -285 -130 L 145 300 L -285 730" strokeWidth="88" opacity="0.3" />
-
-            {/* Haut-droite. */}
-            <path d="M 1145 -145 L 1395 105 L 1145 355" strokeWidth="74" opacity="0.42" />
-            <path d="M 1300 -145 L 1550 105 L 1300 355" strokeWidth="74" opacity="0.42" />
-
-            {/* Bas-droite, à l'extrémité rouge du dégradé. */}
-            <path d="M 1070 660 L 1290 880 L 1070 1100" strokeWidth="66" opacity="0.46" />
-            <path d="M 1210 660 L 1430 880 L 1210 1100" strokeWidth="66" opacity="0.46" />
+            {/* Haut-droite, en vis-à-vis sur la diagonale : le bras du haut
+                sort par le bord supérieur, c'est le bas du couple qu'on voit.
+                Il tombe sur l'extrémité rouge. */}
+            <path d="M 800 -290 L 1180 90 L 800 470" strokeWidth="92" opacity="0.46" />
+            <path d="M 1035 -290 L 1415 90 L 1035 470" strokeWidth="92" opacity="0.46" />
           </g>
         </g>
       </svg>
