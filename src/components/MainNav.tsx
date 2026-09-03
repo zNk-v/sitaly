@@ -109,7 +109,7 @@ function Deroulant({
     <div className="group relative">
       <button
         type="button"
-        className="flex items-center gap-1.5 py-5 text-sm font-medium text-muted-foreground transition-colors group-hover:text-foreground group-focus-within:text-foreground"
+        className="lien-entete flex items-center gap-1.5 py-5 group-hover:text-foreground group-focus-within:text-foreground"
         aria-haspopup="true"
       >
         {label}
@@ -199,10 +199,7 @@ export function MainNav() {
         </div>
       </Deroulant>
 
-      <Link
-        to="/blog/"
-        className="py-5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-      >
+      <Link to="/blog/" className="lien-entete py-5">
         Blog
       </Link>
 

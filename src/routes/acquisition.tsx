@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { SiteHeader } from "@/components/SiteHeader";
 import { useState } from "react";
 import {
   ArrowRight,
@@ -283,35 +284,14 @@ function AcquisitionPage() {
 
 /* ---------------- EN-TÊTE ---------------- */
 function Header() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
-      <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link to="/" aria-label="Retour à sitaly.fr" className="flex items-center">
-          <SitalyLogo />
-        </Link>
-        <div className="flex items-center gap-2">
-          <HeaderCallButton />
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden h-11 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90 sm:inline-flex"
-          >
-            <Calendar className="h-4 w-4" />
-            Demander un accompagnement
-          </a>
-          <MobileMenu />
-        </div>
-      </div>
-    </header>
-  );
+  return <SiteHeader premierEcran="sombre" />;
 }
 
 /* ---------------- HERO ---------------- */
 function Hero() {
   return (
     <section className="hero-bg on-ink">
-      <div className="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-24">
+      <div className="mx-auto max-w-3xl px-4 pt-[calc(var(--entete-hauteur)+2rem)] pb-16 text-center sm:px-6 sm:pb-24 sm:pt-[calc(var(--entete-hauteur)+3.5rem)]">
         <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-white/70">
           <Target className="h-3.5 w-3.5 text-brand" />
           Agence Google Ads

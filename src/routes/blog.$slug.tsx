@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { SiteHeader } from "@/components/SiteHeader";
 import { ArrowLeft, ArrowRight, Calendar, Clock, List, User } from "lucide-react";
 import {
   BLOG_POSTS,
@@ -162,7 +163,7 @@ function BlogPostPage() {
     <div className="min-h-screen bg-background text-foreground">
       <PostNav />
 
-      <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+      <article className="mx-auto max-w-3xl px-4 pt-[calc(var(--entete-hauteur)+1.5rem)] pb-12 sm:px-6 sm:pb-16 sm:pt-[calc(var(--entete-hauteur)+2.5rem)]">
         <Link
           to="/blog/"
           className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
@@ -421,35 +422,7 @@ function FinalCTA() {
 }
 
 function PostNav() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
-      <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link to="/" className="flex items-center" aria-label="Sitaly — accueil">
-          <SitalyLogo />
-        </Link>
-        <nav className="hidden items-center gap-8 md:flex">
-          <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-            Accueil
-          </Link>
-          <Link to="/blog/" className="text-sm font-medium text-foreground">
-            Blog
-          </Link>
-        </nav>
-        <div className="flex items-center gap-2">
-          <HeaderCallButton />
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden h-11 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90 sm:inline-flex"
-          >
-            Parler de votre projet
-          </a>
-          <MobileMenu current="blog" />
-        </div>
-      </div>
-    </header>
-  );
+  return <SiteHeader />;
 }
 
 // keep BLOG_POSTS import side-effect for sitemap consumers if needed

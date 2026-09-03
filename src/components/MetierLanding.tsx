@@ -9,9 +9,8 @@ import {
   Sparkles,
   Star,
 } from "lucide-react";
-import { SitalyLogo } from "@/components/SitalyLogo";
 import { LinkedinLink } from "@/components/LinkedinLink";
-import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
+import { SiteHeader } from "@/components/SiteHeader";
 import { MetierFooterLinks, MetierLinksSection } from "@/components/MetierLinks";
 import type { MetierLink } from "@/lib/metiers";
 import { CALENDLY_URL } from "@/lib/config";
@@ -60,7 +59,7 @@ export function MetierLanding(props: MetierLandingProps) {
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-border bg-gradient-to-b from-secondary/50 to-background">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+        <div className="mx-auto max-w-6xl px-4 pt-[calc(var(--entete-hauteur)+2rem)] pb-16 sm:px-6 sm:pb-24 sm:pt-[calc(var(--entete-hauteur)+4rem)]">
           <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
             <Sparkles className="h-3.5 w-3.5" />
             Spécialiste site internet {metier}
@@ -418,38 +417,7 @@ export function MetierLanding(props: MetierLandingProps) {
 }
 
 function LandingNav() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
-      <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link to="/" className="flex items-center" aria-label="Sitaly — accueil">
-          <SitalyLogo />
-        </Link>
-        <nav className="hidden items-center gap-8 md:flex">
-          <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-            Accueil
-          </Link>
-          <Link
-            to="/blog/"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground"
-          >
-            Blog
-          </Link>
-        </nav>
-        <div className="flex items-center gap-2">
-          <HeaderCallButton />
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden h-11 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90 sm:inline-flex"
-          >
-            Parler de votre projet
-          </a>
-          <MobileMenu />
-        </div>
-      </div>
-    </header>
-  );
+  return <SiteHeader nav="simple" />;
 }
 
 export function buildMetierMeta(opts: {

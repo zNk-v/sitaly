@@ -441,6 +441,7 @@
       }
     }
     .scroll-progress {
+      background: var(--gradient-ruban);
       transform-origin: left;
       animation: progress-grow linear both;
       animation-timeline: scroll(root block);
@@ -608,8 +609,11 @@
        la fente vers le haut pendant que le mot reste au centre de la fenêtre. */
     .zoom-stage {
       /* Bornées en vh : sur un écran bas, une valeur purement en vw fait
-         grossir le mot pendant que la place disponible diminue. */
-      --mot-haut: min(24vh, 12rem);
+         grossir le mot pendant que la place disponible diminue.
+         La réserve a été resserrée de 24 à 21vh quand l'en-tête est sorti du
+         flux : l'écran collé coïncide désormais avec la fenêtre, et les 65 px
+         qui débordaient sous le pli ne sont plus une réserve invisible. */
+      --mot-haut: min(21vh, 11rem);
       --mot-taille: min(9.5vw, 16vh);
       --mot-fente: min(12.5vw, 21vh);
     }
@@ -806,6 +810,101 @@
     position: static;
     margin-top: 2.25rem;
   }
+}
+
+/* En-tête flottant ------------------------------------------------------- */
+
+/* Hauteur totale occupée par l'en-tête flottant : la pastille et sa gouttière.
+   Les pages sans hero s'en servent pour ne pas glisser dessous. */
+:root {
+  --entete-hauteur: 4.5rem;
+}
+
+/* La pastille est peinte par défaut. Sans `animation-timeline`, un en-tête
+   transparent resterait bloqué au-dessus d'une section claire, illisible. */
+.entete-plaque {
+  background: color-mix(in oklab, var(--paper) 82%, transparent);
+  backdrop-filter: saturate(1.4) blur(14px);
+  box-shadow:
+    0 1px 2px oklch(0.2 0.03 300 / 0.05),
+    0 12px 30px -18px oklch(0.2 0.03 300 / 0.5);
+  border: 1px solid color-mix(in oklab, var(--ink) 8%, transparent);
+}
+
+/* Là où la timeline existe, la pastille s'efface en haut de page : le champ du
+   hero passe dessous sans couture, et elle revient dès qu'on quitte le premier
+   écran. La course est courte — 90 px — pour que la bascule soit franche et
+   non un fondu qu'on traverse pendant trois écrans. */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .entete-plaque {
+      animation: entete-poser linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 90px;
+    }
+    @keyframes entete-poser {
+      from {
+        background: color-mix(in oklab, var(--paper) 0%, transparent);
+        box-shadow: 0 0 0 oklch(0.2 0.03 300 / 0);
+        border-color: transparent;
+      }
+      to {
+        background: color-mix(in oklab, var(--paper) 82%, transparent);
+        box-shadow:
+          0 1px 2px oklch(0.2 0.03 300 / 0.05),
+          0 12px 30px -18px oklch(0.2 0.03 300 / 0.5);
+        border-color: color-mix(in oklab, var(--ink) 8%, transparent);
+      }
+    }
+  }
+}
+
+/* Sur une page dont le premier écran est sombre, la pastille ne peut pas
+   s'effacer : ses liens sont en encre, ils disparaîtraient sur le fond noir.
+   Elle reste peinte dès le haut. */
+.entete-plaque--fixe {
+  animation: none;
+}
+
+/* Les liens de l'en-tête prennent la graisse d'affichage du site et non celle
+   de l'interface, et se soulignent du dégradé porteur. Le trait naît du centre
+   pour ne pas donner l'impression de glisser depuis le lien voisin. */
+@utility lien-entete {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  transition: color 0.2s ease;
+}
+/* Le trait est calé sur le texte, pas sur la boîte : le déclencheur d'un menu
+   porte 20 px de rembourrage vertical pour faire le pont vers le panneau
+   déroulant, et un trait posé au bas de cette boîte flotterait dans le vide. */
+.lien-entete::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  top: calc(50% + 0.72em);
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gradient-ruban);
+  transition:
+    left 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    right 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (hover: hover) {
+  .lien-entete:hover {
+    color: var(--foreground);
+  }
+  .lien-entete:hover::after {
+    left: 0;
+    right: 0;
+  }
+}
+.lien-entete:focus-visible::after {
+  left: 0;
+  right: 0;
 }
 
 /* Bouton primaire --------------------------------------------------------- */

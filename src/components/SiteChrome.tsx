@@ -1,11 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { Calendar } from "lucide-react";
 import type { ReactNode } from "react";
 import { SitalyLogo } from "@/components/SitalyLogo";
 import { LinkedinLink } from "@/components/LinkedinLink";
-import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
-import { MainNav } from "@/components/MainNav";
-import { CALENDLY_URL } from "@/lib/config";
+import { SiteHeader } from "@/components/SiteHeader";
 
 /**
  * En-tête et pied de page communs aux pages secondaires.
@@ -17,35 +14,9 @@ import { CALENDLY_URL } from "@/lib/config";
 export function SiteChrome({ children }: { children: ReactNode }) {
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-border bg-paper/85 backdrop-blur-md">
-        <div
-          className="scroll-progress absolute inset-x-0 bottom-0 h-px origin-left bg-gradient-to-r from-brand to-accent"
-          aria-hidden="true"
-        />
-        <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-          <Link to="/" aria-label="Retour à l'accueil Sitaly" className="flex items-center">
-            <SitalyLogo />
-          </Link>
+      <SiteHeader />
 
-          <MainNav />
-
-          <div className="flex items-center gap-2">
-            <HeaderCallButton />
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bouton hidden h-11 px-5 text-sm sm:inline-flex"
-            >
-              <Calendar className="h-4 w-4" />
-              Parler de votre projet
-            </a>
-            <MobileMenu />
-          </div>
-        </div>
-      </header>
-
-      {children}
+      <div className="pt-[var(--entete-hauteur)]">{children}</div>
 
       <footer className="border-t border-white/10 bg-ink py-10 text-white">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 text-sm text-white/60 sm:flex-row sm:px-6">

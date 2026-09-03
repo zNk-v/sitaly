@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { SiteHeader } from "@/components/SiteHeader";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 import { BLOG_POSTS, formatDate } from "@/data/blog-posts";
 import { SitalyLogo } from "@/components/SitalyLogo";
@@ -156,7 +157,7 @@ function BlogIndex() {
     <div className="min-h-screen bg-background text-foreground">
       <BlogNav />
       <header className="border-b border-border bg-secondary/30">
-        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-5xl px-4 pt-[calc(var(--entete-hauteur)+2rem)] pb-16 sm:px-6 sm:pb-20 sm:pt-[calc(var(--entete-hauteur)+3rem)]">
           <p className="text-sm font-medium uppercase tracking-wider text-accent">Le blog Sitaly</p>
           <h1 className="mt-3 font-display text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
             Générer <span className="gradient-text">plus de clients</span>, quel que soit votre
@@ -280,39 +281,7 @@ function PostCard({ post }: { post: (typeof BLOG_POSTS)[number] }) {
 }
 
 function BlogNav() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
-      <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link to="/" className="flex items-center" aria-label="Sitaly — accueil">
-          <SitalyLogo />
-        </Link>
-        <nav className="hidden items-center gap-8 md:flex">
-          <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-            Accueil
-          </Link>
-          <Link
-            to="/blog/"
-            className="text-sm font-medium text-foreground"
-            activeProps={{ className: "text-sm font-medium text-foreground" }}
-          >
-            Blog
-          </Link>
-        </nav>
-        <div className="flex items-center gap-2">
-          <HeaderCallButton />
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden h-11 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90 sm:inline-flex"
-          >
-            Parler de votre projet
-          </a>
-          <MobileMenu current="blog" />
-        </div>
-      </div>
-    </header>
-  );
+  return <SiteHeader />;
 }
 
 function BlogFooter() {

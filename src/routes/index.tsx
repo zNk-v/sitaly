@@ -28,6 +28,7 @@ import { MainNav } from "@/components/MainNav";
 import { Surligne } from "@/components/Surligne";
 import { RealisationsCarousel } from "@/components/RealisationsCarousel";
 import { HeroChamp } from "@/components/HeroChamp";
+import { SiteHeader } from "@/components/SiteHeader";
 import { MetiersDefilement } from "@/components/MetiersDefilement";
 import { FondateurCard } from "@/components/FondateurCard";
 import { ZoomIntro } from "@/components/ZoomIntro";
@@ -115,7 +116,7 @@ function SitalyHome() {
 
   return (
     <div ref={rootRef} className="min-h-screen bg-background text-foreground">
-      <Nav />
+      <SiteHeader accueil />
       <Ouverture />
       <ProfessionsMarquee />
       <Problem />
@@ -131,42 +132,6 @@ function SitalyHome() {
       <Contact />
       <Footer />
     </div>
-  );
-}
-
-/* ---------------- NAV ---------------- */
-function Nav() {
-  return (
-    /* Bandeau en encre : il prolonge le hero sans couture, et reste lisible
-       au-dessus des sections papier une fois le scroll engagé. DESIGN.md §3. */
-    <header className="sticky top-0 z-50 border-b border-border bg-paper/85 backdrop-blur-md">
-      {/* Progression de lecture. Pilotée par la timeline de scroll, donc
-          aucun listener : la barre vit sur le fil de composition. */}
-      <div
-        className="scroll-progress absolute inset-x-0 bottom-0 h-px origin-left bg-gradient-to-r from-brand to-accent"
-        aria-hidden="true"
-      />
-      <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <a href="#top" className="flex items-center" aria-label="Sitaly — accueil">
-          <SitalyLogo />
-        </a>
-        <MainNav />
-
-        <div className="flex items-center gap-2">
-          <HeaderCallButton />
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bouton hidden h-11 px-5 text-sm sm:inline-flex"
-          >
-            <Calendar className="h-4 w-4" />
-            Parler de votre projet
-          </a>
-          <MobileMenu onHome />
-        </div>
-      </div>
-    </header>
   );
 }
 
