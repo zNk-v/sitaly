@@ -80,10 +80,22 @@ export function HeroChamp() {
             <stop offset="86%" stopColor="black" />
             <stop offset="100%" stopColor="white" />
           </linearGradient>
-          <mask id="champ-masque-portrait">
+          <mask
+            id="champ-masque-portrait"
+            maskUnits="userSpaceOnUse"
+            x="0"
+            y="0"
+            width="1440"
+            height="900"
+          >
             <rect width="1440" height="900" fill="url(#champ-fondu-portrait)" />
           </mask>
-          <mask id="champ-masque">
+          {/* Région explicite, en unités de la scène. Par défaut un masque se
+              calcule sur la boîte de l'objet masqué — ici les chevrons, qui
+              débordent largement du cadre — et cette boîte diffère d'un moteur
+              à l'autre. Le voile du nom, qui porte une région explicite depuis
+              le début, s'affiche correctement sur iOS ; ces deux-là, non. */}
+          <mask id="champ-masque" maskUnits="userSpaceOnUse" x="0" y="0" width="1440" height="900">
             <rect width="1440" height="900" fill="url(#champ-fondu)" />
           </mask>
         </defs>
