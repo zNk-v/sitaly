@@ -772,6 +772,89 @@
   }
 }
 
+/* Le repère de défilement est sorti du flux pour se coller au bas de l'écran
+   collé. Sans écran collé — repli ou mouvement réduit — la colonne fait la
+   hauteur de son contenu, et `bottom` le repose sur le bouton. Il revient donc
+   dans le flux dans les deux cas où l'effet ne tourne pas. */
+@media (prefers-reduced-motion: reduce) {
+  .zoom-cue {
+    position: static;
+    margin-top: 2.25rem;
+  }
+}
+@supports not (animation-timeline: view()) {
+  .zoom-cue {
+    position: static;
+    margin-top: 2.25rem;
+  }
+}
+
+/* Défilement des métiers — deux rangées à contresens ---------------------- */
+
+.defile-piste {
+  animation: marquee-scroll var(--defile-duree, 46s) linear infinite;
+  animation-direction: var(--defile-sens, normal);
+  will-change: transform;
+}
+
+/* L'espace entre deux mots vit sur le séparateur, pas sur un `gap` : il doit
+   aussi séparer le dernier mot d'une piste du premier de sa copie, ce qu'un
+   `gap` posé sur la liste ne fait pas. */
+.defile-losange {
+  display: block;
+  width: 0.42em;
+  height: 0.42em;
+  margin-inline: clamp(0.9rem, 1.8vw, 1.6rem);
+  rotate: 45deg;
+  background: var(--gradient-brand);
+  border-radius: 2px;
+}
+
+/* Un mot sur deux en contour. Sans le garde `@supports`, un navigateur sans
+   `-webkit-text-stroke` afficherait du texte transparent, donc rien. */
+@supports (-webkit-text-stroke: 1px black) {
+  .defile-contour {
+    color: transparent;
+    -webkit-text-stroke: 0.9px color-mix(in oklab, var(--ink) 52%, transparent);
+  }
+}
+
+@media (hover: hover) {
+  .defile:hover .defile-piste {
+    animation-play-state: paused;
+  }
+}
+
+/* Figée, la bande couperait les mots au bord. Elle passe donc à la ligne. */
+@media (prefers-reduced-motion: reduce) {
+  .defile-piste {
+    animation: none;
+    width: 100%;
+  }
+  .defile-copie {
+    display: none;
+  }
+  /* Le fondu des bords sert à faire entrer et sortir les mots. Immobiles, ils
+     n'entrent ni ne sortent : le fondu ne ferait que délaver les extrémités de
+     chaque ligne. Sélecteur à deux classes pour passer devant l'utilitaire,
+     quel que soit l'ordre des couches. */
+  .defile.marquee-mask {
+    -webkit-mask-image: none;
+    mask-image: none;
+    padding-inline: 1rem;
+  }
+  /* `shrink-0` sert la boucle : sans lui, les deux pistes se compressent au
+     lieu de défiler. Il empêche en revanche le retour à la ligne, la piste
+     restant large comme son contenu. Il est donc levé ici, et seulement ici. */
+  .defile-rang {
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-width: 0;
+    row-gap: 0.25rem;
+  }
+}
+
 /* ============================================================
    Habillage local — page /agents-ia
    La page reprend les tokens clairs du site (:root) : mêmes surfaces,

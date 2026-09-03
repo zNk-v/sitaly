@@ -28,6 +28,7 @@ import { MainNav } from "@/components/MainNav";
 import { Surligne } from "@/components/Surligne";
 import { RealisationsCarousel } from "@/components/RealisationsCarousel";
 import { HeroChamp } from "@/components/HeroChamp";
+import { MetiersDefilement } from "@/components/MetiersDefilement";
 import { FondateurCard } from "@/components/FondateurCard";
 import { ZoomIntro } from "@/components/ZoomIntro";
 import { REALISATIONS } from "@/data/realisations";
@@ -271,7 +272,7 @@ function Ouverture() {
               reste hors cadre. */}
             <div
               aria-hidden="true"
-              className="absolute inset-x-0 bottom-6 flex flex-col items-center gap-2 text-muted-foreground/70"
+              className="zoom-cue absolute inset-x-0 bottom-6 flex flex-col items-center gap-2 text-muted-foreground/70"
             >
               <span className="rail-label">Faites défiler</span>
               <ChevronDown className="h-5 w-5 animate-bounce" />
@@ -399,58 +400,15 @@ function CeQuOnFait() {
 
 /* ---------------- PROFESSIONS MARQUEE ---------------- */
 function ProfessionsMarquee() {
-  const metiers = [
-    "Artisans",
-    "Ostéopathes",
-    "Kinésithérapeutes",
-    "Coachs sportifs",
-    "Agents immobiliers",
-    "Garages automobiles",
-    "Restaurateurs",
-    "Commerçants",
-    "Avocats",
-    "Experts-comptables",
-    "Cabinets de recrutement",
-    "Centres de formation",
-    "Consultants",
-    "PME de services",
-    "Entrepreneurs",
-  ];
-
-  /* Chaque métier devient une pastille : le défilement lit comme une liste
-     d'étiquettes, pas comme une phrase interminable coupée par des points. */
-  const Track = ({ hidden = false }: { hidden?: boolean }) => (
-    <ul
-      className="flex shrink-0 items-center gap-3 pr-3 sm:gap-4 sm:pr-4"
-      aria-hidden={hidden || undefined}
-    >
-      {metiers.map((m) => (
-        <li
-          key={m}
-          className="whitespace-nowrap rounded-full border border-border bg-card px-5 py-2.5 text-[15px] font-semibold shadow-soft sm:text-base"
-        >
-          {m}
-        </li>
-      ))}
-    </ul>
-  );
-
   return (
-    <section className="border-y border-border bg-paper-sunk py-16 sm:py-20">
-      {/* L'intitulé respire au-dessus du bandeau au lieu de le toucher :
-          c'est le manque d'air, pas le défilement, qui faisait fouillis. */}
+    <section className="border-y border-border bg-paper-sunk py-10 sm:py-12">
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
         <div className="rail-label text-brand-ink">Pour qui</div>
         <h2 className="mt-3 font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
           Le même travail de fond, <Surligne>quel que soit votre métier</Surligne>
         </h2>
       </div>
-      <div className="marquee marquee-mask group relative mt-12 flex overflow-hidden sm:mt-14">
-        <div className="animate-marquee flex shrink-0">
-          <Track />
-          <Track hidden />
-        </div>
-      </div>
+      <MetiersDefilement className="mt-4 sm:mt-5" />
     </section>
   );
 }
