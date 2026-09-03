@@ -103,13 +103,21 @@
 
   /* Signal : réservé au vérifiable (site en ligne, délai tenu, client nommé).
      Deux valeurs, car le vert clair passe sous le seuil sur fond papier. */
-  /* Voile de section : la triade en très clair, aux teintes de la triade —
-     255, 300, 25. Le milieu était en 320, qui tirait vers le magenta et ne
-     correspondait à aucun autre violet du site. Chaque arrêt porte du texte
-     encre à plus de 15:1, donc le fond colore sans jamais gêner la lecture. */
+  /* Voile de section : du bleu au violet, et pas jusqu'au rouge.
+
+     Il finissait en teinte 25. Un rouge à cette clarté n'est pas un rouge,
+     c'est un rose : la bande mesurait rgb(255, 232, 233) à l'écran, teinte 14.
+     Le rouge de la triade ne tient qu'aux clartés basses, celles du ruban et
+     des boutons ; tinté clair, il sort de la direction du site.
+
+     L'arrêt oklch intermédiaire est explicite pour la même raison : le chemin
+     court de 255 à 25 traverse le rose, même sans arrêt posé dessus.
+
+     Chaque arrêt porte du texte encre à plus de 15:1, donc le fond colore sans
+     jamais gêner la lecture. */
   --wash-from: oklch(0.955 0.03 255);
   --wash-via: oklch(0.95 0.038 300);
-  --wash-to: oklch(0.955 0.032 25);
+  --wash-to: oklch(0.945 0.045 305);
 
   /* La même triade en pleine saturation, pour le texte. Les trois arrêts
      passent au-dessus de 5.9:1 sur papier : le dégradé reste lisible sur
@@ -259,7 +267,12 @@
 
 @utility on-wash {
   background: linear-gradient(115deg, var(--wash-from), var(--wash-via) 50%, var(--wash-to));
-  background: linear-gradient(115deg in oklch, var(--wash-from), var(--wash-to));
+  background: linear-gradient(
+    115deg in oklch,
+    var(--wash-from),
+    var(--wash-via) 50%,
+    var(--wash-to)
+  );
   --border: oklch(0.48 0.2 300 / 0.16);
 }
 
