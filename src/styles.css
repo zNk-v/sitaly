@@ -942,6 +942,33 @@
   right: 0;
 }
 
+/* Logo ------------------------------------------------------------------- */
+
+/* L'aspect ratio remplace les dimensions intrinsèques de l'image : sans lui,
+   un élément vide n'a pas de largeur et le bandeau saute au chargement. */
+@utility logo-sitaly {
+  display: block;
+  aspect-ratio: 414 / 108;
+  background-image: var(--logo-forme);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@supports (mask-image: url("#a")) or (-webkit-mask-image: url("#a")) {
+  .logo-sitaly {
+    background-image: none;
+    background: var(--logo-peinture);
+    -webkit-mask-image: var(--logo-forme);
+    mask-image: var(--logo-forme);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+  }
+}
+
 /* Bouton primaire --------------------------------------------------------- */
 
 /* Le dégradé fait deux fois la largeur du bouton et glisse au survol : la
