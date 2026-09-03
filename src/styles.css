@@ -103,10 +103,12 @@
 
   /* Signal : réservé au vérifiable (site en ligne, délai tenu, client nommé).
      Deux valeurs, car le vert clair passe sous le seuil sur fond papier. */
-  /* Voile de section : la triade en très clair. Chaque arrêt porte du texte
+  /* Voile de section : la triade en très clair, aux teintes de la triade —
+     255, 300, 25. Le milieu était en 320, qui tirait vers le magenta et ne
+     correspondait à aucun autre violet du site. Chaque arrêt porte du texte
      encre à plus de 15:1, donc le fond colore sans jamais gêner la lecture. */
   --wash-from: oklch(0.955 0.03 255);
-  --wash-via: oklch(0.95 0.038 320);
+  --wash-via: oklch(0.95 0.038 300);
   --wash-to: oklch(0.955 0.032 25);
 
   /* La même triade en pleine saturation, pour le texte. Les trois arrêts
@@ -1144,13 +1146,13 @@
   /* Déclinaisons de l'accent, du plus clair au plus profond.
      Nommées par rôle et non par couleur : la teinte peut évoluer. */
   --ai-accent: var(--accent);
-  --ai-accent-soft: oklch(0.7 0.15 320);
+  --ai-accent-soft: oklch(0.7 0.15 300);
   --ai-accent-deep: oklch(0.45 0.18 297);
 
-  /* Vert un cran plus foncé que celui du site : ici il sert à de petits
-     libellés (11-12px) posés sur blanc, où le vert clair passait sous le
-     seuil de lisibilité. */
-  --success: oklch(0.5 0.13 170);
+  /* Le vert vient du site. Il était redéfini ici, en teinte 170 et clarté 0,5,
+     au motif d'être « un cran plus foncé » pour de petits libellés — il était
+     en fait plus clair que le jeton global, et moins lisible : 5,38:1 contre
+     5,89:1 sur blanc. */
 
   background-color: var(--background);
   color: var(--foreground);
@@ -1179,7 +1181,7 @@
   background: radial-gradient(
     closest-side,
     oklch(0.6 0.2 300 / 0.18),
-    oklch(0.7 0.15 320 / 0.08) 45%,
+    oklch(0.7 0.15 300 / 0.08) 45%,
     transparent 78%
   );
 }
@@ -1217,22 +1219,9 @@
 }
 
 /* CTA principal */
-.ai-cta {
-  background: linear-gradient(135deg, var(--ai-accent), var(--ai-accent-deep));
-  color: var(--accent-foreground);
-  box-shadow: 0 10px 30px -12px oklch(0.6 0.2 300 / 0.5);
-  transition:
-    box-shadow 0.25s,
-    transform 0.15s,
-    filter 0.25s;
-}
-.ai-cta:hover {
-  filter: brightness(1.06);
-  box-shadow: 0 14px 40px -12px oklch(0.6 0.2 300 / 0.6);
-}
-.ai-cta:active {
-  transform: translateY(1px);
-}
+/* `.ai-cta` a été fusionné dans `.bouton` : même dégradé, mais le survol y
+   fait glisser la couleur au lieu de l'éclaircir, et la forme est la pastille
+   du reste du site. */
 
 .ai-page :is(a, button, input, select, textarea, [tabindex]):focus-visible {
   outline: 2px solid var(--ai-accent);

@@ -535,7 +535,7 @@ function AgentsIA() {
 function Nav() {
   return (
     <div className="sticky top-0 z-50 px-4 pt-3 sm:px-6 sm:pt-4">
-      <header className="relative mx-auto flex h-16 max-w-6xl items-center justify-between rounded-full border border-border bg-background/80 px-4 backdrop-blur-md sm:px-6">
+      <header className="entete-plaque relative mx-auto flex h-14 max-w-6xl items-center justify-between rounded-full pl-5 pr-2 sm:pl-6 sm:pr-3">
         <Link to="/" className="flex items-center py-3" aria-label="Sitaly — accueil">
           <SitalyLogo />
         </Link>
@@ -573,10 +573,7 @@ function Nav() {
         </nav>
         <div className="flex items-center gap-2">
           <HeaderCallButton rounded="full" />
-          <a
-            href={CTA_ANCHOR}
-            className="ai-cta hidden h-11 items-center gap-2 rounded-full px-5 text-sm font-semibold sm:inline-flex"
-          >
+          <a href={CTA_ANCHOR} className="bouton hidden h-11 px-5 text-sm sm:inline-flex">
             {CTA_LABEL}
           </a>
           <MobileMenu variant="floating" current="agents-ia" />
@@ -615,17 +612,11 @@ function Hero() {
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a
-                href={CTA_ANCHOR}
-                className="ai-cta inline-flex items-center justify-center gap-2 rounded-[10px] px-7 py-4 text-base font-semibold"
-              >
+              <a href={CTA_ANCHOR} className="bouton px-8 py-4 text-base">
                 {CTA_LABEL}
                 <ArrowRight className="h-5 w-5" aria-hidden="true" />
               </a>
-              <a
-                href="#systeme"
-                className="inline-flex items-center justify-center gap-2 rounded-[10px] border border-border bg-card px-7 py-4 text-base font-semibold text-foreground transition hover:border-accent/50 hover:bg-secondary"
-              >
+              <a href="#systeme" className="bouton-secondaire px-7 py-4 text-base">
                 Voir le système en action
               </a>
             </div>
@@ -1347,10 +1338,7 @@ function DiagnosticForm() {
         />
       </div>
 
-      <button
-        type="submit"
-        className="ai-cta mt-6 inline-flex w-full items-center justify-center gap-2 rounded-[10px] px-6 py-3.5 text-base font-semibold"
-      >
+      <button type="submit" className="bouton mt-6 w-full px-6 py-3.5 text-base">
         {CTA_LABEL}
         <ArrowRight className="h-5 w-5" aria-hidden="true" />
       </button>
@@ -1486,9 +1474,7 @@ function PrimaryCta({ compact = false }: { compact?: boolean }) {
   return (
     <a
       href={CTA_ANCHOR}
-      className={`ai-cta inline-flex shrink-0 items-center justify-center gap-2 rounded-[10px] font-semibold ${
-        compact ? "px-6 py-3.5 text-[15px]" : "px-8 py-4 text-base"
-      }`}
+      className={`bouton shrink-0 ${compact ? "px-6 py-3.5 text-[15px]" : "px-8 py-4 text-base"}`}
     >
       {CTA_LABEL}
       <ArrowRight className="h-5 w-5" aria-hidden="true" />
