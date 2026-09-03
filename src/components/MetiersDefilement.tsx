@@ -12,12 +12,13 @@ import { cn } from "@/lib/utils";
  * - Des mots en display, un sur deux en contour. Le contour se voyait pour ce
  *   qu'il est, un texte transparent, et non pour un effet.
  *
- * Le ruban porte le dégradé de la marque, du bleu au rouge. Ses arrêts ne sont
- * pas ceux de `--gradient-brand` : celui-ci descend à 4,78:1 sous le blanc à
- * son extrémité rouge. Le ruban garde une clarté constante de 0,46 sur toute
- * la course, avec la chroma maximale tenable en sRGB pour chaque teinte. Le
- * blanc y tient de 7,3 à 8,1:1, et la clarté constante évite qu'une moitié du
- * ruban paraisse plus lourde que l'autre.
+ * Le ruban est un aplat d'encre, et ce sont les mots qui portent le dégradé.
+ * L'inverse a été essayé d'abord — dégradé au fond, mots en réserve blanche —
+ * mais la couleur passait derrière le texte au lieu de le traverser, et chaque
+ * mot changeait de fond en défilant.
+ *
+ * Le dégradé est fixé sur la fenêtre et non sur chaque mot : sans cela on
+ * aurait douze petits dégradés au lieu d'un seul balayage.
  *
  * Framer Motion n'entre pas au bundle pour une translation linéaire : deux
  * `@keyframes` et une piste dupliquée font la même boucle sans rupture. La
@@ -50,7 +51,7 @@ export function MetiersDefilement({ className }: { className?: string }) {
     >
       {METIERS.map((m) => (
         <li key={m} className="flex items-center">
-          <span className="whitespace-nowrap font-display text-[clamp(0.95rem,1.6vw,1.3rem)] font-extrabold tracking-[-0.01em] text-white">
+          <span className="defile-mot whitespace-nowrap font-display text-[clamp(0.95rem,1.6vw,1.3rem)] font-extrabold tracking-[-0.01em]">
             {m}
           </span>
           {/* Le losange sépare aussi le dernier mot d'une piste du premier de

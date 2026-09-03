@@ -395,7 +395,7 @@ function Problem() {
     },
   ];
   return (
-    <section className="on-wash py-20 sm:py-28">
+    <section className="on-wash pt-14 pb-20 sm:pt-16 sm:pb-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
           index="01"

@@ -146,6 +146,20 @@
   --violet-ink: oklch(0.47 0.238 300);
   --red-ink: oklch(0.47 0.183 28);
 
+  /* La même triade, remontée pour vivre sur l'encre. Les arrêts du dégradé
+     porteur sont à 0,46 de clarté, pensés pour porter du blanc ; posés en
+     texte sur l'encre ils tombent à 2,4:1.
+
+     Clarté constante à 0,78, et chroma bornée au gamut sRGB pour chaque
+     teinte — 0,13 et 0,16 sortaient du gamut, le navigateur les rabattait en
+     écrasant la teinte. Le pire point du parcours tient 9,16:1 sur l'encre. */
+  --gradient-ruban-clair: linear-gradient(
+    100deg in oklch,
+    oklch(0.78 0.107 258),
+    oklch(0.78 0.125 300) 55%,
+    oklch(0.78 0.122 28)
+  );
+
   --gradient-ruban: linear-gradient(
     100deg in oklch,
     oklch(0.46 0.162 258),
@@ -1090,13 +1104,38 @@
    toute la course, avec la chroma maximale tenable en sRGB pour chaque teinte —
    au-delà, les arrêts sortent du gamut et le navigateur les ramène en écrasant
    la teinte. Le blanc y tient de 7,3 à 8,1:1. */
+/* Le ruban est un aplat d'encre, et ce sont les mots qui portent le dégradé.
+   Il portait l'inverse : le dégradé au fond, les mots en réserve blanche. La
+   couleur passait alors derrière le texte au lieu de le traverser, et chaque
+   mot changeait de fond en défilant.
+
+   Le dégradé est fixé sur la fenêtre (`background-attachment: fixed`) et non
+   sur chaque mot : sans cela chaque mot rejouerait le dégradé entier sur sa
+   propre boîte, et l'on aurait douze petits dégradés au lieu d'un balayage.
+
+   Les arrêts sont ceux du dégradé porteur, mais éclaircis : sur l'encre, la
+   clarté 0,46 tombe à 2,4:1. Voir --gradient-ruban-clair. */
 .ruban {
-  background: var(--gradient-ruban);
+  background: var(--ink);
+}
+.ruban .defile-mot {
+  background: var(--gradient-ruban-clair);
+  background-attachment: fixed;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+/* Repli : sans découpe sur le texte, les mots restent blancs et lisibles. */
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .ruban .defile-mot {
+    color: #fff;
+  }
 }
 
-/* Le losange, en réserve sur le ruban. */
+/* Le losange garde la réserve blanche : en dégradé il disparaîtrait aux
+   extrémités sombres. */
 .ruban .defile-losange {
-  background: color-mix(in oklab, white 55%, transparent);
+  background: color-mix(in oklab, white 45%, transparent);
 }
 
 .defile-piste {

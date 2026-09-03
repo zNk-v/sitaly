@@ -124,7 +124,7 @@ const LEVIERS: Levier[] = [
 
 export function StackedOffers() {
   return (
-    <section id="offre" className="pt-20 pb-12 sm:pt-28 sm:pb-14">
+    <section id="offre" className="pt-20 pb-8 sm:pt-28 sm:pb-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
           index="03"
@@ -139,7 +139,10 @@ export function StackedOffers() {
 
         {/* La marge basse donne au dernier panneau le temps de rester collé
             pendant qu'on finit de le lire. */}
-        <div className="mt-14 pb-[22vh]">
+        {/* La réserve basse laisse la dernière carte collée le temps qu'on la
+          lise. Elle valait 22vh : 266 px de vide séparaient alors la dernière
+          carte de la section suivante, mesurés sur le rendu. */}
+        <div className="mt-14 pb-[9vh]">
           {LEVIERS.map((l, i) => (
             <article
               key={l.cle}
