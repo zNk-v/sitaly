@@ -570,36 +570,15 @@
     .zoom-word-fallback {
       display: none;
     }
-    /* Le voile reste opaque de bout en bout, puis disparaît d'un coup.
-       Il s'effaçait en fondu, et pendant ces 22vh de transparence on lisait le
-       panneau à travers le papier : la page suivante devenait lisible avant
-       que le trou ne l'ait découverte, ce qui ruinait l'effet.
-
-       Le fondu réglait un vrai problème : le trou ne se referme jamais
-       entièrement sur du noir, les contre-poinçons des lettres restent en
-       papier et le « a » garde son ovale au milieu du panneau. La coupure à
-       84vh est discrète — `visibility` n'a pas d'état intermédiaire — mais
-       elle ne le règle qu'à moitié.
-
-       ÉTAT INTERMÉDIAIRE, mesuré : au maximum d'échelle le trou couvre 94,7 %
-       de l'écran à 1200 px de large, 80,8 % à 1900, 66,5 % à 2560. La coupure
-       est donc encore visible comme un saut, d'autant plus sur écran large.
-       Augmenter l'échelle ne change rien — la couverture plafonne aux mêmes
-       valeurs de 64 à 110 —, ce qui reste à expliquer avant de conclure. */
+    /* Le voile reste opaque de bout en bout et ne s'efface jamais. Il
+       s'effaçait d'abord en fondu — on lisait le panneau à travers le papier —
+       puis d'un coup, ce qui sautait sur les écrans larges où le trou des
+       lettres plafonne à 81 % de la fenêtre. C'est désormais `.zoom-remplir`
+       qui referme le trou, en continu. */
     .zoom-cover {
       pointer-events: none;
-      animation: zoom-voile linear both;
-      animation-timeline: scroll(root);
-      animation-range: 84vh 85vh;
     }
-    @keyframes zoom-voile {
-      from {
-        visibility: visible;
-      }
-      to {
-        visibility: hidden;
-      }
-    }
+
     /* La couche de tête couvre toute la fenêtre. Rendre son enfant direct
        cliquable revenait à poser une vitre sur le panneau du dessous, dont les
        liens ne recevaient plus aucun clic. Seuls les éléments réellement
@@ -611,6 +590,27 @@
     .zoom-front a,
     .zoom-front button {
       pointer-events: auto;
+    }
+
+    /* `view-box` fait résoudre les pourcentages de l'origine sur la fenêtre du
+       SVG et non sur la boîte du rectangle : l'origine tombe ainsi au même
+       point que celle du zoom du mot, à 46,7 % de la largeur et à la hauteur
+       de la fente. Le rectangle fait deux fois la fenêtre, donc l'échelle 1
+       suffit à la couvrir depuis n'importe quel point. */
+    .zoom-remplir {
+      transform-box: view-box;
+      transform-origin: 46.7% calc(var(--mot-haut) + var(--mot-fente) / 2);
+      animation: zoom-remplir linear both;
+      animation-timeline: scroll(root);
+      animation-range: 50vh 82vh;
+    }
+    @keyframes zoom-remplir {
+      from {
+        transform: scale(0);
+      }
+      to {
+        transform: scale(1);
+      }
     }
 
     /* Le mot découpé. `transform-box: fill-box` fait porter l'origine sur la
@@ -702,16 +702,15 @@
        repos, les lettres du mot laissaient voir des fragments de titre et de
        liste : illisibles à cette taille, ils donnaient un effet de désordre.
 
-       Sa course commence là où celle du texte de tête s'achève, à 12vh, et
-       non à 4 : elles se recouvraient, et on lisait les deux textes l'un sur
-       l'autre. Elle courait par ailleurs jusqu'à 62vh, si bien que le panneau
-       se révélait sur sa propre horloge, sans rapport avec l'avancée du trou.
-       Bornée à 28vh, elle ne fait plus qu'une chose : éviter les fragments du
-       début. Passé ce point, c'est le trou seul qui décide de ce qu'on voit. */
+       Sa course va de 30 à 50vh. Plus tôt, le « t » n'est pas encore assez
+       grand pour contenir le texte, qui apparaissait alors en morceaux
+       répartis dans le S, le i, le t et le a — un effet de puzzle, pas de
+       révélation. À 30vh le « t » tient la colonne, et le texte s'y découvre
+       seul. Elle s'achève avant que `.zoom-remplir` ne prenne le relais. */
     .zoom-behind-content {
       animation: zoom-contenu linear both;
       animation-timeline: scroll(root);
-      animation-range: 12vh 28vh;
+      animation-range: 30vh 50vh;
     }
     @keyframes zoom-contenu {
       from {

@@ -68,6 +68,20 @@ export function ZoomIntro({
                 {/* y=0 : la position verticale vient d'une translation CSS, pour
                     qu'elle partage la même formule que la fente réservée dans le
                     flux. Voir --mot-haut dans la feuille de style. */}
+                {/* L'extension du noir. Un rectangle plus grand que la fenêtre,
+                    réduit à rien au départ, qui grandit depuis le point même
+                    d'où part le zoom : visuellement, c'est le noir du « t » qui
+                    déborde et gagne la page. Il remplace une coupure sèche du
+                    voile, qui sautait d'un coup sur les écrans larges où le
+                    trou des lettres ne se referme jamais complètement. */}
+                <rect
+                  className="zoom-remplir"
+                  x="-50%"
+                  y="-50%"
+                  width="200%"
+                  height="200%"
+                  fill="black"
+                />
                 <text
                   className="zoom-word"
                   x="50%"
