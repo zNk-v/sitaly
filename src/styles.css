@@ -570,21 +570,34 @@
     .zoom-word-fallback {
       display: none;
     }
-    /* Le voile s'efface sur la fin. Sans ça, les contre-poinçons des lettres
-       restent en papier une fois le mot agrandi : le « A » garde son triangle
-       intérieur au milieu du panneau révélé. */
+    /* Le voile reste opaque de bout en bout, puis disparaît d'un coup.
+       Il s'effaçait en fondu, et pendant ces 22vh de transparence on lisait le
+       panneau à travers le papier : la page suivante devenait lisible avant
+       que le trou ne l'ait découverte, ce qui ruinait l'effet.
+
+       Le fondu réglait un vrai problème : le trou ne se referme jamais
+       entièrement sur du noir, les contre-poinçons des lettres restent en
+       papier et le « a » garde son ovale au milieu du panneau. La coupure à
+       84vh est discrète — `visibility` n'a pas d'état intermédiaire — mais
+       elle ne le règle qu'à moitié.
+
+       ÉTAT INTERMÉDIAIRE, mesuré : au maximum d'échelle le trou couvre 94,7 %
+       de l'écran à 1200 px de large, 80,8 % à 1900, 66,5 % à 2560. La coupure
+       est donc encore visible comme un saut, d'autant plus sur écran large.
+       Augmenter l'échelle ne change rien — la couverture plafonne aux mêmes
+       valeurs de 64 à 110 —, ce qui reste à expliquer avant de conclure. */
     .zoom-cover {
       pointer-events: none;
       animation: zoom-voile linear both;
       animation-timeline: scroll(root);
-      animation-range: 62vh 84vh;
+      animation-range: 84vh 85vh;
     }
     @keyframes zoom-voile {
       from {
-        opacity: 1;
+        visibility: visible;
       }
       to {
-        opacity: 0;
+        visibility: hidden;
       }
     }
     /* La couche de tête couvre toute la fenêtre. Rendre son enfant direct
@@ -628,7 +641,22 @@
       font-size: var(--mot-taille);
       letter-spacing: -0.02em;
       transform-box: fill-box;
-      transform-origin: center;
+      /* L'origine n'est pas le centre du mot. Le centre tombe dans le blanc
+         entre deux lettres : agrandi, ce blanc envahit l'écran et le voile ne
+         se referme jamais sur du noir — c'est pour ça que la première version
+         terminait en fondu, faute de mieux.
+
+         Ce point est le plus profondément noir du mot, relevé sur le rendu :
+         35 px de noir dans toutes les directions. Une origine posée dedans y
+         reste, ce qui fait grandir le noir au lieu du blanc — la couverture
+         passe de 64 à 94 % à 1200 px de large. Elle ne va pas jusqu'à 100 %,
+         voir la note sur `.zoom-cover`.
+
+         Les pourcentages se rapportent à la boîte de remplissage du texte
+         (`getBBox`), pas à celle de son encre : les deux diffèrent de la
+         hauteur des jambages et des accents, et confondre les deux décale
+         l'origine d'une vingtaine de pour cent en vertical. */
+      transform-origin: 39.3% 49.8%;
       animation: zoom-percer linear both;
       animation-timeline: scroll(root);
       animation-range: 0 82vh;
@@ -664,12 +692,16 @@
     /* Le contenu du panneau n'apparaît qu'une fois l'ouverture entamée. Au
        repos, les lettres du mot laissaient voir des fragments de titre et de
        liste : illisibles à cette taille, ils donnaient un effet de désordre.
-       Le mot se remplit désormais d'aplat, et le texte arrive quand il y a la
-       place de le lire. */
+
+       Sa course s'achève tôt — 22vh — et non à mi-parcours. Elle courait
+       jusqu'à 62vh, si bien que le texte se révélait sur sa propre horloge,
+       sans rapport avec l'avancée du trou. Terminée tôt, elle ne fait plus
+       qu'une chose : éviter les fragments du début. Passé ce point, c'est le
+       trou seul qui décide de ce qu'on voit. */
     .zoom-behind-content {
       animation: zoom-contenu linear both;
       animation-timeline: scroll(root);
-      animation-range: 26vh 62vh;
+      animation-range: 4vh 22vh;
     }
     @keyframes zoom-contenu {
       from {

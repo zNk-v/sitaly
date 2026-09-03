@@ -48,7 +48,21 @@ export function ZoomIntro({
               pixel près et les deux suivent la même règle. */}
           <svg className="absolute inset-0 h-full w-full">
             <defs>
-              <mask id="zoom-intro-mask">
+              {/* Région explicite, bornée à la fenêtre. Un masque est borné par
+                  défaut à 120 % de la boîte de l'objet masqué, ce qui était la
+                  première explication du plafond de couverture du trou. La
+                  mesure l'a démentie : la région explicite n'a rien changé aux
+                  chiffres. Elle reste parce qu'elle rend la borne lisible dans
+                  le code plutôt qu'implicite, mais la cause du plafond est
+                  ailleurs. Voir la note sur `.zoom-cover`. */}
+              <mask
+                id="zoom-intro-mask"
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="0"
+                width="100%"
+                height="100%"
+              >
                 {/* Blanc = opaque, noir = percé. */}
                 <rect width="100%" height="100%" fill="white" />
                 {/* y=0 : la position verticale vient d'une translation CSS, pour
