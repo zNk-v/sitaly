@@ -753,24 +753,6 @@
     transform: translateX(-50%);
   }
 }
-@utility animate-marquee {
-  animation: marquee-scroll 38s linear infinite;
-  will-change: transform;
-}
-@utility marquee-mask {
-  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-}
-@media (hover: hover) {
-  .marquee:hover .animate-marquee {
-    animation-play-state: paused;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .animate-marquee {
-    animation: none;
-  }
-}
 
 /* Le repère de défilement est sorti du flux pour se coller au bas de l'écran
    collé. Sans écran collé — repli ou mouvement réduit — la colonne fait la
@@ -791,6 +773,25 @@
 
 /* Défilement des métiers — deux rangées à contresens ---------------------- */
 
+/* Le ruban. Ses arrêts ne sont pas ceux de `--gradient-brand` : sous du blanc,
+   celui-ci tombe à 4,78:1 à son extrémité rouge. Ici la clarté reste à 0,46 sur
+   toute la course, avec la chroma maximale tenable en sRGB pour chaque teinte —
+   au-delà, les arrêts sortent du gamut et le navigateur les ramène en écrasant
+   la teinte. Le blanc y tient de 7,3 à 8,1:1. */
+.ruban {
+  background: linear-gradient(
+    100deg in oklch,
+    oklch(0.46 0.162 258),
+    oklch(0.46 0.233 300) 55%,
+    oklch(0.46 0.179 28)
+  );
+}
+
+/* Le losange, en réserve sur le ruban. */
+.ruban .defile-losange {
+  background: color-mix(in oklab, white 55%, transparent);
+}
+
 .defile-piste {
   animation: marquee-scroll var(--defile-duree, 46s) linear infinite;
   animation-direction: var(--defile-sens, normal);
@@ -806,17 +807,7 @@
   height: 0.42em;
   margin-inline: clamp(0.9rem, 1.8vw, 1.6rem);
   rotate: 45deg;
-  background: var(--gradient-brand);
   border-radius: 2px;
-}
-
-/* Un mot sur deux en contour. Sans le garde `@supports`, un navigateur sans
-   `-webkit-text-stroke` afficherait du texte transparent, donc rien. */
-@supports (-webkit-text-stroke: 1px black) {
-  .defile-contour {
-    color: transparent;
-    -webkit-text-stroke: 0.9px color-mix(in oklab, var(--ink) 52%, transparent);
-  }
 }
 
 @media (hover: hover) {
@@ -834,13 +825,8 @@
   .defile-copie {
     display: none;
   }
-  /* Le fondu des bords sert à faire entrer et sortir les mots. Immobiles, ils
-     n'entrent ni ne sortent : le fondu ne ferait que délaver les extrémités de
-     chaque ligne. Sélecteur à deux classes pour passer devant l'utilitaire,
-     quel que soit l'ordre des couches. */
-  .defile.marquee-mask {
-    -webkit-mask-image: none;
-    mask-image: none;
+  /* Sur un ruban plein, les lignes ne doivent pas toucher le bord. */
+  .defile {
     padding-inline: 1rem;
   }
   /* `shrink-0` sert la boucle : sans lui, les deux pistes se compressent au

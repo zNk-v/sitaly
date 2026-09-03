@@ -238,6 +238,29 @@ du hero exprimée en `vw` doit être bornée en `vh`, sans quoi elle grossit
 pendant que la place diminue. Et sous 700 px de fenêtre, aucun réglage ne fait
 tenir la colonne : l'effet ne s'active pas, la scène redevient deux sections.
 
+### Le ruban des métiers
+
+Trois traitements ont été essayés avant celui-ci, et les deux abandons valent
+la peine d'être gardés en mémoire.
+
+Des pastilles encadrées, une par métier : bordure, ombre et fond de carte
+répétés douze fois, la bande lisait comme un formulaire. Puis des mots en
+display, un sur deux en contour : le contour se voyait pour ce qu'il est, du
+texte transparent, et non pour un effet.
+
+Ce qui tient : un ruban plein qui traverse la page, les métiers en réserve
+blanche. Ses arrêts ne sont pas ceux de `--gradient-brand` — celui-ci tombe à
+4,78:1 sous du blanc à son extrémité rouge. Le ruban garde une **clarté
+constante de 0,46** sur toute la course, avec la chroma maximale tenable en
+sRGB pour chaque teinte : au-delà, les arrêts sortent du gamut et le navigateur
+les ramène en écrasant la teinte. Mesuré sur le rendu, le blanc y tient de 7,2
+à 8,1:1.
+
+La clarté constante n'est pas qu'une affaire de contraste : elle évite qu'une
+moitié du ruban paraisse plus lourde que l'autre.
+
+---
+
 ## 5. Grille et rythme
 
 Ancrage à gauche, jamais de section entièrement centrée hors CTA final.
