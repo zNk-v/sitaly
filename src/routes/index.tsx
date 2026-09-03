@@ -27,6 +27,7 @@ import { StackedOffers } from "@/components/StackedOffers";
 import { MainNav } from "@/components/MainNav";
 import { Surligne } from "@/components/Surligne";
 import { RealisationsCarousel } from "@/components/RealisationsCarousel";
+import { HeroChamp } from "@/components/HeroChamp";
 import { FondateurCard } from "@/components/FondateurCard";
 import { ZoomIntro } from "@/components/ZoomIntro";
 import { REALISATIONS } from "@/data/realisations";
@@ -186,92 +187,97 @@ function Ouverture() {
            le nom. Des réserves à valeurs fixes se désaccordaient dès qu'une
            ligne de texte changeait de longueur.
            Sans hauteur imposée (mode repli), la colonne s'empile simplement. */
-        <div className="relative flex h-full flex-col items-center px-4 text-center sm:px-6">
-          {/* Hauteur fixe : la fente du mot doit tomber à --mot-haut de la
+        <>
+          <HeroChamp />
+          <div className="relative flex h-full flex-col items-center px-4 text-center sm:px-6">
+            {/* Hauteur fixe : la fente du mot doit tomber à --mot-haut de la
               tête de section, la même valeur que celle qui positionne le mot
               dans le voile. Une colonne centrée ne le garantissait pas. */}
-          <div className="flex h-[var(--mot-haut,34vh)] items-end pb-10">
-            <p className="font-display text-[clamp(1.05rem,2vw,1.6rem)] font-extrabold tracking-[0.08em] text-muted-foreground">
-              Pour les indépendants, les TPE et les PME
-            </p>
-          </div>
-
-          {/* La fente du nom. La doublure ne s'affiche que si l'effet ne tourne
-              pas, sans quoi SITALY disparaîtrait de la page. */}
-          <div className="flex h-[var(--mot-fente,14vw)] shrink-0 items-center justify-center">
-            <p className="zoom-word-fallback font-display text-[max(2.6rem,8.4vw)] font-extrabold leading-none tracking-[-0.02em]">
-              Sitaly
-            </p>
-          </div>
-
-          {/* Marge basse plus généreuse que la haute : la hampe du « y » descend
-              sous la fente, la ligne suivante doit lui laisser le passage. */}
-          <div className="flex flex-col items-center pt-8">
-            {/* text-wrap: balance évite le mot orphelin sur la seconde ligne
-                quand la phrase ne tient pas d'un seul tenant. */}
-            <p className="max-w-5xl text-balance font-display text-[clamp(1.4rem,3.1vw,2.6rem)] font-extrabold leading-[1.08]">
-              <span className="accent-word">installe et pilote</span>{" "}
-              <span className="tracking-[0.02em]">votre présence en ligne</span>
-            </p>
-
-            {/* La phrase qui porte le positionnement : ce qui est fait, et par
-                qui. « Une seule personne » remplace le mot agence, qui
-                promettait une équipe que Sitaly n'a pas. */}
-            <p className="measure mt-4 text-lg text-muted-foreground">
-              Le site internet, la publicité en ligne et les automatisations. Une seule personne au
-              bout du fil, celle qui construit.
-            </p>
-
-            <div className="mt-5 flex items-center gap-3 text-muted-foreground">
-              <svg
-                viewBox="0 0 88 46"
-                aria-hidden="true"
-                className="h-8 w-16 shrink-0 -scale-x-100 text-brand-ink/45"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              >
-                <path d="M84 42C68 16 44 4 6 6" />
-                <path d="M6 6l17 8M6 6l11 13" />
-              </svg>
-              <span className="accent-word -rotate-2 text-xl">et vous gardez la main</span>
+            <div className="flex h-[var(--mot-haut,34vh)] items-end pb-10">
+              <p className="font-display text-[clamp(1.05rem,2vw,1.6rem)] font-extrabold tracking-[0.08em] text-muted-foreground">
+                Pour les indépendants, les TPE et les PME
+              </p>
             </div>
 
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-7 py-4 text-base font-semibold text-accent-foreground shadow-glow transition hover:brightness-110"
-            >
-              <Calendar className="h-5 w-5" />
-              Parler de votre projet
-            </a>
+            {/* La fente du nom. La doublure ne s'affiche que si l'effet ne tourne
+              pas, sans quoi SITALY disparaîtrait de la page. */}
+            <div className="flex h-[var(--mot-fente,14vw)] shrink-0 items-center justify-center">
+              <p className="zoom-word-fallback font-display text-[max(2.6rem,8.4vw)] font-extrabold leading-none tracking-[-0.02em]">
+                Sitaly
+              </p>
+            </div>
 
-            {/* Trois repères sous le bouton. Le premier écran ne portait qu'un
+            {/* Marge basse plus généreuse que la haute : la hampe du « y » descend
+              sous la fente, la ligne suivante doit lui laisser le passage. */}
+            <div className="flex flex-col items-center pt-8">
+              {/* text-wrap: balance évite le mot orphelin sur la seconde ligne
+                quand la phrase ne tient pas d'un seul tenant. */}
+              <p className="max-w-5xl text-balance font-display text-[clamp(1.4rem,3.1vw,2.6rem)] font-extrabold leading-[1.08]">
+                <span className="accent-word">installe et pilote</span>{" "}
+                <span className="tracking-[0.02em]">votre présence en ligne</span>
+              </p>
+
+              {/* La phrase qui porte le positionnement : ce qui est fait, et par
+                qui. « Une seule personne » remplace le mot agence, qui
+                promettait une équipe que Sitaly n'a pas. */}
+              <p className="measure mt-4 text-lg text-muted-foreground">
+                Le site internet, la publicité en ligne et les automatisations. Une seule personne
+                au bout du fil, celle qui construit.
+              </p>
+
+              <div className="mt-5 flex items-center gap-3 text-muted-foreground">
+                <svg
+                  viewBox="0 0 88 46"
+                  aria-hidden="true"
+                  className="h-8 w-16 shrink-0 -scale-x-100 text-brand-ink/45"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                >
+                  <path d="M84 42C68 16 44 4 6 6" />
+                  <path d="M6 6l17 8M6 6l11 13" />
+                </svg>
+                <span className="accent-word -rotate-2 text-xl">et vous gardez la main</span>
+              </div>
+
+              <a
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-7 py-4 text-base font-semibold text-accent-foreground shadow-glow transition hover:brightness-110"
+              >
+                <Calendar className="h-5 w-5" />
+                Parler de votre projet
+              </a>
+
+              {/* Trois repères sous le bouton. Le premier écran ne portait qu'un
                 titre et un bouton : de quoi paraître vide, et rien pour lever
                 les objections de départ. */}
-            <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-sm text-muted-foreground">
-              {["Mise en ligne en 48h", "Réponse sous 24h", "Sans engagement de durée"].map((t) => (
-                <li key={t} className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-signal-ink" />
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </div>
+              <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-sm text-muted-foreground">
+                {["Mise en ligne en 48h", "Réponse sous 24h", "Sans engagement de durée"].map(
+                  (t) => (
+                    <li key={t} className="flex items-center gap-2">
+                      <Check className="h-4 w-4 shrink-0 text-signal-ink" />
+                      {t}
+                    </li>
+                  ),
+                )}
+              </ul>
+            </div>
 
-          {/* Repère de défilement, sorti du flux : dans la colonne, il ajoutait
+            {/* Repère de défilement, sorti du flux : dans la colonne, il ajoutait
               une hauteur que le bas de l'écran collé n'avait pas et poussait le
               reste hors cadre. */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-x-0 bottom-6 flex flex-col items-center gap-2 text-muted-foreground/70"
-          >
-            <span className="rail-label">Faites défiler</span>
-            <ChevronDown className="h-5 w-5 animate-bounce" />
+            <div
+              aria-hidden="true"
+              className="absolute inset-x-0 bottom-6 flex flex-col items-center gap-2 text-muted-foreground/70"
+            >
+              <span className="rail-label">Faites défiler</span>
+              <ChevronDown className="h-5 w-5 animate-bounce" />
+            </div>
           </div>
-        </div>
+        </>
       }
     >
       <CeQuOnFait />

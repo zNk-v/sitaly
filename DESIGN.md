@@ -200,20 +200,43 @@ colonne de gauche : pastille, titre, annotation, ligne défilante, sous-titre,
 deux boutons, trois chiffres, une mention. Le visiteur ne savait pas où
 regarder.
 
-La règle qui remplace tout ça : **le hero porte une phrase, un objet graphique
-et un bouton.** Rien d'autre. Les chiffres, les garanties et la preuve
-descendent dans la page, où ils travaillent mieux.
+La règle : **le hero porte une phrase, un objet graphique et un bouton.** Les
+chiffres et la preuve descendent dans la page, où ils travaillent mieux. Trois
+repères courts sous le bouton font exception : ils lèvent les objections de
+départ sans ouvrir de second discours.
 
-Le nom de la marque vit dans la phrase et en porte le graphisme :
-« Agence web pour artisans, indépendants et PME, **SITALY** fait sonner votre
-téléphone ». Linov applique la même construction avec son propre nom. Le verbe
-reste concret : un artisan attend que son téléphone sonne, pas qu'on
-« digitalise son entreprise ».
+Le nom de la marque est l'objet graphique. Il n'est pas posé sur le fond, il
+est **découpé dedans** : un trou dans un voile couleur papier, qui grandit au
+défilement jusqu'à laisser voir le panneau noir de l'offre. Le mot reprend la
+casse et la chasse du logo, une capitale et le reste en bas de casse.
 
-Sous le titre, les trois sites livrés forment une bande large que le bas du pli
-coupe. Cette coupe fait deviner une suite et invite à défiler.
+### Le champ derrière
 
----
+Le premier écran a d'abord été un aplat crème. Il paraissait vide, et la
+signature bleu-rouge du site n'apparaissait nulle part sur l'écran qui la
+présente. Le champ est un balayage d'arcs concentriques tramés, adapté d'un
+hero 21st.dev, et il obéit à trois contraintes qui ne sont pas négociables.
+
+**Les arcs s'éteignent au centre.** Pas par goût : le centre porte le texte,
+et il porte surtout le trou du mot, qui donne sur le panneau noir. Tout décor
+posé par-dessus ce trou délave le noir en gris.
+
+**Le dégradé est déséquilibré.** Sur un papier crème, violet et rouge à faible
+opacité virent tous deux au rose. Un parcours régulier du bleu au rouge donne
+un champ rose uni, pas un bleu qui rougit. Le bleu tient donc la première
+moitié, le rouge la seule extrémité, et l'axe vise le coin où les bandes sont
+denses.
+
+**Le contraste se mesure sur le rendu, pas sur le jeton.** Le fond du texte
+n'est plus le papier : c'est le papier plus ce que le champ y dépose. Pire cas
+relevé, 5,57:1 contre 6,31:1 sur papier nu.
+
+### Ce qui tient dans l'écran
+
+L'écran collé découpe ce qui dépasse. Deux règles en découlent. Toute mesure
+du hero exprimée en `vw` doit être bornée en `vh`, sans quoi elle grossit
+pendant que la place diminue. Et sous 700 px de fenêtre, aucun réglage ne fait
+tenir la colonne : l'effet ne s'active pas, la scène redevient deux sections.
 
 ## 5. Grille et rythme
 
