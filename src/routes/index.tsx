@@ -15,8 +15,6 @@ import {
   Instagram,
   Linkedin,
 } from "lucide-react";
-import teddy448 from "@/assets/teddy-vidal-448.jpg";
-import teddy672 from "@/assets/teddy-vidal-672.jpg";
 import exampleRenovation from "@/assets/example-renovation.jpg";
 import examplePlombier from "@/assets/example-plombier.jpg";
 import exampleElectricien from "@/assets/example-electricien.jpg";
@@ -29,6 +27,7 @@ import { StackedOffers } from "@/components/StackedOffers";
 import { MainNav } from "@/components/MainNav";
 import { Surligne } from "@/components/Surligne";
 import { RealisationsCarousel } from "@/components/RealisationsCarousel";
+import { FondateurCard } from "@/components/FondateurCard";
 import { ZoomIntro } from "@/components/ZoomIntro";
 import { REALISATIONS } from "@/data/realisations";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
@@ -908,57 +907,16 @@ function Founder() {
   return (
     <section className="bg-paper-sunk py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="grid items-center gap-12 lg:grid-cols-[auto_1fr] lg:gap-16">
-          <div className="rise mx-auto w-full max-w-[260px] lg:mx-0">
-            <div className="zoom-frame relative rounded-2xl border border-border">
-              <img
-                src={teddy448}
-                srcSet={`${teddy448} 448w, ${teddy672} 672w`}
-                sizes="260px"
-                width={448}
-                height={560}
-                loading="lazy"
-                decoding="async"
-                alt="Teddy Vidal, fondateur de Sitaly"
-                className="block h-auto w-full"
-              />
-            </div>
-          </div>
-
-          <div>
-            <div className="rail-label text-brand-ink">Qui est derrière</div>
-            <h2 className="display-section mt-3">
+        <SectionHeader
+          eyebrow="L'interlocuteur"
+          title={
+            <>
               Un seul interlocuteur,{" "}
               <span className="accent-word text-brand-ink">celui qui construit votre site</span>
-            </h2>
-            <div className="measure mt-6 space-y-4 text-lg text-muted-foreground">
-              <p>
-                Sitaly, c'est moi. Je conçois les sites, je pilote les campagnes et je branche les
-                agents IA. Vous n'aurez pas un commercial à l'appel découverte et un stagiaire sur
-                votre projet.
-              </p>
-              <p>
-                Je travaille à distance, partout en France. Pas de déplacement à facturer, pas de
-                rendez-vous à caler trois semaines à l'avance : on s'appelle vingt minutes et on
-                sait tout de suite si ça vaut le coup.
-              </p>
-            </div>
-
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <div>
-                <div className="font-display text-lg font-bold">Teddy Vidal</div>
-                <div className="text-sm text-muted-foreground">Fondateur de Sitaly</div>
-              </div>
-              <a
-                href={`tel:${SITALY_PHONE}`}
-                className="inline-flex items-center gap-2 rounded-xl border border-border px-5 py-3 text-sm font-semibold transition hover:bg-secondary"
-              >
-                <Phone className="h-4 w-4" />
-                {SITALY_PHONE_DISPLAY}
-              </a>
-            </div>
-          </div>
-        </div>
+            </>
+          }
+        />
+        <FondateurCard className="mt-16" />
       </div>
     </section>
   );
