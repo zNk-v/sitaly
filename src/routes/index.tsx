@@ -194,8 +194,15 @@ function Ouverture() {
             {/* Hauteur fixe : la fente du mot doit tomber à --mot-haut de la
               tête de section, la même valeur que celle qui positionne le mot
               dans le voile. Une colonne centrée ne le garantissait pas. */}
-            <div className="flex h-[var(--mot-haut,34vh)] items-end pb-10">
-              <p className="font-display text-[clamp(1.05rem,2vw,1.6rem)] font-extrabold tracking-[0.08em] text-muted-foreground">
+            <div className="flex h-[var(--mot-haut,34vh)] flex-col items-center justify-end gap-3 pb-10">
+              {/* La signature du fondateur. Le vert fluo ne tient pas sur le
+                  papier — 1,35:1, soit rien — d'où la plaque d'encre, où il
+                  monte à 13,8:1. La plaque n'est pas un ornement, c'est ce qui
+                  rend la couleur demandée lisible. */}
+              <p className="inline-flex rounded-xl bg-foreground px-5 py-2.5 font-display text-[clamp(1.5rem,3.8vw,3rem)] font-extrabold leading-none tracking-[-0.01em] text-fluo sm:px-7 sm:py-3">
+                TEDDY VIDAL
+              </p>
+              <p className="font-display text-[clamp(0.95rem,1.6vw,1.25rem)] font-extrabold tracking-[0.08em] text-muted-foreground">
                 Pour les indépendants, les TPE et les PME
               </p>
             </div>

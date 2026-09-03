@@ -57,6 +57,7 @@
   --color-brand: var(--brand);
   --color-brand-deep: var(--brand-deep);
   --color-brand-ink: var(--brand-ink);
+  --color-fluo: var(--fluo);
   --color-signal: var(--signal);
   --color-signal-ink: var(--signal-ink);
 
@@ -126,6 +127,11 @@
   --panel-via: oklch(0.48 0.22 330);
   --panel-to: oklch(0.5 0.21 25);
 
+  /* Vert fluo de la signature du fondateur. Il ne vit que sur l'encre : sur le
+     papier crème il mesure 1,35:1, soit rien du tout. Sur l'encre, 13,8:1.
+     Teinte 145 et non 165, celle de --signal : deux verts au même endroit de
+     la roue, l'un décoratif et l'autre porteur de sens, se confondent. */
+  --fluo: oklch(0.86 0.262 145);
   --signal: oklch(0.72 0.17 165);
   --signal-ink: oklch(0.48 0.13 165);
 
