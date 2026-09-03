@@ -28,7 +28,6 @@ import { MainNav } from "@/components/MainNav";
 import { RealisationsCarousel } from "@/components/RealisationsCarousel";
 import { HeroChamp } from "@/components/HeroChamp";
 import { SiteHeader } from "@/components/SiteHeader";
-import { MetiersDefilement } from "@/components/MetiersDefilement";
 import { FondateurCard } from "@/components/FondateurCard";
 import { ZoomIntro } from "@/components/ZoomIntro";
 import { REALISATIONS } from "@/data/realisations";
@@ -117,7 +116,6 @@ function SitalyHome() {
     <div ref={rootRef} className="min-h-screen bg-background text-foreground">
       <SiteHeader accueil />
       <Ouverture />
-      <ProfessionsMarquee />
       <Problem />
       <HowItWorks />
       <StackedOffers />
@@ -350,21 +348,6 @@ function CeQuOnFait() {
           </a>
         </div>
       </div>
-    </section>
-  );
-}
-
-/* ---------------- PROFESSIONS MARQUEE ---------------- */
-function ProfessionsMarquee() {
-  return (
-    <section className="border-t border-border bg-paper-sunk pt-10 sm:pt-12">
-      <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-        <div className="rail-label text-brand-ink">Pour qui</div>
-        <h2 className="mt-3 font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
-          Le même travail de fond, quel que soit votre métier
-        </h2>
-      </div>
-      <MetiersDefilement className="mt-5 sm:mt-6" />
     </section>
   );
 }

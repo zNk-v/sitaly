@@ -1,5 +1,6 @@
 /**
- * Le champ derrière le premier écran : les chevrons du logo, emboîtés.
+ * Le champ derrière le premier écran : les chevrons du logo, et les métiers
+ * éparpillés en texture.
  *
  * Adapté d'un hero 21st.dev (`componentry/hero-geometric`), dont l'idée tient
  * en deux couches : de larges arcs concentriques qui saignent de tous les
@@ -116,6 +117,92 @@ export function HeroChamp() {
             <path d="M 800 -290 L 1180 90 L 800 470" strokeWidth="92" opacity="0.46" />
             <path d="M 1035 -290 L 1415 90 L 1035 470" strokeWidth="92" opacity="0.46" />
           </g>
+        </g>
+        {/* Les métiers, éparpillés. Ils occupaient une bande à part avec son
+            propre titre ; la page était chargée, ils passent en texture du
+            champ. Ils vivent sous le même masque que les chevrons, donc ils
+            s'effacent au centre où passent le texte et le trou du mot.
+
+            Ils sont décoratifs, `aria-hidden` par le conteneur : à cette
+            opacité et à cette taille, les faire lire par une synthèse vocale
+            reviendrait à annoncer douze mots sans contexte. Les pages métier et
+            le menu Expertises portent ces termes pour de bon.
+
+            Ceux du bord droit s'ancrent par leur fin : posés par leur début,
+            ils sortaient du cadre en plein milieu d'un mot, ce qui lit comme
+            une coupe ratée et non comme un débord. */}
+        <g mask="url(#champ-masque)" className="champ-metiers" fill="var(--ink)">
+          <text x="90" y="120" fontSize="22" opacity="0.16" transform="rotate(-8 90 120)">
+            Artisans
+          </text>
+          <text x="300" y="62" fontSize="17" opacity="0.12" transform="rotate(4 300 62)">
+            Ostéopathes
+          </text>
+          <text
+            x="1300"
+            y="96"
+            fontSize="20"
+            opacity="0.15"
+            textAnchor="end"
+            transform="rotate(-5 1300 96)"
+          >
+            Coachs sportifs
+          </text>
+          <text
+            x="1418"
+            y="210"
+            fontSize="16"
+            opacity="0.11"
+            textAnchor="end"
+            transform="rotate(7 1418 210)"
+          >
+            Agents immobiliers
+          </text>
+          <text x="48" y="330" fontSize="18" opacity="0.13" transform="rotate(-3 48 330)">
+            Garages automobiles
+          </text>
+          <text
+            x="1400"
+            y="430"
+            fontSize="21"
+            opacity="0.14"
+            textAnchor="end"
+            transform="rotate(-6 1400 430)"
+          >
+            Restaurateurs
+          </text>
+          <text x="120" y="610" fontSize="19" opacity="0.12" transform="rotate(5 120 610)">
+            Commerçants
+          </text>
+          <text x="400" y="800" fontSize="23" opacity="0.15" transform="rotate(-4 400 800)">
+            Avocats
+          </text>
+          <text x="760" y="858" fontSize="17" opacity="0.11" transform="rotate(3 760 858)">
+            Experts-comptables
+          </text>
+          <text
+            x="1392"
+            y="780"
+            fontSize="20"
+            opacity="0.13"
+            textAnchor="end"
+            transform="rotate(-7 1392 780)"
+          >
+            Cabinets de recrutement
+          </text>
+          <text
+            x="1412"
+            y="640"
+            fontSize="16"
+            opacity="0.1"
+            textAnchor="end"
+            transform="rotate(6 1412 640)"
+          >
+            Centres de formation
+          </text>
+          <text x="620" y="44" fontSize="18" opacity="0.12" transform="rotate(-2 620 44)">
+            Consultants
+          </text>
         </g>
       </svg>
     </div>

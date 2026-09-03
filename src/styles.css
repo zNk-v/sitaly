@@ -107,8 +107,8 @@
 
      Il finissait en teinte 25. Un rouge à cette clarté n'est pas un rouge,
      c'est un rose : la bande mesurait rgb(255, 232, 233) à l'écran, teinte 14.
-     Le rouge de la triade ne tient qu'aux clartés basses, celles du ruban et
-     des boutons ; tinté clair, il sort de la direction du site.
+     Le rouge de la triade ne tient qu'aux clartés basses, celles du dégradé
+     porteur et des boutons ; tinté clair, il sort de la direction du site.
 
      L'arrêt oklch intermédiaire est explicite pour la même raison : le chemin
      court de 255 à 25 traverse le rose, même sans arrêt posé dessus.
@@ -130,10 +130,11 @@
   --panel-via: oklch(0.48 0.22 330);
   --panel-to: oklch(0.5 0.21 25);
 
-  /* Le dégradé porteur : ruban des métiers et boutons primaires. Clarté
+  /* Le dégradé porteur : boutons primaires et textes en dégradé. Clarté
      constante à 0,46 sur toute la course, chroma maximale tenable en sRGB pour
      chaque teinte. Le blanc y tient de 7,2 à 8,1:1, mesuré sur le rendu. La
-     clarté constante évite qu'une moitié paraisse plus lourde que l'autre. */
+     clarté constante évite qu'une moitié paraisse plus lourde que l'autre.
+     Le nom vient du ruban des métiers, qui l'a porté le premier. */
   /* Encres colorées pour texte sur papier. Clarté constante à 0,47 : les trois
      mots accentués pèsent alors le même poids, aucun ne crie plus fort que les
      autres. Contrastes sur le papier : 6,69 / 7,49 / 7,19:1.
@@ -190,7 +191,7 @@
      La première déclaration sert de repli aux navigateurs qui ne savent pas. */
   /* Alias du dégradé porteur. Il avait ses propres arrêts, dont un repli sRGB
      qui passait par le rose : deux dégradés de marque cohabitaient, l'un pour
-     le ruban et les boutons, l'autre pour les textes. */
+     les boutons, l'autre pour les textes. */
   --gradient-brand: var(--gradient-ruban);
   /* Hero en clair. La nappe violette est un voile posé en haut, pas une nappe
      de fond : elle se dissout dans le papier chaud avant le milieu de la
@@ -279,8 +280,8 @@
 /* Texte en dégradé sur la triade, réservé aux très grandes tailles : c'est là
    que la couleur remplace la masse.
 
-   Il partage les arrêts du dégradé porteur, ceux du ruban et des boutons : une
-   seule définition pour les trois. Il avait les siens, qui passaient par le
+   Il partage les arrêts du dégradé porteur, ceux des boutons : une seule
+   définition pour les deux. Il avait les siens, qui passaient par le
    rose — teinte 350 — et ne correspondaient donc à rien d'autre sur le site.
    La clarté constante de 0,46 sert ici aussi : sur le papier, aucun mot du
    dégradé ne pèse plus qu'un autre. */
@@ -824,15 +825,6 @@
   animation: float-soft 6s ease-in-out infinite;
 }
 
-@keyframes marquee-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 /* Le repère de défilement est sorti du flux pour se coller au bas de l'écran
    collé. Sans écran collé — repli ou mouvement réduit — la colonne fait la
    hauteur de son contenu, et `bottom` le repose sur le bouton. Il revient donc
@@ -1083,90 +1075,241 @@
   }
 }
 
-/* Défilement des métiers — deux rangées à contresens ---------------------- */
-
-/* Le ruban. Ses arrêts ne sont pas ceux de `--gradient-brand` : sous du blanc,
-   celui-ci tombe à 4,78:1 à son extrémité rouge. Ici la clarté reste à 0,46 sur
-   toute la course, avec la chroma maximale tenable en sRGB pour chaque teinte —
-   au-delà, les arrêts sortent du gamut et le navigateur les ramène en écrasant
-   la teinte. Le blanc y tient de 7,3 à 8,1:1. */
-/* La bande n'a pas de fond : les mots portent le dégradé, posés sur le papier
-   de la section. Elle a été un aplat de dégradé aux mots en réserve blanche,
-   puis un aplat d'encre aux mots en dégradé clair. Sans fond, ce sont les
-   arrêts porteurs qui reviennent — ceux à 0,46 de clarté — parce qu'un texte
-   sur papier demande l'inverse d'un texte sur encre : les arrêts clairs y
-   tomberaient à 1,8:1. Le pire point du parcours tient 6,57:1.
-
-   Le dégradé est fixé sur la fenêtre (`background-attachment: fixed`) et non
-   sur chaque mot : sans cela chaque mot rejouerait le dégradé entier sur sa
-   propre boîte, et l'on aurait douze petits dégradés au lieu d'un balayage. */
-.ruban .defile-mot {
-  background: var(--gradient-ruban);
-  background-attachment: fixed;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* Les métiers du champ. Même famille que le reste du site, à une graisse et
+   une taille qui les tiennent au rang de texture. */
+.champ-metiers {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
-/* Repli : sans découpe sur le texte, les mots restent en encre et lisibles. */
-@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
-  .ruban .defile-mot {
-    color: var(--foreground);
+
+/* En-tête flottant ------------------------------------------------------- */
+
+/* Hauteur totale occupée par l'en-tête flottant : la pastille et sa gouttière.
+   Les pages sans hero s'en servent pour ne pas glisser dessous. */
+:root {
+  --entete-hauteur: 4.5rem;
+}
+
+/* La pastille est peinte par défaut. Sans `animation-timeline`, un en-tête
+   transparent resterait bloqué au-dessus d'une section claire, illisible. */
+.entete-plaque {
+  background: color-mix(in oklab, var(--paper) 82%, transparent);
+  backdrop-filter: saturate(1.4) blur(14px);
+  box-shadow:
+    0 1px 2px oklch(0.2 0.03 300 / 0.05),
+    0 12px 30px -18px oklch(0.2 0.03 300 / 0.5);
+  border: 1px solid color-mix(in oklab, var(--ink) 8%, transparent);
+}
+
+/* Là où la timeline existe, la pastille s'efface en haut de page : le champ du
+   hero passe dessous sans couture, et elle revient dès qu'on quitte le premier
+   écran. La course est courte — 90 px — pour que la bascule soit franche et
+   non un fondu qu'on traverse pendant trois écrans. */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .entete-plaque {
+      animation: entete-poser linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 90px;
+    }
+    @keyframes entete-poser {
+      from {
+        background: color-mix(in oklab, var(--paper) 0%, transparent);
+        box-shadow: 0 0 0 oklch(0.2 0.03 300 / 0);
+        border-color: transparent;
+      }
+      to {
+        background: color-mix(in oklab, var(--paper) 82%, transparent);
+        box-shadow:
+          0 1px 2px oklch(0.2 0.03 300 / 0.05),
+          0 12px 30px -18px oklch(0.2 0.03 300 / 0.5);
+        border-color: color-mix(in oklab, var(--ink) 8%, transparent);
+      }
+    }
   }
 }
 
-/* Le losange suit le fond, plus le texte : sur papier, une réserve blanche
-   serait invisible. */
-.ruban .defile-losange {
-  background: color-mix(in oklab, var(--ink) 28%, transparent);
+/* Sur une page dont le premier écran est sombre, la pastille ne peut pas
+   s'effacer : ses liens sont en encre, ils disparaîtraient sur le fond noir.
+   Elle reste peinte dès le haut. */
+.entete-plaque--fixe {
+  animation: none;
 }
 
-.defile-piste {
-  animation: marquee-scroll var(--defile-duree, 46s) linear infinite;
-  animation-direction: var(--defile-sens, normal);
-  will-change: transform;
+/* Les liens de l'en-tête prennent la graisse d'affichage du site et non celle
+   de l'interface, et se soulignent du dégradé porteur. Le trait naît du centre
+   pour ne pas donner l'impression de glisser depuis le lien voisin. */
+@utility lien-entete {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  transition: color 0.2s ease;
 }
-
-/* L'espace entre deux mots vit sur le séparateur, pas sur un `gap` : il doit
-   aussi séparer le dernier mot d'une piste du premier de sa copie, ce qu'un
-   `gap` posé sur la liste ne fait pas. */
-.defile-losange {
-  display: block;
-  width: 0.42em;
-  height: 0.42em;
-  margin-inline: clamp(0.9rem, 1.8vw, 1.6rem);
-  rotate: 45deg;
+/* Le trait est calé sur le texte, pas sur la boîte : le déclencheur d'un menu
+   porte 20 px de rembourrage vertical pour faire le pont vers le panneau
+   déroulant, et un trait posé au bas de cette boîte flotterait dans le vide. */
+.lien-entete::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  top: calc(50% + 0.72em);
+  height: 2px;
   border-radius: 2px;
+  background: var(--gradient-ruban);
+  transition:
+    left 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    right 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (hover: hover) {
+  .lien-entete:hover {
+    color: var(--foreground);
+  }
+  .lien-entete:hover::after {
+    left: 0;
+    right: 0;
+  }
+}
+.lien-entete:focus-visible::after {
+  left: 0;
+  right: 0;
+}
+
+/* Logo ------------------------------------------------------------------- */
+
+/* L'aspect ratio remplace les dimensions intrinsèques de l'image : sans lui,
+   un élément vide n'a pas de largeur et le bandeau saute au chargement. */
+@utility logo-sitaly {
+  display: block;
+  aspect-ratio: 414 / 108;
+  background-image: var(--logo-forme);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@supports (mask-image: url("#a")) or (-webkit-mask-image: url("#a")) {
+  .logo-sitaly {
+    background-image: none;
+    background: var(--logo-peinture);
+    -webkit-mask-image: var(--logo-forme);
+    mask-image: var(--logo-forme);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+  }
+}
+
+/* Bouton primaire --------------------------------------------------------- */
+
+/* Le dégradé fait deux fois la largeur du bouton et glisse au survol : la
+   couleur traverse au lieu de s'éclaircir. `brightness(1.1)`, ce qu'il y avait
+   avant, délavait un dégradé au lieu de l'animer.
+
+   Le halo n'est pas une ombre grise : il reprend la teinte du dégradé, sinon
+   il pose un cerne neutre sous une surface colorée. */
+@utility bouton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  color: white;
+  background-image: var(--gradient-ruban);
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  box-shadow:
+    0 1px 2px oklch(0.3 0.08 290 / 0.25),
+    0 10px 26px -12px oklch(0.46 0.2 290 / 0.7);
+  transition:
+    background-position 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease;
+}
+
+/* Le secondaire reprend la géométrie du primaire — même pastille, même
+   hauteur — et ne s'en distingue que par la surface : papier cerné plutôt que
+   dégradé. Sans lui, un « Refuser » en carré bordé côtoyait un « Accepter » en
+   pastille dégradée, et la paire ne lisait pas comme une paire. */
+@utility bouton-secondaire {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  color: var(--foreground);
+  background: var(--paper);
+  border: 1px solid color-mix(in oklab, var(--ink) 14%, transparent);
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease;
+}
+@media (hover: hover) {
+  .bouton-secondaire:hover {
+    border-color: color-mix(in oklab, var(--ink) 30%, transparent);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px -14px oklch(0.2 0.05 300 / 0.6);
+  }
+}
+.bouton-secondaire:active {
+  transform: translateY(0);
+}
+.bouton-secondaire:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bouton-secondaire {
+    transition: none;
+  }
+}
+
+/* La flèche ou l'icône avance avec le dégradé. */
+@utility bouton-fleche {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (hover: hover) {
-  .defile:hover .defile-piste {
-    animation-play-state: paused;
+  .bouton:hover {
+    background-position: 100% 50%;
+    transform: translateY(-2px);
+    box-shadow:
+      0 1px 2px oklch(0.3 0.08 290 / 0.28),
+      0 18px 36px -14px oklch(0.46 0.2 290 / 0.8);
+  }
+  .bouton:hover .bouton-fleche {
+    transform: translateX(4px);
+  }
+}
+.bouton:active {
+  transform: translateY(0);
+}
+.bouton:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bouton,
+  .bouton-fleche {
+    transition: none;
   }
 }
 
-/* Figée, la bande couperait les mots au bord. Elle passe donc à la ligne. */
-@media (prefers-reduced-motion: reduce) {
-  .defile-piste {
-    animation: none;
-    width: 100%;
-  }
-  .defile-copie {
-    display: none;
-  }
-  /* Sur un ruban plein, les lignes ne doivent pas toucher le bord. */
-  .defile {
-    padding-inline: 1rem;
-  }
-  /* `shrink-0` sert la boucle : sans lui, les deux pistes se compressent au
-     lieu de défiler. Il empêche en revanche le retour à la ligne, la piste
-     restant large comme son contenu. Il est donc levé ici, et seulement ici. */
-  .defile-rang {
-    flex: 1 1 auto;
-    flex-wrap: wrap;
-    justify-content: center;
-    min-width: 0;
-    row-gap: 0.25rem;
-  }
+/* Les métiers du champ. Même famille que le reste du site, à une graisse et
+   une taille qui les tiennent au rang de texture. */
+.champ-metiers {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 /* ============================================================

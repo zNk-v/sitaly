@@ -223,28 +223,21 @@ du hero exprimée en `vw` doit être bornée en `vh`, sans quoi elle grossit
 pendant que la place diminue. Et sous 700 px de fenêtre, aucun réglage ne fait
 tenir la colonne : l'effet ne s'active pas, la scène redevient deux sections.
 
-### Le ruban des métiers
+### Les métiers, en texture du champ
 
-Trois traitements ont été essayés avant celui-ci, et les deux abandons valent
-la peine d'être gardés en mémoire.
+Ils ont d'abord été des pastilles encadrées, puis des mots en display sur deux
+rangées, puis un ruban plein — dégradé au fond et mots en réserve, puis encre au
+fond et mots en dégradé —, puis une bande sans fond. Chaque version réglait le
+défaut de la précédente en ajoutant du poids à une page qui en avait déjà.
 
-Des pastilles encadrées, une par métier : bordure, ombre et fond de carte
-répétés douze fois, la bande lisait comme un formulaire. Puis des mots en
-display, un sur deux en contour : le contour se voyait pour ce qu'il est, du
-texte transparent, et non pour un effet.
+Ils ne forment plus une section. Ils sont éparpillés dans le champ du premier
+écran, sous le même masque que les chevrons, donc absents du centre où passent
+le texte et le trou du mot. Le titre qui les annonçait a disparu avec la
+section.
 
-Ce qui tient : un ruban plein qui traverse la page, les métiers en réserve
-blanche. Ses arrêts ne sont pas ceux de `--gradient-brand` — celui-ci tombe à
-4,78:1 sous du blanc à son extrémité rouge. Le ruban garde une **clarté
-constante de 0,46** sur toute la course, avec la chroma maximale tenable en
-sRGB pour chaque teinte : au-delà, les arrêts sortent du gamut et le navigateur
-les ramène en écrasant la teinte. Mesuré sur le rendu, le blanc y tient de 7,2
-à 8,1:1.
-
-La clarté constante n'est pas qu'une affaire de contraste : elle évite qu'une
-moitié du ruban paraisse plus lourde que l'autre.
-
----
+Ce qu'on y perd, et qu'il faut savoir : ils sont désormais décoratifs. Les pages
+métier et le menu Expertises restent les endroits où ces termes travaillent
+vraiment.
 
 ## 5. Grille et rythme
 
@@ -274,7 +267,6 @@ n'entre dans le bundle.
 | Progression de lecture | `animation-timeline: scroll(root)`, aucun écouteur |
 | Empilement des offres | `position: sticky` à décalages croissants, bande de titre de même hauteur |
 | Halo du hero | Deux variables CSS écrites au rythme de l'écran, pointeur fin |
-| Compteur de métiers | Marquee CSS existant, conservé |
 
 Règles fermes : `transform` et `opacity` uniquement, 150 à 300 ms sur les
 micro-interactions, `prefers-reduced-motion` respecté partout. Les hooks qui
