@@ -1075,14 +1075,6 @@
   }
 }
 
-/* Les métiers du champ. Même famille que le reste du site, à une graisse et
-   une taille qui les tiennent au rang de texture. */
-.champ-metiers {
-  font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
 /* En-tête flottant ------------------------------------------------------- */
 
 /* Hauteur totale occupée par l'en-tête flottant : la pastille et sa gouttière.
@@ -1302,14 +1294,6 @@
   .bouton-fleche {
     transition: none;
   }
-}
-
-/* Les métiers du champ. Même famille que le reste du site, à une graisse et
-   une taille qui les tiennent au rang de texture. */
-.champ-metiers {
-  font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: 0.02em;
 }
 
 /* ============================================================

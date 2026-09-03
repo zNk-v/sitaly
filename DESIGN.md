@@ -223,21 +223,17 @@ du hero exprimée en `vw` doit être bornée en `vh`, sans quoi elle grossit
 pendant que la place diminue. Et sous 700 px de fenêtre, aucun réglage ne fait
 tenir la colonne : l'effet ne s'active pas, la scène redevient deux sections.
 
-### Les métiers, en texture du champ
+### Les métiers, sans place pour l'instant
 
-Ils ont d'abord été des pastilles encadrées, puis des mots en display sur deux
-rangées, puis un ruban plein — dégradé au fond et mots en réserve, puis encre au
-fond et mots en dégradé —, puis une bande sans fond. Chaque version réglait le
-défaut de la précédente en ajoutant du poids à une page qui en avait déjà.
+Ils ont été des pastilles encadrées, des mots en display sur deux rangées, un
+ruban plein sous trois habillages, une bande sans fond, puis une texture
+éparpillée dans le champ du premier écran. Chaque version réglait le défaut de
+la précédente en ajoutant du poids à une page qui en avait déjà, et la dernière
+salissait le hero.
 
-Ils ne forment plus une section. Ils sont éparpillés dans le champ du premier
-écran, sous le même masque que les chevrons, donc absents du centre où passent
-le texte et le trou du mot. Le titre qui les annonçait a disparu avec la
-section.
-
-Ce qu'on y perd, et qu'il faut savoir : ils sont désormais décoratifs. Les pages
-métier et le menu Expertises restent les endroits où ces termes travaillent
-vraiment.
+Ils ne sont nulle part sur l'accueil. C'est un choix d'attente, pas un abandon :
+la liste reste juste et sert le positionnement. Les pages métier et le menu
+Expertises la portent en attendant qu'un endroit se dégage.
 
 ## 5. Grille et rythme
 
