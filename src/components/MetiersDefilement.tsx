@@ -12,10 +12,9 @@ import { cn } from "@/lib/utils";
  * - Des mots en display, un sur deux en contour. Le contour se voyait pour ce
  *   qu'il est, un texte transparent, et non pour un effet.
  *
- * Le ruban est un aplat d'encre, et ce sont les mots qui portent le dégradé.
- * L'inverse a été essayé d'abord — dégradé au fond, mots en réserve blanche —
- * mais la couleur passait derrière le texte au lieu de le traverser, et chaque
- * mot changeait de fond en défilant.
+ * La bande n'a pas de fond : les mots portent le dégradé, posés sur le papier
+ * de la section. Deux versions l'ont précédée — un aplat de dégradé aux mots en
+ * réserve blanche, puis un aplat d'encre aux mots en dégradé clair.
  *
  * Le dégradé est fixé sur la fenêtre et non sur chaque mot : sans cela on
  * aurait douze petits dégradés au lieu d'un seul balayage.
