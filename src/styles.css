@@ -494,8 +494,11 @@
   position: static;
 }
 
+/* Le seuil de hauteur n'est pas décoratif : sous 700 px de fenêtre, le contenu
+   du hero dépasse l'écran collé et se fait rogner par son overflow. En dessous,
+   la scène redevient deux sections l'une après l'autre, et rien n'est coupé. */
 @supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
+  @media (prefers-reduced-motion: no-preference) and (min-height: 700px) {
     .zoom-stage {
       /* La hauteur de la scène EST la durée de l'effet : deux écrans et demi
          de défilement pour ouvrir le mot. La timeline porte un nom, car
@@ -579,9 +582,11 @@
        de texte ne suffisait pas, le bas de colonne dépasse sa moitié et pousse
        la fente vers le haut pendant que le mot reste au centre de la fenêtre. */
     .zoom-stage {
-      --mot-haut: 34vh;
-      --mot-taille: 10.5vw;
-      --mot-fente: 14vw;
+      /* Bornées en vh : sur un écran bas, une valeur purement en vw fait
+         grossir le mot pendant que la place disponible diminue. */
+      --mot-haut: min(24vh, 12rem);
+      --mot-taille: min(9.5vw, 16vh);
+      --mot-fente: min(12.5vw, 21vh);
     }
 
     /* Le mot reprend la casse et la chasse du logo : une capitale, le reste en

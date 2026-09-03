@@ -186,7 +186,7 @@ function Ouverture() {
            le nom. Des réserves à valeurs fixes se désaccordaient dès qu'une
            ligne de texte changeait de longueur.
            Sans hauteur imposée (mode repli), la colonne s'empile simplement. */
-        <div className="flex h-full flex-col items-center px-4 text-center sm:px-6">
+        <div className="relative flex h-full flex-col items-center px-4 text-center sm:px-6">
           {/* Hauteur fixe : la fente du mot doit tomber à --mot-haut de la
               tête de section, la même valeur que celle qui positionne le mot
               dans le voile. Une colonne centrée ne le garantissait pas. */}
@@ -206,7 +206,7 @@ function Ouverture() {
 
           {/* Marge basse plus généreuse que la haute : la hampe du « y » descend
               sous la fente, la ligne suivante doit lui laisser le passage. */}
-          <div className="flex flex-col items-center pt-10">
+          <div className="flex flex-col items-center pt-8">
             {/* text-wrap: balance évite le mot orphelin sur la seconde ligne
                 quand la phrase ne tient pas d'un seul tenant. */}
             <p className="max-w-5xl text-balance font-display text-[clamp(1.4rem,3.1vw,2.6rem)] font-extrabold leading-[1.08]">
@@ -217,12 +217,12 @@ function Ouverture() {
             {/* La phrase qui porte le positionnement : ce qui est fait, et par
                 qui. « Une seule personne » remplace le mot agence, qui
                 promettait une équipe que Sitaly n'a pas. */}
-            <p className="measure mt-5 text-lg text-muted-foreground">
+            <p className="measure mt-4 text-lg text-muted-foreground">
               Le site internet, la publicité en ligne et les automatisations. Une seule personne au
               bout du fil, celle qui construit.
             </p>
 
-            <div className="mt-6 flex items-center gap-3 text-muted-foreground">
+            <div className="mt-5 flex items-center gap-3 text-muted-foreground">
               <svg
                 viewBox="0 0 88 46"
                 aria-hidden="true"
@@ -242,7 +242,7 @@ function Ouverture() {
               href={CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-7 py-4 text-base font-semibold text-accent-foreground shadow-glow transition hover:brightness-110"
+              className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-7 py-4 text-base font-semibold text-accent-foreground shadow-glow transition hover:brightness-110"
             >
               <Calendar className="h-5 w-5" />
               Parler de votre projet
@@ -251,7 +251,7 @@ function Ouverture() {
             {/* Trois repères sous le bouton. Le premier écran ne portait qu'un
                 titre et un bouton : de quoi paraître vide, et rien pour lever
                 les objections de départ. */}
-            <ul className="mt-7 flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-sm text-muted-foreground">
+            <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-sm text-muted-foreground">
               {["Mise en ligne en 48h", "Réponse sous 24h", "Sans engagement de durée"].map((t) => (
                 <li key={t} className="flex items-center gap-2">
                   <Check className="h-4 w-4 shrink-0 text-signal-ink" />
@@ -261,11 +261,12 @@ function Ouverture() {
             </ul>
           </div>
 
-          {/* Repère de défilement : il annonce qu'il se passe quelque chose plus
-              bas, ce qui compte double quand le bas de page est un effet. */}
+          {/* Repère de défilement, sorti du flux : dans la colonne, il ajoutait
+              une hauteur que le bas de l'écran collé n'avait pas et poussait le
+              reste hors cadre. */}
           <div
             aria-hidden="true"
-            className="mt-10 flex flex-col items-center gap-2 text-muted-foreground/70"
+            className="absolute inset-x-0 bottom-6 flex flex-col items-center gap-2 text-muted-foreground/70"
           >
             <span className="rail-label">Faites défiler</span>
             <ChevronDown className="h-5 w-5 animate-bounce" />
