@@ -530,6 +530,22 @@
    les navigateurs sans `animation-timeline` et les visiteurs qui réduisent les
    animations. Un voile figé à l'échelle 1 masquerait la section suivante pour
    toujours : le repli ne peut donc pas être « l'effet, en moins bien ». */
+/* La couche de tête isole son empilement, dans tous les modes.
+
+   Le champ du hero y vit en `z-index: -10`, pour passer sous le texte. Quand
+   l'effet tourne, `.zoom-front` porte un z-index et une animation d'opacité :
+   c'est un contexte d'empilement, et le -10 y reste contenu. En repli — sans
+   `animation-timeline`, ce qui est le cas de Safari avant la version 26, donc
+   de tous les navigateurs sur iPhone — il ne portait plus rien : le -10
+   remontait au contexte racine et le champ passait derrière le fond opaque du
+   conteneur de page, qui le recouvrait entièrement.
+
+   `isolation` plutôt qu'un z-index : elle crée le contexte sans imposer de
+   valeur d'empilement que les règles de l'effet devraient ensuite écraser. */
+.zoom-front {
+  isolation: isolate;
+}
+
 .zoom-cover {
   display: none;
 }
