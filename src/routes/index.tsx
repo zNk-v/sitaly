@@ -293,11 +293,29 @@ function CeQuOnFait() {
   /* Ce que le mot laisse voir, ce sont les prestations réelles, pas des
      formules : le visiteur regarde à l'intérieur de Sitaly et y trouve
      l'offre. Chaque ligne mène à sa page, ce qui sert aussi le maillage. */
+  /* Les deux régies tiennent sur une ligne : ce sont deux canaux d'une même
+     prestation, les séparer laissait croire à deux offres distinctes.
+     Les classes de survol sont écrites en entier, Tailwind ne compile pas un
+     nom de classe assemblé à l'exécution. */
   const prestations = [
-    { texte: "création de site internet", to: "/realisations/", coche: "text-blue-on-ink" },
-    { texte: "campagnes Google Ads", to: "/acquisition/", coche: "text-violet-on-ink" },
-    { texte: "campagnes ChatGPT Ads", href: "/chatgpt-ads/", coche: "text-pink-on-ink" },
-    { texte: "agents IA & automatisations", to: "/agents-ia/", coche: "text-red-on-ink" },
+    {
+      texte: "création de site internet",
+      to: "/realisations/",
+      coche: "text-blue-on-ink",
+      survol: "group-hover:text-blue-on-ink",
+    },
+    {
+      texte: "campagnes Google & ChatGPT Ads",
+      to: "/acquisition/",
+      coche: "text-pink-on-ink",
+      survol: "group-hover:text-pink-on-ink",
+    },
+    {
+      texte: "agents IA & automatisations",
+      to: "/agents-ia/",
+      coche: "text-red-on-ink",
+      survol: "group-hover:text-red-on-ink",
+    },
   ];
 
   return (
@@ -332,7 +350,9 @@ function CeQuOnFait() {
                 >
                   <path d="M8 4l8 8-8 8" />
                 </svg>
-                <span className="font-display text-[clamp(1.5rem,4.6vw,3.6rem)] font-extrabold leading-none tracking-[-0.02em] text-white">
+                <span
+                  className={`font-display text-[clamp(1.5rem,4.6vw,3.6rem)] font-extrabold leading-none tracking-[-0.02em] text-white transition-colors ${p.survol}`}
+                >
                   {p.texte}
                 </span>
               </>
@@ -346,16 +366,9 @@ function CeQuOnFait() {
                 style={{ "--i": i, "--stagger-step": "220ms" } as React.CSSProperties}
                 className={classe}
               >
-                {p.to ? (
-                  <Link to={p.to} className="flex items-center gap-4 sm:gap-6">
-                    {contenu}
-                  </Link>
-                ) : (
-                  /* Landing statique hors routeur : lien classique. */
-                  <a href={p.href} className="flex items-center gap-4 sm:gap-6">
-                    {contenu}
-                  </a>
-                )}
+                <Link to={p.to} className="flex items-center gap-4 sm:gap-6">
+                  {contenu}
+                </Link>
               </li>
             );
           })}

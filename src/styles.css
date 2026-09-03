@@ -558,10 +558,16 @@
         opacity: 0;
       }
     }
-    .zoom-front {
+    /* La couche de tête couvre toute la fenêtre. Rendre son enfant direct
+       cliquable revenait à poser une vitre sur le panneau du dessous, dont les
+       liens ne recevaient plus aucun clic. Seuls les éléments réellement
+       interactifs reprennent le pointeur. */
+    .zoom-front,
+    .zoom-front > * {
       pointer-events: none;
     }
-    .zoom-front > * {
+    .zoom-front a,
+    .zoom-front button {
       pointer-events: auto;
     }
 
