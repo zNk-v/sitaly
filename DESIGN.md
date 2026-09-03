@@ -210,23 +210,6 @@ est **découpé dedans** : un trou dans un voile couleur papier, qui grandit au
 défilement jusqu'à laisser voir le panneau noir de l'offre. Le mot reprend la
 casse et la chasse du logo, une capitale et le reste en bas de casse.
 
-### La signature du fondateur
-
-« TEDDY VIDAL » en vert fluo, sur une plaque d'encre, en tête du premier écran.
-
-La plaque n'est pas un ornement. Le vert fluo demandé, `oklch(0.86 0.262 145)`,
-mesure **1,38:1 sur le papier crème** : à cette clarté, il n'y a pas de version
-du fluo qui tienne sur un fond clair. Le désaturer jusqu'à 3:1 le ramène à un
-vert gazon, ce qui n'est plus la couleur demandée. Sur l'encre, le même vert
-monte à **12,76:1**. La plaque est donc ce qui rend la couleur possible.
-
-Sa teinte est 145 et non 165, celle de `--signal`. Deux verts voisins sur la
-roue, l'un décoratif et l'autre porteur de sens — les coches « Mise en ligne en
-48h » vivent quinze lignes plus bas — se confondent, exactement comme deux
-rouges détruiraient le sens de l'alerte.
-
----
-
 ### Le champ derrière
 
 Le premier écran a d'abord été un aplat crème. Il paraissait vide, et la

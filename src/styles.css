@@ -57,7 +57,6 @@
   --color-brand: var(--brand);
   --color-brand-deep: var(--brand-deep);
   --color-brand-ink: var(--brand-ink);
-  --color-fluo: var(--fluo);
   --color-signal: var(--signal);
   --color-signal-ink: var(--signal-ink);
 
@@ -127,11 +126,6 @@
   --panel-via: oklch(0.48 0.22 330);
   --panel-to: oklch(0.5 0.21 25);
 
-  /* Vert fluo de la signature du fondateur. Il ne vit que sur l'encre : sur le
-     papier crème il mesure 1,35:1, soit rien du tout. Sur l'encre, 13,8:1.
-     Teinte 145 et non 165, celle de --signal : deux verts au même endroit de
-     la roue, l'un décoratif et l'autre porteur de sens, se confondent. */
-  --fluo: oklch(0.86 0.262 145);
   --signal: oklch(0.72 0.17 165);
   --signal-ink: oklch(0.48 0.13 165);
 
@@ -774,6 +768,27 @@
   .zoom-cue {
     position: static;
     margin-top: 2.25rem;
+  }
+}
+
+/* Troisième cas où l'effet ne tourne pas, que les deux règles ci-dessus ne
+   couvrent pas : sous 700 px de fenêtre, la scène est dépliée par sa propre
+   garde de hauteur. `animation-timeline` existe et le mouvement n'est pas
+   réduit, mais il n'y a plus d'écran collé, donc plus de bas contre lequel se
+   caler. */
+@media (max-height: 699px) {
+  .zoom-cue {
+    position: static;
+    margin-top: 2.25rem;
+  }
+}
+
+/* Entre 700 et 769, l'écran collé existe mais ses derniers pixels sont pris :
+   le dégagement mesuré passe de -8 px à 713 à +8 px à 743, puis +25 px à 773.
+   Le repère est décoratif, il s'efface plutôt que de recouvrir les garanties. */
+@media (min-height: 700px) and (max-height: 769px) {
+  .zoom-cue {
+    display: none;
   }
 }
 
