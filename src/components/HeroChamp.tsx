@@ -67,6 +67,22 @@ export function HeroChamp() {
             <stop offset="42%" stopColor="black" />
             <stop offset="100%" stopColor="white" />
           </radialGradient>
+          {/* Masque du portrait. L'ellipse ci-dessus protège le centre d'un
+              écran large, où les chevrons vivent aux extrêmes gauche et droite.
+              En portrait, la bande visible du dessin *est* ce centre : la même
+              ellipse ramenait les chevrons à une opacité effective de 0,06 à
+              0,18, mesurée — invisibles. Ici c'est une bande horizontale : le
+              décor vit en haut et en bas, le texte occupe le milieu. */}
+          <linearGradient id="champ-fondu-portrait" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="white" />
+            <stop offset="20%" stopColor="white" />
+            <stop offset="36%" stopColor="black" />
+            <stop offset="86%" stopColor="black" />
+            <stop offset="100%" stopColor="white" />
+          </linearGradient>
+          <mask id="champ-masque-portrait">
+            <rect width="1440" height="900" fill="url(#champ-fondu-portrait)" />
+          </mask>
           <mask id="champ-masque">
             <rect width="1440" height="900" fill="url(#champ-fondu)" />
           </mask>
@@ -116,7 +132,9 @@ export function HeroChamp() {
             <path d="M 800 -290 L 1180 90 L 800 470" strokeWidth="92" opacity="0.46" />
             <path d="M 1035 -290 L 1415 90 L 1035 470" strokeWidth="92" opacity="0.46" />
           </g>
+        </g>
 
+        <g mask="url(#champ-masque-portrait)">
           {/* Jeu pour les écrans en portrait. La découpe `slice` n'y montre que
               la bande x 512..928 du dessin, mesurée : les couples ci-dessus,
               posés à x -80..535 et 800..1415, n'y laissaient voir que des
@@ -128,13 +146,15 @@ export function HeroChamp() {
             strokeLinecap="round"
             strokeLinejoin="round"
           >
-            {/* Bas, sur l'extrémité bleue. */}
-            <path d="M 420 600 L 620 800 L 420 1000" strokeWidth="86" opacity="0.58" />
-            <path d="M 580 600 L 780 800 L 580 1000" strokeWidth="86" opacity="0.58" />
+            {/* Haut : la seule zone vraiment libre en portrait, entre le
+                bandeau et le nom. */}
+            <path d="M 400 -70 L 620 150 L 400 370" strokeWidth="92" opacity="0.62" />
+            <path d="M 570 -70 L 790 150 L 570 370" strokeWidth="92" opacity="0.62" />
 
-            {/* Haut, sur l'extrémité rouge. */}
-            <path d="M 530 -80 L 700 90 L 530 260" strokeWidth="74" opacity="0.44" />
-            <path d="M 690 -80 L 860 90 L 690 260" strokeWidth="74" opacity="0.44" />
+            {/* Bas : sommets sous le cadre, seuls les bras du haut entrent,
+                derrière le repère de défilement. */}
+            <path d="M 430 760 L 630 960 L 430 1160" strokeWidth="80" opacity="0.5" />
+            <path d="M 590 760 L 790 960 L 590 1160" strokeWidth="80" opacity="0.5" />
           </g>
         </g>
       </svg>
