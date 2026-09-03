@@ -226,22 +226,6 @@ function Ouverture() {
                 au bout du fil, celle qui construit.
               </p>
 
-              <div className="mt-5 flex items-center gap-3 text-muted-foreground">
-                <svg
-                  viewBox="0 0 88 46"
-                  aria-hidden="true"
-                  className="h-8 w-16 shrink-0 -scale-x-100 text-brand-ink/45"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                >
-                  <path d="M84 42C68 16 44 4 6 6" />
-                  <path d="M6 6l17 8M6 6l11 13" />
-                </svg>
-                <span className="accent-word -rotate-2 text-xl">et vous gardez la main</span>
-              </div>
-
               <a
                 href={CALENDLY_URL}
                 target="_blank"

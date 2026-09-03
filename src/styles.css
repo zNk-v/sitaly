@@ -783,15 +783,6 @@
   }
 }
 
-/* Entre 700 et 769, l'écran collé existe mais ses derniers pixels sont pris :
-   le dégagement mesuré passe de -8 px à 713 à +8 px à 743, puis +25 px à 773.
-   Le repère est décoratif, il s'efface plutôt que de recouvrir les garanties. */
-@media (min-height: 700px) and (max-height: 769px) {
-  .zoom-cue {
-    display: none;
-  }
-}
-
 /* Défilement des métiers — deux rangées à contresens ---------------------- */
 
 /* Le ruban. Ses arrêts ne sont pas ceux de `--gradient-brand` : sous du blanc,
