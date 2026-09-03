@@ -272,8 +272,8 @@ function CeQuOnFait() {
     {
       texte: "campagnes Google & ChatGPT Ads",
       to: "/acquisition/",
-      coche: "text-pink-on-ink",
-      survol: "group-hover:text-pink-on-ink",
+      coche: "text-violet-on-ink",
+      survol: "group-hover:text-violet-on-ink",
     },
     {
       texte: "agents IA & automatisations",
@@ -959,10 +959,7 @@ function Contact() {
                   placeholder="Parlez-nous brièvement de votre activité…"
                 />
               </div>
-              <button
-                type="submit"
-                className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
-              >
+              <button type="submit" className="bouton mt-5 w-full px-6 py-3.5">
                 <Phone className="h-5 w-5" />
                 Envoyer un message
               </button>

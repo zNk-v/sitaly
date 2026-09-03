@@ -73,16 +73,12 @@ export function MetierLanding(props: MetierLandingProps) {
               href={CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-elevated transition hover:opacity-90"
+              className="bouton px-7 py-3.5 text-sm"
             >
               Parler de votre projet gratuit
               <ArrowRight className="h-4 w-4" />
             </a>
-            <Link
-              to="/"
-              hash="offre"
-              className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-6 py-3.5 text-sm font-semibold text-foreground transition hover:bg-secondary"
-            >
+            <Link to="/" hash="offre" className="bouton-secondaire px-6 py-3.5 text-sm">
               Voir les tarifs
             </Link>
           </div>
@@ -174,10 +170,7 @@ export function MetierLanding(props: MetierLandingProps) {
                   {example.label}
                 </h2>
                 <p className="mt-3 text-muted-foreground">{example.description}</p>
-                <a
-                  href={example.exempleHref}
-                  className="mt-5 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
-                >
+                <a href={example.exempleHref} className="bouton mt-5 px-5 py-2.5 text-sm">
                   Voir l'exemple en grand
                   <ExternalLink className="h-4 w-4" />
                 </a>

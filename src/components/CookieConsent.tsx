@@ -82,14 +82,14 @@ export function CookieConsent() {
             <button
               type="button"
               onClick={() => handle("denied")}
-              className="inline-flex h-11 items-center justify-center rounded-md border border-input bg-background px-4 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+              className="bouton-secondaire h-11 px-5 text-sm"
             >
               Refuser
             </button>
             <button
               type="button"
               onClick={() => handle("granted")}
-              className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+              className="bouton h-11 px-5 text-sm"
             >
               Accepter
             </button>

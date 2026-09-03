@@ -132,10 +132,7 @@ export const Route = createFileRoute("/blog/$slug")({
       <div className="max-w-md text-center">
         <h1 className="font-display text-4xl font-bold">Article introuvable</h1>
         <p className="mt-3 text-muted-foreground">Cet article n'existe pas ou a été déplacé.</p>
-        <Link
-          to="/blog/"
-          className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
-        >
+        <Link to="/blog/" className="bouton mt-6 px-6 py-2.5 text-sm">
           <ArrowLeft className="h-4 w-4" />
           Retour au blog
         </Link>
@@ -391,7 +388,7 @@ function InlineCTA() {
         href={CALENDLY_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-4 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
+        className="bouton mt-4 px-6 py-2.5 text-sm"
       >
         Parler de votre projet gratuit
         <ArrowRight className="h-4 w-4" />
@@ -412,7 +409,7 @@ function FinalCTA() {
         href={CALENDLY_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-5 inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-elevated transition hover:opacity-90"
+        className="bouton mt-5 w-full px-6 py-3 text-sm sm:w-auto"
       >
         Parler de votre projet gratuit
         <ArrowRight className="h-4 w-4" />

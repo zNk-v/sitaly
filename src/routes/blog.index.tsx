@@ -229,7 +229,7 @@ function BlogIndex() {
             href={CALENDLY_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground shadow-elevated transition hover:opacity-90"
+            className="bouton mt-6 px-7 py-3.5 text-base"
           >
             Parler de votre projet
             <ArrowRight className="h-5 w-5" />

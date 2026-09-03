@@ -681,7 +681,7 @@ function CtaPrincipal() {
       href={CALENDLY_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground shadow-elevated transition hover:opacity-90"
+      className="bouton px-7 py-3.5 text-base"
     >
       <Calendar className="h-5 w-5" />
       Demander un accompagnement

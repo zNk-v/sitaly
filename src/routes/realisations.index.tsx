@@ -128,7 +128,7 @@ function RealisationsIndex() {
               href={CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-9 inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3.5 font-semibold text-accent-foreground transition hover:brightness-110"
+              className="bouton mt-9 px-7 py-3.5"
             >
               <Calendar className="h-5 w-5" />
               Parler de votre projet

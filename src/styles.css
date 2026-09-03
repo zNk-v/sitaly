@@ -48,14 +48,11 @@
   --color-ink-deep: var(--ink-deep);
   --color-blue: var(--blue);
   --color-violet: var(--violet);
-  --color-pink: var(--pink);
   --color-red: var(--red);
   --color-blue-on-ink: var(--blue-on-ink);
   --color-violet-on-ink: var(--violet-on-ink);
-  --color-pink-on-ink: var(--pink-on-ink);
   --color-red-on-ink: var(--red-on-ink);
   --color-brand: var(--brand);
-  --color-brand-deep: var(--brand-deep);
   --color-brand-ink: var(--brand-ink);
   --color-blue-ink: var(--blue-ink);
   --color-violet-ink: var(--violet-ink);
@@ -85,7 +82,6 @@
      et de voile sont dérivées de ces trois-là et d'elles seules. */
   --blue: oklch(0.5 0.19 258);
   --violet: oklch(0.48 0.22 300);
-  --pink: oklch(0.52 0.22 350);
   /* Extrémité chaude du dégradé. Elle ne sert QUE d'arrivée de dégradé :
      jamais en aplat, jamais sur un bouton, jamais seule. Le rouge plein reste
      réservé aux erreurs, et deux rouges qui se ressemblent dans une interface
@@ -98,12 +94,10 @@
      entre 5.8:1 et 6.2:1. */
   --blue-on-ink: oklch(0.66 0.17 258);
   --violet-on-ink: oklch(0.66 0.19 300);
-  --pink-on-ink: oklch(0.68 0.2 350);
   --red-on-ink: oklch(0.68 0.19 28);
 
   /* Versions claires, pour l'ornement sur surface sombre. */
   --brand: oklch(0.722 0.177 305);
-  --brand-deep: oklch(0.631 0.208 344);
   /* Version texte sur papier : 7:1, elle porte un titre sans le noyer. */
   --brand-ink: var(--violet);
 
@@ -118,9 +112,6 @@
   /* La même triade en pleine saturation, pour le texte. Les trois arrêts
      passent au-dessus de 5.9:1 sur papier : le dégradé reste lisible sur
      toute sa longueur, y compris au point le plus clair. */
-  --brand-grad-from: var(--blue);
-  --brand-grad-via: var(--pink);
-  --brand-grad-to: var(--red);
 
   /* Même triade, un cran plus sombre : c'est le fond du panneau révélé par
      l'ouverture. Les trois arrêts portent du blanc entre 6.2:1 et 7.4:1, donc
@@ -187,8 +178,10 @@
      bande boueuse qu'on voit sur la plupart des dégradés bleu-rouge. En oklch
      le chemin court passe par le magenta et reste vif d'un bout à l'autre.
      La première déclaration sert de repli aux navigateurs qui ne savent pas. */
-  --gradient-brand: linear-gradient(115deg, var(--blue), var(--pink) 62%, var(--red));
-  --gradient-brand: linear-gradient(115deg in oklch, var(--blue), var(--red));
+  /* Alias du dégradé porteur. Il avait ses propres arrêts, dont un repli sRGB
+     qui passait par le rose : deux dégradés de marque cohabitaient, l'un pour
+     le ruban et les boutons, l'autre pour les textes. */
+  --gradient-brand: var(--gradient-ruban);
   /* Hero en clair. La nappe violette est un voile posé en haut, pas une nappe
      de fond : elle se dissout dans le papier chaud avant le milieu de la
      section. C'est ce qui la distingue du lavande froid et uniforme de Linov. */
@@ -269,20 +262,21 @@
 }
 
 /* Texte en dégradé sur la triade, réservé aux très grandes tailles : c'est là
-   que la couleur remplace la masse. Interpolation oklch, voir --gradient-brand. */
+   que la couleur remplace la masse.
+
+   Il partage les arrêts du dégradé porteur, ceux du ruban et des boutons : une
+   seule définition pour les trois. Il avait les siens, qui passaient par le
+   rose — teinte 350 — et ne correspondaient donc à rien d'autre sur le site.
+   La clarté constante de 0,46 sert ici aussi : sur le papier, aucun mot du
+   dégradé ne pèse plus qu'un autre. */
 @utility brand-gradient-text {
-  background: linear-gradient(
-    100deg,
-    var(--brand-grad-from),
-    var(--brand-grad-via) 58%,
-    var(--brand-grad-to)
-  );
-  background: linear-gradient(100deg in oklch, var(--brand-grad-from), var(--brand-grad-to));
+  background: var(--gradient-ruban);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
+/* Même dégradé que `brand-gradient-text`, conservé pour ses appelants. */
 @utility gradient-text {
   background: var(--gradient-accent);
   -webkit-background-clip: text;
@@ -975,6 +969,45 @@
     background-position 0.55s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.25s ease;
+}
+
+/* Le secondaire reprend la géométrie du primaire — même pastille, même
+   hauteur — et ne s'en distingue que par la surface : papier cerné plutôt que
+   dégradé. Sans lui, un « Refuser » en carré bordé côtoyait un « Accepter » en
+   pastille dégradée, et la paire ne lisait pas comme une paire. */
+@utility bouton-secondaire {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  color: var(--foreground);
+  background: var(--paper);
+  border: 1px solid color-mix(in oklab, var(--ink) 14%, transparent);
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease;
+}
+@media (hover: hover) {
+  .bouton-secondaire:hover {
+    border-color: color-mix(in oklab, var(--ink) 30%, transparent);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px -14px oklch(0.2 0.05 300 / 0.6);
+  }
+}
+.bouton-secondaire:active {
+  transform: translateY(0);
+}
+.bouton-secondaire:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bouton-secondaire {
+    transition: none;
+  }
 }
 
 /* La flèche ou l'icône avance avec le dégradé. */
