@@ -70,15 +70,38 @@ function Deroulant({
         </svg>
       </button>
 
-      {/* Le panneau reste dans le flux du groupe pour que le survol ne se
-          rompe pas entre le bouton et lui. `invisible` plutôt que `hidden` :
-          la transition d'opacité a besoin d'un élément rendu. */}
+      {/* Le panneau reste un enfant du groupe pour que le survol ne se rompe
+          pas entre le bouton et lui : `group-hover` suit le DOM, pas la
+          géométrie. `invisible` plutôt que `hidden` : la transition d'opacité
+          a besoin d'un élément rendu.
+
+          Le panneau large est en position fixe et centré sur la fenêtre, pas
+          ancré au bouton. Ancré à gauche du déclencheur, ses 54rem sortaient
+          de 94 px par la droite dans une fenêtre de 1024 : la colonne
+          Automatisation était coupée, et six pages avec elle. Centré sur le
+          bouton, il serait sorti par la gauche. Centré sur la fenêtre, il ne
+          peut sortir d'aucun côté, et il passe toujours sous le bouton, donc
+          le survol tient.
+
+          La hauteur est plafonnée pour la même raison : 628 px de panneau ne
+          tiennent pas sous un bandeau dans une fenêtre de 620, et le panneau
+          se met alors à défiler.
+
+          Le `backdrop-filter` de la pastille fait d'elle le bloc conteneur des
+          éléments fixes qu'elle porte : `top` et `left` se résolvent donc sur
+          elle et non sur la fenêtre. C'est sans conséquence en horizontal, la
+          pastille étant centrée, mais le plafond de hauteur doit retrancher la
+          gouttière du haut en plus de la pastille.
+
+          Le rembourrage du haut fait le pont : sans lui, six pixels séparaient
+          le bas du bouton du haut du panneau, et le survol se rompait pendant
+          la traversée. Le panneau commence donc au-dessus du bouton et son
+          rembourrage remet la carte à sa place. */}
       <div
-        /* Le panneau large est ancré à gauche et non centré sur son bouton :
-           centré, ses 54rem débordaient hors de l'écran, le déclencheur se
-           trouvant près du bord gauche du bandeau. */
-        className={`invisible absolute top-full z-50 translate-y-1 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 ${
-          large ? "left-0 w-[min(54rem,calc(100vw-3rem))]" : "left-1/2 w-[22rem] -translate-x-1/2"
+        className={`invisible z-50 translate-y-1 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 ${
+          large
+            ? "fixed left-1/2 top-[calc(var(--entete-hauteur)-1.25rem)] pt-5 max-h-[calc(100dvh-var(--entete-hauteur)-1.5rem)] w-[min(54rem,calc(100vw-2rem))] -translate-x-1/2 overflow-y-auto"
+            : "absolute left-1/2 top-full -mt-2 w-[22rem] -translate-x-1/2 pt-5"
         }`}
       >
         <div className="rounded-2xl border border-border bg-card p-4 shadow-elevated">
