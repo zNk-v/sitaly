@@ -43,6 +43,8 @@
 <link rel="stylesheet" href="/static/sitaly.css"/>
 
 <style>
+body{/* Famille automatisation : la page prend sa couleur, pas le bleu par défaut. */--accent:var(--violet);--brand-ink:var(--violet-ink);}
+
 /* Utilitaires propres à cette page — préfixe ci- (chatgpt / intelligence artificielle).
    Les polices sont déjà servies en @font-face par la feuille de styles du site :
    aucune requête vers un service de polices externe. */
@@ -290,7 +292,7 @@ if(window.SITALY_TRACKING.googleAdsId){
 <main id="contenu">
 
 <!-- ================= 1. HERO ================= -->
-<section class="hero-bg on-ink">
+<section class="hero-bg">
   <div class="ci-wrap ci-hero-pad">
     <div class="ci-grid2" style="align-items:center;gap:2.5rem">
       <div>

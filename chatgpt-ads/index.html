@@ -36,6 +36,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"/>
 
 <style>
+body{/* Famille acquisition : la page prend sa couleur, pas le bleu par défaut. */--accent:var(--red-acquisition);--brand-ink:var(--red-acquisition);}
+
 /* Utilitaires absents du bundle Tailwind compilé — définis ici pour rester autonome. */
 .cg-h1{font-size:2.25rem;line-height:1.1}
 @media(min-width:640px){.cg-h1{font-size:3rem}}
@@ -194,7 +196,7 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
 <main id="contenu">
 
 <!-- ================= 1. HERO ================= -->
-<section class="hero-bg on-ink">
+<section class="hero-bg">
   <div class="cg-wrap" style="padding-top:3.5rem;padding-bottom:3.5rem">
     <div class="cg-grid2 cg-hero" style="align-items:center;gap:3rem">
       <div>
