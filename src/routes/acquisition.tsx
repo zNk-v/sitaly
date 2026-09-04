@@ -291,15 +291,15 @@ function Header() {
 /* ---------------- HERO ---------------- */
 function Hero() {
   return (
-    <section className="hero-bg on-ink">
+    <section className="hero-bg">
       <div className="mx-auto max-w-3xl px-4 pt-[calc(var(--entete-hauteur)+2rem)] pb-16 text-center sm:px-6 sm:pb-24 sm:pt-[calc(var(--entete-hauteur)+3.5rem)]">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-white/70">
-          <Target className="h-3.5 w-3.5 text-brand" />
+        <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground shadow-soft">
+          <Target className="h-3.5 w-3.5 text-brand-ink" />
           Agence Google Ads
         </div>
         <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl">
           Transformez Google en source régulière de{" "}
-          <span className="accent-word text-brand">nouveaux clients.</span>
+          <span className="accent-word text-brand-ink">nouveaux clients.</span>
         </h1>
         <p className="mt-5 text-lg text-muted-foreground">
           Sitaly crée, pilote et optimise vos campagnes Google Ads pour attirer des prospects
@@ -307,10 +307,7 @@ function Hero() {
         </p>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <CtaPrincipal />
-          <a
-            href="#fonctionnement"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 px-6 py-3.5 text-base font-semibold transition hover:bg-white/10"
-          >
+          <a href="#fonctionnement" className="bouton-secondaire px-6 py-3.5 text-base">
             Voir comment ça fonctionne
           </a>
         </div>
@@ -392,7 +389,9 @@ function Fonctionnement() {
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {ETAPES.map((e) => (
             <div key={e.n} className="rounded-2xl border border-border bg-card p-6 shadow-soft">
-              <span className="font-display text-4xl font-extrabold text-accent/25">{e.n}</span>
+              <span className="brand-gradient-text rail-num font-display text-4xl font-extrabold opacity-45">
+                {e.n}
+              </span>
               <h3 className="mt-2 font-display text-lg font-bold tracking-tight">{e.title}</h3>
               <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{e.text}</p>
             </div>
@@ -643,11 +642,11 @@ function Faq() {
 /* ---------------- CTA FINAL ---------------- */
 function CtaFinal() {
   return (
-    <section className="hero-bg on-ink border-t border-white/10">
+    <section className="hero-bg border-t border-border">
       <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 sm:py-24">
         <h2 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
           Votre prochain client cherche peut-être déjà vos services{" "}
-          <span className="accent-word text-brand">sur Google.</span>
+          <span className="accent-word text-brand-ink">sur Google.</span>
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
           Mettons en place une stratégie Google Ads adaptée à votre activité et à votre budget. Un
@@ -655,17 +654,14 @@ function CtaFinal() {
         </p>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <CtaPrincipal />
-          <a
-            href={`tel:${SITALY_PHONE}`}
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 px-6 py-3.5 text-base font-semibold transition hover:bg-white/10"
-          >
-            <Phone className="h-5 w-5 text-brand" />
+          <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5 text-base">
+            <Phone className="h-5 w-5" />
             {SITALY_PHONE_DISPLAY}
           </a>
         </div>
         <p className="mt-6 text-sm text-muted-foreground">
           Vous préférez écrire ?{" "}
-          <Link to="/" hash="contact" className="font-semibold text-brand hover:underline">
+          <Link to="/" hash="contact" className="font-semibold text-brand-ink hover:underline">
             Utilisez le formulaire de contact
           </Link>
           .

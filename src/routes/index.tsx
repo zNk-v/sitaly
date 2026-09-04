@@ -197,7 +197,7 @@ function Ouverture() {
               reste hors cadre. */}
             <div
               aria-hidden="true"
-              className="zoom-cue absolute inset-x-0 bottom-6 flex flex-col items-center gap-2 text-muted-foreground/70"
+              className="zoom-cue absolute inset-x-0 bottom-6 flex flex-col items-center gap-2 text-muted-foreground"
             >
               <span className="rail-label">Faites défiler</span>
               <ChevronDown className="h-5 w-5 animate-bounce" />
@@ -800,7 +800,7 @@ function Field({
   return (
     <div>
       <label htmlFor={id} className="text-sm font-medium">
-        {label} {required && <span className="text-destructive">*</span>}
+        {label} {required && <span className="text-red-ink">*</span>}
       </label>
       <input
         id={id}

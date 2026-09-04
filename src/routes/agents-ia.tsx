@@ -807,7 +807,7 @@ function Agents() {
                 <div className="grid h-12 w-12 place-items-center rounded-xl bg-accent/15 text-accent">
                   <agent.icon className="h-6 w-6" aria-hidden="true" />
                 </div>
-                <span className="font-display text-2xl font-extrabold text-muted-foreground/40">
+                <span className="brand-gradient-text font-display text-2xl font-extrabold opacity-60">
                   {agent.index}
                 </span>
               </div>
@@ -1326,7 +1326,7 @@ function DiagnosticForm() {
 
       <div className="mt-4">
         <label htmlFor="ai-problem" className="text-sm font-medium">
-          Principal problème à résoudre <span className="text-destructive">*</span>
+          Principal problème à résoudre <span className="text-red-ink">*</span>
         </label>
         <textarea
           id="ai-problem"
@@ -1368,7 +1368,7 @@ function FormField({
   return (
     <div>
       <label htmlFor={id} className="text-sm font-medium">
-        {label} {required && <span className="text-destructive">*</span>}
+        {label} {required && <span className="text-red-ink">*</span>}
       </label>
       <input
         id={id}
@@ -1398,7 +1398,7 @@ function SelectField({
   return (
     <div>
       <label htmlFor={id} className="text-sm font-medium">
-        {label} {required && <span className="text-destructive">*</span>}
+        {label} {required && <span className="text-red-ink">*</span>}
       </label>
       <select
         id={id}
