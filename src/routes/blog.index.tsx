@@ -6,6 +6,7 @@ import { SitalyLogo } from "@/components/SitalyLogo";
 import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
 import { LinkedinLink } from "@/components/LinkedinLink";
 import { CALENDLY_URL } from "@/lib/config";
+import { SiteFooter } from "@/components/SiteFooter";
 
 // Rubriques du blog, dans l'ordre d'affichage. `key` doit correspondre au champ
 // `category` des articles (src/data/blog-posts.ts).
@@ -285,17 +286,5 @@ function BlogNav() {
 }
 
 function BlogFooter() {
-  return (
-    <footer className="border-t border-border bg-secondary/30">
-      <div className="mx-auto max-w-7xl px-4 py-10 text-center text-sm text-muted-foreground sm:px-6">
-        <div className="mb-5 flex justify-center">
-          <LinkedinLink />
-        </div>
-        © {new Date().getFullYear()} Sitaly — Création de sites internet pour artisans.{" "}
-        <Link to="/" className="font-medium text-foreground hover:text-accent">
-          Retour à l'accueil
-        </Link>
-      </div>
-    </footer>
-  );
+  return <SiteFooter />;
 }

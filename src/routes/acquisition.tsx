@@ -23,6 +23,7 @@ import { SitalyLogo } from "@/components/SitalyLogo";
 import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
 import { LinkedinLink } from "@/components/LinkedinLink";
 import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
+import { SiteFooter } from "@/components/SiteFooter";
 
 /**
  * Page commerciale Google Ads (offre Sitaly Acquisition).
@@ -711,29 +712,5 @@ function SectionHeader({
 
 /* ---------------- PIED DE PAGE ---------------- */
 function Footer() {
-  return (
-    <footer className="border-t border-border">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-8 text-sm text-muted-foreground sm:flex-row sm:px-6">
-        <SitalyLogo className="scale-90" />
-        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-          <Link to="/" className="hover:text-foreground">
-            Accueil
-          </Link>
-          <Link to="/agents-ia/" className="hover:text-foreground">
-            Agents IA
-          </Link>
-          <a href="/chatgpt-ads/" className="hover:text-foreground">
-            ChatGPT Ads
-          </a>
-          <Link to="/mentions-legales/" className="hover:text-foreground">
-            Mentions légales
-          </Link>
-          <Link to="/cgv/" className="hover:text-foreground">
-            CGV
-          </Link>
-          <LinkedinLink className="h-9 w-9" />
-        </div>
-      </div>
-    </footer>
-  );
+  return <SiteFooter />;
 }

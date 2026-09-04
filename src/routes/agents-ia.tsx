@@ -44,6 +44,7 @@ import { AiFlowRail, type FlowStep } from "@/components/AiFlowRail";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 import { LinkedinLink } from "@/components/LinkedinLink";
+import { SiteFooter } from "@/components/SiteFooter";
 
 const CONTACT_EMAIL = "contact@sitaly.fr";
 
@@ -1421,52 +1422,7 @@ function SelectField({
 
 /* ---------------- FOOTER ---------------- */
 function Footer() {
-  return (
-    <footer className="border-t border-border bg-secondary/30 py-12">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-          <SitalyLogo />
-          <nav className="flex flex-wrap items-center justify-center gap-x-6 text-sm text-muted-foreground">
-            <Link to="/" className="inline-block py-2.5 transition hover:text-foreground">
-              Accueil
-            </Link>
-            <a href="/#offre" className="inline-block py-2.5 transition hover:text-foreground">
-              Offres
-            </a>
-            <Link to="/blog/" className="inline-block py-2.5 transition hover:text-foreground">
-              Blog
-            </Link>
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block py-2.5 transition hover:text-foreground"
-            >
-              Parler de votre projet
-            </a>
-            <LinkedinLink className="h-9 w-9" />
-          </nav>
-        </div>
-        <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row">
-          <div>© {new Date().getFullYear()} Sitaly. Tous droits réservés.</div>
-          <div className="flex flex-wrap justify-center gap-x-5">
-            <Link to="/mentions-legales/" className="inline-block py-2.5 hover:text-foreground">
-              Mentions légales
-            </Link>
-            <Link
-              to="/politique-confidentialite/"
-              className="inline-block py-2.5 hover:text-foreground"
-            >
-              Confidentialité
-            </Link>
-            <Link to="/cgv/" className="inline-block py-2.5 hover:text-foreground">
-              CGV
-            </Link>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
+  return <SiteFooter />;
 }
 
 /* ---------------- ÉLÉMENTS PARTAGÉS ---------------- */

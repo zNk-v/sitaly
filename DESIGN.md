@@ -308,6 +308,50 @@ sans engagement, sans frais d'installation, réponse sous 24 heures.
 
 ---
 
+## 8 bis. L'arborescence des expertises
+
+Décision du 4 septembre 2026, à la demande du client : l'accueil s'allège, les
+pages se multiplient.
+
+**Le constat qui la motive.** L'accueil portait dix sections et douze mille
+pixels. Il disait tout, donc il ne classait rien : un visiteur cherchant
+« site e-commerce » ou « référencement local » ne trouvait ni la page, ni même
+le mot. Le menu proposait sept liens, dont deux vers des pages métier.
+
+**La règle.** Une intention de recherche, une page. Le découpage suit trois
+familles, et chaque famille tient dans une colonne du menu :
+
+| Famille | Pages |
+|---|---|
+| Site internet | création de site, vitrine, e-commerce, landing page, événementiel, refonte |
+| Acquisition | référencement naturel, référencement local, référencement IA, Google Ads, ChatGPT Ads, publicité sociale |
+| Automatisation | agents IA, automatisation des tâches, CRM, logiciel métier, application, intégrations et API |
+
+`src/data/expertises.ts` est la source unique : le menu de bureau, le menu
+mobile, la section Expertises de l'accueil, le pied de page et le sitemap en
+dérivent tous. Une expertise ajoutée là apparaît partout, et son fichier de
+route fait dix lignes.
+
+**Chaque page porte son propre texte.** Même gabarit, contenus distincts :
+un gabarit rempli seize fois avec les mêmes phrases se fait traiter comme du
+contenu dupliqué, et aucune des seize ne se classe. C'est la contrainte la plus
+coûteuse de cette architecture, et la seule qui la rende utile.
+
+**Quatre blocs par page, pas douze.** Ce que ça comprend, quand ça se justifie,
+quatre questions, les pages voisines. Une page d'expertise ne refait pas le
+travail de l'accueil : elle répond à une question et propose l'appel.
+
+**L'accueil en sort raccourci d'un sixième.** Disparaissent « Le constat »,
+« Notre méthode » et « Compléments », qui énuméraient sans rien rendre
+cliquable, ainsi que la grille des métiers, désormais dans le pied de page. Une
+section Expertises les remplace : les trois familles, et leurs dix-huit pages
+en liens directs.
+
+**Un seul pied de page.** Il en existait six, un par route. Le pied de page est
+la carte du site : toute page en atteint toute autre en un clic.
+
+---
+
 ## 9. Identité
 
 Sitaly est une entreprise individuelle sans local. Le site parle au nom de la

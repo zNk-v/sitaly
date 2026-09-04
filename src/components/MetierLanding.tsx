@@ -14,6 +14,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { MetierFooterLinks, MetierLinksSection } from "@/components/MetierLinks";
 import type { MetierLink } from "@/lib/metiers";
 import { CALENDLY_URL } from "@/lib/config";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export interface MetierLandingProps {
   metier: string; // "plombier"
@@ -377,34 +378,7 @@ export function MetierLanding(props: MetierLandingProps) {
         </div>
       </section>
 
-      <footer className="border-t border-border bg-background">
-        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
-          <MetierFooterLinks
-            className="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm text-muted-foreground"
-            linkClassName="block py-2.5 hover:text-foreground"
-          />
-          <div className="mt-5 flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm text-muted-foreground">
-            <Link to="/" className="py-2.5 hover:text-foreground">
-              Accueil
-            </Link>
-            <Link to="/acquisition/" className="py-2.5 hover:text-foreground">
-              Google Ads
-            </Link>
-            <Link to="/agents-ia/" className="py-2.5 hover:text-foreground">
-              Agents IA
-            </Link>
-            <Link to="/blog/" className="py-2.5 hover:text-foreground">
-              Blog
-            </Link>
-          </div>
-          <div className="mt-6 flex justify-center">
-            <LinkedinLink />
-          </div>
-          <div className="mt-6 text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Sitaly — Création de sites internet pour artisans.
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

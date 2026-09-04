@@ -10,15 +10,30 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SiteVitrineRouteImport } from './routes/site-vitrine'
 import { Route as SiteInternetPlombierRouteImport } from './routes/site-internet-plombier'
 import { Route as SiteInternetMenuisierRouteImport } from './routes/site-internet-menuisier'
 import { Route as SiteInternetElectricienRouteImport } from './routes/site-internet-electricien'
 import { Route as SiteInternetCouvreurRouteImport } from './routes/site-internet-couvreur'
+import { Route as SiteEvenementielRouteImport } from './routes/site-evenementiel'
+import { Route as SiteECommerceRouteImport } from './routes/site-e-commerce'
+import { Route as RefonteSiteInternetRouteImport } from './routes/refonte-site-internet'
+import { Route as ReferencementNaturelRouteImport } from './routes/referencement-naturel'
+import { Route as ReferencementLocalRouteImport } from './routes/referencement-local'
+import { Route as ReferencementIaRouteImport } from './routes/referencement-ia'
+import { Route as PubliciteReseauxSociauxRouteImport } from './routes/publicite-reseaux-sociaux'
 import { Route as PolitiqueConfidentialiteRouteImport } from './routes/politique-confidentialite'
 import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
+import { Route as LogicielMetierRouteImport } from './routes/logiciel-metier'
+import { Route as LandingPageRouteImport } from './routes/landing-page'
+import { Route as IntegrationApiRouteImport } from './routes/integration-api'
+import { Route as CrmSurMesureRouteImport } from './routes/crm-sur-mesure'
+import { Route as CreationSiteInternetRouteImport } from './routes/creation-site-internet'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as CgvRouteImport } from './routes/cgv'
 import { Route as BlogRouteImport } from './routes/blog'
+import { Route as AutomatisationTachesRouteImport } from './routes/automatisation-taches'
+import { Route as ApplicationWebMobileRouteImport } from './routes/application-web-mobile'
 import { Route as AgentsIaRouteImport } from './routes/agents-ia'
 import { Route as AcquisitionRouteImport } from './routes/acquisition'
 import { Route as IndexRouteImport } from './routes/index'
@@ -30,6 +45,11 @@ import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteVitrineRoute = SiteVitrineRouteImport.update({
+  id: '/site-vitrine',
+  path: '/site-vitrine',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SiteInternetPlombierRoute = SiteInternetPlombierRouteImport.update({
@@ -52,6 +72,41 @@ const SiteInternetCouvreurRoute = SiteInternetCouvreurRouteImport.update({
   path: '/site-internet-couvreur',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SiteEvenementielRoute = SiteEvenementielRouteImport.update({
+  id: '/site-evenementiel',
+  path: '/site-evenementiel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteECommerceRoute = SiteECommerceRouteImport.update({
+  id: '/site-e-commerce',
+  path: '/site-e-commerce',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RefonteSiteInternetRoute = RefonteSiteInternetRouteImport.update({
+  id: '/refonte-site-internet',
+  path: '/refonte-site-internet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReferencementNaturelRoute = ReferencementNaturelRouteImport.update({
+  id: '/referencement-naturel',
+  path: '/referencement-naturel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReferencementLocalRoute = ReferencementLocalRouteImport.update({
+  id: '/referencement-local',
+  path: '/referencement-local',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReferencementIaRoute = ReferencementIaRouteImport.update({
+  id: '/referencement-ia',
+  path: '/referencement-ia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PubliciteReseauxSociauxRoute = PubliciteReseauxSociauxRouteImport.update({
+  id: '/publicite-reseaux-sociaux',
+  path: '/publicite-reseaux-sociaux',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PolitiqueConfidentialiteRoute =
   PolitiqueConfidentialiteRouteImport.update({
     id: '/politique-confidentialite',
@@ -61,6 +116,31 @@ const PolitiqueConfidentialiteRoute =
 const MentionsLegalesRoute = MentionsLegalesRouteImport.update({
   id: '/mentions-legales',
   path: '/mentions-legales',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LogicielMetierRoute = LogicielMetierRouteImport.update({
+  id: '/logiciel-metier',
+  path: '/logiciel-metier',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LandingPageRoute = LandingPageRouteImport.update({
+  id: '/landing-page',
+  path: '/landing-page',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntegrationApiRoute = IntegrationApiRouteImport.update({
+  id: '/integration-api',
+  path: '/integration-api',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CrmSurMesureRoute = CrmSurMesureRouteImport.update({
+  id: '/crm-sur-mesure',
+  path: '/crm-sur-mesure',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreationSiteInternetRoute = CreationSiteInternetRouteImport.update({
+  id: '/creation-site-internet',
+  path: '/creation-site-internet',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CookiesRoute = CookiesRouteImport.update({
@@ -76,6 +156,16 @@ const CgvRoute = CgvRouteImport.update({
 const BlogRoute = BlogRouteImport.update({
   id: '/blog',
   path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AutomatisationTachesRoute = AutomatisationTachesRouteImport.update({
+  id: '/automatisation-taches',
+  path: '/automatisation-taches',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApplicationWebMobileRoute = ApplicationWebMobileRouteImport.update({
+  id: '/application-web-mobile',
+  path: '/application-web-mobile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AgentsIaRoute = AgentsIaRouteImport.update({
@@ -118,15 +208,30 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/acquisition': typeof AcquisitionRoute
   '/agents-ia': typeof AgentsIaRoute
+  '/application-web-mobile': typeof ApplicationWebMobileRoute
+  '/automatisation-taches': typeof AutomatisationTachesRoute
   '/blog': typeof BlogRouteWithChildren
   '/cgv': typeof CgvRoute
   '/cookies': typeof CookiesRoute
+  '/creation-site-internet': typeof CreationSiteInternetRoute
+  '/crm-sur-mesure': typeof CrmSurMesureRoute
+  '/integration-api': typeof IntegrationApiRoute
+  '/landing-page': typeof LandingPageRoute
+  '/logiciel-metier': typeof LogicielMetierRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
+  '/publicite-reseaux-sociaux': typeof PubliciteReseauxSociauxRoute
+  '/referencement-ia': typeof ReferencementIaRoute
+  '/referencement-local': typeof ReferencementLocalRoute
+  '/referencement-naturel': typeof ReferencementNaturelRoute
+  '/refonte-site-internet': typeof RefonteSiteInternetRoute
+  '/site-e-commerce': typeof SiteECommerceRoute
+  '/site-evenementiel': typeof SiteEvenementielRoute
   '/site-internet-couvreur': typeof SiteInternetCouvreurRoute
   '/site-internet-electricien': typeof SiteInternetElectricienRoute
   '/site-internet-menuisier': typeof SiteInternetMenuisierRoute
   '/site-internet-plombier': typeof SiteInternetPlombierRoute
+  '/site-vitrine': typeof SiteVitrineRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
@@ -137,14 +242,29 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/acquisition': typeof AcquisitionRoute
   '/agents-ia': typeof AgentsIaRoute
+  '/application-web-mobile': typeof ApplicationWebMobileRoute
+  '/automatisation-taches': typeof AutomatisationTachesRoute
   '/cgv': typeof CgvRoute
   '/cookies': typeof CookiesRoute
+  '/creation-site-internet': typeof CreationSiteInternetRoute
+  '/crm-sur-mesure': typeof CrmSurMesureRoute
+  '/integration-api': typeof IntegrationApiRoute
+  '/landing-page': typeof LandingPageRoute
+  '/logiciel-metier': typeof LogicielMetierRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
+  '/publicite-reseaux-sociaux': typeof PubliciteReseauxSociauxRoute
+  '/referencement-ia': typeof ReferencementIaRoute
+  '/referencement-local': typeof ReferencementLocalRoute
+  '/referencement-naturel': typeof ReferencementNaturelRoute
+  '/refonte-site-internet': typeof RefonteSiteInternetRoute
+  '/site-e-commerce': typeof SiteECommerceRoute
+  '/site-evenementiel': typeof SiteEvenementielRoute
   '/site-internet-couvreur': typeof SiteInternetCouvreurRoute
   '/site-internet-electricien': typeof SiteInternetElectricienRoute
   '/site-internet-menuisier': typeof SiteInternetMenuisierRoute
   '/site-internet-plombier': typeof SiteInternetPlombierRoute
+  '/site-vitrine': typeof SiteVitrineRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
@@ -156,15 +276,30 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/acquisition': typeof AcquisitionRoute
   '/agents-ia': typeof AgentsIaRoute
+  '/application-web-mobile': typeof ApplicationWebMobileRoute
+  '/automatisation-taches': typeof AutomatisationTachesRoute
   '/blog': typeof BlogRouteWithChildren
   '/cgv': typeof CgvRoute
   '/cookies': typeof CookiesRoute
+  '/creation-site-internet': typeof CreationSiteInternetRoute
+  '/crm-sur-mesure': typeof CrmSurMesureRoute
+  '/integration-api': typeof IntegrationApiRoute
+  '/landing-page': typeof LandingPageRoute
+  '/logiciel-metier': typeof LogicielMetierRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
+  '/publicite-reseaux-sociaux': typeof PubliciteReseauxSociauxRoute
+  '/referencement-ia': typeof ReferencementIaRoute
+  '/referencement-local': typeof ReferencementLocalRoute
+  '/referencement-naturel': typeof ReferencementNaturelRoute
+  '/refonte-site-internet': typeof RefonteSiteInternetRoute
+  '/site-e-commerce': typeof SiteECommerceRoute
+  '/site-evenementiel': typeof SiteEvenementielRoute
   '/site-internet-couvreur': typeof SiteInternetCouvreurRoute
   '/site-internet-electricien': typeof SiteInternetElectricienRoute
   '/site-internet-menuisier': typeof SiteInternetMenuisierRoute
   '/site-internet-plombier': typeof SiteInternetPlombierRoute
+  '/site-vitrine': typeof SiteVitrineRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
@@ -177,15 +312,30 @@ export interface FileRouteTypes {
     | '/'
     | '/acquisition'
     | '/agents-ia'
+    | '/application-web-mobile'
+    | '/automatisation-taches'
     | '/blog'
     | '/cgv'
     | '/cookies'
+    | '/creation-site-internet'
+    | '/crm-sur-mesure'
+    | '/integration-api'
+    | '/landing-page'
+    | '/logiciel-metier'
     | '/mentions-legales'
     | '/politique-confidentialite'
+    | '/publicite-reseaux-sociaux'
+    | '/referencement-ia'
+    | '/referencement-local'
+    | '/referencement-naturel'
+    | '/refonte-site-internet'
+    | '/site-e-commerce'
+    | '/site-evenementiel'
     | '/site-internet-couvreur'
     | '/site-internet-electricien'
     | '/site-internet-menuisier'
     | '/site-internet-plombier'
+    | '/site-vitrine'
     | '/sitemap.xml'
     | '/blog/$slug'
     | '/realisations/$slug'
@@ -196,14 +346,29 @@ export interface FileRouteTypes {
     | '/'
     | '/acquisition'
     | '/agents-ia'
+    | '/application-web-mobile'
+    | '/automatisation-taches'
     | '/cgv'
     | '/cookies'
+    | '/creation-site-internet'
+    | '/crm-sur-mesure'
+    | '/integration-api'
+    | '/landing-page'
+    | '/logiciel-metier'
     | '/mentions-legales'
     | '/politique-confidentialite'
+    | '/publicite-reseaux-sociaux'
+    | '/referencement-ia'
+    | '/referencement-local'
+    | '/referencement-naturel'
+    | '/refonte-site-internet'
+    | '/site-e-commerce'
+    | '/site-evenementiel'
     | '/site-internet-couvreur'
     | '/site-internet-electricien'
     | '/site-internet-menuisier'
     | '/site-internet-plombier'
+    | '/site-vitrine'
     | '/sitemap.xml'
     | '/blog/$slug'
     | '/realisations/$slug'
@@ -214,15 +379,30 @@ export interface FileRouteTypes {
     | '/'
     | '/acquisition'
     | '/agents-ia'
+    | '/application-web-mobile'
+    | '/automatisation-taches'
     | '/blog'
     | '/cgv'
     | '/cookies'
+    | '/creation-site-internet'
+    | '/crm-sur-mesure'
+    | '/integration-api'
+    | '/landing-page'
+    | '/logiciel-metier'
     | '/mentions-legales'
     | '/politique-confidentialite'
+    | '/publicite-reseaux-sociaux'
+    | '/referencement-ia'
+    | '/referencement-local'
+    | '/referencement-naturel'
+    | '/refonte-site-internet'
+    | '/site-e-commerce'
+    | '/site-evenementiel'
     | '/site-internet-couvreur'
     | '/site-internet-electricien'
     | '/site-internet-menuisier'
     | '/site-internet-plombier'
+    | '/site-vitrine'
     | '/sitemap.xml'
     | '/blog/$slug'
     | '/realisations/$slug'
@@ -234,15 +414,30 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AcquisitionRoute: typeof AcquisitionRoute
   AgentsIaRoute: typeof AgentsIaRoute
+  ApplicationWebMobileRoute: typeof ApplicationWebMobileRoute
+  AutomatisationTachesRoute: typeof AutomatisationTachesRoute
   BlogRoute: typeof BlogRouteWithChildren
   CgvRoute: typeof CgvRoute
   CookiesRoute: typeof CookiesRoute
+  CreationSiteInternetRoute: typeof CreationSiteInternetRoute
+  CrmSurMesureRoute: typeof CrmSurMesureRoute
+  IntegrationApiRoute: typeof IntegrationApiRoute
+  LandingPageRoute: typeof LandingPageRoute
+  LogicielMetierRoute: typeof LogicielMetierRoute
   MentionsLegalesRoute: typeof MentionsLegalesRoute
   PolitiqueConfidentialiteRoute: typeof PolitiqueConfidentialiteRoute
+  PubliciteReseauxSociauxRoute: typeof PubliciteReseauxSociauxRoute
+  ReferencementIaRoute: typeof ReferencementIaRoute
+  ReferencementLocalRoute: typeof ReferencementLocalRoute
+  ReferencementNaturelRoute: typeof ReferencementNaturelRoute
+  RefonteSiteInternetRoute: typeof RefonteSiteInternetRoute
+  SiteECommerceRoute: typeof SiteECommerceRoute
+  SiteEvenementielRoute: typeof SiteEvenementielRoute
   SiteInternetCouvreurRoute: typeof SiteInternetCouvreurRoute
   SiteInternetElectricienRoute: typeof SiteInternetElectricienRoute
   SiteInternetMenuisierRoute: typeof SiteInternetMenuisierRoute
   SiteInternetPlombierRoute: typeof SiteInternetPlombierRoute
+  SiteVitrineRoute: typeof SiteVitrineRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   RealisationsSlugRoute: typeof RealisationsSlugRoute
   RealisationsIndexRoute: typeof RealisationsIndexRoute
@@ -255,6 +450,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-vitrine': {
+      id: '/site-vitrine'
+      path: '/site-vitrine'
+      fullPath: '/site-vitrine'
+      preLoaderRoute: typeof SiteVitrineRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/site-internet-plombier': {
@@ -285,6 +487,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SiteInternetCouvreurRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/site-evenementiel': {
+      id: '/site-evenementiel'
+      path: '/site-evenementiel'
+      fullPath: '/site-evenementiel'
+      preLoaderRoute: typeof SiteEvenementielRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-e-commerce': {
+      id: '/site-e-commerce'
+      path: '/site-e-commerce'
+      fullPath: '/site-e-commerce'
+      preLoaderRoute: typeof SiteECommerceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/refonte-site-internet': {
+      id: '/refonte-site-internet'
+      path: '/refonte-site-internet'
+      fullPath: '/refonte-site-internet'
+      preLoaderRoute: typeof RefonteSiteInternetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/referencement-naturel': {
+      id: '/referencement-naturel'
+      path: '/referencement-naturel'
+      fullPath: '/referencement-naturel'
+      preLoaderRoute: typeof ReferencementNaturelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/referencement-local': {
+      id: '/referencement-local'
+      path: '/referencement-local'
+      fullPath: '/referencement-local'
+      preLoaderRoute: typeof ReferencementLocalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/referencement-ia': {
+      id: '/referencement-ia'
+      path: '/referencement-ia'
+      fullPath: '/referencement-ia'
+      preLoaderRoute: typeof ReferencementIaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/publicite-reseaux-sociaux': {
+      id: '/publicite-reseaux-sociaux'
+      path: '/publicite-reseaux-sociaux'
+      fullPath: '/publicite-reseaux-sociaux'
+      preLoaderRoute: typeof PubliciteReseauxSociauxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/politique-confidentialite': {
       id: '/politique-confidentialite'
       path: '/politique-confidentialite'
@@ -297,6 +548,41 @@ declare module '@tanstack/react-router' {
       path: '/mentions-legales'
       fullPath: '/mentions-legales'
       preLoaderRoute: typeof MentionsLegalesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/logiciel-metier': {
+      id: '/logiciel-metier'
+      path: '/logiciel-metier'
+      fullPath: '/logiciel-metier'
+      preLoaderRoute: typeof LogicielMetierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/landing-page': {
+      id: '/landing-page'
+      path: '/landing-page'
+      fullPath: '/landing-page'
+      preLoaderRoute: typeof LandingPageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/integration-api': {
+      id: '/integration-api'
+      path: '/integration-api'
+      fullPath: '/integration-api'
+      preLoaderRoute: typeof IntegrationApiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crm-sur-mesure': {
+      id: '/crm-sur-mesure'
+      path: '/crm-sur-mesure'
+      fullPath: '/crm-sur-mesure'
+      preLoaderRoute: typeof CrmSurMesureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/creation-site-internet': {
+      id: '/creation-site-internet'
+      path: '/creation-site-internet'
+      fullPath: '/creation-site-internet'
+      preLoaderRoute: typeof CreationSiteInternetRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cookies': {
@@ -318,6 +604,20 @@ declare module '@tanstack/react-router' {
       path: '/blog'
       fullPath: '/blog'
       preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/automatisation-taches': {
+      id: '/automatisation-taches'
+      path: '/automatisation-taches'
+      fullPath: '/automatisation-taches'
+      preLoaderRoute: typeof AutomatisationTachesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/application-web-mobile': {
+      id: '/application-web-mobile'
+      path: '/application-web-mobile'
+      fullPath: '/application-web-mobile'
+      preLoaderRoute: typeof ApplicationWebMobileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/agents-ia': {
@@ -388,15 +688,30 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AcquisitionRoute: AcquisitionRoute,
   AgentsIaRoute: AgentsIaRoute,
+  ApplicationWebMobileRoute: ApplicationWebMobileRoute,
+  AutomatisationTachesRoute: AutomatisationTachesRoute,
   BlogRoute: BlogRouteWithChildren,
   CgvRoute: CgvRoute,
   CookiesRoute: CookiesRoute,
+  CreationSiteInternetRoute: CreationSiteInternetRoute,
+  CrmSurMesureRoute: CrmSurMesureRoute,
+  IntegrationApiRoute: IntegrationApiRoute,
+  LandingPageRoute: LandingPageRoute,
+  LogicielMetierRoute: LogicielMetierRoute,
   MentionsLegalesRoute: MentionsLegalesRoute,
   PolitiqueConfidentialiteRoute: PolitiqueConfidentialiteRoute,
+  PubliciteReseauxSociauxRoute: PubliciteReseauxSociauxRoute,
+  ReferencementIaRoute: ReferencementIaRoute,
+  ReferencementLocalRoute: ReferencementLocalRoute,
+  ReferencementNaturelRoute: ReferencementNaturelRoute,
+  RefonteSiteInternetRoute: RefonteSiteInternetRoute,
+  SiteECommerceRoute: SiteECommerceRoute,
+  SiteEvenementielRoute: SiteEvenementielRoute,
   SiteInternetCouvreurRoute: SiteInternetCouvreurRoute,
   SiteInternetElectricienRoute: SiteInternetElectricienRoute,
   SiteInternetMenuisierRoute: SiteInternetMenuisierRoute,
   SiteInternetPlombierRoute: SiteInternetPlombierRoute,
+  SiteVitrineRoute: SiteVitrineRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   RealisationsSlugRoute: RealisationsSlugRoute,
   RealisationsIndexRoute: RealisationsIndexRoute,

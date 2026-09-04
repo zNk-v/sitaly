@@ -1,68 +1,42 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect, useRef } from "react";
-import {
-  Phone,
-  Calendar,
-  Check,
-  ArrowRight,
-  Search,
-  Clock,
-  ChevronDown,
-  Mail,
-  Globe,
-  Target,
-  Zap,
-  Instagram,
-  Linkedin,
-} from "lucide-react";
-import exampleRenovation from "@/assets/example-renovation.jpg";
-import examplePlombier from "@/assets/example-plombier.jpg";
-import exampleElectricien from "@/assets/example-electricien.jpg";
-import { SitalyLogo } from "@/components/SitalyLogo";
-import { LinkedinLink } from "@/components/LinkedinLink";
-import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
-import { MetierFooterLinks, MetierLinksSection } from "@/components/MetierLinks";
+import { Phone, Calendar, Check, ArrowRight, Clock, ChevronDown } from "lucide-react";
 import { SectionHeader } from "@/components/SectionHeader";
 import { StackedOffers } from "@/components/StackedOffers";
-import { MainNav } from "@/components/MainNav";
 import { RealisationsCarousel } from "@/components/RealisationsCarousel";
 import { HeroChamp } from "@/components/HeroChamp";
 import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
 import { FondateurCard } from "@/components/FondateurCard";
 import { ZoomIntro } from "@/components/ZoomIntro";
-import { REALISATIONS } from "@/data/realisations";
+import { FAMILLES, entreesFamille } from "@/data/expertises";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 import { useSplitWords } from "@/hooks/use-split-words";
 import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
+/* Cinq questions, pas sept. Celles qui portaient sur Google Ads et sur
+   l'automatisation ont désormais leur page, où elles sont posées par des
+   visiteurs qui cherchent précisément ça. */
 const FAQ_ITEMS = [
   {
     q: "Comment se construit le budget ?",
-    a: "Trois offres combinables, en abonnement mensuel, sans engagement de durée et sans frais d'installation. Sitaly Présence couvre votre site, son hébergement et votre référencement local. Sitaly Acquisition couvre la création et la gestion de vos campagnes Google Ads ou ChatGPT Ads, indépendamment du site : la rémunération y combine un forfait mensuel et une part du budget publicitaire. Sitaly Agents IA se chiffre sur mesure, selon les automatisations retenues. Le budget publicitaire lui-même est versé directement aux régies et reste séparé. Le montant exact dépend de votre activité et du périmètre choisi : il vous est donné à l'issue de l'appel découverte de 20 minutes, par écrit, avant tout engagement.",
-  },
-  {
-    q: "Que comprennent vraiment les modifications incluses ?",
-    a: "Les petites modifications de contenu existant sont incluses : changer un texte, une photo, un prix, des horaires ou vos coordonnées. Ce qui demande de la création — nouvelle page, nouveau visuel, rédaction d'articles — fait l'objet d'un devis transparent. Vous savez toujours à l'avance ce qui est inclus et ce qui ne l'est pas.",
-  },
-  {
-    q: "Puis-je acheter mon site ?",
-    a: "Sitaly fonctionne en abonnement : c'est ce qui nous permet de tout gérer pour vous (technique, hébergement, mises à jour) et de rester sans engagement de durée. Un rachat reste possible sur demande si vous le souhaitez.",
+    a: "En abonnement mensuel, sans engagement de durée et sans frais d'installation. Le montant dépend du périmètre retenu et vous est donné par écrit à l'issue de l'appel découverte, avant tout engagement. Le budget publicitaire, lui, est versé directement aux régies et reste séparé.",
   },
   {
     q: "Combien de temps pour le mettre en ligne ?",
-    a: "Votre site est livré en 48h après l'appel découverte et la fourniture des contenus.",
+    a: "48 heures après l'appel découverte et la fourniture des contenus. Les projets plus lourds, boutique en ligne ou logiciel, suivent leur propre calendrier, annoncé avant de commencer.",
+  },
+  {
+    q: "Que comprennent vraiment les modifications incluses ?",
+    a: "Les petites modifications de contenu existant : un texte, une photo, un prix, des horaires, vos coordonnées. Ce qui demande de la création, nouvelle page ou nouveau visuel, fait l'objet d'un devis annoncé à l'avance.",
   },
   {
     q: "Puis-je arrêter mon abonnement ?",
-    a: "Oui. Nos formules sont sans engagement : vous pouvez arrêter à tout moment avec un simple préavis, sans frais ni durée minimale.",
+    a: "Oui, à tout moment avec un simple préavis, sans frais ni durée minimale. Le nom de domaine est déposé à votre nom et part avec vous.",
   },
   {
-    q: "C'est quoi Google Ads et pourquoi en ai-je besoin ?",
-    a: "Google Ads vous place en haut des résultats de recherche dès le premier jour, sans attendre le référencement naturel. On cible les personnes qui cherchent vos services dans votre zone, vous fixez le budget et vous gardez le contrôle. La gestion des campagnes fait l'objet des formules Sitaly Acquisition (le budget publicitaire reste à votre charge).",
-  },
-  {
-    q: "L'automatisation est-elle obligatoire ?",
-    a: "Non. Les automatisations — rappel SMS des appels manqués, relance automatique des devis, qualification des demandes, prise de rendez-vous en ligne — s'ajoutent en modules, selon vos besoins. On commence simple et on monte en puissance uniquement si ça vous fait gagner du temps.",
+    q: "Puis-je acheter mon site ?",
+    a: "L'abonnement est ce qui permet de tout prendre en charge, technique, hébergement et mises à jour, sans engagement. Un rachat reste possible sur demande.",
   },
 ];
 
@@ -116,18 +90,15 @@ function SitalyHome() {
     <div ref={rootRef} className="min-h-screen bg-background text-foreground">
       <SiteHeader accueil />
       <Ouverture />
-      <Problem />
-      <HowItWorks />
+      <Expertises />
       <StackedOffers />
-      <Extras />
       <Realisations />
-      <MetierLinksSection />
       <Process />
-      <Temoignages />
       <Founder />
+      <Temoignages />
       <Faq />
       <Contact />
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }
@@ -262,7 +233,7 @@ function CeQuOnFait() {
   const prestations = [
     {
       texte: "création de site internet",
-      to: "/realisations/",
+      to: "/creation-site-internet/",
       coche: "text-blue-on-ink",
       survol: "group-hover:text-blue-on-ink",
     },
@@ -352,206 +323,69 @@ function CeQuOnFait() {
   );
 }
 
-/* ---------------- LE CONSTAT ---------------- */
+/* ---------------- EXPERTISES ---------------- */
 /**
- * Aplat violet, énoncé unique en très grand, trois faits alignés sous un filet.
+ * Les trois familles, et le chemin vers leurs pages.
  *
- * La section était une grille de trois cartes, comme quatre autres avant la
- * refonte. Elle ouvre désormais la page sur une couleur pleine : c'est le
- * premier moment où le site cesse d'être blanc, et il tombe là où le propos
- * est le plus dur.
+ * Cette section remplace « Notre méthode », qui énumérait attirer, convertir
+ * et automatiser sans que rien ne soit cliquable : le visiteur intéressé par
+ * un point précis n'avait nulle part où aller. Les trois familles disent la
+ * même séquence et mènent chacune à des pages qui la détaillent.
  */
-function Problem() {
-  const faits = [
-    {
-      chiffre: "8 sur 10",
-      texte: "vérifient un site web avant de contacter une entreprise.",
-    },
-    {
-      chiffre: "Vos concurrents",
-      texte: "occupent la place que vous laissez vide sur Google.",
-    },
-    {
-      chiffre: "Zéro heure",
-      texte: "c'est le temps que vous devriez passer à gérer tout ça.",
-    },
-  ];
+function Expertises() {
   return (
-    <section className="on-wash pt-14 pb-20 sm:pt-16 sm:pb-28">
+    <section id="expertises" className="py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
           index="01"
-          eyebrow="Le constat"
+          eyebrow="Expertises"
           title={
             <>
-              Sans site à jour, vous n'êtes pas <span className="accent-word">dans la liste</span>
+              Trois familles, <span className="accent-word">une seule adresse</span>
             </>
           }
+          subtitle="Le site, ce qui l'amène des visiteurs, et ce qui traite les demandes une fois qu'elles arrivent."
         />
 
-        <div className="mt-14 grid gap-x-10 gap-y-10 border-t border-border pt-10 sm:grid-cols-3">
-          {faits.map((f, i) => (
+        <div className="stagger mt-14 grid gap-x-10 gap-y-12 border-t border-border pt-12 md:grid-cols-3">
+          {FAMILLES.map((f, i) => (
             <div
-              key={f.chiffre}
+              key={f.id}
               data-reveal
               style={{ "--i": i } as React.CSSProperties}
-              className="sm:border-l sm:border-border sm:pl-8 sm:first:border-l-0 sm:first:pl-0"
+              className="md:border-l md:border-border md:pl-8 md:first:border-l-0 md:first:pl-0"
             >
-              <div className="brand-gradient-text font-display text-[clamp(1.8rem,3vw,2.6rem)] font-extrabold leading-none tracking-tight">
-                {f.chiffre}
-              </div>
-              <p className="mt-3 text-lg leading-relaxed text-foreground/75">{f.texte}</p>
+              <f.icone className="h-6 w-6 text-brand-ink" />
+              <h3 className="mt-4 font-display text-2xl font-extrabold tracking-tight">
+                {f.titre}
+              </h3>
+              <p className="mt-2 leading-relaxed text-muted-foreground">{f.resume}</p>
+              <ul className="mt-6 space-y-1">
+                {entreesFamille(f.id).map((e) => (
+                  <li key={e.label}>
+                    {e.to ? (
+                      <Link
+                        to={e.to}
+                        className="group flex items-center gap-2 py-1.5 text-[15px] font-medium transition-colors hover:text-brand-ink"
+                      >
+                        <ArrowRight className="h-3.5 w-3.5 shrink-0 text-brand-ink transition-transform group-hover:translate-x-0.5" />
+                        {e.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={e.href}
+                        className="group flex items-center gap-2 py-1.5 text-[15px] font-medium transition-colors hover:text-brand-ink"
+                      >
+                        <ArrowRight className="h-3.5 w-3.5 shrink-0 text-brand-ink transition-transform group-hover:translate-x-0.5" />
+                        {e.label}
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- MÉTHODE ---------------- */
-/**
- * Frise horizontale reliée, plutôt qu'une troisième grille de cartes.
- *
- * Le fil qui court entre les trois temps dit la séquence : attirer, puis
- * convertir, puis automatiser. Une grille de cartes juxtapose, elle
- * n'enchaîne pas.
- */
-function HowItWorks() {
-  const steps = [
-    {
-      icon: Search,
-      title: "Attirer",
-      benefit: "Être trouvé par vos futurs clients",
-      points: ["Site professionnel", "Référencement local", "Google Business", "Google Ads"],
-    },
-    {
-      icon: Target,
-      title: "Convertir",
-      benefit: "Transformer les visiteurs en demandes",
-      points: ["Pages optimisées", "Formulaires courts", "Appels à l'action clairs"],
-    },
-    {
-      icon: Zap,
-      title: "Automatiser",
-      benefit: "Gagner du temps sur le suivi",
-      points: ["Réponse automatique", "Qualification", "Relance des devis", "Prise de rendez-vous"],
-    },
-  ];
-  return (
-    <section className="py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <SectionHeader
-          index="02"
-          eyebrow="Notre méthode"
-          title={
-            <>
-              Attirer, convertir, <span className="accent-word">automatiser</span>
-            </>
-          }
-          subtitle="Un système en trois temps pour transformer votre présence en ligne en clients."
-        />
-
-        <div className="relative mt-16">
-          {/* Le fil de la séquence. Horizontal à partir de md, vertical
-              en dessous, où les trois temps s'empilent. */}
-          <span
-            aria-hidden="true"
-            className="absolute left-6 top-6 hidden h-[calc(100%-3rem)] w-px bg-gradient-to-b from-accent via-accent/40 to-transparent sm:block md:left-0 md:top-6 md:h-px md:w-full md:bg-gradient-to-r"
-          />
-
-          <ol className="stagger relative grid gap-12 md:grid-cols-3 md:gap-10">
-            {steps.map((s, i) => (
-              <li
-                key={s.title}
-                data-reveal
-                style={{ "--i": i } as React.CSSProperties}
-                className="relative pl-20 sm:pl-0"
-              >
-                <span className="absolute left-0 top-0 grid h-12 w-12 place-items-center rounded-full border border-border bg-background text-accent shadow-soft sm:relative sm:mb-6">
-                  <s.icon className="h-5 w-5" />
-                </span>
-                <div className="flex items-baseline gap-3">
-                  <span className="rail-num font-display text-sm font-bold text-brand-ink">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="font-display text-2xl font-extrabold tracking-tight">{s.title}</h3>
-                </div>
-                <p className="mt-1.5 font-medium text-muted-foreground">{s.benefit}</p>
-                <ul className="mt-5 space-y-2">
-                  {s.points.map((p) => (
-                    <li key={p} className="flex items-start gap-2.5 text-[15px]">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-signal-ink" />
-                      <span>{p}</span>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- COMPLÉMENTS ---------------- */
-/**
- * Liste de définitions en grande typographie, sans carte.
- *
- * Quatre cartes à icône de plus n'apportaient rien : ces briques sont des
- * options, pas des arguments. Une liste sobre les annonce sans leur donner
- * le poids visuel d'une offre.
- */
-const EXTRAS = [
-  {
-    name: "Blog SEO",
-    desc: "Des articles optimisés, rédigés et mis en page chaque mois. En complément de votre site, ou seul si vous en avez déjà un.",
-  },
-  {
-    name: "Logo & identité visuelle",
-    desc: "Un logo, une palette et des règles d'usage, quand la marque n'existe pas encore ou a vieilli.",
-  },
-  {
-    name: "Photos professionnelles",
-    desc: "Vos vraies réalisations photographiées. Rien ne remplace une photo de votre travail sur votre propre site.",
-  },
-  {
-    name: "Rédaction de contenus",
-    desc: "Pages de service, fiches métier, textes de présentation. Écrits pour vos clients et pour Google.",
-  },
-] as const;
-
-function Extras() {
-  return (
-    <section className="bg-paper-sunk pt-12 pb-20 sm:pt-14 sm:pb-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <SectionHeader
-          index="04"
-          eyebrow="Compléments"
-          title={
-            <>
-              Ce qui s'ajoute <span className="accent-word">quand c'est utile</span>
-            </>
-          }
-          subtitle="Rien d'imposé. Ces briques se greffent sur votre accompagnement, à la demande."
-        />
-
-        <dl className="stagger mt-14 border-t border-border">
-          {EXTRAS.map((o, i) => (
-            <div
-              key={o.name}
-              data-reveal
-              style={{ "--i": i } as React.CSSProperties}
-              className="grid gap-x-10 gap-y-2 border-b border-border py-6 sm:grid-cols-[18rem_1fr] sm:py-7"
-            >
-              <dt className="font-display text-lg font-bold tracking-tight sm:text-xl">{o.name}</dt>
-              <dd className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">
-                {o.desc}
-              </dd>
-            </div>
-          ))}
-        </dl>
       </div>
     </section>
   );
@@ -571,10 +405,10 @@ function Realisations() {
     <section id="exemples" className="py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
-          index="05"
+          index="03"
           eyebrow="Réalisations"
           title={<>Des sites réellement en ligne</>}
-          subtitle="Trois métiers, trois logiques différentes. Chaque projet a sa page : ce qui a été livré, pourquoi le site est construit comme ça, et ce qu'on voit en l'ouvrant."
+          subtitle="Trois métiers, trois logiques. Chaque projet a sa page, et chaque site est en ligne."
         />
 
         <RealisationsCarousel className="mt-16" />
@@ -613,14 +447,13 @@ function Process() {
     <section id="process" className="on-wash py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
-          index="06"
+          index="04"
           eyebrow="Process"
           title={
             <>
               Cinq étapes, <span className="accent-word">et c'est en ligne</span>
             </>
           }
-          subtitle="De l'appel découverte à la mise en ligne, vous savez à chaque instant où en est votre site."
         />
 
         <ol className="stagger mt-14">
@@ -667,7 +500,7 @@ function Faq() {
     <section id="faq" className="bg-paper-sunk py-20 sm:py-28">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <SectionHeader
-          index="07"
+          index="05"
           eyebrow="FAQ"
           title={
             <>
@@ -978,141 +811,6 @@ function Field({
         className="mt-1.5 w-full rounded-lg border border-input bg-background px-3.5 py-2.5 text-[15px] outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
       />
     </div>
-  );
-}
-
-/* ---------------- FOOTER ---------------- */
-function Footer() {
-  return (
-    <footer className="border-t border-border bg-primary py-12 text-primary-foreground">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <div className="flex items-center gap-2">
-              <SitalyLogo />
-            </div>
-            <p className="mt-3 text-sm text-primary-foreground/70">
-              La présence en ligne des indépendants, TPE et PME : site internet, Google Ads, ChatGPT
-              Ads et automatisation.
-            </p>
-            <div className="mt-4">
-              <LinkedinLink variant="clair" />
-            </div>
-          </div>
-          <div>
-            <div className="text-sm font-semibold">Sites par métier</div>
-            <MetierFooterLinks className="mt-3 space-y-1 text-sm text-primary-foreground/70" />
-          </div>
-          <div>
-            <div className="text-sm font-semibold">Navigation</div>
-            <ul className="mt-3 space-y-1 text-sm text-primary-foreground/70">
-              <li>
-                <a href="#offre" className="block py-2.5 hover:text-primary-foreground">
-                  Offres
-                </a>
-              </li>
-              <li>
-                <Link to="/agents-ia/" className="block py-2.5 hover:text-primary-foreground">
-                  Agents IA
-                </Link>
-              </li>
-              <li>
-                <a href="/chatgpt-ads/" className="block py-2.5 hover:text-primary-foreground">
-                  ChatGPT Ads
-                </a>
-              </li>
-              <li>
-                <a href="#exemples" className="block py-2.5 hover:text-primary-foreground">
-                  Exemples
-                </a>
-              </li>
-              <li>
-                <a href="#process" className="block py-2.5 hover:text-primary-foreground">
-                  Process
-                </a>
-              </li>
-              <li>
-                <a href="#faq" className="block py-2.5 hover:text-primary-foreground">
-                  FAQ
-                </a>
-              </li>
-              <li>
-                <Link to="/blog/" className="block py-2.5 hover:text-primary-foreground">
-                  Blog
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <div className="text-sm font-semibold">Contact</div>
-            <ul className="mt-3 space-y-2 text-sm text-primary-foreground/70">
-              <li>
-                <a
-                  href={`tel:${SITALY_PHONE}`}
-                  className="flex items-center gap-2 py-2.5 font-semibold text-primary-foreground hover:text-accent"
-                >
-                  <Phone className="h-4 w-4" /> {SITALY_PHONE_DISPLAY}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:contact@sitaly.fr"
-                  className="flex items-center gap-2 py-2.5 hover:text-primary-foreground"
-                >
-                  <Mail className="h-4 w-4" /> contact@sitaly.fr
-                </a>
-              </li>
-              <li className="flex items-center gap-2 py-2.5">
-                <Globe className="h-4 w-4" /> sitaly.fr
-              </li>
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/vidalozzi"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 py-2.5 hover:text-primary-foreground"
-                >
-                  <Linkedin className="h-4 w-4" /> Teddy Vidal
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://instagram.com/sitaly.fr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 py-2.5 hover:text-primary-foreground"
-                >
-                  <Instagram className="h-4 w-4" /> @sitaly.fr
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-primary-foreground/60 sm:flex-row">
-          <div>© {new Date().getFullYear()} Sitaly. Tous droits réservés.</div>
-          <div className="flex flex-wrap justify-center gap-x-5 gap-y-1">
-            <Link
-              to="/mentions-legales/"
-              className="inline-block py-2.5 hover:text-primary-foreground"
-            >
-              Mentions légales
-            </Link>
-            <Link
-              to="/politique-confidentialite/"
-              className="inline-block py-2.5 hover:text-primary-foreground"
-            >
-              Confidentialité
-            </Link>
-            <Link to="/cgv/" className="inline-block py-2.5 hover:text-primary-foreground">
-              CGV
-            </Link>
-            <Link to="/cookies/" className="inline-block py-2.5 hover:text-primary-foreground">
-              Cookies
-            </Link>
-          </div>
-        </div>
-      </div>
-    </footer>
   );
 }
 

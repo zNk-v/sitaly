@@ -14,6 +14,7 @@ import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
 import { LinkedinLink } from "@/components/LinkedinLink";
 import { MetierLinksStrip } from "@/components/MetierLinks";
 import { CALENDLY_URL } from "@/lib/config";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
@@ -267,18 +268,7 @@ function BlogPostPage() {
 
       <MetierLinksStrip />
 
-      <footer className="border-t border-border bg-background">
-        <div className="mx-auto max-w-7xl px-4 py-10 text-center text-sm text-muted-foreground sm:px-6">
-          <div className="mb-5 flex justify-center">
-            <LinkedinLink />
-          </div>
-          © {new Date().getFullYear()} Sitaly — Création de sites internet pour artisans.
-          {" — "}
-          <Link to="/blog/" className="underline-offset-2 hover:underline">
-            Tous les articles
-          </Link>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

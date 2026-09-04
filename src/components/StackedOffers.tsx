@@ -127,7 +127,7 @@ export function StackedOffers() {
     <section id="offre" className="pt-20 pb-8 sm:pt-28 sm:pb-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
-          index="03"
+          index="02"
           eyebrow="Nos offres"
           title={
             <>
