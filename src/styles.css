@@ -557,222 +557,126 @@
 /* Le seuil de hauteur n'est pas décoratif : sous 700 px de fenêtre, le contenu
    du hero dépasse l'écran collé et se fait rogner par son overflow. En dessous,
    la scène redevient deux sections l'une après l'autre, et rien n'est coupé. */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) and (min-height: 700px) {
-    .zoom-stage {
-      /* La hauteur de la scène EST la durée de l'effet : deux écrans et demi
-         de défilement pour ouvrir le mot. La timeline porte un nom, car
-         l'enfant collé ne bouge pas et ne peut pas servir de repère à sa
-         propre animation. */
-      /* La hauteur de la scène EST la durée de l'effet : l'enfant reste collé
-         tant qu'on parcourt ces 260vh. Les animations sont pilotées par le
-         défilement du document, pas par une timeline nommée : la scène ouvre
-         la page, donc les deux courses coïncident, et une course en pixels se
-         règle sans deviner ce que « cover 40 % » recouvre. */
-      /* 100vh pour l'écran collé, plus la course des animations (elles
-         s'achèvent vers 88vh de défilement). Au-delà, le panneau resterait
-         collé sans que rien ne bouge. */
-      height: 195vh;
-    }
-    .zoom-pin {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      overflow: hidden;
-    }
-    /* L'empilement est explicite : l'ordre du DOM sert au repli, pas à
-       l'effet. Le voile passe entre les deux couches. */
-    .zoom-behind,
-    .zoom-cover,
-    .zoom-front {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-    }
-    .zoom-behind {
-      z-index: 1;
-    }
-    .zoom-cover {
-      z-index: 2;
-    }
-    .zoom-front {
-      z-index: 3;
-    }
-    /* Le nom est découpé dans le voile : sa doublure en texte n'a plus lieu
-       d'être et ferait doublon au repos. */
-    .zoom-word-fallback {
-      display: none;
-    }
-    /* Le voile reste opaque de bout en bout et ne s'efface jamais. Il
-       s'effaçait d'abord en fondu — on lisait le panneau à travers le papier —
-       puis d'un coup, ce qui sautait sur les écrans larges où le trou des
-       lettres plafonne à 81 % de la fenêtre. C'est désormais `.zoom-remplir`
-       qui referme le trou, en continu. */
-    .zoom-cover {
-      pointer-events: none;
-    }
+/* L'avancement de l'ouverture est porté par des variables que le script met à
+   jour au défilement, et non par `animation-timeline`.
 
-    /* La couche de tête couvre toute la fenêtre. Rendre son enfant direct
-       cliquable revenait à poser une vitre sur le panneau du dessous, dont les
-       liens ne recevaient plus aucun clic. Seuls les éléments réellement
-       interactifs reprennent le pointeur. */
-    .zoom-front,
-    .zoom-front > * {
-      pointer-events: none;
-    }
-    .zoom-front a,
-    .zoom-front button {
-      pointer-events: auto;
-    }
+   Cette timeline n'existe pas avant Safari 26 — donc sur aucun navigateur
+   d'iPhone, Chrome y compris, qui roule sur WebKit. Ces visiteurs ne voyaient
+   pas l'effet du tout. Un seul chemin de code vaut mieux que deux : les
+   transformations restent composées par le GPU, seul l'écriture des variables
+   passe par le fil principal, et elle est calée sur le rafraîchissement.
 
-    /* `view-box` fait résoudre les pourcentages de l'origine sur la fenêtre du
-       SVG et non sur la boîte du rectangle : l'origine tombe ainsi au même
-       point que celle du zoom du mot, à 46,7 % de la largeur et à la hauteur
-       de la fente. Le rectangle fait deux fois la fenêtre, donc l'échelle 1
-       suffit à la couvrir depuis n'importe quel point. */
-    .zoom-remplir {
-      transform-box: view-box;
-      transform-origin: 46.7% calc(var(--mot-haut) + var(--mot-fente) / 2);
-      animation: zoom-remplir linear both;
-      animation-timeline: scroll(root);
-      animation-range: 50vh 82vh;
-    }
-    @keyframes zoom-remplir {
-      from {
-        transform: scale(0);
-      }
-      to {
-        transform: scale(1);
-      }
-    }
+   Sans script, toutes les variables valent 0 : le mot est à l'échelle 1, la
+   tête est visible, le voile intact. C'est l'état de repos, pas un état cassé. */
+@media (prefers-reduced-motion: no-preference) and (min-height: 700px) {
+  .zoom-stage {
+    /* La hauteur de la scène EST la durée de l'effet : 100vh pour l'écran
+       collé, plus la course des animations, qui s'achèvent vers 88vh. */
+    height: 195vh;
 
-    /* Le mot découpé. `transform-box: fill-box` fait porter l'origine sur la
-       boîte du texte et non sur le repère du SVG, sans quoi le zoom part d'un
-       coin. */
-    /* Position du mot et de la fente qui lui est réservée.
-       Une seule formule pour les deux, sinon ils divergent : centrer la colonne
-       de texte ne suffisait pas, le bas de colonne dépasse sa moitié et pousse
-       la fente vers le haut pendant que le mot reste au centre de la fenêtre. */
-    .zoom-stage {
-      /* Bornées en vh : sur un écran bas, une valeur purement en vw fait
-         grossir le mot pendant que la place disponible diminue.
-         La réserve a été resserrée de 24 à 21vh quand l'en-tête est sorti du
-         flux : l'écran collé coïncide désormais avec la fenêtre, et les 65 px
-         qui débordaient sous le pli ne sont plus une réserve invisible. */
-      --mot-haut: min(21vh, 11rem);
-      /* Le `max` garde un corps utilisable sur les écrans étroits : à 375 px,
-         13vw donnait 48 px, soit à peine plus que la ligne de sens — l'objet
-         graphique n'en était plus un. Sur desktop la borne ne mord pas. */
-      --mot-taille: min(max(13vw, 4.4rem), 21vh);
-      --mot-fente: min(max(16vw, 5.4rem), 26vh);
-    }
+    /* Bornées en vh : sur un écran bas, une valeur purement en vw fait grossir
+       le mot pendant que la place disponible diminue. Le `max` garde à
+       l'inverse un corps utilisable sur les écrans étroits — à 375 px, 13vw
+       donnait 48 px, à peine plus que la ligne de sens. */
+    --mot-haut: min(21vh, 11rem);
+    --mot-taille: min(max(13vw, 4.4rem), 21vh);
+    --mot-fente: min(max(16vw, 5.4rem), 26vh);
+  }
+  .zoom-pin {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+  }
 
-    /* Le mot reprend la casse et la chasse du logo : une capitale, le reste en
-       bas de casse, sans interlettrage ajouté. Il est posé à y=0 puis descendu
-       par transform, ce qui permet de composer la translation avec le zoom
-       dans une même déclaration. */
-    .zoom-word {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: var(--mot-taille);
-      letter-spacing: -0.02em;
-      transform-box: fill-box;
-      /* L'origine n'est pas le centre du mot. Le centre tombe dans le blanc
-         entre deux lettres : agrandi, ce blanc envahit l'écran et le voile ne
-         se referme jamais sur du noir — c'est pour ça que la première version
-         terminait en fondu, faute de mieux.
+  /* L'empilement est explicite : l'ordre du DOM sert au repli, pas à l'effet.
+     Le voile passe entre les deux couches. */
+  .zoom-behind,
+  .zoom-cover,
+  .zoom-front {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+  }
 
-         Ce point est le plus profondément noir du mot, relevé sur le rendu :
-         35 px de noir dans toutes les directions. Une origine posée dedans y
-         reste, ce qui fait grandir le noir au lieu du blanc — la couverture
-         passe de 64 à 94 % à 1200 px de large. Elle ne va pas jusqu'à 100 %,
-         voir la note sur `.zoom-cover`.
+  /* La section révélée monte légèrement pendant l'ouverture, ce qui donne la
+     sensation d'entrer dedans plutôt que de la découvrir à plat. */
+  .zoom-behind {
+    z-index: 1;
+    transform: scale(calc(0.94 + 0.06 * var(--p-approche, 0)));
+  }
 
-         Les pourcentages se rapportent à la boîte de remplissage du texte
-         (`getBBox`), pas à celle de son encre : les deux diffèrent de la
-         hauteur des jambages et des accents, et confondre les deux décale
-         l'origine d'une vingtaine de pour cent en vertical. */
-      transform-origin: 39.3% 49.8%;
-      animation: zoom-percer linear both;
-      animation-timeline: scroll(root);
-      animation-range: 8vh 84vh;
-      will-change: transform;
-    }
-    @keyframes zoom-percer {
-      from {
-        transform: translateY(calc(var(--mot-haut) + var(--mot-fente) / 2)) scale(1);
-      }
-      to {
-        transform: translateY(calc(var(--mot-haut) + var(--mot-fente) / 2)) scale(34);
-      }
-    }
+  /* Le voile reste opaque de bout en bout et ne s'efface jamais : c'est
+     `.zoom-remplir` qui referme le trou, en continu. */
+  .zoom-cover {
+    z-index: 2;
+    pointer-events: none;
+  }
 
-    /* Le texte de tête s'efface tôt, et son effacement est terminé avant que
-       le contenu du panneau ne commence à apparaître. Les deux courses se
-       recouvraient sur 26vh — tête sur 0-30, panneau sur 4-22 — et pendant ce
-       recouvrement on voyait les deux textes l'un sur l'autre. Elles sont
-       désormais bout à bout : 0-10 pour la tête, 12-28 pour le panneau.
+  /* Le texte de tête s'efface tôt, avant que le panneau ne commence à
+     apparaître : sinon on lit les deux textes l'un sur l'autre.
 
-       Le mot, lui, ne bouge pas pendant ce temps : sa croissance ne démarre
-       qu'à 8vh. Elle commençait à 0, et la tête se retrouvait donc posée sur
-       un mot déjà grand, en encre sur encre. Trois temps qui ne se
-       recouvrent pas : la tête s'en va, le mot grandit, le panneau se
-       découvre. */
-    .zoom-front {
-      animation: zoom-effacer linear both;
-      animation-timeline: scroll(root);
-      animation-range: 0 10vh;
-    }
-    @keyframes zoom-effacer {
-      from {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      to {
-        opacity: 0;
-        transform: translateY(-2.5rem);
-      }
-    }
+     La couche couvre toute la fenêtre. Rendre son enfant direct cliquable
+     revenait à poser une vitre sur le panneau du dessous, dont les liens ne
+     recevaient plus aucun clic. Seuls les éléments interactifs reprennent le
+     pointeur. */
+  .zoom-front {
+    z-index: 3;
+    opacity: calc(1 - var(--p-tete, 0));
+    transform: translateY(calc(var(--p-tete, 0) * -2.5rem));
+  }
+  .zoom-front,
+  .zoom-front > * {
+    pointer-events: none;
+  }
+  .zoom-front a,
+  .zoom-front button {
+    pointer-events: auto;
+  }
 
-    /* Le contenu du panneau n'apparaît qu'une fois l'ouverture entamée. Au
-       repos, les lettres du mot laissaient voir des fragments de titre et de
-       liste : illisibles à cette taille, ils donnaient un effet de désordre.
+  /* Le nom est découpé dans le voile : sa doublure en texte ferait doublon. */
+  .zoom-word-fallback {
+    display: none;
+  }
 
-       Sa course va de 30 à 50vh. Plus tôt, le « t » n'est pas encore assez
-       grand pour contenir le texte, qui apparaissait alors en morceaux
-       répartis dans le S, le i, le t et le a — un effet de puzzle, pas de
-       révélation. À 30vh le « t » tient la colonne, et le texte s'y découvre
-       seul. Elle s'achève avant que `.zoom-remplir` ne prenne le relais. */
-    .zoom-behind-content {
-      animation: zoom-contenu linear both;
-      animation-timeline: scroll(root);
-      animation-range: 30vh 50vh;
-    }
-    @keyframes zoom-contenu {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
+  /* `view-box` fait résoudre les pourcentages de l'origine sur la fenêtre du
+     SVG et non sur la boîte du rectangle : l'origine tombe ainsi au même point
+     que celle du zoom du mot. Le rectangle fait deux fois la fenêtre, donc
+     l'échelle 1 suffit à la couvrir depuis n'importe quel point. */
+  .zoom-remplir {
+    transform-box: view-box;
+    transform-origin: 46.7% calc(var(--mot-haut) + var(--mot-fente) / 2);
+    transform: scale(var(--p-remplir, 0));
+  }
 
-    /* La section révélée monte légèrement pendant l'ouverture, ce qui donne la
-       sensation d'entrer dedans plutôt que de la découvrir à plat. */
-    .zoom-behind {
-      animation: zoom-approcher linear both;
-      animation-timeline: scroll(root);
-      animation-range: 0 88vh;
-    }
-    @keyframes zoom-approcher {
-      from {
-        transform: scale(0.94);
-      }
-      to {
-        transform: scale(1);
-      }
-    }
+  /* Le mot reprend la casse et la chasse du logo. Il est posé à y=0 puis
+     descendu par transform, ce qui compose la translation avec le zoom dans
+     une seule déclaration.
+
+     L'origine n'est pas le centre du mot : le centre tombe dans le blanc entre
+     deux lettres, et agrandi ce blanc envahit l'écran. C'est le point le plus
+     profondément noir, relevé sur le rendu — 35 px de noir dans toutes les
+     directions. Les pourcentages se rapportent à la boîte de remplissage du
+     texte (`getBBox`), pas à celle de son encre : les confondre décale
+     l'origine d'une vingtaine de pour cent en vertical. */
+  .zoom-word {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--mot-taille);
+    letter-spacing: -0.02em;
+    transform-box: fill-box;
+    transform-origin: 39.3% 49.8%;
+    transform: translateY(calc(var(--mot-haut) + var(--mot-fente) / 2))
+      scale(calc(1 + 33 * var(--p-mot, 0)));
+    will-change: transform;
+  }
+
+  /* Le contenu du panneau ne se découvre qu'une fois le « t » assez grand pour
+     le contenir. Plus tôt, il apparaissait en morceaux répartis dans le S, le
+     i, le t et le a — un effet de puzzle, pas de révélation. */
+  .zoom-behind-content {
+    opacity: var(--p-panneau, 0);
   }
 }
 
