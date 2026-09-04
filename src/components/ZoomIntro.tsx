@@ -44,9 +44,16 @@ export function ZoomIntro({
   useEffect(() => {
     const el = scene.current;
     if (!el) return;
-    const conditions = matchMedia(
-      "(prefers-reduced-motion: no-preference) and (min-height: 700px)",
-    );
+    /* La condition ne porte que sur le mouvement réduit, jamais sur la taille.
+       Elle a un temps repris le seuil de hauteur du CSS, et les deux ont
+       divergé : le CSS a rendu ce seuil dépendant de la largeur, pas le
+       script. Sur un téléphone, la mise en page passait donc en mode effet
+       pendant que le script refusait de la piloter — le panneau restait à
+       l'opacité 0 et l'on traversait deux écrans de vide.
+
+       Écrire cinq variables que le CSS n'utilise pas ne coûte rien. Les faire
+       manquer coûte la page. */
+    const conditions = matchMedia("(prefers-reduced-motion: no-preference)");
     let image = 0;
 
     const ecrire = () => {
@@ -68,9 +75,8 @@ export function ZoomIntro({
       if (!image) image = requestAnimationFrame(ecrire);
     };
 
-    /* Hors conditions — mouvement réduit, écran trop bas — la scène est
-       dépliée : écrire des variables que personne ne lit userait la batterie
-       pour rien. */
+    /* Sous mouvement réduit la scène est dépliée pour de bon : le script se
+       tait, ce qui est le seul cas où son travail serait inutile. */
     const brancher = () => {
       if (conditions.matches) {
         ecrire();
