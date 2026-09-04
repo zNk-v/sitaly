@@ -567,8 +567,17 @@
    passe par le fil principal, et elle est calée sur le rafraîchissement.
 
    Sans script, toutes les variables valent 0 : le mot est à l'échelle 1, la
-   tête est visible, le voile intact. C'est l'état de repos, pas un état cassé. */
-@media (prefers-reduced-motion: no-preference) and (min-height: 700px) {
+   tête est visible, le voile intact. C'est l'état de repos, pas un état cassé.
+
+   Le seuil de hauteur dépend de la largeur, parce que la colonne du hero n'a
+   pas la même hauteur selon la largeur : mesurée à 390 px de large, elle fait
+   574 px et laisse 126 px de mou dans une fenêtre de 700 ; à 1200 px de large,
+   elle en fait 626 et ne tient déjà plus dans 620. Un seuil unique à 700
+   privait donc les téléphones de l'effet sans raison — et Safari résout cette
+   hauteur sur le viewport barre d'URL comprise, ce qui la fait passer sous 700
+   sur beaucoup d'iPhone. */
+@media (prefers-reduced-motion: no-preference) and (min-height: 700px),
+  (prefers-reduced-motion: no-preference) and (max-width: 699px) and (min-height: 580px) {
   .zoom-stage {
     /* La hauteur de la scène EST la durée de l'effet : 100vh pour l'écran
        collé, plus la course des animations, qui s'achèvent vers 88vh. */
@@ -766,22 +775,24 @@
     margin-top: 2.25rem;
   }
 }
-@supports not (animation-timeline: view()) {
+/* Second cas où l'effet ne tourne pas : la scène est dépliée par sa propre
+   garde de hauteur, et il n'y a plus d'écran collé contre lequel se caler.
+   Cette condition est le complément exact de celle qui active l'effet — même
+   seuil, même dépendance à la largeur. */
+@media (max-height: 579px), (min-width: 700px) and (max-height: 699px) {
   .zoom-cue {
     position: static;
     margin-top: 2.25rem;
   }
 }
 
-/* Troisième cas où l'effet ne tourne pas, que les deux règles ci-dessus ne
-   couvrent pas : sous 700 px de fenêtre, la scène est dépliée par sa propre
-   garde de hauteur. `animation-timeline` existe et le mouvement n'est pas
-   réduit, mais il n'y a plus d'écran collé, donc plus de bas contre lequel se
-   caler. */
-@media (max-height: 699px) {
+/* Sur un téléphone bas, l'écran collé existe mais ses derniers pixels sont
+   pris : le dégagement du repère vaut -23 px à 600 de haut, +56 à 700, mesurés.
+   Il devient positif vers 630 et confortable vers 660. Le repère est
+   décoratif : il s'efface plutôt que de recouvrir les trois garanties. */
+@media (max-width: 699px) and (min-height: 580px) and (max-height: 659px) {
   .zoom-cue {
-    position: static;
-    margin-top: 2.25rem;
+    display: none;
   }
 }
 
