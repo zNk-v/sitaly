@@ -652,10 +652,17 @@
   /* `view-box` fait résoudre les pourcentages de l'origine sur la fenêtre du
      SVG et non sur la boîte du rectangle : l'origine tombe ainsi au même point
      que celle du zoom du mot. Le rectangle fait deux fois la fenêtre, donc
-     l'échelle 1 suffit à la couvrir depuis n'importe quel point. */
+     l'échelle 1 suffit à la couvrir depuis n'importe quel point.
+
+     L'abscisse se déduit de celle du mot au lieu d'être relevée à l'écran :
+     le mot est centré et large de 2,663 corps, son origine à 39,3 % de sa
+     boîte tombe donc à 0,285 corps à gauche du milieu de la fenêtre. Un
+     pourcentage figé ne valait que pour une largeur — 46,7 % vise juste à
+     1440 px, et à 30 px du mot sur un téléphone. */
   .zoom-remplir {
     transform-box: view-box;
-    transform-origin: 46.7% calc(var(--mot-haut) + var(--mot-fente) / 2);
+    transform-origin: calc(50% - 0.285 * var(--mot-taille))
+      calc(var(--mot-haut) + var(--mot-fente) / 2);
     transform: scale(var(--p-remplir, 0));
   }
 
@@ -686,6 +693,27 @@
      i, le t et le a — un effet de puzzle, pas de révélation. */
   .zoom-behind-content {
     opacity: var(--p-panneau, 0);
+  }
+
+  /* En portrait le mot doit être beaucoup plus grand, et c'est une question de
+     couverture avant d'être une question de goût. Le zoom part d'un point
+     d'encre du « t » ; pour que le noir atteigne le bas de l'écran, il faut que
+     l'échelle finale multiplie le noir disponible autour de ce point — environ
+     0,205 corps dans chaque direction — jusqu'à la distance du point au bord.
+
+     À 393x852, le corps valait 70 px : il aurait fallu une échelle de 60 pour
+     couvrir les 633 px sous l'origine, contre 33 au maximum. D'où le blanc en
+     bas de l'iPhone pendant toute la course, alors que le paysage se referme
+     vers 22. À 30vw le corps passe à 118 px et l'échelle nécessaire à 27, sous
+     le plafond. La fente suit le même rapport qu'en paysage (1,24 corps) pour
+     que le mot ne morde pas la ligne suivante, et la réserve du haut se réduit
+     d'autant. */
+  @media (max-aspect-ratio: 4 / 5) {
+    .zoom-stage {
+      --mot-haut: min(16vh, 11rem);
+      --mot-taille: min(30vw, 21vh);
+      --mot-fente: min(37vw, 26vh);
+    }
   }
 }
 
