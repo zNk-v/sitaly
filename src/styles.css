@@ -1159,28 +1159,27 @@
   }
 }
 
-/* Figée, la bande couperait les mots au bord. Elle passe donc à la ligne. */
+/* Figée, la bande couperait les mots au bord. Elle a d'abord été repliée sur
+   plusieurs lignes pour l'éviter ; avec cinquante-quatre métiers, ce repli
+   occupait 766 px sur un téléphone, soit un écran entier de noms. La bande
+   doit rester une bande. Elle se parcourt donc à la main : rien n'est coupé,
+   rien n'est retiré de l'arbre d'accessibilité, et la hauteur ne bouge pas. */
 @media (prefers-reduced-motion: reduce) {
   .defile-piste {
     animation: none;
-    width: 100%;
   }
   .defile-copie {
     display: none;
   }
-  /* Sur un ruban plein, les lignes ne doivent pas toucher le bord. */
   .defile {
+    overflow-x: auto;
+    overflow-y: hidden;
     padding-inline: 1rem;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
-  /* `shrink-0` sert la boucle : sans lui, les deux pistes se compressent au
-     lieu de défiler. Il empêche en revanche le retour à la ligne, la piste
-     restant large comme son contenu. Il est donc levé ici, et seulement ici. */
-  .defile-rang {
-    flex: 1 1 auto;
-    flex-wrap: wrap;
-    justify-content: center;
-    min-width: 0;
-    row-gap: 0.25rem;
+  .defile::-webkit-scrollbar {
+    display: none;
   }
 }
 
