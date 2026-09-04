@@ -105,9 +105,11 @@ export const TOUS_LES_METIERS = METIERS;
 
 /* La durée suit le nombre de mots : la course vaut la moitié de la piste, donc
    à durée constante une piste quatre fois plus longue défilerait quatre fois
-   plus vite. 46 s pour douze mots était le réglage d'origine ; le rapport est
-   conservé, la vitesse reste de 52 px/s. */
-const DUREE = `${Math.round((46 * METIERS.length) / 12)}s`;
+   plus vite. Le rapport d'origine, 46 s pour douze mots, donnait 52 px/s ; à
+   ce rythme et avec cinquante-quatre métiers, il fallait 3 min 27 pour voir la
+   liste entière. 29 s pour douze mots la montre en 2 min 11, à 84 px/s à
+   1440 de large, sans que les mots deviennent illisibles au passage. */
+const DUREE = `${Math.round((29 * METIERS.length) / 12)}s`;
 
 function Piste({ copie = false }: { copie?: boolean }) {
   /* La piste est dupliquée et la translation vaut la moitié de l'ensemble :
