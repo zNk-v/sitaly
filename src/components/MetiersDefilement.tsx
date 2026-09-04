@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 /**
- * Le défilement des métiers : deux rangées à contresens, les mots en dégradé.
+ * Le défilement des métiers : une rangée, les mots en dégradé.
  *
  * Adapté de `bundui/marquee-effect` sur 21st.dev, dont le parti est un bandeau
  * traversé par du texte. Deux versions ont été écartées avant celle-ci, et les
@@ -26,9 +26,9 @@ import { cn } from "@/lib/utils";
  */
 
 /**
- * Les métiers, par secteur. L'ordre compte : les rangées sont constituées en
- * alternant un métier sur deux, de sorte que chacune traverse tous les
- * secteurs au lieu d'aligner six métiers du bâtiment puis six du droit.
+ * Les métiers, par secteur. L'ordre compte : la piste change de secteur tous
+ * les six mots, ce qui suffit à faire comprendre en une seconde de lecture que
+ * la liste ne se limite pas au bâtiment.
  *
  * La liste est large volontairement. Restreinte aux artisans, elle disait le
  * contraire de ce que fait Sitaly, et un ostéopathe ou un cabinet de
@@ -103,17 +103,13 @@ const METIERS = [
 /** Toute la liste, pour les lecteurs d'écran et l'indexation. */
 export const TOUS_LES_METIERS = METIERS;
 
-const RANGEE_HAUT = METIERS.filter((_, i) => i % 2 === 0);
-const RANGEE_BAS = METIERS.filter((_, i) => i % 2 === 1);
-
-/* Les durées suivent le nombre de mots : la course vaut la moitié de la piste,
-   donc à durée constante une piste deux fois plus longue défilerait deux fois
+/* La durée suit le nombre de mots : la course vaut la moitié de la piste, donc
+   à durée constante une piste quatre fois plus longue défilerait quatre fois
    plus vite. 46 s pour douze mots était le réglage d'origine ; le rapport est
-   conservé, et les deux rangées reçoivent des durées légèrement différentes
-   pour ne pas se synchroniser à l'œil. */
-const duree = (mots: number, facteur = 1) => `${Math.round((46 * mots) / 12) * facteur}s`;
+   conservé, la vitesse reste de 52 px/s. */
+const DUREE = `${Math.round((46 * METIERS.length) / 12)}s`;
 
-function Piste({ mots, copie = false }: { mots: readonly string[]; copie?: boolean }) {
+function Piste({ copie = false }: { copie?: boolean }) {
   /* La piste est dupliquée et la translation vaut la moitié de l'ensemble :
      au terme de la course, la copie occupe exactement la place du départ. */
   return (
@@ -121,7 +117,7 @@ function Piste({ mots, copie = false }: { mots: readonly string[]; copie?: boole
       aria-hidden={copie || undefined}
       className={cn("defile-rang flex shrink-0 items-center", copie && "defile-copie")}
     >
-      {mots.map((m) => (
+      {METIERS.map((m) => (
         <li key={m} className="flex items-center">
           <span className="defile-mot whitespace-nowrap font-display text-[clamp(0.95rem,1.6vw,1.3rem)] font-extrabold tracking-[-0.01em]">
             {m}
@@ -135,40 +131,13 @@ function Piste({ mots, copie = false }: { mots: readonly string[]; copie?: boole
   );
 }
 
-function Rangee({
-  mots,
-  sens,
-  duree: d,
-}: {
-  mots: readonly string[];
-  sens?: "reverse";
-  duree: string;
-}) {
-  return (
-    <div className="defile overflow-hidden">
-      <div
-        className="defile-piste flex"
-        style={
-          {
-            "--defile-duree": d,
-            ...(sens ? { "--defile-sens": sens } : {}),
-          } as React.CSSProperties
-        }
-      >
-        <Piste mots={mots} />
-        <Piste mots={mots} copie />
-      </div>
-    </div>
-  );
-}
-
 export function MetiersDefilement({ className }: { className?: string }) {
   return (
-    <div className={cn("ruban flex flex-col gap-2 sm:gap-3", className)}>
-      <Rangee mots={RANGEE_HAUT} duree={duree(RANGEE_HAUT.length)} />
-      {/* La seconde rangée remonte le courant : deux rangées dans le même sens
-          se lisent comme un seul bloc qui glisse, et l'on perd le mouvement. */}
-      <Rangee mots={RANGEE_BAS} sens="reverse" duree={duree(RANGEE_BAS.length, 1.12)} />
+    <div className={cn("ruban defile overflow-hidden", className)}>
+      <div className="defile-piste flex" style={{ "--defile-duree": DUREE } as React.CSSProperties}>
+        <Piste />
+        <Piste copie />
+      </div>
     </div>
   );
 }

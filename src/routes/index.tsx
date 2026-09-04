@@ -402,10 +402,8 @@ function Expertises() {
  * transition qui était vide. Elle dit à qui Sitaly s'adresse sans y consacrer
  * une section entière, ce qui était le défaut de la version précédente.
  *
- * Deux rangées plutôt qu'une : la liste est passée de douze métiers à
- * cinquante-quatre, et une seule piste aurait mis trois fois plus longtemps à
- * montrer sa variété. À contresens, les deux rangées se lisent aussi comme un
- * mouvement et non comme un bloc qui glisse.
+ * Une seule rangée : à deux, la bande doublait de hauteur et cessait d'être
+ * une charnière pour devenir une section.
  *
  * Les filets du haut et du bas la font lire comme une règle typographique et
  * non comme une section de plus.
@@ -416,7 +414,7 @@ function BandeMetiers() {
       <p className="sr-only">
         Sitaly accompagne ces métiers, et les autres, dans leur présence en ligne.
       </p>
-      <MetiersDefilement className="py-5 sm:py-6" />
+      <MetiersDefilement className="py-6 sm:py-7" />
     </section>
   );
 }
