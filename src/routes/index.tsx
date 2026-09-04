@@ -10,7 +10,9 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { FondateurCard } from "@/components/FondateurCard";
 import { ZoomIntro } from "@/components/ZoomIntro";
 import { MetiersDefilement } from "@/components/MetiersDefilement";
+import { BlogCard } from "@/components/BlogCard";
 import { FAMILLES, entreesFamille } from "@/data/expertises";
+import { postsALaUne } from "@/data/blog-posts";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 import { useSplitWords } from "@/hooks/use-split-words";
 import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
@@ -99,6 +101,7 @@ function SitalyHome() {
       <Founder />
       <Temoignages />
       <Faq />
+      <Journal />
       <Contact />
       <SiteFooter />
     </div>
@@ -692,6 +695,54 @@ function Founder() {
           }
         />
         <FondateurCard className="mt-16" />
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- JOURNAL ---------------- */
+/**
+ * Trois articles avant le contact.
+ *
+ * La place n'est pas neutre : posé juste avant le formulaire, le journal donne
+ * une sortie à ceux qui ne sont pas prêts à appeler. Sans lui, la page n'offre
+ * que deux issues, réserver un appel ou partir.
+ *
+ * La sélection est éditoriale et vit dans `src/data/blog-posts.ts` : trois
+ * articles choisis, un par famille d'expertise, plutôt que les trois derniers
+ * publiés, qui ne sont pas forcément ceux qui intéressent le plus de monde.
+ */
+function Journal() {
+  const articles = postsALaUne(3);
+
+  return (
+    <section id="journal" className="bg-paper-sunk py-20 sm:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <SectionHeader
+          index="06"
+          eyebrow="Le journal"
+          title={
+            <>
+              Nos articles de <span className="accent-word">blog</span>
+            </>
+          }
+          subtitle="Ce qui bouge en acquisition, en référencement et en automatisation, expliqué sans jargon et sans promesse."
+        />
+
+        <div className="stagger mt-14 grid gap-5 lg:grid-cols-3">
+          {articles.map((post, i) => (
+            <div key={post.slug} data-reveal style={{ "--i": i } as React.CSSProperties}>
+              <BlogCard post={post} className="h-full" />
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 flex justify-center">
+          <Link to="/blog/" className="bouton-secondaire px-7 py-3.5">
+            Tous les articles
+            <ArrowRight className="h-5 w-5" />
+          </Link>
+        </div>
       </div>
     </section>
   );

@@ -1687,3 +1687,115 @@
     transform: translate(46px, -34px) rotate(3.2deg);
   }
 }
+
+/* Cartes d'article — blog et accueil ------------------------------------- */
+
+/* Le filet de rubrique. En `scaleY` plutôt qu'en hauteur : la hauteur relance
+   la mise en page de la carte à chaque survol, la transformation non. */
+.carte-article-filet {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 4px;
+  background: var(--teinte, var(--violet));
+  transform-origin: top;
+  transform: scaleY(0.75);
+  transition: transform 300ms ease;
+}
+.carte-article:hover .carte-article-filet,
+.carte-article:focus-within .carte-article-filet {
+  transform: scaleY(1.6);
+}
+
+/* La rubrique reprend la teinte du filet, assombrie pour tenir sur le papier :
+   les jetons de la triade sont faits pour le trait, pas pour du texte de 12 px.
+   `color-mix` avec l'encre garde la teinte tout en gagnant le contraste. */
+.carte-article-rubrique {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: color-mix(in oklab, var(--teinte, var(--violet)) 72%, var(--ink));
+}
+
+/* Le lien couvre la carte. Le pseudo-élément s'arrête sous le filet pour ne
+   pas manger le survol de celui-ci. */
+.carte-article-lien::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.carte-article:focus-within {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+.carte-article-lien:focus-visible {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carte-article,
+  .carte-article-filet {
+    transition: none;
+  }
+  .carte-article:hover {
+    transform: none;
+  }
+}
+
+/* Puces de filtre du blog ------------------------------------------------- */
+
+/* Le compteur est en `tabular-nums` : sans lui, les puces sautent d'un ou deux
+   pixels selon les chiffres qu'elles portent. */
+.puce-rubrique {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card);
+  padding: 0.5rem 0.75rem 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--foreground);
+  transition:
+    border-color 200ms ease,
+    background-color 200ms ease,
+    color 200ms ease;
+}
+.puce-rubrique-nombre {
+  display: inline-flex;
+  min-width: 1.5rem;
+  justify-content: center;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--teinte, var(--violet)) 12%, transparent);
+  padding: 0.0625rem 0.375rem;
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  color: color-mix(in oklab, var(--teinte, var(--violet)) 72%, var(--ink));
+}
+
+@media (hover: hover) {
+  .puce-rubrique:hover {
+    border-color: color-mix(in oklab, var(--teinte, var(--violet)) 45%, transparent);
+    color: color-mix(in oklab, var(--teinte, var(--violet)) 72%, var(--ink));
+  }
+}
+.puce-rubrique:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* La puce retenue s'inverse : le fond prend la teinte de la rubrique, le
+   libellé passe en blanc. C'est le seul état qui doive se voir de loin dans une
+   rangée de onze puces. */
+.puce-rubrique[aria-pressed="true"] {
+  border-color: transparent;
+  background: color-mix(in oklab, var(--teinte, var(--violet)) 88%, var(--ink));
+  color: oklch(0.99 0 0);
+}
+/* Le compteur s'assombrit au lieu de s'éclaircir. Un voile blanc à 18 % sur la
+   puce rouge ramenait le chiffre à 4,32:1 pour 12 px ; un voile noir creuse
+   l'écart au lieu de le combler, sur les trois teintes. */
+.puce-rubrique[aria-pressed="true"] .puce-rubrique-nombre {
+  background: oklch(0 0 0 / 0.24);
+  color: oklch(0.99 0 0);
+}

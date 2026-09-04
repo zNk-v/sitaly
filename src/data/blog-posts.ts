@@ -4815,3 +4815,32 @@ export function formatDate(iso: string): string {
     day: "numeric",
   });
 }
+
+/**
+ * Les articles mis en avant, sur l'accueil comme en tête du blog.
+ *
+ * Choix éditorial et non chronologique : le plus récent n'est pas forcément
+ * celui qui intéresse le plus de monde. Les trois retenus couvrent les trois
+ * familles d'expertise, de sorte que la sélection dise aussi ce que fait
+ * Sitaly. Modifier cette liste suffit à changer la mise en avant partout.
+ */
+export const A_LA_UNE = [
+  "publicite-chatgpt-ads-guide",
+  "agents-ia-artisans-tpe",
+  "refonte-site-artisan-quand-comment",
+] as const;
+
+/** Du plus récent au plus ancien. L'ordre du fichier est celui de la rédaction. */
+export const POSTS_RECENTS: BlogPost[] = [...BLOG_POSTS].sort((a, b) =>
+  b.publishedAt.localeCompare(a.publishedAt),
+);
+
+/**
+ * La sélection mise en avant, complétée par les articles les plus récents si
+ * un slug de `A_LA_UNE` a disparu ou n'est pas encore publié.
+ */
+export function postsALaUne(limite = 3): BlogPost[] {
+  const choisis = A_LA_UNE.map((s) => getPostBySlug(s)).filter((p): p is BlogPost => Boolean(p));
+  const complement = POSTS_RECENTS.filter((p) => !choisis.includes(p));
+  return [...choisis, ...complement].slice(0, limite);
+}
