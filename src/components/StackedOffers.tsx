@@ -1,10 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { SectionHeader } from "@/components/SectionHeader";
-import { MaquetteAgent, MaquetteConversation, MaquetteRecherche } from "@/components/OfferMockups";
-
-import captureSite from "@/assets/real-lafleur-1200.jpg";
-import captureSitePetite from "@/assets/real-lafleur-720.jpg";
+import {
+  MaquetteAgent,
+  MaquetteConversation,
+  MaquetteRecherche,
+  MaquetteSite,
+} from "@/components/OfferMockups";
 
 /**
  * Les quatre leviers, en cartes qui s'empilent au défilement.
@@ -51,28 +53,7 @@ const LEVIERS: Levier[] = [
       "Un site sur mesure livré en 48h, puis entretenu : hébergement, maintenance, modifications, fiche Google Business et référencement local. Vous ne touchez jamais à la technique.",
     points: ["Livré en 48h", "Référencement local", "Modifications incluses"],
     cta: { label: "Voir les réalisations", to: "/realisations/" },
-    /* Ici la maquette est une vraie capture d'un site livré : sur cette offre,
-       la meilleure illustration est la preuve elle-même. */
-    maquette: (
-      <div className="flex h-full w-full items-center justify-center p-6 sm:p-8">
-        <div className="w-full max-w-[460px]">
-          <div className="zoom-frame overflow-hidden rounded-2xl border border-border shadow-elevated">
-            <img
-              src={captureSitePetite}
-              srcSet={`${captureSitePetite} 720w, ${captureSite} 1200w`}
-              sizes="(min-width: 1024px) 40vw, 90vw"
-              alt="Page d'accueil du site de Lafleur Toiture, livré par Sitaly"
-              loading="lazy"
-              decoding="async"
-              className="block h-auto w-full"
-            />
-          </div>
-          <p className="mt-3 text-center text-xs text-muted-foreground">
-            Lafleur Toiture, couvreur en Essonne. Site réellement en ligne.
-          </p>
-        </div>
-      </div>
-    ),
+    maquette: <MaquetteSite />,
   },
   {
     cle: "ads",

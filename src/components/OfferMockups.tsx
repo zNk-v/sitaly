@@ -141,3 +141,81 @@ export function MaquetteAgent() {
     </Cadre>
   );
 }
+
+/**
+ * Un site livré, vu comme un objet et non comme un texte à lire.
+ *
+ * Cette illustration remplace une vraie capture du site d'un client. La capture
+ * était la meilleure preuve du site, mais la carte porte déjà un titre, un
+ * paragraphe, trois pastilles et un bouton : une page pleine de texte à côté
+ * mettait deux lectures en concurrence, et on ne faisait ni l'une ni l'autre.
+ *
+ * D'où le parti pris : la forme d'un site, aucune phrase. Les barres disent la
+ * structure — un menu, un titre, une photo, trois blocs, un bouton — et l'œil
+ * la reconnaît sans lire. Les vraies captures restent en réalisations, là où
+ * elles servent de preuve et où on vient pour les regarder.
+ */
+export function MaquetteSite() {
+  /* Le bleu de la famille « présence ». Voir COULEURS_FAMILLE. */
+  const accent = "bg-[var(--blue)]";
+
+  return (
+    <Cadre legende="Schéma d'un site livré. Les vraies captures sont en réalisations.">
+      <div>
+        {/* L'écran, dans sa coque. */}
+        <div className="rounded-t-xl bg-ink p-2 pb-0">
+          <div className="overflow-hidden rounded-t-md bg-white">
+            {/* La barre du navigateur. L'adresse est une barre, pas un texte :
+                un nom de domaine se lit, et c'est ce qu'on cherche à éviter. */}
+            <div className="flex items-center gap-1.5 border-b border-neutral-200 bg-neutral-100 px-2.5 py-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-neutral-300" />
+              <span className="h-1.5 w-1.5 rounded-full bg-neutral-300" />
+              <span className="h-1.5 w-1.5 rounded-full bg-neutral-300" />
+              <span className="ml-2 h-2.5 flex-1 rounded-full bg-white" />
+            </div>
+
+            <div className="space-y-3 p-3">
+              {/* Le menu. */}
+              <div className="flex items-center gap-2">
+                <span className={`h-2.5 w-12 rounded ${accent}`} />
+                <span className="ml-auto h-1.5 w-8 rounded bg-neutral-300" />
+                <span className="h-1.5 w-8 rounded bg-neutral-300" />
+                <span className="h-1.5 w-8 rounded bg-neutral-300" />
+                <span className={`h-4 w-12 rounded-full ${accent}`} />
+              </div>
+
+              {/* Le hero : deux lignes de titre, une de texte, un bouton, une
+                  photo. C'est la silhouette que reconnaît n'importe qui. */}
+              <div className="flex gap-3">
+                <div className="flex-1 space-y-1.5 pt-1">
+                  <span className="block h-3 w-full rounded bg-neutral-800" />
+                  <span className="block h-3 w-4/5 rounded bg-neutral-800" />
+                  <span className="mt-2 block h-1.5 w-full rounded bg-neutral-300" />
+                  <span className="block h-1.5 w-3/4 rounded bg-neutral-300" />
+                  <span className={`mt-2.5 block h-5 w-20 rounded-full ${accent}`} />
+                </div>
+                <div className="h-24 w-[38%] shrink-0 rounded-lg bg-neutral-200" />
+              </div>
+
+              {/* Trois blocs de prestations. */}
+              <div className="grid grid-cols-3 gap-2">
+                {[0, 1, 2].map((i) => (
+                  <div key={i} className="space-y-1.5 rounded-lg bg-neutral-100 p-2">
+                    <span className={`block h-3 w-3 rounded ${accent} opacity-70`} />
+                    <span className="block h-1.5 w-full rounded bg-neutral-300" />
+                    <span className="block h-1.5 w-2/3 rounded bg-neutral-300" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Le socle, plus large que l'écran : c'est lui qui fait lire un
+            ordinateur plutôt qu'une fenêtre posée sur la page. */}
+        <div className="relative left-1/2 h-2.5 w-[112%] -translate-x-1/2 rounded-b-lg bg-ink" />
+        <div className="relative left-1/2 h-1 w-[38%] -translate-x-1/2 rounded-b-full bg-ink/40" />
+      </div>
+    </Cadre>
+  );
+}
