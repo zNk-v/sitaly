@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Clock } from "lucide-react";
 import { formatDate, type BlogPost } from "@/data/blog-posts";
+import { COULEURS_FAMILLE, type FamilleId } from "@/data/expertises";
 import { cn } from "@/lib/utils";
 
 /**
@@ -16,22 +17,35 @@ import { cn } from "@/lib/utils";
  * de quoi parle une grille de trente articles.
  */
 
-/** Rubrique → teinte de la triade. Les rubriques absentes prennent le violet. */
-const TEINTES: Record<string, string> = {
-  "Site internet": "var(--blue)",
-  Référencement: "var(--blue)",
-  "Acquisition de clients": "var(--violet)",
-  "Acquisition payante": "var(--violet)",
-  "Publicité IA": "var(--violet)",
-  "Développement commercial": "var(--violet)",
-  "Trouver des chantiers": "var(--violet)",
-  Automatisation: "var(--red)",
-  "Outils & logiciels": "var(--red)",
-  Tarifs: "var(--red)",
+/**
+ * Rubrique du blog → famille d'expertise. C'est la famille qui porte la
+ * couleur, pas la rubrique : sans ce passage, une rubrique renommée changerait
+ * de teinte et le lecteur perdrait le repère qu'il avait acquis.
+ *
+ * Les rubriques sans correspondance tombent sur l'acquisition, qui est le
+ * sujet de la moitié du blog.
+ */
+const FAMILLE_RUBRIQUE: Record<string, FamilleId> = {
+  "Site internet": "site",
+  Référencement: "site",
+  "Acquisition de clients": "acquisition",
+  "Acquisition payante": "acquisition",
+  "Publicité IA": "acquisition",
+  "Développement commercial": "acquisition",
+  "Trouver des chantiers": "acquisition",
+  Tarifs: "acquisition",
+  Automatisation: "automatisation",
+  "Outils & logiciels": "automatisation",
 };
 
+/** La teinte de trait de la rubrique. */
 export function teinteRubrique(categorie: string): string {
-  return TEINTES[categorie] ?? "var(--violet)";
+  return COULEURS_FAMILLE[FAMILLE_RUBRIQUE[categorie] ?? "acquisition"].couleur;
+}
+
+/** La teinte de texte de la rubrique, pour un libellé posé sur du papier. */
+export function encreRubrique(categorie: string): string {
+  return COULEURS_FAMILLE[FAMILLE_RUBRIQUE[categorie] ?? "acquisition"].encre;
 }
 
 export function BlogCard({
@@ -52,7 +66,12 @@ export function BlogCard({
         "carte-article group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-elevated",
         className,
       )}
-      style={{ "--teinte": teinteRubrique(post.category) } as React.CSSProperties}
+      style={
+        {
+          "--teinte": teinteRubrique(post.category),
+          "--teinte-encre": encreRubrique(post.category),
+        } as React.CSSProperties
+      }
     >
       {/* Le filet de rubrique. Il s'épaissit au survol : c'est le seul retour
           visuel de la carte, avec la montée. */}

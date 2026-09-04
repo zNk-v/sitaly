@@ -4,7 +4,7 @@ import { ArrowRight, Calendar, Sparkles } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SectionHeader } from "@/components/SectionHeader";
-import { BlogCard, teinteRubrique } from "@/components/BlogCard";
+import { BlogCard, encreRubrique, teinteRubrique } from "@/components/BlogCard";
 import { BLOG_POSTS, POSTS_RECENTS, formatDate, postsALaUne } from "@/data/blog-posts";
 import { CALENDLY_URL } from "@/lib/config";
 
@@ -285,7 +285,12 @@ function BlogIndex() {
                   onClick={() => setRubrique(rubrique === r.key ? null : r.key)}
                   aria-pressed={rubrique === r.key}
                   className="puce-rubrique"
-                  style={{ "--teinte": teinteRubrique(r.key) } as React.CSSProperties}
+                  style={
+                    {
+                      "--teinte": teinteRubrique(r.key),
+                      "--teinte-encre": encreRubrique(r.key),
+                    } as React.CSSProperties
+                  }
                 >
                   {r.label}
                   <span className="puce-rubrique-nombre">{r.nombre}</span>

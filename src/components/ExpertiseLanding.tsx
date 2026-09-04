@@ -3,7 +3,13 @@ import { ArrowRight, Calendar, Check, Phone } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SectionHeader } from "@/components/SectionHeader";
-import { FAMILLES, cheminExpertise, voisines, type Expertise } from "@/data/expertises";
+import {
+  COULEURS_FAMILLE,
+  FAMILLES,
+  cheminExpertise,
+  voisines,
+  type Expertise,
+} from "@/data/expertises";
 import { BASE_URL } from "@/lib/sitemap";
 import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
@@ -35,7 +41,9 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
               Accueil
             </Link>
             <span className="px-2 text-muted-foreground">/</span>
-            <span className="text-brand-ink">{famille.titre}</span>
+            {/* La famille se dit par sa couleur autant que par son nom : c'est
+                le même repère que dans le menu, le pied de page et le blog. */}
+            <span style={{ color: COULEURS_FAMILLE[e.famille].encre }}>{famille.titre}</span>
           </nav>
 
           <h1 className="display-hero mt-6 max-w-4xl">{e.h1}</h1>

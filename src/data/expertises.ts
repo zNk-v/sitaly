@@ -19,6 +19,35 @@ import { Bot, Globe, Megaphone } from "lucide-react";
 
 export type FamilleId = "site" | "acquisition" | "automatisation";
 
+/**
+ * La couleur de chaque famille. Source unique : le menu, l'accueil, le pied de
+ * page, les pages d'expertise et les rubriques du blog s'y rattachent, de sorte
+ * qu'une teinte veuille dire la même chose partout sur le site.
+ *
+ * L'attribution vient du client : la présence en bleu, l'acquisition en rouge,
+ * l'automatisation en violet. Elle ne suit donc pas l'ordre du dégradé de
+ * marque, et c'est voulu : ce qui compte est qu'un lecteur associe une teinte
+ * à un métier, pas que les trois se suivent.
+ *
+ * Trois jetons par famille, parce qu'une teinte ne tient pas les trois rôles.
+ * `couleur` sert au trait et aux aplats. `encre` sert au texte sur papier : le
+ * violet du trait y tombe à 2,54:1, quand les jetons `-ink`, tous à une clarté
+ * de 0,47, tiennent au-delà de 7:1. `surEncre` sert au texte sur le fond sombre
+ * du pied de page, où les jetons `-ink` passeraient sous 2:1.
+ */
+export const COULEURS_FAMILLE: Record<
+  FamilleId,
+  { couleur: string; encre: string; surEncre: string }
+> = {
+  site: { couleur: "var(--blue)", encre: "var(--blue-ink)", surEncre: "var(--blue-on-ink)" },
+  acquisition: { couleur: "var(--red)", encre: "var(--red-ink)", surEncre: "var(--red-on-ink)" },
+  automatisation: {
+    couleur: "var(--violet)",
+    encre: "var(--violet-ink)",
+    surEncre: "var(--violet-on-ink)",
+  },
+};
+
 export interface Famille {
   id: FamilleId;
   titre: string;

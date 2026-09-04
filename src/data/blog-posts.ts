@@ -4763,6 +4763,201 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "agent-ia-entreprise-guide",
+    title: "Agent IA en entreprise : ce que ça fait, ce que ça coûte, et quand s'en passer",
+    metaTitle: "Agent IA en entreprise : ce que ça fait et ce que ça coûte",
+    metaDescription:
+      "Ce qu'un agent IA fait réellement dans une TPE ou une PME, les quatre tâches où il tient ses promesses, comment en calculer le retour, et les cas où une automatisation simple suffit.",
+    excerpt:
+      "Tout le monde vend des agents IA aux entreprises. Peu de gens disent dans quels cas ils ne servent à rien. Voici les quatre tâches où un agent tient ses promesses dans une petite structure, comment calculer son retour avant de signer, et les trois situations où une automatisation à quinze euros par mois fait le même travail.",
+    category: "Automatisation",
+    readingTime: "10 min",
+    publishedAt: "2026-09-04",
+    author: "L'équipe Sitaly",
+    keyword: "agent IA entreprise",
+    content: [
+      {
+        type: "p",
+        text: "Depuis un an, la promesse revient chaque semaine : un agent IA va répondre à vos clients, qualifier vos demandes, relancer vos devis et vous rendre vos soirées. La promesse n'est pas fausse. Elle est simplement vendue sans son mode d'emploi, et surtout sans la liste des cas où elle ne s'applique pas.",
+      },
+      {
+        type: "p",
+        text: "Cet article part d'une question différente de celle que posent la plupart des guides. Non pas « comment déployer un agent IA », mais « est-ce que votre entreprise en a besoin, et comment le savoir avant de dépenser ». Les réponses sont concrètes, et l'une d'elles est qu'une bonne partie des entreprises qui cherchent un agent IA gagneraient davantage avec une automatisation ordinaire.",
+      },
+      {
+        type: "h2",
+        text: "Un agent IA, une automatisation, un chatbot : trois choses différentes",
+      },
+      {
+        type: "p",
+        text: "Les trois mots servent souvent l'un pour l'autre dans les argumentaires commerciaux, alors qu'ils ne coûtent ni ne rendent la même chose. La distinction tient en une phrase : ce qui décide de la suite.",
+      },
+      {
+        type: "table",
+        caption: "Ce qui distingue les trois, du moins cher au plus cher",
+        headers: ["", "Ce qui décide", "Coût d'entrée", "Quand c'est le bon choix"],
+        rows: [
+          [
+            "Automatisation",
+            "Une règle fixe que vous écrivez : si ceci, alors cela.",
+            "Faible",
+            "La tâche se répète à l'identique et ne demande aucun jugement.",
+          ],
+          [
+            "Chatbot",
+            "Un arbre de réponses préparées, parfois complété par un modèle.",
+            "Moyen",
+            "Les questions reçues sont peu nombreuses et se ressemblent.",
+          ],
+          [
+            "Agent IA",
+            "Un modèle de langage qui comprend la demande et choisit l'action.",
+            "Élevé",
+            "Les demandes arrivent en langage libre et varient à chaque fois.",
+          ],
+        ],
+      },
+      {
+        type: "p",
+        text: "La conséquence est directe. Une relance de devis à J+3 puis J+10 n'a besoin d'aucune intelligence : c'est un calendrier. Répondre à « est-ce que vous intervenez à Massy le samedi pour une fuite sous évier » en demande, parce qu'il faut lire une zone, un jour, une urgence et une prestation dans une seule phrase mal ponctuée.",
+      },
+      { type: "h2", text: "Les quatre tâches où un agent tient ses promesses" },
+      {
+        type: "p",
+        text: "Dans une entreprise de deux à cinquante personnes, la liste des usages réellement rentables est courte. Quatre reviennent, et elles ont un point commun : elles portent sur des demandes entrantes, en langage libre, à un volume qui rend la réponse manuelle coûteuse.",
+      },
+      { type: "h3", text: "1. Répondre aux demandes entrantes hors des heures ouvrées" },
+      {
+        type: "p",
+        text: "C'est le cas le plus solide, parce que la comparaison ne se fait pas contre un salarié mais contre le silence. Un formulaire rempli à 21 h reçoit une réponse à 21 h 01, avec les bonnes questions posées et un créneau proposé. Le lendemain matin, vous ouvrez un dossier qualifié au lieu d'une ligne dans une boîte mail.",
+      },
+      { type: "h3", text: "2. Qualifier avant de transmettre" },
+      {
+        type: "p",
+        text: "Toutes les demandes ne se valent pas, et trier prend du temps précisément quand vous en avez le moins. Un agent lit la demande, pose les deux ou trois questions manquantes, écarte ce qui sort de votre zone ou de vos prestations, et ne vous transmet que ce qui mérite un rappel.",
+      },
+      { type: "h3", text: "3. Répondre aux questions dont la réponse existe déjà" },
+      {
+        type: "p",
+        text: "Horaires, délais, zone d'intervention, modalités de paiement, suivi de commande, documents à fournir. Ces questions occupent une part considérable des échanges et n'apportent rien à personne. Un agent branché sur vos documents y répond avec vos mots, pas avec une formule générique.",
+      },
+      { type: "h3", text: "4. Préparer, jamais décider" },
+      {
+        type: "p",
+        text: "Rédiger un premier jet de devis à partir d'un échange, remplir une fiche client, préparer un compte rendu d'intervention à partir de notes vocales. L'agent produit un brouillon, vous validez. C'est le partage qui fonctionne, et c'est aussi celui que les entreprises abandonnent le moins vite.",
+      },
+      {
+        type: "quote",
+        text: "La règle qui résume les quatre : un agent est rentable là où il transforme une demande brute en information utilisable, pas là où il prend une décision à votre place.",
+      },
+      { type: "h2", text: "Ce que ça coûte, et comment calculer le retour avant de signer" },
+      {
+        type: "p",
+        text: "Les tarifs annoncés sur le marché varient d'un facteur dix, ce qui rend toute fourchette générale inutile. Ce qui se compare en revanche, c'est la structure du coût, qui est la même partout.",
+      },
+      {
+        type: "table",
+        caption: "Les trois postes de coût d'un agent IA",
+        headers: ["Poste", "Ce que c'est", "Ce qui le fait varier"],
+        rows: [
+          [
+            "Mise en place",
+            "Le cadrage, la connexion à vos outils, l'écriture des règles et les tests.",
+            "Le nombre d'outils à raccorder, et l'état de vos données.",
+          ],
+          [
+            "Fonctionnement",
+            "Le coût des appels au modèle, facturés à l'usage.",
+            "Le volume de demandes traitées et la longueur des échanges.",
+          ],
+          [
+            "Suivi",
+            "La correction des réponses ratées et l'adaptation aux changements.",
+            "La stabilité de votre activité et de vos outils.",
+          ],
+        ],
+      },
+      {
+        type: "p",
+        text: "Le calcul du retour, lui, se fait en trois nombres que vous avez déjà. Combien de fois par semaine la tâche revient. Combien de minutes elle prend à chaque fois. Combien vaut une heure de votre temps ou de celui de la personne qui la fait. Multipliez, comparez au coût annoncé, et vous saurez en cinq minutes si la conversation mérite d'être poursuivie.",
+      },
+      {
+        type: "p",
+        text: "Un second calcul, souvent plus parlant pour les activités de service : combien de demandes perdez-vous parce que personne ne répond assez vite. Une seule affaire récupérée par mois change l'équation d'un agent qui traite les demandes du soir et du week-end.",
+      },
+      { type: "h2", text: "Les trois questions à se poser avant de commencer" },
+      {
+        type: "ul",
+        items: [
+          "Est-ce que la tâche arrive en langage libre ? Si les demandes sont déjà structurées, un formulaire et une automatisation coûtent dix fois moins.",
+          "Est-ce que la réponse existe quelque part ? Un agent ne sait rien de votre entreprise. Il lit ce que vous lui donnez. Si vos délais et vos tarifs ne sont écrits nulle part, la première étape n'est pas l'agent, c'est de les écrire.",
+          "Est-ce qu'une erreur est rattrapable ? Un rendez-vous mal noté se rattrape. Un devis envoyé au mauvais prix, moins. Commencez par les tâches où l'erreur se corrige.",
+        ],
+      },
+      { type: "h2", text: "Trois cas où un agent IA ne se justifie pas" },
+      {
+        type: "p",
+        text: "Cette section est celle que les guides de déploiement omettent, et c'est pourtant celle qui fait gagner le plus d'argent.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Le volume est faible. En dessous de quelques demandes par jour, le temps de mise en place ne se rembourse pas. Un renvoi d'appel et un formulaire court font le travail.",
+          "La tâche est déjà réglée par une règle. Relance de devis, rappel de rendez-vous, envoi d'une facture : ce sont des déclencheurs, pas des décisions. Une automatisation ordinaire les traite pour une fraction du prix.",
+          "Vos données sont éparpillées. Si vos clients vivent dans trois tableurs qui se contredisent, l'agent héritera de la contradiction. Ranger d'abord, automatiser ensuite.",
+        ],
+      },
+      { type: "h2", text: "Par où commencer, concrètement" },
+      {
+        type: "p",
+        text: "La méthode qui marche tient en quatre étapes, et la première n'a rien de technique.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Relevez pendant une semaine ce qui se répète. Une feuille et un stylo suffisent : la tâche, le nombre de fois, le temps passé.",
+          "Prenez la ligne la plus coûteuse et regardez si elle demande du jugement. Si non, c'est une automatisation. Si oui, c'est peut-être un agent.",
+          "Faites tourner une seule tâche pendant un mois, avec un repli manuel et une alerte en cas d'échec. Un agent qui tombe en silence coûte plus cher que pas d'agent du tout.",
+          "Mesurez la même semaine que celle du relevé initial. Si le gain n'est pas visible dans les chiffres, arrêtez : l'étendre ne le fera pas apparaître.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Cette progression a un avantage sur les déploiements en six semaines vendus clés en main : elle échoue tôt et pour pas cher quand le besoin n'était pas là. C'est exactement ce qu'on cherche quand on décide sur un marché où tout le monde promet la même chose.",
+      },
+      { type: "h2", text: "Et la réglementation ?" },
+      {
+        type: "p",
+        text: "Deux points suffisent pour une TPE ou une PME française. D'abord, un système qui échange avec vos clients doit se signaler comme automatique : la personne doit savoir qu'elle ne parle pas à un humain, et pouvoir demander à en joindre un. Ensuite, les données personnelles qui transitent restent soumises au RGPD, ce qui suppose de savoir où elles vont et de le documenter. Ces deux exigences se traitent au moment de la mise en place et ne sont pas un obstacle ; elles deviennent un problème seulement quand on les découvre après.",
+      },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Quelle différence entre un agent IA et un chatbot ?",
+            a: "Le chatbot suit un arbre de réponses préparées : il traite bien ce qui a été prévu et se bloque sur le reste. L'agent comprend une demande formulée librement et choisit l'action à mener, y compris demander une précision. Le chatbot coûte moins cher et suffit quand vos questions se ressemblent.",
+          },
+          {
+            q: "Un agent IA peut-il remplacer un salarié ?",
+            a: "Non, et les entreprises qui l'achètent pour ça sont celles qui l'abandonnent le plus vite. Il retire une part de tâches répétitives d'un poste, il ne tient pas le poste. Le gain se mesure en heures rendues, pas en effectif.",
+          },
+          {
+            q: "Combien de temps avant qu'un agent IA soit opérationnel ?",
+            a: "Sur une seule tâche bien délimitée, quelques semaines suffisent, dont la moitié à réunir ce que l'agent doit savoir. Les déploiements qui s'étirent sont presque toujours ceux qui ont voulu traiter cinq tâches à la fois.",
+          },
+          {
+            q: "Faut-il changer d'outils pour installer un agent IA ?",
+            a: "Rarement. Un agent se branche sur ce que vous utilisez déjà, à condition que ces outils exposent une interface. Les logiciels les plus anciens sont la seule vraie limite, et ils se contournent par des exports planifiés.",
+          },
+          {
+            q: "Que se passe-t-il si l'agent se trompe ?",
+            a: "C'est la question à poser avant de signer, pas après. Toute mise en place sérieuse prévoit un repli manuel, une alerte quand un échange échoue, et une revue des réponses les premières semaines. Sans ces trois choses, l'erreur passe inaperçue jusqu'à ce qu'un client la signale.",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 /**
@@ -4825,8 +5020,8 @@ export function formatDate(iso: string): string {
  * Sitaly. Modifier cette liste suffit à changer la mise en avant partout.
  */
 export const A_LA_UNE = [
+  "agent-ia-entreprise-guide",
   "publicite-chatgpt-ads-guide",
-  "agents-ia-artisans-tpe",
   "refonte-site-artisan-quand-comment",
 ] as const;
 

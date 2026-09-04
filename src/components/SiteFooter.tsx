@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Mail, Phone } from "lucide-react";
 import { SitalyLogo } from "@/components/SitalyLogo";
 import { LinkedinLink } from "@/components/LinkedinLink";
-import { FAMILLES, entreesFamille } from "@/data/expertises";
+import { COULEURS_FAMILLE, FAMILLES, entreesFamille } from "@/data/expertises";
 import { METIERS } from "@/lib/metiers";
 import { SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
@@ -52,7 +52,11 @@ export function SiteFooter() {
 
           {FAMILLES.map((f) => (
             <nav key={f.id} aria-label={f.titre}>
-              <div className="rail-label text-brand">{f.titre}</div>
+              {/* Sur l'encre, ce sont les jetons `-on-ink` qu'il faut : les
+                  jetons d'encre de la triade tombent sous 2:1 sur ce fond. */}
+              <div className="rail-label" style={{ color: COULEURS_FAMILLE[f.id].surEncre }}>
+                {f.titre}
+              </div>
               <ul className="mt-4 space-y-2 text-sm text-white/60">
                 {entreesFamille(f.id).map((e) => (
                   <li key={e.label}>

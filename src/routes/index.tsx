@@ -11,7 +11,7 @@ import { FondateurCard } from "@/components/FondateurCard";
 import { ZoomIntro } from "@/components/ZoomIntro";
 import { MetiersDefilement } from "@/components/MetiersDefilement";
 import { BlogCard } from "@/components/BlogCard";
-import { FAMILLES, entreesFamille } from "@/data/expertises";
+import { COULEURS_FAMILLE, FAMILLES, entreesFamille } from "@/data/expertises";
 import { postsALaUne } from "@/data/blog-posts";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 import { useSplitWords } from "@/hooks/use-split-words";
@@ -245,14 +245,14 @@ function CeQuOnFait() {
     {
       texte: "campagnes Google & ChatGPT Ads",
       to: "/acquisition/",
-      coche: "text-violet-on-ink",
-      survol: "group-hover:text-violet-on-ink",
+      coche: "text-red-on-ink",
+      survol: "group-hover:text-red-on-ink",
     },
     {
       texte: "agents IA & automatisations",
       to: "/agents-ia/",
-      coche: "text-red-on-ink",
-      survol: "group-hover:text-red-on-ink",
+      coche: "text-violet-on-ink",
+      survol: "group-hover:text-violet-on-ink",
     },
   ];
 
@@ -357,10 +357,12 @@ function Expertises() {
             <div
               key={f.id}
               data-reveal
-              style={{ "--i": i } as React.CSSProperties}
+              style={
+                { "--i": i, "--encre-famille": COULEURS_FAMILLE[f.id].encre } as React.CSSProperties
+              }
               className="md:border-l md:border-border md:pl-8 md:first:border-l-0 md:first:pl-0"
             >
-              <f.icone className="h-6 w-6 text-brand-ink" />
+              <f.icone className="icone-famille h-6 w-6" />
               <h3 className="mt-4 font-display text-2xl font-extrabold tracking-tight">
                 {f.titre}
               </h3>
@@ -371,17 +373,17 @@ function Expertises() {
                     {e.to ? (
                       <Link
                         to={e.to}
-                        className="group flex items-center gap-2 py-1.5 text-[15px] font-medium transition-colors hover:text-brand-ink"
+                        className="lien-famille group flex items-center gap-2 py-1.5 text-[15px] font-medium transition-colors"
                       >
-                        <ArrowRight className="h-3.5 w-3.5 shrink-0 text-brand-ink transition-transform group-hover:translate-x-0.5" />
+                        <ArrowRight className="fleche-famille h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5" />
                         {e.label}
                       </Link>
                     ) : (
                       <a
                         href={e.href}
-                        className="group flex items-center gap-2 py-1.5 text-[15px] font-medium transition-colors hover:text-brand-ink"
+                        className="lien-famille group flex items-center gap-2 py-1.5 text-[15px] font-medium transition-colors"
                       >
-                        <ArrowRight className="h-3.5 w-3.5 shrink-0 text-brand-ink transition-transform group-hover:translate-x-0.5" />
+                        <ArrowRight className="fleche-famille h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5" />
                         {e.label}
                       </a>
                     )}

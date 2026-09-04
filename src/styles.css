@@ -1707,13 +1707,14 @@
   transform: scaleY(1.6);
 }
 
-/* La rubrique reprend la teinte du filet, assombrie pour tenir sur le papier :
+/* La rubrique prend le jeton d'encre de sa famille, pas la teinte du filet :
    les jetons de la triade sont faits pour le trait, pas pour du texte de 12 px.
-   `color-mix` avec l'encre garde la teinte tout en gagnant le contraste. */
+   Les jetons `-ink` partagent une clarté de 0,47 et tiennent au-delà de 7:1 sur
+   le papier, quelle que soit la teinte. */
 .carte-article-rubrique {
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: color-mix(in oklab, var(--teinte, var(--violet)) 72%, var(--ink));
+  color: var(--teinte-encre, var(--violet-ink));
 }
 
 /* Le lien couvre la carte. Le pseudo-élément s'arrête sous le filet pour ne
@@ -1770,13 +1771,13 @@
   padding: 0.0625rem 0.375rem;
   font-size: 0.75rem;
   font-variant-numeric: tabular-nums;
-  color: color-mix(in oklab, var(--teinte, var(--violet)) 72%, var(--ink));
+  color: var(--teinte-encre, var(--violet-ink));
 }
 
 @media (hover: hover) {
   .puce-rubrique:hover {
     border-color: color-mix(in oklab, var(--teinte, var(--violet)) 45%, transparent);
-    color: color-mix(in oklab, var(--teinte, var(--violet)) 72%, var(--ink));
+    color: var(--teinte-encre, var(--violet-ink));
   }
 }
 .puce-rubrique:focus-visible {
@@ -1798,4 +1799,24 @@
 .puce-rubrique[aria-pressed="true"] .puce-rubrique-nombre {
   background: oklch(0 0 0 / 0.24);
   color: oklch(0.99 0 0);
+}
+
+/* Familles d'expertise — la teinte posée par `--encre-famille` --------------- */
+
+/* La flèche porte la couleur en permanence, le libellé seulement au survol :
+   dix-huit libellés colorés d'un coup feraient une liste illisible, alors que
+   dix-huit flèches colorées font une colonne. */
+.fleche-famille {
+  color: var(--encre-famille, var(--brand-ink));
+}
+@media (hover: hover) {
+  .lien-famille:hover {
+    color: var(--encre-famille, var(--brand-ink));
+  }
+}
+.lien-famille:focus-visible {
+  color: var(--encre-famille, var(--brand-ink));
+}
+.icone-famille {
+  color: var(--encre-famille, var(--brand-ink));
 }

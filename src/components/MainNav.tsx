@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import { FAMILLES, entreesFamille, type EntreeMenu } from "@/data/expertises";
+import { COULEURS_FAMILLE, FAMILLES, entreesFamille, type EntreeMenu } from "@/data/expertises";
 import { METIERS } from "@/lib/metiers";
 import { REALISATIONS } from "@/data/realisations";
 
@@ -118,10 +118,15 @@ export function MainNav() {
       <Deroulant label="Expertises" large>
         <div className="grid grid-cols-3 gap-3">
           {FAMILLES.map((f) => (
-            <div key={f.id}>
+            <div
+              key={f.id}
+              style={{ "--encre-famille": COULEURS_FAMILLE[f.id].encre } as React.CSSProperties}
+            >
               <div className="flex items-center gap-2 px-3 pb-1">
-                <f.icone className="h-4 w-4 text-brand-ink" />
-                <span className="rail-label text-brand-ink">{f.titre}</span>
+                <f.icone className="icone-famille h-4 w-4" />
+                <span className="rail-label" style={{ color: COULEURS_FAMILLE[f.id].encre }}>
+                  {f.titre}
+                </span>
               </div>
               <p className="px-3 pb-2 text-[13px] leading-snug text-muted-foreground">{f.resume}</p>
               <div className="space-y-0.5 border-t border-border pt-2">
