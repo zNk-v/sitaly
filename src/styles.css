@@ -793,6 +793,15 @@
   animation: float-soft 6s ease-in-out infinite;
 }
 
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* Le repère de défilement est sorti du flux pour se coller au bas de l'écran
    collé. Sans écran collé — repli ou mouvement réduit — la colonne fait la
    hauteur de son contenu, et `bottom` le repose sur le bouton. Il revient donc
@@ -1086,6 +1095,92 @@
   .bouton,
   .bouton-fleche {
     transition: none;
+  }
+}
+
+/* Défilement des métiers — deux rangées à contresens ---------------------- */
+
+/* Le ruban. Ses arrêts ne sont pas ceux de `--gradient-brand` : sous du blanc,
+   celui-ci tombe à 4,78:1 à son extrémité rouge. Ici la clarté reste à 0,46 sur
+   toute la course, avec la chroma maximale tenable en sRGB pour chaque teinte —
+   au-delà, les arrêts sortent du gamut et le navigateur les ramène en écrasant
+   la teinte. Le blanc y tient de 7,3 à 8,1:1. */
+/* La bande n'a pas de fond : les mots portent le dégradé, posés sur le papier
+   de la section. Elle a été un aplat de dégradé aux mots en réserve blanche,
+   puis un aplat d'encre aux mots en dégradé clair. Sans fond, ce sont les
+   arrêts porteurs qui reviennent — ceux à 0,46 de clarté — parce qu'un texte
+   sur papier demande l'inverse d'un texte sur encre : les arrêts clairs y
+   tomberaient à 1,8:1. Le pire point du parcours tient 6,57:1.
+
+   Le dégradé est fixé sur la fenêtre (`background-attachment: fixed`) et non
+   sur chaque mot : sans cela chaque mot rejouerait le dégradé entier sur sa
+   propre boîte, et l'on aurait douze petits dégradés au lieu d'un balayage. */
+.ruban .defile-mot {
+  background: var(--gradient-ruban);
+  background-attachment: fixed;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+/* Repli : sans découpe sur le texte, les mots restent en encre et lisibles. */
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .ruban .defile-mot {
+    color: var(--foreground);
+  }
+}
+
+/* Le losange suit le fond, plus le texte : sur papier, une réserve blanche
+   serait invisible. */
+.ruban .defile-losange {
+  background: color-mix(in oklab, var(--ink) 28%, transparent);
+}
+
+.defile-piste {
+  animation: marquee-scroll var(--defile-duree, 46s) linear infinite;
+  animation-direction: var(--defile-sens, normal);
+  will-change: transform;
+}
+
+/* L'espace entre deux mots vit sur le séparateur, pas sur un `gap` : il doit
+   aussi séparer le dernier mot d'une piste du premier de sa copie, ce qu'un
+   `gap` posé sur la liste ne fait pas. */
+.defile-losange {
+  display: block;
+  width: 0.42em;
+  height: 0.42em;
+  margin-inline: clamp(0.9rem, 1.8vw, 1.6rem);
+  rotate: 45deg;
+  border-radius: 2px;
+}
+
+@media (hover: hover) {
+  .defile:hover .defile-piste {
+    animation-play-state: paused;
+  }
+}
+
+/* Figée, la bande couperait les mots au bord. Elle passe donc à la ligne. */
+@media (prefers-reduced-motion: reduce) {
+  .defile-piste {
+    animation: none;
+    width: 100%;
+  }
+  .defile-copie {
+    display: none;
+  }
+  /* Sur un ruban plein, les lignes ne doivent pas toucher le bord. */
+  .defile {
+    padding-inline: 1rem;
+  }
+  /* `shrink-0` sert la boucle : sans lui, les deux pistes se compressent au
+     lieu de défiler. Il empêche en revanche le retour à la ligne, la piste
+     restant large comme son contenu. Il est donc levé ici, et seulement ici. */
+  .defile-rang {
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-width: 0;
+    row-gap: 0.25rem;
   }
 }
 

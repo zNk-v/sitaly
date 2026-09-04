@@ -9,6 +9,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { FondateurCard } from "@/components/FondateurCard";
 import { ZoomIntro } from "@/components/ZoomIntro";
+import { MetiersDefilement } from "@/components/MetiersDefilement";
 import { FAMILLES, entreesFamille } from "@/data/expertises";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 import { useSplitWords } from "@/hooks/use-split-words";
@@ -91,6 +92,7 @@ function SitalyHome() {
       <SiteHeader accueil />
       <Ouverture />
       <Expertises />
+      <BandeMetiers />
       <StackedOffers />
       <Realisations />
       <Process />
@@ -334,7 +336,7 @@ function CeQuOnFait() {
  */
 function Expertises() {
   return (
-    <section id="expertises" className="py-20 sm:py-28">
+    <section id="expertises" className="pt-20 pb-14 sm:pt-28 sm:pb-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
           index="01"
@@ -387,6 +389,29 @@ function Expertises() {
           ))}
         </div>
       </div>
+    </section>
+  );
+}
+
+/* ---------------- BANDE DES MÉTIERS ---------------- */
+/**
+ * La charnière entre les expertises et les offres.
+ *
+ * Elle avait été retirée faute d'endroit : posée entre deux blocs verticaux,
+ * une bande horizontale les sépare mieux qu'une marge, et elle occupe une
+ * transition qui était vide. Elle dit à qui Sitaly s'adresse sans y consacrer
+ * une section entière, ce qui était le défaut de la version précédente.
+ *
+ * Les filets du haut et du bas la font lire comme une règle typographique et
+ * non comme une section de plus.
+ */
+function BandeMetiers() {
+  return (
+    <section aria-label="Métiers accompagnés" className="border-y border-border bg-paper-sunk">
+      <p className="sr-only">
+        Sitaly accompagne notamment les métiers suivants dans leur présence en ligne.
+      </p>
+      <MetiersDefilement className="py-6 sm:py-7" />
     </section>
   );
 }
