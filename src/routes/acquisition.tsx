@@ -268,7 +268,10 @@ export const Route = createFileRoute("/acquisition")({
 
 function AcquisitionPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    /* La page prend la couleur de sa famille. `--accent` vaut le bleu par
+       défaut, ce qui faisait de la page Google Ads une page bleue alors que
+       l'acquisition est rouge partout ailleurs sur le site. */
+    <div className="page-acquisition min-h-screen bg-background text-foreground">
       <Header />
       <Hero />
       <Problemes />

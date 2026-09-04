@@ -24,8 +24,8 @@ export type FamilleId = "site" | "acquisition" | "automatisation";
  * page, les pages d'expertise et les rubriques du blog s'y rattachent, de sorte
  * qu'une teinte veuille dire la même chose partout sur le site.
  *
- * L'attribution vient du client : la présence en bleu, l'acquisition en rouge,
- * l'automatisation en violet. Elle ne suit donc pas l'ordre du dégradé de
+ * L'attribution vient du client : la présence en bleu, l'acquisition en rouge
+ * #aa1212, l'automatisation en violet. Elle ne suit donc pas l'ordre du dégradé de
  * marque, et c'est voulu : ce qui compte est qu'un lecteur associe une teinte
  * à un métier, pas que les trois se suivent.
  *
@@ -40,7 +40,11 @@ export const COULEURS_FAMILLE: Record<
   { couleur: string; encre: string; surEncre: string }
 > = {
   site: { couleur: "var(--blue)", encre: "var(--blue-ink)", surEncre: "var(--blue-on-ink)" },
-  acquisition: { couleur: "var(--red)", encre: "var(--red-ink)", surEncre: "var(--red-on-ink)" },
+  acquisition: {
+    couleur: "var(--red-acquisition)",
+    encre: "var(--red-acquisition)",
+    surEncre: "var(--red-on-ink)",
+  },
   automatisation: {
     couleur: "var(--violet)",
     encre: "var(--violet-ink)",

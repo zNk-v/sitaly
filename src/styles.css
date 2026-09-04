@@ -57,6 +57,7 @@
   --color-blue-ink: var(--blue-ink);
   --color-violet-ink: var(--violet-ink);
   --color-red-ink: var(--red-ink);
+  --color-red-acquisition: var(--red-acquisition);
   --color-signal: var(--signal);
   --color-signal-ink: var(--signal-ink);
 
@@ -146,6 +147,17 @@
   --blue-ink: oklch(0.47 0.166 258);
   --violet-ink: oklch(0.47 0.238 300);
   --red-ink: oklch(0.47 0.183 28);
+
+  /* Le rouge de la famille « acquisition », donné au hexadécimal par le client.
+     #aa1212 vaut oklch(0.4706 0.183 28.1), c'est-à-dire --red-ink au millième
+     près : le jeton d'encre du rouge était déjà cette couleur. Ce qui change,
+     c'est que le trait la prend aussi, là où il prenait --red, plus clair et
+     plus saturé (#df2321).
+
+     Il tient de 6,28 à 7,49:1 sur toutes les surfaces claires du site. Sur
+     l'encre du pied de page il tombe à 2,59:1 : c'est --red-on-ink qui y sert,
+     et c'est la seule exception. */
+  --red-acquisition: #aa1212;
 
   --gradient-ruban: linear-gradient(
     100deg in oklch,
@@ -1183,6 +1195,13 @@
   }
 }
 
+/* La page Google Ads relève de la famille acquisition : son accent est le
+   rouge #aa1212, pas le bleu par défaut. Le blanc y tient 7,30:1. */
+.page-acquisition {
+  --accent: var(--red-acquisition);
+  --brand-ink: var(--red-acquisition);
+}
+
 /* ============================================================
    Habillage local — page /agents-ia
    La page reprend les tokens clairs du site (:root) : mêmes surfaces,
@@ -1191,6 +1210,11 @@
    ============================================================ */
 
 .ai-page {
+  /* La page relève de la famille automatisation : son accent est le violet et
+     non le bleu par défaut. Voir COULEURS_FAMILLE. */
+  --accent: var(--violet);
+  --brand-ink: var(--violet-ink);
+
   /* Déclinaisons de l'accent, du plus clair au plus profond.
      Nommées par rôle et non par couleur : la teinte peut évoluer. */
   --ai-accent: var(--accent);

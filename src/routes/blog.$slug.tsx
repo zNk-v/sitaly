@@ -15,6 +15,7 @@ import { LinkedinLink } from "@/components/LinkedinLink";
 import { MetierLinksStrip } from "@/components/MetierLinks";
 import { CALENDLY_URL } from "@/lib/config";
 import { SiteFooter } from "@/components/SiteFooter";
+import { encreRubrique } from "@/components/BlogCard";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
@@ -158,7 +159,13 @@ function BlogPostPage() {
   const midIndex = Math.max(2, Math.floor(post.content.length * 0.55));
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    /* L'article prend la couleur de sa rubrique : c'est le même repère que
+       sur la carte qui y mène, et il vaut mieux qu'il ne s'éteigne pas au
+       moment où le lecteur ouvre l'article. */
+    <div
+      className="min-h-screen bg-background text-foreground"
+      style={{ "--accent": encreRubrique(post.category) } as React.CSSProperties}
+    >
       <PostNav />
 
       <article className="mx-auto max-w-3xl px-4 pt-[calc(var(--entete-hauteur)+1.5rem)] pb-12 sm:px-6 sm:pb-16 sm:pt-[calc(var(--entete-hauteur)+2.5rem)]">
