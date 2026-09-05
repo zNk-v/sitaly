@@ -965,9 +965,49 @@
 
    Le seuil est en largeur et non en hauteur : c'est la largeur qui fait
    grandir les cartes, en forçant leur contenu à passer sur plus de lignes. */
-@media (max-width: 900px) {
+/* Deux mesures qui doivent bouger ensemble : la bande de titre et le pas de
+   collage. Sur un téléphone, 4,5rem de bande et 5rem de départ laissaient
+   556 px de place utile pour des cartes de 881 à 1051 px : aucune n'était
+   jamais visible en entier, et l'empilement était désactivé pour cette raison.
+
+   Le pas passe donc à 3rem et le départ à 3,5rem, ce qui rend 652 px, et les
+   cartes descendent sous ce seuil par trois retraits mesurés : la bande suit le
+   pas, le bloc de texte se resserre, et la maquette est réduite au zoom. */
+.offre-carte {
+  --bande: 2.75rem;
+  --depart: 3.5rem;
+  position: static;
+}
+
+/* L'empilement ne s'active que là où une carte tient dans la place laissée par
+   les bandes. Sous 720 px de haut, elle n'y tient pas sans que le texte devienne
+   illisible : ces écrans gardent des cartes qui se suivent, ce qui est moins
+   spectaculaire mais lisible. */
+@media (min-height: 720px) {
   .offre-carte {
-    position: static;
+    position: sticky;
+    top: calc(var(--depart) + var(--rang, 0) * var(--bande));
+  }
+}
+.offre-bande {
+  height: var(--bande);
+}
+@media (min-width: 640px) {
+  .offre-carte {
+    --bande: 4.5rem;
+    --depart: 5rem;
+  }
+}
+
+/* La maquette est un schéma : la réduire au zoom conserve ses proportions et
+   sa netteté, et surtout `zoom` diminue la boîte, ce qu'une transformation ne
+   ferait pas — la carte resterait aussi haute. */
+@media (max-width: 639px) {
+  .maquette-contenu {
+    zoom: 0.5;
+  }
+  .maquette-cadre {
+    padding-block: 0.5rem;
   }
 }
 
@@ -1843,4 +1883,177 @@
 }
 .icone-famille {
   color: var(--encre-famille, var(--brand-ink));
+}
+
+/* Feuille du menu mobile -------------------------------------------------- */
+
+.voile-menu {
+  background: color-mix(in oklab, var(--ink) 55%, transparent);
+  backdrop-filter: blur(3px);
+  animation: voile-entre 200ms ease-out;
+}
+@keyframes voile-entre {
+  from {
+    opacity: 0;
+  }
+}
+.feuille-menu {
+  animation: feuille-entre 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes feuille-entre {
+  from {
+    opacity: 0;
+    transform: translateY(-0.75rem) scale(0.985);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .voile-menu,
+  .feuille-menu {
+    animation: none;
+  }
+}
+
+/* La pastille porte la teinte de sa famille, en fond très clair et en icône
+   d'encre : sur 36 px, un aplat plein aurait crié plus fort que le libellé. */
+.pastille-famille {
+  background: color-mix(in oklab, var(--teinte-famille, var(--violet)) 12%, transparent);
+  color: var(--encre-famille, var(--brand-ink));
+}
+.groupe-famille[open] .pastille-famille {
+  background: color-mix(in oklab, var(--teinte-famille, var(--violet)) 20%, transparent);
+}
+.groupe-famille[open] > summary {
+  background: var(--secondary);
+}
+.entree-famille:active {
+  color: var(--encre-famille, var(--brand-ink));
+}
+
+/* Frise du process — un faisceau qui parcourt les étapes ------------------- */
+
+/* Tout découle de `--progression`, écrite au défilement par
+   use-progression-defilement. Le rail est posé à gauche, les blocs à sa
+   droite ; la mesure `--rail` sert à la fois de position du trait et de
+   décalage du contenu, pour que les deux ne puissent pas diverger. */
+.frise {
+  --rail: 1.375rem;
+  --pastille: 2.75rem;
+  --ecart: 1.25rem;
+  position: relative;
+  padding-left: calc(var(--rail) + var(--pastille) / 2 + var(--ecart));
+}
+@media (min-width: 640px) {
+  .frise {
+    --rail: 1.75rem;
+    --pastille: 3.5rem;
+    --ecart: 1.75rem;
+  }
+}
+
+.frise-rail,
+.frise-faisceau {
+  position: absolute;
+  left: calc(var(--rail) - 1px);
+  width: 2px;
+  border-radius: 2px;
+}
+/* Le rail s'arrête au centre de la dernière pastille : filé jusqu'en bas, il
+   dépassait sous la dernière étape et le trait semblait continuer nulle part. */
+.frise-rail {
+  top: calc(var(--pastille) / 2);
+  bottom: calc(var(--pastille) / 2);
+  background: color-mix(in oklab, var(--ink) 14%, transparent);
+}
+.frise-faisceau {
+  top: calc(var(--pastille) / 2);
+  height: calc((100% - var(--pastille)) * var(--progression, 0));
+  background: var(--gradient-ruban);
+  box-shadow: 0 0 12px 1px color-mix(in oklab, var(--violet) 45%, transparent);
+}
+
+.frise-etape {
+  position: relative;
+  padding-bottom: 2.5rem;
+}
+.frise-etape:last-child {
+  padding-bottom: 0;
+}
+
+/* La pastille. `--i` est son rang, `--n` le nombre d'étapes : le produit
+   `progression × n − i` vaut moins de 0 avant qu'elle ne soit atteinte, monte
+   pendant, et dépasse 1 ensuite. L'opacité se borne d'elle-même, ce qui évite
+   un observateur par étape. */
+.frise-pastille {
+  --allumage: calc((var(--progression, 0) * var(--n) - var(--i)) * 2.5);
+  position: absolute;
+  /* Le bloc conteneur est l'étape, dont le bord gauche tombe après le
+     rembourrage de la frise : la pastille remonte donc en négatif jusqu'à
+     retrouver le rail. La formule est l'inverse exact du rembourrage, de sorte
+     que les deux ne peuvent pas diverger. */
+  left: calc(-1 * (var(--pastille) + var(--ecart)));
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: var(--pastille);
+  height: var(--pastille);
+  border-radius: 999px;
+  background: var(--paper);
+  border: 2px solid color-mix(in oklab, var(--ink) 14%, transparent);
+}
+.frise-pastille-fond,
+.frise-pastille-halo {
+  position: absolute;
+  inset: -2px;
+  border-radius: 999px;
+  opacity: var(--allumage);
+}
+.frise-pastille-fond {
+  background: var(--gradient-ruban);
+}
+/* Le halo déborde de la pastille : c'est lui qui donne la lueur, et il grandit
+   avec l'allumage plutôt que d'apparaître d'un coup. */
+.frise-pastille-halo {
+  inset: -0.5rem;
+  background: radial-gradient(
+    circle,
+    color-mix(in oklab, var(--violet) 40%, transparent),
+    transparent 68%
+  );
+  transform: scale(calc(0.6 + 0.4 * var(--allumage)));
+}
+.frise-numero {
+  position: relative;
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  font-size: 0.875rem;
+  letter-spacing: -0.02em;
+  /* Deux couches de couleur superposées par `color-mix` : l'encre tant que la
+     pastille est éteinte, le blanc une fois qu'elle est pleine. */
+  color: color-mix(in oklab, oklch(0.99 0 0) calc(var(--allumage) * 100%), var(--muted-foreground));
+}
+@media (min-width: 640px) {
+  .frise-numero {
+    font-size: 1rem;
+  }
+}
+
+/* Le bloc monte et s'éclaircit sur la même mesure que sa pastille. */
+.frise-bloc {
+  --allumage: calc((var(--progression, 0) * var(--n) - var(--i)) * 2.5);
+  padding-top: 0.35rem;
+  opacity: calc(0.45 + 0.55 * var(--allumage));
+  transform: translateY(calc((1 - min(1, max(0, var(--allumage)))) * 0.5rem));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frise-faisceau {
+    box-shadow: none;
+  }
+  .frise-bloc {
+    transform: none;
+  }
+  .frise-pastille-halo {
+    display: none;
+  }
 }

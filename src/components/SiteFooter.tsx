@@ -3,7 +3,6 @@ import { Mail, Phone } from "lucide-react";
 import { SitalyLogo } from "@/components/SitalyLogo";
 import { LinkedinLink } from "@/components/LinkedinLink";
 import { COULEURS_FAMILLE, FAMILLES, entreesFamille } from "@/data/expertises";
-import { METIERS } from "@/lib/metiers";
 import { SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 /**
@@ -76,19 +75,7 @@ export function SiteFooter() {
           ))}
         </div>
 
-        <div className="mt-12 grid gap-6 border-t border-white/10 pt-8 sm:grid-cols-2">
-          <nav aria-label="Sites par métier">
-            <div className="rail-label text-white/60">Sites par métier</div>
-            <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-white/60">
-              {METIERS.map((m) => (
-                <li key={m.to}>
-                  <Link to={m.to} className="transition hover:text-white">
-                    {m.label.replace("Site internet ", "")}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+        <div className="mt-12 border-t border-white/10 pt-8">
           <nav aria-label="Le site">
             <div className="rail-label text-white/60">Sitaly</div>
             <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-white/60">

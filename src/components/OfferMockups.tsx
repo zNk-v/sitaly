@@ -14,8 +14,8 @@ import { Bell, Calendar, Check, Phone, Search, Sparkles } from "lucide-react";
 
 function Cadre({ children, legende }: { children: React.ReactNode; legende: string }) {
   return (
-    <div className="flex h-full w-full items-center justify-center p-6 sm:p-8">
-      <div className="w-full max-w-[420px]">
+    <div className="maquette-cadre flex h-full w-full items-center justify-center p-4 sm:p-8">
+      <div className="maquette-contenu w-full max-w-[420px]">
         <div className="rounded-2xl border border-border bg-paper-sunk p-4 shadow-soft">
           {children}
         </div>

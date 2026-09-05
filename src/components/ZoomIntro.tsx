@@ -54,19 +54,40 @@ export function ZoomIntro({
        Écrire cinq variables que le CSS n'utilise pas ne coûte rien. Les faire
        manquer coûte la page. */
     const conditions = matchMedia("(prefers-reduced-motion: no-preference)");
+    /* Le format commande le moment où le panneau se découvre. Voir plus bas. */
+    const portrait = matchMedia("(max-aspect-ratio: 4 / 5)");
     let image = 0;
 
     const ecrire = () => {
       image = 0;
-      const hauteur = window.innerHeight;
-      const y = window.scrollY;
+      /* La référence de hauteur vient de la scène, pas de `window.innerHeight`.
+         Sur iPhone, la barre d'URL se rétracte au défilement et `innerHeight`
+         grandit de 60 à 90 px au milieu de la course : toutes les fractions se
+         recalculaient sur une autre échelle et l'ouverture sautait en arrière.
+         La scène fait 195vh, posés à la mise en page et stables ensuite ; la
+         diviser redonne la hauteur d'écran contre laquelle les seuils sont
+         écrits. */
+      const hauteur = el.offsetHeight / 1.95;
+      /* Et l'avancement se mesure depuis le haut de la scène plutôt que depuis
+         le haut du document : le résultat ne dépend plus de ce qui la précède. */
+      const y = -el.getBoundingClientRect().top;
       /* Chaque course est exprimée en fractions de fenêtre, comme l'étaient les
          `animation-range` qu'elle remplace. */
       const part = (debut: number, fin: number) =>
         Math.min(1, Math.max(0, (y - debut * hauteur) / ((fin - debut) * hauteur)));
+
+      /* Le panneau ne se découvre qu'une fois le trou refermé sur toute la
+         fenêtre, sinon on le lit en morceaux répartis entre les lettres.
+         L'échelle qui referme le trou dépend du format : environ 21 en paysage,
+         27 en portrait, où le mot est haut et étroit. Rapportées à la course du
+         mot, ces échelles tombent à 0,55 et 0,67 d'avancement. En portrait, la
+         plage écrite pour le paysage montrait donc le texte du panneau à cheval
+         sur le voile, coupé par les lettres. */
+      const [panneauDebut, panneauFin] = portrait.matches ? [0.58, 0.74] : [0.3, 0.5];
+
       el.style.setProperty("--p-tete", String(part(0, 0.1)));
       el.style.setProperty("--p-mot", String(part(0.08, 0.84)));
-      el.style.setProperty("--p-panneau", String(part(0.3, 0.5)));
+      el.style.setProperty("--p-panneau", String(part(panneauDebut, panneauFin)));
       el.style.setProperty("--p-remplir", String(part(0.5, 0.82)));
       el.style.setProperty("--p-approche", String(part(0, 0.88)));
     };
@@ -90,8 +111,11 @@ export function ZoomIntro({
 
     brancher();
     conditions.addEventListener("change", brancher);
+    /* Une rotation change le format, donc la plage du panneau. */
+    portrait.addEventListener("change", planifier);
     return () => {
       conditions.removeEventListener("change", brancher);
+      portrait.removeEventListener("change", planifier);
       window.removeEventListener("scroll", planifier);
       window.removeEventListener("resize", planifier);
       if (image) cancelAnimationFrame(image);

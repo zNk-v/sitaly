@@ -10,6 +10,7 @@ import {
   voisines,
   type Expertise,
 } from "@/data/expertises";
+import { METIERS } from "@/lib/metiers";
 import { BASE_URL } from "@/lib/sitemap";
 import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
@@ -214,6 +215,29 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
                 </Link>
               ))}
             </div>
+
+            {/* Les quatre pages métier sont des déclinaisons du site vitrine.
+                Elles ont été retirées du menu et du pied de page, où elles
+                n'intéressaient personne ; sans ce rappel elles ne seraient plus
+                liées depuis nulle part, et une page qu'aucune autre ne cite
+                cesse d'exister pour un moteur. */}
+            {e.famille === "site" && (
+              <nav
+                aria-label="Sites par métier"
+                className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-border pt-6"
+              >
+                <span className="rail-label text-muted-foreground">Par métier</span>
+                {METIERS.map((m) => (
+                  <Link
+                    key={m.to}
+                    to={m.to}
+                    className="text-[15px] font-medium text-muted-foreground transition-colors hover:text-brand-ink"
+                  >
+                    {m.label.replace("Site internet ", "Site ")}
+                  </Link>
+                ))}
+              </nav>
+            )}
           </div>
         </section>
       )}

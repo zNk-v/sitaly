@@ -25,10 +25,10 @@ import {
  * Ici c'est du CSS natif : ni écouteur de défilement, ni recalcul de mise en page.
  */
 
-/** Hauteur de la bande de titre, en rem. Voir la règle 1 ci-dessus. */
-const BANDE = 4.5;
-/** Décalage du premier panneau, sous le bandeau collant de 4rem. */
-const DEPART = 5;
+/* La bande et le décalage vivent en CSS, dans `--bande` et `--depart` : ils
+   changent au format, et la règle 1 impose qu'ils changent ensemble. Le rang
+   de la carte est passé en variable, la position s'en déduit. Voir la frise
+   `.offre-carte` dans la feuille de style. */
 
 type Levier = {
   cle: string;
@@ -125,15 +125,12 @@ export function StackedOffers() {
           {LEVIERS.map((l, i) => (
             <article
               key={l.cle}
-              style={{ top: `${DEPART + i * BANDE}rem` }}
+              style={{ "--rang": i } as React.CSSProperties}
               className="offre-carte sticky mb-8 overflow-hidden rounded-3xl border border-border bg-card shadow-elevated"
             >
               {/* Bande de superposition : c'est elle qui reste visible quand le
                   panneau suivant recouvre celui-ci. Hauteur = BANDE. */}
-              <div
-                style={{ height: `${BANDE}rem` }}
-                className="flex items-center justify-between gap-4 border-b border-border bg-paper-sunk px-6 sm:px-8"
-              >
+              <div className="offre-bande flex items-center justify-between gap-4 border-b border-border bg-paper-sunk px-5 sm:px-8">
                 <div className="flex min-w-0 items-baseline gap-3 sm:gap-4">
                   <span className="rail-num font-display text-sm font-bold text-brand-ink">
                     {String(i + 1).padStart(2, "0")}
@@ -148,21 +145,23 @@ export function StackedOffers() {
               </div>
 
               <div className="grid lg:grid-cols-[1.05fr_1fr]">
-                <div className="p-6 sm:p-10 lg:p-12">
+                <div className="offre-texte p-4 sm:p-10 lg:p-12">
                   <p
                     data-split
-                    className="font-display text-[clamp(1.55rem,2.4vw,2.3rem)] font-extrabold leading-[1.1] tracking-[-0.035em]"
+                    className="font-display text-[clamp(1.3rem,2.4vw,2.3rem)] font-extrabold leading-[1.1] tracking-[-0.035em]"
                   >
                     {l.titre}
                   </p>
 
-                  <p className="measure mt-5 text-muted-foreground">{l.texte}</p>
+                  <p className="measure mt-3 text-[14px] leading-relaxed text-muted-foreground sm:mt-5 sm:text-base">
+                    {l.texte}
+                  </p>
 
-                  <ul className="mt-7 flex flex-wrap gap-2">
+                  <ul className="mt-4 flex flex-wrap gap-1.5 sm:mt-7 sm:gap-2">
                     {l.points.map((p) => (
                       <li
                         key={p}
-                        className="rounded-full border border-border px-3 py-1.5 text-sm text-foreground/80"
+                        className="rounded-full border border-border px-2.5 py-1 text-[13px] text-foreground/80 sm:px-3 sm:py-1.5 sm:text-sm"
                       >
                         {p}
                       </li>
@@ -170,20 +169,23 @@ export function StackedOffers() {
                   </ul>
 
                   {l.cta.to ? (
-                    <Link to={l.cta.to} className="bouton mt-9 px-7 py-3.5">
+                    <Link to={l.cta.to} className="bouton mt-5 px-6 py-3 sm:mt-9 sm:px-7 sm:py-3.5">
                       {l.cta.label}
                       <ArrowRight className="bouton-fleche h-5 w-5" />
                     </Link>
                   ) : (
                     /* Page statique hors routeur React : lien classique. */
-                    <a href={l.cta.href} className="bouton mt-9 px-7 py-3.5">
+                    <a
+                      href={l.cta.href}
+                      className="bouton mt-5 px-6 py-3 sm:mt-9 sm:px-7 sm:py-3.5"
+                    >
                       {l.cta.label}
                       <ArrowRight className="bouton-fleche h-5 w-5" />
                     </a>
                   )}
                 </div>
 
-                <div className="border-t border-border bg-paper-sunk/60 lg:border-l lg:border-t-0">
+                <div className="offre-maquette border-t border-border bg-paper-sunk/60 lg:border-l lg:border-t-0">
                   {l.maquette}
                 </div>
               </div>

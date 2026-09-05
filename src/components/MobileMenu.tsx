@@ -1,201 +1,221 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Calendar, Menu, Phone, X } from "lucide-react";
-import { FAMILLES, entreesFamille } from "@/data/expertises";
-import { METIERS } from "@/lib/metiers";
+import { ArrowUpRight, Calendar, Menu, Phone, X } from "lucide-react";
+import { COULEURS_FAMILLE, FAMILLES, entreesFamille } from "@/data/expertises";
 import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 /**
- * Menu de navigation mobile, partagé par tous les en-têtes du site.
+ * Le menu mobile.
  *
- * Il listait sept ancres vers des sections de l'accueil : sur toute autre page,
- * la moitié pointait dans le vide. Il reprend désormais la structure du menu
- * de bureau, famille par famille, avec les mêmes destinations. Un visiteur au
- * téléphone doit atteindre la page « site e-commerce » aussi directement qu'au
- * clavier, et c'est de loin le cas le plus fréquent.
+ * Il a d'abord listé sept ancres vers des sections de l'accueil, qui pointaient
+ * dans le vide dès qu'on n'était pas sur l'accueil. Il a ensuite repris la
+ * structure du menu de bureau, mais sous la forme d'un panneau accroché sous
+ * le bandeau, sans fond derrière : la page continuait de défiler visuellement
+ * derrière lui et rien ne disait où finissait le menu.
  *
- * Les familles sont repliées à l'ouverture : dix-huit liens déroulés d'un coup
- * demandent de faire défiler avant de comprendre le classement. `details`
- * suffit à les replier, sans état ni bibliothèque.
+ * C'est maintenant une feuille posée sur un fond assombri. Trois choses en
+ * découlent, et chacune corrige un défaut mesuré :
  *
- * variant "bar"      : en-tête pleine largeur
- * variant "floating" : en-tête flottant arrondi
+ * - Le fond capte le toucher, donc on referme en touchant à côté. C'était
+ *   impossible auparavant : il fallait viser la croix.
+ * - La feuille a une hauteur bornée et défile pour elle-même, le corps de la
+ *   page étant figé. Le menu ouvert ne faisait pas défiler la page derrière,
+ *   mais il pouvait déborder sans qu'on puisse l'atteindre.
+ * - Chaque famille porte sa couleur, comme partout ailleurs.
+ *
+ * Aucune bibliothèque : deux `details` repliés, une transition CSS, et la
+ * touche Échap.
  */
 export function MobileMenu({
   variant = "bar",
   onHome = false,
   current,
 }: {
+  /** Conservé pour les appelants : la feuille est la même dans les deux cas. */
   variant?: "bar" | "floating";
-  /** Conservé pour les appelants : l'accueil est atteint par la route. */
   onHome?: boolean;
   current?: "agents-ia" | "blog";
 }) {
-  const [open, setOpen] = useState(false);
-  const fermer = () => setOpen(false);
+  const [ouvert, setOuvert] = useState(false);
+  const fermer = () => setOuvert(false);
+  const declencheur = useRef<HTMLButtonElement>(null);
 
-  // Empêche le défilement de la page derrière le menu ouvert.
+  /* Le corps ne défile plus derrière la feuille, et la touche Échap referme.
+     Le focus revient au bouton : sans cela il repart au début du document. */
   useEffect(() => {
-    if (!open) return;
+    if (!ouvert) return;
     const precedent = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    const auClavier = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOuvert(false);
+        declencheur.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", auClavier);
     return () => {
       document.body.style.overflow = precedent;
+      document.removeEventListener("keydown", auClavier);
     };
-  }, [open]);
+  }, [ouvert]);
 
-  // Referme le menu si l'écran repasse en bureau.
+  /* Referme si l'écran repasse en bureau, où le menu déroulant prend le relais. */
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 1024px)");
-    const close = () => mq.matches && setOpen(false);
+    const close = () => mq.matches && setOuvert(false);
     mq.addEventListener("change", close);
     return () => mq.removeEventListener("change", close);
   }, []);
 
-  /* Fond opaque : un panneau translucide laisse lire la page au travers, et le
-     flou de l'en-tête parent empêche un second flou de s'appliquer ici. */
-  const panneau =
-    variant === "floating"
-      ? "absolute left-0 right-0 top-full z-50 mt-2 max-h-[calc(100vh-var(--entete-hauteur)-1rem)] overflow-y-auto overscroll-contain rounded-3xl border border-border/70 bg-background shadow-elevated lg:hidden"
-      : "absolute left-0 right-0 top-full z-50 max-h-[calc(100vh-var(--entete-hauteur))] overflow-y-auto overscroll-contain border-b border-border bg-background shadow-elevated lg:hidden";
-
-  const ligne =
-    "flex items-center justify-between border-b border-border/60 py-3.5 text-base font-medium text-foreground";
+  const lien =
+    "flex items-center justify-between rounded-xl px-3 py-3 text-[15px] font-semibold text-foreground transition-colors active:bg-secondary";
 
   return (
     <>
       <button
+        ref={declencheur}
         type="button"
-        onClick={() => setOpen((v) => !v)}
-        className={`inline-flex h-11 w-11 shrink-0 items-center justify-center border border-border bg-card text-foreground shadow-soft transition hover:border-accent lg:hidden ${
-          variant === "floating" ? "rounded-full" : "rounded-lg"
+        onClick={() => setOuvert((v) => !v)}
+        className={`relative z-[70] inline-flex h-11 w-11 shrink-0 items-center justify-center border border-border bg-card text-foreground shadow-soft transition active:scale-95 lg:hidden ${
+          variant === "floating" ? "rounded-full" : "rounded-xl"
         }`}
-        aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
-        aria-expanded={open}
+        aria-label={ouvert ? "Fermer le menu" : "Ouvrir le menu"}
+        aria-expanded={ouvert}
         aria-controls="menu-mobile"
       >
-        {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        {ouvert ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
       </button>
 
-      {open && (
-        <div id="menu-mobile" className={panneau}>
-          <nav className="flex flex-col px-5 py-2" aria-label="Navigation principale">
-            {FAMILLES.map((f) => (
-              <details key={f.id} className="group border-b border-border/60">
-                <summary className="flex cursor-pointer list-none items-center justify-between py-3.5 marker:content-none">
-                  <span className="flex items-center gap-2.5 text-base font-semibold text-foreground">
-                    <f.icone className="h-4 w-4 text-brand-ink" />
-                    {f.titre}
-                  </span>
-                  <svg
-                    viewBox="0 0 12 12"
-                    aria-hidden="true"
-                    className="h-3.5 w-3.5 text-muted-foreground transition-transform group-open:rotate-180"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                  >
-                    <path d="M2.5 4.5L6 8l3.5-3.5" />
-                  </svg>
-                </summary>
-                <ul className="pb-2 pl-6">
-                  {entreesFamille(f.id).map((e) => (
-                    <li key={e.label}>
-                      {e.to ? (
-                        <Link
-                          to={e.to}
-                          onClick={fermer}
-                          className="block py-2.5 text-[15px] text-muted-foreground"
-                        >
-                          {e.label}
-                        </Link>
-                      ) : (
-                        <a
-                          href={e.href}
-                          onClick={fermer}
-                          className="block py-2.5 text-[15px] text-muted-foreground"
-                        >
-                          {e.label}
-                        </a>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </details>
-            ))}
+      {ouvert && (
+        <>
+          {/* Le fond. Il assombrit la page et referme au toucher. */}
+          <button
+            type="button"
+            aria-label="Fermer le menu"
+            onClick={fermer}
+            className="voile-menu fixed inset-0 z-[55] cursor-default lg:hidden"
+          />
 
-            <details className="group border-b border-border/60">
-              <summary className="flex cursor-pointer list-none items-center justify-between py-3.5 text-base font-medium text-foreground marker:content-none">
-                Sites par métier
-                <svg
-                  viewBox="0 0 12 12"
-                  aria-hidden="true"
-                  className="h-3.5 w-3.5 text-muted-foreground transition-transform group-open:rotate-180"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
+          <div
+            id="menu-mobile"
+            className="feuille-menu fixed inset-x-3 top-[var(--entete-hauteur)] z-[60] max-h-[calc(100dvh-var(--entete-hauteur)-0.75rem)] overflow-y-auto overscroll-contain rounded-3xl border border-border bg-card shadow-elevated sm:inset-x-4 lg:hidden"
+          >
+            <nav className="p-3" aria-label="Navigation principale">
+              {FAMILLES.map((f) => (
+                <details
+                  key={f.id}
+                  className="groupe-famille group"
+                  style={
+                    {
+                      "--encre-famille": COULEURS_FAMILLE[f.id].encre,
+                      "--teinte-famille": COULEURS_FAMILLE[f.id].couleur,
+                    } as React.CSSProperties
+                  }
                 >
-                  <path d="M2.5 4.5L6 8l3.5-3.5" />
-                </svg>
-              </summary>
-              <ul className="pb-2 pl-6">
-                {METIERS.map((m) => (
-                  <li key={m.to}>
-                    <Link
-                      to={m.to}
-                      onClick={fermer}
-                      className="block py-2.5 text-[15px] text-muted-foreground"
+                  <summary className="flex cursor-pointer list-none items-center gap-3 rounded-xl px-3 py-3.5 marker:content-none">
+                    {/* La pastille de couleur porte l'icône : c'est le même
+                        repère que dans le menu de bureau et le pied de page,
+                        à la taille d'un doigt. */}
+                    <span className="pastille-famille grid h-9 w-9 shrink-0 place-items-center rounded-xl">
+                      <f.icone className="h-4.5 w-4.5" />
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block font-display text-base font-bold tracking-tight">
+                        {f.titre}
+                      </span>
+                      <span className="block truncate text-[13px] text-muted-foreground">
+                        {f.resume}
+                      </span>
+                    </span>
+                    <svg
+                      viewBox="0 0 12 12"
+                      aria-hidden="true"
+                      className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
                     >
-                      {m.label.replace("Site internet ", "Site ")}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </details>
+                      <path d="M2.5 4.5L6 8l3.5-3.5" />
+                    </svg>
+                  </summary>
 
-            <Link to="/realisations/" onClick={fermer} className={ligne}>
-              Réalisations
-            </Link>
+                  <ul className="mb-1 ml-[3.25rem] mr-3 space-y-0.5 border-l border-border pl-3">
+                    {entreesFamille(f.id).map((e) => (
+                      <li key={e.label}>
+                        {e.to ? (
+                          <Link
+                            to={e.to}
+                            onClick={fermer}
+                            className="entree-famille block rounded-lg px-2 py-2.5 text-[15px] text-muted-foreground"
+                          >
+                            {e.label}
+                          </Link>
+                        ) : (
+                          <a
+                            href={e.href}
+                            onClick={fermer}
+                            className="entree-famille block rounded-lg px-2 py-2.5 text-[15px] text-muted-foreground"
+                          >
+                            {e.label}
+                          </a>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              ))}
 
-            {current === "blog" ? (
-              <span aria-current="page" className={`${ligne} text-brand-ink`}>
-                Blog
-              </span>
-            ) : (
-              <Link to="/blog/" onClick={fermer} className={ligne}>
-                Blog
+              <div className="my-2 h-px bg-border" />
+
+              <Link to="/realisations/" onClick={fermer} className={lien}>
+                Réalisations
+                <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
               </Link>
-            )}
 
-            {!onHome && (
-              <Link to="/" onClick={fermer} className={ligne}>
-                Accueil
-              </Link>
-            )}
+              {current === "blog" ? (
+                <span aria-current="page" className={`${lien} text-brand-ink`}>
+                  Blog
+                </span>
+              ) : (
+                <Link to="/blog/" onClick={fermer} className={lien}>
+                  Blog
+                  <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
+                </Link>
+              )}
 
-            <a
-              href={`tel:${SITALY_PHONE}`}
-              onClick={fermer}
-              className="flex items-center gap-2 py-4 text-base font-semibold text-foreground"
-            >
-              <Phone className="h-4 w-4 text-brand-ink" />
-              {SITALY_PHONE_DISPLAY}
-            </a>
+              {!onHome && (
+                <Link to="/" onClick={fermer} className={lien}>
+                  Accueil
+                  <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
+                </Link>
+              )}
+            </nav>
 
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={fermer}
-              className="bouton mb-4 h-12 w-full text-base"
-            >
-              <Calendar className="h-4 w-4" />
-              Parler de votre projet
-            </a>
-          </nav>
-        </div>
+            {/* Le pied de la feuille. Les deux actions y sont toujours à la
+                même place, quel que soit ce qui est déplié au-dessus. */}
+            <div className="sticky bottom-0 border-t border-border bg-card/95 p-3 backdrop-blur">
+              <a
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={fermer}
+                className="bouton h-12 w-full text-base"
+              >
+                <Calendar className="h-4 w-4" />
+                Parler de votre projet
+              </a>
+              <a
+                href={`tel:${SITALY_PHONE}`}
+                onClick={fermer}
+                className="mt-2 flex h-11 items-center justify-center gap-2 rounded-xl border border-border text-[15px] font-semibold text-foreground"
+              >
+                <Phone className="h-4 w-4 text-brand-ink" />
+                {SITALY_PHONE_DISPLAY}
+              </a>
+            </div>
+          </div>
+        </>
       )}
     </>
   );

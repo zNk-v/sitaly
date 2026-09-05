@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { COULEURS_FAMILLE, FAMILLES, entreesFamille, type EntreeMenu } from "@/data/expertises";
-import { METIERS } from "@/lib/metiers";
 import { REALISATIONS } from "@/data/realisations";
 
 /**
@@ -135,22 +134,6 @@ export function MainNav() {
                 ))}
               </div>
             </div>
-          ))}
-        </div>
-
-        {/* Les pages métier ne sont pas une famille : ce sont des déclinaisons
-            du site vitrine. Une ligne de liens suffit à les rendre atteignables
-            sans donner à chacune le poids d'une expertise. */}
-        <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1 border-t border-border px-3 pt-3 text-[13px]">
-          <span className="rail-label text-muted-foreground">Par métier</span>
-          {METIERS.map((m) => (
-            <Link
-              key={m.to}
-              to={m.to}
-              className="font-medium text-muted-foreground transition-colors hover:text-brand-ink"
-            >
-              {m.label.replace("Site internet ", "")}
-            </Link>
           ))}
         </div>
       </Deroulant>

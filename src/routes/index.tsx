@@ -9,6 +9,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { FondateurCard } from "@/components/FondateurCard";
 import { ZoomIntro } from "@/components/ZoomIntro";
+import { useProgressionAuDefilement } from "@/hooks/use-progression-defilement";
 import { MetiersDefilement } from "@/components/MetiersDefilement";
 import { BlogCard } from "@/components/BlogCard";
 import { COULEURS_FAMILLE, FAMILLES, entreesFamille } from "@/data/expertises";
@@ -459,14 +460,25 @@ function Realisations() {
 
 /* ---------------- PROCESS ---------------- */
 /**
- * Liste verticale à numéros surdimensionnés, sur aplat violet.
+ * La frise des cinq étapes, avec son faisceau piloté par le défilement.
  *
- * C'était cinq cartes en grille, la cinquième forme de grille de la page.
- * En liste, chaque étape occupe toute la largeur et le numéro devient un
- * élément graphique à part entière plutôt qu'une étiquette dans un coin.
+ * C'était une liste de cinq lignes séparées par des filets, où le numéro
+ * servait d'étiquette. Elle disait la séquence sans la faire sentir : cinq
+ * lignes posées l'une sous l'autre se lisent comme un tableau, pas comme une
+ * progression.
+ *
+ * Le faisceau la fait sentir. Une seule variable, `--progression`, écrite au
+ * défilement, et tout le reste en découle par `calc` : la hauteur du trait
+ * lumineux, l'allumage de chaque pastille, la montée de chaque bloc. Aucune
+ * bibliothèque, aucun observateur par étape.
+ *
+ * L'astuce qui évite un `IntersectionObserver` par pastille : l'opacité se
+ * borne d'elle-même entre 0 et 1. `calc((progression × n − i) × 2.5)` vaut donc
+ * 0 avant que l'étape ne soit atteinte, monte pendant qu'elle l'est, et sature
+ * à 1 ensuite, sans une ligne de script.
  */
 function Process() {
-  const steps = [
+  const etapes = [
     { t: "Appel découverte", d: "On comprend votre activité et vos besoins. Vingt minutes." },
     { t: "Création du site", d: "Votre site est conçu sur mesure, sans gabarit revendu." },
     { t: "Validation", d: "Vous validez le rendu, on ajuste si besoin." },
@@ -476,6 +488,9 @@ function Process() {
     },
     { t: "Suivi mensuel", d: "Maintenance, mises à jour et modifications incluses." },
   ];
+  const frise = useRef<HTMLOListElement>(null);
+  useProgressionAuDefilement(frise);
+
   return (
     <section id="process" className="on-wash py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
@@ -489,19 +504,28 @@ function Process() {
           }
         />
 
-        <ol className="stagger mt-14">
-          {steps.map((s, i) => (
-            <li
-              key={s.t}
-              data-reveal
-              style={{ "--i": i } as React.CSSProperties}
-              className="group grid items-baseline gap-x-8 gap-y-2 border-t border-border py-7 sm:grid-cols-[auto_16rem_1fr] sm:py-9"
-            >
-              <span className="brand-gradient-text rail-num font-display text-[clamp(2.4rem,5vw,4rem)] font-extrabold leading-none opacity-45 transition-opacity group-hover:opacity-100">
-                {String(i + 1).padStart(2, "0")}
+        <ol
+          ref={frise}
+          className="frise mt-16"
+          style={{ "--n": etapes.length } as React.CSSProperties}
+        >
+          {/* Le rail et son faisceau. Deux traits superposés : l'un pose la
+              trajectoire, l'autre la parcourt. */}
+          <span aria-hidden="true" className="frise-rail" />
+          <span aria-hidden="true" className="frise-faisceau" />
+
+          {etapes.map((e, i) => (
+            <li key={e.t} className="frise-etape" style={{ "--i": i } as React.CSSProperties}>
+              <span aria-hidden="true" className="frise-pastille">
+                <span className="frise-pastille-fond" />
+                <span className="frise-pastille-halo" />
+                <span className="frise-numero">{String(i + 1).padStart(2, "0")}</span>
               </span>
-              <h3 className="font-display text-xl font-bold tracking-tight sm:text-2xl">{s.t}</h3>
-              <p className="text-lg leading-relaxed text-muted-foreground">{s.d}</p>
+
+              <div className="frise-bloc">
+                <h3 className="font-display text-xl font-bold tracking-tight sm:text-2xl">{e.t}</h3>
+                <p className="mt-2 leading-relaxed text-muted-foreground">{e.d}</p>
+              </div>
             </li>
           ))}
         </ol>
