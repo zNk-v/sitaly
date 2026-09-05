@@ -46,6 +46,11 @@ export function MobileMenu({
     if (!ouvert) return;
     const precedent = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    /* La pastille de l'en-tête est translucide et floute ce qu'il y a derrière.
+       Le voile passant sous elle, son flou le ramenait dedans et la pastille
+       virait au gris barré. Elle devient opaque le temps du menu : le z-index
+       n'y pouvait rien, c'est le `backdrop-filter` qui échantillonnait. */
+    document.body.classList.add("menu-ouvert");
     const auClavier = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setOuvert(false);
@@ -55,6 +60,7 @@ export function MobileMenu({
     document.addEventListener("keydown", auClavier);
     return () => {
       document.body.style.overflow = precedent;
+      document.body.classList.remove("menu-ouvert");
       document.removeEventListener("keydown", auClavier);
     };
   }, [ouvert]);
@@ -88,12 +94,16 @@ export function MobileMenu({
 
       {ouvert && (
         <>
-          {/* Le fond. Il assombrit la page et referme au toucher. */}
+          {/* Le fond. Il assombrit la page et referme au toucher. Il passe
+              SOUS la pastille de l'en-tête, qui vaut z-50 : au-dessus, il la
+              barrait d'un rectangle gris dont les angles ne suivaient pas les
+              siens, et le logo devenait illisible pendant que le bouton, plus
+              haut encore, restait net. */}
           <button
             type="button"
             aria-label="Fermer le menu"
             onClick={fermer}
-            className="voile-menu fixed inset-0 z-[55] cursor-default lg:hidden"
+            className="voile-menu fixed inset-0 z-40 cursor-default lg:hidden"
           />
 
           <div
@@ -112,20 +122,18 @@ export function MobileMenu({
                     } as React.CSSProperties
                   }
                 >
-                  <summary className="flex cursor-pointer list-none items-center gap-3 rounded-xl px-3 py-3.5 marker:content-none">
+                  <summary className="flex cursor-pointer list-none items-center gap-3 rounded-xl px-3 py-3 marker:content-none">
                     {/* La pastille de couleur porte l'icône : c'est le même
                         repère que dans le menu de bureau et le pied de page,
                         à la taille d'un doigt. */}
                     <span className="pastille-famille grid h-9 w-9 shrink-0 place-items-center rounded-xl">
                       <f.icone className="h-4.5 w-4.5" />
                     </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="block font-display text-base font-bold tracking-tight">
-                        {f.titre}
-                      </span>
-                      <span className="block truncate text-[13px] text-muted-foreground">
-                        {f.resume}
-                      </span>
+                    {/* Le résumé de la famille tenait sur une ligne tronquée
+                        par des points de suspension. Une phrase coupée au
+                        milieu ne renseigne pas, elle encombre. */}
+                    <span className="min-w-0 flex-1 font-display text-base font-bold tracking-tight">
+                      {f.titre}
                     </span>
                     <svg
                       viewBox="0 0 12 12"

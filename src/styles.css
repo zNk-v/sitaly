@@ -2057,3 +2057,10 @@
     display: none;
   }
 }
+
+/* Menu mobile ouvert : la pastille cesse de flouter, sinon elle ramène le voile
+   sombre dans son propre fond et paraît barrée de gris. */
+body.menu-ouvert .entete-plaque {
+  background: var(--paper);
+  backdrop-filter: none;
+}

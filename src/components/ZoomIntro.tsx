@@ -76,19 +76,28 @@ export function ZoomIntro({
       const part = (debut: number, fin: number) =>
         Math.min(1, Math.max(0, (y - debut * hauteur) / ((fin - debut) * hauteur)));
 
-      /* Le panneau ne se découvre qu'une fois le trou refermé sur toute la
-         fenêtre, sinon on le lit en morceaux répartis entre les lettres.
-         L'échelle qui referme le trou dépend du format : environ 21 en paysage,
-         27 en portrait, où le mot est haut et étroit. Rapportées à la course du
-         mot, ces échelles tombent à 0,55 et 0,67 d'avancement. En portrait, la
-         plage écrite pour le paysage montrait donc le texte du panneau à cheval
-         sur le voile, coupé par les lettres. */
-      const [panneauDebut, panneauFin] = portrait.matches ? [0.58, 0.74] : [0.3, 0.5];
+      /* Deux plages dépendent du format, et elles se tiennent.
+
+         Le panneau ne peut se découvrir qu'une fois le trou refermé sur toute
+         la fenêtre, sinon on le lit en morceaux répartis entre les lettres.
+         L'échelle qui referme le trou vaut environ 21 en paysage et 27 en
+         portrait, où le mot est haut et étroit : rapportées à la course du mot,
+         0,55 et 0,67 d'avancement.
+
+         Retarder le panneau ne suffit pas en portrait. Entre le moment où les
+         lettres deviennent énormes et celui où elles se rejoignent, on regarde
+         de grandes formes noires séparées de larges vides blancs : le dessous
+         d'une ligne de base agrandie vingt fois. C'est le rectangle de
+         remplissage qui doit combler ce vide, et il doit donc partir plus tôt.
+         Il court de 0,30 en portrait contre 0,50 en paysage, de sorte que le
+         noir gagne l'écran pendant que les lettres s'écartent. */
+      const [remplirDebut, remplirFin] = portrait.matches ? [0.3, 0.58] : [0.5, 0.82];
+      const [panneauDebut, panneauFin] = portrait.matches ? [0.5, 0.68] : [0.3, 0.5];
 
       el.style.setProperty("--p-tete", String(part(0, 0.1)));
       el.style.setProperty("--p-mot", String(part(0.08, 0.84)));
       el.style.setProperty("--p-panneau", String(part(panneauDebut, panneauFin)));
-      el.style.setProperty("--p-remplir", String(part(0.5, 0.82)));
+      el.style.setProperty("--p-remplir", String(part(remplirDebut, remplirFin)));
       el.style.setProperty("--p-approche", String(part(0, 0.88)));
     };
 
