@@ -592,8 +592,16 @@
   (prefers-reduced-motion: no-preference) and (max-width: 699px) and (min-height: 580px) {
   .zoom-stage {
     /* La hauteur de la scène EST la durée de l'effet : 100vh pour l'écran
-       collé, plus la course des animations, qui s'achèvent vers 88vh. */
-    height: 195vh;
+       collé, plus la course des animations. `--course` la porte parce que le
+       pilote en a besoin pour retrouver la hauteur d'écran de référence : les
+       deux ne peuvent pas diverger si elles lisent la même valeur. */
+    --course: 1.95;
+    /* Le mot est agrandi 33 fois en paysage, où c'est lui qui finit par couvrir
+       l'écran. En portrait, c'est le disque qui couvre et le mot n'a plus à
+       sortir du cadre : 12 fois suffisent, et l'on évite l'instant où il ne
+       reste à l'écran qu'un blanc entre deux jambages. */
+    --facteur-zoom: 33;
+    height: calc(var(--course) * 100vh);
 
     /* Bornées en vh : sur un écran bas, une valeur purement en vw fait grossir
        le mot pendant que la place disponible diminue. Le `max` garde à
@@ -672,6 +680,13 @@
      pourcentage figé ne valait que pour une largeur — 46,7 % vise juste à
      1440 px, et à 30 px du mot sur un téléphone. */
   .zoom-remplir {
+    /* Le disque est centré sur le point d'où part le zoom du mot, et grandit
+       depuis ce même point. Son rayon suit la fenêtre : 0,75 fois la somme des
+       deux côtés dépasse toujours la distance du centre au coin le plus
+       éloigné, quel que soit le format. */
+    cx: calc(50% - 0.285 * var(--mot-taille));
+    cy: calc(var(--mot-haut) + var(--mot-fente) / 2);
+    r: calc(0.75 * (100vw + 100vh));
     transform-box: view-box;
     transform-origin: calc(50% - 0.285 * var(--mot-taille))
       calc(var(--mot-haut) + var(--mot-fente) / 2);
@@ -696,7 +711,7 @@
     transform-box: fill-box;
     transform-origin: 39.3% 49.8%;
     transform: translateY(calc(var(--mot-haut) + var(--mot-fente) / 2))
-      scale(calc(1 + 33 * var(--p-mot, 0)));
+      scale(calc(1 + var(--facteur-zoom) * var(--p-mot, 0)));
     will-change: transform;
   }
 
@@ -722,6 +737,10 @@
      d'autant. */
   @media (max-aspect-ratio: 4 / 5) {
     .zoom-stage {
+      /* La course est plus courte : sur un téléphone, 195vh d'ouverture
+         faisaient dix secondes de défilement pour trois secondes d'effet. */
+      --course: 1.6;
+      --facteur-zoom: 12;
       --mot-haut: min(16vh, 11rem);
       --mot-taille: min(30vw, 21vh);
       --mot-fente: min(37vw, 26vh);

@@ -67,7 +67,8 @@ export function ZoomIntro({
          La scène fait 195vh, posés à la mise en page et stables ensuite ; la
          diviser redonne la hauteur d'écran contre laquelle les seuils sont
          écrits. */
-      const hauteur = el.offsetHeight / 1.95;
+      const course = parseFloat(getComputedStyle(el).getPropertyValue("--course")) || 1.95;
+      const hauteur = el.offsetHeight / course;
       /* Et l'avancement se mesure depuis le haut de la scène plutôt que depuis
          le haut du document : le résultat ne dépend plus de ce qui la précède. */
       const y = -el.getBoundingClientRect().top;
@@ -84,15 +85,19 @@ export function ZoomIntro({
          portrait, où le mot est haut et étroit : rapportées à la course du mot,
          0,55 et 0,67 d'avancement.
 
-         Retarder le panneau ne suffit pas en portrait. Entre le moment où les
-         lettres deviennent énormes et celui où elles se rejoignent, on regarde
-         de grandes formes noires séparées de larges vides blancs : le dessous
-         d'une ligne de base agrandie vingt fois. C'est le rectangle de
-         remplissage qui doit combler ce vide, et il doit donc partir plus tôt.
-         Il court de 0,30 en portrait contre 0,50 en paysage, de sorte que le
-         noir gagne l'écran pendant que les lettres s'écartent. */
-      const [remplirDebut, remplirFin] = portrait.matches ? [0.3, 0.58] : [0.5, 0.82];
-      const [panneauDebut, panneauFin] = portrait.matches ? [0.5, 0.68] : [0.3, 0.5];
+         En portrait, faire porter la couverture par le mot ne marche pas. À
+         grande échelle, ce qu'on voit de l'écran est un tout petit voisinage du
+         point d'origine ; s'il tombe dans un blanc entre deux jambages, l'écran
+         devient entièrement blanc. C'est ce qu'a montré un enregistrement sur
+         iPhone : le mot sortait par le haut et laissait deux secondes de page
+         vide avant que le noir n'arrive.
+
+         Le disque, lui, couvre depuis n'importe quel point intérieur. En
+         portrait il prend donc l'essentiel du travail : il part tôt, le mot
+         grossit moins (voir --facteur-zoom), et il n'existe plus d'instant où
+         l'écran ne montre rien. */
+      const [remplirDebut, remplirFin] = portrait.matches ? [0.22, 0.52] : [0.5, 0.82];
+      const [panneauDebut, panneauFin] = portrait.matches ? [0.44, 0.62] : [0.3, 0.5];
 
       el.style.setProperty("--p-tete", String(part(0, 0.1)));
       el.style.setProperty("--p-mot", String(part(0.08, 0.84)));
@@ -169,20 +174,19 @@ export function ZoomIntro({
                 {/* y=0 : la position verticale vient d'une translation CSS, pour
                     qu'elle partage la même formule que la fente réservée dans le
                     flux. Voir --mot-haut dans la feuille de style. */}
-                {/* L'extension du noir. Un rectangle plus grand que la fenêtre,
-                    réduit à rien au départ, qui grandit depuis le point même
-                    d'où part le zoom : visuellement, c'est le noir du « t » qui
-                    déborde et gagne la page. Il remplace une coupure sèche du
-                    voile, qui sautait d'un coup sur les écrans larges où le
-                    trou des lettres ne se referme jamais complètement. */}
-                <rect
-                  className="zoom-remplir"
-                  x="-50%"
-                  y="-50%"
-                  width="200%"
-                  height="200%"
-                  fill="black"
-                />
+                {/* L'extension du noir. Un disque, réduit à rien au départ, qui
+                    grandit depuis le point même d'où part le zoom : c'est le
+                    noir du « t » qui déborde et gagne la page.
+
+                    Un rectangle a tenu ce rôle et se voyait pour ce qu'il
+                    était : sur un téléphone, où il fait l'essentiel du travail,
+                    on regardait un rectangle à angles vifs grandir au milieu du
+                    blanc. Le disque n'a pas d'angle, donc rien à reconnaître.
+
+                    Son centre et son rayon sont posés en CSS : `cx`, `cy` et `r`
+                    sont des propriétés de géométrie, et il faut le calcul pour
+                    les accrocher au même point que le zoom du mot. */}
+                <circle className="zoom-remplir" fill="black" />
                 <text
                   className="zoom-word"
                   x="50%"
