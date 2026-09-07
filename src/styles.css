@@ -679,34 +679,25 @@
      boîte tombe donc à 0,285 corps à gauche du milieu de la fenêtre. Un
      pourcentage figé ne valait que pour une largeur — 46,7 % vise juste à
      1440 px, et à 30 px du mot sur un téléphone. */
-  /* Trois mesures partagées par le mot et le disque, pour qu'ils ne puissent
-     pas se désaccorder.
-
-     `--echelle` : le grandissement du mot.
-     `--y-mot`   : où se trouve le centre du mot, qui migre de sa place dans la
-                   composition vers le milieu de l'écran pendant qu'il grandit.
-     `--x-du-t`  : où se trouve, à l'écran, le point du « t » d'où part la
-                   plongée. Le mot grandissant autour de son propre centre, ce
-                   point dérive vers la gauche ; la plongée le ramène au milieu.
-                   0,285 corps est sa distance au centre du mot, la largeur du
-                   mot valant 2,663 corps et le point 39,3 % de cette largeur. */
+  /* Deux mesures partagées par le mot et le disque, pour qu'ils ne puissent
+     pas se désaccorder : le grandissement, et le point du « t » d'où tout part.
+     0,285 corps est la distance de ce point au centre du mot, la largeur du mot
+     valant 2,663 corps et le point 39,3 % de cette largeur. */
   .zoom-stage {
     --echelle: calc(1 + var(--facteur-zoom) * var(--p-mot, 0));
-    --y-repos: calc(var(--mot-haut) + var(--mot-fente) / 2);
-    --y-mot: calc(var(--y-repos) + (50vh - var(--y-repos)) * var(--p-centrage, 0));
-    --x-du-t: calc(
-      50% - 0.285 * var(--mot-taille) * var(--echelle) * (1 - var(--p-plongee, 0))
-    );
+    --y-du-t: calc(var(--mot-haut) + var(--mot-fente) / 2);
+    --x-du-t: calc(50% - 0.285 * var(--mot-taille));
   }
 
   .zoom-remplir {
-    /* Le disque part du « t » et le suit. Son rayon dépasse toujours la
-       distance du centre au coin le plus éloigné, quel que soit le format. */
+    /* Le disque part du « t », au même point que le zoom. Son rayon dépasse
+       toujours la distance de ce point au coin le plus éloigné de la fenêtre,
+       quel que soit le format. */
     cx: var(--x-du-t);
-    cy: var(--y-mot);
+    cy: var(--y-du-t);
     r: calc(0.75 * (100vw + 100vh));
     transform-box: view-box;
-    transform-origin: var(--x-du-t) var(--y-mot);
+    transform-origin: var(--x-du-t) var(--y-du-t);
     transform: scale(var(--p-remplir, 0));
   }
 
@@ -714,27 +705,24 @@
      déplacé par transform, ce qui compose la translation avec le zoom dans une
      seule déclaration.
 
-     Il grandit autour de son propre centre et non autour du point du « t ».
-     Autour du « t », le mot dérivait hors du cadre dès qu'il grossissait : on
-     le voyait partir en haut à gauche au lieu de grandir sur place. Il reste
-     donc centré, et migre vers le milieu de l'écran pendant qu'il grandit.
+     L'origine n'est pas le centre du mot : le centre tombe dans le blanc entre
+     deux lettres, et agrandi ce blanc envahit l'écran. C'est le point le plus
+     profondément noir du « t », relevé sur le rendu. Les pourcentages se
+     rapportent à la boîte de remplissage du texte (`getBBox`), pas à celle de
+     son encre : les confondre décale l'origine d'une vingtaine de pour cent.
 
-     La plongée vient après, et par une translation plutôt qu'un changement
-     d'origine : changer l'origine en cours de route ferait sauter le mot d'un
-     bloc. Elle ramène le point du « t » au centre, et c'est de là que le disque
-     prend l'écran. Les translations précèdent l'échelle dans la liste, donc
-     elles s'appliquent après elle, en pixels de la scène et non du mot. */
+     Une version a fait grandir le mot autour de son propre centre avant de
+     plonger vers le « t ». Elle a été retirée : la plongée se voyait comme un
+     écart latéral juste avant le zoom, parce que le « t » n'est pas au centre.
+     Le zoom part donc du « t » et n'en bouge plus. */
   .zoom-word {
     font-family: var(--font-display);
     font-weight: 800;
     font-size: var(--mot-taille);
     letter-spacing: -0.02em;
     transform-box: fill-box;
-    transform-origin: 50% 50%;
-    transform: translateX(
-        calc(0.285 * var(--mot-taille) * var(--echelle) * var(--p-plongee, 0))
-      )
-      translateY(var(--y-mot)) scale(var(--echelle));
+    transform-origin: 39.3% 49.8%;
+    transform: translateY(var(--y-du-t)) scale(var(--echelle));
     will-change: transform;
   }
 
