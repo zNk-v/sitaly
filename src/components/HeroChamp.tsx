@@ -26,81 +26,100 @@
  * la ligne de sens tient 7:1 sur le papier nu, et chaque point d'opacité posé
  * dessus en retire.
  */
-export function HeroChamp() {
+/**
+ * Le dessin seul, sans son hôte.
+ *
+ * Il est rendu à deux endroits : ici dans le premier plan, pour le repli, et
+ * dans le voile du nom, à l'intérieur du groupe masqué, pour que le mot passe
+ * devant les chevrons au lieu d'être traversé par eux. Un seul des deux est
+ * affiché à la fois, selon que l'effet tourne ou non.
+ *
+ * D'où le suffixe : deux copies du même dessin dans la page, ce sont deux jeux
+ * d'identifiants, et un dégradé référencé par un identifiant en double se
+ * résout sur la première occurrence quoi qu'on fasse.
+ */
+export function ChampChevrons({ suffixe }: { suffixe: string }) {
+  const id = (nom: string) => `${nom}-${suffixe}`;
   return (
-    <div aria-hidden="true" className="absolute inset-0 -z-10 overflow-hidden">
-      <svg
-        className="absolute inset-0 h-full w-full"
-        viewBox="0 0 1440 900"
-        preserveAspectRatio="xMidYMid slice"
-      >
-        <defs>
-          {/* Interpolé en oklch : en sRGB, un bleu qui rejoint un rouge passe
+    <svg
+      className="absolute inset-0 h-full w-full"
+      viewBox="0 0 1440 900"
+      preserveAspectRatio="xMidYMid slice"
+    >
+      <defs>
+        {/* Interpolé en oklch : en sRGB, un bleu qui rejoint un rouge passe
               par un gris boueux au milieu du parcours. */}
-          {/* En coordonnées de la scène, et non de chaque forme : par défaut,
+        {/* En coordonnées de la scène, et non de chaque forme : par défaut,
               chaque forme rejouerait le dégradé entier sur sa propre boîte au
               lieu de composer un seul balayage.
               L'axe suit la diagonale des chevrons, du bas-gauche au
               haut-droite. Sur l'autre diagonale, les deux couples tombaient
               tous deux au milieu du parcours : ni bleu franc, ni rouge
               franc. */}
-          <linearGradient
-            id="champ-triade"
-            gradientUnits="userSpaceOnUse"
-            x1="0"
-            y1="900"
-            x2="1440"
-            y2="0"
-          >
-            <stop offset="0%" stopColor="var(--blue)" />
-            <stop offset="28%" stopColor="var(--blue)" />
-            <stop offset="55%" stopColor="var(--violet)" />
-            <stop offset="78%" stopColor="var(--red)" />
-            <stop offset="100%" stopColor="var(--red)" />
-          </linearGradient>
+        <linearGradient
+          id={id("champ-triade")}
+          gradientUnits="userSpaceOnUse"
+          x1="0"
+          y1="900"
+          x2="1440"
+          y2="0"
+        >
+          <stop offset="0%" stopColor="var(--blue)" />
+          <stop offset="28%" stopColor="var(--blue)" />
+          <stop offset="55%" stopColor="var(--violet)" />
+          <stop offset="78%" stopColor="var(--red)" />
+          <stop offset="100%" stopColor="var(--red)" />
+        </linearGradient>
 
-          {/* Le fondu central : au milieu de la fenêtre passent le texte et le
+        {/* Le fondu central : au milieu de la fenêtre passent le texte et le
               trou du mot, tous deux à laisser nus. Le décor ne vit que sur les
               bords. */}
-          <radialGradient id="champ-fondu" cx="50%" cy="46%" r="72%">
-            <stop offset="0%" stopColor="black" />
-            <stop offset="42%" stopColor="black" />
-            <stop offset="100%" stopColor="white" />
-          </radialGradient>
-          {/* Masque du portrait. L'ellipse ci-dessus protège le centre d'un
+        <radialGradient id={id("champ-fondu")} cx="50%" cy="46%" r="72%">
+          <stop offset="0%" stopColor="black" />
+          <stop offset="42%" stopColor="black" />
+          <stop offset="100%" stopColor="white" />
+        </radialGradient>
+        {/* Masque du portrait. L'ellipse ci-dessus protège le centre d'un
               écran large, où les chevrons vivent aux extrêmes gauche et droite.
               En portrait, la bande visible du dessin *est* ce centre : la même
               ellipse ramenait les chevrons à une opacité effective de 0,06 à
               0,18, mesurée — invisibles. Ici c'est une bande horizontale : le
               décor vit en haut et en bas, le texte occupe le milieu. */}
-          <linearGradient id="champ-fondu-portrait" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="white" />
-            <stop offset="20%" stopColor="white" />
-            <stop offset="36%" stopColor="black" />
-            <stop offset="86%" stopColor="black" />
-            <stop offset="100%" stopColor="white" />
-          </linearGradient>
-          <mask
-            id="champ-masque-portrait"
-            maskUnits="userSpaceOnUse"
-            x="0"
-            y="0"
-            width="1440"
-            height="900"
-          >
-            <rect width="1440" height="900" fill="url(#champ-fondu-portrait)" />
-          </mask>
-          {/* Région explicite, en unités de la scène. Par défaut un masque se
+        <linearGradient id={id("champ-fondu-portrait")} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="white" />
+          <stop offset="20%" stopColor="white" />
+          <stop offset="36%" stopColor="black" />
+          <stop offset="86%" stopColor="black" />
+          <stop offset="100%" stopColor="white" />
+        </linearGradient>
+        <mask
+          id={id("champ-masque-portrait")}
+          maskUnits="userSpaceOnUse"
+          x="0"
+          y="0"
+          width="1440"
+          height="900"
+        >
+          <rect width="1440" height="900" fill={`url(#${id("champ-fondu-portrait")})`} />
+        </mask>
+        {/* Région explicite, en unités de la scène. Par défaut un masque se
               calcule sur la boîte de l'objet masqué — ici les chevrons, qui
               débordent largement du cadre — et cette boîte diffère d'un moteur
               à l'autre. Le voile du nom, qui porte une région explicite depuis
               le début, s'affiche correctement sur iOS ; ces deux-là, non. */}
-          <mask id="champ-masque" maskUnits="userSpaceOnUse" x="0" y="0" width="1440" height="900">
-            <rect width="1440" height="900" fill="url(#champ-fondu)" />
-          </mask>
-        </defs>
+        <mask
+          id={id("champ-masque")}
+          maskUnits="userSpaceOnUse"
+          x="0"
+          y="0"
+          width="1440"
+          height="900"
+        >
+          <rect width="1440" height="900" fill={`url(#${id("champ-fondu")})`} />
+        </mask>
+      </defs>
 
-        {/* Les chevrons du logo, par couples. Ils remplacent des arcs
+      {/* Les chevrons du logo, par couples. Ils remplacent des arcs
             concentriques : même principe de formes qui saignent des bords,
             mais la figure est celle de la marque.
 
@@ -124,52 +143,64 @@ export function HeroChamp() {
             Deux couples seulement, en vis-à-vis sur la diagonale. Quatre
             couples répartis dans les quatre coins ne composaient rien : la
             diagonale donne une direction, et c'est celle du dégradé. */}
-        <g mask="url(#champ-masque)">
-          <g
-            className="champ-derive champ-large"
-            fill="none"
-            stroke="url(#champ-triade)"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            {/* Bas-gauche : le sommet est dans le cadre, le bras du bas sort
+      <g mask={`url(#${id("champ-masque")})`}>
+        <g
+          className="champ-derive champ-large"
+          fill="none"
+          stroke={`url(#${id("champ-triade")})`}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          {/* Bas-gauche : le sommet est dans le cadre, le bras du bas sort
                 par le bord inférieur. C'est donc le haut du couple qu'on voit.
                 Il tombe sur l'extrémité bleue du dégradé. */}
-            <path d="M -80 440 L 300 820 L -80 1200" strokeWidth="104" opacity="0.6" />
-            <path d="M 155 440 L 535 820 L 155 1200" strokeWidth="104" opacity="0.6" />
+          <path d="M -80 440 L 300 820 L -80 1200" strokeWidth="104" opacity="0.6" />
+          <path d="M 155 440 L 535 820 L 155 1200" strokeWidth="104" opacity="0.6" />
 
-            {/* Haut-droite, en vis-à-vis sur la diagonale : le bras du haut
+          {/* Haut-droite, en vis-à-vis sur la diagonale : le bras du haut
                 sort par le bord supérieur, c'est le bas du couple qu'on voit.
                 Il tombe sur l'extrémité rouge. */}
-            <path d="M 800 -290 L 1180 90 L 800 470" strokeWidth="92" opacity="0.46" />
-            <path d="M 1035 -290 L 1415 90 L 1035 470" strokeWidth="92" opacity="0.46" />
-          </g>
+          <path d="M 800 -290 L 1180 90 L 800 470" strokeWidth="92" opacity="0.46" />
+          <path d="M 1035 -290 L 1415 90 L 1035 470" strokeWidth="92" opacity="0.46" />
         </g>
+      </g>
 
-        <g mask="url(#champ-masque-portrait)">
-          {/* Jeu pour les écrans en portrait. La découpe `slice` n'y montre que
+      <g mask={`url(#${id("champ-masque-portrait")})`}>
+        {/* Jeu pour les écrans en portrait. La découpe `slice` n'y montre que
               la bande x 512..928 du dessin, mesurée : les couples ci-dessus,
               posés à x -80..535 et 800..1415, n'y laissaient voir que des
               queues de bras. Ceux-ci ont leurs sommets dans la bande. */}
-          <g
-            className="champ-derive champ-portrait"
-            fill="none"
-            stroke="url(#champ-triade)"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            {/* Haut : la seule zone vraiment libre en portrait, entre le
+        <g
+          className="champ-derive champ-portrait"
+          fill="none"
+          stroke={`url(#${id("champ-triade")})`}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          {/* Haut : la seule zone vraiment libre en portrait, entre le
                 bandeau et le nom. */}
-            <path d="M 400 -70 L 620 150 L 400 370" strokeWidth="92" opacity="0.62" />
-            <path d="M 570 -70 L 790 150 L 570 370" strokeWidth="92" opacity="0.62" />
+          <path d="M 400 -70 L 620 150 L 400 370" strokeWidth="92" opacity="0.62" />
+          <path d="M 570 -70 L 790 150 L 570 370" strokeWidth="92" opacity="0.62" />
 
-            {/* Bas : sommets sous le cadre, seuls les bras du haut entrent,
+          {/* Bas : sommets sous le cadre, seuls les bras du haut entrent,
                 derrière le repère de défilement. */}
-            <path d="M 430 760 L 630 960 L 430 1160" strokeWidth="80" opacity="0.5" />
-            <path d="M 590 760 L 790 960 L 590 1160" strokeWidth="80" opacity="0.5" />
-          </g>
+          <path d="M 430 760 L 630 960 L 430 1160" strokeWidth="80" opacity="0.5" />
+          <path d="M 590 760 L 790 960 L 590 1160" strokeWidth="80" opacity="0.5" />
         </g>
-      </svg>
+      </g>
+    </svg>
+  );
+}
+
+/**
+ * L'hôte du dessin dans le premier plan. Il ne sert plus que le repli : quand
+ * l'effet tourne, c'est la copie posée dans le voile qui s'affiche, et la
+ * feuille de style masque celle-ci.
+ */
+export function HeroChamp() {
+  return (
+    <div aria-hidden="true" className="champ-hote absolute inset-0 -z-10 overflow-hidden">
+      <ChampChevrons suffixe="plan" />
     </div>
   );
 }

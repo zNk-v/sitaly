@@ -679,39 +679,62 @@
      boîte tombe donc à 0,285 corps à gauche du milieu de la fenêtre. Un
      pourcentage figé ne valait que pour une largeur — 46,7 % vise juste à
      1440 px, et à 30 px du mot sur un téléphone. */
+  /* Trois mesures partagées par le mot et le disque, pour qu'ils ne puissent
+     pas se désaccorder.
+
+     `--echelle` : le grandissement du mot.
+     `--y-mot`   : où se trouve le centre du mot, qui migre de sa place dans la
+                   composition vers le milieu de l'écran pendant qu'il grandit.
+     `--x-du-t`  : où se trouve, à l'écran, le point du « t » d'où part la
+                   plongée. Le mot grandissant autour de son propre centre, ce
+                   point dérive vers la gauche ; la plongée le ramène au milieu.
+                   0,285 corps est sa distance au centre du mot, la largeur du
+                   mot valant 2,663 corps et le point 39,3 % de cette largeur. */
+  .zoom-stage {
+    --echelle: calc(1 + var(--facteur-zoom) * var(--p-mot, 0));
+    --y-repos: calc(var(--mot-haut) + var(--mot-fente) / 2);
+    --y-mot: calc(var(--y-repos) + (50vh - var(--y-repos)) * var(--p-centrage, 0));
+    --x-du-t: calc(
+      50% - 0.285 * var(--mot-taille) * var(--echelle) * (1 - var(--p-plongee, 0))
+    );
+  }
+
   .zoom-remplir {
-    /* Le disque est centré sur le point d'où part le zoom du mot, et grandit
-       depuis ce même point. Son rayon suit la fenêtre : 0,75 fois la somme des
-       deux côtés dépasse toujours la distance du centre au coin le plus
-       éloigné, quel que soit le format. */
-    cx: calc(50% - 0.285 * var(--mot-taille));
-    cy: calc(var(--mot-haut) + var(--mot-fente) / 2);
+    /* Le disque part du « t » et le suit. Son rayon dépasse toujours la
+       distance du centre au coin le plus éloigné, quel que soit le format. */
+    cx: var(--x-du-t);
+    cy: var(--y-mot);
     r: calc(0.75 * (100vw + 100vh));
     transform-box: view-box;
-    transform-origin: calc(50% - 0.285 * var(--mot-taille))
-      calc(var(--mot-haut) + var(--mot-fente) / 2);
+    transform-origin: var(--x-du-t) var(--y-mot);
     transform: scale(var(--p-remplir, 0));
   }
 
   /* Le mot reprend la casse et la chasse du logo. Il est posé à y=0 puis
-     descendu par transform, ce qui compose la translation avec le zoom dans
-     une seule déclaration.
+     déplacé par transform, ce qui compose la translation avec le zoom dans une
+     seule déclaration.
 
-     L'origine n'est pas le centre du mot : le centre tombe dans le blanc entre
-     deux lettres, et agrandi ce blanc envahit l'écran. C'est le point le plus
-     profondément noir, relevé sur le rendu — 35 px de noir dans toutes les
-     directions. Les pourcentages se rapportent à la boîte de remplissage du
-     texte (`getBBox`), pas à celle de son encre : les confondre décale
-     l'origine d'une vingtaine de pour cent en vertical. */
+     Il grandit autour de son propre centre et non autour du point du « t ».
+     Autour du « t », le mot dérivait hors du cadre dès qu'il grossissait : on
+     le voyait partir en haut à gauche au lieu de grandir sur place. Il reste
+     donc centré, et migre vers le milieu de l'écran pendant qu'il grandit.
+
+     La plongée vient après, et par une translation plutôt qu'un changement
+     d'origine : changer l'origine en cours de route ferait sauter le mot d'un
+     bloc. Elle ramène le point du « t » au centre, et c'est de là que le disque
+     prend l'écran. Les translations précèdent l'échelle dans la liste, donc
+     elles s'appliquent après elle, en pixels de la scène et non du mot. */
   .zoom-word {
     font-family: var(--font-display);
     font-weight: 800;
     font-size: var(--mot-taille);
     letter-spacing: -0.02em;
     transform-box: fill-box;
-    transform-origin: 39.3% 49.8%;
-    transform: translateY(calc(var(--mot-haut) + var(--mot-fente) / 2))
-      scale(calc(1 + var(--facteur-zoom) * var(--p-mot, 0)));
+    transform-origin: 50% 50%;
+    transform: translateX(
+        calc(0.285 * var(--mot-taille) * var(--echelle) * var(--p-plongee, 0))
+      )
+      translateY(var(--y-mot)) scale(var(--echelle));
     will-change: transform;
   }
 
@@ -2082,4 +2105,14 @@
 body.menu-ouvert .entete-plaque {
   background: var(--paper);
   backdrop-filter: none;
+}
+
+/* Le champ des chevrons existe en deux exemplaires : celui du premier plan, qui
+   ne sert que le repli, et celui du voile, découpé par le trou du mot. Quand
+   l'effet tourne, seul le second s'affiche. */
+@media (prefers-reduced-motion: no-preference) and (min-height: 700px),
+  (prefers-reduced-motion: no-preference) and (max-width: 699px) and (min-height: 580px) {
+  .champ-hote {
+    display: none;
+  }
 }

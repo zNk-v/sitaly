@@ -4,7 +4,7 @@ import { Phone, Calendar, Check, ArrowRight, Clock, ChevronDown } from "lucide-r
 import { SectionHeader } from "@/components/SectionHeader";
 import { StackedOffers } from "@/components/StackedOffers";
 import { RealisationsCarousel } from "@/components/RealisationsCarousel";
-import { HeroChamp } from "@/components/HeroChamp";
+import { ChampChevrons, HeroChamp } from "@/components/HeroChamp";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { FondateurCard } from "@/components/FondateurCard";
@@ -120,6 +120,7 @@ function Ouverture() {
   return (
     <ZoomIntro
       nom="Sitaly"
+      fond={<ChampChevrons suffixe="voile" />}
       avant={
         /* Calage déterministe du mot. La colonne occupe toute la hauteur, et
            les deux moitiés portent `flex-1` : la fente centrale tombe donc

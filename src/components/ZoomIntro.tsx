@@ -22,11 +22,15 @@ import { useEffect, useRef, type ReactNode } from "react";
  */
 export function ZoomIntro({
   nom,
+  fond,
   avant,
   children,
 }: {
   /** Le mot découpé dans le voile. */
   nom: string;
+  /** Le décor du voile, posé sous le même masque que lui : ce qui s'y trouve
+      est traversé par le trou du mot au lieu de passer par-dessus. */
+  fond?: ReactNode;
   /** Ce qui accompagne le nom au premier plan, et s'efface en montant. */
   avant: ReactNode;
   /** La section révélée à travers le mot. */
@@ -96,13 +100,20 @@ export function ZoomIntro({
          portrait il prend donc l'essentiel du travail : il part tôt, le mot
          grossit moins (voir --facteur-zoom), et il n'existe plus d'instant où
          l'écran ne montre rien. */
-      const [remplirDebut, remplirFin] = portrait.matches ? [0.22, 0.52] : [0.5, 0.82];
-      const [panneauDebut, panneauFin] = portrait.matches ? [0.44, 0.62] : [0.3, 0.5];
+      const [remplirDebut, remplirFin] = portrait.matches ? [0.44, 0.7] : [0.5, 0.76];
+      const [panneauDebut, panneauFin] = portrait.matches ? [0.62, 0.8] : [0.66, 0.82];
 
       el.style.setProperty("--p-tete", String(part(0, 0.1)));
       el.style.setProperty("--p-mot", String(part(0.08, 0.84)));
       el.style.setProperty("--p-panneau", String(part(panneauDebut, panneauFin)));
       el.style.setProperty("--p-remplir", String(part(remplirDebut, remplirFin)));
+      /* Le mot rejoint le milieu de l'écran tôt, pendant qu'il est encore
+         petit : plus tard, la migration se verrait comme un glissement. */
+      el.style.setProperty("--p-centrage", String(part(0.04, 0.26)));
+      /* Puis la plongée amène le « t » au centre, juste avant que le disque ne
+         parte de ce point. Les deux se recouvrent, sans quoi on verrait le mot
+         glisser puis s'arrêter avant que rien ne se passe. */
+      el.style.setProperty("--p-plongee", String(part(0.34, 0.6)));
       el.style.setProperty("--p-approche", String(part(0, 0.88)));
     };
 
@@ -199,7 +210,19 @@ export function ZoomIntro({
                 </text>
               </mask>
             </defs>
-            <rect width="100%" height="100%" fill="var(--paper)" mask="url(#zoom-intro-mask)" />
+            {/* Le voile et son décor sous le même masque. Les chevrons étaient
+                posés au premier plan, donc au-dessus du trou : ils traversaient
+                le mot au lieu de passer derrière. Ici, le trou les découpe
+                comme il découpe le papier, et le nom passe devant.
+
+                Le `svg` imbriqué porte son propre `viewBox` : le décor est
+                dessiné dans un repère de 1440x900 alors que le voile travaille
+                en pixels, et un `svg` dans un `svg` est justement ce qui permet
+                aux deux de coexister sous un même masque. */}
+            <g mask="url(#zoom-intro-mask)">
+              <rect width="100%" height="100%" fill="var(--paper)" />
+              {fond}
+            </g>
           </svg>
         </div>
 
