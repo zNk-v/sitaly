@@ -4984,12 +4984,100 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((p) => p.slug === slug);
 }
 
+/**
+ * Mots trop courants pour dire quoi que ce soit de la proximité entre deux articles.
+ */
+const MOTS_VIDES = new Set(
+  (
+    "le la les un une des du de au aux et ou en pour par sur dans avec sans que qui quoi " +
+    "comment pourquoi quand ce cet cette ces son sa ses leur leurs votre vos notre nos " +
+    "est sont etre avoir fait faut plus moins tout tous toute toutes vraiment mais donc " +
+    "chez vers entre selon apres avant depuis pas ne on se il elle ils elles"
+  ).split(" "),
+);
+
+/** Les mots retenus d'un article : son mot-clé et son titre, réduits à leur forme nue. */
+function motsDArticle(post: BlogPost): Set<string> {
+  return new Set(
+    `${post.keyword} ${post.title}`
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9\s]/g, " ")
+      .split(/\s+/)
+      .filter((mot) => mot.length > 2 && !MOTS_VIDES.has(mot)),
+  );
+}
+
+const MOTS_PAR_ARTICLE = new Map(BLOG_POSTS.map((p) => [p.slug, motsDArticle(p)]));
+
+/**
+ * Au-delà de deux mots partagés, deux articles sont considérés comme aussi proches l'un
+ * que l'autre. Ce plafond est ce qui laisse le nombre de liens déjà reçus départager les
+ * candidats : sans lui, la pertinence seule décide et les articles d'une même famille se
+ * renvoient la balle en boucle pendant que le reste du blog n'est lié par personne.
+ */
+const PROXIMITE_MAX = 2;
+
+function proximite(a: BlogPost, b: BlogPost): number {
+  const motsB = MOTS_PAR_ARTICLE.get(b.slug);
+  const motsA = MOTS_PAR_ARTICLE.get(a.slug);
+  if (!motsA || !motsB) return 0;
+  let communs = 0;
+  for (const mot of motsA) if (motsB.has(mot)) communs++;
+  return Math.min(communs, PROXIMITE_MAX);
+}
+
+const cartesArticlesLies = new Map<number, Map<string, BlogPost[]>>();
+
+/**
+ * Répartit les suggestions sur l'ensemble du blog, une fois pour toutes.
+ *
+ * La version précédente prenait les premiers articles du tableau. Les liens internes se
+ * concentraient donc sur une poignée d'articles — « Publicité ChatGPT Ads » en recevait 22
+ * à lui seul — pendant que quatre articles n'en recevaient aucun. Google a lu ce signal
+ * comme il fallait s'y attendre et a laissé plusieurs articles hors de son index.
+ *
+ * Le tri se fait ici en quatre temps : la même rubrique, puis la proximité de sujet, puis
+ * le nombre de liens déjà reçus, puis le rang pour rester déterministe d'un build à
+ * l'autre. Chaque article reçoit entre deux et quatre liens internes.
+ */
+function carteArticlesLies(limit: number): Map<string, BlogPost[]> {
+  const dejaCalculee = cartesArticlesLies.get(limit);
+  if (dejaCalculee) return dejaCalculee;
+
+  const liensRecus = new Map(BLOG_POSTS.map((p) => [p.slug, 0]));
+  const carte = new Map<string, BlogPost[]>();
+
+  for (const post of BLOG_POSTS) {
+    const choisis = BLOG_POSTS.map((p, rang) => ({ p, rang }))
+      .filter((c) => c.p.slug !== post.slug)
+      .sort((a, b) => {
+        const rubrique =
+          Number(b.p.category === post.category) - Number(a.p.category === post.category);
+        if (rubrique !== 0) return rubrique;
+        const sujet = proximite(post, b.p) - proximite(post, a.p);
+        if (sujet !== 0) return sujet;
+        const liens = (liensRecus.get(a.p.slug) ?? 0) - (liensRecus.get(b.p.slug) ?? 0);
+        if (liens !== 0) return liens;
+        return a.rang - b.rang;
+      })
+      .slice(0, limit)
+      .map((c) => c.p);
+
+    for (const choisi of choisis) {
+      liensRecus.set(choisi.slug, (liensRecus.get(choisi.slug) ?? 0) + 1);
+    }
+    carte.set(post.slug, choisis);
+  }
+
+  cartesArticlesLies.set(limit, carte);
+  return carte;
+}
+
 export function getRelatedPosts(slug: string, limit = 3): BlogPost[] {
-  const current = getPostBySlug(slug);
-  if (!current) return BLOG_POSTS.slice(0, limit);
-  const sameCategory = BLOG_POSTS.filter((p) => p.slug !== slug && p.category === current.category);
-  const others = BLOG_POSTS.filter((p) => p.slug !== slug && p.category !== current.category);
-  return [...sameCategory, ...others].slice(0, limit);
+  if (!getPostBySlug(slug)) return BLOG_POSTS.slice(0, limit);
+  return carteArticlesLies(limit).get(slug) ?? [];
 }
 
 export function slugifyHeading(text: string): string {
