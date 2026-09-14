@@ -47,6 +47,17 @@ Les offres se choisissent selon la maturité : site internet et référencement 
 - [Site internet pour électricien](https://sitaly.fr/site-internet-electricien/)
 - [Site internet pour menuisier](https://sitaly.fr/site-internet-menuisier/)
 - [Site internet pour couvreur](https://sitaly.fr/site-internet-couvreur/)
+- [Site internet pour chauffagiste](https://sitaly.fr/site-internet-chauffagiste/)
+- [Site internet pour maçon](https://sitaly.fr/site-internet-macon/)
+- [Site internet pour peintre en bâtiment](https://sitaly.fr/site-internet-peintre/)
+- [Site internet pour paysagiste](https://sitaly.fr/site-internet-paysagiste/)
+- [Site internet pour serrurier](https://sitaly.fr/site-internet-serrurier/)
+- [Site internet pour carreleur](https://sitaly.fr/site-internet-carreleur/)
+
+## Outils gratuits
+
+- [Audit de fiche Google Business Profile](https://sitaly.fr/outils/audit-fiche-google/) : 20 questions, un score sur 100 et la liste des corrections, sans inscription.
+- [Calculateur de budget Google Ads pour artisan](https://sitaly.fr/outils/budget-google-ads-artisan/) : clics, appels et chantiers attendus selon le métier, la zone et le budget.
 
 ## Blog — guides de référence
 
