@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sitaly — Votre site internet d'artisan, maquette gratuite en 48h</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23a855f7'/><stop offset='.55' stop-color='%238b5cf6'/><stop offset='1' stop-color='%23d946ef'/></linearGradient></defs><rect width='32' height='32' rx='8' fill='url(%23g)'/><path d='M9 8 L17 16 L9 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/><path d='M17 8 L25 16 L17 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round' opacity='.6'/></svg>">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="description" content="Artisan ? Recevez gratuitement la maquette de votre futur site internet, sans engagement. En ligne en 48h, sans abonnement caché.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,9 +23,8 @@
   body{font-family:'Inter',-apple-system,sans-serif;background:var(--noir);color:var(--blanc);line-height:1.65;overflow-x:hidden;}
   .conteneur{max-width:60rem;margin:0 auto;padding:0 1.4rem;}
   .barre{padding:1.2rem 1.4rem;display:flex;justify-content:center;}
-  .logo{display:flex;align-items:center;gap:.5rem;font-size:1.4rem;letter-spacing:-.03em;line-height:1;}
-  .logo svg{width:30px;height:30px;flex:none;filter:drop-shadow(0 2px 9px rgba(139,92,246,.55));}
-  .logo span{font-style:italic;font-weight:800;color:#fff;letter-spacing:-.04em;}
+  .logo{display:flex;align-items:center;line-height:1;}
+  .logo img{display:block;height:30px;width:auto;}
   .hero{position:relative;padding:2.5rem 1.4rem 1rem;text-align:center;overflow:hidden;}
   .lueur{position:absolute;top:-220px;left:50%;transform:translateX(-50%);width:900px;height:560px;border-radius:50%;z-index:0;
     background:radial-gradient(ellipse at 50% 45%,rgba(124,0,255,.45),rgba(139,92,246,.18) 48%,transparent 72%);filter:blur(85px);pointer-events:none;}
@@ -77,13 +78,8 @@
 <body>
 
 <div class="barre">
-  <div class="logo" aria-label="Sitaly">
-    <svg viewBox="0 0 32 32" role="img" aria-hidden="true">
-      <defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c084fc"/><stop offset=".5" stop-color="#a855f7"/><stop offset="1" stop-color="#d946ef"/></linearGradient></defs>
-      <path d="M6 7 L17 16 L6 25" fill="none" stroke="url(#sg)" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M16 7 L27 16 L16 25" fill="none" stroke="url(#sg)" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/>
-    </svg>
-    <span>Sitaly</span>
+  <div class="logo">
+    <img src="/brand/sitaly-logo-sur-fond-sombre.svg" alt="Sitaly" width="110" height="30">
   </div>
 </div>
 
