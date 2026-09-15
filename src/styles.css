@@ -756,6 +756,73 @@
       --mot-taille: min(30vw, 21vh);
       --mot-fente: min(37vw, 26vh);
     }
+
+    /* Le voile léger remplace le masque SVG. Voir ZoomIntro. */
+    .zoom-cover {
+      display: none;
+    }
+    .zoom-stage .zoom-cover-leger {
+      display: block;
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      overflow: hidden;
+      pointer-events: none;
+      background: var(--paper);
+      /* Il disparaît d'un coup quand le disque couvre l'écran : l'encre qu'il
+         peint et le fond du panneau sont alors la même surface. */
+      opacity: clamp(0, calc((1 - var(--p-remplir, 0)) * 1000), 1);
+    }
+    /* Le décor sur sa propre couche. La dérive d'origine anime un groupe SVG,
+       ce qui repeint le dessin à chaque image ; ici la couche glisse en bloc. */
+    .zoom-leger-champ {
+      position: absolute;
+      inset: -2rem;
+      will-change: transform;
+      animation: champ-derive-leger 54s ease-in-out infinite alternate;
+    }
+    .zoom-leger-champ .champ-derive {
+      animation: none;
+      will-change: auto;
+    }
+    .zoom-leger-disque {
+      --r: calc(0.75 * (100vw + 100vh));
+      position: absolute;
+      left: calc(var(--x-du-t) - var(--r));
+      top: calc(var(--y-du-t) - var(--r));
+      width: calc(2 * var(--r));
+      height: calc(2 * var(--r));
+      border-radius: 50%;
+      background: var(--ink);
+      transform: scale(var(--p-remplir, 0));
+    }
+    .zoom-leger-mot {
+      position: absolute;
+      left: 50%;
+      top: var(--y-du-t);
+      translate: -50% -50%;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: var(--mot-taille);
+      letter-spacing: -0.02em;
+      line-height: normal;
+      white-space: nowrap;
+      color: var(--ink);
+      transform-origin: 39.3% 49.8%;
+      transform: scale(var(--echelle));
+    }
+  }
+}
+
+.zoom-cover-leger {
+  display: none;
+}
+@keyframes champ-derive-leger {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(1.25rem, -1rem);
   }
 }
 
@@ -1013,7 +1080,11 @@
    les bandes. Sous 720 px de haut, elle n'y tient pas sans que le texte devienne
    illisible : ces écrans gardent des cartes qui se suivent, ce qui est moins
    spectaculaire mais lisible. */
-@media (min-height: 720px) {
+/* Sur téléphone, la maquette est retirée (voir plus bas) : les cartes tombent
+   à 342-437 px, mesurés à 390 de large, et tiennent sous leurs bandes dès 560 px
+   de fenêtre. Le seuil de 720 privait de l'empilement tous les iPhone, dont
+   Safari rend 660 à 750 px barres comprises. */
+@media (min-height: 720px), (max-width: 639px) and (min-height: 560px) {
   .offre-carte {
     position: sticky;
     top: calc(var(--depart) + var(--rang, 0) * var(--bande));
@@ -1038,6 +1109,11 @@
   }
   .maquette-cadre {
     padding-block: 0.5rem;
+  }
+  /* Même réduite, la maquette ajoutait 155 à 214 px : la deuxième carte
+     faisait 651 px pour 564 disponibles. Sans elle, toutes s'empilent. */
+  .offre-maquette {
+    display: none;
   }
 }
 
@@ -1233,6 +1309,43 @@
   margin-inline: clamp(0.9rem, 1.8vw, 1.6rem);
   rotate: 45deg;
   border-radius: 2px;
+}
+
+/* Sur téléphone, le corps passe à 0,95rem et la piste raccourcit d'autant : à
+   durée égale, les mots défilaient à 58 px/s. La durée y est réduite de moitié. */
+@media (max-width: 639px) {
+  .defile-piste {
+    animation-duration: calc(var(--defile-duree, 46s) * 0.45);
+  }
+}
+
+/* Safari sur iPhone et iPad ignore `background-attachment: fixed` : chaque mot
+   rejouait le dégradé entier sur sa propre boîte, et la bande virait à l'arc-en-
+   ciel mot par mot. Sur écran tactile, le dégradé passe sur un calque posé
+   au-dessus de la bande, en mode `lighten` : sur le papier, plus clair que le
+   dégradé sur chaque canal, le papier reste ; sur le texte noir, le dégradé
+   apparaît. Le balayage est ainsi fixé sur la bande, comme sur ordinateur. */
+.defile-teinte {
+  display: none;
+}
+@media (hover: none) {
+  .ruban {
+    position: relative;
+    isolation: isolate;
+    background: var(--paper-sunk);
+  }
+  .ruban .defile-mot {
+    background: none;
+    color: #000;
+  }
+  .ruban .defile-teinte {
+    display: block;
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-ruban);
+    mix-blend-mode: lighten;
+    pointer-events: none;
+  }
 }
 
 @media (hover: hover) {

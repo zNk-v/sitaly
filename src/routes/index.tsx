@@ -120,7 +120,7 @@ function Ouverture() {
   return (
     <ZoomIntro
       nom="Sitaly"
-      fond={<ChampChevrons suffixe="voile" />}
+      fond={(suffixe) => <ChampChevrons suffixe={suffixe} />}
       avant={
         /* Calage déterministe du mot. La colonne occupe toute la hauteur, et
            les deux moitiés portent `flex-1` : la fente centrale tombe donc

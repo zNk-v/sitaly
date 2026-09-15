@@ -29,8 +29,10 @@ export function ZoomIntro({
   /** Le mot découpé dans le voile. */
   nom: string;
   /** Le décor du voile, posé sous le même masque que lui : ce qui s'y trouve
-      est traversé par le trou du mot au lieu de passer par-dessus. */
-  fond?: ReactNode;
+      est traversé par le trou du mot au lieu de passer par-dessus. Rendu deux
+      fois (voile SVG et voile léger du portrait), d'où le suffixe
+      d'identifiants. */
+  fond?: (suffixe: string) => ReactNode;
   /** Ce qui accompagne le nom au premier plan, et s'efface en montant. */
   avant: ReactNode;
   /** La section révélée à travers le mot. */
@@ -101,7 +103,10 @@ export function ZoomIntro({
          grossit moins (voir --facteur-zoom), et il n'existe plus d'instant où
          l'écran ne montre rien. */
       const [remplirDebut, remplirFin] = portrait.matches ? [0.22, 0.52] : [0.5, 0.82];
-      const [panneauDebut, panneauFin] = portrait.matches ? [0.44, 0.62] : [0.3, 0.5];
+      /* En portrait, le voile léger peint le trou en encre au lieu de le percer :
+         rien ne transparaît avant que le disque ait couvert l'écran, à 0,52. Le
+         panneau attend donc ce moment pour se découvrir. */
+      const [panneauDebut, panneauFin] = portrait.matches ? [0.5, 0.66] : [0.3, 0.5];
 
       el.style.setProperty("--p-tete", String(part(0, 0.1)));
       el.style.setProperty("--p-mot", String(part(0.08, 0.84)));
@@ -214,9 +219,23 @@ export function ZoomIntro({
                 aux deux de coexister sous un même masque. */}
             <g mask="url(#zoom-intro-mask)">
               <rect width="100%" height="100%" fill="var(--paper)" />
-              {fond}
+              {fond?.("voile")}
             </g>
           </svg>
+        </div>
+
+        {/* Le voile léger, pour les téléphones en portrait. Le masque SVG
+            ci-dessus est recalculé sur le processeur à chaque image : sur un
+            iPhone, c'est un plein écran en densité 3 masqué 60 fois par seconde,
+            et le défilement saccade. Tant que le panneau est masqué, ce que le
+            trou laisse voir est un aplat d'encre : un mot et un disque peints en
+            encre sur le papier donnent la même image, avec de simples
+            transformations. Le décor vit sur sa propre couche et n'est jamais
+            repeint. La feuille de style affiche l'un ou l'autre voile. */}
+        <div className="zoom-cover-leger" aria-hidden="true">
+          <div className="zoom-leger-champ">{fond?.("leger")}</div>
+          <div className="zoom-leger-disque" />
+          <span className="zoom-leger-mot">{nom}</span>
         </div>
 
         {/* Couche du dessous : ce que le trou laisse voir. */}

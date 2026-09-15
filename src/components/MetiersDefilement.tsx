@@ -140,6 +140,8 @@ export function MetiersDefilement({ className }: { className?: string }) {
         <Piste />
         <Piste copie />
       </div>
+      {/* La teinte des écrans tactiles. Voir `.defile-teinte`. */}
+      <div aria-hidden="true" className="defile-teinte" />
     </div>
   );
 }
