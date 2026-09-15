@@ -4958,6 +4958,279 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "comparatif-solutions-site-internet-artisan",
+    title:
+      "Site internet d'artisan : éditeur, abonnement, agence ou freelance ? Le comparatif 2026",
+    metaTitle: "Comparatif site internet artisan 2026 : quelle solution choisir ?",
+    metaDescription:
+      "Éditeur automatique, abonnement d'agence spécialisée, offre tout compris ou création à l'achat : ce que coûte et rapporte chaque solution de site internet pour un artisan en 2026.",
+    excerpt:
+      "De 15 € à 400 € par mois, ou 2 500 € à l'achat : les offres de site internet pour artisans n'ont plus rien de comparable à première vue. Voici comment les ranger, ce que chaque famille inclut, et les questions qui départagent.",
+    category: "Site internet",
+    readingTime: "9 min",
+    publishedAt: "2026-09-14",
+    author: "L'équipe Sitaly",
+    keyword: "comparatif site internet artisan",
+    content: [
+      {
+        type: "p",
+        text: "Tapez « site internet couvreur » ou « site internet plombier » sur Google et vous tombez sur des offres à 14,90 € par mois, à 50 €, à 390 €, ou à 2 000 € en une fois. Le mot « site » recouvre des produits qui n'ont presque rien en commun. Cet article range ces offres en cinq familles, dit ce que chacune comprend et pour quel artisan elle convient.",
+      },
+      {
+        type: "p",
+        text: "Les fourchettes de prix citées viennent des offres publiques d'une quinzaine de prestataires, relevées sur leurs sites en septembre 2026. Elles changent souvent : vérifiez toujours la page du prestataire avant de décider.",
+      },
+      { type: "h2", text: "Les cinq familles d'offres" },
+      {
+        type: "table",
+        caption: "Offres publiques relevées en septembre 2026, montants hors taxes.",
+        headers: ["Famille", "Prix constaté", "Délai", "Ce qui manque le plus souvent"],
+        rows: [
+          [
+            "Éditeur automatique pour artisans",
+            "15 à 25 €/mois",
+            "Quelques minutes",
+            "Contenu propre à votre entreprise, accompagnement",
+          ],
+          [
+            "Abonnement d'agence spécialisée",
+            "40 à 150 €/mois",
+            "48 h à 2 semaines",
+            "Dépend du prestataire : vérifier SEO local et propriété du domaine",
+          ],
+          [
+            "Offre tout compris avec publicité",
+            "300 à 400 €/mois",
+            "2 semaines environ",
+            "Budget publicitaire parfois inclus, parfois non : lire le détail",
+          ],
+          [
+            "Création à l'achat (agence locale ou freelance)",
+            "1 000 à 2 500 € puis hébergement",
+            "3 à 8 semaines",
+            "Maintenance et modifications après la livraison",
+          ],
+          [
+            "Faire soi-même (Wix, Webador…)",
+            "15 à 30 €/mois",
+            "30 à 80 heures de votre temps",
+            "Référencement, rédaction, temps disponible",
+          ],
+        ],
+      },
+      { type: "h2", text: "L'éditeur automatique : le moins cher, le plus générique" },
+      {
+        type: "p",
+        text: "Vous répondez à quelques questions, l'outil génère un site avec des textes et des images prévus pour votre métier. C'est rapide et peu coûteux. La limite tient au principe même : des centaines d'artisans du même métier reçoivent des textes proches, et Google n'a aucune raison de préférer le vôtre. Ces offres conviennent à un artisan qui veut une présence minimale, par exemple pour que ses clients recommandés trouvent un numéro et des photos.",
+      },
+      { type: "h2", text: "L'abonnement d'agence spécialisée : le compromis du moment" },
+      {
+        type: "p",
+        text: "Une agence construit le site avec vous, l'héberge, le maintient et fait les modifications, contre une mensualité. C'est la famille la plus fournie en 2026, et la plus hétérogène. Deux offres au même prix peuvent aller d'un site de cinq pages sans suivi à un site découpé en prestations et en communes avec fiche Google optimisée. Le prix mensuel ne suffit donc pas à comparer : il faut lire le périmètre.",
+      },
+      { type: "h3", text: "Les quatre questions à poser" },
+      {
+        type: "ul",
+        items: [
+          "Le nom de domaine est-il déposé à mon nom, et le récupérerai-je si j'arrête ?",
+          "Y a-t-il une durée d'engagement, et quel est le préavis exact ?",
+          "Combien de pages sont prévues, et une page par prestation ou par commune est-elle incluse ?",
+          "La fiche Google Business Profile est-elle optimisée, et par qui ?",
+        ],
+      },
+      {
+        type: "h2",
+        text: "L'offre tout compris avec publicité : du volume, à condition de mesurer",
+      },
+      {
+        type: "p",
+        text: "Certaines offres regroupent le site, le référencement, les réseaux sociaux et des campagnes Google Ads dans une seule mensualité. L'intérêt est d'obtenir des appels dès les premières semaines, pendant que le référencement naturel se met en place. Le point à vérifier est la part réelle de budget publicitaire versée à Google dans la mensualité. Un budget de quelques dizaines d'euros par mois produit très peu de clics sur un métier concurrentiel.",
+      },
+      {
+        type: "p",
+        text: "Pour estimer ce qu'un budget produit sur votre métier et votre zone, utilisez un calculateur de budget Google Ads avant de signer : il donne le nombre de clics et d'appels à attendre selon le coût moyen d'un clic.",
+      },
+      { type: "h2", text: "La création à l'achat : vous êtes propriétaire, et seul ensuite" },
+      {
+        type: "p",
+        text: "Un freelance ou une agence locale conçoit le site, vous le payez une fois, il vous appartient. C'est la solution la plus personnalisable. Le coût réel apparaît après la livraison : hébergement, mises à jour de sécurité, modifications facturées à l'unité. Un site acheté puis jamais mis à jour perd ses positions en deux ou trois ans, pendant que les concurrents publient.",
+      },
+      { type: "h2", text: "Le faire soi-même : gratuit en argent, cher en temps" },
+      {
+        type: "p",
+        text: "Les éditeurs grand public permettent de construire un site correct. Ils ne rédigent pas à votre place, ne choisissent pas vos mots-clés et ne travaillent pas votre fiche Google. Pour un artisan qui a du temps l'hiver et le goût de l'écriture, c'est une option honnête. Pour les autres, le site reste souvent inachevé.",
+      },
+      { type: "h2", text: "Le piège commun à toutes les familles : l'engagement long" },
+      {
+        type: "p",
+        text: "Quelle que soit la famille, méfiez-vous des contrats de 36 ou 48 mois, surtout quand ils passent par un organisme de financement distinct du prestataire. On parle alors de location financière. Le loyer reste dû même si le site ne vous apporte rien, et la sortie anticipée coûte en général la totalité des loyers restants. Nous détaillons les recours dans notre article sur la résiliation d'un contrat de site en location financière.",
+      },
+      { type: "h2", text: "Quelle solution pour quel artisan ?" },
+      {
+        type: "ul",
+        items: [
+          "Vous travaillez surtout au bouche-à-oreille et voulez juste être trouvable : un éditeur automatique ou un abonnement d'entrée de gamme suffit.",
+          "Vous voulez des demandes régulières sur votre zone sans vous en occuper : un abonnement d'agence spécialisée avec pages par prestation et fiche Google incluses.",
+          "Vous avez besoin d'appels tout de suite : ajoutez Google Ads, en gardant le budget publicitaire séparé et visible.",
+          "Vous voulez un site très personnalisé et avez quelqu'un pour le maintenir : la création à l'achat.",
+        ],
+      },
+      { type: "h2", text: "Questions fréquentes" },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Un site à 15 € par mois peut-il se classer sur Google ?",
+            a: "Il peut apparaître sur votre nom d'entreprise. Sur « métier + ville », il se retrouve face à des sites au contenu propre et à des fiches Google travaillées, et il passe rarement devant. Tout dépend de la concurrence locale.",
+          },
+          {
+            q: "Faut-il privilégier une agence spécialisée dans mon métier ?",
+            a: "La spécialisation aide si elle se traduit par des pages et des arguments propres à votre métier. Demandez à voir des sites livrés pour des artisans de votre secteur, en ligne, et vérifiez qu'ils ne se ressemblent pas tous.",
+          },
+          {
+            q: "Comment comparer deux abonnements au même prix ?",
+            a: "Comparez le périmètre, pas le prix : nombre de pages, pages par commune, fiche Google, modifications incluses, propriété du domaine, durée d'engagement. Demandez ces points par écrit.",
+          },
+          {
+            q: "Où se situe Sitaly dans ce comparatif ?",
+            a: "Dans la famille des abonnements d'agence : site sur mesure livré en 48 heures, hébergement, maintenance, modifications, fiche Google et référencement local, sans engagement de durée et avec le domaine à votre nom. Le montant est chiffré par écrit après un appel de 20 minutes.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "resilier-contrat-site-internet-location-financiere",
+    title: "Résilier un contrat de site internet en location financière : les recours d'un artisan",
+    metaTitle: "Résilier un contrat de site internet (location financière) : recours",
+    metaDescription:
+      "Contrat de site internet sur 48 mois avec un organisme de financement : comment le lire, quand la loi protège un artisan, et les étapes pour tenter d'en sortir.",
+    excerpt:
+      "Un site vendu lors d'un démarchage, un contrat de 48 mois, un loyer prélevé par une société de financement que vous ne connaissiez pas. Voici comment ces contrats fonctionnent et les pistes pour en sortir.",
+    category: "Site internet",
+    readingTime: "10 min",
+    publishedAt: "2026-09-14",
+    author: "L'équipe Sitaly",
+    keyword: "résilier contrat site internet location financière",
+    content: [
+      {
+        type: "p",
+        text: "Le scénario revient souvent. Un commercial passe au dépôt ou appelle, promet un site et une première page Google, fait signer sur tablette. Quelques semaines plus tard, les prélèvements arrivent au nom d'une société de financement, pour 36 ou 48 mois. Le site rapporte peu, et la demande de résiliation se heurte à une réponse sèche : le contrat est irrévocable.",
+      },
+      {
+        type: "p",
+        text: "Cet article explique le mécanisme de ces contrats et les principales pistes de sortie. Il donne une information générale, pas un conseil juridique : chaque contrat se lit au cas par cas, et un avocat ou le service juridique de votre organisation professionnelle reste l'interlocuteur à consulter avant d'agir.",
+      },
+      { type: "h2", text: "Comment fonctionne une location financière" },
+      {
+        type: "p",
+        text: "Trois acteurs interviennent. Le prestataire web conçoit le site. Un organisme de financement, appelé bailleur, achète la prestation au prestataire et vous la loue. Vous payez des loyers au bailleur pendant toute la durée prévue. Le prestataire est payé en une fois dès la signature du procès-verbal de livraison, et le bailleur supporte le risque de votre paiement.",
+      },
+      {
+        type: "p",
+        text: "Pour vous, deux conséquences. D'abord, le contrat de location prévoit en général qu'une résiliation anticipée entraîne le paiement de tous les loyers restants, parfois majorés d'une pénalité. Ensuite, le bailleur répond que la qualité du site ne le regarde pas : il n'a fait que financer.",
+      },
+      { type: "h2", text: "Étape 1 : réunir et relire les documents" },
+      {
+        type: "ul",
+        items: [
+          "Le bon de commande ou contrat de prestation signé avec le prestataire web",
+          "Le contrat de location signé avec le bailleur, souvent sur le même rendez-vous",
+          "Le procès-verbal de livraison ou de réception, et sa date de signature",
+          "Les conditions générales, avec la clause de durée, de résiliation et de pénalités",
+          "Tout écrit du commercial : promesses de positionnement, de nombre d'appels, de pages",
+          "Le lieu et les circonstances de la signature : dans vos locaux, sur un chantier, à distance",
+        ],
+      },
+      {
+        type: "p",
+        text: "Le procès-verbal de livraison mérite une attention particulière. S'il a été signé le jour de la commande, avant que le site existe, cela peut compter dans la discussion.",
+      },
+      {
+        type: "h2",
+        text: "Étape 2 : vérifier si la protection des petites entreprises s'applique",
+      },
+      {
+        type: "p",
+        text: "Un artisan qui signe pour son activité n'est pas un consommateur, et la plupart des protections du Code de la consommation ne s'appliquent pas à lui. L'article L221-3 de ce code prévoit toutefois une extension pour les contrats conclus hors établissement, quand trois conditions sont réunies :",
+      },
+      {
+        type: "ul",
+        items: [
+          "le contrat a été conclu hors établissement, par exemple lors d'un démarchage dans vos locaux ou sur un chantier ;",
+          "son objet n'entre pas dans le champ de votre activité principale, ce qui est souvent le cas d'un site internet pour un artisan du bâtiment ;",
+          "vous employez cinq salariés au plus.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Si ces conditions sont remplies, vous bénéficiez notamment du droit de rétractation de quatorze jours et de l'obligation d'information du professionnel. Quand l'information sur le droit de rétractation n'a pas été fournie, la loi prolonge le délai de rétractation de douze mois. Les tribunaux ont appliqué ces règles à des contrats de création de site dans plusieurs affaires, avec des solutions qui dépendent des faits. C'est le point à faire examiner en priorité.",
+      },
+      { type: "h2", text: "Étape 3 : examiner l'exécution de la prestation" },
+      {
+        type: "p",
+        text: "Le site livré correspond-il au bon de commande ? Les pages promises existent-elles ? Le site est-il en ligne, fonctionne-t-il sur mobile ? Les modifications demandées ont-elles été faites ? Chaque manquement documenté, captures d'écran datées et courriels à l'appui, renforce votre position.",
+      },
+      {
+        type: "p",
+        text: "Ce point compte aussi vis-à-vis du bailleur. La Cour de cassation juge depuis 2013 que les contrats d'une même opération incluant une location financière sont interdépendants : quand le contrat de prestation disparaît, le contrat de location peut tomber avec lui. Obtenir la résolution du contrat avec le prestataire peut donc avoir un effet sur les loyers.",
+      },
+      { type: "h2", text: "Étape 4 : écrire, dans le bon ordre" },
+      {
+        type: "ul",
+        items: [
+          "Une lettre recommandée avec accusé de réception au prestataire, qui liste précisément les manquements et demande leur correction dans un délai fixé.",
+          "Si le délai de rétractation prolongé peut s'appliquer, une lettre de rétractation adressée au prestataire et au bailleur.",
+          "Une copie de vos courriers au bailleur, pour l'informer du litige.",
+          "Avant tout arrêt des paiements, l'avis d'un professionnel du droit : cesser de payer sans fondement solide expose à une action en recouvrement.",
+        ],
+      },
+      { type: "h2", text: "Étape 5 : se faire accompagner" },
+      {
+        type: "p",
+        text: "Les organisations professionnelles du bâtiment disposent souvent d'un service juridique pour leurs adhérents, et ces contrats font partie des litiges qu'elles connaissent. Un avocat en droit des contrats peut évaluer vos chances et négocier une sortie amiable, qui reste l'issue la plus fréquente. Les chambres de métiers orientent aussi vers des interlocuteurs.",
+      },
+      { type: "h2", text: "Récupérer son nom de domaine" },
+      {
+        type: "p",
+        text: "Pendant le litige, vérifiez à qui appartient le nom de domaine de votre site, via un service de consultation de type Whois ou auprès de l'Afnic pour un domaine en .fr. S'il est au nom du prestataire, demandez par écrit son transfert à votre nom et le code de transfert. Votre nom de domaine porte votre réputation en ligne et vos avis : c'est lui qu'il faut protéger en premier.",
+      },
+      { type: "h2", text: "Pour la suite : les clauses à exiger" },
+      {
+        type: "ul",
+        items: [
+          "Aucune durée d'engagement, ou une durée courte avec préavis clair",
+          "Pas d'organisme de financement tiers",
+          "Nom de domaine déposé à votre nom dès le départ",
+          "Périmètre écrit : pages, modifications incluses, référencement, fiche Google",
+          "Aucune promesse de position garantie sur Google : personne ne contrôle le classement",
+        ],
+      },
+      { type: "h2", text: "Questions fréquentes" },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Le bailleur peut-il exiger tous les loyers restants ?",
+            a: "C'est ce que prévoient la plupart de ces contrats en cas de résiliation anticipée. Le montant peut toutefois être discuté, notamment si la clause est jugée excessive, si le contrat de prestation est remis en cause ou si les règles du Code de la consommation s'appliquent.",
+          },
+          {
+            q: "J'ai signé il y a plus d'un an, est-ce trop tard ?",
+            a: "Pour la rétractation prolongée, le délai court à partir de la conclusion du contrat et se trouve souvent dépassé. Les autres pistes restent ouvertes : inexécution de la prestation, vices du consentement, clauses abusives. Un professionnel du droit fera le point sur les délais applicables à votre situation.",
+          },
+          {
+            q: "Puis-je faire refaire mon site ailleurs pendant le litige ?",
+            a: "Oui, rien ne vous en empêche, mais gardez des preuves datées de l'état du site d'origine avant tout changement. Et ne transférez pas le nom de domaine sans l'avoir récupéré proprement.",
+          },
+          {
+            q: "Sitaly propose-t-il de la location financière ?",
+            a: "Non. Sitaly fonctionne en abonnement mensuel sans engagement de durée, sans organisme de financement et avec le nom de domaine à votre nom. Vous arrêtez avec un simple préavis.",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 /**

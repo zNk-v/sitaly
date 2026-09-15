@@ -110,12 +110,6 @@ function PlombierLanding() {
         },
       ]}
       faq={FAQ}
-      testimonial={{
-        quote:
-          "Depuis que mon site est en ligne, je reçois 3 à 5 appels par semaine de nouveaux clients. Le rapport qualité-prix est imbattable.",
-        name: "J. M.",
-        role: "Plombier — Lyon",
-      }}
       url={URL}
     />
   );

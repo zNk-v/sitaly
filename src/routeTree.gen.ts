@@ -11,10 +11,16 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SiteVitrineRouteImport } from './routes/site-vitrine'
+import { Route as SiteInternetSerrurierRouteImport } from './routes/site-internet-serrurier'
 import { Route as SiteInternetPlombierRouteImport } from './routes/site-internet-plombier'
+import { Route as SiteInternetPeintreRouteImport } from './routes/site-internet-peintre'
+import { Route as SiteInternetPaysagisteRouteImport } from './routes/site-internet-paysagiste'
 import { Route as SiteInternetMenuisierRouteImport } from './routes/site-internet-menuisier'
+import { Route as SiteInternetMaconRouteImport } from './routes/site-internet-macon'
 import { Route as SiteInternetElectricienRouteImport } from './routes/site-internet-electricien'
 import { Route as SiteInternetCouvreurRouteImport } from './routes/site-internet-couvreur'
+import { Route as SiteInternetChauffagisteRouteImport } from './routes/site-internet-chauffagiste'
+import { Route as SiteInternetCarreleurRouteImport } from './routes/site-internet-carreleur'
 import { Route as SiteEvenementielRouteImport } from './routes/site-evenementiel'
 import { Route as SiteECommerceRouteImport } from './routes/site-e-commerce'
 import { Route as RefonteSiteInternetRouteImport } from './routes/refonte-site-internet'
@@ -38,8 +44,11 @@ import { Route as AgentsIaRouteImport } from './routes/agents-ia'
 import { Route as AcquisitionRouteImport } from './routes/acquisition'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as RealisationsIndexRouteImport } from './routes/realisations.index'
+import { Route as OutilsIndexRouteImport } from './routes/outils.index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slug'
+import { Route as OutilsBudgetGoogleAdsArtisanRouteImport } from './routes/outils.budget-google-ads-artisan'
+import { Route as OutilsAuditFicheGoogleRouteImport } from './routes/outils.audit-fiche-google'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -52,14 +61,34 @@ const SiteVitrineRoute = SiteVitrineRouteImport.update({
   path: '/site-vitrine',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SiteInternetSerrurierRoute = SiteInternetSerrurierRouteImport.update({
+  id: '/site-internet-serrurier',
+  path: '/site-internet-serrurier',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SiteInternetPlombierRoute = SiteInternetPlombierRouteImport.update({
   id: '/site-internet-plombier',
   path: '/site-internet-plombier',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SiteInternetPeintreRoute = SiteInternetPeintreRouteImport.update({
+  id: '/site-internet-peintre',
+  path: '/site-internet-peintre',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteInternetPaysagisteRoute = SiteInternetPaysagisteRouteImport.update({
+  id: '/site-internet-paysagiste',
+  path: '/site-internet-paysagiste',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SiteInternetMenuisierRoute = SiteInternetMenuisierRouteImport.update({
   id: '/site-internet-menuisier',
   path: '/site-internet-menuisier',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteInternetMaconRoute = SiteInternetMaconRouteImport.update({
+  id: '/site-internet-macon',
+  path: '/site-internet-macon',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SiteInternetElectricienRoute = SiteInternetElectricienRouteImport.update({
@@ -70,6 +99,17 @@ const SiteInternetElectricienRoute = SiteInternetElectricienRouteImport.update({
 const SiteInternetCouvreurRoute = SiteInternetCouvreurRouteImport.update({
   id: '/site-internet-couvreur',
   path: '/site-internet-couvreur',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteInternetChauffagisteRoute =
+  SiteInternetChauffagisteRouteImport.update({
+    id: '/site-internet-chauffagiste',
+    path: '/site-internet-chauffagiste',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SiteInternetCarreleurRoute = SiteInternetCarreleurRouteImport.update({
+  id: '/site-internet-carreleur',
+  path: '/site-internet-carreleur',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SiteEvenementielRoute = SiteEvenementielRouteImport.update({
@@ -188,6 +228,11 @@ const RealisationsIndexRoute = RealisationsIndexRouteImport.update({
   path: '/realisations/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OutilsIndexRoute = OutilsIndexRouteImport.update({
+  id: '/outils/',
+  path: '/outils/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -196,6 +241,17 @@ const BlogIndexRoute = BlogIndexRouteImport.update({
 const RealisationsSlugRoute = RealisationsSlugRouteImport.update({
   id: '/realisations/$slug',
   path: '/realisations/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OutilsBudgetGoogleAdsArtisanRoute =
+  OutilsBudgetGoogleAdsArtisanRouteImport.update({
+    id: '/outils/budget-google-ads-artisan',
+    path: '/outils/budget-google-ads-artisan',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const OutilsAuditFicheGoogleRoute = OutilsAuditFicheGoogleRouteImport.update({
+  id: '/outils/audit-fiche-google',
+  path: '/outils/audit-fiche-google',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
@@ -227,15 +283,24 @@ export interface FileRoutesByFullPath {
   '/refonte-site-internet': typeof RefonteSiteInternetRoute
   '/site-e-commerce': typeof SiteECommerceRoute
   '/site-evenementiel': typeof SiteEvenementielRoute
+  '/site-internet-carreleur': typeof SiteInternetCarreleurRoute
+  '/site-internet-chauffagiste': typeof SiteInternetChauffagisteRoute
   '/site-internet-couvreur': typeof SiteInternetCouvreurRoute
   '/site-internet-electricien': typeof SiteInternetElectricienRoute
+  '/site-internet-macon': typeof SiteInternetMaconRoute
   '/site-internet-menuisier': typeof SiteInternetMenuisierRoute
+  '/site-internet-paysagiste': typeof SiteInternetPaysagisteRoute
+  '/site-internet-peintre': typeof SiteInternetPeintreRoute
   '/site-internet-plombier': typeof SiteInternetPlombierRoute
+  '/site-internet-serrurier': typeof SiteInternetSerrurierRoute
   '/site-vitrine': typeof SiteVitrineRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
+  '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/outils/': typeof OutilsIndexRoute
   '/realisations/': typeof RealisationsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -260,15 +325,24 @@ export interface FileRoutesByTo {
   '/refonte-site-internet': typeof RefonteSiteInternetRoute
   '/site-e-commerce': typeof SiteECommerceRoute
   '/site-evenementiel': typeof SiteEvenementielRoute
+  '/site-internet-carreleur': typeof SiteInternetCarreleurRoute
+  '/site-internet-chauffagiste': typeof SiteInternetChauffagisteRoute
   '/site-internet-couvreur': typeof SiteInternetCouvreurRoute
   '/site-internet-electricien': typeof SiteInternetElectricienRoute
+  '/site-internet-macon': typeof SiteInternetMaconRoute
   '/site-internet-menuisier': typeof SiteInternetMenuisierRoute
+  '/site-internet-paysagiste': typeof SiteInternetPaysagisteRoute
+  '/site-internet-peintre': typeof SiteInternetPeintreRoute
   '/site-internet-plombier': typeof SiteInternetPlombierRoute
+  '/site-internet-serrurier': typeof SiteInternetSerrurierRoute
   '/site-vitrine': typeof SiteVitrineRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
+  '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog': typeof BlogIndexRoute
+  '/outils': typeof OutilsIndexRoute
   '/realisations': typeof RealisationsIndexRoute
 }
 export interface FileRoutesById {
@@ -295,15 +369,24 @@ export interface FileRoutesById {
   '/refonte-site-internet': typeof RefonteSiteInternetRoute
   '/site-e-commerce': typeof SiteECommerceRoute
   '/site-evenementiel': typeof SiteEvenementielRoute
+  '/site-internet-carreleur': typeof SiteInternetCarreleurRoute
+  '/site-internet-chauffagiste': typeof SiteInternetChauffagisteRoute
   '/site-internet-couvreur': typeof SiteInternetCouvreurRoute
   '/site-internet-electricien': typeof SiteInternetElectricienRoute
+  '/site-internet-macon': typeof SiteInternetMaconRoute
   '/site-internet-menuisier': typeof SiteInternetMenuisierRoute
+  '/site-internet-paysagiste': typeof SiteInternetPaysagisteRoute
+  '/site-internet-peintre': typeof SiteInternetPeintreRoute
   '/site-internet-plombier': typeof SiteInternetPlombierRoute
+  '/site-internet-serrurier': typeof SiteInternetSerrurierRoute
   '/site-vitrine': typeof SiteVitrineRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
+  '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/outils/': typeof OutilsIndexRoute
   '/realisations/': typeof RealisationsIndexRoute
 }
 export interface FileRouteTypes {
@@ -331,15 +414,24 @@ export interface FileRouteTypes {
     | '/refonte-site-internet'
     | '/site-e-commerce'
     | '/site-evenementiel'
+    | '/site-internet-carreleur'
+    | '/site-internet-chauffagiste'
     | '/site-internet-couvreur'
     | '/site-internet-electricien'
+    | '/site-internet-macon'
     | '/site-internet-menuisier'
+    | '/site-internet-paysagiste'
+    | '/site-internet-peintre'
     | '/site-internet-plombier'
+    | '/site-internet-serrurier'
     | '/site-vitrine'
     | '/sitemap.xml'
     | '/blog/$slug'
+    | '/outils/audit-fiche-google'
+    | '/outils/budget-google-ads-artisan'
     | '/realisations/$slug'
     | '/blog/'
+    | '/outils/'
     | '/realisations/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -364,15 +456,24 @@ export interface FileRouteTypes {
     | '/refonte-site-internet'
     | '/site-e-commerce'
     | '/site-evenementiel'
+    | '/site-internet-carreleur'
+    | '/site-internet-chauffagiste'
     | '/site-internet-couvreur'
     | '/site-internet-electricien'
+    | '/site-internet-macon'
     | '/site-internet-menuisier'
+    | '/site-internet-paysagiste'
+    | '/site-internet-peintre'
     | '/site-internet-plombier'
+    | '/site-internet-serrurier'
     | '/site-vitrine'
     | '/sitemap.xml'
     | '/blog/$slug'
+    | '/outils/audit-fiche-google'
+    | '/outils/budget-google-ads-artisan'
     | '/realisations/$slug'
     | '/blog'
+    | '/outils'
     | '/realisations'
   id:
     | '__root__'
@@ -398,15 +499,24 @@ export interface FileRouteTypes {
     | '/refonte-site-internet'
     | '/site-e-commerce'
     | '/site-evenementiel'
+    | '/site-internet-carreleur'
+    | '/site-internet-chauffagiste'
     | '/site-internet-couvreur'
     | '/site-internet-electricien'
+    | '/site-internet-macon'
     | '/site-internet-menuisier'
+    | '/site-internet-paysagiste'
+    | '/site-internet-peintre'
     | '/site-internet-plombier'
+    | '/site-internet-serrurier'
     | '/site-vitrine'
     | '/sitemap.xml'
     | '/blog/$slug'
+    | '/outils/audit-fiche-google'
+    | '/outils/budget-google-ads-artisan'
     | '/realisations/$slug'
     | '/blog/'
+    | '/outils/'
     | '/realisations/'
   fileRoutesById: FileRoutesById
 }
@@ -433,13 +543,22 @@ export interface RootRouteChildren {
   RefonteSiteInternetRoute: typeof RefonteSiteInternetRoute
   SiteECommerceRoute: typeof SiteECommerceRoute
   SiteEvenementielRoute: typeof SiteEvenementielRoute
+  SiteInternetCarreleurRoute: typeof SiteInternetCarreleurRoute
+  SiteInternetChauffagisteRoute: typeof SiteInternetChauffagisteRoute
   SiteInternetCouvreurRoute: typeof SiteInternetCouvreurRoute
   SiteInternetElectricienRoute: typeof SiteInternetElectricienRoute
+  SiteInternetMaconRoute: typeof SiteInternetMaconRoute
   SiteInternetMenuisierRoute: typeof SiteInternetMenuisierRoute
+  SiteInternetPaysagisteRoute: typeof SiteInternetPaysagisteRoute
+  SiteInternetPeintreRoute: typeof SiteInternetPeintreRoute
   SiteInternetPlombierRoute: typeof SiteInternetPlombierRoute
+  SiteInternetSerrurierRoute: typeof SiteInternetSerrurierRoute
   SiteVitrineRoute: typeof SiteVitrineRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  OutilsAuditFicheGoogleRoute: typeof OutilsAuditFicheGoogleRoute
+  OutilsBudgetGoogleAdsArtisanRoute: typeof OutilsBudgetGoogleAdsArtisanRoute
   RealisationsSlugRoute: typeof RealisationsSlugRoute
+  OutilsIndexRoute: typeof OutilsIndexRoute
   RealisationsIndexRoute: typeof RealisationsIndexRoute
 }
 
@@ -459,6 +578,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SiteVitrineRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/site-internet-serrurier': {
+      id: '/site-internet-serrurier'
+      path: '/site-internet-serrurier'
+      fullPath: '/site-internet-serrurier'
+      preLoaderRoute: typeof SiteInternetSerrurierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/site-internet-plombier': {
       id: '/site-internet-plombier'
       path: '/site-internet-plombier'
@@ -466,11 +592,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SiteInternetPlombierRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/site-internet-peintre': {
+      id: '/site-internet-peintre'
+      path: '/site-internet-peintre'
+      fullPath: '/site-internet-peintre'
+      preLoaderRoute: typeof SiteInternetPeintreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-internet-paysagiste': {
+      id: '/site-internet-paysagiste'
+      path: '/site-internet-paysagiste'
+      fullPath: '/site-internet-paysagiste'
+      preLoaderRoute: typeof SiteInternetPaysagisteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/site-internet-menuisier': {
       id: '/site-internet-menuisier'
       path: '/site-internet-menuisier'
       fullPath: '/site-internet-menuisier'
       preLoaderRoute: typeof SiteInternetMenuisierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-internet-macon': {
+      id: '/site-internet-macon'
+      path: '/site-internet-macon'
+      fullPath: '/site-internet-macon'
+      preLoaderRoute: typeof SiteInternetMaconRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/site-internet-electricien': {
@@ -485,6 +632,20 @@ declare module '@tanstack/react-router' {
       path: '/site-internet-couvreur'
       fullPath: '/site-internet-couvreur'
       preLoaderRoute: typeof SiteInternetCouvreurRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-internet-chauffagiste': {
+      id: '/site-internet-chauffagiste'
+      path: '/site-internet-chauffagiste'
+      fullPath: '/site-internet-chauffagiste'
+      preLoaderRoute: typeof SiteInternetChauffagisteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-internet-carreleur': {
+      id: '/site-internet-carreleur'
+      path: '/site-internet-carreleur'
+      fullPath: '/site-internet-carreleur'
+      preLoaderRoute: typeof SiteInternetCarreleurRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/site-evenementiel': {
@@ -648,6 +809,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RealisationsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/outils/': {
+      id: '/outils/'
+      path: '/outils'
+      fullPath: '/outils/'
+      preLoaderRoute: typeof OutilsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog/': {
       id: '/blog/'
       path: '/'
@@ -660,6 +828,20 @@ declare module '@tanstack/react-router' {
       path: '/realisations/$slug'
       fullPath: '/realisations/$slug'
       preLoaderRoute: typeof RealisationsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/outils/budget-google-ads-artisan': {
+      id: '/outils/budget-google-ads-artisan'
+      path: '/outils/budget-google-ads-artisan'
+      fullPath: '/outils/budget-google-ads-artisan'
+      preLoaderRoute: typeof OutilsBudgetGoogleAdsArtisanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/outils/audit-fiche-google': {
+      id: '/outils/audit-fiche-google'
+      path: '/outils/audit-fiche-google'
+      fullPath: '/outils/audit-fiche-google'
+      preLoaderRoute: typeof OutilsAuditFicheGoogleRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/$slug': {
@@ -707,13 +889,22 @@ const rootRouteChildren: RootRouteChildren = {
   RefonteSiteInternetRoute: RefonteSiteInternetRoute,
   SiteECommerceRoute: SiteECommerceRoute,
   SiteEvenementielRoute: SiteEvenementielRoute,
+  SiteInternetCarreleurRoute: SiteInternetCarreleurRoute,
+  SiteInternetChauffagisteRoute: SiteInternetChauffagisteRoute,
   SiteInternetCouvreurRoute: SiteInternetCouvreurRoute,
   SiteInternetElectricienRoute: SiteInternetElectricienRoute,
+  SiteInternetMaconRoute: SiteInternetMaconRoute,
   SiteInternetMenuisierRoute: SiteInternetMenuisierRoute,
+  SiteInternetPaysagisteRoute: SiteInternetPaysagisteRoute,
+  SiteInternetPeintreRoute: SiteInternetPeintreRoute,
   SiteInternetPlombierRoute: SiteInternetPlombierRoute,
+  SiteInternetSerrurierRoute: SiteInternetSerrurierRoute,
   SiteVitrineRoute: SiteVitrineRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  OutilsAuditFicheGoogleRoute: OutilsAuditFicheGoogleRoute,
+  OutilsBudgetGoogleAdsArtisanRoute: OutilsBudgetGoogleAdsArtisanRoute,
   RealisationsSlugRoute: RealisationsSlugRoute,
+  OutilsIndexRoute: OutilsIndexRoute,
   RealisationsIndexRoute: RealisationsIndexRoute,
 }
 export const routeTree = rootRouteImport

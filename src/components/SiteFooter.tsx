@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Mail, Phone } from "lucide-react";
 import { SitalyLogo } from "@/components/SitalyLogo";
 import { LinkedinLink } from "@/components/LinkedinLink";
+import { MetierFooterLinks } from "@/components/MetierLinks";
 import { COULEURS_FAMILLE, FAMILLES, entreesFamille } from "@/data/expertises";
 import { SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
@@ -94,7 +95,22 @@ export function SiteFooter() {
                   Blog
                 </Link>
               </li>
+              <li>
+                <Link to="/outils/" className="transition hover:text-white">
+                  Outils gratuits
+                </Link>
+              </li>
             </ul>
+          </nav>
+          {/* Les pages métier n'avaient de lien que depuis le blog et entre elles.
+              Le pied de page est la carte du site (DESIGN.md §8 bis) : elles y
+              figurent, en une ligne pour ne pas alourdir les colonnes. */}
+          <nav aria-label="Sites par métier" className="mt-6">
+            <div className="rail-label text-white/60">Sites par métier</div>
+            <MetierFooterLinks
+              className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-white/60"
+              linkClassName="transition hover:text-white"
+            />
           </nav>
         </div>
 

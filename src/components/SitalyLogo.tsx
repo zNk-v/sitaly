@@ -1,52 +1,40 @@
-import logoForme from "@/assets/sitaly-logo.png";
+import logoCouleur from "@/assets/sitaly-logo.svg";
+import logoBlanc from "@/assets/sitaly-logo-blanc.svg";
 
 /**
- * Logo Sitaly : double chevron et nom.
+ * Logo Sitaly : double chevron et nom, refait en vecteur sur la DA 2026.
  *
- * L'image ne sert plus que de forme. C'était un PNG en dur, avec ses propres
- * violets, qui ne pouvait donc pas suivre la palette : le site a changé de
- * couleurs plusieurs fois autour d'un logo resté figé. Son canal alpha porte
- * la forme — 55 % de l'image est transparente — il sert donc de masque, et la
- * couleur vient d'une peinture posée derrière.
+ * Le chevron porte la triade bleu → violet → rouge, interpolée dans oklch
+ * comme le reste du site. Le nom est en Plus Jakarta Sans 800 vectorisée, à
+ * la chasse du mot du hero : il ne dépend d'aucune police chargée.
  *
- * Trois peintures. Le violet des mots accentués du hero par défaut, le dégradé
- * porteur, et le blanc pour les fonds sombres — ce dernier remplace le second
- * fichier PNG.
+ * Deux fichiers plutôt qu'un masque peint : le masque ne donnait qu'une
+ * couleur à tout le logo, or le chevron garde son dégradé et le nom reste à
+ * l'encre. Sur fond sombre, `blanc` passe le nom en blanc et le chevron sur
+ * les teintes `*-on-ink`.
  *
- * Le violet plutôt que le dégradé : le logo fait une centaine de pixels de
- * large dans le bandeau, et le balayage bleu-rouge s'y comprime au point que
- * « aly » vire au rouge. Le dégradé reste là où il a la place de se déployer,
- * le ruban et les boutons.
- *
- * Repli : sans `mask-image`, l'image d'origine est affichée telle quelle. Le
- * logo perd sa nouvelle couleur mais reste un logo.
+ * Le kit complet et son générateur : `public/brand/`, `scripts/generate-brand.py`.
  */
-const PEINTURES = {
-  degrade: "var(--gradient-ruban)",
-  violet: "var(--violet-ink)",
-  blanc: "#fff",
+const FICHIERS = {
+  couleur: logoCouleur,
+  blanc: logoBlanc,
 } as const;
 
 export function SitalyLogo({
   className = "",
-  variant = "violet",
+  variant = "couleur",
 }: {
   className?: string;
   /** `blanc` pour les fonds sombres. */
-  variant?: keyof typeof PEINTURES | "couleur";
+  variant?: keyof typeof FICHIERS;
 }) {
-  const peinture = PEINTURES[variant === "couleur" ? "degrade" : variant];
   return (
-    <span
-      role="img"
-      aria-label="Sitaly"
-      className={`logo-sitaly h-6 w-auto sm:h-7 ${className}`}
-      style={
-        {
-          "--logo-forme": `url(${logoForme})`,
-          "--logo-peinture": peinture,
-        } as React.CSSProperties
-      }
+    <img
+      src={FICHIERS[variant]}
+      alt="Sitaly"
+      width={398}
+      height={108}
+      className={`block h-6 w-auto sm:h-7 ${className}`}
     />
   );
 }

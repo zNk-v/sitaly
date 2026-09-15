@@ -110,12 +110,6 @@ function MenuisierLanding() {
         },
       ]}
       faq={FAQ}
-      testimonial={{
-        quote:
-          "Sitaly a tout pris en charge. En 48h, j'avais un site magnifique et des demandes de devis dès le premier mois.",
-        name: "S. R.",
-        role: "Artisan rénovation — Bordeaux",
-      }}
       url={URL}
     />
   );

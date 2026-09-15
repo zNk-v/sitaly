@@ -35,7 +35,12 @@ export interface MetierLandingProps {
     exempleHref: string;
   };
   faq: { q: string; a: string }[];
-  testimonial: { quote: string; name: string; role: string };
+  /**
+   * Citation réelle d'un client, telle qu'il l'a écrite. Absente tant qu'aucun
+   * client du métier n'en a fourni : la section ne s'affiche pas. Même règle que
+   * les témoignages de l'accueil (index.tsx) et les résultats des réalisations.
+   */
+  testimonial?: { quote: string; name: string; role: string };
   url: string; // canonical full URL
 }
 
@@ -312,20 +317,51 @@ export function MetierLanding(props: MetierLandingProps) {
       </section>
 
       {/* Testimonial */}
-      <section className="border-y border-border bg-secondary/30 py-14">
-        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <div className="inline-flex gap-0.5 text-accent">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="h-5 w-5 fill-current" />
-            ))}
+      {testimonial && (
+        <section className="border-y border-border bg-secondary/30 py-14">
+          <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
+            <div className="inline-flex gap-0.5 text-accent">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="h-5 w-5 fill-current" />
+              ))}
+            </div>
+            <blockquote className="mt-5 font-display text-2xl font-medium leading-snug text-foreground sm:text-3xl">
+              « {testimonial.quote} »
+            </blockquote>
+            <figcaption className="mt-5 text-sm text-muted-foreground">
+              <span className="font-semibold text-foreground">{testimonial.name}</span> —{" "}
+              {testimonial.role}
+            </figcaption>
           </div>
-          <blockquote className="mt-5 font-display text-2xl font-medium leading-snug text-foreground sm:text-3xl">
-            « {testimonial.quote} »
-          </blockquote>
-          <figcaption className="mt-5 text-sm text-muted-foreground">
-            <span className="font-semibold text-foreground">{testimonial.name}</span> —{" "}
-            {testimonial.role}
-          </figcaption>
+        </section>
+      )}
+
+      {/* Outils gratuits : portes d'entrée SEO et aimants à liens */}
+      <section className="py-14">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+          <h2 className="font-display text-2xl font-bold tracking-tight">
+            Deux outils gratuits pour votre activité de {metier}
+          </h2>
+          <ul className="mt-5 space-y-3 text-foreground/85">
+            <li>
+              <Link
+                to="/outils/audit-fiche-google/"
+                className="font-semibold text-accent hover:underline"
+              >
+                Auditez votre fiche Google en 3 minutes
+              </Link>{" "}
+              : un score sur 100 et la liste des points à corriger.
+            </li>
+            <li>
+              <Link
+                to="/outils/budget-google-ads-artisan/"
+                className="font-semibold text-accent hover:underline"
+              >
+                Calculez votre budget Google Ads
+              </Link>{" "}
+              : combien de clics, d'appels et de chantiers pour un budget donné.
+            </li>
+          </ul>
         </div>
       </section>
 

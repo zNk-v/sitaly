@@ -342,6 +342,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://sitaly.fr/blog/comparatif-solutions-site-internet-artisan/</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sitaly.fr/blog/resilier-contrat-site-internet-location-financiere/</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://sitaly.fr/site-internet-plombier/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -352,14 +364,59 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://sitaly.fr/site-internet-couvreur/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://sitaly.fr/site-internet-menuisier/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://sitaly.fr/site-internet-couvreur/</loc>
+    <loc>https://sitaly.fr/site-internet-chauffagiste/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sitaly.fr/site-internet-macon/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sitaly.fr/site-internet-peintre/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sitaly.fr/site-internet-paysagiste/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sitaly.fr/site-internet-serrurier/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sitaly.fr/site-internet-carreleur/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sitaly.fr/outils/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sitaly.fr/outils/audit-fiche-google/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sitaly.fr/outils/budget-google-ads-artisan/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sitaly.fr/cgv/</loc>

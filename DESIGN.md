@@ -117,14 +117,19 @@ L'aplat saturé reste proscrit : refusé une fois, trop péremptoire.
 
 ### Marque
 
-| Token | Valeur | Origine |
-|---|---|---|
-| `--brand` | `oklch(0.722 0.177 305)` | Chevron clair du logo, `#c084fc` |
-| `--brand-deep` | `oklch(0.631 0.208 344)` | Chevron foncé du logo, `#d946a8` |
-| `--brand-ink` | `oklch(0.34 0.13 305)` | Version texte du violet, contraste AA sur papier |
+**Révision du 14 septembre 2026 — le logo rejoint la triade.** Le double
+chevron portait encore les violets de juin (`#c084fc`, `#d946a8`). Il est
+redessiné en vecteur : chevrons en dégradé `--blue` → `--violet` → `--red`
+interpolé dans oklch, balayé du bas gauche vers le haut droit comme le champ du
+hero, et nom en Plus Jakarta Sans 800 vectorisée à `-0.02em`, à l'encre
+`--foreground`. Sur fond sombre, les chevrons passent sur les teintes
+`*-on-ink` et le nom en blanc. Les tuiles (favicon, icônes, avatar) posent le
+chevron blanc sur `--gradient-ruban`.
 
-Le dégradé de marque va du violet au rose, jamais vers le bleu. C'est exactement
-l'axe du logo, et c'est précisément l'axe que Linov n'occupe pas.
+Le kit complet vit dans `public/brand/` (logo horizontal, empilé, symbole seul,
+en couleur, fond sombre, encre et blanc, plus carré, avatar, bannière LinkedIn,
+signature email). `scripts/generate-brand.py` le régénère entièrement, image OG
+et favicons compris : toute retouche de couleur passe par ce script.
 
 ### Signal
 

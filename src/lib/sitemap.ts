@@ -1,6 +1,7 @@
 import { BLOG_POSTS } from "@/data/blog-posts";
 import { REALISATIONS } from "@/data/realisations";
 import { EXPERTISES } from "@/data/expertises";
+import { METIERS } from "@/lib/metiers";
 
 export const BASE_URL = "https://sitaly.fr";
 
@@ -42,10 +43,15 @@ export const SITEMAP_ENTRIES: SitemapEntry[] = [
     priority: "0.7",
     lastmod: p.updatedAt ?? p.publishedAt,
   })),
-  { path: "/site-internet-plombier", changefreq: "monthly", priority: "0.9" },
-  { path: "/site-internet-electricien", changefreq: "monthly", priority: "0.9" },
-  { path: "/site-internet-menuisier", changefreq: "monthly", priority: "0.9" },
-  { path: "/site-internet-couvreur", changefreq: "monthly", priority: "0.9" },
+  // Les pages métier, dérivées de leur source : en ajouter une suffit.
+  ...METIERS.map((m) => ({
+    path: m.to.replace(/\/$/, ""),
+    changefreq: "monthly" as const,
+    priority: "0.9",
+  })),
+  { path: "/outils", changefreq: "monthly", priority: "0.8" },
+  { path: "/outils/audit-fiche-google", changefreq: "monthly", priority: "0.8" },
+  { path: "/outils/budget-google-ads-artisan", changefreq: "monthly", priority: "0.8" },
   { path: "/cgv", changefreq: "yearly", priority: "0.3" },
   { path: "/mentions-legales", changefreq: "yearly", priority: "0.3" },
   { path: "/politique-confidentialite", changefreq: "yearly", priority: "0.3" },

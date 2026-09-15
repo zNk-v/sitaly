@@ -69,7 +69,7 @@ export const Route = createFileRoute("/blog/$slug")({
             "@type": "Organization",
             name: "Sitaly",
             url: "https://sitaly.fr",
-            logo: { "@type": "ImageObject", url: "https://sitaly.fr/apple-touch-icon.png" },
+            logo: { "@type": "ImageObject", url: "https://sitaly.fr/icon-512.png" },
           },
           mainEntityOfPage: { "@type": "WebPage", "@id": url },
           isPartOf: { "@type": "Blog", "@id": "https://sitaly.fr/blog/" },

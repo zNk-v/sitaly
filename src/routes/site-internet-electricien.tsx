@@ -110,12 +110,6 @@ function ElectricienLanding() {
         },
       ]}
       faq={FAQ}
-      testimonial={{
-        quote:
-          "Simple, clair, efficace. Je n'ai rien à gérer et je peux me concentrer sur mes chantiers. Je recommande sans hésiter.",
-        name: "K. B.",
-        role: "Électricien — Toulouse",
-      }}
       url={URL}
     />
   );
