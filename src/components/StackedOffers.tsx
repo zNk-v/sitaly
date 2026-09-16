@@ -120,8 +120,16 @@ export function StackedOffers() {
 
         {/* La réserve basse laisse la dernière carte collée le temps qu'on la
           lise. Elle valait 22vh : 266 px de vide séparaient alors la dernière
-          carte de la section suivante, mesurés sur le rendu. */}
-        <div className="mt-14 pb-[9vh]">
+          carte de la section suivante, mesurés sur le rendu.
+
+          Elle a été un rembourrage, et c'était le défaut : une carte collante
+          reste bornée par la zone de contenu de son conteneur, où le
+          rembourrage ne compte pas. La pile se libérait donc 11 px avant que la
+          quatrième carte n'atteigne sa position — mesuré : elle passait de 206
+          à 86 px sans jamais s'arrêter à 188, en entraînant les deuxième et
+          troisième cartes avec elle. En bloc de contenu, la réserve appartient
+          à la zone et la quatrième carte se colle comme les autres. */}
+        <div className="mt-14">
           {LEVIERS.map((l, i) => (
             <article
               key={l.cle}
@@ -144,7 +152,7 @@ export function StackedOffers() {
                 </span>
               </div>
 
-              <div className="grid lg:grid-cols-[1.05fr_1fr]">
+              <div className="offre-corps grid lg:grid-cols-[1.05fr_1fr]">
                 <div className="offre-texte p-4 sm:p-10 lg:p-12">
                   <p
                     data-split
@@ -191,6 +199,11 @@ export function StackedOffers() {
               </div>
             </article>
           ))}
+          {/* Cette hauteur est du temps de lecture, pas du vide : elle défile
+              derrière la dernière carte pendant qu'elle est collée, et il n'en
+              reste qu'une centaine de pixels sous la pile au moment où elle se
+              libère. */}
+          <div aria-hidden="true" className="h-[32vh] sm:h-[20vh]" />
         </div>
       </div>
     </section>

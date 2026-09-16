@@ -1059,9 +1059,15 @@
    Le pas passe donc à 3rem et le départ à 3,5rem, ce qui rend 652 px, et les
    cartes descendent sous ce seuil par trois retraits mesurés : la bande suit le
    pas, le bloc de texte se resserre, et la maquette est réduite au zoom. */
+/* Le départ se règle sur le bandeau, qui flotte au-dessus de la page : 12 px de
+   gouttière et 56 px de pastille, soit 68 px occupés. À 3,5rem, la bande de la
+   première carte s'arrêtait à 56 px et passait sous la pastille, coins arrondis
+   compris. À 4,75rem elle s'arrête 8 px dessous, et l'empilement commence là où
+   le bandeau finit. Le pas suit à 2,5rem pour que la quatrième carte, collée à
+   196 px, garde ses 463 px de place utile. */
 .offre-carte {
-  --bande: 2.75rem;
-  --depart: 3.5rem;
+  --bande: 2.5rem;
+  --depart: 4.75rem;
   position: static;
 }
 
@@ -1104,6 +1110,28 @@
   .offre-maquette {
     display: none;
   }
+
+  /* Toutes les cartes finissent sur la même ligne. À hauteurs libres, la
+     quatrième mesurait 350 px et s'arrêtait à 546 quand la troisième descendait
+     à 589 : son bouton dépassait sous la carte censée la recouvrir. Le même
+     écart décidait de l'ordre de sortie, et les cartes se croisaient en
+     quittant l'écran. Bas communs, elles se recouvrent et se libèrent ensemble.
+
+     En `svh` : sur iPhone, la barre d'URL fait respirer la fenêtre en cours de
+     défilement, et la plus petite mesure est la seule qui ne déborde jamais. */
+  .offre-carte {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100svh - var(--depart) - var(--rang, 0) * var(--bande) - 3rem);
+  }
+  .offre-corps {
+    flex: 1;
+  }
+  /* Le texte reste calé en haut, et la réserve tombe au pied de la carte. Le
+     bouton y a été descendu le temps d'un essai : il passait alors sous la
+     carte suivante, qui recouvre justement ce pied, et les trois premières
+     offres perdaient leur lien. Seule la dernière carte montre sa réserve,
+     65 px. */
 }
 
 /* Les points du carrousel font 10 px de côté : c'est la bonne taille à l'œil
