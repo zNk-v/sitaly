@@ -2,12 +2,12 @@
 
 Sitaly est une agence d'acquisition : sites internet, Google Ads, ChatGPT Ads et agents IA pour PME, TPE, entreprises de services et artisans. Intervention partout en France, à distance. Appel découverte et devis gratuits. Site livré en 48h.
 
-Les montants ne sont pas publiés. Chaque périmètre est chiffré après l'appel découverte de 20 minutes, par écrit, avant tout engagement. Tout fonctionne en abonnement mensuel, sans engagement de durée et sans frais d'installation.
+Les montants ne sont pas publiés. Chaque périmètre est chiffré après l'appel découverte de 20 minutes, par écrit, avant tout engagement. Tout repose sur un abonnement mensuel sans engagement de durée, auquel s'ajoutent selon le projet et le métier des frais de création réglés une seule fois.
 
 ## Site internet — Sitaly Présence (abonnement)
 - Inclut : site internet sur mesure livré en 48h, hébergement, nom de domaine, sécurité (HTTPS), maintenance technique, petites modifications de contenu (textes, photos, prix, horaires, coordonnées), optimisation de la fiche Google Business Profile et référencement local
 - Délai : livré en 48h après l'appel découverte et la fourniture des contenus
-- Engagement : sans engagement, sans frais d'installation, résiliable à tout moment avec préavis
+- Engagement : sans engagement, résiliable à tout moment avec préavis ; frais de création possibles à la mise en route, annoncés au devis
 - Hors forfait : la création de pages ou de visuels supplémentaires et la rédaction d'articles font l'objet d'un devis annoncé à l'avance
 
 ## Google Ads — Sitaly Acquisition (abonnement)

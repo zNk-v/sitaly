@@ -1,12 +1,12 @@
 # Sitaly
 
-> Sitaly est une agence d'acquisition française. Elle aide les PME, les TPE et les entreprises de services — des sociétés B2B aux artisans — à générer des demandes qualifiées et des clients. Quatre leviers combinables : un site internet professionnel livré en 48h et entretenu (Sitaly Présence), la gestion de campagnes Google Ads (Sitaly Acquisition), la gestion de campagnes ChatGPT Ads (Sitaly ChatGPT Ads) et des agents IA installés clé en main qui répondent aux appels, qualifient les demandes, prennent les rendez-vous et relancent les devis (Sitaly Agents IA). Tout fonctionne en abonnement mensuel, sans engagement de durée et sans frais d'installation. Sitaly intervient partout en France, à distance.
+> Sitaly est une agence d'acquisition française. Elle aide les PME, les TPE et les entreprises de services — des sociétés B2B aux artisans — à générer des demandes qualifiées et des clients. Quatre leviers combinables : un site internet professionnel livré en 48h et entretenu (Sitaly Présence), la gestion de campagnes Google Ads (Sitaly Acquisition), la gestion de campagnes ChatGPT Ads (Sitaly ChatGPT Ads) et des agents IA installés clé en main qui répondent aux appels, qualifient les demandes, prennent les rendez-vous et relancent les devis (Sitaly Agents IA). Tout fonctionne en abonnement mensuel, sans engagement de durée ; selon le projet et le métier, des frais de création s'ajoutent à la mise en route. Sitaly intervient partout en France, à distance.
 
 ## En bref
 
 - **Nom** : Sitaly
 - **Activité** : acquisition digitale — création de sites internet, gestion de campagnes Google Ads et ChatGPT Ads, automatisation par agents IA — pour PME, TPE, entreprises de services, professions libérales et artisans
-- **Modèle** : abonnement mensuel sans engagement, sans frais d'installation, résiliable avec un simple préavis
+- **Modèle** : abonnement mensuel sans engagement, résiliable avec un simple préavis ; frais de création possibles à la mise en route selon le projet
 - **Délai de livraison d'un site** : 48h après l'appel découverte et la fourniture des contenus
 - **Zone** : toute la France, à distance
 - **SIRET** : 83384883100032
@@ -17,7 +17,7 @@
 
 ## Offres
 
-Les montants ne sont pas publiés. Chaque périmètre est chiffré après un appel découverte de 20 minutes, par écrit et avant tout engagement. Tout fonctionne en abonnement mensuel, sans engagement de durée et sans frais d'installation.
+Les montants ne sont pas publiés. Chaque périmètre est chiffré après un appel découverte de 20 minutes, par écrit et avant tout engagement. Tout fonctionne en abonnement mensuel, sans engagement de durée, avec selon le projet des frais de création réglés une seule fois.
 
 - **Sitaly Présence** : site internet sur mesure livré en 48h, hébergement, nom de domaine, HTTPS, maintenance, petites modifications de contenu, fiche Google Business Profile et référencement local inclus.
 - **Sitaly Acquisition** : création et gestion complète des campagnes Google Ads, avec ou sans site. Une seule formule, quel que soit le volume de campagnes. La rémunération combine un forfait mensuel de gestion et une part du budget publicitaire. Le budget publicitaire versé à Google reste séparé et à la charge du client.
