@@ -987,7 +987,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Méfiez-vous des sites à 99€ : ils sont souvent générés à la chaîne, sans optimisation pour Google. À l'inverse, payer 4 000€ pour 5 pages est rarement justifié quand on est artisan local. Chez Sitaly, nous fonctionnons en location à partir de 149€/mois tout inclus, sans frais d'installation et sans engagement, pour rester accessible sans rogner sur la qualité.",
+        text: "Méfiez-vous des sites à 99€ : ils sont souvent générés à la chaîne, sans optimisation pour Google. À l'inverse, payer 4 000€ pour 5 pages est rarement justifié quand on est artisan local. Chez Sitaly, nous fonctionnons en location à partir de 149€/mois tout inclus et sans engagement. Selon le métier et le périmètre, des frais de création s'ajoutent à la mise en route, annoncés avant de commencer.",
       },
       { type: "h2", text: "Comparatif des grandes options du marché" },
       {
@@ -998,7 +998,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
           ["DIY Wix / Webador", "0 à 200€", "15 à 30€", "30 à 80 h de travail", "Faible"],
           [
             "Sitaly en location",
-            "0€ (sans frais d'installation)",
+            "Selon le projet, annoncé au devis",
             "149€/mois tout inclus",
             "48 à 72 h",
             "Inclus de base",
@@ -1345,7 +1345,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       { type: "h3", text: "500 à 1 500€ : les solutions clé en main" },
       {
         type: "p",
-        text: "C'est la zone de prix la plus adaptée à 90 % des artisans. Un site sur mesure, livré en quelques jours, avec un design propre et un référencement local de base. Sitaly se positionne ici en location à partir de 149€/mois tout inclus (hébergement, maintenance, modifications, support), sans frais d'installation ni engagement.",
+        text: "C'est la zone de prix la plus adaptée à 90 % des artisans. Un site sur mesure, livré en quelques jours, avec un design propre et un référencement local de base. Sitaly se positionne ici en location à partir de 149€/mois tout inclus (hébergement, maintenance, modifications, support), sans engagement, avec selon le projet des frais de création réglés une seule fois.",
       },
       { type: "h3", text: "1 500 à 4 000€ : les freelances et petites agences" },
       {

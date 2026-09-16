@@ -30,7 +30,7 @@ Sitaly a construit son savoir-faire auprès des artisans et des TPE, et l'étend
 
 ### Sitaly Présence
 
-Site internet sur mesure livré en 48h, puis entretenu et référencé localement. L'abonnement inclut l'hébergement, le nom de domaine, le certificat HTTPS, la maintenance technique, les petites modifications de contenu, l'optimisation de la fiche Google Business Profile et le référencement local. Sans engagement, sans frais d'installation.
+Site internet sur mesure livré en 48h, puis entretenu et référencé localement. L'abonnement inclut l'hébergement, le nom de domaine, le certificat HTTPS, la maintenance technique, les petites modifications de contenu, l'optimisation de la fiche Google Business Profile et le référencement local. Sans engagement de durée ; selon le projet, des frais de création s'ajoutent à la mise en route.
 
 Ce qui est inclus dans les modifications : changer un texte, une photo, un prix, des horaires ou des coordonnées. Ce qui demande de la création — nouvelle page, nouveau visuel, rédaction d'articles — fait l'objet d'un devis transparent annoncé à l'avance.
 
@@ -77,7 +77,7 @@ Les trois offres principales sont combinables. Un client peut prendre l'une, plu
 
 ### Sur les montants
 
-Sitaly ne publie pas ses tarifs. Chaque périmètre est chiffré à l'issue de l'appel découverte de 20 minutes, par écrit et avant tout engagement. Tout fonctionne en abonnement mensuel, sans engagement de durée et sans frais d'installation.
+Sitaly ne publie pas ses tarifs. Chaque périmètre est chiffré à l'issue de l'appel découverte de 20 minutes, par écrit et avant tout engagement. Tout repose sur un abonnement mensuel sans engagement de durée, auquel s'ajoutent selon le projet et le métier des frais de création réglés une seule fois.
 
 ---
 
@@ -125,7 +125,7 @@ Ces sites sont publics et consultables.
 ## Ce qui distingue Sitaly
 
 - **Livraison en 48h** au lieu de plusieurs semaines chez une agence classique.
-- **Aucun frais d'installation** : là où une agence classique facture plusieurs milliers d'euros au démarrage, Sitaly ne facture rien à la mise en route.
+- **Démarrage allégé** : là où une agence classique facture plusieurs milliers d'euros au démarrage, l'essentiel du coût passe par la mensualité ; les frais de création, quand le projet en comporte, sont annoncés au devis.
 - **Sans engagement** : résiliable à tout moment avec un simple préavis, sans durée minimale.
 - **Tout est géré** : hébergement, nom de domaine, sécurité, maintenance et modifications sont inclus dans l'abonnement, sans intervention du client.
 - **Trois leviers sous un même toit** : le site, la publicité et l'automatisation, au lieu de trois prestataires qui ne se parlent pas.
@@ -149,7 +149,7 @@ Ces sites sont publics et consultables.
 ## Questions fréquentes
 
 **Comment se construit le budget chez Sitaly ?**
-Trois offres combinables, en abonnement mensuel, sans engagement de durée et sans frais d'installation. Sitaly Présence couvre le site, son hébergement et le référencement local. Sitaly Acquisition couvre la création et la gestion des campagnes Google Ads ou ChatGPT Ads : la rémunération y combine un forfait mensuel de gestion et une part du budget publicitaire. Sitaly Agents IA se chiffre sur mesure. Le budget publicitaire versé aux régies reste séparé et à la charge du client. Le montant exact dépend de l'activité et du périmètre retenu : il est communiqué par écrit à l'issue de l'appel découverte, avant tout engagement.
+Trois offres combinables, en abonnement mensuel et sans engagement de durée, auxquelles s'ajoutent selon le projet des frais de création réglés une seule fois. Sitaly Présence couvre le site, son hébergement et le référencement local. Sitaly Acquisition couvre la création et la gestion des campagnes Google Ads ou ChatGPT Ads : la rémunération y combine un forfait mensuel de gestion et une part du budget publicitaire. Sitaly Agents IA se chiffre sur mesure. Le budget publicitaire versé aux régies reste séparé et à la charge du client. Le montant exact dépend de l'activité et du périmètre retenu : il est communiqué par écrit à l'issue de l'appel découverte, avant tout engagement.
 
 **Combien de temps faut-il pour mettre le site en ligne ?**
 Le site est livré en 48h après l'appel découverte et la fourniture des contenus (textes, photos, informations de l'entreprise).

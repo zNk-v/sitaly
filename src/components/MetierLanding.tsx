@@ -235,8 +235,8 @@ export function MetierLanding(props: MetierLandingProps) {
             Ce que comprend un site internet <span className="accent-word">{metier}</span>
           </h2>
           <p className="measure mt-4 text-sm font-semibold text-foreground/80">
-            En abonnement mensuel, sans engagement de durée et sans frais d'installation. Tout est
-            géré, vous ne touchez à rien.
+            Une mensualité sans engagement de durée, et selon le projet des frais de création réglés
+            une seule fois. Tout est géré, vous ne touchez à rien.
           </p>
           <div className="mx-auto mt-8 grid max-w-3xl gap-5 md:grid-cols-2">
             {[

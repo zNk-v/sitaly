@@ -24,7 +24,7 @@ import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 const FAQ_ITEMS = [
   {
     q: "Comment se construit le budget ?",
-    a: "En abonnement mensuel, sans engagement de durée et sans frais d'installation. Le montant dépend du périmètre retenu et vous est donné par écrit à l'issue de l'appel découverte, avant tout engagement. Le budget publicitaire, lui, est versé directement aux régies et reste séparé.",
+    a: "Il repose sur une mensualité, sans engagement de durée, qui couvre l'hébergement, la maintenance et les modifications. Selon le projet et le métier, la création du site peut s'y ajouter sous forme de frais de mise en place, réglés une seule fois. Les deux montants vous sont donnés par écrit à l'issue de l'appel découverte, avant tout engagement. Le budget publicitaire, lui, est versé directement aux régies et reste séparé.",
   },
   {
     q: "Combien de temps pour le mettre en ligne ?",

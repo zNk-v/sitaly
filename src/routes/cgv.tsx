@@ -61,8 +61,9 @@ function CGV() {
 
       <h2>3. Formules et tarifs</h2>
       <p>
-        Les services Sitaly sont proposés selon plusieurs formules, combinables, sans engagement et
-        sans frais d'installation :
+        Les services Sitaly sont proposés selon plusieurs formules, combinables et sans engagement
+        de durée. Selon le périmètre et l'activité, des frais de création peuvent s'ajouter à
+        l'abonnement ; leur montant figure sur le devis :
       </p>
       <ul>
         <li>
@@ -111,8 +112,10 @@ function CGV() {
 
       <h2>5. Prestations de site internet</h2>
       <p>
-        Pour la création de sites, le service est proposé en location, sans frais d'installation,
-        selon des formules mensuelles. Le site est livré dans un délai de 48h à 7 jours ouvrés à
+        Pour la création de sites, le service est proposé en location selon des formules mensuelles.
+        Des frais de création, réglés une seule fois à la mise en route, peuvent s'y ajouter selon
+        le projet ; leur montant est indiqué sur le devis avant toute exécution, et l'absence de
+        tels frais ne se présume pas. Le site est livré dans un délai de 48h à 7 jours ouvrés à
         compter de la réception des éléments nécessaires. L'hébergement, les mises à jour, les
         sauvegardes et le support sont inclus. Le contrat est à durée indéterminée, résiliable par
         chacune des parties avec un préavis d'un mois.

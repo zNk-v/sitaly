@@ -153,7 +153,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               url: "https://sitaly.fr",
               image: "https://sitaly.fr/og-image.png",
               description:
-                "Sitaly installe et pilote la présence en ligne des indépendants, TPE et PME partout en France, à distance. Site sur mesure livré en 48h, en abonnement mensuel tout inclus (hébergement, maintenance, modifications), sans engagement de durée et sans frais d'installation.",
+                "Sitaly installe et pilote la présence en ligne des indépendants, TPE et PME partout en France, à distance. Site sur mesure livré en 48h, en abonnement mensuel tout inclus (hébergement, maintenance, modifications), sans engagement de durée. Selon le projet, des frais de création s'ajoutent à l'abonnement.",
               telephone: "+33658683372",
               email: "contact@sitaly.fr",
               priceRange: "€€",
@@ -183,7 +183,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                   "@type": "Offer",
                   name: "Sitaly Présence",
                   description:
-                    "Site internet professionnel sur mesure livré en 48h, avec hébergement, maintenance, modifications, fiche Google Business et référencement local inclus. En abonnement mensuel, sans engagement de durée et sans frais d'installation.",
+                    "Site internet professionnel sur mesure livré en 48h, avec hébergement, maintenance, modifications, fiche Google Business et référencement local inclus. En abonnement mensuel, sans engagement de durée, avec selon le projet des frais de création réglés une seule fois.",
                   category: "Site internet avec maintenance",
                 },
                 {

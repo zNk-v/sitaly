@@ -170,7 +170,7 @@ const SITE: Expertise[] = [
       },
       {
         q: "Le site m'appartient-il ?",
-        a: "Le nom de domaine est déposé à votre nom et reste le vôtre. Le site fonctionne en abonnement : c'est ce qui permet d'inclure l'hébergement, les mises à jour et les modifications sans frais d'installation. Un rachat reste possible sur demande.",
+        a: "Le nom de domaine est déposé à votre nom et reste le vôtre. Le site fonctionne en abonnement : c'est ce qui permet d'inclure l'hébergement, les mises à jour et les modifications dans une mensualité sans engagement. Un rachat reste possible sur demande.",
       },
       {
         q: "Faut-il fournir les textes et les photos ?",

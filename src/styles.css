@@ -750,7 +750,7 @@
     .zoom-stage {
       /* La course est plus courte : sur un téléphone, 195vh d'ouverture
          faisaient dix secondes de défilement pour trois secondes d'effet. */
-      --course: 1.6;
+      --course: 1.4;
       --facteur-zoom: 12;
       --mot-haut: min(16vh, 11rem);
       --mot-taille: min(30vw, 21vh);
@@ -769,10 +769,9 @@
       overflow: hidden;
       pointer-events: none;
       background: var(--paper);
-      /* Il disparaît d'un coup quand le disque couvre l'écran : l'encre qu'il
-         peint et le fond du panneau sont alors la même surface. */
-      opacity: clamp(0, calc((1 - var(--p-remplir, 0)) * 1000), 1);
     }
+    /* En portrait, tête, panneau et voile sont animés par ZoomIntro : les
+       règles à variables ci-dessus y restent au repos. */
     /* Le décor sur sa propre couche. La dérive d'origine anime un groupe SVG,
        ce qui repeint le dessin à chaque image ; ici la couche glisse en bloc. */
     .zoom-leger-champ {
@@ -784,17 +783,6 @@
     .zoom-leger-champ .champ-derive {
       animation: none;
       will-change: auto;
-    }
-    .zoom-leger-disque {
-      --r: calc(0.75 * (100vw + 100vh));
-      position: absolute;
-      left: calc(var(--x-du-t) - var(--r));
-      top: calc(var(--y-du-t) - var(--r));
-      width: calc(2 * var(--r));
-      height: calc(2 * var(--r));
-      border-radius: 50%;
-      background: var(--ink);
-      transform: scale(var(--p-remplir, 0));
     }
     .zoom-leger-mot {
       position: absolute;
@@ -808,8 +796,9 @@
       line-height: normal;
       white-space: nowrap;
       color: var(--ink);
-      transform-origin: 39.3% 49.8%;
-      transform: scale(var(--echelle));
+      /* Origine et échelle posées par ZoomIntro, d'après la mesure du « t ».
+         Pas de `will-change` : Chrome figerait la trame à l'échelle 1 et les
+         lettres agrandies 30 fois seraient floues. */
     }
   }
 }
