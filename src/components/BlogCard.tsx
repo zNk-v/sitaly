@@ -7,10 +7,11 @@ import { cn } from "@/lib/utils";
 /**
  * La carte d'article, partagée par l'accueil et le blog.
  *
- * Pas d'image : il n'existe aucune illustration d'article, et une banque
- * d'images en tiendrait lieu au prix de la crédibilité (DESIGN.md §7). Ce qui
+ * Pas d'image de banque : elle coûterait la crédibilité (DESIGN.md §7). Ce qui
  * porte la carte est donc typographique — un filet de couleur en tête, la
- * rubrique, puis le titre au corps d'un titre de section.
+ * rubrique, puis le titre au corps d'un titre de section. Un article qui a son
+ * illustration dessinée pour lui (`post.image`) l'affiche en tête de carte ; les
+ * autres restent typographiques.
  *
  * Le filet prend la teinte de la famille à laquelle la rubrique se rattache.
  * C'est la seule couleur de la carte, et elle sert à repérer d'un coup d'œil
@@ -76,6 +77,25 @@ export function BlogCard({
       {/* Le filet de rubrique. Il s'épaissit au survol : c'est le seul retour
           visuel de la carte, avec la montée. */}
       <span aria-hidden="true" className="carte-article-filet" />
+
+      {/* L'illustration répète le titre qui suit : le lecteur d'écran la saute. */}
+      {post.image && (
+        <img
+          src={`${post.image.src}-1200.webp`}
+          srcSet={`${post.image.src}-1200.webp 1200w, ${post.image.src}-2400.webp 2400w`}
+          sizes={
+            grande
+              ? "(min-width: 1024px) 760px, calc(100vw - 2rem)"
+              : "(min-width: 1024px) 380px, (min-width: 640px) 50vw, calc(100vw - 2rem)"
+          }
+          width={1200}
+          height={630}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          className="block aspect-[40/21] h-auto w-full border-b border-border object-cover"
+        />
+      )}
 
       <div className={cn("flex flex-1 flex-col p-6", grande && "sm:p-8")}>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs">
