@@ -31,6 +31,7 @@ export const Route = createFileRoute("/blog/$slug")({
       };
     }
     const url = `https://sitaly.fr/blog/${post.slug}/`;
+    const ogImage = post.image ? `https://sitaly.fr${post.image.src}-og.jpg` : undefined;
     const faqSection = post.content.find((s) => s.type === "faq");
     const wordCount = post.content.reduce((acc, s) => {
       if (s.type === "p" || s.type === "h2" || s.type === "h3" || s.type === "quote")
@@ -63,6 +64,7 @@ export const Route = createFileRoute("/blog/$slug")({
           inLanguage: "fr-FR",
           articleSection: post.category,
           keywords: post.keyword,
+          ...(ogImage && { image: ogImage }),
           wordCount,
           author: { "@type": "Organization", name: "Sitaly", url: "https://sitaly.fr" },
           publisher: {
@@ -124,6 +126,15 @@ export const Route = createFileRoute("/blog/$slug")({
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: post.metaTitle },
         { name: "twitter:description", content: post.metaDescription },
+        ...(post.image && ogImage
+          ? [
+              { property: "og:image", content: ogImage },
+              { property: "og:image:width", content: "1200" },
+              { property: "og:image:height", content: "630" },
+              { property: "og:image:alt", content: post.image.alt },
+              { name: "twitter:image", content: ogImage },
+            ]
+          : []),
       ],
       links: [{ rel: "canonical", href: url }],
       scripts,
@@ -200,6 +211,22 @@ function BlogPostPage() {
           </h1>
           <p className="mt-5 text-lg text-muted-foreground sm:text-xl">{post.excerpt}</p>
         </header>
+
+        {post.image && (
+          <figure className="mt-10 overflow-hidden rounded-2xl border border-border shadow-soft">
+            <img
+              src={`${post.image.src}-1200.webp`}
+              srcSet={`${post.image.src}-1200.webp 1200w, ${post.image.src}-2400.webp 2400w`}
+              sizes="(min-width: 768px) 720px, calc(100vw - 2rem)"
+              width={1200}
+              height={630}
+              alt={post.image.alt}
+              fetchPriority="high"
+              decoding="async"
+              className="block h-auto w-full"
+            />
+          </figure>
+        )}
 
         {headings.length >= 3 && (
           <nav

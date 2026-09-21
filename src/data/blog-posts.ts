@@ -19,6 +19,16 @@ export interface BlogPost {
   updatedAt?: string;
   author: string;
   keyword: string;
+  /**
+   * Illustration propre à l'article, au format 1200×630. Elle s'affiche sous le
+   * titre et sert d'aperçu au partage. Jamais d'image de banque (DESIGN.md §7) :
+   * un article sans visuel dessiné pour lui n'en a pas.
+   */
+  image?: {
+    /** Chemin sans extension ni largeur : `-1200.webp`, `-2400.webp` et `-og.jpg` existent. */
+    src: string;
+    alt: string;
+  };
   content: BlogSection[];
 }
 
@@ -5244,6 +5254,10 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     publishedAt: "2026-09-21",
     author: "L'équipe Sitaly",
     keyword: "iPhone Duo site internet",
+    image: {
+      src: "/blog-img/iphone-duo-avant-apres",
+      alt: "Le même site sur l'écran déplié de l'iPhone Duo. Avant : une colonne étroite au centre, une photo floue et un numéro coupé. Après : une mise en page pleine largeur, une photo nette et un numéro visible.",
+    },
     content: [
       {
         type: "p",
