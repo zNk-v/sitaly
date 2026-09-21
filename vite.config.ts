@@ -12,6 +12,9 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
     // Pré-génère chaque page en HTML statique (site vitrine → hébergeable sans serveur)
+    // /carte n'est liée depuis aucune page (c'est la cible du QR code des cartes
+    // de visite) : le prérendu par liens ne la trouverait jamais.
+    pages: [{ path: "/carte" }],
     prerender: {
       enabled: true,
       crawlLinks: true,

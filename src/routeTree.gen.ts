@@ -37,6 +37,7 @@ import { Route as CrmSurMesureRouteImport } from './routes/crm-sur-mesure'
 import { Route as CreationSiteInternetRouteImport } from './routes/creation-site-internet'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as CgvRouteImport } from './routes/cgv'
+import { Route as CarteRouteImport } from './routes/carte'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AutomatisationTachesRouteImport } from './routes/automatisation-taches'
 import { Route as ApplicationWebMobileRouteImport } from './routes/application-web-mobile'
@@ -193,6 +194,11 @@ const CgvRoute = CgvRouteImport.update({
   path: '/cgv',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CarteRoute = CarteRouteImport.update({
+  id: '/carte',
+  path: '/carte',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogRoute = BlogRouteImport.update({
   id: '/blog',
   path: '/blog',
@@ -267,6 +273,7 @@ export interface FileRoutesByFullPath {
   '/application-web-mobile': typeof ApplicationWebMobileRoute
   '/automatisation-taches': typeof AutomatisationTachesRoute
   '/blog': typeof BlogRouteWithChildren
+  '/carte': typeof CarteRoute
   '/cgv': typeof CgvRoute
   '/cookies': typeof CookiesRoute
   '/creation-site-internet': typeof CreationSiteInternetRoute
@@ -309,6 +316,7 @@ export interface FileRoutesByTo {
   '/agents-ia': typeof AgentsIaRoute
   '/application-web-mobile': typeof ApplicationWebMobileRoute
   '/automatisation-taches': typeof AutomatisationTachesRoute
+  '/carte': typeof CarteRoute
   '/cgv': typeof CgvRoute
   '/cookies': typeof CookiesRoute
   '/creation-site-internet': typeof CreationSiteInternetRoute
@@ -353,6 +361,7 @@ export interface FileRoutesById {
   '/application-web-mobile': typeof ApplicationWebMobileRoute
   '/automatisation-taches': typeof AutomatisationTachesRoute
   '/blog': typeof BlogRouteWithChildren
+  '/carte': typeof CarteRoute
   '/cgv': typeof CgvRoute
   '/cookies': typeof CookiesRoute
   '/creation-site-internet': typeof CreationSiteInternetRoute
@@ -398,6 +407,7 @@ export interface FileRouteTypes {
     | '/application-web-mobile'
     | '/automatisation-taches'
     | '/blog'
+    | '/carte'
     | '/cgv'
     | '/cookies'
     | '/creation-site-internet'
@@ -440,6 +450,7 @@ export interface FileRouteTypes {
     | '/agents-ia'
     | '/application-web-mobile'
     | '/automatisation-taches'
+    | '/carte'
     | '/cgv'
     | '/cookies'
     | '/creation-site-internet'
@@ -483,6 +494,7 @@ export interface FileRouteTypes {
     | '/application-web-mobile'
     | '/automatisation-taches'
     | '/blog'
+    | '/carte'
     | '/cgv'
     | '/cookies'
     | '/creation-site-internet'
@@ -527,6 +539,7 @@ export interface RootRouteChildren {
   ApplicationWebMobileRoute: typeof ApplicationWebMobileRoute
   AutomatisationTachesRoute: typeof AutomatisationTachesRoute
   BlogRoute: typeof BlogRouteWithChildren
+  CarteRoute: typeof CarteRoute
   CgvRoute: typeof CgvRoute
   CookiesRoute: typeof CookiesRoute
   CreationSiteInternetRoute: typeof CreationSiteInternetRoute
@@ -760,6 +773,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CgvRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/carte': {
+      id: '/carte'
+      path: '/carte'
+      fullPath: '/carte'
+      preLoaderRoute: typeof CarteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog': {
       id: '/blog'
       path: '/blog'
@@ -873,6 +893,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApplicationWebMobileRoute: ApplicationWebMobileRoute,
   AutomatisationTachesRoute: AutomatisationTachesRoute,
   BlogRoute: BlogRouteWithChildren,
+  CarteRoute: CarteRoute,
   CgvRoute: CgvRoute,
   CookiesRoute: CookiesRoute,
   CreationSiteInternetRoute: CreationSiteInternetRoute,

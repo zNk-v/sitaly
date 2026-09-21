@@ -130,7 +130,7 @@ export const REALISATIONS: Realisation[] = [
   {
     slug: "aymeric-pataud",
     client: "Aymeric Pataud",
-    metier: "Chef à domicile et formateur",
+    metier: "Chef consultant, expert du goût",
     zone: "Île-de-France",
     url: "https://www.aymericpataud.fr/",
     domaine: "aymericpataud.fr",
@@ -164,10 +164,11 @@ export const REALISATIONS: Realisation[] = [
       "Six rubriques éditoriales distinctes",
       "Blog en ligne",
       "Appel à l'action unique et répété : parler du projet",
+      "Film de cuisine en ouverture de la page d'accueil",
     ],
     resultats: [],
     capture: { small: realPataud720, large: realPataud1200, mobile: realPataudMobile },
-    captureLe: "2 septembre 2026",
+    captureLe: "21 septembre 2026",
     accent: "oklch(0.5 0.06 150)",
   },
 ];

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 
 const STORAGE_KEY = "sitaly_cookie_consent";
 
@@ -30,7 +30,8 @@ function updateGtagConsent(value: Consent) {
   });
 }
 
-export function CookieConsent() {
+/** État du consentement, partagé par la bannière flottante et le bandeau de /carte. */
+export function useCookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -56,6 +57,55 @@ export function CookieConsent() {
     setVisible(false);
   };
 
+  return { visible, handle };
+}
+
+/**
+ * Version compacte, posée dans le flux en tête de /carte. La bannière flottante
+ * y recouvrait les deux boutons d'appel, sur un écran que chaque visiteur voit
+ * pour la première fois : elle s'affichait donc à tous les coups.
+ */
+export function CookieConsentBandeau() {
+  const { visible, handle } = useCookieConsent();
+  if (!visible) return null;
+  return (
+    <div
+      role="region"
+      aria-label="Consentement aux cookies"
+      className="border-b border-border bg-card px-4 py-2.5"
+    >
+      <div className="mx-auto flex max-w-md items-center gap-3 text-xs text-muted-foreground">
+        <p className="flex-1 leading-snug">
+          Mesure d'audience (Google Analytics).{" "}
+          <Link to="/politique-confidentialite/" className="underline">
+            En savoir plus
+          </Link>
+        </p>
+        <button
+          type="button"
+          onClick={() => handle("denied")}
+          className="bouton-secondaire h-8 shrink-0 px-3 text-xs"
+        >
+          Refuser
+        </button>
+        <button
+          type="button"
+          onClick={() => handle("granted")}
+          className="bouton h-8 shrink-0 px-3 text-xs"
+        >
+          Accepter
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export function CookieConsent() {
+  const { visible, handle } = useCookieConsent();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  // /carte porte son propre bandeau, dans le flux (voir CookieConsentBandeau).
+  if (pathname.startsWith("/carte")) return null;
   if (!visible) return null;
 
   return (
