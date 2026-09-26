@@ -13,6 +13,7 @@ import { SitalyLogo } from "@/components/SitalyLogo";
 import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
 import { LinkedinLink } from "@/components/LinkedinLink";
 import { MetierLinksStrip } from "@/components/MetierLinks";
+import { articleIndexable, directiveRobots } from "@/lib/indexation";
 import { CALENDLY_URL } from "@/lib/config";
 import { SiteFooter } from "@/components/SiteFooter";
 import { encreRubrique } from "@/components/BlogCard";
@@ -66,13 +67,15 @@ export const Route = createFileRoute("/blog/$slug")({
           keywords: post.keyword,
           ...(ogImage && { image: ogImage }),
           wordCount,
-          author: { "@type": "Organization", name: "Sitaly", url: "https://sitaly.fr" },
-          publisher: {
-            "@type": "Organization",
-            name: "Sitaly",
-            url: "https://sitaly.fr",
-            logo: { "@type": "ImageObject", url: "https://sitaly.fr/icon-512.png" },
+          // Auteur et éditeur rattachés au graphe racine (__root.tsx) : une
+          // personne identifiable pèse plus qu'une signature collective.
+          author: {
+            "@type": "Person",
+            "@id": "https://sitaly.fr/#teddy-vidal",
+            name: post.author,
+            url: "https://sitaly.fr/a-propos/",
           },
+          publisher: { "@id": "https://sitaly.fr/#business" },
           mainEntityOfPage: { "@type": "WebPage", "@id": url },
           isPartOf: { "@type": "Blog", "@id": "https://sitaly.fr/blog/" },
           url,
@@ -111,7 +114,7 @@ export const Route = createFileRoute("/blog/$slug")({
         { name: "description", content: post.metaDescription },
         { name: "keywords", content: post.keyword },
         { name: "author", content: post.author },
-        { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large" },
+        { name: "robots", content: directiveRobots(`/blog/${post.slug}`) },
         { property: "og:title", content: post.metaTitle },
         { property: "og:description", content: post.metaDescription },
         { property: "og:type", content: "article" },
@@ -201,13 +204,16 @@ function BlogPostPage() {
               <Clock className="h-3.5 w-3.5" />
               {post.readingTime}
             </span>
-            <span className="inline-flex items-center gap-1.5">
+            <Link
+              to="/a-propos/"
+              className="inline-flex items-center gap-1.5 transition hover:text-brand-ink"
+            >
               <User className="h-3.5 w-3.5" />
               {post.author}
-            </span>
+            </Link>
           </div>
           <h1 className="mt-4 font-display text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
-            {post.title}
+            {post.title.replace(/ ([:;?!])/g, "\u00a0$1")}
           </h1>
           <p className="mt-5 text-lg text-muted-foreground sm:text-xl">{post.excerpt}</p>
         </header>
@@ -300,7 +306,9 @@ function BlogPostPage() {
         </section>
       )}
 
-      <MetierLinksStrip />
+      {/* Les liens vers les pages métier artisans ne restent que sur les
+          articles hors index, écrits pour ce public (src/lib/indexation.ts). */}
+      {!articleIndexable(post.slug) && <MetierLinksStrip />}
 
       <SiteFooter />
     </div>

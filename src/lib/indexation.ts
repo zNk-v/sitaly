@@ -71,6 +71,9 @@ export const ARTICLES_HORS_INDEX = [
   "comparatif-solutions-site-internet-artisan",
   "resilier-contrat-site-internet-location-financiere",
   "iphone-duo-site-internet-ecran-pliable",
+  // Écrit pour les artisans, chiffres sans source : le sujet des appels manqués
+  // est porté par /agents-ia/btp/ et l'article sur le démarchage.
+  "appels-manques-artisan-permanence-telephonique",
 ];
 
 /**

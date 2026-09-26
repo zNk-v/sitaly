@@ -82,7 +82,7 @@ Création et gestion complète des campagnes Google Ads, avec ou sans site Sital
 Stratégie, création et gestion de campagnes publicitaires dans ChatGPT : analyse des intentions, messages, tracking des conversions, optimisation et reporting. Le budget publicitaire reste séparé et à la charge du client. Sitaly n'est ni partenaire officiel ni certifiée par OpenAI, et ne garantit aucun résultat sur ce canal récent. Page : https://sitaly.fr/chatgpt-ads/
 
 ### Sur les montants
-Sitaly ne publie pas ses tarifs. Chaque périmètre est chiffré par écrit après le diagnostic ou l'appel découverte, avant tout engagement. Pour les agents IA : une mise en place, puis un pilotage mensuel.
+Les tarifs des agents IA et des sites ne sont pas publiés. Chaque périmètre est chiffré par écrit après le diagnostic ou l'appel découverte, avant tout engagement. Pour les agents IA : une mise en place, puis un pilotage mensuel.
 
 ---
 
@@ -151,7 +151,8 @@ Oui, à tout moment avec un simple préavis, sans frais ni durée minimale. Le n
 - [Prise de rendez-vous en ligne : le guide complet](https://sitaly.fr/blog/prise-rendez-vous-en-ligne-guide/)
 - [Automatiser son suivi client](https://sitaly.fr/blog/automatiser-suivi-client-tpe/)
 - [Chatbot pour une entreprise : utile, gadget, ou piège à clients ?](https://sitaly.fr/blog/chatbot-entreprise-tpe-guide/)
-- [Appels manqués : permanence téléphonique ou agent IA ?](https://sitaly.fr/blog/appels-manques-artisan-permanence-telephonique/)
+- [Démarchage téléphonique interdit sans consentement : ce qu'un agent IA a encore le droit de faire](https://sitaly.fr/blog/demarchage-telephonique-agent-ia-2026/) — les règles en vigueur depuis le 11 août 2026 (consentement préalable, plages horaires, secteurs fermés, exceptions) et ce qu'un agent IA peut encore faire au téléphone.
+- [AI Act, article 50 : ce que votre agent vocal doit dire dès la première phrase](https://sitaly.fr/blog/ai-act-article-50-agent-vocal/) — l'obligation de transparence applicable depuis le 2 août 2026 et la manière de vérifier un agent.
 - [Agent immobilier : générer des mandats et des acheteurs en ligne](https://sitaly.fr/blog/trouver-clients-agent-immobilier/)
 - [Publicité ChatGPT Ads : faut-il y investir votre budget ?](https://sitaly.fr/blog/publicite-chatgpt-ads-guide/)
 - [Combien coûte ChatGPT Ads ? Ce qu'on peut dire honnêtement](https://sitaly.fr/blog/cout-chatgpt-ads/)

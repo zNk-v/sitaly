@@ -5,7 +5,19 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SectionHeader } from "@/components/SectionHeader";
 import { BlogCard, encreRubrique, teinteRubrique } from "@/components/BlogCard";
-import { BLOG_POSTS, POSTS_RECENTS, formatDate, postsALaUne } from "@/data/blog-posts";
+import {
+  BLOG_POSTS as TOUS_LES_ARTICLES,
+  POSTS_RECENTS as TOUS_LES_RECENTS,
+  formatDate,
+  postsALaUne,
+} from "@/data/blog-posts";
+import { articleIndexable } from "@/lib/indexation";
+
+/* Le blog ne liste que les articles indexés (src/lib/indexation.ts). Les
+   articles écrits pour les artisans restent en ligne à leur adresse, pour la
+   prospection directe, mais ne figurent plus ni ici ni dans le sitemap. */
+const BLOG_POSTS = TOUS_LES_ARTICLES.filter((p) => articleIndexable(p.slug));
+const POSTS_RECENTS = TOUS_LES_RECENTS.filter((p) => articleIndexable(p.slug));
 import { CALENDLY_URL } from "@/lib/config";
 
 /**
@@ -92,9 +104,9 @@ const RUBRIQUES: { key: string; id: string; label: string; desc: string }[] = [
   },
 ];
 
-const TITRE = "Blog Sitaly — Plus de clients : site web, Google Ads & automatisation";
+const TITRE = "Blog Sitaly : agents IA, automatisation et acquisition pour PME";
 const DESCRIPTION =
-  "Guides pratiques pour PME, TPE et artisans : acquisition, site internet, référencement local, Google Ads, ChatGPT Ads et automatisation.";
+  "Guides pour les PME : agents IA, automatisation, règles du démarchage et de l'AI Act, publicité ChatGPT Ads. Sans jargon et sans promesse.";
 
 export const Route = createFileRoute("/blog/")({
   head: () => ({
@@ -123,7 +135,7 @@ export const Route = createFileRoute("/blog/")({
           url: "https://sitaly.fr/blog/",
           inLanguage: "fr-FR",
           description: DESCRIPTION,
-          publisher: { "@type": "Organization", name: "Sitaly", url: "https://sitaly.fr" },
+          publisher: { "@id": "https://sitaly.fr/#business" },
           blogPost: BLOG_POSTS.map((p) => ({
             "@type": "BlogPosting",
             headline: p.title,
@@ -131,7 +143,7 @@ export const Route = createFileRoute("/blog/")({
             datePublished: p.publishedAt,
             dateModified: p.updatedAt ?? p.publishedAt,
             url: `https://sitaly.fr/blog/${p.slug}`,
-            author: { "@type": "Organization", name: "Sitaly" },
+            author: { "@id": "https://sitaly.fr/#teddy-vidal" },
             articleSection: p.category,
             keywords: p.keyword,
           })),

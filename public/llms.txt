@@ -10,7 +10,7 @@
 - **Interlocuteur unique** : Teddy Vidal, fondateur, qui conçoit, déploie et pilote lui-même chaque projet
 - **Clients visés** : PME et TPE structurées, en priorité agences immobilières, courtiers en crédit et en assurance, entreprises du BTP
 - **Porte d'entrée** : diagnostic offert de 30 minutes, puis proposition écrite
-- **Tarifs** : non publiés ; mise en place puis pilotage mensuel, chiffrés par écrit après le diagnostic
+- **Tarifs des agents IA** : non publiés ; une mise en place puis un pilotage mensuel, chiffrés par écrit après le diagnostic
 - **Téléphone** : +33 6 58 68 33 72
 - **E-mail** : contact@sitaly.fr
 - **Réservation** : https://calendly.com/contact-sitaly/decouverte-de-votre-projet-web
@@ -57,7 +57,8 @@
 - [Agent IA en entreprise : ce que ça fait, ce que ça coûte, et quand s'en passer](https://sitaly.fr/blog/agent-ia-entreprise-guide/)
 - [Relancer ses devis automatiquement](https://sitaly.fr/blog/relance-automatique-devis/)
 - [Prise de rendez-vous en ligne : le guide complet](https://sitaly.fr/blog/prise-rendez-vous-en-ligne-guide/)
-- [Appels manqués : permanence téléphonique ou agent IA ?](https://sitaly.fr/blog/appels-manques-artisan-permanence-telephonique/)
+- [Démarchage téléphonique interdit sans consentement : ce qu'un agent IA a encore le droit de faire](https://sitaly.fr/blog/demarchage-telephonique-agent-ia-2026/)
+- [AI Act, article 50 : ce que votre agent vocal doit dire dès la première phrase](https://sitaly.fr/blog/ai-act-article-50-agent-vocal/)
 - [Publicité ChatGPT Ads : faut-il y investir votre budget ?](https://sitaly.fr/blog/publicite-chatgpt-ads-guide/)
 - [Contexte complet (markdown)](https://sitaly.fr/llms-full.txt)
 

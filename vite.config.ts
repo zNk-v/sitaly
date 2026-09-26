@@ -5,6 +5,7 @@
 //     error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { PAGES_A_PRERENDRE_HORS_INDEX } from "./src/lib/indexation";
 
 export default defineConfig({
   tanstackStart: {
@@ -14,7 +15,10 @@ export default defineConfig({
     // Pré-génère chaque page en HTML statique (site vitrine → hébergeable sans serveur)
     // /carte n'est liée depuis aucune page (c'est la cible du QR code des cartes
     // de visite) : le prérendu par liens ne la trouverait jamais.
-    pages: [{ path: "/carte" }],
+    // Les pages hors index (src/lib/indexation.ts) ne sont plus liées depuis
+    // le pied de page ni le blog : listées ici, elles restent générées et
+    // accessibles par leur adresse, pour la prospection directe.
+    pages: [{ path: "/carte" }, ...PAGES_A_PRERENDRE_HORS_INDEX.map((path) => ({ path }))],
     prerender: {
       enabled: true,
       crawlLinks: true,
