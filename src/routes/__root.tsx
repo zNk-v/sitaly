@@ -12,6 +12,13 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CookieConsent } from "../components/CookieConsent";
+import { suivreClicsDeContact } from "../lib/mesure";
+import {
+  SITALY_CODE_POSTAL,
+  SITALY_EMAIL,
+  SITALY_PHONE,
+  SITALY_VILLE,
+} from "../lib/config";
 
 function NotFoundComponent() {
   return (
@@ -67,26 +74,153 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const TITRE_PAR_DEFAUT = "Agents IA et automatisation pour PME | Sitaly";
+const DESCRIPTION_PAR_DEFAUT =
+  "Sitaly installe et pilote des agents IA pour PME : accueil téléphonique, qualification, rendez-vous, relance des devis. Diagnostic offert de 30 min.";
+
+/**
+ * L'entité Sitaly, telle que Google et les assistants IA doivent la comprendre.
+ *
+ * Révision du 26 septembre 2026 (audit SEO/GEO). Le graphe relie trois choses
+ * qui étaient éparses : l'entreprise (nom commercial, SIREN, ville), la
+ * personne qui la fait (Teddy Vidal, auteur des articles) et le site. La ville
+ * y figure désormais, sans l'adresse : c'est elle qui rattache « Sitaly » au
+ * registre, où l'entreprise porte le nom de son dirigeant. Les pages de
+ * service et les articles s'y rattachent par leurs `@id`.
+ */
+const GRAPHE_ENTITE = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "ProfessionalService"],
+      "@id": "https://sitaly.fr/#business",
+      name: "Sitaly",
+      url: "https://sitaly.fr/",
+      logo: { "@type": "ImageObject", url: "https://sitaly.fr/icon-512.png" },
+      image: "https://sitaly.fr/og-image.png",
+      description:
+        "Sitaly installe et pilote des agents IA et des automatisations pour les PME : accueil téléphonique, qualification des demandes, prise de rendez-vous, relance des devis, outils métier sur mesure. Sites internet et campagnes publicitaires en complément.",
+      slogan: "Une seule personne au bout du fil, celle qui construit.",
+      founder: { "@id": "https://sitaly.fr/#teddy-vidal" },
+      telephone: SITALY_PHONE,
+      email: SITALY_EMAIL,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: SITALY_VILLE,
+        postalCode: SITALY_CODE_POSTAL,
+        addressRegion: "Île-de-France",
+        addressCountry: "FR",
+      },
+      areaServed: [
+        { "@type": "AdministrativeArea", name: "Île-de-France" },
+        { "@type": "Country", name: "France" },
+      ],
+      identifier: [
+        { "@type": "PropertyValue", propertyID: "SIREN", value: "833848831" },
+        { "@type": "PropertyValue", propertyID: "SIRET", value: "83384883100032" },
+      ],
+      currenciesAccepted: "EUR",
+      knowsLanguage: "fr",
+      knowsAbout: [
+        "Agents IA",
+        "Agent vocal IA",
+        "Accueil téléphonique automatisé",
+        "Qualification de leads",
+        "Relance de devis",
+        "Automatisation de processus",
+        "CRM sur mesure",
+        "Intégration d'API",
+        "Création de site internet",
+      ],
+      // sameAs relie l'entreprise à ses profils et à son registre : c'est ce
+      // qui permet aux moteurs de traiter ces pages comme une seule entité.
+      // TODO(ted) : ajouter l'URL Google Maps de la fiche Sitaly, puis les
+      // profils d'annuaires (La Fabrique du Net, Sortlist, Malt…).
+      sameAs: [
+        "https://www.linkedin.com/company/sitaly-fr",
+        "https://instagram.com/sitaly.fr",
+        "https://annuaire-entreprises.data.gouv.fr/entreprise/833848831",
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: SITALY_PHONE,
+        email: SITALY_EMAIL,
+        contactType: "sales",
+        areaServed: "FR",
+        availableLanguage: "French",
+      },
+      makesOffer: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Agents IA pour PME",
+            url: "https://sitaly.fr/agents-ia/",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Automatisation des tâches",
+            url: "https://sitaly.fr/automatisation-taches/",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Création de site internet",
+            url: "https://sitaly.fr/creation-site-internet/",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Google Ads",
+            url: "https://sitaly.fr/acquisition/",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "ChatGPT Ads",
+            url: "https://sitaly.fr/chatgpt-ads/",
+          },
+        },
+      ],
+    },
+    {
+      "@type": "Person",
+      "@id": "https://sitaly.fr/#teddy-vidal",
+      name: "Teddy Vidal",
+      jobTitle: "Fondateur de Sitaly",
+      worksFor: { "@id": "https://sitaly.fr/#business" },
+      url: "https://sitaly.fr/a-propos/",
+      sameAs: ["https://www.linkedin.com/in/vidalozzi"],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://sitaly.fr/#website",
+      name: "Sitaly",
+      url: "https://sitaly.fr/",
+      publisher: { "@id": "https://sitaly.fr/#business" },
+      inLanguage: "fr-FR",
+    },
+  ],
+};
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Site internet, publicité et automatisation pour TPE et PME | Sitaly" },
-      {
-        name: "description",
-        content:
-          "Sitaly installe et pilote votre présence en ligne : site internet, Google Ads, ChatGPT Ads et agents IA. Pour indépendants, TPE et PME. Un seul interlocuteur, sans engagement.",
-      },
-      {
-        property: "og:title",
-        content: "Site internet, publicité et automatisation pour TPE et PME | Sitaly",
-      },
-      {
-        property: "og:description",
-        content:
-          "Sitaly installe et pilote votre présence en ligne : site internet, Google Ads, ChatGPT Ads et agents IA. Pour indépendants, TPE et PME. Un seul interlocuteur, sans engagement.",
-      },
+      { title: TITRE_PAR_DEFAUT },
+      { name: "description", content: DESCRIPTION_PAR_DEFAUT },
+      { property: "og:title", content: TITRE_PAR_DEFAUT },
+      { property: "og:description", content: DESCRIPTION_PAR_DEFAUT },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Sitaly" },
       { property: "og:url", content: "https://sitaly.fr" },
@@ -95,7 +229,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:image:height", content: "630" },
       {
         property: "og:image:alt",
-        content: "Sitaly — acquisition et automatisation pour PME, TPE et artisans",
+        content: "Sitaly — agents IA, automatisation et sites pour les PME",
       },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: "https://sitaly.fr/og-image.png" },
@@ -143,90 +277,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "ProfessionalService",
-              "@id": "https://sitaly.fr/#business",
-              name: "Sitaly",
-              url: "https://sitaly.fr",
-              image: "https://sitaly.fr/og-image.png",
-              description:
-                "Sitaly installe et pilote la présence en ligne des indépendants, TPE et PME partout en France, à distance. Site sur mesure livré en 48h, en abonnement mensuel tout inclus (hébergement, maintenance, modifications), sans engagement de durée. Selon le projet, des frais de création s'ajoutent à l'abonnement.",
-              telephone: "+33658683372",
-              email: "contact@sitaly.fr",
-              priceRange: "€€",
-              currenciesAccepted: "EUR",
-              identifier: {
-                "@type": "PropertyValue",
-                propertyID: "SIRET",
-                value: "83384883100032",
-              },
-              // Portée nationale assumée, sans ancrage de ville : Sitaly travaille
-              // à distance. Le siège social reste public dans les mentions légales,
-              // il n'a pas à remonter dans le balisage.
-              areaServed: { "@type": "Country", name: "France" },
-              knowsLanguage: "fr",
-              // sameAs relie l'entreprise à ses profils officiels : c'est le signal
-              // qui permet à Google et aux moteurs IA de traiter Sitaly, le profil
-              // LinkedIn et le compte Instagram comme une seule et même entité.
-              sameAs: ["https://www.linkedin.com/in/vidalozzi", "https://instagram.com/sitaly.fr"],
-              founder: {
-                "@type": "Person",
-                name: "Teddy Vidal",
-                url: "https://www.linkedin.com/in/vidalozzi",
-                sameAs: ["https://www.linkedin.com/in/vidalozzi"],
-              },
-              makesOffer: [
-                {
-                  "@type": "Offer",
-                  name: "Sitaly Présence",
-                  description:
-                    "Site internet professionnel sur mesure livré en 48h, avec hébergement, maintenance, modifications, fiche Google Business et référencement local inclus. En abonnement mensuel, sans engagement de durée, avec selon le projet des frais de création réglés une seule fois.",
-                  category: "Site internet avec maintenance",
-                },
-                {
-                  "@type": "Offer",
-                  name: "Sitaly Acquisition — Google Ads",
-                  description:
-                    "Création et gestion complète de vos campagnes Google Ads pour générer des demandes qualifiées, avec ou sans site. Le budget publicitaire reste séparé et à votre charge. Sans engagement.",
-                  category: "Publicité Google Ads",
-                },
-                {
-                  "@type": "Offer",
-                  name: "Sitaly ChatGPT Ads",
-                  description:
-                    "Stratégie, création et gestion de vos campagnes publicitaires dans ChatGPT : cartographie des intentions, messages, tracking des conversions et optimisation. Le budget publicitaire reste séparé et à votre charge.",
-                  category: "Publicité ChatGPT Ads",
-                },
-                {
-                  "@type": "Offer",
-                  name: "Sitaly Agents IA",
-                  description:
-                    "Des agents IA installés clé en main pour votre activité : standardiste qui ne rate plus un appel, prise de rendez-vous, relance des devis et réponse aux messages. Sans engagement.",
-                  category: "Automatisation par intelligence artificielle",
-                },
-              ],
-              contactPoint: {
-                "@type": "ContactPoint",
-                telephone: "+33658683372",
-                email: "contact@sitaly.fr",
-                contactType: "sales",
-                areaServed: "FR",
-                availableLanguage: "French",
-              },
-            },
-            {
-              "@type": "WebSite",
-              "@id": "https://sitaly.fr/#website",
-              name: "Sitaly",
-              url: "https://sitaly.fr",
-              publisher: { "@id": "https://sitaly.fr/#business" },
-              inLanguage: "fr",
-            },
-          ],
-        }),
+        children: JSON.stringify(GRAPHE_ENTITE),
       },
     ],
   }),
@@ -259,6 +310,9 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  // Clics sur le téléphone et le Calendly, comptés dans GA4 (src/lib/mesure.ts).
+  useEffect(() => suivreClicsDeContact(), []);
 
   return (
     <QueryClientProvider client={queryClient}>

@@ -36,3 +36,4 @@ dist-ssr
 
 # Prospection — données personnelles, jamais versionnées
 prospection/
+.indexnow.log
