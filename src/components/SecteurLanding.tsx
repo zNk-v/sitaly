@@ -20,6 +20,12 @@ import { CALENDLY_URL, PRIX_AGENTS_IA, SITALY_PHONE, SITALY_PHONE_DISPLAY } from
  *
  * Le contenu vient entièrement de `src/data/secteurs.ts`.
  */
+/** Espace insécable avant « : ; ? ! » : en très grand corps, un deux-points
+    rejeté en début de ligne se voit de loin. */
+function insecable(texte: string): string {
+  return texte.replace(/ ([:;?!])/g, "\u00a0$1");
+}
+
 export function SecteurLanding({ s }: { s: Secteur }) {
   const autres = autresSecteurs(s);
   const encre = COULEURS_FAMILLE.automatisation.encre;
@@ -57,7 +63,7 @@ export function SecteurLanding({ s }: { s: Secteur }) {
             <span>{s.label}</span>
           </nav>
 
-          <h1 className="display-hero mt-6 max-w-5xl">{s.h1}</h1>
+          <h1 className="display-hero mt-6 max-w-5xl">{insecable(s.h1)}</h1>
           <p className="measure mt-6 text-lg leading-relaxed text-foreground/75 sm:text-xl">
             {s.intro}
           </p>
@@ -308,7 +314,7 @@ export function SecteurLanding({ s }: { s: Secteur }) {
       <section className="relative overflow-hidden py-20 sm:py-28">
         <div className="absolute inset-0 -z-10 hero-bg" aria-hidden="true" />
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <h2 className="display-section">{s.ctaTitre}</h2>
+          <h2 className="display-section">{insecable(s.ctaTitre)}</h2>
           <p className="mt-5 text-lg text-muted-foreground">
             Trente minutes pour regarder où se perdent vos demandes et ce qu'un agent peut en
             reprendre. Le diagnostic est offert, le chiffrage arrive par écrit, sans engagement.

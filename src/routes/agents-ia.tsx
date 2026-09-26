@@ -679,7 +679,7 @@ function Hero() {
                   au-dessus n'est pas un titre pour les moteurs. */}
               <span className="mb-3 block text-lg font-bold tracking-normal text-accent sm:text-xl">
                 Agents IA pour PME
-              </span>
+              </span>{" "}
               Chaque demande traitée.{" "}
               <span className="ai-gradient-text">Chaque client qualifié.</span> Chaque relance
               envoyée.
