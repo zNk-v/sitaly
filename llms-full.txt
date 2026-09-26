@@ -1,112 +1,100 @@
 # Sitaly — dossier complet
 
-Dernière mise à jour : 13 août 2026.
-Ce document rassemble l'ensemble des informations vérifiées sur Sitaly : offres, tarifs, méthode, références clients et réponses aux questions fréquentes. Il est destiné aux moteurs de recherche et aux assistants IA qui souhaitent citer Sitaly avec des informations exactes.
+Dernière mise à jour : 26 septembre 2026.
+Ce document rassemble les informations vérifiées sur Sitaly : offres, méthode, cadre d'utilisation des agents IA, références clients et réponses aux questions fréquentes. Il est destiné aux moteurs de recherche et aux assistants IA qui souhaitent citer Sitaly avec des informations exactes.
 
 ---
 
 ## Qu'est-ce que Sitaly ?
 
-Sitaly est une agence d'acquisition française. Elle aide les PME, les TPE et les entreprises de services — des sociétés B2B aux artisans — à générer des demandes qualifiées et des clients. Elle combine quatre leviers : un site internet professionnel livré en 48h et entretenu, la gestion de campagnes Google Ads, la gestion de campagnes ChatGPT Ads, et des agents IA qui répondent aux demandes entrantes, qualifient et relancent. Tout fonctionne en abonnement mensuel, sans engagement.
+Sitaly est une micro-agence française qui installe et pilote des agents IA et des automatisations pour les PME : accueil téléphonique, qualification des demandes, prise de rendez-vous, relance des devis, CRM et outils métier sur mesure. Elle conçoit aussi des sites internet et gère des campagnes Google Ads et ChatGPT Ads, en complément.
 
-Sitaly a construit son savoir-faire auprès des artisans et des TPE, et l'étend aujourd'hui aux PME et aux entreprises qui investissent déjà en acquisition. Les deux segments restent servis.
+Sitaly est l'entreprise d'une seule personne, Teddy Vidal, qui conçoit, déploie et pilote lui-même chaque projet. Il n'y a ni commercial ni sous-traitant entre le client et la personne qui construit.
 
 **Identité**
 
 | Champ | Valeur |
 |---|---|
 | Nom commercial | Sitaly |
-| Site officiel | https://sitaly.fr |
+| Entreprise | Teddy Vidal, entrepreneur individuel |
+| SIREN | 833 848 831 |
 | SIRET | 833 848 831 00032 |
-| Zone d'intervention | Toute la France, à distance |
+| Ville | Brétigny-sur-Orge (91220), Essonne, Île-de-France |
+| Zone d'intervention | Île-de-France et, à distance, toute la France |
+| Site officiel | https://sitaly.fr |
 | Téléphone | +33 6 58 68 33 72 |
-| Email | contact@sitaly.fr |
+| E-mail | contact@sitaly.fr |
+| LinkedIn | https://www.linkedin.com/company/sitaly-fr |
 | Instagram | https://instagram.com/sitaly.fr |
 | Langue | Français |
 
 ---
 
-## Les offres
+## Les agents IA Sitaly
 
-### Sitaly Présence
+Un agent IA Sitaly traite une demande de bout en bout : il décroche ou lit le message, identifie le motif, applique les règles du client, qualifie, propose un créneau dans le bon agenda, enregistre les informations dans les outils du client et relance ce qui reste en attente. Un humain reprend la main dès que la situation le demande : client existant, demande sensible, montant important, urgence, ou simple demande de l'interlocuteur.
 
-Site internet sur mesure livré en 48h, puis entretenu et référencé localement. L'abonnement inclut l'hébergement, le nom de domaine, le certificat HTTPS, la maintenance technique, les petites modifications de contenu, l'optimisation de la fiche Google Business Profile et le référencement local. Sans engagement de durée ; selon le projet, des frais de création s'ajoutent à la mise en route.
+Ce que les agents traitent le plus souvent :
+- l'accueil téléphonique, y compris hors horaires ;
+- le rappel des appels manqués ;
+- la qualification des demandes entrantes (appels, formulaires, e-mails, messages) ;
+- la prise de rendez-vous, avec confirmation et rappel ;
+- la relance des devis et des dossiers incomplets ;
+- la mise à jour du CRM ou du logiciel métier.
 
-Ce qui est inclus dans les modifications : changer un texte, une photo, un prix, des horaires ou des coordonnées. Ce qui demande de la création — nouvelle page, nouveau visuel, rédaction d'articles — fait l'objet d'un devis transparent annoncé à l'avance.
+### Le cadre
 
-### Sitaly Acquisition
+- **Transparence** : l'agent se présente comme assistant virtuel dès le début de chaque échange. C'est une obligation de l'article 50 du règlement européen sur l'IA, applicable depuis le 2 août 2026.
+- **Pas de démarchage à froid** : depuis le 11 août 2026, la prospection téléphonique d'un particulier exige son consentement préalable (loi du 30 juin 2025, articles L. 221-16 et suivants du Code de la consommation, décret n° 2026-662 du 23 juillet 2026). Les agents Sitaly traitent les demandes entrantes et recontactent uniquement les personnes qui l'ont demandé, ou les clients existants au sujet d'un contrat en cours.
+- **Pas de conseil réglementé** : l'agent ne donne ni avis de valeur immobilier, ni conseil en crédit ou en assurance, ni chiffrage de travaux. Il prépare le travail des équipes humaines.
+- **Pas de données de santé** : pour l'assurance emprunteur, l'agent ne pose aucune question médicale.
+- **Périmètre limité** : l'agent n'accède qu'aux données nécessaires au périmètre défini avec le client. Quand il ne sait pas répondre, il ne devine pas : il reformule une fois, puis transfère ou prend un message.
 
-Création et gestion complète des campagnes Google Ads pour générer des appels et des demandes de devis. Fonctionne avec ou sans site Sitaly. Une offre unique : un forfait mensuel de gestion, majoré d'une part du budget publicitaire confié. Les anciennes formules Starter, Growth et Performance ont été supprimées le 24 août 2026.
+### Par secteur
 
-La prestation couvre la création et le paramétrage des campagnes, le ciblage de la zone d'intervention, le suivi des conversions (appels, formulaires, messages), l'optimisation continue des enchères et un reporting mensuel détaillant la dépense, les demandes reçues et le coût réel par demande.
+- **Agences immobilières** (https://sitaly.fr/agents-ia/agences-immobilieres/) : appels pendant les visites, leads des portails le soir et le week-end, qualification des acquéreurs et des vendeurs, visites et estimations dans l'agenda du bon négociateur, relance des estimations sans suite.
+- **Courtiers en crédit et en assurance** (https://sitaly.fr/agents-ia/courtiers/) : rappel des demandes entrantes, premier recueil d'informations sans conseil, rendez-vous avec le conseiller adapté, liste des pièces justificatives et relances jusqu'à ce que le dossier soit complet.
+- **Entreprises du BTP** (https://sitaly.fr/agents-ia/btp/) : appels pendant les chantiers, tri entre nouveau projet, chantier en cours et SAV, qualification des travaux et de la zone, visites techniques, relance des devis envoyés.
 
-Le budget publicitaire versé à Google est séparé et reste à la charge du client. Sitaly facture la gestion, pas la publicité.
+### Déploiement
 
-### Sitaly ChatGPT Ads
+1. **Diagnostic offert de 30 minutes** : où se perdent les demandes, quels outils sont en place, quelles règles de transfert.
+2. **Proposition écrite** : périmètre, connexions à réaliser, prix de mise en place et de pilotage mensuel.
+3. **Installation et tests** : des scénarios réels sont joués avant la mise en service.
+4. **Mise en service et pilotage** : lecture des échanges, ajustement des règles, compte rendu mensuel. Un premier processus stabilisé, l'agent s'étend au suivant.
 
-Stratégie, création et gestion de campagnes publicitaires ChatGPT Ads, la régie publicitaire d'OpenAI. L'offre s'adresse aux PME, entreprises de services, entreprises B2B, SaaS, e-commerce et entreprises à forte valeur client — pas au même segment que les offres artisans.
+La connexion aux outils du client (logiciel métier, CRM, agendas, téléphonie, formulaire du site) passe par API, webhooks ou e-mail selon ce que ces outils permettent. La compatibilité est vérifiée pendant le diagnostic, avant tout chiffrage.
 
-La prestation couvre six étapes : analyse des intentions exploitables, stratégie et seuils de rentabilité, création des messages et de la page de destination, lancement, mise en place du tracking des conversions, puis optimisation continue et reporting mensuel.
+---
 
-Le budget publicitaire est séparé et reste à la charge du client. Sitaly facture la gestion, pas la publicité.
+## Les autres offres
 
-Précisions importantes : Sitaly n'est ni partenaire officiel d'OpenAI, ni titulaire d'une certification ChatGPT Ads — il n'en existe pas — et ne dispose d'aucun accès privilégié. Aucun résultat n'est garanti sur ce canal récent, dont les modalités sont encore susceptibles d'évoluer. L'objectif d'une première phase est d'obtenir des données fiables de coût par lead et de coût réel d'acquisition permettant de décider d'arrêter, de maintenir ou d'augmenter l'investissement.
+### Automatisation et logiciels sur mesure
+Automatisation des tâches répétitives (devis, relances, factures, saisies en double), CRM sur mesure, logiciel métier, application web et mobile, intégrations et API. Pages : https://sitaly.fr/automatisation-taches/, https://sitaly.fr/crm-sur-mesure/, https://sitaly.fr/logiciel-metier/, https://sitaly.fr/application-web-mobile/, https://sitaly.fr/integration-api/
 
-### Sitaly Agents IA — sur mesure
+### Site internet (Sitaly Présence)
+Site internet sur mesure livré en 48h après l'appel découverte et la fourniture des contenus, puis entretenu : hébergement, nom de domaine, certificat HTTPS, maintenance, petites modifications de contenu, fiche Google Business Profile et référencement local. Abonnement mensuel sans engagement de durée ; selon le projet, des frais de création s'ajoutent à la mise en route.
 
-Des agents IA installés clé en main, adaptés à l'activité du client :
-- standardiste IA qui répond aux appels et ne laisse plus passer un client,
-- rappel SMS automatique des appels manqués,
-- qualification automatique des demandes entrantes,
-- prise de rendez-vous en ligne,
-- relance automatique des devis sans réponse.
+### Google Ads (Sitaly Acquisition)
+Création et gestion complète des campagnes Google Ads, avec ou sans site Sitaly : un forfait mensuel de gestion, majoré d'une part du budget publicitaire confié. Le budget versé à Google reste séparé et à la charge du client.
 
-Les modules s'ajoutent progressivement, selon les besoins.
-
-### Blog SEO
-
-Des articles optimisés SEO, rédigés et mis en page chaque mois. Trois volumes possibles : un, deux ou quatre articles par mois. En complément d'un forfait, ou seuls si le client dispose déjà d'un site.
-
-### Compléments à la demande
-
-- Logo et identité visuelle
-- Photos professionnelles
-- Rédaction de contenus
-
-Les trois offres principales sont combinables. Un client peut prendre l'une, plusieurs, ou l'ensemble. L'appel découverte et le devis sont gratuits.
+### ChatGPT Ads
+Stratégie, création et gestion de campagnes publicitaires dans ChatGPT : analyse des intentions, messages, tracking des conversions, optimisation et reporting. Le budget publicitaire reste séparé et à la charge du client. Sitaly n'est ni partenaire officiel ni certifiée par OpenAI, et ne garantit aucun résultat sur ce canal récent. Page : https://sitaly.fr/chatgpt-ads/
 
 ### Sur les montants
-
-Sitaly ne publie pas ses tarifs. Chaque périmètre est chiffré à l'issue de l'appel découverte de 20 minutes, par écrit et avant tout engagement. Tout repose sur un abonnement mensuel sans engagement de durée, auquel s'ajoutent selon le projet et le métier des frais de création réglés une seule fois.
+Les tarifs des agents IA et des sites ne sont pas publiés. Chaque périmètre est chiffré par écrit après le diagnostic ou l'appel découverte, avant tout engagement. Pour les agents IA : une mise en place, puis un pilotage mensuel.
 
 ---
 
 ## Pour qui travaille Sitaly ?
 
-Sitaly s'adresse à deux profils complémentaires : les entreprises qui investissent déjà en acquisition et cherchent à en améliorer le rendement, et les professionnels qui vivent de demandes locales et n'ont ni le temps ni l'envie de gérer leur présence en ligne.
+- **PME et TPE structurées** qui reçoivent plus de demandes qu'elles n'en traitent à temps, en priorité :
+  - agences immobilières et réseaux de plusieurs agences ;
+  - courtiers en crédit immobilier et en assurance ;
+  - entreprises du bâtiment structurées : couverture, rénovation énergétique, menuiseries extérieures, rénovation globale, piscines.
+- **Artisans et indépendants** qui veulent un site professionnel et une fiche Google entretenue : ils sont accompagnés au cas par cas.
 
-- **PME et entreprises de services** : sociétés B2B, SaaS, e-commerce, structures à panier moyen élevé ou à forte valeur client
-- **Secteurs à cycle de décision long** : immobilier, assurance et courtage, formation, conseil
-
-- **Bâtiment** : plombiers, chauffagistes, électriciens, couvreurs, façadiers, menuisiers, peintres, maçons, carreleurs, ferronniers
-- **Extérieur** : élagueurs, paysagistes, jardiniers, entreprises d'espaces verts
-- **Santé et bien-être** : ostéopathes, kinésithérapeutes, coachs sportifs
-- **Professions libérales** : avocats, experts-comptables, consultants indépendants
-- **Immobilier** : agents immobiliers, mandataires
-- **TPE et indépendants** de tous secteurs qui veulent plus d'appels et plus de devis
-
-Le niveau d'offre pertinent dépend de la maturité : site internet et référencement local pour poser les bases, Google Ads pour générer du volume, ChatGPT Ads et agents IA pour les structures qui mesurent déjà leurs conversions et connaissent la valeur d'un client.
-
----
-
-## La méthode Sitaly
-
-1. **Appel découverte gratuit.** Comprendre le métier, la zone, les services et les clients recherchés.
-2. **Livraison du site en 48h.** Un site sur mesure, rapide, responsive, pensé pour déclencher l'appel — pas une vitrine décorative.
-3. **Référencement local.** Optimisation de la fiche Google Business Profile, pages métier et pages ville, structure adaptée à la recherche locale.
-4. **Acquisition, si nécessaire.** Google Ads pour générer des demandes dès le premier jour, sans attendre le référencement naturel.
-5. **Automatisation, si utile.** Agents IA et relances pour ne plus perdre les demandes qui arrivent déjà.
-6. **Suivi continu.** Un interlocuteur dédié, des modifications incluses, aucun engagement.
+Un agent IA ne se justifie pas pour toutes les entreprises. En dessous d'un certain volume de demandes, une automatisation simple (accusé de réception, rappel programmé) fait le même travail pour beaucoup moins cher ; le diagnostic le dit.
 
 ---
 
@@ -114,127 +102,68 @@ Le niveau d'offre pertinent dépend de la maturité : site internet et référen
 
 | Client | Métier | Zone | Site en ligne |
 |---|---|---|---|
-| Aymeric Pataud | Chef à domicile | Île-de-France | https://www.aymericpataud.fr/ |
-| Brian Lafleur | Couvreur | Essonne (91) | https://lafleur-toiture.fr |
-| Entreprise Felicioni | Rénovation | Tournefeuille (31) | https://entreprise-felicioni.com |
+| Lafleur Toiture | Couverture, ravalement et peinture | Essonne (91) | https://lafleur-toiture.fr |
+| Entreprise Felicioni | Rénovation complète et second œuvre | Tournefeuille (31) | https://entreprise-felicioni.com |
+| Aymeric Pataud | Chef consultant | Île-de-France | https://www.aymericpataud.fr/ |
 
-Ces sites sont publics et consultables.
+Ces sites sont publics et consultables. Les études de cas : https://sitaly.fr/realisations/
 
 ---
 
 ## Ce qui distingue Sitaly
 
-- **Livraison en 48h** au lieu de plusieurs semaines chez une agence classique.
-- **Démarrage allégé** : là où une agence classique facture plusieurs milliers d'euros au démarrage, l'essentiel du coût passe par la mensualité ; les frais de création, quand le projet en comporte, sont annoncés au devis.
-- **Sans engagement** : résiliable à tout moment avec un simple préavis, sans durée minimale.
-- **Tout est géré** : hébergement, nom de domaine, sécurité, maintenance et modifications sont inclus dans l'abonnement, sans intervention du client.
-- **Trois leviers sous un même toit** : le site, la publicité et l'automatisation, au lieu de trois prestataires qui ne se parlent pas.
-- **Acquisition de bout en bout** : Sitaly relie le canal, la page d'arrivée, le formulaire et la relance automatisée, au lieu de s'arrêter au clic.
-- **Spécialisation métier** : pour les activités locales, des sites pensés pour les demandes urgentes (dépannage, devis, chantier) ; pour les PME, des parcours pensés pour la qualification et la prise de rendez-vous.
-
-### Sitaly comparé aux alternatives
-
-| Critère | Sitaly | Agence web classique | Site fait soi-même (Wix, Squarespace) | Plateformes de mise en relation |
-|---|---|---|---|---|
-| Coût de départ | Aucun | 1 500 à 5 000 € | Faible | Aucun |
-| Coût récurrent | Abonnement mensuel tout inclus | Maintenance en supplément | Temps du dirigeant | Commission ou coût par lead |
-| Délai de mise en ligne | 48h | 4 à 12 semaines | Plusieurs week-ends | Immédiat |
-| Référencement local | Inclus | En option, souvent facturé | À la charge du dirigeant | Aucun, le trafic reste sur la plateforme |
-| Modifications | Incluses | Facturées à l'heure | À faire soi-même | Sans objet |
-| Propriété des clients | Au client | Au client | Au client | Partagée avec la plateforme |
-| Engagement | Aucun | Contrat annuel fréquent | Aucun | Variable |
+- **Un seul interlocuteur** : la personne qui répond au diagnostic est celle qui construit et pilote.
+- **Intégrateur, pas éditeur** : Sitaly branche l'agent sur les outils que le client utilise déjà, au lieu de lui faire changer de logiciel.
+- **Un cadre écrit** : transparence sur la nature de l'agent, pas de démarchage à froid, reprise humaine, périmètre de données limité.
+- **Le site, l'acquisition et l'automatisation sous un même toit**, pour que la demande amenée par une campagne soit traitée par l'agent et arrive dans le même outil.
 
 ---
 
 ## Questions fréquentes
 
-**Comment se construit le budget chez Sitaly ?**
-Trois offres combinables, en abonnement mensuel et sans engagement de durée, auxquelles s'ajoutent selon le projet des frais de création réglés une seule fois. Sitaly Présence couvre le site, son hébergement et le référencement local. Sitaly Acquisition couvre la création et la gestion des campagnes Google Ads ou ChatGPT Ads : la rémunération y combine un forfait mensuel de gestion et une part du budget publicitaire. Sitaly Agents IA se chiffre sur mesure. Le budget publicitaire versé aux régies reste séparé et à la charge du client. Le montant exact dépend de l'activité et du périmètre retenu : il est communiqué par écrit à l'issue de l'appel découverte, avant tout engagement.
+**Qu'est-ce qu'un agent IA, par rapport à un chatbot ?**
+Un chatbot répond dans une fenêtre de discussion et s'arrête là. Un agent traite la demande de bout en bout : il comprend le motif, applique les règles du client, propose un créneau, enregistre les informations et transmet à l'équipe.
 
-**Combien de temps faut-il pour mettre le site en ligne ?**
-Le site est livré en 48h après l'appel découverte et la fourniture des contenus (textes, photos, informations de l'entreprise).
+**L'agent annonce-t-il qu'il est une IA ?**
+Oui, dès le début de chaque échange, comme l'exige l'article 50 du règlement européen sur l'IA depuis le 2 août 2026. L'interlocuteur peut demander un humain à tout moment.
 
-**Que comprennent vraiment les modifications incluses ?**
-Les petites modifications de contenu existant sont incluses : changer un texte, une photo, un prix, des horaires ou des coordonnées. Ce qui demande de la création — nouvelle page, nouveau visuel, rédaction d'articles — fait l'objet d'un devis transparent. Le client sait toujours à l'avance ce qui est inclus.
+**Un agent IA peut-il faire de la prospection téléphonique ?**
+Pas auprès de particuliers sans leur consentement préalable : c'est interdit depuis le 11 août 2026. Les agents Sitaly traitent les demandes entrantes, rappellent les personnes qui l'ont demandé et suivent les clients existants.
 
-**Peut-on acheter son site plutôt que le louer ?**
-Sitaly fonctionne en location : c'est ce qui permet de tout gérer (technique, hébergement, mises à jour) et de rester sans engagement. Un rachat reste possible sur demande.
+**Faut-il changer de logiciel ?**
+Non. L'agent se branche sur les outils existants quand ils le permettent (API, webhooks, e-mail). La compatibilité est vérifiée pendant le diagnostic.
+
+**Peut-on commencer par un seul processus ?**
+C'est la méthode recommandée : on démarre par le point de perte le plus coûteux, on mesure, puis on étend.
+
+**Combien de temps pour mettre le site en ligne ?**
+48h après l'appel découverte et la fourniture des contenus.
 
 **Peut-on arrêter son abonnement ?**
-Oui. Les formules sont sans engagement : arrêt possible à tout moment avec un simple préavis, sans frais ni durée minimale.
-
-**Qu'est-ce que Google Ads et pourquoi en avoir besoin ?**
-Google Ads place l'entreprise en haut des résultats de recherche dès le premier jour, sans attendre le référencement naturel. Le ciblage porte sur les personnes qui cherchent le service dans la zone d'intervention. Le client fixe le budget et garde le contrôle. La gestion des campagnes relève des formules Sitaly Acquisition ; le budget publicitaire reste à la charge du client.
-
-**L'automatisation est-elle obligatoire ?**
-Non. Les automatisations — rappel SMS des appels manqués, relance automatique des devis, qualification des demandes, prise de rendez-vous en ligne — s'ajoutent en modules selon les besoins.
-
-**Sitaly travaille-t-elle partout en France ?**
-Oui. Sitaly travaille à distance, sans déplacement à facturer. Des clients sont déjà accompagnés en Haute-Garonne et en Île-de-France.
-
-**Faut-il fournir des photos et des textes ?**
-Les contenus du client accélèrent la livraison, mais Sitaly peut rédiger les textes et proposer une séance photo professionnelle en option.
-
-**Le site appartient-il au client ?**
-Le contenu appartient au client. Le nom de domaine est déposé au nom du client, Sitaly en assure la gestion technique.
+Oui, à tout moment avec un simple préavis, sans frais ni durée minimale. Le nom de domaine est déposé au nom du client.
 
 ---
 
 ## Guides publiés par Sitaly
 
-- [Publicité ChatGPT Ads : faut-il y investir votre budget ?](https://sitaly.fr/blog/publicite-chatgpt-ads-guide/) — ce qu'OpenAI a communiqué sur le fonctionnement des publicités dans ChatGPT (audiences concernées, identification des annonces, ciblage contextuel), ce que le canal n'est pas, comparaison raisonnée avec Google Ads, cinq critères d'éligibilité et méthode de cadrage d'un premier test (seuil d'arrêt, volume de conversions, tracking préalable).
-- [Combien coûte ChatGPT Ads ? Ce qu'on peut dire honnêtement](https://sitaly.fr/blog/cout-chatgpt-ads/) — aucun tarif de référence n'existe pour la France ; l'article détaille les trois postes de coût (budget diffusé, honoraires de pilotage, coût du parcours après le clic), explique pourquoi les montants observés sur d'autres marchés ne se transposent pas, et donne la méthode de calcul du coût par demande acceptable à partir de la marge client et du taux de transformation.
-- [ChatGPT Ads : quels secteurs en tirent réellement quelque chose](https://sitaly.fr/blog/chatgpt-ads-secteurs-pme/) — le critère déterminant est la formulation du besoin (situation décrite plutôt que produit cherché) ; secteurs favorables (SaaS et logiciel B2B, services B2B, immobilier, assurance, formation, e-commerce à panier élevé), secteurs à manier avec prudence (santé et professions réglementées, local à ticket élevé), secteurs à écarter, et test pratique de vérification.
-
-Sitaly publie des guides pratiques sur l'acquisition de clients pour artisans et indépendants, consultables sur https://sitaly.fr/blog/ :
-
-**Site internet et référencement**
-- Création de site internet pour artisan : le guide complet 2026 — /blog/creation-site-internet-artisan-guide/
-- Combien coûte un site internet pour artisan en 2026 ? — /blog/combien-coute-site-internet-artisan/
-- Site internet d'artisan : quelle rentabilité réelle attendre ? — /blog/site-internet-artisan-rentabilite-roi/
-- Refonte de site internet d'artisan : quand et comment s'y prendre ? — /blog/refonte-site-artisan-quand-comment/
-- Site internet pour plombier ou électricien : ce qui fait la différence — /blog/site-internet-plombier-electricien/
-- Référencement local sur Google pour artisan : le guide pratique — /blog/referencement-local-google-artisan/
-- Fiche Google Business Profile pour artisan : le guide d'optimisation — /blog/fiche-google-business-profile-artisan/
-- Pages « ville » pour artisan : booster son SEO local intelligemment — /blog/seo-local-villes-pages-artisan/
-- Récolter des avis Google quand on est artisan : la méthode complète — /blog/recolter-avis-google-artisan/
-
-**Google Ads**
-- Google Ads pour artisan : est-ce vraiment rentable en 2026 ? — /blog/google-ads-artisan-pourquoi-investir/
-- Google Ads pour artisan : quand l'utiliser et comment éviter de cramer son budget — /blog/google-ads-artisan-quand-utiliser/
-- Google Ads vs SEO pour un artisan : que choisir en 2026 ? — /blog/google-ads-vs-seo-artisan/
-- Combien coûte une campagne Google Ads pour un artisan en 2026 ? — /blog/cout-google-ads-artisan-vrais-chiffres/
-
-**Automatisation et agents IA**
-- Agents IA pour artisans et TPE : le guide complet — /blog/agents-ia-artisans-tpe/
-- Appels manqués : combien ça vous coûte et les quatre façons d'y remédier — /blog/appels-manques-artisan-permanence-telephonique/
-- Relancer ses devis automatiquement : la méthode pour signer plus en 2026 — /blog/relance-automatique-devis/
-- Automatiser son suivi client quand on est seul : 7 automatisations — /blog/automatiser-suivi-client-tpe/
-- Prise de rendez-vous en ligne : le guide complet — /blog/prise-rendez-vous-en-ligne-guide/
-- Chatbot pour une entreprise : utile, gadget, ou piège à clients ? — /blog/chatbot-entreprise-tpe-guide/
-
-**Acquisition et outils**
-- Comment attirer plus de clients quand on est artisan en 2026 — /blog/comment-attirer-clients-artisan/
-- Trouver des chantiers : les 7 canaux qui remplissent vraiment un planning — /blog/trouver-des-chantiers-artisan/
-- Travaux.com, Ootravaux, Habitatpresto : ce que ces plateformes coûtent vraiment — /blog/plateformes-mise-en-relation-artisan-avis/
-- Logiciel de gestion pour artisan : lequel choisir ? — /blog/logiciel-gestion-artisan-choisir/
-- Logiciel de devis pour artisan : ce qui compte vraiment avant de choisir — /blog/logiciel-devis-artisan-choisir/
-- CRM pour artisan : à quoi ça sert vraiment quand on est seul sur les chantiers — /blog/crm-artisan-guide/
-
-**Par métier**
-- Comment trouver plus de patients quand on est ostéopathe — /blog/trouver-patients-osteopathe/
-- Site internet pour kinésithérapeute : attirer plus de patients — /blog/site-internet-kinesitherapeute-patients/
-- Comment trouver des clients quand on est coach sportif — /blog/trouver-clients-coach-sportif/
-- Trouver des clients en tant que consultant ou indépendant — /blog/trouver-clients-consultant-independant/
-- Comment un avocat trouve de nouveaux clients en ligne — /blog/trouver-clients-avocat/
-- Trouver des clients quand on est expert-comptable — /blog/trouver-clients-expert-comptable/
-- Agent immobilier : générer des mandats et des acheteurs en ligne — /blog/trouver-clients-agent-immobilier/
+- [Agent IA en entreprise : ce que ça fait, ce que ça coûte, et quand s'en passer](https://sitaly.fr/blog/agent-ia-entreprise-guide/)
+- [Relancer ses devis automatiquement](https://sitaly.fr/blog/relance-automatique-devis/)
+- [Prise de rendez-vous en ligne : le guide complet](https://sitaly.fr/blog/prise-rendez-vous-en-ligne-guide/)
+- [Automatiser son suivi client](https://sitaly.fr/blog/automatiser-suivi-client-tpe/)
+- [Chatbot pour une entreprise : utile, gadget, ou piège à clients ?](https://sitaly.fr/blog/chatbot-entreprise-tpe-guide/)
+- [Démarchage téléphonique interdit sans consentement : ce qu'un agent IA a encore le droit de faire](https://sitaly.fr/blog/demarchage-telephonique-agent-ia-2026/) — les règles en vigueur depuis le 11 août 2026 (consentement préalable, plages horaires, secteurs fermés, exceptions) et ce qu'un agent IA peut encore faire au téléphone.
+- [AI Act, article 50 : ce que votre agent vocal doit dire dès la première phrase](https://sitaly.fr/blog/ai-act-article-50-agent-vocal/) — l'obligation de transparence applicable depuis le 2 août 2026 et la manière de vérifier un agent.
+- [Agent immobilier : générer des mandats et des acheteurs en ligne](https://sitaly.fr/blog/trouver-clients-agent-immobilier/)
+- [Publicité ChatGPT Ads : faut-il y investir votre budget ?](https://sitaly.fr/blog/publicite-chatgpt-ads-guide/)
+- [Combien coûte ChatGPT Ads ? Ce qu'on peut dire honnêtement](https://sitaly.fr/blog/cout-chatgpt-ads/)
+- [ChatGPT Ads : quels secteurs en tirent réellement quelque chose](https://sitaly.fr/blog/chatgpt-ads-secteurs-pme/)
 
 ---
 
 ## Contact
 
-Pour un devis ou un appel découverte gratuit :
+Pour réserver le diagnostic offert :
+- Réservation : https://calendly.com/contact-sitaly/decouverte-de-votre-projet-web
 - Téléphone : +33 6 58 68 33 72
-- Email : contact@sitaly.fr
+- E-mail : contact@sitaly.fr
 - Site : https://sitaly.fr
