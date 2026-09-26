@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { directiveRobots } from "@/lib/indexation";
 import { useMemo, useState } from "react";
 import { ArrowUpRight, Calendar, Check, RotateCcw } from "lucide-react";
 import { SiteChrome } from "@/components/SiteChrome";
@@ -215,6 +216,9 @@ export const Route = createFileRoute("/outils/audit-fiche-google")({
   head: () => ({
     meta: [
       { title: TITLE },
+      // Outil pensé pour les artisans : en ligne pour la prospection directe,
+      // hors index depuis le 26 septembre 2026 (src/lib/indexation.ts).
+      { name: "robots", content: directiveRobots(new globalThis.URL(URL).pathname) },
       { name: "description", content: DESCRIPTION },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },

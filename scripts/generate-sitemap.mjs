@@ -11,12 +11,32 @@
  * source de vérité, dérivée de BLOG_POSTS.
  */
 import { build } from "esbuild";
+import { execFileSync } from "node:child_process";
 import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+
+/**
+ * Date du dernier commit qui a touché l'un des fichiers, au format AAAA-MM-JJ.
+ * C'est elle qui sert de `lastmod` aux pages qui n'ont pas de date propre :
+ * une date de build changerait à chaque déploiement et Google apprendrait à
+ * l'ignorer. Sans git (archive, CI sans historique), la page part sans date.
+ */
+function dateDernierCommit(fichiers) {
+  try {
+    const sortie = execFileSync("git", ["log", "-1", "--format=%cs", "--", ...fichiers], {
+      cwd: root,
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    }).trim();
+    return sortie || undefined;
+  } catch {
+    return undefined;
+  }
+}
 
 const tmp = await mkdtemp(join(tmpdir(), "sitaly-sitemap-"));
 const bundlePath = join(tmp, "sitemap.mjs");
@@ -37,7 +57,10 @@ try {
   });
 
   const { buildSitemapXml, SITEMAP_ENTRIES } = await import(pathToFileURL(bundlePath).href);
-  const xml = buildSitemapXml();
+  const entrees = SITEMAP_ENTRIES.map((e) =>
+    e.lastmod || !e.source ? e : { ...e, lastmod: dateDernierCommit(e.source) },
+  );
+  const xml = buildSitemapXml(entrees);
   const target = join(root, "public/sitemap.xml");
 
   const previous = await readFile(target, "utf8").catch(() => null);

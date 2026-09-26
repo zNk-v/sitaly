@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { directiveRobots } from "@/lib/indexation";
 import {
   ArrowRight,
   Check,
@@ -340,7 +341,7 @@ export function MetierLanding(props: MetierLandingProps) {
       <section className="py-14">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <h2 className="font-display text-2xl font-bold tracking-tight">
-            Deux outils gratuits pour votre activité de {metier}
+            Deux outils gratuits pour votre activité {deMetier(metier)}
           </h2>
           <ul className="mt-5 space-y-3 text-foreground/85">
             <li>
@@ -423,6 +424,11 @@ function LandingNav() {
   return <SiteHeader nav="simple" />;
 }
 
+/** « de plombier », mais « d'électricien » : l'élision devant voyelle ou h muet. */
+function deMetier(metier: string): string {
+  return /^[aeiouyàâäéèêëîïôöûüh]/i.test(metier) ? `d'${metier}` : `de ${metier}`;
+}
+
 export function buildMetierMeta(opts: {
   title: string;
   description: string;
@@ -435,7 +441,9 @@ export function buildMetierMeta(opts: {
     meta: [
       { title },
       { name: "description", content: description },
-      { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large" },
+      // Pages métier sorties de l'index le 26 septembre 2026 : elles restent
+      // en ligne pour la prospection directe (src/lib/indexation.ts).
+      { name: "robots", content: directiveRobots(new URL(url).pathname) },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
