@@ -42,4 +42,4 @@ export const PRIX_AGENTS_IA = {
  * Vide tant que l'URL du Worker n'est pas renseignée : les formulaires gardent
  * alors leur comportement d'avant (message pré-rempli dans la messagerie).
  */
-export const FORM_ENDPOINT = "";
+export const FORM_ENDPOINT = "https://sitaly-forms.sitaly-forms.workers.dev";
