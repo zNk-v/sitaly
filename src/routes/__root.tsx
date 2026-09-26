@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CookieConsent } from "../components/CookieConsent";
 import { suivreClicsDeContact } from "../lib/mesure";
 import {
+  FICHE_GOOGLE_URL,
   SITALY_CODE_POSTAL,
   SITALY_EMAIL,
   SITALY_PHONE,
@@ -134,9 +135,13 @@ const GRAPHE_ENTITE = {
       ],
       // sameAs relie l'entreprise à ses profils et à son registre : c'est ce
       // qui permet aux moteurs de traiter ces pages comme une seule entité.
-      // TODO(ted) : ajouter l'URL Google Maps de la fiche Sitaly, puis les
-      // profils d'annuaires (La Fabrique du Net, Sortlist, Malt…).
+      // La fiche Google est désignée par son identifiant Maps (cid), stable
+      // même si le nom ou la catégorie changent.
+      // TODO(ted) : ajouter les profils d'annuaires (La Fabrique du Net,
+      // Sortlist, Malt…) au fur et à mesure des inscriptions.
+      hasMap: FICHE_GOOGLE_URL,
       sameAs: [
+        FICHE_GOOGLE_URL,
         "https://www.linkedin.com/company/sitaly-fr",
         "https://instagram.com/sitaly.fr",
         "https://annuaire-entreprises.data.gouv.fr/entreprise/833848831",

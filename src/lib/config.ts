@@ -22,6 +22,12 @@ export const SITALY_CODE_POSTAL = "91220";
 export const SITALY_DEPARTEMENT = "Essonne";
 
 /**
+ * Fiche d'établissement Google de Sitaly, par son identifiant Maps (cid).
+ * Le cid ne change pas quand le nom, la catégorie ou la description changent.
+ */
+export const FICHE_GOOGLE_URL = "https://maps.google.com/?cid=13829169604349736835";
+
+/**
  * Prix plancher des agents IA.
  *
  * DESIGN.md §8 a retiré les prix des pages commerciales le 2 septembre 2026.
