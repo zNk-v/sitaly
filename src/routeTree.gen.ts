@@ -43,6 +43,7 @@ import { Route as AutomatisationTachesRouteImport } from './routes/automatisatio
 import { Route as ApplicationWebMobileRouteImport } from './routes/application-web-mobile'
 import { Route as AgentsIaRouteImport } from './routes/agents-ia'
 import { Route as AcquisitionRouteImport } from './routes/acquisition'
+import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as RealisationsIndexRouteImport } from './routes/realisations.index'
 import { Route as OutilsIndexRouteImport } from './routes/outils.index'
@@ -51,6 +52,9 @@ import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slu
 import { Route as OutilsBudgetGoogleAdsArtisanRouteImport } from './routes/outils.budget-google-ads-artisan'
 import { Route as OutilsAuditFicheGoogleRouteImport } from './routes/outils.audit-fiche-google'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as AgentsIaCourtiersRouteImport } from './routes/agents-ia_.courtiers'
+import { Route as AgentsIaBtpRouteImport } from './routes/agents-ia_.btp'
+import { Route as AgentsIaAgencesImmobilieresRouteImport } from './routes/agents-ia_.agences-immobilieres'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -224,6 +228,11 @@ const AcquisitionRoute = AcquisitionRouteImport.update({
   path: '/acquisition',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AProposRoute = AProposRouteImport.update({
+  id: '/a-propos',
+  path: '/a-propos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -265,9 +274,26 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => BlogRoute,
 } as any)
+const AgentsIaCourtiersRoute = AgentsIaCourtiersRouteImport.update({
+  id: '/agents-ia_/courtiers',
+  path: '/agents-ia/courtiers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgentsIaBtpRoute = AgentsIaBtpRouteImport.update({
+  id: '/agents-ia_/btp',
+  path: '/agents-ia/btp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgentsIaAgencesImmobilieresRoute =
+  AgentsIaAgencesImmobilieresRouteImport.update({
+    id: '/agents-ia_/agences-immobilieres',
+    path: '/agents-ia/agences-immobilieres',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
   '/acquisition': typeof AcquisitionRoute
   '/agents-ia': typeof AgentsIaRoute
   '/application-web-mobile': typeof ApplicationWebMobileRoute
@@ -302,6 +328,9 @@ export interface FileRoutesByFullPath {
   '/site-internet-serrurier': typeof SiteInternetSerrurierRoute
   '/site-vitrine': typeof SiteVitrineRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/agents-ia/agences-immobilieres': typeof AgentsIaAgencesImmobilieresRoute
+  '/agents-ia/btp': typeof AgentsIaBtpRoute
+  '/agents-ia/courtiers': typeof AgentsIaCourtiersRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
   '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
@@ -312,6 +341,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
   '/acquisition': typeof AcquisitionRoute
   '/agents-ia': typeof AgentsIaRoute
   '/application-web-mobile': typeof ApplicationWebMobileRoute
@@ -345,6 +375,9 @@ export interface FileRoutesByTo {
   '/site-internet-serrurier': typeof SiteInternetSerrurierRoute
   '/site-vitrine': typeof SiteVitrineRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/agents-ia/agences-immobilieres': typeof AgentsIaAgencesImmobilieresRoute
+  '/agents-ia/btp': typeof AgentsIaBtpRoute
+  '/agents-ia/courtiers': typeof AgentsIaCourtiersRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
   '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
@@ -356,6 +389,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
   '/acquisition': typeof AcquisitionRoute
   '/agents-ia': typeof AgentsIaRoute
   '/application-web-mobile': typeof ApplicationWebMobileRoute
@@ -390,6 +424,9 @@ export interface FileRoutesById {
   '/site-internet-serrurier': typeof SiteInternetSerrurierRoute
   '/site-vitrine': typeof SiteVitrineRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/agents-ia_/agences-immobilieres': typeof AgentsIaAgencesImmobilieresRoute
+  '/agents-ia_/btp': typeof AgentsIaBtpRoute
+  '/agents-ia_/courtiers': typeof AgentsIaCourtiersRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
   '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
@@ -402,6 +439,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/a-propos'
     | '/acquisition'
     | '/agents-ia'
     | '/application-web-mobile'
@@ -436,6 +474,9 @@ export interface FileRouteTypes {
     | '/site-internet-serrurier'
     | '/site-vitrine'
     | '/sitemap.xml'
+    | '/agents-ia/agences-immobilieres'
+    | '/agents-ia/btp'
+    | '/agents-ia/courtiers'
     | '/blog/$slug'
     | '/outils/audit-fiche-google'
     | '/outils/budget-google-ads-artisan'
@@ -446,6 +487,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/a-propos'
     | '/acquisition'
     | '/agents-ia'
     | '/application-web-mobile'
@@ -479,6 +521,9 @@ export interface FileRouteTypes {
     | '/site-internet-serrurier'
     | '/site-vitrine'
     | '/sitemap.xml'
+    | '/agents-ia/agences-immobilieres'
+    | '/agents-ia/btp'
+    | '/agents-ia/courtiers'
     | '/blog/$slug'
     | '/outils/audit-fiche-google'
     | '/outils/budget-google-ads-artisan'
@@ -489,6 +534,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/a-propos'
     | '/acquisition'
     | '/agents-ia'
     | '/application-web-mobile'
@@ -523,6 +569,9 @@ export interface FileRouteTypes {
     | '/site-internet-serrurier'
     | '/site-vitrine'
     | '/sitemap.xml'
+    | '/agents-ia_/agences-immobilieres'
+    | '/agents-ia_/btp'
+    | '/agents-ia_/courtiers'
     | '/blog/$slug'
     | '/outils/audit-fiche-google'
     | '/outils/budget-google-ads-artisan'
@@ -534,6 +583,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AProposRoute: typeof AProposRoute
   AcquisitionRoute: typeof AcquisitionRoute
   AgentsIaRoute: typeof AgentsIaRoute
   ApplicationWebMobileRoute: typeof ApplicationWebMobileRoute
@@ -568,6 +618,9 @@ export interface RootRouteChildren {
   SiteInternetSerrurierRoute: typeof SiteInternetSerrurierRoute
   SiteVitrineRoute: typeof SiteVitrineRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  AgentsIaAgencesImmobilieresRoute: typeof AgentsIaAgencesImmobilieresRoute
+  AgentsIaBtpRoute: typeof AgentsIaBtpRoute
+  AgentsIaCourtiersRoute: typeof AgentsIaCourtiersRoute
   OutilsAuditFicheGoogleRoute: typeof OutilsAuditFicheGoogleRoute
   OutilsBudgetGoogleAdsArtisanRoute: typeof OutilsBudgetGoogleAdsArtisanRoute
   RealisationsSlugRoute: typeof RealisationsSlugRoute
@@ -815,6 +868,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AcquisitionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/a-propos': {
+      id: '/a-propos'
+      path: '/a-propos'
+      fullPath: '/a-propos'
+      preLoaderRoute: typeof AProposRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -871,6 +931,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof BlogRoute
     }
+    '/agents-ia_/courtiers': {
+      id: '/agents-ia_/courtiers'
+      path: '/agents-ia/courtiers'
+      fullPath: '/agents-ia/courtiers'
+      preLoaderRoute: typeof AgentsIaCourtiersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agents-ia_/btp': {
+      id: '/agents-ia_/btp'
+      path: '/agents-ia/btp'
+      fullPath: '/agents-ia/btp'
+      preLoaderRoute: typeof AgentsIaBtpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agents-ia_/agences-immobilieres': {
+      id: '/agents-ia_/agences-immobilieres'
+      path: '/agents-ia/agences-immobilieres'
+      fullPath: '/agents-ia/agences-immobilieres'
+      preLoaderRoute: typeof AgentsIaAgencesImmobilieresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -888,6 +969,7 @@ const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AProposRoute: AProposRoute,
   AcquisitionRoute: AcquisitionRoute,
   AgentsIaRoute: AgentsIaRoute,
   ApplicationWebMobileRoute: ApplicationWebMobileRoute,
@@ -922,6 +1004,9 @@ const rootRouteChildren: RootRouteChildren = {
   SiteInternetSerrurierRoute: SiteInternetSerrurierRoute,
   SiteVitrineRoute: SiteVitrineRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  AgentsIaAgencesImmobilieresRoute: AgentsIaAgencesImmobilieresRoute,
+  AgentsIaBtpRoute: AgentsIaBtpRoute,
+  AgentsIaCourtiersRoute: AgentsIaCourtiersRoute,
   OutilsAuditFicheGoogleRoute: OutilsAuditFicheGoogleRoute,
   OutilsBudgetGoogleAdsArtisanRoute: OutilsBudgetGoogleAdsArtisanRoute,
   RealisationsSlugRoute: RealisationsSlugRoute,
