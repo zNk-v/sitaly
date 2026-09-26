@@ -1,7 +1,12 @@
 import { Instagram, Linkedin, Mail, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { LINKEDIN_URL } from "@/components/LinkedinLink";
-import { SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
+import {
+  SITALY_DEPARTEMENT,
+  SITALY_PHONE,
+  SITALY_PHONE_DISPLAY,
+  SITALY_VILLE,
+} from "@/lib/config";
 
 import teddy448 from "@/assets/teddy-vidal-448.jpg";
 import teddy672 from "@/assets/teddy-vidal-672.jpg";
@@ -56,19 +61,19 @@ export function FondateurCard({ className }: { className?: string }) {
             Teddy Vidal
           </h3>
           <p className="mt-2 font-medium text-muted-foreground">
-            Fondateur de Sitaly, et la personne qui construit votre site
+            Fondateur de Sitaly, et la personne qui construit vos outils
           </p>
 
           <div className="mt-6 space-y-4 leading-relaxed text-muted-foreground">
             <p>
-              Sitaly, c'est moi. Je conçois les sites, je pilote les campagnes et je branche les
-              agents IA. Vous n'aurez pas un commercial à l'appel découverte et un stagiaire sur
+              Sitaly, c'est moi. J'installe les agents IA, je conçois les sites et je pilote les
+              campagnes. Vous n'aurez pas un commercial à l'appel découverte et un stagiaire sur
               votre projet.
             </p>
             <p>
-              Je travaille à distance, partout en France. Pas de déplacement à facturer, pas de
-              rendez-vous à caler trois semaines à l'avance : on s'appelle vingt minutes et on sait
-              tout de suite si ça vaut le coup.
+              Je suis basé à {SITALY_VILLE}, dans l'{SITALY_DEPARTEMENT}. Je travaille avec des PME
+              d'Île-de-France et, à distance, de toute la France. Pas de rendez-vous à caler trois
+              semaines à l'avance : on s'appelle et on sait tout de suite si ça vaut le coup.
             </p>
           </div>
 

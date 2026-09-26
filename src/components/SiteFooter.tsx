@@ -2,9 +2,14 @@ import { Link } from "@tanstack/react-router";
 import { Mail, Phone } from "lucide-react";
 import { SitalyLogo } from "@/components/SitalyLogo";
 import { LinkedinLink } from "@/components/LinkedinLink";
-import { MetierFooterLinks } from "@/components/MetierLinks";
+import { SECTEURS, cheminSecteur } from "@/data/secteurs";
 import { COULEURS_FAMILLE, FAMILLES, entreesFamille } from "@/data/expertises";
-import { SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
+import {
+  SITALY_DEPARTEMENT,
+  SITALY_PHONE,
+  SITALY_PHONE_DISPLAY,
+  SITALY_VILLE,
+} from "@/lib/config";
 
 /**
  * Pied de page unique du site.
@@ -26,8 +31,11 @@ export function SiteFooter() {
           <div>
             <SitalyLogo variant="blanc" />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
-              La présence en ligne des indépendants, TPE et PME. Le site, l'acquisition et
-              l'automatisation, avec un seul interlocuteur.
+              Agents IA, automatisations et sites pour les PME. Un seul interlocuteur, celui qui
+              construit.
+            </p>
+            <p className="mt-2 max-w-xs text-sm text-white/60">
+              Basé à {SITALY_VILLE} ({SITALY_DEPARTEMENT}).
             </p>
             <div className="mt-5 flex flex-col gap-2 text-sm">
               <a
@@ -96,21 +104,26 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
-                <Link to="/outils/" className="transition hover:text-white">
-                  Outils gratuits
+                <Link to="/a-propos/" className="transition hover:text-white">
+                  À propos
                 </Link>
               </li>
             </ul>
           </nav>
-          {/* Les pages métier n'avaient de lien que depuis le blog et entre elles.
-              Le pied de page est la carte du site (DESIGN.md §8 bis) : elles y
-              figurent, en une ligne pour ne pas alourdir les colonnes. */}
-          <nav aria-label="Sites par métier" className="mt-6">
-            <div className="rail-label text-white/60">Sites par métier</div>
-            <MetierFooterLinks
-              className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-white/60"
-              linkClassName="transition hover:text-white"
-            />
+          {/* Les pages métier artisans sont sorties de l'index le 26 septembre
+              2026 (src/lib/indexation.ts) : elles quittent la carte du site.
+              Les pages Agents IA par secteur prennent leur place. */}
+          <nav aria-label="Agents IA par secteur" className="mt-6">
+            <div className="rail-label text-white/60">Agents IA par secteur</div>
+            <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-white/60">
+              {SECTEURS.map((s) => (
+                <li key={s.slug}>
+                  <Link to={cheminSecteur(s)} className="transition hover:text-white">
+                    {s.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </nav>
         </div>
 

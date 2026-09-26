@@ -10,13 +10,14 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { FondateurCard } from "@/components/FondateurCard";
 import { ZoomIntro } from "@/components/ZoomIntro";
 import { useProgressionAuDefilement } from "@/hooks/use-progression-defilement";
-import { MetiersDefilement } from "@/components/MetiersDefilement";
+import { SECTEURS, cheminSecteur } from "@/data/secteurs";
 import { BlogCard } from "@/components/BlogCard";
 import { COULEURS_FAMILLE, FAMILLES, entreesFamille } from "@/data/expertises";
 import { postsALaUne } from "@/data/blog-posts";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 import { useSplitWords } from "@/hooks/use-split-words";
-import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
+import { CALENDLY_URL, FORM_ENDPOINT, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
+import { envoyerDemande } from "@/lib/formulaire";
 
 /* Cinq questions, pas sept. Celles qui portaient sur Google Ads et sur
    l'automatisation ont désormais leur page, où elles sont posées par des
@@ -44,24 +45,21 @@ const FAQ_ITEMS = [
   },
 ];
 
+/* Recentrage du 26 septembre 2026 (audit SEO/GEO) : l'accueil se positionne
+   sur les agents IA pour les PME. Le site et la publicité restent présentés,
+   en complément. */
+const TITRE_ACCUEIL = "Agents IA et automatisation pour PME | Sitaly";
+const DESCRIPTION_ACCUEIL =
+  "Sitaly installe et pilote des agents IA pour PME : accueil téléphonique, qualification, rendez-vous, relance des devis. Diagnostic offert de 30 min.";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Site internet, publicité et automatisation pour TPE et PME | Sitaly" },
-      {
-        name: "description",
-        content:
-          "Sitaly installe et pilote votre présence en ligne : site internet, Google Ads, ChatGPT Ads et agents IA. Pour indépendants, TPE et PME. Un seul interlocuteur, sans engagement.",
-      },
-      {
-        property: "og:title",
-        content: "Site internet, publicité et automatisation pour TPE et PME | Sitaly",
-      },
-      {
-        property: "og:description",
-        content:
-          "Sitaly installe et pilote votre présence en ligne : site internet, Google Ads, ChatGPT Ads et agents IA. Pour indépendants, TPE et PME. Un seul interlocuteur, sans engagement.",
-      },
+      { title: TITRE_ACCUEIL },
+      { name: "description", content: DESCRIPTION_ACCUEIL },
+      { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large" },
+      { property: "og:title", content: TITRE_ACCUEIL },
+      { property: "og:description", content: DESCRIPTION_ACCUEIL },
       { property: "og:url", content: "https://sitaly.fr/" },
     ],
     links: [{ rel: "canonical", href: "https://sitaly.fr/" }],
@@ -95,7 +93,7 @@ function SitalyHome() {
       <SiteHeader accueil />
       <Ouverture />
       <Expertises />
-      <BandeMetiers />
+      <BandeSecteurs />
       <StackedOffers />
       <Realisations />
       <Process />
@@ -161,17 +159,22 @@ function Ouverture() {
                 className="stagger w-full text-balance font-display text-[clamp(1.35rem,3.5vw,3.3rem)] font-extrabold leading-[1.04] tracking-[-0.03em]"
                 style={{ "--stagger-step": "70ms" } as React.CSSProperties}
               >
+                {/* Le nom est découpé dans le voile par ZoomIntro, il n'est donc
+                    pas écrit dans le titre visible. Il y figure pour les moteurs
+                    et les lecteurs d'écran : « Sitaly installe et pilote… ». */}
+                <span className="sr-only">Sitaly </span>
                 <span className="text-blue-ink">installe</span> et{" "}
-                <span className="text-violet-ink">pilote</span> votre{" "}
-                <span className="text-red-ink">présence</span> en ligne
+                <span className="text-violet-ink">pilote</span> les{" "}
+                <span className="text-red-ink">agents IA</span> de votre PME
               </h1>
 
               {/* La phrase qui porte le positionnement : ce qui est fait, et par
                 qui. « Une seule personne » remplace le mot agence, qui
                 promettait une équipe que Sitaly n'a pas. */}
               <p className="measure mt-6 text-lg text-muted-foreground">
-                Le site internet, la publicité en ligne et les automatisations. Une seule personne
-                au bout du fil, celle qui construit.
+                Accueil téléphonique, qualification des demandes, prise de rendez-vous, relance des
+                devis. Le site et la publicité en complément. Une seule personne au bout du fil,
+                celle qui construit.
               </p>
 
               <a
@@ -188,7 +191,7 @@ function Ouverture() {
                 titre et un bouton : de quoi paraître vide, et rien pour lever
                 les objections de départ. */}
               <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-sm text-muted-foreground">
-                {["Mise en ligne en 48h", "Réponse sous 24h", "Sans engagement de durée"].map(
+                {["Diagnostic offert de 30 min", "Réponse sous 24h", "Sans engagement de durée"].map(
                   (t) => (
                     <li key={t} className="flex items-center gap-2">
                       <Check className="h-4 w-4 shrink-0 text-signal-ink" />
@@ -237,7 +240,14 @@ function CeQuOnFait() {
      prestation, les séparer laissait croire à deux offres distinctes.
      Les classes de survol sont écrites en entier, Tailwind ne compile pas un
      nom de classe assemblé à l'exécution. */
+  /* Les agents IA passent en tête depuis le recentrage du 26 septembre 2026. */
   const prestations = [
+    {
+      texte: "agents IA & automatisations",
+      to: "/agents-ia/",
+      coche: "text-violet-on-ink",
+      survol: "group-hover:text-violet-on-ink",
+    },
     {
       texte: "création de site internet",
       to: "/creation-site-internet/",
@@ -249,12 +259,6 @@ function CeQuOnFait() {
       to: "/acquisition/",
       coche: "text-red-on-ink",
       survol: "group-hover:text-red-on-ink",
-    },
-    {
-      texte: "agents IA & automatisations",
-      to: "/agents-ia/",
-      coche: "text-violet-on-ink",
-      survol: "group-hover:text-violet-on-ink",
     },
   ];
 
@@ -268,8 +272,8 @@ function CeQuOnFait() {
         </p>
 
         <p data-reveal className="measure mx-auto mt-6 text-lg text-white/80 sm:text-xl">
-          Avec Sitaly, votre présence en ligne devient un vrai levier, sur votre visibilité, sur les
-          demandes que vous recevez comme sur votre organisation quotidienne.
+          Avec Sitaly, chaque demande entrante est traitée, qualifiée et relancée, et votre présence
+          en ligne en amène de nouvelles.
         </p>
 
         <ul className="stagger mt-16 space-y-1 sm:space-y-0">
@@ -339,6 +343,10 @@ function CeQuOnFait() {
  * un point précis n'avait nulle part où aller. Les trois familles disent la
  * même séquence et mènent chacune à des pages qui la détaillent.
  */
+/* L'automatisation ouvre la section depuis le recentrage Agents IA / PME.
+   L'ordre du menu et du pied de page ne change pas. */
+const ORDRE_FAMILLES_ACCUEIL = ["automatisation", "site", "acquisition"] as const;
+
 function Expertises() {
   return (
     <section id="expertises" className="pt-20 pb-14 sm:pt-28 sm:pb-16">
@@ -351,11 +359,11 @@ function Expertises() {
               Trois familles, <span className="accent-word">une seule adresse</span>
             </>
           }
-          subtitle="Le site, ce qui l'amène des visiteurs, et ce qui traite les demandes une fois qu'elles arrivent."
+          subtitle="Ce qui traite les demandes quand elles arrivent, le site qui les reçoit, et ce qui les amène."
         />
 
         <div className="stagger mt-14 grid gap-x-10 gap-y-12 border-t border-border pt-12 md:grid-cols-3">
-          {FAMILLES.map((f, i) => (
+          {ORDRE_FAMILLES_ACCUEIL.map((id) => FAMILLES.find((f) => f.id === id)!).map((f, i) => (
             <div
               key={f.id}
               data-reveal
@@ -400,28 +408,34 @@ function Expertises() {
   );
 }
 
-/* ---------------- BANDE DES MÉTIERS ---------------- */
+/* ---------------- BANDE DES SECTEURS ---------------- */
 /**
  * La charnière entre les expertises et les offres.
  *
- * Elle avait été retirée faute d'endroit : posée entre deux blocs verticaux,
- * une bande horizontale les sépare mieux qu'une marge, et elle occupe une
- * transition qui était vide. Elle dit à qui Sitaly s'adresse sans y consacrer
- * une section entière, ce qui était le défaut de la version précédente.
- *
- * Une seule rangée : à deux, la bande doublait de hauteur et cessait d'être
- * une charnière pour devenir une section.
- *
- * Les filets du haut et du bas la font lire comme une règle typographique et
- * non comme une section de plus.
+ * Elle faisait défiler cinquante-quatre métiers. Depuis le recentrage du
+ * 26 septembre 2026 sur les agents IA pour les PME, elle nomme les trois
+ * secteurs que Sitaly prospecte, chacun vers sa page. Même forme de règle
+ * typographique entre deux filets : une rangée, pas une section de plus.
  */
-function BandeMetiers() {
+function BandeSecteurs() {
   return (
-    <section aria-label="Métiers accompagnés" className="border-y border-border bg-paper-sunk">
-      <p className="sr-only">
-        Sitaly accompagne ces métiers, et les autres, dans leur présence en ligne.
-      </p>
-      <MetiersDefilement className="py-6 sm:py-7" />
+    <section aria-label="Agents IA par secteur" className="border-y border-border bg-paper-sunk">
+      <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-6 sm:px-6 sm:py-7 lg:flex-row lg:items-center lg:gap-10">
+        <span className="rail-label shrink-0 text-muted-foreground">Agents IA par secteur</span>
+        <ul className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-x-8 sm:gap-y-2">
+          {SECTEURS.map((s) => (
+            <li key={s.slug}>
+              <Link
+                to={cheminSecteur(s)}
+                className="group inline-flex items-center gap-2 font-display text-lg font-bold tracking-tight transition-colors hover:text-violet-ink"
+              >
+                {s.label}
+                <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }
@@ -717,7 +731,7 @@ function Founder() {
           title={
             <>
               Un seul interlocuteur,{" "}
-              <span className="accent-word text-brand-ink">celui qui construit votre site</span>
+              <span className="accent-word text-brand-ink">celui qui construit vos outils</span>
             </>
           }
         />
@@ -776,8 +790,57 @@ function Journal() {
 }
 
 /* ---------------- CONTACT ---------------- */
+/**
+ * Le formulaire envoie la demande au relais `sitaly-forms` (src/lib/formulaire.ts).
+ *
+ * Il ouvrait jusqu'ici l'application SMS du visiteur avec le message
+ * pré-rempli : sur un ordinateur, rien ne partait, et rien n'était mesuré.
+ * Tant que le relais n'est pas configuré (FORM_ENDPOINT vide), ce
+ * comportement reste le repli ; en cas d'échec d'envoi, le visiteur garde le
+ * téléphone et le SMS sous la main plutôt qu'une demande perdue.
+ */
+type EtatContact = "saisie" | "envoi" | "envoye" | "sms" | "erreur";
+
 function Contact() {
-  const [sent, setSent] = useState(false);
+  const [etat, setEtat] = useState<EtatContact>("saisie");
+  const [lienSms, setLienSms] = useState("");
+
+  async function envoyer(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    const get = (cle: string) => String(fd.get(cle) || "").trim();
+    const nomComplet = `${get("firstname")} ${get("name")}`.trim();
+    const entreprise = get("company");
+    const telephone = get("phone");
+    const message = get("message");
+    const corps = `Bonjour, je suis ${nomComplet}${entreprise ? ` (${entreprise})` : ""}.\nTéléphone : ${telephone}\n\n${message}`;
+    const separateur = /iPad|iPhone|iPod/.test(navigator.userAgent) ? "&" : "?";
+    const sms = `sms:${SITALY_PHONE}${separateur}body=${encodeURIComponent(corps)}`;
+    setLienSms(sms);
+    setEtat("envoi");
+
+    const resultat = await envoyerDemande(
+      {
+        name: nomComplet,
+        company: entreprise,
+        phone: telephone,
+        email: get("email"),
+        subject: "Demande de contact",
+        message,
+        website: get("website"),
+      },
+      "contact-accueil",
+    );
+    if (resultat === "envoye") {
+      setEtat("envoye");
+    } else if (resultat === "indisponible") {
+      window.location.href = sms;
+      setEtat("sms");
+    } else {
+      setEtat("erreur");
+    }
+  }
+
   return (
     <section id="contact" className="relative overflow-hidden py-20 sm:py-28">
       <div className="absolute inset-0 -z-10 hero-bg" />
@@ -796,7 +859,7 @@ function Contact() {
               <div className="grid h-10 w-10 place-items-center rounded-lg bg-accent/10 text-accent">
                 <Phone className="h-5 w-5" />
               </div>
-              Un appel découverte de 20 min
+              Un diagnostic offert de 30 min
             </li>
             <li className="flex items-center gap-3">
               <div className="grid h-10 w-10 place-items-center rounded-lg bg-accent/10 text-accent">
@@ -825,27 +888,21 @@ function Contact() {
         </div>
 
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            const fd = new FormData(e.currentTarget);
-            const name = String(fd.get("name") || "");
-            const firstname = String(fd.get("firstname") || "");
-            const company = String(fd.get("company") || "");
-            const phone = String(fd.get("phone") || "");
-            const message = String(fd.get("message") || "");
-            const fullName = `${firstname} ${name}`.trim();
-            const body = `Bonjour, je suis ${fullName}${company ? ` (${company})` : ""}.\nTéléphone : ${phone}\n\n${message}`;
-            const sitalyPhone = SITALY_PHONE;
-            const ua = navigator.userAgent;
-            const isIOS = /iPad|iPhone|iPod/.test(ua);
-            const separator = isIOS ? "&" : "?";
-            window.location.href = `sms:${sitalyPhone}${separator}body=${encodeURIComponent(body)}`;
-            setSent(true);
-          }}
-          className="rounded-2xl border border-border bg-card p-6 shadow-elevated sm:p-8"
+          onSubmit={envoyer}
+          className="relative rounded-2xl border border-border bg-card p-6 shadow-elevated sm:p-8"
         >
-          {sent ? (
-            <div className="py-10 text-center">
+          {etat === "envoye" ? (
+            <div className="py-10 text-center" role="status">
+              <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-success/15 text-success">
+                <Check className="h-7 w-7" />
+              </div>
+              <h3 className="mt-4 font-display text-xl font-bold">Demande reçue</h3>
+              <p className="mt-2 text-muted-foreground">
+                Je vous rappelle sous 24 h au numéro indiqué.
+              </p>
+            </div>
+          ) : etat === "sms" ? (
+            <div className="py-10 text-center" role="status">
               <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-success/15 text-success">
                 <Check className="h-7 w-7" />
               </div>
@@ -855,13 +912,36 @@ function Contact() {
                 reste plus qu'à l'envoyer.
               </p>
             </div>
+          ) : etat === "erreur" ? (
+            <div className="py-10 text-center" role="alert">
+              <h3 className="font-display text-xl font-bold">L'envoi n'a pas abouti</h3>
+              <p className="mt-2 text-muted-foreground">
+                Votre demande n'est pas partie. Appelez le {SITALY_PHONE_DISPLAY}, ou envoyez-la par
+                SMS : le message est déjà rédigé.
+              </p>
+              <div className="mt-6 flex flex-wrap justify-center gap-3">
+                <a href={`tel:${SITALY_PHONE}`} className="bouton px-6 py-3">
+                  <Phone className="h-4 w-4" />
+                  Appeler
+                </a>
+                <a href={lienSms} className="bouton-secondaire px-6 py-3">
+                  Envoyer par SMS
+                </a>
+              </div>
+            </div>
           ) : (
             <>
               <div className="grid gap-4 sm:grid-cols-2">
                 <Field label="Nom" name="name" required />
                 <Field label="Prénom" name="firstname" required />
                 <Field label="Téléphone" name="phone" type="tel" required />
-                <Field label="Entreprise" name="company" />
+                <Field label="E-mail" name="email" type="email" />
+                <Field label="Entreprise" name="company" className="sm:col-span-2" />
+              </div>
+              {/* Pot de miel : invisible pour un humain, rempli par les robots. */}
+              <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+                <label htmlFor="field-website">Ne pas remplir</label>
+                <input id="field-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
               </div>
               <div className="mt-4">
                 <label htmlFor="contact-message" className="text-sm font-medium">
@@ -876,12 +956,25 @@ function Contact() {
                   placeholder="Parlez-nous brièvement de votre activité…"
                 />
               </div>
-              <button type="submit" className="bouton mt-5 w-full px-6 py-3.5">
+              <button
+                type="submit"
+                disabled={etat === "envoi"}
+                className="bouton mt-5 w-full px-6 py-3.5 disabled:opacity-70"
+              >
                 <Phone className="h-5 w-5" />
-                Envoyer un message
+                {etat === "envoi" ? "Envoi…" : "Envoyer un message"}
               </button>
               <p className="mt-3 text-center text-xs text-muted-foreground">
-                Votre application de messagerie s'ouvrira avec le message pré-rempli.
+                {FORM_ENDPOINT ? (
+                  <>
+                    Vos coordonnées servent uniquement à vous recontacter.{" "}
+                    <Link to="/politique-confidentialite/" className="underline underline-offset-2">
+                      Confidentialité
+                    </Link>
+                  </>
+                ) : (
+                  "Votre application de messagerie s'ouvrira avec le message pré-rempli."
+                )}
               </p>
             </>
           )}
@@ -896,15 +989,17 @@ function Field({
   name,
   type = "text",
   required,
+  className,
 }: {
   label: string;
   name: string;
   type?: string;
   required?: boolean;
+  className?: string;
 }) {
   const id = `field-${name}`;
   return (
-    <div>
+    <div className={className}>
       <label htmlFor={id} className="text-sm font-medium">
         {label} {required && <span className="text-red-ink">*</span>}
       </label>

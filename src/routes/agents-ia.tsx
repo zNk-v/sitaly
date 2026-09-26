@@ -42,7 +42,15 @@ import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
 import { WorkflowCanvas } from "@/components/WorkflowCanvas";
 import { AiFlowRail, type FlowStep } from "@/components/AiFlowRail";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
-import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
+import {
+  CALENDLY_URL,
+  FORM_ENDPOINT,
+  PRIX_AGENTS_IA,
+  SITALY_PHONE,
+  SITALY_PHONE_DISPLAY,
+} from "@/lib/config";
+import { envoyerDemande } from "@/lib/formulaire";
+import { SECTEURS, cheminSecteur, reponsePrix } from "@/data/secteurs";
 import { LinkedinLink } from "@/components/LinkedinLink";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -83,7 +91,15 @@ const FAQ_ITEMS = [
   },
   {
     q: "Comment le projet est-il facturé ?",
-    a: "En deux parties : le déploiement initial, chiffré après le diagnostic selon le périmètre et les connexions à réaliser, puis un suivi mensuel qui couvre le pilotage, les corrections et l'évolution des règles. Rien n'est chiffré avant le diagnostic.",
+    a: `En deux parties : le déploiement initial, puis un suivi mensuel qui couvre le pilotage, les corrections et l'évolution des règles. ${reponsePrix()}`,
+  },
+  {
+    q: "L'agent annonce-t-il qu'il est une IA ?",
+    a: "Oui, dès le début de chaque échange. C'est une obligation de l'article 50 du règlement européen sur l'IA depuis le 2 août 2026, et c'est plus honnête pour vos clients. Ils peuvent demander un humain à tout moment.",
+  },
+  {
+    q: "Peut-il faire de la prospection téléphonique ?",
+    a: "Pas auprès de particuliers sans leur consentement : c'est interdit depuis le 11 août 2026 (loi du 30 juin 2025). L'agent traite les demandes entrantes, rappelle les personnes qui l'ont demandé et suit vos clients existants.",
   },
 ];
 
@@ -460,19 +476,60 @@ const NOT_FIT = [
   "Vous ne souhaitez ni définir de règles ni relire les conversations",
 ];
 
+const TITRE = "Agents IA pour PME : appels, leads et relances | Sitaly";
+const DESCRIPTION =
+  "Des agents IA qui décrochent, qualifient, prennent les rendez-vous et relancent les devis. Installés, connectés à vos outils et pilotés par Sitaly.";
+
+/** Le service, rattaché à l'entité Sitaly du graphe racine. Le prix n'y entre
+    que s'il est affiché (src/lib/config.ts, PRIX_AGENTS_IA). */
+const SERVICE_AGENTS_IA: Record<string, unknown> = {
+  "@type": "Service",
+  "@id": "https://sitaly.fr/agents-ia/#service",
+  name: "Agents IA pour PME",
+  serviceType: "Installation et pilotage d'agents IA",
+  description: DESCRIPTION,
+  url: "https://sitaly.fr/agents-ia/",
+  provider: { "@id": "https://sitaly.fr/#business" },
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "Île-de-France" },
+    { "@type": "Country", name: "France" },
+  ],
+  audience: { "@type": "BusinessAudience", audienceType: "PME" },
+  ...(PRIX_AGENTS_IA.afficher
+    ? {
+        offers: [
+          {
+            "@type": "Offer",
+            name: "Mise en place",
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              minPrice: PRIX_AGENTS_IA.miseEnPlaceMin,
+              priceCurrency: "EUR",
+            },
+          },
+          {
+            "@type": "Offer",
+            name: "Pilotage mensuel",
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              minPrice: PRIX_AGENTS_IA.mensuelMin,
+              priceCurrency: "EUR",
+              unitCode: "MON",
+              unitText: "mois",
+            },
+          },
+        ],
+      }
+    : {}),
+};
+
 export const Route = createFileRoute("/agents-ia")({
   head: () => ({
     meta: [
-      { title: "Agents IA et automatisation pour TPE, PME et cabinets | Sitaly" },
-      {
-        name: "description",
-        content:
-          "Sitaly installe et pilote des agents IA qui répondent aux demandes, qualifient, prennent les rendez-vous et relancent : e-commerce, cabinets, artisans, agences.",
-      },
-      {
-        property: "og:title",
-        content: "Agents IA et automatisation pour TPE, PME et cabinets | Sitaly",
-      },
+      { title: TITRE },
+      { name: "description", content: DESCRIPTION },
+      { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large" },
+      { property: "og:title", content: TITRE },
       {
         property: "og:description",
         content:
@@ -492,12 +549,29 @@ export const Route = createFileRoute("/agents-ia")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: FAQ_ITEMS.map((it) => ({
-            "@type": "Question",
-            name: it.q,
-            acceptedAnswer: { "@type": "Answer", text: it.a },
-          })),
+          "@graph": [
+            SERVICE_AGENTS_IA,
+            {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Accueil", item: "https://sitaly.fr/" },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Agents IA",
+                  item: "https://sitaly.fr/agents-ia/",
+                },
+              ],
+            },
+            {
+              "@type": "FAQPage",
+              mainEntity: FAQ_ITEMS.map((it) => ({
+                "@type": "Question",
+                name: it.q,
+                acceptedAnswer: { "@type": "Answer", text: it.a },
+              })),
+            },
+          ],
         }),
       },
     ],
@@ -598,18 +672,22 @@ function Hero() {
           <div data-reveal>
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground">
               <Sparkles className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
-              Sitaly Agents IA — Automatisation sur mesure
+              Diagnostic offert de 30 minutes
             </div>
             <h1 className="mt-6 font-display text-[2.1rem] font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.4rem]">
+              {/* Le mot-clé de la page, dans le titre lui-même : le bandeau
+                  au-dessus n'est pas un titre pour les moteurs. */}
+              <span className="mb-3 block text-lg font-bold tracking-normal text-accent sm:text-xl">
+                Agents IA pour PME
+              </span>
               Chaque demande traitée.{" "}
               <span className="ai-gradient-text">Chaque client qualifié.</span> Chaque relance
               envoyée.
             </h1>
             <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-muted-foreground sm:text-lg">
-              Que vous vendiez en ligne, receviez des patients ou interveniez chez vos clients,
-              Sitaly installe et pilote les agents IA qui répondent, qualifient, prennent vos
-              rendez-vous et relancent ce qui reste en attente. Un humain reprend la main dès que la
-              situation le demande.
+              Agence immobilière, cabinet de courtage ou entreprise du bâtiment : Sitaly installe et
+              pilote les agents IA qui répondent, qualifient, prennent vos rendez-vous et relancent ce
+              qui reste en attente. Un humain reprend la main dès que la situation le demande.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -886,6 +964,29 @@ function Sectors() {
               </ul>
             </div>
           ))}
+        </div>
+
+        {/* Les pages détaillées par secteur : une par secteur prospecté. */}
+        <div data-reveal className="mt-10 ai-card p-6 sm:p-8">
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            Pages détaillées par secteur
+          </div>
+          <ul className="mt-5 grid gap-3 sm:grid-cols-3">
+            {SECTEURS.map((s) => (
+              <li key={s.slug}>
+                <Link
+                  to={cheminSecteur(s)}
+                  className="group flex items-center justify-between gap-3 rounded-xl border border-border bg-card px-4 py-3 text-[15px] font-semibold transition hover:border-accent"
+                >
+                  {s.label}
+                  <ArrowRight
+                    className="h-4 w-4 shrink-0 text-accent transition-transform group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <p
@@ -1253,9 +1354,10 @@ const VOLUMES = [
 ];
 
 function DiagnosticForm() {
-  const [sent, setSent] = useState(false);
+  const [etat, setEtat] = useState<"saisie" | "envoi" | "envoye" | "mail" | "erreur">("saisie");
+  const [lienMail, setLienMail] = useState(`mailto:${CONTACT_EMAIL}`);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const get = (key: string) => String(data.get(key) || "").trim();
@@ -1271,31 +1373,78 @@ function DiagnosticForm() {
       "Principal problème à résoudre :",
       get("problem"),
     ].join("\n");
-
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+    const mail = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
       "Demande de diagnostic — Agents IA",
     )}&body=${encodeURIComponent(body)}`;
-    setSent(true);
+    setLienMail(mail);
+    setEtat("envoi");
+
+    /* Envoi au relais sitaly-forms (src/lib/formulaire.ts). Sans relais
+       configuré, repli sur la messagerie du visiteur, comme avant. */
+    const resultat = await envoyerDemande(
+      {
+        name: get("fullName"),
+        company: get("company"),
+        phone: get("phone"),
+        email: get("email"),
+        profile: [get("sector"), get("volume")].filter(Boolean).join(" · "),
+        subject: "Demande de diagnostic — Agents IA",
+        message: get("problem"),
+        website: get("website"),
+      },
+      "diagnostic-agents-ia",
+    );
+    if (resultat === "envoye") {
+      setEtat("envoye");
+    } else if (resultat === "indisponible") {
+      window.location.href = mail;
+      setEtat("mail");
+    } else {
+      setEtat("erreur");
+    }
   }
 
-  if (sent) {
+  if (etat === "envoye") {
     return (
-      <div className="ai-card p-8 text-center sm:p-10">
+      <div className="ai-card p-8 text-center sm:p-10" role="status">
         <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-success/15 text-success">
           <Send className="h-6 w-6" aria-hidden="true" />
         </div>
-        <h3 className="mt-5 font-display text-xl font-bold">Votre demande est prête</h3>
+        <h3 className="mt-5 font-display text-xl font-bold">Demande reçue</h3>
         <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-          Votre messagerie s'ouvre avec le récapitulatif pré-rempli. Envoyez-le et nous revenons
-          vers vous sous 24 heures ouvrées.
+          Je reviens vers vous sous 24 heures ouvrées pour caler le diagnostic.
+        </p>
+      </div>
+    );
+  }
+
+  if (etat === "mail" || etat === "erreur") {
+    return (
+      <div className="ai-card p-8 text-center sm:p-10" role={etat === "erreur" ? "alert" : "status"}>
+        <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-success/15 text-success">
+          <Send className="h-6 w-6" aria-hidden="true" />
+        </div>
+        <h3 className="mt-5 font-display text-xl font-bold">
+          {etat === "erreur" ? "L'envoi n'a pas abouti" : "Votre demande est prête"}
+        </h3>
+        <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
+          {etat === "erreur"
+            ? "Votre demande n'est pas partie. Envoyez-la depuis votre messagerie, le récapitulatif est déjà rédigé, ou appelez directement."
+            : "Votre messagerie s'ouvre avec le récapitulatif pré-rempli. Envoyez-le et nous revenons vers vous sous 24 heures ouvrées."}
         </p>
         <p className="mt-4 text-sm text-muted-foreground">
-          Rien ne s'est ouvert ?{" "}
           <a
-            href={`mailto:${CONTACT_EMAIL}`}
+            href={lienMail}
             className="font-semibold text-accent underline-offset-4 hover:underline"
           >
             {CONTACT_EMAIL}
+          </a>
+          {" · "}
+          <a
+            href={`tel:${SITALY_PHONE}`}
+            className="font-semibold text-accent underline-offset-4 hover:underline"
+          >
+            {SITALY_PHONE_DISPLAY}
           </a>
         </p>
       </div>
@@ -1303,7 +1452,7 @@ function DiagnosticForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="ai-card p-6 sm:p-8">
+    <form onSubmit={handleSubmit} className="ai-card relative p-6 sm:p-8">
       <h3 className="font-display text-xl font-bold">{CTA_LABEL}</h3>
       <p className="mt-2 text-sm text-muted-foreground">
         Sept champs, deux minutes. Nous préparons l'échange à partir de vos réponses.
@@ -1339,13 +1488,24 @@ function DiagnosticForm() {
         />
       </div>
 
-      <button type="submit" className="bouton mt-6 w-full px-6 py-3.5 text-base">
-        {CTA_LABEL}
+      {/* Pot de miel : invisible pour un humain, rempli par les robots. */}
+      <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label htmlFor="ai-website">Ne pas remplir</label>
+        <input id="ai-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
+      <button
+        type="submit"
+        disabled={etat === "envoi"}
+        className="bouton mt-6 w-full px-6 py-3.5 text-base disabled:opacity-70"
+      >
+        {etat === "envoi" ? "Envoi…" : CTA_LABEL}
         <ArrowRight className="h-5 w-5" aria-hidden="true" />
       </button>
       <p className="mt-3 text-center text-xs leading-relaxed text-muted-foreground">
-        L'envoi ouvre votre messagerie avec le récapitulatif pré-rempli. Vos informations ne sont
-        utilisées que pour préparer le diagnostic.
+        {FORM_ENDPOINT
+          ? "Vos informations ne sont utilisées que pour préparer le diagnostic."
+          : "L'envoi ouvre votre messagerie avec le récapitulatif pré-rempli. Vos informations ne sont utilisées que pour préparer le diagnostic."}
       </p>
     </form>
   );
