@@ -8,6 +8,13 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import { PAGES_A_PRERENDRE_HORS_INDEX } from "./src/lib/indexation";
 
 export default defineConfig({
+  vite: {
+    // La date du build, identique au prérendu et dans le navigateur
+    // (src/lib/date-du-build.ts).
+    define: {
+      __DATE_DU_BUILD__: JSON.stringify(new Date().toISOString().slice(0, 10)),
+    },
+  },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
