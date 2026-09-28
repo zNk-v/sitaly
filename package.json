@@ -10,6 +10,7 @@
     "postbuild": "node scripts/sync-static-css.mjs",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
+    "verifier:seo": "node scripts/verifier-seo.mjs",
     "lint": "eslint .",
     "format": "prettier --write ."
   },

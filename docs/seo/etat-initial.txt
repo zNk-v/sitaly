@@ -1,0 +1,70 @@
+Vérification SEO du build (dist/client)
+91 pages lues : 43 indexables, 45 hors index, 3 redirections. 43 adresses au sitemap.
+
+ERREURS (41)
+  ✗ /acquisition/ : meta description de 172 caractères (160 au plus)
+  ✗ /blog/agent-ia-entreprise-guide/ : meta description de 182 caractères (160 au plus)
+  ✗ /blog/agent-ia-entreprise-guide/ : CTA « Et si on créait votre site » hors d'un article dont le cta vaut site
+  ✗ /blog/ai-act-article-50-agent-vocal/ : CTA « Et si on créait votre site » hors d'un article dont le cta vaut site
+  ✗ /blog/automatiser-suivi-client-tpe/ : meta description de 167 caractères (160 au plus)
+  ✗ /blog/automatiser-suivi-client-tpe/ : CTA « Et si on créait votre site » hors d'un article dont le cta vaut site
+  ✗ /blog/chatbot-entreprise-tpe-guide/ : CTA « Et si on créait votre site » hors d'un article dont le cta vaut site
+  ✗ /blog/chatgpt-ads-secteurs-pme/ : meta description de 174 caractères (160 au plus)
+  ✗ /blog/chatgpt-ads-secteurs-pme/ : CTA « Et si on créait votre site » hors d'un article dont le cta vaut site
+  ✗ /blog/cout-chatgpt-ads/ : meta description de 176 caractères (160 au plus)
+  ✗ /blog/cout-chatgpt-ads/ : CTA « Et si on créait votre site » hors d'un article dont le cta vaut site
+  ✗ /blog/demarchage-telephonique-agent-ia-2026/ : CTA « Et si on créait votre site » hors d'un article dont le cta vaut site
+  ✗ /blog/ : title de 63 caractères (60 au plus) : « Blog Sitaly : agents IA, automatisation et acquisition pour PME »
+  ✗ /blog/prise-rendez-vous-en-ligne-guide/ : meta description de 162 caractères (160 au plus)
+  ✗ /blog/prise-rendez-vous-en-ligne-guide/ : CTA « Et si on créait votre site » hors d'un article dont le cta vaut site
+  ✗ /blog/publicite-chatgpt-ads-guide/ : meta description de 161 caractères (160 au plus)
+  ✗ /blog/publicite-chatgpt-ads-guide/ : CTA « Et si on créait votre site » hors d'un article dont le cta vaut site
+  ✗ /blog/relance-automatique-devis/ : formulation interdite : « jusqu'à 30 % »
+  ✗ /blog/relance-automatique-devis/ : CTA « Et si on créait votre site » hors d'un article dont le cta vaut site
+  ✗ /blog/trouver-clients-agent-immobilier/ : CTA « Et si on créait votre site » hors d'un article dont le cta vaut site
+  ✗ /cgv/ : title de 61 caractères (60 au plus) : « CGV — Conditions Générales de Vente et d'Utilisation — Sitaly »
+  ✗ /cgv/ : formulation interdite : « plateforme saas »
+  ✗ /chatgpt-ads/ : question de FAQPage absente du texte visible : « En quoi ChatGPT Ads est différent de Google Ads ? »
+  ✗ /chatgpt-ads/ : question de FAQPage absente du texte visible : « Est-ce que Sitaly est partenaire officiel ou certifié OpenAI ? »
+  ✗ /chatgpt-ads/ : question de FAQPage absente du texte visible : « Est-ce que mes publicités apparaîtront dans toutes les conversations ? »
+  ✗ /chatgpt-ads/ : question de FAQPage absente du texte visible : « Quel budget prévoir pour tester ChatGPT Ads ? »
+  ✗ /chatgpt-ads/ : question de FAQPage absente du texte visible : « Faut-il déjà faire de la publicité pour se lancer ? »
+  ✗ /chatgpt-ads/ : title de 62 caractères (60 au plus) : « Agence ChatGPT Ads en France — Publicité dans ChatGPT | Sitaly »
+  ✗ /chatgpt-ads/ : le formulaire part encore par mailto: comme envoi principal
+  ✗ /creation-site-internet/ : title de 64 caractères (60 au plus) : « Création de site internet pour TPE, PME et indépendants | Sitaly »
+  ✗ /crm-sur-mesure/ : title de 61 caractères (60 au plus) : « CRM sur mesure pour TPE et PME : suivi client simple | Sitaly »
+  ✗ /integration-api/ : title de 62 caractères (60 au plus) : « Intégration d'API : connecter vos logiciels entre eux | Sitaly »
+  ✗ /realisations/aymeric-pataud/ : title de 71 caractères (60 au plus) : « Aymeric Pataud, chef consultant, expert du goût — étude de cas | Sitaly »
+  ✗ /realisations/aymeric-pataud/ : meta description de 227 caractères (160 au plus)
+  ✗ /realisations/entreprise-felicioni/ : title de 81 caractères (60 au plus) : « Entreprise Felicioni, rénovation complète et second œuvre — étude de cas | Sitaly »
+  ✗ /realisations/entreprise-felicioni/ : meta description de 222 caractères (160 au plus)
+  ✗ /realisations/ : meta description de 196 caractères (160 au plus)
+  ✗ /realisations/lafleur-toiture/ : title de 75 caractères (60 au plus) : « Lafleur Toiture, couverture, ravalement et peinture — étude de cas | Sitaly »
+  ✗ /realisations/lafleur-toiture/ : meta description de 257 caractères (160 au plus)
+  ✗ /refonte-site-internet/ : title de 63 caractères (60 au plus) : « Refonte de site internet sans perdre son référencement | Sitaly »
+  ✗ /site-vitrine/ : title de 63 caractères (60 au plus) : « Site vitrine professionnel : création et référencement | Sitaly »
+
+AVERTISSEMENTS (21)
+  ! /acquisition/ : réponse de FAQPage différente du texte visible : « Pourquoi une part variable en plus du forfait ? »
+  ! /acquisition/ : réponse de FAQPage différente du texte visible : « Combien dois-je investir en publicité ? »
+  ! /acquisition/ : réponse de FAQPage différente du texte visible : « Est-ce que vous garantissez des clients ? »
+  ! /acquisition/ : réponse de FAQPage différente du texte visible : « Puis-je arrêter l'accompagnement ? »
+  ! /acquisition/ : réponse de FAQPage différente du texte visible : « Dois-je déjà avoir un site internet ? »
+  ! /acquisition/ : réponse de FAQPage différente du texte visible : « Qui est propriétaire du compte Google Ads ? »
+  ! /chatgpt-ads/ : réponse de FAQPage différente du texte visible : « En quoi ChatGPT Ads est différent de Google Ads ? »
+  ! /chatgpt-ads/ : réponse de FAQPage différente du texte visible : « Est-ce que Sitaly est partenaire officiel ou certifié OpenAI ? »
+  ! /chatgpt-ads/ : réponse de FAQPage différente du texte visible : « Est-ce que mes publicités apparaîtront dans toutes les conversations ? »
+  ! /chatgpt-ads/ : réponse de FAQPage différente du texte visible : « Quels résultats puis-je attendre ? »
+  ! /chatgpt-ads/ : réponse de FAQPage différente du texte visible : « Quel budget prévoir pour tester ChatGPT Ads ? »
+  ! /chatgpt-ads/ : réponse de FAQPage différente du texte visible : « Faut-il déjà faire de la publicité pour se lancer ? »
+  ! /cookies/ : title court (26) : « Politique cookies — Sitaly »
+  ! /cookies/ : meta description courte (86)
+  ! / : réponse de FAQPage différente du texte visible : « Combien de temps pour le mettre en ligne ? »
+  ! / : réponse de FAQPage différente du texte visible : « Que comprennent vraiment les modifications incluses ? »
+  ! / : réponse de FAQPage différente du texte visible : « Puis-je arrêter mon abonnement ? »
+  ! / : réponse de FAQPage différente du texte visible : « Puis-je acheter mon site ? »
+  ! /mentions-legales/ : title court (25) : « Mentions légales — Sitaly »
+  ! /mentions-legales/ : meta description courte (64)
+  ! /politique-confidentialite/ : meta description courte (110)
+
+Résultat : 41 erreur(s), 21 avertissement(s).
