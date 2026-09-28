@@ -10,6 +10,24 @@ export type BlogSection =
   | { type: "table"; caption?: string; headers: string[]; rows: string[][] }
   | { type: "faq"; items: { q: string; a: string }[] };
 
+/**
+ * Liens dans le texte des articles, écrits `[ancre](/chemin/)`. Le rendu en
+ * fait de vrais liens ; les données structurées et le décompte de mots n'en
+ * gardent que l'ancre (voir `texteBrut`).
+ */
+export const LIEN_DANS_LE_TEXTE = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+
+/** Le texte tel qu'on le lit, sans la syntaxe des liens. */
+export function texteBrut(texte: string): string {
+  return texte.replace(LIEN_DANS_LE_TEXTE, "$1");
+}
+
+/**
+ * L'étape suivante proposée en fin d'article. Chaque article pousse vers la
+ * page de vente de son sujet, pas vers le catalogue entier.
+ */
+export type CtaArticle = "agents-ia" | "chatgpt-ads" | "automatisation" | "site";
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -22,6 +40,8 @@ export interface BlogPost {
   updatedAt?: string;
   author: string;
   keyword: string;
+  /** L'appel de fin d'article. Sans valeur, le CTA site d'origine. */
+  cta?: CtaArticle;
   /**
    * Illustration propre à l'article, au format 1200×630. Elle s'affiche sous le
    * titre et sert d'aperçu au partage. Jamais d'image de banque (DESIGN.md §7) :
@@ -45,14 +65,16 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     title: "Publicité ChatGPT Ads : faut-il y investir votre budget ?",
     metaTitle: "Publicité ChatGPT Ads : faut-il y investir votre budget ?",
     metaDescription:
-      "Comment fonctionne la publicité dans ChatGPT, ce qu'elle change par rapport à Google Ads, et cinq critères concrets pour décider si ce canal mérite votre budget.",
+      "Comment fonctionne la publicité dans ChatGPT, ce qu'elle change par rapport à Google Ads, et cinq critères pour décider si ce canal mérite votre budget.",
     excerpt:
       "La publicité arrive dans ChatGPT. Voici ce qu'on sait de son fonctionnement, ce que ça change vraiment par rapport à Google Ads, et cinq critères pour décider si ce canal mérite une ligne dans votre budget — ou pas encore.",
     category: "Publicité IA",
     readingTime: "9 min",
     publishedAt: "2026-08-23",
+    updatedAt: "2026-09-28",
     author: "Teddy Vidal",
     keyword: "publicité ChatGPT Ads",
+    cta: "chatgpt-ads",
     content: [
       {
         type: "p",
@@ -258,14 +280,16 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     title: "Combien coûte ChatGPT Ads ? Ce qu'on peut dire honnêtement",
     metaTitle: "Combien coûte ChatGPT Ads ? Prix, budget et calcul du seuil",
     metaDescription:
-      "Aucun CPA fiable n'existe encore sur ChatGPT Ads en France. Voici la structure de coût, pourquoi s'en méfier des chiffres qui circulent, et comment calculer votre propre seuil.",
+      "Prix de ChatGPT Ads en France : ce qui compose le coût, quel budget de test prévoir et comment calculer le coût par lead acceptable pour votre marge.",
     excerpt:
       "Aucun tarif de référence n'existe encore sur ce canal en France. Plutôt qu'inventer un chiffre, voici comment se décompose le coût et comment calculer le seuil qui a du sens pour votre entreprise.",
     category: "Publicité IA",
     readingTime: "8 min",
     publishedAt: "2026-08-23",
+    updatedAt: "2026-09-28",
     author: "Teddy Vidal",
     keyword: "coût ChatGPT Ads",
+    cta: "chatgpt-ads",
     content: [
       {
         type: "p",
@@ -306,7 +330,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       { type: "h3", text: "3. Le coût invisible : ce qui se passe après le clic" },
       {
         type: "p",
-        text: "Celui-là n'apparaît sur aucune facture et il est pourtant souvent le plus lourd. Une page d'arrivée qui convertit mal double mécaniquement votre coût par demande. Des demandes non rappelées sous 24 h font disparaître une partie de ce que vous avez payé. Une campagne techniquement irréprochable branchée sur un parcours défaillant produit des factures, pas des clients.",
+        text: "Celui-là n'apparaît sur aucune facture et il est pourtant souvent le plus lourd. Une page d'arrivée qui convertit deux fois moins bien double mécaniquement votre coût par demande. Des demandes non rappelées sous 24 h font disparaître une partie de ce que vous avez payé. Une campagne techniquement irréprochable branchée sur un parcours défaillant produit des factures, pas des clients.",
       },
       { type: "h2", text: "Les chiffres qui circulent, et ce qu'ils valent" },
       {
@@ -351,7 +375,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Le calcul : votre coût par demande acceptable = (valeur d'un client × part acceptable) × taux de transformation. Une entreprise dont un client rapporte 4 000 € de marge, qui transforme une demande sur cinq et accepte d'y consacrer 20 %, peut payer jusqu'à 160 € une demande qualifiée. C'est son seuil. Il ne dépend d'aucun benchmark, et il reste vrai quel que soit le canal.",
+        text: "Le calcul : votre coût par demande acceptable = (valeur d'un client × part acceptable) × taux de transformation. Exemple, avec des chiffres fictifs : une entreprise dont un client rapporte 4 000 € de marge, qui transforme une demande sur cinq et accepte d'y consacrer 20 %, peut payer jusqu'à 160 € une demande qualifiée. C'est son seuil. Il ne dépend d'aucun benchmark, et il reste vrai quel que soit le canal.",
       },
       {
         type: "p",
@@ -429,14 +453,16 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     title: "ChatGPT Ads : quels secteurs en tirent réellement quelque chose",
     metaTitle: "ChatGPT Ads : quels secteurs et quelles PME en tirent parti",
     metaDescription:
-      "SaaS, B2B, immobilier, assurance, formation, e-commerce : quels secteurs bénéficient vraiment de la publicité dans ChatGPT, lesquels n'y gagnent rien, et comment le vérifier.",
+      "SaaS, B2B, immobilier, assurance, formation : les secteurs où la publicité dans ChatGPT a du sens, ceux où elle n'apporte rien, et comment le vérifier.",
     excerpt:
       "Le secteur compte moins que la façon dont vos prospects formulent leur besoin. Voici les activités structurellement avantagées, celles à manier avec prudence, et un test simple pour trancher votre cas.",
     category: "Publicité IA",
     readingTime: "9 min",
     publishedAt: "2026-08-23",
+    updatedAt: "2026-09-28",
     author: "Teddy Vidal",
     keyword: "ChatGPT Ads secteurs",
+    cta: "chatgpt-ads",
     content: [
       {
         type: "p",
@@ -589,7 +615,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
           },
           {
             q: "Faut-il un site adapté avant de lancer ?",
-            a: "Une page d'arrivée cohérente avec le besoin exprimé est indispensable. Une intention bien captée qui atterrit sur une page d'accueil générique se perd, et double mécaniquement votre coût par demande. C'est souvent le premier chantier avant toute campagne.",
+            a: "Une page d'arrivée cohérente avec le besoin exprimé est indispensable. Une intention bien captée qui atterrit sur une page d'accueil générique se perd, et chaque demande perdue renchérit d'autant votre coût par demande. C'est souvent le premier chantier avant toute campagne.",
           },
         ],
       },
@@ -2670,66 +2696,89 @@ const ALL_BLOG_POSTS: BlogPost[] = [
   {
     slug: "relance-automatique-devis",
     title: "Relancer ses devis automatiquement : la méthode pour signer plus en 2026",
-    metaTitle: "Relance de devis automatique : signez plus (guide 2026)",
+    metaTitle: "Relance de devis automatique : méthode et modèles (2026)",
     metaDescription:
-      "Jusqu'à 30 % de devis signés en plus grâce à la relance automatique. Méthode, timing, modèles de SMS et d'email prêts à l'emploi pour artisans et indépendants.",
+      "Quand et comment relancer un devis automatiquement : le bon timing, des modèles de SMS et d'email, et ce qu'un agent IA peut prendre en charge.",
     excerpt:
-      "La plupart des devis non signés ne sont pas refusés : ils sont oubliés. Voici comment relancer vos devis automatiquement et signer plus de clients, sans y penser.",
+      "La plupart des devis sans réponse ne sont pas refusés : ils sont oubliés. Voici quand relancer, avec quels messages, et comment automatiser la relance sans perdre le ton d'un échange humain.",
     category: "Automatisation",
-    readingTime: "9 min",
+    readingTime: "8 min",
     publishedAt: "2026-06-22",
+    updatedAt: "2026-09-28",
     author: "Teddy Vidal",
     keyword: "relance devis automatique",
+    cta: "agents-ia",
     content: [
       {
         type: "p",
-        text: "Vous envoyez un devis, le client dit « je vous rappelle »… et le silence s'installe. Ce n'est pas un refus : dans la majorité des cas, le prospect a simplement été happé par son quotidien. D'après plusieurs études sur les TPE de services, 6 devis sur 10 ne reçoivent jamais de relance, alors qu'une relance bien menée transforme 20 à 30 % de ces devis « oubliés » en chantiers signés. Le problème n'est pas commercial, il est organisationnel : vous n'avez pas le temps de relancer. La solution s'appelle la relance automatique des devis.",
+        text: "Vous envoyez un devis, le client répond « je reviens vers vous », puis plus rien. Ce silence n'est pas toujours un refus. Souvent, le devis a glissé sous d'autres priorités, chez le client comme chez vous. Dans une PME, la relance dépend de la mémoire de la personne qui a envoyé le devis, et cette personne a d'autres dossiers. La relance automatique retire ce maillon fragile.",
       },
-      { type: "h2", text: "Pourquoi vos devis non relancés vous coûtent une fortune" },
       {
         type: "p",
-        text: "Faites le calcul. Si vous envoyez 15 devis par mois, que 8 restent sans réponse, et qu'une relance en récupère 25 %, ce sont 2 chantiers supplémentaires chaque mois. À 1 200€ de panier moyen, cela représente près de 29 000€ de chiffre d'affaires par an perdus faute d'une simple relance. La relance n'est pas une corvée commerciale : c'est le levier le plus rentable de votre activité, parce que le prospect vous connaît déjà et a déjà reçu votre prix.",
+        text: "Cet article donne une séquence de relance, deux modèles de messages et la frontière entre ce qu'une automatisation simple fait bien et ce qu'un [agent de relance](/agents-ia/#relance) apporte en plus.",
+      },
+      { type: "h2", text: "Ce qu'un devis non relancé vous coûte, calculé avec vos chiffres" },
+      {
+        type: "p",
+        text: "Aucune moyenne de marché ne vous dira ce que vous perdez. Vos propres chiffres, si. Prenez le nombre de devis restés sans réponse le mois dernier, estimez la part qu'une relance aurait pu faire signer, et multipliez par votre marge moyenne sur une affaire.",
+      },
+      {
+        type: "p",
+        text: "Devis sans réponse × part récupérable × marge moyenne = ce que la relance vaut chaque mois pour vous. C'est une simulation : la part récupérable, vous la mesurerez vraiment après trois mois de relances régulières. Mais le calcul suffit à dire si le sujet mérite une heure de réglage.",
       },
       { type: "h2", text: "Le bon timing pour relancer un devis" },
       {
         type: "p",
-        text: "Un prospect prend rarement sa décision le jour J. La séquence qui fonctionne le mieux pour relancer un devis sans paraître insistant suit trois temps : un premier rappel court à J+2 (« vous avez bien reçu le devis ? »), une relance à valeur ajoutée à J+7 (une précision, une disponibilité de chantier, un avis client), puis une dernière relance à J+15 qui crée une légère urgence (planning qui se remplit, offre valable jusqu'à telle date).",
+        text: "Une décision se prend rarement le jour de la réception. La séquence que nous mettons en place suit trois temps : un rappel court deux jours après l'envoi, une relance utile une semaine après, puis une dernière relance au bout de deux semaines, qui donne une date ou une disponibilité.",
       },
       {
         type: "table",
         caption: "Séquence de relance de devis recommandée",
-        headers: ["Moment", "Canal", "Objectif", "Taux de réponse moyen"],
+        headers: ["Moment", "Canal", "Objectif"],
         rows: [
-          ["J+2", "SMS", "Confirmer la bonne réception", "30 à 45 %"],
-          ["J+7", "Email ou SMS", "Lever un frein, rassurer", "15 à 25 %"],
-          ["J+15", "SMS", "Créer une urgence douce", "10 à 20 %"],
+          ["J+2", "SMS ou e-mail", "Confirmer la bonne réception"],
+          ["J+7", "E-mail ou SMS", "Lever un frein, répondre à une question"],
+          ["J+15", "SMS", "Donner une échéance : planning, validité du devis"],
         ],
       },
-      { type: "h2", text: "Manuelle ou automatique : pourquoi automatiser change tout" },
       {
         type: "p",
-        text: "Tout le monde sait qu'il faut relancer. Personne ne le fait, parce que cela suppose de noter chaque devis, de programmer chaque rappel, de réécrire chaque message. La relance automatique supprime cette friction : dès que vous marquez un devis comme « envoyé », le système déclenche tout seul les SMS et emails aux bons moments, avec votre nom et le bon montant. Vous ne pensez plus à relancer — le système le fait pour vous, et s'arrête automatiquement dès que le client répond ou signe.",
+        text: "Une règle vaut pour toute la séquence : elle s'arrête dès que le client répond. Personne ne doit recevoir la relance de J+7 après avoir signé à J+5.",
+      },
+      { type: "h2", text: "Manuelle ou automatique : ce qui change" },
+      {
+        type: "p",
+        text: "Tout le monde sait qu'il faut relancer. Dans les faits, il faut noter chaque devis, programmer chaque rappel et réécrire chaque message. La relance automatique supprime ces trois gestes : dès qu'un devis passe au statut « envoyé » dans votre outil, les messages partent aux dates prévues, avec le nom du client, le bon montant et votre signature.",
+      },
+      {
+        type: "p",
+        text: "Pour une séquence fixe, une [automatisation des tâches](/automatisation-taches/) suffit : c'est un calendrier, pas une décision. L'agent IA devient utile quand le client répond. Il lit la réponse, comprend s'il s'agit d'une question, d'un report ou d'un refus, répond à ce qui a déjà une réponse et vous transmet le reste avec le contexte.",
       },
       { type: "h2", text: "Deux modèles de messages prêts à l'emploi" },
       { type: "h3", text: "SMS de relance à J+2" },
       {
         type: "quote",
-        text: "Bonjour {Prénom}, c'est {Votre nom}. Je voulais m'assurer que vous aviez bien reçu le devis envoyé lundi. Je reste dispo si vous avez la moindre question. Bonne journée !",
+        text: "Bonjour {Prénom}, c'est {Votre nom} de {Entreprise}. Je voulais m'assurer que vous aviez bien reçu le devis envoyé lundi. Je reste disponible si vous avez une question. Bonne journée.",
       },
-      { type: "h3", text: "SMS de relance à J+15 (urgence douce)" },
+      { type: "h3", text: "SMS de relance à J+15" },
       {
         type: "quote",
-        text: "Bonjour {Prénom}, mon planning de {mois} se remplit vite. Si vous souhaitez être positionné, je peux encore vous réserver un créneau cette semaine. Voulez-vous que je bloque une date ?",
+        text: "Bonjour {Prénom}, notre planning de {mois} se remplit. Si vous souhaitez avancer, je peux encore réserver un créneau cette semaine. Voulez-vous que je bloque une date ?",
       },
-      { type: "h2", text: "Ce que la relance automatique permet de gagner" },
+      { type: "h2", text: "Relancer par téléphone : ce que la loi permet" },
+      {
+        type: "p",
+        text: "Depuis le 11 août 2026, appeler un particulier pour le prospecter demande son consentement préalable. Relancer par téléphone un devis qu'il a demandé reste possible s'il a accepté d'être recontacté à ce sujet. Sinon, la relance passe par SMS ou e-mail. Le détail figure dans notre article sur le [démarchage téléphonique et les agents IA](/blog/demarchage-telephonique-agent-ia-2026/).",
+      },
+      { type: "h2", text: "Ce que la relance automatique change au quotidien" },
       {
         type: "ul",
         items: [
-          "Plus aucun devis oublié dans un coin de boîte mail",
-          "20 à 30 % de devis signés en plus sans démarchage supplémentaire",
-          "Un suivi professionnel qui rassure le client et vous différencie",
-          "Zéro temps passé à noter et programmer les rappels",
-          "L'arrêt automatique de la séquence dès que le client répond",
+          "Aucun devis oublié dans une boîte mail",
+          "Un suivi régulier, qui ne dépend plus de la mémoire de celui qui a envoyé le devis",
+          "Des messages personnalisés : prénom, prestation, montant, signature",
+          "L'arrêt de la séquence dès que le client répond",
+          "Une vue claire des devis en attente, relancés, acceptés ou perdus",
         ],
       },
       { type: "h2", text: "Questions fréquentes" },
@@ -2738,46 +2787,48 @@ const ALL_BLOG_POSTS: BlogPost[] = [
         items: [
           {
             q: "La relance automatique, ce n'est pas trop impersonnel ?",
-            a: "Au contraire, bien réglée elle paraît plus humaine qu'un silence. Les messages reprennent votre nom, le prénom du client et le montant du devis. Le client a l'impression d'un suivi soigné, pas d'un robot.",
+            a: "Bien réglée, elle se lit comme un suivi attentif. Les messages reprennent votre nom, le prénom du client et l'objet du devis, et la séquence s'arrête dès qu'il répond. C'est le silence qui paraît impersonnel, pas le rappel.",
           },
           {
             q: "Combien de fois faut-il relancer un devis ?",
-            a: "Trois relances étalées sur deux semaines est l'optimum. Au-delà, le rendement chute et vous risquez d'agacer. Une séquence J+2, J+7, J+15 couvre l'immense majorité des cas.",
+            a: "Nous recommandons trois relances réparties sur deux semaines : à J+2, J+7 et J+15. Au-delà, le client qui n'a pas répondu a le plus souvent choisi, et une relance de plus risque d'agacer.",
           },
           {
             q: "Faut-il un logiciel compliqué pour automatiser ses relances ?",
-            a: "Non. Sitaly met en place une automatisation simple, branchée sur votre façon de travailler (SMS et email), sans logiciel lourd à apprendre. Vous marquez un devis comme envoyé, le reste se fait tout seul.",
+            a: "Non. La relance se branche sur l'outil où vos devis sont déjà suivis : logiciel de devis, CRM ou tableur partagé. Vous passez un devis au statut envoyé, la séquence démarre.",
           },
           {
-            q: "Est-ce que ça marche pour tous les métiers ?",
-            a: "Oui : artisans, ostéopathes, coachs, consultants, agents immobiliers… Dès que vous envoyez des devis ou des propositions, la relance automatique s'applique et augmente votre taux de signature.",
+            q: "Est-ce que ça marche dans tous les secteurs ?",
+            a: "Dès que vous envoyez des devis, des propositions ou des dossiers qui attendent une réponse : entreprises du BTP, agences immobilières, courtiers, cabinets de conseil, prestataires B2B. Le ton et le délai changent, pas le principe.",
           },
         ],
       },
       { type: "h2", text: "Automatisez vos relances avec Sitaly" },
       {
         type: "p",
-        text: "La relance automatique des devis fait partie des automatisations que Sitaly met en place, en option, selon vos besoins. On part de votre façon de travailler et on installe un système simple qui relance à votre place, au bon moment. Réservez un appel gratuit de 15 minutes pour voir combien de chantiers vous laissez aujourd'hui sur la table.",
+        text: "La relance des devis fait partie des six agents que Sitaly installe et pilote pour les PME. On part de votre façon de travailler, on règle la séquence et les messages avec vous, et l'agent vous passe la main dès qu'un client répond. Le [diagnostic offert de 30 minutes](/agents-ia/#diagnostic) sert à repérer où vos devis se perdent aujourd'hui.",
       },
     ],
   },
   {
     slug: "prise-rendez-vous-en-ligne-guide",
-    title: "Prise de rendez-vous en ligne : le guide complet pour indépendants et thérapeutes",
+    title: "Prise de rendez-vous en ligne : le guide complet pour PME, TPE et indépendants",
     metaTitle: "Prise de rendez-vous en ligne : le guide 2026",
     metaDescription:
-      "Moins d'appels manqués, plus de rendez-vous remplis : pourquoi et comment mettre en place la prise de rendez-vous en ligne quand on est indépendant ou thérapeute.",
+      "Pourquoi et comment mettre en place la prise de rendez-vous en ligne quand on est indépendant : moins d'appels manqués, moins de rendez-vous oubliés.",
     excerpt:
-      "Chaque appel manqué est un client qui va voir ailleurs. La prise de rendez-vous en ligne remplit votre agenda 24h/24, sans que vous décrochiez. Voici comment la mettre en place.",
+      "Un appel manqué pendant un rendez-vous, et le prospect appelle ailleurs. La prise de rendez-vous en ligne laisse vos clients réserver seuls, à toute heure. Voici comment la mettre en place.",
     category: "Automatisation",
     readingTime: "8 min",
     publishedAt: "2026-06-22",
+    updatedAt: "2026-09-28",
     author: "Teddy Vidal",
     keyword: "prise de rendez-vous en ligne",
+    cta: "agents-ia",
     content: [
       {
         type: "p",
-        text: "Vous êtes en consultation, en chantier ou en rendez-vous, et le téléphone sonne dans le vide. Le prospect, lui, ne laisse pas toujours de message : il appelle le concurrent suivant qui, lui, propose de réserver en ligne en deux clics. La prise de rendez-vous en ligne n'est plus un confort, c'est devenu un standard que vos futurs clients attendent — surtout les ostéopathes, kinésithérapeutes, coachs et indépendants dont l'activité repose sur l'agenda.",
+        text: "Vous êtes en consultation, en chantier ou en rendez-vous, et le téléphone sonne dans le vide. Le prospect, lui, ne laisse pas toujours de message : il appelle le concurrent suivant qui, lui, propose de réserver en ligne en deux clics. La prise de rendez-vous en ligne est devenue un réflexe pour vos futurs clients, en particulier dans les activités qui vivent de l'agenda : agences immobilières, cabinets de conseil, courtiers, prestataires de services.",
       },
       { type: "h2", text: "Pourquoi la prise de rendez-vous en ligne fait gagner des clients" },
       {
@@ -2788,7 +2839,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       {
         type: "ul",
         items: [
-          "Zéro appel manqué transformé en client perdu",
+          "Moins de demandes perdues pendant que vous êtes occupé",
           "Un agenda qui se remplit même quand vous êtes indisponible",
           "Moins de rendez-vous oubliés grâce aux rappels automatiques",
           "Une image moderne et professionnelle qui rassure",
@@ -2798,7 +2849,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "Le levier anti-lapin : les rappels automatiques" },
       {
         type: "p",
-        text: "Le vrai coût d'un rendez-vous, ce n'est pas de le prendre, c'est de le voir annulé au dernier moment. Les rendez-vous non honorés représentent souvent 10 à 20 % de l'agenda d'un thérapeute. Un système de prise de rendez-vous en ligne couplé à des rappels automatiques par SMS (la veille et le matin) réduit ce taux de moitié. Chaque créneau récupéré, c'est un revenu qui ne s'évapore plus.",
+        text: "Le vrai coût d'un rendez-vous, ce n'est pas de le prendre, c'est de le voir oublié ou annulé au dernier moment. Un rappel automatique par SMS la veille, avec un lien pour déplacer le créneau, donne au client une façon simple de prévenir, et vous laisse le temps de proposer le créneau à quelqu'un d'autre. Mesurez votre taux d'absence avant et après : c'est le seul chiffre qui vaille pour votre activité.",
       },
       {
         type: "table",
@@ -2807,7 +2858,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
         rows: [
           ["Demandes hors horaires", "Perdues", "Captées 24h/24"],
           ["Temps passé au téléphone", "Élevé", "Quasi nul"],
-          ["Rendez-vous non honorés", "10 à 20 %", "5 à 10 % (avec rappels)"],
+          ["Rendez-vous oubliés", "Découverts sur place", "Rappel la veille, créneau libéré à temps"],
           ["Image perçue", "Artisanale", "Professionnelle et moderne"],
         ],
       },
@@ -2816,13 +2867,17 @@ const ALL_BLOG_POSTS: BlogPost[] = [
         type: "p",
         text: "L'idéal est un bouton « Prendre rendez-vous » visible sur chaque page de votre site, qui ouvre un agenda synchronisé avec le vôtre. Le client voit uniquement vos vraies disponibilités, réserve, et l'événement s'ajoute automatiquement à votre calendrier. Pas de double saisie, pas de risque de double réservation. C'est exactement ce type de parcours qui transforme un visiteur hésitant en rendez-vous confirmé.",
       },
+      {
+        type: "p",
+        text: "Un calendrier de réservation couvre les clients qui veulent choisir seuls. Pour ceux qui appellent ou écrivent, un [agent de prise de rendez-vous](/agents-ia/#qualification) pose les questions utiles, propose un créneau réellement libre et le confirme, par téléphone comme par message.",
+      },
       { type: "h2", text: "Questions fréquentes" },
       {
         type: "faq",
         items: [
           {
             q: "La prise de rendez-vous en ligne est-elle adaptée à mon métier ?",
-            a: "Si votre activité repose sur des créneaux (ostéopathe, kiné, coach, consultant, esthéticienne, formateur…), oui, c'est l'un des leviers les plus rentables. Pour les métiers de devis (artisans), on l'utilise plutôt pour caler l'appel ou la visite technique.",
+            a: "Si votre activité repose sur des créneaux (visites, rendez-vous de conseil, estimations, consultations), oui. Pour les métiers de devis, comme le BTP, on l'utilise plutôt pour caler l'appel ou la visite technique.",
           },
           {
             q: "Mes créneaux risquent-ils d'être réservés alors que je ne suis pas dispo ?",
@@ -2834,14 +2889,14 @@ const ALL_BLOG_POSTS: BlogPost[] = [
           },
           {
             q: "Faut-il un logiciel séparé ?",
-            a: "Pas forcément. Sitaly intègre la prise de rendez-vous directement à votre site et la connecte à votre agenda, avec rappels SMS automatiques. Un seul outil, branché sur votre façon de travailler.",
+            a: "Pas forcément. Sitaly connecte la prise de rendez-vous à votre agenda existant, avec des rappels SMS automatiques. Côté outils, nous utilisons Cal.com quand il n'y a rien en place.",
           },
         ],
       },
       { type: "h2", text: "Mettez en place votre prise de rendez-vous en ligne avec Sitaly" },
       {
         type: "p",
-        text: "La réservation en ligne et les rappels automatiques font partie des automatisations proposées par Sitaly, en option selon votre activité. On l'intègre proprement à votre site pour que votre agenda se remplisse tout seul. Réservez un appel gratuit de 15 minutes pour en parler.",
+        text: "La prise de rendez-vous fait partie des six agents que Sitaly installe et pilote pour les PME : l'agent propose un créneau, le confirme, envoie le rappel et vous passe la main quand la demande sort du cadre. Réservez un diagnostic offert de 30 minutes pour en parler.",
       },
     ],
   },
@@ -2851,18 +2906,20 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       "Automatiser son suivi client quand on est seul : 7 automatisations qui font gagner des heures",
     metaTitle: "Automatiser son suivi client en TPE : 7 idées concrètes",
     metaDescription:
-      "7 automatisations simples pour une TPE ou un indépendant : relances, rappels, réponses automatiques, demandes d'avis. Gagnez des heures et ne perdez plus aucun client.",
+      "7 automatisations simples pour une TPE : relances, rappels, réponses automatiques, demandes d'avis. Par où commencer et quoi éviter.",
     excerpt:
       "Quand on gère tout seul, le suivi client passe toujours après. Voici 7 automatisations simples qui travaillent à votre place et vous évitent de laisser filer des clients.",
     category: "Automatisation",
     readingTime: "9 min",
     publishedAt: "2026-06-22",
+    updatedAt: "2026-09-28",
     author: "Teddy Vidal",
     keyword: "automatisation TPE suivi client",
+    cta: "automatisation",
     content: [
       {
         type: "p",
-        text: "Quand on dirige une TPE ou qu'on travaille en indépendant, on porte toutes les casquettes : la production, les devis, la compta, le téléphone. Le suivi client, lui, passe systématiquement en dernier — et c'est là qu'on perd des clients sans même s'en rendre compte. L'automatisation n'a rien de réservé aux grandes entreprises : quelques automatisations simples, bien choisies, suffisent à récupérer plusieurs heures par semaine et à ne plus laisser aucune demande sans réponse.",
+        text: "Quand on dirige une TPE ou qu'on travaille en indépendant, on porte toutes les casquettes : la production, les devis, la compta, le téléphone. Le suivi client, lui, passe systématiquement en dernier — et c'est là qu'on perd des clients sans même s'en rendre compte. L'[automatisation des tâches](/automatisation-taches/) n'a rien de réservé aux grandes entreprises : quelques automatisations simples, bien choisies, rendent du temps chaque semaine et évitent qu'une demande reste sans réponse.",
       },
       { type: "h2", text: "Pourquoi automatiser quand on est une petite structure" },
       {
@@ -2914,11 +2971,11 @@ const ALL_BLOG_POSTS: BlogPost[] = [
           },
           {
             q: "Combien de temps peut-on réellement gagner ?",
-            a: "Une TPE qui automatise réponses, relances et rappels récupère couramment 3 à 5 heures par semaine, tout en augmentant son taux de signature et sa réputation.",
+            a: "Le gain se chiffre avant de commencer, tâche par tâche : combien de fois la tâche revient chaque semaine, combien de minutes elle prend. Multipliez, et vous savez ce que l'automatisation vous rendra. On ne construit que celles que le calcul justifie.",
           },
           {
             q: "Est-ce que ça coûte cher ?",
-            a: "Les automatisations sont proposées en option, selon vos besoins, et se rentabilisent vite : un seul devis récupéré ou un seul rendez-vous sauvé couvre souvent le coût mensuel.",
+            a: "Le coût dépend du nombre d'automatisations et des outils à relier. Il est chiffré par écrit après le diagnostic, et comparé au temps gagné calculé tâche par tâche. Si le calcul ne tient pas, on vous le dit.",
           },
           {
             q: "Faut-il changer tous mes outils actuels ?",
@@ -2929,7 +2986,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "Gagnez du temps avec les automatisations Sitaly" },
       {
         type: "p",
-        text: "Réponse automatique, relance des devis, rappels de rendez-vous, demande d'avis : Sitaly met en place les automatisations adaptées à votre activité, en option et sans complexité. On commence simple, on mesure le temps gagné, on ajoute au fur et à mesure. Réservez un appel gratuit de 15 minutes pour identifier vos deux automatisations prioritaires.",
+        text: "Réponse automatique, relance des devis, rappels de rendez-vous, demande d'avis : Sitaly met en place les automatisations adaptées à votre activité, et les [agents IA](/agents-ia/) quand une demande doit être comprise avant d'être traitée. On commence simple, on mesure le temps gagné, on ajoute au fur et à mesure. Réservez un diagnostic offert de 30 minutes pour repérer vos deux automatisations prioritaires.",
       },
     ],
   },
@@ -3483,8 +3540,10 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     category: "Acquisition de clients",
     readingTime: "10 min",
     publishedAt: "2026-06-22",
+    updatedAt: "2026-09-28",
     author: "Teddy Vidal",
     keyword: "trouver des clients agent immobilier",
+    cta: "agents-ia",
     content: [
       {
         type: "p",
@@ -3519,18 +3578,22 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       {
         type: "table",
         caption: "Générer des mandats : les leviers d'un agent immobilier",
-        headers: ["Levier", "Cible", "Délai", "Impact mandats"],
+        headers: ["Levier", "Cible", "Ce qu'il apporte"],
         rows: [
-          ["Site + estimation en ligne", "Vendeurs", "1 à 3 mois", "Très élevé"],
-          ["Fiche Google + avis", "Vendeurs & acheteurs", "2 à 6 semaines", "Élevé"],
-          ["Google Ads estimation", "Vendeurs chauds", "Quelques jours", "Très élevé"],
-          ["Relance automatique", "Contacts tièdes", "Immédiat", "Élevé"],
+          ["Site + estimation en ligne", "Vendeurs", "Des contacts vendeurs qualifiés, à votre nom"],
+          ["Fiche Google + avis", "Vendeurs et acheteurs", "La confiance locale avant le premier appel"],
+          ["Google Ads estimation", "Vendeurs prêts à agir", "Une présence immédiate sur les recherches vendeurs"],
+          ["Relance des estimations", "Contacts qui hésitent", "Le lien gardé jusqu'à la décision de vendre"],
         ],
       },
       { type: "h2", text: "Le levier qui change tout : relancer les estimations" },
       {
         type: "p",
-        text: "Beaucoup de propriétaires demandent une estimation plusieurs semaines, voire plusieurs mois, avant de se décider à vendre. Sans relance, ces contacts s'évaporent et finissent chez le concurrent qui, lui, a recontacté. La relance automatique des contacts d'estimation maintient le lien et vous place en première position le jour où le propriétaire passe à l'action. C'est l'une des automatisations les plus rentables du métier.",
+        text: "Beaucoup de propriétaires demandent une estimation plusieurs semaines, voire plusieurs mois, avant de se décider à vendre. Sans relance, ces contacts s'évaporent et finissent chez le concurrent qui, lui, a recontacté. La relance automatique des contacts d'estimation maintient le lien et vous place en première position le jour où le propriétaire passe à l'action. Elle vise des personnes qui ont demandé une estimation : ce n'est pas de la prospection à froid, que la loi encadre depuis le 11 août 2026.",
+      },
+      {
+        type: "p",
+        text: "C'est le terrain d'un [agent IA pour agence immobilière](/agents-ia/agences-immobilieres/) : il décroche pendant vos visites, qualifie les demandes des portails, cale les visites et les estimations, et relance les contacts qui l'ont demandé. Il ne donne jamais d'avis de valeur : l'estimation reste votre travail.",
       },
       { type: "h2", text: "Questions fréquentes" },
       {
@@ -3542,7 +3605,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
           },
           {
             q: "Google Ads est-il rentable pour un agent indépendant ?",
-            a: "Oui, surtout ciblé sur les requêtes vendeurs (« estimation + ville »). La valeur d'un seul mandat couvre très largement le budget publicitaire de plusieurs mois. C'est l'un des canaux les plus directs pour rentrer des mandats.",
+            a: "Il peut l'être, surtout ciblé sur les requêtes vendeurs (« estimation + ville »). Le calcul se fait avec vos chiffres : ce que vous rapporte un mandat, combien d'estimations deviennent des mandats, et donc ce que vous pouvez payer une demande d'estimation. Le suivi des appels et des formulaires se met en place avant la première dépense.",
           },
           {
             q: "Et si je dépends d'un réseau qui me fournit déjà un site ?",
@@ -3550,14 +3613,14 @@ const ALL_BLOG_POSTS: BlogPost[] = [
           },
           {
             q: "Puis-je tout déléguer ?",
-            a: "Oui. Sitaly met en place le site avec estimation en ligne, le référencement local et, en option, Google Ads et la relance automatique des contacts. Vous vous concentrez sur les rendez-vous et les ventes.",
+            a: "En grande partie. Sitaly installe l'agent IA qui répond, qualifie et relance, pilote les campagnes Google Ads et crée le site si vous n'en avez pas. Vous gardez les rendez-vous, les estimations et les ventes.",
           },
         ],
       },
       { type: "h2", text: "Générez plus de mandats avec Sitaly" },
       {
         type: "p",
-        text: "Site avec estimation en ligne, référencement local, avis, et en option Google Ads et relance automatique des contacts vendeurs : Sitaly aide les agents immobiliers indépendants à rentrer plus de mandats et à convertir plus d'acheteurs. Réservez un appel gratuit de 15 minutes pour en parler.",
+        text: "Un agent IA qui répond pendant vos visites, des campagnes Google Ads sur les recherches vendeurs, un site à votre nom : Sitaly aide les agences immobilières à ne laisser aucune demande sans suite. Réservez un diagnostic offert de 30 minutes pour repérer où vos contacts se perdent.",
       },
     ],
   },
@@ -4250,8 +4313,10 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     category: "Outils & logiciels",
     readingTime: "11 min",
     publishedAt: "2026-08-25",
+    updatedAt: "2026-09-28",
     author: "Teddy Vidal",
     keyword: "chatbot entreprise",
+    cta: "agents-ia",
     content: [
       {
         type: "p",
@@ -4293,12 +4358,12 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       { type: "h3", text: "2. Vos visiteurs partent sans laisser de trace" },
       {
         type: "p",
-        text: "C'est le cas le plus rentable. Une majorité de visiteurs ne remplit jamais un formulaire de contact, et ne téléphone pas non plus. Un agent qui engage la conversation au bon moment capte une partie de ces départs, souvent en trois échanges, avec un numéro de téléphone à la clé.",
+        text: "Beaucoup de visiteurs repartent sans remplir le formulaire de contact et sans téléphoner. Un agent qui engage la conversation au bon moment capte une partie de ces départs, avec un numéro de téléphone à la clé. Vos statistiques de visite et vos demandes reçues vous disent quelle part de visiteurs repart sans rien laisser.",
       },
       { type: "h3", text: "3. Vos demandes arrivent hors des heures ouvrées" },
       {
         type: "p",
-        text: "Regardez vos statistiques : une part importante des visites de sites de services se produit le soir et le week-end, quand le particulier a enfin le temps. Personne ne répond à ce moment-là. Un agent qui prend le relais transforme ces visites en demandes qualifiées le lendemain matin.",
+        text: "Regardez vos statistiques : si une part de vos visites arrive le soir et le week-end, personne ne leur répond à ce moment-là. Un agent qui prend le relais transforme ces visites en demandes qualifiées, prêtes le lendemain matin.",
       },
 
       { type: "h2", text: "Les trois cas où il vous coûte des clients" },
@@ -4341,7 +4406,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Dans les services aux entreprises, le conseil ou les métiers où le projet se prépare longtemps à l'avance, le rapport s'inverse : le prospect préfère écrire, en dehors des heures, sans engager de conversation. Le chatbot y prend tout son sens. Notre article sur les appels manqués détaille le versant téléphonique.",
+        text: "Dans les services aux entreprises, le conseil ou les métiers où le projet se prépare longtemps à l'avance, le rapport s'inverse : le prospect préfère écrire, en dehors des heures, sans engager de conversation. Le chatbot y prend tout son sens. Le versant téléphonique, lui, relève d'un [agent vocal](/agents-ia/) qui décroche et se présente comme une IA.",
       },
 
       { type: "h2", text: "Combien ça coûte" },
@@ -4351,7 +4416,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Beaucoup de solutions se vendent en libre-service. Vous payez un abonnement modeste, puis vous passez des heures à écrire les réponses, tester et corriger. Pour un dirigeant de TPE qui n'a pas ce temps, le résultat habituel est un outil installé, mal réglé, puis désactivé au bout de deux mois. Le mode clé en main coûte plus cher à l'abonnement et supprime ce risque.",
+        text: "Beaucoup de solutions se vendent en libre-service. Vous payez un abonnement modeste, puis vous passez des heures à écrire les réponses, tester et corriger. Pour un dirigeant de TPE qui n'a pas ce temps, le risque est un outil installé, mal réglé, puis désactivé. Le mode clé en main coûte plus cher à l'abonnement et retire ce risque.",
       },
 
       { type: "h2", text: "Comment savoir s'il sert à quelque chose" },
@@ -4361,7 +4426,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Fixez-vous un point de contrôle à un mois. Relisez une trentaine de conversations réelles. Vous verrez immédiatement les questions auxquelles l'agent répond mal, et une heure de corrections suffit en général à redresser le résultat.",
+        text: "Fixez-vous un point de contrôle à un mois. Relisez une trentaine de conversations réelles. Vous verrez les questions auxquelles l'agent répond mal : ce sont elles qu'il faut corriger en premier.",
       },
 
       {
@@ -4402,7 +4467,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "Un agent réglé pour votre métier, pas un gadget" },
       {
         type: "p",
-        text: "Sitaly installe des agents conversationnels et vocaux clé en main, nourris de vos vraies informations : prestations, zone, délais, tarifs indicatifs. Ils qualifient la demande, obtiennent un numéro et passent la main quand il le faut. Vous ne paramétrez rien. Réservez un appel gratuit de 20 minutes.",
+        text: "Sitaly installe et pilote des [agents IA pour PME](/agents-ia/), écrits et vocaux, nourris de vos vraies informations : prestations, zone, délais, tarifs indicatifs. Ils se présentent comme une IA, qualifient la demande, obtiennent un numéro et passent la main quand il le faut. Vous ne paramétrez rien. Réservez un diagnostic offert de 30 minutes.",
       },
     ],
   },
@@ -4576,14 +4641,16 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     title: "Agent IA en entreprise : ce que ça fait, ce que ça coûte, et quand s'en passer",
     metaTitle: "Agent IA en entreprise : ce que ça fait et ce que ça coûte",
     metaDescription:
-      "Ce qu'un agent IA fait réellement dans une TPE ou une PME, les quatre tâches où il tient ses promesses, comment en calculer le retour, et les cas où une automatisation simple suffit.",
+      "Ce qu'un agent IA fait dans une PME, les tâches où il est rentable, ce qu'il coûte et les cas où une automatisation simple suffit.",
     excerpt:
-      "Tout le monde vend des agents IA aux entreprises. Peu de gens disent dans quels cas ils ne servent à rien. Voici les quatre tâches où un agent tient ses promesses dans une petite structure, comment calculer son retour avant de signer, et les trois situations où une automatisation à quinze euros par mois fait le même travail.",
+      "Tout le monde vend des agents IA aux entreprises. Peu de gens disent dans quels cas ils ne servent à rien. Voici les quatre tâches où un agent tient ses promesses dans une petite structure, comment calculer son retour avant de signer, et les trois situations où une automatisation simple fait le même travail.",
     category: "Automatisation",
     readingTime: "10 min",
     publishedAt: "2026-09-04",
+    updatedAt: "2026-09-28",
     author: "Teddy Vidal",
     keyword: "agent IA entreprise",
+    cta: "agents-ia",
     content: [
       {
         type: "p",
@@ -4591,7 +4658,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Cet article part d'une question différente de celle que posent la plupart des guides. Non pas « comment déployer un agent IA », mais « est-ce que votre entreprise en a besoin, et comment le savoir avant de dépenser ». Les réponses sont concrètes, et l'une d'elles est qu'une bonne partie des entreprises qui cherchent un agent IA gagneraient davantage avec une automatisation ordinaire.",
+        text: "Cet article part d'une question différente de celle que posent la plupart des guides. Non pas « comment déployer un agent IA », mais « est-ce que votre entreprise en a besoin, et comment le savoir avant de dépenser ». Les réponses sont concrètes, et l'une d'elles est qu'une partie des entreprises qui cherchent un agent IA gagneraient davantage avec une automatisation ordinaire. Si vous voulez voir à quoi ressemble un déploiement réel, la page [agents IA pour PME](/agents-ia/) décrit les six agents que Sitaly installe.",
       },
       {
         type: "h2",
@@ -4662,7 +4729,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "Ce que ça coûte, et comment calculer le retour avant de signer" },
       {
         type: "p",
-        text: "Les tarifs annoncés sur le marché varient d'un facteur dix, ce qui rend toute fourchette générale inutile. Ce qui se compare en revanche, c'est la structure du coût, qui est la même partout.",
+        text: "Les tarifs annoncés sur le marché varient fortement d'un prestataire à l'autre, ce qui rend toute fourchette générale peu utile. Ce qui se compare en revanche, c'est la structure du coût, qui est la même partout.",
       },
       {
         type: "table",
@@ -4698,7 +4765,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       {
         type: "ul",
         items: [
-          "Est-ce que la tâche arrive en langage libre ? Si les demandes sont déjà structurées, un formulaire et une automatisation coûtent dix fois moins.",
+          "Est-ce que la tâche arrive en langage libre ? Si les demandes sont déjà structurées, un formulaire et une automatisation coûtent nettement moins.",
           "Est-ce que la réponse existe quelque part ? Un agent ne sait rien de votre entreprise. Il lit ce que vous lui donnez. Si vos délais et vos tarifs ne sont écrits nulle part, la première étape n'est pas l'agent, c'est de les écrire.",
           "Est-ce qu'une erreur est rattrapable ? Un rendez-vous mal noté se rattrape. Un devis envoyé au mauvais prix, moins. Commencez par les tâches où l'erreur se corrige.",
         ],
@@ -4732,12 +4799,12 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Cette progression a un avantage sur les déploiements en six semaines vendus clés en main : elle échoue tôt et pour pas cher quand le besoin n'était pas là. C'est exactement ce qu'on cherche quand on décide sur un marché où tout le monde promet la même chose.",
+        text: "Cette progression a un avantage sur les déploiements complets vendus clés en main : elle échoue tôt et pour pas cher quand le besoin n'était pas là. C'est exactement ce qu'on cherche quand on décide sur un marché où tout le monde promet la même chose.",
       },
       { type: "h2", text: "Et la réglementation ?" },
       {
         type: "p",
-        text: "Deux points suffisent pour une TPE ou une PME française. D'abord, un système qui échange avec vos clients doit se signaler comme automatique : la personne doit savoir qu'elle ne parle pas à un humain, et pouvoir demander à en joindre un. Ensuite, les données personnelles qui transitent restent soumises au RGPD, ce qui suppose de savoir où elles vont et de le documenter. Ces deux exigences se traitent au moment de la mise en place et ne sont pas un obstacle ; elles deviennent un problème seulement quand on les découvre après.",
+        text: "Deux points suffisent pour une TPE ou une PME française. D'abord, un système qui échange avec vos clients doit se signaler comme une IA dès le début de l'échange : c'est l'[article 50 du règlement européen sur l'IA](/blog/ai-act-article-50-agent-vocal/), applicable depuis le 2 août 2026. La personne doit aussi pouvoir demander à joindre un humain. Ensuite, les données personnelles qui transitent restent soumises au RGPD, ce qui suppose de savoir où elles vont et de le documenter. Ces deux exigences se traitent au moment de la mise en place et ne sont pas un obstacle ; elles deviennent un problème seulement quand on les découvre après.",
       },
       {
         type: "faq",

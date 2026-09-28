@@ -38,6 +38,8 @@ export type Realisation = {
   capture: { small: string; large: string; mobile: string };
   captureLe: string;
   accent: string;
+  /** Titre et description de la page d'étude de cas (60 et 160 caractères au plus). */
+  seo: { titre: string; description: string };
 };
 
 export const REALISATIONS: Realisation[] = [
@@ -83,6 +85,11 @@ export const REALISATIONS: Realisation[] = [
     capture: { small: realLafleur720, large: realLafleur1200, mobile: realLafleurMobile },
     captureLe: "2 septembre 2026",
     accent: "oklch(0.45 0.13 255)",
+    seo: {
+      titre: "Lafleur Toiture : site d'un couvreur en Essonne | Sitaly",
+      description:
+        "Étude de cas : le site de Lafleur Toiture, couvreur en Essonne, conçu pour réduire le délai entre l'arrivée sur la page et l'appel. Site en ligne.",
+    },
   },
   {
     slug: "entreprise-felicioni",
@@ -126,6 +133,11 @@ export const REALISATIONS: Realisation[] = [
     capture: { small: realFelicioni720, large: realFelicioni1200, mobile: realFelicioniMobile },
     captureLe: "2 septembre 2026",
     accent: "oklch(0.55 0.2 27)",
+    seo: {
+      titre: "Entreprise Felicioni : site de rénovation | Sitaly",
+      description:
+        "Étude de cas : le site d'Entreprise Felicioni, rénovation et second œuvre, construit autour des photos de chantiers plutôt que des descriptions.",
+    },
   },
   {
     slug: "aymeric-pataud",
@@ -170,6 +182,11 @@ export const REALISATIONS: Realisation[] = [
     capture: { small: realPataud720, large: realPataud1200, mobile: realPataudMobile },
     captureLe: "21 septembre 2026",
     accent: "oklch(0.5 0.06 150)",
+    seo: {
+      titre: "Aymeric Pataud : site d'un chef consultant | Sitaly",
+      description:
+        "Étude de cas : le site d'Aymeric Pataud, chef consultant, pensé comme une signature éditoriale plutôt qu'un catalogue de prestations.",
+    },
   },
 ];
 

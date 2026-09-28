@@ -878,8 +878,9 @@ function Agents() {
           {AGENT_BLOCKS.map((agent) => (
             <article
               key={agent.id}
+              id={agent.id}
               data-reveal
-              className="ai-card ai-topline ai-card-hover relative flex flex-col p-7"
+              className="ai-card ai-topline ai-card-hover relative flex scroll-mt-24 flex-col p-7"
             >
               <div className="flex items-center justify-between gap-3">
                 <div className="grid h-12 w-12 place-items-center rounded-xl bg-accent/15 text-accent">

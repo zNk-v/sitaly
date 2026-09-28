@@ -119,7 +119,7 @@ const SITE: Expertise[] = [
     famille: "site",
     label: "Création de site internet",
     menuDesc: "Le socle : un site à vous, en ligne en 48 heures.",
-    titre: "Création de site internet pour TPE, PME et indépendants | Sitaly",
+    titre: "Création de site internet pour TPE et PME | Sitaly",
     description:
       "Création de site internet sur mesure, livré en 48h. Hébergement, nom de domaine et référencement local inclus, en abonnement mensuel sans engagement.",
     eyebrow: "Site internet",
@@ -187,7 +187,7 @@ const SITE: Expertise[] = [
     famille: "site",
     label: "Site vitrine",
     menuDesc: "Présenter l'activité et recevoir des demandes.",
-    titre: "Site vitrine professionnel : création et référencement | Sitaly",
+    titre: "Site vitrine professionnel : création et SEO | Sitaly",
     description:
       "Création de site vitrine pour artisan, commerçant, profession libérale et PME. Pages de prestations, formulaire court, SEO local. Livré en 48h, sans engagement.",
     eyebrow: "Site internet",
@@ -459,7 +459,7 @@ const SITE: Expertise[] = [
     famille: "site",
     label: "Refonte de site",
     menuDesc: "Reprendre un site existant sans perdre Google.",
-    titre: "Refonte de site internet sans perdre son référencement | Sitaly",
+    titre: "Refonte de site internet sans perte de SEO | Sitaly",
     description:
       "Refonte de site internet : audit, redirections 301, conservation du référencement acquis, nouvelle structure et nouveau design. Livré et suivi par Sitaly.",
     eyebrow: "Site internet",
@@ -881,7 +881,7 @@ const AUTOMATISATION: Expertise[] = [
     famille: "automatisation",
     label: "CRM sur mesure",
     menuDesc: "Suivre vos clients sans usine à gaz.",
-    titre: "CRM sur mesure pour TPE et PME : suivi client simple | Sitaly",
+    titre: "CRM sur mesure pour TPE et PME | Sitaly",
     description:
       "Mise en place d'un CRM adapté à votre activité : fiches clients, suivi des devis, relances, historique. Configuration, reprise de vos données et formation.",
     eyebrow: "Automatisation",
@@ -1085,7 +1085,7 @@ const AUTOMATISATION: Expertise[] = [
     famille: "automatisation",
     label: "Intégrations et API",
     menuDesc: "Faire parler vos outils entre eux.",
-    titre: "Intégration d'API : connecter vos logiciels entre eux | Sitaly",
+    titre: "Intégration d'API : connecter vos logiciels | Sitaly",
     description:
       "Intégration et développement d'API : connecter site, CRM, comptabilité, caisse et logiciels métier. Synchronisation fiable, gestion des erreurs, surveillance.",
     eyebrow: "Automatisation",

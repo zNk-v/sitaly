@@ -104,7 +104,7 @@ const RUBRIQUES: { key: string; id: string; label: string; desc: string }[] = [
   },
 ];
 
-const TITRE = "Blog Sitaly : agents IA, automatisation et acquisition pour PME";
+const TITRE = "Blog Sitaly : agents IA, ChatGPT Ads et automatisation";
 const DESCRIPTION =
   "Guides pour les PME : agents IA, automatisation, règles du démarchage et de l'AI Act, publicité ChatGPT Ads. Sans jargon et sans promesse.";
 

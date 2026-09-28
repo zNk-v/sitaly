@@ -4,11 +4,11 @@ import { LegalLayout } from "@/components/LegalLayout";
 export const Route = createFileRoute("/cgv")({
   head: () => ({
     meta: [
-      { title: "CGV — Conditions Générales de Vente et d'Utilisation — Sitaly" },
+      { title: "CGV — Conditions générales de vente | Sitaly" },
       {
         name: "description",
         content:
-          "Conditions générales de vente et d'utilisation des services Sitaly : création de sites internet et plateforme SaaS pour artisans.",
+          "Conditions générales de vente et d'utilisation des services Sitaly : sites internet, hébergement et maintenance, et accès à la plateforme Sitaly.",
       },
       { name: "robots", content: "index,follow" },
       { property: "og:title", content: "Conditions Générales de Vente et d'Utilisation — Sitaly" },

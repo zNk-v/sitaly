@@ -6,7 +6,9 @@ import {
   formatDate,
   getPostBySlug,
   getRelatedPosts,
+  LIEN_DANS_LE_TEXTE,
   slugifyHeading,
+  texteBrut,
   type BlogSection,
 } from "@/data/blog-posts";
 import { SitalyLogo } from "@/components/SitalyLogo";
@@ -36,15 +38,12 @@ export const Route = createFileRoute("/blog/$slug")({
     const faqSection = post.content.find((s) => s.type === "faq");
     const wordCount = post.content.reduce((acc, s) => {
       if (s.type === "p" || s.type === "h2" || s.type === "h3" || s.type === "quote")
-        return acc + s.text.split(/\s+/).length;
-      if (s.type === "ul") return acc + s.items.join(" ").split(/\s+/).length;
+        return acc + texteBrut(s.text).split(/\s+/).length;
+      if (s.type === "ul") return acc + texteBrut(s.items.join(" ")).split(/\s+/).length;
       if (s.type === "faq")
         return (
           acc +
-          s.items
-            .map((i) => `${i.q} ${i.a}`)
-            .join(" ")
-            .split(/\s+/).length
+          texteBrut(s.items.map((i) => `${i.q} ${i.a}`).join(" ")).split(/\s+/).length
         );
       if (s.type === "table")
         return (
@@ -103,7 +102,7 @@ export const Route = createFileRoute("/blog/$slug")({
           mainEntity: faqSection.items.map((it) => ({
             "@type": "Question",
             name: it.q,
-            acceptedAnswer: { "@type": "Answer", text: it.a },
+            acceptedAnswer: { "@type": "Answer", text: texteBrut(it.a) },
           })),
         }),
       });
@@ -335,19 +334,25 @@ function RenderSection({ section }: { section: BlogSection }) {
         </h3>
       );
     case "p":
-      return <p>{section.text}</p>;
+      return (
+        <p>
+          <TexteAvecLiens texte={section.text} />
+        </p>
+      );
     case "ul":
       return (
         <ul className="ml-5 list-disc space-y-2 marker:text-accent">
           {section.items.map((it, i) => (
-            <li key={i}>{it}</li>
+            <li key={i}>
+              <TexteAvecLiens texte={it} />
+            </li>
           ))}
         </ul>
       );
     case "quote":
       return (
         <blockquote className="border-l-4 border-accent bg-accent/5 px-5 py-3 italic text-foreground/80">
-          {section.text}
+          <TexteAvecLiens texte={section.text} />
         </blockquote>
       );
     case "table":
@@ -397,12 +402,52 @@ function RenderSection({ section }: { section: BlogSection }) {
                 <span className="mr-2 text-accent">Q.</span>
                 {it.q}
               </summary>
-              <p className="mt-2 text-foreground/85">{it.a}</p>
+              <p className="mt-2 text-foreground/85">
+                <TexteAvecLiens texte={it.a} />
+              </p>
             </details>
           ))}
         </div>
       );
   }
+}
+
+/**
+ * Le texte d'un paragraphe, ses liens `[ancre](/chemin/)` rendus cliquables.
+ * Les pages du routeur passent par `Link` ; les pages statiques servies
+ * depuis public/ (ChatGPT Ads) gardent un lien classique, que le routeur ne
+ * saurait pas résoudre.
+ */
+const PAGES_STATIQUES = ["/chatgpt-ads", "/agents-ia/chatgpt"];
+
+function TexteAvecLiens({ texte }: { texte: string }) {
+  const morceaux: React.ReactNode[] = [];
+  let depuis = 0;
+  for (const m of texte.matchAll(LIEN_DANS_LE_TEXTE)) {
+    const [tout, ancre, href] = m;
+    const debut = m.index ?? 0;
+    if (debut > depuis) morceaux.push(texte.slice(depuis, debut));
+    const classe =
+      "font-medium text-accent underline decoration-accent/40 underline-offset-4 transition hover:decoration-accent";
+    const statique = PAGES_STATIQUES.some((p) => href.startsWith(p)) || !href.startsWith("/");
+    // L'ancre passe à part : dans `to`, le routeur la traiterait comme un
+    // segment de chemin et lui ajouterait un slash final.
+    const [chemin, ancreDePage] = href.split("#");
+    morceaux.push(
+      statique ? (
+        <a key={debut} href={href} className={classe}>
+          {ancre}
+        </a>
+      ) : (
+        <Link key={debut} to={chemin} hash={ancreDePage} className={classe}>
+          {ancre}
+        </Link>
+      ),
+    );
+    depuis = debut + tout.length;
+  }
+  if (depuis < texte.length) morceaux.push(texte.slice(depuis));
+  return <>{morceaux}</>;
 }
 
 function InlineCTA() {

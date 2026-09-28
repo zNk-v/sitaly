@@ -10,7 +10,7 @@ import { CALENDLY_URL } from "@/lib/config";
 
 const TITLE = "Réalisations : sites internet livrés par Sitaly | Sitaly";
 const DESCRIPTION =
-  "Les sites réalisés par Sitaly pour des artisans et des indépendants. Chaque projet est en ligne et consultable : couvreur en Essonne, rénovation en Haute-Garonne, chef à domicile en Île-de-France.";
+  "Sites réalisés par Sitaly, en ligne et consultables : couvreur en Essonne, rénovation en Haute-Garonne, chef consultant en Île-de-France.";
 
 export const Route = createFileRoute("/realisations/")({
   head: () => ({

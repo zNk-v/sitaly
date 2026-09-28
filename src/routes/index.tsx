@@ -48,7 +48,7 @@ const FAQ_ITEMS = [
 /* Recentrage du 26 septembre 2026 (audit SEO/GEO) : l'accueil se positionne
    sur les agents IA pour les PME. Le site et la publicité restent présentés,
    en complément. */
-const TITRE_ACCUEIL = "Agents IA et automatisation pour PME | Sitaly";
+const TITRE_ACCUEIL = "Agence IA pour PME : agents IA et automatisation | Sitaly";
 const DESCRIPTION_ACCUEIL =
   "Sitaly installe et pilote des agents IA pour PME : accueil téléphonique, qualification, rendez-vous, relance des devis. Diagnostic offert de 30 min.";
 

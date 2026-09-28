@@ -204,17 +204,20 @@ const CONFIANCE = [
   },
 ] as const;
 
+const TITRE = "Consultant et agence Google Ads pour PME | Sitaly";
+const DESCRIPTION =
+  "Sitaly crée, pilote et optimise vos campagnes Google Ads pour générer des demandes qualifiées. Forfait mensuel sans engagement, budget Google séparé.";
+
 export const Route = createFileRoute("/acquisition")({
   head: () => ({
     meta: [
-      { title: "Agence Google Ads pour PME, TPE et artisans | Sitaly" },
+      { title: TITRE },
       {
         name: "description",
-        content:
-          "Sitaly crée, pilote et optimise vos campagnes Google Ads pour générer des demandes qualifiées. Forfait de gestion mensuel, budget Google séparé et sans engagement de durée.",
+        content: DESCRIPTION,
       },
       { name: "robots", content: "index,follow" },
-      { property: "og:title", content: "Agence Google Ads pour PME et artisans | Sitaly" },
+      { property: "og:title", content: TITRE },
       {
         property: "og:description",
         content:

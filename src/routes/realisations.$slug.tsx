@@ -17,8 +17,8 @@ export const Route = createFileRoute("/realisations/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) return {};
     const r = loaderData;
-    const title = `${r.client}, ${r.metier.toLowerCase()} — étude de cas | Sitaly`;
-    const description = `${r.resume} Site en ligne sur ${r.domaine}, réalisé par Sitaly.`;
+    const title = r.seo.titre;
+    const description = r.seo.description;
     const url = `https://sitaly.fr/realisations/${r.slug}/`;
     return {
       meta: [
