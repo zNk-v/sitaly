@@ -1,4 +1,5 @@
 import type { BlogSection } from "@/data/blog-posts";
+import { PRIX_AGENTS_IA } from "@/lib/config";
 
 /** Le corps de l'article « agence-agents-ia-questions ». Ses métadonnées vivent
     dans src/data/blog-posts-agents-ia.ts ; ce fichier n'est chargé que sur sa
@@ -88,7 +89,8 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Chez Sitaly : une mise en place, puis un pilotage mensuel qui couvre les coûts variables, minutes de voix et SMS compris. Les deux montants sont écrits dans la proposition, après le diagnostic. Notre article sur [le prix d'un agent IA](/blog/prix-agent-ia/) détaille la structure.",
+    // L'article sur le prix n'existe que si les montants sont affichés.
+    text: `Chez Sitaly : une mise en place, puis un pilotage mensuel qui couvre les coûts variables, minutes de voix et SMS compris. Les deux montants sont écrits dans la proposition, après le diagnostic.${PRIX_AGENTS_IA.afficher ? " Notre article sur [le prix d'un agent IA](/blog/prix-agent-ia/) détaille la structure." : ""}`,
   },
   { type: "h2", text: "7. Comment mesure-t-on ce que l'agent traite ?" },
   {

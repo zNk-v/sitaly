@@ -48,6 +48,16 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
     priority: "0.9",
     source: ["src/data/secteurs.ts", "src/components/SecteurLanding.tsx"],
   })),
+  {
+    path: "/agents-ia/agent-vocal",
+    changefreq: "monthly",
+    priority: "0.9",
+    source: [
+      "src/data/agent-vocal.ts",
+      "src/components/SecteurLanding.tsx",
+      route("agents-ia_.agent-vocal.tsx"),
+    ],
+  },
   // Pages statiques servies depuis public/ (hors routeur React), à garder ici :
   // le prérendu ne les découvre pas tout seul.
   {

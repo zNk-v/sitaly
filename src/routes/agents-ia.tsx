@@ -185,6 +185,8 @@ type AgentBlock = {
   does: string[];
   changes: string;
   handover: string;
+  /** La page qui détaille cet agent, quand elle existe. */
+  page?: { to: string; label: string };
 };
 
 const AGENT_BLOCKS: AgentBlock[] = [
@@ -204,6 +206,7 @@ const AGENT_BLOCKS: AgentBlock[] = [
       "Plus aucune demande ne reste sans réponse pendant que votre équipe est occupée ailleurs.",
     handover:
       "Urgence, litige, client existant ou demande hors périmètre : l'agent passe la main immédiatement.",
+    page: { to: "/agents-ia/agent-vocal/", label: "L'agent vocal au téléphone" },
   },
   {
     id: "qualification",
@@ -958,6 +961,16 @@ function Agents() {
                   </p>
                 </div>
               </div>
+
+              {agent.page && (
+                <Link
+                  to={agent.page.to}
+                  className="group mt-5 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-accent"
+                >
+                  {agent.page.label}
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </Link>
+              )}
             </article>
           ))}
         </div>
@@ -1406,19 +1419,15 @@ function Faq() {
 /* Les articles publiés apparaissent seuls : un slug encore absent du blog ne
    produit ni carte ni lien cassé. */
 const A_LIRE = [
+  "agence-agents-ia-questions",
+  "prix-agent-ia",
+  "standard-telephonique-ia",
+  "agent-ia-prise-de-rendez-vous",
+  "agent-ia-rgpd",
+  "ai-act-article-50-agent-vocal",
+  "demarchage-telephonique-agent-ia-2026",
   "agent-ia-entreprise-guide",
   "relance-automatique-devis",
-  "prise-rendez-vous-en-ligne-guide",
-  "automatiser-suivi-client-tpe",
-  "chatbot-entreprise-tpe-guide",
-  "demarchage-telephonique-agent-ia-2026",
-  "ai-act-article-50-agent-vocal",
-  "agence-agents-ia-questions",
-  "agent-ia-prise-de-rendez-vous",
-  "standard-telephonique-ia",
-  "agent-ia-rgpd",
-  "prix-agent-ia",
-  "trouver-clients-agent-immobilier",
 ];
 
 function ALire() {

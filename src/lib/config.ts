@@ -47,6 +47,9 @@ export const PRIX_AGENTS_IA = {
   mensuelMin: 499,
 } as const;
 
+/** Un montant en euros, espaces insécables comprises. */
+export const euros = (n: number) => `${n.toLocaleString("fr-FR").replace(/\u202f/g, " ")} €`;
+
 /**
  * Prix de la gestion ChatGPT Ads : un forfait mensuel plus une part du budget
  * publicitaire, ce budget restant payé à part (décision du 28 septembre 2026,

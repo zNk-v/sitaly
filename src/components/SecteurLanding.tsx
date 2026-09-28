@@ -280,7 +280,8 @@ export function SecteurLanding({ s }: { s: Secteur }) {
             eyebrow="Agents IA"
             title={
               <>
-                Les autres <span className="accent-word">secteurs</span>
+                {(s.maillageTitre ?? ["Les autres", "secteurs"])[0]}{" "}
+                <span className="accent-word">{(s.maillageTitre ?? ["Les autres", "secteurs"])[1]}</span>
               </>
             }
           />
@@ -368,7 +369,7 @@ export function buildSecteurHead(s: Secteur) {
   const service: Record<string, unknown> = {
     "@type": "Service",
     "@id": `${url}#service`,
-    name: `Agent IA pour ${s.audience.toLowerCase()}`,
+    name: s.nomService ?? `Agent IA pour ${s.audience.toLowerCase()}`,
     serviceType: "Installation et pilotage d'agents IA",
     description: s.description,
     url,

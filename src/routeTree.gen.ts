@@ -55,6 +55,7 @@ import { Route as OutilsAuditFicheGoogleRouteImport } from './routes/outils.audi
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AgentsIaCourtiersRouteImport } from './routes/agents-ia_.courtiers'
 import { Route as AgentsIaBtpRouteImport } from './routes/agents-ia_.btp'
+import { Route as AgentsIaAgentVocalRouteImport } from './routes/agents-ia_.agent-vocal'
 import { Route as AgentsIaAgencesImmobilieresRouteImport } from './routes/agents-ia_.agences-immobilieres'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -290,6 +291,11 @@ const AgentsIaBtpRoute = AgentsIaBtpRouteImport.update({
   path: '/agents-ia/btp',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AgentsIaAgentVocalRoute = AgentsIaAgentVocalRouteImport.update({
+  id: '/agents-ia_/agent-vocal',
+  path: '/agents-ia/agent-vocal',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AgentsIaAgencesImmobilieresRoute =
   AgentsIaAgencesImmobilieresRouteImport.update({
     id: '/agents-ia_/agences-immobilieres',
@@ -336,6 +342,7 @@ export interface FileRoutesByFullPath {
   '/site-vitrine': typeof SiteVitrineRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/agents-ia/agences-immobilieres': typeof AgentsIaAgencesImmobilieresRoute
+  '/agents-ia/agent-vocal': typeof AgentsIaAgentVocalRoute
   '/agents-ia/btp': typeof AgentsIaBtpRoute
   '/agents-ia/courtiers': typeof AgentsIaCourtiersRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -384,6 +391,7 @@ export interface FileRoutesByTo {
   '/site-vitrine': typeof SiteVitrineRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/agents-ia/agences-immobilieres': typeof AgentsIaAgencesImmobilieresRoute
+  '/agents-ia/agent-vocal': typeof AgentsIaAgentVocalRoute
   '/agents-ia/btp': typeof AgentsIaBtpRoute
   '/agents-ia/courtiers': typeof AgentsIaCourtiersRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -434,6 +442,7 @@ export interface FileRoutesById {
   '/site-vitrine': typeof SiteVitrineRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/agents-ia_/agences-immobilieres': typeof AgentsIaAgencesImmobilieresRoute
+  '/agents-ia_/agent-vocal': typeof AgentsIaAgentVocalRoute
   '/agents-ia_/btp': typeof AgentsIaBtpRoute
   '/agents-ia_/courtiers': typeof AgentsIaCourtiersRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -485,6 +494,7 @@ export interface FileRouteTypes {
     | '/site-vitrine'
     | '/sitemap.xml'
     | '/agents-ia/agences-immobilieres'
+    | '/agents-ia/agent-vocal'
     | '/agents-ia/btp'
     | '/agents-ia/courtiers'
     | '/blog/$slug'
@@ -533,6 +543,7 @@ export interface FileRouteTypes {
     | '/site-vitrine'
     | '/sitemap.xml'
     | '/agents-ia/agences-immobilieres'
+    | '/agents-ia/agent-vocal'
     | '/agents-ia/btp'
     | '/agents-ia/courtiers'
     | '/blog/$slug'
@@ -582,6 +593,7 @@ export interface FileRouteTypes {
     | '/site-vitrine'
     | '/sitemap.xml'
     | '/agents-ia_/agences-immobilieres'
+    | '/agents-ia_/agent-vocal'
     | '/agents-ia_/btp'
     | '/agents-ia_/courtiers'
     | '/blog/$slug'
@@ -632,6 +644,7 @@ export interface RootRouteChildren {
   SiteVitrineRoute: typeof SiteVitrineRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   AgentsIaAgencesImmobilieresRoute: typeof AgentsIaAgencesImmobilieresRoute
+  AgentsIaAgentVocalRoute: typeof AgentsIaAgentVocalRoute
   AgentsIaBtpRoute: typeof AgentsIaBtpRoute
   AgentsIaCourtiersRoute: typeof AgentsIaCourtiersRoute
   OutilsAuditFicheGoogleRoute: typeof OutilsAuditFicheGoogleRoute
@@ -965,6 +978,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AgentsIaBtpRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/agents-ia_/agent-vocal': {
+      id: '/agents-ia_/agent-vocal'
+      path: '/agents-ia/agent-vocal'
+      fullPath: '/agents-ia/agent-vocal'
+      preLoaderRoute: typeof AgentsIaAgentVocalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/agents-ia_/agences-immobilieres': {
       id: '/agents-ia_/agences-immobilieres'
       path: '/agents-ia/agences-immobilieres'
@@ -1026,6 +1046,7 @@ const rootRouteChildren: RootRouteChildren = {
   SiteVitrineRoute: SiteVitrineRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   AgentsIaAgencesImmobilieresRoute: AgentsIaAgencesImmobilieresRoute,
+  AgentsIaAgentVocalRoute: AgentsIaAgentVocalRoute,
   AgentsIaBtpRoute: AgentsIaBtpRoute,
   AgentsIaCourtiersRoute: AgentsIaCourtiersRoute,
   OutilsAuditFicheGoogleRoute: OutilsAuditFicheGoogleRoute,

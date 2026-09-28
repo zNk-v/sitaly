@@ -1,4 +1,6 @@
-import { PRIX_AGENTS_IA } from "@/lib/config";
+import { PRIX_AGENTS_IA, euros } from "@/lib/config";
+
+export { euros };
 
 /**
  * Les pages Agents IA par secteur.
@@ -20,8 +22,13 @@ import { PRIX_AGENTS_IA } from "@/lib/config";
 
 export type SecteurSlug = "agences-immobilieres" | "courtiers" | "btp";
 
+/**
+ * Une page du même gabarit sous /agents-ia/. Les secteurs en sont, et aussi
+ * la page d'un agent (/agents-ia/agent-vocal/, src/data/agent-vocal.ts), qui
+ * croise un usage plutôt qu'un métier et reste hors de SECTEURS.
+ */
 export interface Secteur {
-  slug: SecteurSlug;
+  slug: SecteurSlug | "agent-vocal";
   /** Libellé court : menu, pied de page, cartes. */
   label: string;
   /** Une ligne sous le libellé dans les cartes. */
@@ -46,6 +53,10 @@ export interface Secteur {
   aLire: string[];
   /** Public visé, pour les données structurées. */
   audience: string;
+  /** Nom du service balisé. Par défaut : « Agent IA pour » + le public. */
+  nomService?: string;
+  /** Titre du bloc de maillage. Par défaut : « Les autres secteurs ». */
+  maillageTitre?: [string, string];
 }
 
 /** Chemin de la page, slash final compris. */
@@ -53,8 +64,6 @@ export function cheminSecteur(s: Pick<Secteur, "slug">): string {
   return `/agents-ia/${s.slug}/`;
 }
 
-/** Un montant en euros, espaces insécables comprises. */
-export const euros = (n: number) => `${n.toLocaleString("fr-FR").replace(/\u202f/g, " ")} €`;
 
 /** Le bloc tarif, avec ou sans montant selon PRIX_AGENTS_IA.afficher. */
 export function texteTarif(): string {
@@ -423,7 +432,7 @@ export function secteur(slug: SecteurSlug): Secteur {
   return s;
 }
 
-/** Les deux autres secteurs, pour le maillage en bas de page. */
+/** Les autres secteurs (les trois, depuis une page d'agent), pour le maillage en bas de page. */
 export function autresSecteurs(s: Secteur): Secteur[] {
   return SECTEURS.filter((x) => x.slug !== s.slug);
 }
