@@ -40,6 +40,10 @@ export const FICHE_GOOGLE_URL = "https://maps.google.com/?cid=138291696043497368
  * qu'aucun montant ne reste ailleurs dans le code. `afficher: false` retire
  * tous les montants, et l'article sur le prix d'un agent IA repasse en
  * brouillon.
+ *
+ * Exception : les fichiers texte de public/ (llms.txt, llms-full.txt,
+ * pricing.md) portent les montants en clair. Ils se corrigent à la main à
+ * chaque changement ici, comme ceux de PRIX_CHATGPT_ADS.
  */
 export const PRIX_AGENTS_IA = {
   afficher: true,
@@ -57,7 +61,8 @@ export const euros = (n: number) => `${n.toLocaleString("fr-FR").replace(/\u202f
  *
  * La page /chatgpt-ads/ est un fichier statique de public/ : elle n'importe
  * pas ce module. Ses montants sont recopiés à la main, et doivent suivre
- * toute modification faite ici (public/chatgpt-ads/index.html, en-tête).
+ * toute modification faite ici (public/chatgpt-ads/index.html, en-tête),
+ * comme ceux de public/llms.txt, public/llms-full.txt et public/pricing.md.
  * `afficher: false` retire aussi la grille Sitaly de l'article
  * /blog/cout-chatgpt-ads/ ; les données de marché y restent.
  */

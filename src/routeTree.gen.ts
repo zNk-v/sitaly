@@ -45,6 +45,7 @@ import { Route as ApplicationWebMobileRouteImport } from './routes/application-w
 import { Route as AgentsIaRouteImport } from './routes/agents-ia'
 import { Route as AcquisitionRouteImport } from './routes/acquisition'
 import { Route as AProposRouteImport } from './routes/a-propos'
+import { Route as R404RouteImport } from './routes/404'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as RealisationsIndexRouteImport } from './routes/realisations.index'
 import { Route as OutilsIndexRouteImport } from './routes/outils.index'
@@ -240,6 +241,11 @@ const AProposRoute = AProposRouteImport.update({
   path: '/a-propos',
   getParentRoute: () => rootRouteImport,
 } as any)
+const R404Route = R404RouteImport.update({
+  id: '/404',
+  path: '/404',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -305,6 +311,7 @@ const AgentsIaAgencesImmobilieresRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/404': typeof R404Route
   '/a-propos': typeof AProposRoute
   '/acquisition': typeof AcquisitionRoute
   '/agents-ia': typeof AgentsIaRoute
@@ -355,6 +362,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/404': typeof R404Route
   '/a-propos': typeof AProposRoute
   '/acquisition': typeof AcquisitionRoute
   '/agents-ia': typeof AgentsIaRoute
@@ -405,6 +413,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/404': typeof R404Route
   '/a-propos': typeof AProposRoute
   '/acquisition': typeof AcquisitionRoute
   '/agents-ia': typeof AgentsIaRoute
@@ -457,6 +466,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/404'
     | '/a-propos'
     | '/acquisition'
     | '/agents-ia'
@@ -507,6 +517,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/404'
     | '/a-propos'
     | '/acquisition'
     | '/agents-ia'
@@ -556,6 +567,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/404'
     | '/a-propos'
     | '/acquisition'
     | '/agents-ia'
@@ -607,6 +619,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  R404Route: typeof R404Route
   AProposRoute: typeof AProposRoute
   AcquisitionRoute: typeof AcquisitionRoute
   AgentsIaRoute: typeof AgentsIaRoute
@@ -908,6 +921,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AProposRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/404': {
+      id: '/404'
+      path: '/404'
+      fullPath: '/404'
+      preLoaderRoute: typeof R404RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -1009,6 +1029,7 @@ const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  R404Route: R404Route,
   AProposRoute: AProposRoute,
   AcquisitionRoute: AcquisitionRoute,
   AgentsIaRoute: AgentsIaRoute,

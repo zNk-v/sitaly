@@ -25,7 +25,16 @@ export default defineConfig({
     // Les pages hors index (src/lib/indexation.ts) ne sont plus liées depuis
     // le pied de page ni le blog : listées ici, elles restent générées et
     // accessibles par leur adresse, pour la prospection directe.
-    pages: [{ path: "/carte" }, ...PAGES_A_PRERENDRE_HORS_INDEX.map((path) => ({ path }))],
+    // /404 sort en /404.html, le fichier que GitHub Pages sert pour toute
+    // adresse inconnue (src/routes/404.tsx).
+    pages: [
+      { path: "/carte" },
+      {
+        path: "/404",
+        prerender: { outputPath: "/404", autoSubfolderIndex: false, crawlLinks: false },
+      },
+      ...PAGES_A_PRERENDRE_HORS_INDEX.map((path) => ({ path })),
+    ],
     prerender: {
       enabled: true,
       crawlLinks: true,
