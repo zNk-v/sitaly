@@ -34,230 +34,278 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
 
-      {/* Ouverture. Le voile plutôt qu'un aplat : la page doit ressembler à
+      <main>
+        {/* Ouverture. Le voile plutôt qu'un aplat : la page doit ressembler à
           une section de l'accueil, pas à une plaquette détachée. */}
-      <section className="on-wash pt-[calc(var(--entete-hauteur)+3rem)] pb-16 sm:pt-[calc(var(--entete-hauteur)+5rem)] sm:pb-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <nav aria-label="Fil d'Ariane" className="rail-label text-muted-foreground">
-            <Link to="/" className="transition hover:text-brand-ink">
-              Accueil
-            </Link>
-            <span className="px-2 text-muted-foreground">/</span>
-            {/* La famille se dit par sa couleur autant que par son nom : c'est
+        <section className="on-wash pt-[calc(var(--entete-hauteur)+3rem)] pb-16 sm:pt-[calc(var(--entete-hauteur)+5rem)] sm:pb-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <nav aria-label="Fil d'Ariane" className="rail-label text-muted-foreground">
+              <Link to="/" className="transition hover:text-brand-ink">
+                Accueil
+              </Link>
+              <span className="px-2 text-muted-foreground">/</span>
+              {/* La famille se dit par sa couleur autant que par son nom : c'est
                 le même repère que dans le menu, le pied de page et le blog. */}
-            <span style={{ color: COULEURS_FAMILLE[e.famille].encre }}>{famille.titre}</span>
-          </nav>
+              <span style={{ color: COULEURS_FAMILLE[e.famille].encre }}>{famille.titre}</span>
+            </nav>
 
-          <h1 className="display-hero mt-6 max-w-4xl">{e.h1}</h1>
-          <p className="measure mt-6 text-lg leading-relaxed text-foreground/75 sm:text-xl">
-            {e.intro}
-          </p>
+            <h1 className="display-hero mt-6 max-w-4xl">
+              {e.h1.replace(/ ([:;?!])/g, "\u00a0$1")}
+            </h1>
+            <p className="measure mt-6 text-lg leading-relaxed text-foreground/75 sm:text-xl">
+              {e.intro}
+            </p>
 
-          <div className="mt-9 flex flex-wrap items-center gap-3">
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bouton px-7 py-3.5"
-            >
-              <Calendar className="h-4 w-4" />
-              Réserver un diagnostic de 30 min
-            </a>
-            <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
-              <Phone className="h-4 w-4" />
-              {SITALY_PHONE_DISPLAY}
-            </a>
+            <div className="mt-9 flex flex-wrap items-center gap-3">
+              <a
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bouton px-7 py-3.5"
+              >
+                <Calendar className="h-4 w-4" />
+                Réserver un diagnostic de 30 min
+              </a>
+              <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
+                <Phone className="h-4 w-4" />
+                {SITALY_PHONE_DISPLAY}
+              </a>
+            </div>
+
+            <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-border pt-6 text-sm font-medium">
+              {e.reperes.map((r) => (
+                <li key={r} className="flex items-center gap-2">
+                  <Check className="h-4 w-4 shrink-0 text-signal-ink" />
+                  {r}
+                </li>
+              ))}
+            </ul>
           </div>
+        </section>
 
-          <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-border pt-6 text-sm font-medium">
-            {e.reperes.map((r) => (
-              <li key={r} className="flex items-center gap-2">
-                <Check className="h-4 w-4 shrink-0 text-signal-ink" />
-                {r}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* 01. Le détail de la prestation, en liste de définitions : c'est la
+        {/* 01. Le détail de la prestation, en liste de définitions : c'est la
           forme la plus sobre pour énumérer sans donner à chaque ligne le poids
           visuel d'une offre. */}
-      <section className="py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <SectionHeader
-            index="01"
-            eyebrow="Le détail"
-            title={
-              <>
-                Ce que comprend <span className="accent-word">{e.nomService}</span>
-              </>
-            }
-          />
-          <dl className="stagger mt-14 border-t border-border">
-            {e.comprend.map((c, i) => (
-              <div
-                key={c.t}
-                data-reveal
-                style={{ "--i": i } as React.CSSProperties}
-                className="grid gap-x-10 gap-y-2 border-b border-border py-6 sm:grid-cols-[20rem_1fr] sm:py-7"
-              >
-                <dt className="font-display text-lg font-bold tracking-tight sm:text-xl">{c.t}</dt>
-                <dd className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">
-                  {c.d}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
-
-      {/* 02. Les cas où la prestation se justifie, et celui où elle ne se
-          justifie pas : c'est ce dernier qui rend les trois autres crédibles. */}
-      <section className="bg-paper-sunk py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <SectionHeader
-            index="02"
-            eyebrow="Pour qui"
-            title={
-              <>
-                Pour quelles entreprises{" "}
-                <span className="accent-word">{e.nomService} est rentable</span>
-              </>
-            }
-          />
-          <div className="stagger mt-14 grid gap-x-10 gap-y-10 border-t border-border pt-10 sm:grid-cols-3">
-            {e.quand.map((q, i) => (
-              <div
-                key={q.t}
-                data-reveal
-                style={{ "--i": i } as React.CSSProperties}
-                className="sm:border-l sm:border-border sm:pl-8 sm:first:border-l-0 sm:first:pl-0"
-              >
-                <h3 className="font-display text-xl font-bold tracking-tight">{q.t}</h3>
-                <p className="mt-3 leading-relaxed text-muted-foreground">{q.d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 03. Quatre questions, ouvertes sans script : `details` suffit et
-          reste lisible sans JavaScript, ce qui vaut aussi pour l'exploration. */}
-      <section className="py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <SectionHeader
-            index="03"
-            eyebrow="Questions"
-            title={
-              <>
-                Questions fréquentes sur <span className="accent-word">{e.nomService}</span>
-              </>
-            }
-          />
-          <div className="mt-14 border-t border-border">
-            {e.faq.map((f) => (
-              <details key={f.q} className="group border-b border-border">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-left font-display text-lg font-bold tracking-tight marker:content-none sm:text-xl">
-                  {f.q}
-                  <span
-                    aria-hidden="true"
-                    className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border transition-transform group-open:rotate-45"
-                  >
-                    <svg
-                      viewBox="0 0 12 12"
-                      className="h-3 w-3"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                    >
-                      <path d="M6 1.5v9M1.5 6h9" />
-                    </svg>
-                  </span>
-                </summary>
-                <p className="measure pb-7 leading-relaxed text-muted-foreground">{f.a}</p>
-              </details>
-            ))}
-          </div>
-          {/* Les articles qui prolongent les questions, dans le même bloc :
-              la page garde ses quatre blocs (DESIGN.md §8 bis). */}
-          {e.aLire && (
-            <div className="mt-14">
-              <ArticlesALire slugs={e.aLire} titre="À lire sur le sujet" />
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Maillage interne : les autres pages de la même famille, plus l'étape
-          suivante dans une autre famille. C'est ce qui fait circuler le
-          visiteur et l'exploration entre des pages qui, sans lui, ne seraient
-          reliées que par le menu. */}
-      {autres.length > 0 && (
-        <section className="bg-paper-sunk py-20 sm:py-28">
+        <section className="py-20 sm:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <SectionHeader
-              eyebrow={famille.titre}
+              index="01"
+              eyebrow="Le détail"
               title={
                 <>
-                  Les autres pages de <span className="accent-word">cette famille</span>
+                  Ce que comprend <span className="accent-word">{e.nomService}</span>
                 </>
               }
             />
-            <div className="stagger mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {autres.map((a, i) => (
-                <Link
-                  key={a.slug}
-                  to={cheminExpertise(a)}
+            <dl className="stagger mt-14 border-t border-border">
+              {e.comprend.map((c, i) => (
+                <div
+                  key={c.t}
                   data-reveal
                   style={{ "--i": i } as React.CSSProperties}
-                  className="group rounded-2xl border border-border bg-card p-6 shadow-soft transition hover:shadow-elevated"
+                  className="grid gap-x-10 gap-y-2 border-b border-border py-6 sm:grid-cols-[20rem_1fr] sm:py-7"
                 >
-                  <h3 className="font-display text-lg font-bold leading-snug transition group-hover:text-brand-ink">
-                    {a.label}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{a.menuDesc}</p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-ink">
-                    Voir la page
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                  </span>
-                </Link>
+                  <dt className="font-display text-lg font-bold tracking-tight sm:text-xl">
+                    {c.t}
+                  </dt>
+                  <dd className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">
+                    {c.d}
+                  </dd>
+                </div>
               ))}
-              <CarteEtapeSuivante depuis={e.famille} />
+            </dl>
+
+            {e.etapes && (
+              <div className="mt-16">
+                <h3 className="font-display text-2xl font-bold tracking-tight">
+                  Les étapes, du diagnostic à la mise en service
+                </h3>
+                <ol className="mt-8 grid gap-x-10 gap-y-8 border-t border-border pt-8 sm:grid-cols-2 lg:grid-cols-4">
+                  {e.etapes.map((etape, i) => (
+                    <li key={etape.t}>
+                      <span className="rail-num text-sm font-bold text-brand-ink">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <h4 className="mt-2 font-display text-lg font-bold tracking-tight">
+                        {etape.t}
+                      </h4>
+                      <p className="mt-2 leading-relaxed text-muted-foreground">{etape.d}</p>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* 02. Les cas où la prestation se justifie, et celui où elle ne se
+          justifie pas : c'est ce dernier qui rend les trois autres crédibles. */}
+        <section className="bg-paper-sunk py-20 sm:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <SectionHeader
+              index="02"
+              eyebrow="Pour qui"
+              title={
+                <>
+                  Pour quelles entreprises{" "}
+                  <span className="accent-word">{e.nomService} est rentable</span>
+                </>
+              }
+            />
+            <div className="stagger mt-14 grid gap-x-10 gap-y-10 border-t border-border pt-10 sm:grid-cols-3">
+              {e.quand.map((q, i) => (
+                <div
+                  key={q.t}
+                  data-reveal
+                  style={{ "--i": i } as React.CSSProperties}
+                  className="sm:border-l sm:border-border sm:pl-8 sm:first:border-l-0 sm:first:pl-0"
+                >
+                  <h3 className="font-display text-xl font-bold tracking-tight">{q.t}</h3>
+                  <p className="mt-3 leading-relaxed text-muted-foreground">{q.d}</p>
+                </div>
+              ))}
+            </div>
+
+            {e.exemples && (
+              <div className="mt-16">
+                <h3 className="font-display text-2xl font-bold tracking-tight">
+                  Exemples par secteur
+                </h3>
+                <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {e.exemples.map((x) => (
+                    <li
+                      key={x.secteur}
+                      className="rounded-2xl border border-border bg-card p-6 shadow-soft"
+                    >
+                      <h4 className="font-display text-lg font-bold tracking-tight">{x.secteur}</h4>
+                      <p className="mt-2 leading-relaxed text-muted-foreground">{x.d}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* 03. Quatre questions, ouvertes sans script : `details` suffit et
+          reste lisible sans JavaScript, ce qui vaut aussi pour l'exploration. */}
+        <section className="py-20 sm:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <SectionHeader
+              index="03"
+              eyebrow="Questions"
+              title={
+                <>
+                  Questions fréquentes sur <span className="accent-word">{e.nomService}</span>
+                </>
+              }
+            />
+            <div className="mt-14 border-t border-border">
+              {e.faq.map((f) => (
+                <details key={f.q} className="group border-b border-border">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-left font-display text-lg font-bold tracking-tight marker:content-none sm:text-xl">
+                    {f.q}
+                    <span
+                      aria-hidden="true"
+                      className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border transition-transform group-open:rotate-45"
+                    >
+                      <svg
+                        viewBox="0 0 12 12"
+                        className="h-3 w-3"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                      >
+                        <path d="M6 1.5v9M1.5 6h9" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <p className="measure pb-7 leading-relaxed text-muted-foreground">{f.a}</p>
+                </details>
+              ))}
+            </div>
+            {/* Les articles qui prolongent les questions, dans le même bloc :
+              la page garde ses quatre blocs (DESIGN.md §8 bis). */}
+            {e.aLire && (
+              <div className="mt-14">
+                <ArticlesALire slugs={e.aLire} titre="À lire sur le sujet" />
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* Maillage interne : les autres pages de la même famille, plus l'étape
+          suivante dans une autre famille. C'est ce qui fait circuler le
+          visiteur et l'exploration entre des pages qui, sans lui, ne seraient
+          reliées que par le menu. */}
+        {autres.length > 0 && (
+          <section className="bg-paper-sunk py-20 sm:py-28">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6">
+              <SectionHeader
+                eyebrow={famille.titre}
+                title={
+                  <>
+                    Les autres pages de <span className="accent-word">cette famille</span>
+                  </>
+                }
+              />
+              <div className="stagger mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {autres.map((a, i) => (
+                  <Link
+                    key={a.slug}
+                    to={cheminExpertise(a)}
+                    data-reveal
+                    style={{ "--i": i } as React.CSSProperties}
+                    className="group rounded-2xl border border-border bg-card p-6 shadow-soft transition hover:shadow-elevated"
+                  >
+                    <h3 className="font-display text-lg font-bold leading-snug transition group-hover:text-brand-ink">
+                      {a.label}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {a.menuDesc}
+                    </p>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-ink">
+                      Voir la page
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    </span>
+                  </Link>
+                ))}
+                <CarteEtapeSuivante depuis={e.famille} />
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Appel final. Trente minutes, pas un formulaire de dix champs. */}
+        <section className="relative overflow-hidden py-20 sm:py-28">
+          <div className="absolute inset-0 -z-10 hero-bg" aria-hidden="true" />
+          <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
+            <h2 className="display-section">
+              On en parle <span className="accent-word">trente minutes</span>&nbsp;?
+            </h2>
+            <p className="mt-5 text-lg text-muted-foreground">
+              Un diagnostic offert : vous décrivez votre activité, on dit ce qui est faisable et ce
+              qui ne l'est pas. Le chiffrage arrive par écrit après l'appel, sans engagement.
+            </p>
+            <div className="mt-9 flex flex-wrap justify-center gap-3">
+              <a
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bouton px-7 py-3.5"
+              >
+                <Calendar className="h-4 w-4" />
+                Réserver un diagnostic de 30 min
+              </a>
+              <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
+                <Phone className="h-4 w-4" />
+                {SITALY_PHONE_DISPLAY}
+              </a>
             </div>
           </div>
         </section>
-      )}
-
-      {/* Appel final. Trente minutes, pas un formulaire de dix champs. */}
-      <section className="relative overflow-hidden py-20 sm:py-28">
-        <div className="absolute inset-0 -z-10 hero-bg" aria-hidden="true" />
-        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <h2 className="display-section">
-            On en parle <span className="accent-word">trente minutes</span>&nbsp;?
-          </h2>
-          <p className="mt-5 text-lg text-muted-foreground">
-            Un diagnostic offert : vous décrivez votre activité, on dit ce qui est faisable et ce
-            qui ne l'est pas. Le chiffrage arrive par écrit après l'appel, sans engagement.
-          </p>
-          <div className="mt-9 flex flex-wrap justify-center gap-3">
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bouton px-7 py-3.5"
-            >
-              <Calendar className="h-4 w-4" />
-              Réserver un diagnostic de 30 min
-            </a>
-            <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
-              <Phone className="h-4 w-4" />
-              {SITALY_PHONE_DISPLAY}
-            </a>
-          </div>
-        </div>
-      </section>
+      </main>
 
       <SiteFooter />
     </div>

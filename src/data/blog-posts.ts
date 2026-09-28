@@ -537,7 +537,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     excerpt:
       "Un chatbot mal réglé fait plus de dégâts que pas de chatbot du tout. Voici les trois situations où il rapporte vraiment, celles où il vous coûte des clients, et ce qui a changé avec l'IA.",
     category: "Outils & logiciels",
-    readingTime: "11 min",
+    readingTime: "12 min",
     publishedAt: "2026-08-25",
     updatedAt: "2026-09-28",
     author: "Teddy Vidal",

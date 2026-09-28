@@ -278,15 +278,17 @@ function AcquisitionPage() {
        l'acquisition est rouge partout ailleurs sur le site. */
     <div className="page-acquisition min-h-screen bg-background text-foreground">
       <Header />
-      <Hero />
-      <Problemes />
-      <Prestations />
-      <UnSeulConsultant />
-      <Fonctionnement />
-      <Tarif />
-      <Confiance />
-      <Faq />
-      <CtaFinal />
+      <main>
+        <Hero />
+        <Problemes />
+        <Prestations />
+        <UnSeulConsultant />
+        <Fonctionnement />
+        <Tarif />
+        <Confiance />
+        <Faq />
+        <CtaFinal />
+      </main>
       <Footer />
     </div>
   );

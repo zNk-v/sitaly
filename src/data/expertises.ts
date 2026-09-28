@@ -113,6 +113,13 @@ export interface Expertise {
   faq: { q: string; a: string }[];
   /** Articles du blog proposés sous les questions (slugs), s'il y en a. */
   aLire?: string[];
+  /**
+   * Le déroulé, du diagnostic à la mise en service. Affiché dans le bloc
+   * « Ce que comprend » : un complément, pas un cinquième bloc.
+   */
+  etapes?: { t: string; d: string }[];
+  /** Des exemples par secteur, affichés dans le bloc « Pour qui ». */
+  exemples?: { secteur: string; d: string }[];
 }
 
 /** Chemin de la page, slash final compris. */
@@ -839,7 +846,7 @@ const AUTOMATISATION: Expertise[] = [
     description:
       "Automatisation des tâches répétitives : relance de devis, rappel des appels manqués, factures, saisies en double entre vos outils. Mise en place et suivi.",
     eyebrow: "Automatisation",
-    h1: "Automatisation : rendre à la semaine les heures qu'elle vous prend",
+    h1: "Automatisation des tâches : relances, rappels et saisies faits sans vous",
     intro:
       "Le temps ne se perd pas sur les grandes tâches, il se perd sur les petites qui reviennent tous les jours. Recopier une demande dans un tableur, relancer un devis, rappeler un appel manqué, renvoyer la même pièce jointe. On les liste, on les chiffre en heures, et on automatise celles qui le méritent.",
     reperes: ["Chiffré en heures gagnées", "Vos outils actuels", "Repli manuel prévu"],
@@ -850,11 +857,11 @@ const AUTOMATISATION: Expertise[] = [
       },
       {
         t: "La relance automatique des devis",
-        d: "Un devis sans relance se perd. Deux relances écrites, espacées, envoyées sans que vous y pensiez, changent le taux de signature.",
+        d: "Un devis sans relance attend une réponse qui ne vient pas. Deux relances écrites, espacées, partent sans que vous y pensiez, et s'arrêtent dès que le client répond.",
       },
       {
         t: "Le rappel des appels manqués",
-        d: "Un SMS part dans la minute qui suit un appel non décroché. C'est l'automatisation la plus rentable pour qui travaille sur les chantiers.",
+        d: "Un SMS part dans la minute qui suit un appel non décroché, avec un lien pour être rappelé ou réserver un créneau. L'appelant sait que sa demande est notée.",
       },
       {
         t: "La fin des doubles saisies",
@@ -868,7 +875,7 @@ const AUTOMATISATION: Expertise[] = [
     quand: [
       {
         t: "Vous travaillez le soir sur l'administratif",
-        d: "C'est le signal le plus net. Ce qui se fait après 19h est presque toujours automatisable.",
+        d: "C'est le signal le plus net. Ce qui se fait après 19 h est la première liste à relever.",
       },
       {
         t: "Des demandes se perdent",
@@ -886,7 +893,7 @@ const AUTOMATISATION: Expertise[] = [
       },
       {
         q: "Combien de temps peut-on espérer gagner ?",
-        a: "Le gain se chiffre avant de commencer, tâche par tâche. Sur une TPE, quelques heures par semaine sont un résultat courant ; on ne construit une automatisation que si le calcul la justifie.",
+        a: "Le gain se chiffre avant de commencer, tâche par tâche, avec vos temps réels : combien de fois par semaine, combien de minutes à chaque fois. On ne construit une automatisation que si le calcul la justifie.",
       },
       {
         q: "Que se passe-t-il si une automatisation tombe en panne ?",
@@ -896,11 +903,51 @@ const AUTOMATISATION: Expertise[] = [
         q: "Quelle différence avec un agent IA ?",
         a: "Une automatisation suit une règle fixe : si ceci, alors cela. Un agent IA comprend une demande écrite ou parlée et décide de la suite. On commence par les règles, moins chères et plus prévisibles.",
       },
+      {
+        q: "Avec quels outils se fait l'automatisation des tâches ?",
+        a: "Les scénarios tournent sur n8n et se branchent sur vos outils quand ils exposent une API ou des webhooks, sinon par l'e-mail ou un fichier partagé. Si une étape demande de comprendre un texte libre, un modèle de langage s'ajoute : on passe alors à un agent IA.",
+      },
+      {
+        q: "Par quelle tâche commencer ?",
+        a: "Par celle qui revient le plus souvent et dont l'oubli coûte un client : la relance des devis ou le rappel des appels manqués, en général. La suivante vient quand la première tourne sans surprise.",
+      },
     ],
     aLire: [
       "relance-automatique-devis",
       "automatiser-suivi-client-tpe",
       "prise-rendez-vous-en-ligne-guide",
+    ],
+    etapes: [
+      {
+        t: "Le diagnostic",
+        d: "Trente minutes au téléphone pour lister ce qui revient chaque semaine, les outils en place et ce qui se perd.",
+      },
+      {
+        t: "Le chiffrage",
+        d: "Chaque tâche reçoit un temps gagné estimé avec vos chiffres et un coût de mise en place. Vous choisissez celles qui passent.",
+      },
+      {
+        t: "La construction",
+        d: "Les scénarios sont construits sur vos outils actuels, puis testés sur de vrais cas avant d'être activés.",
+      },
+      {
+        t: "Le suivi",
+        d: "Chaque scénario prévient en cas d'échec. Les règles évoluent quand votre façon de travailler change.",
+      },
+    ],
+    exemples: [
+      {
+        secteur: "Agence immobilière",
+        d: "Une demande reçue d'un portail crée la fiche du contact, prévient le négociateur du secteur et envoie un accusé de réception à l'acquéreur, le soir compris.",
+      },
+      {
+        secteur: "Courtier en crédit ou en assurance",
+        d: "Les pièces d'un dossier sont réclamées, classées et vérifiées. Le client reçoit un rappel pour chaque pièce manquante, sans que personne ait à le suivre.",
+      },
+      {
+        secteur: "Entreprise du bâtiment",
+        d: "Un devis envoyé déclenche deux relances espacées, un appel manqué déclenche un SMS, un chantier terminé déclenche la demande d'avis Google.",
+      },
     ],
   },
   {
@@ -970,6 +1017,46 @@ const AUTOMATISATION: Expertise[] = [
         q: "Peut-on le relier au site et à la boîte courriel ?",
         a: "Oui. Une demande envoyée depuis le site crée la fiche, et les échanges par courriel s'y rattachent. C'est ce qui évite la double saisie.",
       },
+      {
+        q: "Un agent IA peut-il remplir le CRM ?",
+        a: "Oui, c'est l'un de ses usages les plus directs : l'agent qui prend un appel ou un message crée la fiche, note la demande et programme le rappel. Il faut un CRM qui expose une API ou des webhooks, ce qui se vérifie pendant le diagnostic.",
+      },
+      {
+        q: "Comment se chiffre un CRM sur mesure ?",
+        a: "Selon trois choses : outil du marché ou développement, volume de données à reprendre, branchements à réaliser. Le chiffrage arrive par écrit après le diagnostic, avant tout engagement.",
+      },
+    ],
+    etapes: [
+      {
+        t: "Le diagnostic",
+        d: "Trente minutes pour comprendre d'où viennent vos clients, qui les suit, et où l'information se perd aujourd'hui.",
+      },
+      {
+        t: "Le choix de l'outil",
+        d: "Un outil du marché configuré, ou un développement si votre façon de travailler n'entre dans aucun. La raison du choix est écrite.",
+      },
+      {
+        t: "La reprise et la configuration",
+        d: "Vos tableurs, carnets et contacts sont importés et dédoublonnés. Les écrans inutiles sont retirés, les rappels réglés.",
+      },
+      {
+        t: "La prise en main et les branchements",
+        d: "Une heure d'accompagnement, puis les connexions au site, à la boîte courriel et, si vous le souhaitez, aux agents IA.",
+      },
+    ],
+    exemples: [
+      {
+        secteur: "Agence immobilière",
+        d: "Acquéreurs, vendeurs et biens reliés entre eux, l'historique des visites sur chaque fiche, et un rappel pour chaque estimation restée sans suite.",
+      },
+      {
+        secteur: "Courtier en crédit ou en assurance",
+        d: "Un dossier par projet, avec ses pièces, ses étapes et ses échéances, et un rappel à la date anniversaire du contrat.",
+      },
+      {
+        secteur: "Entreprise du bâtiment",
+        d: "Demande, visite technique, devis, chantier et facture sur une même fiche, et l'entretien annuel planifié pour les contrats de maintenance.",
+      },
     ],
   },
   {
@@ -1038,6 +1125,46 @@ const AUTOMATISATION: Expertise[] = [
       {
         q: "Est-ce vraiment nécessaire ?",
         a: "Dans la majorité des cas, non. Un outil du marché bien configuré, complété par quelques automatisations, revient moins cher. L'étude préalable existe pour trancher honnêtement.",
+      },
+      {
+        q: "Peut-on reprendre nos tableurs ?",
+        a: "Oui. La reprise des données fait partie du projet : les tableurs sont nettoyés, dédoublonnés et importés avant la mise en service, et l'ancien fichier reste consultable.",
+      },
+      {
+        q: "Le logiciel peut-il se connecter à nos autres outils ?",
+        a: "Oui, par API quand l'outil en propose une : comptabilité, agenda, CRM, site. Chaque connexion est listée dans le cahier des charges. Un agent IA peut aussi y écrire les demandes qu'il reçoit.",
+      },
+    ],
+    etapes: [
+      {
+        t: "Le diagnostic",
+        d: "Trente minutes pour décrire ce qui bloque aujourd'hui, et vérifier que le sur mesure mérite d'être étudié.",
+      },
+      {
+        t: "L'étude et le cahier des charges",
+        d: "Les outils existants comparés, puis les écrans, les données et les règles écrits. Le chiffrage arrive avec, découpé par étape.",
+      },
+      {
+        t: "La première version",
+        d: "Le cas principal, utilisable en quelques semaines, avec vos données reprises.",
+      },
+      {
+        t: "Les étapes suivantes",
+        d: "Les fonctions s'ajoutent pendant que vous vous en servez, dans l'ordre qui vous fait gagner le plus de temps.",
+      },
+    ],
+    exemples: [
+      {
+        secteur: "Entreprise du bâtiment",
+        d: "Planning des équipes et des chantiers, bons d'intervention sur téléphone, photos horodatées, commandes de matériaux rattachées au chantier.",
+      },
+      {
+        secteur: "Agence immobilière",
+        d: "Suivi des compromis en cours, avec les échéances des conditions suspensives et les pièces attendues de chaque partie.",
+      },
+      {
+        secteur: "Courtier en crédit ou en assurance",
+        d: "Suivi de chaque dossier étape par étape : pièces reçues et manquantes, banques sollicitées, dates des offres.",
       },
     ],
   },

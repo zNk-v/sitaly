@@ -51,306 +51,318 @@ export function SecteurLanding({ s }: { s: Secteur }) {
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
 
-      <section className="on-wash pt-[calc(var(--entete-hauteur)+3rem)] pb-16 sm:pt-[calc(var(--entete-hauteur)+5rem)] sm:pb-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <nav aria-label="Fil d'Ariane" className="rail-label text-muted-foreground">
-            <Link to="/" className="transition hover:text-brand-ink">
-              Accueil
-            </Link>
-            <span className="px-2 text-muted-foreground">/</span>
-            <Link to="/agents-ia/" className="transition hover:opacity-80" style={{ color: encre }}>
-              Agents IA
-            </Link>
-            <span className="px-2 text-muted-foreground">/</span>
-            <span>{s.label}</span>
-          </nav>
-
-          <h1 className="display-hero mt-6 max-w-5xl">{insecable(s.h1)}</h1>
-          <p className="measure mt-6 text-lg leading-relaxed text-foreground/75 sm:text-xl">
-            {s.intro}
-          </p>
-
-          <div className="mt-9 flex flex-wrap items-center gap-3">
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bouton px-7 py-3.5"
-            >
-              <Calendar className="h-4 w-4" />
-              Réserver un diagnostic de 30 min
-            </a>
-            <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
-              <Phone className="h-4 w-4" />
-              {SITALY_PHONE_DISPLAY}
-            </a>
-          </div>
-
-          <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-border pt-6 text-sm font-medium">
-            {s.reperes.map((r) => (
-              <li key={r} className="flex items-center gap-2">
-                <Check className="h-4 w-4 shrink-0 text-signal-ink" />
-                {r}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* 01. Le constat, dans les mots du métier. C'est ce qui fait qu'un
-          dirigeant se reconnaît avant de lire la moindre promesse. */}
-      <section className="py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <SectionHeader
-            index="01"
-            eyebrow="Le constat"
-            title={
-              <>
-                {s.pertesTitre[0]} <span className="accent-word">{s.pertesTitre[1]}</span>
-              </>
-            }
-          />
-          <div className="mt-14 grid gap-x-10 gap-y-10 border-t border-border pt-10 sm:grid-cols-2 lg:grid-cols-4">
-            {s.pertes.map((p) => (
-              <div
-                key={p.t}
-                className="lg:border-l lg:border-border lg:pl-8 lg:first:border-l-0 lg:first:pl-0"
+      <main>
+        <section className="on-wash pt-[calc(var(--entete-hauteur)+3rem)] pb-16 sm:pt-[calc(var(--entete-hauteur)+5rem)] sm:pb-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <nav aria-label="Fil d'Ariane" className="rail-label text-muted-foreground">
+              <Link to="/" className="transition hover:text-brand-ink">
+                Accueil
+              </Link>
+              <span className="px-2 text-muted-foreground">/</span>
+              <Link
+                to="/agents-ia/"
+                className="transition hover:opacity-80"
+                style={{ color: encre }}
               >
-                <h3 className="font-display text-xl font-bold tracking-tight">{p.t}</h3>
-                <p className="mt-3 leading-relaxed text-muted-foreground">{p.d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+                Agents IA
+              </Link>
+              <span className="px-2 text-muted-foreground">/</span>
+              <span>{s.label}</span>
+            </nav>
 
-      {/* 02. Ce que fait l'agent, en liste de définitions comme sur les pages
-          d'expertise : énumérer sans donner à chaque ligne le poids d'une offre. */}
-      <section className="bg-paper-sunk py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <SectionHeader
-            index="02"
-            eyebrow="L'agent"
-            title={
-              <>
-                Ce que fait <span className="accent-word">l'agent</span>
-              </>
-            }
-          />
-          <dl className="mt-14 border-t border-border">
-            {s.actions.map((a) => (
-              <div
-                key={a.t}
-                className="grid gap-x-10 gap-y-2 border-b border-border py-6 sm:grid-cols-[20rem_1fr] sm:py-7"
+            <h1 className="display-hero mt-6 max-w-5xl">{insecable(s.h1)}</h1>
+            <p className="measure mt-6 text-lg leading-relaxed text-foreground/75 sm:text-xl">
+              {s.intro}
+            </p>
+
+            <div className="mt-9 flex flex-wrap items-center gap-3">
+              <a
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bouton px-7 py-3.5"
               >
-                <dt className="font-display text-lg font-bold tracking-tight sm:text-xl">{a.t}</dt>
-                <dd className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">
-                  {a.d}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
-
-      {/* 03. Les limites. Elles rendent le reste crédible, et ce sont elles
-          que les assistants IA reprennent quand on leur demande ce qu'un agent
-          a le droit de faire. */}
-      <section className="py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <SectionHeader
-            index="03"
-            eyebrow="Le cadre"
-            title={
-              <>
-                {s.cadreTitre[0]} <span className="accent-word">{s.cadreTitre[1]}</span>
-              </>
-            }
-          />
-          <div
-            className={`mt-14 grid gap-x-10 gap-y-10 border-t border-border pt-10 sm:grid-cols-2 ${
-              s.cadre.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"
-            }`}
-          >
-            {s.cadre.map((c) => (
-              <div
-                key={c.t}
-                className="lg:border-l lg:border-border lg:pl-8 lg:first:border-l-0 lg:first:pl-0"
-              >
-                <h3 className="font-display text-xl font-bold tracking-tight">{c.t}</h3>
-                <p className="mt-3 leading-relaxed text-muted-foreground">{c.d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 04. La mise en place : les outils, les quatre étapes, le tarif. */}
-      <section className="bg-paper-sunk py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <SectionHeader
-            index="04"
-            eyebrow="Mise en place"
-            title={
-              <>
-                Branché sur <span className="accent-word">vos outils</span>
-              </>
-            }
-          />
-          <div className="mt-14 grid gap-12 border-t border-border pt-10 lg:grid-cols-2">
-            <div className="space-y-6">
-              <p className="measure leading-relaxed text-foreground/80">{s.outils}</p>
-              {s.pourQui && (
-                <div>
-                  <h3 className="font-display text-xl font-bold tracking-tight">Pour qui</h3>
-                  <p className="measure mt-3 leading-relaxed text-muted-foreground">{s.pourQui}</p>
-                </div>
-              )}
-              <div className="rounded-2xl border border-border bg-card p-6 shadow-soft">
-                <h3 className="font-display text-xl font-bold tracking-tight">Tarif</h3>
-                <p className="mt-3 leading-relaxed text-muted-foreground">{texteTarif()}</p>
-              </div>
+                <Calendar className="h-4 w-4" />
+                Réserver un diagnostic de 30 min
+              </a>
+              <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
+                <Phone className="h-4 w-4" />
+                {SITALY_PHONE_DISPLAY}
+              </a>
             </div>
 
-            <ol className="space-y-0 border-t border-border lg:border-t-0">
-              {etapes.map((e, i) => (
-                <li
-                  key={e.t}
-                  className="grid grid-cols-[2.5rem_1fr] gap-4 border-b border-border py-6 first:pt-6 lg:first:pt-0"
-                >
-                  <span className="rail-num pt-1 text-sm font-bold text-brand-ink">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <h3 className="font-display text-lg font-bold tracking-tight">{e.t}</h3>
-                    <p className="mt-2 leading-relaxed text-muted-foreground">{e.d}</p>
-                  </div>
+            <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-border pt-6 text-sm font-medium">
+              {s.reperes.map((r) => (
+                <li key={r} className="flex items-center gap-2">
+                  <Check className="h-4 w-4 shrink-0 text-signal-ink" />
+                  {r}
                 </li>
               ))}
-            </ol>
+            </ul>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* 05. Les questions, ouvertes sans script. */}
-      <section className="py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <SectionHeader
-            index="05"
-            eyebrow="Questions"
-            title={
-              <>
-                Ce qu'on nous <span className="accent-word">demande</span>
-              </>
-            }
-          />
-          <div className="mt-14 border-t border-border">
-            {s.faq.map((f) => (
-              <details key={f.q} className="group border-b border-border">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-left font-display text-lg font-bold tracking-tight marker:content-none sm:text-xl">
-                  {f.q}
-                  <span
-                    aria-hidden="true"
-                    className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border transition-transform group-open:rotate-45"
+        {/* 01. Le constat, dans les mots du métier. C'est ce qui fait qu'un
+          dirigeant se reconnaît avant de lire la moindre promesse. */}
+        <section className="py-20 sm:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <SectionHeader
+              index="01"
+              eyebrow="Le constat"
+              title={
+                <>
+                  {s.pertesTitre[0]} <span className="accent-word">{s.pertesTitre[1]}</span>
+                </>
+              }
+            />
+            <div className="mt-14 grid gap-x-10 gap-y-10 border-t border-border pt-10 sm:grid-cols-2 lg:grid-cols-4">
+              {s.pertes.map((p) => (
+                <div
+                  key={p.t}
+                  className="lg:border-l lg:border-border lg:pl-8 lg:first:border-l-0 lg:first:pl-0"
+                >
+                  <h3 className="font-display text-xl font-bold tracking-tight">{p.t}</h3>
+                  <p className="mt-3 leading-relaxed text-muted-foreground">{p.d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 02. Ce que fait l'agent, en liste de définitions comme sur les pages
+          d'expertise : énumérer sans donner à chaque ligne le poids d'une offre. */}
+        <section className="bg-paper-sunk py-20 sm:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <SectionHeader
+              index="02"
+              eyebrow="L'agent"
+              title={
+                <>
+                  Ce que fait <span className="accent-word">l'agent</span>
+                </>
+              }
+            />
+            <dl className="mt-14 border-t border-border">
+              {s.actions.map((a) => (
+                <div
+                  key={a.t}
+                  className="grid gap-x-10 gap-y-2 border-b border-border py-6 sm:grid-cols-[20rem_1fr] sm:py-7"
+                >
+                  <dt className="font-display text-lg font-bold tracking-tight sm:text-xl">
+                    {a.t}
+                  </dt>
+                  <dd className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">
+                    {a.d}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+
+        {/* 03. Les limites. Elles rendent le reste crédible, et ce sont elles
+          que les assistants IA reprennent quand on leur demande ce qu'un agent
+          a le droit de faire. */}
+        <section className="py-20 sm:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <SectionHeader
+              index="03"
+              eyebrow="Le cadre"
+              title={
+                <>
+                  {s.cadreTitre[0]} <span className="accent-word">{s.cadreTitre[1]}</span>
+                </>
+              }
+            />
+            <div
+              className={`mt-14 grid gap-x-10 gap-y-10 border-t border-border pt-10 sm:grid-cols-2 ${
+                s.cadre.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"
+              }`}
+            >
+              {s.cadre.map((c) => (
+                <div
+                  key={c.t}
+                  className="lg:border-l lg:border-border lg:pl-8 lg:first:border-l-0 lg:first:pl-0"
+                >
+                  <h3 className="font-display text-xl font-bold tracking-tight">{c.t}</h3>
+                  <p className="mt-3 leading-relaxed text-muted-foreground">{c.d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 04. La mise en place : les outils, les quatre étapes, le tarif. */}
+        <section className="bg-paper-sunk py-20 sm:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <SectionHeader
+              index="04"
+              eyebrow="Mise en place"
+              title={
+                <>
+                  Branché sur <span className="accent-word">vos outils</span>
+                </>
+              }
+            />
+            <div className="mt-14 grid gap-12 border-t border-border pt-10 lg:grid-cols-2">
+              <div className="space-y-6">
+                <p className="measure leading-relaxed text-foreground/80">{s.outils}</p>
+                {s.pourQui && (
+                  <div>
+                    <h3 className="font-display text-xl font-bold tracking-tight">Pour qui</h3>
+                    <p className="measure mt-3 leading-relaxed text-muted-foreground">
+                      {s.pourQui}
+                    </p>
+                  </div>
+                )}
+                <div className="rounded-2xl border border-border bg-card p-6 shadow-soft">
+                  <h3 className="font-display text-xl font-bold tracking-tight">Tarif</h3>
+                  <p className="mt-3 leading-relaxed text-muted-foreground">{texteTarif()}</p>
+                </div>
+              </div>
+
+              <ol className="space-y-0 border-t border-border lg:border-t-0">
+                {etapes.map((e, i) => (
+                  <li
+                    key={e.t}
+                    className="grid grid-cols-[2.5rem_1fr] gap-4 border-b border-border py-6 first:pt-6 lg:first:pt-0"
                   >
-                    <svg
-                      viewBox="0 0 12 12"
-                      className="h-3 w-3"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                    >
-                      <path d="M6 1.5v9M1.5 6h9" />
-                    </svg>
-                  </span>
-                </summary>
-                <p className="measure pb-7 leading-relaxed text-muted-foreground">{f.a}</p>
-              </details>
-            ))}
+                    <span className="rail-num pt-1 text-sm font-bold text-brand-ink">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <h3 className="font-display text-lg font-bold tracking-tight">{e.t}</h3>
+                      <p className="mt-2 leading-relaxed text-muted-foreground">{e.d}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Maillage : les deux autres secteurs, la page Agents IA, et l'étape
+        {/* 05. Les questions, ouvertes sans script. */}
+        <section className="py-20 sm:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <SectionHeader
+              index="05"
+              eyebrow="Questions"
+              title={
+                <>
+                  Ce qu'on nous <span className="accent-word">demande</span>
+                </>
+              }
+            />
+            <div className="mt-14 border-t border-border">
+              {s.faq.map((f) => (
+                <details key={f.q} className="group border-b border-border">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-left font-display text-lg font-bold tracking-tight marker:content-none sm:text-xl">
+                    {f.q}
+                    <span
+                      aria-hidden="true"
+                      className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border transition-transform group-open:rotate-45"
+                    >
+                      <svg
+                        viewBox="0 0 12 12"
+                        className="h-3 w-3"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                      >
+                        <path d="M6 1.5v9M1.5 6h9" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <p className="measure pb-7 leading-relaxed text-muted-foreground">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Maillage : les deux autres secteurs, la page Agents IA, et l'étape
           suivante vers l'acquisition qui amène les demandes. */}
-      <section className="bg-paper-sunk py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <SectionHeader
-            eyebrow="Agents IA"
-            title={
-              <>
-                {(s.maillageTitre ?? ["Les autres", "secteurs"])[0]}{" "}
-                <span className="accent-word">{(s.maillageTitre ?? ["Les autres", "secteurs"])[1]}</span>
-              </>
-            }
-          />
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {autres.map((a) => (
+        <section className="bg-paper-sunk py-20 sm:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <SectionHeader
+              eyebrow="Agents IA"
+              title={
+                <>
+                  {(s.maillageTitre ?? ["Les autres", "secteurs"])[0]}{" "}
+                  <span className="accent-word">
+                    {(s.maillageTitre ?? ["Les autres", "secteurs"])[1]}
+                  </span>
+                </>
+              }
+            />
+            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {autres.map((a) => (
+                <Link
+                  key={a.slug}
+                  to={cheminSecteur(a)}
+                  className="group rounded-2xl border border-border bg-card p-6 shadow-soft transition hover:shadow-elevated"
+                >
+                  <h3 className="font-display text-lg font-bold leading-snug transition group-hover:text-brand-ink">
+                    {a.label}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{a.carte}</p>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-ink">
+                    Voir la page
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </Link>
+              ))}
               <Link
-                key={a.slug}
-                to={cheminSecteur(a)}
+                to="/agents-ia/"
                 className="group rounded-2xl border border-border bg-card p-6 shadow-soft transition hover:shadow-elevated"
               >
                 <h3 className="font-display text-lg font-bold leading-snug transition group-hover:text-brand-ink">
-                  {a.label}
+                  Tous les agents IA
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{a.carte}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  Le système complet : accueil, qualification, rendez-vous, relances.
+                </p>
                 <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-ink">
                   Voir la page
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </span>
               </Link>
-            ))}
-            <Link
-              to="/agents-ia/"
-              className="group rounded-2xl border border-border bg-card p-6 shadow-soft transition hover:shadow-elevated"
-            >
-              <h3 className="font-display text-lg font-bold leading-snug transition group-hover:text-brand-ink">
-                Tous les agents IA
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Le système complet : accueil, qualification, rendez-vous, relances.
-              </p>
-              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-ink">
-                Voir la page
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </span>
-            </Link>
-            <CarteEtapeSuivante depuis="automatisation" />
-          </div>
+              <CarteEtapeSuivante depuis="automatisation" />
+            </div>
 
-          <div className="mt-14 border-t border-border pt-10">
-            <ArticlesALire slugs={s.aLire} titre="À lire sur le sujet" />
+            <div className="mt-14 border-t border-border pt-10">
+              <ArticlesALire slugs={s.aLire} titre="À lire sur le sujet" />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="relative overflow-hidden py-20 sm:py-28">
-        <div className="absolute inset-0 -z-10 hero-bg" aria-hidden="true" />
-        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <h2 className="display-section">{insecable(s.ctaTitre)}</h2>
-          <p className="mt-5 text-lg text-muted-foreground">
-            Trente minutes pour regarder où se perdent vos demandes et ce qu'un agent peut en
-            reprendre. Le diagnostic est offert, le chiffrage arrive par écrit, sans engagement.
-          </p>
-          <div className="mt-9 flex flex-wrap justify-center gap-3">
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bouton px-7 py-3.5"
-            >
-              <Calendar className="h-4 w-4" />
-              Réserver un diagnostic de 30 min
-            </a>
-            <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
-              <Phone className="h-4 w-4" />
-              {SITALY_PHONE_DISPLAY}
-            </a>
+        <section className="relative overflow-hidden py-20 sm:py-28">
+          <div className="absolute inset-0 -z-10 hero-bg" aria-hidden="true" />
+          <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
+            <h2 className="display-section">{insecable(s.ctaTitre)}</h2>
+            <p className="mt-5 text-lg text-muted-foreground">
+              Trente minutes pour regarder où se perdent vos demandes et ce qu'un agent peut en
+              reprendre. Le diagnostic est offert, le chiffrage arrive par écrit, sans engagement.
+            </p>
+            <div className="mt-9 flex flex-wrap justify-center gap-3">
+              <a
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bouton px-7 py-3.5"
+              >
+                <Calendar className="h-4 w-4" />
+                Réserver un diagnostic de 30 min
+              </a>
+              <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
+                <Phone className="h-4 w-4" />
+                {SITALY_PHONE_DISPLAY}
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
       <SiteFooter />
     </div>

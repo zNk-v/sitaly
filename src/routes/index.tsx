@@ -130,18 +130,20 @@ function SitalyHome() {
   return (
     <div ref={rootRef} className="min-h-screen bg-background text-foreground">
       <SiteHeader accueil />
-      <Ouverture />
-      <Expertises />
-      <BandeSecteurs />
-      <StackedOffers />
-      <UnSeulSysteme />
-      <Realisations />
-      <Process />
-      <Founder />
-      <Temoignages />
-      <Faq />
-      <Journal />
-      <Contact />
+      <main>
+        <Ouverture />
+        <Expertises />
+        <BandeSecteurs />
+        <StackedOffers />
+        <UnSeulSysteme />
+        <Realisations />
+        <Process />
+        <Founder />
+        <Temoignages />
+        <Faq />
+        <Journal />
+        <Contact />
+      </main>
       <SiteFooter />
     </div>
   );

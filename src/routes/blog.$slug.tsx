@@ -178,133 +178,135 @@ function BlogPostPage() {
     >
       <PostNav />
 
-      <article className="mx-auto max-w-3xl px-4 pt-[calc(var(--entete-hauteur)+1.5rem)] pb-12 sm:px-6 sm:pb-16 sm:pt-[calc(var(--entete-hauteur)+2.5rem)]">
-        <Link
-          to="/blog/"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Tous les articles
-        </Link>
-
-        <header className="mt-6">
-          <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
-            <span className="rounded-full bg-accent/10 px-3 py-1 font-semibold text-accent">
-              {post.category}
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <Calendar className="h-3.5 w-3.5" />
-              {formatDate(post.publishedAt)}
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <Clock className="h-3.5 w-3.5" />
-              {post.readingTime}
-            </span>
-            <Link
-              to="/a-propos/"
-              className="inline-flex items-center gap-1.5 transition hover:text-brand-ink"
-            >
-              <User className="h-3.5 w-3.5" />
-              {post.author}
-            </Link>
-          </div>
-          <h1 className="mt-4 font-display text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
-            {post.title.replace(/ ([:;?!])/g, "\u00a0$1")}
-          </h1>
-          <p className="mt-5 text-lg text-muted-foreground sm:text-xl">{post.excerpt}</p>
-        </header>
-
-        {post.image && (
-          <figure className="mt-10 overflow-hidden rounded-2xl border border-border shadow-soft">
-            <img
-              src={`${post.image.src}-1200.webp`}
-              srcSet={`${post.image.src}-1200.webp 1200w, ${post.image.src}-2400.webp 2400w`}
-              sizes="(min-width: 768px) 720px, calc(100vw - 2rem)"
-              width={1200}
-              height={630}
-              alt={post.image.alt}
-              fetchPriority="high"
-              decoding="async"
-              className="block h-auto w-full"
-            />
-          </figure>
-        )}
-
-        {headings.length >= 3 && (
-          <nav
-            aria-label="Table des matières"
-            className="mt-10 rounded-2xl border border-border bg-secondary/30 p-5 sm:p-6"
+      <main>
+        <article className="mx-auto max-w-3xl px-4 pt-[calc(var(--entete-hauteur)+1.5rem)] pb-12 sm:px-6 sm:pb-16 sm:pt-[calc(var(--entete-hauteur)+2.5rem)]">
+          <Link
+            to="/blog/"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
           >
-            <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-accent">
-              <List className="h-4 w-4" />
-              Sommaire
+            <ArrowLeft className="h-4 w-4" />
+            Tous les articles
+          </Link>
+
+          <header className="mt-6">
+            <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
+              <span className="rounded-full bg-accent/10 px-3 py-1 font-semibold text-accent">
+                {post.category}
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <Calendar className="h-3.5 w-3.5" />
+                {formatDate(post.publishedAt)}
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <Clock className="h-3.5 w-3.5" />
+                {post.readingTime}
+              </span>
+              <Link
+                to="/a-propos/"
+                className="inline-flex items-center gap-1.5 transition hover:text-brand-ink"
+              >
+                <User className="h-3.5 w-3.5" />
+                {post.author}
+              </Link>
             </div>
-            <ol className="mt-3 space-y-1.5 text-[15px] leading-relaxed">
-              {headings.map((h: { id: string; text: string }, i: number) => (
-                <li key={h.id} className="flex gap-3">
-                  <span className="font-mono text-xs text-muted-foreground">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <a
-                    href={`#${h.id}`}
-                    className="text-foreground/85 underline-offset-4 transition hover:text-accent hover:underline"
+            <h1 className="mt-4 font-display text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+              {post.title.replace(/ ([:;?!])/g, "\u00a0$1")}
+            </h1>
+            <p className="mt-5 text-lg text-muted-foreground sm:text-xl">{post.excerpt}</p>
+          </header>
+
+          {post.image && (
+            <figure className="mt-10 overflow-hidden rounded-2xl border border-border shadow-soft">
+              <img
+                src={`${post.image.src}-1200.webp`}
+                srcSet={`${post.image.src}-1200.webp 1200w, ${post.image.src}-2400.webp 2400w`}
+                sizes="(min-width: 768px) 720px, calc(100vw - 2rem)"
+                width={1200}
+                height={630}
+                alt={post.image.alt}
+                fetchPriority="high"
+                decoding="async"
+                className="block h-auto w-full"
+              />
+            </figure>
+          )}
+
+          {headings.length >= 3 && (
+            <nav
+              aria-label="Table des matières"
+              className="mt-10 rounded-2xl border border-border bg-secondary/30 p-5 sm:p-6"
+            >
+              <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-accent">
+                <List className="h-4 w-4" />
+                Sommaire
+              </div>
+              <ol className="mt-3 space-y-1.5 text-[15px] leading-relaxed">
+                {headings.map((h: { id: string; text: string }, i: number) => (
+                  <li key={h.id} className="flex gap-3">
+                    <span className="font-mono text-xs text-muted-foreground">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <a
+                      href={`#${h.id}`}
+                      className="text-foreground/85 underline-offset-4 transition hover:text-accent hover:underline"
+                    >
+                      {h.text}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          )}
+
+          <div className="prose-content mt-10 space-y-5 text-[17px] leading-relaxed text-foreground/90">
+            {post.content.map((section: BlogSection, idx: number) => (
+              <>
+                <RenderSection key={`s-${idx}`} section={section} />
+                {idx === midIndex && <InlineCTA key={`cta-${idx}`} cta={post.cta ?? "site"} />}
+              </>
+            ))}
+          </div>
+
+          <FinalCTA cta={post.cta ?? "site"} />
+        </article>
+
+        {relatedPosts.length > 0 && (
+          <section className="border-t border-border bg-secondary/30 py-14">
+            <div className="mx-auto max-w-5xl px-4 sm:px-6">
+              <h2 className="font-display text-2xl font-bold sm:text-3xl">À lire ensuite</h2>
+              <p className="mt-2 text-muted-foreground">
+                Continuez votre lecture avec des articles complémentaires.
+              </p>
+              <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {relatedPosts.map((p) => (
+                  <Link
+                    key={p.slug}
+                    to="/blog/$slug/"
+                    params={{ slug: p.slug }}
+                    className="group rounded-xl border border-border bg-card p-5 shadow-soft transition hover:shadow-elevated"
                   >
-                    {h.text}
-                  </a>
-                </li>
-              ))}
-            </ol>
-          </nav>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-accent">
+                      {p.category}
+                    </span>
+                    <h3 className="mt-2 font-display text-lg font-bold leading-snug transition group-hover:text-accent">
+                      {p.title}
+                    </h3>
+                    <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">{p.excerpt}</p>
+                    <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-accent">
+                      Lire l'article
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
         )}
 
-        <div className="prose-content mt-10 space-y-5 text-[17px] leading-relaxed text-foreground/90">
-          {post.content.map((section: BlogSection, idx: number) => (
-            <>
-              <RenderSection key={`s-${idx}`} section={section} />
-              {idx === midIndex && <InlineCTA key={`cta-${idx}`} cta={post.cta ?? "site"} />}
-            </>
-          ))}
-        </div>
-
-        <FinalCTA cta={post.cta ?? "site"} />
-      </article>
-
-      {relatedPosts.length > 0 && (
-        <section className="border-t border-border bg-secondary/30 py-14">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <h2 className="font-display text-2xl font-bold sm:text-3xl">À lire ensuite</h2>
-            <p className="mt-2 text-muted-foreground">
-              Continuez votre lecture avec des articles complémentaires.
-            </p>
-            <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {relatedPosts.map((p) => (
-                <Link
-                  key={p.slug}
-                  to="/blog/$slug/"
-                  params={{ slug: p.slug }}
-                  className="group rounded-xl border border-border bg-card p-5 shadow-soft transition hover:shadow-elevated"
-                >
-                  <span className="text-xs font-semibold uppercase tracking-wider text-accent">
-                    {p.category}
-                  </span>
-                  <h3 className="mt-2 font-display text-lg font-bold leading-snug transition group-hover:text-accent">
-                    {p.title}
-                  </h3>
-                  <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">{p.excerpt}</p>
-                  <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-accent">
-                    Lire l'article
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Les liens vers les pages métier artisans ne restent que sur les
+        {/* Les liens vers les pages métier artisans ne restent que sur les
           articles hors index, écrits pour ce public (src/lib/indexation.ts). */}
-      {!articleIndexable(post.slug) && <MetierLinksStrip />}
+        {!articleIndexable(post.slug) && <MetierLinksStrip />}
+      </main>
 
       <SiteFooter />
     </div>

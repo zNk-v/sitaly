@@ -1,11 +1,13 @@
 import type { BlogSection } from "@/data/blog-posts";
 
 /** Le corps de l'article « publicite-chatgpt-ads-guide ». Ses métadonnées vivent dans
-    src/data/blog-posts.ts ; ce fichier n'est chargé que sur sa page. */
+    src/data/blog-posts.ts ; ce fichier n'est chargé que sur sa page.
+    Mis à jour le 28 septembre 2026 avec les faits du lancement en France,
+    sources citées dans la section « Ce qu'on sait du fonctionnement ». */
 export const contenu: BlogSection[] = [
   {
     type: "p",
-    text: "Pendant vingt ans, chercher une solution voulait dire taper trois mots dans un moteur et comparer des liens. Ce réflexe n'a pas disparu, mais il s'est dédoublé : une partie des décisions d'achat commence désormais par une question posée à un assistant, en langage courant, avec du contexte. OpenAI a commencé à insérer de la publicité dans ces échanges.",
+    text: "Pendant vingt ans, chercher une solution voulait dire taper trois mots dans un moteur et comparer des liens. Ce réflexe n'a pas disparu, mais il s'est dédoublé : une partie des décisions d'achat commence désormais par une question posée à un assistant, en langage courant, avec du contexte. OpenAI y insère de la publicité, en France depuis le 24 août 2026.",
   },
   {
     type: "p",
@@ -35,12 +37,17 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Ce qu'on sait du fonctionnement" },
   {
     type: "p",
-    text: "Le canal est récent et ses modalités évoluent encore. Voici les éléments qu'OpenAI a communiqués publiquement — à considérer comme un état des lieux, pas comme une documentation figée.",
+    text: "ChatGPT Ads est ouvert en France depuis le 24 août 2026, en même temps que dans 30 autres marchés européens. Les modalités évoluent encore : voici ce qui est établi à la date de cette mise à jour, à lire comme un état des lieux.",
+  },
+  { type: "h3", text: "Qui peut acheter" },
+  {
+    type: "p",
+    text: "Depuis le 1er septembre 2026, les annonceurs peuvent créer leurs campagnes eux-mêmes dans ChatGPT Ads Manager, le libre-service d'OpenAI. Une PME n'a plus besoin de passer par un groupe de communication pour tester le canal.",
   },
   { type: "h3", text: "Qui voit les publicités" },
   {
     type: "p",
-    text: "Les publicités concernent les utilisateurs de la formule gratuite et de l'abonnement Go. Les formules Plus, Pro et Enterprise restent sans publicité. Conséquence directe et souvent négligée : une partie de l'audience de ChatGPT n'est pas exposée, et cette partie inclut probablement une proportion notable d'utilisateurs professionnels intensifs. Si votre cible est très majoritairement composée de gros utilisateurs payants, l'audience atteignable est plus étroite que le nombre d'utilisateurs total ne le laisse croire.",
+    text: "Les publicités s'adressent aux utilisateurs adultes de la formule gratuite et de l'abonnement Go. Les formules Plus, Pro et Enterprise restent sans publicité. Conséquence directe et souvent négligée : une partie de l'audience de ChatGPT n'est pas exposée, et cette partie inclut probablement une proportion notable d'utilisateurs professionnels intensifs. Si votre cible est très majoritairement composée de gros utilisateurs payants, l'audience atteignable est plus étroite que le nombre d'utilisateurs total ne le laisse croire.",
   },
   { type: "h3", text: "Comment elles apparaissent" },
   {
@@ -52,9 +59,14 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Le ciblage s'appuie sur le contexte de la conversation en cours plutôt que sur un profil publicitaire constitué au fil du temps. OpenAI précise que les annonceurs n'ont pas accès aux conversations des utilisateurs, et que ces derniers peuvent gérer la personnalisation, comprendre pourquoi une publicité leur est montrée et supprimer leurs données publicitaires.",
   },
+  { type: "h3", text: "Ce qui se mesure" },
   {
     type: "p",
-    text: "Ces informations reflètent l'état des annonces publiques d'OpenAI à la date de cet article. Sur un canal aussi jeune, vérifiez les modalités en vigueur avant tout engagement budgétaire.",
+    text: "Le suivi des conversions existe : par le pixel d'OpenAI, par son API Conversions ou par des outils de mesure tiers. C'est la condition d'un test qui conclut, et elle se vérifie avant la première dépense.",
+  },
+  {
+    type: "p",
+    text: "Sources : OpenAI, « ChatGPT Ads se déploie en Europe », 18 août 2026, mis à jour le 31 août 2026 ; datashake, « ChatGPT Ads en France : le self-service est lancé », 1er septembre 2026 ; Waisso, « ChatGPT Ads arrive en France le 24 août 2026 ». Sur un canal aussi jeune, vérifiez les modalités en vigueur avant tout engagement budgétaire.",
   },
   { type: "h2", text: "Ce que ChatGPT Ads n'est pas" },
   {
@@ -64,7 +76,7 @@ export const contenu: BlogSection[] = [
   { type: "h3", text: "Ce n'est pas « être recommandé par ChatGPT »" },
   {
     type: "p",
-    text: "Acheter de la publicité ne fait pas apparaître votre entreprise dans les réponses du modèle. Ce sont deux choses séparées, et c'est précisément ce qu'OpenAI met en avant. Apparaître dans les réponses relève d'un tout autre travail — éditorial, structurel, de réputation — qui ne s'achète pas.",
+    text: "Acheter de la publicité ne fait pas apparaître votre entreprise dans les réponses du modèle. Ce sont deux choses séparées, et c'est précisément ce qu'OpenAI met en avant. Apparaître dans les réponses relève d'un tout autre travail, éditorial, structurel et de réputation, qui ne s'achète pas.",
   },
   { type: "h3", text: "Ce n'est pas une garantie de présence" },
   {
@@ -98,7 +110,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Lue ainsi, la table ne dit pas « remplacez ». Elle dit : un canal sert de socle, l'autre sert d'exploration. Couper le socle pour financer l'exploration, c'est échanger un résultat connu contre une hypothèse. Si vous n'avez pas de marge budgétaire pour explorer, la bonne décision est d'attendre — pas de sacrifier ce qui marche.",
+    text: "Lue ainsi, la table ne dit pas « remplacez ». Elle dit : un canal sert de socle, l'autre sert d'exploration. Couper le socle pour financer l'exploration, c'est échanger un résultat connu contre une hypothèse. Si vous n'avez pas de marge budgétaire pour explorer, attendez plutôt que de sacrifier ce qui marche.",
   },
   { type: "h2", text: "Cinq critères pour décider" },
   {
@@ -123,7 +135,7 @@ export const contenu: BlogSection[] = [
   { type: "h3", text: "4. Vos prospects décrivent un problème, pas un produit" },
   {
     type: "p",
-    text: "C'est le critère spécifique à ce canal. Si vos clients arrivent en cherchant votre nom ou une référence produit précise, la conversation apporte peu. Si en revanche ils arrivent en décrivant une situation — « comment gérer X », « quel prestataire pour Y », « on a tel problème » — alors le format conversationnel joue en votre faveur.",
+    text: "C'est le critère spécifique à ce canal. Si vos clients arrivent en cherchant votre nom ou une référence produit précise, la conversation apporte peu. S'ils arrivent en décrivant une situation (« comment gérer X », « quel prestataire pour Y », « on a tel problème »), le format conversationnel joue en votre faveur.",
   },
   { type: "h3", text: "5. Vous avez de quoi financer une phase sans résultat" },
   {
@@ -149,7 +161,7 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Les erreurs classiques sur un canal neuf" },
   {
     type: "p",
-    text: "Elles se répètent à chaque ouverture de canal — c'était vrai pour Facebook Ads en 2013, pour TikTok en 2021, ce sera vrai ici.",
+    text: "Elles se répètent à chaque ouverture de canal publicitaire, et celle-ci n'y échappe pas.",
   },
   {
     type: "ul",
@@ -158,7 +170,7 @@ export const contenu: BlogSection[] = [
       "Confondre nouveauté et performance. Un canal récent est moins encombré ; ça ne le rend pas automatiquement rentable pour votre activité.",
       "Arrêter trop tôt, ou beaucoup trop tard. Les deux coûtent cher. Le volume de données fixé à l'avance protège des deux.",
       "Transposer ses annonces Google telles quelles. Un message pensé pour trois mots-clés répond mal à un besoin exprimé en trois phrases.",
-      "Négliger ce qui se passe après le clic. Un canal d'acquisition ne vaut que par le traitement des demandes qu'il génère. Un lead non rappelé sous 24 h est souvent un lead perdu, quel que soit le canal qui l'a produit.",
+      "Négliger ce qui se passe après le clic. Un canal d'acquisition ne vaut que par le traitement des demandes qu'il génère. Une demande rappelée trois jours plus tard a eu le temps d'aller ailleurs, quel que soit le canal qui l'a produite.",
     ],
   },
   { type: "h2", text: "Questions fréquentes" },
@@ -166,8 +178,12 @@ export const contenu: BlogSection[] = [
     type: "faq",
     items: [
       {
+        q: "Depuis quand ChatGPT Ads est-il disponible en France ?",
+        a: "Depuis le 24 août 2026, en même temps que dans 30 autres marchés européens. Le libre-service, ChatGPT Ads Manager, est déployé depuis le 1er septembre 2026 : les annonceurs créent leurs campagnes eux-mêmes.",
+      },
+      {
         q: "Les publicités apparaissent-elles pour tous les utilisateurs ?",
-        a: "Non. OpenAI a indiqué que les publicités concernent les formules gratuites et l'abonnement Go. Les formules Plus, Pro et Enterprise restent sans publicité. Une partie de l'audience n'est donc pas exposée.",
+        a: "Non. OpenAI a indiqué que les publicités concernent les utilisateurs adultes de la formule gratuite et de l'abonnement Go. Les formules Plus, Pro et Enterprise restent sans publicité. Une partie de l'audience n'est donc pas exposée.",
       },
       {
         q: "Les publicités influencent-elles les réponses de ChatGPT ?",
@@ -179,7 +195,7 @@ export const contenu: BlogSection[] = [
       },
       {
         q: "Quel budget faut-il pour tester ?",
-        a: "Il n'existe pas de montant universel. Le budget pertinent est celui qui permet d'accumuler assez de conversions pour conclure — plusieurs dizaines sur la période de test. En dessous, les chiffres obtenus ne sont pas exploitables.",
+        a: "Il n'existe pas de montant universel. Le budget pertinent est celui qui permet d'accumuler assez de conversions pour conclure : plusieurs dizaines sur la période de test. En dessous, les chiffres obtenus ne sont pas exploitables.",
       },
       {
         q: "Combien de temps avant de savoir si ça fonctionne ?",
@@ -198,6 +214,6 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "D'où la seule position défendable : tester avec un budget que vous acceptez de perdre, un tracking qui fonctionne, un seuil d'arrêt écrit à l'avance — et conserver intact ce qui alimente déjà votre activité. Les entreprises qui apprennent tôt sur un canal neuf accumulent une avance réelle. Celles qui s'y précipitent sans mesure financent surtout l'apprentissage des autres.",
+    text: "D'où la seule position défendable : tester avec un budget que vous acceptez de perdre, un tracking qui fonctionne, un seuil d'arrêt écrit à l'avance, en gardant intact ce qui alimente déjà votre activité. Les entreprises qui apprennent tôt sur un canal neuf accumulent une avance réelle. Celles qui s'y précipitent sans mesure financent surtout l'apprentissage des autres.",
   },
 ];

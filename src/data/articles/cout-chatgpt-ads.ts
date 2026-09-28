@@ -1,7 +1,24 @@
 import type { BlogSection } from "@/data/blog-posts";
+import { PRIX_CHATGPT_ADS, euros } from "@/lib/config";
 
 /** Le corps de l'article « cout-chatgpt-ads ». Ses métadonnées vivent dans
-    src/data/blog-posts.ts ; ce fichier n'est chargé que sur sa page. */
+    src/data/blog-posts.ts ; ce fichier n'est chargé que sur sa page.
+
+    La grille de Sitaly suit PRIX_CHATGPT_ADS (décision D2 du 28 septembre
+    2026) : si afficher passe à false, elle disparaît et les données de marché
+    restent. Les faits du lancement viennent des sources citées sur
+    /chatgpt-ads/ (OpenAI, datashake, Waisso). */
+const { afficher, mensuelMin, partBudget } = PRIX_CHATGPT_ADS;
+
+const GRILLE_SITALY: BlogSection[] = afficher
+  ? [
+      {
+        type: "p",
+        text: `Chez Sitaly, la gestion ChatGPT Ads démarre à ${euros(mensuelMin)} par mois plus ${partBudget} % du budget publicitaire dépensé. Le budget publicitaire reste à part : vous le payez directement à OpenAI. Ce montant couvre la cartographie des intentions, la rédaction des messages, la mise en place du suivi des conversions, les arbitrages et un point mensuel qui se conclut par une recommandation nette : arrêter, maintenir ou augmenter.`,
+      },
+    ]
+  : [];
+
 export const contenu: BlogSection[] = [
   {
     type: "p",
@@ -9,7 +26,26 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Cet article ne va donc pas inventer un chiffre de marché. Il explique ce qui compose réellement le coût, pourquoi les montants qui circulent doivent être maniés avec précaution, et comment calculer le budget qui a du sens pour vous. Il donne aussi, plus bas, le tarif de notre [agence ChatGPT Ads](/chatgpt-ads/), pour que vous sachiez ce que coûte la gestion.",
+    text: `Cet article ne va donc pas inventer un chiffre de marché. Il explique ce qui compose réellement le coût, pourquoi les montants qui circulent doivent être maniés avec précaution, et comment calculer le budget qui a du sens pour vous. ${afficher ? "Il donne aussi, plus bas, le tarif de notre [agence ChatGPT Ads](/chatgpt-ads/), pour que vous sachiez ce que coûte la gestion." : "Il explique aussi ce que couvre la gestion confiée à une [agence ChatGPT Ads](/chatgpt-ads/)."}`,
+  },
+  { type: "h2", text: "Depuis le lancement du 24 août 2026" },
+  {
+    type: "p",
+    text: "Le canal est ouvert en France depuis le 24 août 2026, en même temps que dans 30 autres marchés européens. Ce que l'on sait à la date de cette mise à jour :",
+  },
+  {
+    type: "ul",
+    items: [
+      "Depuis le 1er septembre 2026, les annonceurs peuvent créer leurs campagnes eux-mêmes dans ChatGPT Ads Manager, le libre-service d'OpenAI.",
+      "Les annonces sont signalées comme sponsorisées et affichées séparément des réponses.",
+      "Elles s'adressent aux utilisateurs adultes des offres gratuite et Go. Les abonnés Plus et Pro n'en voient pas.",
+      "Le ciblage est contextuel : il part du sujet de la conversation en cours.",
+      "Le suivi des conversions existe, par le pixel d'OpenAI, son API Conversions ou des outils de mesure tiers.",
+    ],
+  },
+  {
+    type: "p",
+    text: "Le libre-service abaisse la porte d'entrée : une PME peut lancer une campagne sans passer par un groupe de communication. Il ne dit rien du coût d'une demande. Pour le savoir, il faut encore vos chiffres et un test cadré. Sources : OpenAI, « ChatGPT Ads se déploie en Europe », 18 août 2026, mis à jour le 31 août 2026 ; datashake, « ChatGPT Ads en France : le self-service est lancé », 1er septembre 2026 ; Waisso, « ChatGPT Ads arrive en France le 24 août 2026 ».",
   },
   { type: "h2", text: "Pourquoi personne ne peut vous donner un CPA" },
   {
@@ -18,7 +54,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Deux éléments manquent encore, et ils sont déterminants. D'abord la densité concurrentielle : tant que peu d'annonceurs sont présents, les enchères restent basses — et rien ne dit qu'elles le resteront. Ensuite le comportement réel des utilisateurs : on ignore encore quel taux de clic produit un contenu sponsorisé placé sous une réponse, et surtout quelle proportion de ces clics se transforme en demande sérieuse.",
+    text: "Deux éléments manquent encore, et ils sont déterminants. D'abord la densité concurrentielle : tant que peu d'annonceurs sont présents, les enchères restent basses, et rien ne dit qu'elles le resteront. Ensuite le comportement réel des utilisateurs : on ignore encore quel taux de clic produit un contenu sponsorisé placé sous une réponse, et surtout quelle proportion de ces clics se transforme en demande sérieuse.",
   },
   {
     type: "p",
@@ -37,7 +73,7 @@ export const contenu: BlogSection[] = [
   { type: "h3", text: "2. Les honoraires de gestion" },
   {
     type: "p",
-    text: "Ce que coûte le pilotage : cadrage, rédaction des messages, mise en place du suivi, arbitrages, analyse. C'est un poste fixe, indépendant du budget diffusé — et c'est aussi lui qui détermine si votre budget publicitaire est bien dépensé ou gaspillé.",
+    text: "Ce que coûte le pilotage : cadrage, rédaction des messages, mise en place du suivi, arbitrages, analyse. Selon les agences, il prend la forme d'un forfait, d'une part du budget diffusé, ou des deux. C'est aussi ce poste qui décide si votre budget publicitaire est bien dépensé ou gaspillé.",
   },
   { type: "h3", text: "3. Le coût invisible : ce qui se passe après le clic" },
   {
@@ -53,7 +89,7 @@ export const contenu: BlogSection[] = [
     type: "ul",
     items: [
       "Ils concernent d'autres marchés. Un tarif observé aux États-Unis ne se transpose pas en France : audience, concurrence et maturité diffèrent.",
-      "Ils décrivent souvent l'accès grands comptes. En France, l'achat passe pour l'instant par un nombre restreint de groupes de communication, et un guichet en libre-service est annoncé. Les conditions de l'un ne préjugent pas de celles de l'autre.",
+      "Ils décrivent souvent l'accès grands comptes. Depuis le 1er septembre 2026, le libre-service de ChatGPT Ads Manager est ouvert en France, et les conditions de l'un ne préjugent pas de celles de l'autre.",
       "Ils bougent vite. Sur un canal qui se déploie marché par marché, un tarif de lancement n'est pas un tarif d'équilibre.",
     ],
   },
@@ -64,7 +100,7 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Calculez à partir de votre marge, pas d'un benchmark" },
   {
     type: "p",
-    text: "La bonne nouvelle, c'est que vous n'avez pas besoin du CPA du marché pour décider. Vous avez besoin du vôtre — et celui-là, vous pouvez le calculer aujourd'hui avec vos propres chiffres.",
+    text: "La bonne nouvelle, c'est que vous n'avez pas besoin du CPA du marché pour décider. Vous avez besoin du vôtre, et celui-là se calcule aujourd'hui avec vos propres chiffres.",
   },
   { type: "p", text: "Trois données suffisent :" },
   {
@@ -91,7 +127,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Ce seuil est l'information la plus utile que vous puissiez apporter à une agence. Une prestation sérieuse commence par le calculer avec vous — pas par vous annoncer un CPA cible sorti d'un tableau.",
+    text: "Ce seuil est l'information la plus utile que vous puissiez apporter à une agence. Une prestation sérieuse commence par le calculer avec vous, avant tout CPA cible sorti d'un tableau.",
   },
   { type: "h2", text: "Combien prévoir pour un test qui conclut" },
   {
@@ -104,17 +140,14 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "D'où la méthode : estimez votre coût par demande acceptable (le calcul ci-dessus), multipliez par le nombre de conversions nécessaires, et vous obtenez l'ordre de grandeur de l'enveloppe de test. Si ce montant vous paraît insupportable, la conclusion n'est pas « testons avec moins » — c'est « ce n'est pas le moment ». Un test sous-financé ne donne pas une petite réponse : il n'en donne aucune.",
+    text: "D'où la méthode : estimez votre coût par demande acceptable (le calcul ci-dessus), multipliez par le nombre de conversions nécessaires, et vous obtenez l'ordre de grandeur de l'enveloppe de test. Si ce montant vous paraît insupportable, la conclusion devient « ce n'est pas le moment », et non « testons avec moins ». Un test sous-financé ne donne pas une petite réponse : il n'en donne aucune.",
   },
   { type: "h2", text: "Ce que coûte la gestion" },
   {
     type: "p",
     text: "Les honoraires de pilotage se justifient par une chose : l'écart entre un budget dépensé au hasard et un budget dépensé avec méthode. Sur un canal mature, cet écart est mesurable. Sur un canal neuf, où il n'existe aucun réglage par défaut ni aucun repère public, il est plus grand encore.",
   },
-  {
-    type: "p",
-    text: "Chez Sitaly, la gestion ChatGPT Ads est facturée 890 €/mois plus 10 % du budget publicitaire, budget publicitaire exclu et facturé séparément. Ce montant couvre la cartographie des intentions, la rédaction des messages, la mise en place du suivi des conversions, les arbitrages et un point mensuel qui se conclut par une recommandation nette : arrêter, maintenir ou augmenter.",
-  },
+  ...GRILLE_SITALY,
   {
     type: "p",
     text: "Quelle que soit l'agence retenue, vérifiez deux points : que le budget publicitaire est bien séparé des honoraires, et qu'un seuil d'arrêt est écrit avant le lancement. Une prestation qui refuse de définir à l'avance les conditions de son propre échec vous engage sans filet.",
@@ -126,7 +159,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "C'est ce chiffre-là qui doit piloter la décision — pas un benchmark de marché qui n'existe pas encore. Et c'est aussi lui qui vous dira, dans quelques mois, si ce canal mérite de rester dans votre plan ou pas.",
+    text: "C'est ce chiffre-là qui doit piloter la décision, plutôt qu'un benchmark de marché qui n'existe pas encore. Et c'est aussi lui qui vous dira, dans quelques mois, si ce canal mérite de rester dans votre plan ou pas.",
   },
   { type: "h2", text: "Questions fréquentes" },
   {
@@ -138,7 +171,7 @@ export const contenu: BlogSection[] = [
       },
       {
         q: "Le budget publicitaire est-il inclus dans les honoraires d'une agence ?",
-        a: "Il ne devrait jamais l'être. Le budget diffusé et les honoraires de pilotage sont deux postes distincts : le premier est variable et vous appartient, le second est fixe et rémunère la méthode. Une offre qui les mélange rend impossible le calcul de votre coût d'acquisition réel.",
+        a: "Il ne devrait jamais l'être. Le budget diffusé et les honoraires de pilotage sont deux postes distincts : le premier vous appartient et se paie à la régie, le second rémunère la méthode, en forfait, en part du budget ou les deux. Une offre qui les mélange rend impossible le calcul de votre coût d'acquisition réel.",
       },
       {
         q: "Comment calculer ce que je peux payer une demande entrante ?",
@@ -154,7 +187,7 @@ export const contenu: BlogSection[] = [
       },
       {
         q: "Les coûts vont-ils augmenter avec le temps ?",
-        a: "C'est le scénario le plus probable : sur tous les canaux publicitaires, les enchères montent à mesure que les annonceurs affluent. C'est l'argument principal en faveur d'un test précoce — apprendre pendant que l'espace est peu disputé — mais ce n'est pas une garantie de rentabilité pour autant.",
+        a: "C'est le scénario le plus probable : sur tous les canaux publicitaires, les enchères montent à mesure que les annonceurs affluent. C'est l'argument principal en faveur d'un test précoce : apprendre pendant que l'espace est peu disputé. Ce n'est pas une garantie de rentabilité pour autant.",
       },
     ],
   },

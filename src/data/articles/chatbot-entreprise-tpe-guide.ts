@@ -19,12 +19,12 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "L'agent conversationnel adossé à un modèle de langage comprend une demande formulée librement, s'appuie sur vos informations réelles pour répondre, et poursuit un objectif, comme obtenir un numéro de téléphone ou caler un rendez-vous. Il ne suit pas un script, il mène une conversation.",
+    text: "L'agent IA, adossé à un modèle de langage, comprend une demande formulée librement, s'appuie sur vos informations réelles pour répondre, et poursuit un objectif, comme obtenir un numéro de téléphone ou caler un rendez-vous. Il ne suit pas un script, il mène une conversation.",
   },
   {
     type: "table",
-    caption: "Chatbot scénarisé et agent conversationnel",
-    headers: ["", "Chatbot scénarisé", "Agent conversationnel IA"],
+    caption: "Chatbot scénarisé et agent IA",
+    headers: ["", "Chatbot scénarisé", "Agent IA"],
     rows: [
       ["Fonctionnement", "Arbre de questions prévues", "Comprend et reformule librement"],
       ["Hors sujet", "Bloque", "S'adapte ou transfère"],
@@ -32,6 +32,49 @@ export const contenu: BlogSection[] = [
       ["Effet sur l'image", "Souvent négatif", "Neutre à positif si bien réglé"],
       ["Coût", "Faible", "Abonnement plus élevé"],
     ],
+  },
+  {
+    type: "h2",
+    text: "Agent IA, chatbot ou assistant IA : la différence sur un même cas client",
+  },
+  {
+    type: "p",
+    text: "Les trois mots se croisent dans les offres. Le plus simple pour les distinguer est de suivre une même demande. Un exemple écrit pour cet article : un mardi à 21 h, une propriétaire écrit sur le site d'une agence immobilière. « Bonjour, je voudrais vendre mon appartement à Brétigny. Vous pouvez venir l'estimer ? »",
+  },
+  { type: "h3", text: "Avec un chatbot scénarisé" },
+  {
+    type: "p",
+    text: "La bulle propose trois boutons : Acheter, Vendre, Louer. La propriétaire clique sur Vendre, puis reçoit un lien vers le formulaire de contact. Elle demande si quelqu'un peut passer samedi : le chatbot répond qu'il n'a pas compris. Elle remplit le formulaire, ou elle ferme la page.",
+  },
+  { type: "h3", text: "Avec un assistant IA" },
+  {
+    type: "p",
+    text: "Un assistant IA, comme ChatGPT ou Claude utilisé par votre équipe, aide la personne qui s'en sert : rédiger une réponse, résumer un dossier, préparer une annonce. Il n'est pas sur votre site et ne parle pas à vos clients. À 21 h, personne ne lui a rien demandé : la propriétaire attend jusqu'au lendemain. L'assistant aidera le négociateur à lui répondre, une fois qu'il aura lu le message.",
+  },
+  { type: "h3", text: "Avec un agent IA" },
+  {
+    type: "p",
+    text: "L'agent répond tout de suite et se présente comme une IA. Il demande le type de bien, la surface et le délai de vente, puis propose deux créneaux d'estimation libres dans l'agenda du négociateur du secteur. La propriétaire choisit samedi 10 h. Elle reçoit une confirmation par SMS. Le négociateur trouve le lendemain matin une fiche complète et un rendez-vous calé. L'agent n'a donné aucun avis de valeur : l'estimation reste le travail du négociateur.",
+  },
+  {
+    type: "table",
+    caption: "Une même demande, trois outils",
+    headers: ["", "Chatbot scénarisé", "Assistant IA", "Agent IA"],
+    rows: [
+      ["Qui l'utilise", "Le visiteur, dans un cadre fixe", "Votre équipe", "Le visiteur, librement"],
+      ["À 21 h", "Des boutons, puis un formulaire", "Rien", "Une réponse et un créneau"],
+      [
+        "Le lendemain matin",
+        "Un formulaire, s'il a été rempli",
+        "Un message à traiter",
+        "Une fiche et un rendez-vous",
+      ],
+      ["Agit dans vos outils", "Non", "Non", "Oui : agenda, CRM, SMS"],
+    ],
+  },
+  {
+    type: "p",
+    text: "Dans la suite de cet article, « agent IA » désigne ce troisième cas. C'est aussi le terme qui s'impose dans les offres, parce qu'il décrit ce que fait l'outil : il agit, dans le cadre que vous lui fixez.",
   },
 
   { type: "h2", text: "Les trois cas où un chatbot rapporte vraiment" },
@@ -91,7 +134,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Dans les services aux entreprises, le conseil ou les métiers où le projet se prépare longtemps à l'avance, le rapport s'inverse : le prospect préfère écrire, en dehors des heures, sans engager de conversation. Le chatbot y prend tout son sens. Le versant téléphonique, lui, relève d'un [agent vocal](/agents-ia/) qui décroche et se présente comme une IA.",
+    text: "Dans les services aux entreprises, le conseil ou les métiers où le projet se prépare longtemps à l'avance, le rapport s'inverse : le prospect préfère écrire, en dehors des heures, sans engager de conversation. L'agent IA écrit y prend tout son sens. Le versant téléphonique, lui, relève d'un [agent vocal IA](/agents-ia/agent-vocal/) qui décroche et se présente comme une IA.",
   },
 
   { type: "h2", text: "Combien ça coûte" },

@@ -379,6 +379,14 @@ des pages voisines reçoit une carte « Étape suivante » vers une autre famill
 que l'acquisition amène). C'est une carte de plus dans le bloc, pas un
 cinquième bloc.
 
+**Compléments du 28 septembre 2026.** Deux sous-parties optionnelles, rangées
+dans les blocs existants : les étapes du déroulé sous « Ce que comprend », des
+exemples par secteur sous « Pour qui » (champs `etapes` et `exemples` de
+`src/data/expertises.ts`). Elles servent les pages trop courtes face au menu et
+au pied de page : /automatisation-taches/ était classée « soft 404 » par Google.
+Le gabarit enveloppe aussi son contenu dans un `<main>`, comme les pages
+secteurs, les articles, l'accueil et /acquisition/.
+
 **L'accueil en sort raccourci d'un sixième.** Disparaissent « Le constat »,
 « Notre méthode » et « Compléments », qui énuméraient sans rien rendre
 cliquable, ainsi que la grille des métiers, désormais dans le pied de page. Une
