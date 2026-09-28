@@ -33,8 +33,14 @@ export function useSplitWords(containerRef: RefObject<HTMLElement | null>) {
     const root = containerRef.current;
     if (!root) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Sous 768 px, les titres restent entiers : sur un téléphone, masquer puis
+    // révéler le titre du premier écran retardait l'affichage principal
+    // (LCP) pour un effet que la petite taille rend à peine visible.
+    if (window.matchMedia("(max-width: 767px)").matches) return;
 
-    const titles = Array.from(root.querySelectorAll<HTMLElement>("[data-split]"));
+    const titles = Array.from(
+      root.querySelectorAll<HTMLElement>("[data-split]:not([data-split-done='1'])"),
+    );
     if (!titles.length) return;
 
     // Viewport non mesurable : onglet ouvert en arrière-plan, prérendu, fenêtre
@@ -44,11 +50,12 @@ export function useSplitWords(containerRef: RefObject<HTMLElement | null>) {
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
     if (!viewportHeight) return;
 
-    for (const title of titles) {
-      if (title.dataset.splitDone === "1") continue;
-
-      // Les noeuds texte sont collectés avant modification : insérer pendant
-      // le parcours invaliderait le TreeWalker.
+    // Toutes les lectures d'abord (styles calculés compris), puis toutes les
+    // écritures : alterner les deux, titre par titre, forçait un recalcul de
+    // style à chaque tour de boucle.
+    // Les noeuds texte sont collectés avant modification : insérer pendant
+    // le parcours invaliderait le TreeWalker.
+    const aDecouper = titles.map((title) => {
       const walker = document.createTreeWalker(title, NodeFilter.SHOW_TEXT);
       const textNodes: Text[] = [];
       let node = walker.nextNode();
@@ -58,7 +65,10 @@ export function useSplitWords(containerRef: RefObject<HTMLElement | null>) {
         }
         node = walker.nextNode();
       }
+      return { title, textNodes };
+    });
 
+    for (const { title, textNodes } of aDecouper) {
       let wordIndex = 0;
       for (const textNode of textNodes) {
         const fragment = document.createDocumentFragment();
@@ -82,6 +92,9 @@ export function useSplitWords(containerRef: RefObject<HTMLElement | null>) {
       title.classList.add("is-split");
     }
 
+    // Un titre déjà à l'écran se montre dès le premier passage de
+    // l'observateur, en gardant sa cascade : c'est elle qui donne le
+    // mouvement du hero. Les autres attendent d'entrer dans la fenêtre.
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -92,17 +105,18 @@ export function useSplitWords(containerRef: RefObject<HTMLElement | null>) {
       },
       { rootMargin: "0px 0px -10% 0px", threshold: 0.15 },
     );
-
-    for (const title of titles) {
-      // Un titre déjà à l'écran au chargement se montre sans attendre le scroll,
-      // mais garde sa cascade : c'est elle qui donne le mouvement du hero.
-      if (title.getBoundingClientRect().top < viewportHeight) {
-        title.classList.add("is-shown");
-      } else {
-        observer.observe(title);
+    const initial = new IntersectionObserver((entries) => {
+      initial.disconnect();
+      for (const entry of entries) {
+        if (entry.isIntersecting) entry.target.classList.add("is-shown");
+        else observer.observe(entry.target);
       }
-    }
+    });
+    for (const title of titles) initial.observe(title);
 
-    return () => observer.disconnect();
+    return () => {
+      initial.disconnect();
+      observer.disconnect();
+    };
   }, [containerRef]);
 }

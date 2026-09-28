@@ -718,8 +718,8 @@ function Hero() {
             </p>
             <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-muted-foreground sm:text-lg">
               Agence immobilière, cabinet de courtage ou entreprise du bâtiment : Sitaly installe et
-              pilote les agents IA qui répondent, qualifient, prennent vos rendez-vous et relancent ce
-              qui reste en attente. Un humain reprend la main dès que la situation le demande.
+              pilote les agents IA qui répondent, qualifient, prennent vos rendez-vous et relancent
+              ce qui reste en attente. Un humain reprend la main dès que la situation le demande.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -1423,7 +1423,10 @@ const A_LIRE = [
 
 function ALire() {
   return (
-    <section id="a-lire" className="scroll-mt-24 border-y border-border bg-secondary/20 py-20 sm:py-28">
+    <section
+      id="a-lire"
+      className="scroll-mt-24 border-y border-border bg-secondary/20 py-20 sm:py-28"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div data-reveal>
           <SectionHeader
@@ -1593,7 +1596,10 @@ function DiagnosticForm() {
 
   if (etat === "mail" || etat === "erreur") {
     return (
-      <div className="ai-card p-8 text-center sm:p-10" role={etat === "erreur" ? "alert" : "status"}>
+      <div
+        className="ai-card p-8 text-center sm:p-10"
+        role={etat === "erreur" ? "alert" : "status"}
+      >
         <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-success/15 text-success">
           <Send className="h-6 w-6" aria-hidden="true" />
         </div>

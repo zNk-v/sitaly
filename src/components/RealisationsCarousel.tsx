@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { REALISATIONS } from "@/data/realisations";
+import { REALISATIONS, srcSetCapture } from "@/data/realisations";
 import { cn } from "@/lib/utils";
 
 /**
@@ -48,14 +48,18 @@ export function RealisationsCarousel({ className }: { className?: string }) {
                   params={{ slug: r.slug }}
                   className="zoom-frame block w-full shrink-0 overflow-hidden rounded-3xl border border-border bg-card shadow-elevated md:w-[52%]"
                 >
+                  {/* En WebP, et chargée en différé : le carrousel vit loin
+                      sous le premier écran. Chargée d'emblée, la première
+                      capture était préchargée en tête de page et disputait
+                      la bande passante au mot du hero. */}
                   <img
-                    src={r.capture.large}
-                    srcSet={`${r.capture.small} 720w, ${r.capture.large} 1200w`}
-                    sizes="(min-width: 768px) 52vw, 92vw"
+                    src={r.capture.small}
+                    srcSet={srcSetCapture(r)}
+                    sizes="(min-width: 1152px) 600px, (min-width: 768px) 52vw, calc(100vw - 2rem)"
                     alt={`Page d'accueil du site de ${r.client}`}
                     width={720}
                     height={500}
-                    loading={i === 0 ? undefined : "lazy"}
+                    loading="lazy"
                     decoding="async"
                     className="block h-auto w-full"
                   />
@@ -118,7 +122,9 @@ export function RealisationsCarousel({ className }: { className?: string }) {
           <ChevronLeft className="h-5 w-5" />
         </button>
 
-        <div className="flex gap-2">
+        {/* Chaque pastille est un bouton de 44 px de côté : le point visible
+            est plus petit, la zone tactile ne l'est pas. */}
+        <div className="flex">
           {REALISATIONS.map((r, i) => (
             <button
               key={r.slug}
@@ -126,11 +132,18 @@ export function RealisationsCarousel({ className }: { className?: string }) {
               onClick={() => setIndex(i)}
               aria-label={`Voir ${r.client}`}
               aria-current={i === index}
-              className={cn(
-                "point-carrousel h-2.5 rounded-full transition-all",
-                i === index ? "w-8 bg-brand-ink" : "w-2.5 bg-border hover:bg-muted-foreground/50",
-              )}
-            />
+              className="group grid h-11 min-w-11 place-items-center px-1"
+            >
+              <span
+                aria-hidden="true"
+                className={cn(
+                  "block h-2.5 rounded-full transition-all",
+                  i === index
+                    ? "w-8 bg-brand-ink"
+                    : "w-2.5 bg-border group-hover:bg-muted-foreground/50",
+                )}
+              />
+            </button>
           ))}
         </div>
 

@@ -50,7 +50,8 @@ const ENTITES = {
 function decoder(texte) {
   return texte.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (tout, code) => {
     if (code[0] === "#") {
-      const n = code[1].toLowerCase() === "x" ? parseInt(code.slice(2), 16) : parseInt(code.slice(1), 10);
+      const n =
+        code[1].toLowerCase() === "x" ? parseInt(code.slice(2), 16) : parseInt(code.slice(1), 10);
       return Number.isFinite(n) ? String.fromCodePoint(n) : tout;
     }
     return ENTITES[code.toLowerCase()] ?? tout;
@@ -123,7 +124,8 @@ function cheminInterne(href) {
   if (!href) return null;
   let h = href.trim();
   if (h.startsWith(DOMAINE)) h = h.slice(DOMAINE.length) || "/";
-  else if (/^https?:\/\/(www\.)?sitaly\.fr/i.test(h)) h = h.replace(/^https?:\/\/(www\.)?sitaly\.fr/i, "") || "/";
+  else if (/^https?:\/\/(www\.)?sitaly\.fr/i.test(h))
+    h = h.replace(/^https?:\/\/(www\.)?sitaly\.fr/i, "") || "/";
   if (!h.startsWith("/") || h.startsWith("//")) return null;
   const net = h.split(/[?#]/)[0];
   return net === "" ? "/" : net;
@@ -194,7 +196,9 @@ for (const p of pages) {
   // chaque question de FAQ se voit aussi : les pages hors index restent en
   // l'état (décision du 26 septembre 2026, src/lib/indexation.ts), et Google
   // n'en tire aucun résultat enrichi.
-  for (const m of html.matchAll(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+  for (const m of html.matchAll(
+    /<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi,
+  )) {
     let donnees;
     try {
       donnees = JSON.parse(m[1]);
@@ -243,14 +247,17 @@ for (const p of pages) {
   const description = meta(html, "name", "description");
   if (!titre) erreur(chemin, "<title> absent");
   else {
-    if (longueur(titre) > 60) erreur(chemin, `title de ${longueur(titre)} caractères (60 au plus) : « ${titre} »`);
-    else if (longueur(titre) < 30) avertir(chemin, `title court (${longueur(titre)}) : « ${titre} »`);
+    if (longueur(titre) > 60)
+      erreur(chemin, `title de ${longueur(titre)} caractères (60 au plus) : « ${titre} »`);
+    else if (longueur(titre) < 30)
+      avertir(chemin, `title court (${longueur(titre)}) : « ${titre} »`);
     titres.set(titre, [...(titres.get(titre) ?? []), chemin]);
   }
   if (!description) erreur(chemin, "meta description absente");
   else {
     const d = description.trim();
-    if (longueur(d) > 160) erreur(chemin, `meta description de ${longueur(d)} caractères (160 au plus)`);
+    if (longueur(d) > 160)
+      erreur(chemin, `meta description de ${longueur(d)} caractères (160 au plus)`);
     else if (longueur(d) < 120) avertir(chemin, `meta description courte (${longueur(d)})`);
     descriptions.set(d, [...(descriptions.get(d) ?? []), chemin]);
   }
@@ -277,7 +284,10 @@ for (const p of pages) {
   }
 
   if (chemin === "/chatgpt-ads/") {
-    if (/<form\b[^>]*action=["']mailto:/i.test(html) || /location\.href\s*=\s*["']mailto:/i.test(html)) {
+    if (
+      /<form\b[^>]*action=["']mailto:/i.test(html) ||
+      /location\.href\s*=\s*["']mailto:/i.test(html)
+    ) {
       erreur(chemin, "le formulaire part encore par mailto: comme envoi principal");
     }
   }
@@ -294,7 +304,8 @@ for (const [titre, chemins] of titres) {
   if (chemins.length > 1) erreurs.push(`title en double « ${titre} » : ${chemins.join(", ")}`);
 }
 for (const [d, chemins] of descriptions) {
-  if (chemins.length > 1) erreurs.push(`meta description en double : ${chemins.join(", ")} (« ${d.slice(0, 60)}… »)`);
+  if (chemins.length > 1)
+    erreurs.push(`meta description en double : ${chemins.join(", ")} (« ${d.slice(0, 60)}… »)`);
 }
 
 /* ---------------------------------------------------------------------------
@@ -323,7 +334,8 @@ if (!existsSync(sitemap)) {
     if (page && !page.indexable) erreurs.push(`sitemap : ${chemin} n'est pas indexable`);
   }
   for (const p of pages) {
-    if (p.indexable && !dansSitemap.has(p.chemin)) avertir(p.chemin, "page indexable absente du sitemap");
+    if (p.indexable && !dansSitemap.has(p.chemin))
+      avertir(p.chemin, "page indexable absente du sitemap");
   }
 }
 

@@ -3,7 +3,7 @@ import { ArrowRight, Calendar, Check, Phone } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SectionHeader } from "@/components/SectionHeader";
-import { getRealisation } from "@/data/realisations";
+import { getRealisation, srcSetCapture } from "@/data/realisations";
 import { BASE_URL } from "@/lib/sitemap";
 import {
   CALENDLY_URL,
@@ -196,14 +196,16 @@ function Essonne() {
           </div>
 
           <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-border pt-6 text-sm font-medium">
-            {["Basé à Brétigny-sur-Orge", "Diagnostic offert de 30 min", "Toute l'Île-de-France"].map(
-              (r) => (
-                <li key={r} className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-signal-ink" />
-                  {r}
-                </li>
-              ),
-            )}
+            {[
+              "Basé à Brétigny-sur-Orge",
+              "Diagnostic offert de 30 min",
+              "Toute l'Île-de-France",
+            ].map((r) => (
+              <li key={r} className="flex items-center gap-2">
+                <Check className="h-4 w-4 shrink-0 text-signal-ink" />
+                {r}
+              </li>
+            ))}
           </ul>
         </div>
       </section>
@@ -287,7 +289,7 @@ function Essonne() {
                 <figure>
                   <img
                     src={lafleur.capture.small}
-                    srcSet={`${lafleur.capture.small} 720w, ${lafleur.capture.large} 1200w`}
+                    srcSet={srcSetCapture(lafleur)}
                     sizes="(min-width: 1024px) 40vw, calc(100vw - 2rem)"
                     width={720}
                     height={500}
@@ -357,7 +359,10 @@ function Essonne() {
               </p>
               <p>
                 Joignable {HORAIRES}, au{" "}
-                <a href={`tel:${SITALY_PHONE}`} className="font-semibold text-brand-ink hover:underline">
+                <a
+                  href={`tel:${SITALY_PHONE}`}
+                  className="font-semibold text-brand-ink hover:underline"
+                >
                   {SITALY_PHONE_DISPLAY}
                 </a>
                 . Pour en savoir plus sur le parcours et l'entreprise :{" "}

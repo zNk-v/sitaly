@@ -1,15 +1,11 @@
 import { Link } from "@tanstack/react-router";
+import { ANNEE_DU_BUILD } from "@/lib/date-du-build";
 import { Mail, Phone } from "lucide-react";
 import { SitalyLogo } from "@/components/SitalyLogo";
 import { LinkedinLink } from "@/components/LinkedinLink";
 import { SECTEURS, cheminSecteur } from "@/data/secteurs";
 import { COULEURS_FAMILLE, FAMILLES, entreesFamille } from "@/data/expertises";
-import {
-  SITALY_DEPARTEMENT,
-  SITALY_PHONE,
-  SITALY_PHONE_DISPLAY,
-  SITALY_VILLE,
-} from "@/lib/config";
+import { SITALY_DEPARTEMENT, SITALY_PHONE, SITALY_PHONE_DISPLAY, SITALY_VILLE } from "@/lib/config";
 
 /**
  * Pied de page unique du site.
@@ -133,7 +129,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-white/60 sm:flex-row">
-          <div>© {new Date().getFullYear()} Sitaly</div>
+          <div>© {ANNEE_DU_BUILD} Sitaly</div>
           <div className="flex flex-wrap justify-center gap-x-5 gap-y-1">
             <Link to="/mentions-legales/" className="py-2 transition hover:text-white">
               Mentions légales

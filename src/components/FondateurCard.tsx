@@ -1,12 +1,7 @@
 import { Instagram, Linkedin, Mail, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { LINKEDIN_URL } from "@/components/LinkedinLink";
-import {
-  SITALY_DEPARTEMENT,
-  SITALY_PHONE,
-  SITALY_PHONE_DISPLAY,
-  SITALY_VILLE,
-} from "@/lib/config";
+import { SITALY_DEPARTEMENT, SITALY_PHONE, SITALY_PHONE_DISPLAY, SITALY_VILLE } from "@/lib/config";
 
 import teddy448 from "@/assets/teddy-vidal-448.jpg";
 import teddy672 from "@/assets/teddy-vidal-672.jpg";

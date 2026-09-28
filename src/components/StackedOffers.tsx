@@ -74,8 +74,8 @@ const LEVIERS: Levier[] = [
         >
           publicité dans ChatGPT
         </a>{" "}
-        est ouverte en France depuis le 24 août 2026. On cartographie les intentions, on écrit
-        les messages, on mesure avant de dépenser.
+        est ouverte en France depuis le 24 août 2026. On cartographie les intentions, on écrit les
+        messages, on mesure avant de dépenser.
       </>
     ),
     points: [

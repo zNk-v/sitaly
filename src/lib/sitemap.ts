@@ -121,9 +121,7 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
  * Source unique du sitemap publié : les pages indexables seulement. Les
  * articles sont dérivés de BLOG_POSTS : ajouter un article suffit.
  */
-export const SITEMAP_ENTRIES: SitemapEntry[] = TOUTES_LES_PAGES.filter((e) =>
-  estIndexable(e.path),
-);
+export const SITEMAP_ENTRIES: SitemapEntry[] = TOUTES_LES_PAGES.filter((e) => estIndexable(e.path));
 
 export function buildSitemapXml(entries: SitemapEntry[] = SITEMAP_ENTRIES): string {
   const urls = entries.map((e) =>

@@ -424,7 +424,10 @@ function UnSeulConsultant() {
         />
         <div className="mx-auto mt-12 grid max-w-5xl gap-5 sm:grid-cols-2">
           {engagements.map((e) => (
-            <div key={e.title} className="flex gap-4 rounded-2xl border border-border bg-card p-6 shadow-soft">
+            <div
+              key={e.title}
+              className="flex gap-4 rounded-2xl border border-border bg-card p-6 shadow-soft"
+            >
               <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent/10 text-accent">
                 <e.icon className="h-5 w-5" />
               </div>
@@ -694,7 +697,9 @@ function Faq() {
               <span>{it.q}</span>
               <ChevronDown className="h-5 w-5 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" />
             </summary>
-            <div className="px-5 pb-5 text-[15px] leading-relaxed text-muted-foreground">{it.a}</div>
+            <div className="px-5 pb-5 text-[15px] leading-relaxed text-muted-foreground">
+              {it.a}
+            </div>
           </details>
         ))}
       </div>

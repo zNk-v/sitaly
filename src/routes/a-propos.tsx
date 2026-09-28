@@ -75,10 +75,10 @@ function APropos() {
             Teddy Vidal, <span className="accent-word">fondateur de Sitaly</span>
           </h1>
           <p className="measure mt-6 text-lg leading-relaxed text-foreground/75 sm:text-xl">
-            Sitaly est une micro-agence d'une seule personne. J'installe les agents IA, je
-            construis les automatisations et les sites, et je pilote les campagnes de mes clients.
-            Basé à {SITALY_VILLE}, dans l'{SITALY_DEPARTEMENT}, je travaille avec des PME
-            d'Île-de-France et, à distance, de toute la France.
+            Sitaly est une micro-agence d'une seule personne. J'installe les agents IA, je construis
+            les automatisations et les sites, et je pilote les campagnes de mes clients. Basé à{" "}
+            {SITALY_VILLE}, dans l'{SITALY_DEPARTEMENT}, je travaille avec des PME d'Île-de-France
+            et, à distance, de toute la France.
           </p>
           <p className="measure mt-4 text-foreground/75">
             Vous êtes dans le département ? La page{" "}
@@ -191,7 +191,10 @@ function APropos() {
             </p>
             <p>
               Les mentions complètes figurent dans les{" "}
-              <Link to="/mentions-legales/" className="font-semibold text-brand-ink hover:underline">
+              <Link
+                to="/mentions-legales/"
+                className="font-semibold text-brand-ink hover:underline"
+              >
                 mentions légales
               </Link>
               .

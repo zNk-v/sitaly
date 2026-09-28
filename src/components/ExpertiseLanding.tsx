@@ -226,7 +226,6 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
               ))}
               <CarteEtapeSuivante depuis={e.famille} />
             </div>
-
           </div>
         </section>
       )}
@@ -239,8 +238,8 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
             On en parle <span className="accent-word">trente minutes</span>&nbsp;?
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Un diagnostic offert : vous décrivez votre activité, on dit ce qui est faisable et ce qui
-            ne l'est pas. Le chiffrage arrive par écrit après l'appel, sans engagement.
+            Un diagnostic offert : vous décrivez votre activité, on dit ce qui est faisable et ce
+            qui ne l'est pas. Le chiffrage arrive par écrit après l'appel, sans engagement.
           </p>
           <div className="mt-9 flex flex-wrap justify-center gap-3">
             <a

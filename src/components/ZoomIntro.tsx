@@ -48,14 +48,25 @@ export function ZoomIntro({
     /* Paysage : l'avancement est écrit en variables au défilement, et le CSS
        en déduit l'échelle du mot, le disque et les fondus. `animation-timeline`
        aurait fait ce travail sans script, mais elle n'existe pas avant
-       Safari 26. */
-    const ecrire = () => {
-      image = 0;
+       Safari 26.
+
+       Les mesures sont prises une fois, puis à chaque redimensionnement : à
+       chaque image, le défilement ne fait plus qu'écrire. Relire le style
+       calculé et la position de la scène à chaque image forçait le moteur à
+       recalculer la mise en page que l'écriture précédente venait de
+       salir. */
+    let hauteur = 1;
+    let haut = 0;
+    const mesurer = () => {
       /* La référence de hauteur vient de la scène, pas de `window.innerHeight`,
          qui varie avec la barre d'URL d'iPhone au milieu de la course. */
       const course = parseFloat(getComputedStyle(el).getPropertyValue("--course")) || 1.95;
-      const hauteur = el.offsetHeight / course;
-      const y = -el.getBoundingClientRect().top;
+      hauteur = el.offsetHeight / course;
+      haut = el.getBoundingClientRect().top + window.scrollY;
+    };
+    const ecrire = () => {
+      image = 0;
+      const y = window.scrollY - haut;
       const part = (debut: number, fin: number) =>
         Math.min(1, Math.max(0, (y - debut * hauteur) / ((fin - debut) * hauteur)));
 
@@ -68,13 +79,17 @@ export function ZoomIntro({
     const planifier = () => {
       if (!image) image = requestAnimationFrame(ecrire);
     };
+    const redimensionner = () => {
+      mesurer();
+      planifier();
+    };
 
     const brancher = () => {
       const version = ++generation;
       demonter?.();
       demonter = null;
       window.removeEventListener("scroll", planifier);
-      window.removeEventListener("resize", planifier);
+      window.removeEventListener("resize", redimensionner);
       if (!conditions.matches) return;
 
       if (portrait.matches) {
@@ -85,9 +100,10 @@ export function ZoomIntro({
         });
         return;
       }
+      mesurer();
       ecrire();
       window.addEventListener("scroll", planifier, { passive: true });
-      window.addEventListener("resize", planifier, { passive: true });
+      window.addEventListener("resize", redimensionner, { passive: true });
     };
 
     brancher();
@@ -98,7 +114,7 @@ export function ZoomIntro({
       conditions.removeEventListener("change", brancher);
       portrait.removeEventListener("change", brancher);
       window.removeEventListener("scroll", planifier);
-      window.removeEventListener("resize", planifier);
+      window.removeEventListener("resize", redimensionner);
       if (image) cancelAnimationFrame(image);
       demonter?.();
     };

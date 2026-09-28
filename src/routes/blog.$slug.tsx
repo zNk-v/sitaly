@@ -11,6 +11,7 @@ import {
   type BlogSection,
   type CtaArticle,
 } from "@/data/blog-posts";
+import { chargerContenu } from "@/data/articles/charger";
 import { SitalyLogo } from "@/components/SitalyLogo";
 import { TexteAvecLiens } from "@/components/TexteAvecLiens";
 import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
@@ -22,10 +23,12 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { encreRubrique } from "@/components/BlogCard";
 
 export const Route = createFileRoute("/blog/$slug")({
-  loader: ({ params }) => {
-    const post = getPostBySlug(params.slug);
-    if (!post) throw notFound();
-    return { post };
+  loader: async ({ params }) => {
+    const meta = getPostBySlug(params.slug);
+    if (!meta) throw notFound();
+    const content = await chargerContenu(meta.slug);
+    if (!content) throw notFound();
+    return { post: { ...meta, content } };
   },
   head: ({ loaderData }) => {
     const post = loaderData?.post;
@@ -42,10 +45,7 @@ export const Route = createFileRoute("/blog/$slug")({
         return acc + texteBrut(s.text).split(/\s+/).length;
       if (s.type === "ul") return acc + texteBrut(s.items.join(" ")).split(/\s+/).length;
       if (s.type === "faq")
-        return (
-          acc +
-          texteBrut(s.items.map((i) => `${i.q} ${i.a}`).join(" ")).split(/\s+/).length
-        );
+        return acc + texteBrut(s.items.map((i) => `${i.q} ${i.a}`).join(" ")).split(/\s+/).length;
       if (s.type === "table")
         return (
           acc + [s.caption ?? "", ...s.headers, ...s.rows.flat()].join(" ").split(/\s+/).length
@@ -528,7 +528,10 @@ function InlineCTA({ cta }: { cta: CtaArticle }) {
 function FinalCTA({ cta }: { cta: CtaArticle }) {
   const appel = APPELS[cta].fin;
   return (
-    <div data-cta={cta} className="mt-12 rounded-2xl border border-accent/30 bg-accent/5 p-7 sm:p-8">
+    <div
+      data-cta={cta}
+      className="mt-12 rounded-2xl border border-accent/30 bg-accent/5 p-7 sm:p-8"
+    >
       <h2 className="font-display text-xl font-bold sm:text-2xl">
         {appel.titre.replace(/ ([:;?!])/g, "\u00a0$1")}
       </h2>

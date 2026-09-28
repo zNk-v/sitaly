@@ -240,13 +240,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "stylesheet", href: appCss },
       // Polices auto-hébergées (voir src/fonts.css) : plus de requête bloquante vers Google.
-      {
-        rel: "preload",
-        as: "font",
-        type: "font/woff2",
-        href: "/fonts/inter-latin.woff2",
-        crossOrigin: "anonymous",
-      },
+      // Une seule préchargée : Plus Jakarta Sans, celle des grands titres et du
+      // mot du hero (l'élément LCP). Inter, le texte courant, s'affiche d'abord
+      // en police de repli (font-display: swap) et ne dispute plus la bande
+      // passante au titre.
       {
         rel: "preload",
         as: "font",
@@ -256,10 +253,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
     ],
     scripts: [
-      {
-        src: "https://www.googletagmanager.com/gtag/js?id=G-H4Z6HZLE3S",
-        async: true,
-      },
+      /* GA4. Le stub `gtag` et le consentement par défaut partent tout de
+         suite : les événements envoyés avant le script restent en file dans
+         `dataLayer`. Le script lui-même attend la fin du chargement, puis un
+         temps libre ou la première interaction, avec un secours à 4 s : il
+         ne dispute plus la bande passante au premier affichage. */
       {
         children: `
           window.dataLayer = window.dataLayer || [];
@@ -274,6 +272,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           });
           gtag('js', new Date());
           gtag('config', 'G-H4Z6HZLE3S', { anonymize_ip: true });
+          (function () {
+            var fait = false;
+            function charger() {
+              if (fait) return;
+              fait = true;
+              var s = document.createElement('script');
+              s.async = true;
+              s.src = 'https://www.googletagmanager.com/gtag/js?id=G-H4Z6HZLE3S';
+              document.head.appendChild(s);
+            }
+            function apresChargement() {
+              if ('requestIdleCallback' in window) requestIdleCallback(charger, { timeout: 4000 });
+              setTimeout(charger, 4000);
+            }
+            ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (e) {
+              window.addEventListener(e, charger, { once: true, passive: true });
+            });
+            if (document.readyState === 'complete') apresChargement();
+            else window.addEventListener('load', apresChargement, { once: true });
+          })();
         `,
       },
       {

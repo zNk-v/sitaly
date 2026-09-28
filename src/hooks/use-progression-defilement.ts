@@ -11,6 +11,10 @@ import { useEffect, type RefObject } from "react";
  * celui où son bas en atteint 35 % : le faisceau démarre quand la première
  * étape entre et finit quand la dernière est lue, plutôt qu'aux bords exacts,
  * où il resterait vide puis se remplirait d'un coup.
+ *
+ * L'écouteur de défilement ne tourne que lorsque l'élément approche de
+ * l'écran : un observateur l'allume et l'éteint. Le reste du temps, aucune
+ * mesure n'est faite.
  */
 export function useProgressionAuDefilement(ref: RefObject<HTMLElement | null>) {
   useEffect(() => {
@@ -22,6 +26,7 @@ export function useProgressionAuDefilement(ref: RefObject<HTMLElement | null>) {
     }
 
     let image = 0;
+    let ecoute = false;
     const ecrire = () => {
       image = 0;
       const r = el.getBoundingClientRect();
@@ -36,11 +41,31 @@ export function useProgressionAuDefilement(ref: RefObject<HTMLElement | null>) {
     const planifier = () => {
       if (!image) image = requestAnimationFrame(ecrire);
     };
+    const ecouter = (oui: boolean) => {
+      if (oui === ecoute) return;
+      ecoute = oui;
+      if (oui) {
+        window.addEventListener("scroll", planifier, { passive: true });
+        window.addEventListener("resize", planifier, { passive: true });
+        planifier();
+      } else {
+        window.removeEventListener("scroll", planifier);
+        window.removeEventListener("resize", planifier);
+        // Une dernière écriture fixe l'état de sortie (0 au-dessus, 1 en dessous).
+        planifier();
+      }
+    };
 
-    ecrire();
-    window.addEventListener("scroll", planifier, { passive: true });
-    window.addEventListener("resize", planifier, { passive: true });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) ecouter(entry.isIntersecting);
+      },
+      { rootMargin: "25% 0px 25% 0px" },
+    );
+    observer.observe(el);
+
     return () => {
+      observer.disconnect();
       window.removeEventListener("scroll", planifier);
       window.removeEventListener("resize", planifier);
       if (image) cancelAnimationFrame(image);

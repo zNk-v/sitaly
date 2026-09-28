@@ -147,10 +147,13 @@ export function MainNav() {
               params={{ slug: r.slug }}
               className="group/item flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-secondary"
             >
+              {/* Vignette de 64 px : la plus petite capture WebP suffit. */}
               <img
-                src={r.capture.small}
+                src={r.capture.webp.w560}
                 alt=""
                 aria-hidden="true"
+                width={64}
+                height={44}
                 loading="lazy"
                 className="h-11 w-16 shrink-0 rounded-md border border-border object-cover object-top"
               />

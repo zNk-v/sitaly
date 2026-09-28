@@ -54,7 +54,7 @@ export function cheminSecteur(s: Pick<Secteur, "slug">): string {
 }
 
 /** Un montant en euros, espaces insécables comprises. */
-export const euros = (n: number) => `${n.toLocaleString("fr-FR").replace(/ /g, " ")} €`;
+export const euros = (n: number) => `${n.toLocaleString("fr-FR").replace(/\u202f/g, " ")} €`;
 
 /** Le bloc tarif, avec ou sans montant selon PRIX_AGENTS_IA.afficher. */
 export function texteTarif(): string {
@@ -79,14 +79,19 @@ export const SECTEURS: Secteur[] = [
   {
     slug: "agences-immobilieres",
     label: "Agences immobilières",
-    carte: "Appels pendant les visites, leads des portails le soir, estimations restées sans suite.",
+    carte:
+      "Appels pendant les visites, leads des portails le soir, estimations restées sans suite.",
     titre: "Agent IA pour agence immobilière : leads et visites | Sitaly",
     description:
       "Un agent IA qui décroche, qualifie acquéreurs et vendeurs, planifie visites et estimations et relance les dossiers. Installé et piloté par Sitaly.",
     h1: "Agent IA pour agence immobilière : chaque appel décroché, chaque contact qualifié",
     intro:
       "Un agent IA pour agence immobilière répond aux appels et aux demandes reçues des portails, qualifie le projet de la personne (achat, vente, location), propose un créneau de visite ou d'estimation dans l'agenda du bon négociateur et transmet une fiche complète à votre équipe. Sitaly l'installe, le connecte à vos outils et le pilote chaque mois. Vos négociateurs gardent la main sur les règles et sur chaque dossier.",
-    reperes: ["Diagnostic offert de 30 minutes", "Branché sur vos outils", "Reprise humaine à tout moment"],
+    reperes: [
+      "Diagnostic offert de 30 minutes",
+      "Branché sur vos outils",
+      "Reprise humaine à tout moment",
+    ],
     pertesTitre: ["Où une agence perd", "ses contacts"],
     pertes: [
       {
@@ -195,7 +200,11 @@ export const SECTEURS: Secteur[] = [
     h1: "Agent IA pour courtier : chaque demande rappelée, chaque dossier complété",
     intro:
       "Un agent IA pour courtier en crédit ou en assurance rappelle les demandes entrantes dès leur arrivée, recueille les informations de base du projet, réserve un rendez-vous avec le bon conseiller et relance les pièces manquantes jusqu'à ce que le dossier soit complet. Il ne donne aucun conseil : le conseil et les obligations liées à votre statut restent assurés par vos conseillers. Sitaly l'installe, le connecte à vos outils et le pilote chaque mois.",
-    reperes: ["Diagnostic offert de 30 minutes", "Aucun conseil donné par l'agent", "Reprise humaine à tout moment"],
+    reperes: [
+      "Diagnostic offert de 30 minutes",
+      "Aucun conseil donné par l'agent",
+      "Reprise humaine à tout moment",
+    ],
     pertesTitre: ["Où un cabinet de courtage perd", "du temps et des dossiers"],
     pertes: [
       {
@@ -306,7 +315,11 @@ export const SECTEURS: Secteur[] = [
     h1: "Agent IA pour entreprise du BTP : les appels décrochés, les devis relancés",
     intro:
       "Un agent IA pour entreprise du BTP répond aux appels quand l'équipe est sur chantier, trie les demandes (nouveau projet, chantier en cours, SAV), qualifie les travaux, réserve la visite technique dans l'agenda du bon interlocuteur et relance les devis restés sans réponse. Sitaly l'installe, le connecte à vos outils et le pilote chaque mois.",
-    reperes: ["Diagnostic offert de 30 minutes", "Branché sur vos outils", "Reprise humaine à tout moment"],
+    reperes: [
+      "Diagnostic offert de 30 minutes",
+      "Branché sur vos outils",
+      "Reprise humaine à tout moment",
+    ],
     pertesTitre: ["Où une entreprise du bâtiment perd", "des chantiers"],
     pertes: [
       {

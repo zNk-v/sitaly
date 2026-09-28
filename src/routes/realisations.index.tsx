@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef } from "react";
 import { ArrowRight, ArrowUpRight, Calendar } from "lucide-react";
-import { REALISATIONS } from "@/data/realisations";
+import { REALISATIONS, srcSetCapture } from "@/data/realisations";
 import { SectionHeader } from "@/components/SectionHeader";
 import { SiteChrome } from "@/components/SiteChrome";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
@@ -90,9 +90,11 @@ function RealisationsIndex() {
                   <div className="zoom-frame relative aspect-[16/11] border-b border-border">
                     <img
                       src={r.capture.small}
-                      srcSet={`${r.capture.small} 720w, ${r.capture.large} 1200w`}
-                      sizes="(min-width: 1024px) 30vw, 100vw"
+                      srcSet={srcSetCapture(r)}
+                      sizes="(min-width: 1280px) 395px, (min-width: 1024px) 30vw, calc(100vw - 2rem)"
                       alt={`Page d'accueil du site de ${r.client}`}
+                      width={720}
+                      height={500}
                       loading="lazy"
                       decoding="async"
                       className="absolute inset-0 h-full w-full object-cover object-top"

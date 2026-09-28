@@ -112,7 +112,10 @@ export function SecteurLanding({ s }: { s: Secteur }) {
           />
           <div className="mt-14 grid gap-x-10 gap-y-10 border-t border-border pt-10 sm:grid-cols-2 lg:grid-cols-4">
             {s.pertes.map((p) => (
-              <div key={p.t} className="lg:border-l lg:border-border lg:pl-8 lg:first:border-l-0 lg:first:pl-0">
+              <div
+                key={p.t}
+                className="lg:border-l lg:border-border lg:pl-8 lg:first:border-l-0 lg:first:pl-0"
+              >
                 <h3 className="font-display text-xl font-bold tracking-tight">{p.t}</h3>
                 <p className="mt-3 leading-relaxed text-muted-foreground">{p.d}</p>
               </div>
@@ -170,7 +173,10 @@ export function SecteurLanding({ s }: { s: Secteur }) {
             }`}
           >
             {s.cadre.map((c) => (
-              <div key={c.t} className="lg:border-l lg:border-border lg:pl-8 lg:first:border-l-0 lg:first:pl-0">
+              <div
+                key={c.t}
+                className="lg:border-l lg:border-border lg:pl-8 lg:first:border-l-0 lg:first:pl-0"
+              >
                 <h3 className="font-display text-xl font-bold tracking-tight">{c.t}</h3>
                 <p className="mt-3 leading-relaxed text-muted-foreground">{c.d}</p>
               </div>

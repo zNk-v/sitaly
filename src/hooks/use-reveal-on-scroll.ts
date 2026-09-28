@@ -7,6 +7,11 @@ import { useEffect, type RefObject } from "react";
  * JS désactivé) : c'est l'effet qui ajoute la classe `ai-anim` responsable de
  * l'état masqué, après avoir marqué comme déjà visibles les éléments présents
  * à l'écran. Aucune animation si l'utilisateur réduit les animations.
+ *
+ * Aucune mesure synchrone : un premier observateur, sans marge, dit ce qui est
+ * déjà à l'écran ; il répond hors du fil de rendu, en une seule fois pour tous
+ * les éléments. Lire `getBoundingClientRect` élément par élément juste après
+ * le rendu forçait un recalcul de mise en page complet au chargement.
  */
 export function useRevealOnScroll(containerRef: RefObject<HTMLElement | null>) {
   useEffect(() => {
@@ -21,10 +26,6 @@ export function useRevealOnScroll(containerRef: RefObject<HTMLElement | null>) {
     // mesurable, l'état masqué ne serait jamais levé.
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
     if (!viewportHeight) return;
-    for (const el of targets) {
-      if (el.getBoundingClientRect().top < viewportHeight) el.classList.add("is-in");
-    }
-    root.classList.add("ai-anim");
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -36,8 +37,20 @@ export function useRevealOnScroll(containerRef: RefObject<HTMLElement | null>) {
       },
       { rootMargin: "0px 0px -12% 0px", threshold: 0.1 },
     );
-    for (const el of targets) observer.observe(el);
 
-    return () => observer.disconnect();
+    const initial = new IntersectionObserver((entries) => {
+      initial.disconnect();
+      for (const entry of entries) {
+        if (entry.isIntersecting) entry.target.classList.add("is-in");
+      }
+      root.classList.add("ai-anim");
+      for (const el of targets) if (!el.classList.contains("is-in")) observer.observe(el);
+    });
+    for (const el of targets) initial.observe(el);
+
+    return () => {
+      initial.disconnect();
+      observer.disconnect();
+    };
   }, [containerRef]);
 }

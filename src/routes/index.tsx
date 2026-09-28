@@ -231,14 +231,16 @@ function Ouverture() {
                 titre et un bouton : de quoi paraître vide, et rien pour lever
                 les objections de départ. */}
               <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-sm text-muted-foreground">
-                {["Diagnostic offert de 30 min", "Réponse sous 24h", "Sans engagement de durée"].map(
-                  (t) => (
-                    <li key={t} className="flex items-center gap-2">
-                      <Check className="h-4 w-4 shrink-0 text-signal-ink" />
-                      {t}
-                    </li>
-                  ),
-                )}
+                {[
+                  "Diagnostic offert de 30 min",
+                  "Réponse sous 24h",
+                  "Sans engagement de durée",
+                ].map((t) => (
+                  <li key={t} className="flex items-center gap-2">
+                    <Check className="h-4 w-4 shrink-0 text-signal-ink" />
+                    {t}
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -1089,7 +1091,13 @@ function Contact() {
               {/* Pot de miel : invisible pour un humain, rempli par les robots. */}
               <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
                 <label htmlFor="field-website">Ne pas remplir</label>
-                <input id="field-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+                <input
+                  id="field-website"
+                  name="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
               </div>
               <div className="mt-4">
                 <label htmlFor="contact-message" className="text-sm font-medium">

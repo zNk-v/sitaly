@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useRef } from "react";
 import { ArrowLeft, ArrowUpRight, Calendar, Check, ExternalLink } from "lucide-react";
-import { getRealisation, REALISATIONS } from "@/data/realisations";
+import { getRealisation, REALISATIONS, srcSetCapture } from "@/data/realisations";
 import { SectionHeader } from "@/components/SectionHeader";
 import { SiteChrome } from "@/components/SiteChrome";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
@@ -147,8 +147,8 @@ function RealisationPage() {
                 >
                   <img
                     src={r.capture.small}
-                    srcSet={`${r.capture.small} 720w, ${r.capture.large} 1200w`}
-                    sizes="(min-width: 1024px) 46vw, 100vw"
+                    srcSet={srcSetCapture(r)}
+                    sizes="(min-width: 1280px) 590px, (min-width: 1024px) 46vw, calc(100vw - 2rem)"
                     alt={`Page d'accueil du site de ${r.client}`}
                     width={720}
                     height={500}
@@ -294,6 +294,10 @@ function RealisationPage() {
                   <div className="zoom-frame relative aspect-[16/10] border-b border-border">
                     <img
                       src={a.capture.small}
+                      srcSet={srcSetCapture(a)}
+                      sizes="(min-width: 640px) 50vw, calc(100vw - 2rem)"
+                      width={720}
+                      height={500}
                       alt={`Page d'accueil du site de ${a.client}`}
                       loading="lazy"
                       decoding="async"

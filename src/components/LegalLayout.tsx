@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { ANNEE_DU_BUILD } from "@/lib/date-du-build";
 import type { ReactNode } from "react";
 import { LinkedinLink } from "@/components/LinkedinLink";
 
@@ -34,7 +35,7 @@ export function LegalLayout({
           <div className="mb-5 flex justify-center">
             <LinkedinLink />
           </div>
-          © {new Date().getFullYear()} Sitaly —{" "}
+          © {ANNEE_DU_BUILD} Sitaly —{" "}
           <Link to="/mentions-legales/" className="hover:underline">
             Mentions légales
           </Link>{" "}

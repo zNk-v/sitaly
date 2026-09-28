@@ -7,6 +7,15 @@ import realLafleurMobile from "@/assets/real-lafleur-mobile.jpg";
 import realFelicioni720 from "@/assets/real-felicioni-720.jpg";
 import realFelicioni1200 from "@/assets/real-felicioni-1200.jpg";
 import realFelicioniMobile from "@/assets/real-felicioni-mobile.jpg";
+import realPataudWebp560 from "@/assets/real-pataud-560.webp";
+import realPataudWebp720 from "@/assets/real-pataud-720.webp";
+import realPataudWebp1200 from "@/assets/real-pataud-1200.webp";
+import realLafleurWebp560 from "@/assets/real-lafleur-560.webp";
+import realLafleurWebp720 from "@/assets/real-lafleur-720.webp";
+import realLafleurWebp1200 from "@/assets/real-lafleur-1200.webp";
+import realFelicioniWebp560 from "@/assets/real-felicioni-560.webp";
+import realFelicioniWebp720 from "@/assets/real-felicioni-720.webp";
+import realFelicioniWebp1200 from "@/assets/real-felicioni-1200.webp";
 
 /**
  * Les réalisations Sitaly.
@@ -35,7 +44,14 @@ export type Realisation = {
   constats: readonly string[];
   /** Chiffres communiqués par le client. Vide tant qu'il n'a rien transmis. */
   resultats: readonly { valeur: string; libelle: string }[];
-  capture: { small: string; large: string; mobile: string };
+  /** `small` et `large` en JPEG, pour le repli ; `webp`, les mêmes captures
+      en WebP, deux fois plus légères, que les pages servent en priorité. */
+  capture: {
+    small: string;
+    large: string;
+    mobile: string;
+    webp: { w560: string; w720: string; w1200: string };
+  };
   captureLe: string;
   accent: string;
   /** Titre et description de la page d'étude de cas (60 et 160 caractères au plus). */
@@ -82,7 +98,12 @@ export const REALISATIONS: Realisation[] = [
       "Garantie décennale et statut d'artisan local mis en avant",
     ],
     resultats: [],
-    capture: { small: realLafleur720, large: realLafleur1200, mobile: realLafleurMobile },
+    capture: {
+      small: realLafleur720,
+      large: realLafleur1200,
+      mobile: realLafleurMobile,
+      webp: { w560: realLafleurWebp560, w720: realLafleurWebp720, w1200: realLafleurWebp1200 },
+    },
     captureLe: "2 septembre 2026",
     accent: "oklch(0.45 0.13 255)",
     seo: {
@@ -130,7 +151,16 @@ export const REALISATIONS: Realisation[] = [
       "Devis gratuit et détaillé annoncé",
     ],
     resultats: [],
-    capture: { small: realFelicioni720, large: realFelicioni1200, mobile: realFelicioniMobile },
+    capture: {
+      small: realFelicioni720,
+      large: realFelicioni1200,
+      mobile: realFelicioniMobile,
+      webp: {
+        w560: realFelicioniWebp560,
+        w720: realFelicioniWebp720,
+        w1200: realFelicioniWebp1200,
+      },
+    },
     captureLe: "2 septembre 2026",
     accent: "oklch(0.55 0.2 27)",
     seo: {
@@ -179,7 +209,12 @@ export const REALISATIONS: Realisation[] = [
       "Film de cuisine en ouverture de la page d'accueil",
     ],
     resultats: [],
-    capture: { small: realPataud720, large: realPataud1200, mobile: realPataudMobile },
+    capture: {
+      small: realPataud720,
+      large: realPataud1200,
+      mobile: realPataudMobile,
+      webp: { w560: realPataudWebp560, w720: realPataudWebp720, w1200: realPataudWebp1200 },
+    },
     captureLe: "21 septembre 2026",
     accent: "oklch(0.5 0.06 150)",
     seo: {
@@ -189,6 +224,13 @@ export const REALISATIONS: Realisation[] = [
     },
   },
 ];
+
+/** Le `srcSet` WebP d'une capture : le navigateur prend la plus petite qui
+    couvre l'affichage, 560 px sur un téléphone au lieu de 1 200. */
+export function srcSetCapture(r: Pick<Realisation, "capture">): string {
+  const w = r.capture.webp;
+  return `${w.w560} 560w, ${w.w720} 720w, ${w.w1200} 1200w`;
+}
 
 export function getRealisation(slug: string): Realisation | undefined {
   return REALISATIONS.find((r) => r.slug === slug);
