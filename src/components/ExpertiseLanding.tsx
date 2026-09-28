@@ -10,6 +10,7 @@ import {
   voisines,
   type Expertise,
 } from "@/data/expertises";
+import { CarteEtapeSuivante } from "@/components/EtapeSuivante";
 import { BASE_URL } from "@/lib/sitemap";
 import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
@@ -88,7 +89,7 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
             eyebrow="Le détail"
             title={
               <>
-                Ce que ça <span className="accent-word">comprend</span>
+                Ce que comprend <span className="accent-word">{e.nomService}</span>
               </>
             }
           />
@@ -119,7 +120,8 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
             eyebrow="Pour qui"
             title={
               <>
-                Quand ça se <span className="accent-word">justifie</span>
+                Pour quelles entreprises{" "}
+                <span className="accent-word">{e.nomService} est rentable</span>
               </>
             }
           />
@@ -148,7 +150,7 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
             eyebrow="Questions"
             title={
               <>
-                Ce qu'on nous <span className="accent-word">demande</span>
+                Questions fréquentes sur <span className="accent-word">{e.nomService}</span>
               </>
             }
           />
@@ -180,9 +182,10 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
         </div>
       </section>
 
-      {/* Maillage interne : les autres pages de la même famille. C'est ce qui
-          fait circuler le visiteur et l'exploration entre des pages qui, sans
-          lui, ne seraient reliées que par le menu. */}
+      {/* Maillage interne : les autres pages de la même famille, plus l'étape
+          suivante dans une autre famille. C'est ce qui fait circuler le
+          visiteur et l'exploration entre des pages qui, sans lui, ne seraient
+          reliées que par le menu. */}
       {autres.length > 0 && (
         <section className="bg-paper-sunk py-20 sm:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
@@ -213,22 +216,23 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
                   </span>
                 </Link>
               ))}
+              <CarteEtapeSuivante depuis={e.famille} />
             </div>
 
           </div>
         </section>
       )}
 
-      {/* Appel final. Vingt minutes, pas un formulaire de dix champs. */}
+      {/* Appel final. Trente minutes, pas un formulaire de dix champs. */}
       <section className="relative overflow-hidden py-20 sm:py-28">
         <div className="absolute inset-0 -z-10 hero-bg" aria-hidden="true" />
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
           <h2 className="display-section">
-            On en parle <span className="accent-word">vingt minutes</span> ?
+            On en parle <span className="accent-word">trente minutes</span>&nbsp;?
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Vous décrivez votre activité, on dit ce qui est faisable et ce qui ne l'est pas. Le
-            chiffrage arrive par écrit après l'appel, sans engagement.
+            Un diagnostic offert : vous décrivez votre activité, on dit ce qui est faisable et ce qui
+            ne l'est pas. Le chiffrage arrive par écrit après l'appel, sans engagement.
           </p>
           <div className="mt-9 flex flex-wrap justify-center gap-3">
             <a

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { Phone, Calendar, Check, ArrowRight, Clock, ChevronDown } from "lucide-react";
 import { SectionHeader } from "@/components/SectionHeader";
 import { StackedOffers } from "@/components/StackedOffers";
@@ -10,38 +10,56 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { FondateurCard } from "@/components/FondateurCard";
 import { ZoomIntro } from "@/components/ZoomIntro";
 import { useProgressionAuDefilement } from "@/hooks/use-progression-defilement";
-import { SECTEURS, cheminSecteur } from "@/data/secteurs";
+import { SECTEURS, cheminSecteur, euros } from "@/data/secteurs";
 import { BlogCard } from "@/components/BlogCard";
+import { TexteAvecLiens } from "@/components/TexteAvecLiens";
 import { COULEURS_FAMILLE, FAMILLES, entreesFamille } from "@/data/expertises";
 import { postsALaUne } from "@/data/blog-posts";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 import { useSplitWords } from "@/hooks/use-split-words";
-import { CALENDLY_URL, FORM_ENDPOINT, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
+import {
+  CALENDLY_URL,
+  FORM_ENDPOINT,
+  PRIX_AGENTS_IA,
+  SITALY_PHONE,
+  SITALY_PHONE_DISPLAY,
+} from "@/lib/config";
 import { envoyerDemande } from "@/lib/formulaire";
+import { texteBrut } from "@/lib/liens-texte";
 
-/* Cinq questions, pas sept. Celles qui portaient sur Google Ads et sur
-   l'automatisation ont désormais leur page, où elles sont posées par des
-   visiteurs qui cherchent précisément ça. */
+/* Les questions de l'accueil portent sur les agents IA depuis le 28 septembre
+   2026 : les cinq précédentes vendaient un abonnement site, et l'accueil se
+   classait sur des recherches web locales. Les questions sur les sites ont
+   leur page (/creation-site-internet/). Le JSON-LD reprend ce texte mot pour
+   mot, liens retirés. */
 const FAQ_ITEMS = [
   {
+    q: "Qu'est-ce qu'un agent IA peut faire pour ma PME ?",
+    a: "Décrocher le téléphone, qualifier une demande selon vos règles, proposer un créneau dans votre agenda, envoyer un SMS après un appel manqué, relancer un devis, répondre aux messages Instagram et gérer vos avis Google. Il met à jour vos outils et passe la main à un humain dès que la situation le demande.",
+  },
+  {
+    q: "L'agent dit-il qu'il est une IA ?",
+    a: "Oui, dès la première phrase. C'est une obligation de l'article 50 du règlement européen sur l'IA, applicable depuis le 2 août 2026.",
+  },
+  {
     q: "Comment se construit le budget ?",
-    a: "Il repose sur une mensualité, sans engagement de durée, qui couvre l'hébergement, la maintenance et les modifications. Selon le projet et le métier, la création du site peut s'y ajouter sous forme de frais de mise en place, réglés une seule fois. Les deux montants vous sont donnés par écrit à l'issue de l'appel découverte, avant tout engagement. Le budget publicitaire, lui, est versé directement aux régies et reste séparé.",
+    a: `Une mise en place, puis un pilotage mensuel, chiffrés par écrit après un diagnostic offert de 30 minutes.${
+      PRIX_AGENTS_IA.afficher
+        ? ` La mise en place démarre à ${euros(PRIX_AGENTS_IA.miseEnPlaceMin)}, le pilotage à ${euros(PRIX_AGENTS_IA.mensuelMin)} par mois.`
+        : ""
+    }`,
   },
   {
-    q: "Combien de temps pour le mettre en ligne ?",
-    a: "48 heures après l'appel découverte et la fourniture des contenus. Les projets plus lourds, boutique en ligne ou logiciel, suivent leur propre calendrier, annoncé avant de commencer.",
+    q: "Que se passe-t-il quand l'agent ne sait pas répondre ?",
+    a: "Il passe la main : la demande est transmise à la bonne personne de votre équipe, selon les règles fixées ensemble pendant la mise en place.",
   },
   {
-    q: "Que comprennent vraiment les modifications incluses ?",
-    a: "Les petites modifications de contenu existant : un texte, une photo, un prix, des horaires, vos coordonnées. Ce qui demande de la création, nouvelle page ou nouveau visuel, fait l'objet d'un devis annoncé à l'avance.",
+    q: "Qui s'occupe de mon projet ?",
+    a: "Teddy Vidal, fondateur de Sitaly, conçoit, installe et pilote lui-même chaque agent. Vous avez un seul interlocuteur, du diagnostic au suivi mensuel.",
   },
   {
-    q: "Puis-je arrêter mon abonnement ?",
-    a: "Oui, à tout moment avec un simple préavis, sans frais ni durée minimale. Le nom de domaine est déposé à votre nom et part avec vous.",
-  },
-  {
-    q: "Puis-je acheter mon site ?",
-    a: "L'abonnement est ce qui permet de tout prendre en charge, technique, hébergement et mises à jour, sans engagement. Un rachat reste possible sur demande.",
+    q: "Vous faites aussi les sites et la publicité ?",
+    a: "Oui. Sitaly pilote les campagnes [ChatGPT Ads](/chatgpt-ads/) et [Google Ads](/acquisition/), et [crée les sites](/creation-site-internet/), pour que les demandes arrivent, soient bien reçues, puis traitées par vos agents.",
   },
 ];
 
@@ -68,12 +86,33 @@ export const Route = createFileRoute("/")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: FAQ_ITEMS.map((it) => ({
-            "@type": "Question",
-            name: it.q,
-            acceptedAnswer: { "@type": "Answer", text: it.a },
-          })),
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://sitaly.fr/#webpage",
+              url: "https://sitaly.fr/",
+              name: TITRE_ACCUEIL,
+              description: DESCRIPTION_ACCUEIL,
+              isPartOf: { "@id": "https://sitaly.fr/#website" },
+              about: { "@id": "https://sitaly.fr/#business" },
+              primaryImageOfPage: {
+                "@type": "ImageObject",
+                url: "https://sitaly.fr/og-image.png",
+                width: 1200,
+                height: 630,
+              },
+              inLanguage: "fr-FR",
+            },
+            {
+              "@type": "FAQPage",
+              "@id": "https://sitaly.fr/#faq",
+              mainEntity: FAQ_ITEMS.map((it) => ({
+                "@type": "Question",
+                name: it.q,
+                acceptedAnswer: { "@type": "Answer", text: texteBrut(it.a) },
+              })),
+            },
+          ],
         }),
       },
     ],
@@ -95,6 +134,7 @@ function SitalyHome() {
       <Expertises />
       <BandeSecteurs />
       <StackedOffers />
+      <UnSeulSysteme />
       <Realisations />
       <Process />
       <Founder />
@@ -240,7 +280,8 @@ function CeQuOnFait() {
      prestation, les séparer laissait croire à deux offres distinctes.
      Les classes de survol sont écrites en entier, Tailwind ne compile pas un
      nom de classe assemblé à l'exécution. */
-  /* Les agents IA passent en tête depuis le recentrage du 26 septembre 2026. */
+  /* L'ordre de l'offre depuis le 28 septembre 2026 : les agents IA, la
+     publicité qui amène les demandes, puis le site qui les reçoit. */
   const prestations = [
     {
       texte: "agents IA & automatisations",
@@ -249,16 +290,16 @@ function CeQuOnFait() {
       survol: "group-hover:text-violet-on-ink",
     },
     {
+      texte: "campagnes ChatGPT & Google Ads",
+      to: "/acquisition/",
+      coche: "text-red-on-ink",
+      survol: "group-hover:text-red-on-ink",
+    },
+    {
       texte: "création de site internet",
       to: "/creation-site-internet/",
       coche: "text-blue-on-ink",
       survol: "group-hover:text-blue-on-ink",
-    },
-    {
-      texte: "campagnes Google & ChatGPT Ads",
-      to: "/acquisition/",
-      coche: "text-red-on-ink",
-      survol: "group-hover:text-red-on-ink",
     },
   ];
 
@@ -343,10 +384,6 @@ function CeQuOnFait() {
  * un point précis n'avait nulle part où aller. Les trois familles disent la
  * même séquence et mènent chacune à des pages qui la détaillent.
  */
-/* L'automatisation ouvre la section depuis le recentrage Agents IA / PME.
-   L'ordre du menu et du pied de page ne change pas. */
-const ORDRE_FAMILLES_ACCUEIL = ["automatisation", "site", "acquisition"] as const;
-
 function Expertises() {
   return (
     <section id="expertises" className="pt-20 pb-14 sm:pt-28 sm:pb-16">
@@ -359,11 +396,11 @@ function Expertises() {
               Trois familles, <span className="accent-word">une seule adresse</span>
             </>
           }
-          subtitle="Ce qui traite les demandes quand elles arrivent, le site qui les reçoit, et ce qui les amène."
+          subtitle="Ce qui traite les demandes quand elles arrivent, ce qui les amène, et le site qui les reçoit."
         />
 
         <div className="stagger mt-14 grid gap-x-10 gap-y-12 border-t border-border pt-12 md:grid-cols-3">
-          {ORDRE_FAMILLES_ACCUEIL.map((id) => FAMILLES.find((f) => f.id === id)!).map((f, i) => (
+          {FAMILLES.map((f, i) => (
             <div
               key={f.id}
               data-reveal
@@ -440,6 +477,110 @@ function BandeSecteurs() {
   );
 }
 
+/* ---------------- UN SEUL SYSTÈME ---------------- */
+/**
+ * Les trois familles, dites comme un seul parcours : faire venir les
+ * demandes, les recevoir, les traiter. La section Expertises liste les pages ;
+ * celle-ci dit pourquoi elles vont ensemble, en trois colonnes et une phrase
+ * chacune. Pas un mur de texte.
+ */
+type LienSysteme = { label: string; to?: string; href?: string };
+
+function UnSeulSysteme() {
+  const etapes: {
+    verbe: string;
+    famille: "acquisition" | "site" | "automatisation";
+    texte: string;
+    liens: LienSysteme[];
+  }[] = [
+    {
+      verbe: "Faire venir",
+      famille: "acquisition",
+      texte: "Des campagnes dans ChatGPT et sur Google, mesurées avant la première dépense.",
+      liens: [
+        { label: "ChatGPT Ads", href: "/chatgpt-ads/" },
+        { label: "Google Ads", to: "/acquisition/" },
+      ],
+    },
+    {
+      verbe: "Recevoir",
+      famille: "site",
+      texte: "Un site qui dit clairement ce que vous faites et où vous joindre.",
+      liens: [{ label: "Site internet", to: "/creation-site-internet/" }],
+    },
+    {
+      verbe: "Traiter",
+      famille: "automatisation",
+      texte: "Des agents IA qui répondent, qualifient, prennent les rendez-vous et relancent.",
+      liens: [{ label: "Agents IA", to: "/agents-ia/" }],
+    },
+  ];
+
+  return (
+    <section id="systeme" className="bg-paper-sunk py-20 sm:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <SectionHeader
+          index="03"
+          eyebrow="Un seul système"
+          title={
+            <>
+              Les demandes arrivent, <span className="accent-word">et quelqu'un y répond</span>
+            </>
+          }
+          subtitle="Chaque offre se prend seule. Ensemble, elles couvrent le parcours entier d'une demande, du premier clic à la prise de rendez-vous."
+        />
+
+        <ol className="stagger mt-14 grid gap-x-10 gap-y-12 border-t border-border pt-12 md:grid-cols-3">
+          {etapes.map((e, i) => (
+            <li
+              key={e.verbe}
+              data-reveal
+              style={
+                {
+                  "--i": i,
+                  "--encre-famille": COULEURS_FAMILLE[e.famille].encre,
+                } as React.CSSProperties
+              }
+              className="md:border-l md:border-border md:pl-8 md:first:border-l-0 md:first:pl-0"
+            >
+              <span className="rail-num font-display text-sm font-bold text-brand-ink">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 className="mt-2 font-display text-2xl font-extrabold tracking-tight">
+                <span className="accent-word">{e.verbe}</span> les demandes
+              </h3>
+              <p className="mt-3 leading-relaxed text-muted-foreground">{e.texte}</p>
+              <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-1">
+                {e.liens.map((l) => (
+                  <li key={l.label}>
+                    {l.to ? (
+                      <Link
+                        to={l.to}
+                        className="lien-famille group inline-flex items-center gap-2 py-1.5 text-[15px] font-medium transition-colors"
+                      >
+                        <ArrowRight className="fleche-famille h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5" />
+                        {l.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={l.href}
+                        className="lien-famille group inline-flex items-center gap-2 py-1.5 text-[15px] font-medium transition-colors"
+                      >
+                        <ArrowRight className="fleche-famille h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5" />
+                        {l.label}
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------- RÉALISATIONS ---------------- */
 /**
  * Rangées alternées pleine largeur plutôt qu'une grille de vignettes.
@@ -454,7 +595,7 @@ function Realisations() {
     <section id="exemples" className="py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
-          index="03"
+          index="04"
           eyebrow="Réalisations"
           title={<>Des sites réellement en ligne</>}
           subtitle="Trois métiers, trois logiques. Chaque projet a sa page, et chaque site est en ligne."
@@ -493,15 +634,29 @@ function Realisations() {
  * à 1 ensuite, sans une ligne de script.
  */
 function Process() {
+  /* Le déroulé d'un projet d'agents IA, sans durée annoncée : elle dépend
+     du périmètre, et le diagnostic la fixe. */
   const etapes = [
-    { t: "Appel découverte", d: "On comprend votre activité et vos besoins. Vingt minutes." },
-    { t: "Création du site", d: "Votre site est conçu sur mesure, sans gabarit revendu." },
-    { t: "Validation", d: "Vous validez le rendu, on ajuste si besoin." },
     {
-      t: "Mise en ligne",
-      d: "Hébergement, nom de domaine, référencement local : on s'occupe de tout.",
+      t: "Diagnostic offert de 30 minutes",
+      d: "Au téléphone : où vos demandes se perdent, quels outils sont en place, ce qu'un agent peut reprendre.",
     },
-    { t: "Suivi mensuel", d: "Maintenance, mises à jour et modifications incluses." },
+    {
+      t: "Proposition écrite",
+      d: "Le périmètre, les outils à connecter, le prix de la mise en place et celui du pilotage. Rien n'est facturé avant votre accord.",
+    },
+    {
+      t: "Mise en place",
+      d: "L'agent est configuré selon vos règles et branché sur votre téléphonie, votre agenda et vos outils.",
+    },
+    {
+      t: "Réglages sur de vraies demandes",
+      d: "Les premières conversations sont relues une à une, et les règles corrigées sur vos cas réels.",
+    },
+    {
+      t: "Pilotage mensuel",
+      d: "Lecture des échanges, corrections, évolutions, et un compte rendu chaque mois. Le même interlocuteur du début à la fin.",
+    },
   ];
   const frise = useRef<HTMLOListElement>(null);
   useProgressionAuDefilement(frise);
@@ -510,11 +665,11 @@ function Process() {
     <section id="process" className="on-wash py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
-          index="04"
+          index="05"
           eyebrow="Process"
           title={
             <>
-              Cinq étapes, <span className="accent-word">et c'est en ligne</span>
+              Cinq étapes, <span className="accent-word">du premier appel au pilotage</span>
             </>
           }
         />
@@ -544,35 +699,34 @@ function Process() {
             </li>
           ))}
         </ol>
+
+        <p className="measure mt-12 text-muted-foreground">
+          Avant d'en parler, notre guide sur l'
+          <Link
+            to="/blog/$slug/"
+            params={{ slug: "agent-ia-entreprise-guide" }}
+            className="font-medium text-brand-ink underline decoration-brand-ink/30 underline-offset-4 transition hover:decoration-brand-ink"
+          >
+            agent IA en entreprise
+          </Link>{" "}
+          dit ce qu'il fait, ce qu'il coûte, et quand une automatisation simple suffit.
+        </p>
       </div>
     </section>
   );
 }
 
 /* ---------------- FAQ ---------------- */
-const FAQ_MODIF_INDEX = FAQ_ITEMS.findIndex((it) => it.q.includes("modifications incluses"));
-
+/**
+ * Les questions s'ouvrent sans script : `details` garde chaque réponse dans le
+ * HTML prérendu, lisible par les moteurs, et identique au JSON-LD.
+ */
 function Faq() {
-  const items = FAQ_ITEMS;
-  const [open, setOpen] = useState<number | null>(0);
-
-  useEffect(() => {
-    const openFromHash = () => {
-      if (window.location.hash !== "#faq-modifications") return;
-      setOpen(FAQ_MODIF_INDEX);
-      const el = document.getElementById("faq-modifications");
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
-    };
-    openFromHash();
-    window.addEventListener("hashchange", openFromHash);
-    return () => window.removeEventListener("hashchange", openFromHash);
-  }, []);
-
   return (
-    <section id="faq" className="bg-paper-sunk py-20 sm:py-28">
+    <section id="faq" className="py-20 sm:py-28">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <SectionHeader
-          index="05"
+          index="06"
           eyebrow="FAQ"
           title={
             <>
@@ -581,29 +735,23 @@ function Faq() {
           }
         />
         <div className="mt-10 space-y-3">
-          {items.map((it, i) => (
-            <div
+          {FAQ_ITEMS.map((it, i) => (
+            <details
               key={it.q}
-              id={i === FAQ_MODIF_INDEX ? "faq-modifications" : undefined}
-              className="overflow-hidden scroll-mt-24 rounded-xl border border-border bg-card shadow-soft"
+              open={i === 0}
+              className="group overflow-hidden rounded-xl border border-border bg-card shadow-soft"
             >
-              <button
-                onClick={() => setOpen(open === i ? null : i)}
-                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-semibold"
-              >
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left font-semibold marker:content-none">
                 <span>{it.q}</span>
-                <ChevronDown
-                  className={`h-5 w-5 shrink-0 text-muted-foreground transition-transform ${
-                    open === i ? "rotate-180" : ""
-                  }`}
+                <ChevronDown className="h-5 w-5 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" />
+              </summary>
+              <p className="px-5 pb-5 text-[15px] leading-relaxed text-muted-foreground">
+                <TexteAvecLiens
+                  texte={it.a}
+                  classeLien="font-medium text-brand-ink underline decoration-brand-ink/30 underline-offset-4 transition hover:decoration-brand-ink"
                 />
-              </button>
-              {open === i && (
-                <div className="px-5 pb-5 text-[15px] leading-relaxed text-muted-foreground">
-                  {it.a}
-                </div>
-              )}
-            </div>
+              </p>
+            </details>
           ))}
         </div>
       </div>
@@ -760,7 +908,7 @@ function Journal() {
     <section id="journal" className="bg-paper-sunk py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
-          index="06"
+          index="07"
           eyebrow="Le journal"
           title={
             <>

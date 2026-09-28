@@ -31,16 +31,18 @@ export const FICHE_GOOGLE_URL = "https://maps.google.com/?cid=138291696043497368
  * Prix plancher des agents IA.
  *
  * DESIGN.md §8 a retiré les prix des pages commerciales le 2 septembre 2026.
- * L'audit SEO/GEO du 25 septembre recommande d'afficher un prix plancher sur
- * les pages Agents IA : c'est ce que les assistants IA reprennent quand on
- * leur demande combien coûte un agent IA. La décision revient au client ; cet
- * interrupteur l'applique partout d'un coup (FAQ, pages sectorielles,
- * données structurées), sans qu'aucun montant ne reste ailleurs dans le code.
+ * Décision du 28 septembre 2026 (plan SEO d'octobre) : les prix plancher des
+ * agents IA sont affichés. C'est ce que les assistants IA reprennent quand on
+ * leur demande combien coûte un agent IA. Cet interrupteur l'applique partout
+ * d'un coup (FAQ, pages sectorielles, accueil, données structurées), sans
+ * qu'aucun montant ne reste ailleurs dans le code. `afficher: false` retire
+ * tous les montants, et l'article sur le prix d'un agent IA repasse en
+ * brouillon.
  */
 export const PRIX_AGENTS_IA = {
-  afficher: false,
-  miseEnPlaceMin: 1500,
-  mensuelMin: 900,
+  afficher: true,
+  miseEnPlaceMin: 1200,
+  mensuelMin: 499,
 } as const;
 
 /**

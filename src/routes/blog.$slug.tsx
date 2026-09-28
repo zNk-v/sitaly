@@ -6,12 +6,12 @@ import {
   formatDate,
   getPostBySlug,
   getRelatedPosts,
-  LIEN_DANS_LE_TEXTE,
   slugifyHeading,
   texteBrut,
   type BlogSection,
 } from "@/data/blog-posts";
 import { SitalyLogo } from "@/components/SitalyLogo";
+import { TexteAvecLiens } from "@/components/TexteAvecLiens";
 import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
 import { LinkedinLink } from "@/components/LinkedinLink";
 import { MetierLinksStrip } from "@/components/MetierLinks";
@@ -410,44 +410,6 @@ function RenderSection({ section }: { section: BlogSection }) {
         </div>
       );
   }
-}
-
-/**
- * Le texte d'un paragraphe, ses liens `[ancre](/chemin/)` rendus cliquables.
- * Les pages du routeur passent par `Link` ; les pages statiques servies
- * depuis public/ (ChatGPT Ads) gardent un lien classique, que le routeur ne
- * saurait pas résoudre.
- */
-const PAGES_STATIQUES = ["/chatgpt-ads", "/agents-ia/chatgpt"];
-
-function TexteAvecLiens({ texte }: { texte: string }) {
-  const morceaux: React.ReactNode[] = [];
-  let depuis = 0;
-  for (const m of texte.matchAll(LIEN_DANS_LE_TEXTE)) {
-    const [tout, ancre, href] = m;
-    const debut = m.index ?? 0;
-    if (debut > depuis) morceaux.push(texte.slice(depuis, debut));
-    const classe =
-      "font-medium text-accent underline decoration-accent/40 underline-offset-4 transition hover:decoration-accent";
-    const statique = PAGES_STATIQUES.some((p) => href.startsWith(p)) || !href.startsWith("/");
-    // L'ancre passe à part : dans `to`, le routeur la traiterait comme un
-    // segment de chemin et lui ajouterait un slash final.
-    const [chemin, ancreDePage] = href.split("#");
-    morceaux.push(
-      statique ? (
-        <a key={debut} href={href} className={classe}>
-          {ancre}
-        </a>
-      ) : (
-        <Link key={debut} to={chemin} hash={ancreDePage} className={classe}>
-          {ancre}
-        </Link>
-      ),
-    );
-    depuis = debut + tout.length;
-  }
-  if (depuis < texte.length) morceaux.push(texte.slice(depuis));
-  return <>{morceaux}</>;
 }
 
 function InlineCTA() {

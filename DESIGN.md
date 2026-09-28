@@ -311,6 +311,23 @@ Ce que le prix affiché faisait, il faut le remplacer. Il portait la clarté et
 l'absence d'engagement. Ces deux promesses restent, formulées sans montant :
 sans engagement, sans frais d'installation, réponse sous 24 heures.
 
+**Révision du 28 septembre 2026 — les prix plancher reviennent, pour deux
+offres seulement.** Le plan SEO d'octobre les réaffiche sur les agents IA et
+sur ChatGPT Ads : ce sont les montants que les assistants IA reprennent quand
+on leur demande ce que coûte un agent IA ou une agence ChatGPT Ads, et une page
+qui les tait se fait citer moins souvent qu'une page qui les donne.
+
+- Agents IA : mise en place à partir de 1 200 €, pilotage à partir de 499 €
+  par mois. Interrupteur `PRIX_AGENTS_IA` dans `src/lib/config.ts`.
+- ChatGPT Ads : à partir de 890 € par mois + 10 % du budget publicitaire,
+  budget payé à part. Interrupteur `PRIX_CHATGPT_ADS` ; la page statique
+  /chatgpt-ads/ recopie les montants à la main.
+- Sites internet : toujours aucun prix.
+
+Ce sont des planchers, pas une grille : le montant exact reste écrit après le
+diagnostic. Sur les pages agents IA, « sans frais d'installation » ne s'écrit
+plus, puisqu'il y a une mise en place.
+
 ---
 
 ## 8 bis. L'arborescence des expertises
@@ -328,9 +345,15 @@ familles, et chaque famille tient dans une colonne du menu :
 
 | Famille | Pages |
 |---|---|
+| Agents IA et automatisation | agents IA, automatisation des tâches, CRM, logiciel métier, application, intégrations et API |
+| Acquisition | ChatGPT Ads, Google Ads, référencement naturel, référencement local, référencement IA, publicité sociale |
 | Site internet | création de site, vitrine, e-commerce, landing page, événementiel, refonte |
-| Acquisition | référencement naturel, référencement local, référencement IA, Google Ads, ChatGPT Ads, publicité sociale |
-| Automatisation | agents IA, automatisation des tâches, CRM, logiciel métier, application, intégrations et API |
+
+**Révision du 28 septembre 2026 — l'IA en tête.** L'ordre des familles suit
+désormais l'offre : les agents IA d'abord, l'acquisition ensuite, le site en
+porte d'entrée. La famille automatisation s'appelle « Agents IA et
+automatisation ». Le menu garde « Site internet », le terme que les gens
+tapent.
 
 `src/data/expertises.ts` est la source unique : le menu de bureau, le menu
 mobile, la section Expertises de l'accueil, le pied de page et le sitemap en
@@ -342,9 +365,19 @@ un gabarit rempli seize fois avec les mêmes phrases se fait traiter comme du
 contenu dupliqué, et aucune des seize ne se classe. C'est la contrainte la plus
 coûteuse de cette architecture, et la seule qui la rende utile.
 
-**Quatre blocs par page, pas douze.** Ce que ça comprend, quand ça se justifie,
-quatre questions, les pages voisines. Une page d'expertise ne refait pas le
-travail de l'accueil : elle répond à une question et propose l'appel.
+**Quatre blocs par page, pas douze.** Ce que comprend le service, pour quelles
+entreprises il est rentable, les questions fréquentes, les pages voisines. Une
+page d'expertise ne refait pas le travail de l'accueil : elle répond à une
+question et propose l'appel.
+
+**Révision du 28 septembre 2026.** Les intertitres nomment le service
+(« Ce que comprend un site vitrine », « Pour quelles entreprises un site
+vitrine est rentable », « Questions fréquentes sur un site vitrine ») :
+seize pages qui portaient les mêmes trois H2 se ressemblaient trop. Le bloc
+des pages voisines reçoit une carte « Étape suivante » vers une autre famille
+(un site reçoit des demandes qu'un agent traite, un agent a besoin de demandes
+que l'acquisition amène). C'est une carte de plus dans le bloc, pas un
+cinquième bloc.
 
 **L'accueil en sort raccourci d'un sixième.** Disparaissent « Le constat »,
 « Notre méthode » et « Compléments », qui énuméraient sans rien rendre
@@ -368,7 +401,9 @@ la couverture nationale.
 
 **Jamais affiché** : un effectif, une page équipe, une adresse de rue, une photo
 de bureau, une invitation à se rencontrer. Linov peut écrire « rencontrons-nous ».
-Sitaly écrit « on s'appelle 20 minutes ».
+Sitaly écrit « on s'appelle 30 minutes » : depuis le 28 septembre 2026, la
+porte d'entrée est un diagnostic offert de 30 minutes, et cette durée est la
+même partout sur le site.
 
 L'avantage se retourne : chez Sitaly, l'interlocuteur est celui qui construit le
 site. Aucune agence à effectif ne peut le promettre.

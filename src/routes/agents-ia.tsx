@@ -50,7 +50,9 @@ import {
   SITALY_PHONE_DISPLAY,
 } from "@/lib/config";
 import { envoyerDemande } from "@/lib/formulaire";
-import { SECTEURS, cheminSecteur, reponsePrix } from "@/data/secteurs";
+import { SECTEURS, cheminSecteur, euros, reponsePrix } from "@/data/secteurs";
+import { TexteAvecLiens } from "@/components/TexteAvecLiens";
+import { texteBrut } from "@/lib/liens-texte";
 import { LinkedinLink } from "@/components/LinkedinLink";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -91,7 +93,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Comment le projet est-il facturé ?",
-    a: `En deux parties : le déploiement initial, puis un suivi mensuel qui couvre le pilotage, les corrections et l'évolution des règles. ${reponsePrix()}`,
+    a: `En deux parties : le déploiement initial, puis un suivi mensuel qui couvre le pilotage, les corrections, l'évolution des règles et les coûts variables (minutes de voix, SMS). ${reponsePrix()}`,
   },
   {
     q: "L'agent annonce-t-il qu'il est une IA ?",
@@ -100,6 +102,10 @@ const FAQ_ITEMS = [
   {
     q: "Peut-il faire de la prospection téléphonique ?",
     a: "Pas auprès de particuliers sans leur consentement : c'est interdit depuis le 11 août 2026 (loi du 30 juin 2025). L'agent traite les demandes entrantes, rappelle les personnes qui l'ont demandé et suit vos clients existants.",
+  },
+  {
+    q: "Peut-on combiner publicité et agents IA ?",
+    a: "Oui, et c'est souvent là que l'agent rapporte le plus : une campagne amène des demandes, l'agent y répond tout de suite, les qualifie et propose un rendez-vous. Pour [combiner ChatGPT Ads et agents IA](/chatgpt-ads/), le suivi des conversions se branche avant la première dépense, et vous voyez ce que devient chaque demande payée.",
   },
 ];
 
@@ -115,7 +121,7 @@ const HERO_FLOW: FlowStep[] = [
 const CAPABILITIES = [
   { label: "Appels", icon: Phone },
   { label: "Formulaires", icon: ClipboardList },
-  { label: "WhatsApp", icon: MessageCircle },
+  { label: "Instagram", icon: MessageCircle },
   { label: "Messages", icon: MessageSquare },
   { label: "Prise de rendez-vous", icon: CalendarCheck },
   { label: "E-mails", icon: Send },
@@ -232,6 +238,29 @@ const AGENT_BLOCKS: AgentBlock[] = [
   },
 ];
 
+/* Les trois agents qui couvrent un canal précis, en format court sous les
+   trois agents principaux. Six au total, comme sur l'accueil. */
+const AUTRES_AGENTS = [
+  {
+    id: "appel-manque",
+    icon: PhoneMissed,
+    name: "SMS après un appel manqué",
+    text: "Un appel reste sans réponse : un SMS part aussitôt, avec un lien pour être rappelé ou réserver un créneau.",
+  },
+  {
+    id: "instagram",
+    icon: MessageCircle,
+    name: "Réponses aux messages Instagram",
+    text: "Il répond aux messages privés de votre compte, qualifie la demande et propose un rendez-vous ou un rappel.",
+  },
+  {
+    id: "avis-google",
+    icon: MessageSquare,
+    name: "Gestion des avis Google",
+    text: "Il demande un avis au client quand la prestation est terminée, et prépare les réponses aux avis publiés.",
+  },
+];
+
 /* Un même système, décliné par métier : chaque carte donne des exemples
    concrets pour que le visiteur se reconnaisse sans avoir à transposer. */
 const SECTOR_CASES = [
@@ -241,7 +270,7 @@ const SECTOR_CASES = [
     context:
       "Beaucoup de messages, peu de temps, et des questions qui reviennent avant et après l'achat.",
     items: [
-      "Questions avant achat sur WhatsApp, chat ou e-mail : stock, délais, tailles",
+      "Questions avant achat sur Instagram, chat ou e-mail : stock, délais, tailles",
       "Suivi de commande, retours et remboursements",
       "Relance des paniers et des devis professionnels",
       "Demande d'avis quelques jours après la livraison",
@@ -253,7 +282,7 @@ const SECTOR_CASES = [
     context: "Le téléphone sonne pendant les consultations et les créneaux annulés restent vides.",
     items: [
       "Prise, déplacement et annulation de rendez-vous",
-      "Rappels de rendez-vous par SMS ou WhatsApp pour limiter les absences",
+      "Rappels de rendez-vous par SMS pour limiter les absences",
       "Questions pratiques : horaires, accès, documents à apporter",
       "Urgences et cas sensibles transmis directement au praticien",
     ],
@@ -314,7 +343,7 @@ const AUTOMATION_FAMILIES = [
     icon: Inbox,
     title: "Demandes entrantes",
     items: [
-      "Réponse aux appels, aux messages WhatsApp, aux formulaires et aux e-mails",
+      "Réponse aux appels, aux messages Instagram, aux formulaires et aux e-mails",
       "Tri et transmission à la bonne personne",
       "Réponses aux questions fréquentes",
       "Détection des demandes urgentes ou sensibles",
@@ -344,7 +373,7 @@ const AUTOMATION_FAMILIES = [
     icon: MessageSquare,
     title: "Après-vente et satisfaction",
     items: [
-      "Suivi de commande, de livraison et de retour, y compris sur WhatsApp",
+      "Suivi de commande, de livraison et de retour",
       "Demande d'avis au bon moment",
       "Réponse aux avis publiés en ligne",
       "Alerte immédiate en cas de client mécontent",
@@ -568,7 +597,7 @@ export const Route = createFileRoute("/agents-ia")({
               mainEntity: FAQ_ITEMS.map((it) => ({
                 "@type": "Question",
                 name: it.q,
-                acceptedAnswer: { "@type": "Answer", text: it.a },
+                acceptedAnswer: { "@type": "Answer", text: texteBrut(it.a) },
               })),
             },
           ],
@@ -593,6 +622,7 @@ function AgentsIA() {
         <Sectors />
         <System />
         <Agents />
+        <ServiceClient />
         <Automations />
         <BeforeAfter />
         <Deployment />
@@ -674,16 +704,16 @@ function Hero() {
               <Sparkles className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
               Diagnostic offert de 30 minutes
             </div>
-            <h1 className="mt-6 font-display text-[2.1rem] font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.4rem]">
-              {/* Le mot-clé de la page, dans le titre lui-même : le bandeau
-                  au-dessus n'est pas un titre pour les moteurs. */}
-              <span className="mb-3 block text-lg font-bold tracking-normal text-accent sm:text-xl">
-                Agents IA pour PME
-              </span>{" "}
+            {/* Le H1 porte le mot-clé de la page, seul. L'accroche, qui
+                partageait la balise, devient la phrase qui le suit. */}
+            <h1 className="mt-6 font-display text-[2.6rem] font-extrabold leading-[1.02] tracking-tight sm:text-6xl lg:text-[4.2rem]">
+              Agents IA pour PME
+            </h1>
+            <p className="mt-5 font-display text-[1.5rem] font-extrabold leading-[1.15] tracking-tight sm:text-3xl">
               Chaque demande traitée.{" "}
               <span className="ai-gradient-text">Chaque client qualifié.</span> Chaque relance
               envoyée.
-            </h1>
+            </p>
             <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-muted-foreground sm:text-lg">
               Agence immobilière, cabinet de courtage ou entreprise du bâtiment : Sitaly installe et
               pilote les agents IA qui répondent, qualifient, prennent vos rendez-vous et relancent ce
@@ -869,8 +899,8 @@ function Agents() {
         <div data-reveal>
           <SectionHeader
             eyebrow="Les composants"
-            title="Trois agents, un seul système"
-            subtitle="Ils ne fonctionnent pas isolément : chacun prend le relais du précédent et passe la main à votre équipe au moment prévu."
+            title="Six agents, un seul système"
+            subtitle="Trois agents portent le parcours d'une demande, trois autres couvrent un canal précis. Aucun ne travaille isolément : chacun passe la main à votre équipe au moment prévu."
           />
         </div>
 
@@ -929,6 +959,98 @@ function Agents() {
             </article>
           ))}
         </div>
+
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          {AUTRES_AGENTS.map((agent) => (
+            <article
+              key={agent.id}
+              id={agent.id}
+              data-reveal
+              className="ai-card ai-card-hover flex scroll-mt-24 gap-4 p-6"
+            >
+              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent/15 text-accent">
+                <agent.icon className="h-5 w-5" aria-hidden="true" />
+              </div>
+              <div>
+                <h3 className="text-[15px] font-bold leading-tight">{agent.name}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{agent.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- SERVICE CLIENT ---------------- */
+const SERVICE_CLIENT_AGENT = [
+  "Les questions dont la réponse existe déjà : horaires, accès, documents à fournir, suivi d'un dossier ou d'une intervention",
+  "La prise, le déplacement et le rappel des rendez-vous",
+  "Les messages Instagram et les SMS, avec la même réponse qu'au téléphone",
+  "La demande d'avis quand la prestation est terminée",
+  "La transmission à la bonne personne, avec le résumé de l'échange",
+];
+
+const SERVICE_CLIENT_EQUIPE = [
+  "Les réclamations et les situations sensibles",
+  "Les avis de valeur, les conseils en crédit ou en assurance, les chiffrages de travaux",
+  "Toute décision qui engage l'entreprise",
+  "Les clients qui demandent à parler à quelqu'un",
+];
+
+function ServiceClient() {
+  return (
+    <section id="service-client" className="scroll-mt-24 py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div data-reveal>
+          <SectionHeader
+            eyebrow="Service client"
+            title="Agent IA et service client"
+            subtitle="Une grande partie des échanges avec vos clients porte sur des questions dont la réponse existe déjà. L'agent les prend en charge, et laisse à votre équipe ce qui demande un jugement."
+          />
+        </div>
+
+        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+          <div data-reveal className="ai-card ai-topline relative border-accent/30 p-7">
+            <h3 className="text-lg font-bold">Ce que l'agent prend en charge</h3>
+            <ul className="mt-6 space-y-4">
+              {SERVICE_CLIENT_AGENT.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-[15px]">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                  <span className="text-foreground/90">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div data-reveal className="ai-card p-7">
+            <h3 className="text-lg font-bold">Ce qui reste à votre équipe</h3>
+            <ul className="mt-6 space-y-4">
+              {SERVICE_CLIENT_EQUIPE.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-[15px]">
+                  <UserCheck className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                  <span className="text-muted-foreground">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <p
+          data-reveal
+          className="mx-auto mt-10 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground"
+        >
+          L'agent se présente comme une IA dès le début de l'échange, comme l'exige l'article 50 du
+          règlement européen sur l'IA depuis le 2 août 2026.{" "}
+          <Link
+            to="/blog/$slug/"
+            params={{ slug: "ai-act-article-50-agent-vocal" }}
+            className="font-semibold text-accent underline-offset-4 hover:underline"
+          >
+            Ce qu'il doit dire dès la première phrase
+          </Link>
+        </p>
       </div>
     </section>
   );
@@ -1010,7 +1132,7 @@ function Automations() {
         <div data-reveal>
           <SectionHeader
             eyebrow="Le périmètre"
-            title="Ce qui peut être automatisé, au-delà des trois agents"
+            title="Ce qui peut être automatisé, au-delà des six agents"
             subtitle="Une fois vos outils connectés, la même mécanique traite bien plus que les demandes entrantes. Voici ce qui se met en place le plus souvent, par famille."
           />
         </div>
@@ -1155,6 +1277,8 @@ function Deployment() {
             <p className="mt-1 text-sm text-muted-foreground">
               Le périmètre, le calendrier et le budget sont chiffrés une fois vos demandes entrantes
               analysées.
+              {PRIX_AGENTS_IA.afficher &&
+                ` Mise en place à partir de ${euros(PRIX_AGENTS_IA.miseEnPlaceMin)}, pilotage à partir de ${euros(PRIX_AGENTS_IA.mensuelMin)} par mois.`}
             </p>
           </div>
           <PrimaryCta compact />
@@ -1263,7 +1387,10 @@ function Faq() {
                 </span>
               </summary>
               <p className="px-6 pb-6 text-[15px] leading-relaxed text-muted-foreground">
-                {item.a}
+                <TexteAvecLiens
+                  texte={item.a}
+                  classeLien="font-semibold text-accent underline-offset-4 hover:underline"
+                />
               </p>
             </details>
           ))}

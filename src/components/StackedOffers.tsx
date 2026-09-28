@@ -34,26 +34,57 @@ type Levier = {
   cle: string;
   categorie: string;
   titre: React.ReactNode;
-  texte: string;
+  texte: React.ReactNode;
   points: readonly string[];
   cta: { label: string; to?: string; href?: string };
   maquette: React.ReactNode;
 };
 
+/* L'ordre suit l'offre depuis le 28 septembre 2026 : les agents IA en tête,
+   la publicité ensuite, le site en porte d'entrée. */
 const LEVIERS: Levier[] = [
   {
-    cle: "site",
-    categorie: "Site internet",
+    cle: "agents",
+    categorie: "Agents IA",
     titre: (
       <>
-        Un site qui travaille <span className="accent-word">pendant que vous travaillez</span>
+        Chaque demande reçue, <span className="accent-word">traitée</span>
       </>
     ),
     texte:
-      "Un site sur mesure livré en 48h, puis entretenu : hébergement, maintenance, modifications, fiche Google Business et référencement local. Vous ne touchez jamais à la technique.",
-    points: ["Livré en 48h", "Référencement local", "Modifications incluses"],
-    cta: { label: "Voir les réalisations", to: "/realisations/" },
-    maquette: <MaquetteSite />,
+      "Des agents installés et pilotés par Sitaly, qui décrochent, qualifient, proposent des rendez-vous et relancent les devis restés sans réponse. Ils se présentent comme une IA et passent la main à votre équipe quand il le faut.",
+    points: ["Accueil téléphonique", "Prise de rendez-vous", "Relance des devis"],
+    cta: { label: "Découvrir les agents", to: "/agents-ia/" },
+    maquette: <MaquetteAgent />,
+  },
+  {
+    cle: "chatgpt",
+    categorie: "ChatGPT Ads",
+    titre: (
+      <>
+        Exister quand un client <span className="accent-word">décrit son besoin à une IA</span>
+      </>
+    ),
+    texte: (
+      <>
+        La{" "}
+        <a
+          href="/chatgpt-ads/"
+          className="font-medium text-brand-ink underline decoration-brand-ink/30 underline-offset-4 transition hover:decoration-brand-ink"
+        >
+          publicité dans ChatGPT
+        </a>{" "}
+        est ouverte en France depuis le 24 août 2026. On cartographie les intentions, on écrit
+        les messages, on mesure avant de dépenser.
+      </>
+    ),
+    points: [
+      "Cartographie des intentions",
+      "Suivi des conversions avant la première dépense",
+      "Optimisation continue",
+    ],
+    cta: { label: "Découvrir ChatGPT Ads", href: "/chatgpt-ads/" },
+    maquette: <MaquetteConversation />,
   },
   {
     cle: "ads",
@@ -70,36 +101,18 @@ const LEVIERS: Levier[] = [
     maquette: <MaquetteRecherche />,
   },
   {
-    cle: "chatgpt",
-    categorie: "ChatGPT Ads",
+    cle: "site",
+    categorie: "Site internet",
     titre: (
       <>
-        Exister quand un client <span className="accent-word">décrit son besoin à une IA</span>
+        Un site qui travaille <span className="accent-word">pendant que vous travaillez</span>
       </>
     ),
     texte:
-      "De plus en plus de décisions d'achat commencent par une conversation plutôt que par une requête. On cartographie les intentions, on écrit les messages, on mesure avant de dépenser.",
-    points: [
-      "Cartographie des intentions",
-      "Tracking avant la première dépense",
-      "Optimisation continue",
-    ],
-    cta: { label: "Découvrir ChatGPT Ads", href: "/chatgpt-ads/" },
-    maquette: <MaquetteConversation />,
-  },
-  {
-    cle: "agents",
-    categorie: "Agents IA",
-    titre: (
-      <>
-        Ne plus jamais <span className="accent-word">rater un appel</span>
-      </>
-    ),
-    texte:
-      "Des agents installés clé en main qui répondent aux demandes entrantes, qualifient, proposent des rendez-vous et relancent les devis restés sans réponse. Vous ne configurez rien.",
-    points: ["Standardiste qui ne rate rien", "Prise de rendez-vous", "Relance des devis"],
-    cta: { label: "Découvrir les agents", to: "/agents-ia/" },
-    maquette: <MaquetteAgent />,
+      "Un site sur mesure livré en 48h, puis entretenu : hébergement, maintenance, modifications, fiche Google Business et référencement local. Vous ne touchez jamais à la technique.",
+    points: ["Livré en 48h", "Référencement local", "Modifications incluses"],
+    cta: { label: "Voir les réalisations", to: "/realisations/" },
+    maquette: <MaquetteSite />,
   },
 ];
 
@@ -115,7 +128,7 @@ export function StackedOffers() {
               Des outils pensés pour <span className="accent-word">vos enjeux</span>
             </>
           }
-          subtitle="Quatre leviers, combinables. Vous en prenez un, deux ou les quatre. Chaque périmètre est chiffré après l'appel découverte, sur votre activité réelle."
+          subtitle="Quatre leviers, combinables. Vous en prenez un, deux ou les quatre. Chaque périmètre est chiffré après le diagnostic offert de 30 minutes, sur votre activité réelle."
         />
 
         {/* La réserve basse laisse la dernière carte collée le temps qu'on la

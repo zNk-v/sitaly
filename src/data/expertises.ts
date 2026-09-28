@@ -60,24 +60,27 @@ export interface Famille {
   icone: React.ComponentType<{ className?: string }>;
 }
 
+/* L'ordre est celui de l'offre depuis le 28 septembre 2026 : les agents IA
+   en tête, l'acquisition ensuite, le site en porte d'entrée. Menu, menu
+   mobile, accueil et pied de page le suivent tous. */
 export const FAMILLES: Famille[] = [
+  {
+    id: "automatisation",
+    titre: "Agents IA et automatisation",
+    resume: "Les demandes traitées et les tâches répétitives faites sans vous.",
+    icone: Bot,
+  },
+  {
+    id: "acquisition",
+    titre: "Acquisition",
+    resume: "Être trouvé, dans ChatGPT comme sur Google.",
+    icone: Megaphone,
+  },
   {
     id: "site",
     titre: "Site internet",
     resume: "Le site, sa mise en ligne et son entretien.",
     icone: Globe,
-  },
-  {
-    id: "acquisition",
-    titre: "Acquisition",
-    resume: "Être trouvé, sur Google comme dans les IA.",
-    icone: Megaphone,
-  },
-  {
-    id: "automatisation",
-    titre: "Automatisation",
-    resume: "Les tâches qui se répètent, faites sans vous.",
-    icone: Bot,
   },
 ];
 
@@ -87,6 +90,12 @@ export interface Expertise {
   famille: FamilleId;
   /** Libellé court, dans le menu et le maillage. */
   label: string;
+  /**
+   * Le service en groupe nominal, déterminant compris : il nomme les
+   * intertitres de la page (« Ce que comprend un site vitrine »), pour que
+   * seize pages du même gabarit ne portent pas les mêmes H2.
+   */
+  nomService: string;
   /** Une ligne sous le libellé dans le menu. */
   menuDesc: string;
   /** Page déjà écrite ailleurs : aucune route n'est générée pour elle. */
@@ -118,6 +127,7 @@ const SITE: Expertise[] = [
     slug: "creation-site-internet",
     famille: "site",
     label: "Création de site internet",
+    nomService: "la création de site internet",
     menuDesc: "Le socle : un site à vous, en ligne en 48 heures.",
     titre: "Création de site internet pour TPE et PME | Sitaly",
     description:
@@ -125,7 +135,7 @@ const SITE: Expertise[] = [
     eyebrow: "Site internet",
     h1: "Création de site internet, en ligne en 48 heures",
     intro:
-      "Un site construit pour votre activité, pas un gabarit revendu. Vous décrivez votre métier pendant vingt minutes, vous recevez une maquette, et le site part en ligne deux jours plus tard avec son hébergement, son nom de domaine et son référencement local.",
+      "Un site construit pour votre activité, pas un gabarit revendu. Vous décrivez votre métier pendant un appel de trente minutes, vous recevez une maquette, et le site part en ligne deux jours plus tard avec son hébergement, son nom de domaine et son référencement local.",
     reperes: ["Livré en 48 heures", "Hébergement et domaine inclus", "Sans engagement de durée"],
     comprend: [
       {
@@ -186,6 +196,7 @@ const SITE: Expertise[] = [
     slug: "site-vitrine",
     famille: "site",
     label: "Site vitrine",
+    nomService: "un site vitrine",
     menuDesc: "Présenter l'activité et recevoir des demandes.",
     titre: "Site vitrine professionnel : création et SEO | Sitaly",
     description:
@@ -254,6 +265,7 @@ const SITE: Expertise[] = [
     slug: "site-e-commerce",
     famille: "site",
     label: "Site e-commerce",
+    nomService: "un site e-commerce",
     menuDesc: "Vendre en ligne, paiement et stocks compris.",
     titre: "Création de site e-commerce clé en main | Sitaly",
     description:
@@ -322,6 +334,7 @@ const SITE: Expertise[] = [
     slug: "landing-page",
     famille: "site",
     label: "Landing page",
+    nomService: "une landing page",
     menuDesc: "Une page unique, taillée pour une campagne.",
     titre: "Création de landing page qui convertit | Sitaly",
     description:
@@ -390,6 +403,7 @@ const SITE: Expertise[] = [
     slug: "site-evenementiel",
     famille: "site",
     label: "Site événementiel",
+    nomService: "un site événementiel",
     menuDesc: "Pour une opération ponctuelle, avec une fin.",
     titre: "Site événementiel : salon, lancement, opération | Sitaly",
     description:
@@ -458,6 +472,7 @@ const SITE: Expertise[] = [
     slug: "refonte-site-internet",
     famille: "site",
     label: "Refonte de site",
+    nomService: "la refonte de site internet",
     menuDesc: "Reprendre un site existant sans perdre Google.",
     titre: "Refonte de site internet sans perte de SEO | Sitaly",
     description:
@@ -533,6 +548,7 @@ const ACQUISITION: Expertise[] = [
     slug: "referencement-naturel",
     famille: "acquisition",
     label: "Référencement naturel (SEO)",
+    nomService: "le référencement naturel",
     menuDesc: "Remonter dans Google sans payer le clic.",
     titre: "Référencement naturel (SEO) pour TPE et PME | Sitaly",
     description:
@@ -601,6 +617,7 @@ const ACQUISITION: Expertise[] = [
     slug: "referencement-local",
     famille: "acquisition",
     label: "Référencement local",
+    nomService: "le référencement local",
     menuDesc: "Sortir sur « votre métier + votre ville ».",
     titre: "Référencement local : être trouvé dans votre ville | Sitaly",
     description:
@@ -669,6 +686,7 @@ const ACQUISITION: Expertise[] = [
     slug: "referencement-ia",
     famille: "acquisition",
     label: "Référencement IA (GEO)",
+    nomService: "le référencement IA",
     menuDesc: "Être cité par ChatGPT, Gemini et Perplexity.",
     titre: "Référencement IA : être cité par ChatGPT | Sitaly",
     description:
@@ -737,6 +755,7 @@ const ACQUISITION: Expertise[] = [
     slug: "publicite-reseaux-sociaux",
     famille: "acquisition",
     label: "Publicité réseaux sociaux",
+    nomService: "la publicité sur les réseaux sociaux",
     menuDesc: "Meta, Instagram, LinkedIn et TikTok.",
     titre: "Publicité réseaux sociaux : Meta, LinkedIn | Sitaly",
     description:
@@ -812,6 +831,7 @@ const AUTOMATISATION: Expertise[] = [
     slug: "automatisation-taches",
     famille: "automatisation",
     label: "Automatisation des tâches",
+    nomService: "l'automatisation des tâches",
     menuDesc: "Devis, relances, factures, saisies en double.",
     titre: "Automatisation des tâches pour TPE et PME | Sitaly",
     description:
@@ -880,6 +900,7 @@ const AUTOMATISATION: Expertise[] = [
     slug: "crm-sur-mesure",
     famille: "automatisation",
     label: "CRM sur mesure",
+    nomService: "un CRM sur mesure",
     menuDesc: "Suivre vos clients sans usine à gaz.",
     titre: "CRM sur mesure pour TPE et PME | Sitaly",
     description:
@@ -948,6 +969,7 @@ const AUTOMATISATION: Expertise[] = [
     slug: "logiciel-metier",
     famille: "automatisation",
     label: "Logiciel métier",
+    nomService: "un logiciel métier",
     menuDesc: "L'outil que votre activité n'a pas trouvé.",
     titre: "Développement de logiciel métier sur mesure | Sitaly",
     description:
@@ -1016,6 +1038,7 @@ const AUTOMATISATION: Expertise[] = [
     slug: "application-web-mobile",
     famille: "automatisation",
     label: "Application web et mobile",
+    nomService: "une application web ou mobile",
     menuDesc: "Un espace client, une appli terrain.",
     titre: "Création d'application web et mobile sur mesure | Sitaly",
     description:
@@ -1084,6 +1107,7 @@ const AUTOMATISATION: Expertise[] = [
     slug: "integration-api",
     famille: "automatisation",
     label: "Intégrations et API",
+    nomService: "l'intégration d'API",
     menuDesc: "Faire parler vos outils entre eux.",
     titre: "Intégration d'API : connecter vos logiciels | Sitaly",
     description:
@@ -1202,7 +1226,8 @@ const HORS_FICHIER: Record<string, EntreeMenu> = {
 };
 
 /** L'ordre d'affichage, colonne par colonne. Les clés sans page générée
-    viennent de HORS_FICHIER. */
+    viennent de HORS_FICHIER. Les pages de vente prioritaires ouvrent chaque
+    colonne : Agents IA, puis ChatGPT Ads et Google Ads. */
 const ORDRE: Record<FamilleId, string[]> = {
   site: [
     "creation-site-internet",
@@ -1213,11 +1238,11 @@ const ORDRE: Record<FamilleId, string[]> = {
     "refonte-site-internet",
   ],
   acquisition: [
+    "chatgpt-ads",
+    "google-ads",
     "referencement-naturel",
     "referencement-local",
     "referencement-ia",
-    "google-ads",
-    "chatgpt-ads",
     "publicite-reseaux-sociaux",
   ],
   automatisation: [

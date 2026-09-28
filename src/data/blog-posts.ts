@@ -10,17 +10,7 @@ export type BlogSection =
   | { type: "table"; caption?: string; headers: string[]; rows: string[][] }
   | { type: "faq"; items: { q: string; a: string }[] };
 
-/**
- * Liens dans le texte des articles, écrits `[ancre](/chemin/)`. Le rendu en
- * fait de vrais liens ; les données structurées et le décompte de mots n'en
- * gardent que l'ancre (voir `texteBrut`).
- */
-export const LIEN_DANS_LE_TEXTE = /\[([^\]]+)\]\(([^)\s]+)\)/g;
-
-/** Le texte tel qu'on le lit, sans la syntaxe des liens. */
-export function texteBrut(texte: string): string {
-  return texte.replace(LIEN_DANS_LE_TEXTE, "$1");
-}
+export { LIEN_DANS_LE_TEXTE, texteBrut } from "@/lib/liens-texte";
 
 /**
  * L'étape suivante proposée en fin d'article. Chaque article pousse vers la

@@ -51,14 +51,15 @@ export function cheminSecteur(s: Pick<Secteur, "slug">): string {
   return `/agents-ia/${s.slug}/`;
 }
 
-const euros = (n: number) => `${n.toLocaleString("fr-FR").replace(/ /g, " ")} €`;
+/** Un montant en euros, espaces insécables comprises. */
+export const euros = (n: number) => `${n.toLocaleString("fr-FR").replace(/ /g, " ")} €`;
 
 /** Le bloc tarif, avec ou sans montant selon PRIX_AGENTS_IA.afficher. */
 export function texteTarif(): string {
   if (PRIX_AGENTS_IA.afficher) {
-    return `La mise en place démarre à ${euros(PRIX_AGENTS_IA.miseEnPlaceMin)}, le pilotage mensuel à ${euros(PRIX_AGENTS_IA.mensuelMin)}. Le montant exact dépend du nombre de processus, de canaux et d'outils à connecter : il vous est remis par écrit après le diagnostic offert. Les minutes de conversation sont incluses dans un volume fixé au devis.`;
+    return `La mise en place démarre à ${euros(PRIX_AGENTS_IA.miseEnPlaceMin)}, le pilotage mensuel à ${euros(PRIX_AGENTS_IA.mensuelMin)}. Le montant exact dépend du nombre de processus, de canaux et d'outils à connecter : il vous est remis par écrit après le diagnostic offert. Le pilotage mensuel couvre les coûts variables : minutes de voix et SMS.`;
   }
-  return "Deux montants, donnés par écrit après le diagnostic offert : la mise en place, puis le pilotage mensuel. Ils dépendent du nombre de processus, de canaux et d'outils à connecter. Les minutes de conversation sont incluses dans un volume fixé au devis.";
+  return "Deux montants, donnés par écrit après le diagnostic offert : la mise en place, puis le pilotage mensuel. Ils dépendent du nombre de processus, de canaux et d'outils à connecter. Le pilotage mensuel couvre les coûts variables : minutes de voix et SMS.";
 }
 
 /** La réponse FAQ « Combien ça coûte ? », avec ou sans montant. */
