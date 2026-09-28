@@ -34,14 +34,35 @@ export const Route = createFileRoute("/realisations/$slug")({
           type: "application/ld+json",
           children: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "CreativeWork",
-            name: `${r.client} — ${r.metier}`,
-            about: r.metier,
-            url,
-            creator: { "@type": "Organization", name: "Sitaly", url: "https://sitaly.fr" },
-            // Le site du client est l'oeuvre décrite : on le relie explicitement
-            // plutôt que de laisser croire que la page en est une copie.
-            mainEntity: { "@type": "WebSite", name: r.client, url: r.url },
+            "@graph": [
+              {
+                "@type": "CreativeWork",
+                "@id": `${url}#etude`,
+                name: `${r.client} — ${r.metier}`,
+                about: r.metier,
+                url,
+                // Rattaché à l'entité du graphe racine (__root.tsx).
+                creator: { "@id": "https://sitaly.fr/#business" },
+                // Le site du client est l'oeuvre décrite : on le relie
+                // explicitement plutôt que de laisser croire que la page en
+                // est une copie.
+                mainEntity: { "@type": "WebSite", name: r.client, url: r.url },
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": `${url}#breadcrumb`,
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "Accueil", item: "https://sitaly.fr/" },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Réalisations",
+                    item: "https://sitaly.fr/realisations/",
+                  },
+                  { "@type": "ListItem", position: 3, name: r.client, item: url },
+                ],
+              },
+            ],
           }),
         },
       ],

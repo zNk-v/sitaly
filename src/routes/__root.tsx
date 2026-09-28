@@ -97,7 +97,12 @@ const GRAPHE_ENTITE = {
       "@id": "https://sitaly.fr/#business",
       name: "Sitaly",
       url: "https://sitaly.fr/",
-      logo: { "@type": "ImageObject", url: "https://sitaly.fr/icon-512.png" },
+      logo: {
+        "@type": "ImageObject",
+        url: "https://sitaly.fr/icon-512.png",
+        width: 512,
+        height: 512,
+      },
       image: "https://sitaly.fr/og-image.png",
       description:
         "Sitaly installe et pilote des agents IA et des automatisations pour les PME : accueil téléphonique, qualification des demandes, prise de rendez-vous, relance des devis, outils métier sur mesure. Sites internet et campagnes publicitaires en complément.",
@@ -112,7 +117,26 @@ const GRAPHE_ENTITE = {
         addressRegion: "Île-de-France",
         addressCountry: "FR",
       },
+      // Le centre de Brétigny-sur-Orge, pas une adresse : Sitaly ne reçoit
+      // pas de public (DESIGN.md §9).
+      geo: { "@type": "GeoCoordinates", latitude: 48.61056, longitude: 2.30889 },
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          opens: "08:00",
+          closes: "19:00",
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: "Saturday",
+          opens: "09:00",
+          closes: "13:00",
+        },
+      ],
+      priceRange: "€€€",
       areaServed: [
+        { "@type": "AdministrativeArea", name: "Essonne" },
         { "@type": "AdministrativeArea", name: "Île-de-France" },
         { "@type": "Country", name: "France" },
       ],
@@ -129,6 +153,8 @@ const GRAPHE_ENTITE = {
         "Qualification de leads",
         "Relance de devis",
         "Automatisation de processus",
+        "ChatGPT Ads",
+        "Google Ads",
         "CRM sur mesure",
         "Intégration d'API",
         "Création de site internet",
@@ -154,48 +180,17 @@ const GRAPHE_ENTITE = {
         areaServed: "FR",
         availableLanguage: "French",
       },
+      // L'ordre de l'offre depuis le 28 septembre 2026 : l'IA en tête.
       makesOffer: [
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Agents IA pour PME",
-            url: "https://sitaly.fr/agents-ia/",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Automatisation des tâches",
-            url: "https://sitaly.fr/automatisation-taches/",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Création de site internet",
-            url: "https://sitaly.fr/creation-site-internet/",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Google Ads",
-            url: "https://sitaly.fr/acquisition/",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "ChatGPT Ads",
-            url: "https://sitaly.fr/chatgpt-ads/",
-          },
-        },
-      ],
+        ["Agents IA pour PME", "https://sitaly.fr/agents-ia/"],
+        ["ChatGPT Ads", "https://sitaly.fr/chatgpt-ads/"],
+        ["Google Ads", "https://sitaly.fr/acquisition/"],
+        ["Automatisation des tâches", "https://sitaly.fr/automatisation-taches/"],
+        ["Création de site internet", "https://sitaly.fr/creation-site-internet/"],
+      ].map(([name, url]) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name, url },
+      })),
     },
     {
       "@type": "Person",
@@ -210,6 +205,7 @@ const GRAPHE_ENTITE = {
       "@type": "WebSite",
       "@id": "https://sitaly.fr/#website",
       name: "Sitaly",
+      alternateName: ["sitaly.fr", "Sitaly Agence"],
       url: "https://sitaly.fr/",
       publisher: { "@id": "https://sitaly.fr/#business" },
       inLanguage: "fr-FR",

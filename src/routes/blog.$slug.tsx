@@ -65,16 +65,12 @@ export const Route = createFileRoute("/blog/$slug")({
           inLanguage: "fr-FR",
           articleSection: post.category,
           keywords: post.keyword,
-          ...(ogImage && { image: ogImage }),
+          // Sans illustration propre, l'image de partage du site.
+          image: ogImage ?? "https://sitaly.fr/og-image.png",
           wordCount,
           // Auteur et éditeur rattachés au graphe racine (__root.tsx) : une
           // personne identifiable pèse plus qu'une signature collective.
-          author: {
-            "@type": "Person",
-            "@id": "https://sitaly.fr/#teddy-vidal",
-            name: post.author,
-            url: "https://sitaly.fr/a-propos/",
-          },
+          author: { "@id": "https://sitaly.fr/#teddy-vidal" },
           publisher: { "@id": "https://sitaly.fr/#business" },
           mainEntityOfPage: { "@type": "WebPage", "@id": url },
           isPartOf: { "@type": "Blog", "@id": "https://sitaly.fr/blog/" },
@@ -87,7 +83,7 @@ export const Route = createFileRoute("/blog/$slug")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Accueil", item: "https://sitaly.fr" },
+            { "@type": "ListItem", position: 1, name: "Accueil", item: "https://sitaly.fr/" },
             { "@type": "ListItem", position: 2, name: "Blog", item: "https://sitaly.fr/blog/" },
             { "@type": "ListItem", position: 3, name: post.title, item: url },
           ],
