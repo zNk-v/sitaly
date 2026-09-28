@@ -11,6 +11,7 @@ import {
   type Expertise,
 } from "@/data/expertises";
 import { CarteEtapeSuivante } from "@/components/EtapeSuivante";
+import { ArticlesALire } from "@/components/ArticlesALire";
 import { BASE_URL } from "@/lib/sitemap";
 import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
@@ -60,7 +61,7 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
               className="bouton px-7 py-3.5"
             >
               <Calendar className="h-4 w-4" />
-              Parler de votre projet
+              Réserver un diagnostic de 30 min
             </a>
             <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
               <Phone className="h-4 w-4" />
@@ -179,6 +180,13 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
               </details>
             ))}
           </div>
+          {/* Les articles qui prolongent les questions, dans le même bloc :
+              la page garde ses quatre blocs (DESIGN.md §8 bis). */}
+          {e.aLire && (
+            <div className="mt-14">
+              <ArticlesALire slugs={e.aLire} titre="À lire sur le sujet" />
+            </div>
+          )}
         </div>
       </section>
 
@@ -242,7 +250,7 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
               className="bouton px-7 py-3.5"
             >
               <Calendar className="h-4 w-4" />
-              Réserver l'appel
+              Réserver un diagnostic de 30 min
             </a>
             <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
               <Phone className="h-4 w-4" />

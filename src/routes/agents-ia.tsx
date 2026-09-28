@@ -55,6 +55,7 @@ import { TexteAvecLiens } from "@/components/TexteAvecLiens";
 import { texteBrut } from "@/lib/liens-texte";
 import { LinkedinLink } from "@/components/LinkedinLink";
 import { SiteFooter } from "@/components/SiteFooter";
+import { ArticlesALire } from "@/components/ArticlesALire";
 
 const CONTACT_EMAIL = "contact@sitaly.fr";
 
@@ -65,7 +66,7 @@ const CTA_LABEL = "Demander un diagnostic";
 const FAQ_ITEMS = [
   {
     q: "Est-ce un simple chatbot ?",
-    a: "Non. Un chatbot répond dans une fenêtre de discussion et s'arrête là. Un agent traite la demande de bout en bout : il comprend le motif, applique vos règles, propose un créneau, enregistre les informations et transmet à votre équipe. Son périmètre est défini avec vous avant le déploiement.",
+    a: "Non. Un [chatbot](/blog/chatbot-entreprise-tpe-guide/) répond dans une fenêtre de discussion et s'arrête là. Un agent traite la demande de bout en bout : il comprend le motif, applique vos règles, propose un créneau, enregistre les informations et transmet à votre équipe. Son périmètre est défini avec vous avant le déploiement.",
   },
   {
     q: "L'agent peut-il transférer vers un humain ?",
@@ -629,6 +630,7 @@ function AgentsIA() {
         <Control />
         <Fit />
         <Faq />
+        <ALire />
         <FinalCta />
       </main>
       <Footer />
@@ -1394,6 +1396,49 @@ function Faq() {
               </p>
             </details>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- À LIRE ---------------- */
+/* Les articles publiés apparaissent seuls : un slug encore absent du blog ne
+   produit ni carte ni lien cassé. */
+const A_LIRE = [
+  "agent-ia-entreprise-guide",
+  "relance-automatique-devis",
+  "prise-rendez-vous-en-ligne-guide",
+  "automatiser-suivi-client-tpe",
+  "chatbot-entreprise-tpe-guide",
+  "demarchage-telephonique-agent-ia-2026",
+  "ai-act-article-50-agent-vocal",
+  "agence-agents-ia-questions",
+  "agent-ia-prise-de-rendez-vous",
+  "standard-telephonique-ia",
+  "agent-ia-rgpd",
+  "prix-agent-ia",
+  "trouver-clients-agent-immobilier",
+];
+
+function ALire() {
+  return (
+    <section id="a-lire" className="scroll-mt-24 border-y border-border bg-secondary/20 py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div data-reveal>
+          <SectionHeader
+            eyebrow="À lire"
+            title="Les guides pour décider avant d'installer"
+            subtitle="Ce qu'un agent fait et ce qu'il coûte, les règles du démarchage et de l'AI Act, la relance, la prise de rendez-vous."
+          />
+        </div>
+        <div data-reveal className="mt-12">
+          <ArticlesALire
+            slugs={A_LIRE}
+            titre=""
+            classeCarte="ai-card ai-card-hover p-5"
+            classeLien="text-accent"
+          />
         </div>
       </div>
     </section>

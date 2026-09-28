@@ -205,7 +205,7 @@ function APropos() {
               className="bouton px-7 py-3.5"
             >
               <Calendar className="h-4 w-4" />
-              Réserver le diagnostic offert
+              Réserver un diagnostic de 30 min
             </a>
           </div>
         </div>

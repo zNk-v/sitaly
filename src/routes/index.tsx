@@ -224,7 +224,7 @@ function Ouverture() {
                 className="bouton mt-7 px-8 py-4 text-base"
               >
                 <Calendar className="h-5 w-5" />
-                Parler de votre projet
+                Réserver un diagnostic de 30 min
               </a>
 
               {/* Trois repères sous le bouton. Le premier écran ne portait qu'un

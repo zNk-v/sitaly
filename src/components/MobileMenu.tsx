@@ -211,7 +211,7 @@ export function MobileMenu({
                 className="bouton h-12 w-full text-base"
               >
                 <Calendar className="h-4 w-4" />
-                Parler de votre projet
+                Réserver un diagnostic de 30 min
               </a>
               <a
                 href={`tel:${SITALY_PHONE}`}

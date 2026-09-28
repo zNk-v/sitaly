@@ -96,7 +96,9 @@ export function SiteHeader({
               className="bouton hidden h-10 px-5 text-sm sm:inline-flex"
             >
               <Calendar className="h-4 w-4" />
-              Parler de votre projet
+              {/* Le libellé complet ne tient qu'à partir de xl, à côté du menu. */}
+              <span className="hidden xl:inline">Réserver un diagnostic de 30 min</span>
+              <span className="xl:hidden">Diagnostic de 30 min</span>
             </a>
             <MobileMenu onHome={accueil} />
           </div>

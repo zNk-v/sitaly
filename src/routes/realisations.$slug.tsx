@@ -296,8 +296,8 @@ function RealisationPage() {
               Le vôtre pourrait être <span className="accent-word text-brand-ink">le prochain</span>
             </h2>
             <p className="mt-6 text-lg text-muted-foreground">
-              Vingt minutes d'appel pour comprendre votre activité, et vous saurez si ça vaut le
-              coup. Sans engagement.
+              Un diagnostic offert de 30 minutes pour comprendre votre activité, et vous saurez si
+              ça vaut le coup. Sans engagement.
             </p>
             <a
               href={CALENDLY_URL}
@@ -306,7 +306,7 @@ function RealisationPage() {
               className="bouton mt-9 px-7 py-3.5"
             >
               <Calendar className="h-5 w-5" />
-              Parler de votre projet
+              Réserver un diagnostic de 30 min
             </a>
           </div>
         </section>

@@ -121,7 +121,7 @@ function RealisationsIndex() {
               Et si le prochain <span className="accent-word text-brand-ink">était le vôtre</span>
             </h2>
             <p className="mt-6 text-lg text-muted-foreground">
-              Vingt minutes suffisent pour savoir si on peut vous être utile. Sans engagement, sans
+              Trente minutes suffisent pour savoir si on peut vous être utile. Sans engagement, sans
               démarchage derrière.
             </p>
             <a
@@ -131,7 +131,7 @@ function RealisationsIndex() {
               className="bouton mt-9 px-7 py-3.5"
             >
               <Calendar className="h-5 w-5" />
-              Parler de votre projet
+              Réserver un diagnostic de 30 min
               <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>

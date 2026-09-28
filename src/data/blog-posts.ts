@@ -196,7 +196,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "Comment cadrer un premier test" },
       {
         type: "p",
-        text: "La méthode ne diffère pas fondamentalement de ce qu'on applique sur un canal mature. C'est la discipline qui compte davantage, précisément parce qu'il n'y a pas de repère extérieur pour corriger vos erreurs de jugement.",
+        text: "La méthode ne diffère pas fondamentalement de ce qu'on applique sur un canal mature. C'est la discipline qui compte davantage, précisément parce qu'il n'y a pas de repère extérieur pour corriger vos erreurs de jugement. C'est aussi celle que nous appliquons à la [gestion de campagnes ChatGPT Ads](/chatgpt-ads/) :",
       },
       {
         type: "ul",
@@ -287,7 +287,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Cet article ne va donc pas inventer un chiffre. Il explique ce qui compose réellement le coût, pourquoi les montants qui circulent doivent être maniés avec précaution, et surtout comment calculer le budget qui a du sens pour vous — méthode qui reste valable quels que soient les tarifs qui se stabiliseront.",
+        text: "Cet article ne va donc pas inventer un chiffre de marché. Il explique ce qui compose réellement le coût, pourquoi les montants qui circulent doivent être maniés avec précaution, et comment calculer le budget qui a du sens pour vous. Il donne aussi, plus bas, le tarif de notre [agence ChatGPT Ads](/chatgpt-ads/), pour que vous sachiez ce que coûte la gestion.",
       },
       { type: "h2", text: "Pourquoi personne ne peut vous donner un CPA" },
       {
@@ -502,7 +502,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       { type: "p", text: "« Comment vendre un bien locatif sans perdre l'avantage fiscal ? »" },
       {
         type: "p",
-        text: "Question technique posée par quelqu'un qui détient déjà le bien et envisage une opération. Le ticket est élevé, le cycle long, et le besoin de conseil considérable. Attention toutefois : la dimension locale reste déterminante, et le canal ne cible pas la géographie aussi finement qu'un moteur de recherche.",
+        text: "Question technique posée par quelqu'un qui détient déjà le bien et envisage une opération. Le ticket est élevé, le cycle long, et le besoin de conseil considérable. Attention toutefois : la dimension locale reste déterminante, et le canal ne cible pas la géographie aussi finement qu'un moteur de recherche. Pour les mandats, les leviers locaux restent décrits dans notre guide pour [trouver des clients quand on est agent immobilier](/blog/trouver-clients-agent-immobilier/).",
       },
       { type: "h3", text: "Assurance et courtage" },
       {
@@ -564,7 +564,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Si vous obtenez des questions riches, situées, décrivant un problème — votre marché est compatible. Si vous obtenez surtout des formulations courtes de type « nom du produit + prix » ou « métier + ville », le canal conversationnel n'apportera pas grand-chose : vos budgets sont mieux placés ailleurs.",
+        text: "Si vous obtenez des questions riches, situées, décrivant un problème, votre marché est compatible. Si vous obtenez surtout des formulations courtes de type « nom du produit + prix » ou « métier + ville », le canal conversationnel n'apportera pas grand-chose : vos budgets sont mieux placés ailleurs. Pour un regard extérieur sur ces questions, demandez une [analyse ChatGPT Ads](/chatgpt-ads/#analyse).",
       },
       {
         type: "p",
@@ -4656,7 +4656,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Les trois mots servent souvent l'un pour l'autre dans les argumentaires commerciaux, alors qu'ils ne coûtent ni ne rendent la même chose. La distinction tient en une phrase : ce qui décide de la suite.",
+        text: "Les trois mots servent souvent l'un pour l'autre dans les argumentaires commerciaux, alors qu'ils ne coûtent ni ne rendent la même chose. La distinction tient en une phrase : ce qui décide de la suite. Le cas du chatbot est détaillé dans notre article sur le [chatbot en entreprise](/blog/chatbot-entreprise-tpe-guide/).",
       },
       {
         type: "table",

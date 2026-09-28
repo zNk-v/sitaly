@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SectionHeader } from "@/components/SectionHeader";
 import { CarteEtapeSuivante } from "@/components/EtapeSuivante";
+import { ArticlesALire } from "@/components/ArticlesALire";
 import { COULEURS_FAMILLE } from "@/data/expertises";
 import { autresSecteurs, cheminSecteur, texteTarif, type Secteur } from "@/data/secteurs";
 import { BASE_URL } from "@/lib/sitemap";
@@ -77,7 +78,7 @@ export function SecteurLanding({ s }: { s: Secteur }) {
               className="bouton px-7 py-3.5"
             >
               <Calendar className="h-4 w-4" />
-              Réserver le diagnostic offert
+              Réserver un diagnostic de 30 min
             </a>
             <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
               <Phone className="h-4 w-4" />
@@ -311,6 +312,10 @@ export function SecteurLanding({ s }: { s: Secteur }) {
             </Link>
             <CarteEtapeSuivante depuis="automatisation" />
           </div>
+
+          <div className="mt-14 border-t border-border pt-10">
+            <ArticlesALire slugs={s.aLire} titre="À lire sur le sujet" />
+          </div>
         </div>
       </section>
 
@@ -330,7 +335,7 @@ export function SecteurLanding({ s }: { s: Secteur }) {
               className="bouton px-7 py-3.5"
             >
               <Calendar className="h-4 w-4" />
-              Réserver le diagnostic offert
+              Réserver un diagnostic de 30 min
             </a>
             <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
               <Phone className="h-4 w-4" />

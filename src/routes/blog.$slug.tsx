@@ -9,6 +9,7 @@ import {
   slugifyHeading,
   texteBrut,
   type BlogSection,
+  type CtaArticle,
 } from "@/data/blog-posts";
 import { SitalyLogo } from "@/components/SitalyLogo";
 import { TexteAvecLiens } from "@/components/TexteAvecLiens";
@@ -264,12 +265,12 @@ function BlogPostPage() {
           {post.content.map((section: BlogSection, idx: number) => (
             <>
               <RenderSection key={`s-${idx}`} section={section} />
-              {idx === midIndex && <InlineCTA key={`cta-${idx}`} />}
+              {idx === midIndex && <InlineCTA key={`cta-${idx}`} cta={post.cta ?? "site"} />}
             </>
           ))}
         </div>
 
-        <FinalCTA />
+        <FinalCTA cta={post.cta ?? "site"} />
       </article>
 
       {relatedPosts.length > 0 && (
@@ -412,47 +413,131 @@ function RenderSection({ section }: { section: BlogSection }) {
   }
 }
 
-function InlineCTA() {
+/**
+ * L'étape suivante proposée par l'article, selon son champ `cta` : chaque
+ * article pousse vers la page de vente de son sujet. Les articles sans champ
+ * gardent l'appel d'origine, écrit pour le site internet.
+ */
+type Appel = { titre: string; texte: string; label: string; href: string };
+
+const APPELS: Record<CtaArticle, { milieu: Appel; fin: Appel }> = {
+  "agents-ia": {
+    milieu: {
+      titre: "Un agent IA pour ne plus laisser filer de demande",
+      texte:
+        "Il décroche, qualifie, propose un rendez-vous et relance, en se présentant comme une IA. Sitaly l'installe et le pilote pour les PME.",
+      label: "Voir les agents IA",
+      href: "/agents-ia/",
+    },
+    fin: {
+      titre: "30 minutes pour repérer où vos demandes se perdent",
+      texte:
+        "Un diagnostic offert, au téléphone : vos demandes entrantes, vos outils, ce qu'un agent IA peut reprendre. Le chiffrage arrive par écrit, sans engagement.",
+      label: "Réserver un diagnostic",
+      href: CALENDLY_URL,
+    },
+  },
+  "chatgpt-ads": {
+    milieu: {
+      titre: "Tester ChatGPT Ads avec une méthode",
+      texte:
+        "Le suivi des conversions avant la première dépense, un seuil d'arrêt écrit, une décision sur les chiffres.",
+      label: "Voir la gestion ChatGPT Ads",
+      href: "/chatgpt-ads/",
+    },
+    fin: {
+      titre: "ChatGPT Ads a-t-il du sens pour votre entreprise ?",
+      texte:
+        "Décrivez votre activité : vous recevez une lecture honnête du potentiel, du budget de test qu'il suppose, ou de la raison pour laquelle ce n'est pas le moment.",
+      label: "Demander une analyse",
+      href: "/chatgpt-ads/#analyse",
+    },
+  },
+  automatisation: {
+    milieu: {
+      titre: "Chiffrer avant d'automatiser",
+      texte:
+        "Chaque tâche se mesure en minutes par semaine. On n'automatise que celles que le calcul justifie, avec un repli manuel prévu.",
+      label: "Voir l'automatisation des tâches",
+      href: "/automatisation-taches/",
+    },
+    fin: {
+      titre: "Ce que vous pouvez arrêter de faire à la main",
+      texte:
+        "Relances, rappels, saisies en double : on liste vos tâches répétitives, on chiffre le temps gagné, et on automatise celles qui le méritent.",
+      label: "Voir les automatisations",
+      href: "/automatisation-taches/",
+    },
+  },
+  site: {
+    milieu: {
+      titre: "Vous voulez appliquer tout ça sans y passer 40 heures ?",
+      texte:
+        "Site artisan livré en 48h, optimisé pour le SEO local. En abonnement mensuel, sans engagement.",
+      label: "Parler de votre projet gratuit",
+      href: CALENDLY_URL,
+    },
+    fin: {
+      titre: "Et si on créait votre site ?",
+      texte:
+        "Sitaly s'occupe de tout : création, référencement local, mise en ligne en 48h. En abonnement mensuel, tout inclus et sans engagement.",
+      label: "Parler de votre projet gratuit",
+      href: CALENDLY_URL,
+    },
+  },
+};
+
+/** Le bouton d'un appel : Calendly dans un nouvel onglet, les pages du
+    routeur par `Link`, la page statique ChatGPT Ads par un lien classique. */
+function BoutonAppel({ appel, className }: { appel: Appel; className: string }) {
+  const contenu = (
+    <>
+      {appel.label}
+      <ArrowRight className="h-4 w-4" />
+    </>
+  );
+  if (appel.href.startsWith("http")) {
+    return (
+      <a href={appel.href} target="_blank" rel="noopener noreferrer" className={className}>
+        {contenu}
+      </a>
+    );
+  }
+  if (appel.href.startsWith("/chatgpt-ads")) {
+    return (
+      <a href={appel.href} className={className}>
+        {contenu}
+      </a>
+    );
+  }
+  return (
+    <Link to={appel.href} className={className}>
+      {contenu}
+    </Link>
+  );
+}
+
+function InlineCTA({ cta }: { cta: CtaArticle }) {
+  const appel = APPELS[cta].milieu;
   return (
     <aside className="my-10 rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 via-primary/5 to-accent/10 p-6 sm:p-7">
       <div className="text-xs font-semibold uppercase tracking-widest text-primary">Sitaly</div>
-      <h3 className="mt-1 font-display text-xl font-bold sm:text-2xl">
-        Vous voulez appliquer tout ça sans y passer 40 heures ?
-      </h3>
-      <p className="mt-2 text-foreground/80">
-        Site artisan livré en 48h, optimisé pour le SEO local. En abonnement mensuel, sans
-        engagement.
-      </p>
-      <a
-        href={CALENDLY_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="bouton mt-4 px-6 py-2.5 text-sm"
-      >
-        Parler de votre projet gratuit
-        <ArrowRight className="h-4 w-4" />
-      </a>
+      <h3 className="mt-1 font-display text-xl font-bold sm:text-2xl">{appel.titre}</h3>
+      <p className="mt-2 text-foreground/80">{appel.texte}</p>
+      <BoutonAppel appel={appel} className="bouton mt-4 px-6 py-2.5 text-sm" />
     </aside>
   );
 }
 
-function FinalCTA() {
+function FinalCTA({ cta }: { cta: CtaArticle }) {
+  const appel = APPELS[cta].fin;
   return (
-    <div className="mt-12 rounded-2xl border border-accent/30 bg-accent/5 p-7 sm:p-8">
-      <h2 className="font-display text-xl font-bold sm:text-2xl">Et si on créait votre site ?</h2>
-      <p className="mt-2 text-muted-foreground">
-        Sitaly s'occupe de tout : création, référencement local, mise en ligne en 48h. En abonnement
-        mensuel, tout inclus et sans engagement.
-      </p>
-      <a
-        href={CALENDLY_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="bouton mt-5 w-full px-6 py-3 text-sm sm:w-auto"
-      >
-        Parler de votre projet gratuit
-        <ArrowRight className="h-4 w-4" />
-      </a>
+    <div data-cta={cta} className="mt-12 rounded-2xl border border-accent/30 bg-accent/5 p-7 sm:p-8">
+      <h2 className="font-display text-xl font-bold sm:text-2xl">
+        {appel.titre.replace(/ ([:;?!])/g, "\u00a0$1")}
+      </h2>
+      <p className="mt-2 text-muted-foreground">{appel.texte}</p>
+      <BoutonAppel appel={appel} className="bouton mt-5 w-full px-6 py-3 text-sm sm:w-auto" />
     </div>
   );
 }

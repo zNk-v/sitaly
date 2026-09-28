@@ -341,7 +341,7 @@ function BlogIndex() {
               Et pour <span className="accent-word">votre activité</span> ?
             </h2>
             <p className="mt-5 text-lg text-muted-foreground">
-              Vingt minutes au téléphone valent mieux que trente articles lus en diagonale. Vous
+              Trente minutes au téléphone valent mieux que dix articles lus en diagonale. Vous
               décrivez votre activité, on dit ce qui est faisable et ce qui ne l'est pas.
             </p>
             <a
@@ -350,7 +350,7 @@ function BlogIndex() {
               rel="noopener noreferrer"
               className="bouton mt-9 px-7 py-3.5"
             >
-              Parler de votre projet
+              Réserver un diagnostic de 30 min
               <ArrowRight className="bouton-fleche h-5 w-5" />
             </a>
           </div>

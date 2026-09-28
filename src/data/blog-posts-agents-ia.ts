@@ -26,8 +26,10 @@ export const ARTICLES_AGENTS_IA: BlogPost[] = [
     category: "Automatisation",
     readingTime: "8 min",
     publishedAt: "2026-09-26",
+    updatedAt: "2026-09-28",
     author: "Teddy Vidal",
     keyword: "démarchage téléphonique agent IA",
+    cta: "agents-ia",
     content: [
       {
         type: "p",
@@ -113,11 +115,11 @@ export const ARTICLES_AGENTS_IA: BlogPost[] = [
       { type: "h2", text: "Ce que ça change pour les secteurs qui prospectaient au téléphone" },
       {
         type: "p",
-        text: "Agences immobilières en recherche de mandats, courtiers qui rappelaient des listes de contacts, entreprises de rénovation : pour ces métiers, le téléphone sortant perd une grande partie de son usage auprès des particuliers. Ce qui reste, c'est l'entrant : les appels reçus, les formulaires, les demandes de rappel.",
+        text: "Agences immobilières en recherche de mandats, courtiers qui rappelaient des listes de contacts, entreprises de rénovation : pour ces métiers, le téléphone sortant perd une grande partie de son usage auprès des particuliers. Ce qui reste, c'est l'entrant : les appels reçus, les formulaires, les demandes de rappel. Pour une agence, notre guide sur [les mandats et les acheteurs en ligne](/blog/trouver-clients-agent-immobilier/) détaille ce qui fonctionne sans démarchage.",
       },
       {
         type: "p",
-        text: "C'est précisément là qu'un agent IA a sa place. Il ne sert plus à multiplier les appels sortants ; il sert à ne perdre aucune des demandes qui arrivent, à les qualifier et à les rappeler dans le cadre qu'elles ont fixé. Une demande entrante traitée tard vaut désormais plus cher, parce qu'on ne la remplacera pas par un appel à froid.",
+        text: "C'est précisément là qu'un [agent IA](/agents-ia/) a sa place. Il ne sert plus à multiplier les appels sortants ; il sert à ne perdre aucune des demandes qui arrivent, à les qualifier et à les rappeler dans le cadre qu'elles ont fixé. Une demande entrante traitée tard vaut désormais plus cher, parce qu'on ne la remplacera pas par un appel à froid.",
       },
       { type: "h2", text: "Et le règlement européen sur l'IA ?" },
       {
@@ -168,12 +170,14 @@ export const ARTICLES_AGENTS_IA: BlogPost[] = [
     category: "Automatisation",
     readingTime: "6 min",
     publishedAt: "2026-09-26",
+    updatedAt: "2026-09-28",
     author: "Teddy Vidal",
     keyword: "AI Act article 50 agent vocal",
+    cta: "agents-ia",
     content: [
       {
         type: "p",
-        text: "Le règlement européen sur l'intelligence artificielle, l'AI Act, s'applique par étapes. Celle du 2 août 2026 concerne directement les entreprises qui utilisent un agent vocal, un chatbot ou un assistant de messagerie : ses obligations de transparence, réunies à l'article 50, sont entrées en application.",
+        text: "Le règlement européen sur l'intelligence artificielle, l'AI Act, s'applique par étapes. Celle du 2 août 2026 concerne directement les entreprises qui utilisent un agent vocal, un [chatbot](/blog/chatbot-entreprise-tpe-guide/) ou un assistant de messagerie : ses obligations de transparence, réunies à l'article 50, sont entrées en application.",
       },
       {
         type: "p",
@@ -192,7 +196,7 @@ export const ARTICLES_AGENTS_IA: BlogPost[] = [
       { type: "h2", text: "Qui est concerné" },
       {
         type: "p",
-        text: "Le texte place l'obligation de conception sur le fournisseur du système : c'est à lui de faire en sorte que l'agent s'annonce. Dans les faits, l'entreprise qui déploie un agent vocal pour son accueil a tout intérêt à le vérifier elle-même, parce que c'est son numéro, sa marque et ses clients qui sont en jeu.",
+        text: "Le texte place l'obligation de conception sur le fournisseur du système : c'est à lui de faire en sorte que l'agent s'annonce. Dans les faits, l'entreprise qui déploie un agent vocal pour son accueil a tout intérêt à le vérifier elle-même, parce que c'est son numéro, sa marque et ses clients qui sont en jeu. Les [agents IA installés par Sitaly](/agents-ia/) s'annoncent dès leur première phrase.",
       },
       {
         type: "p",

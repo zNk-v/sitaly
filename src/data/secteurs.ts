@@ -42,6 +42,8 @@ export interface Secteur {
   pourQui?: string;
   faq: { q: string; a: string }[];
   ctaTitre: string;
+  /** Les articles du blog proposés en bas de page (slugs). */
+  aLire: string[];
   /** Public visé, pour les données structurées. */
   audience: string;
 }
@@ -175,6 +177,12 @@ export const SECTEURS: Secteur[] = [
       },
     ],
     ctaTitre: "Où votre agence perd-elle des contacts ?",
+    aLire: [
+      "trouver-clients-agent-immobilier",
+      "demarchage-telephonique-agent-ia-2026",
+      "chatbot-entreprise-tpe-guide",
+      "agent-ia-prise-de-rendez-vous",
+    ],
     audience: "Agences immobilières",
   },
   {
@@ -280,6 +288,12 @@ export const SECTEURS: Secteur[] = [
       },
     ],
     ctaTitre: "Combien de demandes attendent un rappel ce soir ?",
+    aLire: [
+      "demarchage-telephonique-agent-ia-2026",
+      "ai-act-article-50-agent-vocal",
+      "agent-ia-rgpd",
+      "chatbot-entreprise-tpe-guide",
+    ],
     audience: "Courtiers en crédit et en assurance",
   },
   {
@@ -380,6 +394,12 @@ export const SECTEURS: Secteur[] = [
       { q: "Combien ça coûte ?", a: reponsePrix() },
     ],
     ctaTitre: "Combien d'appels sont restés sans réponse cette semaine ?",
+    aLire: [
+      "relance-automatique-devis",
+      "standard-telephonique-ia",
+      "demarchage-telephonique-agent-ia-2026",
+      "prise-rendez-vous-en-ligne-guide",
+    ],
     audience: "Entreprises du bâtiment et des travaux publics",
   },
 ];

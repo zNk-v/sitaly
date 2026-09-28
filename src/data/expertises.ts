@@ -111,6 +111,8 @@ export interface Expertise {
   comprend: { t: string; d: string }[];
   quand: { t: string; d: string }[];
   faq: { q: string; a: string }[];
+  /** Articles du blog proposés sous les questions (slugs), s'il y en a. */
+  aLire?: string[];
 }
 
 /** Chemin de la page, slash final compris. */
@@ -894,6 +896,11 @@ const AUTOMATISATION: Expertise[] = [
         q: "Quelle différence avec un agent IA ?",
         a: "Une automatisation suit une règle fixe : si ceci, alors cela. Un agent IA comprend une demande écrite ou parlée et décide de la suite. On commence par les règles, moins chères et plus prévisibles.",
       },
+    ],
+    aLire: [
+      "relance-automatique-devis",
+      "automatiser-suivi-client-tpe",
+      "prise-rendez-vous-en-ligne-guide",
     ],
   },
   {

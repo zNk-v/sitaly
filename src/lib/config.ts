@@ -1,4 +1,6 @@
-// Lien de prise de rendez-vous (Calendly) utilisé par tous les CTA "Parler de votre projet".
+// Lien de prise de rendez-vous (Calendly) utilisé par tous les CTA « Réserver un
+// diagnostic de 30 min ». L'URL garde son ancien nom d'événement tant qu'un
+// événement « Diagnostic Sitaly (30 min) » n'existe pas (plan SEO, D4).
 export const CALENDLY_URL = "https://calendly.com/contact-sitaly/decouverte-de-votre-projet-web";
 
 // URL de l'application SaaS (espace client artisans).
