@@ -90,6 +90,9 @@ function texteVisible(html) {
       .replace(/<script\b[\s\S]*?<\/script>/gi, " ")
       .replace(/<style\b[\s\S]*?<\/style>/gi, " ")
       .replace(/<template\b[\s\S]*?<\/template>/gi, " ")
+      // Les balises de texte (lien, gras, italique) ne coupent pas les mots :
+      // « <a>ancre</a>. » se lit « ancre. ». Les autres séparent des blocs.
+      .replace(/<\/?(a|strong|em|b|i|span|abbr|code|small|sup|sub|mark)\b[^>]*>/gi, "")
       .replace(/<[^>]+>/g, " "),
   );
 }

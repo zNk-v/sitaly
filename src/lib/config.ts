@@ -44,6 +44,23 @@ export const PRIX_AGENTS_IA = {
 } as const;
 
 /**
+ * Prix de la gestion ChatGPT Ads : un forfait mensuel plus une part du budget
+ * publicitaire, ce budget restant payé à part (décision du 28 septembre 2026,
+ * DESIGN.md §8).
+ *
+ * La page /chatgpt-ads/ est un fichier statique de public/ : elle n'importe
+ * pas ce module. Ses montants sont recopiés à la main, et doivent suivre
+ * toute modification faite ici (public/chatgpt-ads/index.html, en-tête).
+ * `afficher: false` retire aussi la grille Sitaly de l'article
+ * /blog/cout-chatgpt-ads/ ; les données de marché y restent.
+ */
+export const PRIX_CHATGPT_ADS = {
+  afficher: true,
+  mensuelMin: 890,
+  partBudget: 10,
+} as const;
+
+/**
  * Relais de formulaires (Worker Cloudflare `sitaly-forms`, dépôt ~/sitaly-forms).
  * Vide tant que l'URL du Worker n'est pas renseignée : les formulaires gardent
  * alors leur comportement d'avant (message pré-rempli dans la messagerie).
