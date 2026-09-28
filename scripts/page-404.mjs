@@ -36,7 +36,10 @@ html = html
   // L'état sérialisé du routeur et la barrière de flux.
   .replace(/<script\b[^>]*class="\$tsr"[^>]*>[\s\S]*?<\/script>/g, "")
   // La restauration du défilement, propre au routeur.
-  .replace(/<script\b[^>]*>(?:(?!<\/script>)[\s\S])*__TSR_key(?:(?!<\/script>)[\s\S])*<\/script>/g, "");
+  .replace(
+    /<script\b[^>]*>(?:(?!<\/script>)[\s\S])*__TSR_key(?:(?!<\/script>)[\s\S])*<\/script>/g,
+    "",
+  );
 
 if (/type="module"|\$_TSR|__TSR_key/.test(html)) {
   console.error("page-404 : des scripts du routeur restent dans 404.html");

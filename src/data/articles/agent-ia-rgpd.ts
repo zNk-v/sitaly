@@ -161,7 +161,11 @@ export const contenu: BlogSection[] = [
     caption: "Dix questions à poser, et la preuve écrite à obtenir",
     headers: ["Point", "La question", "La preuve à obtenir"],
     rows: [
-      ["Finalité et base légale", "À quoi sert l'agent, et sur quelle base ?", "Une phrase écrite au registre"],
+      [
+        "Finalité et base légale",
+        "À quoi sert l'agent, et sur quelle base ?",
+        "Une phrase écrite au registre",
+      ],
       ["Information", "Que dit l'agent en décrochant ?", "Le script d'accueil"],
       ["Minimisation", "Chaque question sert-elle la demande ?", "La liste des champs collectés"],
       [
@@ -169,9 +173,21 @@ export const contenu: BlogSection[] = [
         "Combien de temps pour l'audio, les transcriptions, les fiches ?",
         "Une durée par type de trace",
       ],
-      ["Sous-traitants", "Quels outils, avec quel contrat ?", "La liste des outils et leurs contrats"],
-      ["Transferts", "Les données quittent-elles l'Union ?", "Le lieu d'hébergement et le mécanisme"],
-      ["Sécurité", "Qui accède aux conversations ?", "La liste des comptes, la double authentification"],
+      [
+        "Sous-traitants",
+        "Quels outils, avec quel contrat ?",
+        "La liste des outils et leurs contrats",
+      ],
+      [
+        "Transferts",
+        "Les données quittent-elles l'Union ?",
+        "Le lieu d'hébergement et le mécanisme",
+      ],
+      [
+        "Sécurité",
+        "Qui accède aux conversations ?",
+        "La liste des comptes, la double authentification",
+      ],
       ["Droits", "Comment effacer un appel précis ?", "Un test fait avant la mise en service"],
       ["Registre", "Le traitement est-il inscrit ?", "La fiche du registre"],
       ["Analyse d'impact", "Deux critères ou plus sont-ils remplis ?", "L'AIPD, si elle s'impose"],

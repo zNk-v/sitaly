@@ -4,13 +4,14 @@ import { LegalLayout } from "@/components/LegalLayout";
 export const Route = createFileRoute("/mentions-legales")({
   head: () => ({
     meta: [
-      { title: "Mentions légales — Sitaly" },
+      { title: "Mentions légales du site sitaly.fr | Sitaly" },
       {
         name: "description",
-        content: "Mentions légales du site Sitaly conformément à la loi française.",
+        content:
+          "Mentions légales de sitaly.fr : éditeur du site (Teddy Vidal, entrepreneur individuel), hébergement, propriété intellectuelle, droit applicable et contact.",
       },
       { name: "robots", content: "index,follow" },
-      { property: "og:title", content: "Mentions légales — Sitaly" },
+      { property: "og:title", content: "Mentions légales du site sitaly.fr | Sitaly" },
       {
         property: "og:description",
         content:

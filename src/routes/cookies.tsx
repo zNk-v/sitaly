@@ -4,14 +4,14 @@ import { LegalLayout } from "@/components/LegalLayout";
 export const Route = createFileRoute("/cookies")({
   head: () => ({
     meta: [
-      { title: "Politique cookies — Sitaly" },
+      { title: "Politique cookies du site sitaly.fr | Sitaly" },
       {
         name: "description",
         content:
-          "Politique de gestion des cookies du site Sitaly conformément à la réglementation CNIL.",
+          "Les cookies utilisés sur sitaly.fr, leur finalité et leur durée de conservation, et la façon de gérer vos préférences, selon les recommandations de la CNIL.",
       },
       { name: "robots", content: "index,follow" },
-      { property: "og:title", content: "Politique cookies — Sitaly" },
+      { property: "og:title", content: "Politique cookies du site sitaly.fr | Sitaly" },
       {
         property: "og:description",
         content:

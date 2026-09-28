@@ -61,7 +61,12 @@ export const contenu: BlogSection[] = [
     caption: "Une même demande, trois outils",
     headers: ["", "Chatbot scénarisé", "Assistant IA", "Agent IA"],
     rows: [
-      ["Qui l'utilise", "Le visiteur, dans un cadre fixe", "Votre équipe", "Le visiteur, librement"],
+      [
+        "Qui l'utilise",
+        "Le visiteur, dans un cadre fixe",
+        "Votre équipe",
+        "Le visiteur, librement",
+      ],
       ["À 21 h", "Des boutons, puis un formulaire", "Rien", "Une réponse et un créneau"],
       [
         "Le lendemain matin",

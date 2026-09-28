@@ -107,7 +107,7 @@ export const AGENT_VOCAL: Secteur = {
     },
     {
       q: "Faut-il changer de numéro ?",
-      a: "Non. Un renvoi d'appel réglé chez votre opérateur suffit, en permanence ou seulement quand personne ne décroche.",
+      a: "En règle générale, non : un renvoi d'appel réglé chez votre opérateur envoie les appels vers l'agent, en permanence ou seulement quand personne ne décroche. C'est vérifié pendant le diagnostic.",
     },
     { q: "Combien coûte un agent vocal IA ?", a: reponsePrix() },
   ],

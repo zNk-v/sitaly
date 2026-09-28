@@ -64,7 +64,6 @@ export function cheminSecteur(s: Pick<Secteur, "slug">): string {
   return `/agents-ia/${s.slug}/`;
 }
 
-
 /** Le bloc tarif, avec ou sans montant selon PRIX_AGENTS_IA.afficher. */
 export function texteTarif(): string {
   if (PRIX_AGENTS_IA.afficher) {

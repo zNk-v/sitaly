@@ -88,15 +88,15 @@ export const contenu: BlogSection[] = [
         "Les connexions",
         "Un agenda et un CRM ouverts se branchent vite. Un logiciel fermé demande un relais, donc plus de travail.",
       ],
-      [
-        "Le volume",
-        "Les minutes de voix et les SMS suivent le nombre d'appels et de messages.",
-      ],
+      ["Le volume", "Les minutes de voix et les SMS suivent le nombre d'appels et de messages."],
       [
         "Les règles de transfert",
         "Urgences, clients existants, zones d'intervention : chaque cas particulier est une règle à écrire et à tester.",
       ],
-      ["Les canaux", "Voix, SMS, messages écrits : chaque canal a son format et ses propres tests."],
+      [
+        "Les canaux",
+        "Voix, SMS, messages écrits : chaque canal a son format et ses propres tests.",
+      ],
     ],
   },
   { type: "h2", text: "Les prix de Sitaly" },
