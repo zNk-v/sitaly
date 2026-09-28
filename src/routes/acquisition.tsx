@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
-import { useState } from "react";
 import {
   ArrowRight,
   BarChart3,
@@ -50,7 +49,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Combien dois-je investir en publicité ?",
-    a: "Il n'existe pas de montant universel, et méfiez-vous de quiconque vous en annonce un sans vous connaître. Le bon budget dépend de votre activité, de votre zone géographique, du niveau de concurrence sur vos mots-clés et de ce que vous rapporte un client. Nous le définissons ensemble lors de l'appel découverte, en partant de ce qu'un nouveau client vaut pour vous.",
+    a: "Il n'existe pas de montant universel, et méfiez-vous de quiconque vous en annonce un sans vous connaître. Le bon budget dépend de votre activité, de votre zone géographique, du niveau de concurrence sur vos mots-clés et de ce que vous rapporte un client. Nous le définissons ensemble lors du diagnostic offert de 30 minutes, en partant de ce qu'un nouveau client vaut pour vous.",
   },
   {
     q: "Est-ce que vous garantissez des clients ?",
@@ -89,7 +88,7 @@ const PROBLEMES = [
   },
   {
     icon: Gauge,
-    text: "Vous n'avez ni le temps ni l'envie de surveiller des enchères entre deux chantiers.",
+    text: "Vous n'avez ni le temps ni l'envie de surveiller des enchères entre deux rendez-vous.",
   },
 ] as const;
 
@@ -232,12 +231,15 @@ export const Route = createFileRoute("/acquisition")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Service",
-          name: "Sitaly Acquisition — gestion de campagnes Google Ads",
-          serviceType: "Gestion de campagnes Google Ads",
+          "@id": "https://sitaly.fr/acquisition/#service",
+          name: "Gestion de campagnes Google Ads",
+          serviceType: "Agence Google Ads",
+          url: "https://sitaly.fr/acquisition/",
           description:
-            "Création, gestion et optimisation de campagnes Google Ads pour PME, TPE et artisans : stratégie, mots-clés, annonces, suivi des conversions, optimisation et reporting. Honoraires mensuels de gestion, majorés d'une part du budget publicitaire dépensé. Le budget publicitaire est payé directement à Google et n'est pas inclus.",
-          provider: { "@type": "Organization", name: "Sitaly", url: "https://sitaly.fr" },
-          areaServed: "FR",
+            "Création, gestion et optimisation de campagnes Google Ads pour PME et TPE : stratégie, mots-clés, annonces, suivi des conversions, optimisation et reporting. Honoraires mensuels de gestion, majorés d'une part du budget publicitaire dépensé. Le budget publicitaire est payé directement à Google et n'est pas inclus.",
+          // Rattaché à l'entité du graphe racine (__root.tsx) par son @id.
+          provider: { "@id": "https://sitaly.fr/#business" },
+          areaServed: { "@type": "Country", name: "France" },
           offers: [
             {
               "@type": "Offer",
@@ -279,6 +281,7 @@ function AcquisitionPage() {
       <Hero />
       <Problemes />
       <Prestations />
+      <UnSeulConsultant />
       <Fonctionnement />
       <Tarif />
       <Confiance />
@@ -301,11 +304,11 @@ function Hero() {
       <div className="mx-auto max-w-3xl px-4 pt-[calc(var(--entete-hauteur)+2rem)] pb-16 text-center sm:px-6 sm:pb-24 sm:pt-[calc(var(--entete-hauteur)+3.5rem)]">
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground shadow-soft">
           <Target className="h-3.5 w-3.5 text-brand-ink" />
-          Agence Google Ads
+          Consultant et agence Google Ads
         </div>
         <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl">
-          Transformez Google en source régulière de{" "}
-          <span className="accent-word text-brand-ink">nouveaux clients.</span>
+          Agence Google Ads pour PME&nbsp;:{" "}
+          <span className="accent-word text-brand-ink">des demandes qualifiées chaque mois</span>
         </h1>
         <p className="mt-5 text-lg text-muted-foreground">
           Sitaly crée, pilote et optimise vos campagnes Google Ads pour attirer des prospects
@@ -382,6 +385,61 @@ function Prestations() {
   );
 }
 
+/* ---------------- UN SEUL CONSULTANT ---------------- */
+/**
+ * Ce qui distingue la prestation d'une agence à effectif : la même personne
+ * règle le suivi, construit les campagnes et écrit le rapport. Les quatre
+ * engagements sont ceux de l'offre, sans chiffre de résultat.
+ */
+function UnSeulConsultant() {
+  const engagements = [
+    {
+      icon: BarChart3,
+      title: "La mesure avant la dépense",
+      text: "Le suivi des appels et des formulaires est installé et vérifié avant le premier euro de publicité. Sans lui, aucun chiffre du rapport ne veut rien dire.",
+    },
+    {
+      icon: Search,
+      title: "Le Réseau de Recherche",
+      text: "Les campagnes visent les personnes qui cherchent déjà votre service sur Google, pas des bannières montrées à des gens qui ne cherchent rien.",
+    },
+    {
+      icon: Calendar,
+      title: "Un forfait mensuel, sans engagement",
+      text: "Un forfait de gestion chaque mois, résiliable à tout moment. Vous restez parce que les chiffres le justifient, pas à cause d'un contrat.",
+    },
+    {
+      icon: Wallet,
+      title: "Votre budget, payé à Google",
+      text: "Le budget publicitaire part directement de votre moyen de paiement vers Google, sur un compte à votre nom. Il ne transite jamais par Sitaly.",
+    },
+  ];
+  return (
+    <section className="border-y border-border bg-secondary/40">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24">
+        <SectionHeader
+          eyebrow="Votre interlocuteur"
+          title="Un seul consultant, du réglage au rapport"
+          subtitle="Teddy Vidal règle le suivi, construit les campagnes, les pilote et écrit le rapport mensuel. Vous parlez à la personne qui touche à votre compte."
+        />
+        <div className="mx-auto mt-12 grid max-w-5xl gap-5 sm:grid-cols-2">
+          {engagements.map((e) => (
+            <div key={e.title} className="flex gap-4 rounded-2xl border border-border bg-card p-6 shadow-soft">
+              <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent/10 text-accent">
+                <e.icon className="h-5 w-5" />
+              </div>
+              <div>
+                <h3 className="font-display text-lg font-bold tracking-tight">{e.title}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{e.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------- FONCTIONNEMENT ---------------- */
 function Fonctionnement() {
   return (
@@ -403,6 +461,17 @@ function Fonctionnement() {
             </div>
           ))}
         </div>
+        <p className="mx-auto mt-10 max-w-2xl text-center text-muted-foreground">
+          Quand vos campagnes Google tournent et que les chiffres sont fiables, un second canal se
+          teste avec la même méthode :{" "}
+          <a
+            href="/chatgpt-ads/"
+            className="font-semibold text-brand-ink underline decoration-brand-ink/30 underline-offset-4 hover:decoration-brand-ink"
+          >
+            compléter Google Ads avec ChatGPT Ads
+          </a>
+          , là où vos clients décrivent leur besoin à une IA.
+        </p>
       </div>
     </section>
   );
@@ -553,8 +622,8 @@ function StructureBudget() {
 
       <p className="mt-6 flex items-start gap-2 rounded-xl border border-border bg-paper-sunk px-4 py-3 text-sm text-muted-foreground">
         <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-signal-ink" />
-        Le chiffrage exact vous est donné par écrit à l'issue de l'appel découverte, avant tout
-        engagement. Sans engagement de durée, résiliable avec un simple préavis.
+        Le chiffrage exact vous est donné par écrit à l'issue du diagnostic offert de 30 minutes,
+        avant tout engagement. Sans engagement de durée, résiliable avec un simple préavis.
       </p>
     </div>
   );
@@ -605,40 +674,28 @@ function Confiance() {
 }
 
 /* ---------------- FAQ ---------------- */
+/* `details` garde chaque réponse dans le HTML prérendu, identique au JSON-LD. */
 function Faq() {
-  const [open, setOpen] = useState<number | null>(0);
   return (
     <section id="faq" className="mx-auto max-w-3xl px-4 py-20 sm:px-6 sm:py-24">
       <SectionHeader
         eyebrow="FAQ"
-        title="Questions fréquentes"
+        title="Questions fréquentes sur Google Ads"
         subtitle="Le tarif, le budget, l'engagement : les réponses sans détour."
       />
       <div className="mt-10 space-y-3">
         {FAQ_ITEMS.map((it, i) => (
-          <div
+          <details
             key={it.q}
-            className="overflow-hidden rounded-xl border border-border bg-card shadow-soft"
+            open={i === 0}
+            className="group overflow-hidden rounded-xl border border-border bg-card shadow-soft"
           >
-            <button
-              type="button"
-              onClick={() => setOpen(open === i ? null : i)}
-              aria-expanded={open === i}
-              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-semibold"
-            >
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left font-semibold marker:content-none">
               <span>{it.q}</span>
-              <ChevronDown
-                className={`h-5 w-5 shrink-0 text-muted-foreground transition-transform ${
-                  open === i ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-            {open === i && (
-              <div className="px-5 pb-5 text-[15px] leading-relaxed text-muted-foreground">
-                {it.a}
-              </div>
-            )}
-          </div>
+              <ChevronDown className="h-5 w-5 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" />
+            </summary>
+            <div className="px-5 pb-5 text-[15px] leading-relaxed text-muted-foreground">{it.a}</div>
+          </details>
         ))}
       </div>
     </section>
@@ -656,7 +713,7 @@ function CtaFinal() {
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
           Mettons en place une stratégie Google Ads adaptée à votre activité et à votre budget. Un
-          appel de 20 minutes suffit pour savoir si le canal a du sens pour vous.
+          diagnostic offert de 30 minutes suffit pour savoir si le canal a du sens pour vous.
         </p>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <CtaPrincipal />

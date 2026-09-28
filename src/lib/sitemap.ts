@@ -90,6 +90,8 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
     lastmod: p.updatedAt ?? p.publishedAt,
   })),
   { path: "/a-propos", changefreq: "yearly", priority: "0.6", source: [route("a-propos.tsx")] },
+  // La page locale, hors familles d'expertise (décision du 28 septembre 2026).
+  { path: "/essonne", changefreq: "monthly", priority: "0.8", source: [route("essonne.tsx")] },
   // Les pages métier, dérivées de leur source (hors index, voir indexation.ts).
   ...METIERS.map((m) => ({
     path: m.to.replace(/\/$/, ""),

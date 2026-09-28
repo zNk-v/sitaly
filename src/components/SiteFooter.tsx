@@ -108,6 +108,11 @@ export function SiteFooter() {
                   À propos
                 </Link>
               </li>
+              <li>
+                <Link to="/essonne/" className="transition hover:text-white">
+                  Agence en Essonne
+                </Link>
+              </li>
             </ul>
           </nav>
           {/* Les pages métier artisans sont sorties de l'index le 26 septembre

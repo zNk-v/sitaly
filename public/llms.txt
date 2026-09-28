@@ -47,6 +47,10 @@
 - [Google Ads](https://sitaly.fr/acquisition/) : campagnes de recherche avec suivi des appels et des formulaires.
 - [ChatGPT Ads](https://sitaly.fr/chatgpt-ads/) : stratégie et gestion des campagnes publicitaires dans ChatGPT.
 
+## Local
+
+- [Agence web et agents IA en Essonne](https://sitaly.fr/essonne/) : sites, référencement local, Google Ads et agents IA pour les entreprises de l'Essonne, depuis Brétigny-sur-Orge.
+
 ## Réalisations
 
 - [Lafleur Toiture](https://sitaly.fr/realisations/lafleur-toiture/) : site d'un couvreur de l'Essonne.

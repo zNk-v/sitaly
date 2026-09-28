@@ -33,6 +33,7 @@ import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as LogicielMetierRouteImport } from './routes/logiciel-metier'
 import { Route as LandingPageRouteImport } from './routes/landing-page'
 import { Route as IntegrationApiRouteImport } from './routes/integration-api'
+import { Route as EssonneRouteImport } from './routes/essonne'
 import { Route as CrmSurMesureRouteImport } from './routes/crm-sur-mesure'
 import { Route as CreationSiteInternetRouteImport } from './routes/creation-site-internet'
 import { Route as CookiesRouteImport } from './routes/cookies'
@@ -178,6 +179,11 @@ const IntegrationApiRoute = IntegrationApiRouteImport.update({
   path: '/integration-api',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EssonneRoute = EssonneRouteImport.update({
+  id: '/essonne',
+  path: '/essonne',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CrmSurMesureRoute = CrmSurMesureRouteImport.update({
   id: '/crm-sur-mesure',
   path: '/crm-sur-mesure',
@@ -304,6 +310,7 @@ export interface FileRoutesByFullPath {
   '/cookies': typeof CookiesRoute
   '/creation-site-internet': typeof CreationSiteInternetRoute
   '/crm-sur-mesure': typeof CrmSurMesureRoute
+  '/essonne': typeof EssonneRoute
   '/integration-api': typeof IntegrationApiRoute
   '/landing-page': typeof LandingPageRoute
   '/logiciel-metier': typeof LogicielMetierRoute
@@ -351,6 +358,7 @@ export interface FileRoutesByTo {
   '/cookies': typeof CookiesRoute
   '/creation-site-internet': typeof CreationSiteInternetRoute
   '/crm-sur-mesure': typeof CrmSurMesureRoute
+  '/essonne': typeof EssonneRoute
   '/integration-api': typeof IntegrationApiRoute
   '/landing-page': typeof LandingPageRoute
   '/logiciel-metier': typeof LogicielMetierRoute
@@ -400,6 +408,7 @@ export interface FileRoutesById {
   '/cookies': typeof CookiesRoute
   '/creation-site-internet': typeof CreationSiteInternetRoute
   '/crm-sur-mesure': typeof CrmSurMesureRoute
+  '/essonne': typeof EssonneRoute
   '/integration-api': typeof IntegrationApiRoute
   '/landing-page': typeof LandingPageRoute
   '/logiciel-metier': typeof LogicielMetierRoute
@@ -450,6 +459,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/creation-site-internet'
     | '/crm-sur-mesure'
+    | '/essonne'
     | '/integration-api'
     | '/landing-page'
     | '/logiciel-metier'
@@ -497,6 +507,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/creation-site-internet'
     | '/crm-sur-mesure'
+    | '/essonne'
     | '/integration-api'
     | '/landing-page'
     | '/logiciel-metier'
@@ -545,6 +556,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/creation-site-internet'
     | '/crm-sur-mesure'
+    | '/essonne'
     | '/integration-api'
     | '/landing-page'
     | '/logiciel-metier'
@@ -594,6 +606,7 @@ export interface RootRouteChildren {
   CookiesRoute: typeof CookiesRoute
   CreationSiteInternetRoute: typeof CreationSiteInternetRoute
   CrmSurMesureRoute: typeof CrmSurMesureRoute
+  EssonneRoute: typeof EssonneRoute
   IntegrationApiRoute: typeof IntegrationApiRoute
   LandingPageRoute: typeof LandingPageRoute
   LogicielMetierRoute: typeof LogicielMetierRoute
@@ -798,6 +811,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IntegrationApiRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/essonne': {
+      id: '/essonne'
+      path: '/essonne'
+      fullPath: '/essonne'
+      preLoaderRoute: typeof EssonneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/crm-sur-mesure': {
       id: '/crm-sur-mesure'
       path: '/crm-sur-mesure'
@@ -980,6 +1000,7 @@ const rootRouteChildren: RootRouteChildren = {
   CookiesRoute: CookiesRoute,
   CreationSiteInternetRoute: CreationSiteInternetRoute,
   CrmSurMesureRoute: CrmSurMesureRoute,
+  EssonneRoute: EssonneRoute,
   IntegrationApiRoute: IntegrationApiRoute,
   LandingPageRoute: LandingPageRoute,
   LogicielMetierRoute: LogicielMetierRoute,

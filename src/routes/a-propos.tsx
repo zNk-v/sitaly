@@ -80,6 +80,13 @@ function APropos() {
             Basé à {SITALY_VILLE}, dans l'{SITALY_DEPARTEMENT}, je travaille avec des PME
             d'Île-de-France et, à distance, de toute la France.
           </p>
+          <p className="measure mt-4 text-foreground/75">
+            Vous êtes dans le département ? La page{" "}
+            <Link to="/essonne/" className="font-semibold text-brand-ink hover:underline">
+              agence web et agents IA en Essonne
+            </Link>{" "}
+            détaille ce que je fais sur place et les communes où j'interviens.
+          </p>
         </div>
       </section>
 
