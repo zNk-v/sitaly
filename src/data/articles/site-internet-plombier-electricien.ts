@@ -102,6 +102,6 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Notre approche chez Sitaly" },
   {
     type: "p",
-    text: "Nous livrons des sites pour plombiers et électriciens en 48h, avec téléphone cliquable, formulaire court, pages par ville et chargement sous 2 secondes. À partir de 149€/mois en location, sans engagement, avec en option la gestion Google Ads et des automatisations pour générer et suivre vos demandes. Réservez un appel gratuit pour voir un exemple.",
+    text: "Nous livrons des sites pour plombiers et électriciens en 48h, avec téléphone cliquable, formulaire court, pages par ville et chargement sous 2 secondes. À partir de 149€/mois en location, sans engagement, avec en option des [demandes de chantier exclusives](/acquisition/) et des automatisations pour suivre vos demandes. Réservez un appel gratuit pour voir un exemple.",
   },
 ];

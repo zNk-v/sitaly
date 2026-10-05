@@ -71,7 +71,7 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Cas concret : Julien, électricien à Nîmes" },
   {
     type: "p",
-    text: "Julien était à 60 % de planning rempli en moyenne. Il a appliqué 4 leviers en 3 mois : fiche Google passée de 6 à 28 avis, site internet refait, 2 pages 'ville' (Nîmes + Alès), et 200€/mois de Google Ads. Résultat à 6 mois : planning rempli à 95 %, refus de chantiers, et embauche d'un apprenti. CA additionnel mensuel : environ 4 800€, pour un investissement de 448€/mois (Sitaly Présence pour le site + Sitaly Acquisition pour la gestion Google Ads) plus 200€/mois de budget publicitaire.",
+    text: "Julien était à 60 % de planning rempli en moyenne. Il a appliqué 4 leviers en 3 mois : fiche Google passée de 6 à 28 avis, site internet refait, 2 pages 'ville' (Nîmes + Alès), et 200€/mois de Google Ads. Résultat à 6 mois : planning rempli à 95 %, refus de chantiers, et embauche d'un apprenti. CA additionnel mensuel : environ 4 800€, pour 200€/mois de budget publicitaire en plus du site.",
   },
   { type: "h2", text: "Par où commencer concrètement ?" },
   {

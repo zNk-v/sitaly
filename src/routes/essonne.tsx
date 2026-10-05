@@ -27,7 +27,7 @@ import {
  */
 const TITRE = "Agence web, SEO et agents IA en Essonne (91) | Sitaly";
 const DESCRIPTION =
-  "Agence basée à Brétigny-sur-Orge : sites internet, référencement local, Google Ads et agents IA pour les entreprises de l'Essonne et d'Île-de-France.";
+  "Agence basée à Brétigny-sur-Orge : agents IA, demandes de chantier pour artisans, référencement local et sites internet en Essonne et Île-de-France.";
 const URL = `${BASE_URL}/essonne/`;
 
 const SERVICES = [
@@ -38,10 +38,12 @@ const SERVICES = [
     lien: { label: "Agents IA pour PME", to: "/agents-ia/" },
   },
   {
-    titre: "Google Ads sur votre zone",
+    /* Offre du 5 octobre 2026 : Sitaly paie ses campagnes et livre les
+       demandes à une seule entreprise par zone (src/routes/acquisition.tsx). */
+    titre: "Des demandes de chantier pour les artisans",
     texte:
-      "Des campagnes sur le Réseau de Recherche, ciblées sur les communes où vous travaillez, avec le suivi des appels et des formulaires en place avant la première dépense.",
-    lien: { label: "Google Ads", to: "/acquisition/" },
+      "Nous payons la publicité, nous recevons les demandes des particuliers de votre secteur et nous les transmettons à une seule entreprise par métier et par zone. Les premières sont offertes.",
+    lien: { label: "Demandes de chantier", to: "/acquisition/" },
   },
   {
     titre: "Le référencement local",
@@ -174,9 +176,9 @@ function Essonne() {
           </h1>
           <p className="measure mt-6 text-lg leading-relaxed text-foreground/75 sm:text-xl">
             Sitaly est une micro-agence de l'{SITALY_DEPARTEMENT}. Elle installe des agents IA,
-            pilote des campagnes Google Ads, travaille le référencement local et crée des sites pour
-            les entreprises du département. Un seul interlocuteur, Teddy Vidal, du premier appel au
-            suivi mensuel.
+            livre des demandes de chantier aux artisans, travaille le référencement local et crée
+            des sites pour les entreprises du département. Un seul interlocuteur, Teddy Vidal, du
+            premier appel au suivi mensuel.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">

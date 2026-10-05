@@ -253,17 +253,19 @@ export function MetierLanding(props: MetierLandingProps) {
                 ],
                 note: null as string | null,
               },
+              /* Offre du 5 octobre 2026 : Sitaly paie ses campagnes et livre
+                 les demandes à une seule entreprise par zone. */
               {
-                name: "Sitaly Acquisition",
-                claim: "Vos campagnes, pilotées",
+                name: "Demandes de chantier",
+                claim: "Des clients, livrés",
                 featured: false,
                 features: [
-                  "Campagnes Google Ads gérées",
-                  "Indépendant de votre site",
-                  "Une part du budget publicitaire",
-                  "Reporting mensuel",
+                  "Demandes de particuliers exclusives",
+                  "Une seule entreprise par zone",
+                  "Premières demandes offertes",
+                  "Sans engagement, aucune pub à gérer",
                 ],
-                note: "Budget publicitaire Google non inclus.",
+                note: null,
               },
             ].map((tier) => (
               <article
@@ -308,9 +310,9 @@ export function MetierLanding(props: MetierLandingProps) {
             ))}
           </div>
           <p className="mt-6 text-center text-sm text-muted-foreground">
-            Besoin de plus de clients ?{" "}
+            Besoin de plus de chantiers ?{" "}
             <Link to="/acquisition/" className="font-semibold text-accent hover:underline">
-              Découvrez les formules Sitaly Acquisition
+              Recevez des demandes de chantier exclusives
             </Link>
             .
           </p>
@@ -479,9 +481,9 @@ export function buildMetierMeta(opts: {
             },
             {
               "@type": "Offer",
-              name: "Sitaly Acquisition",
+              name: "Demandes de chantier",
               description:
-                "Création et gestion de campagnes publicitaires, avec ou sans site. Forfait mensuel de gestion majoré d'une part du budget publicitaire, budget versé directement à la régie.",
+                "Demandes de chantier de particuliers transmises à une seule entreprise par métier et par zone. Premières demandes offertes, puis abonnement mensuel prépayé, sans engagement de durée.",
             },
           ],
           url,

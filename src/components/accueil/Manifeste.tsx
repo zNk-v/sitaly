@@ -6,11 +6,12 @@ import {
   FileText,
   Globe,
   Inbox,
-  MapPin,
   MessageSquare,
   MousePointerClick,
   Phone,
+  PhoneIncoming,
   PhoneMissed,
+  RefreshCw,
   Search,
   Sparkles,
   Target,
@@ -82,23 +83,29 @@ const GROUPES: Groupe[] = [
     ],
   },
   {
-    mot: "Google Ads",
+    /* L'offre du 5 octobre 2026 (src/routes/acquisition.tsx) : Sitaly paie
+       ses campagnes et livre les demandes à une seule entreprise par zone. */
+    mot: "demandes de chantier",
     couleur: "text-red-ink",
     cartes: [
-      { icone: Search, haut: "Sponsorisé · plombier brétigny", corps: "Intervention en 1 h" },
+      {
+        icone: PhoneIncoming,
+        haut: "Nouvelle demande · 9 h 42",
+        corps: "Élagage d'un chêne, Brétigny",
+      },
       {
         icone: Target,
-        haut: "Affichages",
+        haut: "Partenaire sur votre zone",
         corps: (
           <>
-            <span className="block font-display text-3xl font-extrabold tracking-tight">1 240</span>
-            cette semaine
+            <span className="block font-display text-3xl font-extrabold tracking-tight">1</span>
+            seule entreprise par métier
           </>
         ),
         sombre: true,
       },
-      { icone: Phone, haut: "Appels depuis l'annonce", corps: "+18 cette semaine" },
-      { icone: MapPin, haut: "Fiche Google", corps: "4,9 ★ · itinéraire demandé" },
+      { icone: Phone, haut: "Appel de 3 min 12", corps: "Enregistré et horodaté" },
+      { icone: RefreshCw, haut: "Demande hors zone", corps: "Signalée sous 48 h, remplacée" },
     ],
   },
   {

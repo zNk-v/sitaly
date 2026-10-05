@@ -1,6 +1,6 @@
 # Offres de Sitaly
 
-Sitaly installe et pilote des agents IA pour les PME, gère des campagnes ChatGPT Ads et Google Ads, et crée des sites internet. Basée à Brétigny-sur-Orge (Essonne), elle intervient en Essonne et en Île-de-France, et à distance dans toute la France. Diagnostic offert de 30 minutes.
+Sitaly installe et pilote des agents IA pour les PME, gère des campagnes ChatGPT Ads, livre des demandes de chantier exclusives aux artisans, et crée des sites internet. Basée à Brétigny-sur-Orge (Essonne), elle intervient en Essonne et en Île-de-France, et à distance dans toute la France. Diagnostic offert de 30 minutes.
 
 Montants plancher publiés depuis le 28 septembre 2026 pour les agents IA et ChatGPT Ads. Le montant exact de chaque périmètre est écrit après le diagnostic, avant tout engagement. Les sites internet restent chiffrés sur devis.
 
@@ -20,10 +20,16 @@ Montants plancher publiés depuis le 28 septembre 2026 pour les agents IA et Cha
 - Précision : Sitaly n'est ni partenaire officiel ni certifiée par OpenAI, et ne garantit aucun résultat sur ce canal récent
 - Détail : https://sitaly.fr/chatgpt-ads/
 
-## Google Ads : Sitaly Acquisition (abonnement)
-- Structure : un forfait mensuel de gestion, sans engagement de durée, majoré d'une part du budget publicitaire dépensé
-- Inclut : création et gestion des campagnes sur le Réseau de Recherche, suivi des appels et des formulaires en place avant toute dépense, avec ou sans site Sitaly
-- Budget publicitaire : séparé, versé à Google, à la charge du client
+## Demandes de chantier pour artisans (abonnement)
+- Principe : Sitaly paie ses propres campagnes et pages, et transmet les demandes de particuliers (appels, formulaires) à une seule entreprise par métier et par zone
+- Cible : artisans du bâtiment et de l'extérieur, Essonne et Île-de-France
+- Tarif : prix par demande selon le métier et la valeur moyenne d'un chantier, aucun prix publié, annoncé par écrit avant la première demande offerte
+- Démarrage : premières demandes offertes, signées ou non
+- Abonnement : forfait mensuel de demandes, prépayé, sans engagement de durée, préavis d'un mois ; demandes non livrées reportées au mois suivant
+- Demande valide : appel de plus de 60 secondes ou formulaire complet, dans la zone, pour une prestation couverte, coordonnées joignables ; demande invalide signalée sous 48 h remplacée
+- Exclusivité : une demande n'est jamais revendue à plusieurs artisans
+- Budget publicitaire : à la charge de Sitaly, rien à avancer pour l'artisan
+- Option : gestion de campagnes Google Ads sur le compte et le budget du client, sur demande
 - Détail : https://sitaly.fr/acquisition/
 
 ## Site internet : Sitaly Présence (abonnement)

@@ -85,7 +85,7 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Comment Sitaly facture la prestation Google Ads" },
   {
     type: "p",
-    text: "Notre tarification est volontairement simple : un forfait mensuel de gestion (à partir de 250€/mois) couvrant la création, l'optimisation continue, le suivi des appels et un rapport mensuel. Le budget média que vous fixez (à partir de 300€/mois) est versé directement à Google — nous ne prenons pas de commission dessus, par éthique et par transparence. Vous voyez exactement ce qui va à Google et ce qui va à Sitaly.",
+    text: "Chez Sitaly, vous n'avez pas à gérer de publicité : nous payons nos propres campagnes et nous transmettons les [demandes de chantier](/acquisition/) des particuliers de votre secteur à une seule entreprise par métier et par zone. Les premières demandes sont offertes, et le prix d'une demande vous est annoncé par écrit avant la première. Si vous préférez garder votre propre compte Google Ads, nous pouvons aussi gérer vos campagnes sur votre compte et votre budget.",
   },
   {
     type: "p",

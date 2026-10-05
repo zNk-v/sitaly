@@ -136,6 +136,7 @@ const GRAPHE_ENTITE = {
         "Automatisation de processus",
         "ChatGPT Ads",
         "Google Ads",
+        "Mise en relation entre particuliers et artisans",
         "CRM sur mesure",
         "Intégration d'API",
         "Création de site internet",
@@ -165,7 +166,7 @@ const GRAPHE_ENTITE = {
       makesOffer: [
         ["Agents IA pour PME", "https://sitaly.fr/agents-ia/"],
         ["ChatGPT Ads", "https://sitaly.fr/chatgpt-ads/"],
-        ["Google Ads", "https://sitaly.fr/acquisition/"],
+        ["Demandes de chantier pour artisans", "https://sitaly.fr/acquisition/"],
         ["Automatisation des tâches", "https://sitaly.fr/automatisation-taches/"],
         ["Création de site internet", "https://sitaly.fr/creation-site-internet/"],
       ].map(([name, url]) => ({

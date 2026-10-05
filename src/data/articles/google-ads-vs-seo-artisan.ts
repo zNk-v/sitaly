@@ -70,7 +70,7 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Exemple chiffré sur 12 mois : un électricien à Nantes" },
   {
     type: "p",
-    text: "Investissement total année 1 : Sitaly Présence + Sitaly Acquisition à 448€/mois (site + gestion Google Ads) plus 500€/mois de budget publicitaire, soit 11 376€ sur l'année. Résultat mesuré : 78 appels SEO sur l'année (presque tous arrivés au S2 après que le site soit bien référencé), 142 appels Google Ads (réguliers tout au long de l'année). Total : 220 appels qualifiés, dont 88 chantiers signés à 1 850€ de marge moyenne. CA généré : 162 800€. ROI : 14x.",
+    text: "Investissement année 1 : le site, la gestion des campagnes et 500€/mois de budget publicitaire. Résultat mesuré : 78 appels SEO sur l'année (presque tous arrivés au S2 après que le site soit bien référencé), 142 appels Google Ads (réguliers tout au long de l'année). Total : 220 appels qualifiés, dont 88 chantiers signés à 1 850€ de marge moyenne. CA généré : 162 800€. ROI : 14x.",
   },
   {
     type: "p",
@@ -116,7 +116,7 @@ export const contenu: BlogSection[] = [
       },
       {
         q: "Quel budget global mensuel viser pour un artisan ?",
-        a: "Pour un artisan qui veut vraiment décoller : Sitaly Présence + Sitaly Acquisition à partir de 448€/mois (site + gestion Google Ads) plus 300 à 500€/mois de budget publicitaire. ROI typique 10 à 25x sur 12 mois si le site convertit bien.",
+        a: "Si vous gérez vos propres campagnes : un site qui fait appeler, puis 300 à 500€/mois de budget publicitaire, à ajuster selon votre métier et votre zone. Si vous ne voulez pas gérer de publicité du tout, Sitaly livre des [demandes de chantier exclusives](/acquisition/) : nous payons la publicité, et les premières demandes sont offertes.",
       },
     ],
   },

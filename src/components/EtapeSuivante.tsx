@@ -30,7 +30,7 @@ const ETAPE_SUIVANTE: Record<FamilleId, EtapeSuivante> = {
     phrase: "Un agent a besoin de demandes à traiter.",
     liens: [
       { label: "ChatGPT Ads", href: "/chatgpt-ads/" },
-      { label: "Google Ads", to: "/acquisition/" },
+      { label: "Demandes de chantier", to: "/acquisition/" },
     ],
   },
 };

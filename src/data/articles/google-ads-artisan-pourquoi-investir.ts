@@ -42,7 +42,7 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Exemple chiffré : un menuisier en région parisienne" },
   {
     type: "p",
-    text: "Un menuisier accompagné par Sitaly (formule Acquisition : site optimisé + gestion Google Ads) a lancé une campagne à 400€/mois de budget sur les requêtes « dressing sur mesure + ville ». Résultat sur 90 jours : 87 clics, taux de conversion 9 %, 8 demandes de devis, 4 chantiers signés à 4 200€ en moyenne. Soit 16 800€ de CA pour 1 200€ de budget publicitaire sur le trimestre, un retour sur investissement de 14x, mesuré et reproductible.",
+    text: "Exemple de calcul pour un menuisier qui lance une campagne à 400€/mois de budget sur les requêtes « dressing sur mesure + ville ». Sur 90 jours, 87 clics avec 9 % de visiteurs qui demandent un devis donnent 8 demandes. Si la moitié se signe à 4 200€ en moyenne, cela fait 16 800€ de chiffre d'affaires pour 1 200€ de budget publicitaire sur le trimestre. Ce sont des ordres de grandeur pour faire vos propres calculs, pas un résultat garanti.",
   },
   {
     type: "p",

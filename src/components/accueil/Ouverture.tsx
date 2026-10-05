@@ -30,24 +30,33 @@ export function Ouverture() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mx-auto max-w-5xl text-center">
           <div data-reveal>
+            {/* Le point pulse comme un appel entrant : c'est la scène que le
+                titre raconte. Il reste fixe sous mouvement réduit. */}
             <Pastille className="border-white/15 bg-white/5 text-white/80">
-              <span className="h-1.5 w-1.5 rounded-full bg-signal" />
-              Agents IA, publicité et site internet pour les PME
+              <span className="relative flex h-2 w-2">
+                <span className="appel-pulse absolute inline-flex h-full w-full rounded-full bg-signal" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-signal" />
+              </span>
+              Artisans et PME · Essonne et partout en France
             </Pastille>
           </div>
 
+          {/* Refonte du 5 octobre 2026, à la demande du client : une scène
+              plutôt qu'un argumentaire, qui couvre toute l'offre. Faire
+              sonner, c'est les demandes de chantier, le site et la publicité ;
+              décrocher, ce sont les agents IA. Les mots-clés vivent dans le
+              sous-titre. */}
           <h1
             data-split
-            className="stagger mt-6 font-display text-[clamp(2.3rem,5.6vw,4.6rem)] font-extrabold leading-[1.02] tracking-[-0.042em] text-balance"
+            className="stagger mt-6 font-display text-[clamp(2.4rem,6vw,5rem)] font-extrabold leading-[1.02] tracking-[-0.045em] text-balance"
           >
-            Un interlocuteur unique pour{" "}
-            <span className="accent-word whitespace-nowrap">les agents IA</span> de votre PME
+            On fait sonner votre téléphone.{" "}
+            <span className="accent-word block">Et on décroche.</span>
           </h1>
 
           <p data-reveal className="measure mx-auto mt-6 text-lg text-white/70 sm:text-xl">
-            Sitaly installe et pilote les agents qui décrochent, qualifient, prennent les
-            rendez-vous et relancent vos devis. Les campagnes ChatGPT et Google Ads et votre site
-            internet suivent, avec la même personne au bout du fil.
+            Des demandes de chantier livrées, un site qui fait appeler, des agents IA qui répondent
+            et relancent. Sitaly s'occupe de tout, avec une seule personne au bout du fil.
           </p>
 
           <div

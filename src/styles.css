@@ -2699,3 +2699,17 @@ body.menu-ouvert .entete-plaque {
     radial-gradient(48% 55% at 88% 8%, oklch(0.45 0.17 27 / 0.32), transparent 70%),
     radial-gradient(40% 50% at 0% 100%, oklch(0.45 0.17 27 / 0.16), transparent 70%);
 }
+
+/* Le point de la pastille d'accueil pulse comme un appel entrant. */
+@media (prefers-reduced-motion: no-preference) {
+  .appel-pulse {
+    animation: appel-pulse 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+}
+@keyframes appel-pulse {
+  75%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
