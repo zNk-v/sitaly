@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, Calendar, Menu, Phone, X } from "lucide-react";
+import { ArrowUpRight, Building2, Calendar, Menu, Phone, X } from "lucide-react";
 import { COULEURS_FAMILLE, FAMILLES, entreesFamille } from "@/data/expertises";
 import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
+import { SECTEURS, cheminSecteur } from "@/data/secteurs";
 
 /**
  * Le menu mobile.
@@ -174,10 +175,60 @@ export function MobileMenu({
                 </details>
               ))}
 
+              {/* Les secteurs, comme dans le menu de bureau. */}
+              <details className="groupe-famille group">
+                <summary className="flex cursor-pointer list-none items-center gap-3 rounded-xl px-3 py-3 marker:content-none">
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-secondary">
+                    <Building2 className="h-4.5 w-4.5" />
+                  </span>
+                  <span className="min-w-0 flex-1 font-display text-base font-bold tracking-tight">
+                    Secteurs
+                  </span>
+                  <svg
+                    viewBox="0 0 12 12"
+                    aria-hidden="true"
+                    className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                  >
+                    <path d="M2.5 4.5L6 8l3.5-3.5" />
+                  </svg>
+                </summary>
+                <ul className="mb-1 ml-[3.25rem] mr-3 space-y-0.5 border-l border-border pl-3">
+                  {SECTEURS.map((sec) => (
+                    <li key={sec.slug}>
+                      <Link
+                        to={cheminSecteur(sec)}
+                        onClick={fermer}
+                        className="entree-famille block rounded-lg px-2 py-2.5 text-[15px] text-muted-foreground"
+                      >
+                        {sec.label}
+                      </Link>
+                    </li>
+                  ))}
+                  <li>
+                    <Link
+                      to="/creation-site-internet/"
+                      onClick={fermer}
+                      className="entree-famille block rounded-lg px-2 py-2.5 text-[15px] text-muted-foreground"
+                    >
+                      Artisans et TPE
+                    </Link>
+                  </li>
+                </ul>
+              </details>
+
               <div className="my-2 h-px bg-border" />
 
               <Link to="/realisations/" onClick={fermer} className={lien}>
                 Réalisations
+                <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
+              </Link>
+
+              <Link to="/a-propos/" onClick={fermer} className={lien}>
+                À propos
                 <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
               </Link>
 

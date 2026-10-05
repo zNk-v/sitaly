@@ -428,3 +428,61 @@ web ? Ce qui doit l'en empêcher :
 - Le vert réservé au vérifiable.
 - Les trois réalisations réelles, ouvrables, avec leurs vraies captures.
 - Le visage du fondateur à un endroit où les concurrents mettent une photo d'équipe.
+
+---
+
+## 11. Refonte de l'accueil d'après futurdigital.fr
+
+Décision du 5 octobre 2026, à la demande du client : un accueil plus
+professionnel et plus humain, calqué sur futurdigital.fr jusque dans le
+mouvement. La palette, les trois polices et la bascule en serif italique
+restent celles de Sitaly. Les sections vivent dans `src/components/accueil/`.
+
+**Le parcours, section par section**
+1. Premier écran sur l'encre : pastille, titre, deux boutons, note Google
+   (logo, étoiles, nombre réel d'avis), une photo avec sa carte d'interface,
+   un avis, puis le bandeau « Visible là où vos clients vous cherchent » qui
+   fait défiler les logos des plateformes (`src/data/plateformes.ts`).
+2. Le constat remonte sur l'écran sombre, coins arrondis ; ses trois
+   chiffres comptent à l'entrée.
+3. La phrase « Sitaly réunit tout » reste épinglée trois écrans pendant que
+   des cartes d'interface entrent par groupe et allument leur mot.
+4. Les services en deux temps, papier puis encre : photo, carte d'interface
+   à cheval sur le coin, glissement à l'apparition.
+5. Les avis Google en défilé continu, logo Google sur chaque carte.
+6. Le process en trois temps et une feuille de route animée, avec un bouton
+   pause.
+7. La rubrique Services (« Huit leviers, un seul interlocuteur ») et la
+   rubrique Secteurs : neuf cartes photo, sur la liste de futurdigital.fr
+   (artisans, BTP, restauration, santé, beauté, immobilier, automobile,
+   professions libérales) plus les courtiers. Chaque secteur a sa page
+   /agents-ia/<secteur>/ et son propre texte dans `src/data/secteurs.ts`.
+8. Réalisations, fondateur, FAQ, journal, puis l'appel final sur l'encre.
+
+**Ce qui défait les règles précédentes**
+- §7 : les photos de banque d'images entrent sur l'accueil, à la demande du
+  client, dans un style Revolut / Trade Republic (portraits nets, fonds
+  colorés, téléphone ou ordinateur en main). Elles viennent d'Unsplash
+  (licence Unsplash, usage commercial libre) et vivent dans
+  `src/assets/photos/`. Elles illustrent un usage, jamais un témoignage :
+  aucune n'est posée à côté d'un avis ou d'un nom de client.
+- §2 et §3 : l'encre revient en pleine bande, au premier écran, sur la
+  seconde moitié des services et à l'appel final.
+- §4 bis : le mot découpé dans le voile (`ZoomIntro`) et l'empilement des
+  offres (`StackedOffers`) quittent l'accueil. Les composants restent dans
+  le code ; `LEVIERS` alimente toujours le texte des services.
+- §9 : une seule photo de Teddy sur l'accueil, dans le bloc fondateur.
+
+**Ce qui ne bouge pas**
+- Les avis restent ceux de la fiche, recopiés sans retouche.
+- Les cartes d'interface portent « Exemple », et la phrase épinglée dit que
+  ses chiffres sont des exemples.
+- Les pages Site internet par métier restent hors index (D3) : ni le menu
+  Secteurs ni l'accueil ne pointent vers elles.
+
+**Crédits photo (Unsplash)** : Vitaly Gariev (premier écran, agents IA),
+Nachristos (ChatGPT Ads), Brooke Cagle (Google Ads), Wright Building Center
+(site internet), Md Ishak Rahman (immobilier), Marc Zeman (BTP), Lyubomyr
+Reverchuk (courtiers), Centre for Ageing Better (artisans), Andreas Dick
+(restauration), Beatriz Mendez (santé), Adam Winger (beauté), Darren
+Richardson (automobile), Vitaly Gariev (professions libérales).

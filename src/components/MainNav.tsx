@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { COULEURS_FAMILLE, FAMILLES, entreesFamille, type EntreeMenu } from "@/data/expertises";
 import { REALISATIONS } from "@/data/realisations";
+import { SECTEURS, cheminSecteur } from "@/data/secteurs";
 
 /**
  * Navigation principale, avec ses menus déroulants.
@@ -100,7 +101,7 @@ function Deroulant({
         className={`invisible z-50 translate-y-1 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 ${
           large
             ? "fixed left-1/2 top-[calc(var(--entete-hauteur)-1.25rem)] pt-5 max-h-[calc(100dvh-var(--entete-hauteur)-1.5rem)] w-[min(54rem,calc(100vw-2rem))] -translate-x-1/2 overflow-y-auto"
-            : "absolute left-1/2 top-full -mt-2 w-[22rem] -translate-x-1/2 pt-5"
+            : "absolute left-1/2 top-full -mt-2 w-max min-w-[22rem] -translate-x-1/2 pt-5"
         }`}
       >
         <div className="rounded-2xl border border-border bg-card p-4 shadow-elevated">
@@ -114,7 +115,7 @@ function Deroulant({
 export function MainNav() {
   return (
     <nav className="hidden items-center gap-7 lg:flex" aria-label="Navigation principale">
-      <Deroulant label="Expertises" large>
+      <Deroulant label="Services" large>
         <div className="grid grid-cols-3 gap-3">
           {FAMILLES.map((f) => (
             <div
@@ -135,6 +136,33 @@ export function MainNav() {
               </div>
             </div>
           ))}
+        </div>
+      </Deroulant>
+
+      {/* Les secteurs, comme le menu « Secteurs » de futurdigital.fr : les
+          pages Agents IA par secteur, puis les artisans (refonte du 5 octobre
+          2026). Les pages Site internet par métier restent hors index
+          (décision D3) : aucun lien de menu ne pointe vers elles. */}
+      <Deroulant label="Secteurs">
+        <div className="w-[30rem] max-w-full">
+          <p className="rail-label px-3 pb-2 text-muted-foreground">Agents IA par secteur</p>
+          <div className="grid grid-cols-2 gap-x-1">
+            {SECTEURS.map((sec) => (
+              <Link
+                key={sec.slug}
+                to={cheminSecteur(sec)}
+                className="rounded-lg px-3 py-2 text-[15px] font-medium transition-colors hover:bg-secondary hover:text-brand-ink"
+              >
+                {sec.label}
+              </Link>
+            ))}
+            <Link
+              to="/creation-site-internet/"
+              className="rounded-lg px-3 py-2 text-[15px] font-medium transition-colors hover:bg-secondary hover:text-brand-ink"
+            >
+              Artisans et TPE
+            </Link>
+          </div>
         </div>
       </Deroulant>
 
@@ -177,6 +205,10 @@ export function MainNav() {
 
       <Link to="/blog/" className="lien-entete py-5">
         Blog
+      </Link>
+
+      <Link to="/a-propos/" className="lien-entete py-5">
+        À propos
       </Link>
     </nav>
   );

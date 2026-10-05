@@ -33,6 +33,11 @@
 - [Agent IA pour agence immobilière](https://sitaly.fr/agents-ia/agences-immobilieres/) : appels pendant les visites, leads des portails, visites et estimations, relances.
 - [Agent IA pour courtier en crédit et en assurance](https://sitaly.fr/agents-ia/courtiers/) : rappel des demandes entrantes, rendez-vous, relance des pièces justificatives, sans conseil.
 - [Agent IA pour entreprise du BTP](https://sitaly.fr/agents-ia/btp/) : appels pendant les chantiers, visites techniques, relance des devis, SAV.
+- [Agent IA pour restaurant et hôtel](https://sitaly.fr/agents-ia/restauration/) : réservations pendant le service, confirmations et rappels, groupes et privatisations.
+- [Agent IA pour cabinet de santé et de bien-être](https://sitaly.fr/agents-ia/sante/) : prise et déplacement des rendez-vous, rappels, questions pratiques, sans aucun avis médical.
+- [Agent IA pour salon de coiffure et institut de beauté](https://sitaly.fr/agents-ia/beaute/) : réservation de la bonne prestation, rappels, acomptes, liste d'attente.
+- [Agent IA pour garage automobile](https://sitaly.fr/agents-ia/automobile/) : rendez-vous d'atelier, suivi du véhicule, préparation et relance des devis.
+- [Agent IA pour professions libérales](https://sitaly.fr/agents-ia/professions-liberales/) : accueil et qualification des premiers contacts, premier rendez-vous, pièces à fournir, sans conseil.
 - [Automatisation des tâches](https://sitaly.fr/automatisation-taches/) : relances, rappels, factures, saisies en double.
 - [CRM sur mesure](https://sitaly.fr/crm-sur-mesure/) : suivi des clients et des demandes.
 - [Logiciel métier](https://sitaly.fr/logiciel-metier/) : outil interne conçu pour une activité précise.

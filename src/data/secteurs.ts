@@ -20,7 +20,15 @@ export { euros };
  * distincts.
  */
 
-export type SecteurSlug = "agences-immobilieres" | "courtiers" | "btp";
+export type SecteurSlug =
+  | "agences-immobilieres"
+  | "courtiers"
+  | "btp"
+  | "restauration"
+  | "sante"
+  | "beaute"
+  | "automobile"
+  | "professions-liberales";
 
 /**
  * Une page du même gabarit sous /agents-ia/. Les secteurs en sont, et aussi
@@ -422,6 +430,563 @@ export const SECTEURS: Secteur[] = [
       "prise-rendez-vous-en-ligne-guide",
     ],
     audience: "Entreprises du bâtiment et des travaux publics",
+  },
+  /* Cinq secteurs ajoutés le 5 octobre 2026, sur la liste de futurdigital.fr
+     (DESIGN.md §11). Même règle que les trois premiers : aucun chiffre, un
+     texte propre à chaque page, les seules dates citées sont celles des
+     textes de loi. */
+  {
+    slug: "restauration",
+    label: "Restauration et hôtellerie",
+    carte: "Réservations pendant le service, commandes à emporter, avis à remercier.",
+    titre: "Agent IA pour restaurant et hôtel : réservations | Sitaly",
+    description:
+      "Un agent IA qui prend les réservations pendant le service, répond aux questions courantes et confirme par SMS. Installé et piloté par Sitaly.",
+    h1: "Agent IA pour restaurant et hôtel : les réservations prises, même en plein service",
+    intro:
+      "Un agent IA pour restaurant ou hôtel décroche quand la salle est pleine et que personne n'a les mains libres. Il prend la réservation, note le nombre de couverts et les demandes particulières, répond aux questions courantes (horaires, accès, terrasse, privatisation) et envoie la confirmation par SMS. Sitaly l'installe, le branche sur votre outil de réservation et le pilote chaque mois.",
+    reperes: [
+      "Diagnostic offert de 30 minutes",
+      "Branché sur votre outil de réservation",
+      "Reprise humaine à tout moment",
+    ],
+    pertesTitre: ["Où un restaurant perd", "ses couverts"],
+    pertes: [
+      {
+        t: "Pendant le coup de feu",
+        d: "Le téléphone sonne à 20 h 30. Personne ne décroche, et la table de six part chez le voisin.",
+      },
+      {
+        t: "Les tables vides du no-show",
+        d: "Une réservation sans confirmation reste une table bloquée pour quelqu'un qui ne viendra peut-être pas.",
+      },
+      {
+        t: "Les mêmes questions, en boucle",
+        d: "Horaires, parking, menu enfant, chiens acceptés : chaque appel coupe un serveur dans son service.",
+      },
+      {
+        t: "Les demandes de groupe oubliées",
+        d: "Un repas d'entreprise ou un anniversaire se négocie au téléphone. Noté sur un coin de carnet, il se perd.",
+      },
+    ],
+    actions: [
+      {
+        t: "Réservations par téléphone",
+        d: "Date, heure, nombre de couverts, nom, demandes particulières. Il vérifie la disponibilité dans votre outil de réservation et confirme sur le champ.",
+      },
+      {
+        t: "Confirmations et rappels",
+        d: "Un SMS de confirmation, puis un rappel le jour même avec un lien pour annuler. La table se libère au lieu de rester vide.",
+      },
+      {
+        t: "Questions pratiques",
+        d: "Horaires, accès, terrasse, formules du midi : il répond à partir des informations que vous lui donnez, et seulement celles-là.",
+      },
+      {
+        t: "Groupes et privatisations",
+        d: "Il recueille la date, le nombre de personnes, le budget et l'occasion, puis transmet une fiche complète au responsable.",
+      },
+      {
+        t: "Hôtels : questions avant séjour",
+        d: "Arrivée tardive, parking, petit-déjeuner, lit bébé : il répond et note la demande dans la réservation quand votre outil le permet.",
+      },
+      {
+        t: "Avis clients",
+        d: "Il propose des réponses aux avis Google que vous validez avant publication.",
+      },
+    ],
+    cadreTitre: ["Ce que l'agent", "ne fait pas"],
+    cadre: [
+      {
+        t: "Il ne s'engage pas sur les allergènes",
+        d: "L'information sur les allergènes reste la vôtre (règlement européen INCO). L'agent lit la fiche que vous lui fournissez et passe la main à l'équipe au moindre doute.",
+      },
+      {
+        t: "Il ne surréserve pas",
+        d: "Il ne propose que les créneaux libres dans votre outil. Les exceptions restent décidées par vous.",
+      },
+      { t: "Il ne se fait pas passer pour un humain", d: RAPPEL_AI_ACT },
+    ],
+    outils:
+      "L'agent travaille avec votre outil de réservation, votre ligne téléphonique (par renvoi d'appel pendant le service ou en permanence) et votre fiche Google. La connexion passe par API ou par e-mail selon ce que l'outil permet. On le vérifie pendant le diagnostic, avant tout chiffrage.",
+    scenarios:
+      "Des scénarios réels sont joués avant la mise en service : une réservation un samedi soir complet, une demande de groupe, une question sur un allergène.",
+    pourQui:
+      "Restaurants qui servent midi et soir et ratent des appels pendant le service, brasseries, restaurants de groupe, hôtels indépendants. Si vos réservations passent déjà presque toutes en ligne, une automatisation simple des confirmations peut suffire : on vous le dit pendant le diagnostic.",
+    faq: [
+      {
+        q: "Les clients savent-ils qu'ils parlent à une IA ?",
+        a: "Oui, dès la première phrase, comme l'exige l'article 50 du règlement européen sur l'IA, applicable depuis le 2 août 2026. Ils peuvent demander quelqu'un de l'équipe à tout moment.",
+      },
+      {
+        q: "Peut-il prendre une réservation quand nous sommes complets ?",
+        a: "Non. Il propose un autre créneau ou une liste d'attente si vous en tenez une. Il ne réserve que ce que votre outil affiche comme libre.",
+      },
+      {
+        q: "Et les questions sur les allergènes ?",
+        a: "Il lit la fiche allergènes que vous lui fournissez. S'il y a le moindre doute, il passe la main à l'équipe plutôt que de répondre.",
+      },
+      {
+        q: "Peut-il prendre des commandes à emporter ?",
+        a: "Oui, à partir de votre carte et de vos horaires, si votre caisse ou votre outil de commande peut les recevoir. C'est vérifié pendant le diagnostic.",
+      },
+      {
+        q: "Faut-il changer d'outil de réservation ?",
+        a: "Non. L'agent se branche sur l'outil que vous utilisez quand il le permet (API ou e-mail).",
+      },
+      { q: "Combien ça coûte ?", a: reponsePrix() },
+    ],
+    ctaTitre: "Combien d'appels avez-vous laissés sonner samedi soir ?",
+    aLire: [
+      "agent-ia-prise-de-rendez-vous",
+      "standard-telephonique-ia",
+      "chatbot-entreprise-tpe-guide",
+      "prise-rendez-vous-en-ligne-guide",
+    ],
+    audience: "Restaurants et hôtels",
+  },
+  {
+    slug: "sante",
+    label: "Santé et bien-être",
+    carte: "Secrétariat débordé, rendez-vous à déplacer, patients qui ne viennent pas.",
+    titre: "Agent IA pour cabinet de santé : secrétariat | Sitaly",
+    description:
+      "Un agent IA qui décroche pour le cabinet, prend et déplace les rendez-vous et envoie les rappels, sans jamais donner d'avis médical. Piloté par Sitaly.",
+    h1: "Agent IA pour cabinet de santé et de bien-être : le secrétariat qui décroche toujours",
+    intro:
+      "Un agent IA pour cabinet de santé ou de bien-être répond aux appels pendant les séances, prend, déplace ou annule les rendez-vous dans votre agenda, répond aux questions pratiques et envoie les rappels. Il ne donne aucun avis médical et oriente toute urgence vers le 15. Sitaly l'installe, vérifie avec vous le traitement des données et le pilote chaque mois.",
+    reperes: [
+      "Diagnostic offert de 30 minutes",
+      "Aucun avis médical",
+      "Reprise humaine à tout moment",
+    ],
+    pertesTitre: ["Où un cabinet perd", "ses rendez-vous"],
+    pertes: [
+      {
+        t: "Pendant la séance",
+        d: "Vous ne décrochez pas en pleine consultation. Le patient qui appelait pour un premier rendez-vous en prend un ailleurs.",
+      },
+      {
+        t: "Les rendez-vous non honorés",
+        d: "Un créneau oublié par le patient est un créneau perdu, que personne n'a pu reprendre.",
+      },
+      {
+        t: "Les déplacements de rendez-vous",
+        d: "Décaler, annuler, reprogrammer : ces appels occupent le secrétariat plus que les nouvelles demandes.",
+      },
+      {
+        t: "Les questions pratiques",
+        d: "Adresse, accès, pièces à apporter, remboursement : toujours les mêmes, toujours au mauvais moment.",
+      },
+    ],
+    actions: [
+      {
+        t: "Prise de rendez-vous",
+        d: "Il identifie le motif (premier rendez-vous, suivi, bilan), propose les créneaux adaptés à la durée de la séance et réserve dans votre agenda.",
+      },
+      {
+        t: "Déplacements et annulations",
+        d: "Le patient décale lui-même son rendez-vous par téléphone. Le créneau libéré redevient disponible.",
+      },
+      {
+        t: "Rappels",
+        d: "Un SMS la veille avec l'adresse et un lien pour annuler. Moins de créneaux vides, sans appel de votre part.",
+      },
+      {
+        t: "Questions pratiques",
+        d: "Accès, parking, documents à apporter, modalités de paiement : il répond à partir des informations que vous lui fournissez.",
+      },
+      {
+        t: "Urgences",
+        d: "Au moindre signe d'urgence, il oriente vers le 15 ou le 112 et ne cherche pas à évaluer la situation.",
+      },
+      {
+        t: "Messages pour le praticien",
+        d: "Ce qui ne relève pas de l'agenda est noté et transmis, avec un résumé, au praticien concerné.",
+      },
+    ],
+    cadreTitre: ["Ce que l'agent", "ne fait pas"],
+    cadre: [
+      {
+        t: "Il ne donne aucun avis médical",
+        d: "Ni diagnostic, ni conseil de traitement, ni tri de la gravité. Il prend le rendez-vous et oriente toute urgence vers le 15.",
+      },
+      {
+        t: "Il ne stocke pas de dossier patient",
+        d: "Les données de santé relèvent de l'article 9 du RGPD. L'agent ne recueille que ce qu'exige la prise de rendez-vous, et l'hébergement est vérifié avec vous (hébergeur certifié HDS dès que des données de santé sont conservées).",
+      },
+      { t: "Il ne se fait pas passer pour un humain", d: RAPPEL_AI_ACT },
+    ],
+    outils:
+      "L'agent se branche sur votre agenda en ligne et votre ligne téléphonique, quand l'agenda le permet (API ou synchronisation). La conformité du traitement des données est vérifiée pendant le diagnostic, avant tout chiffrage. Vous ne changez pas d'agenda.",
+    scenarios:
+      "Des scénarios réels sont joués avant la mise en service : un premier rendez-vous, un patient qui veut décaler, un appel qui évoque une urgence.",
+    pourQui:
+      "Kinésithérapeutes, ostéopathes, cabinets pluridisciplinaires, centres de bien-être et praticiens qui travaillent sans secrétariat ou avec un secrétariat débordé. Si votre agenda en ligne absorbe déjà l'essentiel des demandes, l'agent ne se justifie que pour les appels : on vous le dit pendant le diagnostic.",
+    faq: [
+      {
+        q: "L'agent peut-il conseiller un patient ?",
+        a: "Non. Il ne donne aucun avis médical. Il prend le rendez-vous, répond aux questions pratiques et oriente toute urgence vers le 15 ou le 112.",
+      },
+      {
+        q: "Et les données de santé ?",
+        a: "L'agent ne recueille que ce qu'exige la prise de rendez-vous. Le traitement est encadré par l'article 9 du RGPD, et l'hébergement est vérifié avec vous pendant le diagnostic.",
+      },
+      {
+        q: "Les patients savent-ils qu'ils parlent à une IA ?",
+        a: "Oui, dès la première phrase (article 50 du règlement européen sur l'IA). Ils peuvent demander à laisser un message au praticien à tout moment.",
+      },
+      {
+        q: "Fonctionne-t-il avec notre agenda en ligne ?",
+        a: "Avec la plupart des agendas qui exposent une interface ou une synchronisation. C'est vérifié avant tout chiffrage.",
+      },
+      {
+        q: "Peut-il gérer plusieurs praticiens ?",
+        a: "Oui. Chaque praticien a ses motifs, ses durées de séance et ses créneaux, et l'agent réserve dans le bon agenda.",
+      },
+      { q: "Combien ça coûte ?", a: reponsePrix() },
+    ],
+    ctaTitre: "Combien d'appels sont tombés sur la messagerie pendant vos séances ?",
+    aLire: [
+      "agent-ia-prise-de-rendez-vous",
+      "agent-ia-rgpd",
+      "prise-rendez-vous-en-ligne-guide",
+      "ai-act-article-50-agent-vocal",
+    ],
+    audience: "Cabinets de santé et de bien-être",
+    nomService: "Agent IA pour cabinet de santé et de bien-être",
+  },
+  {
+    slug: "beaute",
+    label: "Beauté et esthétique",
+    carte: "Rendez-vous pris en pleine prestation, rappels oubliés, créneaux vides.",
+    titre: "Agent IA pour salon de beauté et institut | Sitaly",
+    description:
+      "Un agent IA qui décroche pendant les prestations, réserve le bon soin avec la bonne personne et envoie les rappels. Installé et piloté par Sitaly.",
+    h1: "Agent IA pour salon de coiffure et institut de beauté : l'agenda rempli sans lâcher les ciseaux",
+    intro:
+      "Un agent IA pour salon de coiffure, institut ou spa répond aux appels quand toute l'équipe est en prestation. Il identifie le soin demandé, en connaît la durée, réserve le créneau avec la bonne personne dans votre agenda et envoie la confirmation puis le rappel. Sitaly l'installe sur votre logiciel de réservation et le pilote chaque mois.",
+    reperes: [
+      "Diagnostic offert de 30 minutes",
+      "Branché sur votre agenda",
+      "Reprise humaine à tout moment",
+    ],
+    pertesTitre: ["Où un salon perd", "ses clientes"],
+    pertes: [
+      {
+        t: "Les mains occupées",
+        d: "Une coloration en cours, un soin du visage : personne ne peut décrocher. La cliente réserve ailleurs en ligne.",
+      },
+      {
+        t: "Les rendez-vous oubliés",
+        d: "Sans rappel, une cliente oublie. Le créneau d'une heure reste vide.",
+      },
+      {
+        t: "Le mauvais créneau",
+        d: "Un balayage réservé sur un créneau de trente minutes désorganise toute l'après-midi.",
+      },
+      {
+        t: "Les questions de prix",
+        d: "Combien coûte une coupe, un soin, un forfait : la réponse existe, mais il faut décrocher pour la donner.",
+      },
+    ],
+    actions: [
+      {
+        t: "Réservation de la bonne prestation",
+        d: "Il identifie le soin, applique sa durée et réserve avec la personne qui le pratique.",
+      },
+      {
+        t: "Confirmations et rappels",
+        d: "Un SMS de confirmation, un rappel la veille, un lien pour annuler. Le créneau libéré peut être repris.",
+      },
+      {
+        t: "Tarifs et prestations",
+        d: "Il répond à partir de votre carte de prestations, sans arrondir ni improviser.",
+      },
+      {
+        t: "Acomptes",
+        d: "Si vous demandez un acompte pour les prestations longues, il envoie le lien de paiement de votre prestataire.",
+      },
+      {
+        t: "Liste d'attente",
+        d: "Quand une cliente annule, il peut proposer le créneau aux personnes qui l'attendaient.",
+      },
+      {
+        t: "Messages et avis",
+        d: "Il transmet les demandes particulières à l'équipe et propose des réponses aux avis Google, que vous validez.",
+      },
+    ],
+    cadreTitre: ["Ce que l'agent", "ne fait pas"],
+    cadre: [
+      {
+        t: "Il ne donne pas de conseil de soin",
+        d: "Contre-indications, allergies, type de peau : ces questions vont à l'esthéticienne ou au coiffeur.",
+      },
+      {
+        t: "Il ne relance pas sans accord",
+        d: "Les messages promotionnels ne partent qu'aux clientes qui ont accepté de les recevoir. Les rappels de rendez-vous, eux, accompagnent une réservation existante.",
+      },
+      { t: "Il ne se fait pas passer pour un humain", d: RAPPEL_AI_ACT },
+    ],
+    outils:
+      "L'agent se branche sur votre logiciel de réservation et votre ligne téléphonique quand le logiciel le permet (API ou e-mail). Votre carte de prestations, vos durées et vos tarifs sont repris tels quels. On vérifie la compatibilité pendant le diagnostic.",
+    scenarios:
+      "Des scénarios réels sont joués avant la mise en service : une réservation de coloration, une cliente qui veut décaler, une question sur une allergie.",
+    pourQui:
+      "Salons de coiffure, instituts de beauté, spas et barbiers où toute l'équipe travaille en cabine ou au fauteuil. Si vos clientes réservent déjà presque toutes en ligne, des rappels automatiques suffisent peut-être : on vous le dit pendant le diagnostic.",
+    faq: [
+      {
+        q: "L'agent sait-il quelle durée prévoir pour chaque soin ?",
+        a: "Oui. Il applique les durées de votre carte de prestations, et chaque personne de l'équipe garde ses propres créneaux.",
+      },
+      {
+        q: "Peut-il répondre sur une allergie ou une contre-indication ?",
+        a: "Non. Ces questions sont transmises à l'équipe. L'agent ne donne aucun conseil de soin.",
+      },
+      {
+        q: "Les clientes savent-elles qu'elles parlent à une IA ?",
+        a: "Oui, dès la première phrase (article 50 du règlement européen sur l'IA). Elles peuvent demander quelqu'un du salon à tout moment.",
+      },
+      {
+        q: "Peut-il demander un acompte ?",
+        a: "Il envoie le lien de paiement de votre prestataire quand vous le décidez. Les fonds vont directement sur votre compte.",
+      },
+      {
+        q: "Faut-il changer de logiciel de réservation ?",
+        a: "Non. L'agent se branche sur votre logiciel quand il le permet. C'est vérifié pendant le diagnostic.",
+      },
+      { q: "Combien ça coûte ?", a: reponsePrix() },
+    ],
+    ctaTitre: "Combien de créneaux sont restés vides ce mois-ci ?",
+    aLire: [
+      "agent-ia-prise-de-rendez-vous",
+      "prise-rendez-vous-en-ligne-guide",
+      "automatiser-suivi-client-tpe",
+      "standard-telephonique-ia",
+    ],
+    audience: "Salons de coiffure et instituts de beauté",
+  },
+  {
+    slug: "automobile",
+    label: "Garages et automobile",
+    carte: "Appels pendant l'atelier, rendez-vous d'entretien, « ma voiture est prête ? ».",
+    titre: "Agent IA pour garage automobile : atelier et RDV | Sitaly",
+    description:
+      "Un agent IA qui décroche quand l'atelier tourne, réserve les entretiens, répond à « ma voiture est prête ? » et relance les devis. Piloté par Sitaly.",
+    h1: "Agent IA pour garage automobile : l'atelier tourne, le téléphone est décroché",
+    intro:
+      "Un agent IA pour garage décroche quand les mécaniciens ont les mains dans le moteur. Il réserve les rendez-vous d'entretien et de réparation selon la capacité de l'atelier, répond aux clients qui demandent où en est leur véhicule, recueille les informations utiles avant un devis et relance les devis en attente. Sitaly l'installe sur vos outils et le pilote chaque mois.",
+    reperes: [
+      "Diagnostic offert de 30 minutes",
+      "Branché sur votre logiciel de garage",
+      "Reprise humaine à tout moment",
+    ],
+    pertesTitre: ["Où un garage perd", "ses clients"],
+    pertes: [
+      {
+        t: "À l'atelier",
+        d: "Le chef d'atelier est sous un pont. Le client qui voulait sa révision appelle le centre auto d'à côté.",
+      },
+      {
+        t: "« Ma voiture est prête ? »",
+        d: "Ces appels interrompent l'atelier dix fois par jour, pour une information que le logiciel connaît déjà.",
+      },
+      {
+        t: "Les devis sans réponse",
+        d: "Une distribution, un embrayage : le client hésite, compare, et personne ne le rappelle.",
+      },
+      {
+        t: "Les rendez-vous mal calibrés",
+        d: "Une réparation longue posée sur un créneau court décale toute la journée.",
+      },
+    ],
+    actions: [
+      {
+        t: "Rendez-vous d'atelier",
+        d: "Immatriculation, kilométrage, intervention demandée. Il réserve selon la durée de l'opération et la capacité de l'atelier.",
+      },
+      {
+        t: "Suivi du véhicule",
+        d: "Il répond à « ma voiture est prête ? » à partir de l'état saisi dans votre logiciel, et prévient le client quand elle l'est.",
+      },
+      {
+        t: "Préparation des devis",
+        d: "Symptômes, voyants, photos par SMS : le réceptionnaire reçoit une demande complète.",
+      },
+      {
+        t: "Relance des devis",
+        d: "Il reprend contact avec les clients qui ont demandé un devis, répond aux questions simples et vous remonte leurs objections.",
+      },
+      {
+        t: "Véhicule de prêt",
+        d: "Il vérifie la disponibilité d'un véhicule de courtoisie et le réserve avec le rendez-vous.",
+      },
+      {
+        t: "Transfert à l'atelier",
+        d: "Panne sur la route, client mécontent, question technique : l'appel passe directement à la bonne personne.",
+      },
+    ],
+    cadreTitre: ["Ce que l'agent", "ne fait pas"],
+    cadre: [
+      {
+        t: "Il ne diagnostique pas de panne",
+        d: "Il recueille les symptômes pour le mécanicien. Le diagnostic et le chiffrage restent ceux de l'atelier.",
+      },
+      {
+        t: "Il ne démarche pas",
+        d: "La prospection téléphonique d'un particulier sans consentement préalable est interdite depuis le 11 août 2026. Les rappels d'entretien partent par SMS aux clients qui ont accepté de les recevoir.",
+      },
+      { t: "Il ne se fait pas passer pour un humain", d: RAPPEL_AI_ACT },
+    ],
+    outils:
+      "L'agent se branche sur votre logiciel de gestion de garage, votre agenda d'atelier et votre ligne téléphonique, par API ou par e-mail selon ce que vos outils permettent. On le vérifie pendant le diagnostic, avant tout chiffrage.",
+    scenarios:
+      "Des scénarios réels sont joués avant la mise en service : une prise de rendez-vous de révision, un client qui demande où en est son véhicule, une panne sur la route.",
+    pourQui:
+      "Garages indépendants, concessions, carrosseries et centres de contrôle où l'atelier ne peut pas décrocher. Si vous recevez peu d'appels, un simple SMS automatique « votre véhicule est prêt » suffit peut-être : on vous le dit pendant le diagnostic.",
+    faq: [
+      {
+        q: "L'agent peut-il faire un devis ?",
+        a: "Non. Il recueille les informations et les photos pour que le réceptionnaire chiffre vite. Le prix reste celui de l'atelier.",
+      },
+      {
+        q: "Comment sait-il si la voiture est prête ?",
+        a: "Il lit l'état du dossier dans votre logiciel de garage, quand celui-ci le permet. Sinon, il prend le message et prévient l'atelier.",
+      },
+      {
+        q: "Peut-il envoyer des rappels d'entretien ?",
+        a: "Par SMS, aux clients qui ont accepté de les recevoir. Il ne démarche pas par téléphone.",
+      },
+      {
+        q: "Les clients savent-ils qu'ils parlent à une IA ?",
+        a: "Oui, dès la première phrase (article 50 du règlement européen sur l'IA). Ils peuvent demander quelqu'un de l'atelier à tout moment.",
+      },
+      {
+        q: "Faut-il changer de logiciel de garage ?",
+        a: "Non. L'agent se branche sur vos outils quand ils le permettent. C'est vérifié pendant le diagnostic.",
+      },
+      { q: "Combien ça coûte ?", a: reponsePrix() },
+    ],
+    ctaTitre:
+      "Combien de fois l'atelier a-t-il décroché pour « ma voiture est prête ? » aujourd'hui ?",
+    aLire: [
+      "relance-automatique-devis",
+      "standard-telephonique-ia",
+      "agent-ia-prise-de-rendez-vous",
+      "demarchage-telephonique-agent-ia-2026",
+    ],
+    audience: "Garages et professionnels de l'automobile",
+  },
+  {
+    slug: "professions-liberales",
+    label: "Professions libérales",
+    carte: "Premiers contacts à qualifier, rendez-vous à poser, pièces à réclamer.",
+    titre: "Agent IA pour avocat et expert-comptable | Sitaly",
+    description:
+      "Un agent IA qui accueille les premiers contacts, qualifie la demande, pose le rendez-vous et réclame les pièces, sans jamais donner de conseil. Par Sitaly.",
+    h1: "Agent IA pour professions libérales : chaque premier contact accueilli et qualifié",
+    intro:
+      "Un agent IA pour cabinet d'avocat, d'expertise comptable, d'architecte ou de conseil accueille les nouveaux contacts par téléphone et sur le site, identifie la nature de la demande, réserve le premier rendez-vous avec le bon associé et envoie la liste des pièces à préparer. Il ne donne aucun conseil juridique, fiscal ou technique. Sitaly l'installe et le pilote chaque mois.",
+    reperes: [
+      "Diagnostic offert de 30 minutes",
+      "Aucun conseil donné",
+      "Reprise humaine à tout moment",
+    ],
+    pertesTitre: ["Où un cabinet perd", "ses dossiers"],
+    pertes: [
+      {
+        t: "En rendez-vous ou en audience",
+        d: "Le nouveau client appelle au moment où personne ne peut répondre, et contacte le cabinet suivant.",
+      },
+      {
+        t: "Les demandes hors périmètre",
+        d: "Un premier rendez-vous pour une matière que le cabinet ne traite pas coûte une heure à tout le monde.",
+      },
+      {
+        t: "Les pièces qui n'arrivent pas",
+        d: "Le dossier attend un document, et personne n'a le temps de le réclamer une troisième fois.",
+      },
+      {
+        t: "Les questions récurrentes",
+        d: "Honoraires, délais, adresse, documents : le secrétariat répète, au lieu de traiter.",
+      },
+    ],
+    actions: [
+      {
+        t: "Accueil des nouveaux contacts",
+        d: "Il identifie la nature de la demande et son urgence, à partir des matières et des missions que vous définissez.",
+      },
+      {
+        t: "Orientation",
+        d: "Il réserve le premier rendez-vous avec l'associé ou le collaborateur compétent, ou indique poliment que le cabinet ne traite pas la demande.",
+      },
+      {
+        t: "Pièces à préparer",
+        d: "Il envoie la liste des documents utiles avant le rendez-vous, puis relance jusqu'à ce que le dossier soit complet.",
+      },
+      {
+        t: "Questions pratiques",
+        d: "Adresse, accès, modalités de rendez-vous, principe de la convention d'honoraires : il répond à partir de vos informations.",
+      },
+      {
+        t: "Clients existants",
+        d: "Il reconnaît un client en cours et transmet son message au collaborateur qui suit le dossier.",
+      },
+      {
+        t: "Rappels",
+        d: "Confirmation et rappel du rendez-vous par SMS ou par e-mail.",
+      },
+    ],
+    cadreTitre: ["Ce que l'agent", "ne fait pas"],
+    cadre: [
+      {
+        t: "Il ne donne aucun conseil",
+        d: "Ni juridique, ni fiscal, ni technique. Il recueille ce qu'il faut pour préparer le premier rendez-vous, rien de plus.",
+      },
+      {
+        t: "Il ne recueille que le nécessaire",
+        d: "Le secret professionnel s'impose au cabinet. L'agent ne demande pas le détail d'une affaire et ne conserve que ce que vous décidez.",
+      },
+      { t: "Il ne se fait pas passer pour un humain", d: RAPPEL_AI_ACT },
+    ],
+    outils:
+      "L'agent se branche sur votre agenda, votre logiciel de cabinet et votre ligne téléphonique quand ils le permettent (API, webhooks ou e-mail). On le vérifie pendant le diagnostic, avant tout chiffrage. Vous ne changez pas d'outil.",
+    scenarios:
+      "Des scénarios réels sont joués avant la mise en service : un nouveau client pressé, une demande hors de vos matières, un client existant qui veut joindre son avocat.",
+    pourQui:
+      "Cabinets d'avocats, d'expertise comptable, d'architectes, de géomètres et de conseil qui reçoivent des premiers contacts chaque semaine et n'ont pas de secrétariat disponible en permanence. Si vos nouveaux clients viennent presque tous par recommandation directe, l'agent ne se justifie peut-être pas : on vous le dit pendant le diagnostic.",
+    faq: [
+      {
+        q: "L'agent peut-il répondre à une question juridique ou fiscale ?",
+        a: "Non. Il ne donne aucun conseil. Il qualifie la demande et réserve le rendez-vous avec la bonne personne.",
+      },
+      {
+        q: "Et le secret professionnel ?",
+        a: "L'agent ne recueille que ce qu'il faut pour orienter la demande. Vous décidez de ce qui est conservé et de la durée de conservation.",
+      },
+      {
+        q: "Peut-il vérifier les conflits d'intérêts ?",
+        a: "Non. Il recueille le nom des parties si vous le souhaitez, et la vérification reste faite par le cabinet avant le rendez-vous.",
+      },
+      {
+        q: "Les clients savent-ils qu'ils parlent à une IA ?",
+        a: "Oui, dès la première phrase (article 50 du règlement européen sur l'IA). Ils peuvent demander à laisser un message à tout moment.",
+      },
+      {
+        q: "Faut-il changer de logiciel de cabinet ?",
+        a: "Non. L'agent se branche sur vos outils quand ils le permettent. C'est vérifié pendant le diagnostic.",
+      },
+      { q: "Combien ça coûte ?", a: reponsePrix() },
+    ],
+    ctaTitre: "Combien de premiers contacts ont laissé un message sans rappel ?",
+    aLire: [
+      "standard-telephonique-ia",
+      "agence-agents-ia-questions",
+      "agent-ia-rgpd",
+      "agent-ia-prise-de-rendez-vous",
+    ],
+    audience: "Professions libérales",
+    nomService: "Agent IA pour cabinet d'avocat, d'expertise comptable et de conseil",
   },
 ];
 

@@ -30,7 +30,7 @@ import {
    de la carte est passé en variable, la position s'en déduit. Voir la frise
    `.offre-carte` dans la feuille de style. */
 
-type Levier = {
+export type Levier = {
   cle: string;
   categorie: string;
   titre: React.ReactNode;
@@ -42,7 +42,7 @@ type Levier = {
 
 /* L'ordre suit l'offre depuis le 28 septembre 2026 : les agents IA en tête,
    la publicité ensuite, le site en porte d'entrée. */
-const LEVIERS: Levier[] = [
+export const LEVIERS: Levier[] = [
   {
     cle: "agents",
     categorie: "Agents IA",

@@ -54,8 +54,13 @@ import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slu
 import { Route as OutilsBudgetGoogleAdsArtisanRouteImport } from './routes/outils.budget-google-ads-artisan'
 import { Route as OutilsAuditFicheGoogleRouteImport } from './routes/outils.audit-fiche-google'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as AgentsIaSanteRouteImport } from './routes/agents-ia_.sante'
+import { Route as AgentsIaRestaurationRouteImport } from './routes/agents-ia_.restauration'
+import { Route as AgentsIaProfessionsLiberalesRouteImport } from './routes/agents-ia_.professions-liberales'
 import { Route as AgentsIaCourtiersRouteImport } from './routes/agents-ia_.courtiers'
 import { Route as AgentsIaBtpRouteImport } from './routes/agents-ia_.btp'
+import { Route as AgentsIaBeauteRouteImport } from './routes/agents-ia_.beaute'
+import { Route as AgentsIaAutomobileRouteImport } from './routes/agents-ia_.automobile'
 import { Route as AgentsIaAgentVocalRouteImport } from './routes/agents-ia_.agent-vocal'
 import { Route as AgentsIaAgencesImmobilieresRouteImport } from './routes/agents-ia_.agences-immobilieres'
 
@@ -287,6 +292,22 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => BlogRoute,
 } as any)
+const AgentsIaSanteRoute = AgentsIaSanteRouteImport.update({
+  id: '/agents-ia_/sante',
+  path: '/agents-ia/sante',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgentsIaRestaurationRoute = AgentsIaRestaurationRouteImport.update({
+  id: '/agents-ia_/restauration',
+  path: '/agents-ia/restauration',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgentsIaProfessionsLiberalesRoute =
+  AgentsIaProfessionsLiberalesRouteImport.update({
+    id: '/agents-ia_/professions-liberales',
+    path: '/agents-ia/professions-liberales',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AgentsIaCourtiersRoute = AgentsIaCourtiersRouteImport.update({
   id: '/agents-ia_/courtiers',
   path: '/agents-ia/courtiers',
@@ -295,6 +316,16 @@ const AgentsIaCourtiersRoute = AgentsIaCourtiersRouteImport.update({
 const AgentsIaBtpRoute = AgentsIaBtpRouteImport.update({
   id: '/agents-ia_/btp',
   path: '/agents-ia/btp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgentsIaBeauteRoute = AgentsIaBeauteRouteImport.update({
+  id: '/agents-ia_/beaute',
+  path: '/agents-ia/beaute',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgentsIaAutomobileRoute = AgentsIaAutomobileRouteImport.update({
+  id: '/agents-ia_/automobile',
+  path: '/agents-ia/automobile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AgentsIaAgentVocalRoute = AgentsIaAgentVocalRouteImport.update({
@@ -350,8 +381,13 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/agents-ia/agences-immobilieres': typeof AgentsIaAgencesImmobilieresRoute
   '/agents-ia/agent-vocal': typeof AgentsIaAgentVocalRoute
+  '/agents-ia/automobile': typeof AgentsIaAutomobileRoute
+  '/agents-ia/beaute': typeof AgentsIaBeauteRoute
   '/agents-ia/btp': typeof AgentsIaBtpRoute
   '/agents-ia/courtiers': typeof AgentsIaCourtiersRoute
+  '/agents-ia/professions-liberales': typeof AgentsIaProfessionsLiberalesRoute
+  '/agents-ia/restauration': typeof AgentsIaRestaurationRoute
+  '/agents-ia/sante': typeof AgentsIaSanteRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
   '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
@@ -400,8 +436,13 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/agents-ia/agences-immobilieres': typeof AgentsIaAgencesImmobilieresRoute
   '/agents-ia/agent-vocal': typeof AgentsIaAgentVocalRoute
+  '/agents-ia/automobile': typeof AgentsIaAutomobileRoute
+  '/agents-ia/beaute': typeof AgentsIaBeauteRoute
   '/agents-ia/btp': typeof AgentsIaBtpRoute
   '/agents-ia/courtiers': typeof AgentsIaCourtiersRoute
+  '/agents-ia/professions-liberales': typeof AgentsIaProfessionsLiberalesRoute
+  '/agents-ia/restauration': typeof AgentsIaRestaurationRoute
+  '/agents-ia/sante': typeof AgentsIaSanteRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
   '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
@@ -452,8 +493,13 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/agents-ia_/agences-immobilieres': typeof AgentsIaAgencesImmobilieresRoute
   '/agents-ia_/agent-vocal': typeof AgentsIaAgentVocalRoute
+  '/agents-ia_/automobile': typeof AgentsIaAutomobileRoute
+  '/agents-ia_/beaute': typeof AgentsIaBeauteRoute
   '/agents-ia_/btp': typeof AgentsIaBtpRoute
   '/agents-ia_/courtiers': typeof AgentsIaCourtiersRoute
+  '/agents-ia_/professions-liberales': typeof AgentsIaProfessionsLiberalesRoute
+  '/agents-ia_/restauration': typeof AgentsIaRestaurationRoute
+  '/agents-ia_/sante': typeof AgentsIaSanteRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
   '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
@@ -505,8 +551,13 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/agents-ia/agences-immobilieres'
     | '/agents-ia/agent-vocal'
+    | '/agents-ia/automobile'
+    | '/agents-ia/beaute'
     | '/agents-ia/btp'
     | '/agents-ia/courtiers'
+    | '/agents-ia/professions-liberales'
+    | '/agents-ia/restauration'
+    | '/agents-ia/sante'
     | '/blog/$slug'
     | '/outils/audit-fiche-google'
     | '/outils/budget-google-ads-artisan'
@@ -555,8 +606,13 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/agents-ia/agences-immobilieres'
     | '/agents-ia/agent-vocal'
+    | '/agents-ia/automobile'
+    | '/agents-ia/beaute'
     | '/agents-ia/btp'
     | '/agents-ia/courtiers'
+    | '/agents-ia/professions-liberales'
+    | '/agents-ia/restauration'
+    | '/agents-ia/sante'
     | '/blog/$slug'
     | '/outils/audit-fiche-google'
     | '/outils/budget-google-ads-artisan'
@@ -606,8 +662,13 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/agents-ia_/agences-immobilieres'
     | '/agents-ia_/agent-vocal'
+    | '/agents-ia_/automobile'
+    | '/agents-ia_/beaute'
     | '/agents-ia_/btp'
     | '/agents-ia_/courtiers'
+    | '/agents-ia_/professions-liberales'
+    | '/agents-ia_/restauration'
+    | '/agents-ia_/sante'
     | '/blog/$slug'
     | '/outils/audit-fiche-google'
     | '/outils/budget-google-ads-artisan'
@@ -658,8 +719,13 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   AgentsIaAgencesImmobilieresRoute: typeof AgentsIaAgencesImmobilieresRoute
   AgentsIaAgentVocalRoute: typeof AgentsIaAgentVocalRoute
+  AgentsIaAutomobileRoute: typeof AgentsIaAutomobileRoute
+  AgentsIaBeauteRoute: typeof AgentsIaBeauteRoute
   AgentsIaBtpRoute: typeof AgentsIaBtpRoute
   AgentsIaCourtiersRoute: typeof AgentsIaCourtiersRoute
+  AgentsIaProfessionsLiberalesRoute: typeof AgentsIaProfessionsLiberalesRoute
+  AgentsIaRestaurationRoute: typeof AgentsIaRestaurationRoute
+  AgentsIaSanteRoute: typeof AgentsIaSanteRoute
   OutilsAuditFicheGoogleRoute: typeof OutilsAuditFicheGoogleRoute
   OutilsBudgetGoogleAdsArtisanRoute: typeof OutilsBudgetGoogleAdsArtisanRoute
   RealisationsSlugRoute: typeof RealisationsSlugRoute
@@ -984,6 +1050,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof BlogRoute
     }
+    '/agents-ia_/sante': {
+      id: '/agents-ia_/sante'
+      path: '/agents-ia/sante'
+      fullPath: '/agents-ia/sante'
+      preLoaderRoute: typeof AgentsIaSanteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agents-ia_/restauration': {
+      id: '/agents-ia_/restauration'
+      path: '/agents-ia/restauration'
+      fullPath: '/agents-ia/restauration'
+      preLoaderRoute: typeof AgentsIaRestaurationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agents-ia_/professions-liberales': {
+      id: '/agents-ia_/professions-liberales'
+      path: '/agents-ia/professions-liberales'
+      fullPath: '/agents-ia/professions-liberales'
+      preLoaderRoute: typeof AgentsIaProfessionsLiberalesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/agents-ia_/courtiers': {
       id: '/agents-ia_/courtiers'
       path: '/agents-ia/courtiers'
@@ -996,6 +1083,20 @@ declare module '@tanstack/react-router' {
       path: '/agents-ia/btp'
       fullPath: '/agents-ia/btp'
       preLoaderRoute: typeof AgentsIaBtpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agents-ia_/beaute': {
+      id: '/agents-ia_/beaute'
+      path: '/agents-ia/beaute'
+      fullPath: '/agents-ia/beaute'
+      preLoaderRoute: typeof AgentsIaBeauteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agents-ia_/automobile': {
+      id: '/agents-ia_/automobile'
+      path: '/agents-ia/automobile'
+      fullPath: '/agents-ia/automobile'
+      preLoaderRoute: typeof AgentsIaAutomobileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/agents-ia_/agent-vocal': {
@@ -1068,8 +1169,13 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   AgentsIaAgencesImmobilieresRoute: AgentsIaAgencesImmobilieresRoute,
   AgentsIaAgentVocalRoute: AgentsIaAgentVocalRoute,
+  AgentsIaAutomobileRoute: AgentsIaAutomobileRoute,
+  AgentsIaBeauteRoute: AgentsIaBeauteRoute,
   AgentsIaBtpRoute: AgentsIaBtpRoute,
   AgentsIaCourtiersRoute: AgentsIaCourtiersRoute,
+  AgentsIaProfessionsLiberalesRoute: AgentsIaProfessionsLiberalesRoute,
+  AgentsIaRestaurationRoute: AgentsIaRestaurationRoute,
+  AgentsIaSanteRoute: AgentsIaSanteRoute,
   OutilsAuditFicheGoogleRoute: OutilsAuditFicheGoogleRoute,
   OutilsBudgetGoogleAdsArtisanRoute: OutilsBudgetGoogleAdsArtisanRoute,
   RealisationsSlugRoute: RealisationsSlugRoute,

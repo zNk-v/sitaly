@@ -60,6 +60,11 @@ Outils utilisés : Vapi pour la voix, Twilio pour les appels et les SMS, Cal.com
 - **Agences immobilières** (https://sitaly.fr/agents-ia/agences-immobilieres/) : appels pendant les visites, leads des portails le soir et le week-end, qualification des acquéreurs et des vendeurs, visites et estimations dans l'agenda du bon négociateur, relance des estimations sans suite.
 - **Courtiers en crédit et en assurance** (https://sitaly.fr/agents-ia/courtiers/) : rappel des demandes entrantes, premier recueil d'informations sans conseil, rendez-vous avec le conseiller adapté, liste des pièces justificatives et relances jusqu'à ce que le dossier soit complet.
 - **Entreprises du BTP** (https://sitaly.fr/agents-ia/btp/) : appels pendant les chantiers, tri entre nouveau projet, chantier en cours et SAV, qualification des travaux et de la zone, visites techniques, relance des devis envoyés.
+- **Restaurants et hôtels** (https://sitaly.fr/agents-ia/restauration/) : réservations prises pendant le service selon les disponibilités réelles, confirmation et rappel par SMS, questions pratiques, demandes de groupe transmises au responsable ; aucun engagement sur les allergènes au-delà de la fiche fournie par l'établissement.
+- **Cabinets de santé et de bien-être** (https://sitaly.fr/agents-ia/sante/) : prise, déplacement et annulation des rendez-vous, rappels, questions pratiques ; aucun avis médical, toute urgence orientée vers le 15 ou le 112, données limitées à la prise de rendez-vous.
+- **Salons de coiffure et instituts de beauté** (https://sitaly.fr/agents-ia/beaute/) : réservation de la bonne prestation avec la bonne personne, rappels, liens d'acompte, liste d'attente ; aucun conseil de soin.
+- **Garages et automobile** (https://sitaly.fr/agents-ia/automobile/) : rendez-vous d'atelier selon la capacité, réponse à « mon véhicule est-il prêt ? », préparation et relance des devis ; aucun diagnostic de panne.
+- **Professions libérales** (https://sitaly.fr/agents-ia/professions-liberales/) : accueil et qualification des premiers contacts, orientation vers le bon associé, liste et relance des pièces ; aucun conseil juridique, fiscal ou technique.
 
 ### Déploiement
 

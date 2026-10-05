@@ -1156,7 +1156,6 @@
   inset: -1rem -0.5rem;
 }
 
-
 /* Bouton primaire --------------------------------------------------------- */
 
 /* Le dégradé fait deux fois la largeur du bouton et glisse au survol : la
@@ -2215,5 +2214,461 @@ body.menu-ouvert .entete-plaque {
   (prefers-reduced-motion: no-preference) and (max-width: 699px) and (min-height: 580px) {
   .champ-hote {
     display: none;
+  }
+}
+
+/* ============================================================
+   Refonte de l'accueil, 5 octobre 2026 (DESIGN.md §11)
+   ============================================================ */
+
+/* Carte claire posée sur une section .on-ink : rétablit les jetons du papier,
+   sans quoi les maquettes héritent d'un texte blanc sur fond blanc. */
+@utility sur-papier {
+  color: oklch(0.2 0.045 302);
+  --foreground: oklch(0.2 0.045 302);
+  --muted-foreground: oklch(0.48 0.03 302);
+  --border: oklch(0.92 0.008 302);
+  --input: oklch(0.92 0.008 302);
+  --secondary: var(--paper-sunk);
+  --secondary-foreground: var(--violet);
+  --brand-ink: var(--violet);
+}
+
+/* « Découvrir le service » : le libellé, puis une flèche dans un rond qui se
+   remplit au survol. */
+.lien-service {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-weight: 600;
+}
+.lien-service-rond {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (hover: hover) {
+  .lien-service:hover .lien-service-rond {
+    background: var(--foreground);
+    color: var(--ink);
+    transform: translateX(3px);
+  }
+}
+
+/* --- Premier écran sur l'encre : trois foyers de la triade --------------- */
+.hero-foyers {
+  background:
+    radial-gradient(55% 45% at 12% 0%, oklch(0.5 0.19 258 / 0.38), transparent 70%),
+    radial-gradient(45% 40% at 88% 6%, oklch(0.52 0.22 350 / 0.22), transparent 70%),
+    radial-gradient(70% 55% at 50% 100%, oklch(0.48 0.22 300 / 0.28), transparent 70%);
+}
+
+/* Bande sombre des services : de fines rayures verticales, comme le fond
+   strié de la référence. */
+.fond-rayures {
+  background-image: repeating-linear-gradient(
+    90deg,
+    oklch(1 0 0 / 0.028) 0 1px,
+    transparent 1px 7.5rem
+  );
+}
+
+/* --- Défilés en boucle : plateformes et avis ------------------------------
+   La piste est doublée ; elle recule de la moitié de sa largeur, donc la
+   copie prend exactement la place de l'original. */
+.defile-masque {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .defile-plateformes {
+    animation: marquee-scroll 38s linear infinite;
+  }
+  .defile-avis-piste {
+    animation: marquee-scroll 70s linear infinite;
+  }
+  .defile-avis:hover .defile-avis-piste,
+  .defile-avis:focus-within .defile-avis-piste {
+    animation-play-state: paused;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .defile-avis {
+    overflow-x: auto;
+  }
+}
+
+/* Carte d'interface posée sur la photo du premier écran : elle flotte. */
+@media (prefers-reduced-motion: no-preference) {
+  .carte-flottante {
+    animation: float-soft 6s ease-in-out infinite;
+  }
+}
+
+/* --- Rangées de services : la photo glisse, la carte monte ensuite ------- */
+.ai-anim [data-reveal].rangee {
+  opacity: 1;
+  transform: none;
+}
+.ai-anim .rangee .rangee-photo {
+  opacity: 0;
+  transform: translateX(-56px) scale(0.98);
+  transition:
+    opacity 0.9s ease,
+    transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ai-anim .rangee--droite .rangee-photo {
+  transform: translateX(56px) scale(0.98);
+}
+.ai-anim .rangee .rangee-carte {
+  opacity: 0;
+  transform: translateY(44px);
+  transition:
+    opacity 0.7s ease 0.35s,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
+}
+.ai-anim .rangee.is-in .rangee-photo,
+.ai-anim .rangee.is-in .rangee-carte {
+  opacity: 1;
+  transform: none;
+}
+
+/* --- Manifeste : les cartes entrent et sortent par groupe ----------------
+   `translate` et `scale` en propriétés séparées : l'inclinaison de chaque
+   place passe par `rotate`, et les trois se composent sans s'écraser. */
+.manifeste-carte {
+  opacity: 0;
+  translate: 0 48px;
+  scale: 0.94;
+  transition:
+    opacity 0.5s ease var(--d, 0ms),
+    translate 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms),
+    scale 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms);
+}
+.manifeste-carte.est-actif {
+  opacity: 1;
+  translate: 0 0;
+  scale: 1;
+}
+.manifeste-carte.est-passe {
+  translate: 0 -48px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .manifeste-carte {
+    transition: opacity 0.2s ease;
+    translate: none;
+    scale: none;
+  }
+}
+
+/* --- Feuille de route du process ----------------------------------------
+   Un cycle de 12 s : les barres poussent l'une après l'autre, le curseur
+   avance, tout s'efface et recommence. Le bouton fige le cycle. */
+.feuille-barre {
+  transform-origin: left center;
+}
+.feuille-barre--clair {
+  background: var(--paper-sunk);
+  border: 1px solid var(--border);
+}
+.feuille-barre--violet {
+  background: color-mix(in oklab, var(--violet) 16%, white);
+  color: var(--violet-ink);
+}
+.feuille-barre--degrade {
+  background-image: var(--gradient-ruban);
+  color: white;
+}
+.feuille-barre--encre {
+  background: var(--ink);
+  color: white;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .feuille-barre {
+    animation: 12s ease-out infinite both;
+  }
+  .feuille li:nth-child(1) .feuille-barre {
+    animation-name: feuille-pousse-1;
+  }
+  .feuille li:nth-child(2) .feuille-barre {
+    animation-name: feuille-pousse-2;
+  }
+  .feuille li:nth-child(3) .feuille-barre {
+    animation-name: feuille-pousse-3;
+  }
+  .feuille li:nth-child(4) .feuille-barre {
+    animation-name: feuille-pousse-4;
+  }
+  .feuille-curseur {
+    animation: feuille-curseur 12s linear infinite;
+  }
+  .feuille.est-en-pause .feuille-barre,
+  .feuille.est-en-pause .feuille-curseur {
+    animation-play-state: paused;
+  }
+}
+.feuille-curseur {
+  left: 30%;
+}
+@keyframes feuille-curseur {
+  0% {
+    left: 0%;
+    opacity: 1;
+  }
+  90% {
+    left: 100%;
+    opacity: 1;
+  }
+  95%,
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+@keyframes feuille-pousse-1 {
+  0%,
+  2% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  12%,
+  90% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  97%,
+  100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+}
+@keyframes feuille-pousse-2 {
+  0%,
+  16% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  28%,
+  90% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  97%,
+  100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+}
+@keyframes feuille-pousse-3 {
+  0%,
+  40% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  52%,
+  90% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  97%,
+  100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+}
+@keyframes feuille-pousse-4 {
+  0%,
+  64% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  76%,
+  90% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  97%,
+  100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+}
+
+/* --- Vitrine des secteurs (accordéon d'images, d'après 21st.dev) ---------
+   Un halo de la triade suit le pointeur, posé sur un grain fin. Les
+   panneaux s'ouvrent par une transition sur `flex` (en hauteur sous lg). */
+.vitrine-halo {
+  background:
+    radial-gradient(
+      38rem 28rem at var(--mx, 75%) var(--my, 20%),
+      oklch(0.48 0.22 300 / 0.32),
+      transparent 70%
+    ),
+    radial-gradient(40% 50% at 0% 100%, oklch(0.5 0.19 258 / 0.25), transparent 70%),
+    radial-gradient(35% 40% at 100% 100%, oklch(0.52 0.22 350 / 0.18), transparent 70%);
+  transition: background-position 0.2s ease;
+}
+.vitrine-grain {
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.vitrine-chiffre {
+  background: linear-gradient(
+    100deg,
+    var(--blue-on-ink),
+    var(--violet-on-ink) 50%,
+    var(--red-on-ink)
+  );
+  background: linear-gradient(100deg in oklch, var(--blue-on-ink), var(--red-on-ink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.vitrine-panneau {
+  height: 4.5rem;
+  transition: height 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.vitrine-panneau.est-ouvert {
+  height: 32rem;
+}
+@media (min-width: 1024px) {
+  .vitrine-panneau {
+    height: auto;
+    flex: 0 0 4.75rem;
+    min-width: 0;
+    transition: flex 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .vitrine-panneau.est-ouvert {
+    height: auto;
+    flex: 1 1 0%;
+  }
+  .vitrine-libelle {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+  }
+}
+
+/* La photo : désaturée et serrée en bande, pleine et en lent zoom une fois
+   ouverte. */
+.vitrine-photo {
+  filter: grayscale(0.7) brightness(0.6);
+  transform: scale(1.18);
+  transition:
+    filter 0.8s ease,
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.vitrine-panneau:not(.est-ouvert):hover .vitrine-photo {
+  filter: grayscale(0.2) brightness(0.8);
+}
+.vitrine-panneau.est-ouvert .vitrine-photo {
+  filter: none;
+  transform: scale(1.04);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .vitrine-panneau.est-ouvert .vitrine-photo {
+    animation: vitrine-zoom 9s ease-out forwards;
+  }
+}
+@keyframes vitrine-zoom {
+  from {
+    transform: scale(1.04);
+  }
+  to {
+    transform: scale(1.14);
+  }
+}
+
+.vitrine-voile {
+  background: oklch(0.165 0.045 302 / 0.35);
+  transition: background 0.6s ease;
+}
+.vitrine-panneau.est-ouvert .vitrine-voile {
+  background: linear-gradient(
+    to top,
+    oklch(0.115 0.032 302 / 0.95) 0%,
+    oklch(0.115 0.032 302 / 0.55) 45%,
+    transparent 75%
+  );
+}
+
+/* La bande repliée disparaît quand le panneau s'ouvre. */
+.vitrine-bande {
+  transition: opacity 0.3s ease;
+}
+.vitrine-panneau.est-ouvert .vitrine-bande {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Le contenu monte, élément par élément, une fois le panneau ouvert. */
+.vitrine-corps {
+  visibility: hidden;
+}
+.vitrine-corps > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+.vitrine-panneau.est-ouvert .vitrine-corps {
+  visibility: visible;
+}
+.vitrine-panneau.est-ouvert .vitrine-corps > * {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.6s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.vitrine-panneau.est-ouvert .vitrine-corps > :nth-child(1) {
+  transition-delay: 0.3s;
+}
+.vitrine-panneau.est-ouvert .vitrine-corps > :nth-child(2) {
+  transition-delay: 0.38s;
+}
+.vitrine-panneau.est-ouvert .vitrine-corps > :nth-child(3) {
+  transition-delay: 0.46s;
+}
+.vitrine-panneau.est-ouvert .vitrine-corps > :nth-child(4) {
+  transition-delay: 0.54s;
+}
+.vitrine-panneau.est-ouvert .vitrine-corps > :nth-child(5) {
+  transition-delay: 0.62s;
+}
+.vitrine-panneau.est-ouvert .vitrine-corps > .vitrine-barre {
+  transform: scaleX(0);
+}
+
+.vitrine-barre {
+  background-image: var(--gradient-ruban);
+  animation-name: vitrine-progression;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+@keyframes vitrine-progression {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vitrine-panneau,
+  .vitrine-photo,
+  .vitrine-corps > * {
+    transition: none !important;
   }
 }
