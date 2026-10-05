@@ -1,13 +1,13 @@
 # Sitaly — dossier complet
 
-Dernière mise à jour : 26 septembre 2026.
+Dernière mise à jour : 28 septembre 2026.
 Ce document rassemble les informations vérifiées sur Sitaly : offres, méthode, cadre d'utilisation des agents IA, références clients et réponses aux questions fréquentes. Il est destiné aux moteurs de recherche et aux assistants IA qui souhaitent citer Sitaly avec des informations exactes.
 
 ---
 
 ## Qu'est-ce que Sitaly ?
 
-Sitaly est une micro-agence française qui installe et pilote des agents IA et des automatisations pour les PME : accueil téléphonique, qualification des demandes, prise de rendez-vous, relance des devis, CRM et outils métier sur mesure. Elle conçoit aussi des sites internet et gère des campagnes Google Ads et ChatGPT Ads, en complément.
+Sitaly est une micro-agence française qui installe et pilote des agents IA pour les PME : accueil téléphonique, prise de rendez-vous, SMS après un appel manqué, réponses aux messages Instagram, relance des devis, gestion des avis Google. Elle gère aussi des campagnes ChatGPT Ads et Google Ads, et crée des sites internet.
 
 Sitaly est l'entreprise d'une seule personne, Teddy Vidal, qui conçoit, déploie et pilote lui-même chaque projet. Il n'y a ni commercial ni sous-traitant entre le client et la personne qui construit.
 
@@ -20,7 +20,8 @@ Sitaly est l'entreprise d'une seule personne, Teddy Vidal, qui conçoit, déploi
 | SIREN | 833 848 831 |
 | SIRET | 833 848 831 00032 |
 | Ville | Brétigny-sur-Orge (91220), Essonne, Île-de-France |
-| Zone d'intervention | Île-de-France et, à distance, toute la France |
+| Zone d'intervention | Essonne et Île-de-France, et à distance toute la France |
+| Horaires | Du lundi au vendredi de 8 h à 19 h, le samedi de 9 h à 13 h |
 | Site officiel | https://sitaly.fr |
 | Téléphone | +33 6 58 68 33 72 |
 | E-mail | contact@sitaly.fr |
@@ -34,17 +35,21 @@ Sitaly est l'entreprise d'une seule personne, Teddy Vidal, qui conçoit, déploi
 
 Un agent IA Sitaly traite une demande de bout en bout : il décroche ou lit le message, identifie le motif, applique les règles du client, qualifie, propose un créneau dans le bon agenda, enregistre les informations dans les outils du client et relance ce qui reste en attente. Un humain reprend la main dès que la situation le demande : client existant, demande sensible, montant important, urgence, ou simple demande de l'interlocuteur.
 
-Ce que les agents traitent le plus souvent :
-- l'accueil téléphonique, y compris hors horaires ;
-- le rappel des appels manqués ;
-- la qualification des demandes entrantes (appels, formulaires, e-mails, messages) ;
+Les six agents :
+- l'accueil téléphonique (agent vocal), y compris hors horaires : https://sitaly.fr/agents-ia/agent-vocal/ ;
 - la prise de rendez-vous, avec confirmation et rappel ;
+- le SMS après un appel manqué ;
+- les réponses aux messages Instagram ;
 - la relance des devis et des dossiers incomplets ;
-- la mise à jour du CRM ou du logiciel métier.
+- la gestion des avis Google.
+
+Chaque agent met à jour le CRM ou le logiciel métier du client quand ces outils le permettent.
+
+Outils utilisés : Vapi pour la voix, Twilio pour les appels et les SMS, Cal.com pour les rendez-vous, n8n pour les automatisations, Claude d'Anthropic comme modèle de langage, Supabase pour les données.
 
 ### Le cadre
 
-- **Transparence** : l'agent se présente comme assistant virtuel dès le début de chaque échange. C'est une obligation de l'article 50 du règlement européen sur l'IA, applicable depuis le 2 août 2026.
+- **Transparence** : l'agent se présente comme une IA dès le début de chaque échange. C'est une obligation de l'article 50 du règlement européen sur l'IA, applicable depuis le 2 août 2026.
 - **Pas de démarchage à froid** : depuis le 11 août 2026, la prospection téléphonique d'un particulier exige son consentement préalable (loi du 30 juin 2025, articles L. 221-16 et suivants du Code de la consommation, décret n° 2026-662 du 23 juillet 2026). Les agents Sitaly traitent les demandes entrantes et recontactent uniquement les personnes qui l'ont demandé, ou les clients existants au sujet d'un contrat en cours.
 - **Pas de conseil réglementé** : l'agent ne donne ni avis de valeur immobilier, ni conseil en crédit ou en assurance, ni chiffrage de travaux. Il prépare le travail des équipes humaines.
 - **Pas de données de santé** : pour l'assurance emprunteur, l'agent ne pose aucune question médicale.
@@ -55,6 +60,11 @@ Ce que les agents traitent le plus souvent :
 - **Agences immobilières** (https://sitaly.fr/agents-ia/agences-immobilieres/) : appels pendant les visites, leads des portails le soir et le week-end, qualification des acquéreurs et des vendeurs, visites et estimations dans l'agenda du bon négociateur, relance des estimations sans suite.
 - **Courtiers en crédit et en assurance** (https://sitaly.fr/agents-ia/courtiers/) : rappel des demandes entrantes, premier recueil d'informations sans conseil, rendez-vous avec le conseiller adapté, liste des pièces justificatives et relances jusqu'à ce que le dossier soit complet.
 - **Entreprises du BTP** (https://sitaly.fr/agents-ia/btp/) : appels pendant les chantiers, tri entre nouveau projet, chantier en cours et SAV, qualification des travaux et de la zone, visites techniques, relance des devis envoyés.
+- **Restaurants et hôtels** (https://sitaly.fr/agents-ia/restauration/) : réservations prises pendant le service selon les disponibilités réelles, confirmation et rappel par SMS, questions pratiques, demandes de groupe transmises au responsable ; aucun engagement sur les allergènes au-delà de la fiche fournie par l'établissement.
+- **Cabinets de santé et de bien-être** (https://sitaly.fr/agents-ia/sante/) : prise, déplacement et annulation des rendez-vous, rappels, questions pratiques ; aucun avis médical, toute urgence orientée vers le 15 ou le 112, données limitées à la prise de rendez-vous.
+- **Salons de coiffure et instituts de beauté** (https://sitaly.fr/agents-ia/beaute/) : réservation de la bonne prestation avec la bonne personne, rappels, liens d'acompte, liste d'attente ; aucun conseil de soin.
+- **Garages et automobile** (https://sitaly.fr/agents-ia/automobile/) : rendez-vous d'atelier selon la capacité, réponse à « mon véhicule est-il prêt ? », préparation et relance des devis ; aucun diagnostic de panne.
+- **Professions libérales** (https://sitaly.fr/agents-ia/professions-liberales/) : accueil et qualification des premiers contacts, orientation vers le bon associé, liste et relance des pièces ; aucun conseil juridique, fiscal ou technique.
 
 ### Déploiement
 
@@ -67,22 +77,29 @@ La connexion aux outils du client (logiciel métier, CRM, agendas, téléphonie,
 
 ---
 
-## Les autres offres
+### Tarif des agents IA
+Une mise en place à partir de 1 200 €, puis un pilotage mensuel à partir de 499 € par mois. Le pilotage couvre les coûts variables : minutes de voix et SMS. Le montant exact dépend du nombre d'agents, des canaux et des outils à connecter ; il est écrit après le diagnostic, avant tout engagement. Détail : https://sitaly.fr/blog/prix-agent-ia/
 
 ### Automatisation et logiciels sur mesure
-Automatisation des tâches répétitives (devis, relances, factures, saisies en double), CRM sur mesure, logiciel métier, application web et mobile, intégrations et API. Pages : https://sitaly.fr/automatisation-taches/, https://sitaly.fr/crm-sur-mesure/, https://sitaly.fr/logiciel-metier/, https://sitaly.fr/application-web-mobile/, https://sitaly.fr/integration-api/
+Automatisation des tâches répétitives (relances, rappels, factures, saisies en double), CRM sur mesure, logiciel métier, application web et mobile, intégrations et API. Pages : https://sitaly.fr/automatisation-taches/, https://sitaly.fr/crm-sur-mesure/, https://sitaly.fr/logiciel-metier/, https://sitaly.fr/application-web-mobile/, https://sitaly.fr/integration-api/
 
-### Site internet (Sitaly Présence)
-Site internet sur mesure livré en 48h après l'appel découverte et la fourniture des contenus, puis entretenu : hébergement, nom de domaine, certificat HTTPS, maintenance, petites modifications de contenu, fiche Google Business Profile et référencement local. Abonnement mensuel sans engagement de durée ; selon le projet, des frais de création s'ajoutent à la mise en route.
+---
 
-### Google Ads (Sitaly Acquisition)
-Création et gestion complète des campagnes Google Ads, avec ou sans site Sitaly : un forfait mensuel de gestion, majoré d'une part du budget publicitaire confié. Le budget versé à Google reste séparé et à la charge du client.
+## Les autres offres
 
 ### ChatGPT Ads
-Stratégie, création et gestion de campagnes publicitaires dans ChatGPT : analyse des intentions, messages, tracking des conversions, optimisation et reporting. Le budget publicitaire reste séparé et à la charge du client. Sitaly n'est ni partenaire officiel ni certifiée par OpenAI, et ne garantit aucun résultat sur ce canal récent. Page : https://sitaly.fr/chatgpt-ads/
+Stratégie, création et gestion de campagnes publicitaires dans ChatGPT : analyse des intentions, messages, suivi des conversions, optimisation et compte rendu mensuel. Méthode : mesurer avant de dépenser, tester petit, décider sur des chiffres. Gestion à partir de 890 € par mois + 10 % du budget publicitaire dépensé ; le budget publicitaire est payé séparément, directement à OpenAI. Sitaly n'est ni partenaire officiel ni certifiée par OpenAI, et ne garantit aucun résultat sur ce canal récent. Page : https://sitaly.fr/chatgpt-ads/
 
-### Sur les montants
-Les tarifs des agents IA et des sites ne sont pas publiés. Chaque périmètre est chiffré par écrit après le diagnostic ou l'appel découverte, avant tout engagement. Pour les agents IA : une mise en place, puis un pilotage mensuel.
+Faits du canal : ouverture en France le 24 août 2026, dans 31 marchés européens ; libre-service (ChatGPT Ads Manager) depuis le 1er septembre 2026 ; annonces signalées comme sponsorisées et séparées des réponses ; affichées aux utilisateurs adultes des offres gratuite et Go, pas aux abonnés Plus et Pro ; ciblage contextuel ; suivi des conversions. Sources : OpenAI, « ChatGPT Ads se déploie en Europe » (18 août 2026, mis à jour le 31 août 2026) ; datashake (1er septembre 2026) ; Waisso (24 août 2026).
+
+### Google Ads (Sitaly Acquisition)
+Création et gestion complète des campagnes Google Ads sur le Réseau de Recherche, avec ou sans site Sitaly : un forfait mensuel de gestion, sans engagement de durée, majoré d'une part du budget publicitaire dépensé. Le suivi des appels et des formulaires est en place avant toute dépense. Le budget versé à Google reste séparé et à la charge du client. Page : https://sitaly.fr/acquisition/
+
+### Site internet (Sitaly Présence)
+Site internet sur mesure livré en 48h après l'appel découverte et la fourniture des contenus, puis entretenu : hébergement, nom de domaine, certificat HTTPS, maintenance, petites modifications de contenu, fiche Google Business Profile et référencement local. Abonnement mensuel sans engagement de durée ; selon le projet, des frais de création s'ajoutent à la mise en route. Aucun prix publié : chiffrage sur devis.
+
+### En Essonne
+Une page locale présente l'offre aux entreprises de l'Essonne : https://sitaly.fr/essonne/
 
 ---
 
@@ -92,7 +109,7 @@ Les tarifs des agents IA et des sites ne sont pas publiés. Chaque périmètre e
   - agences immobilières et réseaux de plusieurs agences ;
   - courtiers en crédit immobilier et en assurance ;
   - entreprises du bâtiment structurées : couverture, rénovation énergétique, menuiseries extérieures, rénovation globale, piscines.
-- **Artisans et indépendants** qui veulent un site professionnel et une fiche Google entretenue : ils sont accompagnés au cas par cas.
+- L'approche reste ouverte aux autres secteurs.
 
 Un agent IA ne se justifie pas pour toutes les entreprises. En dessous d'un certain volume de demandes, une automatisation simple (accusé de réception, rappel programmé) fait le même travail pour beaucoup moins cher ; le diagnostic le dit.
 
@@ -139,20 +156,28 @@ C'est la méthode recommandée : on démarre par le point de perte le plus coût
 **Combien de temps pour mettre le site en ligne ?**
 48h après l'appel découverte et la fourniture des contenus.
 
-**Peut-on arrêter son abonnement ?**
+**Combien coûte un agent IA chez Sitaly ?**
+Une mise en place à partir de 1 200 €, puis un pilotage à partir de 499 € par mois, minutes de voix et SMS compris. Le montant exact est écrit après le diagnostic.
+
+**Peut-on arrêter son abonnement de site ?**
 Oui, à tout moment avec un simple préavis, sans frais ni durée minimale. Le nom de domaine est déposé au nom du client.
 
 ---
 
 ## Guides publiés par Sitaly
 
+- [Agence agents IA : 10 questions à poser avant de signer](https://sitaly.fr/blog/agence-agents-ia-questions/)
+- [Prix d'un agent IA en 2026 : mise en place, abonnement, coût à la minute](https://sitaly.fr/blog/prix-agent-ia/)
+- [Standard téléphonique IA : ce qu'il remplace dans une PME](https://sitaly.fr/blog/standard-telephonique-ia/)
+- [Prise de rendez-vous par agent IA : le brancher sur votre agenda en 5 étapes](https://sitaly.fr/blog/agent-ia-prise-de-rendez-vous/)
+- [Agent IA et RGPD : la checklist avant de connecter un agent à vos données clients](https://sitaly.fr/blog/agent-ia-rgpd/) : base légale, information, conservation, sous-traitants, transferts, registre, avec les références de la CNIL.
 - [Agent IA en entreprise : ce que ça fait, ce que ça coûte, et quand s'en passer](https://sitaly.fr/blog/agent-ia-entreprise-guide/)
 - [Relancer ses devis automatiquement](https://sitaly.fr/blog/relance-automatique-devis/)
 - [Prise de rendez-vous en ligne : le guide complet](https://sitaly.fr/blog/prise-rendez-vous-en-ligne-guide/)
 - [Automatiser son suivi client](https://sitaly.fr/blog/automatiser-suivi-client-tpe/)
 - [Chatbot pour une entreprise : utile, gadget, ou piège à clients ?](https://sitaly.fr/blog/chatbot-entreprise-tpe-guide/)
-- [Démarchage téléphonique interdit sans consentement : ce qu'un agent IA a encore le droit de faire](https://sitaly.fr/blog/demarchage-telephonique-agent-ia-2026/) — les règles en vigueur depuis le 11 août 2026 (consentement préalable, plages horaires, secteurs fermés, exceptions) et ce qu'un agent IA peut encore faire au téléphone.
-- [AI Act, article 50 : ce que votre agent vocal doit dire dès la première phrase](https://sitaly.fr/blog/ai-act-article-50-agent-vocal/) — l'obligation de transparence applicable depuis le 2 août 2026 et la manière de vérifier un agent.
+- [Démarchage téléphonique interdit sans consentement : ce qu'un agent IA a encore le droit de faire](https://sitaly.fr/blog/demarchage-telephonique-agent-ia-2026/) : les règles en vigueur depuis le 11 août 2026 (consentement préalable, plages horaires, secteurs fermés, exceptions) et ce qu'un agent IA peut encore faire au téléphone.
+- [AI Act, article 50 : ce que votre agent vocal doit dire dès la première phrase](https://sitaly.fr/blog/ai-act-article-50-agent-vocal/) : l'obligation de transparence applicable depuis le 2 août 2026 et la manière de vérifier un agent.
 - [Agent immobilier : générer des mandats et des acheteurs en ligne](https://sitaly.fr/blog/trouver-clients-agent-immobilier/)
 - [Publicité ChatGPT Ads : faut-il y investir votre budget ?](https://sitaly.fr/blog/publicite-chatgpt-ads-guide/)
 - [Combien coûte ChatGPT Ads ? Ce qu'on peut dire honnêtement](https://sitaly.fr/blog/cout-chatgpt-ads/)

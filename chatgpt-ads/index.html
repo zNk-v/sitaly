@@ -5,13 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
 <!-- ============================================================
-     Sitaly ChatGPT Ads — landing page
-     Prix affiché : voir le bloc marqué [TARIF] dans la section OFFRE.
-     Formulaire : envoi par mailto vers CONTACT_EMAIL (<script> en bas).
+     Sitaly ChatGPT Ads : landing page statique, servie depuis public/.
+     Elle n'importe pas src/lib/config.ts : les valeurs y sont recopiées
+     à la main et doivent suivre le code.
+     - Tarif (section #tarif et FAQ) : PRIX_CHATGPT_ADS, soit 890 € par
+       mois + 10 % du budget publicitaire. Si afficher passe à false, retirer
+       les montants ici aussi.
+     - Formulaire : envoi JSON au relais sitaly-forms (FORM_ENDPOINT), mêmes
+       règles que src/lib/formulaire.ts. En cas d'échec, téléphone et
+       e-mail pré-rempli, sans rien effacer de la saisie.
+     - Calendly : CALENDLY_URL.
+     - FAQ : le JSON-LD FAQPage reprend mot pour mot les questions visibles.
      ============================================================ -->
 
-<title>Agence ChatGPT Ads en France — Publicité dans ChatGPT | Sitaly</title>
-<meta name="description" content="Sitaly conçoit et pilote vos campagnes ChatGPT Ads : analyse des intentions, messages, tracking des conversions et optimisation du coût d'acquisition."/>
+<title>Agence ChatGPT Ads : publicité dans ChatGPT | Sitaly</title>
+<meta name="description" content="Publicité dans ChatGPT pour PME et B2B : stratégie, annonces, suivi des conversions et pilotage de vos campagnes ChatGPT Ads. Analyse sans engagement."/>
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large"/>
 <link rel="canonical" href="https://sitaly.fr/chatgpt-ads/"/>
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
@@ -21,12 +30,12 @@
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Sitaly"/>
 <meta property="og:url" content="https://sitaly.fr/chatgpt-ads/"/>
-<meta property="og:title" content="Agence ChatGPT Ads en France — Publicité dans ChatGPT | Sitaly"/>
-<meta property="og:description" content="Analyse des intentions, création des campagnes, tracking des conversions, optimisation du coût d'acquisition. Sitaly vous aide à évaluer ChatGPT Ads."/>
+<meta property="og:title" content="Agence ChatGPT Ads : publicité dans ChatGPT | Sitaly"/>
+<meta property="og:description" content="Publicité dans ChatGPT pour PME et B2B : stratégie, annonces, suivi des conversions et pilotage de vos campagnes ChatGPT Ads. Analyse sans engagement."/>
 <meta property="og:image" content="https://sitaly.fr/og-image.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
-<meta property="og:image:alt" content="Sitaly — agence ChatGPT Ads"/>
+<meta property="og:image:alt" content="Sitaly, agence ChatGPT Ads"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://sitaly.fr/og-image.png"/>
 
@@ -121,6 +130,18 @@ select.cg-field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg 
 .cg-skip{position:absolute;left:-9999px;top:0;z-index:60}
 .cg-skip:focus{left:1rem;top:1rem;width:auto;height:auto;padding:.6rem 1rem;border-radius:var(--radius-lg);
   background:var(--primary);color:var(--primary-foreground);font-size:.875rem;font-weight:600}
+.cg-table{width:100%;border-collapse:collapse;font-size:.925rem;line-height:1.55}
+.cg-table th,.cg-table td{padding:.85rem 1rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--border)}
+.cg-table thead th{font-family:var(--font-display);font-weight:700;font-size:.95rem;background:var(--secondary)}
+.cg-table tbody th{font-weight:600;color:var(--foreground);width:22%}
+.cg-table td{color:var(--muted-foreground)}
+.cg-table thead .cg-label{display:block;margin-top:.2rem;text-transform:none;letter-spacing:0;font-size:.75rem;font-weight:500}
+@media(max-width:640px){.cg-table th,.cg-table td{padding:.7rem .6rem;font-size:.85rem}.cg-table tbody th{width:auto}}
+.cg-tablewrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius-xl);background:var(--card)}
+.cg-facts{display:flex;flex-direction:column;gap:.85rem;list-style:none;padding:0;margin:0}
+.cg-link{color:var(--accent);font-weight:600}
+.cg-repli{margin-top:1rem;border:1px solid color-mix(in oklch,var(--destructive) 35%,var(--border));border-radius:var(--radius-lg);
+  padding:1rem 1.1rem;background:color-mix(in oklch,var(--destructive) 5%,var(--card));font-size:.9rem;line-height:1.6}
 [hidden]{display:none !important}
 </style>
 
@@ -131,30 +152,16 @@ window.gtag = gtag;
 gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
 gtag('js',new Date());
 gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
+/* gtag.js après le chargement : temps libre, première interaction, ou 4 s
+   (même règle que src/routes/__root.tsx). */
+(function(){var fait=false;function charger(){if(fait)return;fait=true;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-H4Z6HZLE3S';document.head.appendChild(s);}
+function apres(){if('requestIdleCallback' in window)requestIdleCallback(charger,{timeout:4000});setTimeout(charger,4000);}
+['pointerdown','keydown','touchstart','scroll'].forEach(function(e){window.addEventListener(e,charger,{once:true,passive:true});});
+if(document.readyState==='complete')apres();else window.addEventListener('load',apres,{once:true});})();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-H4Z6HZLE3S"></script>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
-{"@type":"Service","@id":"https://sitaly.fr/chatgpt-ads/#service",
-"name":"Gestion de campagnes ChatGPT Ads",
-"serviceType":"Publicité ChatGPT Ads",
-"description":"Conception, lancement, mesure et optimisation de campagnes publicitaires ChatGPT Ads pour PME, entreprises de services, B2B, SaaS et e-commerce.",
-"url":"https://sitaly.fr/chatgpt-ads/",
-"areaServed":{"@type":"Country","name":"France"},
-"audience":{"@type":"BusinessAudience","name":"PME, entreprises B2B, SaaS, e-commerce"},
-"provider":{"@type":"ProfessionalService","name":"Sitaly","url":"https://sitaly.fr","telephone":"+33658683372","email":"contact@sitaly.fr"}},
-{"@type":"BreadcrumbList","@id":"https://sitaly.fr/chatgpt-ads/#breadcrumb","itemListElement":[
-{"@type":"ListItem","position":1,"name":"Accueil","item":"https://sitaly.fr/"},
-{"@type":"ListItem","position":2,"name":"ChatGPT Ads","item":"https://sitaly.fr/chatgpt-ads/"}]},
-{"@type":"FAQPage","@id":"https://sitaly.fr/chatgpt-ads/#faq","mainEntity":[
-{"@type":"Question","name":"Qu'est-ce que ChatGPT Ads ?","acceptedAnswer":{"@type":"Answer","text":"ChatGPT Ads est la régie publicitaire d'OpenAI. Elle permet à des annonceurs de diffuser des messages publicitaires au sein de ChatGPT. Les publicités sont identifiées comme telles, présentées séparément de la réponse, et n'influencent pas le contenu des réponses générées par le modèle."}},
-{"@type":"Question","name":"En quoi ChatGPT Ads est différent de Google Ads ?","acceptedAnswer":{"@type":"Answer","text":"Google Ads répond à une intention exprimée sous forme de requête dans un moteur de recherche. ChatGPT Ads s'inscrit dans une conversation : l'utilisateur décrit son contexte, ses contraintes et son besoin sur plusieurs échanges. Les deux canaux sont complémentaires, ils ne se remplacent pas."}},
-{"@type":"Question","name":"Est-ce que Sitaly est partenaire officiel ou certifié OpenAI ?","acceptedAnswer":{"@type":"Answer","text":"Non. Sitaly n'est ni partenaire officiel, ni certifié par OpenAI, et ne revendique aucun accès privilégié. Sitaly est une agence indépendante d'acquisition qui se positionne tôt sur ce canal et applique la même rigueur que sur ses campagnes Google Ads."}},
-{"@type":"Question","name":"Est-ce que mes publicités apparaîtront dans toutes les conversations ?","acceptedAnswer":{"@type":"Answer","text":"Non. La diffusion dépend du contexte de la conversation, du format, de l'audience concernée et des règles fixées par OpenAI. Aucune agence ne peut garantir une présence dans toutes les conversations, ni sur une requête précise."}},
-{"@type":"Question","name":"Quels résultats puis-je attendre ?","acceptedAnswer":{"@type":"Answer","text":"Aucun résultat ne peut être garanti sur un canal récent. L'objectif d'une première phase est d'obtenir des données fiables : coût par clic, coût par lead, qualité des demandes et coût réel d'acquisition. Ces données permettent ensuite de décider d'arrêter, de maintenir ou d'augmenter l'investissement."}},
-{"@type":"Question","name":"Quel budget prévoir pour tester ChatGPT Ads ?","acceptedAnswer":{"@type":"Answer","text":"Le budget publicitaire est distinct des honoraires de gestion et vous est facturé directement par la régie. Le montant pertinent dépend de votre secteur, de votre panier moyen et du volume de données nécessaire pour conclure. Nous le définissons ensemble lors de l'analyse préalable."}},
-{"@type":"Question","name":"Faut-il déjà faire de la publicité pour se lancer ?","acceptedAnswer":{"@type":"Answer","text":"Ce n'est pas obligatoire, mais c'est préférable. Les entreprises qui mesurent déjà leurs conversions et connaissent la valeur d'un client tirent des conclusions beaucoup plus vite. Si votre tracking n'est pas en place, nous commençons par là."}}]}]}
+{"@context": "https://schema.org","@graph": [{"@type": "Service","@id": "https://sitaly.fr/chatgpt-ads/#service","name": "Gestion de campagnes ChatGPT Ads","serviceType": "Agence ChatGPT Ads","description": "Conception, lancement, mesure et optimisation de campagnes publicitaires ChatGPT Ads pour PME, entreprises de services, B2B, SaaS et e-commerce.","url": "https://sitaly.fr/chatgpt-ads/","provider": {"@id": "https://sitaly.fr/#business"},"areaServed": {"@type": "Country","name": "France"},"audience": {"@type": "BusinessAudience","audienceType": "PME, entreprises B2B, SaaS, e-commerce"}},{"@type": "BreadcrumbList","@id": "https://sitaly.fr/chatgpt-ads/#breadcrumb","itemListElement": [{"@type": "ListItem","position": 1,"name": "Accueil","item": "https://sitaly.fr/"},{"@type": "ListItem","position": 2,"name": "ChatGPT Ads","item": "https://sitaly.fr/chatgpt-ads/"}]},{"@type": "FAQPage","@id": "https://sitaly.fr/chatgpt-ads/#faq","mainEntity": [{"@type": "Question","name": "Qu'est-ce que ChatGPT Ads ?","acceptedAnswer": {"@type": "Answer","text": "ChatGPT Ads est la régie publicitaire d'OpenAI. Elle permet à des annonceurs de diffuser des messages publicitaires au sein de ChatGPT. Les publicités sont identifiées comme telles, présentées séparément de la réponse, et n'influencent pas le contenu des réponses générées par le modèle."}},{"@type": "Question","name": "Combien coûte ChatGPT Ads ?","acceptedAnswer": {"@type": "Answer","text": "Deux budgets distincts : le budget publicitaire, payé à OpenAI, et la gestion. Chez Sitaly, la gestion démarre à 890 € par mois plus 10 % du budget publicitaire. Le détail du calcul et le budget de test sont expliqués dans notre article sur le coût de ChatGPT Ads."}},{"@type": "Question","name": "Qui voit les publicités dans ChatGPT ?","acceptedAnswer": {"@type": "Answer","text": "Les utilisateurs adultes des offres gratuite et Go. Les abonnés Plus et Pro n'en voient pas. Les annonces sont signalées comme telles et séparées des réponses."}},{"@type": "Question","name": "En quoi ChatGPT Ads est-il différent de Google Ads ?","acceptedAnswer": {"@type": "Answer","text": "Google Ads répond à une intention exprimée sous forme de requête dans un moteur de recherche. ChatGPT Ads s'inscrit dans une conversation : l'utilisateur décrit son contexte, ses contraintes et son besoin sur plusieurs échanges. Les deux canaux sont complémentaires, et nous ne recommandons jamais de couper Google Ads pour financer un test ChatGPT Ads."}},{"@type": "Question","name": "Faut-il passer par ChatGPT Ads Manager ou par une agence ?","acceptedAnswer": {"@type": "Answer","text": "Le libre-service est ouvert depuis le 1er septembre 2026. Une agence apporte le suivi des conversions en place avant de dépenser, le choix des intentions à cibler et le pilotage."}},{"@type": "Question","name": "Comment se passe le lancement d'une première campagne ?","acceptedAnswer": {"@type": "Answer","text": "Analyse du potentiel, mise en place du suivi des conversions, premier test avec un budget limité, puis décision sur les chiffres obtenus."}},{"@type": "Question","name": "Sitaly est-elle partenaire officiel ou certifiée OpenAI ?","acceptedAnswer": {"@type": "Answer","text": "Non. Sitaly n'est ni partenaire officiel, ni certifiée par OpenAI, et ne revendique aucun accès privilégié. Il n'existe d'ailleurs pas de certification ChatGPT Ads à ce jour. Sitaly est une agence indépendante d'acquisition qui applique à ce canal la même rigueur de mesure qu'à ses campagnes Google Ads."}},{"@type": "Question","name": "Mes publicités apparaîtront-elles dans toutes les conversations ?","acceptedAnswer": {"@type": "Answer","text": "Non. La diffusion dépend du contexte de la conversation, du format, de l'audience concernée et des règles fixées par OpenAI. Aucune agence ne peut garantir une présence dans toutes les conversations, ni sur une formulation précise. Les modalités de ce canal peuvent encore évoluer."}},{"@type": "Question","name": "Quels résultats puis-je attendre ?","acceptedAnswer": {"@type": "Answer","text": "Aucun résultat ne peut être garanti sur un canal récent, et nous n'en promettons pas. L'objectif d'une première phase est d'obtenir des données fiables : coût par clic, coût par lead, qualité des demandes et coût réel d'acquisition. Ces données permettent ensuite de décider d'arrêter, de maintenir ou d'augmenter l'investissement."}},{"@type": "Question","name": "Quel budget publicitaire prévoir ?","acceptedAnswer": {"@type": "Answer","text": "Le budget publicitaire est distinct de nos honoraires de gestion. Le montant pertinent dépend de votre secteur, de votre panier moyen et du volume de données nécessaire pour conclure. Nous le définissons ensemble lors de l'analyse préalable, et nous vous disons si le montant envisagé est trop faible pour être concluant."}},{"@type": "Question","name": "Faut-il déjà investir en publicité pour se lancer ?","acceptedAnswer": {"@type": "Answer","text": "Ce n'est pas obligatoire, mais c'est préférable. Les entreprises qui mesurent déjà leurs conversions et connaissent la valeur d'un client tirent des conclusions plus vite. Si votre suivi des conversions n'est pas en place, nous commençons par là : il sert aussi tous vos autres canaux."}},{"@type": "Question","name": "Peut-on combiner ChatGPT Ads et vos agents IA ?","acceptedAnswer": {"@type": "Answer","text": "Oui. Un canal d'acquisition ne vaut que par ce qui se passe après le clic. Nos agents IA répondent aux demandes entrantes, les qualifient et prennent les rendez-vous, pour qu'aucune demande payée ne reste sans réponse."}}]}]}
 </script>
 </head>
 <body>
@@ -200,11 +207,17 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
       <div>
         <span class="cg-eyebrow"><span class="cg-dot"></span>Nouveau canal d'acquisition</span>
         <h1 class="cg-h1 font-bold tracking-tight" style="margin-top:1.25rem">
-          Apparaissez dans <span class="gradient-text">ChatGPT</span> au moment où vos futurs clients cherchent une solution.
+          Agence ChatGPT Ads&nbsp;: votre publicité dans <span class="gradient-text">ChatGPT</span>
         </h1>
-        <p class="cg-mb6" style="margin-top:1.25rem;font-size:1.075rem;line-height:1.7;color:var(--muted-foreground)">
-          Des millions de décisions d'achat commencent désormais par une conversation plutôt que par une requête.
-          Sitaly conçoit, lance et optimise vos campagnes <strong class="text-foreground">ChatGPT Ads</strong> —
+        <p style="margin-top:1.25rem;font-family:var(--font-display);font-size:1.3rem;font-weight:700;line-height:1.35;letter-spacing:-.01em">
+          Apparaissez dans ChatGPT au moment où vos futurs clients cherchent une solution.
+        </p>
+        <p class="cg-note" style="margin-top:.6rem">
+          Campagnes pilotées par <a href="/a-propos/" class="cg-link">Teddy Vidal</a>, page mise à jour le 28 septembre 2026.
+        </p>
+        <p class="cg-mb6" style="margin-top:1.1rem;font-size:1.075rem;line-height:1.7;color:var(--muted-foreground)">
+          Une partie des décisions d'achat commence désormais par une conversation plutôt que par une requête.
+          Sitaly conçoit, lance et optimise vos campagnes <strong class="text-foreground">ChatGPT Ads</strong>,
           et mesure ce qu'elles rapportent réellement.
         </p>
         <div style="display:flex;flex-wrap:wrap;gap:.75rem">
@@ -249,55 +262,57 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
   </div>
 </section>
 
-<!-- ================= 2. LE NOUVEAU CANAL ================= -->
+<!-- ================= 2. CHATGPT ADS OU GOOGLE ADS ================= -->
 <section class="cg-sec">
   <div class="cg-wrap">
     <div class="cg-narrow" style="text-align:center">
       <span class="cg-eyebrow"><span class="cg-dot"></span>Le nouveau canal</span>
       <h2 class="cg-h1 font-bold tracking-tight" style="font-size:2rem;margin-top:1rem">
-        La recherche ne s'arrête plus à une requête
+        ChatGPT Ads ou Google Ads&nbsp;: ce qui change pour votre acquisition
       </h2>
       <p style="margin-top:1rem;font-size:1.05rem;line-height:1.7;color:var(--muted-foreground)">
-        Une requête tient en trois mots. Une conversation, elle, contient le budget, les contraintes,
-        la taille de l'entreprise, les solutions déjà écartées et le délai. C'est une intention beaucoup
-        plus complète — et souvent beaucoup plus proche de la décision.
+        Une requête tient en trois mots. Une conversation contient le budget, les contraintes,
+        la taille de l'entreprise, les solutions déjà écartées et le délai. L'intention y est plus
+        explicite, et souvent plus proche de la décision.
       </p>
     </div>
 
-    <div class="cg-grid2" style="margin-top:3rem">
-      <div class="cg-card">
-        <span class="cg-label">Recherche classique</span>
-        <h3 class="font-bold tracking-tight cg-mb4" style="font-size:1.25rem;margin-top:.5rem">Google Ads</h3>
-        <p style="font-size:.95rem;line-height:1.65;color:var(--muted-foreground)" class="cg-mb4">
-          Un canal mature, mesurable et toujours indispensable. L'utilisateur formule une requête courte,
-          compare des résultats, puis choisit. Sitaly y pilote déjà des budgets tous les mois.
-        </p>
-        <ul style="display:flex;flex-direction:column;gap:.6rem;list-style:none;padding:0;margin:0">
-          <li class="cg-li"><span style="color:var(--muted-foreground)">•</span> Intention exprimée en mots-clés</li>
-          <li class="cg-li"><span style="color:var(--muted-foreground)">•</span> Volumes connus, enchères matures</li>
-          <li class="cg-li"><span style="color:var(--muted-foreground)">•</span> Concurrence installée, coûts en hausse</li>
-        </ul>
-      </div>
-
-      <div class="cg-card" style="border-color:color-mix(in oklch,var(--accent) 35%,var(--border))">
-        <span class="cg-label" style="color:var(--accent)">Recherche conversationnelle</span>
-        <h3 class="font-bold tracking-tight cg-mb4" style="font-size:1.25rem;margin-top:.5rem">ChatGPT Ads</h3>
-        <p style="font-size:.95rem;line-height:1.65;color:var(--muted-foreground)" class="cg-mb4">
-          Un canal émergent. L'utilisateur décrit une situation, affine son besoin sur plusieurs échanges
-          et attend une recommandation. Le contexte publicitaire est plus riche — et encore peu exploité.
-        </p>
-        <ul style="display:flex;flex-direction:column;gap:.6rem;list-style:none;padding:0;margin:0">
-          <li class="cg-li"><span style="color:var(--accent)">•</span> Intention exprimée en langage naturel</li>
-          <li class="cg-li"><span style="color:var(--accent)">•</span> Contexte détaillé sur plusieurs messages</li>
-          <li class="cg-li"><span style="color:var(--accent)">•</span> Canal récent, référentiels à construire</li>
-        </ul>
-      </div>
+    <div class="cg-tablewrap" style="margin-top:3rem">
+      <table class="cg-table">
+        <caption class="cg-note" style="caption-side:bottom;padding:.85rem 1rem;text-align:left">
+          Deux canaux, deux façons d'exprimer un besoin. Google Ads reste le socle ; ChatGPT Ads s'évalue à côté, avec la même exigence de mesure.
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col"><span class="sr-only">Critère</span></th>
+            <th scope="col">Google Ads<span class="cg-label">Recherche classique</span></th>
+            <th scope="col" style="color:var(--accent)">ChatGPT Ads<span class="cg-label" style="color:var(--accent)">Recherche conversationnelle</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Intention</th>
+            <td>Exprimée en quelques mots-clés, puis comparée dans une liste de résultats.</td>
+            <td>Décrite en langage naturel, avec le contexte et les contraintes, sur plusieurs messages.</td>
+          </tr>
+          <tr>
+            <th scope="row">Format</th>
+            <td>Annonces texte dans les résultats de recherche, au-dessus des résultats naturels.</td>
+            <td>Annonce identifiée comme sponsorisée, affichée séparément de la réponse de ChatGPT.</td>
+          </tr>
+          <tr>
+            <th scope="row">Maturité</th>
+            <td>Canal installé : volumes connus, enchères disputées, repères de coût par secteur.</td>
+            <td>Ouvert en France le 24 août 2026 : peu d'annonceurs, repères de coût à construire.</td>
+          </tr>
+          <tr>
+            <th scope="row">Mesure</th>
+            <td>Suivi des appels, des formulaires et des conversions éprouvé.</td>
+            <td>Suivi des conversions disponible, à brancher et vérifier avant la première dépense.</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-
-    <p class="cg-narrow cg-note" style="margin-top:2rem;text-align:center">
-      Les deux canaux ne s'opposent pas. Google Ads reste le socle de la plupart des stratégies d'acquisition ;
-      ChatGPT Ads est un canal supplémentaire à évaluer avec la même exigence de mesure.
-    </p>
   </div>
 </section>
 
@@ -307,21 +322,21 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
     <div class="cg-narrow" style="text-align:center">
       <span class="cg-eyebrow"><span class="cg-dot"></span>Le contexte</span>
       <h2 class="font-bold tracking-tight" style="font-size:2rem;margin-top:1rem">
-        Vos budgets sont déjà engagés. Un canal vient de s'ouvrir à côté.
+        Pourquoi tester ChatGPT Ads maintenant
       </h2>
       <p style="margin-top:1rem;font-size:1.05rem;line-height:1.7;color:var(--muted-foreground)">
         Sur Google, Meta ou LinkedIn, vous arrivez après des années d'optimisation par vos concurrents.
-        Sur un canal qui démarre, personne n'a encore d'avance — et l'apprentissage coûte moins cher.
+        Sur un canal qui démarre, personne n'a encore d'avance, et l'apprentissage se fait pendant que l'espace est peu disputé.
       </p>
     </div>
 
     <div class="cg-grid3" style="margin-top:3rem">
       <div class="cg-card">
         <div class="cg-num">1</div>
-        <h3 class="font-bold tracking-tight" style="font-size:1.1rem;margin-top:1rem">Les canaux actuels se renchérissent</h3>
+        <h3 class="font-bold tracking-tight" style="font-size:1.1rem;margin-top:1rem">Les canaux installés sont disputés</h3>
         <p style="margin-top:.6rem;font-size:.925rem;line-height:1.65;color:var(--muted-foreground)">
-          Sur les segments concurrentiels, le coût par lead progresse d'année en année. Optimiser encore
-          rapporte, mais chaque point gagné se paie plus cher que le précédent.
+          Sur les requêtes concurrentielles, vos concurrents optimisent depuis des années. Optimiser encore
+          rapporte, mais chaque gain demande plus d'effort que le précédent.
         </p>
       </div>
       <div class="cg-card">
@@ -329,7 +344,7 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
         <h3 class="font-bold tracking-tight" style="font-size:1.1rem;margin-top:1rem">Les usages se déplacent</h3>
         <p style="margin-top:.6rem;font-size:.925rem;line-height:1.65;color:var(--muted-foreground)">
           Une partie des recherches de prestataires, de logiciels et de solutions passe désormais par un
-          assistant conversationnel. Ce trafic ne se retrouve pas dans vos rapports habituels.
+          assistant conversationnel. Ce trafic n'apparaît pas dans vos rapports habituels.
         </p>
       </div>
       <div class="cg-card">
@@ -350,7 +365,7 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
     <div class="cg-narrow" style="text-align:center">
       <span class="cg-eyebrow"><span class="cg-dot"></span>La méthode</span>
       <h2 class="font-bold tracking-tight" style="font-size:2rem;margin-top:1rem">
-        Six étapes, aucune improvisation
+        Notre méthode de gestion de campagnes ChatGPT Ads en 6 étapes
       </h2>
       <p style="margin-top:1rem;font-size:1.05rem;line-height:1.7;color:var(--muted-foreground)">
         La même discipline que nous appliquons à Google Ads, transposée à un canal conversationnel.
@@ -395,7 +410,7 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
         <h3 class="font-bold tracking-tight" style="font-size:1.1rem;margin-top:1rem">Tracking</h3>
         <p style="margin-top:.6rem;font-size:.925rem;line-height:1.65;color:var(--muted-foreground)">
           Conversions, formulaires, appels, rendez-vous. Sans mesure fiable, un canal récent ne produit que
-          des impressions — et aucune décision. Nous branchons le suivi avant de dépenser.
+          des impressions, et aucune décision. Nous branchons le suivi avant de dépenser.
         </p>
       </div>
       <div class="cg-card">
@@ -416,7 +431,7 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
     <div class="cg-narrow" style="text-align:center">
       <span class="cg-eyebrow"><span class="cg-dot"></span>Pour qui</span>
       <h2 class="font-bold tracking-tight" style="font-size:2rem;margin-top:1rem">
-        Ce canal n'est pas pertinent pour tout le monde
+        ChatGPT Ads est-il rentable pour votre entreprise&nbsp;?
       </h2>
       <p style="margin-top:1rem;font-size:1.05rem;line-height:1.7;color:var(--muted-foreground)">
         Nous préférons le dire avant de vous facturer quoi que ce soit.
@@ -459,7 +474,7 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
           <li class="cg-li"><span style="color:var(--muted-foreground);margin-top:.1rem">—</span> <span>Vos campagnes Google Ads existantes présentent encore des marges de progression évidentes.</span></li>
         </ul>
         <p class="cg-note" style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border)">
-          Dans ce cas, nous vous le disons — et nous vous orientons vers
+          Dans ce cas, nous vous le disons, et nous vous orientons vers
           <a href="/acquisition/" style="color:var(--accent);font-weight:600">ce qui aura le plus d'impact</a> à court terme.
         </p>
       </div>
@@ -473,7 +488,7 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
     <div class="cg-narrow" style="text-align:center">
       <span class="cg-eyebrow"><span class="cg-dot"></span>Cas d'usage</span>
       <h2 class="font-bold tracking-tight" style="font-size:2rem;margin-top:1rem">
-        À quoi ressemble une intention exploitable
+        Exemples d'intentions exploitables, secteur par secteur
       </h2>
       <p style="margin-top:1rem;font-size:1.05rem;line-height:1.7;color:var(--muted-foreground)">
         Quelques exemples de situations où une conversation révèle un besoin qualifié.
@@ -544,7 +559,7 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
         « Quel architecte d'intérieur pour rénover un appartement haussmannien à Paris ? »
       </p>
       <p style="margin-top:.85rem;font-size:.875rem;line-height:1.6;color:var(--muted-foreground);max-width:52rem">
-        Le local à forte valeur fonctionne aussi — à condition que le ticket moyen justifie l'investissement
+        Le local à forte valeur fonctionne aussi, à condition que le ticket moyen justifie l'investissement
         publicitaire et que la zone soit suffisamment dense.
       </p>
     </div>
@@ -557,7 +572,7 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
     <div class="cg-narrow" style="text-align:center">
       <span class="cg-eyebrow"><span class="cg-dot"></span>Pourquoi Sitaly</span>
       <h2 class="font-bold tracking-tight" style="font-size:2rem;margin-top:1rem">
-        Une agence d'acquisition, pas un revendeur de nouveauté
+        Pourquoi confier vos campagnes ChatGPT Ads à Sitaly
       </h2>
     </div>
 
@@ -579,8 +594,8 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
       <div class="cg-card">
         <h3 class="font-bold tracking-tight" style="font-size:1.05rem">Automatisation IA</h3>
         <p style="margin-top:.6rem;font-size:.9rem;line-height:1.65;color:var(--muted-foreground)">
-          Nos <a href="/agents-ia/" style="color:var(--accent);font-weight:600">agents IA</a> qualifient les demandes
-          entrantes, relancent et prennent les rendez-vous. Un lead capté n'est pas un lead perdu.
+          Nos <a href="/agents-ia/" style="color:var(--accent);font-weight:600">agents IA</a> répondent aux demandes
+          entrantes, les qualifient, relancent et prennent les rendez-vous. Une demande payée ne reste pas sans réponse.
         </p>
       </div>
       <div class="cg-card">
@@ -595,8 +610,8 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
     <div class="cg-card cg-narrow" style="margin-top:2rem;text-align:center;background:var(--card)">
       <p style="font-size:.95rem;line-height:1.7;color:var(--muted-foreground);margin:0">
         <strong class="text-foreground">Ce que nous ne prétendons pas.</strong>
-        Sitaly n'est pas partenaire officiel d'OpenAI, n'est titulaire d'aucune certification ChatGPT Ads —
-        il n'en existe pas — et ne dispose d'aucun accès privilégié. Nous ne garantissons aucun résultat
+        Sitaly n'est pas partenaire officiel d'OpenAI, n'est titulaire d'aucune certification ChatGPT Ads
+        (il n'en existe pas) et ne dispose d'aucun accès privilégié. Nous ne garantissons aucun résultat
         sur un canal récent. Ce que nous apportons, c'est une méthode d'acquisition éprouvée et la rigueur
         de mesure qui va avec.
       </p>
@@ -604,86 +619,119 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
   </div>
 </section>
 
-<!-- ================= 8. OFFRE ================= -->
-<section class="cg-sec" id="offre">
+<!-- ================= 8. CHATGPT ADS EN FRANCE ================= -->
+<section class="cg-sec" id="france">
   <div class="cg-wrap">
     <div class="cg-narrow" style="text-align:center">
-      <span class="cg-eyebrow"><span class="cg-dot"></span>L'offre</span>
+      <span class="cg-eyebrow"><span class="cg-dot"></span>Les faits</span>
       <h2 class="font-bold tracking-tight" style="font-size:2rem;margin-top:1rem">
-        Un accompagnement complet, budget publicitaire séparé
+        ChatGPT Ads en France&nbsp;: dates, audiences et formats
       </h2>
       <p style="margin-top:1rem;font-size:1.05rem;line-height:1.7;color:var(--muted-foreground)">
-        Vous payez la stratégie et le pilotage. Le budget publicitaire reste le vôtre, et il est distinct
-        de nos honoraires.
+        Ce qui est établi à ce jour, avec les sources. Le canal évolue vite : vérifiez les modalités en vigueur avant d'engager un budget.
+      </p>
+    </div>
+
+    <div class="cg-card cg-narrow" style="margin-top:2.5rem">
+      <ul class="cg-facts">
+        <li class="cg-li"><svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg><span><strong class="text-foreground">Ouverture en France le 24 août 2026</strong>, en même temps que 30 autres marchés européens : 31 au total.</span></li>
+        <li class="cg-li"><svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg><span><strong class="text-foreground">Libre-service depuis le 1er septembre 2026.</strong> Les annonceurs peuvent créer leurs campagnes eux-mêmes dans ChatGPT Ads Manager ; OpenAI a annoncé cette ouverture pour les 31 marchés européens le 31 août 2026.</span></li>
+        <li class="cg-li"><svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg><span><strong class="text-foreground">Qui voit les annonces&nbsp;:</strong> les utilisateurs adultes des offres gratuite et Go. Les abonnés Plus et Pro n'en voient pas.</span></li>
+        <li class="cg-li"><svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg><span><strong class="text-foreground">Format&nbsp;:</strong> des annonces signalées comme sponsorisées et affichées séparément des réponses. Selon OpenAI, la publicité n'influence pas les réponses de ChatGPT.</span></li>
+        <li class="cg-li"><svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg><span><strong class="text-foreground">Ciblage&nbsp;:</strong> contextuel, à partir du sujet de la conversation en cours.</span></li>
+        <li class="cg-li"><svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg><span><strong class="text-foreground">Mesure&nbsp;:</strong> suivi des conversions, par le pixel d'OpenAI, son API Conversions ou des outils de mesure tiers.</span></li>
+      </ul>
+      <p class="cg-note" style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border)">
+        Sources&nbsp;:
+        <a href="https://openai.com/fr-FR/index/chatgpt-ads-expands-across-europe/" target="_blank" rel="noopener" class="cg-link">OpenAI, « ChatGPT Ads se déploie en Europe »</a>, 18 août 2026, mis à jour le 31 août 2026 ;
+        <a href="https://www.datashake.fr/articles/chatgpt-ads-france-self-service" target="_blank" rel="noopener" class="cg-link">datashake, « ChatGPT Ads en France : le self-service est lancé »</a>, 1er septembre 2026 ;
+        <a href="https://waisso.com/digital/chatgpt-ads-france/" target="_blank" rel="noopener" class="cg-link">Waisso, « ChatGPT Ads arrive en France le 24 août 2026 »</a>, 24 août 2026.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 9. TARIF ================= -->
+<section class="cg-sec" id="tarif" style="background:var(--secondary)">
+  <div class="cg-wrap">
+    <div class="cg-narrow" style="text-align:center">
+      <span class="cg-eyebrow"><span class="cg-dot"></span>Le tarif</span>
+      <h2 class="font-bold tracking-tight" style="font-size:2rem;margin-top:1rem">
+        Tarif de gestion ChatGPT Ads&nbsp;: forfait et part du budget
+      </h2>
+      <p style="margin-top:1rem;font-size:1.05rem;line-height:1.7;color:var(--muted-foreground)">
+        Vous payez deux choses distinctes : la gestion, facturée par Sitaly, et le budget publicitaire, payé directement à OpenAI.
       </p>
     </div>
 
     <div class="cg-grid2" style="margin-top:3rem;align-items:start;gap:2rem">
-      <div class="cg-card">
-        <h3 class="font-bold tracking-tight cg-mb4" style="font-size:1.2rem">Ce qui est inclus</h3>
-        <ul style="display:flex;flex-direction:column;gap:.85rem;list-style:none;padding:0;margin:0">
-          <li class="cg-li">
-            <svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
-            <span><strong class="text-foreground">Stratégie</strong> — cartographie des intentions, audiences prioritaires, objectifs et seuils de rentabilité.</span>
-          </li>
-          <li class="cg-li">
-            <svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
-            <span><strong class="text-foreground">Création &amp; gestion</strong> — rédaction des messages, structure des campagnes, mise en ligne et suivi opérationnel.</span>
-          </li>
-          <li class="cg-li">
-            <svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
-            <span><strong class="text-foreground">Tracking</strong> — mise en place et vérification du suivi des conversions avant toute dépense.</span>
-          </li>
-          <li class="cg-li">
-            <svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
-            <span><strong class="text-foreground">Optimisation</strong> — tests de messages, arbitrages de budget, ajustement des audiences.</span>
-          </li>
-          <li class="cg-li">
-            <svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
-            <span><strong class="text-foreground">Reporting</strong> — un point mensuel lisible : dépense, conversions, coût réel d'acquisition, décision recommandée.</span>
-          </li>
-        </ul>
-      </div>
-
       <div class="cg-card" style="border-color:color-mix(in oklch,var(--accent) 40%,var(--border));box-shadow:var(--shadow-glow)">
-        <!-- Les montants ont quitté le site (DESIGN.md §8) : cette carte décrit la
-             structure de la rémunération, le chiffrage est donné après l'analyse. -->
         <span class="cg-label" style="color:var(--accent)">Gestion ChatGPT Ads</span>
         <p style="margin:.75rem 0 0;font-family:var(--font-display);font-size:1.75rem;font-weight:800;letter-spacing:-.03em;line-height:1.1">
-          Un forfait mensuel de gestion
+          À partir de 890&nbsp;€ par mois
         </p>
         <p style="margin:.6rem 0 0;font-size:1.05rem;font-weight:700;color:var(--accent)">
-          + une part du budget publicitaire dépensé
+          + 10&nbsp;% du budget publicitaire dépensé
         </p>
         <p class="cg-note" style="margin-top:.5rem">
-          Hors budget publicitaire, qui reste versé à la régie. La part variable est calculée sur le montant réellement dépensé sur le mois, jamais sur un prévisionnel. Le chiffrage exact vous est donné par écrit après l'analyse, avant tout engagement.
+          Budget publicitaire exclu, payé séparément à OpenAI. La part variable se calcule sur le montant réellement
+          dépensé dans le mois, jamais sur un prévisionnel. Le chiffrage exact vous est donné par écrit après l'analyse,
+          avant tout engagement.
         </p>
-
         <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
           <p style="font-size:.9rem;line-height:1.65;color:var(--muted-foreground);margin:0">
             <strong class="text-foreground">Budget publicitaire séparé.</strong> Il dépend de votre secteur,
             de votre panier moyen et du volume de données nécessaire pour conclure. Nous le définissons
-            ensemble avant le lancement — et nous vous disons franchement si le montant envisagé est
-            insuffisant pour obtenir un enseignement fiable.
+            ensemble avant le lancement, et nous vous disons franchement si le montant envisagé est
+            insuffisant pour obtenir un enseignement fiable. Le calcul pas à pas&nbsp;:
+            <a href="/blog/cout-chatgpt-ads/" class="cg-link">combien coûte ChatGPT Ads</a>.
           </p>
         </div>
-
         <a href="#analyse" class="cg-btn cg-btn-primary" style="width:100%;margin-top:1.5rem">Demander une analyse</a>
         <p class="cg-note" style="margin-top:.85rem;text-align:center">
           Sans engagement de durée, comme le reste de nos offres.
+        </p>
+      </div>
+
+      <div class="cg-card">
+        <h3 class="font-bold tracking-tight cg-mb4" style="font-size:1.2rem">Ce que couvre la gestion</h3>
+        <ul style="display:flex;flex-direction:column;gap:.85rem;list-style:none;padding:0;margin:0">
+          <li class="cg-li">
+            <svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span><strong class="text-foreground">Stratégie</strong> : cartographie des intentions, audiences prioritaires, objectifs et seuils de rentabilité.</span>
+          </li>
+          <li class="cg-li">
+            <svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span><strong class="text-foreground">Création &amp; gestion</strong> : rédaction des messages, structure des campagnes, mise en ligne et suivi opérationnel.</span>
+          </li>
+          <li class="cg-li">
+            <svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span><strong class="text-foreground">Tracking</strong> : mise en place et vérification du suivi des conversions avant toute dépense.</span>
+          </li>
+          <li class="cg-li">
+            <svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span><strong class="text-foreground">Optimisation</strong> : tests de messages, arbitrages de budget, ajustement des audiences.</span>
+          </li>
+          <li class="cg-li">
+            <svg class="cg-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span><strong class="text-foreground">Reporting</strong> : un point mensuel lisible : dépense, conversions, coût réel d'acquisition, décision recommandée.</span>
+          </li>
+        </ul>
+        <p class="cg-note" style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border)">
+          Notre méthode tient en trois règles : mesurer avant de dépenser, tester petit, décider sur des chiffres.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= 9. FAQ ================= -->
-<section class="cg-sec" style="background:var(--secondary)">
+<!-- ================= 10. FAQ ================= -->
+<section class="cg-sec" id="faq">
   <div class="cg-wrap">
     <div class="cg-narrow" style="text-align:center">
       <span class="cg-eyebrow"><span class="cg-dot"></span>Questions fréquentes</span>
       <h2 class="font-bold tracking-tight" style="font-size:2rem;margin-top:1rem">
-        Ce qu'il faut savoir sur la publicité dans ChatGPT
+        Questions fréquentes sur ChatGPT Ads
       </h2>
     </div>
 
@@ -693,48 +741,73 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
         <p>ChatGPT Ads est la régie publicitaire d'OpenAI. Elle permet à des annonceurs de diffuser des messages publicitaires au sein de ChatGPT. Les publicités sont identifiées comme telles, présentées séparément de la réponse, et n'influencent pas le contenu des réponses générées par le modèle.</p>
       </details>
       <details class="cg-faq">
-        <summary>En quoi est-ce différent de Google Ads ?</summary>
-        <p>Google Ads répond à une intention exprimée sous forme de requête dans un moteur de recherche. ChatGPT Ads s'inscrit dans une conversation : l'utilisateur décrit son contexte, ses contraintes et son besoin sur plusieurs échanges. Les deux canaux sont complémentaires — nous ne recommandons jamais de couper Google Ads pour financer un test ChatGPT Ads.</p>
+        <summary>Combien coûte ChatGPT Ads ?</summary>
+        <p>Deux budgets distincts : le budget publicitaire, payé à OpenAI, et la gestion. Chez Sitaly, la gestion démarre à 890 € par mois plus 10 % du budget publicitaire. Le détail du calcul et le budget de test sont expliqués dans <a href="/blog/cout-chatgpt-ads/" style="color:var(--accent);font-weight:600">notre article sur le coût de ChatGPT Ads</a>.</p>
+      </details>
+      <details class="cg-faq">
+        <summary>Qui voit les publicités dans ChatGPT ?</summary>
+        <p>Les utilisateurs adultes des offres gratuite et Go. Les abonnés Plus et Pro n'en voient pas. Les annonces sont signalées comme telles et séparées des réponses.</p>
+      </details>
+      <details class="cg-faq">
+        <summary>En quoi ChatGPT Ads est-il différent de Google Ads ?</summary>
+        <p>Google Ads répond à une intention exprimée sous forme de requête dans un moteur de recherche. ChatGPT Ads s'inscrit dans une conversation : l'utilisateur décrit son contexte, ses contraintes et son besoin sur plusieurs échanges. Les deux canaux sont complémentaires, et nous ne recommandons jamais de couper Google Ads pour financer un test ChatGPT Ads.</p>
+      </details>
+      <details class="cg-faq">
+        <summary>Faut-il passer par ChatGPT Ads Manager ou par une agence ?</summary>
+        <p>Le libre-service est ouvert depuis le 1er septembre 2026. Une agence apporte le suivi des conversions en place avant de dépenser, le choix des intentions à cibler et le pilotage.</p>
+      </details>
+      <details class="cg-faq">
+        <summary>Comment se passe le lancement d'une première campagne ?</summary>
+        <p>Analyse du potentiel, mise en place du suivi des conversions, premier test avec un budget limité, puis décision sur les chiffres obtenus.</p>
       </details>
       <details class="cg-faq">
         <summary>Sitaly est-elle partenaire officiel ou certifiée OpenAI ?</summary>
-        <p>Non. Sitaly n'est ni partenaire officiel, ni certifiée par OpenAI, et ne revendique aucun accès privilégié. Il n'existe d'ailleurs pas de certification ChatGPT Ads à ce jour. Sitaly est une agence indépendante d'acquisition qui se positionne tôt sur ce canal et y applique la même rigueur que sur ses campagnes Google Ads.</p>
+        <p>Non. Sitaly n'est ni partenaire officiel, ni certifiée par OpenAI, et ne revendique aucun accès privilégié. Il n'existe d'ailleurs pas de certification ChatGPT Ads à ce jour. Sitaly est une agence indépendante d'acquisition qui applique à ce canal la même rigueur de mesure qu'à ses campagnes Google Ads.</p>
       </details>
       <details class="cg-faq">
         <summary>Mes publicités apparaîtront-elles dans toutes les conversations ?</summary>
-        <p>Non. La diffusion dépend du contexte de la conversation, du format, de l'audience concernée et des règles fixées par OpenAI. Aucune agence ne peut garantir une présence dans toutes les conversations, ni sur une formulation précise. Les modalités de ce canal sont encore susceptibles d'évoluer.</p>
+        <p>Non. La diffusion dépend du contexte de la conversation, du format, de l'audience concernée et des règles fixées par OpenAI. Aucune agence ne peut garantir une présence dans toutes les conversations, ni sur une formulation précise. Les modalités de ce canal peuvent encore évoluer.</p>
       </details>
       <details class="cg-faq">
         <summary>Quels résultats puis-je attendre ?</summary>
-        <p>Aucun résultat ne peut être garanti sur un canal récent, et nous nous y refusons. L'objectif d'une première phase est d'obtenir des données fiables : coût par clic, coût par lead, qualité des demandes et coût réel d'acquisition. Ces données permettent ensuite de décider d'arrêter, de maintenir ou d'augmenter l'investissement.</p>
+        <p>Aucun résultat ne peut être garanti sur un canal récent, et nous n'en promettons pas. L'objectif d'une première phase est d'obtenir des données fiables : coût par clic, coût par lead, qualité des demandes et coût réel d'acquisition. Ces données permettent ensuite de décider d'arrêter, de maintenir ou d'augmenter l'investissement.</p>
       </details>
       <details class="cg-faq">
         <summary>Quel budget publicitaire prévoir ?</summary>
-        <p>Le budget publicitaire est distinct de nos honoraires de gestion. Le montant pertinent dépend de votre secteur, de votre panier moyen et du volume de données nécessaire pour conclure quelque chose de solide. Nous le définissons ensemble lors de l'analyse préalable, et nous vous disons si le montant envisagé est trop faible pour être concluant.</p>
+        <p>Le budget publicitaire est distinct de nos honoraires de gestion. Le montant pertinent dépend de votre secteur, de votre panier moyen et du volume de données nécessaire pour conclure. Nous le définissons ensemble lors de l'analyse préalable, et nous vous disons si le montant envisagé est trop faible pour être concluant.</p>
       </details>
       <details class="cg-faq">
         <summary>Faut-il déjà investir en publicité pour se lancer ?</summary>
-        <p>Ce n'est pas obligatoire, mais c'est préférable. Les entreprises qui mesurent déjà leurs conversions et connaissent la valeur d'un client tirent des conclusions beaucoup plus vite. Si votre tracking n'est pas en place, nous commençons par là — cela sert aussi tous vos autres canaux.</p>
+        <p>Ce n'est pas obligatoire, mais c'est préférable. Les entreprises qui mesurent déjà leurs conversions et connaissent la valeur d'un client tirent des conclusions plus vite. Si votre suivi des conversions n'est pas en place, nous commençons par là : il sert aussi tous vos autres canaux.</p>
       </details>
       <details class="cg-faq">
         <summary>Peut-on combiner ChatGPT Ads et vos agents IA ?</summary>
-        <p>Oui, et c'est souvent pertinent. Un canal d'acquisition ne vaut que par ce qui se passe après le clic. Nos <a href="/agents-ia/" style="color:var(--accent);font-weight:600">agents IA</a> qualifient les demandes entrantes, répondent hors horaires et prennent les rendez-vous, ce qui améliore mécaniquement le rendement du budget publicitaire.</p>
+        <p>Oui. Un canal d'acquisition ne vaut que par ce qui se passe après le clic. Nos <a href="/agents-ia/" style="color:var(--accent);font-weight:600">agents IA</a> répondent aux demandes entrantes, les qualifient et prennent les rendez-vous, pour qu'aucune demande payée ne reste sans réponse.</p>
       </details>
+    </div>
+
+    <div class="cg-card cg-narrow" style="margin-top:2.5rem">
+      <h3 class="font-bold tracking-tight" style="font-size:1.1rem">Pour aller plus loin</h3>
+      <ul class="cg-facts" style="margin-top:1rem">
+        <li class="cg-li"><span style="color:var(--accent)">→</span><span><a href="/blog/publicite-chatgpt-ads-guide/" class="cg-link">Publicité ChatGPT Ads : faut-il y investir votre budget ?</a> Le guide complet, et cinq critères pour décider.</span></li>
+        <li class="cg-li"><span style="color:var(--accent)">→</span><span><a href="/blog/cout-chatgpt-ads/" class="cg-link">Combien coûte ChatGPT Ads ?</a> Ce qui compose le coût et comment calculer votre seuil.</span></li>
+        <li class="cg-li"><span style="color:var(--accent)">→</span><span><a href="/blog/chatgpt-ads-secteurs-pme/" class="cg-link">ChatGPT Ads : quels secteurs en tirent réellement quelque chose</a> Et un test en dix minutes pour votre cas.</span></li>
+      </ul>
     </div>
   </div>
 </section>
 
 <!-- ================= 10. CTA FINAL + FORMULAIRE ================= -->
-<section class="cg-sec" id="analyse">
+<section class="cg-sec" id="analyse" style="background:var(--secondary)">
   <div class="cg-wrap">
     <div class="cg-narrow" style="text-align:center">
       <span class="cg-eyebrow"><span class="cg-dot"></span>Analyse ChatGPT Ads</span>
       <h2 class="font-bold tracking-tight" style="font-size:2rem;margin-top:1rem">
-        Découvrez si ChatGPT Ads peut devenir un nouveau canal d'acquisition pour votre entreprise.
+        Demander une analyse ChatGPT Ads
       </h2>
       <p style="margin-top:1rem;font-size:1.05rem;line-height:1.7;color:var(--muted-foreground)">
         Décrivez votre activité et vos objectifs. Nous revenons vers vous avec une lecture honnête :
-        le potentiel que nous voyons, le budget que cela suppose — ou la raison pour laquelle ce n'est
+        le potentiel que nous voyons, le budget que cela suppose, ou la raison pour laquelle ce n'est
         pas le bon moment.
       </p>
     </div>
@@ -815,14 +888,32 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
           </div>
         </div>
 
+        <!-- Pot de miel : invisible pour un humain, rempli par les robots. -->
+        <div aria-hidden="true" style="position:absolute;left:-9999px;width:0;height:0;overflow:hidden">
+          <label for="f-website">Ne pas remplir</label>
+          <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off"/>
+        </div>
+
         <div id="cg-error" hidden role="alert" style="margin-top:1rem;font-size:.875rem;color:var(--destructive);font-weight:600"></div>
+
+        <div id="cg-repli" class="cg-repli" hidden role="alert">
+          <p style="margin:0;font-weight:700;color:var(--foreground)">L'envoi n'a pas abouti.</p>
+          <p style="margin:.35rem 0 0;color:var(--muted-foreground)">
+            Votre saisie est conservée. Appelez le
+            <a href="tel:+33658683372" class="cg-link">06 58 68 33 72</a>, ou envoyez-la par e-mail&nbsp;: le message est déjà rédigé.
+          </p>
+          <div style="display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.85rem">
+            <a href="tel:+33658683372" class="cg-btn cg-btn-primary" style="height:2.6rem">Appeler</a>
+            <a id="cg-mail" href="mailto:contact@sitaly.fr" class="cg-btn cg-btn-ghost" style="height:2.6rem">Envoyer par e-mail</a>
+          </div>
+        </div>
 
         <button type="submit" id="cg-submit" class="cg-btn cg-btn-primary" style="width:100%;margin-top:1.5rem">
           Demander une analyse
         </button>
 
         <p class="cg-note" style="margin-top:1rem;text-align:center">
-          Réponse sous 48 h ouvrées. Vos données servent uniquement à traiter votre demande —
+          Réponse sous 48 h ouvrées. Vos données servent uniquement à traiter votre demande :
           voir notre <a href="/politique-confidentialite/" style="color:var(--accent);font-weight:600">politique de confidentialité</a>.
         </p>
       </form>
@@ -831,29 +922,19 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
         <div class="cg-num" style="width:3rem;height:3rem;margin:0 auto;background:var(--success);color:var(--success-foreground)">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
         </div>
-        <h3 class="font-bold tracking-tight" style="font-size:1.35rem;margin-top:1.25rem">Votre message est prêt</h3>
+        <h3 class="font-bold tracking-tight" style="font-size:1.35rem;margin-top:1.25rem">Demande reçue</h3>
         <p style="margin-top:.75rem;font-size:.95rem;line-height:1.65;color:var(--muted-foreground)">
-          Votre logiciel de messagerie s'est ouvert avec votre demande pré-remplie.
-          Il ne reste qu'à l'envoyer — nous répondons sous 48 h ouvrées.
+          Merci. Nous revenons vers vous sous 48 h ouvrées avec une première lecture de votre cas.
         </p>
         <p style="margin-top:1.25rem;font-size:.925rem;line-height:1.7">
-          Rien ne s'est ouvert ? Écrivez-nous à
-          <a href="mailto:contact@sitaly.fr" style="color:var(--accent);font-weight:600">contact@sitaly.fr</a><br/>
-          ou appelez le <a href="tel:+33658683372" style="color:var(--accent);font-weight:600">06 58 68 33 72</a>.
+          Une question d'ici là ? Appelez le <a href="tel:+33658683372" style="color:var(--accent);font-weight:600">06 58 68 33 72</a>.
         </p>
       </div>
     </div>
 
     <p class="cg-narrow cg-note" style="margin-top:1.5rem;text-align:center">
-      Pour aller plus loin :
-      <a href="/blog/publicite-chatgpt-ads-guide/" style="color:var(--accent);font-weight:600">notre guide complet</a>,
-      <a href="/blog/cout-chatgpt-ads/" style="color:var(--accent);font-weight:600">ce que coûte réellement le canal</a>
-      et <a href="/blog/chatgpt-ads-secteurs-pme/" style="color:var(--accent);font-weight:600">les secteurs qui en tirent quelque chose</a>.
-    </p>
-
-    <p class="cg-narrow cg-note" style="margin-top:.75rem;text-align:center">
       Vous préférez en parler de vive voix ?
-      <a href="https://calendly.com/contact-sitaly/decouverte-de-votre-projet-web" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:600">Réservez un appel de découverte</a>.
+      <a href="https://calendly.com/contact-sitaly/decouverte-de-votre-projet-web" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:600">Réserver un diagnostic de 30 min</a>.
     </p>
   </div>
 </section>
@@ -904,11 +985,21 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
     });
   }
 
-  /* --- Formulaire : composition d'un email pré-rempli --- */
+  /* --- Formulaire : envoi au relais sitaly-forms ---
+     Mêmes règles que src/lib/formulaire.ts : envoi JSON au Worker, événement
+     GA4 generate_lead au succès seulement, et en cas d'échec le téléphone et
+     un e-mail pré-rempli, sans rien effacer de la saisie. Le Worker refuse
+     les origines absentes de sa liste, localhost compris : en local, l'envoi
+     tombe en erreur et affiche le repli. */
+  var FORM_ENDPOINT = "https://sitaly-forms.sitaly-forms.workers.dev";
   var form = document.getElementById("cg-form");
   if (!form) return;
   var errorBox = document.getElementById("cg-error");
+  var repli = document.getElementById("cg-repli");
+  var lienMail = document.getElementById("cg-mail");
   var success = document.getElementById("cg-success");
+  var submit = document.getElementById("cg-submit");
+  var libelleBouton = submit ? submit.textContent : "";
 
   var LABELS = {
     nom: "Nom", entreprise: "Entreprise", email: "Email", telephone: "Téléphone",
@@ -921,9 +1012,22 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
     errorBox.removeAttribute("hidden");
   }
 
+  function afficherRepli(data) {
+    var body = "Demande d'analyse ChatGPT Ads\n\n" + Object.keys(LABELS).map(function (k) {
+      return LABELS[k] + " : " + (data[k] || "—");
+    }).join("\n");
+    var subject = "Demande d'analyse ChatGPT Ads — " + (data.entreprise || data.nom);
+    lienMail.setAttribute("href", "mailto:" + CONTACT_EMAIL +
+      "?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(body));
+    repli.removeAttribute("hidden");
+    repli.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     errorBox.setAttribute("hidden", "");
+    repli.setAttribute("hidden", "");
 
     var data = {};
     Object.keys(LABELS).forEach(function (k) {
@@ -945,23 +1049,48 @@ gtag('config','G-H4Z6HZLE3S',{anonymize_ip:true});
       return;
     }
 
-    var body = "Demande d'analyse ChatGPT Ads\n\n" + Object.keys(LABELS).map(function (k) {
-      return LABELS[k] + " : " + (data[k] || "—");
-    }).join("\n");
-    var subject = "Demande d'analyse ChatGPT Ads — " + (data.entreprise || data.nom);
+    var message = [
+      "Secteur : " + data.secteur,
+      "Budget acquisition mensuel : " + data.budget,
+      "Objectif : " + data.objectif,
+      "Site web : " + (data.site || "—"),
+      "",
+      data.message || "(pas de message)"
+    ].join("\n");
+    var champs = {
+      name: data.nom,
+      email: data.email,
+      company: data.entreprise,
+      phone: data.telephone,
+      message: message,
+      subject: "ChatGPT Ads",
+      website: String((form.elements.website && form.elements.website.value) || "")
+    };
 
-    window.location.href = "mailto:" + CONTACT_EMAIL +
-      "?subject=" + encodeURIComponent(subject) +
-      "&body=" + encodeURIComponent(body);
+    if (submit) { submit.disabled = true; submit.textContent = "Envoi…"; }
+    var controle = typeof AbortController === "function" ? new AbortController() : null;
+    var delai = controle ? setTimeout(function () { controle.abort(); }, 15000) : null;
 
-    form.setAttribute("hidden", "");
-    success.removeAttribute("hidden");
-    success.scrollIntoView({ behavior: "smooth", block: "center" });
-
-    if (typeof window.gtag === "function") {
-      window.gtag("event", "generate_lead", { form: "chatgpt_ads_analyse" });
-    }
-    if (window.dataLayer) { window.dataLayer.push({ event: "chatgpt_ads_lead" }); }
+    fetch(FORM_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(champs),
+      signal: controle ? controle.signal : undefined
+    }).then(function (reponse) {
+      if (!reponse.ok) throw new Error("HTTP " + reponse.status);
+      form.setAttribute("hidden", "");
+      success.removeAttribute("hidden");
+      success.scrollIntoView({ behavior: "smooth", block: "center" });
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "generate_lead", { form_id: "chatgpt-ads" });
+      }
+      if (window.dataLayer) { window.dataLayer.push({ event: "chatgpt_ads_lead" }); }
+    }).catch(function () {
+      afficherRepli(data);
+    }).then(function () {
+      if (delai) clearTimeout(delai);
+      if (submit) { submit.disabled = false; submit.textContent = libelleBouton; }
+    });
   });
 })();
 </script>
