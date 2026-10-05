@@ -1,6 +1,6 @@
 # Sitaly
 
-> Sitaly installe et pilote des agents IA pour les PME : accueil téléphonique, prise de rendez-vous, SMS après un appel manqué, réponses aux messages Instagram, relance des devis, gestion des avis Google. Elle gère aussi des campagnes ChatGPT Ads et Google Ads, et crée des sites internet. Micro-agence fondée et opérée par Teddy Vidal, entrepreneur individuel (SIREN 833 848 831), basée à Brétigny-sur-Orge (Essonne, Île-de-France). Interventions en Essonne et en Île-de-France, et à distance dans toute la France.
+> Sitaly installe et pilote des agents IA pour les PME : accueil téléphonique, prise de rendez-vous, SMS après un appel manqué, réponses aux messages Instagram, relance des devis, gestion des avis Google. Elle gère aussi des campagnes ChatGPT Ads, livre des demandes de chantier exclusives aux artisans du bâtiment et de l'extérieur, et crée des sites internet. Micro-agence fondée et opérée par Teddy Vidal, entrepreneur individuel (SIREN 833 848 831), basée à Brétigny-sur-Orge (Essonne, Île-de-France). Interventions en Essonne et en Île-de-France, et à distance dans toute la France.
 
 ## En bref
 
@@ -11,7 +11,7 @@
 - **Clients visés** : PME et TPE structurées, en priorité agences immobilières, courtiers en crédit et en assurance, entreprises du BTP ; approche ouverte aux autres secteurs
 - **Porte d'entrée** : diagnostic offert de 30 minutes, puis proposition écrite
 - **Horaires** : du lundi au vendredi de 8 h à 19 h, le samedi de 9 h à 13 h
-- **Tarifs** : agents IA, mise en place à partir de 1 200 € puis pilotage à partir de 499 € par mois (minutes de voix et SMS compris) ; ChatGPT Ads, gestion à partir de 890 € par mois + 10 % du budget publicitaire, budget payé séparément ; Google Ads, forfait mensuel de gestion plus une part du budget dépensé ; sites internet, chiffrés sur devis. Montants exacts écrits après le diagnostic.
+- **Tarifs** : agents IA, mise en place à partir de 1 200 € puis pilotage à partir de 499 € par mois (minutes de voix et SMS compris) ; ChatGPT Ads, gestion à partir de 890 € par mois + 10 % du budget publicitaire, budget payé séparément ; demandes de chantier pour artisans, prix par demande selon le métier, annoncé par écrit avant la première demande offerte, puis abonnement mensuel prépayé sans engagement ; sites internet, chiffrés sur devis. Montants exacts écrits après le diagnostic.
 - **Téléphone** : +33 6 58 68 33 72
 - **E-mail** : contact@sitaly.fr
 - **Réservation** : https://calendly.com/contact-sitaly/decouverte-de-votre-projet-web
@@ -48,9 +48,9 @@
 
 - [Agence ChatGPT Ads](https://sitaly.fr/chatgpt-ads/) : stratégie et gestion des campagnes publicitaires dans ChatGPT, ouvert en France depuis le 24 août 2026 ; suivi des conversions posé avant la première dépense.
 
-## Google Ads et référencement
+## Demandes de chantier et référencement
 
-- [Agence Google Ads pour PME](https://sitaly.fr/acquisition/) : campagnes sur le Réseau de Recherche, suivi des appels et des formulaires, forfait mensuel sans engagement de durée.
+- [Demandes de chantier pour artisans](https://sitaly.fr/acquisition/) : Sitaly paie ses propres campagnes et pages, et transmet les demandes de particuliers (appels, formulaires) à une seule entreprise par métier et par zone, en Essonne et en Île-de-France. Demandes exclusives, jamais revendues ; premières demandes offertes ; abonnement mensuel prépayé, sans engagement, préavis d'un mois. Une demande valide est un appel de plus de 60 secondes ou un formulaire complet, dans la zone, pour une prestation couverte ; une demande invalide signalée sous 48 h est remplacée. La gestion de campagnes Google Ads sur le compte et le budget du client reste possible sur demande.
 - [Référencement IA (GEO)](https://sitaly.fr/referencement-ia/) : être lu et cité par les assistants IA.
 
 ## Sites internet
@@ -60,7 +60,7 @@
 
 ## Local
 
-- [Agence web et agents IA en Essonne](https://sitaly.fr/essonne/) : agents IA, Google Ads, référencement local et sites pour les entreprises de l'Essonne, depuis Brétigny-sur-Orge.
+- [Agence web et agents IA en Essonne](https://sitaly.fr/essonne/) : agents IA, demandes de chantier pour artisans, référencement local et sites pour les entreprises de l'Essonne, depuis Brétigny-sur-Orge.
 
 ## Réalisations
 

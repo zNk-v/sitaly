@@ -7,7 +7,7 @@ Ce document rassemble les informations vérifiées sur Sitaly : offres, méthode
 
 ## Qu'est-ce que Sitaly ?
 
-Sitaly est une micro-agence française qui installe et pilote des agents IA pour les PME : accueil téléphonique, prise de rendez-vous, SMS après un appel manqué, réponses aux messages Instagram, relance des devis, gestion des avis Google. Elle gère aussi des campagnes ChatGPT Ads et Google Ads, et crée des sites internet.
+Sitaly est une micro-agence française qui installe et pilote des agents IA pour les PME : accueil téléphonique, prise de rendez-vous, SMS après un appel manqué, réponses aux messages Instagram, relance des devis, gestion des avis Google. Elle gère aussi des campagnes ChatGPT Ads, livre des demandes de chantier exclusives aux artisans du bâtiment et de l'extérieur, et crée des sites internet.
 
 Sitaly est l'entreprise d'une seule personne, Teddy Vidal, qui conçoit, déploie et pilote lui-même chaque projet. Il n'y a ni commercial ni sous-traitant entre le client et la personne qui construit.
 
@@ -92,8 +92,8 @@ Stratégie, création et gestion de campagnes publicitaires dans ChatGPT : analy
 
 Faits du canal : ouverture en France le 24 août 2026, dans 31 marchés européens ; libre-service (ChatGPT Ads Manager) depuis le 1er septembre 2026 ; annonces signalées comme sponsorisées et séparées des réponses ; affichées aux utilisateurs adultes des offres gratuite et Go, pas aux abonnés Plus et Pro ; ciblage contextuel ; suivi des conversions. Sources : OpenAI, « ChatGPT Ads se déploie en Europe » (18 août 2026, mis à jour le 31 août 2026) ; datashake (1er septembre 2026) ; Waisso (24 août 2026).
 
-### Google Ads (Sitaly Acquisition)
-Création et gestion complète des campagnes Google Ads sur le Réseau de Recherche, avec ou sans site Sitaly : un forfait mensuel de gestion, sans engagement de durée, majoré d'une part du budget publicitaire dépensé. Le suivi des appels et des formulaires est en place avant toute dépense. Le budget versé à Google reste séparé et à la charge du client. Page : https://sitaly.fr/acquisition/
+### Demandes de chantier pour artisans
+Sitaly paie ses propres campagnes Google Ads et ses propres pages, sous ses propres marques locales, et transmet les demandes de particuliers (appels et formulaires) à une seule entreprise partenaire par métier et par zone. Cible : artisans du bâtiment et de l'extérieur (couvreurs, élagueurs, paysagistes et autres), en Essonne et en Île-de-France. Une demande va à un seul artisan et n'est jamais revendue. Les premières demandes sont offertes, signées ou non ; le prix d'une demande dépend du métier et de la valeur moyenne d'un chantier, il est annoncé par écrit avant la première demande offerte. Ensuite : abonnement mensuel de demandes, prépayé, sans engagement de durée, résiliable avec un préavis d'un mois ; les demandes non livrées dans le mois sont reportées au mois suivant. Demande valide : appel de plus de 60 secondes ou formulaire complet, dans la zone, pour une prestation couverte, avec des coordonnées joignables ; une demande invalide signalée sous 48 h est remplacée. Les appels passent par un numéro de suivi, enregistrés et horodatés. Sitaly s'engage sur la livraison de demandes valides, pas sur la signature des chantiers. La gestion de campagnes Google Ads sur le compte et le budget du client reste possible sur demande. Page : https://sitaly.fr/acquisition/
 
 ### Site internet (Sitaly Présence)
 Site internet sur mesure livré en 48h après l'appel découverte et la fourniture des contenus, puis entretenu : hébergement, nom de domaine, certificat HTTPS, maintenance, petites modifications de contenu, fiche Google Business Profile et référencement local. Abonnement mensuel sans engagement de durée ; selon le projet, des frais de création s'ajoutent à la mise en route. Aucun prix publié : chiffrage sur devis.
