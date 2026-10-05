@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Check, PhoneIncoming, Search, Sparkles } from "lucide-react";
+import { Check, PhoneIncoming, Sparkles } from "lucide-react";
 import { LEVIERS, type Levier } from "@/components/StackedOffers";
 import { FlecheRonde } from "@/components/accueil/communs";
 
@@ -36,8 +36,8 @@ const HABILLAGE: Record<string, Habillage> = {
   ads: {
     photo: [photoGoogle800, photoGoogle1400],
     position: "50% 40%",
-    alt: "Une cliente cherche une entreprise sur son téléphone",
-    carte: <CarteRecherche />,
+    alt: "Une particulière cherche un artisan sur son téléphone",
+    carte: <CarteDemande />,
   },
   chatgpt: {
     photo: [photoChatgpt800, photoChatgpt1400],
@@ -65,7 +65,7 @@ export function Services() {
                 Les fondations <span className="accent-word">de vos demandes</span>
               </>
             }
-            texte="On commence par le socle : un site qui transforme la visite en appel, et une publicité qui vous met devant ceux qui cherchent."
+            texte="On commence par le socle : un site qui transforme la visite en appel, et, pour les artisans, des demandes de chantier livrées sans pub à gérer."
           />
           <div className="mt-16 space-y-24 sm:mt-20 sm:space-y-32">
             <Rangee levier={par("site")} rang={0} />
@@ -234,23 +234,26 @@ function CarteSite() {
   );
 }
 
-function CarteRecherche() {
+/* Une demande de chantier transmise à l'artisan partenaire (offre du
+   5 octobre 2026). Schéma, sans chiffre de résultat. */
+function CarteDemande() {
   return (
     <Cadre>
-      <div className="flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-[12px] text-muted-foreground">
-        <Search className="h-3.5 w-3.5" />
-        plombier brétigny urgence
-      </div>
-      <p className="mt-3 text-[11px] font-semibold">Sponsorisé</p>
-      <p className="mt-0.5 text-[11px] text-muted-foreground">votre-entreprise.fr</p>
-      <p className="mt-1 text-sm font-semibold text-blue-ink">
-        Plombier à Brétigny, intervention en 1 h
-      </p>
-      <p className="mt-1 text-[12px] text-muted-foreground">Devis gratuit · 7j/7 · Essonne</p>
-      <div className="mt-3 flex items-center justify-between text-[11px] text-muted-foreground">
+      <div className="flex items-center justify-between text-[11px] text-muted-foreground">
+        <span className="inline-flex items-center gap-1.5">
+          <PhoneIncoming className="h-3.5 w-3.5" />
+          Nouvelle demande · 9 h 42
+        </span>
         <span>Exemple</span>
-        <span className="font-semibold text-signal-ink">+18 appels cette semaine</span>
       </div>
+      <p className="mt-2 text-sm font-semibold">Élagage d'un chêne, Brétigny-sur-Orge</p>
+      <p className="mt-0.5 text-[12px] text-muted-foreground">
+        Appel de 3 min 12, enregistré et horodaté
+      </p>
+      <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-signal/15 px-2.5 py-1 text-[12px] font-semibold text-signal-ink">
+        <Check className="h-3.5 w-3.5" />
+        Transmise à une seule entreprise
+      </p>
     </Cadre>
   );
 }

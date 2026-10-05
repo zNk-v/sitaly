@@ -2672,3 +2672,30 @@ body.menu-ouvert .entete-plaque {
     transition: none !important;
   }
 }
+
+/* --- Page Demandes de chantier (/acquisition/) ---------------------------
+   Une seule couleur d'accent, le rouge de la famille acquisition : les
+   boutons quittent le dégradé de la triade pour un aplat, et les cartes
+   claires posées sur l'encre gardent ce rouge au lieu du violet. Le blanc
+   tient 7,30:1 sur ce rouge. */
+.page-acquisition .bouton {
+  background-image: none;
+  background-color: var(--red-acquisition);
+  box-shadow:
+    0 1px 2px oklch(0.3 0.12 27 / 0.3),
+    0 12px 28px -14px oklch(0.42 0.17 27 / 0.75);
+}
+@media (hover: hover) {
+  .page-acquisition .bouton:hover {
+    background-color: oklch(0.42 0.16 27);
+  }
+}
+.page-acquisition .sur-papier {
+  --brand-ink: var(--red-acquisition);
+  --accent: var(--red-acquisition);
+}
+.acquisition-foyer {
+  background:
+    radial-gradient(48% 55% at 88% 8%, oklch(0.45 0.17 27 / 0.32), transparent 70%),
+    radial-gradient(40% 50% at 0% 100%, oklch(0.45 0.17 27 / 0.16), transparent 70%);
+}

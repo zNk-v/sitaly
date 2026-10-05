@@ -68,7 +68,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Vous faites aussi les sites et la publicité ?",
-    a: "Oui. Sitaly pilote les campagnes [ChatGPT Ads](/chatgpt-ads/) et [Google Ads](/acquisition/), et [crée les sites](/creation-site-internet/), pour que les demandes arrivent, soient bien reçues, puis traitées par vos agents.",
+    a: "Oui. Sitaly pilote les campagnes [ChatGPT Ads](/chatgpt-ads/), livre aux artisans des [demandes de chantier exclusives](/acquisition/) et [crée les sites](/creation-site-internet/), pour que les demandes arrivent, soient bien reçues, puis traitées par vos agents.",
   },
 ];
 

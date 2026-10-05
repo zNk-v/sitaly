@@ -1342,9 +1342,11 @@ export interface EntreeMenu {
 }
 
 const HORS_FICHIER: Record<string, EntreeMenu> = {
+  /* La clé garde son nom : l'URL /acquisition/ aussi. L'offre, elle, est
+     devenue la livraison de demandes de chantier (5 octobre 2026). */
   "google-ads": {
-    label: "Google Ads",
-    desc: "Être en haut des recherches dès aujourd'hui.",
+    label: "Demandes de chantier",
+    desc: "Des clients livrés, pas une pub à gérer.",
     to: "/acquisition/",
   },
   "chatgpt-ads": {

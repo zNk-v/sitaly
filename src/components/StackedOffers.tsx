@@ -87,17 +87,24 @@ export const LEVIERS: Levier[] = [
     maquette: <MaquetteConversation />,
   },
   {
+    /* Depuis le 5 octobre 2026, l'offre n'est plus la gestion Google Ads au
+       forfait : Sitaly paie ses propres campagnes et livre les demandes à
+       une seule entreprise par zone (voir src/routes/acquisition.tsx). */
     cle: "ads",
-    categorie: "Google Ads",
+    categorie: "Demandes de chantier",
     titre: (
       <>
-        Être en haut de Google <span className="accent-word">dès aujourd'hui</span>
+        Des demandes de chantier, <span className="accent-word">pas une pub à gérer</span>
       </>
     ),
     texte:
-      "Le référencement naturel demande des mois. La publicité vous place devant les gens qui cherchent vos services, dans votre zone, pendant que votre visibilité naturelle se construit.",
-    points: ["Ciblage de votre zone", "Suivi des appels et formulaires", "Reporting mensuel"],
-    cta: { label: "Voir l'offre Google Ads", to: "/acquisition/" },
+      "Pour les artisans du bâtiment et de l'extérieur : nous payons la publicité, nous recevons les demandes des particuliers de votre secteur, et nous les transmettons à une seule entreprise, la vôtre. Les premières sont offertes.",
+    points: [
+      "Demandes exclusives, jamais revendues",
+      "Une seule entreprise par zone",
+      "Sans engagement",
+    ],
+    cta: { label: "Voir les demandes de chantier", to: "/acquisition/" },
     maquette: <MaquetteRecherche />,
   },
   {
