@@ -1,1 +1,0 @@
-import{ot as e}from"./index-DV1Axpgb.js";var t=e;export{t as component};
