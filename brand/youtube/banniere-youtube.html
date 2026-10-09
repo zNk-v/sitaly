@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"Jakarta";src:url(../../fonts/plus-jakarta-sans-latin.woff2) format("woff2");font-weight:200 800}
+@font-face{font-family:"Inter";src:url(../../fonts/inter-latin.woff2) format("woff2");font-weight:100 900}
+:root{--paper:#fbfaf7;--ink:#1a1027;--muted:#5d566b;--blue:#0a55c0;--purple:#7429c3;--red:#aa1212}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:2560px;height:1440px;overflow:hidden;background:var(--paper)}
+.canvas{position:relative;width:2560px;height:1440px;background:
+  radial-gradient(1400px 900px at 10% 0%, rgba(21,108,221,.16), transparent 62%),
+  radial-gradient(1300px 900px at 52% -6%, rgba(136,67,219,.13), transparent 60%),
+  radial-gradient(1200px 900px at 92% 4%, rgba(230,66,76,.14), transparent 60%),
+  var(--paper)}
+svg.deco{position:absolute;inset:0}
+/* zone sûre YouTube : 1546 x 423 centrée */
+.safe{position:absolute;left:507px;top:508px;width:1546px;height:423px;display:flex;flex-direction:column;justify-content:center;align-items:stretch;padding:0 24px}
+.eyebrow{font:600 30px/1 "Inter";letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:18px}
+.eyebrow svg{width:44px;height:44px}
+h1{margin-top:22px;font:800 80px/1.05 "Jakarta";letter-spacing:-.025em;color:var(--ink)}
+h1 .p{color:var(--purple)} h1 .b{color:var(--blue)} h1 .r{color:var(--red)}
+.row{margin-top:26px;display:flex;align-items:center;gap:22px;font:500 36px/1 "Inter";color:var(--muted)}
+.row i{width:9px;height:9px;border-radius:50%;background:#b9b3c4;display:block}
+.url{margin-left:auto;font:700 38px/1 "Jakarta";color:var(--ink);padding:14px 28px;border:3px solid var(--ink);border-radius:999px}
+.guide .safe{outline:4px dashed #e0115f}
+.guide .desk{position:absolute;left:0;top:508px;width:2560px;height:423px;outline:4px dashed #0a55c0}
+</style></head>
+<body><div class="canvas">
+<svg class="deco" viewBox="0 0 2560 1440"><defs>
+<linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" y1="1440" x2="2560" y2="0"><stop offset="0" stop-color="#005ccc"/><stop offset=".3" stop-color="#005ccc"/><stop offset=".62" stop-color="#7429c3"/><stop offset="1" stop-color="#df2321"/></linearGradient>
+<radialGradient id="f" gradientUnits="userSpaceOnUse" cx="1280" cy="720" r="1500"><stop offset=".34" stop-color="#000"/><stop offset=".72" stop-color="#fff"/></radialGradient>
+<mask id="m" maskUnits="userSpaceOnUse" x="0" y="0" width="2560" height="1440"><rect width="2560" height="1440" fill="url(#f)"/></mask></defs>
+<g mask="url(#m)" fill="none" stroke="url(#g)" stroke-linecap="round" stroke-linejoin="round">
+<path d="M -120 380 L 220 720 L -120 1060" stroke-width="92" opacity=".5"/>
+<path d="M 60 380 L 400 720 L 60 1060" stroke-width="92" opacity=".5"/>
+<path d="M 2130 380 L 2470 720 L 2130 1060" stroke-width="92" opacity=".5"/>
+<path d="M 2310 380 L 2650 720 L 2310 1060" stroke-width="92" opacity=".5"/>
+</g></svg>
+<div class="safe">
+  <div class="eyebrow"><svg viewBox="0 0 100 100"><defs><linearGradient id="s" gradientUnits="userSpaceOnUse" x1="12" y1="88" x2="88" y2="12"><stop offset="0" stop-color="#005ccc"/><stop offset=".5" stop-color="#7429c3"/><stop offset="1" stop-color="#df2321"/></linearGradient></defs><g fill="none" stroke="url(#s)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"><path d="M20 24 46 50 20 76"/><path d="M54 24 80 50 54 76"/></g></svg>Sitaly · Essonne, Île-de-France</div>
+  <h1><span class="p">Agents IA</span> pour <span class="b">PME</span> et <span class="r">artisans</span><br>montrés en conditions réelles.</h1>
+  <div class="row"><span>Démos</span><i></i><span>Coûts chiffrés</span><i></i><span>Tutos pas à pas</span><span class="url">sitaly.fr</span></div>
+</div>
+<div class="desk"></div>
+</div></body></html>
