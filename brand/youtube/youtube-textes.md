@@ -6,25 +6,22 @@
 
 ## Description (YouTube Studio > Personnalisation > Informations de base)
 
-Agents IA pour PME et artisans : démos réelles, coûts chiffrés, tutos pas à pas.
+Des clients en plus, du temps en plus : Sitaly aide les artisans, indépendants et PME à trouver des clients, à être visibles en ligne et à gagner du temps.
 
-Ici, je montre des agents IA au travail dans une vraie entreprise : décrocher le téléphone pendant un chantier, prendre un rendez-vous, envoyer un SMS après un appel manqué, relancer un devis, répondre aux avis Google.
+Sur cette chaîne, des cas concrets, chiffres à l'appui :
+- trouver des clients : demandes de chantier, Google Ads, ChatGPT Ads
+- être trouvé en ligne : site internet qui convertit, fiche Google, avis, référencement local
+- gagner du temps : agents IA qui décrochent, prennent les rendez-vous et relancent les devis
 
-Pas de théorie : l'écran, l'appel, le résultat, et ce que ça coûte par mois.
+Pas de théorie : ce qu'on met en place, ce que ça rapporte, ce que ça coûte.
 
-Au programme :
-- démos d'agents vocaux et d'automatisations (n8n, Vapi, Twilio, Cal.com)
-- les règles à respecter : AI Act, RGPD, démarchage téléphonique
-- ChatGPT Ads et Google Ads expliqués pour les TPE
-- sites internet d'artisans décortiqués
-
-Je suis Teddy Vidal, fondateur de Sitaly, à Brétigny-sur-Orge (Essonne). J'installe et je pilote ces outils pour les PME et les artisans, en Île-de-France et partout en France.
+Je suis Teddy Vidal, fondateur de Sitaly, à Brétigny-sur-Orge (Essonne). J'accompagne les entreprises en Île-de-France et partout en France.
 
 Diagnostic offert de 30 minutes : https://sitaly.fr
 
 ## Mots-clés de la chaîne (Paramètres > Chaîne > Informations de base)
 
-agent IA, agent IA PME, agent vocal IA, standard téléphonique IA, intelligence artificielle entreprise, IA pour artisans, automatisation PME, automatisation n8n, tuto n8n, Vapi, prise de rendez-vous automatique, relance devis, avis Google, ChatGPT Ads, Google Ads artisan, site internet artisan, agence IA, TPE, Essonne, Sitaly
+trouver des clients, trouver des clients artisan, demandes de chantier, génération de leads, Google Ads artisan, ChatGPT Ads, publicité en ligne, site internet artisan, création site internet, fiche Google, avis Google, référencement local, visibilité en ligne, agent IA, agent IA PME, automatisation PME, gagner du temps entreprise, artisan, TPE, PME, Essonne, Sitaly
 
 ## Liens (dans cet ordre, le premier s'affiche sous le nom)
 1. Diagnostic offert : https://sitaly.fr
