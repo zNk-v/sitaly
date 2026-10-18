@@ -1,0 +1,1 @@
+var e=/\[([^\]]+)\]\(([^)\s]+)\)/g;function t(t){return t.replace(e,`$1`)}export{t as n,e as t};
