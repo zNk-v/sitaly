@@ -222,6 +222,11 @@ export function MobileMenu({
 
               <div className="my-2 h-px bg-border" />
 
+              <Link to="/tarifs/" onClick={fermer} className={lien}>
+                Tarifs
+                <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
+              </Link>
+
               <Link to="/realisations/" onClick={fermer} className={lien}>
                 Réalisations
                 <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
@@ -262,7 +267,7 @@ export function MobileMenu({
                 className="bouton h-12 w-full text-base"
               >
                 <Calendar className="h-4 w-4" />
-                Réserver un diagnostic de 30 min
+                Réserver un appel de 30 min
               </a>
               <a
                 href={`tel:${SITALY_PHONE}`}

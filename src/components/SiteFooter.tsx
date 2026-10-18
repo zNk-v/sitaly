@@ -27,8 +27,8 @@ export function SiteFooter() {
           <div>
             <SitalyLogo variant="blanc" />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
-              Agents IA, automatisations et sites pour les PME. Un seul interlocuteur, celui qui
-              construit.
+              Sites internet, référencement local et agents IA pour les TPE et PME. Un seul
+              interlocuteur, celui qui construit.
             </p>
             <p className="mt-2 max-w-xs text-sm text-white/60">
               Basé à {SITALY_VILLE} ({SITALY_DEPARTEMENT}).
@@ -92,6 +92,11 @@ export function SiteFooter() {
               <li>
                 <Link to="/realisations/" className="transition hover:text-white">
                   Réalisations
+                </Link>
+              </li>
+              <li>
+                <Link to="/tarifs/" className="transition hover:text-white">
+                  Tarifs
                 </Link>
               </li>
               <li>

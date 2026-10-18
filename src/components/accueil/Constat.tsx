@@ -4,8 +4,9 @@ import { Compteur, Pastille } from "@/components/accueil/communs";
 
 /**
  * « La recherche s'est transformée » chez la référence : une phrase de
- * contexte, puis trois chiffres qui comptent à l'entrée. La section remonte
- * sur le premier écran, coins arrondis, comme une feuille posée dessus.
+ * contexte, puis trois chiffres qui comptent à l'entrée. Depuis le recentrage
+ * du 18 octobre 2026, la section suit les rangées des formats (Detail), qui
+ * remontent à sa place sur le premier écran.
  *
  * Trois chiffres que n'importe qui peut vérifier, aucun chiffre de marché.
  */
@@ -13,34 +14,34 @@ export function Constat() {
   const note = Number(NOTE_GOOGLE.note.replace(",", "."));
   const chiffres = [
     {
-      pastille: "Du diagnostic au pilotage",
+      pastille: "Mise en ligne",
+      icone: Clock,
+      valeur: 48,
+      decimales: 0,
+      suffixe: "h",
+      texte: (
+        <>
+          Entre l'appel découverte et le site en ligne, une fois vos photos et vos informations
+          réunies.{" "}
+          <strong className="font-semibold text-foreground">
+            Les textes sont écrits pour vous.
+          </strong>
+        </>
+      ),
+    },
+    {
+      pastille: "De la maquette au suivi",
       icone: UserRound,
       valeur: 1,
       decimales: 0,
       suffixe: "interlocuteur",
       texte: (
         <>
-          Teddy fait le diagnostic, installe vos outils et les pilote chaque mois.{" "}
+          Teddy conçoit votre site, le met en ligne et le tient à jour chaque mois.{" "}
           <strong className="font-semibold text-foreground">
             Ni commercial à l'appel découverte, ni sous-traitant
           </strong>{" "}
           sur le projet.
-        </>
-      ),
-    },
-    {
-      pastille: "Le diagnostic, offert",
-      icone: Clock,
-      valeur: 30,
-      decimales: 0,
-      suffixe: "min",
-      texte: (
-        <>
-          Au téléphone. À la fin de l'appel, vous savez{" "}
-          <strong className="font-semibold text-foreground">
-            si un agent IA vaut le coup chez vous
-          </strong>
-          , et pour quelle tâche.
         </>
       ),
     },
@@ -62,16 +63,16 @@ export function Constat() {
   ];
 
   return (
-    <section className="relative z-10 -mt-10 rounded-t-[2.5rem] bg-gradient-to-b from-paper-sunk via-paper to-paper py-20 sm:py-28">
+    <section className="bg-paper-sunk pt-14 pb-16 sm:pt-16 sm:pb-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div data-reveal className="mx-auto max-w-2xl text-center">
           <h2 data-split className="display-section">
-            Vos clients <span className="accent-word">n'attendent plus</span>
+            Vos clients vous cherchent <span className="accent-word">avant de vous appeler</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Hier, un client qui tombait sur la messagerie rappelait plus tard. Aujourd'hui, il
-            appelle l'entreprise suivante. Et avant d'appeler, il a souvent demandé conseil à
-            ChatGPT.
+            Ils tapent votre métier et leur ville, regardent vos photos, lisent vos avis, ou
+            demandent conseil à ChatGPT. Ce qu'ils trouvent décide s'ils vous contactent, vous ou le
+            suivant.
           </p>
         </div>
 

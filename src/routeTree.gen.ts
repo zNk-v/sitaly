@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TarifsRouteImport } from './routes/tarifs'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SiteVitrineRouteImport } from './routes/site-vitrine'
 import { Route as SiteInternetSerrurierRouteImport } from './routes/site-internet-serrurier'
@@ -64,6 +65,11 @@ import { Route as AgentsIaAutomobileRouteImport } from './routes/agents-ia_.auto
 import { Route as AgentsIaAgentVocalRouteImport } from './routes/agents-ia_.agent-vocal'
 import { Route as AgentsIaAgencesImmobilieresRouteImport } from './routes/agents-ia_.agences-immobilieres'
 
+const TarifsRoute = TarifsRouteImport.update({
+  id: '/tarifs',
+  path: '/tarifs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -379,6 +385,7 @@ export interface FileRoutesByFullPath {
   '/site-internet-serrurier': typeof SiteInternetSerrurierRoute
   '/site-vitrine': typeof SiteVitrineRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tarifs': typeof TarifsRoute
   '/agents-ia/agences-immobilieres': typeof AgentsIaAgencesImmobilieresRoute
   '/agents-ia/agent-vocal': typeof AgentsIaAgentVocalRoute
   '/agents-ia/automobile': typeof AgentsIaAutomobileRoute
@@ -434,6 +441,7 @@ export interface FileRoutesByTo {
   '/site-internet-serrurier': typeof SiteInternetSerrurierRoute
   '/site-vitrine': typeof SiteVitrineRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tarifs': typeof TarifsRoute
   '/agents-ia/agences-immobilieres': typeof AgentsIaAgencesImmobilieresRoute
   '/agents-ia/agent-vocal': typeof AgentsIaAgentVocalRoute
   '/agents-ia/automobile': typeof AgentsIaAutomobileRoute
@@ -491,6 +499,7 @@ export interface FileRoutesById {
   '/site-internet-serrurier': typeof SiteInternetSerrurierRoute
   '/site-vitrine': typeof SiteVitrineRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tarifs': typeof TarifsRoute
   '/agents-ia_/agences-immobilieres': typeof AgentsIaAgencesImmobilieresRoute
   '/agents-ia_/agent-vocal': typeof AgentsIaAgentVocalRoute
   '/agents-ia_/automobile': typeof AgentsIaAutomobileRoute
@@ -549,6 +558,7 @@ export interface FileRouteTypes {
     | '/site-internet-serrurier'
     | '/site-vitrine'
     | '/sitemap.xml'
+    | '/tarifs'
     | '/agents-ia/agences-immobilieres'
     | '/agents-ia/agent-vocal'
     | '/agents-ia/automobile'
@@ -604,6 +614,7 @@ export interface FileRouteTypes {
     | '/site-internet-serrurier'
     | '/site-vitrine'
     | '/sitemap.xml'
+    | '/tarifs'
     | '/agents-ia/agences-immobilieres'
     | '/agents-ia/agent-vocal'
     | '/agents-ia/automobile'
@@ -660,6 +671,7 @@ export interface FileRouteTypes {
     | '/site-internet-serrurier'
     | '/site-vitrine'
     | '/sitemap.xml'
+    | '/tarifs'
     | '/agents-ia_/agences-immobilieres'
     | '/agents-ia_/agent-vocal'
     | '/agents-ia_/automobile'
@@ -717,6 +729,7 @@ export interface RootRouteChildren {
   SiteInternetSerrurierRoute: typeof SiteInternetSerrurierRoute
   SiteVitrineRoute: typeof SiteVitrineRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TarifsRoute: typeof TarifsRoute
   AgentsIaAgencesImmobilieresRoute: typeof AgentsIaAgencesImmobilieresRoute
   AgentsIaAgentVocalRoute: typeof AgentsIaAgentVocalRoute
   AgentsIaAutomobileRoute: typeof AgentsIaAutomobileRoute
@@ -735,6 +748,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tarifs': {
+      id: '/tarifs'
+      path: '/tarifs'
+      fullPath: '/tarifs'
+      preLoaderRoute: typeof TarifsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -1167,6 +1187,7 @@ const rootRouteChildren: RootRouteChildren = {
   SiteInternetSerrurierRoute: SiteInternetSerrurierRoute,
   SiteVitrineRoute: SiteVitrineRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TarifsRoute: TarifsRoute,
   AgentsIaAgencesImmobilieresRoute: AgentsIaAgencesImmobilieresRoute,
   AgentsIaAgentVocalRoute: AgentsIaAgentVocalRoute,
   AgentsIaAutomobileRoute: AgentsIaAutomobileRoute,

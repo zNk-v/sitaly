@@ -100,6 +100,13 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
     lastmod: p.updatedAt ?? p.publishedAt,
   })),
   { path: "/a-propos", changefreq: "yearly", priority: "0.6", source: [route("a-propos.tsx")] },
+  // La grille des prix (18 octobre 2026). Ses montants vivent dans src/data/offres.ts.
+  {
+    path: "/tarifs",
+    changefreq: "monthly",
+    priority: "0.9",
+    source: [route("tarifs.tsx"), "src/data/offres.ts"],
+  },
   // La page locale, hors familles d'expertise (décision du 28 septembre 2026).
   { path: "/essonne", changefreq: "monthly", priority: "0.8", source: [route("essonne.tsx")] },
   // Les pages métier, dérivées de leur source (hors index, voir indexation.ts).

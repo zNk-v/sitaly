@@ -139,6 +139,11 @@ export function MainNav() {
         </div>
       </Deroulant>
 
+      {/* La grille des prix (18 octobre 2026), juste après les services. */}
+      <Link to="/tarifs/" className="lien-entete py-5">
+        Tarifs
+      </Link>
+
       {/* Les secteurs, comme le menu « Secteurs » de futurdigital.fr : les
           pages Agents IA par secteur, puis les artisans (refonte du 5 octobre
           2026). Les pages Site internet par métier restent hors index

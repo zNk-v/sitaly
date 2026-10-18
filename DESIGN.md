@@ -328,6 +328,22 @@ Ce sont des planchers, pas une grille : le montant exact reste écrit après le
 diagnostic. Sur les pages agents IA, « sans frais d'installation » ne s'écrit
 plus, puisqu'il y a une mise en place.
 
+**Révision du 18 octobre 2026 — les prix des sites sont publiés.** Sitaly se
+recentre sur les sites et la fiche Google, pour des artisans, indépendants et
+petits commerces qui décident sur un prix, pas sur un diagnostic. La page
+/tarifs/ publie la grille complète : Présence, Présence Pro, Boutique en ligne
+(Shopify), Maintenance, options à la carte, conditions de départ et de rachat.
+
+- Source unique des montants : `src/data/offres.ts`. Aucun montant de site
+  n'est recopié ailleurs dans le code ; les fichiers texte de public/
+  (pricing.md, llms.txt, llms-full.txt) se corrigent à la main.
+- Le prix mensuel s'affiche en grand, la mise en service juste dessous, jamais
+  cachée. Mention « TVA non applicable, art. 293 B du CGI ».
+- « Sans engagement » s'oppose aux contrats de location de site longue durée,
+  sans jamais nommer de concurrent.
+- Hors grille, toujours sans prix publié sur /tarifs/ : agents IA, Google Ads,
+  ChatGPT Ads, accessibles par un lien discret « sur devis ».
+
 ---
 
 ## 8 bis. L'arborescence des expertises

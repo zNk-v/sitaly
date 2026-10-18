@@ -97,8 +97,8 @@ export function SiteHeader({
             >
               <Calendar className="h-4 w-4" />
               {/* Le libellé complet ne tient qu'à partir de xl, à côté du menu. */}
-              <span className="hidden xl:inline">Réserver un diagnostic de 30 min</span>
-              <span className="xl:hidden">Diagnostic de 30 min</span>
+              <span className="hidden xl:inline">Réserver un appel de 30 min</span>
+              <span className="xl:hidden">Appel de 30 min</span>
             </a>
             <MobileMenu onHome={accueil} />
           </div>

@@ -9,13 +9,9 @@ import { LINKEDIN_URL } from "@/components/LinkedinLink";
 import { Ouverture } from "@/components/accueil/Ouverture";
 import { Constat } from "@/components/accueil/Constat";
 import { Manifeste } from "@/components/accueil/Manifeste";
-import { Services } from "@/components/accueil/Services";
+import { AllerPlusLoin, Detail, Formats } from "@/components/accueil/Services";
 import { Avis } from "@/components/accueil/Avis";
 import { Process } from "@/components/accueil/Process";
-import { Leviers } from "@/components/accueil/Leviers";
-import { Secteurs } from "@/components/accueil/Secteurs";
-import { Pastille } from "@/components/accueil/communs";
-import { euros } from "@/data/secteurs";
 import { BlogCard } from "@/components/BlogCard";
 import { TexteAvecLiens } from "@/components/TexteAvecLiens";
 import { postsALaUne } from "@/data/blog-posts";
@@ -24,7 +20,6 @@ import { useSplitWords } from "@/hooks/use-split-words";
 import {
   CALENDLY_URL,
   FORM_ENDPOINT,
-  PRIX_AGENTS_IA,
   SITALY_CODE_POSTAL,
   SITALY_PHONE,
   SITALY_PHONE_DISPLAY,
@@ -36,48 +31,48 @@ import { texteBrut } from "@/lib/liens-texte";
 import teddyMur700 from "@/assets/teddy-mur-700.webp";
 import teddyMur1200 from "@/assets/teddy-mur-1200.webp";
 
-/* Les questions de l'accueil portent sur les agents IA depuis le 28 septembre
-   2026 : les cinq précédentes vendaient un abonnement site, et l'accueil se
-   classait sur des recherches web locales. Les questions sur les sites ont
-   leur page (/creation-site-internet/). Le JSON-LD reprend ce texte mot pour
-   mot, liens retirés. */
+/* Recentrage du 18 octobre 2026 : les questions de l'accueil reviennent aux
+   sites, le service qui fait tourner Sitaly. Celles sur les agents IA vivent
+   sur /agents-ia/. Aucun prix de site (DESIGN.md §8). Le JSON-LD reprend ce
+   texte mot pour mot, liens retirés. */
 const FAQ_ITEMS = [
   {
-    q: "Qu'est-ce qu'un agent IA peut faire pour ma PME ?",
-    a: "Décrocher le téléphone, qualifier une demande selon vos règles, proposer un créneau dans votre agenda, envoyer un SMS après un appel manqué, relancer un devis, répondre aux messages Instagram et gérer vos avis Google. Il met à jour vos outils et passe la main à un humain dès que la situation le demande.",
+    q: "Quels types de sites créez-vous ?",
+    a: "Des [sites vitrines](/site-vitrine/), des [boutiques en ligne](/site-e-commerce/), des [landing pages](/landing-page/) et des [sites événementiels](/site-evenementiel/), ainsi que la [refonte](/refonte-site-internet/) de sites existants. Chaque site est conçu sur mesure, pour l'action que vous attendez de vos visiteurs : appeler, réserver, acheter ou s'inscrire.",
   },
   {
-    q: "L'agent dit-il qu'il est une IA ?",
-    a: "Oui, dès la première phrase. C'est une obligation de l'article 50 du règlement européen sur l'IA, applicable depuis le 2 août 2026.",
+    q: "Combien de temps faut-il pour créer un site ?",
+    a: "Un site vitrine est en ligne 48 heures après l'appel découverte, une fois vos photos et vos informations réunies. Une boutique en ligne ou un site événementiel avec inscriptions demande plus de temps, annoncé avant de commencer.",
   },
   {
-    q: "Comment se construit le budget ?",
-    a: `Une mise en place, puis un pilotage mensuel, chiffrés par écrit après un diagnostic offert de 30 minutes.${
-      PRIX_AGENTS_IA.afficher
-        ? ` La mise en place démarre à ${euros(PRIX_AGENTS_IA.miseEnPlaceMin)}, le pilotage à ${euros(PRIX_AGENTS_IA.mensuelMin)} par mois.`
-        : ""
-    }`,
+    q: "Faut-il fournir les textes et les photos ?",
+    a: "Les textes sont écrits par Sitaly. Pour les photos, vos vraies réalisations prises au téléphone valent mieux qu'une banque d'images ; si vous n'en avez pas, on démarre avec des visuels temporaires.",
   },
   {
-    q: "Que se passe-t-il quand l'agent ne sait pas répondre ?",
-    a: "Il passe la main : la demande est transmise à la bonne personne de votre équipe, selon les règles fixées ensemble pendant la mise en place.",
+    q: "Combien coûte un site ?",
+    a: "Les prix sont publiés sur la page [tarifs](/tarifs/) : un abonnement mensuel, plus une mise en service payée une fois à la signature. L'abonnement comprend l'hébergement, le nom de domaine, la maintenance et la gestion de votre fiche Google. Toutes les offres sont sans engagement.",
   },
   {
-    q: "Qui s'occupe de mon projet ?",
-    a: "Teddy Vidal, fondateur de Sitaly, conçoit, installe et pilote lui-même chaque agent. Vous avez un seul interlocuteur, du diagnostic au suivi mensuel.",
+    q: "Le site m'appartient-il ?",
+    a: "Un site vitrine reste la propriété de Sitaly : c'est ce qui permet d'inclure sa création, son hébergement et sa maintenance dans une mensualité sans engagement. Si vous partez, votre nom de domaine vous est transféré gratuitement, votre fiche Google reste la vôtre, et vous pouvez racheter le site au prix indiqué sur la page [tarifs](/tarifs/). Une boutique Shopify vous appartient dès le départ.",
   },
   {
-    q: "Vous faites aussi les sites et la publicité ?",
-    a: "Oui. Sitaly pilote les campagnes [ChatGPT Ads](/chatgpt-ads/), livre aux artisans des [demandes de chantier exclusives](/acquisition/) et [crée les sites](/creation-site-internet/), pour que les demandes arrivent, soient bien reçues, puis traitées par vos agents.",
+    q: "Pouvez-vous reprendre un site fait par quelqu'un d'autre ?",
+    a: "Oui. Sitaly reprend la maintenance de sites existants, sous WordPress ou autre : audit de départ, sauvegardes, mises à jour et corrections mineures, pour une mensualité sans engagement ([voir le tarif](/tarifs/#maintenance)). Si le site date trop, une [refonte](/refonte-site-internet/) coûte souvent moins cher que de le maintenir en l'état.",
+  },
+  {
+    q: "Vous faites aussi les agents IA ?",
+    a: "Oui, une fois le site en ligne. Sitaly installe des [agents IA](/agents-ia/) qui répondent au téléphone, prennent les rendez-vous et relancent les devis restés sans réponse. Ils sont chiffrés sur devis.",
   },
 ];
 
-/* Recentrage du 26 septembre 2026 (audit SEO/GEO) : l'accueil se positionne
-   sur les agents IA pour les PME. Le site et la publicité restent présentés,
-   en complément. */
-const TITRE_ACCUEIL = "Agence IA pour PME : agents IA et automatisation | Sitaly";
+/* Recentrage du 18 octobre 2026, à la demande du client : l'accueil se
+   positionne sur la création de sites, ses six formats nommés. Le titre ne
+   reprend pas mot pour mot celui de /creation-site-internet/, pour que les
+   deux pages ne se disputent pas la même requête. */
+const TITRE_ACCUEIL = "Sitaly : création de site vitrine, e-commerce et landing page";
 const DESCRIPTION_ACCUEIL =
-  "Sitaly installe et pilote des agents IA pour PME : accueil téléphonique, qualification, rendez-vous, relance des devis. Diagnostic offert de 30 min.";
+  "Site vitrine, e-commerce, landing page, refonte ou site événementiel : Sitaly conçoit, héberge et entretient votre site, fiche Google comprise. Essonne et France.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -139,20 +134,30 @@ function SitalyHome() {
   /* Refonte du 5 octobre 2026 (DESIGN.md §11) : la page suit le parcours et
      les animations de futurdigital.fr. La palette, les polices et la bascule
      en serif italique restent celles de Sitaly. Les sections propres à
-     l'accueil vivent dans src/components/accueil/. */
+     l'accueil vivent dans src/components/accueil/.
+
+     Recentrage du 18 octobre 2026 : les six formats de site passent juste
+     sous le premier écran, trois d'entre eux sont détaillés en rangées
+     illustrées, les autres services descendent dans « Aller plus loin ».
+     Second passage le même jour : les rangées illustrées montent juste sous
+     le premier écran, et les six formats passent en défilé horizontal
+     épinglé après les chiffres. Les prix vivent sur /tarifs/.
+     Leviers et Secteurs quittent l'accueil ; leurs composants restent dans
+     le code. Espacements resserrés (py-16/20 au lieu de py-20/28) : deux
+     sections voisines additionnaient plus de 220 px de vide. */
   return (
     <div ref={rootRef} className="min-h-screen bg-background text-foreground">
       <SiteHeader accueil premierEcran="sombre" />
       <main>
         <Ouverture />
+        <Detail />
         <Constat />
+        <Formats />
         <Manifeste />
-        <Services />
-        <Avis />
         <Process />
-        <Leviers />
-        <Secteurs />
         <Realisations />
+        <Avis />
+        <AllerPlusLoin />
         <Fondateur />
         <Faq />
         <Journal />
@@ -168,7 +173,7 @@ const PHOTO_MUR = `${teddyMur700} 700w, ${teddyMur1200} 1200w`;
 /* ---------------- RÉALISATIONS ---------------- */
 function Realisations() {
   return (
-    <section id="exemples" className="py-20 sm:py-28">
+    <section id="exemples" className="bg-paper pt-16 pb-12 sm:pt-20 sm:pb-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
           eyebrow="Réalisations"
@@ -180,9 +185,9 @@ function Realisations() {
           subtitle="Trois métiers, trois logiques. Chaque projet a sa page, et chaque site s'ouvre."
         />
 
-        <RealisationsCarousel className="mt-16" />
+        <RealisationsCarousel className="mt-12" />
 
-        <div className="mt-14 flex justify-center">
+        <div className="mt-10 flex justify-center">
           <Link to="/realisations/" className="bouton px-7 py-3.5">
             Toutes les réalisations
             <ArrowRight className="bouton-fleche h-5 w-5" />
@@ -201,7 +206,7 @@ function Realisations() {
  */
 function Fondateur() {
   return (
-    <section className="bg-paper-sunk py-20 sm:py-28">
+    <section className="bg-paper-sunk py-16 sm:py-20">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16">
         <div data-reveal className="relative lg:col-span-5">
           <img
@@ -229,14 +234,14 @@ function Fondateur() {
           </h2>
           <div className="measure mt-7 space-y-4 text-lg leading-relaxed text-muted-foreground">
             <p>
-              Sitaly, c'est moi. J'installe les agents IA, je conçois les sites et je pilote les
-              campagnes. Vous n'aurez pas un commercial à l'appel découverte et un stagiaire sur
-              votre projet.
+              Sitaly, c'est moi. Je conçois les sites, je tiens les fiches Google à jour et, quand
+              c'est utile, j'installe les agents IA et je pilote les campagnes. Vous n'aurez pas un
+              commercial à l'appel découverte et un stagiaire sur votre projet.
             </p>
             <p>
-              Je travaille avec des PME d'Île-de-France et, à distance, de toute la France. Pas de
-              rendez-vous à caler trois semaines à l'avance : on s'appelle, et on sait tout de suite
-              si ça vaut le coup.
+              Je travaille avec des artisans, des commerçants et des PME d'Île-de-France et, à
+              distance, de toute la France. Pas de rendez-vous à caler trois semaines à l'avance :
+              on s'appelle, et on sait tout de suite si ça vaut le coup.
             </p>
           </div>
 
@@ -279,7 +284,7 @@ function Fondateur() {
  */
 function Faq() {
   return (
-    <section id="faq" className="bg-paper py-20 sm:py-28">
+    <section id="faq" className="bg-paper py-16 sm:py-20">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <div
           data-reveal
@@ -335,7 +340,7 @@ function Journal() {
   const articles = postsALaUne(3);
 
   return (
-    <section id="journal" className="bg-paper-sunk py-20 sm:py-28">
+    <section id="journal" className="bg-paper-sunk py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader
           eyebrow="Le journal"
@@ -423,7 +428,7 @@ function Contact() {
        clients qui vous trouvent. »), sur l'encre, avec le formulaire posé à
        droite. Les chevrons du logo, en filigrane, tiennent la place des
        épingles de carte de Futur Digital. */
-    <section id="contact" className="on-ink relative isolate overflow-hidden bg-ink py-20 sm:py-28">
+    <section id="contact" className="on-ink relative isolate overflow-hidden bg-ink py-16 sm:py-20">
       <svg
         aria-hidden="true"
         viewBox="0 0 400 300"
@@ -440,11 +445,11 @@ function Contact() {
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div data-reveal>
             <h2 data-split className="display-section">
-              Moins d'appels perdus. <span className="accent-word">Plus de rendez-vous pris.</span>
+              Parlons de votre site. <span className="accent-word">Réponse sous 24 h.</span>
             </h2>
             <p className="mt-5 text-lg text-white/70">
-              Sitaly réunit vos agents IA, vos campagnes et votre site au même endroit, pour que
-              plus aucune demande ne se perde. Laissez vos coordonnées : on vous rappelle sous 24 h.
+              Vitrine, boutique, landing page, refonte ou événement : décrivez votre activité en
+              deux lignes, et on vous rappelle pour voir quel format vous convient.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
@@ -454,7 +459,7 @@ function Contact() {
                 className="bouton px-7 py-3.5"
               >
                 <Calendar className="h-5 w-5" />
-                Réserver un diagnostic de 30 min
+                Réserver un appel de 30 min
               </a>
               <a
                 href={`tel:${SITALY_PHONE}`}
@@ -465,7 +470,7 @@ function Contact() {
               </a>
             </div>
             <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/65">
-              {["Sans engagement", "Diagnostic offert", "Réponse sous 24 h"].map((t) => (
+              {["Sans engagement", "Appel offert", "Réponse sous 24 h"].map((t) => (
                 <li key={t} className="flex items-center gap-2">
                   <Check className="h-4 w-4 text-signal" />
                   {t}

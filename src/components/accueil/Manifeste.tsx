@@ -1,19 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import {
-  Bot,
-  CalendarCheck,
   ChevronDown,
   FileText,
   Globe,
   Inbox,
+  MapPin,
   MessageSquare,
   MousePointerClick,
-  Phone,
-  PhoneIncoming,
-  PhoneMissed,
   RefreshCw,
   Search,
+  ShieldCheck,
   Sparkles,
+  Star,
   Target,
 } from "lucide-react";
 
@@ -22,6 +20,10 @@ import {
  * pendant que des cartes d'interface entrent et sortent autour d'elle par
  * groupes. Chaque groupe allume son mot dans la phrase. C'est la section
  * « Futur Digital réunit tout » de la référence.
+ *
+ * Depuis le recentrage du 18 octobre 2026, la phrase dit ce que comprend un
+ * site Sitaly, quel que soit son format : le design, la fiche Google, le
+ * référencement local et l'entretien.
  *
  * Une seule mesure par image : la progression dans la section, qui donne le
  * groupe actif. Tout le reste est en transitions CSS. Sous `lg`, ni épingle
@@ -39,81 +41,10 @@ type Groupe = { mot: string; couleur: string; cartes: [Carte, Carte, Carte, Cart
 
 const GROUPES: Groupe[] = [
   {
-    mot: "agents IA",
-    couleur: "text-violet-ink",
-    cartes: [
-      { icone: PhoneMissed, haut: "Appel manqué · 18:47", corps: "SMS envoyé au client en 30 s" },
-      {
-        icone: CalendarCheck,
-        haut: "Agenda · mardi",
-        corps: (
-          <>
-            <span className="block font-display text-3xl font-extrabold tracking-tight">10:00</span>
-            Rendez-vous pris par l'agent
-          </>
-        ),
-        sombre: true,
-      },
-      { icone: FileText, haut: "Devis n° 214", corps: "Relancé à J+3, accepté" },
-      { icone: Bot, haut: "Qualification", corps: "Urgence · Brétigny · fuite" },
-    ],
-  },
-  {
-    mot: "ChatGPT Ads",
-    couleur: "text-red-ink",
-    cartes: [
-      {
-        icone: MessageSquare,
-        haut: "ChatGPT",
-        corps: "« Un couvreur sérieux vers Brétigny ? »",
-      },
-      { icone: Sparkles, haut: "Annonce sponsorisée", corps: "Votre entreprise · devis sous 24 h" },
-      {
-        icone: Target,
-        haut: "Demandes suivies",
-        corps: (
-          <>
-            <span className="block font-display text-3xl font-extrabold tracking-tight">38</span>
-            ce mois-ci
-          </>
-        ),
-        sombre: true,
-      },
-      { icone: Search, haut: "Intentions", corps: "urgence · devis · avis" },
-    ],
-  },
-  {
-    /* L'offre du 5 octobre 2026 (src/routes/acquisition.tsx) : Sitaly paie
-       ses campagnes et livre les demandes à une seule entreprise par zone. */
-    mot: "demandes de chantier",
-    couleur: "text-red-ink",
-    cartes: [
-      {
-        icone: PhoneIncoming,
-        haut: "Nouvelle demande · 9 h 42",
-        corps: "Élagage d'un chêne, Brétigny",
-      },
-      {
-        icone: Target,
-        haut: "Partenaire sur votre zone",
-        corps: (
-          <>
-            <span className="block font-display text-3xl font-extrabold tracking-tight">1</span>
-            seule entreprise par métier
-          </>
-        ),
-        sombre: true,
-      },
-      { icone: Phone, haut: "Appel de 3 min 12", corps: "Enregistré et horodaté" },
-      { icone: RefreshCw, haut: "Demande hors zone", corps: "Signalée sous 48 h, remplacée" },
-    ],
-  },
-  {
-    mot: "site internet",
+    mot: "un design sur mesure",
     couleur: "text-blue-ink",
     cartes: [
-      { icone: Globe, haut: "votre-entreprise.fr", corps: "Chargé en 0,8 s" },
-      { icone: Inbox, haut: "Formulaire", corps: "Nouvelle demande reçue" },
+      { icone: Globe, haut: "votre-entreprise.fr", corps: "Maquette validée en un appel" },
       {
         icone: Sparkles,
         haut: "Score mobile",
@@ -125,7 +56,68 @@ const GROUPES: Groupe[] = [
         ),
         sombre: true,
       },
-      { icone: MousePointerClick, haut: "Bouton Appeler", corps: "42 clics ce mois" },
+      { icone: MousePointerClick, haut: "Bouton Appeler", corps: "Visible sur chaque page" },
+      { icone: FileText, haut: "Textes", corps: "Écrits pour vous, à partir de l'appel" },
+    ],
+  },
+  {
+    mot: "votre fiche Google",
+    couleur: "text-red-ink",
+    cartes: [
+      { icone: MapPin, haut: "Google Maps", corps: "« Fleuriste Brétigny-sur-Orge »" },
+      { icone: Star, haut: "Avis clients", corps: "Demandés après chaque prestation" },
+      {
+        icone: Target,
+        haut: "Photos publiées",
+        corps: (
+          <>
+            <span className="block font-display text-3xl font-extrabold tracking-tight">6</span>
+            ce mois-ci
+          </>
+        ),
+        sombre: true,
+      },
+      { icone: RefreshCw, haut: "Horaires", corps: "À jour, jours fériés compris" },
+    ],
+  },
+  {
+    mot: "le référencement local",
+    couleur: "text-violet-ink",
+    cartes: [
+      { icone: Search, haut: "Recherche Google", corps: "« Tatoueur près de chez moi »" },
+      {
+        icone: Target,
+        haut: "Pages par ville",
+        corps: (
+          <>
+            <span className="block font-display text-3xl font-extrabold tracking-tight">12</span>
+            communes couvertes
+          </>
+        ),
+        sombre: true,
+      },
+      { icone: Globe, haut: "Données structurées", corps: "Adresse, horaires, zone" },
+      { icone: MessageSquare, haut: "ChatGPT et Gemini", corps: "Des pages qu'ils savent lire" },
+    ],
+  },
+  {
+    mot: "l'entretien du site",
+    couleur: "text-blue-ink",
+    cartes: [
+      { icone: RefreshCw, haut: "Modification demandée", corps: "Nouveaux tarifs en ligne" },
+      { icone: ShieldCheck, haut: "HTTPS", corps: "Certificat renouvelé sans vous" },
+      {
+        icone: Sparkles,
+        haut: "Chargement",
+        corps: (
+          <>
+            <span className="block font-display text-3xl font-extrabold tracking-tight">0,8 s</span>
+            sur mobile
+          </>
+        ),
+        sombre: true,
+      },
+      { icone: Inbox, haut: "Sauvegarde", corps: "Faite chaque nuit" },
     ],
   },
 ];
@@ -177,10 +169,10 @@ export function Manifeste() {
   return (
     <section
       ref={ref}
-      aria-label="Ce que Sitaly réunit"
-      className="relative bg-gradient-to-b from-paper to-paper-sunk lg:h-[340vh]"
+      aria-label="Ce que comprend un site Sitaly"
+      className="relative bg-gradient-to-b from-paper-sunk to-paper lg:h-[260vh]"
     >
-      <div className="relative flex flex-col items-center justify-center px-4 py-24 sm:px-6 lg:sticky lg:top-0 lg:h-screen lg:py-0">
+      <div className="relative flex flex-col items-center justify-center px-4 py-16 sm:px-6 lg:sticky lg:top-0 lg:h-screen lg:py-0">
         <div aria-hidden="true" className="absolute inset-0 hidden lg:block">
           {GROUPES.map((g, gi) =>
             g.cartes.map((c, ci) => (
@@ -206,7 +198,7 @@ export function Manifeste() {
         </div>
 
         <p className="relative mx-auto max-w-3xl text-center font-display text-[clamp(1.6rem,3.4vw,2.75rem)] font-bold leading-[1.2] tracking-[-0.03em]">
-          Sitaly réunit tout :{" "}
+          Chaque site Sitaly comprend{" "}
           {GROUPES.map((g, i) => (
             <span key={g.mot}>
               {/* Sous `lg`, tous les mots gardent leur teinte. Au-dessus, seul
@@ -221,11 +213,11 @@ export function Manifeste() {
               {i < GROUPES.length - 2 ? ", " : i === GROUPES.length - 2 ? " et " : ""}
             </span>
           ))}
-          , en un seul système piloté par la personne qui le construit.
+          , suivis par la personne qui le construit.
         </p>
 
         <a
-          href="#offre"
+          href="#process"
           className="rail-label relative mt-12 inline-flex flex-col items-center gap-2 text-muted-foreground transition hover:text-foreground"
         >
           Continuez la visite

@@ -1,5 +1,6 @@
 /**
- * Avis Google de la fiche Sitaly, recopiés depuis Google Maps le 21 septembre 2026.
+ * Avis Google de la fiche Sitaly, recopiés depuis Google Maps le 21 septembre 2026,
+ * puis le 18 octobre 2026 (avis de Brian Lafleur, transmis par Teddy).
  *
  * Règle : le texte est celui que le client a publié. Seules la ponctuation,
  * les apostrophes et les traits d'union manquants sont corrigés (« C est »
@@ -25,6 +26,14 @@ export const AVIS_GOOGLE: AvisGoogle[] = [
     realisation: "aymeric-pataud",
     texte:
       "Un accompagnement au top pour mon nouveau site internet et la stratégie autour de mon savoir-faire et de mon personal branding. C'est la 1ère fois que quelqu'un comprend exactement ce que je veux et trouve les bons mots pour raconter qui je suis et ce que je fais. Un seul conseil, si vous cherchez un site qui tient la route et un accompagnement concernant votre stratégie de développement, faites appel à Teddy, vous ne serez pas déçu.",
+  },
+  {
+    auteur: "Brian Lafleur",
+    note: 5,
+    date: "juillet 2026",
+    realisation: "lafleur-toiture",
+    texte:
+      "Nous avons confié la création du site internet de notre entreprise de couverture à Sitaly et le résultat est à la hauteur de nos attentes. L'équipe a su créer un site moderne, rapide et parfaitement adapté à notre activité de couvreur. La communication a été fluide du début à la fin, avec un vrai accompagnement et de très bons conseils pour améliorer notre visibilité sur Google. Le travail est soigné, les délais ont été respectés et le rapport qualité-prix est excellent. Nous recommandons Sitaly à toute entreprise ou artisan qui souhaite un site internet professionnel et efficace pour développer son activité.",
   },
   {
     auteur: "Ludovic",

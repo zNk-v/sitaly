@@ -16,41 +16,43 @@ const TEMPS = [
   {
     titre: "On fait le point",
     texte:
-      "30 minutes au téléphone : où vos demandes se perdent, quels outils sont en place, ce qu'un agent peut reprendre. Puis une proposition écrite et chiffrée.",
+      "30 minutes au téléphone : votre métier, vos clients, ce que le site doit leur faire faire. Appeler, réserver, acheter ou s'inscrire.",
   },
   {
-    titre: "On s'occupe de tout",
+    titre: "On construit",
     texte:
-      "L'agent est configuré selon vos règles, branché sur votre téléphonie, votre agenda et vos outils. Vous validez, on exécute.",
+      "Maquette, textes écrits pour vous, fiche Google mise en ordre. Vous validez, le site part en ligne, hébergé et sécurisé.",
   },
   {
-    titre: "On suit et on ajuste",
+    titre: "On entretient",
     texte:
-      "Chaque mois, la lecture des échanges, les corrections et un compte rendu clair. Le même interlocuteur du premier appel au centième.",
+      "Un texte, une photo, un tarif ou des horaires à changer : c'est inclus. Le même interlocuteur, du premier appel au centième.",
   },
 ];
 
-/* Lignes de la feuille de route : début et fin en douzièmes de la frise. */
+/* Lignes de la feuille de route : début et fin en douzièmes de la frise. La
+   première colonne couvre la première semaine, d'où une échelle non linéaire,
+   annoncée par l'en-tête. */
 const BARRES = [
-  { ligne: "Diagnostic", label: "Appel de 30 min", debut: 0, fin: 2, ton: "feuille-barre--clair" },
+  { ligne: "Découverte", label: "Appel de 30 min", debut: 0, fin: 2, ton: "feuille-barre--clair" },
   {
-    ligne: "Mise en place",
-    label: "Agent configuré et branché",
-    debut: 2,
-    fin: 5,
+    ligne: "Mise en ligne",
+    label: "Maquette, puis site en ligne",
+    debut: 1,
+    fin: 4,
     ton: "feuille-barre--violet",
   },
   {
-    ligne: "Réglages",
-    label: "Premiers appels relus",
-    debut: 5,
+    ligne: "Visibilité",
+    label: "Fiche Google et pages locales",
+    debut: 4,
     fin: 8,
     ton: "feuille-barre--degrade",
   },
   {
-    ligne: "Pilotage",
-    label: "Compte rendu mensuel",
-    debut: 8,
+    ligne: "Entretien",
+    label: "Modifications et suivi mensuel",
+    debut: 6,
     fin: 12,
     ton: "feuille-barre--encre",
   },
@@ -60,10 +62,10 @@ export function Process() {
   const [pause, setPause] = useState(false);
 
   return (
-    <section id="process" className="bg-paper py-20 sm:py-28">
+    <section id="process" className="bg-paper-sunk py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 data-reveal data-split className="display-section max-w-3xl">
-          On fait le point, <span className="accent-word">on installe, on pilote</span>
+          On fait le point, <span className="accent-word">on construit, on entretient</span>
         </h2>
 
         <ol className="stagger mt-12 grid gap-8 md:grid-cols-3">
@@ -102,7 +104,7 @@ export function Process() {
                   <span className="h-2.5 w-2.5 rounded-full bg-border" />
                   <span className="h-2.5 w-2.5 rounded-full bg-border" />
                 </span>
-                <span className="text-sm font-semibold">Feuille de route · 3 mois</span>
+                <span className="text-sm font-semibold">Feuille de route · premier trimestre</span>
               </div>
               <span className="rounded-full bg-ink px-3 py-1 text-[12px] font-semibold text-white">
                 Exemple
@@ -115,9 +117,9 @@ export function Process() {
                 <div className="grid grid-cols-[7.5rem_1fr] text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
                   <span />
                   <div className="grid grid-cols-3">
+                    <span>Semaine 1</span>
                     <span>Mois 1</span>
-                    <span>Mois 2</span>
-                    <span>Mois 3</span>
+                    <span>Mois 2 et 3</span>
                   </div>
                 </div>
 
@@ -164,15 +166,14 @@ export function Process() {
         </div>
 
         <p className="measure mt-10 text-muted-foreground">
-          Avant d'en parler, notre guide sur l'
+          Ce que comprend un site, du nom de domaine aux modifications, est détaillé sur la page{" "}
           <Link
-            to="/blog/$slug/"
-            params={{ slug: "agent-ia-entreprise-guide" }}
+            to="/creation-site-internet/"
             className="font-medium text-brand-ink underline decoration-brand-ink/30 underline-offset-4 transition hover:decoration-brand-ink"
           >
-            agent IA en entreprise
-          </Link>{" "}
-          dit ce qu'il fait, ce qu'il coûte, et quand une automatisation simple suffit.
+            création de site internet
+          </Link>
+          .
         </p>
       </div>
     </section>

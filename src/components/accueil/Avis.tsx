@@ -20,7 +20,7 @@ export function Avis() {
   const serie = Array.from({ length: REPETITIONS }, () => AVIS_GOOGLE).flat();
 
   return (
-    <section id="avis" className="overflow-hidden bg-paper py-20 sm:py-28">
+    <section id="avis" className="overflow-hidden bg-paper pt-12 pb-16 sm:pt-14 sm:pb-20">
       <div data-reveal className="mx-auto max-w-3xl px-4 text-center sm:px-6">
         <h2 data-split className="display-section">
           La confiance de dirigeants{" "}

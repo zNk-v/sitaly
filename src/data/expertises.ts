@@ -60,15 +60,16 @@ export interface Famille {
   icone: React.ComponentType<{ className?: string }>;
 }
 
-/* L'ordre est celui de l'offre depuis le 28 septembre 2026 : les agents IA
-   en tête, l'acquisition ensuite, le site en porte d'entrée. Menu, menu
-   mobile, accueil et pied de page le suivent tous. */
+/* L'ordre est celui de l'offre depuis le 18 octobre 2026 : le site internet
+   revient en tête (c'est le service qui fait tourner Sitaly), l'acquisition
+   ensuite, les agents IA en complément. Menu, menu mobile, accueil et pied de
+   page le suivent tous. */
 export const FAMILLES: Famille[] = [
   {
-    id: "automatisation",
-    titre: "Agents IA et automatisation",
-    resume: "Les demandes traitées et les tâches répétitives faites sans vous.",
-    icone: Bot,
+    id: "site",
+    titre: "Site internet",
+    resume: "Le site, sa mise en ligne et son entretien.",
+    icone: Globe,
   },
   {
     id: "acquisition",
@@ -77,10 +78,10 @@ export const FAMILLES: Famille[] = [
     icone: Megaphone,
   },
   {
-    id: "site",
-    titre: "Site internet",
-    resume: "Le site, sa mise en ligne et son entretien.",
-    icone: Globe,
+    id: "automatisation",
+    titre: "Agents IA et automatisation",
+    resume: "Les demandes traitées et les tâches répétitives faites sans vous.",
+    icone: Bot,
   },
 ];
 
@@ -189,7 +190,7 @@ const SITE: Expertise[] = [
       },
       {
         q: "Le site m'appartient-il ?",
-        a: "Le nom de domaine est déposé à votre nom et reste le vôtre. Le site fonctionne en abonnement : c'est ce qui permet d'inclure l'hébergement, les mises à jour et les modifications dans une mensualité sans engagement. Un rachat reste possible sur demande.",
+        a: "Le site reste la propriété de Sitaly : c'est ce qui permet d'inclure sa création, son hébergement et sa maintenance dans une mensualité sans engagement. Votre fiche Google est à vous, votre nom de domaine vous est transféré gratuitement si vous partez, et le site peut être racheté au prix indiqué sur la page tarifs.",
       },
       {
         q: "Faut-il fournir les textes et les photos ?",
@@ -197,7 +198,7 @@ const SITE: Expertise[] = [
       },
       {
         q: "Que se passe-t-il si j'arrête ?",
-        a: "Sans engagement de durée : vous arrêtez avec un préavis, sans frais ni durée minimale. Le nom de domaine part avec vous.",
+        a: "Sans engagement : vous arrêtez quand vous voulez, sans frais ni durée minimale. Le site est mis hors ligne, sauf si vous le rachetez, et le nom de domaine vous est transféré gratuitement.",
       },
     ],
   },
