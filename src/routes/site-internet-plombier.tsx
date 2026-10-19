@@ -21,7 +21,7 @@ const FAQ = [
   },
   {
     q: "Que se passe-t-il si je veux arrêter ?",
-    a: "Nos formules sont en location, sans engagement : vous arrêtez quand vous voulez avec un simple préavis, sans frais ni durée minimale.",
+    a: "Toutes nos formules sont sans engagement : vous arrêtez quand vous voulez, sans frais ni durée minimale. Votre nom de domaine vous est transféré gratuitement et votre fiche Google reste la vôtre. Le détail est sur la page tarifs.",
   },
   {
     q: "Je n'ai que des photos prises au téléphone, ça suffit ?",
@@ -33,7 +33,7 @@ const FAQ = [
   },
   {
     q: "Et si je travaille déjà avec des plateformes de mise en relation ?",
-    a: "Les plateformes vous facturent chaque contact et vous mettent en concurrence sur le prix. Votre site vous appartient, les appels sont directs et le coût ne bouge pas quand le volume augmente. Beaucoup de plombiers gardent les deux au début, puis réduisent la plateforme au fil des mois.",
+    a: "Les plateformes vous facturent chaque contact et vous mettent en concurrence sur le prix. Avec votre site, les appels arrivent directement chez vous et le coût ne bouge pas quand le volume augmente. Beaucoup de plombiers gardent les deux au début, puis réduisent la plateforme au fil des mois.",
   },
 ];
 

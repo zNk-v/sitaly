@@ -46,15 +46,15 @@ export const contenu: BlogSection[] = [
       ["Peintre / Plaquiste", "9", "35 %", "1 400€", "52 900€"],
     ],
   },
-  { type: "h2", text: "Exemple concret : un plombier à Avignon" },
+  { type: "h2", text: "Exemple de calcul : un plombier en ville" },
   {
     type: "p",
-    text: "Coût site : 149€/mois. Appels générés : 15 par mois. Taux de conversion : 30 % = 4,5 chantiers/mois. Panier moyen : 800€. CA mensuel généré : 3 600€. Marge nette estimée à 35 % : 1 260€. ROI mensuel : 1 111€. Le site se rentabilise en moins de 3 semaines de chantiers.",
+    text: "Hypothèse de calcul, pas un client réel. Coût site : 149€/mois. Appels générés : 15 par mois. Taux de conversion : 30 % = 4,5 chantiers/mois. Panier moyen : 800€. CA mensuel généré : 3 600€. Marge nette estimée à 35 % : 1 260€. ROI mensuel : 1 111€. Le site se rentabilise en moins de 3 semaines de chantiers.",
   },
-  { type: "h2", text: "Exemple concret : un menuisier en zone rurale" },
+  { type: "h2", text: "Exemple de calcul : un menuisier en zone rurale" },
   {
     type: "p",
-    text: "Coût site : 149€/mois. Appels générés : 4 par mois. Taux de conversion : 35 % = 1,4 chantier/mois. Panier moyen : 3 500€. CA mensuel : 4 900€. Marge nette à 25 % : 1 225€. Le site se rentabilise dès le premier chantier signé, et continue à produire les mois suivants.",
+    text: "Hypothèse de calcul, pas un client réel. Coût site : 149€/mois. Appels générés : 4 par mois. Taux de conversion : 35 % = 1,4 chantier/mois. Panier moyen : 3 500€. CA mensuel : 4 900€. Marge nette à 25 % : 1 225€. Le site se rentabilise dès le premier chantier signé, et continue à produire les mois suivants.",
   },
   { type: "h2", text: "Combien de temps avant les premiers résultats ?" },
   {

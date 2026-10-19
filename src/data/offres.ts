@@ -111,6 +111,9 @@ export const RACHAT_SITE = [
   { periode: "Ensuite", prix: 490 },
 ];
 
+/** Boutique livrée sans abonnement Sitaly, en une fois. */
+export const BOUTIQUE_SANS_ABONNEMENT = 1490;
+
 export const MENTION_TVA = "TVA non applicable, art. 293 B du CGI";
 
 /** Prix le plus bas d'un site, pour les accroches (« à partir de »). */

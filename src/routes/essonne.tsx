@@ -1,3 +1,5 @@
+import { PRIX_SITE_MIN } from "@/data/offres";
+import { euros } from "@/lib/config";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Calendar, Check, Phone } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -25,9 +27,8 @@ import {
  * Identité (DESIGN.md §9) : ni adresse de rue, ni invitation à se rencontrer.
  * Tout commence par un appel de 30 minutes.
  */
-const TITRE = "Agence web, SEO et agents IA en Essonne (91) | Sitaly";
-const DESCRIPTION =
-  "Agence basée à Brétigny-sur-Orge : agents IA, demandes de chantier pour artisans, référencement local et sites internet en Essonne et Île-de-France.";
+const TITRE = "Création de site internet en Essonne (91) | Sitaly";
+const DESCRIPTION = `Agence web basée à Brétigny-sur-Orge : sites internet, fiche Google et référencement local pour artisans et commerces de l'Essonne. Dès ${euros(PRIX_SITE_MIN)} par mois, sans engagement.`;
 const URL = `${BASE_URL}/essonne/`;
 
 const SERVICES = [

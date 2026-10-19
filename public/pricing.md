@@ -1,6 +1,6 @@
 # Offres de Sitaly
 
-Sitaly installe et pilote des agents IA pour les PME, gère des campagnes ChatGPT Ads, livre des demandes de chantier exclusives aux artisans, et crée des sites internet. Basée à Brétigny-sur-Orge (Essonne), elle intervient en Essonne et en Île-de-France, et à distance dans toute la France. Diagnostic offert de 30 minutes.
+Sitaly est une micro-agence en abonnement qui crée, héberge et entretient les sites internet des artisans, indépendants, commerçants et TPE, fiche Google comprise. Elle installe aussi des agents IA et gère des campagnes ChatGPT Ads, sur devis. Basée à Brétigny-sur-Orge (Essonne), elle intervient en Essonne et en Île-de-France, et à distance dans toute la France.
 
 Montants plancher publiés depuis le 28 septembre 2026 pour les agents IA et ChatGPT Ads. Le montant exact de chaque périmètre est écrit après le diagnostic, avant tout engagement. Les sites internet ont une grille publiée depuis le 18 octobre 2026.
 
@@ -71,8 +71,8 @@ Prix en euros, TVA non applicable, art. 293 B du CGI. Détail : https://sitaly.f
 - Logo et identité visuelle, photos professionnelles, rédaction de contenus : à la demande, sur devis
 
 ## Pour qui
-- PME et TPE structurées qui reçoivent plus de demandes qu'elles n'en traitent à temps, en priorité : agences immobilières, courtiers en crédit et en assurance, entreprises du BTP
-- Approche ouverte aux autres secteurs
+- Sites : artisans, indépendants, petits commerces (fleuristes, tatoueurs, créateurs) et TPE
+- Agents IA : PME et TPE structurées qui reçoivent plus de demandes qu'elles n'en traitent à temps
 
 ## Contact
 - Téléphone : +33 6 58 68 33 72

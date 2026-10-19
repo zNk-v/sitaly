@@ -63,10 +63,10 @@ export const contenu: BlogSection[] = [
       "Formulaire de devis et téléphone cliquable",
     ],
   },
-  { type: "h2", text: "Exemple chiffré : 4 pages 'ville' bien construites" },
+  { type: "h2", text: "Exemple de calcul : 4 pages 'ville' bien construites" },
   {
     type: "p",
-    text: "Cas d'un électricien à Avignon créant 4 pages 'ville' (Avignon, Le Pontet, Sorgues, Carpentras) avec 600 mots uniques, 4 photos locales et 3 avis ciblés par page. Trafic SEO local avant : 95 visites/mois. Après 5 mois : 412 visites/mois (+334 %). Appels mensuels supplémentaires : 11. CA additionnel estimé : 2 800€/mois. Temps de production des 4 pages : ~18 heures.",
+    text: "Exemple fictif, à titre d'illustration : un électricien à Avignon crée 4 pages 'ville' (Avignon, Le Pontet, Sorgues, Carpentras) avec 600 mots uniques, 4 photos locales et 3 avis ciblés par page. Trafic SEO local avant : 95 visites/mois. Après 5 mois : 412 visites/mois (+334 %). Appels mensuels supplémentaires : 11. CA additionnel estimé : 2 800€/mois. Temps de production des 4 pages : ~18 heures.",
   },
   { type: "h2", text: "Optimisations techniques" },
   {

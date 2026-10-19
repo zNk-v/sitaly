@@ -26,7 +26,7 @@ const TEMPS = [
   {
     titre: "On entretient",
     texte:
-      "Un texte, une photo, un tarif ou des horaires à changer : c'est inclus. Le même interlocuteur, du premier appel au centième.",
+      "Un texte, une photo, un tarif ou des horaires à changer : une modification par mois est incluse. Le même interlocuteur, du premier appel au centième.",
   },
 ];
 

@@ -14,7 +14,8 @@ import { LinkedinLink } from "@/components/LinkedinLink";
 import { SiteHeader } from "@/components/SiteHeader";
 import { MetierFooterLinks, MetierLinksSection } from "@/components/MetierLinks";
 import type { MetierLink } from "@/lib/metiers";
-import { CALENDLY_URL } from "@/lib/config";
+import { CALENDLY_URL, euros } from "@/lib/config";
+import { MENTION_TVA, offre } from "@/data/offres";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export interface MetierLandingProps {
@@ -225,53 +226,23 @@ export function MetierLanding(props: MetierLandingProps) {
         </div>
       </section>
 
-      {/* Pricing */}
+      {/* Tarifs : les deux offres de site, montants lus dans src/data/offres.ts
+          (prix publiés depuis le 18 octobre 2026, DESIGN.md §8). */}
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          {/* Le titre interrogeait le prix. Les montants ayant quitté le site
-              (DESIGN.md §8), la section répond désormais sur le périmètre :
-              poser la question du coût sans y répondre serait pire que ne pas
-              la poser. Arbitrage signalé au client. */}
           <h2 className="display-section">
-            Ce que comprend un site internet <span className="accent-word">{metier}</span>
+            Combien coûte un site internet <span className="accent-word">{metier}</span>
           </h2>
           <p className="measure mt-4 text-sm font-semibold text-foreground/80">
-            Une mensualité sans engagement de durée, et selon le projet des frais de création réglés
-            une seule fois. Tout est géré, vous ne touchez à rien.
+            Un abonnement mensuel sans engagement, et une mise en service payée une fois. Tout est
+            géré, vous ne touchez à rien.
           </p>
           <div className="mx-auto mt-8 grid max-w-3xl gap-5 md:grid-cols-2">
-            {[
-              {
-                name: "Sitaly Présence",
-                claim: "Votre site, entretenu",
-                featured: true,
-                features: [
-                  "Site professionnel + hébergement",
-                  "Maintenance & modifications",
-                  "Fiche Google Business",
-                  "Référencement local",
-                ],
-                note: null as string | null,
-              },
-              /* Offre du 5 octobre 2026 : Sitaly paie ses campagnes et livre
-                 les demandes à une seule entreprise par zone. */
-              {
-                name: "Demandes de chantier",
-                claim: "Des clients, livrés",
-                featured: false,
-                features: [
-                  "Demandes de particuliers exclusives",
-                  "Une seule entreprise par zone",
-                  "Premières demandes offertes",
-                  "Sans engagement, aucune pub à gérer",
-                ],
-                note: null,
-              },
-            ].map((tier) => (
+            {[offre("presence"), offre("presence-pro")].map((o) => (
               <article
-                key={tier.name}
+                key={o.id}
                 className={`rounded-2xl p-7 ${
-                  tier.featured
+                  o.recommandee
                     ? "border-2 border-primary bg-primary/5 shadow-elevated"
                     : "border border-border bg-card shadow-soft"
                 }`}
@@ -279,42 +250,46 @@ export function MetierLanding(props: MetierLandingProps) {
                 <div className="flex items-center justify-between">
                   <div
                     className={`text-xs font-semibold uppercase tracking-wider ${
-                      tier.featured ? "text-primary" : "text-muted-foreground"
+                      o.recommandee ? "text-primary" : "text-muted-foreground"
                     }`}
                   >
-                    {tier.name}
+                    {o.nom}
                   </div>
-                  {tier.featured && (
+                  {o.recommandee && (
                     <span className="rounded-full bg-primary px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-primary-foreground">
-                      Recommandé
+                      Recommandée
                     </span>
                   )}
                 </div>
-                <div className="mt-3 font-display text-2xl font-extrabold tracking-tight">
-                  {tier.claim}
+                <div className="mt-3 font-display text-3xl font-extrabold tracking-tight tabular-nums">
+                  {euros(o.mensuel)}
+                  <span className="text-base font-medium text-muted-foreground">/mois</span>
                 </div>
+                <p className="mt-1 text-sm font-medium text-foreground/80">
+                  + {euros(o.depart)} {o.departLibelle}
+                </p>
                 <ul className="mt-5 space-y-2.5 text-sm">
-                  {tier.features.map((it) => (
+                  {o.reprend && <li className="font-semibold">{o.reprend}</li>}
+                  {o.inclus.map((it) => (
                     <li key={it} className="flex items-start gap-2.5">
                       <Check
                         className={`mt-0.5 h-4 w-4 flex-shrink-0 ${
-                          tier.featured ? "text-primary" : "text-accent"
+                          o.recommandee ? "text-primary" : "text-accent"
                         }`}
                       />
                       <span>{it}</span>
                     </li>
                   ))}
                 </ul>
-                {tier.note && <p className="mt-4 text-xs text-muted-foreground">* {tier.note}</p>}
               </article>
             ))}
           </div>
           <p className="mt-6 text-center text-sm text-muted-foreground">
-            Besoin de plus de chantiers ?{" "}
-            <Link to="/acquisition/" className="font-semibold text-accent hover:underline">
-              Recevez des demandes de chantier exclusives
+            Boutique en ligne, maintenance d'un site existant, options et conditions :{" "}
+            <Link to="/tarifs/" className="font-semibold text-accent hover:underline">
+              voir tous les tarifs
             </Link>
-            .
+            . {MENTION_TVA}.
           </p>
         </div>
       </section>
@@ -470,22 +445,21 @@ export function buildMetierMeta(opts: {
             url: "https://sitaly.fr",
           },
           areaServed: { "@type": "Country", name: "France" },
-          // Les offres gardent leur périmètre, elles perdent leurs montants :
-          // le balisage ne doit pas annoncer un prix que la page ne dit plus.
-          offers: [
-            {
-              "@type": "Offer",
-              name: "Sitaly Présence",
-              description:
-                "Site internet professionnel livré en 48h, hébergement, maintenance, modifications et référencement local inclus. Abonnement mensuel sans engagement de durée.",
+          // Les deux offres de site et leur prix, comme la section Tarifs.
+          offers: [offre("presence"), offre("presence-pro")].map((o) => ({
+            "@type": "Offer",
+            name: o.nom,
+            description: o.inclus.join(", "),
+            priceCurrency: "EUR",
+            price: o.mensuel,
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              price: o.mensuel,
+              priceCurrency: "EUR",
+              billingDuration: "P1M",
             },
-            {
-              "@type": "Offer",
-              name: "Demandes de chantier",
-              description:
-                "Demandes de chantier de particuliers transmises à une seule entreprise par métier et par zone. Premières demandes offertes, puis abonnement mensuel prépayé, sans engagement de durée.",
-            },
-          ],
+            url: "https://sitaly.fr/tarifs/",
+          })),
           url,
         }),
       },

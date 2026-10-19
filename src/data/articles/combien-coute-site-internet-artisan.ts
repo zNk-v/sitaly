@@ -35,7 +35,7 @@ export const contenu: BlogSection[] = [
     headers: ["Solution", "Création", "Hébergement 3 ans", "Maintenance 3 ans", "Total 3 ans"],
     rows: [
       ["DIY Wix Pro", "0€", "540€", "0€ (vous)", "540€ + ~60h de votre temps"],
-      ["Sitaly en location 149€/mois", "0€", "Inclus", "Inclus", "5 364€"],
+      ["Sitaly Présence 149€/mois", "290€", "Inclus", "Inclus", "5 654€"],
       ["Freelance", "1 800€", "360€", "600€", "2 760€"],
       ["Agence", "5 500€", "1 800€", "2 400€", "9 700€"],
     ],
@@ -97,7 +97,7 @@ export const contenu: BlogSection[] = [
       },
       {
         q: "La location d'un site est-elle un piège ?",
-        a: "Non, à condition que (1) la formule soit sans engagement, (2) vous restiez propriétaire de votre nom de domaine, (3) un export du contenu reste possible en cas de départ. Sitaly respecte ces 3 règles : sans engagement, domaine à votre nom, et vous arrêtez quand vous voulez.",
+        a: "Non, à condition que (1) la formule soit sans engagement, (2) vous restiez propriétaire de votre nom de domaine, (3) un export du contenu reste possible en cas de départ. Chez Sitaly : sans engagement, nom de domaine transféré gratuitement à votre départ, et rachat du site possible à un prix publié sur la page tarifs.",
       },
       {
         q: "Comment éviter les surprises sur la facture finale ?",

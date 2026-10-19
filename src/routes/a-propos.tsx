@@ -22,7 +22,7 @@ import { CALENDLY_URL, SITALY_DEPARTEMENT, SITALY_VILLE } from "@/lib/config";
  */
 const TITRE = "Teddy Vidal, fondateur de Sitaly | À propos";
 const DESCRIPTION =
-  "Sitaly, micro-agence de Teddy Vidal à Brétigny-sur-Orge (Essonne) : agents IA, automatisations et sites pour les PME. Un seul interlocuteur.";
+  "Sitaly, micro-agence de Teddy Vidal à Brétigny-sur-Orge (Essonne) : sites internet et fiche Google pour artisans, indépendants et petits commerces. Un seul interlocuteur.";
 const URL = `${BASE_URL}/a-propos/`;
 
 export const Route = createFileRoute("/a-propos")({
@@ -75,10 +75,10 @@ function APropos() {
             Teddy Vidal, <span className="accent-word">fondateur de Sitaly</span>
           </h1>
           <p className="measure mt-6 text-lg leading-relaxed text-foreground/75 sm:text-xl">
-            Sitaly est une micro-agence d'une seule personne. J'installe les agents IA, je construis
-            les automatisations et les sites, et je pilote les campagnes de mes clients. Basé à{" "}
-            {SITALY_VILLE}, dans l'{SITALY_DEPARTEMENT}, je travaille avec des PME d'Île-de-France
-            et, à distance, de toute la France.
+            Sitaly est une micro-agence d'une seule personne. Je conçois les sites de mes clients,
+            je tiens leur fiche Google à jour et, quand c'est utile, j'installe des agents IA. Basé
+            à {SITALY_VILLE}, dans l'{SITALY_DEPARTEMENT}, je travaille avec des artisans, des
+            commerçants et des PME d'Île-de-France et, à distance, de toute la France.
           </p>
           <p className="measure mt-4 text-foreground/75">
             Vous êtes dans le département ? La page{" "}

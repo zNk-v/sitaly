@@ -33,7 +33,7 @@ import teddyMur1200 from "@/assets/teddy-mur-1200.webp";
 
 /* Recentrage du 18 octobre 2026 : les questions de l'accueil reviennent aux
    sites, le service qui fait tourner Sitaly. Celles sur les agents IA vivent
-   sur /agents-ia/. Aucun prix de site (DESIGN.md §8). Le JSON-LD reprend ce
+   sur /agents-ia/. Les prix vivent sur /tarifs/ (src/data/offres.ts). Le JSON-LD reprend ce
    texte mot pour mot, liens retirés. */
 const FAQ_ITEMS = [
   {

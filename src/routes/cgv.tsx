@@ -1,5 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LegalLayout } from "@/components/LegalLayout";
+import { euros } from "@/lib/config";
+import {
+  A_LA_CARTE,
+  BOUTIQUE_SANS_ABONNEMENT,
+  MENTION_TVA,
+  OFFRES,
+  RACHAT_SITE,
+  offre,
+} from "@/data/offres";
 
 export const Route = createFileRoute("/cgv")({
   head: () => ({
@@ -8,7 +17,7 @@ export const Route = createFileRoute("/cgv")({
       {
         name: "description",
         content:
-          "Conditions générales de vente et d'utilisation des services Sitaly : sites internet, hébergement et maintenance, et accès à la plateforme Sitaly.",
+          "Conditions générales de vente et d'utilisation des services Sitaly : sites vitrines, boutiques Shopify, maintenance, fiche Google, services sur devis et plateforme Sitaly.",
       },
       { name: "robots", content: "index,follow" },
       { property: "og:title", content: "Conditions Générales de Vente et d'Utilisation — Sitaly" },
@@ -24,9 +33,12 @@ export const Route = createFileRoute("/cgv")({
   component: CGV,
 });
 
+/** Première lettre en minuscule, pour insérer un libellé dans une phrase. */
+const minuscule = (t: string) => t.charAt(0).toLowerCase() + t.slice(1);
+
 function CGV() {
   return (
-    <LegalLayout title="Conditions Générales de Vente et d'Utilisation" updated="8 juillet 2026">
+    <LegalLayout title="Conditions Générales de Vente et d'Utilisation" updated="19 octobre 2026">
       <p>
         Les présentes conditions (ci-après « CGV/CGU ») régissent les relations contractuelles entre{" "}
         <strong>Sitaly</strong>, Auto-Entrepreneur, dont le siège social est situé 25 allée des
@@ -36,11 +48,16 @@ function CGV() {
       </p>
 
       <h2>1. Objet</h2>
-      <p>Le Prestataire propose deux familles de services :</p>
+      <p>Le Prestataire propose trois familles de services :</p>
       <ul>
         <li>
-          <strong>Sites internet</strong> : création, hébergement et maintenance de sites à
-          destination des artisans, TPE et professionnels indépendants ;
+          <strong>Sites internet</strong> : création, hébergement et maintenance de sites vitrines,
+          création de boutiques en ligne sur Shopify, maintenance de sites existants et gestion de
+          la fiche Google, à destination des artisans, indépendants, commerçants et TPE ;
+        </li>
+        <li>
+          <strong>Services sur devis</strong> : agents d'intelligence artificielle, campagnes
+          publicitaires (Google Ads, ChatGPT Ads) et outils sur mesure ;
         </li>
         <li>
           <strong>Plateforme Sitaly</strong> : une application en ligne (logiciel en mode SaaS)
@@ -50,53 +67,49 @@ function CGV() {
         </li>
       </ul>
 
-      <h2>2. Devis, commande et création de compte</h2>
+      <h2>2. Commande et création de compte</h2>
       <p>
-        Les prestations de site internet font l'objet d'un devis personnalisé, valable 30 jours ; sa
-        signature vaut acceptation des présentes. L'accès à la plateforme Sitaly suppose la création
-        d'un compte : l'Utilisateur garantit l'exactitude des informations fournies et la
-        confidentialité de ses identifiants. La validation de l'inscription vaut acceptation des
-        présentes CGV/CGU.
+        Les offres de sites internet sont souscrites sur la base des tarifs publiés sur la page{" "}
+        <a href="/tarifs/">Tarifs</a> à la date de la commande, confirmée par écrit (bon de
+        commande, devis ou e-mail) ; cette confirmation vaut acceptation des présentes. Les services
+        sur devis font l'objet d'un devis personnalisé, valable 30 jours, dont la signature vaut
+        acceptation des présentes. L'accès à la plateforme Sitaly suppose la création d'un compte :
+        l'Utilisateur garantit l'exactitude des informations fournies et la confidentialité de ses
+        identifiants.
       </p>
 
-      <h2>3. Formules et tarifs</h2>
+      <h2>3. Offres et tarifs</h2>
       <p>
-        Les services Sitaly sont proposés selon plusieurs formules, combinables et sans engagement
-        de durée. Selon le périmètre et l'activité, des frais de création peuvent s'ajouter à
-        l'abonnement ; leur montant figure sur le devis :
+        Les offres de sites internet et leurs prix sont publiés sur la page{" "}
+        <a href="/tarifs/">Tarifs</a>. À la date des présentes :
       </p>
       <ul>
-        <li>
-          <strong>Sitaly Présence</strong> : abonnement mensuel comprenant la création et
-          l'hébergement d'un site internet, sa maintenance, les modifications de contenu incluses,
-          la fiche Google Business, le référencement local et l'accès à l'application Sitaly ;
-        </li>
-        <li>
-          <strong>Sitaly Acquisition</strong> : abonnement mensuel portant sur la création et la
-          gestion de campagnes de publicité en ligne, indépendamment du site. Deux canaux au choix,
-          Google Ads ou ChatGPT Ads, rémunérés par un forfait mensuel de gestion majoré d'une part
-          du budget publicitaire confié. Le budget publicitaire versé aux régies n'est pas compris
-          dans l'abonnement ;
-        </li>
-        <li>
-          <strong>Sitaly Agents IA</strong> : mise en place et entretien d'agents d'intelligence
-          artificielle (accueil téléphonique, prise de rendez-vous, relance de devis, réponse aux
-          messages), facturés selon un montant d'installation et un abonnement mensuel définis sur
-          devis en fonction du périmètre.
-        </li>
+        {OFFRES.map((o) => (
+          <li key={o.id}>
+            <strong>{o.nom}</strong> : {euros(o.mensuel)} par mois, plus {euros(o.depart)}{" "}
+            {o.departLibelle} payés une fois à la commande. Inclus :{" "}
+            {o.inclus.map(minuscule).join(" ; ")}
+            {o.reprend ? `, en plus du contenu de l'offre ${offre("presence").nom}` : ""}.
+          </li>
+        ))}
       </ul>
       <p>
-        Les tarifs ne sont pas publiés sur le site. Le prix applicable à chaque prestation est celui
-        figurant sur le devis accepté par l'Utilisateur, ou à défaut sur la commande confirmée par
-        écrit, avant toute exécution. Ce devis précise le montant de l'abonnement mensuel, le cas
-        échéant la part variable assise sur le budget publicitaire, ainsi que les prestations
-        incluses et exclues.
+        Options à la carte, payées une fois :{" "}
+        {A_LA_CARTE.map((x) => `${minuscule(x.libelle)} (${euros(x.prix)})`).join(", ")}. La
+        boutique en ligne peut aussi être livrée sans abonnement Sitaly, pour un prix unique de{" "}
+        {euros(BOUTIQUE_SANS_ABONNEMENT)}.
       </p>
       <p>
-        Les prix sont indiqués en euros. La TVA est applicable selon le régime du Prestataire
-        (mention « TVA non applicable, art. 293 B du CGI » le cas échéant). Le Prestataire peut
-        faire évoluer ses tarifs ; tout changement applicable à un abonnement en cours est notifié à
-        l'avance et n'entre en vigueur qu'à l'échéance suivante.
+        Les agents IA, les campagnes Google Ads et ChatGPT Ads et les outils sur mesure sont
+        chiffrés sur devis : le devis précise la mise en place, l'abonnement mensuel, le cas échéant
+        la part variable assise sur le budget publicitaire (qui reste payé directement aux régies),
+        ainsi que les prestations incluses et exclues.
+      </p>
+      <p>
+        Les prix sont indiqués en euros. {MENTION_TVA}. Le Prestataire peut faire évoluer ses tarifs
+        ; tout changement applicable à un abonnement en cours est notifié à l'avance et n'entre en
+        vigueur qu'à l'échéance suivante. Les prix publiés au jour de la commande restent acquis
+        pour la mise en service.
       </p>
 
       <h2>4. Paiement et durée de l'abonnement</h2>
@@ -111,14 +124,71 @@ function CGV() {
       </p>
 
       <h2>5. Prestations de site internet</h2>
+
+      <h3>5.1 Mise en service</h3>
       <p>
-        Pour la création de sites, le service est proposé en location selon des formules mensuelles.
-        Des frais de création, réglés une seule fois à la mise en route, peuvent s'y ajouter selon
-        le projet ; leur montant est indiqué sur le devis avant toute exécution, et l'absence de
-        tels frais ne se présume pas. Le site est livré dans un délai de 48h à 7 jours ouvrés à
-        compter de la réception des éléments nécessaires. L'hébergement, les mises à jour, les
-        sauvegardes et le support sont inclus. Le contrat est à durée indéterminée, résiliable par
-        chacune des parties avec un préavis d'un mois.
+        Les frais de mise en service (ou d'audit pour la maintenance d'un site existant) sont payés
+        à la commande. Ils rémunèrent le travail de départ : échange sur l'activité, rédaction,
+        conception, mise en ligne et mise en ordre de la fiche Google. Une fois le travail lancé,
+        ils ne sont pas remboursables, y compris en cas de résiliation ultérieure de l'abonnement.
+        Un site vitrine est livré dans un délai de 48 heures à 7 jours ouvrés à compter de la
+        réception des éléments nécessaires ; le délai d'une boutique en ligne dépend de son
+        catalogue et est annoncé à la commande.
+      </p>
+
+      <h3>5.2 Contenu de l'abonnement</h3>
+      <p>
+        L'abonnement comprend les prestations décrites pour chaque offre à l'article 3. Les
+        modifications incluses s'entendent de retouches du contenu existant (texte, photo, prix,
+        horaires, coordonnées), dans la limite prévue par l'offre : une modification par mois pour
+        les offres {offre("presence").nom} et {offre("presence-pro").nom}, une heure par mois pour
+        la Boutique en ligne. Au-delà, ou pour toute création nouvelle (page, visuel, fonction), le
+        Prestataire applique les options à la carte ou établit un devis préalable. Pour la
+        maintenance d'un site existant, la remise en état d'un site défectueux ou obsolète fait
+        l'objet d'un devis séparé ; le Prestataire ne répond pas des défauts antérieurs à sa
+        reprise.
+      </p>
+
+      <h3>5.3 Durée et résiliation</h3>
+      <p>
+        Les abonnements sont conclus pour une durée indéterminée, sans engagement de durée minimale.
+        Le Client peut résilier à tout moment et sans frais, par e-mail à{" "}
+        <a href="mailto:contact@sitaly.fr">contact@sitaly.fr</a> ; la résiliation prend effet à la
+        fin de la période mensuelle en cours, déjà payée, conformément à l'article 4. Le Prestataire
+        peut mettre fin à un abonnement avec un préavis d'un mois, ou sans préavis en cas de
+        manquement grave du Client, notamment de défaut de paiement.
+      </p>
+
+      <h3>5.4 Propriété des sites vitrines et rachat</h3>
+      <p>
+        Pour les offres {offre("presence").nom} et {offre("presence-pro").nom}, le site (sa
+        conception, son code et les textes rédigés par le Prestataire) reste la propriété du
+        Prestataire ; le Client en a l'usage pendant la durée de son abonnement. Les éléments
+        fournis par le Client (logo, photos, textes) restent sa propriété. À la fin de l'abonnement,
+        le site est mis hors ligne, sauf si le Client choisit de le racheter. Le prix de rachat
+        dépend de l'ancienneté de l'abonnement :{" "}
+        {RACHAT_SITE.map((r) => `${minuscule(r.periode)}, ${euros(r.prix)}`).join(" ; ")}. Le
+        rachat, payé en une fois, emporte cession au Client des droits sur le site et remise de ses
+        fichiers.
+      </p>
+
+      <h3>5.5 Nom de domaine et fiche Google</h3>
+      <p>
+        Le nom de domaine réservé pour le Client lui est transféré gratuitement à la fin de
+        l'abonnement, quelle que soit l'offre. La fiche Google Business Profile du Client lui
+        appartient en toutes circonstances : le Prestataire n'y intervient qu'en qualité de
+        gestionnaire, et retire son accès à la fin de l'abonnement.
+      </p>
+
+      <h3>5.6 Boutique en ligne Shopify</h3>
+      <p>
+        La boutique en ligne est créée sur la plateforme Shopify, dans un compte ouvert au nom du
+        Client, qui en est propriétaire dès sa création. L'abonnement Shopify (de l'ordre de 36 €
+        par mois à la date des présentes) et les frais de paiement prélevés sur les ventes sont
+        facturés directement au Client par Shopify, selon les conditions de Shopify, et ne sont pas
+        compris dans les prix du Prestataire. Le Client reste seul responsable de son activité de
+        vente : conditions de vente, droit de rétractation de ses acheteurs, expéditions et
+        obligations fiscales.
       </p>
 
       <h2>6. Accès à la plateforme et disponibilité</h2>
@@ -173,8 +243,8 @@ function CGV() {
         La plateforme, son code et ses éléments techniques restent la propriété exclusive du
         Prestataire ; l'Utilisateur bénéficie d'un droit d'usage personnel et non exclusif pendant
         la durée de son abonnement. Les données et contenus saisis par l'Utilisateur restent sa
-        propriété ; il peut en demander l'export ou la suppression. Pour les sites internet fournis
-        en location, les dispositions spécifiques de l'article 5 s'appliquent.
+        propriété ; il peut en demander l'export ou la suppression. Pour les sites internet, les
+        dispositions spécifiques de l'article 5.4 à 5.6 s'appliquent.
       </p>
 
       <h2>11. Droit de rétractation</h2>

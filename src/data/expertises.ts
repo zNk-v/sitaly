@@ -166,7 +166,7 @@ const SITE: Expertise[] = [
       },
       {
         t: "Le suivi, tous les mois",
-        d: "Changer un texte, une photo, un tarif ou des horaires est inclus. Ce qui demande de la création fait l'objet d'un devis annoncé à l'avance.",
+        d: "Une modification par mois est incluse : un texte, une photo, un tarif ou des horaires. Une page en plus ou une nouvelle fonction est chiffrée à l'avance.",
       },
     ],
     quand: [
@@ -267,7 +267,7 @@ const SITE: Expertise[] = [
       },
       {
         q: "Puis-je modifier mon site moi-même ?",
-        a: "Vous n'avez pas à le faire. Vous envoyez la modification, elle est appliquée. Les petites retouches de contenu existant sont incluses dans l'abonnement.",
+        a: "Vous n'avez pas à le faire. Vous envoyez la modification, elle est appliquée. Une modification par mois est incluse dans l'abonnement ; une page supplémentaire coûte 90 €.",
       },
     ],
   },
@@ -276,35 +276,39 @@ const SITE: Expertise[] = [
     famille: "site",
     label: "Site e-commerce",
     nomService: "un site e-commerce",
-    menuDesc: "Vendre en ligne, paiement et stocks compris.",
-    titre: "Création de site e-commerce clé en main | Sitaly",
+    menuDesc: "Une boutique Shopify à votre nom, paiement et livraison compris.",
+    titre: "Création de boutique en ligne Shopify clé en main | Sitaly",
     description:
-      "Création de boutique en ligne : catalogue, paiement sécurisé, stocks, livraison et fiches produits optimisées SEO. Livrée, hébergée et suivie.",
+      "Création de boutique en ligne sur Shopify : thème, produits, paiement, livraison et pages légales configurés. La boutique est à votre nom, Sitaly la suit chaque mois.",
     eyebrow: "Site internet",
     h1: "Site e-commerce : vendre en ligne sans y passer vos soirées",
     intro:
-      "Une boutique en ligne ne se juge pas sur sa page d'accueil mais sur le nombre de clics entre l'arrivée et le paiement. On construit le catalogue, le tunnel et les fiches produits, et on branche le paiement, la livraison et les stocks sur les outils que vous utilisez déjà.",
-    reperes: ["Paiement sécurisé", "Fiches produits optimisées", "Stocks synchronisés"],
+      "Une boutique en ligne ne se juge pas sur sa page d'accueil mais sur le nombre de clics entre l'arrivée et le paiement. On configure votre boutique sur Shopify, à votre nom : thème, premiers produits, paiement, livraison et pages légales, puis on vous apprend à vous en servir et on la suit chaque mois.",
+    reperes: [
+      "Boutique Shopify à votre nom",
+      "Jusqu'à 20 produits configurés",
+      "Paiement et livraison réglés",
+    ],
     comprend: [
       {
-        t: "Le catalogue et ses filtres",
-        d: "Catégories, variantes, tailles, couleurs, options. Un catalogue mal découpé se paie en abandons de panier et en pages introuvables sur Google.",
+        t: "Le catalogue de départ",
+        d: "Jusqu'à 20 produits configurés, avec leurs catégories et leurs variantes. Au-delà, chaque lot de 10 produits est chiffré à l'avance.",
       },
       {
         t: "Un tunnel de commande court",
-        d: "Paiement par carte, Apple Pay et Google Pay, commande sans création de compte, relance des paniers abandonnés. Chaque étape supprimée se voit dans le chiffre.",
+        d: "Paiement par carte, Apple Pay et Google Pay, commande sans création de compte. L'argent des ventes arrive directement sur votre compte.",
       },
       {
         t: "Des fiches produits écrites pour la recherche",
         d: "Titre, description, attributs et données structurées Product. C'est ce qui fait remonter la fiche dans Google Shopping et dans les résultats enrichis.",
       },
       {
-        t: "Livraison, stocks et facturation",
-        d: "Transporteurs, points relais, frais par zone, seuil de franco. Les stocks se synchronisent avec votre logiciel de caisse ou votre tableur quand il y en a un.",
+        t: "Livraison et pages légales",
+        d: "Modes de livraison, frais par zone, seuil de livraison offerte, retrait sur place. Conditions de vente, mentions légales et politique de retour mises en place.",
       },
       {
-        t: "Le suivi des ventes",
-        d: "Suivi des conversions, valeur du panier, produits qui sortent et pages qui perdent les visiteurs. Sans cette mesure, la publicité en ligne se pilote à l'aveugle.",
+        t: "Le suivi chaque mois",
+        d: "Mises à jour, support et une heure de modifications par mois : nouveaux produits, bannières de saison. La fiche Google et les avis sont gérés en même temps.",
       },
     ],
     quand: [
@@ -324,7 +328,7 @@ const SITE: Expertise[] = [
     faq: [
       {
         q: "Quelle plateforme e-commerce utilisez-vous ?",
-        a: "Celle qui correspond à votre volume et à vos contraintes, pas celle qui nous arrange. Pour un catalogue restreint et des produits simples, une solution légère suffit et coûte moins cher à faire tourner.",
+        a: "Shopify. La boutique est ouverte à votre nom et vous appartient dès le départ. L'abonnement Shopify, environ 36 € par mois, et les frais de paiement sur les ventes sont payés directement à Shopify.",
       },
       {
         q: "Comment sont gérés les paiements ?",
@@ -332,11 +336,11 @@ const SITE: Expertise[] = [
       },
       {
         q: "Peut-on relier la boutique à ma caisse ou à mon stock ?",
-        a: "Oui, quand l'outil expose une interface ou un export. C'est le sujet de la page Intégrations et API : la boutique lit le stock, écrit les commandes, et personne ne ressaisit rien.",
+        a: "Shopify propose des connexions avec de nombreux logiciels de caisse. Quand la vôtre en fait partie, on la branche ; sinon, on étudie la solution sur devis.",
       },
       {
         q: "Combien de temps pour ouvrir la boutique ?",
-        a: "Plus que 48 heures : le délai dépend surtout du catalogue. Une centaine de références prêtes se met en ligne en une à deux semaines ; ce sont les photos et les descriptions qui prennent le temps.",
+        a: "Plus que 48 heures : le délai dépend surtout du catalogue, et il est annoncé à la commande. Ce sont les photos et les descriptions des produits qui prennent le temps.",
       },
     ],
   },

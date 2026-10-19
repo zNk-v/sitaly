@@ -117,7 +117,7 @@ export const LEVIERS: Levier[] = [
     ),
     texte:
       "Un site sur mesure livré en 48h, puis entretenu : hébergement, maintenance, modifications, fiche Google Business et référencement local. Vous ne touchez jamais à la technique.",
-    points: ["Livré en 48h", "Référencement local", "Modifications incluses"],
+    points: ["Livré en 48h", "Référencement local", "Une modification par mois"],
     cta: { label: "Voir les réalisations", to: "/realisations/" },
     maquette: <MaquetteSite />,
   },

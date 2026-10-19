@@ -47,7 +47,7 @@ export const contenu: BlogSection[] = [
       ["DIY Wix / Webador", "0 à 200€", "15 à 30€", "30 à 80 h de travail", "Faible"],
       [
         "Sitaly en location",
-        "Selon le projet, annoncé au devis",
+        "290€ de mise en service",
         "149€/mois tout inclus",
         "48 à 72 h",
         "Inclus de base",
@@ -61,10 +61,10 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Un site d'artisan classique (5 à 7 pages) peut être livré en 48 à 72 heures si vous fournissez rapidement vos photos et textes. Les agences traditionnelles annoncent 4 à 8 semaines parce qu'elles partent d'une page blanche et multiplient les allers-retours. Demandez systématiquement un délai contractuel avant de signer.",
   },
-  { type: "h2", text: "Exemple chiffré : le site de Marc, plombier à Avignon" },
+  { type: "h2", text: "Exemple de calcul : un plombier indépendant" },
   {
     type: "p",
-    text: "Marc, plombier indépendant à Avignon, n'avait qu'une page Facebook. Après le lancement d'un site Sitaly à 149€/mois couplé à sa fiche Google optimisée, il a constaté en 4 mois : trafic mensuel passé de 0 à 420 visiteurs, 12 appels qualifiés/mois en plus, 4 chantiers signés en moyenne (panier moyen 850€). Sur 12 mois, cela représente 40 800€ de CA additionnel pour 1 788€ investis sur l'année, soit un retour plus de 20 fois supérieur à la mise.",
+    text: "Une hypothèse, pas un client réel : un plombier indépendant qui n'a qu'une page Facebook met en ligne un site et une fiche Google soignée. S'il reçoit 12 appels de plus par mois et en signe 4, avec un panier moyen de 850€, cela représente 3 400€ de chiffre d'affaires par mois. En face, un site à 149€/mois et 290€ de mise en service coûte 2 078€ la première année. Refaites le calcul avec vos propres chiffres : c'est le nombre de chantiers signés qui compte, pas le nombre de visites.",
   },
   { type: "h2", text: "Les 5 erreurs qui plombent les sites d'artisans" },
   {

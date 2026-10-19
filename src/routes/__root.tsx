@@ -1,3 +1,5 @@
+import { PRIX_SITE_MIN } from "@/data/offres";
+import { euros } from "@/lib/config";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -56,9 +58,8 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-const TITRE_PAR_DEFAUT = "Agents IA et automatisation pour PME | Sitaly";
-const DESCRIPTION_PAR_DEFAUT =
-  "Sitaly installe et pilote des agents IA pour PME : accueil téléphonique, qualification, rendez-vous, relance des devis. Diagnostic offert de 30 min.";
+const TITRE_PAR_DEFAUT = "Création de site internet et fiche Google | Sitaly";
+const DESCRIPTION_PAR_DEFAUT = `Sitaly crée, héberge et entretient les sites des artisans, indépendants et petits commerces, fiche Google comprise. Dès ${euros(PRIX_SITE_MIN)} par mois, sans engagement.`;
 
 /**
  * L'entité Sitaly, telle que Google et les assistants IA doivent la comprendre.
@@ -86,7 +87,7 @@ const GRAPHE_ENTITE = {
       },
       image: "https://sitaly.fr/og-image.png",
       description:
-        "Sitaly installe et pilote des agents IA et des automatisations pour les PME : accueil téléphonique, qualification des demandes, prise de rendez-vous, relance des devis, outils métier sur mesure. Sites internet et campagnes publicitaires en complément.",
+        "Sitaly est une micro-agence en abonnement qui crée, héberge et entretient les sites internet des artisans, indépendants, commerçants et TPE : site vitrine, boutique en ligne Shopify, refonte, maintenance de site existant et gestion de la fiche Google. Agents IA et campagnes publicitaires sur devis.",
       slogan: "Une seule personne au bout du fil, celle qui construit.",
       founder: { "@id": "https://sitaly.fr/#teddy-vidal" },
       telephone: SITALY_PHONE,
@@ -115,7 +116,7 @@ const GRAPHE_ENTITE = {
           closes: "13:00",
         },
       ],
-      priceRange: "€€€",
+      priceRange: "€€",
       areaServed: [
         { "@type": "AdministrativeArea", name: "Essonne" },
         { "@type": "AdministrativeArea", name: "Île-de-France" },
@@ -162,13 +163,14 @@ const GRAPHE_ENTITE = {
         areaServed: "FR",
         availableLanguage: "French",
       },
-      // L'ordre de l'offre depuis le 28 septembre 2026 : l'IA en tête.
+      // L'ordre de l'offre depuis le 18 octobre 2026 : le site en tête.
       makesOffer: [
-        ["Agents IA pour PME", "https://sitaly.fr/agents-ia/"],
-        ["ChatGPT Ads", "https://sitaly.fr/chatgpt-ads/"],
-        ["Demandes de chantier pour artisans", "https://sitaly.fr/acquisition/"],
-        ["Automatisation des tâches", "https://sitaly.fr/automatisation-taches/"],
         ["Création de site internet", "https://sitaly.fr/creation-site-internet/"],
+        ["Site vitrine", "https://sitaly.fr/site-vitrine/"],
+        ["Boutique en ligne Shopify", "https://sitaly.fr/site-e-commerce/"],
+        ["Refonte de site internet", "https://sitaly.fr/refonte-site-internet/"],
+        ["Maintenance de site existant", "https://sitaly.fr/tarifs/#maintenance"],
+        ["Agents IA pour PME", "https://sitaly.fr/agents-ia/"],
       ].map(([name, url]) => ({
         "@type": "Offer",
         itemOffered: { "@type": "Service", name, url },
@@ -212,7 +214,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:image:height", content: "630" },
       {
         property: "og:image:alt",
-        content: "Sitaly — agents IA, automatisation et sites pour les PME",
+        content: "Sitaly — création de sites internet et fiche Google, en abonnement",
       },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: "https://sitaly.fr/og-image.png" },
