@@ -1,1 +1,0 @@
-import{ct as e}from"./index-sEXM3krk.js";var t=e;export{t as component};
