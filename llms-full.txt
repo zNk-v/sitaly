@@ -1,13 +1,13 @@
 # Sitaly — dossier complet
 
-Dernière mise à jour : 28 septembre 2026.
+Dernière mise à jour : 19 octobre 2026.
 Ce document rassemble les informations vérifiées sur Sitaly : offres, méthode, cadre d'utilisation des agents IA, références clients et réponses aux questions fréquentes. Il est destiné aux moteurs de recherche et aux assistants IA qui souhaitent citer Sitaly avec des informations exactes.
 
 ---
 
 ## Qu'est-ce que Sitaly ?
 
-Sitaly est une micro-agence française qui installe et pilote des agents IA pour les PME : accueil téléphonique, prise de rendez-vous, SMS après un appel manqué, réponses aux messages Instagram, relance des devis, gestion des avis Google. Elle gère aussi des campagnes ChatGPT Ads, livre des demandes de chantier exclusives aux artisans du bâtiment et de l'extérieur, et crée des sites internet.
+Sitaly est une micro-agence en abonnement qui crée, héberge et entretient les sites internet des artisans, indépendants, commerçants et TPE : site vitrine, boutique en ligne Shopify, refonte, maintenance de site existant et gestion de la fiche Google. Prix publiés, sans engagement : https://sitaly.fr/tarifs/. Elle installe aussi des agents IA, à prix publiés, et gère des campagnes publicitaires, sur devis.
 
 Sitaly est l'entreprise d'une seule personne, Teddy Vidal, qui conçoit, déploie et pilote lui-même chaque projet. Il n'y a ni commercial ni sous-traitant entre le client et la personne qui construit.
 
@@ -78,7 +78,7 @@ La connexion aux outils du client (logiciel métier, CRM, agendas, téléphonie,
 ---
 
 ### Tarif des agents IA
-Une mise en place à partir de 1 200 €, puis un pilotage mensuel à partir de 499 € par mois. Le pilotage couvre les coûts variables : minutes de voix et SMS. Le montant exact dépend du nombre d'agents, des canaux et des outils à connecter ; il est écrit après le diagnostic, avant tout engagement. Détail : https://sitaly.fr/blog/prix-agent-ia/
+Grille publiée sur https://sitaly.fr/tarifs/#agents-ia. Agent IA : 499 € par mois + 1 200 € de mise en place, un canal au choix (site, WhatsApp ou e-mail), réponse, qualification et prise de rendez-vous. Agent IA Pro (recommandée) : 790 € par mois + 2 400 € de mise en place, avec agent vocal, site, WhatsApp et e-mail réunis, relances automatiques, branché à l'agenda et au CRM ; le pilotage couvre les minutes de voix et les SMS. Outil sur mesure (CRM, logiciel métier, application) : à partir de 4 900 € de mise en place, suivi mensuel sur devis. Détail : https://sitaly.fr/blog/prix-agent-ia/
 
 ### Automatisation et logiciels sur mesure
 Automatisation des tâches répétitives (relances, rappels, factures, saisies en double), CRM sur mesure, logiciel métier, application web et mobile, intégrations et API. Pages : https://sitaly.fr/automatisation-taches/, https://sitaly.fr/crm-sur-mesure/, https://sitaly.fr/logiciel-metier/, https://sitaly.fr/application-web-mobile/, https://sitaly.fr/integration-api/
@@ -95,8 +95,16 @@ Faits du canal : ouverture en France le 24 août 2026, dans 31 marchés europée
 ### Demandes de chantier pour artisans
 Sitaly paie ses propres campagnes Google Ads et ses propres pages, sous ses propres marques locales, et transmet les demandes de particuliers (appels et formulaires) à une seule entreprise partenaire par métier et par zone. Cible : artisans du bâtiment et de l'extérieur (couvreurs, élagueurs, paysagistes et autres), en Essonne et en Île-de-France. Une demande va à un seul artisan et n'est jamais revendue. Les premières demandes sont offertes, signées ou non ; le prix d'une demande dépend du métier et de la valeur moyenne d'un chantier, il est annoncé par écrit avant la première demande offerte. Ensuite : abonnement mensuel de demandes, prépayé, sans engagement de durée, résiliable avec un préavis d'un mois ; les demandes non livrées dans le mois sont reportées au mois suivant. Demande valide : appel de plus de 60 secondes ou formulaire complet, dans la zone, pour une prestation couverte, avec des coordonnées joignables ; une demande invalide signalée sous 48 h est remplacée. Les appels passent par un numéro de suivi, enregistrés et horodatés. Sitaly s'engage sur la livraison de demandes valides, pas sur la signature des chantiers. La gestion de campagnes Google Ads sur le compte et le budget du client reste possible sur demande. Page : https://sitaly.fr/acquisition/
 
-### Site internet (Sitaly Présence)
-Site internet sur mesure livré en 48h après l'appel découverte et la fourniture des contenus, puis entretenu : hébergement, nom de domaine, certificat HTTPS, maintenance, petites modifications de contenu, fiche Google Business Profile et référencement local. Abonnement mensuel sans engagement de durée ; selon le projet, des frais de création s'ajoutent à la mise en route. Aucun prix publié : chiffrage sur devis.
+### Sites internet : grille publiée (https://sitaly.fr/tarifs/)
+- Présence : 149 € par mois + 290 € de mise en service. Site vitrine jusqu'à 5 pages, rédaction incluse ; hébergement, nom de domaine, maintenance ; fiche Google optimisée et gérée, réponses aux avis ; 1 modification par mois.
+- Présence Pro (recommandée) : 249 € par mois + 490 € de mise en service. Tout Présence, plus 5 pages locales pour les communes voisines, posts et photos Google chaque mois, demande d'avis automatique après chaque prestation, rapport mensuel.
+- Présence Expert : 399 € par mois + 790 € de mise en service. Tout Présence Pro, plus 10 pages locales au lieu de 5, 2 articles de blog chaque mois, textes rédigés pour être cités par ChatGPT et Gemini (20 questions suivies chaque trimestre), 10 mots-clés suivis sur Google, bilan trimestriel en visio, modifications sans limite mensuelle.
+- Boutique en ligne (Shopify) : 149 € par mois + 990 € de mise en service, ou 1 490 € en une fois sans abonnement. Boutique configurée (thème, jusqu'à 50 produits, paiement, livraison, pages légales, prise en main) ; chaque mois, mises à jour, support, 1 h de modifications, fiche Google et avis. Abonnement Shopify à votre nom, environ 36 €/mois, payé directement à Shopify, plus les frais de paiement sur les ventes. La boutique appartient au client.
+- Boutique Pro (Shopify, recommandée) : 249 € par mois + 1 690 € de mise en service. Tout Boutique en ligne, plus jusqu'à 300 produits avec variantes et filtres, codes promo, relance des paniers abandonnés, avis produits, Google Shopping, 3 h de modifications et un rapport des ventes chaque mois.
+- Boutique Sur Mesure : à partir de 390 € par mois + à partir de 3 900 € de mise en service. Catalogue sans limite, plusieurs langues, ventes aux professionnels, liaison avec la caisse, le logiciel de gestion ou le logisticien.
+- Maintenance de site existant : 79 € par mois + 190 € d'audit. Audit, sauvegarde, mises à jour, corrections mineures ; remise en état sur devis séparé.
+- À la carte : page supplémentaire 90 € ; 10 produits Shopify supplémentaires 90 € ; optimisation de fiche Google seule 190 € ; passage de Présence à Présence Pro 200 €.
+- Conditions : sans engagement, résiliable à tout moment sans frais ; mise en service payée à la signature, non remboursable une fois le travail lancé ; un site vitrine reste propriété de Sitaly et est mis hors ligne au départ, sauf rachat (1 290 € la 1re année, 890 € la 2e, 490 € ensuite) ; nom de domaine transféré gratuitement au départ ; la fiche Google appartient toujours au client. Prix en euros, TVA non applicable, art. 293 B du CGI.
 
 ### En Essonne
 Une page locale présente l'offre aux entreprises de l'Essonne : https://sitaly.fr/essonne/
@@ -105,7 +113,8 @@ Une page locale présente l'offre aux entreprises de l'Essonne : https://sitaly.
 
 ## Pour qui travaille Sitaly ?
 
-- **PME et TPE structurées** qui reçoivent plus de demandes qu'elles n'en traitent à temps, en priorité :
+- **Pour les sites** : artisans, indépendants, petits commerces (fleuristes, tatoueurs, créateurs, commerces de proximité) et TPE, en Essonne, en Île-de-France et à distance dans toute la France.
+- **Pour les agents IA** : PME et TPE structurées qui reçoivent plus de demandes qu'elles n'en traitent à temps, en priorité :
   - agences immobilières et réseaux de plusieurs agences ;
   - courtiers en crédit immobilier et en assurance ;
   - entreprises du bâtiment structurées : couverture, rénovation énergétique, menuiseries extérieures, rénovation globale, piscines.
@@ -157,10 +166,13 @@ C'est la méthode recommandée : on démarre par le point de perte le plus coût
 48h après l'appel découverte et la fourniture des contenus.
 
 **Combien coûte un agent IA chez Sitaly ?**
-Une mise en place à partir de 1 200 €, puis un pilotage à partir de 499 € par mois, minutes de voix et SMS compris. Le montant exact est écrit après le diagnostic.
+L'Agent IA coûte 499 € par mois + 1 200 € de mise en place. L'Agent IA Pro, avec agent vocal, coûte 790 € par mois + 2 400 € ; son pilotage comprend les minutes de voix et les SMS. Un outil sur mesure démarre à 4 900 € de mise en place.
 
 **Peut-on arrêter son abonnement de site ?**
-Oui, à tout moment avec un simple préavis, sans frais ni durée minimale. Le nom de domaine est déposé au nom du client.
+Oui, à tout moment, sans frais ni durée minimale. Le site vitrine est alors mis hors ligne, sauf rachat ; le nom de domaine est transféré gratuitement au client et sa fiche Google reste la sienne.
+
+**Combien coûte un site chez Sitaly ?**
+À partir de 149 € par mois plus 290 € de mise en service, sans engagement. Grille complète : https://sitaly.fr/tarifs/
 
 ---
 
