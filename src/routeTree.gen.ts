@@ -30,6 +30,7 @@ import { Route as ReferencementLocalRouteImport } from './routes/referencement-l
 import { Route as ReferencementIaRouteImport } from './routes/referencement-ia'
 import { Route as PubliciteReseauxSociauxRouteImport } from './routes/publicite-reseaux-sociaux'
 import { Route as PolitiqueConfidentialiteRouteImport } from './routes/politique-confidentialite'
+import { Route as MonProjetRouteImport } from './routes/mon-projet'
 import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as LogicielMetierRouteImport } from './routes/logiciel-metier'
 import { Route as LandingPageRouteImport } from './routes/landing-page'
@@ -172,6 +173,11 @@ const PolitiqueConfidentialiteRoute =
     path: '/politique-confidentialite',
     getParentRoute: () => rootRouteImport,
   } as any)
+const MonProjetRoute = MonProjetRouteImport.update({
+  id: '/mon-projet',
+  path: '/mon-projet',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MentionsLegalesRoute = MentionsLegalesRouteImport.update({
   id: '/mentions-legales',
   path: '/mentions-legales',
@@ -365,6 +371,7 @@ export interface FileRoutesByFullPath {
   '/landing-page': typeof LandingPageRoute
   '/logiciel-metier': typeof LogicielMetierRoute
   '/mentions-legales': typeof MentionsLegalesRoute
+  '/mon-projet': typeof MonProjetRoute
   '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
   '/publicite-reseaux-sociaux': typeof PubliciteReseauxSociauxRoute
   '/referencement-ia': typeof ReferencementIaRoute
@@ -421,6 +428,7 @@ export interface FileRoutesByTo {
   '/landing-page': typeof LandingPageRoute
   '/logiciel-metier': typeof LogicielMetierRoute
   '/mentions-legales': typeof MentionsLegalesRoute
+  '/mon-projet': typeof MonProjetRoute
   '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
   '/publicite-reseaux-sociaux': typeof PubliciteReseauxSociauxRoute
   '/referencement-ia': typeof ReferencementIaRoute
@@ -479,6 +487,7 @@ export interface FileRoutesById {
   '/landing-page': typeof LandingPageRoute
   '/logiciel-metier': typeof LogicielMetierRoute
   '/mentions-legales': typeof MentionsLegalesRoute
+  '/mon-projet': typeof MonProjetRoute
   '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
   '/publicite-reseaux-sociaux': typeof PubliciteReseauxSociauxRoute
   '/referencement-ia': typeof ReferencementIaRoute
@@ -538,6 +547,7 @@ export interface FileRouteTypes {
     | '/landing-page'
     | '/logiciel-metier'
     | '/mentions-legales'
+    | '/mon-projet'
     | '/politique-confidentialite'
     | '/publicite-reseaux-sociaux'
     | '/referencement-ia'
@@ -594,6 +604,7 @@ export interface FileRouteTypes {
     | '/landing-page'
     | '/logiciel-metier'
     | '/mentions-legales'
+    | '/mon-projet'
     | '/politique-confidentialite'
     | '/publicite-reseaux-sociaux'
     | '/referencement-ia'
@@ -651,6 +662,7 @@ export interface FileRouteTypes {
     | '/landing-page'
     | '/logiciel-metier'
     | '/mentions-legales'
+    | '/mon-projet'
     | '/politique-confidentialite'
     | '/publicite-reseaux-sociaux'
     | '/referencement-ia'
@@ -709,6 +721,7 @@ export interface RootRouteChildren {
   LandingPageRoute: typeof LandingPageRoute
   LogicielMetierRoute: typeof LogicielMetierRoute
   MentionsLegalesRoute: typeof MentionsLegalesRoute
+  MonProjetRoute: typeof MonProjetRoute
   PolitiqueConfidentialiteRoute: typeof PolitiqueConfidentialiteRoute
   PubliciteReseauxSociauxRoute: typeof PubliciteReseauxSociauxRoute
   ReferencementIaRoute: typeof ReferencementIaRoute
@@ -893,6 +906,13 @@ declare module '@tanstack/react-router' {
       path: '/politique-confidentialite'
       fullPath: '/politique-confidentialite'
       preLoaderRoute: typeof PolitiqueConfidentialiteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mon-projet': {
+      id: '/mon-projet'
+      path: '/mon-projet'
+      fullPath: '/mon-projet'
+      preLoaderRoute: typeof MonProjetRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mentions-legales': {
@@ -1167,6 +1187,7 @@ const rootRouteChildren: RootRouteChildren = {
   LandingPageRoute: LandingPageRoute,
   LogicielMetierRoute: LogicielMetierRoute,
   MentionsLegalesRoute: MentionsLegalesRoute,
+  MonProjetRoute: MonProjetRoute,
   PolitiqueConfidentialiteRoute: PolitiqueConfidentialiteRoute,
   PubliciteReseauxSociauxRoute: PubliciteReseauxSociauxRoute,
   ReferencementIaRoute: ReferencementIaRoute,

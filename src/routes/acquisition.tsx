@@ -1,10 +1,10 @@
 import { useRef } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Calendar, Check, Minus, Phone, PhoneIncoming, Plus, X } from "lucide-react";
+import { ArrowRight, Check, Minus, Phone, PhoneIncoming, Plus, X } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
-import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
+import { SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 import photoArtisan600 from "@/assets/photos/secteur-artisans-600.webp";
 import photoArtisan1000 from "@/assets/photos/secteur-artisans-1000.webp";
@@ -177,16 +177,14 @@ function DemandesDeChantier() {
 
 function BoutonZone({ className = "" }: { className?: string }) {
   return (
-    <a
-      href={CALENDLY_URL}
-      target="_blank"
-      rel="noopener noreferrer"
+    <Link
+      to="/mon-projet/"
+      search={{ besoin: "visibilite" }}
       className={`bouton px-7 py-3.5 text-base ${className}`}
     >
-      <Calendar className="h-5 w-5" />
       Vérifier si ma zone est libre
       <ArrowRight className="bouton-fleche h-4 w-4" />
-    </a>
+    </Link>
   );
 }
 
@@ -774,14 +772,13 @@ function BarreAppel() {
           <Phone className="h-4 w-4" />
           Appeler
         </a>
-        <a
-          href={CALENDLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          to="/mon-projet/"
+          search={{ besoin: "visibilite" }}
           className="bouton-secondaire flex-1 px-4 py-3 text-[15px]"
         >
           Ma zone est libre ?
-        </a>
+        </Link>
       </div>
     </div>
   );

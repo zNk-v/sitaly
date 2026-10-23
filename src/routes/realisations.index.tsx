@@ -1,12 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef } from "react";
-import { ArrowRight, ArrowUpRight, Calendar } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { REALISATIONS, srcSetCapture } from "@/data/realisations";
 import { SectionHeader } from "@/components/SectionHeader";
 import { SiteChrome } from "@/components/SiteChrome";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 import { useSplitWords } from "@/hooks/use-split-words";
-import { CALENDLY_URL } from "@/lib/config";
 
 const TITLE = "Réalisations : sites internet livrés par Sitaly | Sitaly";
 const DESCRIPTION =
@@ -123,19 +122,13 @@ function RealisationsIndex() {
               Et si le prochain <span className="accent-word text-brand-ink">était le vôtre</span>
             </h2>
             <p className="mt-6 text-lg text-muted-foreground">
-              Trente minutes suffisent pour savoir si on peut vous être utile. Sans engagement, sans
-              démarchage derrière.
+              Quatre questions suffisent pour savoir ce qu'on peut faire pour vous, et à quel prix.
+              Sans engagement, sans démarchage derrière.
             </p>
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bouton mt-9 px-7 py-3.5"
-            >
-              <Calendar className="h-5 w-5" />
-              Réserver un diagnostic de 30 min
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
+            <Link to="/mon-projet/" className="bouton mt-9 px-7 py-3.5">
+              Trouver mon offre
+              <ArrowRight className="bouton-fleche h-4 w-4" />
+            </Link>
           </div>
         </section>
       </SiteChrome>

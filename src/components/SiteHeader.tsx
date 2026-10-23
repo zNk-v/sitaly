@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { Calendar, Phone } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 import { SitalyLogo } from "@/components/SitalyLogo";
 import { MainNav } from "@/components/MainNav";
 import { MobileMenu } from "@/components/MobileMenu";
-import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
+import { SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 /**
  * L'en-tête du site, en un seul endroit.
@@ -92,17 +92,14 @@ export function SiteHeader({
               <span className="hidden xl:inline">{SITALY_PHONE_DISPLAY}</span>
               <span className="lg:hidden">Appeler</span>
             </a>
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bouton hidden h-10 px-5 text-sm sm:inline-flex"
-            >
-              <Calendar className="h-4 w-4" />
-              {/* Le libellé complet ne tient qu'à partir de xl, à côté du menu. */}
-              <span className="hidden xl:inline">Réserver un appel de 30 min</span>
-              <span className="xl:hidden">Appel de 30 min</span>
-            </a>
+            {/* Le bouton principal du site : le questionnaire qui mène à l'offre
+                et à son prix (23 octobre 2026). Le rendez-vous de 30 minutes
+                n'est plus proposé qu'à la fin du questionnaire et sur les pages
+                agents IA. */}
+            <Link to="/mon-projet/" className="bouton hidden h-10 px-5 text-sm sm:inline-flex">
+              Trouver mon offre
+              <ArrowRight className="bouton-fleche h-4 w-4" />
+            </Link>
             <MobileMenu onHome={accueil} />
           </div>
         </div>

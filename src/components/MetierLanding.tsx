@@ -1,20 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { directiveRobots } from "@/lib/indexation";
-import {
-  ArrowRight,
-  Check,
-  Clock,
-  ExternalLink,
-  Phone,
-  ShieldCheck,
-  Sparkles,
-  Star,
-} from "lucide-react";
+import { ArrowRight, Check, Clock, ExternalLink, ShieldCheck, Sparkles, Star } from "lucide-react";
 import { LinkedinLink } from "@/components/LinkedinLink";
 import { SiteHeader } from "@/components/SiteHeader";
 import { MetierFooterLinks, MetierLinksSection } from "@/components/MetierLinks";
 import type { MetierLink } from "@/lib/metiers";
-import { CALENDLY_URL, euros } from "@/lib/config";
+import { euros } from "@/lib/config";
 import { MENTION_TVA, lignesIncluses, offre } from "@/data/offres";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -77,15 +68,14 @@ export function MetierLanding(props: MetierLandingProps) {
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-muted-foreground sm:text-xl">{intro}</p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/mon-projet/"
+              search={{ besoin: "site" }}
               className="bouton px-7 py-3.5 text-sm"
             >
-              Parler de votre projet gratuit
-              <ArrowRight className="h-4 w-4" />
-            </a>
+              Trouver mon offre
+              <ArrowRight className="bouton-fleche h-4 w-4" />
+            </Link>
             <Link to="/" hash="offre" className="bouton-secondaire px-6 py-3.5 text-sm">
               Voir les tarifs
             </Link>
@@ -378,17 +368,16 @@ export function MetierLanding(props: MetierLandingProps) {
             Prêt à recevoir plus d'appels qualifiés ?
           </h2>
           <p className="mt-3 text-primary-foreground/90">
-            Échangeons 20 minutes pour cadrer votre site {metier}, sans engagement.
+            Quatre questions pour connaître l'offre qui convient à votre site {metier}, et son prix.
           </p>
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/mon-projet/"
+            search={{ besoin: "site" }}
             className="mt-7 inline-flex items-center gap-2 rounded-xl bg-background px-7 py-3.5 text-sm font-semibold text-foreground shadow-elevated transition hover:opacity-95"
           >
-            <Phone className="h-4 w-4" />
-            Parler de votre projet gratuit
-          </a>
+            Trouver mon offre
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
 

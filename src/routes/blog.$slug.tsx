@@ -472,15 +472,15 @@ const APPELS: Record<CtaArticle, { milieu: Appel; fin: Appel }> = {
       titre: "Vous voulez appliquer tout ça sans y passer 40 heures ?",
       texte:
         "Site artisan livré en 48h, optimisé pour le SEO local. En abonnement mensuel, sans engagement.",
-      label: "Parler de votre projet gratuit",
-      href: CALENDLY_URL,
+      label: "Trouver mon offre",
+      href: "/mon-projet/",
     },
     fin: {
       titre: "Et si on créait votre site ?",
       texte:
         "Sitaly s'occupe de tout : création, référencement local, mise en ligne en 48h. En abonnement mensuel, tout inclus et sans engagement.",
-      label: "Parler de votre projet gratuit",
-      href: CALENDLY_URL,
+      label: "Trouver mon offre",
+      href: "/mon-projet/",
     },
   },
 };

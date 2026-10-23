@@ -61,7 +61,6 @@ export interface Offre {
   recommandee?: boolean;
   /** La page qui détaille l'offre, quand elle existe. Sinon le menu mène à sa carte. */
   page?: string;
-  cta: "rappel" | "devis";
 }
 
 const MENTION_SHOPIFY =
@@ -77,7 +76,6 @@ export const OFFRES: Offre[] = [
     mensuel: 149,
     depart: 290,
     departLibelle: "de mise en service",
-    cta: "rappel",
   },
   {
     id: "presence-pro",
@@ -89,7 +87,6 @@ export const OFFRES: Offre[] = [
     depart: 490,
     departLibelle: "de mise en service",
     recommandee: true,
-    cta: "rappel",
   },
   {
     id: "presence-expert",
@@ -100,7 +97,6 @@ export const OFFRES: Offre[] = [
     mensuel: 399,
     depart: 790,
     departLibelle: "de mise en service",
-    cta: "rappel",
   },
   {
     id: "boutique",
@@ -114,7 +110,6 @@ export const OFFRES: Offre[] = [
     notes: ["La boutique vous appartient.", "Sans abonnement Sitaly : 1 490 € en une fois."],
     mention: MENTION_SHOPIFY,
     page: "/site-e-commerce/",
-    cta: "devis",
   },
   {
     id: "boutique-pro",
@@ -128,7 +123,6 @@ export const OFFRES: Offre[] = [
     notes: ["La boutique vous appartient."],
     mention: MENTION_SHOPIFY,
     recommandee: true,
-    cta: "devis",
   },
   {
     id: "boutique-sur-mesure",
@@ -145,7 +139,6 @@ export const OFFRES: Offre[] = [
       "Le montant exact est écrit dans le devis, avant de commencer.",
     ],
     mention: MENTION_SHOPIFY,
-    cta: "devis",
   },
   {
     id: "maintenance",
@@ -157,7 +150,6 @@ export const OFFRES: Offre[] = [
     depart: 190,
     departLibelle: "d'audit",
     notes: ["Si le site demande une remise en état : devis séparé, annoncé avant tout travail."],
-    cta: "devis",
   },
   {
     id: "agent-ia",
@@ -169,7 +161,6 @@ export const OFFRES: Offre[] = [
     depart: PRIX_AGENTS_IA.miseEnPlaceMin,
     departLibelle: "de mise en place",
     page: "/agents-ia/",
-    cta: "devis",
   },
   {
     id: "agent-ia-pro",
@@ -182,7 +173,6 @@ export const OFFRES: Offre[] = [
     departLibelle: "de mise en place",
     recommandee: true,
     page: "/agents-ia/agent-vocal/",
-    cta: "devis",
   },
   {
     id: "outil-sur-mesure",
@@ -194,7 +184,6 @@ export const OFFRES: Offre[] = [
     departLibelle: "de mise en place",
     aPartirDe: true,
     page: "/logiciel-metier/",
-    cta: "devis",
   },
 ];
 
@@ -511,6 +500,14 @@ export function offresDu(groupe: GroupeId): Offre[] {
 export function prixCourt(o: Offre): string {
   const des = o.aPartirDe ? "dès " : "";
   return o.mensuel === undefined ? `${des}${euros(o.depart)}` : `${des}${euros(o.mensuel)}/mois`;
+}
+
+/** Le prix complet : « 249 €/mois + 490 € de mise en service », « dès 4 900 € de mise en place ». */
+export function prixLong(o: Offre): string {
+  const des = o.aPartirDe ? "dès " : "";
+  return o.mensuel === undefined
+    ? `${des}${euros(o.depart)} ${o.departLibelle}`
+    : `${des}${euros(o.mensuel)}/mois + ${des}${euros(o.depart)} ${o.departLibelle}`;
 }
 
 /** Le lien du menu : la page de l'offre, ou sa carte sur /tarifs/. */

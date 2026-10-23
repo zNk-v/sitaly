@@ -364,6 +364,22 @@ paie un travail visible).
 - Visibilité inchangée, en attente : Google Ads et ChatGPT Ads restent sur
   devis, la page Demandes de chantier n'est pas retouchée.
 
+**Révision du 23 octobre 2026 (suite) : le questionnaire devient le bouton
+principal.** Sur le modèle du parcours « Démarrer » de devmiweb.com, raccourci
+à cinq écrans : le besoin, deux questions qui désignent l'offre, l'activité et
+le délai, puis l'offre conseillée avec son prix (`/mon-projet/`, hors index).
+
+- Trois niveaux d'appel à l'action, plus jamais trois boutons de même poids :
+  « Trouver mon offre » en principal (en-tête, premiers écrans, cartes de
+  /tarifs/), le téléphone en second, Calendly seulement à la fin du
+  questionnaire et sur les pages agents IA (page agents IA, pages secteur,
+  expertises de la famille automatisation, fin des articles agents IA).
+- Le formulaire « Être rappelé » de /tarifs/ disparaît : il est la dernière
+  étape du questionnaire. Chaque carte de /tarifs/ ouvre le questionnaire sur
+  son offre (`?offre=`).
+- « Être plus visible » et « Je ne sais pas » ne proposent pas d'offre : la
+  grille Visibilité est à revoir, le visiteur est rappelé.
+
 ---
 
 ## 8 bis. L'arborescence des expertises

@@ -1,24 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Calendar, Check, Inbox } from "lucide-react";
-import { CALENDLY_URL } from "@/lib/config";
+import { ArrowRight, Check, Inbox } from "lucide-react";
+
 import { AVIS_GOOGLE } from "@/data/avis-google";
 import { PLATEFORMES } from "@/data/plateformes";
 import { Etoiles, LogoGoogle, NoteGoogle, Pastille } from "@/components/accueil/communs";
 
 import heroTelephone800 from "@/assets/photos/hero-telephone-800.webp";
 import heroTelephone1400 from "@/assets/photos/hero-telephone-1400.webp";
-
-/** Les six formats de site, dans l'ordre où le client les présente. Les
-    libellés sont courts pour tenir en pastilles ; chaque page porte le nom
-    complet. */
-const FORMATS_HERO = [
-  { label: "Site sur mesure", to: "/creation-site-internet/" },
-  { label: "Site vitrine", to: "/site-vitrine/" },
-  { label: "E-commerce", to: "/site-e-commerce/" },
-  { label: "Landing page", to: "/landing-page/" },
-  { label: "Refonte", to: "/refonte-site-internet/" },
-  { label: "Site événementiel", to: "/site-evenementiel/" },
-] as const;
 
 /**
  * Le premier écran, sur l'encre, comme celui de futurdigital.fr : une
@@ -50,42 +38,36 @@ export function Ouverture() {
                 <span className="appel-pulse absolute inline-flex h-full w-full rounded-full bg-signal" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-signal" />
               </span>
-              Création de sites · Essonne et partout en France
+              Site web · Visibilité · Agents IA
             </Pastille>
           </div>
 
-          {/* Recentrage du 18 octobre 2026, à la demande du client : l'accueil
-              dit d'abord que Sitaly fait des sites. Les six formats sont
-              nommés dans le sous-titre et repris en pastilles sous les
-              boutons, pour qu'un visiteur trouve le sien sans défiler. */}
+          {/* Allègement du 23 octobre 2026, à la demande du client : le premier
+              écran reprend les trois onglets du menu (Site web, Visibilité,
+              Agents IA) dans la pastille et le sous-titre. Les pastilles des
+              six formats quittent le Hero : la section Formats les présente
+              juste en dessous. */}
           <h1
             data-split
             className="stagger mt-6 font-display text-[clamp(2.4rem,6vw,5rem)] font-extrabold leading-[1.02] tracking-[-0.045em] text-balance"
           >
-            Un site internet qui vous ressemble.{" "}
-            <span className="accent-word block">Et qui vous fait trouver.</span>
+            Un site internet qui vous fait trouver.{" "}
+            <span className="accent-word block">Et appeler.</span>
           </h1>
 
           <p data-reveal className="measure mx-auto mt-6 text-lg text-white/70 sm:text-xl">
-            Site vitrine, boutique en ligne, landing page, refonte ou site événementiel : Sitaly le
-            conçoit, le met en ligne, l'héberge et l'entretient, fiche Google comprise. Une seule
-            personne au bout du fil.
+            Sitaly crée votre site, le fait remonter sur Google et répond à vos clients avec des
+            agents IA. Un seul interlocuteur.
           </p>
 
           <div
             data-reveal
             className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bouton px-7 py-3.5 text-base"
-            >
-              <Calendar className="h-5 w-5" />
-              Parler de mon projet de site
+            <Link to="/mon-projet/" className="bouton px-7 py-3.5 text-base">
+              Trouver mon offre
               <ArrowRight className="bouton-fleche h-4 w-4" />
-            </a>
+            </Link>
             <Link
               to="/tarifs/"
               className="inline-flex items-center justify-center rounded-full border border-white/20 px-7 py-3.5 text-base font-semibold text-white transition hover:border-white/50"
@@ -93,21 +75,6 @@ export function Ouverture() {
               Voir les tarifs
             </Link>
           </div>
-
-          <nav data-reveal aria-label="Les formats de site" className="mt-8">
-            <ul className="flex flex-wrap justify-center gap-2">
-              {FORMATS_HERO.map((f) => (
-                <li key={f.to}>
-                  <Link
-                    to={f.to}
-                    className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white/85 transition hover:border-white/40 hover:text-white"
-                  >
-                    {f.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
 
           <a
             data-reveal
@@ -140,10 +107,6 @@ export function Ouverture() {
             <figcaption className="p-6 text-white sm:p-8">
               <p className="font-display text-xl font-extrabold tracking-[-0.02em] sm:text-2xl">
                 Un site, un objectif : qu'on vous contacte.
-              </p>
-              <p className="mt-1.5 max-w-sm text-sm text-white/80">
-                Conception, hébergement, fiche Google et modifications : tout est suivi par la même
-                personne.
               </p>
             </figcaption>
 

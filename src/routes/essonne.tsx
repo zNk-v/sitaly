@@ -1,19 +1,13 @@
 import { PRIX_SITE_MIN } from "@/data/offres";
 import { euros } from "@/lib/config";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Calendar, Check, Phone } from "lucide-react";
+import { ArrowRight, Check, Phone } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SectionHeader } from "@/components/SectionHeader";
 import { getRealisation, srcSetCapture } from "@/data/realisations";
 import { BASE_URL } from "@/lib/sitemap";
-import {
-  CALENDLY_URL,
-  SITALY_DEPARTEMENT,
-  SITALY_PHONE,
-  SITALY_PHONE_DISPLAY,
-  SITALY_VILLE,
-} from "@/lib/config";
+import { SITALY_DEPARTEMENT, SITALY_PHONE, SITALY_PHONE_DISPLAY, SITALY_VILLE } from "@/lib/config";
 
 /**
  * La page locale de Sitaly, décidée le 28 septembre 2026.
@@ -187,15 +181,10 @@ function Essonne() {
               <Phone className="h-4 w-4" />
               {SITALY_PHONE_DISPLAY}
             </a>
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bouton-secondaire px-6 py-3.5"
-            >
-              <Calendar className="h-4 w-4" />
-              Réserver un diagnostic de 30 min
-            </a>
+            <Link to="/mon-projet/" className="bouton-secondaire px-6 py-3.5">
+              Trouver mon offre
+              <ArrowRight className="bouton-fleche h-4 w-4" />
+            </Link>
           </div>
 
           <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-border pt-6 text-sm font-medium">
@@ -435,15 +424,10 @@ function Essonne() {
                 <Phone className="h-4 w-4" />
                 {SITALY_PHONE_DISPLAY}
               </a>
-              <a
-                href={CALENDLY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bouton-secondaire px-6 py-3.5"
-              >
-                <Calendar className="h-4 w-4" />
-                Réserver un diagnostic de 30 min
-              </a>
+              <Link to="/mon-projet/" className="bouton-secondaire px-6 py-3.5">
+                Trouver mon offre
+                <ArrowRight className="bouton-fleche h-4 w-4" />
+              </Link>
             </div>
           </div>
         </section>
@@ -459,15 +443,9 @@ function Essonne() {
             <Phone className="h-4 w-4" aria-hidden="true" />
             Appeler
           </a>
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bouton-secondaire flex-1 px-4 py-3 text-sm"
-          >
-            <Calendar className="h-4 w-4" aria-hidden="true" />
-            Réserver
-          </a>
+          <Link to="/mon-projet/" className="bouton-secondaire flex-1 px-4 py-3 text-sm">
+            Mon offre
+          </Link>
         </div>
       </div>
     </div>

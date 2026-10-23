@@ -57,15 +57,7 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-3">
-              <a
-                href={CALENDLY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bouton px-7 py-3.5"
-              >
-                <Calendar className="h-4 w-4" />
-                Réserver un diagnostic de 30 min
-              </a>
+              <BoutonPrincipal e={e} />
               <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
                 <Phone className="h-4 w-4" />
                 {SITALY_PHONE_DISPLAY}
@@ -277,27 +269,34 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
           </section>
         )}
 
-        {/* Appel final. Trente minutes, pas un formulaire de dix champs. */}
+        {/* Appel final : le questionnaire, sauf pour les agents IA, dont la
+            vente passe par un diagnostic de trente minutes. */}
         <section className="relative overflow-hidden py-20 sm:py-28">
           <div className="absolute inset-0 -z-10 hero-bg" aria-hidden="true" />
           <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-            <h2 className="display-section">
-              On en parle <span className="accent-word">trente minutes</span>&nbsp;?
-            </h2>
-            <p className="mt-5 text-lg text-muted-foreground">
-              Un diagnostic offert : vous décrivez votre activité, on dit ce qui est faisable et ce
-              qui ne l'est pas. Le chiffrage arrive par écrit après l'appel, sans engagement.
-            </p>
+            {e.famille === "automatisation" ? (
+              <>
+                <h2 className="display-section">
+                  On en parle <span className="accent-word">trente minutes</span>&nbsp;?
+                </h2>
+                <p className="mt-5 text-lg text-muted-foreground">
+                  Un diagnostic offert : vous décrivez votre activité, on dit ce qui est faisable et
+                  ce qui ne l'est pas. Le chiffrage arrive par écrit après l'appel, sans engagement.
+                </p>
+              </>
+            ) : (
+              <>
+                <h2 className="display-section">
+                  Votre offre, <span className="accent-word">en quatre questions</span>
+                </h2>
+                <p className="mt-5 text-lg text-muted-foreground">
+                  Vous décrivez votre besoin, on vous montre l'offre qui convient et son prix.
+                  Ensuite, on vous rappelle si vous le souhaitez. Sans engagement.
+                </p>
+              </>
+            )}
             <div className="mt-9 flex flex-wrap justify-center gap-3">
-              <a
-                href={CALENDLY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bouton px-7 py-3.5"
-              >
-                <Calendar className="h-4 w-4" />
-                Réserver un diagnostic de 30 min
-              </a>
+              <BoutonPrincipal e={e} />
               <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
                 <Phone className="h-4 w-4" />
                 {SITALY_PHONE_DISPLAY}
@@ -321,6 +320,37 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
  * celui que les modèles de langage citent le plus volontiers, parce qu'une
  * question suivie de sa réponse se reprend telle quelle.
  */
+/**
+ * Le bouton principal d'une page d'expertise : le questionnaire « Trouver mon
+ * offre » (23 octobre 2026), sauf pour les agents IA et l'automatisation, où
+ * le diagnostic de trente minutes reste le premier pas.
+ */
+function BoutonPrincipal({ e }: { e: Expertise }) {
+  if (e.famille === "automatisation") {
+    return (
+      <a
+        href={CALENDLY_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bouton px-7 py-3.5"
+      >
+        <Calendar className="h-4 w-4" />
+        Réserver un diagnostic de 30 min
+      </a>
+    );
+  }
+  return (
+    <Link
+      to="/mon-projet/"
+      search={{ besoin: e.famille === "site" ? "site" : "visibilite" }}
+      className="bouton px-7 py-3.5"
+    >
+      Trouver mon offre
+      <ArrowRight className="bouton-fleche h-4 w-4" />
+    </Link>
+  );
+}
+
 export function buildExpertiseHead(e: Expertise) {
   const url = `${BASE_URL}${cheminExpertise(e)}`;
   const famille = FAMILLES.find((f) => f.id === e.famille)!;

@@ -1,13 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Calendar, Check, Phone } from "lucide-react";
+import { ArrowRight, Check, Phone } from "lucide-react";
 import { SitalyLogo } from "@/components/SitalyLogo";
 import { CookieConsentBandeau } from "@/components/CookieConsent";
 import { ChampChevrons } from "@/components/HeroChamp";
 import { CarteRealisations, Etoiles } from "@/components/CarteRealisations";
 import { AVIS_GOOGLE, NOTE_GOOGLE } from "@/data/avis-google";
 import { COULEURS_FAMILLE, type FamilleId } from "@/data/expertises";
-import { CALENDLY_URL, SITALY_PHONE } from "@/lib/config";
+import { SITALY_PHONE } from "@/lib/config";
 
 import teddy112 from "@/assets/teddy-vidal-carte-112.webp";
 import teddy224 from "@/assets/teddy-vidal-carte-224.webp";
@@ -26,8 +26,6 @@ import teddy224 from "@/assets/teddy-vidal-carte-224.webp";
  * que le prérendu la génère.
  */
 
-// Les réservations venues des cartes se retrouvent dans Calendly par ces UTM.
-const CALENDLY_CARTE = `${CALENDLY_URL}?utm_source=carte&utm_medium=print`;
 const TEL_HREF = `tel:${SITALY_PHONE}`;
 
 type Emplacement = "accueil" | "barre";
@@ -49,7 +47,7 @@ export const Route = createFileRoute("/carte")({
       {
         name: "description",
         content:
-          "Teddy Vidal, fondateur de Sitaly : site internet, publicité en ligne et automatisations. Un seul interlocuteur. Appelez ou réservez un appel de 20 minutes.",
+          "Teddy Vidal, fondateur de Sitaly : site internet, publicité en ligne et automatisations. Un seul interlocuteur. Appelez, ou trouvez votre offre en quatre questions.",
       },
       { name: "robots", content: "noindex" },
       { property: "og:title", content: "Teddy Vidal, fondateur de Sitaly" },
@@ -168,16 +166,14 @@ function Carte() {
               <Phone className="h-5 w-5" aria-hidden="true" />
               Me contacter
             </a>
-            <a
-              href={CALENDLY_CARTE}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => suivre("carte_clic_calendly", { emplacement: "accueil" })}
+            <Link
+              to="/mon-projet/"
               className="bouton-secondaire w-full px-6 py-4 text-base"
+              onClick={() => suivre("carte_clic_questionnaire", { emplacement: "accueil" })}
             >
-              <Calendar className="h-5 w-5" aria-hidden="true" />
-              Réserver un appel de 20 min
-            </a>
+              Trouver mon offre
+              <ArrowRight className="h-5 w-5" aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>
@@ -299,19 +295,9 @@ function Carte() {
             <Phone className="h-4 w-4" aria-hidden="true" />
             Me contacter
           </a>
-          <a
-            href={CALENDLY_CARTE}
-            target="_blank"
-            rel="noopener noreferrer"
-            tabIndex={barreVisible ? 0 : -1}
-            onClick={() =>
-              suivre("carte_clic_calendly", { emplacement: "barre" satisfies Emplacement })
-            }
-            className="bouton-secondaire flex-1 px-4 py-3 text-sm"
-          >
-            <Calendar className="h-4 w-4" aria-hidden="true" />
-            Réserver
-          </a>
+          <Link to="/mon-projet/" tabIndex={barreVisible ? 0 : -1}>
+            Mon offre
+          </Link>
         </div>
       </div>
     </div>

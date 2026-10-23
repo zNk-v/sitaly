@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { ArrowRight, Check, Info, Phone, Plus, X } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { PictoRubrique } from "@/components/PictoRubrique";
@@ -7,8 +7,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { TexteAvecLiens } from "@/components/TexteAvecLiens";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 import { useSplitWords } from "@/hooks/use-split-words";
-import { SITALY_PHONE, SITALY_PHONE_DISPLAY, euros } from "@/lib/config";
-import { envoyerDemande } from "@/lib/formulaire";
+import { SITALY_PHONE, euros } from "@/lib/config";
 import { texteBrut } from "@/lib/liens-texte";
 import { BASE_URL } from "@/lib/sitemap";
 import {
@@ -154,7 +153,6 @@ function Tarifs() {
   const rootRef = useRef<HTMLDivElement>(null);
   useRevealOnScroll(rootRef);
   useSplitWords(rootRef);
-  const [choix, setChoix] = useState<OffreId | "">("");
 
   return (
     <div ref={rootRef} className="min-h-screen bg-background pb-24 text-foreground lg:pb-0">
@@ -216,7 +214,6 @@ function Tarifs() {
                   <span className="accent-word">tenus pour vous</span>
                 </>
               }
-              onChoisir={setChoix}
             />
 
             <Grille
@@ -226,7 +223,6 @@ function Tarifs() {
                   Une boutique qui <span className="accent-word">vous appartient</span>
                 </>
               }
-              onChoisir={setChoix}
             />
 
             {/* Faire évoluer un site existant : la maintenance, et la refonte
@@ -236,7 +232,7 @@ function Tarifs() {
                 {GROUPES.maintenance.titre}
               </p>
               <div className="mt-6 grid gap-5 lg:grid-cols-2 lg:items-start lg:gap-6">
-                <CarteOffre o={offre("maintenance")} onChoisir={setChoix} secondaire />
+                <CarteOffre o={offre("maintenance")} secondaire />
                 <div data-reveal className="lg:pl-6 lg:pt-4">
                   <h2 className="font-display text-[clamp(1.6rem,3vw,2.3rem)] font-extrabold leading-[1.08] tracking-[-0.035em]">
                     Votre site a vieilli ? <span className="accent-word">On le refait</span>
@@ -264,7 +260,6 @@ function Tarifs() {
                   Vos demandes traitées, <span className="accent-word">même sans vous</span>
                 </>
               }
-              onChoisir={setChoix}
             />
 
             <p className="mt-10 text-[15px] text-muted-foreground">
@@ -397,8 +392,6 @@ function Tarifs() {
             </div>
           </div>
         </section>
-
-        <Rappel choix={choix} setChoix={setChoix} />
       </main>
 
       <SiteFooter />
@@ -406,12 +399,12 @@ function Tarifs() {
       {/* Barre d'appel mobile, sur le modèle de /essonne et /carte. */}
       <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-8px_24px_-16px_oklch(0.2_0.05_300/0.5)] lg:hidden">
         <div className="mx-auto flex max-w-md gap-3">
-          <a href={`tel:${SITALY_PHONE}`} className="bouton flex-1 px-4 py-3 text-sm">
+          <Link to="/mon-projet/" className="bouton flex-1 px-4 py-3 text-sm">
+            Trouver mon offre
+          </Link>
+          <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire flex-1 px-4 py-3 text-sm">
             <Phone className="h-4 w-4" aria-hidden="true" />
             Appeler
-          </a>
-          <a href="#rappel" className="bouton-secondaire flex-1 px-4 py-3 text-sm">
-            Être rappelé
           </a>
         </div>
       </div>
@@ -421,15 +414,7 @@ function Tarifs() {
 
 /* ---------------- Grille de trois offres ---------------- */
 
-function Grille({
-  groupe,
-  titre,
-  onChoisir,
-}: {
-  groupe: GroupeId;
-  titre: React.ReactNode;
-  onChoisir: (id: OffreId) => void;
-}) {
+function Grille({ groupe, titre }: { groupe: GroupeId; titre: React.ReactNode }) {
   const g = GROUPES[groupe];
   return (
     <div id={g.ancre} className="mt-20 scroll-mt-28 first:mt-0">
@@ -441,7 +426,7 @@ function Grille({
       </div>
       <div className="mt-8 grid gap-5 lg:grid-cols-3 lg:items-stretch lg:gap-6">
         {offresDu(groupe).map((o) => (
-          <CarteOffre key={o.id} o={o} onChoisir={onChoisir} />
+          <CarteOffre key={o.id} o={o} />
         ))}
       </div>
     </div>
@@ -450,15 +435,7 @@ function Grille({
 
 /* ---------------- Carte d'offre ---------------- */
 
-function CarteOffre({
-  o,
-  onChoisir,
-  secondaire = false,
-}: {
-  o: Offre;
-  onChoisir: (id: OffreId) => void;
-  secondaire?: boolean;
-}) {
+function CarteOffre({ o, secondaire = false }: { o: Offre; secondaire?: boolean }) {
   const mise = !!o.recommandee;
   const sombre = mise;
   const attenue = sombre ? "text-white/70" : "text-muted-foreground";
@@ -596,195 +573,17 @@ function CarteOffre({
       )}
 
       <div className="mt-auto pt-8">
-        <a
-          href="#rappel"
-          onClick={() => onChoisir(o.id)}
+        {/* Le questionnaire part de cette offre : il ne reste que l'activité
+            et le délai à donner avant le rappel. */}
+        <Link
+          to="/mon-projet/"
+          search={{ offre: o.id }}
           className={`w-full px-6 py-3.5 ${mise || !secondaire ? "bouton" : "bouton-secondaire"}`}
         >
-          {o.cta === "rappel" ? "Être rappelé" : "Demander un devis"}
+          Choisir cette offre
           <ArrowRight className="bouton-fleche h-4 w-4" />
-        </a>
+        </Link>
       </div>
     </article>
-  );
-}
-
-/* ---------------- Être rappelé ---------------- */
-
-type Etat = "saisie" | "envoi" | "envoye" | "erreur";
-
-function Rappel({
-  choix,
-  setChoix,
-}: {
-  choix: OffreId | "";
-  setChoix: (id: OffreId | "") => void;
-}) {
-  const [etat, setEtat] = useState<Etat>("saisie");
-
-  async function envoyer(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    const get = (k: string) => String(fd.get(k) || "").trim();
-    const nomOffre = choix ? offre(choix).nom : "Je ne sais pas encore";
-    setEtat("envoi");
-    const r = await envoyerDemande(
-      {
-        name: get("name"),
-        company: get("company"),
-        phone: get("phone"),
-        email: "",
-        subject: `Rappel tarifs : ${nomOffre}`,
-        message: `Offre : ${nomOffre}\n\n${get("message")}`,
-        website: get("website"),
-      },
-      "rappel-tarifs",
-    );
-    setEtat(r === "envoye" ? "envoye" : "erreur");
-  }
-
-  const champ =
-    "mt-1.5 w-full rounded-lg border border-input bg-background px-3.5 py-2.5 text-[15px] outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20";
-
-  return (
-    <section id="rappel" className="bg-paper-sunk py-16 sm:py-20">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-16">
-        <div data-reveal>
-          <h2 data-split className="display-section">
-            Être rappelé, <span className="accent-word">sous 24 h</span>
-          </h2>
-          <p className="measure mt-5 text-lg text-muted-foreground">
-            Laissez votre numéro : Teddy vous rappelle pour comprendre votre activité et vous dire
-            quelle offre convient, avant toute signature.
-          </p>
-          <a
-            href={`tel:${SITALY_PHONE}`}
-            className="mt-7 inline-flex items-center gap-2 font-semibold text-brand-ink"
-          >
-            <Phone className="h-4 w-4" />
-            Ou appelez le {SITALY_PHONE_DISPLAY}
-          </a>
-        </div>
-
-        <form
-          onSubmit={envoyer}
-          className="relative rounded-[1.75rem] border border-border bg-card p-6 shadow-elevated sm:p-8"
-        >
-          {etat === "envoye" ? (
-            <div className="py-10 text-center" role="status">
-              <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-success/15 text-success">
-                <Check className="h-7 w-7" />
-              </div>
-              <h3 className="mt-4 font-display text-xl font-bold">Demande reçue</h3>
-              <p className="mt-2 text-muted-foreground">
-                Je vous rappelle sous 24 h au numéro indiqué.
-              </p>
-            </div>
-          ) : etat === "erreur" ? (
-            <div className="py-10 text-center" role="alert">
-              <h3 className="font-display text-xl font-bold">L'envoi n'a pas abouti</h3>
-              <p className="mt-2 text-muted-foreground">
-                Votre demande n'est pas partie. Appelez le {SITALY_PHONE_DISPLAY}, je vous réponds
-                directement.
-              </p>
-              <a href={`tel:${SITALY_PHONE}`} className="bouton mt-6 px-6 py-3">
-                <Phone className="h-4 w-4" />
-                Appeler
-              </a>
-            </div>
-          ) : (
-            <>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div>
-                  <label htmlFor="rappel-name" className="text-sm font-medium">
-                    Nom <span className="text-red-ink">*</span>
-                  </label>
-                  <input id="rappel-name" name="name" required maxLength={150} className={champ} />
-                </div>
-                <div>
-                  <label htmlFor="rappel-phone" className="text-sm font-medium">
-                    Téléphone <span className="text-red-ink">*</span>
-                  </label>
-                  <input
-                    id="rappel-phone"
-                    name="phone"
-                    type="tel"
-                    required
-                    maxLength={30}
-                    className={champ}
-                  />
-                </div>
-                <div className="sm:col-span-2">
-                  <label htmlFor="rappel-company" className="text-sm font-medium">
-                    Activité et commune
-                  </label>
-                  <input
-                    id="rappel-company"
-                    name="company"
-                    maxLength={150}
-                    placeholder="Fleuriste à Brétigny-sur-Orge"
-                    className={champ}
-                  />
-                </div>
-                <div className="sm:col-span-2">
-                  <label htmlFor="rappel-offre" className="text-sm font-medium">
-                    Offre qui vous intéresse
-                  </label>
-                  <select
-                    id="rappel-offre"
-                    name="offre"
-                    value={choix}
-                    onChange={(e) => setChoix(e.target.value as OffreId | "")}
-                    className={champ}
-                  >
-                    <option value="">Je ne sais pas encore</option>
-                    {(Object.keys(GROUPES) as GroupeId[]).map((g) => (
-                      <optgroup key={g} label={GROUPES[g].titre}>
-                        {offresDu(g).map((o) => (
-                          <option key={o.id} value={o.id}>
-                            {o.nom}
-                          </option>
-                        ))}
-                      </optgroup>
-                    ))}
-                  </select>
-                </div>
-                <div className="sm:col-span-2">
-                  <label htmlFor="rappel-message" className="text-sm font-medium">
-                    Message
-                  </label>
-                  <textarea id="rappel-message" name="message" rows={3} className={champ} />
-                </div>
-              </div>
-              {/* Pot de miel : invisible pour un humain, rempli par les robots. */}
-              <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
-                <label htmlFor="rappel-website">Ne pas remplir</label>
-                <input
-                  id="rappel-website"
-                  name="website"
-                  type="text"
-                  tabIndex={-1}
-                  autoComplete="off"
-                />
-              </div>
-              <button
-                type="submit"
-                disabled={etat === "envoi"}
-                className="bouton mt-5 w-full px-6 py-3.5 disabled:opacity-70"
-              >
-                <Phone className="h-5 w-5" />
-                {etat === "envoi" ? "Envoi…" : "Être rappelé"}
-              </button>
-              <p className="mt-3 text-center text-xs text-muted-foreground">
-                Vos coordonnées servent uniquement à vous rappeler.{" "}
-                <Link to="/politique-confidentialite/" className="underline underline-offset-2">
-                  Confidentialité
-                </Link>
-              </p>
-            </>
-          )}
-        </form>
-      </div>
-    </section>
   );
 }

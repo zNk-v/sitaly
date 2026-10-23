@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Calendar, Phone } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
+import { SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 /**
  * La page introuvable. GitHub Pages sert /404.html pour toute adresse
@@ -98,15 +98,10 @@ export function PageIntrouvable() {
             </ul>
 
             <div className="mt-10 flex flex-wrap items-center gap-3">
-              <a
-                href={CALENDLY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bouton px-7 py-3.5"
-              >
-                <Calendar className="h-4 w-4" />
-                Réserver un diagnostic de 30 min
-              </a>
+              <Link to="/mon-projet/" className="bouton px-7 py-3.5">
+                Trouver mon offre
+                <ArrowRight className="bouton-fleche h-4 w-4" />
+              </Link>
               <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
                 <Phone className="h-4 w-4" />
                 {SITALY_PHONE_DISPLAY}

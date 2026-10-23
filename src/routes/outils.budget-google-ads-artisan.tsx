@@ -1,9 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { directiveRobots } from "@/lib/indexation";
 import { useState } from "react";
-import { ArrowUpRight, Calendar } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { SiteChrome } from "@/components/SiteChrome";
-import { CALENDLY_URL } from "@/lib/config";
 
 const URL = "https://sitaly.fr/outils/budget-google-ads-artisan/";
 const TITLE = "Calculateur de budget Google Ads pour artisan (gratuit) | Sitaly";
@@ -250,16 +249,14 @@ function BudgetGoogleAds() {
               )}
 
               <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href={CALENDLY_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to="/mon-projet/"
+                  search={{ besoin: "visibilite" }}
                   className="bouton px-6 py-3 text-sm"
                 >
-                  <Calendar className="h-4 w-4" />
                   Chiffrer ma zone précisément
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
             </div>
           </div>

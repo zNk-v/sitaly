@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, Bot, Calendar, Globe, Megaphone, Menu, Phone, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Bot, Globe, Megaphone, Menu, Phone, X } from "lucide-react";
 import { COULEURS_FAMILLE, type EntreeMenu, type FamilleId } from "@/data/expertises";
 import { AGENCE, ONGLETS } from "@/data/menu";
-import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
+import { SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 const ICONES: Record<FamilleId, React.ComponentType<{ className?: string }>> = {
   site: Globe,
@@ -232,16 +232,10 @@ export function MobileMenu({
             {/* Le pied de la feuille. Les deux actions y sont toujours à la
                 même place, quel que soit ce qui est déplié au-dessus. */}
             <div className="sticky bottom-0 border-t border-border bg-card/95 p-3 backdrop-blur">
-              <a
-                href={CALENDLY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={fermer}
-                className="bouton h-12 w-full text-base"
-              >
-                <Calendar className="h-4 w-4" />
-                Réserver un appel de 30 min
-              </a>
+              <Link to="/mon-projet/" onClick={fermer} className="bouton h-12 w-full text-base">
+                Trouver mon offre
+                <ArrowRight className="bouton-fleche h-4 w-4" />
+              </Link>
               <a
                 href={`tel:${SITALY_PHONE}`}
                 onClick={fermer}

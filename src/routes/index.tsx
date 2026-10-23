@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useRef } from "react";
-import { ArrowRight, Calendar, Check, Linkedin, Phone, Plus } from "lucide-react";
+import { ArrowRight, Check, Linkedin, Phone, Plus } from "lucide-react";
 import { SectionHeader } from "@/components/SectionHeader";
 import { RealisationsCarousel } from "@/components/RealisationsCarousel";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -18,7 +18,6 @@ import { postsALaUne } from "@/data/blog-posts";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 import { useSplitWords } from "@/hooks/use-split-words";
 import {
-  CALENDLY_URL,
   FORM_ENDPOINT,
   SITALY_CODE_POSTAL,
   SITALY_PHONE,
@@ -246,15 +245,10 @@ function Fondateur() {
           </div>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bouton px-7 py-3.5"
-            >
-              <Calendar className="h-5 w-5" />
-              Réserver 30 min avec Teddy
-            </a>
+            <Link to="/mon-projet/" className="bouton px-7 py-3.5">
+              Trouver mon offre
+              <ArrowRight className="bouton-fleche h-4 w-4" />
+            </Link>
             <Link to="/a-propos/" className="bouton-secondaire px-7 py-3.5">
               Mon parcours
               <ArrowRight className="h-4 w-4" />
@@ -452,15 +446,10 @@ function Contact() {
               deux lignes, et on vous rappelle pour voir quel format vous convient.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <a
-                href={CALENDLY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bouton px-7 py-3.5"
-              >
-                <Calendar className="h-5 w-5" />
-                Réserver un appel de 30 min
-              </a>
+              <Link to="/mon-projet/" className="bouton px-7 py-3.5">
+                Trouver mon offre
+                <ArrowRight className="bouton-fleche h-4 w-4" />
+              </Link>
               <a
                 href={`tel:${SITALY_PHONE}`}
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3.5 font-semibold whitespace-nowrap text-white transition hover:border-white/50"

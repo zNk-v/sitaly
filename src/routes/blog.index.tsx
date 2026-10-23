@@ -18,7 +18,6 @@ import { articleIndexable } from "@/lib/indexation";
    prospection directe, mais ne figurent plus ni ici ni dans le sitemap. */
 const BLOG_POSTS = TOUS_LES_ARTICLES.filter((p) => articleIndexable(p.slug));
 const POSTS_RECENTS = TOUS_LES_RECENTS.filter((p) => articleIndexable(p.slug));
-import { CALENDLY_URL } from "@/lib/config";
 
 /**
  * L'index du blog.
@@ -341,18 +340,13 @@ function BlogIndex() {
               Et pour <span className="accent-word">votre activité</span> ?
             </h2>
             <p className="mt-5 text-lg text-muted-foreground">
-              Trente minutes au téléphone valent mieux que dix articles lus en diagonale. Vous
-              décrivez votre activité, on dit ce qui est faisable et ce qui ne l'est pas.
+              Quatre questions valent mieux que dix articles lus en diagonale. Vous décrivez votre
+              besoin, on vous montre l'offre qui convient et son prix.
             </p>
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bouton mt-9 px-7 py-3.5"
-            >
-              Réserver un diagnostic de 30 min
-              <ArrowRight className="bouton-fleche h-5 w-5" />
-            </a>
+            <Link to="/mon-projet/" className="bouton mt-9 px-7 py-3.5">
+              Trouver mon offre
+              <ArrowRight className="bouton-fleche h-4 w-4" />
+            </Link>
           </div>
         </section>
       </main>

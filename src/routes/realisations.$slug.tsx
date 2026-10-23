@@ -1,12 +1,11 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useRef } from "react";
-import { ArrowLeft, ArrowUpRight, Calendar, Check, ExternalLink } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Check, ExternalLink } from "lucide-react";
 import { getRealisation, REALISATIONS, srcSetCapture } from "@/data/realisations";
 import { SectionHeader } from "@/components/SectionHeader";
 import { SiteChrome } from "@/components/SiteChrome";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 import { useSplitWords } from "@/hooks/use-split-words";
-import { CALENDLY_URL } from "@/lib/config";
 
 export const Route = createFileRoute("/realisations/$slug")({
   loader: ({ params }) => {
@@ -321,18 +320,13 @@ function RealisationPage() {
               Le vôtre pourrait être <span className="accent-word text-brand-ink">le prochain</span>
             </h2>
             <p className="mt-6 text-lg text-muted-foreground">
-              Un diagnostic offert de 30 minutes pour comprendre votre activité, et vous saurez si
-              ça vaut le coup. Sans engagement.
+              Quatre questions sur votre activité, et vous voyez l'offre qui vous convient et son
+              prix. Sans engagement.
             </p>
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bouton mt-9 px-7 py-3.5"
-            >
-              <Calendar className="h-5 w-5" />
-              Réserver un diagnostic de 30 min
-            </a>
+            <Link to="/mon-projet/" className="bouton mt-9 px-7 py-3.5">
+              Trouver mon offre
+              <ArrowRight className="bouton-fleche h-4 w-4" />
+            </Link>
           </div>
         </section>
       </SiteChrome>

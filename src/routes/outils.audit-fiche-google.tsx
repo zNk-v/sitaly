@@ -1,9 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { directiveRobots } from "@/lib/indexation";
 import { useMemo, useState } from "react";
-import { ArrowUpRight, Calendar, Check, RotateCcw } from "lucide-react";
+import { ArrowRight, Check, RotateCcw } from "lucide-react";
 import { SiteChrome } from "@/components/SiteChrome";
-import { CALENDLY_URL } from "@/lib/config";
 
 const URL = "https://sitaly.fr/outils/audit-fiche-google/";
 const TITLE = "Audit gratuit de fiche Google Business Profile : score sur 100 | Sitaly";
@@ -377,16 +376,14 @@ function AuditFicheGoogle() {
                 ))}
               </ol>
               <div className="mt-10 flex flex-wrap gap-3">
-                <a
-                  href={CALENDLY_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to="/mon-projet/"
+                  search={{ besoin: "visibilite" }}
                   className="bouton px-6 py-3 text-sm"
                 >
-                  <Calendar className="h-4 w-4" />
                   Faire corriger ma fiche
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
                 <button
                   type="button"
                   onClick={() => {
