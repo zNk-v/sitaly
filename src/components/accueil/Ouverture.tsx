@@ -51,8 +51,8 @@ export function Ouverture() {
             data-split
             className="stagger mt-6 font-display text-[clamp(2.4rem,6vw,5rem)] font-extrabold leading-[1.02] tracking-[-0.045em] text-balance"
           >
-            Un site internet qui vous fait trouver.{" "}
-            <span className="accent-word block">Et appeler.</span>
+            Un site internet qui vous ressemble.{" "}
+            <span className="accent-word block">Et qui vous différencie.</span>
           </h1>
 
           <p data-reveal className="measure mx-auto mt-6 text-lg text-white/70 sm:text-xl">
