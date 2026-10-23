@@ -1,0 +1,1 @@
+import"./config-BXL7NECp.js";import{st as e}from"./index-sEXM3krk.js";async function t(t,n){try{return(await fetch(`https://sitaly-forms.sitaly-forms.workers.dev`,{method:`POST`,headers:{"Content-Type":`application/json`,Accept:`application/json`},body:JSON.stringify(t)})).ok?(e(`generate_lead`,{form_id:n}),`envoye`):`erreur`}catch{return`erreur`}}export{t};
