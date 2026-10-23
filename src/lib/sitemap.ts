@@ -1,4 +1,5 @@
 import { BLOG_POSTS } from "@/data/blog-posts";
+import { PAGES_OFFRES } from "@/data/pages-offres";
 import { REALISATIONS } from "@/data/realisations";
 import { EXPERTISES } from "@/data/expertises";
 import { SECTEURS } from "@/data/secteurs";
@@ -114,6 +115,13 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
     path: m.to.replace(/\/$/, ""),
     changefreq: "monthly" as const,
     priority: "0.5",
+  })),
+  // Les pages d'offre (23 octobre 2026), une par offre sans page à elle.
+  ...PAGES_OFFRES.map((p) => ({
+    path: `/offres/${p.id}`,
+    changefreq: "monthly" as const,
+    priority: "0.8",
+    source: [route("offres.$id.tsx"), "src/data/pages-offres.ts", "src/data/offres.ts"],
   })),
   { path: "/outils", changefreq: "monthly", priority: "0.5" },
   { path: "/outils/audit-fiche-google", changefreq: "monthly", priority: "0.5" },

@@ -1,4 +1,5 @@
 import { PRIX_AGENTS_IA, euros } from "@/lib/config";
+import type { OffreId } from "@/data/offres";
 
 export { euros };
 
@@ -65,6 +66,8 @@ export interface Secteur {
   nomService?: string;
   /** Titre du bloc de maillage. Par défaut : « Les autres secteurs ». */
   maillageTitre?: [string, string];
+  /** Les offres de la grille que la page détaille, prix compris. */
+  offres?: OffreId[];
 }
 
 /** Chemin de la page, slash final compris. */

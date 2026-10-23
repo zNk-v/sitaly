@@ -12,6 +12,7 @@ import { reponsePrix, type Secteur } from "@/data/secteurs";
  * Règle de preuve : aucun chiffre. Les dates sont celles des textes.
  */
 export const AGENT_VOCAL: Secteur = {
+  offres: ["agent-ia-pro"],
   slug: "agent-vocal",
   label: "Agent vocal",
   carte: "Accueil téléphonique, qualification et rendez-vous, à toute heure.",

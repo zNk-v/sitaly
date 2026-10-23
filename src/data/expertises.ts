@@ -1,3 +1,4 @@
+import type { OffreId } from "@/data/offres";
 import { Bot, Globe, Megaphone } from "lucide-react";
 
 /**
@@ -121,6 +122,8 @@ export interface Expertise {
   etapes?: { t: string; d: string }[];
   /** Des exemples par secteur, affichés dans le bloc « Pour qui ». */
   exemples?: { secteur: string; d: string }[];
+  /** Les offres de la grille que la page détaille, prix compris. */
+  offres?: OffreId[];
 }
 
 /** Chemin de la page, slash final compris. */
@@ -273,6 +276,7 @@ const SITE: Expertise[] = [
   },
   {
     slug: "site-e-commerce",
+    offres: ["boutique", "boutique-pro", "boutique-sur-mesure"],
     famille: "site",
     label: "Site e-commerce",
     nomService: "un site e-commerce",
@@ -1066,6 +1070,7 @@ const AUTOMATISATION: Expertise[] = [
   },
   {
     slug: "logiciel-metier",
+    offres: ["outil-sur-mesure"],
     famille: "automatisation",
     label: "Logiciel métier",
     nomService: "un logiciel métier",

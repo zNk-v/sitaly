@@ -11,6 +11,7 @@ import {
   type Expertise,
 } from "@/data/expertises";
 import { CarteEtapeSuivante } from "@/components/EtapeSuivante";
+import { OffresEnBref } from "@/components/OffresEnBref";
 import { ArticlesALire } from "@/components/ArticlesALire";
 import { BASE_URL } from "@/lib/sitemap";
 import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
@@ -178,6 +179,27 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
             )}
           </div>
         </section>
+
+        {/* L'offre et son prix, quand la page correspond à une offre de la
+          grille : le menu y mène depuis l'offre, la page doit la détailler. */}
+        {e.offres && (
+          <section id="offre" className="scroll-mt-28 py-20 sm:py-28">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6">
+              <SectionHeader
+                eyebrow="Tarifs"
+                title={
+                  <>
+                    {e.offres.length > 1 ? "Nos offres, " : "L'offre, "}
+                    <span className="accent-word">prix compris</span>
+                  </>
+                }
+              />
+              <div className="mt-12">
+                <OffresEnBref ids={e.offres} />
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* 03. Quatre questions, ouvertes sans script : `details` suffit et
           reste lisible sans JavaScript, ce qui vaut aussi pour l'exploration. */}

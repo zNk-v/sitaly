@@ -76,6 +76,7 @@ export const OFFRES: Offre[] = [
     mensuel: 149,
     depart: 290,
     departLibelle: "de mise en service",
+    page: "/offres/presence/",
   },
   {
     id: "presence-pro",
@@ -87,6 +88,7 @@ export const OFFRES: Offre[] = [
     depart: 490,
     departLibelle: "de mise en service",
     recommandee: true,
+    page: "/offres/presence-pro/",
   },
   {
     id: "presence-expert",
@@ -97,6 +99,7 @@ export const OFFRES: Offre[] = [
     mensuel: 399,
     depart: 790,
     departLibelle: "de mise en service",
+    page: "/offres/presence-expert/",
   },
   {
     id: "boutique",
@@ -123,6 +126,7 @@ export const OFFRES: Offre[] = [
     notes: ["La boutique vous appartient."],
     mention: MENTION_SHOPIFY,
     recommandee: true,
+    page: "/site-e-commerce/",
   },
   {
     id: "boutique-sur-mesure",
@@ -139,6 +143,7 @@ export const OFFRES: Offre[] = [
       "Le montant exact est écrit dans le devis, avant de commencer.",
     ],
     mention: MENTION_SHOPIFY,
+    page: "/site-e-commerce/",
   },
   {
     id: "maintenance",
@@ -149,6 +154,7 @@ export const OFFRES: Offre[] = [
     mensuel: 79,
     depart: 190,
     departLibelle: "d'audit",
+    page: "/offres/maintenance/",
     notes: ["Si le site demande une remise en état : devis séparé, annoncé avant tout travail."],
   },
   {
@@ -289,7 +295,7 @@ export const GRILLES: Record<GroupeId, Rubrique[]> = {
             "presence-expert": "sans limite mensuelle",
           },
         },
-        { libelle: "Un interlocuteur unique, réponse sous 24 h", valeurs: partout(SITES) },
+        { libelle: "Un interlocuteur unique, réponse sous 24\u00a0h", valeurs: partout(SITES) },
         { libelle: "Rapport mensuel", valeurs: { "presence-pro": true, "presence-expert": true } },
         { libelle: "Bilan trimestriel en visio", valeurs: { "presence-expert": true } },
       ],
@@ -468,7 +474,7 @@ export const GRILLES: Record<GroupeId, Rubrique[]> = {
           libelle: "Minutes de voix et SMS compris",
           valeurs: { "agent-ia-pro": true, "outil-sur-mesure": "selon le projet" },
         },
-        { libelle: "Un interlocuteur unique, réponse sous 24 h", valeurs: partout(AGENTS) },
+        { libelle: "Un interlocuteur unique, réponse sous 24\u00a0h", valeurs: partout(AGENTS) },
       ],
     },
   ],

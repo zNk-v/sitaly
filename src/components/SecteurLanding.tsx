@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, Calendar, Check, Phone } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { OffresEnBref } from "@/components/OffresEnBref";
 import { SectionHeader } from "@/components/SectionHeader";
 import { CarteEtapeSuivante } from "@/components/EtapeSuivante";
 import { ArticlesALire } from "@/components/ArticlesALire";
@@ -240,6 +241,26 @@ export function SecteurLanding({ s }: { s: Secteur }) {
             </div>
           </div>
         </section>
+
+        {/* L'offre et son prix, quand la page correspond à une offre de la
+          grille : le menu y mène depuis l'offre (Agent IA Pro). */}
+        {s.offres && (
+          <section id="offre" className="scroll-mt-28 py-20 sm:py-28">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6">
+              <SectionHeader
+                eyebrow="Tarifs"
+                title={
+                  <>
+                    L'offre, <span className="accent-word">prix compris</span>
+                  </>
+                }
+              />
+              <div className="mt-12">
+                <OffresEnBref ids={s.offres} />
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* 05. Les questions, ouvertes sans script. */}
         <section className="py-20 sm:py-28">

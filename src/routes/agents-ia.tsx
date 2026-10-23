@@ -1,4 +1,5 @@
 import { useRef, useState, type FormEvent } from "react";
+import { OffresEnBref } from "@/components/OffresEnBref";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -632,6 +633,7 @@ function AgentsIA() {
         <Deployment />
         <Control />
         <Fit />
+        <Tarifs />
         <Faq />
         <ALire />
         <FinalCta />
@@ -1382,6 +1384,29 @@ function Fit() {
 }
 
 /* ---------------- FAQ ---------------- */
+/* ---------------- TARIFS ---------------- */
+
+/* Les trois offres de la grille Agents IA, prix compris : le menu y mène
+   depuis « Agent IA » (src/data/offres.ts). */
+function Tarifs() {
+  return (
+    <section id="tarifs" className="scroll-mt-24 py-20 sm:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div data-reveal>
+          <SectionHeader
+            eyebrow="Tarifs"
+            title="Trois offres, prix affichés"
+            subtitle="Mise en place payée une fois, puis un abonnement sans engagement."
+          />
+        </div>
+        <div className="mt-12">
+          <OffresEnBref ids={["agent-ia", "agent-ia-pro", "outil-sur-mesure"]} />
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Faq() {
   return (
     <section id="faq" className="scroll-mt-24 py-20 sm:py-28">

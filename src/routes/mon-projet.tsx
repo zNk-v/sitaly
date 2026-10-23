@@ -543,25 +543,50 @@ function EcranActivite({
   setDomaine: (v: string) => void;
   onSuivant: () => void;
 }) {
+  /* Les erreurs ne s'affichent qu'après un premier essai de « Continuer ». */
+  const [essai, setEssai] = useState(false);
+  const champActivite = useRef<HTMLInputElement>(null);
+  const blocDelai = useRef<HTMLFieldSetElement>(null);
+  const activiteManque = !activite.trim();
+  const delaiManque = !delai;
+
   return (
     <form
+      noValidate
       onSubmit={(e) => {
         e.preventDefault();
+        if (activiteManque || delaiManque) {
+          setEssai(true);
+          if (activiteManque) champActivite.current?.focus();
+          else blocDelai.current?.querySelector("button")?.focus();
+          return;
+        }
         onSuivant();
       }}
       className="rounded-[1.75rem] border border-border bg-card p-6 shadow-elevated sm:p-8"
     >
       <label htmlFor="projet-activite" className="font-semibold">
-        Votre activité et votre commune
+        Votre activité et votre commune <span className="text-red-ink">*</span>
       </label>
       <input
+        ref={champActivite}
         id="projet-activite"
         value={activite}
         onChange={(e) => setActivite(e.target.value)}
         maxLength={150}
+        required
+        aria-invalid={essai && activiteManque}
+        aria-describedby={essai && activiteManque ? "projet-activite-erreur" : undefined}
         placeholder="Fleuriste à Brétigny-sur-Orge"
-        className="mt-2 w-full rounded-lg border border-input bg-background px-3.5 py-3 text-[16px] outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+        className={`mt-2 w-full rounded-lg border bg-background px-3.5 py-3 text-[16px] outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20 ${
+          essai && activiteManque ? "border-red-ink" : "border-input"
+        }`}
       />
+      {essai && activiteManque && (
+        <p id="projet-activite-erreur" className="mt-1.5 text-sm text-red-ink">
+          Indiquez votre activité et votre commune.
+        </p>
+      )}
 
       {domaine !== undefined && (
         <div className="mt-7">
@@ -582,8 +607,14 @@ function EcranActivite({
         </div>
       )}
 
-      <fieldset className="mt-7">
-        <legend className="font-semibold">Pour quand ?</legend>
+      <fieldset
+        ref={blocDelai}
+        className="mt-7"
+        aria-describedby={essai && delaiManque ? "projet-delai-erreur" : undefined}
+      >
+        <legend className="font-semibold">
+          Pour quand ? <span className="text-red-ink">*</span>
+        </legend>
         <div className="mt-3 flex flex-wrap gap-2">
           {DELAIS.map((d) => (
             <button
@@ -601,6 +632,11 @@ function EcranActivite({
             </button>
           ))}
         </div>
+        {essai && delaiManque && (
+          <p id="projet-delai-erreur" className="mt-2 text-sm text-red-ink">
+            Choisissez un délai.
+          </p>
+        )}
       </fieldset>
 
       <button type="submit" className="bouton mt-8 w-full px-6 py-3.5">
@@ -698,6 +734,7 @@ function EcranCoordonnees({
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
         <Champ
           nom="nom"
+          pattern=".*\S.*"
           label="Nom"
           maxLength={60}
           autoComplete="family-name"
@@ -705,6 +742,7 @@ function EcranCoordonnees({
         />
         <Champ
           nom="prenom"
+          pattern=".*\S.*"
           label="Prénom"
           maxLength={60}
           autoComplete="given-name"
@@ -732,7 +770,7 @@ function EcranCoordonnees({
           label="Téléphone"
           type="tel"
           maxLength={30}
-          pattern="[+0-9][0-9 .()\-]{7,}"
+          pattern="[+0-9][0-9 .\(\)\-]{7,}"
           autoComplete="tel"
           valeur={contact?.phone}
         />
@@ -869,9 +907,14 @@ function Resultat({ o, refonte, contact }: { o?: Offre; refonte: boolean; contac
           pages agents IA, où Calendly apparaît. */}
       <div className="rounded-[1.75rem] border border-border bg-card p-6 text-center shadow-elevated sm:p-8">
         {contact?.envoye && (
-          <p className="mx-auto mb-5 inline-flex items-center gap-2 rounded-full bg-success/10 px-4 py-1.5 text-sm font-semibold text-success">
-            <Check className="h-4 w-4" />
-            {o ? "Offre envoyée à" : "Réponses envoyées, copie à"} {contact.email}
+          <p className="mx-auto mb-6 flex max-w-md gap-2.5 rounded-xl bg-success/10 px-4 py-3 text-left text-sm text-foreground/85">
+            <Check className="mt-0.5 h-4 w-4 shrink-0 text-success" />
+            <span>
+              {o ? "Une copie de cette offre part" : "Une copie de vos réponses part"} à{" "}
+              <strong className="text-foreground">{contact.email}</strong>, pour la garder ou la
+              transmettre. Rien reçu d'ici quelques minutes ? Regardez dans vos courriers
+              indésirables.
+            </span>
           </p>
         )}
         <h2 className="font-display text-xl font-bold">
