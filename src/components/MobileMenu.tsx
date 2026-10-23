@@ -1,9 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, Building2, Calendar, Menu, Phone, X } from "lucide-react";
-import { COULEURS_FAMILLE, FAMILLES, entreesFamille } from "@/data/expertises";
+import { ArrowUpRight, Bot, Calendar, Globe, Megaphone, Menu, Phone, X } from "lucide-react";
+import { COULEURS_FAMILLE, type EntreeMenu, type FamilleId } from "@/data/expertises";
+import { AGENCE, ONGLETS } from "@/data/menu";
 import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
-import { SECTEURS, cheminSecteur } from "@/data/secteurs";
+
+const ICONES: Record<FamilleId, React.ComponentType<{ className?: string }>> = {
+  site: Globe,
+  acquisition: Megaphone,
+  automatisation: Bot,
+};
 
 /**
  * Le menu mobile.
@@ -23,6 +29,10 @@ import { SECTEURS, cheminSecteur } from "@/data/secteurs";
  *   page étant figé. Le menu ouvert ne faisait pas défiler la page derrière,
  *   mais il pouvait déborder sans qu'on puisse l'atteindre.
  * - Chaque famille porte sa couleur, comme partout ailleurs.
+ *
+ * Les onglets sont ceux du menu de bureau (src/data/menu.ts) : Site web,
+ * Visibilité et Agents IA, avec le pictogramme de chaque entrée et le prix des
+ * offres de la grille.
  *
  * Aucune bibliothèque : deux `details` repliés, une transition CSS, et la
  * touche Échap.
@@ -112,113 +122,77 @@ export function MobileMenu({
             className="feuille-menu fixed inset-x-3 top-[var(--entete-hauteur)] z-[60] max-h-[calc(100dvh-var(--entete-hauteur)-0.75rem)] overflow-y-auto overscroll-contain rounded-3xl border border-border bg-card shadow-elevated sm:inset-x-4 lg:hidden"
           >
             <nav className="p-3" aria-label="Navigation principale">
-              {FAMILLES.map((f) => (
-                <details
-                  key={f.id}
-                  className="groupe-famille group"
-                  style={
-                    {
-                      "--encre-famille": COULEURS_FAMILLE[f.id].encre,
-                      "--teinte-famille": COULEURS_FAMILLE[f.id].couleur,
-                    } as React.CSSProperties
-                  }
-                >
-                  <summary className="flex cursor-pointer list-none items-center gap-3 rounded-xl px-3 py-3 marker:content-none">
-                    {/* La pastille de couleur porte l'icône : c'est le même
-                        repère que dans le menu de bureau et le pied de page,
-                        à la taille d'un doigt. */}
-                    <span className="pastille-famille grid h-9 w-9 shrink-0 place-items-center rounded-xl">
-                      <f.icone className="h-4.5 w-4.5" />
-                    </span>
-                    {/* Le résumé de la famille tenait sur une ligne tronquée
-                        par des points de suspension. Une phrase coupée au
-                        milieu ne renseigne pas, elle encombre. */}
-                    <span className="min-w-0 flex-1 font-display text-base font-bold tracking-tight">
-                      {f.titre}
-                    </span>
-                    <svg
-                      viewBox="0 0 12 12"
-                      aria-hidden="true"
-                      className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                    >
-                      <path d="M2.5 4.5L6 8l3.5-3.5" />
-                    </svg>
-                  </summary>
-
-                  <ul className="mb-1 ml-[3.25rem] mr-3 space-y-0.5 border-l border-border pl-3">
-                    {entreesFamille(f.id).map((e) => (
-                      <li key={e.label}>
-                        {e.to ? (
-                          <Link
-                            to={e.to}
-                            onClick={fermer}
-                            className="entree-famille block rounded-lg px-2 py-2.5 text-[15px] text-muted-foreground"
-                          >
-                            {e.label}
-                          </Link>
-                        ) : (
-                          <a
-                            href={e.href}
-                            onClick={fermer}
-                            className="entree-famille block rounded-lg px-2 py-2.5 text-[15px] text-muted-foreground"
-                          >
-                            {e.label}
-                          </a>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </details>
-              ))}
-
-              {/* Les secteurs, comme dans le menu de bureau. */}
-              <details className="groupe-famille group">
-                <summary className="flex cursor-pointer list-none items-center gap-3 rounded-xl px-3 py-3 marker:content-none">
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-secondary">
-                    <Building2 className="h-4.5 w-4.5" />
-                  </span>
-                  <span className="min-w-0 flex-1 font-display text-base font-bold tracking-tight">
-                    Secteurs
-                  </span>
-                  <svg
-                    viewBox="0 0 12 12"
-                    aria-hidden="true"
-                    className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
+              {ONGLETS.map((o) => {
+                const Icone = ICONES[o.famille];
+                const encre = COULEURS_FAMILLE[o.famille].encre;
+                return (
+                  <details
+                    key={o.label}
+                    className="groupe-famille group"
+                    style={
+                      {
+                        "--encre-famille": encre,
+                        "--teinte-famille": COULEURS_FAMILLE[o.famille].couleur,
+                      } as React.CSSProperties
+                    }
                   >
-                    <path d="M2.5 4.5L6 8l3.5-3.5" />
-                  </svg>
-                </summary>
-                <ul className="mb-1 ml-[3.25rem] mr-3 space-y-0.5 border-l border-border pl-3">
-                  {SECTEURS.map((sec) => (
-                    <li key={sec.slug}>
-                      <Link
-                        to={cheminSecteur(sec)}
-                        onClick={fermer}
-                        className="entree-famille block rounded-lg px-2 py-2.5 text-[15px] text-muted-foreground"
+                    <summary className="flex cursor-pointer list-none items-center gap-3 rounded-xl px-3 py-3 marker:content-none">
+                      {/* La pastille de couleur porte l'icône : c'est le même
+                          repère que dans le menu de bureau et le pied de page,
+                          à la taille d'un doigt. */}
+                      <span className="pastille-famille grid h-9 w-9 shrink-0 place-items-center rounded-xl">
+                        <Icone className="h-4.5 w-4.5" />
+                      </span>
+                      <span className="min-w-0 flex-1 font-display text-base font-bold tracking-tight">
+                        {o.label}
+                      </span>
+                      <svg
+                        viewBox="0 0 12 12"
+                        aria-hidden="true"
+                        className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
                       >
-                        {sec.label}
-                      </Link>
-                    </li>
-                  ))}
-                  <li>
-                    <Link
-                      to="/creation-site-internet/"
-                      onClick={fermer}
-                      className="entree-famille block rounded-lg px-2 py-2.5 text-[15px] text-muted-foreground"
-                    >
-                      Artisans et TPE
-                    </Link>
-                  </li>
-                </ul>
-              </details>
+                        <path d="M2.5 4.5L6 8l3.5-3.5" />
+                      </svg>
+                    </summary>
+
+                    <div className="mb-1 ml-[3.25rem] mr-3 border-l border-border pl-3">
+                      {o.colonnes.map((c) => (
+                        <div key={c.titre} className="pb-1">
+                          {/* Un seul intertitre ne classe rien : il ne s'affiche
+                              que s'il y a plusieurs colonnes. */}
+                          {o.colonnes.length > 1 && (
+                            <p className="rail-label px-2 pt-2 pb-1" style={{ color: encre }}>
+                              {c.titre}
+                            </p>
+                          )}
+                          <ul className="space-y-0.5">
+                            {c.entrees.map((e) => (
+                              <li key={e.label}>
+                                <EntreeMobile e={e} onClick={fermer} />
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                      {o.pied && (
+                        <Link
+                          to={o.pied.to}
+                          hash={o.pied.hash}
+                          onClick={fermer}
+                          className="block rounded-lg px-2 py-2.5 text-[15px] font-semibold"
+                          style={{ color: encre }}
+                        >
+                          {o.pied.label}
+                        </Link>
+                      )}
+                    </div>
+                  </details>
+                );
+              })}
 
               <div className="my-2 h-px bg-border" />
 
@@ -232,20 +206,19 @@ export function MobileMenu({
                 <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
               </Link>
 
-              <Link to="/a-propos/" onClick={fermer} className={lien}>
-                À propos
-                <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
-              </Link>
-
-              {current === "blog" ? (
-                <span aria-current="page" className={`${lien} text-brand-ink`}>
-                  Blog
-                </span>
-              ) : (
-                <Link to="/blog/" onClick={fermer} className={lien}>
-                  Blog
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
-                </Link>
+              {/* L'agence : à plat sur mobile, trois liens ne méritent pas un
+                  volet de plus. */}
+              {AGENCE.map((e) =>
+                current === "blog" && e.to === "/blog/" ? (
+                  <span key={e.label} aria-current="page" className={`${lien} text-brand-ink`}>
+                    {e.label}
+                  </span>
+                ) : (
+                  <Link key={e.label} to={e.to} onClick={fermer} className={lien}>
+                    {e.label}
+                    <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
+                  </Link>
+                ),
               )}
 
               {!onHome && (
@@ -282,6 +255,36 @@ export function MobileMenu({
         </>
       )}
     </>
+  );
+}
+
+/** Une entrée d'onglet : le libellé, et le prix quand c'est une offre de la grille. */
+function EntreeMobile({ e, onClick }: { e: EntreeMenu; onClick: () => void }) {
+  const classe =
+    "entree-famille flex items-center gap-3 rounded-lg px-2 py-2 text-[15px] text-muted-foreground";
+  const contenu = (
+    <>
+      {e.icone && (
+        <span className="pastille-famille grid h-8 w-8 shrink-0 place-items-center rounded-lg">
+          <e.icone className="h-4 w-4" />
+        </span>
+      )}
+      <span className="min-w-0 flex-1">{e.label}</span>
+      {e.prix && (
+        <span className="shrink-0 text-[13px] font-semibold whitespace-nowrap tabular-nums text-[color:var(--encre-famille)]">
+          {e.prix}
+        </span>
+      )}
+    </>
+  );
+  return e.to ? (
+    <Link to={e.to} hash={e.hash} onClick={onClick} className={classe}>
+      {contenu}
+    </Link>
+  ) : (
+    <a href={e.href} onClick={onClick} className={classe}>
+      {contenu}
+    </a>
   );
 }
 

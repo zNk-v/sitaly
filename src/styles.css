@@ -999,6 +999,8 @@
    pour ne pas donner l'impression de glisser depuis le lien voisin. */
 @utility lien-entete {
   position: relative;
+  /* « Site web » et « Agents IA » passaient sur deux lignes à 1024 px. */
+  white-space: nowrap;
   font-family: var(--font-display);
   font-size: 0.9375rem;
   font-weight: 600;

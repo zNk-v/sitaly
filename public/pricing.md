@@ -1,13 +1,24 @@
 # Offres de Sitaly
 
-Sitaly est une micro-agence en abonnement qui crée, héberge et entretient les sites internet des artisans, indépendants, commerçants et TPE, fiche Google comprise. Elle installe aussi des agents IA et gère des campagnes ChatGPT Ads, sur devis. Basée à Brétigny-sur-Orge (Essonne), elle intervient en Essonne et en Île-de-France, et à distance dans toute la France.
+Sitaly est une micro-agence en abonnement qui crée, héberge et entretient les sites internet des artisans, indépendants, commerçants et TPE, fiche Google comprise. Elle installe aussi des agents IA, à prix publiés, et gère des campagnes ChatGPT Ads, sur devis. Basée à Brétigny-sur-Orge (Essonne), elle intervient en Essonne et en Île-de-France, et à distance dans toute la France.
 
-Montants plancher publiés depuis le 28 septembre 2026 pour les agents IA et ChatGPT Ads. Le montant exact de chaque périmètre est écrit après le diagnostic, avant tout engagement. Les sites internet ont une grille publiée depuis le 18 octobre 2026.
+Montant plancher publié depuis le 28 septembre 2026 pour ChatGPT Ads. Les sites internet ont une grille publiée depuis le 18 octobre 2026, révisée le 23 octobre 2026 (trois offres de site, trois boutiques), et les agents IA depuis le 23 octobre 2026.
 
-## Agents IA : Sitaly Agents IA (sur mesure)
-- Tarif : mise en place à partir de 1 200 €, puis pilotage à partir de 499 € par mois
-- Coûts variables : minutes de voix et SMS, couverts par le pilotage mensuel
-- Ce qui fait varier le prix : nombre d'agents, canaux, outils à connecter, volume
+## Agents IA et automatisation : grille publiée (abonnement, sans engagement)
+
+### Agent IA : 499 € par mois + 1 200 € de mise en place
+- Un canal au choix : site, WhatsApp ou e-mail
+- Réponse aux questions, qualification de chaque demande, prise de rendez-vous dans l'agenda
+- Pilotage mensuel : réglages et suivi des conversations
+
+### Agent IA Pro : 790 € par mois + 2 400 € de mise en place (offre recommandée)
+- Tout Agent IA, plus : agent vocal qui décroche, répond et prend les messages ; site, WhatsApp et e-mail réunis ; relances automatiques des devis et des rendez-vous ; branché à l'agenda et au CRM
+- Le pilotage mensuel couvre les minutes de voix et les SMS
+
+### Outil sur mesure : à partir de 4 900 € de mise en place, suivi mensuel sur devis
+- CRM, logiciel métier ou application web et mobile, connectés aux logiciels existants
+
+### Les six agents et leur cadre
 - Six agents : accueil téléphonique (agent vocal), prise de rendez-vous, SMS après un appel manqué, réponses aux messages Instagram, relance des devis, gestion des avis Google ; reprise humaine dès que la situation le demande
 - Cadre : l'agent se présente comme une IA (article 50 du règlement européen sur l'IA) et ne fait pas de prospection téléphonique à froid auprès de particuliers
 - Pages : https://sitaly.fr/agents-ia/ · https://sitaly.fr/agents-ia/agent-vocal/ · https://sitaly.fr/agents-ia/agences-immobilieres/ · https://sitaly.fr/agents-ia/courtiers/ · https://sitaly.fr/agents-ia/btp/
@@ -44,11 +55,23 @@ Prix en euros, TVA non applicable, art. 293 B du CGI. Détail : https://sitaly.f
 ### Présence Pro : 249 € par mois + 490 € de mise en service (offre recommandée)
 - Tout Présence, plus : 5 pages locales pour les communes voisines, posts et photos Google chaque mois, demande d'avis automatique après chaque prestation, rapport mensuel
 
+### Présence Expert : 399 € par mois + 790 € de mise en service
+- Tout Présence Pro, plus : 10 pages locales au lieu de 5, 2 articles de blog rédigés chaque mois, textes rédigés pour être cités par ChatGPT et Gemini (20 questions suivies chaque trimestre), 10 mots-clés suivis sur Google, bilan trimestriel en visio, modifications sans limite mensuelle
+
+## Boutiques en ligne : grille publiée (abonnement, sans engagement)
+La boutique est créée sur Shopify et appartient au client dès le départ.
+
 ### Boutique en ligne (Shopify) : 149 € par mois + 990 € de mise en service
-- Boutique Shopify configurée : thème, jusqu'à 20 produits, paiement, livraison, pages légales, prise en main
+- Boutique Shopify configurée : thème, jusqu'à 50 produits, paiement, livraison, pages légales, prise en main
 - Mensuel : mises à jour, support, 1 h de modifications par mois, gestion de la fiche Google et des avis
 - Option sans abonnement : 1 490 € en une fois
-- Abonnement Shopify à votre nom, environ 36 €/mois, payé directement à Shopify, plus les frais de paiement sur les ventes. La boutique appartient au client.
+- Abonnement Shopify à votre nom, environ 36 €/mois, payé directement à Shopify, plus les frais de paiement sur les ventes
+
+### Boutique Pro (Shopify) : 249 € par mois + 1 690 € de mise en service (offre recommandée)
+- Tout Boutique en ligne, plus : jusqu'à 300 produits avec variantes et filtres, codes promo, relance des paniers abandonnés, avis produits, Google Shopping configuré, 3 h de modifications et un rapport des ventes chaque mois
+
+### Boutique Sur Mesure : à partir de 390 € par mois + à partir de 3 900 € de mise en service
+- Tout Boutique Pro, plus : catalogue sans limite, plusieurs langues, ventes aux professionnels, liaison avec la caisse, le logiciel de gestion ou le logisticien, interlocuteur dédié et bilan trimestriel
 
 ### Maintenance de site existant : 79 € par mois + 190 € d'audit
 - Audit, sauvegarde, mises à jour, corrections mineures ; remise en état sur devis séparé

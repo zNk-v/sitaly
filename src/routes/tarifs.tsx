@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef, useState } from "react";
-import { ArrowRight, Check, Info, Phone, Plus } from "lucide-react";
+import { ArrowRight, Check, Info, Phone, Plus, X } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
+import { PictoRubrique } from "@/components/PictoRubrique";
 import { SiteFooter } from "@/components/SiteFooter";
 import { TexteAvecLiens } from "@/components/TexteAvecLiens";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
@@ -12,27 +13,35 @@ import { texteBrut } from "@/lib/liens-texte";
 import { BASE_URL } from "@/lib/sitemap";
 import {
   A_LA_CARTE,
+  GRILLES,
+  GROUPES,
   MENTION_TVA,
   OFFRES,
   RACHAT_SITE,
   offre,
+  offresDu,
+  type GroupeId,
   type Offre,
   type OffreId,
 } from "@/data/offres";
 
 /**
- * Page Tarifs (18 octobre 2026) : la grille des offres de site, prix
- * affichés, et les conditions qui vont avec. Les montants viennent tous de
- * src/data/offres.ts.
+ * Page Tarifs (18 octobre 2026, refondue le 23 octobre) : la grille des
+ * offres, prix affichés, et les conditions qui vont avec. Les montants viennent
+ * tous de src/data/offres.ts.
+ *
+ * Trois grilles de trois offres, sur le modèle de devmiweb.com : les sites
+ * (#site), les boutiques (#boutique) et les agents IA (#agents-ia), plus la
+ * maintenance d'un site existant (#evoluer). Chaque carte porte l'identifiant
+ * de son offre : le menu de l'en-tête y mène directement.
  *
  * Mise en page : sur téléphone, les cartes s'empilent et une barre d'appel
- * reste en bas de l'écran. Sur ordinateur, Présence et Présence Pro côte à
- * côte (Pro mise en avant sur l'encre), puis Boutique et Maintenance sur une
- * ligne secondaire. Le prix mensuel est grand, la mise en service juste en
- * dessous, toujours visible.
+ * reste en bas de l'écran. Sur ordinateur, trois cartes par ligne, l'offre
+ * recommandée sur l'encre. Le prix mensuel est grand, la mise en service juste
+ * en dessous, toujours visible.
  *
- * Hors grille : agents IA, Google Ads et ChatGPT Ads, sans prix, par un lien
- * discret « sur devis ».
+ * Hors grille : Google Ads et ChatGPT Ads, sans prix, par un lien discret
+ * « sur devis » (la grille Visibilité est à revoir avec le client).
  */
 
 const LIEN_DISCRET =
@@ -45,7 +54,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "À qui appartient mon site ?",
-    a: "Pour les sites vitrines (Présence et Présence Pro), le site reste la propriété de Sitaly : c'est ce qui permet d'inclure la création, l'hébergement et la maintenance dans une mensualité sans engagement. Votre fiche Google, elle, vous appartient toujours, et votre nom de domaine vous est transféré si vous partez. Une boutique Shopify vous appartient dès le départ.",
+    a: "Pour les sites vitrines (Présence, Présence Pro et Présence Expert), le site reste la propriété de Sitaly : c'est ce qui permet d'inclure la création, l'hébergement et la maintenance dans une mensualité sans engagement. Votre fiche Google, elle, vous appartient toujours, et votre nom de domaine vous est transféré si vous partez. Une boutique Shopify vous appartient dès le départ.",
   },
   {
     q: "Que se passe-t-il si j'arrête ?",
@@ -60,8 +69,8 @@ const FAQ: { q: string; a: string }[] = [
     a: "Ils couvrent le travail du départ : l'appel pour comprendre votre activité, la rédaction des pages, la conception du site, sa mise en ligne et la remise en ordre de votre fiche Google. Les payer à la signature permet de garder un abonnement sans engagement : vous ne financez pas ce travail sur des années de contrat. Ils ne sont pas remboursables une fois le travail lancé.",
   },
   {
-    q: "Quelle différence entre Présence et Présence Pro ?",
-    a: `Présence met en ligne un site vitrine jusqu'à 5 pages et gère votre fiche Google. Présence Pro ajoute ce qui sert à être trouvé plus loin et plus souvent : 5 pages locales pour les communes voisines, des posts et des photos publiés chaque mois sur votre fiche, une demande d'avis envoyée automatiquement après chaque prestation, et un rapport mensuel. Passer de l'une à l'autre coûte ${euros(A_LA_CARTE.find((a) => a.libelle.startsWith("Passage"))?.prix ?? 0)}.`,
+    q: "Quelle différence entre Présence, Présence Pro et Présence Expert ?",
+    a: `Présence met en ligne un site vitrine jusqu'à 5 pages et gère votre fiche Google. Présence Pro ajoute ce qui sert à être trouvé plus loin et plus souvent : 5 pages locales pour les communes voisines, des posts et des photos publiés chaque mois sur votre fiche, une demande d'avis envoyée automatiquement après chaque prestation, et un rapport mensuel. Présence Expert double les pages locales, publie deux articles par mois, prépare vos textes pour être cités par les IA et suit vos positions sur Google, avec un bilan chaque trimestre. Passer de Présence à Présence Pro coûte ${euros(A_LA_CARTE.find((a) => a.libelle.startsWith("Passage"))?.prix ?? 0)}.`,
   },
   {
     q: "Combien coûte Shopify en plus ?",
@@ -69,8 +78,10 @@ const FAQ: { q: string; a: string }[] = [
   },
 ];
 
-const TITRE = "Tarifs Sitaly : site vitrine, boutique en ligne et maintenance";
-const DESCRIPTION = `Présence ${euros(offre("presence").mensuel)}/mois, Présence Pro ${euros(offre("presence-pro").mensuel)}/mois, boutique Shopify, maintenance ${euros(offre("maintenance").mensuel)}/mois. Sans engagement, mise en service affichée.`;
+const mensuel = (id: OffreId) => euros(offre(id).mensuel ?? 0);
+
+const TITRE = "Tarifs Sitaly : site vitrine, boutique en ligne et agents IA";
+const DESCRIPTION = `Présence ${mensuel("presence")}/mois, Présence Pro ${mensuel("presence-pro")}/mois, Présence Expert ${mensuel("presence-expert")}/mois, boutique dès ${mensuel("boutique")}/mois, agent IA dès ${mensuel("agent-ia")}/mois. Sans engagement, mise en service affichée.`;
 const URL = `${BASE_URL}/tarifs/`;
 
 export const Route = createFileRoute("/tarifs")({
@@ -102,16 +113,20 @@ export const Route = createFileRoute("/tarifs")({
                 description: o.pour,
                 priceCurrency: "EUR",
                 priceSpecification: [
-                  {
-                    "@type": "UnitPriceSpecification",
-                    price: o.mensuel,
-                    priceCurrency: "EUR",
-                    billingDuration: "P1M",
-                    unitText: "mois",
-                  },
+                  ...(o.mensuel === undefined
+                    ? []
+                    : [
+                        {
+                          "@type": "UnitPriceSpecification",
+                          ...(o.aPartirDe ? { minPrice: o.mensuel } : { price: o.mensuel }),
+                          priceCurrency: "EUR",
+                          billingDuration: "P1M",
+                          unitText: "mois",
+                        },
+                      ]),
                   {
                     "@type": "PriceSpecification",
-                    price: o.depart,
+                    ...(o.aPartirDe ? { minPrice: o.depart } : { price: o.depart }),
                     priceCurrency: "EUR",
                     name: o.departLibelle.replace(/^d[e']\s?/, ""),
                   },
@@ -140,8 +155,6 @@ function Tarifs() {
   useRevealOnScroll(rootRef);
   useSplitWords(rootRef);
   const [choix, setChoix] = useState<OffreId | "">("");
-
-  const [presence, pro, boutique, maintenance] = OFFRES;
 
   return (
     <div ref={rootRef} className="min-h-screen bg-background pb-24 text-foreground lg:pb-0">
@@ -176,35 +189,86 @@ function Tarifs() {
                 ),
               )}
             </ul>
+            {/* Les trois grilles, à un clic, comme le « Comparer les formules »
+                de devmiweb.com. */}
+            <nav aria-label="Les grilles" className="mt-8 flex flex-wrap gap-2.5">
+              {(["site", "boutique", "agents-ia"] as GroupeId[]).map((g) => (
+                <a
+                  key={g}
+                  href={`#${GROUPES[g].ancre}`}
+                  className="rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold transition hover:border-foreground/20"
+                >
+                  {GROUPES[g].titre}
+                </a>
+              ))}
+            </nav>
           </div>
         </section>
 
-        {/* ---------- Grille ---------- */}
+        {/* ---------- Les grilles ---------- */}
         <section id="offres" className="bg-paper py-14 sm:py-20">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <h2 className="sr-only">Les offres</h2>
-            <div className="grid gap-5 lg:grid-cols-2 lg:items-stretch lg:gap-6">
-              <CarteOffre o={presence} onChoisir={setChoix} />
-              <CarteOffre o={pro} onChoisir={setChoix} />
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <Grille
+              groupe="site"
+              titre={
+                <>
+                  Un site, et votre fiche Google,{" "}
+                  <span className="accent-word">tenus pour vous</span>
+                </>
+              }
+              onChoisir={setChoix}
+            />
+
+            <Grille
+              groupe="boutique"
+              titre={
+                <>
+                  Une boutique qui <span className="accent-word">vous appartient</span>
+                </>
+              }
+              onChoisir={setChoix}
+            />
+
+            {/* Faire évoluer un site existant : la maintenance, et la refonte
+                qui se chiffre comme une création. */}
+            <div id={GROUPES.maintenance.ancre} className="mt-20 scroll-mt-28">
+              <p data-reveal className="rail-label text-brand-ink">
+                {GROUPES.maintenance.titre}
+              </p>
+              <div className="mt-6 grid gap-5 lg:grid-cols-2 lg:items-start lg:gap-6">
+                <CarteOffre o={offre("maintenance")} onChoisir={setChoix} secondaire />
+                <div data-reveal className="lg:pl-6 lg:pt-4">
+                  <h2 className="font-display text-[clamp(1.6rem,3vw,2.3rem)] font-extrabold leading-[1.08] tracking-[-0.035em]">
+                    Votre site a vieilli ? <span className="accent-word">On le refait</span>
+                  </h2>
+                  <p className="measure mt-4 text-lg leading-relaxed text-muted-foreground">
+                    Une refonte se chiffre comme une création : vous choisissez Présence, Présence
+                    Pro ou Présence Expert, et chaque ancienne adresse est redirigée pour ne rien
+                    perdre sur Google.
+                  </p>
+                  <Link
+                    to="/refonte-site-internet/"
+                    className="mt-6 inline-flex items-center gap-2 font-semibold text-brand-ink"
+                  >
+                    La refonte de site
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
             </div>
 
-            <div data-reveal className="mt-16 max-w-2xl">
-              <p className="rail-label text-brand-ink">Autres besoins</p>
-              <h2 className="mt-3 font-display text-[clamp(1.6rem,3vw,2.3rem)] font-extrabold leading-[1.08] tracking-[-0.035em]">
-                Vendre en ligne, ou garder <span className="accent-word">votre site actuel</span>
-              </h2>
-            </div>
-            <div className="mt-8 grid gap-5 lg:grid-cols-2 lg:gap-6">
-              <CarteOffre o={boutique} onChoisir={setChoix} secondaire />
-              <CarteOffre o={maintenance} onChoisir={setChoix} secondaire />
-            </div>
+            <Grille
+              groupe="agents-ia"
+              titre={
+                <>
+                  Vos demandes traitées, <span className="accent-word">même sans vous</span>
+                </>
+              }
+              onChoisir={setChoix}
+            />
 
             <p className="mt-10 text-[15px] text-muted-foreground">
-              Besoins spécifiques, sur devis :{" "}
-              <Link to="/agents-ia/" className={LIEN_DISCRET}>
-                agents IA
-              </Link>
-              ,{" "}
+              Publicité, sur devis :{" "}
               <Link to="/acquisition/" className={LIEN_DISCRET}>
                 Google Ads
               </Link>
@@ -218,7 +282,7 @@ function Tarifs() {
         </section>
 
         {/* ---------- À la carte ---------- */}
-        <section className="bg-paper-sunk py-14 sm:py-20">
+        <section id="a-la-carte" className="scroll-mt-28 bg-paper-sunk py-14 sm:py-20">
           <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
             <div data-reveal>
               <h2 data-split className="display-section">
@@ -355,6 +419,35 @@ function Tarifs() {
   );
 }
 
+/* ---------------- Grille de trois offres ---------------- */
+
+function Grille({
+  groupe,
+  titre,
+  onChoisir,
+}: {
+  groupe: GroupeId;
+  titre: React.ReactNode;
+  onChoisir: (id: OffreId) => void;
+}) {
+  const g = GROUPES[groupe];
+  return (
+    <div id={g.ancre} className="mt-20 scroll-mt-28 first:mt-0">
+      <div data-reveal className="max-w-3xl">
+        <p className="rail-label text-brand-ink">{g.titre}</p>
+        <h2 className="mt-3 font-display text-[clamp(1.6rem,3vw,2.3rem)] font-extrabold leading-[1.08] tracking-[-0.035em]">
+          {titre}
+        </h2>
+      </div>
+      <div className="mt-8 grid gap-5 lg:grid-cols-3 lg:items-stretch lg:gap-6">
+        {offresDu(groupe).map((o) => (
+          <CarteOffre key={o.id} o={o} onChoisir={onChoisir} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ---------------- Carte d'offre ---------------- */
 
 function CarteOffre({
@@ -374,7 +467,7 @@ function CarteOffre({
     <article
       id={o.id}
       data-reveal
-      className={`relative flex flex-col rounded-[2rem] border p-6 transition duration-300 sm:p-8 ${
+      className={`relative flex scroll-mt-28 flex-col rounded-[2rem] border p-6 transition duration-300 sm:p-8 ${
         sombre
           ? "on-ink border-transparent bg-ink text-white shadow-elevated ring-1 ring-white/10"
           : "border-border bg-card shadow-soft hover:border-foreground/15 hover:shadow-elevated"
@@ -402,44 +495,90 @@ function CarteOffre({
           </span>
         )}
       </div>
-      <p className={`mt-2 leading-relaxed ${attenue}`}>{o.pour}</p>
+      {/* Trois lignes réservées sur ordinateur : une description plus longue
+          décalait toutes les lignes de sa carte par rapport aux voisines. */}
+      <p className={`mt-2 leading-relaxed lg:min-h-[3lh] ${attenue}`}>{o.pour}</p>
 
-      {/* Le prix : mensuel en grand, frais de départ juste dessous. */}
+      {/* Le prix : mensuel en grand, frais de départ juste dessous. Sans
+          mensuel fixe, c'est la mise en place qui passe en grand. */}
       <div className="mt-7">
         <p className="flex items-baseline gap-1.5">
+          {o.aPartirDe && <span className={`font-medium ${attenue}`}>dès</span>}
           <span
             className={`font-display font-extrabold leading-none tracking-[-0.045em] tabular-nums ${
-              secondaire ? "text-[2.75rem]" : "text-[3.5rem]"
+              secondaire ? "text-[2.75rem]" : "text-[3.25rem]"
             }`}
           >
-            {euros(o.mensuel)}
+            {euros(o.mensuel ?? o.depart)}
           </span>
-          <span className={`font-medium ${attenue}`}>/mois</span>
+          {o.mensuel !== undefined && <span className={`font-medium ${attenue}`}>/mois</span>}
         </p>
         <p
-          className={`mt-2 text-[15px] font-medium ${sombre ? "text-white/85" : "text-foreground/80"}`}
+          className={`mt-2 text-[15px] font-medium lg:min-h-[2lh] ${sombre ? "text-white/85" : "text-foreground/80"}`}
         >
-          + {euros(o.depart)} {o.departLibelle}
+          {o.mensuel === undefined
+            ? `${o.departLibelle.replace(/^de /, "")}, puis un suivi mensuel chiffré dans le devis`
+            : `+ ${o.aPartirDe ? "dès " : ""}${euros(o.depart)} ${o.departLibelle}`}
         </p>
       </div>
 
       <div className={`my-7 h-px ${sombre ? "bg-white/10" : "bg-border"}`} />
 
-      {o.reprend && <p className="mb-3 font-semibold">{o.reprend}</p>}
-      <ul className="space-y-3">
-        {o.inclus.map((i) => (
-          <li key={i} className="flex gap-3">
-            <span
-              className={`mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full ${
-                sombre ? "bg-signal/20" : "bg-signal/20 text-signal-ink"
-              }`}
-            >
-              <Check className={`h-3 w-3 ${sombre ? "text-signal" : ""}`} />
-            </span>
-            <span className={sombre ? "text-white/90" : ""}>{i}</span>
-          </li>
+      {/* Toutes les lignes de la grille, comprises ou non : la carte voisine
+          a les mêmes, dans le même ordre, et la différence se lit en ligne. */}
+      <div className="space-y-6">
+        {GRILLES[o.groupe].map((r) => (
+          <div key={r.titre}>
+            <p className="flex items-center gap-2.5 font-semibold">
+              <span
+                className={`grid h-8 w-8 shrink-0 place-items-center rounded-lg ${
+                  sombre ? "bg-white/10 text-white" : "bg-brand-ink/10 text-brand-ink"
+                }`}
+              >
+                <PictoRubrique icone={r.icone} className="h-4 w-4" />
+              </span>
+              {r.titre}
+            </p>
+            <ul className="mt-3 space-y-2.5 text-[15px]">
+              {r.lignes.map((l) => {
+                const v = l.valeurs[o.id];
+                return (
+                  <li key={l.libelle} className="flex gap-3">
+                    <span
+                      className={`mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full ${
+                        v
+                          ? sombre
+                            ? "bg-signal/20 text-signal"
+                            : "bg-signal/20 text-signal-ink"
+                          : sombre
+                            ? "bg-white/5 text-white/35"
+                            : "bg-foreground/5 text-foreground/30"
+                      }`}
+                    >
+                      {v ? <Check className="h-3 w-3" /> : <X className="h-3 w-3" />}
+                    </span>
+                    <span
+                      className={
+                        v
+                          ? sombre
+                            ? "text-white/90"
+                            : ""
+                          : sombre
+                            ? "text-white/40"
+                            : "text-foreground/40"
+                      }
+                    >
+                      {!v && <span className="sr-only">Non compris : </span>}
+                      {l.libelle}
+                      {typeof v === "string" && <strong className="font-semibold"> : {v}</strong>}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         ))}
-      </ul>
+      </div>
 
       {o.notes && (
         <ul className={`mt-5 space-y-1.5 text-[15px] ${attenue}`}>
@@ -599,10 +738,14 @@ function Rappel({
                     className={champ}
                   >
                     <option value="">Je ne sais pas encore</option>
-                    {OFFRES.map((o) => (
-                      <option key={o.id} value={o.id}>
-                        {o.nom}
-                      </option>
+                    {(Object.keys(GROUPES) as GroupeId[]).map((g) => (
+                      <optgroup key={g} label={GROUPES[g].titre}>
+                        {offresDu(g).map((o) => (
+                          <option key={o.id} value={o.id}>
+                            {o.nom}
+                          </option>
+                        ))}
+                      </optgroup>
                     ))}
                   </select>
                 </div>

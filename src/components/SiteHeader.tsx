@@ -86,7 +86,10 @@ export function SiteHeader({
               aria-label={`Appeler Sitaly au ${SITALY_PHONE_DISPLAY}`}
             >
               <Phone className="h-4 w-4" />
-              <span className="hidden lg:inline">{SITALY_PHONE_DISPLAY}</span>
+              {/* Le numéro ne tient qu'à partir de xl, à côté des six entrées
+                  du menu : entre lg et xl, il passait sur deux lignes, et
+                  l'icône seule y suffit (le lien porte son aria-label). */}
+              <span className="hidden xl:inline">{SITALY_PHONE_DISPLAY}</span>
               <span className="lg:hidden">Appeler</span>
             </a>
             <a

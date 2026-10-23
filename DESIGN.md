@@ -344,6 +344,26 @@ petits commerces qui décident sur un prix, pas sur un diagnostic. La page
 - Hors grille, toujours sans prix publié sur /tarifs/ : agents IA, Google Ads,
   ChatGPT Ads, accessibles par un lien discret « sur devis ».
 
+**Révision du 23 octobre 2026 : trois grilles de trois offres, sur le modèle de
+devmiweb.com.** Le modèle mensuel reste (mise en service basse, mensualité qui
+paie un travail visible).
+
+- Sites : Présence, Présence Pro (recommandée), Présence Expert (399 €/mois).
+- Boutiques : Boutique en ligne, Boutique Pro (recommandée), Boutique Sur
+  Mesure (« dès »), toutes sur Shopify. WooCommerce a été écarté : Sitaly ne
+  le maîtrise pas.
+- Chaque grille range son contenu par rubrique, avec un pictogramme (le site,
+  Google, les IA, le suivi). Une carte affiche toutes les lignes de sa grille,
+  comprises (coche) ou non (croix grisée) : la différence avec la carte
+  voisine se lit ligne à ligne (`GRILLES` dans `src/data/offres.ts`).
+- Agents IA : Agent IA (les planchers de `PRIX_AGENTS_IA`), Agent IA Pro,
+  Outil sur mesure. Les agents IA entrent donc dans la grille de /tarifs/.
+- Le menu remplace « Services » par trois onglets, Site web, Visibilité et
+  Agents IA, avec le prix de chaque offre (`src/data/menu.ts`). Aucun métier ni
+  secteur dans le menu : le site parle à toutes les activités.
+- Visibilité inchangée, en attente : Google Ads et ChatGPT Ads restent sur
+  devis, la page Demandes de chantier n'est pas retouchée.
+
 ---
 
 ## 8 bis. L'arborescence des expertises

@@ -15,7 +15,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { MetierFooterLinks, MetierLinksSection } from "@/components/MetierLinks";
 import type { MetierLink } from "@/lib/metiers";
 import { CALENDLY_URL, euros } from "@/lib/config";
-import { MENTION_TVA, offre } from "@/data/offres";
+import { MENTION_TVA, lignesIncluses, offre } from "@/data/offres";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export interface MetierLandingProps {
@@ -262,15 +262,15 @@ export function MetierLanding(props: MetierLandingProps) {
                   )}
                 </div>
                 <div className="mt-3 font-display text-3xl font-extrabold tracking-tight tabular-nums">
-                  {euros(o.mensuel)}
+                  {/* Présence et Présence Pro ont toujours un mensuel fixe. */}
+                  {euros(o.mensuel ?? 0)}
                   <span className="text-base font-medium text-muted-foreground">/mois</span>
                 </div>
                 <p className="mt-1 text-sm font-medium text-foreground/80">
                   + {euros(o.depart)} {o.departLibelle}
                 </p>
                 <ul className="mt-5 space-y-2.5 text-sm">
-                  {o.reprend && <li className="font-semibold">{o.reprend}</li>}
-                  {o.inclus.map((it) => (
+                  {lignesIncluses(o).map((it) => (
                     <li key={it} className="flex items-start gap-2.5">
                       <Check
                         className={`mt-0.5 h-4 w-4 flex-shrink-0 ${
@@ -449,7 +449,7 @@ export function buildMetierMeta(opts: {
           offers: [offre("presence"), offre("presence-pro")].map((o) => ({
             "@type": "Offer",
             name: o.nom,
-            description: o.inclus.join(", "),
+            description: lignesIncluses(o).join(", "),
             priceCurrency: "EUR",
             price: o.mensuel,
             priceSpecification: {

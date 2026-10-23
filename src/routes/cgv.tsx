@@ -7,7 +7,9 @@ import {
   MENTION_TVA,
   OFFRES,
   RACHAT_SITE,
+  lignesIncluses,
   offre,
+  type Offre,
 } from "@/data/offres";
 
 export const Route = createFileRoute("/cgv")({
@@ -33,8 +35,24 @@ export const Route = createFileRoute("/cgv")({
   component: CGV,
 });
 
-/** Première lettre en minuscule, pour insérer un libellé dans une phrase. */
-const minuscule = (t: string) => t.charAt(0).toLowerCase() + t.slice(1);
+/** Première lettre en minuscule, pour insérer un libellé dans une phrase. Les
+    sigles (CRM) et les noms de marque (Shopify) gardent leur majuscule. */
+const NOMS_PROPRES = /^(Shopify|Google|ChatGPT|WhatsApp)\b/;
+const minuscule = (t: string) =>
+  /^[A-Z]{2}/.test(t) || NOMS_PROPRES.test(t) ? t : t.charAt(0).toLowerCase() + t.slice(1);
+
+/** Le prix d'une offre en une phrase : mensuel, puis frais de départ. */
+function prixOffre(o: Offre): string {
+  const des = o.aPartirDe ? "à partir de " : "";
+  const depart = `${des}${euros(o.depart)} ${o.departLibelle} payés une fois à la commande`;
+  return o.mensuel === undefined
+    ? `${depart}, puis un suivi mensuel chiffré dans le devis`
+    : `${des}${euros(o.mensuel)} par mois, plus ${depart}`;
+}
+
+const VITRINES = ["presence", "presence-pro", "presence-expert"] as const;
+const nomsVitrines = VITRINES.map((id) => offre(id).nom);
+const listeVitrines = `${nomsVitrines.slice(0, -1).join(", ")} et ${nomsVitrines.at(-1)}`;
 
 function CGV() {
   return (
@@ -56,8 +74,9 @@ function CGV() {
           la fiche Google, à destination des artisans, indépendants, commerçants et TPE ;
         </li>
         <li>
-          <strong>Services sur devis</strong> : agents d'intelligence artificielle, campagnes
-          publicitaires (Google Ads, ChatGPT Ads) et outils sur mesure ;
+          <strong>Agents IA et services sur devis</strong> : agents d'intelligence artificielle, aux
+          prix publiés sur la page Tarifs, outils sur mesure et campagnes publicitaires (Google Ads,
+          ChatGPT Ads), chiffrés sur devis ;
         </li>
         <li>
           <strong>Plateforme Sitaly</strong> : une application en ligne (logiciel en mode SaaS)
@@ -80,16 +99,14 @@ function CGV() {
 
       <h2>3. Offres et tarifs</h2>
       <p>
-        Les offres de sites internet et leurs prix sont publiés sur la page{" "}
-        <a href="/tarifs/">Tarifs</a>. À la date des présentes :
+        Les offres et leurs prix sont publiés sur la page <a href="/tarifs/">Tarifs</a>. À la date
+        des présentes :
       </p>
       <ul>
         {OFFRES.map((o) => (
           <li key={o.id}>
-            <strong>{o.nom}</strong> : {euros(o.mensuel)} par mois, plus {euros(o.depart)}{" "}
-            {o.departLibelle} payés une fois à la commande. Inclus :{" "}
-            {o.inclus.map(minuscule).join(" ; ")}
-            {o.reprend ? `, en plus du contenu de l'offre ${offre("presence").nom}` : ""}.
+            <strong>{o.nom}</strong> : {prixOffre(o)}. Inclus :{" "}
+            {lignesIncluses(o).map(minuscule).join(" ; ")}.
           </li>
         ))}
       </ul>
@@ -100,10 +117,10 @@ function CGV() {
         {euros(BOUTIQUE_SANS_ABONNEMENT)}.
       </p>
       <p>
-        Les agents IA, les campagnes Google Ads et ChatGPT Ads et les outils sur mesure sont
-        chiffrés sur devis : le devis précise la mise en place, l'abonnement mensuel, le cas échéant
-        la part variable assise sur le budget publicitaire (qui reste payé directement aux régies),
-        ainsi que les prestations incluses et exclues.
+        Les offres dont le prix est indiqué « à partir de », les campagnes Google Ads et ChatGPT Ads
+        sont chiffrées sur devis : le devis précise la mise en place, l'abonnement mensuel, le cas
+        échéant la part variable assise sur le budget publicitaire (qui reste payé directement aux
+        régies), ainsi que les prestations incluses et exclues.
       </p>
       <p>
         Les prix sont indiqués en euros. {MENTION_TVA}. Le Prestataire peut faire évoluer ses tarifs
@@ -141,12 +158,14 @@ function CGV() {
         L'abonnement comprend les prestations décrites pour chaque offre à l'article 3. Les
         modifications incluses s'entendent de retouches du contenu existant (texte, photo, prix,
         horaires, coordonnées), dans la limite prévue par l'offre : une modification par mois pour
-        les offres {offre("presence").nom} et {offre("presence-pro").nom}, une heure par mois pour
-        la Boutique en ligne. Au-delà, ou pour toute création nouvelle (page, visuel, fonction), le
-        Prestataire applique les options à la carte ou établit un devis préalable. Pour la
-        maintenance d'un site existant, la remise en état d'un site défectueux ou obsolète fait
-        l'objet d'un devis séparé ; le Prestataire ne répond pas des défauts antérieurs à sa
-        reprise.
+        les offres {offre("presence").nom} et {offre("presence-pro").nom}, sans limite mensuelle
+        pour l'offre {offre("presence-expert").nom}, une heure par mois pour l'offre{" "}
+        {offre("boutique").nom}, trois heures par mois pour l'offre {offre("boutique-pro").nom}, et
+        selon le devis pour l'offre {offre("boutique-sur-mesure").nom}. Au-delà, ou pour toute
+        création nouvelle (page, visuel, fonction), le Prestataire applique les options à la carte
+        ou établit un devis préalable. Pour la maintenance d'un site existant, la remise en état
+        d'un site défectueux ou obsolète fait l'objet d'un devis séparé ; le Prestataire ne répond
+        pas des défauts antérieurs à sa reprise.
       </p>
 
       <h3>5.3 Durée et résiliation</h3>
@@ -161,12 +180,11 @@ function CGV() {
 
       <h3>5.4 Propriété des sites vitrines et rachat</h3>
       <p>
-        Pour les offres {offre("presence").nom} et {offre("presence-pro").nom}, le site (sa
-        conception, son code et les textes rédigés par le Prestataire) reste la propriété du
-        Prestataire ; le Client en a l'usage pendant la durée de son abonnement. Les éléments
-        fournis par le Client (logo, photos, textes) restent sa propriété. À la fin de l'abonnement,
-        le site est mis hors ligne, sauf si le Client choisit de le racheter. Le prix de rachat
-        dépend de l'ancienneté de l'abonnement :{" "}
+        Pour les offres {listeVitrines}, le site (sa conception, son code et les textes rédigés par
+        le Prestataire) reste la propriété du Prestataire ; le Client en a l'usage pendant la durée
+        de son abonnement. Les éléments fournis par le Client (logo, photos, textes) restent sa
+        propriété. À la fin de l'abonnement, le site est mis hors ligne, sauf si le Client choisit
+        de le racheter. Le prix de rachat dépend de l'ancienneté de l'abonnement :{" "}
         {RACHAT_SITE.map((r) => `${minuscule(r.periode)}, ${euros(r.prix)}`).join(" ; ")}. Le
         rachat, payé en une fois, emporte cession au Client des droits sur le site et remise de ses
         fichiers.

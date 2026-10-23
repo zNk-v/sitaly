@@ -1342,7 +1342,13 @@ export function voisines(e: Expertise): Expertise[] {
 export interface EntreeMenu {
   label: string;
   desc: string;
+  /** Le prix affiché à côté du libellé, pour les offres de la grille. */
+  prix?: string;
+  /** Le pictogramme de l'entrée, dans les menus de l'en-tête. */
+  icone?: React.ComponentType<{ className?: string }>;
   to?: string;
+  /** Ancre sur la page `to`, sans « # » : une carte de /tarifs/. */
+  hash?: string;
   href?: string;
 }
 
@@ -1396,11 +1402,14 @@ const ORDRE: Record<FamilleId, string[]> = {
   ],
 };
 
+/** L'entrée de menu d'une page, générée ou non (« chatgpt-ads », « crm-sur-mesure »). */
+export function entreeMenu(cle: string): EntreeMenu {
+  const hors = HORS_FICHIER[cle];
+  if (hors) return hors;
+  const e = expertise(cle);
+  return { label: e.label, desc: e.menuDesc, to: cheminExpertise(e) };
+}
+
 export function entreesFamille(famille: FamilleId): EntreeMenu[] {
-  return ORDRE[famille].map((cle) => {
-    const hors = HORS_FICHIER[cle];
-    if (hors) return hors;
-    const e = expertise(cle);
-    return { label: e.label, desc: e.menuDesc, to: cheminExpertise(e) };
-  });
+  return ORDRE[famille].map(entreeMenu);
 }

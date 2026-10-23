@@ -1,19 +1,20 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import { COULEURS_FAMILLE, FAMILLES, entreesFamille, type EntreeMenu } from "@/data/expertises";
+import { COULEURS_FAMILLE, type EntreeMenu } from "@/data/expertises";
+import { AGENCE, ONGLETS, type OngletMenu } from "@/data/menu";
 import { REALISATIONS } from "@/data/realisations";
-import { SECTEURS, cheminSecteur } from "@/data/secteurs";
 
 /**
  * Navigation principale, avec ses menus déroulants.
  *
- * Le menu Expertises tient en trois colonnes, une par famille, et chaque
- * entrée mène à une page qui ne traite que ce sujet. C'est la structure que
- * réclame le référencement autant que la lecture : un visiteur qui cherche
- * « site e-commerce » n'a pas à deviner qu'il se cache derrière « Offres ».
+ * Trois onglets de services (Site web, Visibilité, Agents IA), chacun dans la
+ * couleur de sa famille, puis Réalisations, Tarifs et L'agence. Chaque onglet
+ * reprend la mise en page de devmiweb.com : deux colonnes d'entrées avec leur
+ * pictogramme, un encart à droite, et le prix des offres de la grille, pour
+ * que le visiteur voie ce que coûte un site avant d'ouvrir une page.
  *
- * Les colonnes viennent de `src/data/expertises.ts` : le menu n'a aucune liste
- * à lui, il ne décide que de la mise en page.
+ * Les onglets viennent de `src/data/menu.ts` : le menu n'a aucune liste à lui,
+ * il ne décide que de la mise en page.
  *
  * Volontairement sans Radix : le menu s'ouvre au survol et au focus par CSS
  * (`group-hover`, `group-focus-within`), donc il reste accessible au clavier
@@ -23,15 +24,36 @@ import { SECTEURS, cheminSecteur } from "@/data/secteurs";
 function EntreeLien({ e }: { e: EntreeMenu }) {
   const contenu = (
     <>
-      <span className="font-semibold group-hover/item:text-brand-ink">{e.label}</span>
-      <span className="mt-0.5 block text-[13px] leading-snug text-muted-foreground">{e.desc}</span>
+      {/* Le pictogramme dans un carré teinté de la couleur de l'onglet, comme
+          les « piliers » de devmiweb.com : on reconnaît l'entrée avant de la
+          lire. */}
+      {e.icone && (
+        <span className="pastille-famille grid h-9 w-9 shrink-0 place-items-center rounded-lg transition-colors">
+          <e.icone className="h-[18px] w-[18px]" />
+        </span>
+      )}
+      <span className="min-w-0 flex-1">
+        <span className="flex items-baseline justify-between gap-3">
+          <span className="font-semibold group-hover/item:text-[color:var(--encre-famille,var(--brand-ink))]">
+            {e.label}
+          </span>
+          {e.prix && (
+            <span className="shrink-0 text-[13px] font-semibold whitespace-nowrap tabular-nums text-[color:var(--encre-famille,var(--brand-ink))]">
+              {e.prix}
+            </span>
+          )}
+        </span>
+        <span className="mt-0.5 block text-[13px] leading-snug text-muted-foreground">
+          {e.desc}
+        </span>
+      </span>
     </>
   );
   const classe =
-    "group/item block rounded-lg px-3 py-2 transition-colors hover:bg-secondary focus-visible:bg-secondary";
+    "group/item flex items-start gap-3 rounded-xl px-2.5 py-2 transition-colors hover:bg-secondary focus-visible:bg-secondary";
   /* Les landings servies depuis public/ vivent hors du routeur : lien classique. */
   return e.to ? (
-    <Link to={e.to} className={classe}>
+    <Link to={e.to} hash={e.hash} className={classe}>
       {contenu}
     </Link>
   ) : (
@@ -45,13 +67,16 @@ function Deroulant({
   label,
   children,
   large = false,
+  style,
 }: {
   label: string;
   children: React.ReactNode;
-  large?: boolean;
+  /** Largeur du panneau centré sous l'en-tête, en rem. Absent : panneau centré sur le bouton. */
+  large?: false | number;
+  style?: React.CSSProperties;
 }) {
   return (
-    <div className="group relative">
+    <div className={`group ${large ? "" : "relative"}`} style={style}>
       <button
         type="button"
         className="lien-entete flex items-center gap-1.5 py-5 group-hover:text-foreground group-focus-within:text-foreground"
@@ -75,32 +100,28 @@ function Deroulant({
           géométrie. `invisible` plutôt que `hidden` : la transition d'opacité
           a besoin d'un élément rendu.
 
-          Le panneau large est en position fixe et centré sur la fenêtre, pas
-          ancré au bouton. Ancré à gauche du déclencheur, ses 54rem sortaient
-          de 94 px par la droite dans une fenêtre de 1024 : la colonne
-          Automatisation était coupée, et six pages avec elle. Centré sur le
-          bouton, il serait sorti par la gauche. Centré sur la fenêtre, il ne
-          peut sortir d'aucun côté, et il passe toujours sous le bouton, donc
-          le survol tient.
+          Le panneau large se centre sous la pastille de l'en-tête, comme chez
+          devmiweb.com : ni son groupe ni la `nav` ne sont positionnés, c'est
+          la pastille (`.entete-plaque`) qui l'est. Il prend sa largeur, dans
+          la limite de 64rem. Centré sur la fenêtre, l'ancien panneau Services
+          ne recouvrait plus que 16 px du bouton Site web à 1920 px de large,
+          le menu n'étant pas centré dans la pastille, et le survol se rompait.
+          Large comme la pastille, il passe sous chaque bouton à toutes les
+          largeurs.
 
-          La hauteur est plafonnée pour la même raison : 628 px de panneau ne
-          tiennent pas sous un bandeau dans une fenêtre de 620, et le panneau
-          se met alors à défiler.
-
-          Le `backdrop-filter` de la pastille fait d'elle le bloc conteneur des
-          éléments fixes qu'elle porte : `top` et `left` se résolvent donc sur
-          elle et non sur la fenêtre. C'est sans conséquence en horizontal, la
-          pastille étant centrée, mais le plafond de hauteur doit retrancher la
-          gouttière du haut en plus de la pastille.
+          La hauteur est plafonnée : 628 px de panneau ne tiennent pas sous un
+          bandeau dans une fenêtre de 620, et le panneau se met alors à
+          défiler.
 
           Le rembourrage du haut fait le pont : sans lui, six pixels séparaient
           le bas du bouton du haut du panneau, et le survol se rompait pendant
           la traversée. Le panneau commence donc au-dessus du bouton et son
           rembourrage remet la carte à sa place. */}
       <div
+        style={large ? ({ "--largeur-panneau": `${large}rem` } as React.CSSProperties) : undefined}
         className={`invisible z-50 translate-y-1 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 ${
           large
-            ? "fixed left-1/2 top-[calc(var(--entete-hauteur)-1.25rem)] pt-5 max-h-[calc(100dvh-var(--entete-hauteur)-1.5rem)] w-[min(54rem,calc(100vw-2rem))] -translate-x-1/2 overflow-y-auto"
+            ? "absolute left-1/2 top-full -mt-2 max-h-[calc(100dvh-var(--entete-hauteur)-1.5rem)] w-[min(var(--largeur-panneau),100%)] -translate-x-1/2 overflow-y-auto pt-5"
             : "absolute left-1/2 top-full -mt-2 w-max min-w-[22rem] -translate-x-1/2 pt-5"
         }`}
       >
@@ -112,64 +133,93 @@ function Deroulant({
   );
 }
 
+/** Un onglet de services : deux colonnes, l'encart, puis le lien vers les tarifs. */
+function Onglet({ o }: { o: OngletMenu }) {
+  const { encre, couleur } = COULEURS_FAMILLE[o.famille];
+  return (
+    <Deroulant
+      label={o.label}
+      large={64}
+      style={{ "--encre-famille": encre, "--teinte-famille": couleur } as React.CSSProperties}
+    >
+      <div className="grid grid-cols-[1fr_1fr_15rem] gap-4">
+        {o.colonnes.map((c) => (
+          <div key={c.titre}>
+            <p className="rail-label px-2.5 pb-2" style={{ color: encre }}>
+              {c.titre}
+            </p>
+            <div className="space-y-0.5">
+              {c.entrees.map((e) => (
+                <EntreeLien key={e.label} e={e} />
+              ))}
+            </div>
+          </div>
+        ))}
+        <Carte o={o} />
+      </div>
+      {o.pied && (
+        <Link
+          to={o.pied.to}
+          hash={o.pied.hash}
+          className="mt-3 flex items-center gap-1.5 rounded-lg border-t border-border px-2.5 pt-3 text-sm font-semibold"
+          style={{ color: encre }}
+        >
+          {o.pied.label}
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      )}
+    </Deroulant>
+  );
+}
+
+/** L'encart à droite d'un onglet : une réalisation, un outil gratuit, un article. */
+function Carte({ o }: { o: OngletMenu }) {
+  const c = o.carte;
+  /* Sans image, l'encart porte le pictogramme de la première offre. */
+  const Icone = o.colonnes[0].entrees[0].icone;
+  return (
+    <Link
+      to={c.to}
+      className="group/carte flex flex-col overflow-hidden rounded-xl border border-border bg-secondary/60 transition-colors hover:border-foreground/15"
+    >
+      {c.image ? (
+        <img
+          src={c.image}
+          alt=""
+          aria-hidden="true"
+          width={240}
+          height={150}
+          loading="lazy"
+          className="aspect-[16/10] w-full border-b border-border object-cover object-top"
+        />
+      ) : (
+        <span className="pastille-famille grid aspect-[16/10] w-full place-items-center">
+          {Icone && <Icone className="h-10 w-10" />}
+        </span>
+      )}
+      <span className="flex flex-1 flex-col p-3.5">
+        <span className="rail-label" style={{ color: COULEURS_FAMILLE[o.famille].encre }}>
+          {c.surtitre}
+        </span>
+        <span className="mt-1.5 text-[14px] leading-snug font-semibold">{c.titre}</span>
+        <span
+          className="mt-auto flex items-center gap-1.5 pt-3 text-[13px] font-semibold"
+          style={{ color: COULEURS_FAMILLE[o.famille].encre }}
+        >
+          {c.lien}
+          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/carte:translate-x-0.5" />
+        </span>
+      </span>
+    </Link>
+  );
+}
+
 export function MainNav() {
   return (
-    <nav className="hidden items-center gap-7 lg:flex" aria-label="Navigation principale">
-      <Deroulant label="Services" large>
-        <div className="grid grid-cols-3 gap-3">
-          {FAMILLES.map((f) => (
-            <div
-              key={f.id}
-              style={{ "--encre-famille": COULEURS_FAMILLE[f.id].encre } as React.CSSProperties}
-            >
-              <div className="flex items-center gap-2 px-3 pb-1">
-                <f.icone className="icone-famille h-4 w-4" />
-                <span className="rail-label" style={{ color: COULEURS_FAMILLE[f.id].encre }}>
-                  {f.titre}
-                </span>
-              </div>
-              <p className="px-3 pb-2 text-[13px] leading-snug text-muted-foreground">{f.resume}</p>
-              <div className="space-y-0.5 border-t border-border pt-2">
-                {entreesFamille(f.id).map((e) => (
-                  <EntreeLien key={e.label} e={e} />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </Deroulant>
-
-      {/* La grille des prix (18 octobre 2026), juste après les services. */}
-      <Link to="/tarifs/" className="lien-entete py-5">
-        Tarifs
-      </Link>
-
-      {/* Les secteurs, comme le menu « Secteurs » de futurdigital.fr : les
-          pages Agents IA par secteur, puis les artisans (refonte du 5 octobre
-          2026). Les pages Site internet par métier restent hors index
-          (décision D3) : aucun lien de menu ne pointe vers elles. */}
-      <Deroulant label="Secteurs">
-        <div className="w-[30rem] max-w-full">
-          <p className="rail-label px-3 pb-2 text-muted-foreground">Agents IA par secteur</p>
-          <div className="grid grid-cols-2 gap-x-1">
-            {SECTEURS.map((sec) => (
-              <Link
-                key={sec.slug}
-                to={cheminSecteur(sec)}
-                className="rounded-lg px-3 py-2 text-[15px] font-medium transition-colors hover:bg-secondary hover:text-brand-ink"
-              >
-                {sec.label}
-              </Link>
-            ))}
-            <Link
-              to="/creation-site-internet/"
-              className="rounded-lg px-3 py-2 text-[15px] font-medium transition-colors hover:bg-secondary hover:text-brand-ink"
-            >
-              Artisans et TPE
-            </Link>
-          </div>
-        </div>
-      </Deroulant>
+    <nav className="hidden items-center gap-5 lg:flex xl:gap-7" aria-label="Navigation principale">
+      {ONGLETS.map((o) => (
+        <Onglet key={o.label} o={o} />
+      ))}
 
       <Deroulant label="Réalisations">
         <div className="space-y-0.5">
@@ -208,13 +258,17 @@ export function MainNav() {
         </div>
       </Deroulant>
 
-      <Link to="/blog/" className="lien-entete py-5">
-        Blog
+      <Link to="/tarifs/" className="lien-entete py-5">
+        Tarifs
       </Link>
 
-      <Link to="/a-propos/" className="lien-entete py-5">
-        À propos
-      </Link>
+      <Deroulant label="L'agence">
+        <div className="space-y-0.5">
+          {AGENCE.map((e) => (
+            <EntreeLien key={e.label} e={e} />
+          ))}
+        </div>
+      </Deroulant>
     </nav>
   );
 }
