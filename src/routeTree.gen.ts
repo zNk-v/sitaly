@@ -53,6 +53,7 @@ import { Route as RealisationsIndexRouteImport } from './routes/realisations.ind
 import { Route as OutilsIndexRouteImport } from './routes/outils.index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slug'
+import { Route as OutilsVerifierNomDeDomaineRouteImport } from './routes/outils.verifier-nom-de-domaine'
 import { Route as OutilsBudgetGoogleAdsArtisanRouteImport } from './routes/outils.budget-google-ads-artisan'
 import { Route as OutilsAuditFicheGoogleRouteImport } from './routes/outils.audit-fiche-google'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
@@ -288,6 +289,12 @@ const RealisationsSlugRoute = RealisationsSlugRouteImport.update({
   path: '/realisations/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OutilsVerifierNomDeDomaineRoute =
+  OutilsVerifierNomDeDomaineRouteImport.update({
+    id: '/outils/verifier-nom-de-domaine',
+    path: '/outils/verifier-nom-de-domaine',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const OutilsBudgetGoogleAdsArtisanRoute =
   OutilsBudgetGoogleAdsArtisanRouteImport.update({
     id: '/outils/budget-google-ads-artisan',
@@ -405,6 +412,7 @@ export interface FileRoutesByFullPath {
   '/blog/$slug': typeof BlogSlugRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
   '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
+  '/outils/verifier-nom-de-domaine': typeof OutilsVerifierNomDeDomaineRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/outils/': typeof OutilsIndexRoute
@@ -462,6 +470,7 @@ export interface FileRoutesByTo {
   '/blog/$slug': typeof BlogSlugRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
   '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
+  '/outils/verifier-nom-de-domaine': typeof OutilsVerifierNomDeDomaineRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog': typeof BlogIndexRoute
   '/outils': typeof OutilsIndexRoute
@@ -521,6 +530,7 @@ export interface FileRoutesById {
   '/blog/$slug': typeof BlogSlugRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
   '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
+  '/outils/verifier-nom-de-domaine': typeof OutilsVerifierNomDeDomaineRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/outils/': typeof OutilsIndexRoute
@@ -581,6 +591,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/outils/audit-fiche-google'
     | '/outils/budget-google-ads-artisan'
+    | '/outils/verifier-nom-de-domaine'
     | '/realisations/$slug'
     | '/blog/'
     | '/outils/'
@@ -638,6 +649,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/outils/audit-fiche-google'
     | '/outils/budget-google-ads-artisan'
+    | '/outils/verifier-nom-de-domaine'
     | '/realisations/$slug'
     | '/blog'
     | '/outils'
@@ -696,6 +708,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/outils/audit-fiche-google'
     | '/outils/budget-google-ads-artisan'
+    | '/outils/verifier-nom-de-domaine'
     | '/realisations/$slug'
     | '/blog/'
     | '/outils/'
@@ -754,6 +767,7 @@ export interface RootRouteChildren {
   AgentsIaSanteRoute: typeof AgentsIaSanteRoute
   OutilsAuditFicheGoogleRoute: typeof OutilsAuditFicheGoogleRoute
   OutilsBudgetGoogleAdsArtisanRoute: typeof OutilsBudgetGoogleAdsArtisanRoute
+  OutilsVerifierNomDeDomaineRoute: typeof OutilsVerifierNomDeDomaineRoute
   RealisationsSlugRoute: typeof RealisationsSlugRoute
   OutilsIndexRoute: typeof OutilsIndexRoute
   RealisationsIndexRoute: typeof RealisationsIndexRoute
@@ -1069,6 +1083,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RealisationsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/outils/verifier-nom-de-domaine': {
+      id: '/outils/verifier-nom-de-domaine'
+      path: '/outils/verifier-nom-de-domaine'
+      fullPath: '/outils/verifier-nom-de-domaine'
+      preLoaderRoute: typeof OutilsVerifierNomDeDomaineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/outils/budget-google-ads-artisan': {
       id: '/outils/budget-google-ads-artisan'
       path: '/outils/budget-google-ads-artisan'
@@ -1220,6 +1241,7 @@ const rootRouteChildren: RootRouteChildren = {
   AgentsIaSanteRoute: AgentsIaSanteRoute,
   OutilsAuditFicheGoogleRoute: OutilsAuditFicheGoogleRoute,
   OutilsBudgetGoogleAdsArtisanRoute: OutilsBudgetGoogleAdsArtisanRoute,
+  OutilsVerifierNomDeDomaineRoute: OutilsVerifierNomDeDomaineRoute,
   RealisationsSlugRoute: RealisationsSlugRoute,
   OutilsIndexRoute: OutilsIndexRoute,
   RealisationsIndexRoute: RealisationsIndexRoute,

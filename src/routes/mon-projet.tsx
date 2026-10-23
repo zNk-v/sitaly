@@ -22,6 +22,8 @@ import {
 } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { VerificateurDomaine } from "@/components/VerificateurDomaine";
+import { resumeDomaine } from "@/lib/domaine";
 import { CALENDLY_URL, euros } from "@/lib/config";
 import { envoyerDemande } from "@/lib/formulaire";
 import { suivreEvenement } from "@/lib/mesure";
@@ -282,6 +284,8 @@ function MonProjet() {
   const [activite, setActivite] = useState("");
   const [delai, setDelai] = useState("");
   const [contact, setContact] = useState<Contact>();
+  /* Le nom de domaine testé à l'étape activité, quand le visiteur part de zéro. */
+  const [domaine, setDomaine] = useState("");
   /* L'historique des écrans vus : « Retour » y remonte, quel que soit le
      chemin pris, y compris quand on arrive avec une offre déjà choisie. */
   const [historique, setHistorique] = useState<Etape[]>(() => {
@@ -343,6 +347,7 @@ function MonProjet() {
       .filter(([, v]) => v)
       .map(([e, v]) => `${QUESTIONS[e as Etape]} ${v}`),
     o ? `Offre conseillée : ${o.nom} (${prixLong(o)})` : "Offre : à définir ensemble",
+    ...(existant === "non" && domaine ? [`Nom de domaine testé : ${domaine}`] : []),
   ];
   const question = etape === "coordonnees" && !o ? "Où vous répondre ?" : QUESTIONS[etape];
 
@@ -448,6 +453,8 @@ function MonProjet() {
                 setActivite={setActivite}
                 delai={delai}
                 setDelai={setDelai}
+                domaine={existant === "non" ? domaine : undefined}
+                setDomaine={setDomaine}
                 onSuivant={() => aller("coordonnees")}
               />
             )}
@@ -523,12 +530,17 @@ function EcranActivite({
   setActivite,
   delai,
   setDelai,
+  domaine,
+  setDomaine,
   onSuivant,
 }: {
   activite: string;
   setActivite: (v: string) => void;
   delai: string;
   setDelai: (v: string) => void;
+  /** Défini quand le visiteur part de zéro : le vérificateur s'affiche. */
+  domaine?: string;
+  setDomaine: (v: string) => void;
   onSuivant: () => void;
 }) {
   return (
@@ -550,6 +562,25 @@ function EcranActivite({
         placeholder="Fleuriste à Brétigny-sur-Orge"
         className="mt-2 w-full rounded-lg border border-input bg-background px-3.5 py-3 text-[16px] outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
       />
+
+      {domaine !== undefined && (
+        <div className="mt-7">
+          <p className="font-semibold">
+            Votre futur nom de domaine{" "}
+            <span className="font-normal text-muted-foreground">(facultatif)</span>
+          </p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Vérifiez qu'il est libre. Il est compris dans toutes nos offres de site.
+          </p>
+          <div className="mt-3">
+            <VerificateurDomaine
+              id="projet-domaine"
+              valeurInitiale={domaine.split(" : ")[0]}
+              onResultat={(r) => setDomaine(resumeDomaine(r))}
+            />
+          </div>
+        </div>
+      )}
 
       <fieldset className="mt-7">
         <legend className="font-semibold">Pour quand ?</legend>

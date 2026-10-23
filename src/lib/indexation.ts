@@ -39,6 +39,7 @@ export const PAGES_OUTILS_HORS_INDEX = [
   "/outils",
   "/outils/audit-fiche-google",
   "/outils/budget-google-ads-artisan",
+  "/outils/verifier-nom-de-domaine",
 ];
 
 /** Articles écrits pour les artisans, les professions libérales, ou hors offre. */

@@ -183,7 +183,7 @@ export const AGENCE: EntreeMenu[] = [
   { label: "Blog", desc: "Conseils et prix réels, sans jargon.", to: "/blog/", icone: Newspaper },
   {
     label: "Outils gratuits",
-    desc: "Auditer votre fiche Google, estimer un budget.",
+    desc: "Fiche Google, budget publicitaire, nom de domaine.",
     to: "/outils/",
     icone: Wrench,
   },

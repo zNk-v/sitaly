@@ -1,12 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { directiveRobots } from "@/lib/indexation";
-import { ArrowRight, Calculator, ClipboardCheck } from "lucide-react";
+import { ArrowRight, Calculator, ClipboardCheck, Globe } from "lucide-react";
 import { SiteChrome } from "@/components/SiteChrome";
 
 const URL = "https://sitaly.fr/outils/";
-const TITLE = "Outils gratuits pour artisans : fiche Google et budget Google Ads | Sitaly";
+const TITLE =
+  "Outils gratuits pour artisans : fiche Google, budget Google Ads, nom de domaine | Sitaly";
 const DESCRIPTION =
-  "Deux outils gratuits et sans inscription pour artisans et TPE : auditer sa fiche Google Business Profile et calculer un budget Google Ads réaliste selon son métier.";
+  "Trois outils gratuits et sans inscription pour artisans et TPE : auditer sa fiche Google Business Profile, calculer un budget Google Ads réaliste et vérifier qu'un nom de domaine est libre.";
 
 const OUTILS = [
   {
@@ -20,6 +21,12 @@ const OUTILS = [
     icon: Calculator,
     titre: "Calculateur de budget Google Ads",
     desc: "Votre métier, votre zone et votre budget : le nombre de clics, d'appels et de chantiers à attendre, et le coût de chaque demande.",
+  },
+  {
+    to: "/outils/verifier-nom-de-domaine/" as const,
+    icon: Globe,
+    titre: "Vérificateur de nom de domaine",
+    desc: "Le nom de votre entreprise est-il libre en .fr et en .com ? La réponse des registres officiels, en une seconde, sans laisser de trace.",
   },
 ];
 
@@ -70,14 +77,14 @@ function OutilsIndex() {
               Vérifiez vous-même <span className="accent-word text-brand-ink">avant de payer</span>
             </h1>
             <p className="measure mt-6 text-lg text-muted-foreground">
-              Deux outils pour savoir où vous en êtes sur Google, sans créer de compte ni laisser
-              vos coordonnées.
+              Trois outils pour savoir où vous en êtes, sans créer de compte ni laisser vos
+              coordonnées.
             </p>
           </div>
         </section>
 
         <section className="py-20 sm:py-28">
-          <div className="mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 md:grid-cols-2">
+          <div className="mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 md:grid-cols-2 lg:grid-cols-3">
             {OUTILS.map((o) => {
               const Icon = o.icon;
               return (

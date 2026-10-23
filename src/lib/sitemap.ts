@@ -118,6 +118,7 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
   { path: "/outils", changefreq: "monthly", priority: "0.5" },
   { path: "/outils/audit-fiche-google", changefreq: "monthly", priority: "0.5" },
   { path: "/outils/budget-google-ads-artisan", changefreq: "monthly", priority: "0.5" },
+  { path: "/outils/verifier-nom-de-domaine", changefreq: "monthly", priority: "0.5" },
   { path: "/cgv", changefreq: "yearly", priority: "0.3", source: [route("cgv.tsx")] },
   {
     path: "/mentions-legales",
