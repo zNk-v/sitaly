@@ -47,7 +47,7 @@
         "Site lisible par les IA : données structurées et fichier llms.txt",
         "Textes rédigés pour être cités par ChatGPT et Gemini",
         "Questions suivies dans les IA chaque trimestre : 20 questions",
-        "Vos modifications faites par nous : sans limite mensuelle",
+        "Vos modifications faites par nous : 4 par mois",
         "Un interlocuteur unique, réponse sous 24 h",
         "Rapport mensuel",
         "Bilan trimestriel en visio"
@@ -60,52 +60,11 @@
       "prix": "149 €/mois + 990 € de mise en service",
       "inclus": [
         "Boutique Shopify configurée : thème, paiement, livraison",
-        "Produits mis en ligne : jusqu'à 50",
+        "Produits mis en ligne : jusqu'à 20",
         "Pages légales et prise en main",
         "Fiche Google gérée, réponses aux avis",
         "Modifications chaque mois (produits, bannières de saison) : 1 h",
         "Mises à jour et support"
-      ],
-      "tarifs": "https://sitaly.fr/tarifs/#boutique"
-    },
-    "boutique-pro": {
-      "nom": "Boutique Pro",
-      "pour": "Un catalogue plus large, des promotions, et des paniers relancés sans vous.",
-      "prix": "249 €/mois + 1 690 € de mise en service",
-      "inclus": [
-        "Boutique Shopify configurée : thème, paiement, livraison",
-        "Produits mis en ligne : jusqu'à 300",
-        "Pages légales et prise en main",
-        "Variantes et filtres",
-        "Codes promo et relance des paniers abandonnés",
-        "Avis produits",
-        "Fiche Google gérée, réponses aux avis",
-        "Google Shopping configuré",
-        "Modifications chaque mois (produits, bannières de saison) : 3 h",
-        "Mises à jour et support",
-        "Rapport des ventes chaque mois"
-      ],
-      "tarifs": "https://sitaly.fr/tarifs/#boutique"
-    },
-    "boutique-sur-mesure": {
-      "nom": "Boutique Sur Mesure",
-      "pour": "Un grand catalogue, plusieurs langues, ou une boutique reliée à vos outils.",
-      "prix": "dès 390 €/mois + dès 3 900 € de mise en service",
-      "inclus": [
-        "Boutique Shopify configurée : thème, paiement, livraison",
-        "Produits mis en ligne : sans limite",
-        "Pages légales et prise en main",
-        "Variantes et filtres",
-        "Plusieurs langues, ventes aux professionnels",
-        "Liaison avec votre caisse, votre logiciel de gestion ou votre logisticien",
-        "Codes promo et relance des paniers abandonnés",
-        "Avis produits",
-        "Fiche Google gérée, réponses aux avis",
-        "Google Shopping configuré",
-        "Modifications chaque mois (produits, bannières de saison) : selon le devis",
-        "Mises à jour et support",
-        "Rapport des ventes chaque mois",
-        "Interlocuteur dédié et bilan trimestriel"
       ],
       "tarifs": "https://sitaly.fr/tarifs/#boutique"
     },
@@ -119,7 +78,7 @@
         "Mises à jour",
         "Corrections mineures"
       ],
-      "tarifs": "https://sitaly.fr/tarifs/#evoluer"
+      "tarifs": "https://sitaly.fr/tarifs/#maintenance"
     },
     "agent-ia": {
       "nom": "Agent IA",
