@@ -196,7 +196,24 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
                 }
               />
               <div className="mt-12">
-                <OffresEnBref ids={e.offres} />
+                <OffresEnBref
+                  ids={e.offres}
+                  apres={
+                    e.surDevis && (
+                      <div className="sur-devis">
+                        <p>{e.surDevis}</p>
+                        <Link
+                          to="/"
+                          hash="contact"
+                          className="bouton-secondaire shrink-0 px-5 py-3 text-sm"
+                        >
+                          Nous contacter
+                          <ArrowRight className="h-4 w-4" />
+                        </Link>
+                      </div>
+                    )
+                  }
+                />
               </div>
             </div>
           </section>

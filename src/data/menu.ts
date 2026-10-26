@@ -91,7 +91,7 @@ export const ONGLETS: OngletMenu[] = [
           entreeOffre("presence", Store),
           entreeOffre("presence-pro", Rocket),
           entreeOffre("presence-expert", Gem),
-          /* Trois boutiques : le menu annonce le premier prix. */
+          /* Au-delà de la boutique, tout se chiffre sur devis : le menu annonce « dès ». */
           entreeOffre("boutique", ShoppingCart, `dès ${prixCourt(offre("boutique"))}`),
         ],
       },

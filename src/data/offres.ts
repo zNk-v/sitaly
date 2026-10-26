@@ -5,15 +5,17 @@ import { PRIX_AGENTS_IA, euros } from "@/lib/config";
  *
  * Décision du 18 octobre 2026 : les prix des sites sont publiés (révision de
  * DESIGN.md §8). Révision du 23 octobre 2026 : trois offres de site, trois
- * boutiques Shopify, et les agents IA entrent dans la grille. La page /tarifs/,
+ * boutiques Shopify, et les agents IA entrent dans la grille. Révision du 25
+ * octobre 2026 : une seule boutique, et Présence Expert à 4 modifications par
+ * mois. La page /tarifs/,
  * le menu, l'accueil, les CGV et la FAQ lisent ce fichier ; aucun montant ne
  * doit être recopié ailleurs dans le code.
  *
  * Le contenu des offres vit dans GRILLES, pas dans les offres : chaque grille
  * range ses lignes par rubrique (le site, Google, les IA, le suivi), et chaque
- * ligne dit pour chaque offre si elle est comprise. Une carte affiche toutes
- * les lignes de sa grille, comprises ou non : on voit d'un coup d'œil ce
- * qu'une offre a de plus que sa voisine, et ce qui lui manque. Les fichiers texte de public/ (pricing.md,
+ * ligne dit pour chaque offre si elle est comprise. Sur /tarifs/, une carte
+ * n'affiche que ce qui la distingue ; les lignes communes à tout l'onglet
+ * passent dans l'encart « Inclus dans toutes les offres ». Les fichiers texte de public/ (pricing.md,
  * llms.txt, llms-full.txt) se corrigent à la main à chaque changement ici.
  *
  * L'offre Agent IA reprend les planchers de PRIX_AGENTS_IA (src/lib/config.ts),
@@ -28,8 +30,6 @@ export type OffreId =
   | "presence-pro"
   | "presence-expert"
   | "boutique"
-  | "boutique-pro"
-  | "boutique-sur-mesure"
   | "maintenance"
   | "agent-ia"
   | "agent-ia-pro"
@@ -111,37 +111,6 @@ export const OFFRES: Offre[] = [
     depart: 990,
     departLibelle: "de mise en service",
     notes: ["La boutique vous appartient.", "Sans abonnement Sitaly : 1 490 € en une fois."],
-    mention: MENTION_SHOPIFY,
-    page: "/site-e-commerce/",
-  },
-  {
-    id: "boutique-pro",
-    groupe: "boutique",
-    nom: "Boutique Pro",
-    pour: "Un catalogue plus large, des promotions, et des paniers relancés sans vous.",
-    menuDesc: "Un plus grand catalogue, promotions et relances comprises.",
-    mensuel: 249,
-    depart: 1690,
-    departLibelle: "de mise en service",
-    notes: ["La boutique vous appartient."],
-    mention: MENTION_SHOPIFY,
-    recommandee: true,
-    page: "/site-e-commerce/",
-  },
-  {
-    id: "boutique-sur-mesure",
-    groupe: "boutique",
-    nom: "Boutique Sur Mesure",
-    pour: "Un grand catalogue, plusieurs langues, ou une boutique reliée à vos outils.",
-    menuDesc: "Grand catalogue, plusieurs langues, liaison à vos outils.",
-    mensuel: 390,
-    depart: 3900,
-    departLibelle: "de mise en service",
-    aPartirDe: true,
-    notes: [
-      "La boutique vous appartient.",
-      "Le montant exact est écrit dans le devis, avant de commencer.",
-    ],
     mention: MENTION_SHOPIFY,
     page: "/site-e-commerce/",
   },
@@ -228,7 +197,7 @@ const partout = (ids: OffreId[], v: Valeur = true) =>
   Object.fromEntries(ids.map((id) => [id, v])) as Partial<Record<OffreId, Valeur>>;
 
 const SITES: OffreId[] = ["presence", "presence-pro", "presence-expert"];
-const BOUTIQUES: OffreId[] = ["boutique", "boutique-pro", "boutique-sur-mesure"];
+const BOUTIQUES: OffreId[] = ["boutique"];
 const AGENTS: OffreId[] = ["agent-ia", "agent-ia-pro", "outil-sur-mesure"];
 
 export const GRILLES: Record<GroupeId, Rubrique[]> = {
@@ -292,7 +261,7 @@ export const GRILLES: Record<GroupeId, Rubrique[]> = {
           valeurs: {
             presence: "1 par mois",
             "presence-pro": "1 par mois",
-            "presence-expert": "sans limite mensuelle",
+            "presence-expert": "4 par mois",
           },
         },
         { libelle: "Un interlocuteur unique, réponse sous 24\u00a0h", valeurs: partout(SITES) },
@@ -301,6 +270,8 @@ export const GRILLES: Record<GroupeId, Rubrique[]> = {
       ],
     },
   ],
+  /* Une seule boutique depuis le 25 octobre 2026. Grand catalogue, plusieurs
+     langues ou liaison avec vos outils : sur devis (voir /site-e-commerce/). */
   boutique: [
     {
       titre: "Votre boutique",
@@ -310,53 +281,14 @@ export const GRILLES: Record<GroupeId, Rubrique[]> = {
           libelle: "Boutique Shopify configurée : thème, paiement, livraison",
           valeurs: partout(BOUTIQUES),
         },
-        {
-          libelle: "Produits mis en ligne",
-          valeurs: {
-            boutique: "jusqu'à 50",
-            "boutique-pro": "jusqu'à 300",
-            "boutique-sur-mesure": "sans limite",
-          },
-        },
+        { libelle: "Produits mis en ligne", valeurs: { boutique: "jusqu'à 20" } },
         { libelle: "Pages légales et prise en main", valeurs: partout(BOUTIQUES) },
-        {
-          libelle: "Variantes et filtres",
-          valeurs: { "boutique-pro": true, "boutique-sur-mesure": true },
-        },
-        {
-          libelle: "Plusieurs langues, ventes aux professionnels",
-          valeurs: { "boutique-sur-mesure": true },
-        },
-        {
-          libelle: "Liaison avec votre caisse, votre logiciel de gestion ou votre logisticien",
-          valeurs: { "boutique-sur-mesure": true },
-        },
-      ],
-    },
-    {
-      titre: "Vendre plus",
-      icone: "vendre",
-      lignes: [
-        {
-          libelle: "Codes promo et relance des paniers abandonnés",
-          valeurs: { "boutique-pro": true, "boutique-sur-mesure": true },
-        },
-        {
-          libelle: "Avis produits",
-          valeurs: { "boutique-pro": true, "boutique-sur-mesure": true },
-        },
       ],
     },
     {
       titre: "Sur Google",
       icone: "google",
-      lignes: [
-        { libelle: "Fiche Google gérée, réponses aux avis", valeurs: partout(BOUTIQUES) },
-        {
-          libelle: "Google Shopping configuré",
-          valeurs: { "boutique-pro": true, "boutique-sur-mesure": true },
-        },
-      ],
+      lignes: [{ libelle: "Fiche Google gérée, réponses aux avis", valeurs: partout(BOUTIQUES) }],
     },
     {
       titre: "Suivi et support",
@@ -364,21 +296,9 @@ export const GRILLES: Record<GroupeId, Rubrique[]> = {
       lignes: [
         {
           libelle: "Modifications chaque mois (produits, bannières de saison)",
-          valeurs: {
-            boutique: "1 h",
-            "boutique-pro": "3 h",
-            "boutique-sur-mesure": "selon le devis",
-          },
+          valeurs: { boutique: "1\u00a0h" },
         },
         { libelle: "Mises à jour et support", valeurs: partout(BOUTIQUES) },
-        {
-          libelle: "Rapport des ventes chaque mois",
-          valeurs: { "boutique-pro": true, "boutique-sur-mesure": true },
-        },
-        {
-          libelle: "Interlocuteur dédié et bilan trimestriel",
-          valeurs: { "boutique-sur-mesure": true },
-        },
       ],
     },
   ],
@@ -494,7 +414,7 @@ export function lignesIncluses(o: Offre): string[] {
 export const GROUPES: Record<GroupeId, { titre: string; ancre: string }> = {
   site: { titre: "Créer votre site", ancre: "site" },
   boutique: { titre: "Vendre en ligne", ancre: "boutique" },
-  maintenance: { titre: "Faire évoluer votre site", ancre: "evoluer" },
+  maintenance: { titre: "Faire évoluer votre site", ancre: "maintenance" },
   "agents-ia": { titre: "Agents IA et automatisation", ancre: "agents-ia" },
 };
 
@@ -521,11 +441,17 @@ export function lienOffre(o: Offre): string {
   return o.page ?? `/tarifs/#${o.id}`;
 }
 
-export const A_LA_CARTE: { libelle: string; prix: number; detail?: string }[] = [
-  { libelle: "Page supplémentaire", prix: 90 },
-  { libelle: "10 produits Shopify supplémentaires", prix: 90 },
-  { libelle: "Optimisation de fiche Google seule, sans site", prix: 190, detail: "en une fois" },
-  { libelle: "Passage de Présence à Présence Pro", prix: 200 },
+/** Chaque option s'affiche sous l'onglet de son groupe, sur /tarifs/. */
+export const A_LA_CARTE: { libelle: string; prix: number; detail?: string; groupe: GroupeId }[] = [
+  { libelle: "Page supplémentaire", prix: 90, groupe: "site" },
+  { libelle: "10 produits Shopify supplémentaires", prix: 90, groupe: "boutique" },
+  {
+    libelle: "Optimisation de fiche Google seule, sans site",
+    prix: 190,
+    detail: "en une fois",
+    groupe: "site",
+  },
+  { libelle: "Passage de Présence à Présence Pro", prix: 200, groupe: "site" },
 ];
 
 /** Rachat d'un site vitrine au départ du client, selon l'ancienneté. */

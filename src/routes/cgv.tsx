@@ -158,14 +158,13 @@ function CGV() {
         L'abonnement comprend les prestations décrites pour chaque offre à l'article 3. Les
         modifications incluses s'entendent de retouches du contenu existant (texte, photo, prix,
         horaires, coordonnées), dans la limite prévue par l'offre : une modification par mois pour
-        les offres {offre("presence").nom} et {offre("presence-pro").nom}, sans limite mensuelle
-        pour l'offre {offre("presence-expert").nom}, une heure par mois pour l'offre{" "}
-        {offre("boutique").nom}, trois heures par mois pour l'offre {offre("boutique-pro").nom}, et
-        selon le devis pour l'offre {offre("boutique-sur-mesure").nom}. Au-delà, ou pour toute
-        création nouvelle (page, visuel, fonction), le Prestataire applique les options à la carte
-        ou établit un devis préalable. Pour la maintenance d'un site existant, la remise en état
-        d'un site défectueux ou obsolète fait l'objet d'un devis séparé ; le Prestataire ne répond
-        pas des défauts antérieurs à sa reprise.
+        les offres {offre("presence").nom} et {offre("presence-pro").nom}, quatre modifications par
+        mois pour l'offre {offre("presence-expert").nom}, et une heure par mois pour l'offre{" "}
+        {offre("boutique").nom}. Au-delà, ou pour toute création nouvelle (page, visuel, fonction),
+        le Prestataire applique les options à la carte ou établit un devis préalable. Pour la
+        maintenance d'un site existant, la remise en état d'un site défectueux ou obsolète fait
+        l'objet d'un devis séparé ; le Prestataire ne répond pas des défauts antérieurs à sa
+        reprise.
       </p>
 
       <h3>5.3 Durée et résiliation</h3>

@@ -1,8 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { useRef } from "react";
-import { ArrowRight, Check, Info, Phone, Plus, X } from "lucide-react";
+import { createFileRoute, Link, useLocation, useNavigate } from "@tanstack/react-router";
+import { useEffect, useRef, useState, type KeyboardEvent } from "react";
+import { ArrowRight, Check, Info, Phone, Plus } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
-import { PictoRubrique } from "@/components/PictoRubrique";
 import { SiteFooter } from "@/components/SiteFooter";
 import { TexteAvecLiens } from "@/components/TexteAvecLiens";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
@@ -18,6 +17,7 @@ import {
   MENTION_TVA,
   OFFRES,
   RACHAT_SITE,
+  type Ligne,
   offre,
   offresDu,
   type GroupeId,
@@ -30,21 +30,84 @@ import {
  * offres, prix affichés, et les conditions qui vont avec. Les montants viennent
  * tous de src/data/offres.ts.
  *
- * Trois grilles de trois offres, sur le modèle de devmiweb.com : les sites
- * (#site), les boutiques (#boutique) et les agents IA (#agents-ia), plus la
- * maintenance d'un site existant (#evoluer). Chaque carte porte l'identifiant
- * de son offre : le menu de l'en-tête y mène directement.
+ * Quatre onglets depuis le 25 octobre 2026 : les sites (#site), la boutique
+ * (#boutique), la maintenance d'un site existant (#maintenance, ex-#evoluer)
+ * et les agents IA (#agents-ia). L'ancre ouvre l'onglet ; une ancre d'offre
+ * (#presence-pro) ouvre son onglet et descend jusqu'à sa carte : le menu de
+ * l'en-tête y mène directement.
  *
- * Mise en page : sur téléphone, les cartes s'empilent et une barre d'appel
- * reste en bas de l'écran. Sur ordinateur, trois cartes par ligne, l'offre
- * recommandée sur l'encre. Le prix mensuel est grand, la mise en service juste
- * en dessous, toujours visible.
+ * Une carte n'affiche que ce qui la distingue. Ce que toutes les offres de
+ * l'onglet comprennent passe dans l'encart « Inclus dans toutes les offres »,
+ * à côté des options à la carte de l'onglet.
+ *
+ * Mise en page : sur téléphone, les cartes s'empilent, l'offre recommandée en
+ * premier, et une barre d'appel reste en bas de l'écran. Sur ordinateur, trois
+ * cartes par ligne, l'offre recommandée sur l'encre.
  *
  * Hors grille : la visibilité, sans prix, dans un encart rouge « sur devis »
  * (la grille Visibilité est à revoir avec le client).
  */
 
 const mensuel = (id: OffreId) => euros(offre(id).mensuel ?? 0);
+
+/** Les onglets de la grille, dans l'ordre d'affichage. */
+const ONGLETS: GroupeId[] = ["site", "boutique", "maintenance", "agents-ia"];
+
+/** Une ancre d'onglet vers son groupe ; #evoluer reste valable pour les anciens liens. */
+const ONGLET_DE_L_ANCRE: Record<string, GroupeId> = {
+  ...Object.fromEntries(ONGLETS.map((g) => [GROUPES[g].ancre, g])),
+  evoluer: "maintenance",
+};
+const ANCRES_ONGLETS = new Set(ONGLETS.map((g) => GROUPES[g].ancre));
+
+/** La question de la FAQ dont la réponse affiche la grille de rachat. */
+const QUESTION_DEPART = "Que se passe-t-il si j'arrête ?";
+
+const TITRES: Partial<Record<GroupeId, React.ReactNode>> = {
+  site: (
+    <>
+      Un site, et votre fiche Google, <span className="accent-word">tenus pour vous</span>
+    </>
+  ),
+  boutique: (
+    <>
+      Une boutique qui <span className="accent-word">vous appartient</span>
+    </>
+  ),
+  "agents-ia": (
+    <>
+      Vos demandes traitées, <span className="accent-word">même sans vous</span>
+    </>
+  ),
+};
+
+/** Ce qu'ouvre une ancre : un onglet (#site), ou un onglet et une carte (#presence-pro). */
+function cibleDeLAncre(hash: string): { groupe: GroupeId; cible: "onglets" | OffreId } | null {
+  let ancre = "";
+  try {
+    ancre = decodeURIComponent(hash.replace(/^#/, ""));
+  } catch {
+    return null;
+  }
+  if (!ancre) return null;
+  if (ONGLET_DE_L_ANCRE[ancre]) return { groupe: ONGLET_DE_L_ANCRE[ancre], cible: "onglets" };
+  const o = OFFRES.find((x) => x.id === ancre);
+  return o ? { groupe: o.groupe, cible: o.id } : null;
+}
+
+const lignesDu = (g: GroupeId): Ligne[] => GRILLES[g].flatMap((r) => r.lignes);
+
+/** Les lignes comprises dans toutes les offres de l'onglet : affichées une fois, sous les cartes. */
+function lignesCommunes(g: GroupeId): Ligne[] {
+  const offres = offresDu(g);
+  return lignesDu(g).filter((l) => offres.every((o) => l.valeurs[o.id] === true));
+}
+
+/** Les lignes d'une carte : ce que l'offre comprend, hors lignes communes. */
+function lignesDistinctives(o: Offre): Ligne[] {
+  const communes = new Set(lignesCommunes(o.groupe).map((l) => l.libelle));
+  return lignesDu(o.groupe).filter((l) => !communes.has(l.libelle) && l.valeurs[o.id]);
+}
 
 const TITRE = "Tarifs Sitaly : site vitrine, boutique en ligne et agents IA";
 const DESCRIPTION = `Présence ${mensuel("presence")}/mois, Présence Pro ${mensuel("presence-pro")}/mois, Présence Expert ${mensuel("presence-expert")}/mois, boutique dès ${mensuel("boutique")}/mois, agent IA dès ${mensuel("agent-ia")}/mois. Sans engagement, mise en service affichée.`;
@@ -121,6 +184,76 @@ function Tarifs() {
   useRevealOnScroll(rootRef);
   useSplitWords(rootRef);
 
+  const [actif, setActif] = useState<GroupeId>("site");
+  const actifRef = useRef<GroupeId>("site");
+  const ongletsRef = useRef<HTMLDivElement>(null);
+  const [defilement, setDefilement] = useState<{ cible: string; n: number } | null>(null);
+  const premierHash = useRef(true);
+  const hash = useLocation({ select: (l) => l.hash });
+  const navigate = useNavigate();
+
+  /* L'ancre ouvre son onglet. On ne descend vers la grille qu'à l'arrivée,
+     au changement d'onglet ou vers une carte : un clic sur l'onglet déjà
+     ouvert ne fait pas sauter la page. */
+  useEffect(() => {
+    const premier = premierHash.current;
+    premierHash.current = false;
+    const c = cibleDeLAncre(hash);
+    if (!c) return;
+    const change = c.groupe !== actifRef.current;
+    if (change) {
+      actifRef.current = c.groupe;
+      setActif(c.groupe);
+    }
+    if (premier || change || c.cible !== "onglets")
+      setDefilement({ cible: c.cible, n: Date.now() });
+  }, [hash]);
+
+  useEffect(() => {
+    if (!defilement) return;
+    const el =
+      defilement.cible === "onglets"
+        ? ongletsRef.current
+        : document.getElementById(defilement.cible);
+    if (!el) return;
+    const id = requestAnimationFrame(() => el.scrollIntoView({ block: "start" }));
+    return () => cancelAnimationFrame(id);
+  }, [defilement]);
+
+  function choisir(g: GroupeId) {
+    actifRef.current = g;
+    setActif(g);
+    const ancre = GROUPES[g].ancre;
+    if (hash.replace(/^#/, "") === ancre) return;
+    navigate({
+      to: "/tarifs/",
+      hash: ancre,
+      replace: true,
+      resetScroll: false,
+      hashScrollIntoView: false,
+    });
+  }
+
+  /* Les flèches passent d'un onglet à l'autre, comme le veut le motif ARIA. */
+  function clavier(e: KeyboardEvent) {
+    const i = ONGLETS.indexOf(actifRef.current);
+    const n = ONGLETS.length;
+    const j =
+      e.key === "ArrowRight"
+        ? (i + 1) % n
+        : e.key === "ArrowLeft"
+          ? (i + n - 1) % n
+          : e.key === "Home"
+            ? 0
+            : e.key === "End"
+              ? n - 1
+              : -1;
+    if (j < 0) return;
+    e.preventDefault();
+    choisir(ONGLETS[j]);
+    document.getElementById(`onglet-${GROUPES[ONGLETS[j]].ancre}`)?.focus();
+  }
+
   return (
     <div ref={rootRef} className="min-h-screen bg-background pb-24 text-foreground lg:pb-0">
       <SiteHeader />
@@ -145,95 +278,55 @@ function Tarifs() {
               arrêtez quand vous voulez.
             </p>
             <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-foreground/75">
-              {["Résiliable à tout moment, sans frais", "Réponse sous 24 h", MENTION_TVA].map(
-                (t) => (
-                  <li key={t} className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-signal-ink" />
-                    {t}
-                  </li>
-                ),
-              )}
-            </ul>
-            {/* Les trois grilles, à un clic, comme le « Comparer les formules »
-                de devmiweb.com. */}
-            <nav aria-label="Les grilles" className="mt-8 flex flex-wrap gap-2.5">
-              {(["site", "boutique", "agents-ia"] as GroupeId[]).map((g) => (
-                <a
-                  key={g}
-                  href={`#${GROUPES[g].ancre}`}
-                  className="rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold transition hover:border-foreground/20"
-                >
-                  {GROUPES[g].titre}
-                </a>
+              {["Réponse sous 24 h", MENTION_TVA].map((t) => (
+                <li key={t} className="flex items-center gap-2">
+                  <Check className="h-4 w-4 text-signal-ink" />
+                  {t}
+                </li>
               ))}
-            </nav>
+            </ul>
           </div>
         </section>
 
         {/* ---------- Les grilles ---------- */}
         <section id="offres" className="bg-paper py-14 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
-            {/* Chaque famille garde sa couleur, comme sur ses pages : bleu pour
-                le site, violet pour les agents IA, rouge pour la visibilité. */}
-            <div className="ambiance-site">
-              <Grille
-                groupe="site"
-                titre={
-                  <>
-                    Un site, et votre fiche Google,{" "}
-                    <span className="accent-word">tenus pour vous</span>
-                  </>
-                }
-              />
-
-              <Grille
-                groupe="boutique"
-                titre={
-                  <>
-                    Une boutique qui <span className="accent-word">vous appartient</span>
-                  </>
-                }
-              />
-
-              {/* Faire évoluer un site existant : la maintenance, et la refonte
-                qui se chiffre comme une création. */}
-              <div id={GROUPES.maintenance.ancre} className="mt-20 scroll-mt-28">
-                <p data-reveal className="rail-label text-brand-ink">
-                  {GROUPES.maintenance.titre}
-                </p>
-                <div className="mt-6 grid gap-5 lg:grid-cols-2 lg:items-start lg:gap-6">
-                  <CarteOffre o={offre("maintenance")} secondaire />
-                  <div data-reveal className="lg:pl-6 lg:pt-4">
-                    <h2 className="font-display text-[clamp(1.6rem,3vw,2.3rem)] font-extrabold leading-[1.08] tracking-[-0.035em]">
-                      Votre site a vieilli ? <span className="accent-word">On le refait</span>
-                    </h2>
-                    <p className="measure mt-4 text-lg leading-relaxed text-muted-foreground">
-                      Une refonte se chiffre comme une création : vous choisissez Présence, Présence
-                      Pro ou Présence Expert, et chaque ancienne adresse est redirigée pour ne rien
-                      perdre sur Google.
-                    </p>
-                    <Link
-                      to="/refonte-site-internet/"
-                      className="mt-6 inline-flex items-center gap-2 font-semibold text-brand-ink"
-                    >
-                      La refonte de site
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </div>
-                </div>
+            <div ref={ongletsRef} className="scroll-mt-28">
+              <p className="tf-bandeau">
+                <span className="tf-bandeau-icone">
+                  <Check className="h-3.5 w-3.5" />
+                </span>
+                Sans engagement, résiliable à tout moment, sans frais
+              </p>
+              <div
+                role="tablist"
+                aria-label="Les grilles de tarifs"
+                className="tf-onglets"
+                onKeyDown={clavier}
+              >
+                {ONGLETS.map((g) => (
+                  <button
+                    key={g}
+                    type="button"
+                    role="tab"
+                    id={`onglet-${GROUPES[g].ancre}`}
+                    aria-selected={actif === g}
+                    aria-controls={GROUPES[g].ancre}
+                    tabIndex={actif === g ? 0 : -1}
+                    className="tf-onglet"
+                    onClick={() => choisir(g)}
+                  >
+                    {GROUPES[g].titre}
+                  </button>
+                ))}
               </div>
             </div>
 
-            <div className="ambiance-automatisation mt-20">
-              <Grille
-                groupe="agents-ia"
-                titre={
-                  <>
-                    Vos demandes traitées, <span className="accent-word">même sans vous</span>
-                  </>
-                }
-              />
-            </div>
+            {/* Chaque onglet garde la couleur de sa famille, comme sur ses pages :
+                bleu pour le site, violet pour les agents IA. */}
+            {ONGLETS.map((g) => (
+              <Onglet key={g} groupe={g} actif={actif === g} />
+            ))}
 
             {/* La visibilité, sur devis : hors grille, dans l'ambiance de la page
                 Demandes de chantier. */}
@@ -271,39 +364,6 @@ function Tarifs() {
           </div>
         </section>
 
-        {/* ---------- À la carte ---------- */}
-        <section id="a-la-carte" className="scroll-mt-28 bg-paper-sunk py-14 sm:py-20">
-          <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
-            <div data-reveal>
-              <h2 data-split className="display-section">
-                À la <span className="accent-word">carte</span>
-              </h2>
-              <p className="measure mt-5 text-lg text-muted-foreground">
-                Pour ajouter ce dont vous avez besoin, sans changer d'offre. Chaque option est payée
-                une fois.
-              </p>
-            </div>
-            <ul data-reveal className="self-start border-t border-border">
-              {A_LA_CARTE.map((a) => (
-                <li
-                  key={a.libelle}
-                  className="flex items-baseline justify-between gap-6 border-b border-border py-4"
-                >
-                  <span className="min-w-0">{a.libelle}</span>
-                  <span className="shrink-0 font-semibold whitespace-nowrap tabular-nums">
-                    {euros(a.prix)}
-                    {a.detail && (
-                      <span className="ml-1 text-sm font-normal text-muted-foreground">
-                        {a.detail}
-                      </span>
-                    )}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
         {/* ---------- Sans engagement ---------- */}
         <section
           id="sans-engagement"
@@ -323,7 +383,6 @@ function Tarifs() {
               </div>
               <ul data-reveal className="space-y-4">
                 {[
-                  "Toutes les offres sont résiliables à tout moment, sans frais.",
                   "La mise en service est payée à la signature. Elle n'est pas remboursable une fois le travail lancé.",
                   "Votre nom de domaine vous est transféré gratuitement à votre départ.",
                   "Votre fiche Google vous appartient, toujours.",
@@ -340,25 +399,6 @@ function Tarifs() {
               </ul>
             </div>
 
-            <div
-              data-reveal
-              className="mt-12 rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-6 sm:p-8"
-            >
-              <p className="font-semibold">Racheter votre site vitrine à votre départ</p>
-              <p className="mt-1 text-sm text-white/60">
-                Selon l'ancienneté de votre abonnement, en une fois.
-              </p>
-              <dl className="mt-6 grid gap-4 sm:grid-cols-3">
-                {RACHAT_SITE.map((r) => (
-                  <div key={r.periode} className="rounded-2xl border border-white/10 p-4">
-                    <dt className="text-sm text-white/60">{r.periode}</dt>
-                    <dd className="mt-1 font-display text-3xl font-extrabold tracking-[-0.03em] tabular-nums">
-                      {euros(r.prix)}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
             <p className="mt-6 text-sm text-white/55">Prix en euros. {MENTION_TVA}.</p>
           </div>
         </section>
@@ -376,12 +416,16 @@ function Tarifs() {
                     <span>{f.q}</span>
                     <Plus className="h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300 group-open:rotate-45" />
                   </summary>
-                  <p className="faq-reponse measure pb-6 text-[15px] leading-relaxed text-muted-foreground">
-                    <TexteAvecLiens
-                      texte={f.a}
-                      classeLien="font-medium text-brand-ink underline decoration-brand-ink/30 underline-offset-4"
-                    />
-                  </p>
+                  {f.q === QUESTION_DEPART ? (
+                    <ReponseDepart />
+                  ) : (
+                    <p className="faq-reponse measure pb-6 text-[15px] leading-relaxed text-muted-foreground">
+                      <TexteAvecLiens
+                        texte={f.a}
+                        classeLien="font-medium text-brand-ink underline decoration-brand-ink/30 underline-offset-4"
+                      />
+                    </p>
+                  )}
                 </details>
               ))}
             </div>
@@ -407,22 +451,136 @@ function Tarifs() {
   );
 }
 
-/* ---------------- Grille de trois offres ---------------- */
+/* ---------------- Réponse de la FAQ sur le départ ---------------- */
 
-function Grille({ groupe, titre }: { groupe: GroupeId; titre: React.ReactNode }) {
-  const g = GROUPES[groupe];
+/** La grille de rachat du site vitrine, dans la réponse plutôt qu'en bloc à part. */
+function ReponseDepart() {
   return (
-    <div id={g.ancre} className="mt-20 scroll-mt-28 first:mt-0">
-      <div data-reveal className="max-w-3xl">
-        <p className="rail-label text-brand-ink">{g.titre}</p>
-        <h2 className="mt-3 font-display text-[clamp(1.6rem,3vw,2.3rem)] font-extrabold leading-[1.08] tracking-[-0.035em]">
-          {titre}
-        </h2>
-      </div>
-      <div className="mt-8 grid gap-5 lg:grid-cols-3 lg:items-stretch lg:gap-6">
-        {offresDu(groupe).map((o) => (
-          <CarteOffre key={o.id} o={o} />
+    <div className="faq-reponse measure pb-6 text-[15px] leading-relaxed text-muted-foreground">
+      <p>
+        Votre site vitrine est mis hors ligne, sauf si vous le rachetez. Le rachat se paie en une
+        fois, selon l'ancienneté de votre abonnement :
+      </p>
+      <dl className="tf-rachat">
+        {RACHAT_SITE.map((r) => (
+          <div key={r.periode}>
+            <dt>{r.periode}</dt>
+            <dd className="mt-1 font-display text-2xl font-extrabold tracking-[-0.03em] text-foreground tabular-nums">
+              {euros(r.prix)}
+            </dd>
+          </div>
         ))}
+      </dl>
+      <p className="mt-4">
+        Dans tous les cas, votre nom de domaine vous est transféré gratuitement et votre fiche
+        Google reste la vôtre.
+      </p>
+    </div>
+  );
+}
+
+/* ---------------- Un onglet ---------------- */
+
+/** Les cartes, puis ce qui est inclus partout, puis les options à la carte de l'onglet. */
+function Onglet({ groupe, actif }: { groupe: GroupeId; actif: boolean }) {
+  const g = GROUPES[groupe];
+  const offres = offresDu(groupe);
+  const communes = lignesCommunes(groupe);
+  const options = A_LA_CARTE.filter((a) => a.groupe === groupe);
+
+  return (
+    <div
+      role="tabpanel"
+      id={g.ancre}
+      aria-labelledby={`onglet-${g.ancre}`}
+      tabIndex={0}
+      hidden={!actif}
+      className={`tf-panneau scroll-mt-28 ${
+        groupe === "agents-ia" ? "ambiance-automatisation" : "ambiance-site"
+      }`}
+    >
+      {TITRES[groupe] && (
+        <h2 className="mb-8 max-w-3xl font-display text-[clamp(1.6rem,3vw,2.3rem)] font-extrabold leading-[1.08] tracking-[-0.035em]">
+          {TITRES[groupe]}
+        </h2>
+      )}
+
+      {groupe === "maintenance" ? (
+        <div className="grid gap-5 lg:grid-cols-2 lg:items-start lg:gap-6">
+          <CarteOffre o={offre("maintenance")} secondaire />
+          <div className="lg:pl-6 lg:pt-4">
+            <h2 className="font-display text-[clamp(1.6rem,3vw,2.3rem)] font-extrabold leading-[1.08] tracking-[-0.035em]">
+              Votre site a vieilli ? <span className="accent-word">On le refait</span>
+            </h2>
+            <p className="measure mt-4 text-lg leading-relaxed text-muted-foreground">
+              Une refonte se chiffre comme une création : vous choisissez Présence, Présence Pro ou
+              Présence Expert, et chaque ancienne adresse est redirigée pour ne rien perdre sur
+              Google.
+            </p>
+            <Link
+              to="/refonte-site-internet/"
+              className="mt-6 inline-flex items-center gap-2 font-semibold text-brand-ink"
+            >
+              La refonte de site
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      ) : (
+        <div
+          className={
+            offres.length > 1
+              ? "grid gap-5 lg:grid-cols-3 lg:items-stretch lg:gap-6"
+              : "tf-grille-une grid gap-5"
+          }
+        >
+          {offres.map((o) => (
+            <CarteOffre key={o.id} o={o} />
+          ))}
+        </div>
+      )}
+
+      <div className={`tf-pied${options.length ? " tf-pied-deux" : ""}`}>
+        {communes.length > 0 && (
+          <div className="tf-encart">
+            <p className="rail-label text-brand-ink">
+              {offres.length > 1 ? "Inclus dans toutes les offres" : "Inclus dans l'offre"}
+            </p>
+            <ul className="tf-inclus">
+              {communes.map((l) => (
+                <li key={l.libelle}>
+                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-signal/20 text-signal-ink">
+                    <Check className="h-3 w-3" />
+                  </span>
+                  <span>{l.libelle}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {options.length > 0 && (
+          <div className="tf-encart">
+            <p className="rail-label text-brand-ink">À la carte</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Payé une fois, sans changer d'offre.
+            </p>
+            <ul className="tf-options">
+              {options.map((a) => (
+                <li key={a.libelle}>
+                  <span className="min-w-0">{a.libelle}</span>
+                  <span className="shrink-0 font-semibold whitespace-nowrap tabular-nums">
+                    {euros(a.prix)}
+                    {a.detail && (
+                      <span className="ml-1 text-sm font-normal text-muted-foreground">
+                        {a.detail}
+                      </span>
+                    )}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -434,12 +592,17 @@ function CarteOffre({ o, secondaire = false }: { o: Offre; secondaire?: boolean 
   const mise = !!o.recommandee;
   const sombre = mise;
   const attenue = sombre ? "text-white/70" : "text-muted-foreground";
+  const lignes = lignesDistinctives(o);
 
+  /* Pas de data-reveal : une carte d'onglet masqué ne serait jamais révélée.
+     Une offre qui porte le nom d'un onglet (#boutique, #maintenance) laisse
+     l'ancre à l'onglet. */
   return (
     <article
-      id={o.id}
-      data-reveal
+      id={ANCRES_ONGLETS.has(o.id) ? undefined : o.id}
       className={`relative flex scroll-mt-28 flex-col rounded-[2rem] border p-6 transition duration-300 sm:p-8 ${
+        mise ? "tf-premier " : ""
+      }${
         sombre
           ? "on-ink border-transparent bg-ink text-white shadow-elevated ring-1 ring-white/10"
           : "border-border bg-card shadow-soft hover:border-foreground/15 hover:shadow-elevated"
@@ -494,63 +657,32 @@ function CarteOffre({ o, secondaire = false }: { o: Offre; secondaire?: boolean 
         </p>
       </div>
 
-      <div className={`my-7 h-px ${sombre ? "bg-white/10" : "bg-border"}`} />
-
-      {/* Toutes les lignes de la grille, comprises ou non : la carte voisine
-          a les mêmes, dans le même ordre, et la différence se lit en ligne. */}
-      <div className="space-y-6">
-        {GRILLES[o.groupe].map((r) => (
-          <div key={r.titre}>
-            <p className="flex items-center gap-2.5 font-semibold">
-              <span
-                className={`grid h-8 w-8 shrink-0 place-items-center rounded-lg ${
-                  sombre ? "bg-white/10 text-white" : "bg-brand-ink/10 text-brand-ink"
-                }`}
-              >
-                <PictoRubrique icone={r.icone} className="h-4 w-4" />
-              </span>
-              {r.titre}
-            </p>
-            <ul className="mt-3 space-y-2.5 text-[15px]">
-              {r.lignes.map((l) => {
-                const v = l.valeurs[o.id];
-                return (
-                  <li key={l.libelle} className="flex gap-3">
-                    <span
-                      className={`mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full ${
-                        v
-                          ? sombre
-                            ? "bg-signal/20 text-signal"
-                            : "bg-signal/20 text-signal-ink"
-                          : sombre
-                            ? "bg-white/5 text-white/35"
-                            : "bg-foreground/5 text-foreground/30"
-                      }`}
-                    >
-                      {v ? <Check className="h-3 w-3" /> : <X className="h-3 w-3" />}
-                    </span>
-                    <span
-                      className={
-                        v
-                          ? sombre
-                            ? "text-white/90"
-                            : ""
-                          : sombre
-                            ? "text-white/40"
-                            : "text-foreground/40"
-                      }
-                    >
-                      {!v && <span className="sr-only">Non compris : </span>}
-                      {l.libelle}
-                      {typeof v === "string" && <strong className="font-semibold"> : {v}</strong>}
-                    </span>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        ))}
-      </div>
+      {/* Ce que l'offre comprend en plus des lignes communes à l'onglet. */}
+      {lignes.length > 0 && (
+        <>
+          <div className={`my-7 h-px ${sombre ? "bg-white/10" : "bg-border"}`} />
+          <ul className="space-y-2.5 text-[15px]">
+            {lignes.map((l) => {
+              const v = l.valeurs[o.id];
+              return (
+                <li key={l.libelle} className="flex gap-3">
+                  <span
+                    className={`mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full ${
+                      sombre ? "bg-signal/20 text-signal" : "bg-signal/20 text-signal-ink"
+                    }`}
+                  >
+                    <Check className="h-3 w-3" />
+                  </span>
+                  <span className={sombre ? "text-white/90" : ""}>
+                    {l.libelle}
+                    {typeof v === "string" && <strong className="font-semibold"> : {v}</strong>}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      )}
 
       {o.notes && (
         <ul className={`mt-5 space-y-1.5 text-[15px] ${attenue}`}>

@@ -120,14 +120,14 @@ export const PAGES_OFFRES: PageOffre[] = [
     pourQui: [
       "Votre métier est disputé dans votre secteur.",
       "Vos clients comparent avant d'appeler, sur Google et dans ChatGPT.",
-      "Vous voulez des modifications sans compter.",
+      "Vous avez souvent des modifications à faire : 4 modifications par mois sont comprises.",
     ],
     etapes: [
       ...ETAPES_SITE,
       {
         titre: "Chaque mois",
         texte:
-          "Deux articles, des posts et des photos sur votre fiche, des demandes d'avis, vos modifications sans limite et un rapport. Un bilan en visio chaque trimestre.",
+          "Deux articles, des posts et des photos sur votre fiche, des demandes d'avis, 4 modifications faites par nous et un rapport. Un bilan en visio chaque trimestre.",
       },
     ],
     faq: [

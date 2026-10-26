@@ -124,6 +124,8 @@ export interface Expertise {
   exemples?: { secteur: string; d: string }[];
   /** Les offres de la grille que la page détaille, prix compris. */
   offres?: OffreId[];
+  /** Ce qui sort de la grille et se chiffre sur devis, sous les offres. */
+  surDevis?: string;
 }
 
 /** Chemin de la page, slash final compris. */
@@ -276,7 +278,8 @@ const SITE: Expertise[] = [
   },
   {
     slug: "site-e-commerce",
-    offres: ["boutique", "boutique-pro", "boutique-sur-mesure"],
+    offres: ["boutique"],
+    surDevis: "Grand catalogue, plusieurs langues ou liaison avec vos outils : sur devis",
     famille: "site",
     label: "Site e-commerce",
     nomService: "un site e-commerce",

@@ -30,8 +30,4 @@ export const FAQ_TARIFS: { q: string; a: string }[] = [
     q: "Quelle différence entre Présence, Présence Pro et Présence Expert ?",
     a: `Présence met en ligne un site vitrine jusqu'à 5 pages et gère votre fiche Google. Présence Pro ajoute ce qui sert à être trouvé plus loin et plus souvent : 5 pages locales pour les communes voisines, des posts et des photos publiés chaque mois sur votre fiche, une demande d'avis envoyée automatiquement après chaque prestation, et un rapport mensuel. Présence Expert double les pages locales, publie deux articles par mois, prépare vos textes pour être cités par les IA et suit vos positions sur Google, avec un bilan chaque trimestre. Passer de Présence à Présence Pro coûte ${euros(A_LA_CARTE.find((a) => a.libelle.startsWith("Passage"))?.prix ?? 0)}.`,
   },
-  {
-    q: "Combien coûte Shopify en plus ?",
-    a: "L'abonnement Shopify est à votre nom, environ 36 € par mois, payé directement à Shopify. S'y ajoutent les frais de paiement prélevés sur chaque vente. Ces montants sont fixés par Shopify, pas par Sitaly, qui ne les encaisse pas.",
-  },
 ];

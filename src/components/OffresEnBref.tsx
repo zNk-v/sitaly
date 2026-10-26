@@ -9,7 +9,7 @@ import { GROUPES, MENTION_TVA, lignesIncluses, offre, type OffreId } from "@/dat
  * devmiweb.com. Sert sur /site-e-commerce/, /logiciel-metier/, /agents-ia/ et
  * /agents-ia/agent-vocal/. Prix et contenu : src/data/offres.ts.
  */
-export function OffresEnBref({ ids }: { ids: OffreId[] }) {
+export function OffresEnBref({ ids, apres }: { ids: OffreId[]; apres?: React.ReactNode }) {
   const offres = ids.map(offre);
   const groupe = offres[0].groupe;
   const colonnes =
@@ -95,6 +95,7 @@ export function OffresEnBref({ ids }: { ids: OffreId[] }) {
           </article>
         ))}
       </div>
+      {apres}
       <p className="mt-6 text-sm text-muted-foreground">
         Sans engagement. {MENTION_TVA}.{" "}
         <Link

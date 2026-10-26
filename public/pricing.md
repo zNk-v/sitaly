@@ -2,7 +2,7 @@
 
 Sitaly est une micro-agence en abonnement qui crée, héberge et entretient les sites internet des artisans, indépendants, commerçants et TPE, fiche Google comprise. Elle installe aussi des agents IA, à prix publiés, et gère des campagnes ChatGPT Ads, sur devis. Basée à Brétigny-sur-Orge (Essonne), elle intervient en Essonne et en Île-de-France, et à distance dans toute la France.
 
-Montant plancher publié depuis le 28 septembre 2026 pour ChatGPT Ads. Les sites internet ont une grille publiée depuis le 18 octobre 2026, révisée le 23 octobre 2026 (trois offres de site, trois boutiques), et les agents IA depuis le 23 octobre 2026.
+Montant plancher publié depuis le 28 septembre 2026 pour ChatGPT Ads. Les sites internet ont une grille publiée depuis le 18 octobre 2026, révisée le 25 octobre 2026 (trois offres de site, une boutique), et les agents IA depuis le 23 octobre 2026.
 
 ## Agents IA et automatisation : grille publiée (abonnement, sans engagement)
 
@@ -56,22 +56,18 @@ Prix en euros, TVA non applicable, art. 293 B du CGI. Détail : https://sitaly.f
 - Tout Présence, plus : 5 pages locales pour les communes voisines, posts et photos Google chaque mois, demande d'avis automatique après chaque prestation, rapport mensuel
 
 ### Présence Expert : 399 € par mois + 790 € de mise en service
-- Tout Présence Pro, plus : 10 pages locales au lieu de 5, 2 articles de blog rédigés chaque mois, textes rédigés pour être cités par ChatGPT et Gemini (20 questions suivies chaque trimestre), 10 mots-clés suivis sur Google, bilan trimestriel en visio, modifications sans limite mensuelle
+- Tout Présence Pro, plus : 10 pages locales au lieu de 5, 2 articles de blog rédigés chaque mois, textes rédigés pour être cités par ChatGPT et Gemini (20 questions suivies chaque trimestre), 10 mots-clés suivis sur Google, bilan trimestriel en visio, 4 modifications par mois
 
-## Boutiques en ligne : grille publiée (abonnement, sans engagement)
+## Boutique en ligne : grille publiée (abonnement, sans engagement)
 La boutique est créée sur Shopify et appartient au client dès le départ.
 
 ### Boutique en ligne (Shopify) : 149 € par mois + 990 € de mise en service
-- Boutique Shopify configurée : thème, jusqu'à 50 produits, paiement, livraison, pages légales, prise en main
+- Boutique Shopify configurée : thème, jusqu'à 20 produits, paiement, livraison, pages légales, prise en main
 - Mensuel : mises à jour, support, 1 h de modifications par mois, gestion de la fiche Google et des avis
 - Option sans abonnement : 1 490 € en une fois
 - Abonnement Shopify à votre nom, environ 36 €/mois, payé directement à Shopify, plus les frais de paiement sur les ventes
 
-### Boutique Pro (Shopify) : 249 € par mois + 1 690 € de mise en service (offre recommandée)
-- Tout Boutique en ligne, plus : jusqu'à 300 produits avec variantes et filtres, codes promo, relance des paniers abandonnés, avis produits, Google Shopping configuré, 3 h de modifications et un rapport des ventes chaque mois
-
-### Boutique Sur Mesure : à partir de 390 € par mois + à partir de 3 900 € de mise en service
-- Tout Boutique Pro, plus : catalogue sans limite, plusieurs langues, ventes aux professionnels, liaison avec la caisse, le logiciel de gestion ou le logisticien, interlocuteur dédié et bilan trimestriel
+### Grand catalogue, plusieurs langues ou liaison avec vos outils : sur devis
 
 ### Maintenance de site existant : 79 € par mois + 190 € d'audit
 - Audit, sauvegarde, mises à jour, corrections mineures ; remise en état sur devis séparé

@@ -148,27 +148,28 @@ const CLIENTS: (Choix<string> & { offre: OffreId })[] = [
   },
 ];
 
-const CATALOGUE: (Choix<string> & { offre: OffreId })[] = [
+/* Une seule boutique : au-delà de son catalogue, la boutique se chiffre sur
+   devis, sans offre conseillée. */
+const CATALOGUE: (Choix<string> & { offre?: OffreId })[] = [
   {
     valeur: "petit",
-    label: "Moins de 50 produits",
+    label: "Jusqu'à 20 produits",
     detail: "Une boutique simple à tenir",
     icone: ShoppingCart,
     offre: "boutique",
   },
   {
     valeur: "moyen",
-    label: "De 50 à 300 produits",
-    detail: "Avec des variantes et des promotions",
+    label: "Plus de 20 produits",
+    detail: "Par lots de 10 produits supplémentaires",
     icone: ShoppingBag,
-    offre: "boutique-pro",
+    offre: "boutique",
   },
   {
     valeur: "grand",
-    label: "Plus de 300, ou plusieurs langues",
-    detail: "Ou une boutique reliée à vos outils",
+    label: "Un grand catalogue ou plusieurs langues",
+    detail: "Ou une boutique reliée à vos outils : sur devis",
     icone: Gem,
-    offre: "boutique-sur-mesure",
   },
 ];
 
@@ -335,7 +336,7 @@ function MonProjet() {
     }
   }
 
-  function choisirOffre(e: Etape, c: Choix<string> & { offre: OffreId }) {
+  function choisirOffre(e: Etape, c: Choix<string> & { offre?: OffreId }) {
     noter(e, c.label);
     setOffreId(c.offre);
     aller("activite");
@@ -435,7 +436,7 @@ function MonProjet() {
               <ListeChoix
                 choix={CATALOGUE}
                 onChoisir={(c) => choisirOffre("catalogue", c)}
-                actif={CATALOGUE.find((c) => c.offre === offreId)?.valeur}
+                actif={offreId && CATALOGUE.find((c) => c.offre === offreId)?.valeur}
               />
             )}
 
