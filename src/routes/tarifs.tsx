@@ -40,12 +40,9 @@ import {
  * recommandée sur l'encre. Le prix mensuel est grand, la mise en service juste
  * en dessous, toujours visible.
  *
- * Hors grille : Google Ads et ChatGPT Ads, sans prix, par un lien discret
- * « sur devis » (la grille Visibilité est à revoir avec le client).
+ * Hors grille : la visibilité, sans prix, dans un encart rouge « sur devis »
+ * (la grille Visibilité est à revoir avec le client).
  */
-
-const LIEN_DISCRET =
-  "underline decoration-border underline-offset-4 transition hover:text-foreground hover:decoration-foreground/40";
 
 const mensuel = (id: OffreId) => euros(offre(id).mensuel ?? 0);
 
@@ -176,73 +173,101 @@ function Tarifs() {
         {/* ---------- Les grilles ---------- */}
         <section id="offres" className="bg-paper py-14 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
-            <Grille
-              groupe="site"
-              titre={
-                <>
-                  Un site, et votre fiche Google,{" "}
-                  <span className="accent-word">tenus pour vous</span>
-                </>
-              }
-            />
+            {/* Chaque famille garde sa couleur, comme sur ses pages : bleu pour
+                le site, violet pour les agents IA, rouge pour la visibilité. */}
+            <div className="ambiance-site">
+              <Grille
+                groupe="site"
+                titre={
+                  <>
+                    Un site, et votre fiche Google,{" "}
+                    <span className="accent-word">tenus pour vous</span>
+                  </>
+                }
+              />
 
-            <Grille
-              groupe="boutique"
-              titre={
-                <>
-                  Une boutique qui <span className="accent-word">vous appartient</span>
-                </>
-              }
-            />
+              <Grille
+                groupe="boutique"
+                titre={
+                  <>
+                    Une boutique qui <span className="accent-word">vous appartient</span>
+                  </>
+                }
+              />
 
-            {/* Faire évoluer un site existant : la maintenance, et la refonte
+              {/* Faire évoluer un site existant : la maintenance, et la refonte
                 qui se chiffre comme une création. */}
-            <div id={GROUPES.maintenance.ancre} className="mt-20 scroll-mt-28">
-              <p data-reveal className="rail-label text-brand-ink">
-                {GROUPES.maintenance.titre}
-              </p>
-              <div className="mt-6 grid gap-5 lg:grid-cols-2 lg:items-start lg:gap-6">
-                <CarteOffre o={offre("maintenance")} secondaire />
-                <div data-reveal className="lg:pl-6 lg:pt-4">
-                  <h2 className="font-display text-[clamp(1.6rem,3vw,2.3rem)] font-extrabold leading-[1.08] tracking-[-0.035em]">
-                    Votre site a vieilli ? <span className="accent-word">On le refait</span>
-                  </h2>
-                  <p className="measure mt-4 text-lg leading-relaxed text-muted-foreground">
-                    Une refonte se chiffre comme une création : vous choisissez Présence, Présence
-                    Pro ou Présence Expert, et chaque ancienne adresse est redirigée pour ne rien
-                    perdre sur Google.
-                  </p>
-                  <Link
-                    to="/refonte-site-internet/"
-                    className="mt-6 inline-flex items-center gap-2 font-semibold text-brand-ink"
-                  >
-                    La refonte de site
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
+              <div id={GROUPES.maintenance.ancre} className="mt-20 scroll-mt-28">
+                <p data-reveal className="rail-label text-brand-ink">
+                  {GROUPES.maintenance.titre}
+                </p>
+                <div className="mt-6 grid gap-5 lg:grid-cols-2 lg:items-start lg:gap-6">
+                  <CarteOffre o={offre("maintenance")} secondaire />
+                  <div data-reveal className="lg:pl-6 lg:pt-4">
+                    <h2 className="font-display text-[clamp(1.6rem,3vw,2.3rem)] font-extrabold leading-[1.08] tracking-[-0.035em]">
+                      Votre site a vieilli ? <span className="accent-word">On le refait</span>
+                    </h2>
+                    <p className="measure mt-4 text-lg leading-relaxed text-muted-foreground">
+                      Une refonte se chiffre comme une création : vous choisissez Présence, Présence
+                      Pro ou Présence Expert, et chaque ancienne adresse est redirigée pour ne rien
+                      perdre sur Google.
+                    </p>
+                    <Link
+                      to="/refonte-site-internet/"
+                      className="mt-6 inline-flex items-center gap-2 font-semibold text-brand-ink"
+                    >
+                      La refonte de site
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <Grille
-              groupe="agents-ia"
-              titre={
-                <>
-                  Vos demandes traitées, <span className="accent-word">même sans vous</span>
-                </>
-              }
-            />
+            <div className="ambiance-automatisation mt-20">
+              <Grille
+                groupe="agents-ia"
+                titre={
+                  <>
+                    Vos demandes traitées, <span className="accent-word">même sans vous</span>
+                  </>
+                }
+              />
+            </div>
 
-            <p className="mt-10 text-[15px] text-muted-foreground">
-              Publicité, sur devis :{" "}
-              <Link to="/acquisition/" className={LIEN_DISCRET}>
-                Google Ads
-              </Link>
-              ,{" "}
-              <a href="/chatgpt-ads/" className={LIEN_DISCRET}>
-                ChatGPT Ads
-              </a>
-              .
-            </p>
+            {/* La visibilité, sur devis : hors grille, dans l'ambiance de la page
+                Demandes de chantier. */}
+            <div id="visibilite" className="ambiance-acquisition mt-20 scroll-mt-28">
+              <div
+                data-reveal
+                className="on-ink relative isolate flex flex-col gap-6 overflow-hidden rounded-[2rem] bg-ink p-6 shadow-elevated sm:p-10 lg:flex-row lg:items-center lg:justify-between"
+              >
+                <div aria-hidden="true" className="foyer-ambiance absolute inset-0 -z-10" />
+                <div>
+                  <p className="rail-label text-white/60">Visibilité, sur devis</p>
+                  <h2 className="mt-3 font-display text-[clamp(1.6rem,3vw,2.3rem)] font-extrabold leading-[1.08] tracking-[-0.035em]">
+                    Des demandes de chantier,{" "}
+                    <span className="accent-word">pas une pub à gérer</span>
+                  </h2>
+                  <p className="mt-4 max-w-2xl text-lg leading-relaxed text-white/75">
+                    Le prix d'une demande dépend du métier. Il vous est annoncé par écrit avant la
+                    première, qui est offerte. Pour exister quand un client décrit son besoin à une
+                    IA :{" "}
+                    <a
+                      href="/chatgpt-ads/"
+                      className="font-semibold text-white underline decoration-white/40 underline-offset-4 hover:decoration-white"
+                    >
+                      ChatGPT Ads
+                    </a>
+                    .
+                  </p>
+                </div>
+                <Link to="/acquisition/" className="bouton shrink-0 px-7 py-3.5">
+                  Voir les demandes de chantier
+                  <ArrowRight className="bouton-fleche h-4 w-4" />
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
 

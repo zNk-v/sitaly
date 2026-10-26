@@ -53,7 +53,7 @@ export function MetierLanding(props: MetierLandingProps) {
   } = props;
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="ambiance-site min-h-screen bg-background text-foreground">
       <LandingNav />
 
       {/* Hero */}

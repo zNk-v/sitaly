@@ -144,7 +144,9 @@ function PageDOffre() {
   const faq = questions(p, o);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div
+      className={`${o.groupe === "agents-ia" ? "ambiance-automatisation" : "ambiance-site"} min-h-screen bg-background text-foreground`}
+    >
       <SiteChrome>
         {/* ---------- Accroche et prix ---------- */}
         <section className="hero-bg relative overflow-hidden">

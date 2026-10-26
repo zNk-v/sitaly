@@ -1379,13 +1379,6 @@
   }
 }
 
-/* La page Google Ads relève de la famille acquisition : son accent est le
-   rouge #aa1212, pas le bleu par défaut. Le blanc y tient 7,30:1. */
-.page-acquisition {
-  --accent: var(--red-acquisition);
-  --brand-ink: var(--red-acquisition);
-}
-
 /* ============================================================
    Habillage local — page /agents-ia
    La page reprend les tokens clairs du site (:root) : mêmes surfaces,
@@ -2675,31 +2668,91 @@ body.menu-ouvert .entete-plaque {
   }
 }
 
-/* --- Page Demandes de chantier (/acquisition/) ---------------------------
-   Une seule couleur d'accent, le rouge de la famille acquisition : les
-   boutons quittent le dégradé de la triade pour un aplat, et les cartes
-   claires posées sur l'encre gardent ce rouge au lieu du violet. Le blanc
-   tient 7,30:1 sur ce rouge. */
-.page-acquisition .bouton {
+/* --- Ambiances de famille (26 octobre 2026) ------------------------------
+   Chaque page porte la couleur de sa famille, sur le modèle de la page
+   Demandes de chantier : bleu pour Site web, rouge #aa1212 pour Visibilité,
+   violet pour Agents IA. La classe se pose sur la racine d'une page, ou sur un
+   bloc (les grilles de /tarifs/).
+
+   Elle rebranche l'accent, l'encre de marque et le dégradé porteur : boutons,
+   badges, filets et surtitres suivent sans qu'on les réécrive. Les boutons
+   quittent le dégradé de la triade pour un aplat de la famille. Le blanc y
+   tient 6,2:1 sur le bleu, 7,3:1 sur le rouge et 6,9:1 sur le violet.
+
+   `.foyer-ambiance` éclaire un premier écran sombre de la couleur de la
+   famille, comme celui de /acquisition/. */
+.ambiance-site {
+  --ambiance: var(--blue);
+  --ambiance-encre: var(--blue-ink);
+  --ambiance-sur-encre: var(--blue-on-ink);
+}
+.ambiance-acquisition {
+  --ambiance: var(--red-acquisition);
+  --ambiance-encre: var(--red-acquisition);
+  --ambiance-sur-encre: var(--red-on-ink);
+}
+.ambiance-automatisation {
+  --ambiance: var(--violet);
+  --ambiance-encre: var(--violet-ink);
+  --ambiance-sur-encre: var(--violet-on-ink);
+}
+:is(.ambiance-site, .ambiance-acquisition, .ambiance-automatisation) {
+  --accent: var(--ambiance);
+  --brand-ink: var(--ambiance-encre);
+  --ring: var(--ambiance);
+  --gradient-ruban: linear-gradient(100deg, var(--ambiance-encre), var(--ambiance));
+}
+/* Sur l'encre, l'encre de marque passe à sa version claire ; les cartes
+   claires posées dessus reprennent la version sombre. */
+:is(.ambiance-site, .ambiance-acquisition, .ambiance-automatisation) .on-ink {
+  --brand-ink: var(--ambiance-sur-encre);
+}
+:is(.ambiance-site, .ambiance-acquisition, .ambiance-automatisation) .sur-papier {
+  --brand-ink: var(--ambiance-encre);
+}
+:is(.ambiance-site, .ambiance-acquisition, .ambiance-automatisation) .bouton {
   background-image: none;
-  background-color: var(--red-acquisition);
+  background-color: var(--ambiance);
   box-shadow:
-    0 1px 2px oklch(0.3 0.12 27 / 0.3),
-    0 12px 28px -14px oklch(0.42 0.17 27 / 0.75);
+    0 1px 2px color-mix(in oklab, var(--ambiance) 30%, transparent),
+    0 12px 28px -14px color-mix(in oklab, var(--ambiance) 75%, transparent);
 }
 @media (hover: hover) {
-  .page-acquisition .bouton:hover {
-    background-color: oklch(0.42 0.16 27);
+  :is(.ambiance-site, .ambiance-acquisition, .ambiance-automatisation) .bouton:hover {
+    background-color: color-mix(in oklab, var(--ambiance) 86%, black);
   }
 }
-.page-acquisition .sur-papier {
-  --brand-ink: var(--red-acquisition);
-  --accent: var(--red-acquisition);
-}
-.acquisition-foyer {
+.foyer-ambiance {
   background:
-    radial-gradient(48% 55% at 88% 8%, oklch(0.45 0.17 27 / 0.32), transparent 70%),
-    radial-gradient(40% 50% at 0% 100%, oklch(0.45 0.17 27 / 0.16), transparent 70%);
+    radial-gradient(
+      48% 55% at 88% 8%,
+      color-mix(in oklab, var(--ambiance) 34%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      40% 50% at 0% 100%,
+      color-mix(in oklab, var(--ambiance) 18%, transparent),
+      transparent 70%
+    );
+}
+/* Le second bouton d'un premier écran sombre : un contour, pas une pastille
+   papier, dont le libellé suivrait --foreground passé au blanc. */
+.bouton-contour-clair {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid oklch(1 0 0 / 0.25);
+  font-weight: 600;
+  white-space: nowrap;
+  color: white;
+  transition: border-color 0.25s ease;
+}
+@media (hover: hover) {
+  .bouton-contour-clair:hover {
+    border-color: oklch(1 0 0 / 0.6);
+  }
 }
 
 /* Le point de la pastille d'accueil pulse comme un appel entrant. */

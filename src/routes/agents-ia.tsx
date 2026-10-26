@@ -38,8 +38,7 @@ import {
   Users,
   X,
 } from "lucide-react";
-import { SitalyLogo } from "@/components/SitalyLogo";
-import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
+import { SiteHeader } from "@/components/SiteHeader";
 import { WorkflowCanvas } from "@/components/WorkflowCanvas";
 import { AiFlowRail, type FlowStep } from "@/components/AiFlowRail";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
@@ -618,8 +617,10 @@ function AgentsIA() {
   useRevealOnScroll(pageRef);
 
   return (
-    <div ref={pageRef} className="ai-page min-h-screen">
-      <Nav />
+    <div ref={pageRef} className="ai-page ambiance-automatisation min-h-screen">
+      {/* L'en-tête commun, comme sur les autres pages : la page en avait un à
+          elle, et ses onglets ne menaient pas aux mêmes endroits. */}
+      <SiteHeader />
       <main>
         <Hero />
         <Capabilities />
@@ -643,62 +644,10 @@ function AgentsIA() {
   );
 }
 
-/* ---------------- NAV ---------------- */
-function Nav() {
-  return (
-    <div className="sticky top-0 z-50 px-4 pt-3 sm:px-6 sm:pt-4">
-      <header className="entete-plaque relative mx-auto flex h-14 max-w-6xl items-center justify-between rounded-full pl-5 pr-2 sm:pl-6 sm:pr-3">
-        <Link to="/" className="flex items-center py-3" aria-label="Sitaly — accueil">
-          <SitalyLogo />
-        </Link>
-        <nav className="hidden items-center gap-1 md:flex">
-          <a
-            href="/#offre"
-            className="rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition hover:bg-secondary hover:text-foreground"
-          >
-            Offres
-          </a>
-          <span
-            aria-current="page"
-            className="rounded-full bg-accent/15 px-4 py-2 text-sm font-semibold text-accent"
-          >
-            Agents IA
-          </span>
-          <a
-            href="#metiers"
-            className="rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition hover:bg-secondary hover:text-foreground"
-          >
-            Métiers
-          </a>
-          <a
-            href="#systeme"
-            className="rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition hover:bg-secondary hover:text-foreground"
-          >
-            Le système
-          </a>
-          <Link
-            to="/blog/"
-            className="rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition hover:bg-secondary hover:text-foreground"
-          >
-            Blog
-          </Link>
-        </nav>
-        <div className="flex items-center gap-2">
-          <HeaderCallButton rounded="full" />
-          <a href={CTA_ANCHOR} className="bouton hidden h-11 px-5 text-sm sm:inline-flex">
-            {CTA_LABEL}
-          </a>
-          <MobileMenu variant="floating" current="agents-ia" />
-        </div>
-      </header>
-    </div>
-  );
-}
-
 /* ---------------- HERO ---------------- */
 function Hero() {
   return (
-    <section className="relative overflow-hidden pb-16 pt-14 sm:pb-20 sm:pt-20">
+    <section className="relative overflow-hidden pb-16 pt-[calc(var(--entete-hauteur)+3.5rem)] sm:pb-20 sm:pt-[calc(var(--entete-hauteur)+5rem)]">
       <div className="ai-grid" aria-hidden="true" />
       <div
         className="ai-halo left-1/2 top-[-140px] h-[420px] w-[720px] -translate-x-1/2"

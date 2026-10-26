@@ -152,7 +152,7 @@ function DemandesDeChantier() {
        barre d'appel collée en bas d'écran sur téléphone. */
     <div
       ref={ref}
-      className="page-acquisition min-h-screen bg-background pb-20 text-foreground lg:pb-0"
+      className="ambiance-acquisition min-h-screen bg-background pb-20 text-foreground lg:pb-0"
     >
       <SiteHeader premierEcran="sombre" />
       <main>
@@ -226,7 +226,7 @@ function Surtitre({ children, sombre = false }: { children: React.ReactNode; som
 function Ouverture() {
   return (
     <section className="on-ink relative isolate overflow-hidden bg-ink">
-      <div aria-hidden="true" className="acquisition-foyer absolute inset-0 -z-10" />
+      <div aria-hidden="true" className="foyer-ambiance absolute inset-0 -z-10" />
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 pt-[calc(var(--entete-hauteur)+2.5rem)] pb-20 sm:px-6 sm:pt-[calc(var(--entete-hauteur)+4rem)] sm:pb-28 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
         <div data-reveal>
           <Surtitre sombre>
@@ -736,7 +736,7 @@ function Faq() {
 function AppelFinal() {
   return (
     <section className="on-ink relative isolate overflow-hidden bg-ink">
-      <div aria-hidden="true" className="acquisition-foyer absolute inset-0 -z-10" />
+      <div aria-hidden="true" className="foyer-ambiance absolute inset-0 -z-10" />
       <div data-reveal className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 sm:py-32">
         <h2 className="display-section">
           Votre zone est-elle <span className="accent-word">encore libre ?</span>

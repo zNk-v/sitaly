@@ -31,7 +31,7 @@ function insecable(texte: string): string {
 
 export function SecteurLanding({ s }: { s: Secteur }) {
   const autres = autresSecteurs(s);
-  const encre = COULEURS_FAMILLE.automatisation.encre;
+  const encre = COULEURS_FAMILLE.automatisation.surEncre;
   const etapes = [
     {
       t: "Diagnostic offert, 30 minutes",
@@ -49,11 +49,12 @@ export function SecteurLanding({ s }: { s: Secteur }) {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader />
+    <div className="ambiance-automatisation min-h-screen bg-background text-foreground">
+      <SiteHeader premierEcran="sombre" />
 
       <main>
-        <section className="on-wash pt-[calc(var(--entete-hauteur)+3rem)] pb-16 sm:pt-[calc(var(--entete-hauteur)+5rem)] sm:pb-24">
+        <section className="on-ink relative isolate overflow-hidden bg-ink pt-[calc(var(--entete-hauteur)+3rem)] pb-16 sm:pt-[calc(var(--entete-hauteur)+5rem)] sm:pb-24">
+          <div aria-hidden="true" className="foyer-ambiance absolute inset-0 -z-10" />
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <nav aria-label="Fil d'Ariane" className="rail-label text-muted-foreground">
               <Link to="/" className="transition hover:text-brand-ink">
@@ -86,7 +87,7 @@ export function SecteurLanding({ s }: { s: Secteur }) {
                 <Calendar className="h-4 w-4" />
                 Réserver un diagnostic de 30 min
               </a>
-              <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
+              <a href={`tel:${SITALY_PHONE}`} className="bouton-contour-clair px-6 py-3.5">
                 <Phone className="h-4 w-4" />
                 {SITALY_PHONE_DISPLAY}
               </a>
@@ -95,7 +96,7 @@ export function SecteurLanding({ s }: { s: Secteur }) {
             <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-border pt-6 text-sm font-medium">
               {s.reperes.map((r) => (
                 <li key={r} className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-signal-ink" />
+                  <Check className="h-4 w-4 shrink-0 text-signal" />
                   {r}
                 </li>
               ))}
@@ -358,8 +359,8 @@ export function SecteurLanding({ s }: { s: Secteur }) {
           </div>
         </section>
 
-        <section className="relative overflow-hidden py-20 sm:py-28">
-          <div className="absolute inset-0 -z-10 hero-bg" aria-hidden="true" />
+        <section className="on-ink relative isolate overflow-hidden bg-ink py-20 sm:py-28">
+          <div aria-hidden="true" className="foyer-ambiance absolute inset-0 -z-10" />
           <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
             <h2 className="display-section">{insecable(s.ctaTitre)}</h2>
             <p className="mt-5 text-lg text-muted-foreground">
@@ -376,7 +377,7 @@ export function SecteurLanding({ s }: { s: Secteur }) {
                 <Calendar className="h-4 w-4" />
                 Réserver un diagnostic de 30 min
               </a>
-              <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
+              <a href={`tel:${SITALY_PHONE}`} className="bouton-contour-clair px-6 py-3.5">
                 <Phone className="h-4 w-4" />
                 {SITALY_PHONE_DISPLAY}
               </a>

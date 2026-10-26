@@ -32,13 +32,14 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
   const autres = voisines(e);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader />
+    <div className={`ambiance-${e.famille} min-h-screen bg-background text-foreground`}>
+      <SiteHeader premierEcran="sombre" />
 
       <main>
-        {/* Ouverture. Le voile plutôt qu'un aplat : la page doit ressembler à
-          une section de l'accueil, pas à une plaquette détachée. */}
-        <section className="on-wash pt-[calc(var(--entete-hauteur)+3rem)] pb-16 sm:pt-[calc(var(--entete-hauteur)+5rem)] sm:pb-24">
+        {/* Ouverture sombre, éclairée de la couleur de la famille : la même
+          ambiance que la page Demandes de chantier, déclinée par famille. */}
+        <section className="on-ink relative isolate overflow-hidden bg-ink pt-[calc(var(--entete-hauteur)+3rem)] pb-16 sm:pt-[calc(var(--entete-hauteur)+5rem)] sm:pb-24">
+          <div aria-hidden="true" className="foyer-ambiance absolute inset-0 -z-10" />
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <nav aria-label="Fil d'Ariane" className="rail-label text-muted-foreground">
               <Link to="/" className="transition hover:text-brand-ink">
@@ -47,7 +48,7 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
               <span className="px-2 text-muted-foreground">/</span>
               {/* La famille se dit par sa couleur autant que par son nom : c'est
                 le même repère que dans le menu, le pied de page et le blog. */}
-              <span style={{ color: COULEURS_FAMILLE[e.famille].encre }}>{famille.titre}</span>
+              <span style={{ color: COULEURS_FAMILLE[e.famille].surEncre }}>{famille.titre}</span>
             </nav>
 
             <h1 className="display-hero mt-6 max-w-4xl">
@@ -59,7 +60,7 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
 
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <BoutonPrincipal e={e} />
-              <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
+              <a href={`tel:${SITALY_PHONE}`} className="bouton-contour-clair px-6 py-3.5">
                 <Phone className="h-4 w-4" />
                 {SITALY_PHONE_DISPLAY}
               </a>
@@ -68,7 +69,7 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
             <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-border pt-6 text-sm font-medium">
               {e.reperes.map((r) => (
                 <li key={r} className="flex items-center gap-2">
-                  <Check className="h-4 w-4 shrink-0 text-signal-ink" />
+                  <Check className="h-4 w-4 shrink-0 text-signal" />
                   {r}
                 </li>
               ))}
@@ -293,8 +294,8 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
 
         {/* Appel final : le questionnaire, sauf pour les agents IA, dont la
             vente passe par un diagnostic de trente minutes. */}
-        <section className="relative overflow-hidden py-20 sm:py-28">
-          <div className="absolute inset-0 -z-10 hero-bg" aria-hidden="true" />
+        <section className="on-ink relative isolate overflow-hidden bg-ink py-20 sm:py-28">
+          <div aria-hidden="true" className="foyer-ambiance absolute inset-0 -z-10" />
           <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
             {e.famille === "automatisation" ? (
               <>
@@ -319,7 +320,7 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
             )}
             <div className="mt-9 flex flex-wrap justify-center gap-3">
               <BoutonPrincipal e={e} />
-              <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
+              <a href={`tel:${SITALY_PHONE}`} className="bouton-contour-clair px-6 py-3.5">
                 <Phone className="h-4 w-4" />
                 {SITALY_PHONE_DISPLAY}
               </a>
