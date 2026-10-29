@@ -1,1 +1,0 @@
-import{o as e}from"./useStore-Bziq3ZTA.js";import{c as t,t as n}from"./SiteFooter-CVdFvSfC.js";var r=e();function i({children:e,appel:i}){return(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(t,{appel:i}),(0,r.jsx)(`div`,{className:`pt-[var(--entete-hauteur)]`,children:e}),(0,r.jsx)(n,{})]})}export{i as t};
