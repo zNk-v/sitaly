@@ -388,7 +388,6 @@ const FORMULES: Formule[] = [
       {
         titre: "Prise de rendez-vous en ligne",
         texte: "Vos clients réservent un créneau depuis votre site.",
-        bientot: true,
       },
     ],
   },
@@ -569,6 +568,12 @@ const GROUPES_COMPARES: { titre: string; lignes: LigneComparee[] }[] = [
       },
       { libelle: "Retouches en une phrase", valeurs: [true, true, true] },
       { libelle: "Photos créées par l'IA", valeurs: [true, true, true] },
+      {
+        libelle: "Articles de blog écrits par l'IA",
+        aide: "1 crédit les idées, 6 crédits l'article.",
+        valeurs: [true, true, true],
+      },
+      { libelle: "Logo et identité de marque", valeurs: [true, true, true] },
     ],
   },
   {
@@ -584,10 +589,8 @@ const GROUPES_COMPARES: { titre: string; lignes: LigneComparee[] }[] = [
         aide: "Enregistré à votre nom, renouvelé tant que l'abonnement court.",
         valeurs: [false, { bientot: "Bientôt" }, { bientot: "Bientôt" }],
       },
-      {
-        libelle: "Prise de rendez-vous en ligne",
-        valeurs: [false, { bientot: "Bientôt" }, { bientot: "Bientôt" }],
-      },
+      { libelle: "Score de visibilité SEO et GEO, fichier llms.txt", valeurs: [true, true, true] },
+      { libelle: "Prise de rendez-vous en ligne", valeurs: [false, true, true] },
       { libelle: "Site en deux langues", valeurs: [false, false, { bientot: "Bientôt" }] },
     ],
   },

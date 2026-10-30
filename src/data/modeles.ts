@@ -145,7 +145,7 @@ export const MODELES: Modele[] = [
       { titre: "Tarifs", texte: "Femme, homme, enfant : une grille lisible." },
       { titre: "L'équipe", texte: "Vos coiffeuses et leurs spécialités." },
       { titre: "Avis clients", texte: "Les retours qui donnent confiance." },
-      { titre: "Rendez-vous", texte: "Téléphone, formulaire, et bientôt la réservation en ligne." },
+      { titre: "Rendez-vous", texte: "Téléphone, formulaire et réservation en ligne des créneaux libres." },
     ],
     conseils: [
       {

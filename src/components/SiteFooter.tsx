@@ -34,6 +34,10 @@ const COLONNES: { titre: string; entrees: Entree[] }[] = [
     entrees: [
       { label: "Créer mon site", href: lienCreation() },
       { label: "Fonctionnalités", to: "/", hash: "fonctionnalites" },
+      { label: "Prise de rendez-vous", to: "/produits/prise-de-rendez-vous/" },
+      { label: "Blog écrit par l'IA", to: "/produits/blog-ia/" },
+      { label: "SEO et GEO", to: "/produits/referencement-seo-geo/" },
+      { label: "Identité de marque", to: "/produits/identite-de-marque/" },
       { label: "Modèles de sites", to: "/modeles/" },
       { label: "Tarifs", to: "/tarifs/" },
       { label: "Se connecter", href: `${APP_URL}/connexion` },
@@ -52,7 +56,7 @@ const COLONNES: { titre: string; entrees: Entree[] }[] = [
     entrees: [
       { label: "Vérifier un nom de domaine", to: "/outils/verifier-nom-de-domaine/" },
       { label: "Générateur de nom", to: "/outils/generateur-nom-entreprise/" },
-      { label: "Générateur de logo", bientot: true },
+      { label: "Générateur de logo", to: "/produits/identite-de-marque/" },
     ],
   },
   {

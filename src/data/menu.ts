@@ -76,17 +76,28 @@ const PRODUITS: MenuDeroulant = {
           hash: "fonctionnalites",
           icone: Palette,
         },
+        {
+          label: "Identité de marque",
+          desc: "Votre logo, vos couleurs, votre police.",
+          to: "/produits/identite-de-marque/",
+          icone: PenTool,
+        },
       ],
     },
     {
       titre: "Être trouvé",
       entrees: [
         {
-          label: "Référencement Google",
-          desc: "Titres, descriptions et fiche entreprise prêts.",
-          to: "/",
-          hash: "fonctionnalites",
+          label: "Référencement SEO et GEO",
+          desc: "Trouvé sur Google et par les IA.",
+          to: "/produits/referencement-seo-geo/",
           icone: SearchCheck,
+        },
+        {
+          label: "Blog écrit par l'IA",
+          desc: "Des articles qui vous amènent des visites.",
+          to: "/produits/blog-ia/",
+          icone: Newspaper,
         },
         {
           label: "Votre nom de domaine",
@@ -97,7 +108,7 @@ const PRODUITS: MenuDeroulant = {
         {
           label: "Prise de rendez-vous",
           desc: "Vos clients réservent depuis votre site.",
-          bientot: true,
+          to: "/produits/prise-de-rendez-vous/",
           icone: CalendarCheck,
         },
         {
@@ -160,8 +171,8 @@ const OUTILS: MenuDeroulant = {
         },
         {
           label: "Générateur de logo",
-          desc: "Un logo simple pour démarrer.",
-          bientot: true,
+          desc: "Votre logo à essayer en ligne.",
+          to: "/produits/identite-de-marque/",
           icone: PenTool,
         },
       ],

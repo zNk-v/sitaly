@@ -57,6 +57,7 @@ import { Route as ModelesIndexRouteImport } from './routes/modeles.index'
 import { Route as ComparerIndexRouteImport } from './routes/comparer.index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slug'
+import { Route as ProduitsIdRouteImport } from './routes/produits.$id'
 import { Route as OutilsVerifierNomDeDomaineRouteImport } from './routes/outils.verifier-nom-de-domaine'
 import { Route as OutilsGenerateurNomEntrepriseRouteImport } from './routes/outils.generateur-nom-entreprise'
 import { Route as OutilsBudgetGoogleAdsArtisanRouteImport } from './routes/outils.budget-google-ads-artisan'
@@ -317,6 +318,11 @@ const RealisationsSlugRoute = RealisationsSlugRouteImport.update({
   path: '/realisations/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProduitsIdRoute = ProduitsIdRouteImport.update({
+  id: '/produits/$id',
+  path: '/produits/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OutilsVerifierNomDeDomaineRoute =
   OutilsVerifierNomDeDomaineRouteImport.update({
     id: '/outils/verifier-nom-de-domaine',
@@ -468,6 +474,7 @@ export interface FileRoutesByFullPath {
   '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
   '/outils/generateur-nom-entreprise': typeof OutilsGenerateurNomEntrepriseRoute
   '/outils/verifier-nom-de-domaine': typeof OutilsVerifierNomDeDomaineRoute
+  '/produits/$id': typeof ProduitsIdRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/comparer/': typeof ComparerIndexRoute
@@ -534,6 +541,7 @@ export interface FileRoutesByTo {
   '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
   '/outils/generateur-nom-entreprise': typeof OutilsGenerateurNomEntrepriseRoute
   '/outils/verifier-nom-de-domaine': typeof OutilsVerifierNomDeDomaineRoute
+  '/produits/$id': typeof ProduitsIdRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog': typeof BlogIndexRoute
   '/comparer': typeof ComparerIndexRoute
@@ -602,6 +610,7 @@ export interface FileRoutesById {
   '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
   '/outils/generateur-nom-entreprise': typeof OutilsGenerateurNomEntrepriseRoute
   '/outils/verifier-nom-de-domaine': typeof OutilsVerifierNomDeDomaineRoute
+  '/produits/$id': typeof ProduitsIdRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/comparer/': typeof ComparerIndexRoute
@@ -671,6 +680,7 @@ export interface FileRouteTypes {
     | '/outils/budget-google-ads-artisan'
     | '/outils/generateur-nom-entreprise'
     | '/outils/verifier-nom-de-domaine'
+    | '/produits/$id'
     | '/realisations/$slug'
     | '/blog/'
     | '/comparer/'
@@ -737,6 +747,7 @@ export interface FileRouteTypes {
     | '/outils/budget-google-ads-artisan'
     | '/outils/generateur-nom-entreprise'
     | '/outils/verifier-nom-de-domaine'
+    | '/produits/$id'
     | '/realisations/$slug'
     | '/blog'
     | '/comparer'
@@ -804,6 +815,7 @@ export interface FileRouteTypes {
     | '/outils/budget-google-ads-artisan'
     | '/outils/generateur-nom-entreprise'
     | '/outils/verifier-nom-de-domaine'
+    | '/produits/$id'
     | '/realisations/$slug'
     | '/blog/'
     | '/comparer/'
@@ -871,6 +883,7 @@ export interface RootRouteChildren {
   OutilsBudgetGoogleAdsArtisanRoute: typeof OutilsBudgetGoogleAdsArtisanRoute
   OutilsGenerateurNomEntrepriseRoute: typeof OutilsGenerateurNomEntrepriseRoute
   OutilsVerifierNomDeDomaineRoute: typeof OutilsVerifierNomDeDomaineRoute
+  ProduitsIdRoute: typeof ProduitsIdRoute
   RealisationsSlugRoute: typeof RealisationsSlugRoute
   ComparerIndexRoute: typeof ComparerIndexRoute
   ModelesIndexRoute: typeof ModelesIndexRoute
@@ -1216,6 +1229,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RealisationsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/produits/$id': {
+      id: '/produits/$id'
+      path: '/produits/$id'
+      fullPath: '/produits/$id'
+      preLoaderRoute: typeof ProduitsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/outils/verifier-nom-de-domaine': {
       id: '/outils/verifier-nom-de-domaine'
       path: '/outils/verifier-nom-de-domaine'
@@ -1409,6 +1429,7 @@ const rootRouteChildren: RootRouteChildren = {
   OutilsBudgetGoogleAdsArtisanRoute: OutilsBudgetGoogleAdsArtisanRoute,
   OutilsGenerateurNomEntrepriseRoute: OutilsGenerateurNomEntrepriseRoute,
   OutilsVerifierNomDeDomaineRoute: OutilsVerifierNomDeDomaineRoute,
+  ProduitsIdRoute: ProduitsIdRoute,
   RealisationsSlugRoute: RealisationsSlugRoute,
   ComparerIndexRoute: ComparerIndexRoute,
   ModelesIndexRoute: ModelesIndexRoute,

@@ -7,6 +7,7 @@ import { SECTEURS } from "@/data/secteurs";
 import { METIERS } from "@/lib/metiers";
 import { MODELES } from "@/data/modeles";
 import { COMPARATIFS } from "@/data/comparatifs";
+import { PRODUITS } from "@/data/produits";
 import { estIndexable } from "@/lib/indexation";
 
 export const BASE_URL = "https://sitaly.fr";
@@ -108,6 +109,13 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
     changefreq: "monthly" as const,
     priority: "0.8",
     source: [route("comparer.$id.tsx"), "src/data/comparatifs.ts"],
+  })),
+  // Les pages produits de Sitaly App (31 octobre 2026).
+  ...PRODUITS.map((p) => ({
+    path: `/produits/${p.id}`,
+    changefreq: "monthly" as const,
+    priority: "0.8",
+    source: [route("produits.$id.tsx"), "src/data/produits.ts"],
   })),
   // Le générateur de noms d'entreprise (31 octobre 2026).
   {

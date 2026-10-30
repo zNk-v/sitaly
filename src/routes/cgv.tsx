@@ -170,9 +170,10 @@ function CGV() {
       <h3>3.3 Crédits IA</h3>
       <p>
         Les crédits IA servent aux demandes faites à l'intelligence artificielle : réécrire ou
-        ajouter une section, changer le ton, modifier le site en une phrase, créer une photo. Le
-        nombre de crédits consommé dépend de la demande et s'affiche dans l'application ; à la date
-        des présentes, une retouche coûte 1 ou 2 crédits et une photo créée par l'IA en coûte 5.
+        ajouter une section, changer le ton, modifier le site en une phrase, créer une photo, écrire
+        un article de blog. Le nombre de crédits consommé dépend de la demande et s'affiche dans
+        l'application ; à la date des présentes, une retouche coûte 1 ou 2 crédits, une photo créée
+        par l'IA 5, des idées d'articles 1 et un article de blog 6.
       </p>
       <p>
         Les crédits des formules payantes se renouvellent au début de chaque mois civil, y compris
