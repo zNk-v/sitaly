@@ -16,10 +16,16 @@ cd "$SRC"
 npm run build
 
 echo "==> 2/5 Copie du build vers le repo de mise en ligne"
-# --delete nettoie les vieux chunks JS et les pages supprimées.
+# --delete nettoie les pages supprimées.
 # --exclude protège ce qui N'EST PAS dans le build : CNAME, .nojekyll, .git, landing pub/
+# --filter 'P /assets/**' garde les anciens fichiers JS et CSS : GitHub Pages
+# sert la page HTML en cache jusqu'à 10 minutes après une publication, et cette
+# ancienne page appelle les fichiers de l'ancien build. Supprimés, ils
+# renvoyaient 404 et la page restait sans JavaScript (carrousel figé, menu
+# mobile fermé, animations absentes), le 31 octobre 2026.
 rsync -a --delete \
   --exclude .git --exclude CNAME --exclude .nojekyll --exclude /pub \
+  --filter 'P /assets/**' \
   "$SRC/dist/client/" "$PUB/"
 
 echo "==> 3/5 Commit"
