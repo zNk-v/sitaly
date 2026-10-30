@@ -6,6 +6,7 @@ import { EXPERTISES } from "@/data/expertises";
 import { SECTEURS } from "@/data/secteurs";
 import { METIERS } from "@/lib/metiers";
 import { MODELES } from "@/data/modeles";
+import { COMPARATIFS } from "@/data/comparatifs";
 import { estIndexable } from "@/lib/indexation";
 
 export const BASE_URL = "https://sitaly.fr";
@@ -94,6 +95,19 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
     changefreq: "yearly" as const,
     priority: "0.7",
     source: ["src/data/realisations.ts"],
+  })),
+  // Les comparatifs (30 octobre 2026).
+  {
+    path: "/comparer",
+    changefreq: "monthly",
+    priority: "0.7",
+    source: [route("comparer.index.tsx"), "src/data/comparatifs.ts"],
+  },
+  ...COMPARATIFS.map((c) => ({
+    path: `/comparer/${c.id}`,
+    changefreq: "monthly" as const,
+    priority: "0.8",
+    source: [route("comparer.$id.tsx"), "src/data/comparatifs.ts"],
   })),
   // Le générateur de noms d'entreprise (31 octobre 2026).
   {

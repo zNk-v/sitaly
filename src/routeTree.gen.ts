@@ -54,6 +54,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as RealisationsIndexRouteImport } from './routes/realisations.index'
 import { Route as OutilsIndexRouteImport } from './routes/outils.index'
 import { Route as ModelesIndexRouteImport } from './routes/modeles.index'
+import { Route as ComparerIndexRouteImport } from './routes/comparer.index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slug'
 import { Route as OutilsVerifierNomDeDomaineRouteImport } from './routes/outils.verifier-nom-de-domaine'
@@ -62,6 +63,7 @@ import { Route as OutilsBudgetGoogleAdsArtisanRouteImport } from './routes/outil
 import { Route as OutilsAuditFicheGoogleRouteImport } from './routes/outils.audit-fiche-google'
 import { Route as OffresIdRouteImport } from './routes/offres.$id'
 import { Route as ModelesIdRouteImport } from './routes/modeles.$id'
+import { Route as ComparerIdRouteImport } from './routes/comparer.$id'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AgentsIaSanteRouteImport } from './routes/agents-ia_.sante'
 import { Route as AgentsIaRestaurationRouteImport } from './routes/agents-ia_.restauration'
@@ -300,6 +302,11 @@ const ModelesIndexRoute = ModelesIndexRouteImport.update({
   path: '/modeles/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComparerIndexRoute = ComparerIndexRouteImport.update({
+  id: '/comparer/',
+  path: '/comparer/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -341,6 +348,11 @@ const OffresIdRoute = OffresIdRouteImport.update({
 const ModelesIdRoute = ModelesIdRouteImport.update({
   id: '/modeles/$id',
   path: '/modeles/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComparerIdRoute = ComparerIdRouteImport.update({
+  id: '/comparer/$id',
+  path: '/comparer/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
@@ -449,6 +461,7 @@ export interface FileRoutesByFullPath {
   '/agents-ia/restauration': typeof AgentsIaRestaurationRoute
   '/agents-ia/sante': typeof AgentsIaSanteRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/comparer/$id': typeof ComparerIdRoute
   '/modeles/$id': typeof ModelesIdRoute
   '/offres/$id': typeof OffresIdRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
@@ -457,6 +470,7 @@ export interface FileRoutesByFullPath {
   '/outils/verifier-nom-de-domaine': typeof OutilsVerifierNomDeDomaineRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/comparer/': typeof ComparerIndexRoute
   '/modeles/': typeof ModelesIndexRoute
   '/outils/': typeof OutilsIndexRoute
   '/realisations/': typeof RealisationsIndexRoute
@@ -513,6 +527,7 @@ export interface FileRoutesByTo {
   '/agents-ia/restauration': typeof AgentsIaRestaurationRoute
   '/agents-ia/sante': typeof AgentsIaSanteRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/comparer/$id': typeof ComparerIdRoute
   '/modeles/$id': typeof ModelesIdRoute
   '/offres/$id': typeof OffresIdRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
@@ -521,6 +536,7 @@ export interface FileRoutesByTo {
   '/outils/verifier-nom-de-domaine': typeof OutilsVerifierNomDeDomaineRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog': typeof BlogIndexRoute
+  '/comparer': typeof ComparerIndexRoute
   '/modeles': typeof ModelesIndexRoute
   '/outils': typeof OutilsIndexRoute
   '/realisations': typeof RealisationsIndexRoute
@@ -579,6 +595,7 @@ export interface FileRoutesById {
   '/agents-ia_/restauration': typeof AgentsIaRestaurationRoute
   '/agents-ia_/sante': typeof AgentsIaSanteRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/comparer/$id': typeof ComparerIdRoute
   '/modeles/$id': typeof ModelesIdRoute
   '/offres/$id': typeof OffresIdRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
@@ -587,6 +604,7 @@ export interface FileRoutesById {
   '/outils/verifier-nom-de-domaine': typeof OutilsVerifierNomDeDomaineRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/comparer/': typeof ComparerIndexRoute
   '/modeles/': typeof ModelesIndexRoute
   '/outils/': typeof OutilsIndexRoute
   '/realisations/': typeof RealisationsIndexRoute
@@ -646,6 +664,7 @@ export interface FileRouteTypes {
     | '/agents-ia/restauration'
     | '/agents-ia/sante'
     | '/blog/$slug'
+    | '/comparer/$id'
     | '/modeles/$id'
     | '/offres/$id'
     | '/outils/audit-fiche-google'
@@ -654,6 +673,7 @@ export interface FileRouteTypes {
     | '/outils/verifier-nom-de-domaine'
     | '/realisations/$slug'
     | '/blog/'
+    | '/comparer/'
     | '/modeles/'
     | '/outils/'
     | '/realisations/'
@@ -710,6 +730,7 @@ export interface FileRouteTypes {
     | '/agents-ia/restauration'
     | '/agents-ia/sante'
     | '/blog/$slug'
+    | '/comparer/$id'
     | '/modeles/$id'
     | '/offres/$id'
     | '/outils/audit-fiche-google'
@@ -718,6 +739,7 @@ export interface FileRouteTypes {
     | '/outils/verifier-nom-de-domaine'
     | '/realisations/$slug'
     | '/blog'
+    | '/comparer'
     | '/modeles'
     | '/outils'
     | '/realisations'
@@ -775,6 +797,7 @@ export interface FileRouteTypes {
     | '/agents-ia_/restauration'
     | '/agents-ia_/sante'
     | '/blog/$slug'
+    | '/comparer/$id'
     | '/modeles/$id'
     | '/offres/$id'
     | '/outils/audit-fiche-google'
@@ -783,6 +806,7 @@ export interface FileRouteTypes {
     | '/outils/verifier-nom-de-domaine'
     | '/realisations/$slug'
     | '/blog/'
+    | '/comparer/'
     | '/modeles/'
     | '/outils/'
     | '/realisations/'
@@ -840,6 +864,7 @@ export interface RootRouteChildren {
   AgentsIaProfessionsLiberalesRoute: typeof AgentsIaProfessionsLiberalesRoute
   AgentsIaRestaurationRoute: typeof AgentsIaRestaurationRoute
   AgentsIaSanteRoute: typeof AgentsIaSanteRoute
+  ComparerIdRoute: typeof ComparerIdRoute
   ModelesIdRoute: typeof ModelesIdRoute
   OffresIdRoute: typeof OffresIdRoute
   OutilsAuditFicheGoogleRoute: typeof OutilsAuditFicheGoogleRoute
@@ -847,6 +872,7 @@ export interface RootRouteChildren {
   OutilsGenerateurNomEntrepriseRoute: typeof OutilsGenerateurNomEntrepriseRoute
   OutilsVerifierNomDeDomaineRoute: typeof OutilsVerifierNomDeDomaineRoute
   RealisationsSlugRoute: typeof RealisationsSlugRoute
+  ComparerIndexRoute: typeof ComparerIndexRoute
   ModelesIndexRoute: typeof ModelesIndexRoute
   OutilsIndexRoute: typeof OutilsIndexRoute
   RealisationsIndexRoute: typeof RealisationsIndexRoute
@@ -1169,6 +1195,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ModelesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/comparer/': {
+      id: '/comparer/'
+      path: '/comparer'
+      fullPath: '/comparer/'
+      preLoaderRoute: typeof ComparerIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog/': {
       id: '/blog/'
       path: '/'
@@ -1223,6 +1256,13 @@ declare module '@tanstack/react-router' {
       path: '/modeles/$id'
       fullPath: '/modeles/$id'
       preLoaderRoute: typeof ModelesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/comparer/$id': {
+      id: '/comparer/$id'
+      path: '/comparer/$id'
+      fullPath: '/comparer/$id'
+      preLoaderRoute: typeof ComparerIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/$slug': {
@@ -1362,6 +1402,7 @@ const rootRouteChildren: RootRouteChildren = {
   AgentsIaProfessionsLiberalesRoute: AgentsIaProfessionsLiberalesRoute,
   AgentsIaRestaurationRoute: AgentsIaRestaurationRoute,
   AgentsIaSanteRoute: AgentsIaSanteRoute,
+  ComparerIdRoute: ComparerIdRoute,
   ModelesIdRoute: ModelesIdRoute,
   OffresIdRoute: OffresIdRoute,
   OutilsAuditFicheGoogleRoute: OutilsAuditFicheGoogleRoute,
@@ -1369,6 +1410,7 @@ const rootRouteChildren: RootRouteChildren = {
   OutilsGenerateurNomEntrepriseRoute: OutilsGenerateurNomEntrepriseRoute,
   OutilsVerifierNomDeDomaineRoute: OutilsVerifierNomDeDomaineRoute,
   RealisationsSlugRoute: RealisationsSlugRoute,
+  ComparerIndexRoute: ComparerIndexRoute,
   ModelesIndexRoute: ModelesIndexRoute,
   OutilsIndexRoute: OutilsIndexRoute,
   RealisationsIndexRoute: RealisationsIndexRoute,

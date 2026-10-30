@@ -17,9 +17,9 @@ import {
  * durable.com) : Produit, Ressources, Outils, Comparer, Entreprise, puis les
  * réseaux.
  *
- * Les entrées sans page portent « Bientôt » et ne sont pas des liens : le blog
- * de guides, les générateurs (nom, logo), les comparatifs et le programme
- * d'affiliation arrivent ensuite. Les pages de l'agence restent en ligne hors
+ * Les entrées sans page portent « Bientôt » et ne sont pas des liens : le
+ * guide, les tutoriels, le générateur de logo et le programme d'affiliation
+ * arrivent ensuite. Les pages de l'agence restent en ligne hors
  * menu ; la ligne « Aussi chez Sitaly » garde un lien vers les principales.
  */
 
@@ -58,10 +58,10 @@ const COLONNES: { titre: string; entrees: Entree[] }[] = [
   {
     titre: "Comparer",
     entrees: [
-      { label: "Sitaly ou Wix", bientot: true },
-      { label: "Sitaly ou WordPress", bientot: true },
-      { label: "Sitaly ou Squarespace", bientot: true },
-      { label: "Sitaly ou une agence", bientot: true },
+      { label: "Wix", to: "/comparer/wix/" },
+      { label: "WordPress", to: "/comparer/wordpress/" },
+      { label: "Squarespace", to: "/comparer/squarespace/" },
+      { label: "Une agence web", to: "/comparer/agence/" },
     ],
   },
   {
