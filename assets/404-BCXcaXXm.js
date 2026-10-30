@@ -1,0 +1,1 @@
+import{Gt as e}from"./index-DP4oHzx3.js";var t=e;export{t as component};

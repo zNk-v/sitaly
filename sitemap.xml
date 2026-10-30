@@ -223,6 +223,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://sitaly.fr/produits/devis-et-factures/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://sitaly.fr/produits/prise-de-rendez-vous/</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
