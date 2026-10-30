@@ -1,0 +1,1 @@
+import{vt as e}from"./index-CTLdtBwt.js";var t=e;export{t as component};
