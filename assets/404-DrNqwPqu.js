@@ -1,0 +1,1 @@
+import{Ut as e}from"./index-DeFlAAZE.js";var t=e;export{t as component};
