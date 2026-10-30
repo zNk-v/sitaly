@@ -1,49 +1,33 @@
 import {
-  AppWindow,
-  Bot,
-  ContactRound,
-  Gem,
-  HardHat,
+  CalendarCheck,
+  Globe,
+  ImagePlus,
   Info,
-  MapPin,
-  Megaphone,
+  Languages,
+  LayoutTemplate,
+  Lightbulb,
   MessageSquareText,
   Newspaper,
+  Palette,
   PenTool,
-  PhoneCall,
-  Plug,
-  Puzzle,
-  RefreshCw,
-  Rocket,
   SearchCheck,
-  ShieldCheck,
-  ShoppingCart,
-  Smartphone,
   Sparkles,
-  Store,
-  Workflow,
-  Wrench,
+  Wand2,
 } from "lucide-react";
-import { entreeMenu, type EntreeMenu, type FamilleId } from "@/data/expertises";
-import { CREATEUR_IA, offre, prixCourt, type Offre, type OffreId } from "@/data/offres";
-import { euros } from "@/lib/config";
-import { PREMIUM_PUBLIE } from "@/data/premium";
-import { REALISATIONS } from "@/data/realisations";
+import type { EntreeMenu } from "@/data/expertises";
 
 /**
- * Les onglets de l'en-tête (refonte du 23 octobre 2026, sur le modèle de
- * devmiweb.com) : Site web, Visibilité et Agents IA remplacent l'ancien
- * déroulant « Services ».
+ * Les menus de l'en-tête (31 octobre 2026), sur le modèle de durable.com :
+ * Produits, Ressources et Outils en menus déroulants, puis Tarifs.
  *
- * Chaque onglet tient en deux colonnes d'entrées, chacune avec son
- * pictogramme, et un encart à droite. Les offres de la grille portent leur
- * prix, lu dans src/data/offres.ts. L'onglet Visibilité garde ses pages :
- * sa grille est à revoir avec le client.
+ * Avant : Fonctionnalités, Exemples, Tarifs, l'onglet Services (Google Ads et
+ * sur mesure) et Ressources. Services est sorti de l'en-tête : ces offres se
+ * vendent au téléphone, et leurs pages restent liées depuis le pied de page
+ * (« Aussi chez Sitaly »). Les outils pensés pour l'agence (budget Google Ads,
+ * audit de fiche Google) restent en ligne, hors menu.
  *
- * Aucun métier ni secteur dans le menu : le site doit parler à n'importe quelle
- * activité. Les pages par métier et par secteur restent en ligne, hors menu.
- * Landing page, site événementiel et création de site internet restent en
- * ligne aussi, hors menu, à la demande du client.
+ * Une entrée `bientot` n'a pas encore de page : elle s'affiche avec la mention
+ * « Bientôt », sans lien.
  *
  * Le menu de bureau et le menu mobile lisent tous deux ce fichier.
  */
@@ -53,90 +37,138 @@ export interface ColonneMenu {
   entrees: EntreeMenu[];
 }
 
-/** L'encart à droite des colonnes, comme « Nos réalisations » chez devmiweb.com. */
-export interface CarteMenu {
-  surtitre: string;
-  titre: string;
-  lien: string;
-  to: string;
-  image?: string;
-}
-
-export interface OngletMenu {
+export interface MenuDeroulant {
   label: string;
-  /** La famille dont l'onglet porte la couleur. */
-  famille: FamilleId;
   colonnes: ColonneMenu[];
-  carte: CarteMenu;
-  /** Le lien sous les colonnes. */
-  pied?: { label: string; to: string; hash?: string };
 }
 
-type Icone = React.ComponentType<{ className?: string }>;
-
-/** Une offre en entrée de menu : sa page si elle en a une, sinon sa carte sur /tarifs/. */
-function entreeOffre(id: OffreId, icone: Icone, prix?: string): EntreeMenu {
-  const o: Offre = offre(id);
-  const base = { label: o.nom, desc: o.menuDesc, prix: prix ?? prixCourt(o), icone };
-  return o.page ? { ...base, to: o.page } : { ...base, to: "/tarifs/", hash: o.id };
-}
-
-const page = (cle: string, icone: Icone): EntreeMenu => ({ ...entreeMenu(cle), icone });
-
-/**
- * Depuis le 30 octobre 2026, sitaly.fr présente Sitaly App, comme durable.com :
- * le menu mène aux fonctions, aux exemples et aux tarifs de l'application
- * (MainNav, MobileMenu). Un seul onglet déroulant reste : « Services », pour ce
- * que l'application ne fait pas et que l'équipe vend en direct (Google Ads, sur
- * mesure). Les autres pages de l'agence restent en ligne, hors menu.
- */
-export const LIENS_PRODUIT: { label: string; to: string; hash?: string }[] = [
-  { label: "Fonctionnalités", to: "/", hash: "fonctionnalites" },
-  { label: "Exemples", to: "/", hash: "exemples" },
-  { label: "Tarifs", to: "/tarifs/" },
-];
-
-export const ONGLETS: OngletMenu[] = [
-  {
-    label: "Services",
-    famille: "acquisition",
-    colonnes: [
-      {
-        titre: "Être vu",
-        entrees: [page("google-ads", HardHat)],
-      },
-      {
-        titre: "Sur mesure",
-        entrees: [
-          entreeOffre("boutique", ShoppingCart, `dès ${prixCourt(offre("boutique"))}`),
-          ...(PREMIUM_PUBLIE ? [entreeOffre("site-premium", PenTool)] : []),
-          page("application-web-mobile", Smartphone),
-          page("crm-sur-mesure", ContactRound),
-          page("logiciel-metier", AppWindow),
-        ],
-      },
-    ],
-    carte: {
-      surtitre: "Un projet à part ?",
-      titre: "Campagnes Google Ads, boutique ou outil sur mesure : on en parle au téléphone",
-      lien: "Décrire mon projet",
-      to: "/mon-projet/",
+const PRODUITS: MenuDeroulant = {
+  label: "Produits",
+  colonnes: [
+    {
+      titre: "Créer votre site",
+      entrees: [
+        {
+          label: "Créateur de site IA",
+          desc: "Votre site complet à partir d'une phrase.",
+          to: "/",
+          hash: "fonctionnalites",
+          icone: Sparkles,
+        },
+        {
+          label: "Retouches par l'IA",
+          desc: "Modifiez votre site en lui parlant.",
+          to: "/",
+          hash: "retouches",
+          icone: MessageSquareText,
+        },
+        {
+          label: "Photos créées par l'IA",
+          desc: "Décrivez la photo, l'IA la crée.",
+          to: "/",
+          hash: "fonctionnalites",
+          icone: ImagePlus,
+        },
+        {
+          label: "Thèmes",
+          desc: "Quatre allures, un clic pour changer.",
+          to: "/",
+          hash: "fonctionnalites",
+          icone: Palette,
+        },
+      ],
     },
-  },
-];
+    {
+      titre: "Être trouvé",
+      entrees: [
+        {
+          label: "Référencement Google",
+          desc: "Titres, descriptions et fiche entreprise prêts.",
+          to: "/",
+          hash: "fonctionnalites",
+          icone: SearchCheck,
+        },
+        {
+          label: "Votre nom de domaine",
+          desc: "Votre propre adresse, ou la vôtre reliée.",
+          bientot: true,
+          icone: Globe,
+        },
+        {
+          label: "Prise de rendez-vous",
+          desc: "Vos clients réservent depuis votre site.",
+          bientot: true,
+          icone: CalendarCheck,
+        },
+        {
+          label: "Site en deux langues",
+          desc: "Une deuxième langue pour vos visiteurs.",
+          bientot: true,
+          icone: Languages,
+        },
+      ],
+    },
+  ],
+};
 
-export const AGENCE: EntreeMenu[] = [
-  {
-    label: "À propos",
-    desc: "Qui est derrière Sitaly, et comment on travaille.",
-    to: "/a-propos/",
-    icone: Info,
-  },
-  { label: "Blog", desc: "Conseils et prix réels, sans jargon.", to: "/blog/", icone: Newspaper },
-  {
-    label: "Outils gratuits",
-    desc: "Fiche Google, budget publicitaire, nom de domaine.",
-    to: "/outils/",
-    icone: Wrench,
-  },
-];
+const RESSOURCES: MenuDeroulant = {
+  label: "Ressources",
+  colonnes: [
+    {
+      titre: "Ressources",
+      entrees: [
+        {
+          label: "Modèles de sites",
+          desc: "Un modèle par métier, prêt à personnaliser.",
+          to: "/modeles/",
+          icone: LayoutTemplate,
+        },
+        {
+          label: "Blog",
+          desc: "Conseils pour lancer et faire connaître votre activité.",
+          to: "/blog/",
+          icone: Newspaper,
+        },
+        {
+          label: "À propos",
+          desc: "Qui est derrière Sitaly.",
+          to: "/a-propos/",
+          icone: Info,
+        },
+      ],
+    },
+  ],
+};
+
+const OUTILS: MenuDeroulant = {
+  label: "Outils",
+  colonnes: [
+    {
+      titre: "Outils gratuits",
+      entrees: [
+        {
+          label: "Générateur de nom d'entreprise",
+          desc: "Des idées de noms pour votre activité.",
+          bientot: true,
+          icone: Lightbulb,
+        },
+        {
+          label: "Vérifier un nom de domaine",
+          desc: "Votre adresse en .fr ou .com est-elle libre ?",
+          to: "/outils/verifier-nom-de-domaine/",
+          icone: Wand2,
+        },
+        {
+          label: "Générateur de logo",
+          desc: "Un logo simple pour démarrer.",
+          bientot: true,
+          icone: PenTool,
+        },
+      ],
+    },
+  ],
+};
+
+export const MENUS: MenuDeroulant[] = [PRODUITS, RESSOURCES, OUTILS];
+
+export const LIEN_TARIFS = { label: "Tarifs", to: "/tarifs/" };

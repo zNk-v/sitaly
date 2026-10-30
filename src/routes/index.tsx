@@ -165,7 +165,10 @@ function Accueil() {
           </div>
         </section>
 
-        <section className="bg-[#0d0f14] px-4 py-20 text-white sm:px-6 sm:py-28">
+        <section
+          id="retouches"
+          className="scroll-mt-28 bg-[#0d0f14] px-4 py-20 text-white sm:px-6 sm:py-28"
+        >
           <div className="mx-auto max-w-6xl">
             <div className="mx-auto max-w-3xl text-center">
               <div className="text-sm font-medium text-[#c4b5fd]">Retouches</div>

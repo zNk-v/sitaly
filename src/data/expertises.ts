@@ -1358,6 +1358,8 @@ export interface EntreeMenu {
   /** Ancre sur la page `to`, sans « # » : une carte de /tarifs/. */
   hash?: string;
   href?: string;
+  /** Pas encore de page : l'entrée s'affiche avec « Bientôt », sans lien. */
+  bientot?: boolean;
 }
 
 const HORS_FICHIER: Record<string, EntreeMenu> = {

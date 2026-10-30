@@ -1,16 +1,10 @@
 import type { OffreId } from "@/data/offres";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Bot, Globe, Megaphone, Menu, Phone, X } from "lucide-react";
-import { COULEURS_FAMILLE, type EntreeMenu, type FamilleId } from "@/data/expertises";
-import { AGENCE, LIENS_PRODUIT, ONGLETS } from "@/data/menu";
+import { ArrowRight, ArrowUpRight, Menu, Phone, X } from "lucide-react";
+import type { EntreeMenu } from "@/data/expertises";
+import { LIEN_TARIFS, MENUS } from "@/data/menu";
 import { APP_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
-
-const ICONES: Record<FamilleId, React.ComponentType<{ className?: string }>> = {
-  site: Globe,
-  acquisition: Megaphone,
-  automatisation: Bot,
-};
 
 /**
  * Le menu mobile.
@@ -31,9 +25,8 @@ const ICONES: Record<FamilleId, React.ComponentType<{ className?: string }>> = {
  *   mais il pouvait déborder sans qu'on puisse l'atteindre.
  * - Chaque famille porte sa couleur, comme partout ailleurs.
  *
- * Les onglets sont ceux du menu de bureau (src/data/menu.ts) : Site web,
- * Visibilité et Agents IA, avec le pictogramme de chaque entrée et le prix des
- * offres de la grille.
+ * Les menus sont ceux du bureau (src/data/menu.ts) : Produits, Ressources et
+ * Outils, chacun dans un volet, puis Tarifs.
  *
  * Aucune bibliothèque : deux `details` repliés, une transition CSS, et la
  * touche Échap.
@@ -47,7 +40,6 @@ export interface AppelPrincipal {
 export function MobileMenu({
   variant = "bar",
   onHome = false,
-  current,
   appel,
 }: {
   appel?: AppelPrincipal;
@@ -131,102 +123,38 @@ export function MobileMenu({
             className="feuille-menu fixed inset-x-3 top-[var(--entete-hauteur)] z-[60] max-h-[calc(100dvh-var(--entete-hauteur)-0.75rem)] overflow-y-auto overscroll-contain rounded-3xl border border-border bg-card shadow-elevated sm:inset-x-4 lg:hidden"
           >
             <nav className="p-3" aria-label="Navigation principale">
-              {/* Sitaly App d'abord : ses fonctions, ses exemples, ses tarifs. */}
-              {LIENS_PRODUIT.map((l) => (
-                <Link key={l.label} to={l.to} hash={l.hash} onClick={fermer} className={lien}>
-                  {l.label}
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
-                </Link>
+              {MENUS.map((m) => (
+                <details key={m.label} className="group">
+                  <summary className="flex cursor-pointer list-none items-center justify-between rounded-xl px-3 py-3 font-display text-base font-bold tracking-tight marker:content-none">
+                    {m.label}
+                    <svg
+                      viewBox="0 0 12 12"
+                      aria-hidden="true"
+                      className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                    >
+                      <path d="M2.5 4.5L6 8l3.5-3.5" />
+                    </svg>
+                  </summary>
+                  <ul className="mb-1 space-y-0.5 px-2">
+                    {m.colonnes
+                      .flatMap((c) => c.entrees)
+                      .map((e) => (
+                        <li key={e.label}>
+                          <EntreeMobile e={e} onClick={fermer} />
+                        </li>
+                      ))}
+                  </ul>
+                </details>
               ))}
 
-              {ONGLETS.map((o) => {
-                const Icone = ICONES[o.famille];
-                const encre = COULEURS_FAMILLE[o.famille].encre;
-                return (
-                  <details
-                    key={o.label}
-                    className="groupe-famille group"
-                    style={
-                      {
-                        "--encre-famille": encre,
-                        "--teinte-famille": COULEURS_FAMILLE[o.famille].couleur,
-                      } as React.CSSProperties
-                    }
-                  >
-                    <summary className="flex cursor-pointer list-none items-center gap-3 rounded-xl px-3 py-3 marker:content-none">
-                      {/* La pastille de couleur porte l'icône : c'est le même
-                          repère que dans le menu de bureau et le pied de page,
-                          à la taille d'un doigt. */}
-                      <span className="pastille-famille grid h-9 w-9 shrink-0 place-items-center rounded-xl">
-                        <Icone className="h-4.5 w-4.5" />
-                      </span>
-                      <span className="min-w-0 flex-1 font-display text-base font-bold tracking-tight">
-                        {o.label}
-                      </span>
-                      <svg
-                        viewBox="0 0 12 12"
-                        aria-hidden="true"
-                        className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.8"
-                        strokeLinecap="round"
-                      >
-                        <path d="M2.5 4.5L6 8l3.5-3.5" />
-                      </svg>
-                    </summary>
-
-                    <div className="mb-1 ml-[3.25rem] mr-3 border-l border-border pl-3">
-                      {o.colonnes.map((c) => (
-                        <div key={c.titre} className="pb-1">
-                          {/* Un seul intertitre ne classe rien : il ne s'affiche
-                              que s'il y a plusieurs colonnes. */}
-                          {o.colonnes.length > 1 && (
-                            <p className="rail-label px-2 pt-2 pb-1" style={{ color: encre }}>
-                              {c.titre}
-                            </p>
-                          )}
-                          <ul className="space-y-0.5">
-                            {c.entrees.map((e) => (
-                              <li key={e.label}>
-                                <EntreeMobile e={e} onClick={fermer} />
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                      {o.pied && (
-                        <Link
-                          to={o.pied.to}
-                          hash={o.pied.hash}
-                          onClick={fermer}
-                          className="block rounded-lg px-2 py-2.5 text-[15px] font-semibold"
-                          style={{ color: encre }}
-                        >
-                          {o.pied.label}
-                        </Link>
-                      )}
-                    </div>
-                  </details>
-                );
-              })}
-
-              <div className="my-2 h-px bg-border" />
-
-              {/* L'agence : à plat sur mobile, trois liens ne méritent pas un
-                  volet de plus. */}
-              {AGENCE.map((e) =>
-                current === "blog" && e.to === "/blog/" ? (
-                  <span key={e.label} aria-current="page" className={`${lien} text-brand-ink`}>
-                    {e.label}
-                  </span>
-                ) : (
-                  <Link key={e.label} to={e.to} onClick={fermer} className={lien}>
-                    {e.label}
-                    <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
-                  </Link>
-                ),
-              )}
+              <Link to={LIEN_TARIFS.to} onClick={fermer} className={lien}>
+                {LIEN_TARIFS.label}
+                <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
+              </Link>
 
               {!onHome && (
                 <Link to="/" onClick={fermer} className={lien}>
@@ -296,6 +224,11 @@ function EntreeMobile({ e, onClick }: { e: EntreeMenu; onClick: () => void }) {
         </span>
       )}
       <span className="min-w-0 flex-1">{e.label}</span>
+      {e.bientot && (
+        <span className="shrink-0 rounded-full bg-secondary px-2 py-0.5 text-[11px] font-medium">
+          Bientôt
+        </span>
+      )}
       {e.prix && (
         <span className="shrink-0 text-[13px] font-semibold whitespace-nowrap tabular-nums text-[color:var(--encre-famille)]">
           {e.prix}
@@ -303,6 +236,7 @@ function EntreeMobile({ e, onClick }: { e: EntreeMenu; onClick: () => void }) {
       )}
     </>
   );
+  if (e.bientot) return <div className={`${classe} opacity-60`}>{contenu}</div>;
   return e.to ? (
     <Link to={e.to} hash={e.hash} onClick={onClick} className={classe}>
       {contenu}

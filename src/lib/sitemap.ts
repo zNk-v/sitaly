@@ -5,6 +5,7 @@ import { REALISATIONS } from "@/data/realisations";
 import { EXPERTISES } from "@/data/expertises";
 import { SECTEURS } from "@/data/secteurs";
 import { METIERS } from "@/lib/metiers";
+import { MODELES } from "@/data/modeles";
 import { estIndexable } from "@/lib/indexation";
 
 export const BASE_URL = "https://sitaly.fr";
@@ -93,6 +94,19 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
     changefreq: "yearly" as const,
     priority: "0.7",
     source: ["src/data/realisations.ts"],
+  })),
+  // Les modèles de sites par métier (31 octobre 2026).
+  {
+    path: "/modeles",
+    changefreq: "monthly",
+    priority: "0.8",
+    source: [route("modeles.index.tsx"), "src/data/modeles.ts"],
+  },
+  ...MODELES.map((m) => ({
+    path: `/modeles/${m.id}`,
+    changefreq: "monthly" as const,
+    priority: "0.7",
+    source: [route("modeles.$id.tsx"), "src/data/modeles.ts"],
   })),
   { path: "/blog", changefreq: "weekly", priority: "0.9", lastmod: derniereDateBlog },
   ...BLOG_POSTS.map((p) => ({

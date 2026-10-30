@@ -1,18 +1,14 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
-import { COULEURS_FAMILLE, type EntreeMenu } from "@/data/expertises";
-import { AGENCE, LIENS_PRODUIT, ONGLETS, type OngletMenu } from "@/data/menu";
+import type { EntreeMenu } from "@/data/expertises";
+import { LIEN_TARIFS, MENUS, type MenuDeroulant } from "@/data/menu";
 
 /**
  * Navigation principale, avec ses menus déroulants.
  *
- * Depuis le 30 octobre 2026 : Fonctionnalités, Exemples et Tarifs de Sitaly
- * App, puis l'onglet Services (ce que l'équipe vend en direct) et Ressources.
- * Avant : trois onglets de services (Site web, Visibilité, Agents IA), chacun
- * dans la couleur de sa famille, puis Réalisations, Tarifs et L'agence. Chaque onglet
- * reprend la mise en page de devmiweb.com : deux colonnes d'entrées avec leur
- * pictogramme, un encart à droite, et le prix des offres de la grille, pour
- * que le visiteur voie ce que coûte un site avant d'ouvrir une page.
+ * Depuis le 31 octobre 2026, comme sur durable.com : Produits, Ressources et
+ * Outils en menus déroulants, puis Tarifs. Avant (30 octobre) :
+ * Fonctionnalités, Exemples, Tarifs, l'onglet Services et Ressources ; avant
+ * encore, trois onglets de services de l'agence à la manière de devmiweb.com.
  *
  * Les onglets viennent de `src/data/menu.ts` : le menu n'a aucune liste à lui,
  * il ne décide que de la mise en page.
@@ -38,6 +34,11 @@ function EntreeLien({ e }: { e: EntreeMenu }) {
           <span className="font-semibold group-hover/item:text-[color:var(--encre-famille,var(--brand-ink))]">
             {e.label}
           </span>
+          {e.bientot && (
+            <span className="shrink-0 rounded-full bg-secondary px-2 py-0.5 text-[11px] font-medium text-muted-foreground">
+              Bientôt
+            </span>
+          )}
           {e.prix && (
             <span className="shrink-0 text-[13px] font-semibold whitespace-nowrap tabular-nums text-[color:var(--encre-famille,var(--brand-ink))]">
               {e.prix}
@@ -52,6 +53,11 @@ function EntreeLien({ e }: { e: EntreeMenu }) {
   );
   const classe =
     "group/item flex items-start gap-3 rounded-xl px-2.5 py-2 transition-colors hover:bg-secondary focus-visible:bg-secondary";
+  if (e.bientot) {
+    return (
+      <div className="flex items-start gap-3 rounded-xl px-2.5 py-2 opacity-60">{contenu}</div>
+    );
+  }
   /* Les landings servies depuis public/ vivent hors du routeur : lien classique. */
   return e.to ? (
     <Link to={e.to} hash={e.hash} className={classe}>
@@ -134,21 +140,15 @@ function Deroulant({
   );
 }
 
-/** Un onglet de services : deux colonnes, l'encart, puis le lien vers les tarifs. */
-function Onglet({ o }: { o: OngletMenu }) {
-  const { encre, couleur } = COULEURS_FAMILLE[o.famille];
+/** Un menu déroulant : ses colonnes d'entrées côte à côte. */
+function Menu({ m }: { m: MenuDeroulant }) {
+  const plusieurs = m.colonnes.length > 1;
   return (
-    <Deroulant
-      label={o.label}
-      large={64}
-      style={{ "--encre-famille": encre, "--teinte-famille": couleur } as React.CSSProperties}
-    >
-      <div className="grid grid-cols-[1fr_1fr_15rem] gap-4">
-        {o.colonnes.map((c) => (
-          <div key={c.titre}>
-            <p className="rail-label px-2.5 pb-2" style={{ color: encre }}>
-              {c.titre}
-            </p>
+    <Deroulant label={m.label}>
+      <div className={plusieurs ? "grid grid-cols-2 gap-4" : ""}>
+        {m.colonnes.map((c) => (
+          <div key={c.titre} className={plusieurs ? "w-[19rem]" : "w-[22rem]"}>
+            {plusieurs && <p className="rail-label px-2.5 pb-2 text-muted-foreground">{c.titre}</p>}
             <div className="space-y-0.5">
               {c.entrees.map((e) => (
                 <EntreeLien key={e.label} e={e} />
@@ -156,85 +156,20 @@ function Onglet({ o }: { o: OngletMenu }) {
             </div>
           </div>
         ))}
-        <Carte o={o} />
       </div>
-      {o.pied && (
-        <Link
-          to={o.pied.to}
-          hash={o.pied.hash}
-          className="mt-3 flex items-center gap-1.5 rounded-lg border-t border-border px-2.5 pt-3 text-sm font-semibold"
-          style={{ color: encre }}
-        >
-          {o.pied.label}
-          <ArrowRight className="h-4 w-4" />
-        </Link>
-      )}
     </Deroulant>
-  );
-}
-
-/** L'encart à droite d'un onglet : une réalisation, un outil gratuit, un article. */
-function Carte({ o }: { o: OngletMenu }) {
-  const c = o.carte;
-  /* Sans image, l'encart porte le pictogramme de la première offre. */
-  const Icone = o.colonnes[0].entrees[0].icone;
-  return (
-    <Link
-      to={c.to}
-      className="group/carte flex flex-col overflow-hidden rounded-xl border border-border bg-secondary/60 transition-colors hover:border-foreground/15"
-    >
-      {c.image ? (
-        <img
-          src={c.image}
-          alt=""
-          aria-hidden="true"
-          width={240}
-          height={150}
-          loading="lazy"
-          className="aspect-[16/10] w-full border-b border-border object-cover object-top"
-        />
-      ) : (
-        <span className="pastille-famille grid aspect-[16/10] w-full place-items-center">
-          {Icone && <Icone className="h-10 w-10" />}
-        </span>
-      )}
-      <span className="flex flex-1 flex-col p-3.5">
-        <span className="rail-label" style={{ color: COULEURS_FAMILLE[o.famille].encre }}>
-          {c.surtitre}
-        </span>
-        <span className="mt-1.5 text-[14px] leading-snug font-semibold">{c.titre}</span>
-        <span
-          className="mt-auto flex items-center gap-1.5 pt-3 text-[13px] font-semibold"
-          style={{ color: COULEURS_FAMILLE[o.famille].encre }}
-        >
-          {c.lien}
-          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/carte:translate-x-0.5" />
-        </span>
-      </span>
-    </Link>
   );
 }
 
 export function MainNav() {
   return (
     <nav className="hidden items-center gap-5 lg:flex xl:gap-7" aria-label="Navigation principale">
-      {LIENS_PRODUIT.map((l) => (
-        <Link key={l.label} to={l.to} hash={l.hash} className="lien-entete py-5">
-          {l.label}
-        </Link>
+      {MENUS.map((m) => (
+        <Menu key={m.label} m={m} />
       ))}
-
-      {ONGLETS.map((o) => (
-        <Onglet key={o.label} o={o} />
-      ))}
-
-      <Deroulant label="Ressources">
-        <div className="space-y-0.5">
-          {AGENCE.map((e) => (
-            <EntreeLien key={e.label} e={e} />
-          ))}
-        </div>
-      </Deroulant>
+      <Link to={LIEN_TARIFS.to} className="lien-entete py-5">
+        {LIEN_TARIFS.label}
+      </Link>
     </nav>
   );
 }

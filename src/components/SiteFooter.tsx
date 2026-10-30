@@ -14,7 +14,8 @@ import {
 
 /**
  * Pied de page unique du site (refonte du 30 octobre 2026, sur le modèle de
- * durable.com) : Produit, Ressources, Comparer, Entreprise, puis les réseaux.
+ * durable.com) : Produit, Ressources, Outils, Comparer, Entreprise, puis les
+ * réseaux.
  *
  * Les entrées sans page portent « Bientôt » et ne sont pas des liens : le blog
  * de guides, les générateurs (nom, logo), les comparatifs et le programme
@@ -33,7 +34,7 @@ const COLONNES: { titre: string; entrees: Entree[] }[] = [
     entrees: [
       { label: "Créer mon site", href: lienCreation() },
       { label: "Fonctionnalités", to: "/", hash: "fonctionnalites" },
-      { label: "Exemples", to: "/", hash: "exemples" },
+      { label: "Modèles de sites", to: "/modeles/" },
       { label: "Tarifs", to: "/tarifs/" },
       { label: "Se connecter", href: `${APP_URL}/connexion` },
     ],
@@ -42,10 +43,15 @@ const COLONNES: { titre: string; entrees: Entree[] }[] = [
     titre: "Ressources",
     entrees: [
       { label: "Blog", to: "/blog/" },
-      { label: "Outils gratuits", to: "/outils/" },
       { label: "Guide de démarrage", bientot: true },
       { label: "Tutoriels vidéo", bientot: true },
-      { label: "Générateur de nom d'entreprise", bientot: true },
+    ],
+  },
+  {
+    titre: "Outils",
+    entrees: [
+      { label: "Vérifier un nom de domaine", to: "/outils/verifier-nom-de-domaine/" },
+      { label: "Générateur de nom", bientot: true },
       { label: "Générateur de logo", bientot: true },
     ],
   },
@@ -107,7 +113,7 @@ export function SiteFooter() {
   return (
     <footer className="overflow-hidden border-t border-black/[0.06] bg-white pt-16 text-[#09090b]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_repeat(4,1fr)]">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.2fr_repeat(5,1fr)]">
           <div>
             <SitalyLogo />
             <p className="mt-4 max-w-xs text-[15px] leading-relaxed text-black/60">

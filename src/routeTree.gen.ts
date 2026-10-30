@@ -53,12 +53,14 @@ import { Route as R404RouteImport } from './routes/404'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as RealisationsIndexRouteImport } from './routes/realisations.index'
 import { Route as OutilsIndexRouteImport } from './routes/outils.index'
+import { Route as ModelesIndexRouteImport } from './routes/modeles.index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slug'
 import { Route as OutilsVerifierNomDeDomaineRouteImport } from './routes/outils.verifier-nom-de-domaine'
 import { Route as OutilsBudgetGoogleAdsArtisanRouteImport } from './routes/outils.budget-google-ads-artisan'
 import { Route as OutilsAuditFicheGoogleRouteImport } from './routes/outils.audit-fiche-google'
 import { Route as OffresIdRouteImport } from './routes/offres.$id'
+import { Route as ModelesIdRouteImport } from './routes/modeles.$id'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AgentsIaSanteRouteImport } from './routes/agents-ia_.sante'
 import { Route as AgentsIaRestaurationRouteImport } from './routes/agents-ia_.restauration'
@@ -292,6 +294,11 @@ const OutilsIndexRoute = OutilsIndexRouteImport.update({
   path: '/outils/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ModelesIndexRoute = ModelesIndexRouteImport.update({
+  id: '/modeles/',
+  path: '/modeles/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -322,6 +329,11 @@ const OutilsAuditFicheGoogleRoute = OutilsAuditFicheGoogleRouteImport.update({
 const OffresIdRoute = OffresIdRouteImport.update({
   id: '/offres/$id',
   path: '/offres/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ModelesIdRoute = ModelesIdRouteImport.update({
+  id: '/modeles/$id',
+  path: '/modeles/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
@@ -430,12 +442,14 @@ export interface FileRoutesByFullPath {
   '/agents-ia/restauration': typeof AgentsIaRestaurationRoute
   '/agents-ia/sante': typeof AgentsIaSanteRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/modeles/$id': typeof ModelesIdRoute
   '/offres/$id': typeof OffresIdRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
   '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
   '/outils/verifier-nom-de-domaine': typeof OutilsVerifierNomDeDomaineRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/modeles/': typeof ModelesIndexRoute
   '/outils/': typeof OutilsIndexRoute
   '/realisations/': typeof RealisationsIndexRoute
 }
@@ -491,12 +505,14 @@ export interface FileRoutesByTo {
   '/agents-ia/restauration': typeof AgentsIaRestaurationRoute
   '/agents-ia/sante': typeof AgentsIaSanteRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/modeles/$id': typeof ModelesIdRoute
   '/offres/$id': typeof OffresIdRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
   '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
   '/outils/verifier-nom-de-domaine': typeof OutilsVerifierNomDeDomaineRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog': typeof BlogIndexRoute
+  '/modeles': typeof ModelesIndexRoute
   '/outils': typeof OutilsIndexRoute
   '/realisations': typeof RealisationsIndexRoute
 }
@@ -554,12 +570,14 @@ export interface FileRoutesById {
   '/agents-ia_/restauration': typeof AgentsIaRestaurationRoute
   '/agents-ia_/sante': typeof AgentsIaSanteRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/modeles/$id': typeof ModelesIdRoute
   '/offres/$id': typeof OffresIdRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
   '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
   '/outils/verifier-nom-de-domaine': typeof OutilsVerifierNomDeDomaineRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/modeles/': typeof ModelesIndexRoute
   '/outils/': typeof OutilsIndexRoute
   '/realisations/': typeof RealisationsIndexRoute
 }
@@ -618,12 +636,14 @@ export interface FileRouteTypes {
     | '/agents-ia/restauration'
     | '/agents-ia/sante'
     | '/blog/$slug'
+    | '/modeles/$id'
     | '/offres/$id'
     | '/outils/audit-fiche-google'
     | '/outils/budget-google-ads-artisan'
     | '/outils/verifier-nom-de-domaine'
     | '/realisations/$slug'
     | '/blog/'
+    | '/modeles/'
     | '/outils/'
     | '/realisations/'
   fileRoutesByTo: FileRoutesByTo
@@ -679,12 +699,14 @@ export interface FileRouteTypes {
     | '/agents-ia/restauration'
     | '/agents-ia/sante'
     | '/blog/$slug'
+    | '/modeles/$id'
     | '/offres/$id'
     | '/outils/audit-fiche-google'
     | '/outils/budget-google-ads-artisan'
     | '/outils/verifier-nom-de-domaine'
     | '/realisations/$slug'
     | '/blog'
+    | '/modeles'
     | '/outils'
     | '/realisations'
   id:
@@ -741,12 +763,14 @@ export interface FileRouteTypes {
     | '/agents-ia_/restauration'
     | '/agents-ia_/sante'
     | '/blog/$slug'
+    | '/modeles/$id'
     | '/offres/$id'
     | '/outils/audit-fiche-google'
     | '/outils/budget-google-ads-artisan'
     | '/outils/verifier-nom-de-domaine'
     | '/realisations/$slug'
     | '/blog/'
+    | '/modeles/'
     | '/outils/'
     | '/realisations/'
   fileRoutesById: FileRoutesById
@@ -803,11 +827,13 @@ export interface RootRouteChildren {
   AgentsIaProfessionsLiberalesRoute: typeof AgentsIaProfessionsLiberalesRoute
   AgentsIaRestaurationRoute: typeof AgentsIaRestaurationRoute
   AgentsIaSanteRoute: typeof AgentsIaSanteRoute
+  ModelesIdRoute: typeof ModelesIdRoute
   OffresIdRoute: typeof OffresIdRoute
   OutilsAuditFicheGoogleRoute: typeof OutilsAuditFicheGoogleRoute
   OutilsBudgetGoogleAdsArtisanRoute: typeof OutilsBudgetGoogleAdsArtisanRoute
   OutilsVerifierNomDeDomaineRoute: typeof OutilsVerifierNomDeDomaineRoute
   RealisationsSlugRoute: typeof RealisationsSlugRoute
+  ModelesIndexRoute: typeof ModelesIndexRoute
   OutilsIndexRoute: typeof OutilsIndexRoute
   RealisationsIndexRoute: typeof RealisationsIndexRoute
 }
@@ -1122,6 +1148,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OutilsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/modeles/': {
+      id: '/modeles/'
+      path: '/modeles'
+      fullPath: '/modeles/'
+      preLoaderRoute: typeof ModelesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog/': {
       id: '/blog/'
       path: '/'
@@ -1162,6 +1195,13 @@ declare module '@tanstack/react-router' {
       path: '/offres/$id'
       fullPath: '/offres/$id'
       preLoaderRoute: typeof OffresIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/modeles/$id': {
+      id: '/modeles/$id'
+      path: '/modeles/$id'
+      fullPath: '/modeles/$id'
+      preLoaderRoute: typeof ModelesIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/$slug': {
@@ -1301,11 +1341,13 @@ const rootRouteChildren: RootRouteChildren = {
   AgentsIaProfessionsLiberalesRoute: AgentsIaProfessionsLiberalesRoute,
   AgentsIaRestaurationRoute: AgentsIaRestaurationRoute,
   AgentsIaSanteRoute: AgentsIaSanteRoute,
+  ModelesIdRoute: ModelesIdRoute,
   OffresIdRoute: OffresIdRoute,
   OutilsAuditFicheGoogleRoute: OutilsAuditFicheGoogleRoute,
   OutilsBudgetGoogleAdsArtisanRoute: OutilsBudgetGoogleAdsArtisanRoute,
   OutilsVerifierNomDeDomaineRoute: OutilsVerifierNomDeDomaineRoute,
   RealisationsSlugRoute: RealisationsSlugRoute,
+  ModelesIndexRoute: ModelesIndexRoute,
   OutilsIndexRoute: OutilsIndexRoute,
   RealisationsIndexRoute: RealisationsIndexRoute,
 }
