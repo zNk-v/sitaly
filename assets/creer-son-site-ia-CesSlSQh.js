@@ -1,0 +1,1 @@
+import{a as e,n as t,t as n}from"./jsx-runtime-n5LQ9ujS.js";var r=e(t()),i=n();function a(){return(0,r.useEffect)(()=>{window.location.replace(`/`)},[]),(0,i.jsxs)(`p`,{className:`p-8 text-center`,children:[`Cette page a déménagé : `,(0,i.jsx)(`a`,{href:`/`,children:`créez votre site avec l'IA sur l'accueil de Sitaly`}),`.`]})}export{a as component};
