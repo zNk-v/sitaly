@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { formatDate, type BlogPost } from "@/data/blog-posts";
 import { TEXTE_GRIS } from "@/components/produit/Produit";
+import { Couverture } from "@/components/produit/Couverture";
 
 /**
  * La carte d'un article dans l'allure Durable (30 octobre 2026) : le blog et
@@ -27,8 +28,13 @@ export function CarteArticle({
         sombre ? "bg-[#0d0f14] text-white hover:bg-black" : "bg-black/[0.03] hover:bg-black/[0.05]"
       } ${className}`}
     >
-      {/* La grande carte pose son titre en bas, comme une couverture. */}
+      {/* La grande carte laisse sa couverture animée occuper toute la hauteur libre. */}
       <div className={sombre ? "flex flex-1 flex-col" : ""}>
+        <Couverture
+          slug={post.slug}
+          rubrique={post.category}
+          className={`mb-5 rounded-2xl ${sombre ? "min-h-[16rem] flex-1" : "aspect-[1.9/1]"}`}
+        />
         <div className="flex flex-wrap items-center gap-2 text-[13px]">
           <span
             className={`rounded-full px-3 py-1 font-medium ${sombre ? "bg-white/10 text-[#c4b5fd]" : "bg-white text-black/70"}`}
@@ -40,7 +46,7 @@ export function CarteArticle({
         <h3
           className={
             sombre
-              ? "titre-produit mt-auto max-w-2xl pt-16 text-[2rem] leading-[1.05] text-white sm:text-[2.8rem]"
+              ? "titre-produit max-w-2xl pt-2 text-[2rem] leading-[1.05] text-white sm:text-[2.6rem]"
               : "mt-5 text-xl leading-snug font-semibold tracking-tight"
           }
         >

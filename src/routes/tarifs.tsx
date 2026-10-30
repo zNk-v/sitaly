@@ -6,6 +6,7 @@ import {
   Faq,
   FAQ_PRODUIT,
   GrilleTarifs,
+  TableauFormules,
   TEXTE_GRIS,
   TitreSection,
 } from "@/components/produit/Produit";
@@ -79,6 +80,19 @@ function Tarifs() {
           </div>
           <div className="mx-auto mt-14 max-w-6xl">
             <GrilleTarifs />
+          </div>
+        </section>
+
+        <section className="px-4 py-20 sm:px-6 sm:py-28">
+          <div className="mx-auto max-w-5xl">
+            <TitreSection
+              surtitre="Comparer"
+              titre="Toutes les fonctions, formule par formule"
+              sousTitre="Ce que comprend chaque formule, ligne par ligne."
+            />
+            <div className="mt-14">
+              <TableauFormules />
+            </div>
           </div>
         </section>
 

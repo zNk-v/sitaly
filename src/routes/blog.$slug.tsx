@@ -16,6 +16,7 @@ import { TexteAvecLiens } from "@/components/TexteAvecLiens";
 import { MetierLinksStrip } from "@/components/MetierLinks";
 import { SiteChrome } from "@/components/SiteChrome";
 import { CarteArticle } from "@/components/produit/CarteArticle";
+import { Couverture } from "@/components/produit/Couverture";
 import { BOUTON_NOIR, BoiteApp, CARTE, Confiance, TEXTE_GRIS } from "@/components/produit/Produit";
 import { articleIndexable, directiveRobots } from "@/lib/indexation";
 import { APP_URL, CALENDLY_URL } from "@/lib/config";
@@ -202,6 +203,14 @@ function BlogPostPage() {
             </div>
           </header>
 
+          {/* Sans illustration propre, la couverture animée de l'article. */}
+          {!post.image && (
+            <Couverture
+              slug={post.slug}
+              rubrique={post.category}
+              className="mt-10 aspect-[1.9/1] rounded-3xl"
+            />
+          )}
           {post.image && (
             <figure className="mt-10 overflow-hidden rounded-3xl">
               <img

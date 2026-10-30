@@ -528,6 +528,221 @@ function CartePrix({ formule, annuel }: { formule: Formule; annuel: boolean }) {
 }
 
 /* ---------------------------------------------------------------------------
+   Le tableau comparatif des formules (30 octobre 2026), comme « Compare plans »
+   chez durable.com : sous les cartes de prix, ligne par ligne. Il reprend les
+   mêmes chiffres (CREATEUR_IA) ; une valeur « bientot » s'affiche grisée.
+   --------------------------------------------------------------------------- */
+
+type Valeur = boolean | string | { bientot: string };
+
+interface LigneComparee {
+  libelle: string;
+  aide?: string;
+  valeurs: [Valeur, Valeur, Valeur];
+}
+
+const GROUPES_COMPARES: { titre: string; lignes: LigneComparee[] }[] = [
+  {
+    titre: "Votre site",
+    lignes: [
+      { libelle: "Site complet écrit par l'IA", valeurs: [true, true, true] },
+      {
+        libelle: "Modèle d'IA pour la rédaction",
+        valeurs: ["Avancé", "Avancé", "Le plus avancé"],
+      },
+      { libelle: "Quatre thèmes, changement en un clic", valeurs: [true, true, true] },
+      { libelle: "Retouches à la main dans l'éditeur", valeurs: [true, true, true] },
+      { libelle: "Formulaire de contact", valeurs: [true, true, true] },
+    ],
+  },
+  {
+    titre: "Intelligence artificielle",
+    lignes: [
+      {
+        libelle: "Crédits IA",
+        aide: "Une retouche coûte 1 ou 2 crédits, une photo 5.",
+        valeurs: [
+          `${IA.decouverte.credits} offerts`,
+          `${IA.essentiel.credits.toLocaleString("fr-FR")} par mois`,
+          `${IA.pro.credits.toLocaleString("fr-FR")} par mois`,
+        ],
+      },
+      { libelle: "Retouches en une phrase", valeurs: [true, true, true] },
+      { libelle: "Photos créées par l'IA", valeurs: [true, true, true] },
+    ],
+  },
+  {
+    titre: "En ligne",
+    lignes: [
+      { libelle: "Adresse nom.sitaly.fr et cadenas HTTPS", valeurs: [true, true, true] },
+      {
+        libelle: "Prêt pour Google : titres, descriptions, plan du site",
+        valeurs: [true, true, true],
+      },
+      {
+        libelle: "Votre nom de domaine, offert",
+        aide: "Enregistré à votre nom, renouvelé tant que l'abonnement court.",
+        valeurs: [false, { bientot: "Bientôt" }, { bientot: "Bientôt" }],
+      },
+      {
+        libelle: "Prise de rendez-vous en ligne",
+        valeurs: [false, { bientot: "Bientôt" }, { bientot: "Bientôt" }],
+      },
+      { libelle: "Site en deux langues", valeurs: [false, false, { bientot: "Bientôt" }] },
+    ],
+  },
+  {
+    titre: "Accompagnement",
+    lignes: [
+      { libelle: "Assistance par e-mail, en français", valeurs: [false, true, true] },
+      { libelle: "Mise en place avec un expert", valeurs: [false, false, true] },
+    ],
+  },
+];
+
+const NOMS_COMPARES = [IA.decouverte.nom, IA.essentiel.nom, IA.pro.nom] as const;
+const PRIX_COMPARES = [
+  "Gratuit",
+  `${euros(IA.essentiel.mensuel)}/mois`,
+  `${euros(IA.pro.mensuel)}/mois`,
+] as const;
+
+function CelluleValeur({ v }: { v: Valeur }) {
+  if (v === true) return <Check className="mx-auto h-5 w-5 text-black/80" aria-label="Compris" />;
+  if (v === false)
+    return (
+      <span className="text-black/25" aria-label="Non compris">
+        —
+      </span>
+    );
+  if (typeof v === "string") return <span className="text-[15px] font-medium">{v}</span>;
+  return (
+    <span className="inline-flex items-center gap-1 rounded-full bg-black/[0.05] px-2.5 py-0.5 text-xs font-medium text-black/55">
+      <Clock className="h-3 w-3" aria-hidden="true" />
+      {v.bientot}
+    </span>
+  );
+}
+
+/** Les trois formules ligne par ligne : un tableau sur ordinateur, une formule à la fois sur téléphone. */
+export function TableauFormules() {
+  const [choix, setChoix] = useState(1);
+  return (
+    <div>
+      {/* Ordinateur */}
+      <div className="hidden md:block">
+        <table className="w-full table-fixed text-left">
+          <caption className="sr-only">Comparatif des formules Sitaly</caption>
+          <thead>
+            <tr className="align-bottom">
+              <th scope="col" className="w-[40%] pb-6" />
+              {NOMS_COMPARES.map((nom, k) => (
+                <th key={nom} scope="col" className="px-3 pb-6 text-center font-normal">
+                  <div
+                    className={`rounded-3xl p-5 ${k === 1 ? "bg-[#0d0f14] text-white" : "bg-black/[0.03]"}`}
+                  >
+                    <div className="text-lg font-semibold">{nom}</div>
+                    <div className={`mt-1 text-sm ${k === 1 ? "text-white/60" : TEXTE_GRIS}`}>
+                      {PRIX_COMPARES[k]}
+                    </div>
+                    <a
+                      href={lienCreation()}
+                      className={`mt-4 inline-flex w-full items-center justify-center rounded-2xl px-4 py-2.5 text-sm font-semibold transition ${
+                        k === 1
+                          ? "bg-white text-black hover:bg-white/90"
+                          : "bg-black/85 text-white hover:bg-black"
+                      }`}
+                    >
+                      {k === 0 ? "Commencer" : "Choisir"}
+                    </a>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          {GROUPES_COMPARES.map((g) => (
+            <tbody key={g.titre}>
+              <tr>
+                <th
+                  colSpan={4}
+                  scope="colgroup"
+                  className="pt-8 pb-3 text-sm font-semibold text-brand-ink"
+                >
+                  {g.titre}
+                </th>
+              </tr>
+              {g.lignes.map((l) => (
+                <tr key={l.libelle} className="border-t border-black/[0.06]">
+                  <th scope="row" className="py-4 pr-6 align-top font-normal">
+                    <div className="text-[15px] font-medium">{l.libelle}</div>
+                    {l.aide && <div className={`mt-0.5 text-sm ${TEXTE_GRIS}`}>{l.aide}</div>}
+                  </th>
+                  {l.valeurs.map((v, k) => (
+                    <td
+                      key={k}
+                      className={`px-3 py-4 text-center align-top ${k === 1 ? "bg-black/[0.02]" : ""}`}
+                    >
+                      <CelluleValeur v={v} />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          ))}
+        </table>
+      </div>
+
+      {/* Téléphone : une formule à la fois */}
+      <div className="md:hidden">
+        <div
+          role="tablist"
+          aria-label="Formule à comparer"
+          className="sticky top-[calc(var(--entete-hauteur)+0.5rem)] z-10 grid grid-cols-3 rounded-full bg-black/[0.05] p-1 text-sm font-medium backdrop-blur"
+        >
+          {NOMS_COMPARES.map((nom, k) => (
+            <button
+              key={nom}
+              type="button"
+              role="tab"
+              aria-selected={choix === k}
+              onClick={() => setChoix(k)}
+              className={`min-h-10 rounded-full transition ${choix === k ? "bg-white shadow-sm" : "text-black/55"}`}
+            >
+              {nom}
+            </button>
+          ))}
+        </div>
+        <p className={`mt-4 text-center text-sm ${TEXTE_GRIS}`}>{PRIX_COMPARES[choix]}</p>
+        {GROUPES_COMPARES.map((g) => (
+          <div key={g.titre} className="mt-6">
+            <div className="text-sm font-semibold text-brand-ink">{g.titre}</div>
+            <ul className="mt-2">
+              {g.lignes.map((l) => (
+                <li
+                  key={l.libelle}
+                  className="flex items-start justify-between gap-4 border-t border-black/[0.06] py-3.5"
+                >
+                  <div>
+                    <div className="text-[15px] font-medium">{l.libelle}</div>
+                    {l.aide && <div className={`mt-0.5 text-sm ${TEXTE_GRIS}`}>{l.aide}</div>}
+                  </div>
+                  <div className="shrink-0 text-right">
+                    <CelluleValeur v={l.valeurs[choix]} />
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+        <a href={lienCreation()} className={`${BOUTON_NOIR} mt-6 w-full`}>
+          {choix === 0 ? "Commencer gratuitement" : `Choisir ${NOMS_COMPARES[choix]}`}
+        </a>
+      </div>
+    </div>
+  );
+}
+
+/* ---------------------------------------------------------------------------
    Les questions fréquentes
    --------------------------------------------------------------------------- */
 

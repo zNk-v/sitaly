@@ -3025,3 +3025,68 @@ body.menu-ouvert .entete-plaque {
   .vitrine-ticker, .vitrine-point, .vitrine-curseur { animation: none !important; }
   .vitrine-courbe { stroke-dashoffset: 0; animation: none !important; }
 }
+
+/* ---------------------------------------------------------------------------
+   Couvertures animées des articles (30 octobre 2026, Couverture.tsx).
+   Les scènes SVG s'animent quand leur cadre reçoit .est-visible ; avec
+   « réduire les animations », elles s'affichent directement dans leur état final.
+   --------------------------------------------------------------------------- */
+.couv-monte, .couv-trait, .couv-tombe, .couv-barre, .couv-eventail, .couv-remonte, .couv-etoile, .couv-pulse, .couv-flotte, .couv-voile {
+  transform-box: fill-box;
+}
+.couv-monte { opacity: 0; transform: translateY(10px); }
+.couv-trait { transform: scaleX(0); transform-origin: left center; }
+.couv-tombe { opacity: 0; transform: translateY(-28px); }
+.couv-barre { transform: scaleY(0); transform-origin: center bottom; }
+.couv-coche { stroke-dasharray: 20; stroke-dashoffset: 20; }
+.couv-eventail { transform-origin: center bottom; }
+.couv-remonte { transform: translateY(186px); }
+.couv-etoile { opacity: .2; transform-origin: center; }
+.couv-pulse { transform-origin: center; }
+
+.est-visible .couv-monte { animation: couv-monte .7s cubic-bezier(.2,.7,.2,1) var(--d, 0s) forwards; }
+.est-visible .couv-trait { animation: couv-trait .7s cubic-bezier(.2,.7,.2,1) var(--d, 0s) forwards; }
+.est-visible .couv-tombe { animation: couv-tombe .9s cubic-bezier(.3,1.4,.4,1) var(--d, 0s) forwards; }
+.est-visible .couv-barre { animation: couv-trait-y 1s cubic-bezier(.2,.7,.2,1) var(--d, 0s) forwards; }
+.est-visible .couv-coche { animation: couv-coche .5s ease-out var(--d, 0s) forwards; }
+.est-visible .couv-eventail { animation: couv-eventail 1.1s cubic-bezier(.2,.7,.2,1) var(--d, 0s) forwards; }
+.est-visible .couv-remonte { animation: couv-remonte 1.2s cubic-bezier(.2,.7,.2,1) var(--d, 0s) forwards; }
+.est-visible .couv-etoile { animation: couv-etoile .4s ease-out var(--d, 0s) forwards; }
+.est-visible .couv-pulse { animation: couv-pulse 2.4s ease-in-out var(--d, 0s) infinite; }
+.est-visible .couv-flotte { animation: couv-flotte 3s ease-in-out infinite; }
+.est-visible .couv-saisie { transform-box: fill-box; transform-origin: left center; animation: couv-saisie 4s steps(14) infinite; }
+.est-visible .couv-voile { animation: couv-voile 5s steps(17) infinite; }
+.est-visible .couv-defile { animation: couv-defile 9s cubic-bezier(.6,0,.2,1) infinite; }
+
+@keyframes couv-monte { to { opacity: 1; transform: none; } }
+@keyframes couv-trait { to { transform: scaleX(1); } }
+@keyframes couv-trait-y { to { transform: scaleY(1); } }
+@keyframes couv-tombe { to { opacity: 1; transform: none; } }
+@keyframes couv-coche { to { stroke-dashoffset: 0; } }
+@keyframes couv-eventail { to { transform: translateX(var(--x, 0)) rotate(var(--r, 0deg)); } }
+@keyframes couv-remonte { to { transform: none; } }
+@keyframes couv-etoile { 60% { opacity: 1; transform: scale(1.3); } to { opacity: 1; transform: none; } }
+@keyframes couv-pulse { 0%, 100% { transform: none; } 50% { transform: scale(1.08); } }
+@keyframes couv-flotte { 0%, 100% { transform: none; } 50% { transform: translateY(-7px); } }
+@keyframes couv-saisie { 0% { transform: scaleX(0); } 70%, 100% { transform: scaleX(1); } }
+@keyframes couv-voile { 0% { transform: none; } 60%, 100% { transform: translateX(100%); } }
+@keyframes couv-defile {
+  0%, 20% { transform: none; }
+  25%, 45% { transform: translateY(-130px); }
+  50%, 70% { transform: translateY(-260px); }
+  75%, 95% { transform: translateY(-390px); }
+  100% { transform: translateY(-520px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .couv-monte, .couv-trait, .couv-tombe, .couv-barre, .couv-remonte, .couv-etoile, .couv-pulse, .couv-flotte,
+  .couv-saisie, .couv-voile, .couv-defile,
+  .est-visible .couv-monte, .est-visible .couv-trait, .est-visible .couv-tombe, .est-visible .couv-barre,
+  .est-visible .couv-remonte, .est-visible .couv-etoile, .est-visible .couv-pulse, .est-visible .couv-flotte,
+  .est-visible .couv-saisie, .est-visible .couv-voile, .est-visible .couv-defile {
+    animation: none; opacity: 1; transform: none;
+  }
+  .couv-voile { display: none; }
+  .couv-coche, .est-visible .couv-coche { animation: none; stroke-dashoffset: 0; }
+  .couv-eventail, .est-visible .couv-eventail { animation: none; transform: translateX(var(--x, 0)) rotate(var(--r, 0deg)); }
+}
