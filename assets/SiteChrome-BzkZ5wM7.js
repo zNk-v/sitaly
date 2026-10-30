@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-n5LQ9ujS.js";import{Ut as t,en as n}from"./index-B5rLN5Qp.js";var r=e();function i({children:e,appel:i}){return(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(n,{appel:i}),(0,r.jsx)(`div`,{className:`pt-[var(--entete-hauteur)]`,children:e}),(0,r.jsx)(t,{})]})}export{i as t};
