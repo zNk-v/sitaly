@@ -18,7 +18,7 @@ import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
 import { LinkedinLink } from "@/components/LinkedinLink";
 import { MetierLinksStrip } from "@/components/MetierLinks";
 import { articleIndexable, directiveRobots } from "@/lib/indexation";
-import { CALENDLY_URL } from "@/lib/config";
+import { APP_URL, CALENDLY_URL } from "@/lib/config";
 import { SiteFooter } from "@/components/SiteFooter";
 import { encreRubrique } from "@/components/BlogCard";
 
@@ -467,6 +467,23 @@ const APPELS: Record<CtaArticle, { milieu: Appel; fin: Appel }> = {
       href: "/automatisation-taches/",
     },
   },
+  // Sitaly App (30 octobre 2026) : les articles pour qui veut créer son site lui-même.
+  app: {
+    milieu: {
+      titre: "Votre site, écrit par l'IA en une minute",
+      texte:
+        "Décrivez votre activité en une phrase : Sitaly écrit vos pages, crée vos photos et met le site en ligne. Gratuit pour commencer.",
+      label: "Créer mon site",
+      href: `${APP_URL}/`,
+    },
+    fin: {
+      titre: "Passez de la lecture à votre site",
+      texte:
+        "Une phrase sur votre activité suffit : votre site est en ligne une minute plus tard, et vous le retouchez en parlant à l'IA. Gratuit, sans carte bancaire.",
+      label: "Créer mon site gratuitement",
+      href: `${APP_URL}/`,
+    },
+  },
   site: {
     milieu: {
       titre: "Vous voulez appliquer tout ça sans y passer 40 heures ?",
@@ -494,6 +511,14 @@ function BoutonAppel({ appel, className }: { appel: Appel; className: string }) 
       <ArrowRight className="h-4 w-4" />
     </>
   );
+  // L'application s'ouvre dans le même onglet : c'est la suite de la lecture.
+  if (appel.href.startsWith(APP_URL)) {
+    return (
+      <a href={appel.href} className={className}>
+        {contenu}
+      </a>
+    );
+  }
   if (appel.href.startsWith("http")) {
     return (
       <a href={appel.href} target="_blank" rel="noopener noreferrer" className={className}>

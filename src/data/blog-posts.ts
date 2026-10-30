@@ -17,7 +17,7 @@ export { LIEN_DANS_LE_TEXTE, texteBrut } from "@/lib/liens-texte";
  * L'étape suivante proposée en fin d'article. Chaque article pousse vers la
  * page de vente de son sujet, pas vers le catalogue entier.
  */
-export type CtaArticle = "agents-ia" | "chatgpt-ads" | "automatisation" | "site";
+export type CtaArticle = "agents-ia" | "chatgpt-ads" | "automatisation" | "site" | "app";
 
 export interface BlogPost {
   slug: string;
@@ -60,6 +60,126 @@ export interface ArticleComplet extends BlogPost {
  * Ne pas consommer directement : utiliser BLOG_POSTS, qui filtre les articles programmés.
  */
 const ALL_BLOG_POSTS: BlogPost[] = [
+  {
+    slug: "creer-site-internet-gratuit",
+    title: "Créer un site internet gratuit : ce qui est vraiment gratuit, et ce qui ne l'est pas",
+    metaTitle: "Créer un site internet gratuit en 2026 : le guide honnête",
+    metaDescription:
+      "Ce que donnent vraiment les formules gratuites (Sitaly, Wix, WordPress.com), ce qui reste payant, et comment créer votre site gratuit en 4 étapes.",
+    excerpt:
+      "Un site sans frais existe bel et bien. Voici ce que vous obtenez sans payer, ce qui reste payant, et comment démarrer sans regretter votre choix six mois plus tard.",
+    category: "Créer son site",
+    readingTime: "5 min",
+    publishedAt: "2026-10-30",
+    author: "Teddy Vidal",
+    keyword: "créer un site internet gratuit",
+    cta: "app",
+  },
+  {
+    slug: "creer-site-internet-sans-coder",
+    title: "Créer un site internet sans savoir coder : la méthode en 5 étapes",
+    metaTitle: "Créer un site internet sans coder : la méthode en 5 étapes",
+    metaDescription:
+      "Pas besoin de savoir coder pour avoir un site professionnel. La méthode en cinq étapes, le bon type d'outil pour vous, et les pièges qui font perdre des semaines.",
+    excerpt:
+      "Vous n'avez pas besoin de savoir coder. Vous avez besoin de savoir ce que vous vendez, à qui et où : le reste, un outil s'en charge.",
+    category: "Créer son site",
+    readingTime: "5 min",
+    publishedAt: "2026-10-30",
+    author: "Teddy Vidal",
+    keyword: "créer un site internet sans coder",
+    cta: "app",
+  },
+  {
+    slug: "prix-site-internet",
+    title: "Combien coûte un site internet en 2026 ? Les vrais prix, poste par poste",
+    metaTitle: "Prix d'un site internet en 2026 : les vrais coûts poste par poste",
+    metaDescription:
+      "Créateur par IA, Wix, WordPress ou agence : ce que coûte vraiment un site internet, les frais qu'on oublie, et le calcul sur trois ans pour comparer.",
+    excerpt:
+      "De zéro à plusieurs milliers d'euros : pour comparer, il faut séparer ce que vous payez une fois, chaque année, et en temps.",
+    category: "Créer son site",
+    readingTime: "6 min",
+    publishedAt: "2026-10-30",
+    author: "Teddy Vidal",
+    keyword: "prix site internet",
+    cta: "app",
+  },
+  {
+    slug: "trouver-nom-entreprise",
+    title: "Trouver un nom d'entreprise : 7 méthodes et les vérifications à faire",
+    metaTitle: "Trouver un nom d'entreprise : 7 méthodes et les vérifications",
+    metaDescription:
+      "Sept méthodes pour trouver le nom de votre entreprise, puis les vérifications indispensables : marques INPI, entreprises existantes, nom de domaine.",
+    excerpt:
+      "Le nom de votre entreprise vous suivra partout. Il mérite une heure de réflexion, pas une semaine d'hésitation.",
+    category: "Lancer son activité",
+    readingTime: "6 min",
+    publishedAt: "2026-10-30",
+    author: "Teddy Vidal",
+    keyword: "trouver un nom d'entreprise",
+    cta: "app",
+  },
+  {
+    slug: "choisir-nom-de-domaine",
+    title: "Choisir son nom de domaine : .fr ou .com, et 8 règles simples",
+    metaTitle: "Choisir son nom de domaine : .fr ou .com et 8 règles simples",
+    metaDescription:
+      "Comment choisir le nom de domaine de votre site : .fr ou .com, huit règles pour un nom qui se retient, et pourquoi il doit être à votre nom.",
+    excerpt:
+      "Un bon nom de domaine se retient du premier coup. Voici comment le choisir, et pourquoi le .fr est souvent le meilleur choix en France.",
+    category: "Créer son site",
+    readingTime: "5 min",
+    publishedAt: "2026-10-30",
+    author: "Teddy Vidal",
+    keyword: "choisir nom de domaine",
+    cta: "app",
+  },
+  {
+    slug: "mentions-legales-site-internet",
+    title: "Mentions légales d'un site professionnel : ce qui est obligatoire",
+    metaTitle: "Mentions légales d'un site internet professionnel : la liste",
+    metaDescription:
+      "Ce que doit contenir la page de mentions légales d'un site professionnel selon votre statut, les sanctions prévues, et les textes qui l'accompagnent (RGPD, cookies).",
+    excerpt:
+      "Tout site professionnel doit dire qui l'édite et qui l'héberge. Voici ce que la page doit contenir selon votre statut.",
+    category: "Créer son site",
+    readingTime: "6 min",
+    publishedAt: "2026-10-30",
+    author: "Teddy Vidal",
+    keyword: "mentions légales site internet",
+    cta: "app",
+  },
+  {
+    slug: "pages-indispensables-site-vitrine",
+    title: "Les pages indispensables d'un site vitrine, et ce qu'on met dans chacune",
+    metaTitle: "Les pages indispensables d'un site vitrine (et quoi y mettre)",
+    metaDescription:
+      "Accueil, prestations, tarifs, avis, à propos, FAQ, contact, mentions légales : les pages d'un site vitrine efficace et ce que chacune doit contenir.",
+    excerpt:
+      "Un site vitrine n'a pas besoin d'être grand. Il doit répondre, dans l'ordre, aux questions que se pose un client.",
+    category: "Créer son site",
+    readingTime: "5 min",
+    publishedAt: "2026-10-30",
+    author: "Teddy Vidal",
+    keyword: "pages site vitrine",
+    cta: "app",
+  },
+  {
+    slug: "apparaitre-sur-google",
+    title: "Apparaître sur Google quand on lance son activité : le plan en 6 étapes",
+    metaTitle: "Apparaître sur Google quand on lance son activité : 6 étapes",
+    metaDescription:
+      "Fiche Google, site, avis, Search Console : les six étapes pour être trouvé sur Google quand on lance son activité, dans l'ordre où elles rapportent.",
+    excerpt:
+      "Être trouvé par les gens du coin ne se fait pas en un jour, mais ne demande pas d'expert. Voici les six étapes, dans l'ordre où elles rapportent.",
+    category: "Lancer son activité",
+    readingTime: "6 min",
+    publishedAt: "2026-10-30",
+    author: "Teddy Vidal",
+    keyword: "apparaître sur Google",
+    cta: "app",
+  },
   {
     slug: "publicite-chatgpt-ads-guide",
     title: "Publicité ChatGPT Ads : faut-il y investir votre budget ?",
@@ -775,14 +895,14 @@ export function formatDate(iso: string): string {
  * Les articles mis en avant, sur l'accueil comme en tête du blog.
  *
  * Choix éditorial et non chronologique : le plus récent n'est pas forcément
- * celui qui intéresse le plus de monde. Les trois retenus couvrent les trois
- * familles d'expertise, de sorte que la sélection dise aussi ce que fait
- * Sitaly. Modifier cette liste suffit à changer la mise en avant partout.
+ * celui qui intéresse le plus de monde. Depuis le 30 octobre 2026, la
+ * sélection suit Sitaly App : créer son site et lancer son activité.
+ * Modifier cette liste suffit à changer la mise en avant partout.
  */
 export const A_LA_UNE = [
-  "demarchage-telephonique-agent-ia-2026",
-  "agent-ia-entreprise-guide",
-  "publicite-chatgpt-ads-guide",
+  "creer-site-internet-gratuit",
+  "prix-site-internet",
+  "trouver-nom-entreprise",
 ] as const;
 
 /** Du plus récent au plus ancien. L'ordre du fichier est celui de la rédaction. */

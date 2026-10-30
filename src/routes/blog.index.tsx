@@ -42,6 +42,18 @@ const POSTS_RECENTS = TOUS_LES_RECENTS.filter((p) => articleIndexable(p.slug));
 // `category` des articles (src/data/blog-posts.ts).
 const RUBRIQUES: { key: string; id: string; label: string; desc: string }[] = [
   {
+    key: "Créer son site",
+    id: "creer-son-site",
+    label: "Créer son site",
+    desc: "Gratuit ou payant, avec ou sans IA : créer un site qui vous ressemble et vous amène des clients.",
+  },
+  {
+    key: "Lancer son activité",
+    id: "lancer-son-activite",
+    label: "Lancer son activité",
+    desc: "Trouver un nom, être trouvé sur Google, faire les bonnes démarches dès le départ.",
+  },
+  {
     key: "Trouver des chantiers",
     id: "trouver-des-chantiers",
     label: "Trouver des chantiers",
@@ -103,9 +115,9 @@ const RUBRIQUES: { key: string; id: string; label: string; desc: string }[] = [
   },
 ];
 
-const TITRE = "Blog Sitaly : agents IA, ChatGPT Ads et automatisation";
+const TITRE = "Blog Sitaly : créer son site et lancer son activité";
 const DESCRIPTION =
-  "Guides pour les PME : agents IA, automatisation, règles du démarchage et de l'AI Act, publicité ChatGPT Ads. Sans jargon et sans promesse.";
+  "Guides pour les indépendants et les petites entreprises : créer son site, choisir un nom et un domaine, être trouvé sur Google, trouver des clients. Sans jargon.";
 
 export const Route = createFileRoute("/blog/")({
   head: () => ({
@@ -200,12 +212,10 @@ function BlogIndex() {
             <span className="text-brand-ink">Le journal</span>
           </nav>
 
-          <h1 className="display-hero mt-6 max-w-4xl">
-            Générer plus de clients, quel que soit votre métier
-          </h1>
+          <h1 className="display-hero mt-6 max-w-4xl">Créer son site, lancer son activité</h1>
           <p className="measure mt-6 text-lg leading-relaxed text-foreground/75 sm:text-xl">
-            Site internet, référencement local, Google Ads, ChatGPT Ads et automatisation. Des
-            guides écrits pour être appliqués, sans jargon et sans promesse de miracle.
+            Créer son site, choisir un nom, être trouvé sur Google, trouver des clients. Des guides
+            écrits pour être appliqués, sans jargon et sans promesse de miracle.
           </p>
 
           {/* Trois repères plutôt qu'une phrase d'introduction de plus. */}

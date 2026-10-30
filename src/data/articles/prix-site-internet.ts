@@ -1,0 +1,93 @@
+import type { BlogSection } from "@/data/blog-posts";
+
+/** Le corps de l'article « prix-site-internet ». Ses métadonnées vivent dans
+    src/data/blog-posts.ts ; ce fichier n'est chargé que sur sa page. */
+export const contenu: BlogSection[] = [
+  {
+    type: "p",
+    text: "Un site internet peut coûter zéro euro ou plusieurs milliers. Les deux chiffres sont vrais : ils ne parlent pas du même produit. Pour comparer, il faut séparer ce que vous payez une fois, ce que vous payez chaque année, et ce que vous payez en temps.",
+  },
+  { type: "h2", text: "Les quatre façons de payer un site" },
+  {
+    type: "table",
+    caption:
+      "Ordres de grandeur constatés en octobre 2026 pour un site vitrine d'indépendant ou de petite entreprise.",
+    headers: ["Solution", "Prix", "Ce qui est compris", "Votre temps"],
+    rows: [
+      [
+        "Créateur de site par IA",
+        "Gratuit, puis 15 à 80 €/mois environ",
+        "Hébergement, mise en ligne, textes écrits par l'IA",
+        "Une heure pour relire et ajuster",
+      ],
+      [
+        "Éditeur à modèles (Wix, Squarespace…)",
+        "Environ 15 à 40 €/mois pour les formules courantes",
+        "Hébergement, modèles, domaine la première année en annuel",
+        "Un week-end ou plus",
+      ],
+      [
+        "WordPress installé soi-même",
+        "Hébergement de quelques euros par mois, plus thème et extensions",
+        "Ce que vous installez",
+        "Plusieurs jours, puis les mises à jour",
+      ],
+      [
+        "Agence ou freelance",
+        "Souvent 1 500 à 5 000 € à la création, plus la maintenance",
+        "Conception sur mesure, accompagnement",
+        "Des rendez-vous et des relectures",
+      ],
+    ],
+  },
+  { type: "h2", text: "Les coûts qu'on oublie" },
+  {
+    type: "ul",
+    items: [
+      "Le nom de domaine : en général 5 à 15 € par an pour un .fr ou un .com, parfois plus cher au renouvellement qu'à la première année.",
+      "L'adresse e-mail professionnelle, si elle n'est pas comprise.",
+      "La maintenance : mises à jour, sauvegardes et sécurité, comprises dans un abonnement, à votre charge avec WordPress.",
+      "Les modifications : gratuites si vous les faites vous-même, facturées à l'heure ou au forfait chez beaucoup de prestataires.",
+      "Les photos et les textes, si l'outil ne les fournit pas.",
+    ],
+  },
+  {
+    type: "p",
+    text: "Lisez toujours la ligne « renouvellement » : beaucoup d'offres affichent un prix d'appel la première année, puis un tarif plus élevé.",
+  },
+  { type: "h2", text: "Le calcul qui compte : le coût sur trois ans" },
+  {
+    type: "p",
+    text: "Pour comparer deux offres, additionnez tout sur trois ans : création, abonnement, domaine, maintenance et modifications. Un site à 2 000 € plus 50 € par mois de maintenance revient à 3 800 € sur trois ans. Un abonnement à 39 € par mois, domaine compris, revient à 1 404 €. Ni l'un ni l'autre n'est « le bon prix » : tout dépend de ce dont vous avez besoin.",
+  },
+  {
+    type: "quote",
+    text: "Le site le moins cher est celui qui vous apporte des clients sans vous voler vos soirées.",
+  },
+  { type: "h2", text: "Combien coûte un site avec Sitaly" },
+  {
+    type: "ul",
+    items: [
+      "Découverte : gratuit, sans carte bancaire. Le site est en ligne sur votre-nom.sitaly.fr.",
+      "Essentiel : 39 € par mois, ou 398 € par an. Votre nom de domaine est offert et renouvelé tant que l'abonnement court, avec 500 crédits IA par mois pour vos retouches.",
+      "Pro : 79 € par mois, ou 806 € par an, avec le meilleur modèle d'IA et 2 500 crédits par mois.",
+    ],
+  },
+  {
+    type: "p",
+    text: "Sitaly n'est pas assujetti à la TVA : ces prix sont les montants que vous payez. Le détail des formules est sur la page [Tarifs](/tarifs/).",
+  },
+  {
+    type: "faq",
+    items: [
+      {
+        q: "Un site internet est-il une dépense déductible ?",
+        a: "Pour une entreprise, les abonnements et les prestations liés au site sont en principe des charges professionnelles. Les règles dépendent de votre statut : demandez confirmation à votre comptable.",
+      },
+      {
+        q: "Pourquoi les prix varient-ils autant ?",
+        a: "Parce qu'on compare des choses différentes : un outil que vous utilisez vous-même, et un service où quelqu'un travaille pour vous. Le premier coûte peu d'argent et un peu de temps, le second l'inverse.",
+      },
+    ],
+  },
+];

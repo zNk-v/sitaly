@@ -1,0 +1,94 @@
+import type { BlogSection } from "@/data/blog-posts";
+
+/** Le corps de l'article « creer-site-internet-sans-coder ». Ses métadonnées vivent dans
+    src/data/blog-posts.ts ; ce fichier n'est chargé que sur sa page. */
+export const contenu: BlogSection[] = [
+  {
+    type: "p",
+    text: "Vous n'avez pas besoin de savoir coder pour avoir un site professionnel. Vous avez besoin de savoir ce que vous vendez, à qui, et où. Le reste, un outil s'en charge. Voici la méthode en cinq étapes, avec les pièges qui font perdre des semaines.",
+  },
+  { type: "h2", text: "Étape 1 : écrire votre activité en une phrase" },
+  {
+    type: "p",
+    text: "Avant de choisir un outil, écrivez une phrase qui répond à trois questions : que faites-vous, pour qui, et où ? « Coach sportive à domicile à Bordeaux, pour les débutants » dit tout. Cette phrase servira de titre à votre page d'accueil, de description sur Google, et de point de départ si vous utilisez un créateur de site par IA.",
+  },
+  { type: "h2", text: "Étape 2 : choisir le type d'outil" },
+  {
+    type: "table",
+    caption: "Les trois grandes familles d'outils pour créer un site sans coder.",
+    headers: ["Type d'outil", "Comment ça marche", "Pour qui"],
+    rows: [
+      [
+        "Créateur de site par IA",
+        "Vous décrivez votre activité, l'IA écrit et met en page le site",
+        "Qui veut un site en ligne vite et le faire évoluer simplement",
+      ],
+      [
+        "Éditeur à modèles",
+        "Vous choisissez un modèle et le remplissez bloc par bloc",
+        "Qui veut régler chaque détail et a du temps",
+      ],
+      [
+        "WordPress",
+        "Vous installez un thème et des extensions, puis vous écrivez les pages",
+        "Qui a un projet particulier, ou quelqu'un pour s'en occuper",
+      ],
+    ],
+  },
+  {
+    type: "p",
+    text: "Les comparatifs [Sitaly ou Wix](/comparer/wix/) et [Sitaly ou WordPress](/comparer/wordpress/) détaillent les différences, y compris les cas où l'autre outil est le meilleur choix.",
+  },
+  { type: "h2", text: "Étape 3 : rassembler votre contenu" },
+  {
+    type: "p",
+    text: "Un site se remplit avec des faits que vous seul connaissez. Préparez-les dans un document avant de commencer :",
+  },
+  {
+    type: "ul",
+    items: [
+      "Vos prestations, avec un prix ou au moins un prix de départ.",
+      "Votre zone d'intervention ou votre adresse, et vos horaires.",
+      "Trois à cinq avis de clients, avec leur accord.",
+      "Quelques photos de votre travail, même prises au téléphone, en lumière du jour.",
+      "Ce qui vous distingue : un diplôme, un délai, une spécialité, une garantie.",
+    ],
+  },
+  { type: "h2", text: "Étape 4 : construire peu de pages, mais complètes" },
+  {
+    type: "p",
+    text: "Un site d'indépendant n'a pas besoin de vingt pages. Une page d'accueil claire, une page par grande prestation, une page de contact et vos mentions légales suffisent pour commencer. Le détail de chaque page est dans notre article sur [les pages indispensables d'un site vitrine](/blog/pages-indispensables-site-vitrine/).",
+  },
+  {
+    type: "quote",
+    text: "Un visiteur décide en quelques secondes s'il reste. Dites-lui tout de suite ce que vous faites, où, et comment vous joindre.",
+  },
+  { type: "h2", text: "Étape 5 : publier, puis se faire trouver" },
+  {
+    type: "p",
+    text: "Mettez le site en ligne dès qu'il est juste, sans attendre qu'il soit parfait : vous l'améliorerez ensuite. Puis faites trois choses le jour même : reliez votre fiche Google à votre site, ajoutez l'adresse sur vos réseaux et vos devis, et demandez un avis à vos derniers clients.",
+  },
+  { type: "h2", text: "Les pièges qui font perdre du temps" },
+  {
+    type: "ul",
+    items: [
+      "Passer des heures à choisir un modèle avant d'avoir écrit un seul texte.",
+      "Écrire « nous » quand on travaille seul : vos clients aiment savoir à qui ils parlent.",
+      "Oublier le téléphone sur mobile : la majorité de vos visiteurs arrivent par leur téléphone.",
+      "Publier sans relire : un prix faux ou un horaire périmé coûte plus cher qu'une faute de goût.",
+    ],
+  },
+  {
+    type: "faq",
+    items: [
+      {
+        q: "Combien de temps faut-il pour créer un site sans coder ?",
+        a: "Avec un créateur par IA, une première version prend une minute, puis une heure de relecture et d'ajustements. Avec un éditeur à modèles, comptez plutôt un week-end. Avec WordPress, plusieurs jours si vous partez de zéro.",
+      },
+      {
+        q: "Faut-il un nom de domaine dès le départ ?",
+        a: "Ce n'est pas obligatoire pour publier, mais c'est mieux avant d'imprimer quoi que ce soit. Notre guide pour [choisir son nom de domaine](/blog/choisir-nom-de-domaine/) vous aide à le trouver.",
+      },
+    ],
+  },
+];
