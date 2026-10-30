@@ -95,6 +95,13 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
     priority: "0.7",
     source: ["src/data/realisations.ts"],
   })),
+  // Le générateur de noms d'entreprise (31 octobre 2026).
+  {
+    path: "/outils/generateur-nom-entreprise",
+    changefreq: "monthly",
+    priority: "0.8",
+    source: [route("outils.generateur-nom-entreprise.tsx")],
+  },
   // Les modèles de sites par métier (31 octobre 2026).
   {
     path: "/modeles",

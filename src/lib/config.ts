@@ -6,6 +6,10 @@ export const CALENDLY_URL = "https://calendly.com/contact-sitaly/decouverte-de-v
 // URL de l'application SaaS (espace client artisans).
 export const APP_URL = "https://app.sitaly.fr";
 
+// Fonction Supabase du générateur de noms d'entreprise (outil gratuit, sans compte).
+export const NOMS_ENTREPRISE_URL =
+  "https://zgigeakspxdzgaigypoq.supabase.co/functions/v1/noms-entreprise";
+
 // Téléphone Sitaly : format E.164 pour les liens tel:/sms:, format lisible pour l'affichage.
 export const SITALY_PHONE = "+33658683372";
 export const SITALY_PHONE_DISPLAY = "06 58 68 33 72";

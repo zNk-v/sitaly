@@ -57,6 +57,7 @@ import { Route as ModelesIndexRouteImport } from './routes/modeles.index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slug'
 import { Route as OutilsVerifierNomDeDomaineRouteImport } from './routes/outils.verifier-nom-de-domaine'
+import { Route as OutilsGenerateurNomEntrepriseRouteImport } from './routes/outils.generateur-nom-entreprise'
 import { Route as OutilsBudgetGoogleAdsArtisanRouteImport } from './routes/outils.budget-google-ads-artisan'
 import { Route as OutilsAuditFicheGoogleRouteImport } from './routes/outils.audit-fiche-google'
 import { Route as OffresIdRouteImport } from './routes/offres.$id'
@@ -315,6 +316,12 @@ const OutilsVerifierNomDeDomaineRoute =
     path: '/outils/verifier-nom-de-domaine',
     getParentRoute: () => rootRouteImport,
   } as any)
+const OutilsGenerateurNomEntrepriseRoute =
+  OutilsGenerateurNomEntrepriseRouteImport.update({
+    id: '/outils/generateur-nom-entreprise',
+    path: '/outils/generateur-nom-entreprise',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const OutilsBudgetGoogleAdsArtisanRoute =
   OutilsBudgetGoogleAdsArtisanRouteImport.update({
     id: '/outils/budget-google-ads-artisan',
@@ -446,6 +453,7 @@ export interface FileRoutesByFullPath {
   '/offres/$id': typeof OffresIdRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
   '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
+  '/outils/generateur-nom-entreprise': typeof OutilsGenerateurNomEntrepriseRoute
   '/outils/verifier-nom-de-domaine': typeof OutilsVerifierNomDeDomaineRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -509,6 +517,7 @@ export interface FileRoutesByTo {
   '/offres/$id': typeof OffresIdRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
   '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
+  '/outils/generateur-nom-entreprise': typeof OutilsGenerateurNomEntrepriseRoute
   '/outils/verifier-nom-de-domaine': typeof OutilsVerifierNomDeDomaineRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog': typeof BlogIndexRoute
@@ -574,6 +583,7 @@ export interface FileRoutesById {
   '/offres/$id': typeof OffresIdRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
   '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
+  '/outils/generateur-nom-entreprise': typeof OutilsGenerateurNomEntrepriseRoute
   '/outils/verifier-nom-de-domaine': typeof OutilsVerifierNomDeDomaineRoute
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -640,6 +650,7 @@ export interface FileRouteTypes {
     | '/offres/$id'
     | '/outils/audit-fiche-google'
     | '/outils/budget-google-ads-artisan'
+    | '/outils/generateur-nom-entreprise'
     | '/outils/verifier-nom-de-domaine'
     | '/realisations/$slug'
     | '/blog/'
@@ -703,6 +714,7 @@ export interface FileRouteTypes {
     | '/offres/$id'
     | '/outils/audit-fiche-google'
     | '/outils/budget-google-ads-artisan'
+    | '/outils/generateur-nom-entreprise'
     | '/outils/verifier-nom-de-domaine'
     | '/realisations/$slug'
     | '/blog'
@@ -767,6 +779,7 @@ export interface FileRouteTypes {
     | '/offres/$id'
     | '/outils/audit-fiche-google'
     | '/outils/budget-google-ads-artisan'
+    | '/outils/generateur-nom-entreprise'
     | '/outils/verifier-nom-de-domaine'
     | '/realisations/$slug'
     | '/blog/'
@@ -831,6 +844,7 @@ export interface RootRouteChildren {
   OffresIdRoute: typeof OffresIdRoute
   OutilsAuditFicheGoogleRoute: typeof OutilsAuditFicheGoogleRoute
   OutilsBudgetGoogleAdsArtisanRoute: typeof OutilsBudgetGoogleAdsArtisanRoute
+  OutilsGenerateurNomEntrepriseRoute: typeof OutilsGenerateurNomEntrepriseRoute
   OutilsVerifierNomDeDomaineRoute: typeof OutilsVerifierNomDeDomaineRoute
   RealisationsSlugRoute: typeof RealisationsSlugRoute
   ModelesIndexRoute: typeof ModelesIndexRoute
@@ -1176,6 +1190,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OutilsVerifierNomDeDomaineRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/outils/generateur-nom-entreprise': {
+      id: '/outils/generateur-nom-entreprise'
+      path: '/outils/generateur-nom-entreprise'
+      fullPath: '/outils/generateur-nom-entreprise'
+      preLoaderRoute: typeof OutilsGenerateurNomEntrepriseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/outils/budget-google-ads-artisan': {
       id: '/outils/budget-google-ads-artisan'
       path: '/outils/budget-google-ads-artisan'
@@ -1345,6 +1366,7 @@ const rootRouteChildren: RootRouteChildren = {
   OffresIdRoute: OffresIdRoute,
   OutilsAuditFicheGoogleRoute: OutilsAuditFicheGoogleRoute,
   OutilsBudgetGoogleAdsArtisanRoute: OutilsBudgetGoogleAdsArtisanRoute,
+  OutilsGenerateurNomEntrepriseRoute: OutilsGenerateurNomEntrepriseRoute,
   OutilsVerifierNomDeDomaineRoute: OutilsVerifierNomDeDomaineRoute,
   RealisationsSlugRoute: RealisationsSlugRoute,
   ModelesIndexRoute: ModelesIndexRoute,

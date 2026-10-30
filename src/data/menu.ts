@@ -148,8 +148,8 @@ const OUTILS: MenuDeroulant = {
       entrees: [
         {
           label: "Générateur de nom d'entreprise",
-          desc: "Des idées de noms pour votre activité.",
-          bientot: true,
+          desc: "Douze idées de noms pour votre activité.",
+          to: "/outils/generateur-nom-entreprise/",
           icone: Lightbulb,
         },
         {

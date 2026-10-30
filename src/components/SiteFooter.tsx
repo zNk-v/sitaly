@@ -51,7 +51,7 @@ const COLONNES: { titre: string; entrees: Entree[] }[] = [
     titre: "Outils",
     entrees: [
       { label: "Vérifier un nom de domaine", to: "/outils/verifier-nom-de-domaine/" },
-      { label: "Générateur de nom", bientot: true },
+      { label: "Générateur de nom", to: "/outils/generateur-nom-entreprise/" },
       { label: "Générateur de logo", bientot: true },
     ],
   },
