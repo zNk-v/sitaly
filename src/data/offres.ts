@@ -33,10 +33,11 @@ export type OffreId =
   | "maintenance"
   | "agent-ia"
   | "agent-ia-pro"
-  | "outil-sur-mesure";
+  | "outil-sur-mesure"
+  | "site-premium";
 
 /** Les sections de la page /tarifs/, dans l'ordre. */
-export type GroupeId = "site" | "boutique" | "maintenance" | "agents-ia";
+export type GroupeId = "site" | "boutique" | "maintenance" | "agents-ia" | "premium";
 
 export interface Offre {
   id: OffreId;
@@ -160,6 +161,24 @@ export const OFFRES: Offre[] = [
     aPartirDe: true,
     page: "/logiciel-metier/",
   },
+  /* Le site sur mesure, payé une fois (23 octobre 2026) : hors du modèle
+     mensuel, sur sa propre page. Plancher, acomptes et contenu restent des
+     propositions tant que Teddy ne les a pas validés (voir src/data/premium.ts). */
+  {
+    id: "site-premium",
+    groupe: "premium",
+    nom: "Sitaly Premium",
+    pour: "Un site dessiné de zéro pour votre métier : direction artistique, textes, animations et code.",
+    menuDesc: "Un site dessiné pour votre métier, payé une fois.",
+    depart: 6900,
+    departLibelle: "en trois acomptes",
+    aPartirDe: true,
+    notes: [
+      "Le site, son code et ses fichiers vous appartiennent au dernier acompte.",
+      "Le montant exact est écrit dans le devis, avant de commencer.",
+    ],
+    page: "/site-premium/",
+  },
 ];
 
 /* ---------------------------------------------------------------------------
@@ -176,7 +195,8 @@ export type IconeRubrique =
   | "vendre"
   | "repondre"
   | "organiser"
-  | "sur-mesure";
+  | "sur-mesure"
+  | "direction-artistique";
 
 /** `true` : compris. Un texte : compris, avec sa quantité. Absent : non compris. */
 export type Valeur = true | string;
@@ -398,6 +418,70 @@ export const GRILLES: Record<GroupeId, Rubrique[]> = {
       ],
     },
   ],
+  premium: [
+    {
+      titre: "Direction artistique",
+      icone: "direction-artistique",
+      lignes: [
+        { libelle: "Atelier de lancement de 2 h en visio", valeurs: { "site-premium": true } },
+        {
+          libelle: "Deux pistes graphiques : palette, lettres, motif",
+          valeurs: { "site-premium": true },
+        },
+        {
+          libelle: "Un logotype en lettres si vous n'en avez pas",
+          valeurs: { "site-premium": true },
+        },
+      ],
+    },
+    {
+      titre: "Votre site",
+      icone: "site",
+      lignes: [
+        {
+          libelle: "Pages dessinées pour le téléphone puis l'ordinateur",
+          valeurs: { "site-premium": "jusqu'à 8" },
+        },
+        {
+          libelle: "Animations au défilement, testées sur iPhone et Android",
+          valeurs: { "site-premium": true },
+        },
+        { libelle: "Code écrit à la main, sans thème acheté", valeurs: { "site-premium": true } },
+      ],
+    },
+    {
+      titre: "Textes et images",
+      icone: "ia",
+      lignes: [
+        { libelle: "Toutes les pages rédigées pour vous", valeurs: { "site-premium": true } },
+        {
+          libelle: "Vos photos triées, recadrées et retouchées",
+          valeurs: { "site-premium": true },
+        },
+        {
+          libelle: "Motifs, plans et pictogrammes dessinés en code",
+          valeurs: { "site-premium": true },
+        },
+      ],
+    },
+    {
+      titre: "Mise en ligne et suivi",
+      icone: "support",
+      lignes: [
+        { libelle: "Nom de domaine", valeurs: { "site-premium": true } },
+        {
+          libelle: "Référencement de départ, données structurées et fichier llms.txt",
+          valeurs: { "site-premium": true },
+        },
+        { libelle: "Fiche Google remise en ordre", valeurs: { "site-premium": true } },
+        { libelle: "Une heure de prise en main en visio", valeurs: { "site-premium": true } },
+        {
+          libelle: "Hébergement et corrections",
+          valeurs: { "site-premium": "pendant 3 mois" },
+        },
+      ],
+    },
+  ],
 };
 
 /** Ce qu'une offre comprend, en phrases : pour les CGV, le JSON-LD et les pages métier. */
@@ -416,7 +500,26 @@ export const GROUPES: Record<GroupeId, { titre: string; ancre: string }> = {
   boutique: { titre: "Vendre en ligne", ancre: "boutique" },
   maintenance: { titre: "Faire évoluer votre site", ancre: "maintenance" },
   "agents-ia": { titre: "Agents IA et automatisation", ancre: "agents-ia" },
+  premium: { titre: "Sur mesure", ancre: "premium" },
 };
+
+/** Les trois acomptes de Sitaly Premium : signature, maquettes validées, mise en ligne. */
+export const ACOMPTES_PREMIUM = [
+  { part: 0.3, moment: "à la signature" },
+  { part: 0.4, moment: "à la validation des maquettes" },
+  { part: 0.3, moment: "à la mise en ligne" },
+] as const;
+
+/** Le montant de chaque acompte, arrondi à l'euro ; le dernier par différence, pour que le total reste exact. */
+export function montantsAcomptes(o: Offre): { montant: number; moment: string; part: number }[] {
+  let deja = 0;
+  return ACOMPTES_PREMIUM.map((a, i) => {
+    const montant =
+      i === ACOMPTES_PREMIUM.length - 1 ? o.depart - deja : Math.round(o.depart * a.part);
+    deja += montant;
+    return { montant, moment: a.moment, part: a.part };
+  });
+}
 
 export function offresDu(groupe: GroupeId): Offre[] {
   return OFFRES.filter((o) => o.groupe === groupe);
@@ -434,6 +537,17 @@ export function prixLong(o: Offre): string {
   return o.mensuel === undefined
     ? `${des}${euros(o.depart)} ${o.departLibelle}`
     : `${des}${euros(o.mensuel)}/mois + ${des}${euros(o.depart)} ${o.departLibelle}`;
+}
+
+/**
+ * La ligne sous le grand prix d'une carte : les frais de départ d'une offre au
+ * mois, ou ce qui suit un montant payé une fois.
+ */
+export function ligneDepart(o: Offre): string {
+  if (o.mensuel !== undefined)
+    return `+ ${o.aPartirDe ? "dès " : ""}${euros(o.depart)} ${o.departLibelle}`;
+  if (o.groupe === "premium") return `${o.departLibelle}, sans abonnement`;
+  return `${o.departLibelle.replace(/^de /, "")}, puis un suivi mensuel chiffré dans le devis`;
 }
 
 /** Le lien du menu : la page de l'offre, ou sa carte sur /tarifs/. */
@@ -465,6 +579,23 @@ export const RACHAT_SITE = [
 export const BOUTIQUE_SANS_ABONNEMENT = 1490;
 
 export const MENTION_TVA = "TVA non applicable, art. 293 B du CGI";
+
+/**
+ * Sitaly App, le créateur de site par l'IA en libre-service (29 octobre 2026,
+ * produit principal de sitaly.fr depuis le 30 octobre). Trois formules
+ * calquées sur Durable (Gratuit, Launch, Grow), mensuelles ou annuelles
+ * (douze mois moins 15 %, arrondis à l'euro). Les mêmes montants vivent dans
+ * l'application (sitaly-saas : src/lib/entitlements.ts) et dans Stripe.
+ *
+ * Hors de `OFFRES`, qui garde les offres de l'agence, vendues au téléphone.
+ */
+export const CREATEUR_IA = {
+  page: "/",
+  menuDesc: "Votre site écrit par l'IA, formule gratuite pour commencer.",
+  decouverte: { nom: "Découverte", mensuel: 0, annuel: 0, credits: 50 },
+  essentiel: { nom: "Essentiel", mensuel: 39, annuel: 398, credits: 500, creditDomaine: 20 },
+  pro: { nom: "Pro", mensuel: 79, annuel: 806, credits: 2500, creditDomaine: 40 },
+} as const;
 
 /** Prix le plus bas d'un site, pour les accroches (« à partir de »). */
 export const PRIX_SITE_MIN = Math.min(

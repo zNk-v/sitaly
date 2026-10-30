@@ -1,0 +1,240 @@
+/* Maquette « fleuriste » : Herbier. Préfixe .m-fleuriste. Voir
+   fleuriste.tsx. Mesures en cqi/cqb de l'écran (container « ecran »).
+   Paysage par défaut, portrait sous @container ecran (aspect-ratio < 1).
+   Couleur de décor propre : coquelicot #bd4334, réservé aux pétales et aux
+   grands chiffres (4,5:1 sur le rose). */
+
+.m-fleuriste .herbier {
+  --coquelicot: #bd4334;
+  --filet: color-mix(in oklab, var(--v-encre) 18%, transparent);
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto 1fr;
+  column-gap: 5cqi;
+  height: 100%;
+}
+
+.m-fleuriste .herbier-bandeau {
+  grid-column: 1 / -1;
+  padding: 1cqb 4cqi;
+  background: var(--v-encre);
+  color: var(--v-fond);
+  font-size: max(11px, 1.3cqi);
+  font-weight: 500;
+  text-align: center;
+}
+.m-fleuriste .herbier-entete {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: baseline;
+  gap: 3cqi;
+  padding: 3cqb 5cqi 2.4cqb;
+}
+.m-fleuriste .herbier-logo {
+  font-size: max(22px, 4.4cqi);
+}
+.m-fleuriste .herbier-nav {
+  display: flex;
+  gap: 2.4cqi;
+  margin-left: auto;
+  color: var(--v-doux);
+  font-size: max(12px, 1.4cqi);
+}
+.m-fleuriste .herbier-panier {
+  font-size: max(12px, 1.4cqi);
+  font-weight: 600;
+}
+
+/* La planche : papier légèrement plus clair, tiges d'un seul trait,
+   étiquette à double filet posée en biais. */
+.m-fleuriste .herbier-planche {
+  position: relative;
+  align-self: stretch;
+  margin: 0 0 6cqb 5cqi;
+  border: 1px solid var(--filet);
+  background: color-mix(in oklab, white 55%, var(--v-fond));
+}
+.m-fleuriste .herbier-tiges {
+  position: absolute;
+  inset: 4% 8% 18% 8%;
+  width: 84%;
+  height: 78%;
+}
+.m-fleuriste .tige {
+  --de: calc(0.15 + var(--j) * 0.1);
+  --a: calc(0.25 + var(--j) * 0.1);
+  transform-box: fill-box;
+  transform-origin: bottom;
+  transform: scaleY(var(--ge));
+}
+.m-fleuriste .trait {
+  fill: none;
+  stroke: var(--v-encre);
+  stroke-width: 1.5px;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+.m-fleuriste .feuille {
+  fill: color-mix(in oklab, var(--v-encre) 22%, transparent);
+  stroke: var(--v-encre);
+  stroke-width: 1px;
+  vector-effect: non-scaling-stroke;
+}
+.m-fleuriste .fleur {
+  fill: var(--coquelicot);
+}
+.m-fleuriste .coeur {
+  fill: var(--v-encre);
+}
+.m-fleuriste .herbier-etiquette {
+  --de: 0.1;
+  --a: 0.4;
+  position: absolute;
+  right: 6%;
+  bottom: 6%;
+  display: grid;
+  gap: 0.5cqb;
+  width: min(62%, 28cqi);
+  padding: 1.4cqb 1.6cqi;
+  border: 3px double var(--v-encre);
+  background: var(--v-fond);
+  font-size: max(11px, 1.25cqi);
+  transform: rotate(calc(-6deg + 4deg * var(--ge)));
+}
+.m-fleuriste .herbier-etiquette span {
+  display: inline-block;
+  min-width: 6.5em;
+  color: var(--v-doux);
+  font-size: 0.9em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.m-fleuriste .herbier-etiquette em {
+  font-family: var(--font-accent);
+  font-size: 1.15em;
+}
+
+.m-fleuriste .herbier-offre {
+  align-self: center;
+  padding: 0 5cqi 7cqb 0;
+}
+.m-fleuriste .herbier-latin {
+  color: var(--v-doux);
+  font-size: max(11px, 1.2cqi);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.m-fleuriste .herbier-accroche {
+  margin-top: 2cqb;
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: max(24px, 4.6cqi);
+  line-height: 1.04;
+}
+.m-fleuriste .herbier-tailles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2cqi;
+  margin-top: 3cqb;
+}
+.m-fleuriste .herbier-tailles li {
+  display: grid;
+  justify-items: center;
+  gap: 0.3cqb;
+  padding: 1.6cqb 0;
+  border: 1px solid var(--filet);
+  border-radius: 999px 999px 1.2cqi 1.2cqi;
+}
+.m-fleuriste .herbier-tailles li[data-choisi] {
+  border: 2px solid var(--v-encre);
+}
+.m-fleuriste .herbier-taille {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: max(16px, 2.4cqi);
+}
+.m-fleuriste .herbier-prix {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: max(15px, 2cqi);
+  color: var(--coquelicot);
+}
+.m-fleuriste .herbier-bouton {
+  display: block;
+  margin-top: 2.4cqb;
+  padding: 1.5cqb 0;
+  border-radius: 999px;
+  background: var(--v-accent);
+  color: var(--v-sur);
+  font-size: max(13px, 1.7cqi);
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Portrait : l'étiquette en tête, la planche en bandeau, les tailles en
+   pastilles. */
+@container ecran (aspect-ratio < 1) {
+  .m-fleuriste .herbier {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto 1fr;
+  }
+  .m-fleuriste .herbier-bandeau {
+    font-size: max(11px, 2.8cqi);
+    padding: 0.8cqb 3cqi;
+  }
+  .m-fleuriste .herbier-nav {
+    display: none;
+  }
+  .m-fleuriste .herbier-logo {
+    font-size: max(24px, 9cqi);
+  }
+  .m-fleuriste .herbier-panier {
+    margin-left: auto;
+    font-size: max(13px, 3.4cqi);
+  }
+  .m-fleuriste .herbier-planche {
+    height: 26cqb;
+    margin: 0 5cqi;
+  }
+  .m-fleuriste .herbier-tiges {
+    inset: 4% auto 4% 4%;
+    width: 40%;
+    height: 92%;
+  }
+  .m-fleuriste .herbier-etiquette {
+    right: 4%;
+    bottom: 12%;
+    width: 54%;
+    font-size: max(11px, 2.9cqi);
+  }
+  .m-fleuriste .herbier-offre {
+    align-self: start;
+    padding: 2.4cqb 5cqi 7cqb;
+  }
+  .m-fleuriste .herbier-latin {
+    font-size: max(11px, 2.7cqi);
+  }
+  .m-fleuriste .herbier-accroche {
+    font-size: max(26px, 8.6cqi);
+  }
+  .m-fleuriste .herbier-tailles {
+    margin-top: 2cqb;
+    gap: 2.4cqi;
+  }
+  .m-fleuriste .herbier-tailles li {
+    padding: 1.2cqb 0;
+    border-radius: 999px;
+  }
+  .m-fleuriste .herbier-taille {
+    font-size: max(16px, 5cqi);
+  }
+  .m-fleuriste .herbier-prix {
+    font-size: max(15px, 4.4cqi);
+  }
+  .m-fleuriste .herbier-bouton {
+    font-size: max(14px, 4cqi);
+    padding: 1.3cqb 0;
+  }
+}

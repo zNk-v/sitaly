@@ -9,6 +9,7 @@ import {
   Megaphone,
   MessageSquareText,
   Newspaper,
+  PenTool,
   PhoneCall,
   Plug,
   Puzzle,
@@ -24,7 +25,9 @@ import {
   Wrench,
 } from "lucide-react";
 import { entreeMenu, type EntreeMenu, type FamilleId } from "@/data/expertises";
-import { offre, prixCourt, type Offre, type OffreId } from "@/data/offres";
+import { CREATEUR_IA, offre, prixCourt, type Offre, type OffreId } from "@/data/offres";
+import { euros } from "@/lib/config";
+import { PREMIUM_PUBLIE } from "@/data/premium";
 import { REALISATIONS } from "@/data/realisations";
 
 /**
@@ -80,96 +83,45 @@ function entreeOffre(id: OffreId, icone: Icone, prix?: string): EntreeMenu {
 
 const page = (cle: string, icone: Icone): EntreeMenu => ({ ...entreeMenu(cle), icone });
 
+/**
+ * Depuis le 30 octobre 2026, sitaly.fr présente Sitaly App, comme durable.com :
+ * le menu mène aux fonctions, aux exemples et aux tarifs de l'application
+ * (MainNav, MobileMenu). Un seul onglet déroulant reste : « Services », pour ce
+ * que l'application ne fait pas et que l'équipe vend en direct (Google Ads, sur
+ * mesure). Les autres pages de l'agence restent en ligne, hors menu.
+ */
+export const LIENS_PRODUIT: { label: string; to: string; hash?: string }[] = [
+  { label: "Fonctionnalités", to: "/", hash: "fonctionnalites" },
+  { label: "Exemples", to: "/", hash: "exemples" },
+  { label: "Tarifs", to: "/tarifs/" },
+];
+
 export const ONGLETS: OngletMenu[] = [
   {
-    label: "Site web",
-    famille: "site",
-    colonnes: [
-      {
-        titre: "Créer votre site",
-        entrees: [
-          entreeOffre("presence", Store),
-          entreeOffre("presence-pro", Rocket),
-          entreeOffre("presence-expert", Gem),
-          /* Au-delà de la boutique, tout se chiffre sur devis : le menu annonce « dès ». */
-          entreeOffre("boutique", ShoppingCart, `dès ${prixCourt(offre("boutique"))}`),
-        ],
-      },
-      {
-        titre: "Faire évoluer votre site",
-        entrees: [
-          page("refonte-site-internet", RefreshCw),
-          entreeOffre("maintenance", ShieldCheck),
-        ],
-      },
-    ],
-    carte: {
-      surtitre: "Nos réalisations",
-      titre: `${REALISATIONS.map((r) => r.client).join(", ")} : voir les sites livrés`,
-      lien: "Voir les réalisations",
-      to: "/realisations/",
-      image: REALISATIONS[0].capture.webp.w560,
-    },
-    pied: { label: "Voir tous les tarifs", to: "/tarifs/", hash: "site" },
-  },
-  {
-    label: "Visibilité",
+    label: "Services",
     famille: "acquisition",
     colonnes: [
       {
-        titre: "Être trouvé",
-        entrees: [
-          page("referencement-naturel", SearchCheck),
-          page("referencement-local", MapPin),
-          page("referencement-ia", Sparkles),
-        ],
-      },
-      {
         titre: "Être vu",
-        entrees: [
-          page("chatgpt-ads", MessageSquareText),
-          page("google-ads", HardHat),
-          page("publicite-reseaux-sociaux", Megaphone),
-        ],
-      },
-    ],
-    carte: {
-      surtitre: "Par où commencer ?",
-      titre: "Votre fiche Google notée sur 100, gratuitement, avec les corrections à faire",
-      lien: "Auditer ma fiche Google",
-      to: "/outils/audit-fiche-google/",
-    },
-  },
-  {
-    label: "Agents IA",
-    famille: "automatisation",
-    colonnes: [
-      {
-        titre: "Agents IA",
-        entrees: [
-          entreeOffre("agent-ia", Bot),
-          entreeOffre("agent-ia-pro", PhoneCall),
-          entreeOffre("outil-sur-mesure", Puzzle),
-        ],
+        entrees: [page("google-ads", HardHat)],
       },
       {
-        titre: "Automatiser",
+        titre: "Sur mesure",
         entrees: [
-          page("automatisation-taches", Workflow),
+          entreeOffre("boutique", ShoppingCart, `dès ${prixCourt(offre("boutique"))}`),
+          ...(PREMIUM_PUBLIE ? [entreeOffre("site-premium", PenTool)] : []),
+          page("application-web-mobile", Smartphone),
           page("crm-sur-mesure", ContactRound),
           page("logiciel-metier", AppWindow),
-          page("application-web-mobile", Smartphone),
-          page("integration-api", Plug),
         ],
       },
     ],
     carte: {
-      surtitre: "Avant de signer",
-      titre: "Ce que coûte vraiment un agent IA : mise en place, abonnement, minutes de voix",
-      lien: "Lire le détail des prix",
-      to: "/blog/prix-agent-ia/",
+      surtitre: "Un projet à part ?",
+      titre: "Campagnes Google Ads, boutique ou outil sur mesure : on en parle au téléphone",
+      lien: "Décrire mon projet",
+      to: "/mon-projet/",
     },
-    pied: { label: "Voir les tarifs des agents IA", to: "/tarifs/", hash: "agents-ia" },
   },
 ];
 

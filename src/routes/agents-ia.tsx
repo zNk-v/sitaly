@@ -620,7 +620,7 @@ function AgentsIA() {
     <div ref={pageRef} className="ai-page ambiance-automatisation min-h-screen">
       {/* L'en-tête commun, comme sur les autres pages : la page en avait un à
           elle, et ses onglets ne menaient pas aux mêmes endroits. */}
-      <SiteHeader />
+      <SiteHeader appel={{ label: CTA_LABEL, offre: "agent-ia" }} />
       <main>
         <Hero />
         <Capabilities />

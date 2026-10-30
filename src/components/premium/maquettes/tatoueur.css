@@ -1,0 +1,203 @@
+/* Maquette « tatoueur » : Fine Ligne. Préfixe .m-tatoueur. Voir
+   tatoueur.tsx. Mesures en cqi/cqb de l'écran (container « ecran »).
+   Paysage par défaut, portrait sous @container ecran (aspect-ratio < 1).
+   Couleur propre : vermillon #c52012, pour les numéros des flashs seulement
+   (5,2:1 sur l'os). */
+
+.m-tatoueur .ligne {
+  --vermillon: #c52012;
+  --filet: color-mix(in oklab, var(--v-encre) 16%, transparent);
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-rows: auto 1fr;
+  column-gap: 4cqi;
+  height: 100%;
+  padding: 0 5cqi 6cqb;
+  overflow: hidden;
+}
+
+/* « Fl » en serif italique, à la hauteur de l'écran, coupé par les bords. */
+.m-tatoueur .ligne-lettres {
+  position: absolute;
+  left: 1cqi;
+  top: 6cqb;
+  display: flex;
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 66cqb;
+  line-height: 1;
+  color: var(--v-encre);
+  pointer-events: none;
+}
+.m-tatoueur .ligne-f {
+  --de: 0.05;
+  --a: 0.4;
+  display: inline-block;
+  transform: translateX(calc((1 - var(--ge)) * -30%));
+}
+.m-tatoueur .ligne-l {
+  --de: 0.05;
+  --a: 0.4;
+  display: inline-block;
+  transform: translateX(calc((1 - var(--ge)) * 30%));
+}
+
+.m-tatoueur .ligne-entete {
+  position: relative;
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: baseline;
+  gap: 3cqi;
+  padding: 3.6cqb 0 2.6cqb;
+  border-bottom: 1px solid var(--v-encre);
+}
+.m-tatoueur .ligne-logo {
+  font-size: max(20px, 3.4cqi);
+}
+.m-tatoueur .ligne-nav {
+  display: flex;
+  gap: 2.6cqi;
+  margin-left: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: max(12px, 1.35cqi);
+  text-transform: uppercase;
+}
+
+/* Le texte se pose à droite des lettres géantes, sur un fond os qui les
+   masque : rien ne passe derrière un mot. */
+.m-tatoueur .ligne-texte {
+  position: relative;
+  align-self: end;
+  justify-self: end;
+  width: min(100%, 30cqi);
+  margin-bottom: 2cqb;
+  padding: 2cqb 2cqi;
+  background: var(--v-fond);
+}
+.m-tatoueur .ligne-accroche {
+  font-family: var(--font-display);
+  font-size: max(17px, 2.5cqi);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.m-tatoueur .ligne-atelier {
+  margin-top: 1.4cqb;
+  color: var(--v-doux);
+  font-size: max(12px, 1.35cqi);
+}
+.m-tatoueur .ligne-bouton {
+  display: inline-block;
+  margin-top: 2cqb;
+  padding: 1.3cqb 2.4cqi;
+  background: var(--v-accent);
+  color: var(--v-sur);
+  font-size: max(13px, 1.55cqi);
+  font-weight: 700;
+}
+
+/* La planche : neuf flashs en 3 × 3, trait de 1,25 px, apparition en damier. */
+.m-tatoueur .ligne-planche {
+  position: relative;
+  align-self: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--filet);
+  border-left: 1px solid var(--filet);
+  background: var(--v-fond);
+}
+.m-tatoueur .ligne-planche li {
+  --de: 0.35;
+  --a: 0.45;
+  display: grid;
+  justify-items: center;
+  gap: 0.6cqb;
+  padding: 1.6cqb 1cqi 1.2cqb;
+  border-right: 1px solid var(--filet);
+  border-bottom: 1px solid var(--filet);
+  opacity: var(--g);
+}
+.m-tatoueur .ligne-planche li[data-pair] {
+  --de: 0.25;
+  --a: 0.35;
+}
+.m-tatoueur .ligne-planche svg {
+  width: 62%;
+  max-height: 10cqb;
+  fill: none;
+  stroke: var(--v-encre);
+  stroke-width: 1.25px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.m-tatoueur .ligne-planche li span {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: max(11px, 1.15cqi);
+  color: var(--v-doux);
+  white-space: nowrap;
+}
+.m-tatoueur .ligne-planche li b {
+  font-weight: 600;
+  color: var(--vermillon);
+}
+
+/* Portrait : les lettres en fond à 12 %, la planche en 3 × 3 par-dessus. */
+@container ecran (aspect-ratio < 1) {
+  .m-tatoueur .ligne {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr;
+    padding: 0 5cqi 7cqb;
+  }
+  .m-tatoueur .ligne-lettres {
+    left: -6cqi;
+    bottom: auto;
+    top: 6cqb;
+    font-size: 70cqb;
+    color: color-mix(in oklab, var(--v-encre) 12%, var(--v-fond));
+  }
+  .m-tatoueur .ligne-nav {
+    display: none;
+  }
+  .m-tatoueur .ligne-logo {
+    font-size: max(22px, 8cqi);
+  }
+  .m-tatoueur .ligne-texte {
+    grid-row: 2;
+    justify-self: stretch;
+    align-self: start;
+    width: auto;
+    margin: 2cqb 0 0;
+    padding: 0;
+    background: none;
+  }
+  .m-tatoueur .ligne-accroche {
+    font-size: max(18px, 5.4cqi);
+  }
+  .m-tatoueur .ligne-atelier {
+    font-size: max(13px, 3.4cqi);
+  }
+  .m-tatoueur .ligne-bouton {
+    display: none;
+  }
+  .m-tatoueur .ligne-planche {
+    grid-row: 3;
+    align-self: center;
+  }
+  .m-tatoueur .ligne-planche li {
+    padding: 1.2cqb 0.6cqi 1cqb;
+  }
+  .m-tatoueur .ligne-planche svg {
+    max-height: 6cqb;
+  }
+  .m-tatoueur .ligne-planche {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .m-tatoueur .ligne-planche li span {
+    font-size: max(10px, 2.5cqi);
+    white-space: normal;
+    text-align: center;
+  }
+}

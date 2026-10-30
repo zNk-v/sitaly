@@ -29,6 +29,8 @@ export default defineConfig({
     // adresse inconnue (src/routes/404.tsx).
     pages: [
       { path: "/carte" },
+      // Sitaly Premium : relue à son adresse avant d'entrer dans le menu.
+      { path: "/site-premium" },
       {
         path: "/404",
         prerender: { outputPath: "/404", autoSubfolderIndex: false, crawlLinks: false },

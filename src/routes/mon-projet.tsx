@@ -19,6 +19,11 @@ import {
   ShoppingCart,
   Sparkles,
   Store,
+  Swords,
+  TrendingUp,
+  CalendarCheck,
+  Palette,
+  Wallet,
 } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -29,6 +34,9 @@ import { envoyerDemande } from "@/lib/formulaire";
 import { suivreEvenement } from "@/lib/mesure";
 import { BASE_URL } from "@/lib/sitemap";
 import {
+  prixCourt,
+  montantsAcomptes,
+  ligneDepart,
   GROUPES,
   MENTION_TVA,
   OFFRES,
@@ -66,13 +74,17 @@ import {
  * Hors index : la page n'a pas de contenu à elle, elle oriente.
  */
 
-type Besoin = "site" | "boutique" | "agents" | "visibilite" | "conseil";
+/* « premium » ne figure pas au premier écran : on y arrive par la page
+   /site-premium/, avec ?offre=site-premium. */
+type Besoin = "site" | "boutique" | "agents" | "visibilite" | "conseil" | "premium";
 type Etape =
   | "besoin"
   | "existant"
   | "clients"
   | "catalogue"
   | "demandes"
+  | "objectif"
+  | "budget"
   | "activite"
   | "coordonnees"
   | "resultat";
@@ -197,6 +209,64 @@ const DEMANDES: (Choix<string> & { offre: OffreId })[] = [
   },
 ];
 
+/* Parcours Premium : ce que le site doit changer, puis le budget. Ni l'un ni
+   l'autre ne change l'offre conseillée ; ils préparent l'appel. */
+const OBJECTIFS: Choix<string>[] = [
+  {
+    valeur: "concurrents",
+    label: "Être choisi face à des concurrents mieux présentés",
+    detail: "Vos clients comparent avant d'appeler",
+    icone: Swords,
+  },
+  {
+    valeur: "prix",
+    label: "Vendre mes prestations plus cher",
+    detail: "Le site doit montrer ce qui justifie le prix",
+    icone: TrendingUp,
+  },
+  {
+    valeur: "reservations",
+    label: "Prendre des réservations ou des commandes",
+    detail: "Rendez-vous, tables, chambres, commandes",
+    icone: CalendarCheck,
+  },
+  {
+    valeur: "image",
+    label: "Changer d'image",
+    detail: "Votre site ne vous ressemble plus",
+    icone: Palette,
+  },
+];
+
+const PREMIUM = offre("site-premium");
+const PRESENCE_PRO = offre("presence-pro");
+const BUDGETS: Choix<string>[] = [
+  {
+    valeur: "base",
+    label: `${euros(PREMIUM.depart)} à ${euros(9000)}`,
+    detail: "Un site de huit pages au plus",
+    icone: Wallet,
+  },
+  {
+    valeur: "moyen",
+    label: `${euros(9000)} à ${euros(15000)}`,
+    detail: "Plus de pages, une deuxième langue, une réservation",
+    icone: Wallet,
+  },
+  {
+    valeur: "haut",
+    label: `Plus de ${euros(15000)}`,
+    detail: "Une boutique, un grand catalogue, plusieurs univers",
+    icone: Gem,
+  },
+  {
+    valeur: "inconnu",
+    label: "Je ne sais pas encore",
+    detail: "On en parle pendant l'appel",
+    icone: Sparkles,
+  },
+];
+
 const DELAIS = ["Dès que possible", "Dans le mois", "Dans les 3 mois", "Je me renseigne"];
 
 const QUESTIONS: Record<Etape, string> = {
@@ -205,6 +275,8 @@ const QUESTIONS: Record<Etape, string> = {
   clients: "Où sont vos clients ?",
   catalogue: "Combien de produits voulez-vous vendre ?",
   demandes: "Où se perdent vos demandes ?",
+  objectif: "Que doit changer votre nouveau site ?",
+  budget: "Quel budget prévoyez-vous ?",
   activite: "Parlez-nous de votre activité",
   coordonnees: "Votre offre est prête",
   resultat: "Notre conseil",
@@ -224,6 +296,8 @@ function parcours(besoin: Besoin | undefined, existant: Existant | undefined): E
     case "visibilite":
     case "conseil":
       return ["besoin", "activite", "coordonnees", "resultat"];
+    case "premium":
+      return ["besoin", "objectif", "budget", "activite", "coordonnees", "resultat"];
     default:
       return ["besoin", "existant", "clients", "activite", "coordonnees", "resultat"];
   }
@@ -234,7 +308,10 @@ const BESOIN_DU_GROUPE: Record<Offre["groupe"], Besoin> = {
   maintenance: "site",
   boutique: "boutique",
   "agents-ia": "agents",
+  premium: "premium",
 };
+
+const LIBELLE_PREMIUM = "Un site sur mesure (Sitaly Premium)";
 
 const IDS = new Set<string>(OFFRES.map((o) => o.id));
 const BESOINS_VALIDES = new Set<string>(["site", "boutique", "agents", "visibilite", "conseil"]);
@@ -245,11 +322,18 @@ const DESCRIPTION =
 const URL = `${BASE_URL}/mon-projet/`;
 
 export const Route = createFileRoute("/mon-projet")({
-  validateSearch: (s: Record<string, unknown>): { offre?: OffreId; besoin?: Besoin } => ({
+  validateSearch: (
+    s: Record<string, unknown>,
+  ): { offre?: OffreId; besoin?: Besoin; metier?: string } => ({
     offre: typeof s.offre === "string" && IDS.has(s.offre) ? (s.offre as OffreId) : undefined,
     besoin:
       typeof s.besoin === "string" && BESOINS_VALIDES.has(s.besoin)
         ? (s.besoin as Besoin)
+        : undefined,
+    /* Le métier tapé sur /site-premium/ : il préremplit l'activité. */
+    metier:
+      typeof s.metier === "string" && s.metier.trim()
+        ? s.metier.replace(/[<>]/g, "").trim().slice(0, 60)
         : undefined,
   }),
   head: () => ({
@@ -279,10 +363,10 @@ function MonProjet() {
   const [offreId, setOffreId] = useState<OffreId | undefined>(depart?.id);
   const [reponses, setReponses] = useState<Partial<Record<Etape, string>>>(() => {
     const b = depart ? BESOIN_DU_GROUPE[depart.groupe] : recherche.besoin;
-    const label = BESOINS.find((c) => c.valeur === b)?.label;
+    const label = b === "premium" ? LIBELLE_PREMIUM : BESOINS.find((c) => c.valeur === b)?.label;
     return label ? { besoin: label } : {};
   });
-  const [activite, setActivite] = useState("");
+  const [activite, setActivite] = useState(recherche.metier ?? "");
   const [delai, setDelai] = useState("");
   const [contact, setContact] = useState<Contact>();
   /* Le nom de domaine testé à l'étape activité, quand le visiteur part de zéro. */
@@ -290,6 +374,7 @@ function MonProjet() {
   /* L'historique des écrans vus : « Retour » y remonte, quel que soit le
      chemin pris, y compris quand on arrive avec une offre déjà choisie. */
   const [historique, setHistorique] = useState<Etape[]>(() => {
+    if (depart?.groupe === "premium") return ["besoin", "objectif"];
     if (depart) return ["besoin", "activite"];
     if (recherche.besoin) return ["besoin", parcours(recherche.besoin, undefined)[1]];
     return ["besoin"];
@@ -336,6 +421,12 @@ function MonProjet() {
     }
   }
 
+  /* Objectif et budget du parcours Premium : notés, sans changer l'offre. */
+  function noterEtSuivre(e: Etape, c: Choix<string>, suivante: Etape) {
+    noter(e, c.label);
+    aller(suivante);
+  }
+
   function choisirOffre(e: Etape, c: Choix<string> & { offre?: OffreId }) {
     noter(e, c.label);
     setOffreId(c.offre);
@@ -343,14 +434,21 @@ function MonProjet() {
   }
 
   const o = offreId ? offre(offreId) : undefined;
+  /* Le vérificateur de domaine sert à qui part de zéro, et au parcours Premium. */
+  const avecDomaine = existant === "non" || besoin === "premium";
   const resume = [
     ...Object.entries(reponses)
       .filter(([, v]) => v)
       .map(([e, v]) => `${QUESTIONS[e as Etape]} ${v}`),
     o ? `Offre conseillée : ${o.nom} (${prixLong(o)})` : "Offre : à définir ensemble",
-    ...(existant === "non" && domaine ? [`Nom de domaine testé : ${domaine}`] : []),
+    ...(avecDomaine && domaine ? [`Nom de domaine testé : ${domaine}`] : []),
   ];
-  const question = etape === "coordonnees" && !o ? "Où vous répondre ?" : QUESTIONS[etape];
+  const question =
+    etape === "coordonnees" && !o
+      ? "Où vous répondre ?"
+      : etape === "coordonnees" && besoin === "premium"
+        ? "Votre projet est prêt"
+        : QUESTIONS[etape];
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -448,13 +546,29 @@ function MonProjet() {
               />
             )}
 
+            {etape === "objectif" && (
+              <ListeChoix
+                choix={OBJECTIFS}
+                onChoisir={(c) => noterEtSuivre("objectif", c, "budget")}
+                actif={OBJECTIFS.find((c) => c.label === reponses.objectif)?.valeur}
+              />
+            )}
+
+            {etape === "budget" && (
+              <ListeChoix
+                choix={BUDGETS}
+                onChoisir={(c) => noterEtSuivre("budget", c, "activite")}
+                actif={BUDGETS.find((c) => c.label === reponses.budget)?.valeur}
+              />
+            )}
+
             {etape === "activite" && (
               <EcranActivite
                 activite={activite}
                 setActivite={setActivite}
                 delai={delai}
                 setDelai={setDelai}
-                domaine={existant === "non" ? domaine : undefined}
+                domaine={avecDomaine ? domaine : undefined}
                 setDomaine={setDomaine}
                 onSuivant={() => aller("coordonnees")}
               />
@@ -475,7 +589,12 @@ function MonProjet() {
             )}
 
             {etape === "resultat" && (
-              <Resultat o={o} refonte={existant === "refaire"} contact={contact} />
+              <Resultat
+                o={o}
+                refonte={existant === "refaire"}
+                contact={contact}
+                budgetInconnu={reponses.budget === BUDGETS[3].label}
+              />
             )}
           </div>
         </div>
@@ -843,7 +962,18 @@ function Champ({
 
 /* ---------------- Le résultat ---------------- */
 
-function Resultat({ o, refonte, contact }: { o?: Offre; refonte: boolean; contact?: Contact }) {
+function Resultat({
+  o,
+  refonte,
+  contact,
+  budgetInconnu = false,
+}: {
+  o?: Offre;
+  refonte: boolean;
+  contact?: Contact;
+  /** Parcours Premium, budget « Je ne sais pas encore » : l'offre au mois est rappelée. */
+  budgetInconnu?: boolean;
+}) {
   /* Calendly reprend le prénom et l'e-mail : le prospect n'a plus qu'à
      choisir son créneau. */
   const calendly = contact
@@ -870,11 +1000,16 @@ function Resultat({ o, refonte, contact }: { o?: Offre; refonte: boolean; contac
             </span>
             {o.mensuel !== undefined && <span className="font-medium text-white/70">/mois</span>}
           </p>
-          <p className="mt-2 text-[15px] font-medium text-white/85">
-            {o.mensuel === undefined
-              ? `${o.departLibelle.replace(/^de /, "")}, puis un suivi mensuel chiffré dans le devis`
-              : `+ ${o.aPartirDe ? "dès " : ""}${euros(o.depart)} ${o.departLibelle}`}
-          </p>
+          <p className="mt-2 text-[15px] font-medium text-white/85">{ligneDepart(o)}</p>
+          {o.groupe === "premium" && (
+            <ul className="mt-4 space-y-1 text-[15px] text-white/80">
+              {montantsAcomptes(o).map((a) => (
+                <li key={a.moment} className="tabular-nums">
+                  {euros(a.montant)} {a.moment}
+                </li>
+              ))}
+            </ul>
+          )}
           <ul className="mt-6 space-y-2.5 border-t border-white/10 pt-6 text-[15px]">
             {lignesIncluses(o).map((l) => (
               <li key={l} className="flex gap-3">
@@ -902,6 +1037,25 @@ function Resultat({ o, refonte, contact }: { o?: Offre; refonte: boolean; contac
             </Link>
           </p>
         </article>
+      )}
+
+      {budgetInconnu && (
+        <div className="rounded-[1.75rem] border border-border bg-card p-6 shadow-soft sm:p-8">
+          <p className="font-semibold">Un budget plus serré ?</p>
+          <p className="mt-1 text-[15px] leading-relaxed text-muted-foreground">
+            {PRESENCE_PRO.nom} met votre site en ligne pour {prixCourt(PRESENCE_PRO)}, avec{" "}
+            {euros(PRESENCE_PRO.depart)} {PRESENCE_PRO.departLibelle}. Teddy vous dira pendant
+            l'appel laquelle des deux offres sert le mieux votre activité.
+          </p>
+          <Link
+            to="/offres/$id/"
+            params={{ id: PRESENCE_PRO.id }}
+            className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-ink"
+          >
+            Voir {PRESENCE_PRO.nom}
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
       )}
 
       {/* Un seul bouton : le rendez-vous. C'est le seul endroit du site, hors

@@ -51,6 +51,20 @@ const beasties = new Beasties({
   logLevel: "silent",
 });
 
+/**
+ * Les feuilles qui doivent rester bloquantes. premium.css (/site-premium/)
+ * porte les règles du mode effet, qui dépendent d'une classe posée par un
+ * script en tête de page : Beasties ne peut pas les juger critiques, et la
+ * scène sauterait au chargement si la feuille arrivait après le premier
+ * affichage.
+ */
+function garderBloquantes(html) {
+  return html.replace(
+    /(<link rel="stylesheet" href="\/assets\/premium-[^"]+\.css"[^>]*?) media="print" onload="this\.media='all'"/g,
+    "$1",
+  );
+}
+
 const pages = await pagesHtml(dist);
 let traitees = 0;
 let ignorees = 0;
@@ -62,7 +76,7 @@ for (const fichier of pages) {
     continue;
   }
   try {
-    const sortie = await beasties.process(html);
+    const sortie = garderBloquantes(await beasties.process(html));
     await writeFile(fichier, sortie, "utf8");
     traitees++;
   } catch (e) {

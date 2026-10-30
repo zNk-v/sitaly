@@ -1,0 +1,483 @@
+/* Maquette « garagiste » : Garage Bielle. Préfixe .m-garagiste. Voir garagiste.tsx.
+   Mesures en cqi/cqb de l'écran (container « ecran »). Deux compositions :
+   paysage par défaut, portrait sous @container ecran (aspect-ratio < 1).
+   Couleurs de décor propres à la maquette (aucun texte courant dessus) :
+   anthracite clair #1c232a et #20272e (cadran, cartes), anthracite profond
+   #0c1013 (afficheur, bande). */
+
+.m-garagiste .bielle {
+  --filet: color-mix(in oklab, var(--v-encre) 14%, transparent);
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --bande: max(8px, 2.4cqb);
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 34cqi;
+  grid-template-rows: auto minmax(0, 1fr);
+  column-gap: 4.5cqi;
+  height: 100%;
+  padding: 0 5.5cqi calc(var(--bande) + 6cqb);
+  /* Le cadran est éclairé par l'arrière, comme un tableau de bord. */
+  background: radial-gradient(circle at 77% 54%, #20272e 0, transparent 30cqi), var(--v-fond);
+  font-weight: 400;
+}
+
+/* L'en-tête : logo, trois rubriques, le rendez-vous en filet. */
+.m-garagiste .bielle-entete {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 3cqi;
+  padding: 4cqb 0 3cqb;
+  border-bottom: 1px solid var(--filet);
+}
+.m-garagiste .bielle-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  font-size: max(14px, 1.9cqi);
+  white-space: nowrap;
+}
+/* La marque : une barre jaune inclinée, un repère de vitesse. */
+.m-garagiste .bielle-logo::before {
+  content: "";
+  width: 0.7em;
+  height: 1.05em;
+  background: var(--v-accent);
+  clip-path: polygon(45% 0, 100% 0, 55% 100%, 0 100%);
+}
+.m-garagiste .bielle-nav {
+  display: flex;
+  gap: 3cqi;
+  margin-left: auto;
+  color: var(--v-doux);
+  font-size: max(12px, 1.45cqi);
+  font-weight: 500;
+}
+.m-garagiste .bielle-rdv {
+  padding: 0.9cqb 1.9cqi;
+  border: 1px solid color-mix(in oklab, var(--v-encre) 45%, transparent);
+  border-radius: 0.5cqi;
+  font-size: max(12px, 1.45cqi);
+  font-weight: 600;
+}
+
+/* Le texte : surtitre, titre, prestations, réservation. */
+.m-garagiste .bielle-texte {
+  align-self: center;
+  min-width: 0;
+}
+.m-garagiste .bielle-sur {
+  display: flex;
+  align-items: center;
+  gap: 1.2cqi;
+  color: var(--v-doux);
+  font-family: var(--mono);
+  font-size: max(11px, 1.35cqi);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.m-garagiste .bielle-sur::before {
+  content: "";
+  width: 3cqi;
+  height: 2px;
+  background: var(--v-accent);
+}
+.m-garagiste .bielle-titre {
+  margin-top: 2.4cqb;
+  font-family: var(--font-display);
+  font-size: 3.7cqi;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+.m-garagiste .bielle-titre > span {
+  display: block;
+}
+.m-garagiste .bielle-titre em {
+  color: var(--v-accent);
+  font-style: normal;
+}
+
+/* Les prestations : nom, durée, prix sur la même ligne. */
+.m-garagiste .bielle-liste {
+  margin-top: 4.4cqb;
+  border-top: 1px solid var(--filet);
+}
+.m-garagiste .bielle-liste li {
+  --de: calc(0.1 + var(--j) * 0.035);
+  --a: calc(0.22 + var(--j) * 0.035);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(8.5cqi, auto) minmax(10.5cqi, auto);
+  align-items: baseline;
+  gap: 2cqi;
+  padding: 1.55cqb 0;
+  border-bottom: 1px solid var(--filet);
+  font-weight: 600;
+  opacity: var(--g);
+  transform: translateY(calc((1 - var(--ge)) * 1.5rem));
+}
+.m-garagiste :is(.bielle-duree, .bielle-prix) {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.m-garagiste .bielle-duree {
+  color: var(--v-doux);
+}
+.m-garagiste .bielle-prix {
+  text-align: right;
+}
+.m-garagiste [data-offert] .bielle-prix {
+  color: var(--v-accent);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* La réservation : la semaine, puis le bouton. */
+.m-garagiste .bielle-resa {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: end;
+  column-gap: 3cqi;
+  margin-top: 4.4cqb;
+}
+.m-garagiste .bielle-resa-titre {
+  grid-column: 1 / -1;
+  margin-bottom: 1.3cqb;
+  color: var(--v-doux);
+  font-family: var(--mono);
+  font-size: max(11px, 1.2cqi);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.m-garagiste .bielle-semaine {
+  display: flex;
+  gap: 0.8cqi;
+}
+.m-garagiste .bielle-semaine li {
+  display: grid;
+  justify-items: center;
+  gap: 0.2cqb;
+  width: 4.6cqi;
+  padding: 0.9cqb 0 1cqb;
+  border: 1px solid var(--filet);
+  border-radius: 0.6cqi;
+  background: #1c232a;
+  color: var(--v-doux);
+  font-size: max(11px, 1.2cqi);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.m-garagiste .bielle-semaine li::after {
+  content: attr(data-n);
+  color: var(--v-encre);
+  font-family: var(--mono);
+  font-size: max(14px, 1.9cqi);
+  font-weight: 700;
+}
+.m-garagiste .bielle-semaine li[data-etat="complet"] {
+  background: none;
+}
+.m-garagiste .bielle-semaine li[data-etat="complet"]::after {
+  color: var(--v-doux);
+  font-weight: 400;
+}
+.m-garagiste .bielle-semaine li[data-etat="choisi"] {
+  border: 2px solid var(--v-accent);
+  color: var(--v-encre);
+}
+.m-garagiste .bielle-semaine li[data-etat="choisi"]::after {
+  color: var(--v-accent);
+}
+.m-garagiste .bielle-bouton {
+  justify-self: start;
+  padding: 1.9cqb 2.8cqi;
+  border-radius: 0.5cqi;
+  background: var(--v-accent);
+  color: var(--v-sur);
+  font-size: max(13px, 1.65cqi);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+/* Le compte-tours : un cadran rond, un arc de 240°, l'aiguille et
+   l'afficheur de retour dans l'ouverture du bas. */
+.m-garagiste .bielle-cadran {
+  position: relative;
+  align-self: center;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 38%, #20272e 0, #12171b 72%);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in oklab, var(--v-encre) 10%, transparent),
+    inset 0 0 0 0.9cqi #0c1013,
+    0 2.4cqi 6cqi -1cqi rgb(0 0 0 / 0.55);
+}
+/* Le moyeu de l'aiguille, au centre du cadran. */
+.m-garagiste .bielle-cadran::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 9%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #3a434c, #0c1013 70%);
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--v-encre) 22%, transparent);
+  transform: translate(-50%, -50%);
+}
+.m-garagiste .bielle-cadran svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  fill: none;
+}
+.m-garagiste .bielle-piste {
+  stroke: color-mix(in oklab, var(--v-encre) 26%, transparent);
+  stroke-width: 1.2;
+}
+.m-garagiste .bielle-zone {
+  stroke: var(--v-accent);
+  stroke-width: 3.5;
+}
+.m-garagiste .bielle-majeures {
+  stroke: var(--v-encre);
+  stroke-width: 2.6;
+}
+.m-garagiste .bielle-mineures {
+  stroke: var(--v-doux);
+  stroke-width: 1.1;
+}
+.m-garagiste .bielle-cadran text {
+  fill: var(--v-encre);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+.m-garagiste .bielle-cadran text[data-rouge] {
+  fill: var(--v-accent);
+}
+.m-garagiste .bielle-unite {
+  position: absolute;
+  left: 50%;
+  top: 65%;
+  color: var(--v-doux);
+  font-family: var(--mono);
+  font-size: max(10px, 1.05cqi);
+  letter-spacing: 0.06em;
+  line-height: 1.25;
+  text-align: center;
+  white-space: pre;
+  transform: translate(-50%, -50%);
+}
+/* L'aiguille : de -130° (au repos, sous le zéro) à -20° (3 300 tours). */
+.m-garagiste .bielle-aiguille {
+  --de: 0.1;
+  --a: 0.9;
+  fill: var(--v-accent);
+  transform-box: view-box;
+  transform-origin: 0 0;
+  transform: rotate(calc(-130deg + 110deg * var(--ge)));
+}
+.m-garagiste .bielle-afficheur {
+  position: absolute;
+  left: 50%;
+  bottom: 11%;
+  padding: 0.6cqb 1.2cqi;
+  border: 1px solid color-mix(in oklab, var(--v-encre) 12%, transparent);
+  border-radius: 0.5cqi;
+  background: #0c1013;
+  color: var(--v-accent);
+  font-family: var(--mono);
+  font-size: max(12px, 1.4cqi);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+.m-garagiste .bielle-afficheur span {
+  margin-right: 0.5em;
+  color: var(--v-doux);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+/* La bande de pied, jaune et anthracite à 45°. Elle déborde de 2rem à
+   droite et glisse de 2rem vers la gauche pendant le pas. */
+.m-garagiste .bielle-bande {
+  --de: 0.05;
+  --a: 0.9;
+  position: absolute;
+  left: 0;
+  right: -2rem;
+  bottom: 0;
+  height: var(--bande);
+  background: repeating-linear-gradient(-45deg, var(--v-accent) 0 0.85rem, #0c1013 0.85rem 1.7rem);
+  transform: translateX(calc(var(--g) * -2rem));
+}
+.m-garagiste .vitrine-etiquette {
+  bottom: calc(var(--bande, 8px) + max(8px, 2cqb));
+}
+
+/* Portrait : le compte-tours réduit à droite du titre, les prestations en
+   cartes (deux côte à côte, le pré-contrôle offert en large), la semaine et
+   le bouton en pied. */
+@container ecran (aspect-ratio < 1) {
+  .m-garagiste .bielle {
+    /* Le cadran grandit sur un écran plus haut que 4:5 ; la place libre se
+       partage entre le haut du titre et le pied de page. */
+    grid-template-columns: minmax(0, 1fr) min(40cqi, max(34cqi, 26cqb));
+    grid-template-rows: auto 1fr auto auto auto 1fr auto;
+    grid-template-areas:
+      "entete entete"
+      ". ."
+      "sur cadran"
+      "titre cadran"
+      "liste liste"
+      ". ."
+      "resa resa";
+    column-gap: 3cqi;
+    padding: 0 4.5cqi calc(var(--bande) + 6.5cqb);
+    background: radial-gradient(circle at 80% 26%, #20272e 0, transparent 30cqi), var(--v-fond);
+  }
+  .m-garagiste .bielle-entete {
+    grid-area: entete;
+    padding: 2.8cqb 0 2cqb;
+  }
+  .m-garagiste .bielle-nav {
+    display: none;
+  }
+  .m-garagiste .bielle-logo {
+    font-size: max(14px, 4cqi);
+  }
+  .m-garagiste .bielle-rdv {
+    margin-left: auto;
+    padding: 0.7cqb 3cqi;
+    font-size: max(13px, 3.6cqi);
+  }
+  .m-garagiste .bielle-texte {
+    display: contents;
+  }
+  .m-garagiste .bielle-sur {
+    grid-area: sur;
+    align-self: end;
+    margin-top: 2.4cqb;
+    font-size: max(11px, 2.9cqi);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  .m-garagiste .bielle-sur::before {
+    display: none;
+  }
+  .m-garagiste .bielle-titre {
+    grid-area: titre;
+    align-self: start;
+    margin-top: 1cqb;
+    font-size: 5.7cqi;
+    line-height: 1.06;
+  }
+  .m-garagiste .bielle-cadran {
+    grid-area: cadran;
+    align-self: end;
+    margin-top: 2.4cqb;
+  }
+  .m-garagiste .bielle-cadran text {
+    font-size: 20px;
+  }
+  .m-garagiste .bielle-unite,
+  .m-garagiste .bielle-mineures {
+    display: none;
+  }
+  .m-garagiste .bielle-afficheur {
+    bottom: 7%;
+    padding: 0.2cqb 1.4cqi;
+    font-size: max(12px, 3.3cqi);
+  }
+  .m-garagiste .bielle-afficheur span {
+    display: none;
+  }
+
+  /* Les cartes : le nom en tête, la durée et le prix en dessous. Le
+     pseudo-élément force le retour à la ligne après le nom. */
+  .m-garagiste .bielle-liste {
+    grid-area: liste;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2cqi;
+    margin-top: 2.6cqb;
+    border: 0;
+  }
+  .m-garagiste .bielle-liste li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.3cqb 2cqi;
+    padding: 1.1cqb 3.6cqi;
+    border: 1px solid var(--filet);
+    border-radius: 2cqi;
+    background: #1c232a;
+    line-height: 1.3;
+  }
+  .m-garagiste .bielle-liste li::after {
+    content: "";
+    order: 1;
+    flex-basis: 100%;
+    height: 0;
+  }
+  .m-garagiste .bielle-duree {
+    order: 2;
+  }
+  .m-garagiste .bielle-prix {
+    order: 3;
+    margin-left: auto;
+    font-weight: 700;
+  }
+  .m-garagiste .bielle-liste [data-offert] {
+    grid-column: 1 / -1;
+    border-color: color-mix(in oklab, var(--v-accent) 55%, transparent);
+  }
+
+  .m-garagiste .bielle-resa {
+    grid-area: resa;
+    grid-template-columns: 1fr;
+    align-self: end;
+    row-gap: 1.4cqb;
+    margin-top: 2cqb;
+  }
+  .m-garagiste .bielle-resa-titre {
+    margin-bottom: -0.4cqb;
+    font-size: max(11px, 2.9cqi);
+  }
+  .m-garagiste .bielle-semaine {
+    gap: 2cqi;
+  }
+  .m-garagiste .bielle-semaine li {
+    flex: 1;
+    width: auto;
+    grid-auto-flow: column;
+    justify-content: center;
+    align-items: baseline;
+    gap: 1.6cqi;
+    padding: 0.7cqb 0;
+    border-radius: 1.6cqi;
+    font-size: max(12px, 3.2cqi);
+  }
+  .m-garagiste .bielle-semaine li::after {
+    font-size: max(14px, 4.2cqi);
+  }
+  .m-garagiste .bielle-bouton {
+    justify-self: stretch;
+    padding: 1.5cqb 4cqi;
+    border-radius: 1.6cqi;
+    font-size: max(15px, 4.4cqi);
+    text-align: center;
+  }
+}

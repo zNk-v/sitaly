@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TarifsRouteImport } from './routes/tarifs'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SiteVitrineRouteImport } from './routes/site-vitrine'
+import { Route as SitePremiumRouteImport } from './routes/site-premium'
 import { Route as SiteInternetSerrurierRouteImport } from './routes/site-internet-serrurier'
 import { Route as SiteInternetPlombierRouteImport } from './routes/site-internet-plombier'
 import { Route as SiteInternetPeintreRouteImport } from './routes/site-internet-peintre'
@@ -37,6 +38,7 @@ import { Route as LandingPageRouteImport } from './routes/landing-page'
 import { Route as IntegrationApiRouteImport } from './routes/integration-api'
 import { Route as EssonneRouteImport } from './routes/essonne'
 import { Route as CrmSurMesureRouteImport } from './routes/crm-sur-mesure'
+import { Route as CreerSonSiteIaRouteImport } from './routes/creer-son-site-ia'
 import { Route as CreationSiteInternetRouteImport } from './routes/creation-site-internet'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as CgvRouteImport } from './routes/cgv'
@@ -81,6 +83,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const SiteVitrineRoute = SiteVitrineRouteImport.update({
   id: '/site-vitrine',
   path: '/site-vitrine',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitePremiumRoute = SitePremiumRouteImport.update({
+  id: '/site-premium',
+  path: '/site-premium',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SiteInternetSerrurierRoute = SiteInternetSerrurierRouteImport.update({
@@ -208,6 +215,11 @@ const EssonneRoute = EssonneRouteImport.update({
 const CrmSurMesureRoute = CrmSurMesureRouteImport.update({
   id: '/crm-sur-mesure',
   path: '/crm-sur-mesure',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreerSonSiteIaRoute = CreerSonSiteIaRouteImport.update({
+  id: '/creer-son-site-ia',
+  path: '/creer-son-site-ia',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CreationSiteInternetRoute = CreationSiteInternetRouteImport.update({
@@ -378,6 +390,7 @@ export interface FileRoutesByFullPath {
   '/cgv': typeof CgvRoute
   '/cookies': typeof CookiesRoute
   '/creation-site-internet': typeof CreationSiteInternetRoute
+  '/creer-son-site-ia': typeof CreerSonSiteIaRoute
   '/crm-sur-mesure': typeof CrmSurMesureRoute
   '/essonne': typeof EssonneRoute
   '/integration-api': typeof IntegrationApiRoute
@@ -403,6 +416,7 @@ export interface FileRoutesByFullPath {
   '/site-internet-peintre': typeof SiteInternetPeintreRoute
   '/site-internet-plombier': typeof SiteInternetPlombierRoute
   '/site-internet-serrurier': typeof SiteInternetSerrurierRoute
+  '/site-premium': typeof SitePremiumRoute
   '/site-vitrine': typeof SiteVitrineRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tarifs': typeof TarifsRoute
@@ -437,6 +451,7 @@ export interface FileRoutesByTo {
   '/cgv': typeof CgvRoute
   '/cookies': typeof CookiesRoute
   '/creation-site-internet': typeof CreationSiteInternetRoute
+  '/creer-son-site-ia': typeof CreerSonSiteIaRoute
   '/crm-sur-mesure': typeof CrmSurMesureRoute
   '/essonne': typeof EssonneRoute
   '/integration-api': typeof IntegrationApiRoute
@@ -462,6 +477,7 @@ export interface FileRoutesByTo {
   '/site-internet-peintre': typeof SiteInternetPeintreRoute
   '/site-internet-plombier': typeof SiteInternetPlombierRoute
   '/site-internet-serrurier': typeof SiteInternetSerrurierRoute
+  '/site-premium': typeof SitePremiumRoute
   '/site-vitrine': typeof SiteVitrineRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tarifs': typeof TarifsRoute
@@ -498,6 +514,7 @@ export interface FileRoutesById {
   '/cgv': typeof CgvRoute
   '/cookies': typeof CookiesRoute
   '/creation-site-internet': typeof CreationSiteInternetRoute
+  '/creer-son-site-ia': typeof CreerSonSiteIaRoute
   '/crm-sur-mesure': typeof CrmSurMesureRoute
   '/essonne': typeof EssonneRoute
   '/integration-api': typeof IntegrationApiRoute
@@ -523,6 +540,7 @@ export interface FileRoutesById {
   '/site-internet-peintre': typeof SiteInternetPeintreRoute
   '/site-internet-plombier': typeof SiteInternetPlombierRoute
   '/site-internet-serrurier': typeof SiteInternetSerrurierRoute
+  '/site-premium': typeof SitePremiumRoute
   '/site-vitrine': typeof SiteVitrineRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tarifs': typeof TarifsRoute
@@ -560,6 +578,7 @@ export interface FileRouteTypes {
     | '/cgv'
     | '/cookies'
     | '/creation-site-internet'
+    | '/creer-son-site-ia'
     | '/crm-sur-mesure'
     | '/essonne'
     | '/integration-api'
@@ -585,6 +604,7 @@ export interface FileRouteTypes {
     | '/site-internet-peintre'
     | '/site-internet-plombier'
     | '/site-internet-serrurier'
+    | '/site-premium'
     | '/site-vitrine'
     | '/sitemap.xml'
     | '/tarifs'
@@ -619,6 +639,7 @@ export interface FileRouteTypes {
     | '/cgv'
     | '/cookies'
     | '/creation-site-internet'
+    | '/creer-son-site-ia'
     | '/crm-sur-mesure'
     | '/essonne'
     | '/integration-api'
@@ -644,6 +665,7 @@ export interface FileRouteTypes {
     | '/site-internet-peintre'
     | '/site-internet-plombier'
     | '/site-internet-serrurier'
+    | '/site-premium'
     | '/site-vitrine'
     | '/sitemap.xml'
     | '/tarifs'
@@ -679,6 +701,7 @@ export interface FileRouteTypes {
     | '/cgv'
     | '/cookies'
     | '/creation-site-internet'
+    | '/creer-son-site-ia'
     | '/crm-sur-mesure'
     | '/essonne'
     | '/integration-api'
@@ -704,6 +727,7 @@ export interface FileRouteTypes {
     | '/site-internet-peintre'
     | '/site-internet-plombier'
     | '/site-internet-serrurier'
+    | '/site-premium'
     | '/site-vitrine'
     | '/sitemap.xml'
     | '/tarifs'
@@ -740,6 +764,7 @@ export interface RootRouteChildren {
   CgvRoute: typeof CgvRoute
   CookiesRoute: typeof CookiesRoute
   CreationSiteInternetRoute: typeof CreationSiteInternetRoute
+  CreerSonSiteIaRoute: typeof CreerSonSiteIaRoute
   CrmSurMesureRoute: typeof CrmSurMesureRoute
   EssonneRoute: typeof EssonneRoute
   IntegrationApiRoute: typeof IntegrationApiRoute
@@ -765,6 +790,7 @@ export interface RootRouteChildren {
   SiteInternetPeintreRoute: typeof SiteInternetPeintreRoute
   SiteInternetPlombierRoute: typeof SiteInternetPlombierRoute
   SiteInternetSerrurierRoute: typeof SiteInternetSerrurierRoute
+  SitePremiumRoute: typeof SitePremiumRoute
   SiteVitrineRoute: typeof SiteVitrineRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TarifsRoute: typeof TarifsRoute
@@ -807,6 +833,13 @@ declare module '@tanstack/react-router' {
       path: '/site-vitrine'
       fullPath: '/site-vitrine'
       preLoaderRoute: typeof SiteVitrineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-premium': {
+      id: '/site-premium'
+      path: '/site-premium'
+      fullPath: '/site-premium'
+      preLoaderRoute: typeof SitePremiumRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/site-internet-serrurier': {
@@ -982,6 +1015,13 @@ declare module '@tanstack/react-router' {
       path: '/crm-sur-mesure'
       fullPath: '/crm-sur-mesure'
       preLoaderRoute: typeof CrmSurMesureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/creer-son-site-ia': {
+      id: '/creer-son-site-ia'
+      path: '/creer-son-site-ia'
+      fullPath: '/creer-son-site-ia'
+      preLoaderRoute: typeof CreerSonSiteIaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/creation-site-internet': {
@@ -1222,6 +1262,7 @@ const rootRouteChildren: RootRouteChildren = {
   CgvRoute: CgvRoute,
   CookiesRoute: CookiesRoute,
   CreationSiteInternetRoute: CreationSiteInternetRoute,
+  CreerSonSiteIaRoute: CreerSonSiteIaRoute,
   CrmSurMesureRoute: CrmSurMesureRoute,
   EssonneRoute: EssonneRoute,
   IntegrationApiRoute: IntegrationApiRoute,
@@ -1247,6 +1288,7 @@ const rootRouteChildren: RootRouteChildren = {
   SiteInternetPeintreRoute: SiteInternetPeintreRoute,
   SiteInternetPlombierRoute: SiteInternetPlombierRoute,
   SiteInternetSerrurierRoute: SiteInternetSerrurierRoute,
+  SitePremiumRoute: SitePremiumRoute,
   SiteVitrineRoute: SiteVitrineRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TarifsRoute: TarifsRoute,

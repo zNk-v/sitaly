@@ -1,7 +1,14 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Check } from "lucide-react";
 import { euros } from "@/lib/config";
-import { GROUPES, MENTION_TVA, lignesIncluses, offre, type OffreId } from "@/data/offres";
+import {
+  GROUPES,
+  MENTION_TVA,
+  ligneDepart,
+  lignesIncluses,
+  offre,
+  type OffreId,
+} from "@/data/offres";
 
 /**
  * Les offres d'une page de service, prix compris (23 octobre 2026) : chaque
@@ -55,11 +62,7 @@ export function OffresEnBref({ ids, apres }: { ids: OffreId[]; apres?: React.Rea
               </span>
               {o.mensuel !== undefined && <span className="font-medium opacity-70">/mois</span>}
             </p>
-            <p className="mt-2 text-[15px] font-medium opacity-85">
-              {o.mensuel === undefined
-                ? `${o.departLibelle.replace(/^de /, "")}, puis un suivi mensuel chiffré dans le devis`
-                : `+ ${o.aPartirDe ? "dès " : ""}${euros(o.depart)} ${o.departLibelle}`}
-            </p>
+            <p className="mt-2 text-[15px] font-medium opacity-85">{ligneDepart(o)}</p>
             <ul
               className={`mt-6 flex-1 space-y-2.5 border-t pt-6 text-[15px] ${
                 o.recommandee ? "border-white/10" : "border-border"

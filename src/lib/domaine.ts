@@ -35,7 +35,7 @@ export function nomDeDomaine(texte: string): string {
     .replace(/[/?#].*$/, "")
     .replace(/\.(fr|com|net|org|eu|io|bzh|paris)$/, "")
     .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
+    .replace(/[\u0300-\u036f]/g, "")
     .replace(/œ/g, "oe")
     .replace(/æ/g, "ae")
     .replace(/&/g, "-et-")

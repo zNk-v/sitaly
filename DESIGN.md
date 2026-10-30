@@ -538,3 +538,70 @@ Nachristos (ChatGPT Ads), Brooke Cagle (Google Ads), Wright Building Center
 Reverchuk (courtiers), Centre for Ageing Better (artisans), Andreas Dick
 (restauration), Beatriz Mendez (santé), Adam Winger (beauté), Darren
 Richardson (automobile), Vitaly Gariev (professions libérales).
+
+---
+
+## 12. La page Premium (/site-premium/)
+
+Révision du 24 octobre 2026. Sitaly Premium, le site sur mesure payé une fois,
+a sa propre page, et la page est la démonstration : un cadre reste collé à
+l'écran et le site inventé qu'il montre change de métier treize fois, du
+plombier au tatoueur. Concept retenu sur quatre propositions par trois
+jugements (projection, direction artistique, faisabilité) ; spécification
+complète dans `Claude outputs/premium-specification.md`.
+
+**Les marques sont inventées, et la page le dit.** Six endroits : le
+sous-titre, la pastille de la barre d'adresse, l'étiquette dans chaque
+composition (elle reste sur une capture recadrée), la légende de chaque
+figure, le titre de la preuve, la première question. Domaines en `.exemple`,
+numéro de fiction (01 99 00 xx xx), `data-nosnippet` sur les maquettes,
+aucune marque fictive dans les données structurées. Aucune maquette ne
+montre d'avis, de note, d'étoile, d'adresse, de nom de personne, de SIRET ni
+de nom de ville réelle.
+
+**§7 tient.** Aucune image, photo ou vidéo : les treize maquettes sont
+écrites en HTML, CSS et SVG. Le seul site réel de la page est une
+réalisation livrée, présentée comme « un site sur mesure livré par Sitaly ».
+
+**Les couleurs des marques vivent dans le cadre.** Hors du cadre, la page
+garde la charte : papier, triade, mot en serif italique, colonne de repères.
+`scripts/verifier-premium.mjs` fait échouer le build si une palette entre
+dans les teintes de Sitaly (OKLCH 240 à 310 et 330 à 360, chroma au-dessus de
+0,06), dans le vert signal (145 à 185), ou si un couple texte et fond passe
+sous 4,5:1.
+
+**Aucune police ajoutée.** Les maquettes jouent sur les trois polices du
+site et leurs graisses : Inter et Plus Jakarta Sans sont variables, leurs
+`@font-face` déclarent désormais une plage (100 à 900, 200 à 800).
+
+**Deux états, un seul DOM.** En mode effet (`.premium-effet` sur `<html>`,
+posé avant le premier affichage par un script en tête), la scène est
+collée. Sinon (sans script, mouvement réduit, sous 700 px de haut ou 580 px
+sur téléphone), la page est une galerie lisible. Le pilote n'écrit qu'une
+variable par site, `--t` ; volets, sorties et gestes en découlent en CSS,
+en transform et en opacité seulement, sans 3D.
+
+**Tant que les conditions ne sont pas validées**, `PREMIUM_PUBLIE` vaut
+`false` dans `src/data/premium.ts` : page en noindex, hors menu, hors
+sitemap et sans bandeau sur /tarifs/. Elle est prérendue pour être relue à
+son adresse.
+
+## 13. La page du créateur de site IA (/creer-son-site-ia/)
+
+Décision du 29 octobre 2026. Teddy a rejeté la grammaire éditoriale de ce
+document pour cette page (titres en minuscules, mot basculé en italique,
+colonne de repères) et demandé l'allure de durable.com. La page en sort donc,
+et elle seule :
+
+- fond blanc pur, pas le papier chaud ;
+- titres centrés en Plus Jakarta Sans gras, casse de phrase, approche serrée
+  (utilitaire `titre-produit` dans `src/styles.css`). Un premier essai en
+  Instrument Serif droit, plus proche de Durable, a été écarté par Teddy ;
+- cartes gris très clair (`bg-black/[0.03]`), coins de 24 px ;
+- boutons presque noirs ; le violet ne sert qu'aux surtitres ;
+- un champ de saisie dans le premier écran, et un mur de sites d'exemple
+  construits en balisage, marques inventées et dites comme telles (§7 tient).
+
+L'en-tête et le pied de page restent ceux du site. Si le créateur IA devient
+la page d'accueil (phase 2 de docs/saas/), c'est cette allure qui
+s'étendra, et ce document sera à réécrire.

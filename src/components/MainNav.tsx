@@ -1,14 +1,15 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { COULEURS_FAMILLE, type EntreeMenu } from "@/data/expertises";
-import { AGENCE, ONGLETS, type OngletMenu } from "@/data/menu";
-import { REALISATIONS } from "@/data/realisations";
+import { AGENCE, LIENS_PRODUIT, ONGLETS, type OngletMenu } from "@/data/menu";
 
 /**
  * Navigation principale, avec ses menus déroulants.
  *
- * Trois onglets de services (Site web, Visibilité, Agents IA), chacun dans la
- * couleur de sa famille, puis Réalisations, Tarifs et L'agence. Chaque onglet
+ * Depuis le 30 octobre 2026 : Fonctionnalités, Exemples et Tarifs de Sitaly
+ * App, puis l'onglet Services (ce que l'équipe vend en direct) et Ressources.
+ * Avant : trois onglets de services (Site web, Visibilité, Agents IA), chacun
+ * dans la couleur de sa famille, puis Réalisations, Tarifs et L'agence. Chaque onglet
  * reprend la mise en page de devmiweb.com : deux colonnes d'entrées avec leur
  * pictogramme, un encart à droite, et le prix des offres de la grille, pour
  * que le visiteur voie ce que coûte un site avant d'ouvrir une page.
@@ -217,52 +218,17 @@ function Carte({ o }: { o: OngletMenu }) {
 export function MainNav() {
   return (
     <nav className="hidden items-center gap-5 lg:flex xl:gap-7" aria-label="Navigation principale">
+      {LIENS_PRODUIT.map((l) => (
+        <Link key={l.label} to={l.to} hash={l.hash} className="lien-entete py-5">
+          {l.label}
+        </Link>
+      ))}
+
       {ONGLETS.map((o) => (
         <Onglet key={o.label} o={o} />
       ))}
 
-      <Deroulant label="Réalisations">
-        <div className="space-y-0.5">
-          {REALISATIONS.map((r) => (
-            <Link
-              key={r.slug}
-              to="/realisations/$slug/"
-              params={{ slug: r.slug }}
-              className="group/item flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-secondary"
-            >
-              {/* Vignette de 64 px : la plus petite capture WebP suffit. */}
-              <img
-                src={r.capture.webp.w560}
-                alt=""
-                aria-hidden="true"
-                width={64}
-                height={44}
-                loading="lazy"
-                className="h-11 w-16 shrink-0 rounded-md border border-border object-cover object-top"
-              />
-              <span className="min-w-0">
-                <span className="block truncate font-semibold group-hover/item:text-brand-ink">
-                  {r.client}
-                </span>
-                <span className="block truncate text-[13px] text-muted-foreground">{r.metier}</span>
-              </span>
-            </Link>
-          ))}
-          <Link
-            to="/realisations/"
-            className="mt-1 flex items-center gap-1.5 rounded-lg px-3 py-2.5 text-sm font-semibold text-brand-ink transition-colors hover:bg-secondary"
-          >
-            Toutes les réalisations
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </Deroulant>
-
-      <Link to="/tarifs/" className="lien-entete py-5">
-        Tarifs
-      </Link>
-
-      <Deroulant label="L'agence">
+      <Deroulant label="Ressources">
         <div className="space-y-0.5">
           {AGENCE.map((e) => (
             <EntreeLien key={e.label} e={e} />

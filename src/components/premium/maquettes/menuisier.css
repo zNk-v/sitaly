@@ -1,0 +1,218 @@
+/* Maquette « menuisier » : Atelier Tenon. Préfixe .m-menuisier. Voir
+   menuisier.tsx. Mesures en cqi/cqb de l'écran (container « ecran »).
+   Paysage par défaut, portrait sous @container ecran (aspect-ratio < 1). */
+
+.m-menuisier .tenon {
+  --filet: color-mix(in oklab, var(--v-encre) 18%, transparent);
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  column-gap: 4cqi;
+  height: 100%;
+  padding: 0 5cqi;
+  /* Papier millimétré : un pas fin et un pas fort, à 6 %. */
+  background-color: var(--v-fond);
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--v-accent) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--v-accent) 6%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(color-mix(in oklab, var(--v-accent) 11%, transparent) 1px, transparent 1px),
+    linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--v-accent) 11%, transparent) 1px,
+      transparent 1px
+    );
+  background-size:
+    1.25cqi 1.25cqi,
+    1.25cqi 1.25cqi,
+    6.25cqi 6.25cqi,
+    6.25cqi 6.25cqi;
+}
+
+.m-menuisier .tenon-entete {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 3cqi;
+  padding: 3.6cqb 0 3cqb;
+  border-bottom: 1.5px solid var(--v-encre);
+}
+.m-menuisier .tenon-logo {
+  font-size: max(17px, 2.9cqi);
+}
+.m-menuisier .tenon-nav {
+  display: flex;
+  gap: 2.4cqi;
+  margin-left: auto;
+  color: var(--v-doux);
+  font-size: max(12px, 1.45cqi);
+  font-weight: 600;
+}
+.m-menuisier .tenon-cta {
+  padding: 0.8cqb 2cqi;
+  border: 1.5px solid var(--v-accent);
+  color: var(--v-accent);
+  font-size: max(12px, 1.45cqi);
+  font-weight: 700;
+}
+
+.m-menuisier .tenon-texte {
+  align-self: center;
+  padding-block: 2cqb 7cqb;
+}
+.m-menuisier .tenon-sur {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: max(11px, 1.3cqi);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--v-accent);
+}
+.m-menuisier .tenon-accroche {
+  margin-top: 2cqb;
+  font-family: var(--font-display);
+  font-size: max(22px, 4.4cqi);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+}
+.m-menuisier .tenon-engagements {
+  display: grid;
+  margin-top: 3.4cqb;
+  border-top: 1.5px solid var(--v-encre);
+}
+.m-menuisier .tenon-engagements li {
+  display: flex;
+  align-items: baseline;
+  gap: 1.6cqi;
+  padding: 1.3cqb 0;
+  border-bottom: 1px solid var(--filet);
+  font-weight: 600;
+}
+.m-menuisier .tenon-num {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: max(11px, 1.3cqi);
+  color: var(--v-accent);
+}
+.m-menuisier .tenon-bouton {
+  display: inline-block;
+  margin-top: 3.4cqb;
+  padding: 1.5cqb 3cqi;
+  background: var(--v-accent);
+  color: var(--v-sur);
+  font-size: max(13px, 1.7cqi);
+  font-weight: 700;
+}
+
+/* Le plan : traits de 1,5 px, cotes au bleu de plan, chiffres en mono. */
+.m-menuisier .tenon-plan {
+  align-self: center;
+  margin: 0;
+  padding-bottom: 6cqb;
+}
+.m-menuisier .tenon-plan svg {
+  display: block;
+  width: 100%;
+  max-height: 64cqb;
+  overflow: visible;
+}
+.m-menuisier .trait {
+  fill: none;
+  stroke: var(--v-encre);
+  stroke-width: 1.5px;
+  vector-effect: non-scaling-stroke;
+}
+.m-menuisier .trait.fin {
+  stroke-width: 1px;
+}
+.m-menuisier .cote {
+  --de: 0.2;
+  --a: 0.45;
+  fill: var(--v-accent);
+  stroke: var(--v-accent);
+  stroke-width: 1px;
+  vector-effect: non-scaling-stroke;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scaleX(var(--ge));
+}
+.m-menuisier .cote-v {
+  transform: scaleY(var(--ge));
+}
+.m-menuisier .chiffre {
+  --de: 0.4;
+  --a: 0.55;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--v-accent);
+  text-anchor: middle;
+  opacity: var(--g);
+}
+.m-menuisier .chiffre-v {
+  writing-mode: vertical-rl;
+}
+.m-menuisier .tenon-plan figcaption {
+  margin-top: 1.6cqb;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: max(11px, 1.25cqi);
+  color: var(--v-doux);
+  text-align: center;
+}
+
+/* Portrait : le plan sur toute la largeur au-dessus, puis le texte. */
+@container ecran (aspect-ratio < 1) {
+  .m-menuisier .tenon {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+    padding: 0 5cqi;
+  }
+  .m-menuisier .tenon-nav,
+  .m-menuisier .tenon-cta {
+    display: none;
+  }
+  .m-menuisier .tenon-logo {
+    font-size: max(20px, 7cqi);
+  }
+  .m-menuisier .tenon-plan {
+    grid-row: 2;
+    padding: 1.6cqb 0 0;
+  }
+  .m-menuisier .tenon-plan svg {
+    max-height: 31cqb;
+  }
+  .m-menuisier .tenon-plan figcaption {
+    display: none;
+  }
+  .m-menuisier .tenon-texte {
+    grid-row: 3;
+    align-self: start;
+    padding: 2cqb 0 9cqb;
+  }
+  .m-menuisier .tenon-sur {
+    font-size: max(11px, 3cqi);
+  }
+  .m-menuisier .tenon-accroche {
+    font-size: max(22px, 7.4cqi);
+    margin-top: 1.2cqb;
+  }
+  .m-menuisier .tenon-engagements {
+    margin-top: 2cqb;
+  }
+  .m-menuisier .tenon-engagements li {
+    padding: 0.9cqb 0;
+  }
+  .m-menuisier .tenon-num {
+    font-size: max(11px, 3cqi);
+  }
+  .m-menuisier .tenon-bouton {
+    display: block;
+    margin-top: 2.4cqb;
+    padding: 1.4cqb 0;
+    text-align: center;
+    font-size: max(14px, 4cqi);
+  }
+}

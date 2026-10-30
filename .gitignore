@@ -37,3 +37,9 @@ dist-ssr
 # Prospection — données personnelles, jamais versionnées
 prospection/
 .indexnow.log
+
+# Dossiers de travail hors site : contrats et archives privés, médias lourds
+contrats/
+Claude outputs/
+medias-premium/
+linkedin-iphone-duo/

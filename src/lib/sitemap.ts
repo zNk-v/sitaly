@@ -1,5 +1,6 @@
 import { BLOG_POSTS } from "@/data/blog-posts";
 import { PAGES_OFFRES } from "@/data/pages-offres";
+import { PREMIUM_PUBLIE } from "@/data/premium";
 import { REALISATIONS } from "@/data/realisations";
 import { EXPERTISES } from "@/data/expertises";
 import { SECTEURS } from "@/data/secteurs";
@@ -108,6 +109,7 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
     priority: "0.9",
     source: [route("tarifs.tsx"), "src/data/offres.ts"],
   },
+  // /creer-son-site-ia/ redirige vers l'accueil depuis le 30 octobre 2026 : hors plan du site.
   // La page locale, hors familles d'expertise (décision du 28 septembre 2026).
   { path: "/essonne", changefreq: "monthly", priority: "0.8", source: [route("essonne.tsx")] },
   // Les pages métier, dérivées de leur source (hors index, voir indexation.ts).
@@ -123,6 +125,17 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
     priority: "0.8",
     source: [route("offres.$id.tsx"), "src/data/pages-offres.ts", "src/data/offres.ts"],
   })),
+  // Sitaly Premium : dans le sitemap une fois publiée (premium.ts).
+  ...(PREMIUM_PUBLIE
+    ? [
+        {
+          path: "/site-premium",
+          changefreq: "monthly" as const,
+          priority: "0.8",
+          source: [route("site-premium.tsx"), "src/data/premium.ts", "src/data/offres.ts"],
+        },
+      ]
+    : []),
   { path: "/outils", changefreq: "monthly", priority: "0.5" },
   { path: "/outils/audit-fiche-google", changefreq: "monthly", priority: "0.5" },
   { path: "/outils/budget-google-ads-artisan", changefreq: "monthly", priority: "0.5" },

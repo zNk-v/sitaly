@@ -1,0 +1,375 @@
+/* Maquette « boulanger » : Le Levain du Lavoir. Préfixe .m-boulanger. Voir
+   boulanger.tsx. Mesures en cqi/cqb de l'écran (container « ecran »). Deux
+   compositions : paysage par défaut (l'heure à gauche, l'ardoise à droite),
+   portrait sous @container ecran (aspect-ratio < 1) (l'heure en tête,
+   l'ardoise sur toute la largeur). */
+
+.m-boulanger {
+  --brique: #9f4325;
+}
+
+.m-boulanger .levain {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+  padding-inline: 5.5cqi;
+  font-weight: 500;
+}
+
+/* La farine dans les marges : trois grains répétés, à 6 %, que l'on efface
+   au centre de l'écran. */
+.m-boulanger .levain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, var(--v-encre) 0.18cqi, transparent 0.26cqi),
+    radial-gradient(circle at 70% 60%, var(--v-encre) 0.12cqi, transparent 0.2cqi),
+    radial-gradient(circle at 45% 85%, var(--v-encre) 0.1cqi, transparent 0.17cqi);
+  background-size: 2.9cqi 2.9cqi;
+  opacity: 0.06;
+  -webkit-mask-image: linear-gradient(90deg, #000, transparent 7cqi, transparent 93cqi, #000);
+  mask-image: linear-gradient(90deg, #000, transparent 7cqi, transparent 93cqi, #000);
+  pointer-events: none;
+}
+
+/* ---- En-tête : grignes, logotype, rubriques, bouton ---- */
+
+.m-boulanger .levain-entete {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 3cqi;
+  padding-block: 3.4cqb 2.6cqb;
+  border-bottom: 1px solid color-mix(in oklab, var(--v-encre) 16%, transparent);
+}
+.m-boulanger .levain-marque {
+  display: grid;
+  justify-items: start;
+  gap: 0.7cqb;
+}
+.m-boulanger .levain-grignes {
+  display: flex;
+  gap: 0.55cqi;
+  padding-left: 0.3cqi;
+}
+/* Une grigne : barre arrondie inclinée à 28°, incisée de gauche à droite. */
+.m-boulanger .levain-grignes > span {
+  --de: calc(0.32 + var(--j) * 0.1);
+  --a: calc(0.42 + var(--j) * 0.1);
+  width: 2.3cqi;
+  height: max(3px, 0.5cqi);
+  border-radius: 999px;
+  background: var(--brique);
+  transform-origin: left center;
+  transform: rotate(-28deg) scaleX(var(--ge));
+}
+.m-boulanger .levain-logo {
+  font-size: max(18px, 3.3cqi);
+  white-space: nowrap;
+}
+.m-boulanger .levain-nav {
+  display: flex;
+  gap: 2.6cqi;
+  margin-left: auto;
+  padding-bottom: 0.3cqb;
+  color: var(--v-doux);
+  font-size: max(13px, 1.55cqi);
+}
+.m-boulanger .levain-commander {
+  padding: 0.9cqb 2cqi;
+  border: 1.5px solid var(--v-encre);
+  border-radius: 999px;
+  font-size: max(13px, 1.55cqi);
+  font-weight: 600;
+}
+
+/* ---- Corps : l'heure à gauche, l'ardoise à droite ---- */
+
+.m-boulanger .levain-corps {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: center;
+  gap: 5cqi;
+  padding-bottom: 6cqb;
+}
+
+.m-boulanger .levain-surtitre {
+  color: var(--v-doux);
+  font-size: max(13px, 1.35cqi);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.m-boulanger .levain-chiffre {
+  margin: 1.2cqb 0 0 -0.8cqi;
+  color: var(--brique);
+  font-family: var(--font-display);
+  font-size: 16cqi;
+  font-weight: 200;
+  letter-spacing: -0.05em;
+  line-height: 0.92;
+  white-space: nowrap;
+}
+.m-boulanger .levain-accroche {
+  margin-top: 2.4cqb;
+  font-family: var(--font-display);
+  font-size: max(16px, 2.55cqi);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  white-space: pre-line;
+}
+.m-boulanger .levain-horaires {
+  margin-top: 1.6cqb;
+  color: var(--v-doux);
+  font-size: max(13px, 1.7cqi);
+}
+.m-boulanger .levain-horaires strong {
+  color: var(--v-encre);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.m-boulanger .levain-reserver {
+  display: inline-block;
+  margin-top: 3.4cqb;
+  padding: 1.5cqb 2.8cqi;
+  border-radius: 999px;
+  background: var(--v-accent);
+  color: var(--v-sur);
+  font-size: max(13px, 1.7cqi);
+  font-weight: 600;
+}
+
+/* L'ardoise : la croûte en fond, un filet de craie, de la poussière de
+   craie à 6 %. */
+.m-boulanger .levain-ardoise {
+  position: relative;
+  display: grid;
+  gap: 2.3cqb;
+  padding: 4.4cqb 3.4cqi 5.4cqb;
+  border-radius: 1.4cqi;
+  background:
+    radial-gradient(
+        circle at 30% 40%,
+        color-mix(in srgb, var(--v-fond) 6%, transparent) 0.16cqi,
+        transparent 0.24cqi
+      )
+      0 0 / 2.3cqi 2.3cqi,
+    var(--v-encre);
+  color: var(--v-fond);
+  outline: 1px solid color-mix(in oklab, var(--v-fond) 30%, transparent);
+  outline-offset: -1.1cqi;
+}
+.m-boulanger .levain-ardoise-titre {
+  color: color-mix(in oklab, var(--v-fond) 82%, var(--v-encre));
+  font-size: max(13px, 1.35cqi);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0.5cqb;
+}
+/* Une ligne de l'ardoise : le pain, les points de conduite, le prix, et sa
+   note dessous. */
+.m-boulanger .levain-ligne {
+  --de: calc(0.12 + var(--j) * 0.04);
+  --a: calc(0.24 + var(--j) * 0.04);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    "pain points prix"
+    "note note note";
+  align-items: baseline;
+  column-gap: 1cqi;
+  opacity: var(--g);
+  transform: translateX(calc((1 - var(--ge)) * -1.5rem));
+}
+/* Les points de conduite, posés sur la ligne de base. */
+.m-boulanger .levain-ligne::before {
+  content: "";
+  grid-area: points;
+  height: 0.5em;
+  background: radial-gradient(
+      circle,
+      color-mix(in oklab, var(--v-fond) 60%, transparent) 0.1em,
+      transparent 0.13em
+    )
+    left bottom / 0.42em 0.3em repeat-x;
+}
+.m-boulanger .levain-pain {
+  grid-area: pain;
+  font-family: var(--font-accent);
+  font-size: max(19px, 3.1cqi);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+}
+.m-boulanger .levain-prix {
+  grid-area: prix;
+  font-size: max(14px, 1.95cqi);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.m-boulanger .levain-note {
+  grid-area: note;
+  margin-top: 0.4cqb;
+  color: color-mix(in oklab, var(--v-fond) 74%, var(--v-encre));
+  font-size: max(13px, 1.45cqi);
+  font-weight: 500;
+}
+
+/* Le tampon : posé en dernier, d'un coup sec, au coin bas de l'ardoise,
+   sous le dernier prix. */
+.m-boulanger .levain-tampon {
+  --de: 0.44;
+  --a: 0.5;
+  --diametre: max(80px, 11cqi);
+  position: absolute;
+  right: -2.4cqi;
+  bottom: calc(-0.55 * var(--diametre));
+  display: grid;
+  place-items: center;
+  width: var(--diametre);
+  aspect-ratio: 1;
+  border: max(2px, 0.3cqi) solid var(--brique);
+  border-radius: 50%;
+  background: var(--v-fond);
+  box-shadow:
+    inset 0 0 0 0.45cqi var(--v-fond),
+    inset 0 0 0 calc(0.45cqi + 1px) var(--brique);
+  color: var(--brique);
+  font-size: max(11px, 1.25cqi);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.15;
+  text-align: center;
+  white-space: pre-line;
+  text-transform: uppercase;
+  opacity: var(--g);
+  transform: rotate(-12deg) scale(calc(1.35 - 0.35 * var(--ge)));
+}
+
+/* ---- Portrait : l'heure en tête, l'ardoise sur toute la largeur, le bouton
+   collé au bas de l'écran ---- */
+@container ecran (aspect-ratio < 1) {
+  .m-boulanger .levain {
+    padding-inline: 5cqi;
+  }
+  .m-boulanger .levain::before {
+    -webkit-mask-image: linear-gradient(90deg, #000, transparent 5cqi, transparent 95cqi, #000);
+    mask-image: linear-gradient(90deg, #000, transparent 5cqi, transparent 95cqi, #000);
+  }
+  .m-boulanger .levain-entete {
+    padding-block: 2.6cqb 1.8cqb;
+  }
+  .m-boulanger .levain-grignes {
+    gap: 1.2cqi;
+  }
+  .m-boulanger .levain-grignes > span {
+    width: 4.6cqi;
+    height: max(3px, 1cqi);
+  }
+  .m-boulanger .levain-logo {
+    font-size: max(19px, 6.4cqi);
+  }
+  .m-boulanger .levain-nav {
+    display: none;
+  }
+  .m-boulanger .levain-commander {
+    margin-left: auto;
+    padding: 0.8cqb 3.4cqi;
+    font-size: max(13px, 3.6cqi);
+  }
+  /* Le corps garde sous lui la place du bouton (bas 6cqb, hauteur 2,6cqb
+     plus une ligne, 2,5cqb d'air) ; l'ardoise prend toute la hauteur qui
+     reste et centre ses lignes. */
+  .m-boulanger .levain-corps {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2.6cqb;
+    min-height: 0;
+    padding: 2.2cqb 0 calc(11.1cqb + 1.4 * max(15px, 4.4cqi));
+  }
+  .m-boulanger .levain-surtitre {
+    display: none;
+  }
+  .m-boulanger .levain-chiffre {
+    margin: 0 0 0 -1.1cqi;
+    font-size: 22cqi;
+  }
+  .m-boulanger .levain-accroche {
+    margin-top: 1.2cqb;
+    font-size: max(15px, 4.6cqi);
+  }
+  .m-boulanger .levain-horaires {
+    margin-top: 1cqb;
+    font-size: max(14px, 3.8cqi);
+  }
+  .m-boulanger .levain-note {
+    display: none;
+  }
+  .m-boulanger .levain-ardoise {
+    position: static;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1cqb;
+    margin-inline: -5cqi;
+    padding: 2.4cqb 7cqi 2.6cqb;
+    border-radius: 0;
+    outline-offset: -2.2cqi;
+  }
+  .m-boulanger .levain-ardoise-titre {
+    margin-bottom: 0.4cqb;
+    font-size: max(13px, 3.4cqi);
+  }
+  .m-boulanger .levain-ligne {
+    column-gap: 2cqi;
+  }
+  .m-boulanger .levain-pain {
+    font-size: max(20px, 6.4cqi);
+  }
+  .m-boulanger .levain-prix {
+    font-size: max(15px, 4.4cqi);
+  }
+  /* Le tampon quitte l'ardoise et se pose à droite de l'heure : sa hauteur
+     suit celle de l'en-tête (5,1cqb + 7,4cqi), du haut du corps (2,2cqb) et
+     de la moitié de l'heure, moins la moitié du tampon. */
+  .m-boulanger .levain-tampon {
+    --diametre: 22cqi;
+    top: calc(7.3cqb + 6.5cqi);
+    bottom: auto;
+    right: 5.5cqi;
+    font-size: max(11px, 2.6cqi);
+    letter-spacing: 0.06em;
+    box-shadow:
+      inset 0 0 0 0.9cqi var(--v-fond),
+      inset 0 0 0 calc(0.9cqi + 1px) var(--brique);
+  }
+  .m-boulanger .levain-reserver {
+    position: absolute;
+    left: 5cqi;
+    right: 5cqi;
+    bottom: 6cqb;
+    margin: 0;
+    padding: 1.3cqb 0;
+    text-align: center;
+    font-size: max(15px, 4.4cqi);
+  }
+}
+
+/* Portrait haut (téléphone en mode effet) : l'ardoise a la place de ses
+   notes. */
+@container ecran (aspect-ratio < 0.62) {
+  .m-boulanger .levain-note {
+    display: block;
+    margin-top: 0.3cqb;
+    font-size: max(14px, 3.8cqi);
+  }
+  .m-boulanger .levain-ardoise {
+    gap: 1.6cqb;
+  }
+}

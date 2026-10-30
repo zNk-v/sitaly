@@ -1,9 +1,10 @@
+import type { OffreId } from "@/data/offres";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Bot, Globe, Megaphone, Menu, Phone, X } from "lucide-react";
 import { COULEURS_FAMILLE, type EntreeMenu, type FamilleId } from "@/data/expertises";
-import { AGENCE, ONGLETS } from "@/data/menu";
-import { SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
+import { AGENCE, LIENS_PRODUIT, ONGLETS } from "@/data/menu";
+import { APP_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 const ICONES: Record<FamilleId, React.ComponentType<{ className?: string }>> = {
   site: Globe,
@@ -37,11 +38,19 @@ const ICONES: Record<FamilleId, React.ComponentType<{ className?: string }>> = {
  * Aucune bibliothèque : deux `details` repliés, une transition CSS, et la
  * touche Échap.
  */
+/** Le bouton principal d'une page : libellé et offre déjà choisie (voir SiteHeader). */
+export interface AppelPrincipal {
+  label: string;
+  offre?: OffreId;
+}
+
 export function MobileMenu({
   variant = "bar",
   onHome = false,
   current,
+  appel,
 }: {
+  appel?: AppelPrincipal;
   /** Conservé pour les appelants : la feuille est la même dans les deux cas. */
   variant?: "bar" | "floating";
   onHome?: boolean;
@@ -122,6 +131,14 @@ export function MobileMenu({
             className="feuille-menu fixed inset-x-3 top-[var(--entete-hauteur)] z-[60] max-h-[calc(100dvh-var(--entete-hauteur)-0.75rem)] overflow-y-auto overscroll-contain rounded-3xl border border-border bg-card shadow-elevated sm:inset-x-4 lg:hidden"
           >
             <nav className="p-3" aria-label="Navigation principale">
+              {/* Sitaly App d'abord : ses fonctions, ses exemples, ses tarifs. */}
+              {LIENS_PRODUIT.map((l) => (
+                <Link key={l.label} to={l.to} hash={l.hash} onClick={fermer} className={lien}>
+                  {l.label}
+                  <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
+                </Link>
+              ))}
+
               {ONGLETS.map((o) => {
                 const Icone = ICONES[o.famille];
                 const encre = COULEURS_FAMILLE[o.famille].encre;
@@ -196,16 +213,6 @@ export function MobileMenu({
 
               <div className="my-2 h-px bg-border" />
 
-              <Link to="/tarifs/" onClick={fermer} className={lien}>
-                Tarifs
-                <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
-              </Link>
-
-              <Link to="/realisations/" onClick={fermer} className={lien}>
-                Réalisations
-                <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
-              </Link>
-
               {/* L'agence : à plat sur mobile, trois liens ne méritent pas un
                   volet de plus. */}
               {AGENCE.map((e) =>
@@ -232,18 +239,43 @@ export function MobileMenu({
             {/* Le pied de la feuille. Les deux actions y sont toujours à la
                 même place, quel que soit ce qui est déplié au-dessus. */}
             <div className="sticky bottom-0 border-t border-border bg-card/95 p-3 backdrop-blur">
-              <Link to="/mon-projet/" onClick={fermer} className="bouton h-12 w-full text-base">
-                Trouver mon offre
-                <ArrowRight className="bouton-fleche h-4 w-4" />
-              </Link>
-              <a
-                href={`tel:${SITALY_PHONE}`}
-                onClick={fermer}
-                className="mt-2 flex h-11 items-center justify-center gap-2 rounded-xl border border-border text-[15px] font-semibold text-foreground"
-              >
-                <Phone className="h-4 w-4 text-brand-ink" />
-                {SITALY_PHONE_DISPLAY}
-              </a>
+              {/* Une page de service vend son offre (questionnaire, téléphone) ;
+                  partout ailleurs, l'action est de créer son site dans l'application. */}
+              {appel ? (
+                <>
+                  <Link
+                    to="/mon-projet/"
+                    search={appel.offre ? { offre: appel.offre } : {}}
+                    onClick={fermer}
+                    className="bouton h-12 w-full text-base"
+                  >
+                    {appel.label}
+                    <ArrowRight className="bouton-fleche h-4 w-4" />
+                  </Link>
+                  <a
+                    href={`tel:${SITALY_PHONE}`}
+                    onClick={fermer}
+                    className="mt-2 flex h-11 items-center justify-center gap-2 rounded-xl border border-border text-[15px] font-semibold text-foreground"
+                  >
+                    <Phone className="h-4 w-4 text-brand-ink" />
+                    {SITALY_PHONE_DISPLAY}
+                  </a>
+                </>
+              ) : (
+                <>
+                  <a href={`${APP_URL}/`} onClick={fermer} className="bouton h-12 w-full text-base">
+                    Créer mon site
+                    <ArrowRight className="bouton-fleche h-4 w-4" />
+                  </a>
+                  <a
+                    href={`${APP_URL}/connexion`}
+                    onClick={fermer}
+                    className="mt-2 flex h-11 items-center justify-center rounded-xl border border-border text-[15px] font-semibold text-foreground"
+                  >
+                    Se connecter
+                  </a>
+                </>
+              )}
             </div>
           </div>
         </>

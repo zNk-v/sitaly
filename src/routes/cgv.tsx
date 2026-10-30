@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LegalLayout } from "@/components/LegalLayout";
+import { PREMIUM_PUBLIE } from "@/data/premium";
 import { euros } from "@/lib/config";
 import {
   A_LA_CARTE,
@@ -8,6 +9,7 @@ import {
   OFFRES,
   RACHAT_SITE,
   lignesIncluses,
+  montantsAcomptes,
   offre,
   type Offre,
 } from "@/data/offres";
@@ -44,11 +46,19 @@ const minuscule = (t: string) =>
 /** Le prix d'une offre en une phrase : mensuel, puis frais de départ. */
 function prixOffre(o: Offre): string {
   const des = o.aPartirDe ? "à partir de " : "";
+  if (o.groupe === "premium") {
+    const acomptes = montantsAcomptes(o)
+      .map((a) => `${Math.round(a.part * 100)} % ${a.moment}`)
+      .join(", ");
+    return `${des}${euros(o.depart)}, payés en trois acomptes : ${acomptes}, sans abonnement`;
+  }
   const depart = `${des}${euros(o.depart)} ${o.departLibelle} payés une fois à la commande`;
   return o.mensuel === undefined
     ? `${depart}, puis un suivi mensuel chiffré dans le devis`
     : `${des}${euros(o.mensuel)} par mois, plus ${depart}`;
 }
+
+const PREMIUM = offre("site-premium");
 
 const VITRINES = ["presence", "presence-pro", "presence-expert"] as const;
 const nomsVitrines = VITRINES.map((id) => offre(id).nom);
@@ -103,7 +113,7 @@ function CGV() {
         des présentes :
       </p>
       <ul>
-        {OFFRES.map((o) => (
+        {OFFRES.filter((o) => PREMIUM_PUBLIE || o.groupe !== "premium").map((o) => (
           <li key={o.id}>
             <strong>{o.nom}</strong> : {prixOffre(o)}. Inclus :{" "}
             {lignesIncluses(o).map(minuscule).join(" ; ")}.
@@ -207,6 +217,27 @@ function CGV() {
         vente : conditions de vente, droit de rétractation de ses acheteurs, expéditions et
         obligations fiscales.
       </p>
+
+      {/* Clause proposée le 24 octobre 2026 avec la page /site-premium/ : à
+          relire par Teddy, et par un juriste, avant publication. Elle suit le
+          verrou de la page : absente des CGV tant que PREMIUM_PUBLIE vaut false. */}
+      {PREMIUM_PUBLIE && (
+        <>
+          <h3>5.7 Site sur mesure (Sitaly Premium)</h3>
+          <p>
+            Le site sur mesure est payé une fois, sans abonnement, en trois acomptes :{" "}
+            {montantsAcomptes(PREMIUM)
+              .map((a) => `${Math.round(a.part * 100)} % ${a.moment}`)
+              .join(", ")}
+            . Le montant exact figure au devis accepté par le Client. Chaque acompte reste acquis au
+            Prestataire pour les étapes réalisées, si le projet s'arrête avant la mise en ligne. Le
+            site, son code, ses textes et ses fichiers deviennent la propriété du Client au paiement
+            du dernier acompte. L'hébergement et les corrections sont compris pendant trois mois
+            après la mise en ligne ; ensuite, le Client confie l'entretien au Prestataire selon
+            l'offre de maintenance en vigueur, ou reprend le site avec le prestataire de son choix.
+          </p>
+        </>
+      )}
 
       <h2>6. Accès à la plateforme et disponibilité</h2>
       <p>

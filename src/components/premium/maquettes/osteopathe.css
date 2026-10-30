@@ -1,0 +1,334 @@
+/* Maquette « osteopathe » : L'Axe. Préfixe .m-osteopathe. Voir osteopathe.tsx.
+   Mesures en cqi/cqb de l'écran (container « ecran »). Deux compositions :
+   paysage par défaut, portrait sous @container ecran (aspect-ratio < 1), que
+   prend aussi un écran de moins de 480 px de large. Couleur de décor propre
+   à la maquette : vertèbres #d2b8a5 (aucun texte dessus). */
+
+.m-osteopathe .axe {
+  /* L'axe : sa position en paysage, sous le « l » du logo. */
+  --x: 10.5cqi;
+  /* L'unité des vertèbres : 1cqi en paysage, bornée par la hauteur en
+     portrait. */
+  --u: 1cqi;
+  --filet: color-mix(in oklab, var(--v-encre) 15%, transparent);
+  --trait: color-mix(in oklab, var(--v-encre) 30%, transparent);
+  --vertebre: #d2b8a5;
+  --apophyse: color-mix(in oklab, #d2b8a5 52%, var(--v-fond));
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+  font-weight: 400;
+  /* Une lumière douce en haut à droite, pour que le blanc respire. */
+  background: radial-gradient(
+    ellipse 60% 70% at 88% 18%,
+    color-mix(in oklab, white 60%, var(--v-fond)) 0,
+    transparent 72%
+  );
+}
+
+/* L'en-tête : le logo posé sur l'axe, trois rubriques, le rendez-vous en
+   filet. */
+.m-osteopathe .axe-entete {
+  display: flex;
+  align-items: center;
+  gap: 3.2cqi;
+  padding: 4.6cqb 6cqi 0;
+}
+.m-osteopathe .axe-logo {
+  /* Le fût du « l » tombe sur l'axe. */
+  margin-left: calc(var(--x) - 6cqi - 0.07em);
+  font-size: max(18px, 3.8cqi);
+}
+.m-osteopathe .axe-nav {
+  display: flex;
+  gap: 3cqi;
+  margin-left: auto;
+  color: var(--v-doux);
+  font-size: max(13px, 1.5cqi);
+  white-space: nowrap;
+}
+.m-osteopathe .axe-entete-rdv {
+  flex-shrink: 0;
+  padding: 0.9cqb 2cqi;
+  border: 1px solid color-mix(in oklab, var(--v-encre) 38%, transparent);
+  border-radius: 999px;
+  font-size: max(13px, 1.5cqi);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Le corps : la colonne centrée sur l'axe, une seule colonne de texte. */
+.m-osteopathe .axe-corps {
+  display: grid;
+  grid-template-columns: 9cqi minmax(0, 1fr);
+  column-gap: 6.5cqi;
+  align-items: center;
+  padding: 3cqb 6cqi 8cqb calc(var(--x) - 4.5cqi);
+}
+
+/* La colonne : l'axe se trace depuis le logo (0,05 à 0,4), puis sept
+   vertèbres quittent leur décalage (--d, en unités --u) et s'y alignent, de
+   haut en bas, entre 0,25 et 0,6. */
+.m-osteopathe .axe-colonne {
+  --de: 0.05;
+  --a: 0.4;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.3cqb;
+  align-self: stretch;
+  margin-top: -3cqb;
+}
+.m-osteopathe .axe-colonne::before {
+  content: "";
+  position: absolute;
+  left: calc(50% - 0.5px);
+  top: 2cqb;
+  bottom: -2cqb;
+  width: 1px;
+  background: linear-gradient(var(--trait) 0 62%, transparent);
+  transform-origin: top;
+  transform: scaleY(var(--ge));
+}
+.m-osteopathe .axe-colonne span {
+  --de: calc(0.25 + var(--j) * 0.03);
+  --a: calc(0.42 + var(--j) * 0.03);
+  --decal: calc(var(--d) * var(--u) * (1 - var(--ge)));
+  --tourne: calc(var(--d) * 3deg * (1 - var(--ge)));
+  position: relative;
+  width: calc(4.2cqi + var(--j) * 0.42cqi);
+  height: calc(3.2cqb + var(--j) * 0.22cqb);
+  transform: translateX(var(--decal)) rotate(var(--tourne));
+}
+/* Les apophyses, plus claires, puis le corps de la vertèbre par-dessus. */
+.m-osteopathe .axe-colonne span::before,
+.m-osteopathe .axe-colonne span::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+}
+.m-osteopathe .axe-colonne span::before {
+  inset: 32% -24%;
+  background: var(--apophyse);
+}
+.m-osteopathe .axe-colonne span::after {
+  inset: 0;
+  border-radius: 1.1cqi;
+  background: var(--vertebre);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35);
+}
+
+/* Le texte. */
+.m-osteopathe .axe-texte {
+  max-width: 66cqi;
+}
+.m-osteopathe .axe-surtitre {
+  color: var(--v-doux);
+  font-size: max(13px, 1.4cqi);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.m-osteopathe .axe-titre {
+  margin-top: 2.4cqb;
+  font-family: var(--font-display);
+  font-size: 4.4cqi;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.m-osteopathe .axe-titre span {
+  display: block;
+}
+
+/* Les pièces : les trois lignes, puis l'action. La pièce j part à
+   0,10 + 0,035 × j et monte sur 0,12 du pas. Le filet du haut appartient à
+   la première ligne : il entre avec elle. */
+.m-osteopathe :is(.axe-lignes li, .axe-action) {
+  --de: calc(0.1 + var(--j) * 0.035);
+  --a: calc(0.22 + var(--j) * 0.035);
+  opacity: var(--g);
+  transform: translateY(calc((1 - var(--ge)) * 1.5rem));
+}
+.m-osteopathe .axe-lignes {
+  max-width: 54cqi;
+  margin-top: 4.8cqb;
+}
+.m-osteopathe .axe-lignes li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2cqi;
+  padding: 1.4cqb 0;
+  border-bottom: 1px solid var(--filet);
+}
+.m-osteopathe .axe-lignes li:first-child {
+  border-top: 1px solid var(--filet);
+}
+.m-osteopathe .axe-valeur {
+  color: var(--v-accent);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* L'action unique, et la mention de remboursement à côté. */
+.m-osteopathe .axe-action {
+  display: flex;
+  align-items: center;
+  gap: 3cqi;
+  margin-top: 4.6cqb;
+}
+.m-osteopathe .axe-bouton {
+  flex-shrink: 0;
+  padding: 1.6cqb 3.4cqi;
+  border-radius: 999px;
+  background: var(--v-accent);
+  color: var(--v-sur);
+  font-size: max(13px, 1.7cqi);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.m-osteopathe .axe-mention {
+  max-width: 30ch;
+  color: var(--v-doux);
+  font-size: max(13px, 1.5cqi);
+  line-height: 1.45;
+}
+
+/* Portrait : la colonne se couche en filet au-dessus du titre, le bouton
+   prend toute la largeur et se pose en bas. Les tailles se règlent sur le
+   format 4:5 ; sur un écran plus carré, la hauteur les borne (min avec
+   cqb), et sur un écran plus haut, le titre grandit un peu. */
+@container ecran (aspect-ratio < 1) or (width < 480px) {
+  .m-osteopathe .axe {
+    --u: min(1cqi, 0.8cqb);
+    font-size: max(14px, min(4.2cqi, 3.36cqb));
+    background: radial-gradient(
+      ellipse 90% 45% at 80% 8%,
+      color-mix(in oklab, white 60%, var(--v-fond)) 0,
+      transparent 70%
+    );
+  }
+  .m-osteopathe .axe-entete {
+    padding: 3.6cqb 6cqi 0;
+  }
+  .m-osteopathe .axe-nav {
+    display: none;
+  }
+  .m-osteopathe .axe-logo {
+    margin-left: 0;
+    font-size: max(20px, min(8cqi, 5.9cqb));
+  }
+  .m-osteopathe .axe-entete-rdv {
+    margin-left: auto;
+    padding: 0.8cqb 3.6cqi;
+    font-size: max(14px, min(3.6cqi, 2.9cqb));
+  }
+  /* Le blanc en trop se partage entre le haut de la colonne et le haut de
+     l'action. */
+  .m-osteopathe .axe-corps {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    /* En bas, la place de l'étiquette et 12 px de blanc au moins. */
+    padding: 2.4cqb 6cqi max(34px, 7.4cqb);
+  }
+  .m-osteopathe .axe-colonne {
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    gap: calc(1.1 * var(--u));
+    margin-top: auto;
+    height: calc(8.6 * var(--u));
+    padding-left: calc(1.6 * var(--u));
+  }
+  .m-osteopathe .axe-colonne::before {
+    left: -6cqi;
+    right: -6cqi;
+    top: calc(50% - 0.5px);
+    bottom: auto;
+    width: auto;
+    height: 1px;
+    background: linear-gradient(90deg, var(--trait) 0 55%, transparent);
+    transform-origin: left;
+    transform: scaleX(var(--ge));
+  }
+  .m-osteopathe .axe-colonne span {
+    width: calc((3.2 + var(--j) * 0.22) * var(--u));
+    height: calc((4.4 + var(--j) * 0.3) * var(--u));
+    transform: translateY(var(--decal)) rotate(calc(-1 * var(--tourne)));
+  }
+  .m-osteopathe .axe-colonne span::before {
+    inset: -20% 26%;
+  }
+  .m-osteopathe .axe-colonne span::after {
+    border-radius: var(--u);
+  }
+  .m-osteopathe .axe-texte {
+    display: contents;
+  }
+  .m-osteopathe .axe-surtitre {
+    margin-top: 1.8cqb;
+    font-size: max(14px, min(3.4cqi, 2.7cqb));
+    letter-spacing: 0.14em;
+  }
+  .m-osteopathe .axe-titre {
+    margin-top: 1cqb;
+    font-size: min(8.2cqi, 5.6cqb);
+    text-wrap: balance;
+  }
+  .m-osteopathe .axe-titre span {
+    display: inline;
+  }
+  .m-osteopathe .axe-lignes {
+    max-width: none;
+    margin-top: 2cqb;
+  }
+  .m-osteopathe .axe-lignes li {
+    padding: 0.7cqb 0;
+  }
+  /* L'action se pose au pied de l'écran, comme une barre de rendez-vous. */
+  .m-osteopathe .axe-action {
+    display: grid;
+    gap: 1cqb;
+    margin-top: auto;
+    padding-top: 2.2cqb;
+  }
+  .m-osteopathe .axe-bouton {
+    padding: 1.3cqb 4cqi;
+    font-size: max(15px, min(4.4cqi, 3.5cqb));
+    text-align: center;
+  }
+  .m-osteopathe .axe-mention {
+    max-width: none;
+    font-size: max(14px, min(3.4cqi, 2.7cqb));
+    line-height: 1.35;
+    text-wrap: pretty;
+  }
+}
+
+/* Un écran portrait haut (téléphone en mode effet) ou large (tablette) : la
+   place permet de poser chaque phrase du titre sur sa ligne. */
+@container ecran (aspect-ratio < 0.7) or ((aspect-ratio < 1) and (width > 600px)) {
+  .m-osteopathe .axe-titre span {
+    display: block;
+    text-wrap: balance;
+  }
+}
+
+/* Un écran portrait bas (téléphone de 320 à 360 px, ou cadre presque carré) :
+   la mention passe sur trois lignes à 14 px. Le surtitre cède sa place pour
+   que l'étiquette reste dégagée ; le métier se lit déjà dans le titre et
+   dans la légende de la page. */
+@container ecran ((aspect-ratio < 1) or (width < 480px)) and (height < 430px) {
+  .m-osteopathe .axe-surtitre {
+    display: none;
+  }
+  .m-osteopathe .axe-titre {
+    margin-top: 2cqb;
+  }
+}

@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { SiteHeader } from "@/components/SiteHeader";
+import type { AppelPrincipal } from "@/components/MobileMenu";
 import { SiteFooter } from "@/components/SiteFooter";
 
 /**
@@ -11,10 +12,17 @@ import { SiteFooter } from "@/components/SiteFooter";
  * c'est `SiteFooter`, le même sur toutes les pages du site. Il en existait six
  * versions, une par route, dont trois ne renvoyaient nulle part.
  */
-export function SiteChrome({ children }: { children: ReactNode }) {
+export function SiteChrome({
+  children,
+  appel,
+}: {
+  children: ReactNode;
+  /** Le bouton principal de l'en-tête, pour une page qui vend une seule offre. */
+  appel?: AppelPrincipal;
+}) {
   return (
     <>
-      <SiteHeader />
+      <SiteHeader appel={appel} />
 
       <div className="pt-[var(--entete-hauteur)]">{children}</div>
 

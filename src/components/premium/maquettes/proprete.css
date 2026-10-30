@@ -1,0 +1,251 @@
+/* Maquette « proprete » : Escouade. Préfixe .m-proprete. Voir proprete.tsx.
+   Mesures en cqi/cqb de l'écran (container « ecran »). Paysage par défaut,
+   portrait sous @container ecran (aspect-ratio < 1). Le citron
+   (var(--v-accent)) est un fond, jamais une couleur de texte. */
+
+.m-proprete .escouade {
+  --filet: color-mix(in oklab, var(--v-encre) 14%, transparent);
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-rows: auto auto 1fr;
+  column-gap: 5cqi;
+  height: 100%;
+  padding: 0 5cqi 6cqb;
+}
+
+.m-proprete .escouade-bandeau {
+  grid-column: 1 / -1;
+  margin: 0 -5cqi;
+  padding: 1.1cqb 4cqi;
+  background: var(--v-encre);
+  color: var(--v-fond);
+  font-size: max(11px, 1.3cqi);
+  font-weight: 600;
+  text-align: center;
+}
+.m-proprete .escouade-entete {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 3cqi;
+  padding: 3cqb 0 2cqb;
+}
+.m-proprete .escouade-logo {
+  padding: 0.5cqb 1.6cqi 0.9cqb;
+  border-radius: 999px;
+  background: var(--v-accent);
+  color: var(--v-sur);
+  font-size: max(18px, 3cqi);
+}
+.m-proprete .escouade-nav {
+  display: flex;
+  gap: 2.4cqi;
+  margin-left: auto;
+  color: var(--v-doux);
+  font-size: max(12px, 1.4cqi);
+  font-weight: 600;
+}
+
+.m-proprete .escouade-texte {
+  align-self: center;
+}
+.m-proprete .escouade-accroche {
+  font-family: var(--font-display);
+  font-size: max(22px, 4.2cqi);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+}
+.m-proprete .escouade-liste {
+  display: grid;
+  gap: 1.2cqb;
+  margin-top: 3cqb;
+  font-weight: 600;
+}
+.m-proprete .escouade-liste li {
+  display: flex;
+  align-items: center;
+  gap: 1.4cqi;
+}
+.m-proprete .escouade-coche {
+  --de: calc(0.35 + var(--j) * 0.06);
+  --a: calc(0.42 + var(--j) * 0.06);
+  position: relative;
+  flex-shrink: 0;
+  width: max(18px, 2.6cqi);
+  height: max(18px, 2.6cqi);
+  border: 2px solid var(--v-encre);
+  border-radius: 0.8cqi;
+  background: var(--v-accent);
+  transform: scale(var(--ge));
+}
+.m-proprete .escouade-coche::after {
+  content: "";
+  position: absolute;
+  left: 30%;
+  top: 12%;
+  width: 30%;
+  height: 55%;
+  border: solid var(--v-encre);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Le calculateur : un bloc citron à grands rayons, texte charbon. */
+.m-proprete .escouade-calcul {
+  align-self: center;
+  display: grid;
+  gap: 1.1cqb;
+  padding: 3cqb 3cqi;
+  border: 2px solid var(--v-encre);
+  border-radius: 2.4cqi;
+  background: var(--v-accent);
+  color: var(--v-sur);
+}
+.m-proprete .escouade-calcul-titre {
+  font-family: var(--font-display);
+  font-size: max(17px, 2.4cqi);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.m-proprete .escouade-ligne {
+  display: flex;
+  justify-content: space-between;
+  font-size: max(12px, 1.45cqi);
+}
+.m-proprete .escouade-ligne strong {
+  font-variant-numeric: tabular-nums;
+}
+.m-proprete .escouade-jauge {
+  position: relative;
+  height: 0.6cqb;
+  min-height: 4px;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--v-encre) 20%, transparent);
+}
+.m-proprete .escouade-jauge::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 46%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--v-encre);
+  transform: translateY(-50%);
+}
+.m-proprete .escouade-pastilles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8cqi;
+}
+.m-proprete .escouade-pastilles span {
+  display: grid;
+  place-items: center;
+  padding: 0.7cqb 0;
+  border: 1.5px solid var(--v-encre);
+  border-radius: 999px;
+  font-size: max(12px, 1.4cqi);
+  font-weight: 700;
+}
+.m-proprete .escouade-pastilles span[data-choisi] {
+  background: var(--v-encre);
+  color: var(--v-accent);
+}
+.m-proprete .escouade-delai {
+  font-size: max(12px, 1.35cqi);
+  font-weight: 600;
+}
+.m-proprete .escouade-bouton {
+  display: block;
+  padding: 1.5cqb 0;
+  border-radius: 999px;
+  background: var(--v-encre);
+  color: var(--v-fond);
+  font-size: max(13px, 1.6cqi);
+  font-weight: 700;
+  text-align: center;
+}
+
+/* La raclette : un calque de la largeur de l'écran, bande citron sur son bord
+   droit. Le volet entre par la gauche : le bord droit de l'écran est à
+   e × 100 % dans le repère du contenu, et la bande le suit. Elle s'efface de
+   t = 0,35 à 0,45 ; hors du mode effet, elle n'existe pas. */
+.m-proprete .escouade-raclette {
+  display: none;
+}
+.premium-effet .m-proprete .escouade-raclette {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: block;
+  pointer-events: none;
+  transform: translateX(calc(var(--e) * 100% - 100%));
+  opacity: clamp(0, calc((0.45 - var(--t)) * 10), 1);
+}
+.premium-effet .m-proprete .escouade-raclette::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 1.25rem;
+  background: var(--v-accent);
+  box-shadow: -0.4rem 0 0.8rem rgb(0 0 0 / 0.12);
+}
+
+/* Portrait : le calculateur en tête, puis la liste. */
+@container ecran (aspect-ratio < 1) {
+  .m-proprete .escouade {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto 1fr;
+    padding: 0 5cqi 7cqb;
+  }
+  .m-proprete .escouade-bandeau {
+    font-size: max(11px, 2.8cqi);
+  }
+  .m-proprete .escouade-nav {
+    display: none;
+  }
+  .m-proprete .escouade-logo {
+    font-size: max(20px, 7cqi);
+    padding: 0.4cqb 3.4cqi 0.8cqb;
+  }
+  .m-proprete .escouade-texte {
+    grid-row: 3;
+    align-self: start;
+  }
+  .m-proprete .escouade-accroche {
+    font-size: max(20px, 6.6cqi);
+  }
+  .m-proprete .escouade-liste {
+    display: none;
+  }
+  .m-proprete .escouade-calcul {
+    grid-row: 4;
+    align-self: start;
+    margin-top: 1.8cqb;
+    gap: 0.8cqb;
+    padding: 1.8cqb 5cqi;
+    border-radius: 5cqi;
+  }
+  .m-proprete .escouade-calcul-titre {
+    font-size: max(18px, 5.6cqi);
+  }
+  .m-proprete .escouade-ligne,
+  .m-proprete .escouade-delai {
+    font-size: max(13px, 3.6cqi);
+  }
+  .m-proprete .escouade-pastilles span {
+    font-size: max(13px, 3.6cqi);
+  }
+  .m-proprete .escouade-jauge,
+  .m-proprete .escouade-delai {
+    display: none;
+  }
+  .m-proprete .escouade-bouton {
+    font-size: max(14px, 4cqi);
+    padding: 1.3cqb 0;
+  }
+}

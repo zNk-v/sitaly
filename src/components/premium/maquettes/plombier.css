@@ -1,0 +1,192 @@
+/* Maquette « plombier » : Clapet. Préfixe .m-plombier. Voir plombier.tsx.
+   Mesures en cqi/cqb de l'écran (container « ecran »). Deux compositions :
+   paysage par défaut, portrait sous @container ecran (aspect-ratio < 1). */
+
+.m-plombier .clapet {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  height: 100%;
+  font-weight: 500;
+}
+
+.m-plombier .clapet-bandeau {
+  padding: 1.1cqb 4cqi;
+  background: var(--v-encre);
+  color: var(--v-fond);
+  font-size: max(11px, 1.35cqi);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.m-plombier .clapet-entete {
+  display: flex;
+  align-items: center;
+  gap: 3cqi;
+  padding: 2.6cqb 4cqi;
+}
+.m-plombier .clapet-logo {
+  font-size: max(16px, 3cqi);
+}
+.m-plombier .clapet-nav {
+  display: flex;
+  gap: 2.4cqi;
+  margin-left: auto;
+  color: var(--v-doux);
+  font-size: max(12px, 1.5cqi);
+}
+.m-plombier .clapet-devis {
+  padding: 0.7cqb 1.8cqi;
+  border: 2px solid var(--v-encre);
+  border-radius: 999px;
+  font-size: max(12px, 1.5cqi);
+  font-weight: 700;
+}
+
+/* Le tuyau : deux traits parallèles, un coude, un raccord à six pans. Il
+   glisse pendant la pose du premier site (t de 0,35 à 1). */
+.m-plombier .clapet-tuyau {
+  --de: 0.35;
+  --a: 1;
+  position: absolute;
+  left: 0;
+  top: 33%;
+  width: 100%;
+  height: 22%;
+  overflow: visible;
+  fill: none;
+  stroke: color-mix(in oklab, var(--v-encre) 22%, var(--v-fond));
+  stroke-width: 0.6cqi;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  transform: translateX(calc((1 - var(--ge)) * -6%));
+}
+.m-plombier .clapet-tuyau :is(path, polygon) {
+  vector-effect: non-scaling-stroke;
+}
+.m-plombier .clapet-tuyau polygon {
+  fill: var(--v-fond);
+  stroke-linejoin: round;
+}
+
+.m-plombier .clapet-corps {
+  position: relative;
+  align-self: center;
+  padding-inline: 4cqi;
+}
+.m-plombier .clapet-accroche {
+  font-family: var(--font-display);
+  font-size: max(17px, 3.4cqi);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.m-plombier .clapet-numero {
+  margin-top: 1.2cqb;
+  font-size: 7.5cqi;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.m-plombier .clapet-appeler {
+  display: inline-block;
+  margin-top: 2.4cqb;
+  padding: 1.3cqb 3.4cqi;
+  border: 2px solid var(--v-encre);
+  border-radius: 999px;
+  background: var(--v-accent);
+  color: var(--v-sur);
+  font-size: max(13px, 1.8cqi);
+  font-weight: 700;
+}
+.m-plombier .clapet-sous {
+  margin-top: 2cqb;
+  color: var(--v-doux);
+}
+
+.m-plombier .clapet-tuiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6cqi;
+  padding: 0 4cqi 7cqb;
+}
+.m-plombier .clapet-tuiles li {
+  --de: calc(0.1 + var(--j) * 0.035);
+  --a: calc(0.22 + var(--j) * 0.035);
+  display: grid;
+  gap: 0.4cqb;
+  padding: 2cqb 2cqi;
+  border: 1px solid color-mix(in oklab, var(--v-encre) 18%, transparent);
+  border-radius: 1.2cqi;
+  background: color-mix(in oklab, var(--v-fond) 70%, white);
+  opacity: var(--g);
+  transform: translateY(calc((1 - var(--ge)) * 1.5rem));
+}
+.m-plombier .clapet-tuile-titre {
+  font-weight: 700;
+}
+.m-plombier .clapet-tuile-delai {
+  color: var(--v-doux);
+  font-size: max(12px, 1.5cqi);
+}
+
+/* Portrait : numéro en tête sur deux lignes, tuiles empilées, bouton
+   Appeler collé au bas de l'écran. */
+@container ecran (aspect-ratio < 1) {
+  .m-plombier .clapet-nav {
+    display: none;
+  }
+  .m-plombier .clapet-logo {
+    font-size: max(18px, 5.5cqi);
+  }
+  .m-plombier .clapet-devis {
+    margin-left: auto;
+    font-size: max(13px, 3.4cqi);
+  }
+  .m-plombier .clapet-tuyau {
+    top: 51%;
+    height: 9%;
+    stroke-width: 1.1cqi;
+  }
+  .m-plombier .clapet-corps {
+    position: static;
+    align-self: start;
+    padding-top: 3cqb;
+  }
+  .m-plombier .clapet-accroche {
+    font-size: max(18px, 6.2cqi);
+  }
+  .m-plombier .clapet-numero {
+    font-size: 15cqi;
+  }
+  .m-plombier .clapet-numero span {
+    display: block;
+  }
+  .m-plombier .clapet-sous {
+    display: none;
+  }
+  .m-plombier .clapet-tuiles {
+    grid-template-columns: 1fr;
+    gap: 1.4cqb;
+    padding-bottom: 17cqb;
+  }
+  .m-plombier .clapet-tuiles li {
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    padding: 1.6cqb 4cqi;
+    border-radius: 3cqi;
+  }
+  .m-plombier .clapet-tuile-delai {
+    font-size: max(13px, 3.4cqi);
+  }
+  .m-plombier .clapet-appeler {
+    position: absolute;
+    left: 4cqi;
+    right: 4cqi;
+    bottom: 6.5cqb;
+    text-align: center;
+    font-size: max(15px, 4.4cqi);
+  }
+}

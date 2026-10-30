@@ -3,6 +3,7 @@ import {
   Headset,
   MessageCircle,
   Monitor,
+  PenTool,
   Puzzle,
   ShoppingBag,
   Sparkles,
@@ -25,6 +26,7 @@ const LUCIDE: Record<
   repondre: MessageCircle,
   organiser: CalendarCheck,
   "sur-mesure": Puzzle,
+  "direction-artistique": PenTool,
 };
 
 /**

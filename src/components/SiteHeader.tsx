@@ -2,8 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, Phone } from "lucide-react";
 import { SitalyLogo } from "@/components/SitalyLogo";
 import { MainNav } from "@/components/MainNav";
-import { MobileMenu } from "@/components/MobileMenu";
-import { SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
+import { MobileMenu, type AppelPrincipal } from "@/components/MobileMenu";
+import { APP_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 /**
  * L'en-tête du site, en un seul endroit.
@@ -29,6 +29,7 @@ export function SiteHeader({
   accueil = false,
   nav = "complete",
   premierEcran = "clair",
+  appel,
 }: {
   /** Sur l'accueil, le logo renvoie à l'ancre de tête plutôt qu'à la route. */
   accueil?: boolean;
@@ -37,6 +38,10 @@ export function SiteHeader({
   /** Sur un premier écran sombre, la pastille reste peinte : ses liens sont
       en encre et s'effaceraient sur le fond. */
   premierEcran?: "clair" | "sombre";
+  /** Le bouton principal d'une page qui vend une seule offre : son libellé, et
+      l'offre que le questionnaire reçoit déjà choisie. Par défaut, « Trouver
+      mon offre » sans offre. */
+  appel?: AppelPrincipal;
 }) {
   const Logo = accueil ? (
     <a href="#top" className="flex items-center" aria-label="Sitaly — accueil">
@@ -78,29 +83,41 @@ export function SiteHeader({
           )}
 
           <div className="flex items-center gap-1 sm:gap-3">
-            {/* Le téléphone redevient un lien, pas une seconde pastille : deux
-                boutons côte à côte se disputaient l'appel à l'action. */}
-            <a
-              href={`tel:${SITALY_PHONE}`}
-              className="lien-entete hidden items-center gap-2 sm:inline-flex"
-              aria-label={`Appeler Sitaly au ${SITALY_PHONE_DISPLAY}`}
-            >
-              <Phone className="h-4 w-4" />
-              {/* Le numéro ne tient qu'à partir de xl, à côté des six entrées
-                  du menu : entre lg et xl, il passait sur deux lignes, et
-                  l'icône seule y suffit (le lien porte son aria-label). */}
-              <span className="hidden xl:inline">{SITALY_PHONE_DISPLAY}</span>
-              <span className="lg:hidden">Appeler</span>
-            </a>
-            {/* Le bouton principal du site : le questionnaire qui mène à l'offre
-                et à son prix (23 octobre 2026). Le rendez-vous de 30 minutes
-                n'est plus proposé qu'à la fin du questionnaire et sur les pages
-                agents IA. */}
-            <Link to="/mon-projet/" className="bouton hidden h-10 px-5 text-sm sm:inline-flex">
-              Trouver mon offre
-              <ArrowRight className="bouton-fleche h-4 w-4" />
-            </Link>
-            <MobileMenu onHome={accueil} />
+            {/* Depuis le 30 octobre 2026, comme chez durable.com : se connecter,
+                ou créer son site dans l'application. Une page de service garde
+                son appel (questionnaire, avec l'offre déjà choisie) et le
+                téléphone. */}
+            {appel ? (
+              <>
+                <a
+                  href={`tel:${SITALY_PHONE}`}
+                  className="lien-entete hidden items-center gap-2 sm:inline-flex"
+                  aria-label={`Appeler Sitaly au ${SITALY_PHONE_DISPLAY}`}
+                >
+                  <Phone className="h-4 w-4" />
+                  <span className="hidden xl:inline">{SITALY_PHONE_DISPLAY}</span>
+                </a>
+                <Link
+                  to="/mon-projet/"
+                  search={appel.offre ? { offre: appel.offre } : {}}
+                  className="bouton hidden h-10 px-5 text-sm sm:inline-flex"
+                >
+                  {appel.label}
+                  <ArrowRight className="bouton-fleche h-4 w-4" />
+                </Link>
+              </>
+            ) : (
+              <>
+                <a href={`${APP_URL}/connexion`} className="lien-entete hidden sm:inline-flex">
+                  Se connecter
+                </a>
+                <a href={`${APP_URL}/`} className="bouton hidden h-10 px-5 text-sm sm:inline-flex">
+                  Créer mon site
+                  <ArrowRight className="bouton-fleche h-4 w-4" />
+                </a>
+              </>
+            )}
+            <MobileMenu onHome={accueil} appel={appel} />
           </div>
         </div>
       </header>
