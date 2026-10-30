@@ -1,6 +1,6 @@
+import { Fragment } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { SiteHeader } from "@/components/SiteHeader";
-import { ArrowLeft, ArrowRight, Calendar, Clock, List, User } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 import {
   BLOG_POSTS,
   formatDate,
@@ -12,15 +12,13 @@ import {
   type CtaArticle,
 } from "@/data/blog-posts";
 import { chargerContenu } from "@/data/articles/charger";
-import { SitalyLogo } from "@/components/SitalyLogo";
 import { TexteAvecLiens } from "@/components/TexteAvecLiens";
-import { HeaderCallButton, MobileMenu } from "@/components/MobileMenu";
-import { LinkedinLink } from "@/components/LinkedinLink";
 import { MetierLinksStrip } from "@/components/MetierLinks";
+import { SiteChrome } from "@/components/SiteChrome";
+import { CarteArticle } from "@/components/produit/CarteArticle";
+import { BOUTON_NOIR, BoiteApp, CARTE, Confiance, TEXTE_GRIS } from "@/components/produit/Produit";
 import { articleIndexable, directiveRobots } from "@/lib/indexation";
 import { APP_URL, CALENDLY_URL } from "@/lib/config";
-import { SiteFooter } from "@/components/SiteFooter";
-import { encreRubrique } from "@/components/BlogCard";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: async ({ params }) => {
@@ -157,66 +155,55 @@ export const Route = createFileRoute("/blog/$slug")({
 function BlogPostPage() {
   const { post } = Route.useLoaderData();
   const relatedPosts = getRelatedPosts(post.slug, 3);
+  const cta = post.cta ?? "site";
 
-  // Build table of contents from h2 sections
   const headings: { id: string; text: string }[] = post.content
     .filter((s: BlogSection) => s.type === "h2")
     .map((s: BlogSection) =>
       s.type === "h2" ? { id: slugifyHeading(s.text), text: s.text } : { id: "", text: "" },
     );
 
-  // Inject mid-article CTA after ~55% of sections
-  const midIndex = Math.max(2, Math.floor(post.content.length * 0.55));
+  // L'appel du milieu, à la fin de la section qui passe la moitié de l'article :
+  // jamais entre un intertitre et son texte.
+  const moitie = Math.max(2, Math.floor(post.content.length * 0.55));
+  const finDeSection = post.content.findIndex(
+    (s: BlogSection, i: number) =>
+      i >= moitie && s.type !== "h2" && s.type !== "h3" && post.content[i + 1]?.type === "h2",
+  );
+  const midIndex = finDeSection >= 0 ? finDeSection : moitie;
 
+  // Refonte du 30 octobre 2026 : l'allure Durable des pages produit (DESIGN.md §13).
   return (
-    /* L'article prend la couleur de sa rubrique : c'est le même repère que
-       sur la carte qui y mène, et il vaut mieux qu'il ne s'éteigne pas au
-       moment où le lecteur ouvre l'article. */
-    <div
-      className="min-h-screen bg-background text-foreground"
-      style={{ "--accent": encreRubrique(post.category) } as React.CSSProperties}
-    >
-      <PostNav />
-
-      <main>
-        <article className="mx-auto max-w-3xl px-4 pt-[calc(var(--entete-hauteur)+1.5rem)] pb-12 sm:px-6 sm:pb-16 sm:pt-[calc(var(--entete-hauteur)+2.5rem)]">
-          <Link
-            to="/blog/"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
+    <div className="min-h-screen bg-white text-[#09090b]">
+      <SiteChrome>
+        <article className="mx-auto max-w-3xl px-4 pt-10 pb-12 sm:px-6 sm:pt-14 sm:pb-16">
+          <nav
+            aria-label="Fil d'Ariane"
+            className={`flex items-center gap-1.5 text-sm ${TEXTE_GRIS}`}
           >
-            <ArrowLeft className="h-4 w-4" />
-            Tous les articles
-          </Link>
+            <Link to="/blog/" className="hover:text-black">
+              Blog
+            </Link>
+            <ChevronRight className="h-3.5 w-3.5" />
+            <span className="text-black">{post.category}</span>
+          </nav>
 
           <header className="mt-6">
-            <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
-              <span className="rounded-full bg-accent/10 px-3 py-1 font-semibold text-accent">
-                {post.category}
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Calendar className="h-3.5 w-3.5" />
-                {formatDate(post.publishedAt)}
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Clock className="h-3.5 w-3.5" />
-                {post.readingTime}
-              </span>
-              <Link
-                to="/a-propos/"
-                className="inline-flex items-center gap-1.5 transition hover:text-brand-ink"
-              >
-                <User className="h-3.5 w-3.5" />
-                {post.author}
-              </Link>
-            </div>
-            <h1 className="mt-4 font-display text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+            <h1 className="titre-produit text-[2.3rem] leading-[1.05] sm:text-5xl lg:text-[3.4rem]">
               {post.title.replace(/ ([:;?!])/g, "\u00a0$1")}
             </h1>
-            <p className="mt-5 text-lg text-muted-foreground sm:text-xl">{post.excerpt}</p>
+            <p className={`mt-6 text-lg leading-8 sm:text-xl ${TEXTE_GRIS}`}>{post.excerpt}</p>
+            <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-black/55">
+              <Link to="/a-propos/" className="font-medium text-black hover:underline">
+                {post.author}
+              </Link>
+              <span>{formatDate(post.publishedAt)}</span>
+              <span>{post.readingTime} de lecture</span>
+            </div>
           </header>
 
           {post.image && (
-            <figure className="mt-10 overflow-hidden rounded-2xl border border-border shadow-soft">
+            <figure className="mt-10 overflow-hidden rounded-3xl">
               <img
                 src={`${post.image.src}-1200.webp`}
                 srcSet={`${post.image.src}-1200.webp 1200w, ${post.image.src}-2400.webp 2400w`}
@@ -232,23 +219,15 @@ function BlogPostPage() {
           )}
 
           {headings.length >= 3 && (
-            <nav
-              aria-label="Table des matières"
-              className="mt-10 rounded-2xl border border-border bg-secondary/30 p-5 sm:p-6"
-            >
-              <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-accent">
-                <List className="h-4 w-4" />
-                Sommaire
-              </div>
-              <ol className="mt-3 space-y-1.5 text-[15px] leading-relaxed">
-                {headings.map((h: { id: string; text: string }, i: number) => (
+            <nav aria-label="Table des matières" className={`${CARTE} mt-10 p-6`}>
+              <div className="text-sm font-semibold">Dans cet article</div>
+              <ol className="mt-3 space-y-2 text-[15px]">
+                {headings.map((h, i) => (
                   <li key={h.id} className="flex gap-3">
-                    <span className="font-mono text-xs text-muted-foreground">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+                    <span className="w-5 shrink-0 text-black/35 tabular-nums">{i + 1}</span>
                     <a
                       href={`#${h.id}`}
-                      className="text-foreground/85 underline-offset-4 transition hover:text-accent hover:underline"
+                      className="text-black/75 underline-offset-4 transition hover:text-black hover:underline"
                     >
                       {h.text}
                     </a>
@@ -258,45 +237,30 @@ function BlogPostPage() {
             </nav>
           )}
 
-          <div className="prose-content mt-10 space-y-5 text-[17px] leading-relaxed text-foreground/90">
+          <div className="mt-10 space-y-6 text-[17px] leading-8 text-black/80">
             {post.content.map((section: BlogSection, idx: number) => (
-              <>
-                <RenderSection key={`s-${idx}`} section={section} />
-                {idx === midIndex && <InlineCTA key={`cta-${idx}`} cta={post.cta ?? "site"} />}
-              </>
+              <Fragment key={idx}>
+                <RenderSection section={section} />
+                {idx === midIndex && <InlineCTA cta={cta} />}
+              </Fragment>
             ))}
           </div>
-
-          <FinalCTA cta={post.cta ?? "site"} />
         </article>
 
+        <FinalCTA cta={cta} />
+
         {relatedPosts.length > 0 && (
-          <section className="border-t border-border bg-secondary/30 py-14">
-            <div className="mx-auto max-w-5xl px-4 sm:px-6">
-              <h2 className="font-display text-2xl font-bold sm:text-3xl">À lire ensuite</h2>
-              <p className="mt-2 text-muted-foreground">
-                Continuez votre lecture avec des articles complémentaires.
-              </p>
-              <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <section className="px-4 py-16 sm:px-6 sm:py-20">
+            <div className="mx-auto max-w-6xl">
+              <div className="flex flex-wrap items-end justify-between gap-4">
+                <h2 className="titre-produit text-[2rem] sm:text-4xl">À lire ensuite</h2>
+                <Link to="/blog/" className="text-sm font-semibold hover:underline">
+                  Tous les articles
+                </Link>
+              </div>
+              <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {relatedPosts.map((p) => (
-                  <Link
-                    key={p.slug}
-                    to="/blog/$slug/"
-                    params={{ slug: p.slug }}
-                    className="group rounded-xl border border-border bg-card p-5 shadow-soft transition hover:shadow-elevated"
-                  >
-                    <span className="text-xs font-semibold uppercase tracking-wider text-accent">
-                      {p.category}
-                    </span>
-                    <h3 className="mt-2 font-display text-lg font-bold leading-snug transition group-hover:text-accent">
-                      {p.title}
-                    </h3>
-                    <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">{p.excerpt}</p>
-                    <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-accent">
-                      Lire l'article
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </span>
-                  </Link>
+                  <CarteArticle key={p.slug} post={p} />
                 ))}
               </div>
             </div>
@@ -304,14 +268,15 @@ function BlogPostPage() {
         )}
 
         {/* Les liens vers les pages métier artisans ne restent que sur les
-          articles hors index, écrits pour ce public (src/lib/indexation.ts). */}
+            articles hors index, écrits pour ce public (src/lib/indexation.ts). */}
         {!articleIndexable(post.slug) && <MetierLinksStrip />}
-      </main>
-
-      <SiteFooter />
+      </SiteChrome>
     </div>
   );
 }
+
+const LIEN_ARTICLE =
+  "font-medium text-black underline decoration-black/25 underline-offset-4 transition hover:decoration-black";
 
 function RenderSection({ section }: { section: BlogSection }) {
   switch (section.type) {
@@ -320,7 +285,7 @@ function RenderSection({ section }: { section: BlogSection }) {
       return (
         <h2
           id={id}
-          className="mt-10 scroll-mt-24 font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
+          className="titre-produit !mt-14 scroll-mt-28 text-[1.9rem] leading-tight text-black sm:text-[2.2rem]"
         >
           {section.text}
         </h2>
@@ -328,81 +293,85 @@ function RenderSection({ section }: { section: BlogSection }) {
     }
     case "h3":
       return (
-        <h3 className="mt-6 font-display text-xl font-bold tracking-tight text-foreground sm:text-2xl">
-          {section.text}
-        </h3>
+        <h3 className="!mt-9 text-xl font-semibold tracking-tight text-black">{section.text}</h3>
       );
     case "p":
       return (
         <p>
-          <TexteAvecLiens texte={section.text} />
+          <TexteAvecLiens texte={section.text} classeLien={LIEN_ARTICLE} />
         </p>
       );
     case "ul":
       return (
-        <ul className="ml-5 list-disc space-y-2 marker:text-accent">
+        <ul className="space-y-3">
           {section.items.map((it, i) => (
-            <li key={i}>
-              <TexteAvecLiens texte={it} />
+            <li key={i} className="flex gap-3">
+              <span
+                className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[#7c3aed]"
+                aria-hidden="true"
+              />
+              <span>
+                <TexteAvecLiens texte={it} classeLien={LIEN_ARTICLE} />
+              </span>
             </li>
           ))}
         </ul>
       );
     case "quote":
       return (
-        <blockquote className="border-l-4 border-accent bg-accent/5 px-5 py-3 italic text-foreground/80">
-          <TexteAvecLiens texte={section.text} />
+        <blockquote className="!my-10 border-l-2 border-black pl-6 text-[1.4rem] leading-snug font-medium tracking-tight text-black">
+          <TexteAvecLiens texte={section.text} classeLien={LIEN_ARTICLE} />
         </blockquote>
       );
     case "table":
       return (
-        <figure className="my-6 overflow-x-auto rounded-xl border border-border">
-          <table className="w-full border-collapse text-sm">
-            <thead className="bg-secondary/60">
-              <tr>
-                {section.headers.map((h, i) => (
-                  <th
-                    key={i}
-                    className="border-b border-border px-3 py-2.5 text-left font-semibold text-foreground"
-                  >
-                    {h}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {section.rows.map((row, ri) => (
-                <tr key={ri} className="odd:bg-background even:bg-secondary/20">
-                  {row.map((cell, ci) => (
-                    <td
-                      key={ci}
-                      className="border-b border-border/60 px-3 py-2.5 align-top text-foreground/90"
-                    >
-                      {cell}
-                    </td>
+        <figure className="!my-8">
+          <div className="overflow-x-auto rounded-3xl border border-black/[0.08]">
+            <table className="w-full text-left text-[15px] leading-6">
+              <thead className="bg-black/[0.03]">
+                <tr>
+                  {section.headers.map((h, i) => (
+                    <th key={i} scope="col" className="px-5 py-3.5 font-semibold text-black">
+                      {h}
+                    </th>
                   ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {section.rows.map((row, ri) => (
+                  <tr key={ri} className="border-t border-black/[0.06] align-top">
+                    {row.map((cell, ci) => (
+                      <td
+                        key={ci}
+                        className={`px-5 py-3.5 ${ci === 0 ? "font-medium text-black" : "text-black/70"}`}
+                      >
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
           {section.caption && (
-            <figcaption className="px-3 py-2 text-xs text-muted-foreground">
-              {section.caption}
-            </figcaption>
+            <figcaption className="mt-2 px-1 text-sm text-black/50">{section.caption}</figcaption>
           )}
         </figure>
       );
     case "faq":
       return (
-        <div className="my-4 divide-y divide-border rounded-xl border border-border bg-card">
+        <div className="!mt-10 space-y-3">
+          <h2 className="titre-produit text-[1.9rem] leading-tight text-black sm:text-[2.2rem]">
+            Questions fréquentes
+          </h2>
           {section.items.map((it, i) => (
-            <details key={i} className="group px-5 py-4 open:bg-accent/5">
-              <summary className="cursor-pointer list-none font-semibold text-foreground marker:hidden">
-                <span className="mr-2 text-accent">Q.</span>
+            <details key={i} className={`${CARTE} group p-5`}>
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-black marker:content-none">
                 {it.q}
+                <span className="text-xl leading-none transition group-open:rotate-45">+</span>
               </summary>
-              <p className="mt-2 text-foreground/85">
-                <TexteAvecLiens texte={it.a} />
+              <p className="mt-3 text-[16px] leading-7 text-black/70">
+                <TexteAvecLiens texte={it.a} classeLien={LIEN_ARTICLE} />
               </p>
             </details>
           ))}
@@ -502,8 +471,8 @@ const APPELS: Record<CtaArticle, { milieu: Appel; fin: Appel }> = {
   },
 };
 
-/** Le bouton d'un appel : Calendly dans un nouvel onglet, les pages du
-    routeur par `Link`, la page statique ChatGPT Ads par un lien classique. */
+/** Le bouton d'un appel : Calendly dans un nouvel onglet, l'application et la
+    page statique ChatGPT Ads par un lien classique, les pages du routeur par `Link`. */
 function BoutonAppel({ appel, className }: { appel: Appel; className: string }) {
   const contenu = (
     <>
@@ -512,7 +481,7 @@ function BoutonAppel({ appel, className }: { appel: Appel; className: string }) 
     </>
   );
   // L'application s'ouvre dans le même onglet : c'est la suite de la lecture.
-  if (appel.href.startsWith(APP_URL)) {
+  if (appel.href.startsWith(APP_URL) || appel.href.startsWith("/chatgpt-ads")) {
     return (
       <a href={appel.href} className={className}>
         {contenu}
@@ -526,13 +495,6 @@ function BoutonAppel({ appel, className }: { appel: Appel; className: string }) 
       </a>
     );
   }
-  if (appel.href.startsWith("/chatgpt-ads")) {
-    return (
-      <a href={appel.href} className={className}>
-        {contenu}
-      </a>
-    );
-  }
   return (
     <Link to={appel.href} className={className}>
       {contenu}
@@ -540,36 +502,52 @@ function BoutonAppel({ appel, className }: { appel: Appel; className: string }) 
   );
 }
 
+/** L'appel du milieu : une carte sombre, comme la une du blog. */
 function InlineCTA({ cta }: { cta: CtaArticle }) {
   const appel = APPELS[cta].milieu;
   return (
-    <aside className="my-10 rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 via-primary/5 to-accent/10 p-6 sm:p-7">
-      <div className="text-xs font-semibold uppercase tracking-widest text-primary">Sitaly</div>
-      <h3 className="mt-1 font-display text-xl font-bold sm:text-2xl">{appel.titre}</h3>
-      <p className="mt-2 text-foreground/80">{appel.texte}</p>
-      <BoutonAppel appel={appel} className="bouton mt-4 px-6 py-2.5 text-sm" />
+    <aside className="!my-12 rounded-3xl bg-[#0d0f14] p-7 text-white sm:p-8">
+      <div className="text-sm font-medium text-[#c4b5fd]">Sitaly</div>
+      <p className="titre-produit mt-2 text-[1.7rem] leading-tight text-white sm:text-3xl">
+        {appel.titre}
+      </p>
+      <p className="mt-3 text-[16px] leading-7 text-white/65">{appel.texte}</p>
+      <BoutonAppel
+        appel={appel}
+        className="mt-6 inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-black transition hover:bg-white/90"
+      />
     </aside>
   );
 }
 
+/** L'appel de fin : l'encart de l'application pour les articles Sitaly App, une carte sinon. */
 function FinalCTA({ cta }: { cta: CtaArticle }) {
   const appel = APPELS[cta].fin;
+  if (cta === "app") {
+    return (
+      <section data-cta={cta} className="px-4 pt-8 pb-16 sm:px-6">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="titre-produit text-[2.15rem] sm:text-5xl">{appel.titre}</h2>
+          <p className={`mx-auto mt-5 max-w-xl text-lg ${TEXTE_GRIS}`}>{appel.texte}</p>
+        </div>
+        <div className="mx-auto mt-10 max-w-3xl">
+          <BoiteApp idees={false} />
+        </div>
+        <Confiance />
+      </section>
+    );
+  }
   return (
-    <div
-      data-cta={cta}
-      className="mt-12 rounded-2xl border border-accent/30 bg-accent/5 p-7 sm:p-8"
-    >
-      <h2 className="font-display text-xl font-bold sm:text-2xl">
-        {appel.titre.replace(/ ([:;?!])/g, "\u00a0$1")}
-      </h2>
-      <p className="mt-2 text-muted-foreground">{appel.texte}</p>
-      <BoutonAppel appel={appel} className="bouton mt-5 w-full px-6 py-3 text-sm sm:w-auto" />
-    </div>
+    <section data-cta={cta} className="px-4 pt-4 pb-12 sm:px-6">
+      <div className={`${CARTE} mx-auto max-w-3xl p-8 text-center sm:p-10`}>
+        <h2 className="titre-produit text-[1.9rem] leading-tight sm:text-4xl">
+          {appel.titre.replace(/ ([:;?!])/g, "\u00a0$1")}
+        </h2>
+        <p className={`mx-auto mt-4 max-w-xl text-[16px] leading-7 ${TEXTE_GRIS}`}>{appel.texte}</p>
+        <BoutonAppel appel={appel} className={`${BOUTON_NOIR} mt-7 px-6 py-3.5`} />
+      </div>
+    </section>
   );
-}
-
-function PostNav() {
-  return <SiteHeader />;
 }
 
 // keep BLOG_POSTS import side-effect for sitemap consumers if needed

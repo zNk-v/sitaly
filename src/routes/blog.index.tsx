@@ -1,14 +1,12 @@
 import { useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Calendar, Sparkles } from "lucide-react";
-import { SiteHeader } from "@/components/SiteHeader";
-import { SiteFooter } from "@/components/SiteFooter";
-import { SectionHeader } from "@/components/SectionHeader";
-import { BlogCard, encreRubrique, teinteRubrique } from "@/components/BlogCard";
+import { ChevronRight } from "lucide-react";
+import { SiteChrome } from "@/components/SiteChrome";
+import { CarteArticle } from "@/components/produit/CarteArticle";
+import { BoiteApp, Confiance, TEXTE_GRIS } from "@/components/produit/Produit";
 import {
   BLOG_POSTS as TOUS_LES_ARTICLES,
   POSTS_RECENTS as TOUS_LES_RECENTS,
-  formatDate,
   postsALaUne,
 } from "@/data/blog-posts";
 import { articleIndexable } from "@/lib/indexation";
@@ -30,9 +28,12 @@ const POSTS_RECENTS = TOUS_LES_RECENTS.filter((p) => articleIndexable(p.slug));
  *    ouvre sur trente-trois articles de même poids ne dit pas par où commencer.
  * 2. Un filtre par rubrique plutôt que dix ancres. L'ancre déplaçait le
  *    lecteur, le filtre lui répond.
- * 3. Une grille à trois colonnes, où la couleur du filet dit la rubrique. Sur
- *    trente-trois articles, c'est ce repère qui remplace la lecture des
- *    étiquettes une par une.
+ * 3. Une grille à trois colonnes.
+ *
+ * Depuis le 30 octobre 2026, la page suit l'allure Durable des pages produit
+ * (DESIGN.md §13) : cartes grises arrondies (CarteArticle), une grande carte
+ * sombre pour la une, filtres en pastilles, et l'encart de l'application en
+ * bas de page.
  *
  * Le filtre est un état React, donc le rendu statique sort avec « Tout » :
  * les trente-trois liens sont dans le HTML livré, ce dont dépend l'exploration.
@@ -194,110 +195,75 @@ function BlogIndex() {
   );
   const rubriqueCourante = rubriquesActives.find((r) => r.key === rubrique);
 
-  const derniere = POSTS_RECENTS[0];
+  const puce = (active: boolean) =>
+    `inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition ${
+      active ? "bg-black/85 text-white" : "bg-black/[0.04] text-black/70 hover:bg-black/[0.08]"
+    }`;
 
+  // Refonte du 30 octobre 2026 : l'allure Durable des pages produit (DESIGN.md §13),
+  // à la place du voile, des sections numérotées et des filets de couleur.
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader />
+    <div className="min-h-screen bg-white text-[#09090b]">
+      <SiteChrome>
+        <section className="px-4 pt-14 pb-12 sm:px-6 sm:pt-20">
+          <div className="mx-auto max-w-4xl text-center">
+            <nav
+              aria-label="Fil d'Ariane"
+              className={`flex items-center justify-center gap-1.5 text-sm ${TEXTE_GRIS}`}
+            >
+              <Link to="/" className="hover:text-black">
+                Accueil
+              </Link>
+              <ChevronRight className="h-3.5 w-3.5" />
+              <span className="text-black">Blog</span>
+            </nav>
+            <h1 className="titre-produit mt-5 text-[2.5rem] sm:text-6xl lg:text-7xl">
+              Créer son site, lancer son activité
+            </h1>
+            <p className={`mx-auto mt-6 max-w-2xl text-lg leading-7 ${TEXTE_GRIS}`}>
+              Créer son site, choisir un nom, être trouvé sur Google, trouver des clients. Des
+              guides écrits pour être appliqués, sans jargon.
+            </p>
+          </div>
+        </section>
 
-      {/* Ouverture. Le voile, comme les pages d'expertise : le blog fait partie
-          du site, il ne s'ouvre pas sur une charte à lui. */}
-      <header className="on-wash pt-[calc(var(--entete-hauteur)+3rem)] pb-16 sm:pt-[calc(var(--entete-hauteur)+5rem)] sm:pb-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <nav aria-label="Fil d'Ariane" className="rail-label text-muted-foreground">
-            <Link to="/" className="transition hover:text-brand-ink">
-              Accueil
-            </Link>
-            <span className="px-2 text-muted-foreground">/</span>
-            <span className="text-brand-ink">Le journal</span>
-          </nav>
-
-          <h1 className="display-hero mt-6 max-w-4xl">Créer son site, lancer son activité</h1>
-          <p className="measure mt-6 text-lg leading-relaxed text-foreground/75 sm:text-xl">
-            Créer son site, choisir un nom, être trouvé sur Google, trouver des clients. Des guides
-            écrits pour être appliqués, sans jargon et sans promesse de miracle.
-          </p>
-
-          {/* Trois repères plutôt qu'une phrase d'introduction de plus. */}
-          <dl className="mt-12 grid max-w-3xl grid-cols-2 gap-x-8 gap-y-6 border-t border-border pt-8 sm:grid-cols-3">
-            <div>
-              <dt className="rail-label text-muted-foreground">Guides publiés</dt>
-              <dd className="brand-gradient-text mt-1.5 font-display text-3xl font-extrabold leading-none">
-                {BLOG_POSTS.length}
-              </dd>
-            </div>
-            <div>
-              <dt className="rail-label text-muted-foreground">Rubriques</dt>
-              <dd className="brand-gradient-text mt-1.5 font-display text-3xl font-extrabold leading-none">
-                {rubriquesActives.length}
-              </dd>
-            </div>
-            <div className="col-span-2 sm:col-span-1">
-              <dt className="rail-label text-muted-foreground">Dernier article</dt>
-              <dd className="mt-1.5 flex items-center gap-2 font-display text-base font-bold">
-                <Calendar className="h-4 w-4 text-brand-ink" />
-                {formatDate(derniere.publishedAt)}
-              </dd>
-            </div>
-          </dl>
-        </div>
-      </header>
-
-      <main>
-        {/* À la une. Un grand article et deux autres : une page qui ouvre sur
-            trente-trois articles de même poids ne dit pas par où commencer. */}
-        <section className="py-20 sm:py-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6">
-            <SectionHeader
-              index="01"
-              eyebrow="À la une"
-              title={
-                <>
-                  Par où <span className="accent-word">commencer</span>
-                </>
-              }
-            />
-            <div className="mt-12 grid gap-5 lg:grid-cols-3">
-              <BlogCard post={uneSelection[0]} taille="grande" className="lg:col-span-2" />
-              <div className="grid gap-5">
-                {uneSelection.slice(1).map((p) => (
-                  <BlogCard key={p.slug} post={p} className="h-full" />
-                ))}
-              </div>
+        {/* La une : un grand article sombre et deux autres. */}
+        <section className="px-4 pb-20 sm:px-6">
+          <div className="mx-auto grid max-w-6xl gap-4 lg:grid-cols-3">
+            <CarteArticle post={uneSelection[0]} sombre className="min-h-[22rem] lg:col-span-2" />
+            <div className="grid gap-4">
+              {uneSelection.slice(1).map((p) => (
+                <CarteArticle key={p.slug} post={p} />
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Tous les articles, filtrés par rubrique. */}
-        <section id="articles" className="bg-paper-sunk py-20 sm:py-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6">
-            <SectionHeader
-              index="02"
-              eyebrow="Le sommaire"
-              title={
-                <>
-                  Tous les <span className="accent-word">articles</span>
-                </>
-              }
-            />
-
-            {/* Le filtre. Des boutons et non des ancres : l'ancre déplaçait le
-                lecteur au milieu de la page, le filtre lui répond sur place.
-                Le rendu statique sort sans sélection, donc avec les
-                trente-trois articles dans le HTML. */}
+        {/* Tous les articles, filtrés par rubrique. Le rendu statique sort sur
+            « Tout » : tous les liens sont dans le HTML livré, pour l'exploration. */}
+        <section id="articles" className="scroll-mt-28 px-4 py-16 sm:px-6">
+          <div className="mx-auto max-w-6xl">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <h2 className="titre-produit text-[2rem] sm:text-5xl">Tous les articles</h2>
+              <p aria-live="polite" className={`max-w-md text-[15px] ${TEXTE_GRIS}`}>
+                {rubriqueCourante
+                  ? rubriqueCourante.desc
+                  : `${BLOG_POSTS.length} guides, du plus récent au plus ancien.`}
+              </p>
+            </div>
             <div
               role="group"
               aria-label="Filtrer par rubrique"
-              className="mt-10 flex flex-wrap gap-2"
+              className="mt-8 flex flex-wrap gap-2"
             >
               <button
                 type="button"
                 onClick={() => setRubrique(null)}
                 aria-pressed={rubrique === null}
-                className="puce-rubrique"
+                className={puce(rubrique === null)}
               >
                 Tout
-                <span className="puce-rubrique-nombre">{BLOG_POSTS.length}</span>
+                <span className="text-xs opacity-60">{BLOG_POSTS.length}</span>
               </button>
               {rubriquesActives.map((r) => (
                 <button
@@ -305,63 +271,37 @@ function BlogIndex() {
                   type="button"
                   onClick={() => setRubrique(rubrique === r.key ? null : r.key)}
                   aria-pressed={rubrique === r.key}
-                  className="puce-rubrique"
-                  style={
-                    {
-                      "--teinte": teinteRubrique(r.key),
-                      "--teinte-encre": encreRubrique(r.key),
-                    } as React.CSSProperties
-                  }
+                  className={puce(rubrique === r.key)}
                 >
                   {r.label}
-                  <span className="puce-rubrique-nombre">{r.nombre}</span>
+                  <span className="text-xs opacity-60">{r.nombre}</span>
                 </button>
               ))}
             </div>
-
-            {/* La description de la rubrique retenue. Elle disait quelque chose
-                que le libellé seul ne dit pas ; elle reste, mais une à la fois. */}
-            <p
-              aria-live="polite"
-              className="measure mt-6 min-h-[3rem] text-[15px] leading-relaxed text-muted-foreground"
-            >
-              {rubriqueCourante
-                ? rubriqueCourante.desc
-                : `Les ${BLOG_POSTS.length} guides, du plus récent au plus ancien.`}
-            </p>
-
-            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {liste.map((post) => (
-                <BlogCard key={post.slug} post={post} className="h-full" />
+                <CarteArticle key={post.slug} post={post} />
               ))}
             </div>
           </div>
         </section>
 
-        {/* Appel final, le même que sur les pages d'expertise. */}
-        <section className="relative overflow-hidden py-20 sm:py-28">
-          <div className="absolute inset-0 -z-10 hero-bg" aria-hidden="true" />
-          <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-            <span className="rail-label inline-flex items-center gap-2 text-brand-ink">
-              <Sparkles className="h-4 w-4" />
-              Passer à la pratique
-            </span>
-            <h2 className="display-section mt-4">
-              Et pour <span className="accent-word">votre activité</span> ?
+        <section className="px-4 pt-12 pb-28 sm:px-6">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="titre-produit text-[2.15rem] sm:text-5xl lg:text-6xl">
+              Passez à la pratique
             </h2>
-            <p className="mt-5 text-lg text-muted-foreground">
-              Quatre questions valent mieux que dix articles lus en diagonale. Vous décrivez votre
-              besoin, on vous montre l'offre qui convient et son prix.
+            <p className={`mx-auto mt-5 max-w-xl text-lg ${TEXTE_GRIS}`}>
+              Décrivez votre activité en une phrase : votre site est en ligne une minute plus tard.
+              C'est gratuit.
             </p>
-            <Link to="/mon-projet/" className="bouton mt-9 px-7 py-3.5">
-              Trouver mon offre
-              <ArrowRight className="bouton-fleche h-4 w-4" />
-            </Link>
           </div>
+          <div className="mx-auto mt-10 max-w-3xl">
+            <BoiteApp idees={false} />
+          </div>
+          <Confiance />
         </section>
-      </main>
-
-      <SiteFooter />
+      </SiteChrome>
     </div>
   );
 }
