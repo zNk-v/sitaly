@@ -1,0 +1,1 @@
+import{vt as e}from"./index-Csp2mknt.js";var t=e;export{t as component};
