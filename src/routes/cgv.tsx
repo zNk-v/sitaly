@@ -216,6 +216,23 @@ function CGV() {
         <a href="/politique-confidentialite/">politique de confidentialité</a>.
       </p>
 
+      <h3>3.6 Devis, factures et paiements</h3>
+      <p>
+        Sitaly App permet à l'Utilisateur d'établir des devis et des factures à son nom et de les
+        envoyer à ses propres clients. L'Utilisateur reste l'émetteur de ces documents : il répond
+        de l'exactitude des informations qu'il y porte (identité, SIRET, régime de TVA, prix,
+        assurance professionnelle) et de leur conservation. Une facture envoyée ne peut plus être
+        modifiée ni supprimée ; elle se corrige par un avoir.
+      </p>
+      <p>
+        Le paiement par carte des factures passe par Stripe, sur un compte Stripe ouvert au nom de
+        l'Utilisateur, qui accepte à cette occasion les conditions de Stripe. Les sommes sont
+        versées directement à l'Utilisateur ; le Prestataire ne les détient à aucun moment et ne
+        prélève, à la date des présentes, aucune commission sur ces paiements. Toute commission
+        future serait annoncée au moins trente jours avant son application. La formule{" "}
+        {IA.decouverte.nom} permet d'émettre trois factures par mois.
+      </p>
+
       <h2>4. Offres de l'agence</h2>
       <p>
         Les offres de l'agence sont présentées au téléphone ou sur devis. À la date des présentes :

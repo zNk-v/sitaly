@@ -3,6 +3,8 @@ import {
   Bath,
   CalendarCheck,
   Check,
+  CheckCircle2,
+  CreditCard,
   Droplet,
   Flame,
   Hammer,
@@ -210,6 +212,94 @@ function Visibilite() {
   );
 }
 
+function Factures() {
+  const [paye, setPaye] = useState(false);
+  const lignes: [string, string, string][] = [
+    ["Chauffe-eau 200 L, fourniture et pose", "1", "890,00 €"],
+    ["Main d'œuvre", "2,5 h", "137,50 €"],
+    ["Déplacement", "1", "35,00 €"],
+  ];
+  return (
+    <div className={`${PANNEAU} grid gap-4 md:grid-cols-[1.25fr_1fr] md:items-center`}>
+      <div className="rounded-2xl bg-white p-5 text-[13px] sm:p-7">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <div className="text-base font-bold">Plomberie Garnier</div>
+            <div className="text-black/50">SIRET 123 456 789 00012</div>
+          </div>
+          <div className="text-right">
+            <div className="text-lg font-bold">Devis</div>
+            <div className="font-semibold">D-2026-0007</div>
+          </div>
+        </div>
+        <table className="mt-5 w-full text-left">
+          <thead>
+            <tr className="border-b-2 border-black text-[11px] text-black/50 uppercase">
+              <th className="py-1.5 font-semibold">Désignation</th>
+              <th className="py-1.5 text-right font-semibold">Qté</th>
+              <th className="py-1.5 text-right font-semibold">Total HT</th>
+            </tr>
+          </thead>
+          <tbody>
+            {lignes.map(([d, q, t]) => (
+              <tr key={d} className="border-b border-black/10">
+                <td className="py-2 pr-2">{d}</td>
+                <td className="py-2 text-right whitespace-nowrap">{q}</td>
+                <td className="py-2 text-right whitespace-nowrap">{t}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div className="mt-3 flex justify-end">
+          <div className="w-full max-w-[14rem] space-y-1">
+            <div className="flex justify-between text-black/60">
+              <span>TVA 10 %</span>
+              <span>106,25 €</span>
+            </div>
+            <div className="flex justify-between border-t-2 border-black pt-1.5 text-[15px] font-bold">
+              <span>Total TTC</span>
+              <span>1 168,75 €</span>
+            </div>
+          </div>
+        </div>
+        <div className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#16a34a]/10 px-3 py-1 font-medium text-[#15803d]">
+          <CheckCircle2 className="h-4 w-4" aria-hidden="true" /> Accepté en ligne par Julie Martin
+        </div>
+      </div>
+      <div className="space-y-3">
+        <div className="rounded-2xl bg-white p-5">
+          <div className="text-xs font-medium text-black/50">Facture F-2026-0012 · Plomberie Garnier</div>
+          <div className="mt-1 text-3xl font-bold tracking-tight">1 168,75 €</div>
+          {paye ? (
+            <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#16a34a]/10 px-3 py-1.5 text-sm font-medium text-[#15803d]">
+              <CheckCircle2 className="h-4 w-4" aria-hidden="true" /> Payée. Merci !
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setPaye(true)}
+              className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-xl bg-black/85 px-4 text-sm font-medium text-white hover:bg-black"
+            >
+              <CreditCard className="h-4 w-4" aria-hidden="true" /> Payer par carte
+            </button>
+          )}
+          <div className="mt-3 text-xs text-black/50">Ou par virement : IBAN FR76 3000 6000 0112 …</div>
+        </div>
+        <div className="grid grid-cols-2 gap-3 text-white">
+          <div className="rounded-2xl bg-white/[0.06] p-4">
+            <div className="text-xs text-white/55">À encaisser</div>
+            <div className="mt-1 text-lg font-bold">{paye ? "640,00 €" : "1 808,75 €"}</div>
+          </div>
+          <div className="rounded-2xl bg-white/[0.06] p-4">
+            <div className="text-xs text-white/55">Encaissé ce mois</div>
+            <div className="mt-1 text-lg font-bold text-[#c4b5fd]">{paye ? "5 368,75 €" : "4 200,00 €"}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ---------------------------------------------------------------------------
    Le créateur de logo : le visiteur tape son nom et règle son logo.
    --------------------------------------------------------------------------- */
@@ -377,6 +467,8 @@ function Marque() {
 
 export function VisuelProduit({ id }: { id: ProduitId }) {
   switch (id) {
+    case "devis-et-factures":
+      return <Factures />;
     case "prise-de-rendez-vous":
       return <Reservation />;
     case "blog-ia":

@@ -363,8 +363,8 @@ const FORMULES: Formule[] = [
         texte: "Pour retoucher votre site en une phrase ou créer des photos.",
       },
       {
-        titre: "Formulaire de contact",
-        texte: "Chaque demande de vos visiteurs arrive dans votre boîte mail.",
+        titre: "Devis et factures",
+        texte: "Devis illimités, 3 factures par mois, payables par carte ou virement.",
       },
     ],
   },
@@ -378,6 +378,10 @@ const FORMULES: Formule[] = [
       {
         titre: `${IA.essentiel.credits.toLocaleString("fr-FR")} crédits IA par mois`,
         texte: "Réécrire une section, ajouter des tarifs, changer le ton, créer des photos.",
+      },
+      {
+        titre: "Factures illimitées et relances",
+        texte: "Vos impayés relancés automatiquement à J+1, J+8 et J+15.",
       },
       { titre: "Assistance par e-mail", texte: "Une vraie personne vous répond, en français." },
       {
@@ -590,8 +594,21 @@ const GROUPES_COMPARES: { titre: string; lignes: LigneComparee[] }[] = [
         valeurs: [false, { bientot: "Bientôt" }, { bientot: "Bientôt" }],
       },
       { libelle: "Score de visibilité SEO et GEO, fichier llms.txt", valeurs: [true, true, true] },
-      { libelle: "Prise de rendez-vous en ligne", valeurs: [false, true, true] },
       { libelle: "Site en deux langues", valeurs: [false, false, { bientot: "Bientôt" }] },
+    ],
+  },
+  {
+    titre: "Gérer votre activité",
+    lignes: [
+      { libelle: "Devis acceptés en ligne", valeurs: [true, true, true] },
+      { libelle: "Factures conformes", valeurs: ["3 par mois", "Illimitées", "Illimitées"] },
+      {
+        libelle: "Paiement des factures par carte",
+        aide: "Sans commission Sitaly : seuls les frais Stripe s'appliquent.",
+        valeurs: [true, true, true],
+      },
+      { libelle: "Relances automatiques des impayés", valeurs: [false, true, true] },
+      { libelle: "Prise de rendez-vous en ligne", valeurs: [false, true, true] },
     ],
   },
   {

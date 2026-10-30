@@ -34,6 +34,7 @@ const COLONNES: { titre: string; entrees: Entree[] }[] = [
     entrees: [
       { label: "Créer mon site", href: lienCreation() },
       { label: "Fonctionnalités", to: "/", hash: "fonctionnalites" },
+      { label: "Devis et factures", to: "/produits/devis-et-factures/" },
       { label: "Prise de rendez-vous", to: "/produits/prise-de-rendez-vous/" },
       { label: "Blog écrit par l'IA", to: "/produits/blog-ia/" },
       { label: "SEO et GEO", to: "/produits/referencement-seo-geo/" },

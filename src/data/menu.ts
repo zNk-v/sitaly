@@ -10,6 +10,7 @@ import {
   Newspaper,
   Palette,
   PenTool,
+  ReceiptText,
   SearchCheck,
   Sparkles,
   Wand2,
@@ -105,17 +106,29 @@ const PRODUITS: MenuDeroulant = {
           bientot: true,
           icone: Globe,
         },
-        {
-          label: "Prise de rendez-vous",
-          desc: "Vos clients réservent depuis votre site.",
-          to: "/produits/prise-de-rendez-vous/",
-          icone: CalendarCheck,
-        },
+
         {
           label: "Site en deux langues",
           desc: "Une deuxième langue pour vos visiteurs.",
           bientot: true,
           icone: Languages,
+        },
+      ],
+    },
+    {
+      titre: "Gérer votre activité",
+      entrees: [
+        {
+          label: "Devis et factures",
+          desc: "Devis acceptés en ligne, factures payées par carte.",
+          to: "/produits/devis-et-factures/",
+          icone: ReceiptText,
+        },
+        {
+          label: "Prise de rendez-vous",
+          desc: "Vos clients réservent depuis votre site.",
+          to: "/produits/prise-de-rendez-vous/",
+          icone: CalendarCheck,
         },
       ],
     },

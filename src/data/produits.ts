@@ -13,10 +13,13 @@ import { CREATEUR_IA as IA } from "@/data/offres";
  *   6 crédits l'article), pages /blog/ des sites ;
  * - visibilite : rubrique Visibilité (score sur 100), llms.txt, plan du site
  *   et données structurées produits par le programme sitaly-sites ;
- * - marque : rubrique Identité de marque (src/site/logo.ts), sans crédit.
+ * - marque : rubrique Identité de marque (src/site/logo.ts), sans crédit ;
+ * - factures (1er novembre 2026) : rubrique Devis et factures, page client
+ *   /d/<jeton>, paiement Stripe Connect sans commission, relances en
+ *   Essentiel et Pro, 3 factures par mois en Découverte.
  */
 
-export type ProduitId = "prise-de-rendez-vous" | "blog-ia" | "referencement-seo-geo" | "identite-de-marque";
+export type ProduitId = "devis-et-factures" | "prise-de-rendez-vous" | "blog-ia" | "referencement-seo-geo" | "identite-de-marque";
 
 export interface Produit {
   id: ProduitId;
@@ -38,6 +41,70 @@ export interface Produit {
 }
 
 export const PRODUITS: Produit[] = [
+  {
+    id: "devis-et-factures",
+    nom: "Devis et factures",
+    menuDesc: "Devis acceptés en ligne, factures payées par carte.",
+    titre: "Facturez, soyez payé",
+    intro:
+      "Un devis que votre client accepte en ligne, une facture conforme qu'il règle par carte ou par virement, des relances qui partent seules. Depuis la fiche de votre client, en deux minutes.",
+    seoTitre: "Logiciel de devis et factures pour artisans et indépendants",
+    description:
+      "Créez vos devis et factures conformes, faites accepter vos devis en ligne, encaissez par carte sans commission ou par virement, et relancez les impayés automatiquement. Inclus dans Sitaly.",
+    etapes: [
+      {
+        titre: "Préparez le devis",
+        texte: "Choisissez le client dans votre liste, ajoutez vos lignes, quantités et TVA. La feuille se dessine à côté, telle que votre client la verra.",
+      },
+      {
+        titre: "Votre client l'accepte en ligne",
+        texte: "Il reçoit un lien par e-mail, ou par SMS si vous le copiez. Il lit, écrit son nom, et c'est un bon pour accord. Vous êtes prévenu aussitôt.",
+      },
+      {
+        titre: "Facturez et encaissez",
+        texte: "Le devis devient une facture en un clic. Votre client la paie par carte ou par virement ; elle passe en « payée » et votre suivi se met à jour.",
+      },
+    ],
+    points: [
+      {
+        titre: "Conforme au droit français",
+        texte: "Numérotation sans trou, facture figée une fois envoyée, avoir pour corriger, SIRET, pénalités de retard, mention 293 B en franchise, assurance décennale.",
+      },
+      {
+        titre: "Payé par carte, sans commission",
+        texte: "Reliez votre compte Stripe en cinq minutes : l'argent arrive chez vous. Sitaly ne prend rien, seuls les frais Stripe s'appliquent.",
+      },
+      {
+        titre: "Les impayés relancés pour vous",
+        texte: "Un rappel part au client le lendemain de l'échéance, puis à huit et quinze jours. Vous voyez d'un coup d'œil ce qui reste à encaisser.",
+      },
+      {
+        titre: "Relié à vos clients",
+        texte: "Chaque devis, facture et paiement entre dans l'historique du client. Un devis accepté fait passer la fiche en « client ».",
+      },
+    ],
+    inclus: ["3 factures par mois", "Illimité", "Illimité"],
+    noteInclus:
+      "Devis illimités dans toutes les formules. Relances automatiques en Essentiel et Pro. Paiement par carte : frais Stripe seulement, aucune commission Sitaly.",
+    faq: [
+      {
+        q: "Mes factures sont-elles conformes ?",
+        a: "Oui. Elles portent les mentions obligatoires, se numérotent sans trou et ne se modifient plus une fois envoyées ; une erreur se corrige par un avoir, comme l'exige la loi.",
+      },
+      {
+        q: "Et la facture électronique obligatoire ?",
+        a: "Pour vos clients particuliers, la facture PDF reste valable. Entre professionnels, l'émission électronique devient obligatoire pour les petites entreprises le 1er septembre 2027 : Sitaly s'y prépare et vous préviendra avant.",
+      },
+      {
+        q: "Combien coûte le paiement par carte ?",
+        a: "Sitaly ne prend aucune commission. Stripe facture ses propres frais par paiement, prélevés sur la somme reçue. Le virement reste gratuit.",
+      },
+      {
+        q: "Mon client doit-il créer un compte ?",
+        a: "Non. Il ouvre le lien, lit le document, accepte le devis ou paie la facture. Il peut aussi l'imprimer ou l'enregistrer en PDF.",
+      },
+    ],
+  },
   {
     id: "prise-de-rendez-vous",
     nom: "Prise de rendez-vous",
