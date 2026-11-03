@@ -1,0 +1,1 @@
+import{Yt as e}from"./index-DBILI5k6.js";var t=e;export{t as component};
