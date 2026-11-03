@@ -54,6 +54,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as RealisationsIndexRouteImport } from './routes/realisations.index'
 import { Route as OutilsIndexRouteImport } from './routes/outils.index'
 import { Route as ModelesIndexRouteImport } from './routes/modeles.index'
+import { Route as GuidesIndexRouteImport } from './routes/guides.index'
 import { Route as ComparerIndexRouteImport } from './routes/comparer.index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slug'
@@ -64,6 +65,7 @@ import { Route as OutilsBudgetGoogleAdsArtisanRouteImport } from './routes/outil
 import { Route as OutilsAuditFicheGoogleRouteImport } from './routes/outils.audit-fiche-google'
 import { Route as OffresIdRouteImport } from './routes/offres.$id'
 import { Route as ModelesIdRouteImport } from './routes/modeles.$id'
+import { Route as GuidesIdRouteImport } from './routes/guides.$id'
 import { Route as ComparerIdRouteImport } from './routes/comparer.$id'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AgentsIaSanteRouteImport } from './routes/agents-ia_.sante'
@@ -303,6 +305,11 @@ const ModelesIndexRoute = ModelesIndexRouteImport.update({
   path: '/modeles/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuidesIndexRoute = GuidesIndexRouteImport.update({
+  id: '/guides/',
+  path: '/guides/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ComparerIndexRoute = ComparerIndexRouteImport.update({
   id: '/comparer/',
   path: '/comparer/',
@@ -354,6 +361,11 @@ const OffresIdRoute = OffresIdRouteImport.update({
 const ModelesIdRoute = ModelesIdRouteImport.update({
   id: '/modeles/$id',
   path: '/modeles/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesIdRoute = GuidesIdRouteImport.update({
+  id: '/guides/$id',
+  path: '/guides/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ComparerIdRoute = ComparerIdRouteImport.update({
@@ -468,6 +480,7 @@ export interface FileRoutesByFullPath {
   '/agents-ia/sante': typeof AgentsIaSanteRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/comparer/$id': typeof ComparerIdRoute
+  '/guides/$id': typeof GuidesIdRoute
   '/modeles/$id': typeof ModelesIdRoute
   '/offres/$id': typeof OffresIdRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
@@ -478,6 +491,7 @@ export interface FileRoutesByFullPath {
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/comparer/': typeof ComparerIndexRoute
+  '/guides/': typeof GuidesIndexRoute
   '/modeles/': typeof ModelesIndexRoute
   '/outils/': typeof OutilsIndexRoute
   '/realisations/': typeof RealisationsIndexRoute
@@ -535,6 +549,7 @@ export interface FileRoutesByTo {
   '/agents-ia/sante': typeof AgentsIaSanteRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/comparer/$id': typeof ComparerIdRoute
+  '/guides/$id': typeof GuidesIdRoute
   '/modeles/$id': typeof ModelesIdRoute
   '/offres/$id': typeof OffresIdRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
@@ -545,6 +560,7 @@ export interface FileRoutesByTo {
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog': typeof BlogIndexRoute
   '/comparer': typeof ComparerIndexRoute
+  '/guides': typeof GuidesIndexRoute
   '/modeles': typeof ModelesIndexRoute
   '/outils': typeof OutilsIndexRoute
   '/realisations': typeof RealisationsIndexRoute
@@ -604,6 +620,7 @@ export interface FileRoutesById {
   '/agents-ia_/sante': typeof AgentsIaSanteRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/comparer/$id': typeof ComparerIdRoute
+  '/guides/$id': typeof GuidesIdRoute
   '/modeles/$id': typeof ModelesIdRoute
   '/offres/$id': typeof OffresIdRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
@@ -614,6 +631,7 @@ export interface FileRoutesById {
   '/realisations/$slug': typeof RealisationsSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/comparer/': typeof ComparerIndexRoute
+  '/guides/': typeof GuidesIndexRoute
   '/modeles/': typeof ModelesIndexRoute
   '/outils/': typeof OutilsIndexRoute
   '/realisations/': typeof RealisationsIndexRoute
@@ -674,6 +692,7 @@ export interface FileRouteTypes {
     | '/agents-ia/sante'
     | '/blog/$slug'
     | '/comparer/$id'
+    | '/guides/$id'
     | '/modeles/$id'
     | '/offres/$id'
     | '/outils/audit-fiche-google'
@@ -684,6 +703,7 @@ export interface FileRouteTypes {
     | '/realisations/$slug'
     | '/blog/'
     | '/comparer/'
+    | '/guides/'
     | '/modeles/'
     | '/outils/'
     | '/realisations/'
@@ -741,6 +761,7 @@ export interface FileRouteTypes {
     | '/agents-ia/sante'
     | '/blog/$slug'
     | '/comparer/$id'
+    | '/guides/$id'
     | '/modeles/$id'
     | '/offres/$id'
     | '/outils/audit-fiche-google'
@@ -751,6 +772,7 @@ export interface FileRouteTypes {
     | '/realisations/$slug'
     | '/blog'
     | '/comparer'
+    | '/guides'
     | '/modeles'
     | '/outils'
     | '/realisations'
@@ -809,6 +831,7 @@ export interface FileRouteTypes {
     | '/agents-ia_/sante'
     | '/blog/$slug'
     | '/comparer/$id'
+    | '/guides/$id'
     | '/modeles/$id'
     | '/offres/$id'
     | '/outils/audit-fiche-google'
@@ -819,6 +842,7 @@ export interface FileRouteTypes {
     | '/realisations/$slug'
     | '/blog/'
     | '/comparer/'
+    | '/guides/'
     | '/modeles/'
     | '/outils/'
     | '/realisations/'
@@ -877,6 +901,7 @@ export interface RootRouteChildren {
   AgentsIaRestaurationRoute: typeof AgentsIaRestaurationRoute
   AgentsIaSanteRoute: typeof AgentsIaSanteRoute
   ComparerIdRoute: typeof ComparerIdRoute
+  GuidesIdRoute: typeof GuidesIdRoute
   ModelesIdRoute: typeof ModelesIdRoute
   OffresIdRoute: typeof OffresIdRoute
   OutilsAuditFicheGoogleRoute: typeof OutilsAuditFicheGoogleRoute
@@ -886,6 +911,7 @@ export interface RootRouteChildren {
   ProduitsIdRoute: typeof ProduitsIdRoute
   RealisationsSlugRoute: typeof RealisationsSlugRoute
   ComparerIndexRoute: typeof ComparerIndexRoute
+  GuidesIndexRoute: typeof GuidesIndexRoute
   ModelesIndexRoute: typeof ModelesIndexRoute
   OutilsIndexRoute: typeof OutilsIndexRoute
   RealisationsIndexRoute: typeof RealisationsIndexRoute
@@ -1208,6 +1234,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ModelesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guides/': {
+      id: '/guides/'
+      path: '/guides'
+      fullPath: '/guides/'
+      preLoaderRoute: typeof GuidesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/comparer/': {
       id: '/comparer/'
       path: '/comparer'
@@ -1276,6 +1309,13 @@ declare module '@tanstack/react-router' {
       path: '/modeles/$id'
       fullPath: '/modeles/$id'
       preLoaderRoute: typeof ModelesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/$id': {
+      id: '/guides/$id'
+      path: '/guides/$id'
+      fullPath: '/guides/$id'
+      preLoaderRoute: typeof GuidesIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/comparer/$id': {
@@ -1423,6 +1463,7 @@ const rootRouteChildren: RootRouteChildren = {
   AgentsIaRestaurationRoute: AgentsIaRestaurationRoute,
   AgentsIaSanteRoute: AgentsIaSanteRoute,
   ComparerIdRoute: ComparerIdRoute,
+  GuidesIdRoute: GuidesIdRoute,
   ModelesIdRoute: ModelesIdRoute,
   OffresIdRoute: OffresIdRoute,
   OutilsAuditFicheGoogleRoute: OutilsAuditFicheGoogleRoute,
@@ -1432,6 +1473,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProduitsIdRoute: ProduitsIdRoute,
   RealisationsSlugRoute: RealisationsSlugRoute,
   ComparerIndexRoute: ComparerIndexRoute,
+  GuidesIndexRoute: GuidesIndexRoute,
   ModelesIndexRoute: ModelesIndexRoute,
   OutilsIndexRoute: OutilsIndexRoute,
   RealisationsIndexRoute: RealisationsIndexRoute,

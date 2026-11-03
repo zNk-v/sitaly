@@ -48,8 +48,8 @@ const COLONNES: { titre: string; entrees: Entree[] }[] = [
     titre: "Ressources",
     entrees: [
       { label: "Blog", to: "/blog/" },
-      { label: "Guide de démarrage", bientot: true },
-      { label: "Tutoriels vidéo", bientot: true },
+      { label: "Guide de démarrage", to: "/guides/publier/" },
+      { label: "Tutoriels vidéo", to: "/guides/" },
     ],
   },
   {

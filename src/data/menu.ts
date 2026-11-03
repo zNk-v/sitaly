@@ -10,6 +10,7 @@ import {
   Newspaper,
   Palette,
   PenTool,
+  PlayCircle,
   ReceiptText,
   SearchCheck,
   Sparkles,
@@ -146,6 +147,12 @@ const RESSOURCES: MenuDeroulant = {
           desc: "Un modèle par métier, prêt à personnaliser.",
           to: "/modeles/",
           icone: LayoutTemplate,
+        },
+        {
+          label: "Guides en vidéo",
+          desc: "Chaque étape de Sitaly, montrée pas à pas.",
+          to: "/guides/",
+          icone: PlayCircle,
         },
         {
           label: "Blog",

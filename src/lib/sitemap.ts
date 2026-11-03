@@ -8,6 +8,7 @@ import { METIERS } from "@/lib/metiers";
 import { MODELES } from "@/data/modeles";
 import { COMPARATIFS } from "@/data/comparatifs";
 import { PRODUITS } from "@/data/produits";
+import { GUIDES } from "@/data/guides";
 import { estIndexable } from "@/lib/indexation";
 
 export const BASE_URL = "https://sitaly.fr";
@@ -116,6 +117,19 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
     changefreq: "monthly" as const,
     priority: "0.8",
     source: [route("produits.$id.tsx"), "src/data/produits.ts"],
+  })),
+  // Les guides pas à pas de Sitaly App, en vidéo (3 novembre 2026).
+  {
+    path: "/guides",
+    changefreq: "monthly",
+    priority: "0.7",
+    source: [route("guides.index.tsx"), "src/data/guides.ts"],
+  },
+  ...GUIDES.map((g) => ({
+    path: `/guides/${g.id}`,
+    changefreq: "monthly" as const,
+    priority: "0.7",
+    source: [route("guides.$id.tsx"), "src/data/guides.ts"],
   })),
   // Le générateur de noms d'entreprise (31 octobre 2026).
   {
