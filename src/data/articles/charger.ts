@@ -1,4 +1,5 @@
 import type { BlogSection } from "@/data/blog-posts";
+import { corpsVitrine } from "@/data/vitrine";
 
 /**
  * Charge le corps d'un article à la demande. Vite fait de chaque fichier de
@@ -13,6 +14,7 @@ const CORPS = import.meta.glob<{ contenu: BlogSection[] }>(["./*.ts", "!./charge
 
 export async function chargerContenu(slug: string): Promise<BlogSection[] | undefined> {
   const charger = CORPS[`./${slug}.ts`];
-  if (!charger) return undefined;
+  // Sans fichier dans ce dossier : un article écrit depuis le centre de pilotage.
+  if (!charger) return corpsVitrine(slug);
   return (await charger()).contenu;
 }

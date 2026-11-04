@@ -1,6 +1,7 @@
 import { articleIndexable } from "@/lib/indexation";
 import { DATE_DU_BUILD } from "@/lib/date-du-build";
 import { ARTICLES_AGENTS_IA } from "@/data/blog-posts-agents-ia";
+import { ARTICLES_VITRINE } from "@/data/vitrine";
 
 export type BlogSection =
   | { type: "p"; text: string }
@@ -745,6 +746,9 @@ const ALL_BLOG_POSTS: BlogPost[] = [
   // Ligne Agents IA / PME (26 septembre 2026) : src/data/blog-posts-agents-ia.ts
   ...ARTICLES_AGENTS_IA,
 ];
+// Les articles écrits depuis le centre de pilotage de l'app (src/data/vitrine.ts).
+// Un article du code garde la main si les deux partagent une adresse.
+ALL_BLOG_POSTS.push(...ARTICLES_VITRINE.filter((a) => !ALL_BLOG_POSTS.some((p) => p.slug === a.slug)));
 
 /**
  * Publication différée. Un article dont `publishedAt` est dans le futur reste dans le

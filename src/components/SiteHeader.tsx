@@ -1,3 +1,4 @@
+import { VITRINE } from "@/data/vitrine";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Phone } from "lucide-react";
 import { SitalyLogo } from "@/components/SitalyLogo";
@@ -64,6 +65,18 @@ export function SiteHeader({
 
       {/* La gouttière ne doit pas intercepter les clics destinés au hero. */}
       <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
+        {/* Le bandeau d'annonce, réglé depuis le centre de pilotage de l'app (src/data/vitrine.ts). */}
+        {VITRINE.annonce && (
+          <div className="pointer-events-auto mx-auto mb-2 flex w-fit max-w-full justify-center">
+            {VITRINE.annonce.lien ? (
+              <a href={VITRINE.annonce.lien} className="truncate rounded-full bg-[#0d0f14] px-4 py-1.5 text-center text-[13px] font-medium text-white shadow-lg hover:bg-black">
+                {VITRINE.annonce.texte} <span aria-hidden="true">→</span>
+              </a>
+            ) : (
+              <p className="truncate rounded-full bg-[#0d0f14] px-4 py-1.5 text-center text-[13px] font-medium text-white shadow-lg">{VITRINE.annonce.texte}</p>
+            )}
+          </div>
+        )}
         <div
           className={`entete-plaque${premierEcran === "sombre" ? " entete-plaque--fixe" : ""} pointer-events-auto mx-auto flex h-14 max-w-7xl items-center justify-between rounded-full pl-5 pr-2 sm:pl-6 sm:pr-3`}
         >

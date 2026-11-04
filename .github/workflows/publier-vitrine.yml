@@ -1,0 +1,56 @@
+# Publier sitaly.fr depuis le centre de pilotage de l'app (4 novembre 2026).
+# Lancé par le bouton « Publier sitaly.fr » (fonction vitrine-publier) : construit
+# le site de la branche site-premium avec le contenu du pilotage (prebuild :
+# scripts/contenus-vitrine.mjs), le copie sur la branche main servie par GitHub
+# Pages, comme le fait deploy.sh depuis le Mac de Teddy.
+name: Publier sitaly.fr
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: publier-vitrine
+  cancel-in-progress: false
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: site-premium
+          fetch-depth: 0
+          path: source
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: enligne
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: source/package-lock.json
+      - name: Installer
+        working-directory: source
+        run: npm ci
+      - name: Construire
+        working-directory: source
+        run: npm run build
+      - name: Copier le site construit
+        # Mêmes règles que deploy.sh : garder CNAME, la landing pub/, les vidéos medias/
+        # et les anciens fichiers assets/ (pages HTML encore en cache chez les visiteurs).
+        run: rsync -a --delete --exclude .git --exclude CNAME --exclude .nojekyll --exclude /pub --exclude /medias --filter 'P /assets/**' source/dist/client/ enligne/
+      - name: Mettre en ligne
+        working-directory: enligne
+        run: |
+          git config user.name "Sitaly (publication)"
+          git config user.email "contact@sitaly.fr"
+          git add -A
+          if git diff --cached --quiet; then echo "Rien de nouveau."; exit 0; fi
+          git commit -q -m "Publication depuis le centre de pilotage"
+          git push -q
+      - name: Lancer GitHub Pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "GitHub Pages se lancera de lui-même."

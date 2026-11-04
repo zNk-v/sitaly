@@ -1,3 +1,4 @@
+import { VITRINE } from "@/data/vitrine";
 import { PRIX_AGENTS_IA, euros } from "@/lib/config";
 
 /**
@@ -593,8 +594,9 @@ export const CREATEUR_IA = {
   page: "/",
   menuDesc: "Votre site écrit par l'IA, formule gratuite pour commencer.",
   decouverte: { nom: "Découverte", mensuel: 0, annuel: 0, credits: 50 },
-  essentiel: { nom: "Essentiel", mensuel: 39, annuel: 398, credits: 500, creditDomaine: 20 },
-  pro: { nom: "Pro", mensuel: 79, annuel: 806, credits: 2500, creditDomaine: 40 },
+  // Les prix se règlent aussi depuis le centre de pilotage de l'app (src/data/vitrine.ts).
+  essentiel: { nom: "Essentiel", mensuel: VITRINE.tarif("essentiel", "mensuel") ?? 39, annuel: VITRINE.tarif("essentiel", "annuel") ?? 398, credits: 500, creditDomaine: 20 },
+  pro: { nom: "Pro", mensuel: VITRINE.tarif("pro", "mensuel") ?? 79, annuel: VITRINE.tarif("pro", "annuel") ?? 806, credits: 2500, creditDomaine: 40 },
 } as const;
 
 /** Prix le plus bas d'un site, pour les accroches (« à partir de »). */

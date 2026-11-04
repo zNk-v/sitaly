@@ -20,6 +20,7 @@ import {
 } from "@/components/produit/Vitrine";
 import { FilmLancement, GrilleActivite } from "@/components/produit/Activite";
 import { CREATEUR_IA as IA } from "@/data/offres";
+import { VITRINE } from "@/data/vitrine";
 
 /**
  * L'accueil de sitaly.fr (30 octobre 2026) : la vitrine de Sitaly App.
@@ -121,13 +122,13 @@ function Accueil() {
         <section className="px-4 pt-14 pb-8 sm:px-6 sm:pt-20">
           <div className="mx-auto max-w-4xl text-center">
             <h1 className="titre-produit text-[2.6rem] sm:text-6xl lg:text-[5.25rem]">
-              Votre site internet, créé par l'IA en une minute
+              {VITRINE.accueilTitre ?? "Votre site internet, créé par l'IA en une minute"}
             </h1>
             <p
               className={`mx-auto mt-6 max-w-2xl text-lg leading-7 sm:text-xl sm:leading-8 ${TEXTE_GRIS}`}
             >
-              Décrivez votre activité. Sitaly écrit vos pages, crée vos photos et met votre site en
-              ligne. Ensuite, vous le retouchez en parlant à l'IA.
+              {VITRINE.accueilSousTitre ??
+                "Décrivez votre activité. Sitaly écrit vos pages, crée vos photos et met votre site en ligne. Ensuite, vous le retouchez en parlant à l'IA."}
             </p>
           </div>
           <div className="mx-auto mt-10 max-w-3xl">
