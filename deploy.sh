@@ -24,7 +24,7 @@ echo "==> 2/5 Copie du build vers le repo de mise en ligne"
 # renvoyaient 404 et la page restait sans JavaScript (carrousel figé, menu
 # mobile fermé, animations absentes), le 31 octobre 2026.
 rsync -a --delete \
-  --exclude .git --exclude CNAME --exclude .nojekyll --exclude /pub --exclude /medias \
+  --exclude .git --exclude CNAME --exclude .nojekyll --exclude /pub --exclude /medias --exclude /.github \
   --filter 'P /assets/**' \
   "$SRC/dist/client/" "$PUB/"
 

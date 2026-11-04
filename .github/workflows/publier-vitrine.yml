@@ -40,7 +40,7 @@ jobs:
       - name: Copier le site construit
         # Mêmes règles que deploy.sh : garder CNAME, la landing pub/, les vidéos medias/
         # et les anciens fichiers assets/ (pages HTML encore en cache chez les visiteurs).
-        run: rsync -a --delete --exclude .git --exclude CNAME --exclude .nojekyll --exclude /pub --exclude /medias --filter 'P /assets/**' source/dist/client/ enligne/
+        run: rsync -a --delete --exclude .git --exclude CNAME --exclude .nojekyll --exclude /pub --exclude /medias --exclude /.github --filter 'P /assets/**' source/dist/client/ enligne/
       - name: Mettre en ligne
         working-directory: enligne
         run: |
