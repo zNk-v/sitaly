@@ -50,3 +50,40 @@ export function suivreClicsDeContact(): () => void {
   document.addEventListener("click", auClic, { capture: true });
   return () => document.removeEventListener("click", auClic, { capture: true });
 }
+
+/**
+ * La mesure d'audience de Sitaly (4 novembre 2026), sans cookie : chaque
+ * page vue part à la fonction mesure de l'app (Supabase), qui n'en garde
+ * qu'une empreinte du jour, effacée le lendemain. Exemptée de consentement
+ * par la CNIL, elle compte aussi les visiteurs qui refusent les cookies de
+ * GA4. Toutes les minutes, tant que l'onglet est visible, un « battement »
+ * alimente le direct du tableau de bord. Rien ne part en local.
+ */
+const MESURE = "https://zgigeakspxdzgaigypoq.supabase.co/functions/v1/mesure";
+let premiereVue = true;
+
+function envoyerMesure(corps: Record<string, unknown>): void {
+  try {
+    const donnees = new Blob([JSON.stringify({ s: "sitaly.fr", ...corps })], { type: "text/plain" });
+    if (!navigator.sendBeacon?.(MESURE, donnees)) void fetch(MESURE, { method: "POST", body: donnees, keepalive: true }).catch(() => {});
+  } catch {
+    // La mesure ne doit jamais casser la page.
+  }
+}
+
+const mesureActive = () => typeof window !== "undefined" && /(^|\.)sitaly\.fr$/.test(window.location.hostname);
+
+export function compterVue(chemin: string): void {
+  if (!mesureActive()) return;
+  envoyerMesure({ p: chemin, r: premiereVue ? document.referrer : null });
+  premiereVue = false;
+}
+
+/** Le battement de présence ; renvoie de quoi l'arrêter. */
+export function battreMesure(): () => void {
+  if (!mesureActive()) return () => {};
+  const minuterie = window.setInterval(() => {
+    if (document.visibilityState === "visible") envoyerMesure({ b: true });
+  }, 60_000);
+  return () => window.clearInterval(minuterie);
+}

@@ -46,6 +46,16 @@ function Cookies() {
         mémorisation de votre choix concernant les cookies). Ils ne nécessitent pas votre
         consentement.
       </p>
+      <h3>Mesure de fréquentation sans cookie</h3>
+      <p>
+        Sitaly compte aussi ses visites sans cookie ni adresse IP conservée. À chaque page vue, notre
+        serveur calcule une empreinte de votre adresse et de votre navigateur, mêlée à une valeur
+        aléatoire qui change chaque jour et que nous effaçons le lendemain. Elle sert seulement à
+        compter les visiteurs d'une journée : elle ne permet ni de vous identifier, ni de relier vos
+        visites d'un jour à l'autre, ni de vous suivre sur d'autres sites. Nous conservons ces
+        statistiques 25 mois. Cette mesure, limitée à Sitaly, n'exige pas votre consentement selon
+        les règles de la CNIL.
+      </p>
       <h3>Cookies de mesure d'audience</h3>
       <p>
         Le site utilise <strong>Google Analytics 4</strong>, déployé via{" "}
