@@ -146,17 +146,19 @@ export function SiteFooter() {
                   <Linkedin className="h-[18px] w-[18px]" aria-hidden="true" />
                 </a>
                 {[
-                  { nom: "Instagram", Icone: Instagram },
-                  { nom: "YouTube", Icone: Youtube },
-                ].map(({ nom, Icone }) => (
-                  <span
+                  { nom: "Instagram", Icone: Instagram, url: "https://www.instagram.com/sitaly.fr/" },
+                  { nom: "YouTube", Icone: Youtube, url: "https://www.youtube.com/@sitaly-fr" },
+                ].map(({ nom, Icone, url }) => (
+                  <a
                     key={nom}
-                    title={`${nom} : bientôt`}
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/[0.04] text-black/30"
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Sitaly sur ${nom}`}
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/[0.04] transition hover:bg-black/[0.08]"
                   >
                     <Icone className="h-[18px] w-[18px]" aria-hidden="true" />
-                    <span className="sr-only">{nom}, bientôt</span>
-                  </span>
+                  </a>
                 ))}
               </div>
             </div>

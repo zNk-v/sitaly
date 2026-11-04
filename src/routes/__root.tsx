@@ -153,7 +153,8 @@ const GRAPHE_ENTITE = {
       sameAs: [
         FICHE_GOOGLE_URL,
         "https://www.linkedin.com/company/sitaly-fr",
-        "https://instagram.com/sitaly.fr",
+        "https://www.instagram.com/sitaly.fr/",
+        "https://www.youtube.com/@sitaly-fr",
         "https://annuaire-entreprises.data.gouv.fr/entreprise/833848831",
       ],
       contactPoint: {
