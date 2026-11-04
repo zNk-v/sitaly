@@ -1,0 +1,1 @@
+import{Yt as e}from"./index-BWZ-co7b.js";var t=e;export{t as component};
