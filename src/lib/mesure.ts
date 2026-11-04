@@ -59,7 +59,9 @@ export function suivreClicsDeContact(): () => void {
  * GA4. Toutes les minutes, tant que l'onglet est visible, un « battement »
  * alimente le direct du tableau de bord. Rien ne part en local.
  */
-const MESURE = "https://zgigeakspxdzgaigypoq.supabase.co/functions/v1/mesure";
+// Depuis le 5 novembre 2026, la balise passe par mesure.sitaly.fr (programme des sites
+// de l'app), qui ajoute le pays et la ville lus par Cloudflare avant la fonction mesure.
+const MESURE = "https://mesure.sitaly.fr/v";
 let premiereVue = true;
 
 function envoyerMesure(corps: Record<string, unknown>): void {
@@ -75,7 +77,7 @@ const mesureActive = () => typeof window !== "undefined" && /(^|\.)sitaly\.fr$/.
 
 export function compterVue(chemin: string): void {
   if (!mesureActive()) return;
-  envoyerMesure({ p: chemin, r: premiereVue ? document.referrer : null });
+  envoyerMesure({ p: chemin, r: premiereVue ? document.referrer : null, q: premiereVue ? window.location.search : undefined });
   premiereVue = false;
 }
 
