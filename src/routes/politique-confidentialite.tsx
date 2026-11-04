@@ -152,6 +152,11 @@ function PolitiqueConfidentialite() {
           <strong>Anthropic (Claude)</strong> — génération de texte par l'assistant IA ;
         </li>
         <li>
+          <strong>Black Forest Labs</strong> — génération des images et des logos des sites, par
+          son serveur européen, ou par son serveur mondial lorsque le serveur européen est
+          indisponible ;
+        </li>
+        <li>
           <strong>Google</strong> — accès à la fiche d'établissement et aux avis, lorsque
           l'utilisateur active la connexion ;
         </li>
@@ -222,7 +227,7 @@ function PolitiqueConfidentialite() {
 
       <h2>10. Transfert de données hors Union européenne</h2>
       <p>
-        Certains sous-traitants (par exemple Anthropic, Google ou Stripe) peuvent traiter des
+        Certains sous-traitants (par exemple Anthropic, Black Forest Labs, Google ou Stripe) peuvent traiter des
         données en dehors de l'Union européenne, notamment aux États-Unis. Dans ce cas, des
         garanties appropriées (clauses contractuelles types de la Commission européenne, ou adhésion
         à un cadre de protection reconnu) encadrent ces transferts pour assurer un niveau de
