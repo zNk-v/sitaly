@@ -578,6 +578,12 @@ const GROUPES_COMPARES: { titre: string; lignes: LigneComparee[] }[] = [
         valeurs: [true, true, true],
       },
       { libelle: "Logo et identité de marque", valeurs: [true, true, true] },
+      {
+        libelle: "Agent IA : réponses aux demandes du site",
+        aide: "1 crédit par réponse rédigée, envoyée après votre accord.",
+        valeurs: [true, true, true],
+      },
+      { libelle: "Agent IA : réponses aux avis Google", valeurs: [false, true, true] },
     ],
   },
   {
@@ -601,6 +607,11 @@ const GROUPES_COMPARES: { titre: string; lignes: LigneComparee[] }[] = [
     titre: "Gérer votre activité",
     lignes: [
       { libelle: "Devis acceptés en ligne", valeurs: [true, true, true] },
+      {
+        libelle: "Devis dicté à la voix",
+        aide: "2 crédits le devis, relu par vous avant l'envoi.",
+        valeurs: [true, true, true],
+      },
       { libelle: "Factures conformes", valeurs: ["3 par mois", "Illimitées", "Illimitées"] },
       {
         libelle: "Paiement des factures par carte",

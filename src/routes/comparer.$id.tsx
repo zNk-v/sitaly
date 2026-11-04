@@ -24,7 +24,7 @@ export const Route = createFileRoute("/comparer/$id")({
     const url = `${BASE_URL}/comparer/${c.id}/`;
     return {
       meta: [
-        { title: `${c.titre} | Sitaly` },
+        { title: c.titre.length > 51 ? c.titre : `${c.titre} | Sitaly` },
         { name: "description", content: c.description },
         { property: "og:title", content: c.titre },
         { property: "og:description", content: c.description },

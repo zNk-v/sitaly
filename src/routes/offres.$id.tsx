@@ -68,7 +68,7 @@ export const Route = createFileRoute("/offres/$id")({
     if (!p) return {};
     const o = offre(p.id);
     const url = `${BASE_URL}/offres/${o.id}/`;
-    const titre = `${o.nom} : ${p.sujet}, ${prixCourt(o)} | Sitaly`;
+    const titre = `${o.nom} : ${p.sujet}, ${prixCourt(o)}`;
     const description = `${o.pour} ${prixCourt(o)} + ${euros(o.depart)} ${o.departLibelle}, sans engagement.`;
     return {
       meta: [

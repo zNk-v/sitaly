@@ -25,7 +25,7 @@ export const Route = createFileRoute("/guides/$id")({
     const url = `${BASE_URL}/guides/${g.id}/`;
     return {
       meta: [
-        { title: `${g.seoTitre} | Sitaly` },
+        { title: g.seoTitre.length > 51 ? g.seoTitre : `${g.seoTitre} | Sitaly` },
         { name: "description", content: g.description },
         { property: "og:title", content: g.seoTitre },
         { property: "og:description", content: g.description },

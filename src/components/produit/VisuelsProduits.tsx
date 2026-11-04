@@ -465,12 +465,85 @@ function Marque() {
   );
 }
 
+const ONGLETS_AGENTS = [
+  {
+    nom: "Demandes",
+    source: "Formulaire de votre site · il y a 4 min",
+    de: "Sophie B.",
+    message: "Bonjour, j'ai une fuite sous l'évier depuis ce matin. Pouvez-vous passer aujourd'hui ?",
+    urgent: true,
+    reponse: "Bonjour Sophie, je peux venir aujourd'hui entre 14 h et 16 h. Coupez l'arrivée d'eau sous l'évier en attendant. Thomas, Durand Plomberie",
+  },
+  {
+    nom: "Avis Google",
+    source: "Avis Google · ★★★★★",
+    de: "Karim B.",
+    message: "Travail propre et soigné, chaudière bien conseillée. Je recommande.",
+    urgent: false,
+    reponse: "Merci Karim pour votre confiance ! Ravi que la nouvelle chaudière vous convienne. À l'an prochain pour l'entretien.",
+  },
+  {
+    nom: "Blog",
+    source: "Article de la semaine · 6 crédits",
+    de: "Idée retenue",
+    message: "Chaudière : les 5 signes qu'il faut l'entretenir avant l'hiver",
+    urgent: false,
+    reponse: "Un bruit de claquement, une flamme jaune, une facture qui grimpe : votre chaudière vous parle. Voici comment la lire avant les premiers froids…",
+  },
+];
+
+function Agents() {
+  const [onglet, setOnglet] = useState(0);
+  const a = ONGLETS_AGENTS[onglet];
+  return (
+    <div className={`${PANNEAU} grid gap-4 md:grid-cols-[1fr_1.2fr] md:items-start`}>
+      <div className="space-y-2">
+        {ONGLETS_AGENTS.map((o, i) => (
+          <button
+            key={o.nom}
+            type="button"
+            onClick={() => setOnglet(i)}
+            aria-pressed={onglet === i}
+            className={`flex min-h-14 w-full items-center gap-3 rounded-2xl px-4 text-left transition ${onglet === i ? "bg-white text-black" : "bg-white/[0.06] text-white hover:bg-white/[0.1]"}`}
+          >
+            <Sparkles className={`h-4 w-4 shrink-0 ${onglet === i ? "text-[#7c3aed]" : "text-[#c4b5fd]"}`} aria-hidden="true" />
+            <span className="font-semibold">{o.nom}</span>
+            <span className={`ml-auto text-xs ${onglet === i ? "text-black/50" : "text-white/50"}`}>Agent actif</span>
+          </button>
+        ))}
+      </div>
+      <div className="rounded-2xl bg-white p-5 sm:p-6">
+        <div className="flex items-center gap-2 text-xs font-medium text-black/50">
+          {a.source}
+          {a.urgent && <span className="rounded-full bg-[#fee2e2] px-2 py-0.5 text-[11px] font-semibold text-[#b91c1c]">Urgent</span>}
+        </div>
+        <div className="mt-2 font-semibold">{a.de}</div>
+        <p className="mt-1 text-sm leading-6 text-black/70">{a.message}</p>
+        <div className="mt-4 rounded-2xl bg-[#f5f3ff] p-4">
+          <div className="flex items-center gap-2 text-xs font-semibold text-[#6d28d9]">
+            <Sparkles className="h-3.5 w-3.5" aria-hidden="true" /> Réponse préparée par l'agent
+          </div>
+          <p className="mt-2 text-sm leading-6 text-black/80">{a.reponse}</p>
+        </div>
+        <div className="mt-4 flex gap-2">
+          <span className="inline-flex min-h-11 flex-1 items-center justify-center rounded-xl bg-black/85 text-sm font-semibold text-white">
+            {onglet === 2 ? "Publier l'article" : "Envoyer"}
+          </span>
+          <span className="inline-flex min-h-11 items-center justify-center rounded-xl bg-black/[0.05] px-4 text-sm font-medium">Corriger</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function VisuelProduit({ id }: { id: ProduitId }) {
   switch (id) {
     case "devis-et-factures":
       return <Factures />;
     case "prise-de-rendez-vous":
       return <Reservation />;
+    case "agents-ia":
+      return <Agents />;
     case "blog-ia":
       return <Blog />;
     case "referencement-seo-geo":

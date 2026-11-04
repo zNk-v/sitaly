@@ -8,7 +8,7 @@ import { BASE_URL } from "@/lib/sitemap";
 /** La liste des comparatifs (30 octobre 2026) : Sitaly face à Wix, WordPress, Squarespace et une agence. */
 
 const URL = `${BASE_URL}/comparer/`;
-const TITRE = "Comparer Sitaly à Wix, WordPress, Squarespace ou une agence | Sitaly";
+const TITRE = "Sitaly face à Wix, WordPress, Squarespace ou une agence";
 const DESCRIPTION =
   "Sitaly face aux autres façons de créer un site : Wix, WordPress, Squarespace, une agence web. Création, prix, nom de domaine, modifications.";
 

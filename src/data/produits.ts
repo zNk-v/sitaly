@@ -17,9 +17,14 @@ import { CREATEUR_IA as IA } from "@/data/offres";
  * - factures (1er novembre 2026) : rubrique Devis et factures, page client
  *   /d/<jeton>, paiement Stripe Connect sans commission, relances en
  *   Essentiel et Pro, 3 factures par mois en Découverte.
+ * - agents-ia (4 novembre 2026) : rubriques Réponse aux demandes (fonction
+ *   agent-demandes, 1 crédit par réponse), Avis Google (agent-avis, avis
+ *   collés à la main en attendant la connexion à la fiche), Blog et
+ *   Assistant IA (bilan de la semaine chaque lundi par e-mail). Rien ne
+ *   part sans l'accord de l'entrepreneur.
  */
 
-export type ProduitId = "devis-et-factures" | "prise-de-rendez-vous" | "blog-ia" | "referencement-seo-geo" | "identite-de-marque";
+export type ProduitId = "devis-et-factures" | "prise-de-rendez-vous" | "agents-ia" | "blog-ia" | "referencement-seo-geo" | "identite-de-marque";
 
 export interface Produit {
   id: ProduitId;
@@ -48,9 +53,9 @@ export const PRODUITS: Produit[] = [
     titre: "Facturez, soyez payé",
     intro:
       "Un devis que votre client accepte en ligne, une facture conforme qu'il règle par carte ou par virement, des relances qui partent seules. Depuis la fiche de votre client, en deux minutes.",
-    seoTitre: "Logiciel de devis et factures pour artisans et indépendants",
+    seoTitre: "Devis et factures pour artisans et indépendants",
     description:
-      "Créez vos devis et factures conformes, faites accepter vos devis en ligne, encaissez par carte sans commission ou par virement, et relancez les impayés automatiquement. Inclus dans Sitaly.",
+      "Devis et factures conformes, acceptés en ligne et payés par carte sans commission. Les impayés sont relancés pour vous. Inclus dans Sitaly.",
     etapes: [
       {
         titre: "Préparez le devis",
@@ -114,7 +119,7 @@ export const PRODUITS: Produit[] = [
       "Une page de réservation sur votre site : vos prestations, vos horaires, les créneaux libres. Le client choisit, vous recevez le rendez-vous par e-mail et dans votre liste de clients.",
     seoTitre: "Prise de rendez-vous en ligne pour votre site",
     description:
-      "Ajoutez la prise de rendez-vous en ligne à votre site : prestations, horaires, créneaux libres, e-mails de confirmation et lien d'annulation. Inclus dans les formules Essentiel et Pro.",
+      "Vos clients réservent en ligne depuis votre site : prestations, horaires, confirmation par e-mail, annulation en un clic. Formules Essentiel et Pro.",
     etapes: [
       {
         titre: "Décrivez vos prestations",
@@ -169,6 +174,69 @@ export const PRODUITS: Produit[] = [
     ],
   },
   {
+    id: "agents-ia",
+    nom: "Agents IA",
+    menuDesc: "Ils répondent à vos clients pendant que vous travaillez.",
+    titre: "Vos agents répondent pour vous",
+    intro:
+      "Une demande arrive sur votre site, un avis tombe sur Google, le blog attend son article : vos agents IA préparent la réponse dans votre ton. Vous relisez, vous envoyez. Rien ne part sans vous.",
+    seoTitre: "Agents IA pour répondre à vos clients et à vos avis",
+    description:
+      "Les agents IA de Sitaly répondent aux demandes de votre site, préparent vos réponses aux avis Google et écrivent votre blog. Vous validez avant l'envoi.",
+    etapes: [
+      {
+        titre: "Activez un agent",
+        texte: "Réponse aux demandes, Avis Google, Blog : chaque agent s'allume d'un clic dans la rubrique Agents de l'app.",
+      },
+      {
+        titre: "Réglez son ton",
+        texte: "Tutoiement ou vouvoiement, signature, informations à rappeler : l'agent écrit comme vous, avec ce que dit votre site.",
+      },
+      {
+        titre: "Relisez et envoyez",
+        texte: "La réponse vous attend, prête. Vous la corrigez si besoin et vous l'envoyez en un clic, depuis votre téléphone.",
+      },
+    ],
+    points: [
+      {
+        titre: "Les urgences d'abord",
+        texte: "L'agent repère une fuite, une panne ou un rendez-vous du jour et vous prévient aussitôt par e-mail, même sur un chantier.",
+      },
+      {
+        titre: "Une réponse à chaque avis Google",
+        texte: "Remerciements pour les bons avis, réponse posée pour les plus durs. Les avis délicats passent en premier.",
+      },
+      {
+        titre: "Votre blog, sans y passer vos soirées",
+        texte: "Six idées d'articles pour votre métier et votre ville, puis l'article complet, publié sur votre site.",
+      },
+      {
+        titre: "Votre bilan du lundi",
+        texte: "L'Assistant IA vous envoie chaque lundi les chiffres de la semaine : demandes, devis, factures, visites de votre site.",
+      },
+    ],
+    inclus: ["Avec vos 50 crédits offerts", "500 crédits par mois", "2 500 crédits par mois"],
+    noteInclus: "Une réponse rédigée coûte 1 crédit, un article de blog 6. Les réponses aux avis Google sont comprises dans Essentiel et Pro.",
+    faq: [
+      {
+        q: "L'agent envoie-t-il des messages sans moi ?",
+        a: "Non. Chaque réponse attend votre accord : vous la lisez, vous la corrigez si besoin, puis vous l'envoyez.",
+      },
+      {
+        q: "Comment l'agent connaît-il mon entreprise ?",
+        a: "Il lit votre site Sitaly : vos prestations, vos horaires, votre secteur et vos tarifs. Vous pouvez lui ajouter des consignes.",
+      },
+      {
+        q: "Les réponses aux avis sont-elles publiées sur Google ?",
+        a: "Pour l'instant, vous collez l'avis dans Sitaly et vous publiez la réponse préparée sur Google en deux clics. La connexion directe à votre fiche arrive.",
+      },
+      {
+        q: "Est-ce la même chose que les agents IA sur mesure ?",
+        a: "Non. Les agents de l'app sont prêts à l'emploi et compris dans votre abonnement. Pour un agent conçu pour votre entreprise, voyez l'offre Agents IA sur mesure.",
+      },
+    ],
+  },
+  {
     id: "blog-ia",
     nom: "Blog écrit par l'IA",
     menuDesc: "Des articles qui vous amènent des visites.",
@@ -177,7 +245,7 @@ export const PRODUITS: Produit[] = [
       "L'IA lit votre site, propose des sujets que vos clients cherchent sur Google, puis écrit l'article. Vous relisez, vous corrigez, vous publiez sur votre site.",
     seoTitre: "Générateur d'articles de blog par l'IA",
     description:
-      "Le blog de votre site écrit par l'IA : des idées d'articles tirées de votre activité, un article complet en vingt secondes, relu et publié par vous. Pour être trouvé sur Google.",
+      "Le blog de votre site écrit par l'IA : des idées tirées de votre activité, un article complet en vingt secondes, relu et publié par vous.",
     etapes: [
       {
         titre: "Trouvez un sujet",
@@ -238,9 +306,9 @@ export const PRODUITS: Produit[] = [
     titre: "Trouvé sur Google et par les IA",
     intro:
       "Votre site sort prêt pour Google et pour ChatGPT, Gemini ou Perplexity. Un score sur 100 vous dit ce qui manque, et comment l'ajouter.",
-    seoTitre: "Référencement SEO et GEO automatique pour votre site",
+    seoTitre: "SEO et GEO automatiques pour votre site",
     description:
-      "SEO et GEO compris dans votre site : titres, descriptions, plan du site, données structurées, fichier llms.txt pour les IA et un score de visibilité sur 100 avec la liste de ce qui manque.",
+      "Titres, descriptions, plan du site, données structurées, fichier llms.txt et score de visibilité sur 100 : le SEO et le GEO compris dans votre site.",
     etapes: [
       {
         titre: "Votre site sort prêt",

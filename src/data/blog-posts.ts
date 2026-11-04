@@ -80,7 +80,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     title: "Créer un site internet sans savoir coder : la méthode en 5 étapes",
     metaTitle: "Créer un site internet sans coder : la méthode en 5 étapes",
     metaDescription:
-      "Pas besoin de savoir coder pour avoir un site professionnel. La méthode en cinq étapes, le bon type d'outil pour vous, et les pièges qui font perdre des semaines.",
+      "Pas besoin de savoir coder pour avoir un site professionnel : la méthode en cinq étapes, le bon outil pour vous et les pièges qui font perdre des semaines.",
     excerpt:
       "Vous n'avez pas besoin de savoir coder. Vous avez besoin de savoir ce que vous vendez, à qui et où : le reste, un outil s'en charge.",
     category: "Créer son site",
@@ -93,7 +93,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
   {
     slug: "prix-site-internet",
     title: "Combien coûte un site internet en 2026 ? Les vrais prix, poste par poste",
-    metaTitle: "Prix d'un site internet en 2026 : les vrais coûts poste par poste",
+    metaTitle: "Prix d'un site internet en 2026 : les vrais coûts",
     metaDescription:
       "Créateur par IA, Wix, WordPress ou agence : ce que coûte vraiment un site internet, les frais qu'on oublie, et le calcul sur trois ans pour comparer.",
     excerpt:
@@ -108,7 +108,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
   {
     slug: "trouver-nom-entreprise",
     title: "Trouver un nom d'entreprise : 7 méthodes et les vérifications à faire",
-    metaTitle: "Trouver un nom d'entreprise : 7 méthodes et les vérifications",
+    metaTitle: "Trouver un nom d'entreprise : 7 méthodes",
     metaDescription:
       "Sept méthodes pour trouver le nom de votre entreprise, puis les vérifications indispensables : marques INPI, entreprises existantes, nom de domaine.",
     excerpt:
@@ -140,7 +140,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     title: "Mentions légales d'un site professionnel : ce qui est obligatoire",
     metaTitle: "Mentions légales d'un site internet professionnel : la liste",
     metaDescription:
-      "Ce que doit contenir la page de mentions légales d'un site professionnel selon votre statut, les sanctions prévues, et les textes qui l'accompagnent (RGPD, cookies).",
+      "Ce que doit contenir la page de mentions légales d'un site professionnel selon votre statut, les sanctions prévues et les textes voisins (RGPD, cookies).",
     excerpt:
       "Tout site professionnel doit dire qui l'édite et qui l'héberge. Voici ce que la page doit contenir selon votre statut.",
     category: "Créer son site",
@@ -153,7 +153,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
   {
     slug: "pages-indispensables-site-vitrine",
     title: "Les pages indispensables d'un site vitrine, et ce qu'on met dans chacune",
-    metaTitle: "Les pages indispensables d'un site vitrine (et quoi y mettre)",
+    metaTitle: "Les pages indispensables d'un site vitrine",
     metaDescription:
       "Accueil, prestations, tarifs, avis, à propos, FAQ, contact, mentions légales : les pages d'un site vitrine efficace et ce que chacune doit contenir.",
     excerpt:

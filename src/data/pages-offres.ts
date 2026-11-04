@@ -53,7 +53,7 @@ const ETAPES_SITE: Etape[] = [
 export const PAGES_OFFRES: PageOffre[] = [
   {
     id: "presence",
-    sujet: "site vitrine et fiche Google gérée",
+    sujet: "site et fiche Google gérée",
     h1: "Présence : le site vitrine pour être trouvé dans votre commune",
     intro:
       "Vous recevez cinq pages rédigées pour vous, hébergées et tenues à jour. Nous gérons votre fiche Google et répondons à vos avis. Quand un client cherche votre métier dans votre commune, il tombe sur vous.",
@@ -83,7 +83,7 @@ export const PAGES_OFFRES: PageOffre[] = [
   },
   {
     id: "presence-pro",
-    sujet: "site vitrine, pages locales et avis Google",
+    sujet: "pages locales et avis Google",
     h1: "Présence Pro : être trouvé aussi dans les communes voisines",
     intro:
       "Dix pages, dont cinq écrites pour les communes où vous vous déplacez. Chaque mois, nous publions des posts et des photos sur votre fiche Google, et vos clients reçoivent une demande d'avis après votre passage. C'est l'offre que nous conseillons à la plupart de nos clients.",
@@ -113,7 +113,7 @@ export const PAGES_OFFRES: PageOffre[] = [
   },
   {
     id: "presence-expert",
-    sujet: "site vitrine, articles et visibilité dans les IA",
+    sujet: "articles et visibilité IA",
     h1: "Présence Expert : quand vos concurrents sont déjà en tête",
     intro:
       "Quinze pages, dont dix locales, deux articles par mois et des textes écrits pour que ChatGPT et Gemini vous comprennent. Nous suivons dix mots-clés sur Google et vingt questions posées aux IA, et nous faisons le point avec vous chaque trimestre en visio.",
@@ -143,7 +143,7 @@ export const PAGES_OFFRES: PageOffre[] = [
   },
   {
     id: "maintenance",
-    sujet: "maintenance de site WordPress ou autre",
+    sujet: "WordPress ou autre",
     h1: "La maintenance d'un site que vous avez déjà",
     intro:
       "Votre site a été fait ailleurs, sous WordPress ou avec un autre outil, et personne ne s'en occupe plus. Nous l'auditons au départ, puis chaque mois nous le sauvegardons, le mettons à jour et corrigeons les petits problèmes.",

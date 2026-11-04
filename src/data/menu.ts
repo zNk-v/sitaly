@@ -1,4 +1,5 @@
 import {
+  Bot,
   CalendarCheck,
   Globe,
   ImagePlus,
@@ -130,6 +131,12 @@ const PRODUITS: MenuDeroulant = {
           desc: "Vos clients réservent depuis votre site.",
           to: "/produits/prise-de-rendez-vous/",
           icone: CalendarCheck,
+        },
+        {
+          label: "Agents IA",
+          desc: "Ils répondent à vos clients pendant que vous travaillez.",
+          to: "/produits/agents-ia/",
+          icone: Bot,
         },
       ],
     },

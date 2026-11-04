@@ -31,7 +31,7 @@ export const Route = createFileRoute("/modeles/$id")({
     const { modele, metier } = loaderData;
     const url = `${BASE_URL}/modeles/${modele.id}/`;
     const titre = `Modèle de site internet pour ${modele.nom} | Sitaly`;
-    const description = `${modele.intro} Créez votre site de ${modele.nom} avec l'IA, gratuitement.`;
+    const description = `${modele.intro} Gratuit, créé par l'IA.`;
     return {
       meta: [
         { title: titre },

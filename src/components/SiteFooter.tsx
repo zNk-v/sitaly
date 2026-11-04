@@ -36,6 +36,7 @@ const COLONNES: { titre: string; entrees: Entree[] }[] = [
       { label: "Fonctionnalités", to: "/", hash: "fonctionnalites" },
       { label: "Devis et factures", to: "/produits/devis-et-factures/" },
       { label: "Prise de rendez-vous", to: "/produits/prise-de-rendez-vous/" },
+      { label: "Agents IA", to: "/produits/agents-ia/" },
       { label: "Blog écrit par l'IA", to: "/produits/blog-ia/" },
       { label: "SEO et GEO", to: "/produits/referencement-seo-geo/" },
       { label: "Identité de marque", to: "/produits/identite-de-marque/" },
@@ -84,7 +85,7 @@ const AUSSI: { label: string; to: string }[] = [
   { label: "Campagnes Google Ads", to: "/acquisition/" },
   { label: "Référencement local", to: "/referencement-local/" },
   { label: "Site sur mesure", to: "/mon-projet/" },
-  { label: "Agents IA", to: "/agents-ia/" },
+  { label: "Agents IA sur mesure", to: "/agents-ia/" },
 ];
 
 const LIEN = "block py-1 text-black/60 transition hover:text-black";

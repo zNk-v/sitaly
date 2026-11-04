@@ -22,7 +22,7 @@ import { SITALY_DEPARTEMENT, SITALY_VILLE } from "@/lib/config";
  */
 const TITRE = "Teddy Vidal, fondateur de Sitaly | À propos";
 const DESCRIPTION =
-  "Sitaly, micro-agence de Teddy Vidal à Brétigny-sur-Orge (Essonne) : sites internet et fiche Google pour artisans, indépendants et petits commerces. Un seul interlocuteur.";
+  "Teddy Vidal a fondé Sitaly à Brétigny-sur-Orge (Essonne) : sites internet et fiche Google pour artisans, indépendants et petits commerces.";
 const URL = `${BASE_URL}/a-propos/`;
 
 export const Route = createFileRoute("/a-propos")({

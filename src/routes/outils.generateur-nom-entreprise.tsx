@@ -25,7 +25,7 @@ import { BASE_URL } from "@/lib/sitemap";
  */
 
 const URL = `${BASE_URL}/outils/generateur-nom-entreprise/`;
-const TITRE = "Générateur de nom d'entreprise gratuit, avec l'IA | Sitaly";
+const TITRE = "Générateur de nom d'entreprise gratuit par l'IA | Sitaly";
 const DESCRIPTION =
   "Décrivez votre activité : l'IA propose 12 noms d'entreprise, et vérifie si le nom de domaine en .fr est libre. Gratuit, sans inscription.";
 

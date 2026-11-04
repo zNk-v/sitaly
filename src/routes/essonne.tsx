@@ -22,7 +22,7 @@ import { SITALY_DEPARTEMENT, SITALY_PHONE, SITALY_PHONE_DISPLAY, SITALY_VILLE } 
  * Tout commence par un appel de 30 minutes.
  */
 const TITRE = "Création de site internet en Essonne (91) | Sitaly";
-const DESCRIPTION = `Agence web basée à Brétigny-sur-Orge : sites internet, fiche Google et référencement local pour artisans et commerces de l'Essonne. Dès ${euros(PRIX_SITE_MIN)} par mois, sans engagement.`;
+const DESCRIPTION = `Agence web à Brétigny-sur-Orge : site internet, fiche Google et référencement local pour les artisans et commerces de l'Essonne. Dès ${euros(PRIX_SITE_MIN)} par mois.`;
 const URL = `${BASE_URL}/essonne/`;
 
 const SERVICES = [

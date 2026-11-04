@@ -118,7 +118,7 @@ const RUBRIQUES: { key: string; id: string; label: string; desc: string }[] = [
 
 const TITRE = "Blog Sitaly : créer son site et lancer son activité";
 const DESCRIPTION =
-  "Guides pour les indépendants et les petites entreprises : créer son site, choisir un nom et un domaine, être trouvé sur Google, trouver des clients. Sans jargon.";
+  "Guides pour indépendants et petites entreprises : créer son site, choisir un nom et un domaine, être trouvé sur Google, trouver des clients. Sans jargon.";
 
 export const Route = createFileRoute("/blog/")({
   head: () => ({

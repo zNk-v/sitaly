@@ -31,6 +31,8 @@ export default defineConfig({
       { path: "/carte" },
       // Sitaly Premium : relue à son adresse avant d'entrer dans le menu.
       { path: "/site-premium" },
+      // L'offre maintenance n'est liée d'aucune page mais figure au plan du site.
+      { path: "/offres/maintenance" },
       {
         path: "/404",
         prerender: { outputPath: "/404", autoSubfolderIndex: false, crawlLinks: false },

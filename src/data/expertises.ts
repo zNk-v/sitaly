@@ -286,7 +286,7 @@ const SITE: Expertise[] = [
     menuDesc: "Une boutique Shopify à votre nom, paiement et livraison compris.",
     titre: "Création de boutique en ligne Shopify clé en main | Sitaly",
     description:
-      "Création de boutique en ligne sur Shopify : thème, produits, paiement, livraison et pages légales configurés. La boutique est à votre nom, Sitaly la suit chaque mois.",
+      "Boutique en ligne sur Shopify : thème, produits, paiement, livraison et pages légales configurés. La boutique est à votre nom, Sitaly la suit chaque mois.",
     eyebrow: "Site internet",
     h1: "Site e-commerce : vendre en ligne sans y passer vos soirées",
     intro:

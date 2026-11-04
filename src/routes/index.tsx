@@ -18,6 +18,7 @@ import {
   GrilleFonctions,
   OutilsRemplaces,
 } from "@/components/produit/Vitrine";
+import { FilmLancement, GrilleActivite } from "@/components/produit/Activite";
 import { CREATEUR_IA as IA } from "@/data/offres";
 
 /**
@@ -139,6 +140,19 @@ function Accueil() {
           <Carrousel />
         </div>
 
+        <section id="film" className="scroll-mt-28 px-4 pt-20 sm:px-6 sm:pt-28">
+          <div className="mx-auto max-w-6xl">
+            <TitreSection
+              surtitre="En vidéo"
+              titre="Voyez Sitaly travailler"
+              sousTitre="Une phrase, un site en ligne, puis les devis, les rendez-vous et les réponses aux clients."
+            />
+            <div className="mt-12">
+              <FilmLancement />
+            </div>
+          </div>
+        </section>
+
         <section className="px-4 py-20 sm:px-6 sm:py-28">
           <div className="mx-auto max-w-6xl">
             <TitreSection
@@ -186,12 +200,25 @@ function Accueil() {
           </div>
         </section>
 
+        <section id="activite" className="scroll-mt-28 px-4 py-20 sm:px-6 sm:py-28">
+          <div className="mx-auto max-w-6xl">
+            <TitreSection
+              surtitre="Gérer votre activité"
+              titre="Votre site, et tout le reste"
+              sousTitre="Devis, rendez-vous, réponses aux clients : ce qui vous prenait vos soirées tient dans la même app."
+            />
+            <div className="mt-14">
+              <GrilleActivite />
+            </div>
+          </div>
+        </section>
+
         <section className="px-4 py-20 sm:px-6 sm:py-28">
           <div className="mx-auto max-w-5xl">
             <TitreSection
               surtitre="Un seul abonnement"
               titre="Moins d'outils à assembler"
-              sousTitre="Créateur de site, hébergement, rédaction, photos, référencement, formulaire : tout est déjà dans Sitaly."
+              sousTitre="Créateur de site, hébergement, rédaction, photos, référencement, devis et factures, agenda : tout est déjà dans Sitaly."
             />
             <OutilsRemplaces />
             <div className="mx-auto mt-2 grid max-w-xl grid-cols-2 gap-4 text-center">
