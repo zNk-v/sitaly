@@ -1,0 +1,1 @@
+import{Zt as e}from"./index-DS30-K_0.js";var t=e;export{t as component};
