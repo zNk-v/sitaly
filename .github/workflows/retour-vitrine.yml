@@ -1,0 +1,61 @@
+# Remettre une ancienne version de sitaly.fr (5 novembre 2026).
+# Lancé depuis l'onglet « Historique » du centre de pilotage (fonction
+# vitrine-historique). Ajoute sur main un commit qui reprend les fichiers du site
+# tels qu'ils étaient dans la version choisie : rien n'est effacé de l'historique,
+# et la version d'avant reste disponible pour revenir en avant.
+# Ne bougent jamais : CNAME, la landing pub/, les vidéos medias/ (planifiées dans
+# Metricool), les workflows .github/ et les anciens fichiers assets/ encore en
+# cache chez les visiteurs (mêmes règles que deploy.sh et publier-vitrine.yml).
+name: Revenir à une version de sitaly.fr
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Commit de main à remettre en ligne"
+        required: true
+      libelle:
+        description: "Date de la version, pour le message"
+        required: false
+        default: ""
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: publier-vitrine
+  cancel-in-progress: false
+jobs:
+  retour:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Remettre les fichiers de la version choisie
+        env:
+          VERSION: ${{ inputs.version }}
+          LIBELLE: ${{ inputs.libelle }}
+        run: |
+          set -euo pipefail
+          echo "$VERSION" | grep -Eq '^[0-9a-f]{7,40}$' || { echo "Version invalide."; exit 1; }
+          git cat-file -e "$VERSION^{commit}"
+          git merge-base --is-ancestor "$VERSION" HEAD || { echo "Cette version n'est pas dans l'historique de main."; exit 1; }
+          GARDER=(':(exclude)CNAME' ':(exclude).nojekyll' ':(exclude)pub' ':(exclude)medias' ':(exclude).github' ':(exclude)assets')
+          # Les pages ajoutées après la version choisie disparaissent du site.
+          comm -23 <(git ls-files -- . "${GARDER[@]}" | sort) <(git ls-tree -r --name-only "$VERSION" | sort) > en-trop.txt
+          if [ -s en-trop.txt ]; then xargs -d '\n' git rm -q -- < en-trop.txt; fi
+          rm en-trop.txt
+          # Les autres reprennent leur contenu d'alors ; assets/ ne fait que s'enrichir.
+          git checkout "$VERSION" -- . "${GARDER[@]}"
+          git checkout "$VERSION" -- assets 2>/dev/null || true
+          git config user.name "Sitaly (publication)"
+          git config user.email "contact@sitaly.fr"
+          git add -A
+          if git diff --cached --quiet; then echo "Le site est déjà dans cette version."; exit 0; fi
+          git commit -q -m "Retour à la version du ${LIBELLE:-$VERSION} (${VERSION:0:8})"
+          git push -q
+      - name: Lancer GitHub Pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "GitHub Pages se lancera de lui-même."
