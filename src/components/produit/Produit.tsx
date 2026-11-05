@@ -385,9 +385,8 @@ const FORMULES: Formule[] = [
       },
       { titre: "Assistance par e-mail", texte: "Une vraie personne vous répond, en français." },
       {
-        titre: "Votre nom de domaine",
-        texte: `Connectez le vôtre, ou recevez-en un à votre nom (valeur jusqu'à ${euros(IA.essentiel.creditDomaine)} par an).`,
-        bientot: true,
+        titre: "Votre nom de domaine, offert",
+        texte: "Un .fr ou un .com enregistré à votre nom, branché sur votre site et renouvelé tant que votre abonnement court.",
       },
       {
         titre: "Prise de rendez-vous en ligne",
@@ -605,7 +604,7 @@ const GROUPES_COMPARES: { titre: string; lignes: LigneComparee[] }[] = [
       {
         libelle: "Votre nom de domaine, offert",
         aide: "Enregistré à votre nom, renouvelé tant que l'abonnement court.",
-        valeurs: [false, { bientot: "Bientôt" }, { bientot: "Bientôt" }],
+        valeurs: [false, true, true],
       },
       { libelle: "Score de visibilité SEO et GEO, fichier llms.txt", valeurs: [true, true, true] },
       { libelle: "Site en deux langues", valeurs: [false, false, { bientot: "Bientôt" }] },
@@ -822,7 +821,7 @@ export const FAQ_PRODUIT = [
   },
   {
     q: "Quelle sera l'adresse de mon site ?",
-    a: "Votre site est publié sur votre-nom.sitaly.fr. Le branchement de votre propre nom de domaine arrive bientôt avec Essentiel et Pro.",
+    a: "Votre site est publié sur votre-nom.sitaly.fr. Avec Essentiel et Pro, Sitaly vous offre un nom en .fr ou en .com, enregistré à votre nom et branché sur votre site en quelques heures.",
   },
   {
     q: "Mon site sera-t-il trouvé sur Google ?",

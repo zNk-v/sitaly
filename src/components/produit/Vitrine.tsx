@@ -732,7 +732,7 @@ export function GrilleFonctions() {
       <Bloc
         className="lg:col-span-3"
         titre="En ligne en un clic"
-        texte="Votre site est publié sur votre-nom.sitaly.fr. Bientôt, votre propre nom de domaine."
+        texte="Votre site est publié sur votre-nom.sitaly.fr. Avec Essentiel et Pro, votre propre nom de domaine est offert."
       >
         <div className="max-w-md">
           <VisuelAdresse />
