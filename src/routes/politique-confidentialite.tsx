@@ -110,7 +110,9 @@ function PolitiqueConfidentialite() {
       <p>
         <strong>Connexion à Google (fonctionnalité optionnelle) :</strong> si l'utilisateur relie sa
         fiche d'établissement Google, Sitaly accède, sur son instruction et via l'API officielle de
-        Google, à ses avis Google afin de les afficher et d'y répondre depuis l'application.
+        Google, à ses avis Google afin de les afficher, de lui proposer une réponse et de publier
+        la réponse qu'il valide. Aucune réponse n'est publiée sans son action. S'il le choisit, sa
+        note et une sélection de ses avis apparaissent aussi sur son propre site Sitaly.
       </p>
 
       <h2>4. Finalités du traitement</h2>
@@ -179,9 +181,15 @@ function PolitiqueConfidentialite() {
         </a>
         , y compris ses exigences d'<strong>utilisation limitée</strong> (Limited Use). Les données
         de la fiche Google et les avis auxquels l'application accède sont utilisés uniquement pour
-        fournir les fonctionnalités visibles par l'utilisateur (afficher ses avis et l'aider à y
-        répondre). Ces données ne sont ni vendues, ni utilisées à des fins publicitaires, ni
-        exploitées pour entraîner des modèles d'intelligence artificielle.
+        fournir les fonctionnalités visibles par l'utilisateur : afficher ses avis, lui proposer une
+        réponse, publier la réponse qu'il valide et, s'il le demande, afficher ses avis sur son
+        site. Pour proposer une réponse, le texte de l'avis est transmis à notre prestataire
+        d'intelligence artificielle (Anthropic), qui n'a pas le droit de s'en servir pour entraîner
+        ses modèles. Ces données ne sont ni vendues, ni utilisées à des fins publicitaires, ni
+        exploitées pour entraîner des modèles d'intelligence artificielle. Les avis gardés dans
+        Sitaly sont relus chez Google au moins une fois par semaine ; un avis que Google ne rend
+        plus est effacé sous 30 jours. Quand l'utilisateur déconnecte sa fiche, l'accès est révoqué
+        et les avis venus de Google sont effacés de Sitaly et de son site.
       </p>
 
       <h2>8. Durée de conservation</h2>
