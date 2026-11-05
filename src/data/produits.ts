@@ -18,8 +18,10 @@ import { CREATEUR_IA as IA } from "@/data/offres";
  *   /d/<jeton>, paiement Stripe Connect sans commission, relances en
  *   Essentiel et Pro, 3 factures par mois en Découverte.
  * - agents-ia (4 novembre 2026) : rubriques Réponse aux demandes (fonction
- *   agent-demandes, 1 crédit par réponse), Avis Google (agent-avis, avis
- *   collés à la main en attendant la connexion à la fiche), Blog et
+ *   agent-demandes, 1 crédit par réponse), Avis Google (agent-avis et
+ *   google-fiche : fiche connectée depuis le 5 novembre, avis relevés chaque
+ *   matin, réponse publiée sur Google après le clic de l'artisan, demandes
+ *   d'avis par e-mail, QR code ou envoi automatique, avis sur le site), Blog et
  *   Assistant IA (bilan de la semaine chaque lundi par e-mail). Rien ne
  *   part sans l'accord de l'entrepreneur.
  */
@@ -179,10 +181,10 @@ export const PRODUITS: Produit[] = [
     menuDesc: "Ils répondent à vos clients pendant que vous travaillez.",
     titre: "Vos agents répondent pour vous",
     intro:
-      "Une demande arrive sur votre site, un avis tombe sur Google, le blog attend son article : vos agents IA préparent la réponse dans votre ton. Vous relisez, vous envoyez. Rien ne part sans vous.",
+      "Une demande arrive sur votre site, un avis tombe sur votre fiche Google, le blog attend son article : vos agents IA préparent la réponse dans votre ton. Vous relisez, vous envoyez. Rien ne part sans vous.",
     seoTitre: "Agents IA pour répondre à vos clients et à vos avis",
     description:
-      "Les agents IA de Sitaly répondent aux demandes de votre site, préparent vos réponses aux avis Google et écrivent votre blog. Vous validez avant l'envoi.",
+      "Les agents IA de Sitaly répondent aux demandes de votre site, relèvent vos avis Google et publient la réponse que vous validez, demandent des avis à vos clients et écrivent votre blog.",
     etapes: [
       {
         titre: "Activez un agent",
@@ -203,8 +205,16 @@ export const PRODUITS: Produit[] = [
         texte: "L'agent repère une fuite, une panne ou un rendez-vous du jour et vous prévient aussitôt par e-mail, même sur un chantier.",
       },
       {
-        titre: "Une réponse à chaque avis Google",
-        texte: "Remerciements pour les bons avis, réponse posée pour les plus durs. Les avis délicats passent en premier.",
+        titre: "Vos avis Google, réglés d'un clic",
+        texte: "Connectez votre fiche : chaque nouvel avis arrive le matin avec sa réponse prête, et vous la publiez sous l'avis d'un clic. Les avis délicats passent en premier.",
+      },
+      {
+        titre: "Plus d'avis, sans relancer",
+        texte: "Le lendemain d'une facture payée ou d'un rendez-vous, votre client reçoit la demande d'avis à votre nom. Un QR code à imprimer complète, pour le comptoir ou la camionnette.",
+      },
+      {
+        titre: "Vos avis sur votre site",
+        texte: "Votre note et vos meilleurs avis récents s'affichent sur votre site, à jour chaque matin, sans rien recopier.",
       },
       {
         titre: "Votre blog, sans y passer vos soirées",
@@ -228,7 +238,15 @@ export const PRODUITS: Produit[] = [
       },
       {
         q: "Les réponses aux avis sont-elles publiées sur Google ?",
-        a: "Pour l'instant, vous collez l'avis dans Sitaly et vous publiez la réponse préparée sur Google en deux clics. La connexion directe à votre fiche arrive.",
+        a: "Oui, si vous connectez votre fiche Google : vos avis arrivent chaque matin dans Sitaly, et la réponse que vous validez part sous l'avis d'un clic. Sans fiche connectée, vous collez l'avis et vous publiez la réponse vous-même.",
+      },
+      {
+        q: "Comment obtenir plus d'avis ?",
+        a: "Sitaly récupère le lien « Laisser un avis » de votre fiche. Vous l'envoyez par e-mail, SMS ou WhatsApp, vous imprimez l'affichette avec son QR code, ou vous laissez Sitaly l'envoyer le lendemain de chaque facture payée et de chaque rendez-vous. Un client ne reçoit jamais plus d'une demande tous les six mois.",
+      },
+      {
+        q: "Mes avis peuvent-ils apparaître sur mon site ?",
+        a: "Oui. Une case suffit : votre note et vos meilleurs avis récents s'affichent sur votre site Sitaly et se mettent à jour chaque matin.",
       },
       {
         q: "Est-ce la même chose que les agents IA sur mesure ?",

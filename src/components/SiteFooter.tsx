@@ -18,8 +18,8 @@ import {
  * réseaux.
  *
  * Les entrées sans page portent « Bientôt » et ne sont pas des liens : le
- * guide, les tutoriels, le générateur de logo et le programme d'affiliation
- * arrivent ensuite. Les pages de l'agence restent en ligne hors
+ * guide, les tutoriels et le générateur de logo arrivent ensuite. Le
+ * parrainage a sa page depuis le 5 novembre 2026. Les pages de l'agence restent en ligne hors
  * menu ; la ligne « Aussi chez Sitaly » garde un lien vers les principales.
  */
 
@@ -76,7 +76,7 @@ const COLONNES: { titre: string; entrees: Entree[] }[] = [
       { label: "À propos", to: "/a-propos/" },
       { label: "Réalisations", to: "/realisations/" },
       { label: "Nous contacter", to: "/mon-projet/" },
-      { label: "Programme d'affiliation", bientot: true },
+      { label: "Parrainage", to: "/parrainage/" },
     ],
   },
 ];

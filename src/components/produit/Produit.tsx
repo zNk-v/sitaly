@@ -393,6 +393,10 @@ const FORMULES: Formule[] = [
         titre: "Prise de rendez-vous en ligne",
         texte: "Vos clients réservent un créneau depuis votre site.",
       },
+      {
+        titre: "Vos avis Google",
+        texte: "Chaque nouvel avis arrive avec sa réponse prête, publiée d'un clic. Vos clients reçoivent la demande d'avis.",
+      },
     ],
   },
   {
@@ -583,7 +587,11 @@ const GROUPES_COMPARES: { titre: string; lignes: LigneComparee[] }[] = [
         aide: "1 crédit par réponse rédigée, envoyée après votre accord.",
         valeurs: [true, true, true],
       },
-      { libelle: "Agent IA : réponses aux avis Google", valeurs: [false, true, true] },
+      {
+        libelle: "Agent IA : avis Google",
+        aide: "Fiche connectée : avis relevés chaque matin, réponse prête, publiée sur Google après votre clic. 1 crédit par réponse.",
+        valeurs: [false, true, true],
+      },
     ],
   },
   {
@@ -620,6 +628,12 @@ const GROUPES_COMPARES: { titre: string; lignes: LigneComparee[] }[] = [
       },
       { libelle: "Relances automatiques des impayés", valeurs: [false, true, true] },
       { libelle: "Prise de rendez-vous en ligne", valeurs: [false, true, true] },
+      {
+        libelle: "Demandes d'avis à vos clients",
+        aide: "Par e-mail, SMS ou QR code, ou envoyées seules après une facture payée ou un rendez-vous.",
+        valeurs: [false, true, true],
+      },
+      { libelle: "Vos avis Google sur votre site", valeurs: [false, true, true] },
     ],
   },
   {

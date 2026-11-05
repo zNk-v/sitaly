@@ -31,6 +31,7 @@ import { Route as ReferencementLocalRouteImport } from './routes/referencement-l
 import { Route as ReferencementIaRouteImport } from './routes/referencement-ia'
 import { Route as PubliciteReseauxSociauxRouteImport } from './routes/publicite-reseaux-sociaux'
 import { Route as PolitiqueConfidentialiteRouteImport } from './routes/politique-confidentialite'
+import { Route as ParrainageRouteImport } from './routes/parrainage'
 import { Route as MonProjetRouteImport } from './routes/mon-projet'
 import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as LogicielMetierRouteImport } from './routes/logiciel-metier'
@@ -190,6 +191,11 @@ const PolitiqueConfidentialiteRoute =
     path: '/politique-confidentialite',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ParrainageRoute = ParrainageRouteImport.update({
+  id: '/parrainage',
+  path: '/parrainage',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MonProjetRoute = MonProjetRouteImport.update({
   id: '/mon-projet',
   path: '/mon-projet',
@@ -447,6 +453,7 @@ export interface FileRoutesByFullPath {
   '/logiciel-metier': typeof LogicielMetierRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/mon-projet': typeof MonProjetRoute
+  '/parrainage': typeof ParrainageRoute
   '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
   '/publicite-reseaux-sociaux': typeof PubliciteReseauxSociauxRoute
   '/referencement-ia': typeof ReferencementIaRoute
@@ -516,6 +523,7 @@ export interface FileRoutesByTo {
   '/logiciel-metier': typeof LogicielMetierRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/mon-projet': typeof MonProjetRoute
+  '/parrainage': typeof ParrainageRoute
   '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
   '/publicite-reseaux-sociaux': typeof PubliciteReseauxSociauxRoute
   '/referencement-ia': typeof ReferencementIaRoute
@@ -587,6 +595,7 @@ export interface FileRoutesById {
   '/logiciel-metier': typeof LogicielMetierRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/mon-projet': typeof MonProjetRoute
+  '/parrainage': typeof ParrainageRoute
   '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
   '/publicite-reseaux-sociaux': typeof PubliciteReseauxSociauxRoute
   '/referencement-ia': typeof ReferencementIaRoute
@@ -659,6 +668,7 @@ export interface FileRouteTypes {
     | '/logiciel-metier'
     | '/mentions-legales'
     | '/mon-projet'
+    | '/parrainage'
     | '/politique-confidentialite'
     | '/publicite-reseaux-sociaux'
     | '/referencement-ia'
@@ -728,6 +738,7 @@ export interface FileRouteTypes {
     | '/logiciel-metier'
     | '/mentions-legales'
     | '/mon-projet'
+    | '/parrainage'
     | '/politique-confidentialite'
     | '/publicite-reseaux-sociaux'
     | '/referencement-ia'
@@ -798,6 +809,7 @@ export interface FileRouteTypes {
     | '/logiciel-metier'
     | '/mentions-legales'
     | '/mon-projet'
+    | '/parrainage'
     | '/politique-confidentialite'
     | '/publicite-reseaux-sociaux'
     | '/referencement-ia'
@@ -869,6 +881,7 @@ export interface RootRouteChildren {
   LogicielMetierRoute: typeof LogicielMetierRoute
   MentionsLegalesRoute: typeof MentionsLegalesRoute
   MonProjetRoute: typeof MonProjetRoute
+  ParrainageRoute: typeof ParrainageRoute
   PolitiqueConfidentialiteRoute: typeof PolitiqueConfidentialiteRoute
   PubliciteReseauxSociauxRoute: typeof PubliciteReseauxSociauxRoute
   ReferencementIaRoute: typeof ReferencementIaRoute
@@ -1071,6 +1084,13 @@ declare module '@tanstack/react-router' {
       path: '/politique-confidentialite'
       fullPath: '/politique-confidentialite'
       preLoaderRoute: typeof PolitiqueConfidentialiteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parrainage': {
+      id: '/parrainage'
+      path: '/parrainage'
+      fullPath: '/parrainage'
+      preLoaderRoute: typeof ParrainageRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mon-projet': {
@@ -1431,6 +1451,7 @@ const rootRouteChildren: RootRouteChildren = {
   LogicielMetierRoute: LogicielMetierRoute,
   MentionsLegalesRoute: MentionsLegalesRoute,
   MonProjetRoute: MonProjetRoute,
+  ParrainageRoute: ParrainageRoute,
   PolitiqueConfidentialiteRoute: PolitiqueConfidentialiteRoute,
   PubliciteReseauxSociauxRoute: PubliciteReseauxSociauxRoute,
   ReferencementIaRoute: ReferencementIaRoute,

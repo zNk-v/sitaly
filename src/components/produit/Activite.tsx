@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Check, Play, Sparkles } from "lucide-react";
+import { ArrowRight, Check, Play, Send, Sparkles, Star } from "lucide-react";
 import { useVisible } from "@/components/produit/Vitrine";
 import type { ProduitId } from "@/data/produits";
 
@@ -33,14 +33,14 @@ export function FilmLancement() {
   );
 }
 
-function Carte({ id, titre, texte, children }: { id: ProduitId; titre: string; texte: string; children: ReactNode }) {
+function Carte({ id, titre, texte, large = false, children }: { id: ProduitId; titre: string; texte: string; large?: boolean; children: ReactNode }) {
   const { ref, classe } = useVisible<HTMLAnchorElement>(0.3);
   return (
     <Link
       ref={ref}
       to="/produits/$id/"
       params={{ id }}
-      className={`${classe} group flex flex-col overflow-hidden rounded-3xl bg-black/[0.03] p-7 transition hover:bg-black/[0.05] sm:p-8`}
+      className={`${classe} ${large ? "md:col-span-2" : ""} group flex flex-col overflow-hidden rounded-3xl bg-black/[0.03] p-7 transition hover:bg-black/[0.05] sm:p-8`}
     >
       <div className="flex-1">{children}</div>
       <h3 className="mt-7 text-xl font-semibold tracking-tight">{titre}</h3>
@@ -132,6 +132,45 @@ export function GrilleActivite() {
             <div className="truncate font-bold">Durand Plomberie</div>
             <div className="text-xs text-white/70">Plombier chauffagiste · Valmont</div>
             <div className="mt-2 text-xs text-white/85">01 99 00 12 34</div>
+          </div>
+        </div>
+      </Carte>
+      <Carte
+        id="agents-ia"
+        large
+        titre="Plus d'avis Google, et une réponse à chacun"
+        texte="Connectez votre fiche : chaque nouvel avis arrive le matin avec sa réponse prête, vous la publiez d'un clic. Le lendemain d'une facture payée, votre client reçoit la demande d'avis à votre nom."
+      >
+        <div className="grid gap-2.5 md:grid-cols-[1fr_1fr_auto]">
+          <div className="rounded-2xl bg-white p-4 text-sm">
+            <div className="flex items-center gap-2 text-xs text-black/50">
+              <span className="inline-flex text-[#f5a623]" aria-label="5 étoiles sur 5">
+                {Array.from({ length: 5 }, (_, i) => (
+                  <Star key={i} className="h-3.5 w-3.5 fill-current" aria-hidden="true" />
+                ))}
+              </span>
+              Claire M. · ce matin
+            </div>
+            <p className="mt-1 text-black/75">Intervention rapide et propre, le devis a été respecté. Je recommande.</p>
+          </div>
+          <div className="rounded-2xl bg-[#f0fdf4] p-4 text-sm">
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-[#15803d]">
+              <Sparkles className="h-3.5 w-3.5" aria-hidden="true" /> Réponse prête
+            </div>
+            <p className="mt-1 text-black/80">Merci Claire, ravi que le chantier se soit bien passé. À bientôt !</p>
+            <span className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-black/85 px-3 py-1.5 text-xs font-semibold text-white">
+              <Send className="h-3.5 w-3.5" aria-hidden="true" /> Publier sur Google
+            </span>
+          </div>
+          <div className="flex items-center gap-4 rounded-2xl bg-white p-4 md:flex-col md:justify-center md:text-center">
+            <div className="text-3xl font-bold tracking-tight tabular-nums">
+              4,9<span className="text-base font-semibold text-black/45">/5</span>
+            </div>
+            <div className="text-xs text-black/50">
+              37 avis
+              <br />
+              +6 ce mois-ci
+            </div>
           </div>
         </div>
       </Carte>

@@ -159,6 +159,8 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
     lastmod: p.updatedAt ?? p.publishedAt,
   })),
   { path: "/a-propos", changefreq: "yearly", priority: "0.6", source: [route("a-propos.tsx")] },
+  // Le parrainage (5 novembre 2026) : les règles vivent dans l'app (src/lib/parrainage.ts).
+  { path: "/parrainage", changefreq: "monthly", priority: "0.5", source: [route("parrainage.tsx")] },
   // La grille des prix (18 octobre 2026). Ses montants vivent dans src/data/offres.ts.
   {
     path: "/tarifs",
