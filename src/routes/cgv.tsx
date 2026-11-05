@@ -67,7 +67,7 @@ const listeVitrines = `${nomsVitrines.slice(0, -1).join(", ")} et ${nomsVitrines
 
 function CGV() {
   return (
-    <LegalLayout title="Conditions Générales de Vente et d'Utilisation" updated="3 novembre 2026">
+    <LegalLayout title="Conditions Générales de Vente et d'Utilisation" updated="5 novembre 2026">
       <p>
         Les présentes conditions (ci-après « CGV/CGU ») régissent les relations contractuelles entre{" "}
         <strong>Sitaly</strong>, Auto-Entrepreneur, dont le siège social est situé 25 allée des
@@ -177,10 +177,11 @@ function CGV() {
       </p>
       <p>
         Les crédits des formules payantes se renouvellent au début de chaque mois civil, y compris
-        pour un abonnement annuel. Les crédits non utilisés dans le mois passent en réserve sur le
-        mois suivant, dans la limite d'un mois de crédits de la formule. La réserve dure tant que
-        l'abonnement court : elle disparaît à la fin d'un abonnement résilié, ou quand le compte
-        repasse en Découverte. Les crédits n'ont aucune valeur monétaire : ils ne sont ni remboursables, ni cessibles, ni
+        pour un abonnement annuel. Les crédits de la formule non utilisés dans le mois ne se
+        reportent pas sur le mois suivant. Les abonnés Essentiel et Pro peuvent acheter en plus des
+        packs de crédits, payés une fois : ces crédits servent après ceux du mois, n'ont pas de date
+        de fin et restent acquis au compte, y compris après un changement de formule. Un pack
+        remboursé perd ses crédits. Les crédits n'ont aucune valeur monétaire : ils ne sont ni remboursables, ni cessibles, ni
         convertibles. Quand ils sont épuisés, l'Utilisateur garde son site et peut le modifier à la
         main ; les demandes à l'IA reprennent au renouvellement suivant ou après un passage à une
         formule supérieure. Une demande qui échoue pour une raison technique ne consomme pas de

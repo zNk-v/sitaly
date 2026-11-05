@@ -809,7 +809,7 @@ export const FAQ_PRODUIT = [
   },
   {
     q: "À quoi servent les crédits IA ?",
-    a: "Chaque demande à l'IA consomme des crédits : 1 pour retoucher une section, 2 pour une demande sur tout le site, 5 pour une photo créée par l'IA. La création du site elle-même ne coûte aucun crédit. Sur Essentiel et Pro, les crédits non utilisés passent au mois suivant, jusqu'à un mois de crédits en réserve.",
+    a: "Chaque demande à l'IA consomme des crédits : 1 pour retoucher une section, 2 pour une demande sur tout le site, 5 pour une photo créée par l'IA. La création du site elle-même ne coûte aucun crédit. Les crédits d'Essentiel et de Pro valent pour le mois en cours et repartent à zéro le mois suivant. Pour un mois chargé, des packs de crédits s'achètent en plus, sans date de fin.",
   },
   {
     q: "Et les photos ?",
