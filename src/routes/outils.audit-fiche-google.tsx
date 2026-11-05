@@ -3,6 +3,7 @@ import { directiveRobots } from "@/lib/indexation";
 import { useMemo, useState } from "react";
 import { ArrowRight, Check, RotateCcw } from "lucide-react";
 import { SiteChrome } from "@/components/SiteChrome";
+import { lienCreation } from "@/components/produit/Produit";
 
 const URL = "https://sitaly.fr/outils/audit-fiche-google/";
 const TITLE = "Audit gratuit de fiche Google Business Profile : score sur 100 | Sitaly";
@@ -106,7 +107,7 @@ const CRITERES: Critere[] = [
     question: "Ma note moyenne est de 4,5 ou plus",
     poids: 5,
     conseil:
-      "Répondez aux avis négatifs avec calme et précision, et sollicitez les clients satisfaits : ce sont eux qui oublient de laisser un avis.",
+      "Répondez aux avis négatifs avec calme et précision, et demandez un avis à chaque client, sans trier : les clients contents sont ceux qui oublient d'en laisser un.",
   },
   {
     id: "reponses",
@@ -266,6 +267,8 @@ function AuditFicheGoogle() {
     [coches],
   );
   const manquants = CRITERES.filter((c) => !coches[c.id]).sort((a, b) => b.poids - a.poids);
+  // Les points perdus sur les avis : l'agent Avis Google de Sitaly s'en charge (5 novembre 2026).
+  const pointsAvis = manquants.filter((c) => ["nbavis", "recents", "reponses"].includes(c.id)).reduce((t, c) => t + c.poids, 0);
   const v = verdict(score);
 
   return (
@@ -375,6 +378,22 @@ function AuditFicheGoogle() {
                   </li>
                 ))}
               </ol>
+              {pointsAvis > 0 && (
+                <div className="mt-10 rounded-2xl border border-border bg-background p-6">
+                  <p className="font-semibold">
+                    Vos avis vous coûtent {pointsAvis} point{pointsAvis > 1 ? "s" : ""}. Sitaly peut s'en charger.
+                  </p>
+                  <p className="mt-2 text-foreground/80">
+                    Connectez votre fiche à Sitaly : chaque nouvel avis arrive avec sa réponse prête, que vous publiez d'un clic. Le lendemain
+                    d'une facture payée ou d'un rendez-vous, votre client reçoit la demande d'avis à votre nom. Compris dans la formule
+                    Essentiel, et le compte se crée gratuitement.
+                  </p>
+                  <a href={lienCreation()} className="bouton mt-5 px-6 py-3 text-sm">
+                    Créer mon compte gratuit
+                    <ArrowRight className="h-4 w-4" />
+                  </a>
+                </div>
+              )}
               <div className="mt-10 flex flex-wrap gap-3">
                 <Link
                   to="/mon-projet/"

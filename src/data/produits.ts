@@ -143,7 +143,7 @@ export const PRODUITS: Produit[] = [
       },
       {
         titre: "Un e-mail pour vous, un pour le client",
-        texte: "Le client reçoit sa confirmation avec un lien pour annuler. Vous recevez le nom, le téléphone et le message.",
+        texte: "Le client reçoit sa confirmation avec un lien pour annuler, puis un rappel la veille. Vous recevez le nom, le téléphone et le message.",
       },
       {
         titre: "Chaque réservation entre dans vos clients",
