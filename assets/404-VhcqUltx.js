@@ -1,0 +1,1 @@
+import{Zt as e}from"./index-Dpv-2NSe.js";var t=e;export{t as component};
