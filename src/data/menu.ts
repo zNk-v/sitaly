@@ -15,6 +15,7 @@ import {
   ReceiptText,
   SearchCheck,
   Sparkles,
+  Star,
   Wand2,
 } from "lucide-react";
 import type { EntreeMenu } from "@/data/expertises";
@@ -97,6 +98,12 @@ const PRODUITS: MenuDeroulant = {
           icone: SearchCheck,
         },
         {
+          label: "Avis Google",
+          desc: "Plus d'avis, et une réponse à chacun.",
+          to: "/produits/avis-google/",
+          icone: Star,
+        },
+        {
           label: "Blog écrit par l'IA",
           desc: "Des articles qui vous amènent des visites.",
           to: "/produits/blog-ia/",
@@ -104,8 +111,8 @@ const PRODUITS: MenuDeroulant = {
         },
         {
           label: "Votre nom de domaine",
-          desc: "Votre propre adresse, ou la vôtre reliée.",
-          bientot: true,
+          desc: "Un .fr ou un .com offert avec Essentiel et Pro.",
+          to: "/tarifs/",
           icone: Globe,
         },
 

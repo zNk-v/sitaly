@@ -12,7 +12,9 @@ import {
   Lightbulb,
   PawPrint,
   Scissors,
+  Send,
   Sparkles,
+  Star,
   Utensils,
   Wrench,
   type LucideIcon,
@@ -536,6 +538,76 @@ function Agents() {
   );
 }
 
+function Etoiles5({ classe = "h-3.5 w-3.5" }: { classe?: string }) {
+  return (
+    <span className="inline-flex text-[#f5a623]" aria-label="5 étoiles sur 5">
+      {Array.from({ length: 5 }, (_, i) => (
+        <Star key={i} className={`${classe} fill-current`} aria-hidden="true" />
+      ))}
+    </span>
+  );
+}
+
+/** Avis Google : la fiche connectée, un avis du matin avec sa réponse, une demande d'avis partie seule. Entreprise inventée. */
+function AvisGoogle() {
+  return (
+    <div className={`${PANNEAU} grid gap-4 md:grid-cols-[1.3fr_1fr]`}>
+      <div className="rounded-2xl bg-white p-5 sm:p-6">
+        <div className="flex items-center justify-between gap-3 border-b border-black/10 pb-4">
+          <div>
+            <div className="font-semibold">Durand Plomberie</div>
+            <div className="text-xs text-black/50">Fiche Google connectée · relevée ce matin</div>
+          </div>
+          <div className="text-right">
+            <div className="text-2xl font-bold tracking-tight tabular-nums">
+              4,9<span className="text-sm font-semibold text-black/40">/5</span>
+            </div>
+            <div className="text-xs text-black/50">37 avis</div>
+          </div>
+        </div>
+        <div className="mt-4 flex items-center gap-2 text-xs text-black/50">
+          <Etoiles5 /> Claire M. · ce matin
+        </div>
+        <p className="mt-1.5 text-sm leading-6 text-black/75">Intervention rapide et propre, le chauffe-eau a été changé dans la matinée. Je recommande.</p>
+        <div className="mt-4 rounded-2xl bg-[#f5f3ff] p-4">
+          <div className="flex items-center gap-2 text-xs font-semibold text-[#6d28d9]">
+            <Sparkles className="h-3.5 w-3.5" aria-hidden="true" /> Réponse prête
+          </div>
+          <p className="mt-2 text-sm leading-6 text-black/80">
+            Merci Claire ! Ravi que le nouveau chauffe-eau soit en place avant le week-end. À votre service pour l'entretien. Thomas, Durand Plomberie
+          </p>
+        </div>
+        <span className="mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-black/85 text-sm font-semibold text-white">
+          <Send className="h-4 w-4" aria-hidden="true" /> Publier sur Google
+        </span>
+      </div>
+      <div className="flex flex-col gap-3">
+        <div className="rounded-2xl bg-white/[0.06] p-5 text-white">
+          <div className="text-xs font-semibold text-[#c4b5fd]">Demande d'avis envoyée</div>
+          <div className="mt-2 font-semibold">Mme Lopez</div>
+          <p className="mt-1 text-sm text-white/60">Le lendemain de la facture F-2026-0031, payée par carte.</p>
+        </div>
+        <div className="flex flex-1 items-center gap-4 rounded-2xl bg-white/[0.06] p-5 text-white">
+          <div className="grid h-20 w-20 shrink-0 grid-cols-5 gap-0.5 rounded-lg bg-white p-1.5" aria-hidden="true">
+            {[1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1].map((v, i) => (
+              <span key={i} className={v ? "bg-black" : ""} />
+            ))}
+          </div>
+          <div>
+            <div className="font-semibold">Votre avis compte</div>
+            <p className="mt-1 text-sm text-white/60">L'affichette A5 et son QR code, pour le comptoir.</p>
+          </div>
+        </div>
+        <div className="rounded-2xl bg-white/[0.06] p-5 text-white">
+          <div className="flex items-center gap-2 text-sm">
+            <Etoiles5 /> <span className="font-semibold">+6 avis</span> <span className="text-white/60">ce mois-ci</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function VisuelProduit({ id }: { id: ProduitId }) {
   switch (id) {
     case "devis-et-factures":
@@ -544,6 +616,8 @@ export function VisuelProduit({ id }: { id: ProduitId }) {
       return <Reservation />;
     case "agents-ia":
       return <Agents />;
+    case "avis-google":
+      return <AvisGoogle />;
     case "blog-ia":
       return <Blog />;
     case "referencement-seo-geo":

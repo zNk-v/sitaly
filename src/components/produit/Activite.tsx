@@ -136,7 +136,7 @@ export function GrilleActivite() {
         </div>
       </Carte>
       <Carte
-        id="agents-ia"
+        id="avis-google"
         large
         titre="Plus d'avis Google, et une réponse à chacun"
         texte="Connectez votre fiche : chaque nouvel avis arrive le matin avec sa réponse prête, vous la publiez d'un clic. Le lendemain d'une facture payée, votre client reçoit la demande d'avis à votre nom."

@@ -24,9 +24,14 @@ import { CREATEUR_IA as IA } from "@/data/offres";
  *   d'avis par e-mail, QR code ou envoi automatique, avis sur le site), Blog et
  *   Assistant IA (bilan de la semaine chaque lundi par e-mail). Rien ne
  *   part sans l'accord de l'entrepreneur.
+ * - avis-google (5 novembre 2026) : rubrique Avis Google (fonctions
+ *   google-fiche et agent-avis) : fiche connectée en Essentiel et Pro, avis
+ *   relevés chaque matin, réponse préparée et publiée après un clic, demandes
+ *   d'avis par e-mail, SMS, QR code ou envoi automatique, avis sur le site.
+ *   Jamais « partenaire de Google » (règle de Google).
  */
 
-export type ProduitId = "devis-et-factures" | "prise-de-rendez-vous" | "agents-ia" | "blog-ia" | "referencement-seo-geo" | "identite-de-marque";
+export type ProduitId = "devis-et-factures" | "prise-de-rendez-vous" | "agents-ia" | "avis-google" | "blog-ia" | "referencement-seo-geo" | "identite-de-marque";
 
 export interface Produit {
   id: ProduitId;
@@ -251,6 +256,73 @@ export const PRODUITS: Produit[] = [
       {
         q: "Est-ce la même chose que les agents IA sur mesure ?",
         a: "Non. Les agents de l'app sont prêts à l'emploi et compris dans votre abonnement. Pour un agent conçu pour votre entreprise, voyez l'offre Agents IA sur mesure.",
+      },
+    ],
+  },
+  {
+    id: "avis-google",
+    nom: "Avis Google",
+    menuDesc: "Plus d'avis, et une réponse à chacun.",
+    titre: "Plus d'avis Google, sans y penser",
+    intro:
+      "Connectez votre fiche : chaque nouvel avis arrive le matin avec sa réponse prête, que vous publiez d'un clic. Après chaque chantier, votre client reçoit la demande d'avis à votre nom.",
+    seoTitre: "Avis Google pour artisans : répondre et en obtenir plus",
+    description:
+      "Répondez à chaque avis Google d'un clic et récoltez-en plus : réponse préparée par l'IA, demande d'avis envoyée après chaque facture, QR code à imprimer, avis affichés sur votre site.",
+    etapes: [
+      {
+        titre: "Connectez votre fiche",
+        texte: "Un bouton, puis l'autorisation de Google avec votre compte. Sitaly retrouve votre fiche et vos avis en quelques secondes.",
+      },
+      {
+        titre: "Répondez d'un clic",
+        texte: "Chaque matin, les nouveaux avis arrivent avec une réponse dans votre ton. Vous la relisez, puis « Publier sur Google ».",
+      },
+      {
+        titre: "Récoltez des avis",
+        texte: "Le lendemain d'une facture payée ou d'un rendez-vous, votre client reçoit le lien pour laisser son avis, à votre nom.",
+      },
+    ],
+    points: [
+      {
+        titre: "Prévenu sur votre téléphone",
+        texte: "Un avis tombe ? Une notification vous le dit, avec la réponse déjà prête. Vous publiez entre deux chantiers.",
+      },
+      {
+        titre: "Les avis délicats d'abord",
+        texte: "Une note basse, un reproche, un litige : l'agent le signale et propose une réponse posée, sans reconnaître de faute.",
+      },
+      {
+        titre: "Un QR code pour le comptoir",
+        texte: "Une affichette A5 « Votre avis compte » à imprimer, pour la vitrine, le comptoir ou la camionnette.",
+      },
+      {
+        titre: "Vos avis sur votre site",
+        texte: "Votre note et vos meilleurs avis récents s'affichent sur votre site Sitaly, à jour chaque matin.",
+      },
+    ],
+    inclus: ["Avis collés à la main", "Fiche connectée", "Fiche connectée"],
+    noteInclus: "Fiche connectée, envoi par e-mail et demandes automatiques en Essentiel et Pro. Une réponse préparée coûte 1 crédit.",
+    faq: [
+      {
+        q: "Une réponse peut-elle partir sans moi ?",
+        a: "Non. L'agent prépare la réponse ; elle ne part sur Google qu'après votre clic sur « Publier sur Google ».",
+      },
+      {
+        q: "Comment Sitaly accède-t-il à ma fiche ?",
+        a: "Par l'API Google Business Profile, avec votre autorisation donnée sur l'écran de Google. Vous pouvez la retirer à tout moment : la déconnexion efface aussi vos avis de Sitaly.",
+      },
+      {
+        q: "Puis-je demander des avis seulement aux clients contents ?",
+        a: "Non, et Google l'interdit. Sitaly envoie la même demande à chaque client, au plus une fois tous les six mois, sans contrepartie.",
+      },
+      {
+        q: "Et si je n'ai pas encore de fiche Google ?",
+        a: "Créez-la gratuitement sur Google Business Profile, puis connectez-la. En attendant, vous pouvez coller un avis dans Sitaly pour recevoir une réponse préparée.",
+      },
+      {
+        q: "Combien d'avis faut-il viser ?",
+        a: "Des avis réguliers comptent plus qu'un gros chiffre ancien. Un avis par mois et des réponses à chacun suffisent à faire la différence face à un concurrent silencieux.",
       },
     ],
   },

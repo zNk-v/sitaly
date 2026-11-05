@@ -37,6 +37,7 @@ const COLONNES: { titre: string; entrees: Entree[] }[] = [
       { label: "Devis et factures", to: "/produits/devis-et-factures/" },
       { label: "Prise de rendez-vous", to: "/produits/prise-de-rendez-vous/" },
       { label: "Agents IA", to: "/produits/agents-ia/" },
+      { label: "Avis Google", to: "/produits/avis-google/" },
       { label: "Blog écrit par l'IA", to: "/produits/blog-ia/" },
       { label: "SEO et GEO", to: "/produits/referencement-seo-geo/" },
       { label: "Identité de marque", to: "/produits/identite-de-marque/" },
