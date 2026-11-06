@@ -15,7 +15,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CookieConsent } from "../components/CookieConsent";
 import { PageIntrouvable } from "../components/PageIntrouvable";
-import { battreMesure, compterVue, suivreClicsDeContact } from "../lib/mesure";
+import { battreMesure, compterVue, prolongerCampagne, suivreClicsDeContact } from "../lib/mesure";
 import {
   FICHE_GOOGLE_URL,
   SITALY_CODE_POSTAL,
@@ -318,6 +318,7 @@ function RootComponent() {
 
   // Clics sur le téléphone et le Calendly, comptés dans GA4 (src/lib/mesure.ts).
   useEffect(() => suivreClicsDeContact(), []);
+  useEffect(() => prolongerCampagne(), []);
 
   // Les visites, sans cookie (src/lib/mesure.ts) : une page vue à chaque changement d'adresse.
   const chemin = useRouterState({ select: (s) => s.location.pathname });

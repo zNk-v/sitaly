@@ -89,3 +89,39 @@ export function battreMesure(): () => void {
   }, 60_000);
   return () => window.clearInterval(minuterie);
 }
+
+/**
+ * La campagne d'une pub jusqu'à l'inscription (6 novembre 2026). Les pubs
+ * arrivent avec ?utm_source=meta&utm_campaign=… ; ces paramètres sont lus une
+ * fois, gardés en mémoire (rien sur l'appareil) et ajoutés au moment du clic
+ * à tout lien vers app.sitaly.fr. L'app les rattache au compte créé, et le
+ * centre de pilotage suit chaque campagne jusqu'à l'abonnement.
+ */
+export function prolongerCampagne(): () => void {
+  if (typeof document === "undefined") return () => {};
+  const arrivee = new URLSearchParams(window.location.search);
+  const garder = new URLSearchParams();
+  for (const cle of ["utm_source", "utm_medium", "utm_campaign"]) {
+    const v = arrivee.get(cle)?.trim().slice(0, 60);
+    if (v) garder.set(cle, v);
+  }
+  if (!garder.has("utm_source")) return () => {};
+  const completer = (event: MouseEvent) => {
+    const lien = (event.target as Element | null)?.closest?.("a[href]") as HTMLAnchorElement | null;
+    if (!lien || lien.hostname !== "app.sitaly.fr") return;
+    try {
+      const url = new URL(lien.href);
+      if (url.searchParams.has("utm_source")) return;
+      garder.forEach((v, k) => url.searchParams.set(k, v));
+      lien.href = url.toString();
+    } catch {
+      // La mesure ne doit jamais casser un lien.
+    }
+  };
+  document.addEventListener("click", completer, { capture: true });
+  document.addEventListener("auxclick", completer, { capture: true });
+  return () => {
+    document.removeEventListener("click", completer, { capture: true });
+    document.removeEventListener("auxclick", completer, { capture: true });
+  };
+}
