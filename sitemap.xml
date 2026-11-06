@@ -241,6 +241,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://sitaly.fr/produits/avis-google/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://sitaly.fr/produits/blog-ia/</loc>
     <lastmod>2026-11-05</lastmod>
     <changefreq>monthly</changefreq>
