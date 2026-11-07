@@ -49,12 +49,15 @@ export interface Produit {
   /** Ce que chaque formule (Découverte, Essentiel, Pro) en donne. */
   inclus: [string | false, string | false, string | false];
   noteInclus: string;
+  /** Le bouton de la page : il reprend la promesse du titre, pas « Créer mon site ». */
+  cta: string;
   faq: { q: string; a: string }[];
 }
 
 export const PRODUITS: Produit[] = [
   {
     id: "devis-et-factures",
+    cta: "Faire mon premier devis",
     nom: "Devis et factures",
     menuDesc: "Devis acceptés en ligne, factures payées par carte.",
     titre: "Facturez, soyez payé",
@@ -119,6 +122,7 @@ export const PRODUITS: Produit[] = [
   },
   {
     id: "prise-de-rendez-vous",
+    cta: "Ouvrir mes réservations",
     nom: "Prise de rendez-vous",
     menuDesc: "Vos clients réservent depuis votre site.",
     titre: "Vos clients réservent seuls",
@@ -182,6 +186,7 @@ export const PRODUITS: Produit[] = [
   },
   {
     id: "agents-ia",
+    cta: "Activer mes agents IA",
     nom: "Agents IA",
     menuDesc: "Ils répondent à vos clients pendant que vous travaillez.",
     titre: "Vos agents répondent pour vous",
@@ -261,6 +266,7 @@ export const PRODUITS: Produit[] = [
   },
   {
     id: "avis-google",
+    cta: "Recevoir plus d'avis",
     nom: "Avis Google",
     menuDesc: "Plus d'avis, et une réponse à chacun.",
     titre: "Plus d'avis Google, sans y penser",
@@ -328,6 +334,7 @@ export const PRODUITS: Produit[] = [
   },
   {
     id: "blog-ia",
+    cta: "Lancer mon blog",
     nom: "Blog écrit par l'IA",
     menuDesc: "Des articles qui vous amènent des visites.",
     titre: "Un blog qui s'écrit pour vous",
@@ -391,6 +398,7 @@ export const PRODUITS: Produit[] = [
   },
   {
     id: "referencement-seo-geo",
+    cta: "Améliorer mon référencement",
     nom: "Référencement SEO et GEO",
     menuDesc: "Trouvé sur Google et par les IA.",
     titre: "Trouvé sur Google et par les IA",
@@ -454,6 +462,7 @@ export const PRODUITS: Produit[] = [
   },
   {
     id: "identite-de-marque",
+    cta: "Créer mon logo",
     nom: "Identité de marque",
     menuDesc: "Votre logo, vos couleurs, votre police.",
     titre: "Votre logo en une minute",

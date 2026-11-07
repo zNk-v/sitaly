@@ -100,51 +100,58 @@ export function CookieConsentBandeau() {
   );
 }
 
+/**
+ * Le bandeau flottant (7 novembre 2026) : une ligne fine en bas de l'écran.
+ * L'ancienne carte couvrait un tiers de l'écran d'un téléphone, et la barre
+ * « Créer mon site » avec. Sa hauteur passe dans --bandeau-cookies, pour que
+ * les boutons collants se posent au-dessus.
+ */
 export function CookieConsent() {
   const { visible, handle } = useCookieConsent();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const surCarte = pathname.startsWith("/carte");
+  const montre = visible && !surCarte;
+
+  useEffect(() => {
+    const racine = document.documentElement;
+    if (montre) racine.style.setProperty("--bandeau-cookies", "3.25rem");
+    else racine.style.removeProperty("--bandeau-cookies");
+    return () => {
+      racine.style.removeProperty("--bandeau-cookies");
+    };
+  }, [montre]);
 
   // /carte porte son propre bandeau, dans le flux (voir CookieConsentBandeau).
-  if (pathname.startsWith("/carte")) return null;
-  if (!visible) return null;
+  if (!montre) return null;
 
   return (
     <div
-      role="dialog"
+      role="region"
       aria-live="polite"
       aria-label="Consentement aux cookies"
-      className="fixed inset-x-0 bottom-0 z-[100] p-4 sm:p-6"
+      className="fixed inset-x-0 bottom-0 z-[100] border-t border-border bg-background/95 px-3 py-2 backdrop-blur supports-[backdrop-filter]:bg-background/85"
     >
-      <div className="mx-auto max-w-3xl rounded-2xl border border-border bg-background/95 p-5 shadow-2xl backdrop-blur supports-[backdrop-filter]:bg-background/80">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="text-sm text-foreground">
-            <p className="font-semibold">Cookies & mesure d'audience</p>
-            <p className="mt-1 text-muted-foreground">
-              Nous utilisons des cookies pour analyser l'audience du site (Google Analytics). Vous
-              pouvez accepter ou refuser. Voir notre{" "}
-              <Link to="/politique-confidentialite/" className="underline hover:text-primary">
-                politique de confidentialité
-              </Link>
-              .
-            </p>
-          </div>
-          <div className="flex shrink-0 gap-2">
-            <button
-              type="button"
-              onClick={() => handle("denied")}
-              className="bouton-secondaire h-11 px-5 text-sm"
-            >
-              Refuser
-            </button>
-            <button
-              type="button"
-              onClick={() => handle("granted")}
-              className="bouton h-11 px-5 text-sm"
-            >
-              Accepter
-            </button>
-          </div>
-        </div>
+      <div className="mx-auto flex h-9 max-w-3xl items-center gap-2 text-xs text-muted-foreground">
+        <p className="min-w-0 flex-1 truncate">
+          Cookies d'audience.{" "}
+          <Link to="/politique-confidentialite/" className="underline hover:text-primary">
+            Détails
+          </Link>
+        </p>
+        <button
+          type="button"
+          onClick={() => handle("denied")}
+          className="bouton-secondaire h-8 shrink-0 px-3 text-xs"
+        >
+          Refuser
+        </button>
+        <button
+          type="button"
+          onClick={() => handle("granted")}
+          className="bouton h-8 shrink-0 px-3 text-xs"
+        >
+          Accepter
+        </button>
       </div>
     </div>
   );

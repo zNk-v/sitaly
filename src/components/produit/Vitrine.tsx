@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
-import { ArrowRight, ArrowUp, Lock, Sparkles, Star } from "lucide-react";
+import { ArrowRight, Lock, Sparkles, Star } from "lucide-react";
 import { lienCreation } from "@/components/produit/Produit";
 
 /**
@@ -324,7 +324,8 @@ export function BarreCollante() {
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-4 z-40 flex justify-center px-3 transition-all duration-500 ${montre ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-6 opacity-0"}`}
+      className={`fixed inset-x-0 z-40 flex justify-center px-3 transition-all duration-500 ${montre ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-6 opacity-0"}`}
+      style={{ bottom: "calc(var(--bandeau-cookies, 0px) + 1rem)" }}
       aria-hidden={!montre}
     >
       <form
@@ -352,8 +353,8 @@ export function BarreCollante() {
           aria-label="Créer mon site"
           className="inline-flex h-10 shrink-0 items-center gap-2 rounded-full bg-black/85 px-4 text-sm font-medium text-white hover:bg-black"
         >
+          <span className="sm:hidden">Créer</span>
           <span className="hidden sm:inline">Créer mon site</span>
-          <ArrowUp className="h-4 w-4 sm:hidden" />
         </button>
       </form>
     </div>

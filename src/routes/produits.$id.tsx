@@ -11,6 +11,7 @@ import {
   lienCreation,
 } from "@/components/produit/Produit";
 import { VisuelProduit } from "@/components/produit/VisuelsProduits";
+import { BoutonCollant } from "@/components/produit/BoutonCollant";
 import { PRODUITS, getProduit } from "@/data/produits";
 import { CREATEUR_IA as IA, MENTION_TVA } from "@/data/offres";
 import { euros } from "@/lib/config";
@@ -83,6 +84,7 @@ function PageProduit() {
   return (
     <div className="min-h-screen bg-white text-[#09090b]">
       <SiteChrome>
+        <BoutonCollant libelle={p.cta} href={lienCreation()} />
         <section className="px-4 pt-10 pb-10 sm:px-6 sm:pt-16">
           <div className="mx-auto max-w-4xl text-center">
             <nav
@@ -99,9 +101,9 @@ function PageProduit() {
             <p className={`mx-auto mt-6 max-w-2xl text-lg leading-7 ${TEXTE_GRIS}`}>{p.intro}</p>
             <div className="mt-8 flex flex-col items-center gap-3">
               <a href={lienCreation()} className={`${BOUTON_NOIR} min-h-12 px-6 text-base`}>
-                Créer mon site gratuitement <ArrowRight className="h-4 w-4" />
+                {p.cta} <ArrowRight className="h-4 w-4" />
               </a>
-              <span className={`text-sm ${TEXTE_GRIS}`}>{p.noteInclus}</span>
+              <span className={`text-sm ${TEXTE_GRIS}`}>Gratuit, sans carte bancaire.</span>
             </div>
           </div>
         </section>
@@ -178,7 +180,10 @@ function PageProduit() {
                 );
               })}
             </div>
-            <p className={`mt-5 text-center text-sm ${TEXTE_GRIS}`}>
+            <p className={`mx-auto mt-6 max-w-2xl text-center text-sm leading-6 ${TEXTE_GRIS}`}>
+              {p.noteInclus}
+            </p>
+            <p className={`mt-3 text-center text-sm ${TEXTE_GRIS}`}>
               {MENTION_TVA}.{" "}
               <Link to="/tarifs/" className="font-medium text-black underline underline-offset-2">
                 Comparer les formules
