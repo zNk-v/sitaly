@@ -91,6 +91,54 @@ export function battreMesure(): () => void {
 }
 
 /**
+ * Les moteurs de recherche et les assistants IA (7 novembre 2026) : un visiteur
+ * qui en arrive, sans lien de pub, porte utm_source=seo et le nom du moteur en
+ * campagne jusqu'à l'app. Le centre de pilotage suit ainsi les inscriptions
+ * venues du référencement (rubrique Organique de l'espace Pub).
+ */
+const MOTEURS: [RegExp, string][] = [
+  [/(^|\.)google\./, "google"],
+  [/(^|\.)bing\.com$/, "bing"],
+  [/(^|\.)duckduckgo\.com$/, "duckduckgo"],
+  [/(^|\.)ecosia\.org$/, "ecosia"],
+  [/(^|\.)qwant\.com$/, "qwant"],
+  [/(^|\.)yahoo\./, "yahoo"],
+  [/(^|\.)search\.brave\.com$/, "brave"],
+  [/(^|\.)(chatgpt\.com|chat\.openai\.com)$/, "chatgpt"],
+  [/(^|\.)perplexity\.ai$/, "perplexity"],
+  [/(^|\.)gemini\.google\.com$/, "gemini"],
+  [/(^|\.)copilot\.microsoft\.com$/, "copilot"],
+  [/(^|\.)claude\.ai$/, "claude"],
+  [/(^|\.)chat\.mistral\.ai$/, "mistral"],
+];
+function moteurDe(referent: string): string | null {
+  try {
+    const hote = new URL(referent).hostname;
+    // gemini.google.com passe avant google.
+    if (/(^|\.)gemini\.google\.com$/.test(hote)) return "gemini";
+    return MOTEURS.find(([motif]) => motif.test(hote))?.[1] ?? null;
+  } catch {
+    return null;
+  }
+}
+
+/** La campagne gardée pour la visite, ajoutée aux liens et aux formulaires vers l'app. */
+let campagneGardee: URLSearchParams | null = null;
+
+/** Une adresse de l'app, complétée par la campagne de la visite (pub ou moteur). */
+export function avecCampagne(href: string): string {
+  if (!campagneGardee) return href;
+  try {
+    const url = new URL(href);
+    if (url.hostname !== "app.sitaly.fr" || url.searchParams.has("utm_source")) return href;
+    campagneGardee.forEach((v, k) => url.searchParams.set(k, v));
+    return url.toString();
+  } catch {
+    return href;
+  }
+}
+
+/**
  * La campagne d'une pub jusqu'à l'inscription (6 novembre 2026). Les pubs
  * arrivent avec ?utm_source=meta&utm_campaign=… ; ces paramètres sont lus une
  * fois, gardés en mémoire (rien sur l'appareil) et ajoutés au moment du clic
@@ -105,18 +153,21 @@ export function prolongerCampagne(): () => void {
     const v = arrivee.get(cle)?.trim().slice(0, 60);
     if (v) garder.set(cle, v);
   }
+  if (!garder.has("utm_source")) {
+    const moteur = moteurDe(document.referrer);
+    if (moteur) {
+      garder.set("utm_source", "seo");
+      garder.set("utm_medium", "organique");
+      garder.set("utm_campaign", moteur);
+    }
+  }
   if (!garder.has("utm_source")) return () => {};
+  campagneGardee = garder;
   const completer = (event: MouseEvent) => {
     const lien = (event.target as Element | null)?.closest?.("a[href]") as HTMLAnchorElement | null;
     if (!lien || lien.hostname !== "app.sitaly.fr") return;
-    try {
-      const url = new URL(lien.href);
-      if (url.searchParams.has("utm_source")) return;
-      garder.forEach((v, k) => url.searchParams.set(k, v));
-      lien.href = url.toString();
-    } catch {
-      // La mesure ne doit jamais casser un lien.
-    }
+    const complete = avecCampagne(lien.href);
+    if (complete !== lien.href) lien.href = complete;
   };
   document.addEventListener("click", completer, { capture: true });
   document.addEventListener("auxclick", completer, { capture: true });

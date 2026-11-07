@@ -1,3 +1,4 @@
+import { avecCampagne } from "@/lib/mesure";
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { ArrowRight, Check, Clock, Lock, Sparkles, Star } from "lucide-react";
 import { APP_URL, euros, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
@@ -135,7 +136,7 @@ export function BoiteApp({ idees = true }: { idees?: boolean }) {
 
   function envoyer(e: FormEvent) {
     e.preventDefault();
-    window.location.href = lienCreation(activite.trim());
+    window.location.href = avecCampagne(lienCreation(activite.trim()));
   }
 
   return (
