@@ -4,6 +4,7 @@ import { SiteChrome } from "@/components/SiteChrome";
 import { PictoRubrique } from "@/components/PictoRubrique";
 import { euros } from "@/lib/config";
 import { BASE_URL } from "@/lib/sitemap";
+import { directiveRobots } from "@/lib/indexation";
 import { FAQ_TARIFS } from "@/data/faq-tarifs";
 import { pageOffre, type PageOffre } from "@/data/pages-offres";
 import { REALISATIONS, srcSetCapture } from "@/data/realisations";
@@ -74,6 +75,7 @@ export const Route = createFileRoute("/offres/$id")({
       meta: [
         { title: titre },
         { name: "description", content: description },
+        { name: "robots", content: directiveRobots(`/offres/${o.id}`) },
         { property: "og:title", content: titre },
         { property: "og:description", content: description },
         { property: "og:url", content: url },

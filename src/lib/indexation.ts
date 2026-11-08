@@ -104,6 +104,17 @@ export const PAGES_AGENCE_HORS_INDEX = [
   "/referencement-naturel",
 ];
 
+/**
+ * Les pages des anciennes offres d'agence (décision du 8 novembre 2026) : leurs
+ * prix (79 à 399 €/mois) contredisaient la page Tarifs de l'application.
+ */
+export const PAGES_OFFRES_HORS_INDEX = [
+  "/offres/presence",
+  "/offres/presence-pro",
+  "/offres/presence-expert",
+  "/offres/maintenance",
+];
+
 function normaliser(chemin: string): string {
   const sansQuery = chemin.split(/[?#]/)[0];
   const net = sansQuery.replace(/\/+$/, "");
@@ -114,6 +125,7 @@ const HORS_INDEX = new Set<string>([
   ...PAGES_METIER_HORS_INDEX,
   ...PAGES_OUTILS_HORS_INDEX,
   ...PAGES_AGENCE_HORS_INDEX,
+  ...PAGES_OFFRES_HORS_INDEX,
   ...ARTICLES_HORS_INDEX.map((slug) => `/blog/${slug}`),
   ...LANDINGS_STATIQUES_HORS_INDEX,
 ]);
@@ -149,5 +161,6 @@ export const PAGES_A_PRERENDRE_HORS_INDEX = [
   ...PAGES_METIER_HORS_INDEX,
   ...PAGES_OUTILS_HORS_INDEX,
   ...PAGES_AGENCE_HORS_INDEX,
+  ...PAGES_OFFRES_HORS_INDEX,
   ...ARTICLES_HORS_INDEX.map((slug) => `/blog/${slug}`),
 ];
