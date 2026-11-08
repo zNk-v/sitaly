@@ -147,6 +147,7 @@ const GRAPHE_ENTITE = {
         "https://www.instagram.com/sitaly.fr/",
         "https://www.youtube.com/@sitaly-fr",
         "https://annuaire-entreprises.data.gouv.fr/entreprise/833848831",
+        "https://www.lafabriquedunet.fr/logiciel/sitaly",
       ],
       contactPoint: {
         "@type": "ContactPoint",

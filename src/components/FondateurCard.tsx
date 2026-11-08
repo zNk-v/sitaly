@@ -56,19 +56,17 @@ export function FondateurCard({ className }: { className?: string }) {
             Teddy Vidal
           </h3>
           <p className="mt-2 font-medium text-muted-foreground">
-            Fondateur de Sitaly, et la personne qui construit vos outils
+            Fondateur de Sitaly
           </p>
 
           <div className="mt-6 space-y-4 leading-relaxed text-muted-foreground">
             <p>
-              Sitaly, c'est moi. J'installe les agents IA, je conçois les sites et je pilote les
-              campagnes. Vous n'aurez pas un commercial à l'appel découverte et un stagiaire sur
-              votre projet.
+              J'ai créé des sites à la main pour des artisans et des petites entreprises. Sitaly
+              fait ce travail en une minute environ, et vous gardez la main sur le résultat.
             </p>
             <p>
-              Je suis basé à {SITALY_VILLE}, dans l'{SITALY_DEPARTEMENT}. Je travaille avec des PME
-              d'Île-de-France et, à distance, de toute la France. Pas de rendez-vous à caler trois
-              semaines à l'avance : on s'appelle et on sait tout de suite si ça vaut le coup.
+              Je suis basé à {SITALY_VILLE}, dans l'{SITALY_DEPARTEMENT}. Une question sur
+              l'application ? Appelez-moi ou écrivez-moi.
             </p>
           </div>
 

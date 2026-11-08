@@ -5,7 +5,8 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SectionHeader } from "@/components/SectionHeader";
 import { FondateurCard } from "@/components/FondateurCard";
 import { REALISATIONS } from "@/data/realisations";
-import { SECTEURS, cheminSecteur } from "@/data/secteurs";
+import { PRODUITS } from "@/data/produits";
+import { lienCreation } from "@/components/produit/Produit";
 import { BASE_URL } from "@/lib/sitemap";
 import { SITALY_DEPARTEMENT, SITALY_VILLE } from "@/lib/config";
 
@@ -22,7 +23,7 @@ import { SITALY_DEPARTEMENT, SITALY_VILLE } from "@/lib/config";
  */
 const TITRE = "Teddy Vidal, fondateur de Sitaly | À propos";
 const DESCRIPTION =
-  "Teddy Vidal a fondé Sitaly à Brétigny-sur-Orge (Essonne) : sites internet et fiche Google pour artisans, indépendants et petits commerces.";
+  "Teddy Vidal a fondé Sitaly, l'application française qui crée le site internet des artisans, des indépendants et des TPE à partir d'une phrase, avec l'IA.";
 const URL = `${BASE_URL}/a-propos/`;
 
 export const Route = createFileRoute("/a-propos")({
@@ -75,17 +76,18 @@ function APropos() {
             Teddy Vidal, <span className="accent-word">fondateur de Sitaly</span>
           </h1>
           <p className="measure mt-6 text-lg leading-relaxed text-foreground/75 sm:text-xl">
-            Sitaly est une micro-agence d'une seule personne. Je conçois les sites de mes clients,
-            je tiens leur fiche Google à jour et, quand c'est utile, j'installe des agents IA. Basé
-            à {SITALY_VILLE}, dans l'{SITALY_DEPARTEMENT}, je travaille avec des artisans, des
-            commerçants et des PME d'Île-de-France et, à distance, de toute la France.
+            Sitaly est une application française qui crée le site internet des artisans, des
+            indépendants et des TPE à partir d'une phrase, avec l'IA. Avant l'application, je
+            créais ces sites à la main. Aujourd'hui, l'IA écrit le vôtre en une minute environ, et
+            vous gardez la main pour le relire et le publier.
           </p>
           <p className="measure mt-4 text-foreground/75">
-            Vous êtes dans le département ? La page{" "}
-            <Link to="/essonne/" className="font-semibold text-brand-ink hover:underline">
-              agence web et agents IA en Essonne
-            </Link>{" "}
-            détaille ce que je fais sur place et les communes où j'interviens.
+            Vous préférez qu'on s'occupe de tout ? L'équipe Sitaly peut créer et suivre votre site à
+            votre place, ou installer des{" "}
+            <Link to="/agents-ia/" className="font-semibold text-brand-ink hover:underline">
+              agents IA sur mesure
+            </Link>
+            .
           </p>
         </div>
       </section>
@@ -103,34 +105,23 @@ function APropos() {
             eyebrow="Ce que je fais"
             title={
               <>
-                Des agents IA pour <span className="accent-word">les PME</span>
+                Une application pour <span className="accent-word">les petites entreprises</span>
               </>
             }
-            subtitle="Accueil téléphonique, qualification des demandes, prise de rendez-vous, relance des devis. Chaque agent est branché sur les outils de l'entreprise, et un humain reprend la main dès que la situation le demande."
+            subtitle="Votre site, vos devis et factures, vos rendez-vous, vos avis Google et votre référencement, au même endroit."
           />
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <Link
-              to="/agents-ia/"
-              className="group rounded-2xl border border-border bg-card p-6 shadow-soft transition hover:shadow-elevated"
-            >
-              <h3 className="font-display text-lg font-bold leading-snug transition group-hover:text-brand-ink">
-                Agents IA
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Le système complet et la méthode de déploiement.
-              </p>
-              <ArrowRight className="mt-4 h-4 w-4 text-brand-ink transition-transform group-hover:translate-x-0.5" />
-            </Link>
-            {SECTEURS.map((s) => (
+            {PRODUITS.map((p) => (
               <Link
-                key={s.slug}
-                to={cheminSecteur(s)}
+                key={p.id}
+                to="/produits/$id/"
+                params={{ id: p.id }}
                 className="group rounded-2xl border border-border bg-card p-6 shadow-soft transition hover:shadow-elevated"
               >
                 <h3 className="font-display text-lg font-bold leading-snug transition group-hover:text-brand-ink">
-                  {s.label}
+                  {p.nom}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.carte}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.menuDesc}</p>
                 <ArrowRight className="mt-4 h-4 w-4 text-brand-ink transition-transform group-hover:translate-x-0.5" />
               </Link>
             ))}
@@ -148,6 +139,7 @@ function APropos() {
                 Des projets <span className="accent-word">réellement en ligne</span>
               </>
             }
+            subtitle="Des sites que j'ai conçus à la main, avant l'application."
           />
           <ul className="mt-12 border-t border-border">
             {REALISATIONS.map((r) => (
@@ -201,10 +193,10 @@ function APropos() {
             </p>
           </div>
           <div className="mt-10">
-            <Link to="/mon-projet/" className="bouton px-7 py-3.5">
-              Trouver mon offre
+            <a href={lienCreation()} className="bouton px-7 py-3.5">
+              Créer mon site
               <ArrowRight className="bouton-fleche h-4 w-4" />
-            </Link>
+            </a>
           </div>
         </div>
       </section>

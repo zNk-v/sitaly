@@ -102,6 +102,9 @@ export const PAGES_AGENCE_HORS_INDEX = [
   "/automatisation-taches",
   "/referencement-local",
   "/referencement-naturel",
+  "/creation-site-internet",
+  "/site-vitrine",
+  "/refonte-site-internet",
 ];
 
 /**
