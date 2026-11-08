@@ -191,6 +191,17 @@ function APropos() {
               </Link>
               .
             </p>
+            {/* Comparateur-IA contrôle ce lien chaque mois : le retirer ou le passer en nofollow retire la fiche de l'annuaire. */}
+            <p>
+              <a href="https://comparateur-ia.com/outils-ia/sitaly/" className="cia-badge">
+                <img
+                  src="https://comparateur-ia.com/wp-content/uploads/2026/08/badge-verifie-comparateur-ia.svg"
+                  alt="Vérifié par Comparateur-IA"
+                  width="180"
+                  height="52"
+                />
+              </a>
+            </p>
           </div>
           <div className="mt-10">
             <a href={lienCreation()} className="bouton px-7 py-3.5">
