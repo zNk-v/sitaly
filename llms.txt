@@ -1,94 +1,80 @@
 # Sitaly
 
-> Sitaly est une micro-agence en abonnement qui crée, héberge et entretient les sites internet des artisans, indépendants, commerçants et TPE : site vitrine, boutique en ligne Shopify, refonte, maintenance de site existant et gestion de la fiche Google. Prix publiés, sans engagement : https://sitaly.fr/tarifs/. Elle installe aussi des agents IA, à prix publiés, et gère des campagnes publicitaires, sur devis. Micro-agence fondée et opérée par Teddy Vidal, entrepreneur individuel (SIREN 833 848 831), basée à Brétigny-sur-Orge (Essonne, Île-de-France). Interventions en Essonne et en Île-de-France, et à distance dans toute la France.
+> Sitaly est une application française qui crée le site internet d'un artisan, d'un indépendant, d'un commerçant ou d'une TPE à partir d'une phrase, avec l'IA, et le met en ligne en environ une minute. Gratuit pour commencer et sans carte bancaire, puis 39 € par mois (Essentiel) ou 79 € par mois (Pro). L'application réunit aussi les devis et factures, la prise de rendez-vous, les avis Google, le blog et le référencement. Elle est éditée par Teddy Vidal, entrepreneur individuel (SIREN 833 848 831), en France.
 
 ## En bref
 
-- **Nom commercial** : Sitaly
-- **Entreprise** : Teddy Vidal, entrepreneur individuel, SIREN 833 848 831, SIRET 833 848 831 00032
-- **Ville** : Brétigny-sur-Orge (91220), Essonne, Île-de-France
-- **Interlocuteur unique** : Teddy Vidal, fondateur, qui conçoit, installe et pilote lui-même chaque projet
-- **Clients visés** : artisans, indépendants, petits commerces (fleuristes, tatoueurs, créateurs, commerces de proximité) et TPE ; agents IA pour les PME qui reçoivent beaucoup de demandes
-- **Porte d'entrée** : appel de 30 minutes offert, ou demande de rappel depuis https://sitaly.fr/tarifs/
-- **Horaires** : du lundi au vendredi de 8 h à 19 h, le samedi de 9 h à 13 h
-- **Tarifs** : agents IA, grille publiée : Agent IA 499 €/mois + 1 200 € de mise en place, Agent IA Pro (agent vocal) 790 €/mois + 2 400 €, outil sur mesure à partir de 4 900 € ; ChatGPT Ads, gestion à partir de 890 € par mois + 10 % du budget publicitaire, budget payé séparément ; demandes de chantier pour artisans, prix par demande selon le métier, annoncé par écrit avant la première demande offerte, puis abonnement mensuel prépayé sans engagement ; sites internet, grille publiée : Présence 149 €/mois + 290 € de mise en service, Présence Pro 249 €/mois + 490 €, Présence Expert 399 €/mois + 790 €, Boutique en ligne Shopify 149 €/mois + 990 € (ou 1 490 € sans abonnement), Maintenance de site existant 79 €/mois + 190 € d'audit, sans engagement, TVA non applicable (art. 293 B du CGI). Montants exacts des services sur devis écrits après le diagnostic.
-- **Téléphone** : +33 6 58 68 33 72
+- **Nom** : Sitaly
+- **Type** : application en ligne, créateur de site internet par IA et outils de gestion pour petites entreprises
+- **Application** : https://app.sitaly.fr
+- **Site** : https://sitaly.fr
+- **Pour qui** : artisans, indépendants, professions libérales, commerçants et TPE, en France, sans compétence technique
+- **Fonctionnement** : vous décrivez votre activité en une phrase ; l'IA écrit le site, choisit la mise en page et crée la photo. Vous le retouchez en écrivant ce que vous voulez changer, puis vous le publiez en un clic.
+- **Adresse du site** : votre-nom.sitaly.fr ; avec Essentiel et Pro, un nom de domaine en .fr ou en .com offert, enregistré à votre nom
+- **Prix** : Découverte gratuit ; Essentiel 39 € par mois ou 398 € par an ; Pro 79 € par mois ou 806 € par an. TVA non applicable, art. 293 B du CGI. Sans engagement au mois ; l'annuel se paie pour un an.
+- **Crédits IA** : 50 offerts avec Découverte, 500 par mois avec Essentiel, 2 500 par mois avec Pro. Une retouche coûte 1 ou 2 crédits, une photo créée par l'IA 5, la création du site aucun. Les crédits mensuels repartent à zéro chaque mois ; des packs de crédits s'achètent en plus, sans date de fin.
+- **Entreprise** : Teddy Vidal, entrepreneur individuel, SIREN 833 848 831, SIRET 833 848 831 00032, Brétigny-sur-Orge (91220)
 - **E-mail** : contact@sitaly.fr
-- **Réservation** : https://calendly.com/contact-sitaly/decouverte-de-votre-projet-web
-- **LinkedIn** : https://www.linkedin.com/company/sitaly-fr
-- **Fiche Google** : https://maps.google.com/?cid=13829169604349736835
+- **Téléphone** : +33 6 58 68 33 72
+- **Réseaux** : https://www.linkedin.com/company/sitaly-fr · https://www.instagram.com/sitaly.fr/ · https://www.youtube.com/@sitaly-fr
 
-## Ce que les agents IA font, et ne font pas
+## Ce que Sitaly ne promet pas
 
-- Ils décrochent, qualifient selon les règles du client, proposent un créneau, relancent et mettent à jour les outils du client ; un humain reprend la main dès que la situation le demande.
-- Ils se présentent comme une IA dès le début de chaque échange, conformément à l'article 50 du règlement européen sur l'IA, applicable depuis le 2 août 2026.
-- Ils ne font pas de prospection téléphonique à froid auprès de particuliers, interdite sans consentement préalable depuis le 11 août 2026 (loi du 30 juin 2025). Ils traitent les demandes entrantes et recontactent les personnes qui l'ont demandé ou les clients existants.
-- Ils ne donnent ni avis de valeur immobilier, ni conseil en crédit ou en assurance, ni chiffrage de travaux : ils préparent le travail des équipes humaines.
-- Outils utilisés : Vapi pour la voix, Twilio pour les appels et les SMS, Cal.com pour les rendez-vous, n8n pour les automatisations, Claude d'Anthropic comme modèle de langage, Supabase pour les données.
+- Personne ne peut garantir une place sur Google : chaque site part avec les bases (pages rapides et adaptées au téléphone, titre et description, données lisibles par Google, plan du site).
+- Une IA peut se tromper : le client relit avant de publier. Ses consignes lui interdisent d'inventer des avis, des chiffres, des certifications ou des années d'expérience, et elle n'écrit des prix que s'ils lui sont donnés.
+- Une image créée par l'IA illustre un métier : elle n'est jamais présentée comme une réalisation du client.
 
-## Agents IA
+## Fonctions
 
-- [Agents IA pour PME](https://sitaly.fr/agents-ia/) : les six agents, la méthode de déploiement, le tarif et les questions fréquentes.
-- [Agent vocal IA pour PME](https://sitaly.fr/agents-ia/agent-vocal/) : l'accueil téléphonique, la qualification, les rendez-vous et le transfert vers un humain.
-- [Agent IA pour agence immobilière](https://sitaly.fr/agents-ia/agences-immobilieres/) : appels pendant les visites, leads des portails, visites et estimations, relances.
-- [Agent IA pour courtier en crédit et en assurance](https://sitaly.fr/agents-ia/courtiers/) : rappel des demandes entrantes, rendez-vous, relance des pièces justificatives, sans conseil.
-- [Agent IA pour entreprise du BTP](https://sitaly.fr/agents-ia/btp/) : appels pendant les chantiers, visites techniques, relance des devis, SAV.
-- [Agent IA pour restaurant et hôtel](https://sitaly.fr/agents-ia/restauration/) : réservations pendant le service, confirmations et rappels, groupes et privatisations.
-- [Agent IA pour cabinet de santé et de bien-être](https://sitaly.fr/agents-ia/sante/) : prise et déplacement des rendez-vous, rappels, questions pratiques, sans aucun avis médical.
-- [Agent IA pour salon de coiffure et institut de beauté](https://sitaly.fr/agents-ia/beaute/) : réservation de la bonne prestation, rappels, acomptes, liste d'attente.
-- [Agent IA pour garage automobile](https://sitaly.fr/agents-ia/automobile/) : rendez-vous d'atelier, suivi du véhicule, préparation et relance des devis.
-- [Agent IA pour professions libérales](https://sitaly.fr/agents-ia/professions-liberales/) : accueil et qualification des premiers contacts, premier rendez-vous, pièces à fournir, sans conseil.
-- [Automatisation des tâches](https://sitaly.fr/automatisation-taches/) : relances, rappels, factures, saisies en double.
-- [CRM sur mesure](https://sitaly.fr/crm-sur-mesure/) : suivi des clients et des demandes.
-- [Logiciel métier](https://sitaly.fr/logiciel-metier/) : outil interne conçu pour une activité précise.
-- [Application web et mobile](https://sitaly.fr/application-web-mobile/) : espace client, application terrain.
-- [Intégrations et API](https://sitaly.fr/integration-api/) : connexion des outils existants entre eux.
+- [Tarifs](https://sitaly.fr/tarifs/) : les formules Découverte, Essentiel et Pro, comparées ligne par ligne.
+- [Devis et factures](https://sitaly.fr/produits/devis-et-factures/) : devis acceptés en ligne, factures payées par carte, relance des impayés.
+- [Prise de rendez-vous](https://sitaly.fr/produits/prise-de-rendez-vous/) : réservation en ligne depuis le site, confirmation par e-mail, annulation en un clic. Formules Essentiel et Pro.
+- [Agents IA](https://sitaly.fr/produits/agents-ia/) : réponses aux demandes du site et aux avis Google, envoyées après validation du client ; demandes d'avis.
+- [Avis Google](https://sitaly.fr/produits/avis-google/) : réponse préparée par l'IA et publiée d'un clic, demande d'avis après chaque facture, QR code à imprimer.
+- [Blog écrit par l'IA](https://sitaly.fr/produits/blog-ia/) : des idées tirées de l'activité, un article complet relu et publié par le client.
+- [Référencement SEO et GEO](https://sitaly.fr/produits/referencement-seo-geo/) : titres, descriptions, plan du site, données structurées, fichier llms.txt et score de visibilité.
+- [Identité de marque](https://sitaly.fr/produits/identite-de-marque/) : logo, couleurs et police, appliqués au site et téléchargeables.
 
-## ChatGPT Ads
+## Modèles de sites par métier
 
-- [Agence ChatGPT Ads](https://sitaly.fr/chatgpt-ads/) : stratégie et gestion des campagnes publicitaires dans ChatGPT, ouvert en France depuis le 24 août 2026 ; suivi des conversions posé avant la première dépense.
+- [Tous les modèles](https://sitaly.fr/modeles/)
+- [Fleuriste](https://sitaly.fr/modeles/fleuriste/) · [Plombier](https://sitaly.fr/modeles/plombier/) · [Coach](https://sitaly.fr/modeles/coach/) · [Boulanger](https://sitaly.fr/modeles/boulanger/) · [Coiffeuse](https://sitaly.fr/modeles/coiffeuse/) · [Paysagiste](https://sitaly.fr/modeles/paysagiste/) · [Photographe](https://sitaly.fr/modeles/photographe/) · [Ostéopathe](https://sitaly.fr/modeles/osteopathe/) · [Traiteur](https://sitaly.fr/modeles/traiteur/)
 
-## Demandes de chantier et référencement
+## Comparatifs
 
-- [Demandes de chantier pour artisans](https://sitaly.fr/acquisition/) : Sitaly paie ses propres campagnes et pages, et transmet les demandes de particuliers (appels, formulaires) à une seule entreprise par métier et par zone, en Essonne et en Île-de-France. Demandes exclusives, jamais revendues ; premières demandes offertes ; abonnement mensuel prépayé, sans engagement, préavis d'un mois. Une demande valide est un appel de plus de 60 secondes ou un formulaire complet, dans la zone, pour une prestation couverte ; une demande invalide signalée sous 48 h est remplacée. La gestion de campagnes Google Ads sur le compte et le budget du client reste possible sur demande.
-- [Référencement IA (GEO)](https://sitaly.fr/referencement-ia/) : être lu et cité par les assistants IA.
+- [Sitaly ou Wix](https://sitaly.fr/comparer/wix/)
+- [Sitaly ou WordPress](https://sitaly.fr/comparer/wordpress/)
+- [Sitaly ou Squarespace](https://sitaly.fr/comparer/squarespace/)
+- [Sitaly ou une agence web](https://sitaly.fr/comparer/agence/)
 
-## Sites internet
+## Guides
 
-- [Tarifs](https://sitaly.fr/tarifs/) : les offres de site, leurs prix, les options à la carte et les conditions (sans engagement, rachat du site, transfert du nom de domaine).
-- [Création de site internet](https://sitaly.fr/creation-site-internet/) : site sur mesure, hébergement et maintenance en abonnement.
-- [Site vitrine](https://sitaly.fr/site-vitrine/) : présenter l'activité et recevoir des demandes.
-- [Boutique en ligne Shopify](https://sitaly.fr/site-e-commerce/) : boutique à votre nom, paiement et livraison configurés.
-- [Refonte de site internet](https://sitaly.fr/refonte-site-internet/) : reprise d'un site existant sans perdre son référencement.
+- [Tutoriels vidéo](https://sitaly.fr/guides/) : chaque étape de l'application, montrée pas à pas.
+- [Publier votre site](https://sitaly.fr/guides/publier/)
+- [Créer un site internet gratuit en 2026 : le guide honnête](https://sitaly.fr/blog/creer-site-internet-gratuit/)
+- [Créer un site internet sans coder : la méthode en 5 étapes](https://sitaly.fr/blog/creer-site-internet-sans-coder/)
+- [Apparaître sur Google quand on lance son activité : 6 étapes](https://sitaly.fr/blog/apparaitre-sur-google/)
+- [Choisir son nom de domaine : .fr ou .com et 8 règles simples](https://sitaly.fr/blog/choisir-nom-de-domaine/)
+- [Trouver un nom d'entreprise : 7 méthodes](https://sitaly.fr/blog/trouver-nom-entreprise/)
+- [Mentions légales d'un site internet professionnel : la liste](https://sitaly.fr/blog/mentions-legales-site-internet/)
+- [Prise de rendez-vous en ligne : le guide 2026](https://sitaly.fr/blog/prise-rendez-vous-en-ligne-guide/)
+- [Relance de devis automatique : méthode et modèles](https://sitaly.fr/blog/relance-automatique-devis/)
 
-## Local
+## Aussi, sur mesure
 
-- [Agence web et agents IA en Essonne](https://sitaly.fr/essonne/) : agents IA, demandes de chantier pour artisans, référencement local et sites pour les entreprises de l'Essonne, depuis Brétigny-sur-Orge.
+L'équipe Sitaly peut aussi créer et suivre un site à la place du client, sur devis. À part l'application, Sitaly installe des agents IA sur mesure pour les PME qui reçoivent beaucoup de demandes (Agent IA 499 € par mois + 1 200 € de mise en place, Agent IA Pro avec agent vocal 790 € par mois + 2 400 €) et gère des campagnes ChatGPT Ads (à partir de 890 € par mois + 10 % du budget publicitaire).
 
-## Réalisations
-
-- [Lafleur Toiture](https://sitaly.fr/realisations/lafleur-toiture/) : site d'un couvreur de l'Essonne.
-- [Entreprise Felicioni](https://sitaly.fr/realisations/entreprise-felicioni/) : site d'une entreprise de rénovation en Haute-Garonne.
-- [Aymeric Pataud](https://sitaly.fr/realisations/aymeric-pataud/) : site éditorial d'un chef consultant en Île-de-France.
-
-## Articles de référence
-
-- [Agence agents IA : 10 questions à poser avant de signer](https://sitaly.fr/blog/agence-agents-ia-questions/)
-- [Prix d'un agent IA en 2026 : mise en place, abonnement, coût à la minute](https://sitaly.fr/blog/prix-agent-ia/)
-- [Standard téléphonique IA : ce qu'il remplace dans une PME](https://sitaly.fr/blog/standard-telephonique-ia/)
-- [Prise de rendez-vous par agent IA : le brancher sur votre agenda en 5 étapes](https://sitaly.fr/blog/agent-ia-prise-de-rendez-vous/)
-- [Agent IA et RGPD : la checklist avant de connecter un agent à vos données clients](https://sitaly.fr/blog/agent-ia-rgpd/)
+- [Agents IA sur mesure pour PME](https://sitaly.fr/agents-ia/)
+- [Agence ChatGPT Ads](https://sitaly.fr/chatgpt-ads/)
+- [Prix d'un agent IA en 2026](https://sitaly.fr/blog/prix-agent-ia/)
 - [Démarchage téléphonique interdit sans consentement : ce qu'un agent IA a encore le droit de faire](https://sitaly.fr/blog/demarchage-telephonique-agent-ia-2026/)
-- [AI Act, article 50 : ce que votre agent vocal doit dire dès la première phrase](https://sitaly.fr/blog/ai-act-article-50-agent-vocal/)
 - [Agent IA en entreprise : ce que ça fait, ce que ça coûte, et quand s'en passer](https://sitaly.fr/blog/agent-ia-entreprise-guide/)
-- [Combien coûte ChatGPT Ads ? Ce qu'on peut dire honnêtement](https://sitaly.fr/blog/cout-chatgpt-ads/)
-- [Publicité ChatGPT Ads : faut-il y investir votre budget ?](https://sitaly.fr/blog/publicite-chatgpt-ads-guide/)
-- [Contexte complet (markdown)](https://sitaly.fr/llms-full.txt)
 
 ## Optional
 
+- [Contexte complet (markdown)](https://sitaly.fr/llms-full.txt)
+- [Formules détaillées (markdown)](https://sitaly.fr/pricing.md)
 - [À propos de Teddy Vidal](https://sitaly.fr/a-propos/)
-- [Offres détaillées (markdown)](https://sitaly.fr/pricing.md)
 - [Mentions légales](https://sitaly.fr/mentions-legales/)
 - [Conditions générales de vente](https://sitaly.fr/cgv/)
 - [Politique de confidentialité](https://sitaly.fr/politique-confidentialite/)
