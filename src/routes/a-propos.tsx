@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -57,6 +58,36 @@ export const Route = createFileRoute("/a-propos")({
   }),
   component: APropos,
 });
+
+const BADGE_FABRIQUE_DU_NET =
+  "https://www.lafabriquedunet.fr/badge/software/sitaly/badge.js?color=dark";
+
+/**
+ * Badge La Fabrique du Net. Leur script s'insère juste avant sa propre balise.
+ * La balise reste dans le HTML prérendu, comme le demande leur consigne
+ * d'intégration ; une navigation interne ne l'exécute pas, d'où l'effet.
+ */
+function BadgeFabriqueDuNet() {
+  const zone = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = zone.current;
+    if (!el || el.querySelector("[data-lfdn-badge]")) return;
+    el.replaceChildren();
+    const script = document.createElement("script");
+    script.src = BADGE_FABRIQUE_DU_NET;
+    el.append(script);
+  }, []);
+  return (
+    <div
+      ref={zone}
+      style={{ minHeight: 42 }}
+      suppressHydrationWarning
+      dangerouslySetInnerHTML={{
+        __html: `<script src="${BADGE_FABRIQUE_DU_NET}" defer></script>`,
+      }}
+    />
+  );
+}
 
 function APropos() {
   return (
@@ -191,6 +222,7 @@ function APropos() {
               </Link>
               .
             </p>
+            <BadgeFabriqueDuNet />
           </div>
           <div className="mt-10">
             <a href={lienCreation()} className="bouton px-7 py-3.5">
