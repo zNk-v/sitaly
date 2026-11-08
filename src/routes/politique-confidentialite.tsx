@@ -26,7 +26,7 @@ export const Route = createFileRoute("/politique-confidentialite")({
 
 function PolitiqueConfidentialite() {
   return (
-    <LegalLayout title="Politique de confidentialité" updated="8 juillet 2026">
+    <LegalLayout title="Politique de confidentialité" updated="8 novembre 2026">
       <p>
         La présente politique de confidentialité informe les utilisateurs du site et de
         l'application <strong>Sitaly</strong> sur la manière dont leurs données personnelles sont
@@ -165,6 +165,10 @@ function PolitiqueConfidentialite() {
         <li>
           <strong>Stripe</strong> — traitement sécurisé des paiements d'abonnement ;
         </li>
+        <li>
+          <strong>TikTok</strong> : mesure de nos publicités par le pixel TikTok, après votre
+          consentement aux cookies (voir la <a href="/cookies/">politique cookies</a>) ;
+        </li>
         <li>Prestataires d'envoi d'e-mails, d'analyse d'audience et de comptabilité.</li>
       </ul>
 
@@ -235,7 +239,7 @@ function PolitiqueConfidentialite() {
 
       <h2>10. Transfert de données hors Union européenne</h2>
       <p>
-        Certains sous-traitants (par exemple Anthropic, Black Forest Labs, Google ou Stripe) peuvent traiter des
+        Certains sous-traitants (par exemple Anthropic, Black Forest Labs, Google, Stripe ou TikTok) peuvent traiter des
         données en dehors de l'Union européenne, notamment aux États-Unis. Dans ce cas, des
         garanties appropriées (clauses contractuelles types de la Commission européenne, ou adhésion
         à un cadre de protection reconnu) encadrent ces transferts pour assurer un niveau de

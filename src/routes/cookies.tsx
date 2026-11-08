@@ -26,7 +26,7 @@ export const Route = createFileRoute("/cookies")({
 
 function Cookies() {
   return (
-    <LegalLayout title="Politique de gestion des cookies" updated="17 juin 2026">
+    <LegalLayout title="Politique de gestion des cookies" updated="8 novembre 2026">
       <p>
         Cette page décrit l'utilisation des cookies et autres traceurs sur le site Sitaly,
         conformément à la directive ePrivacy, au RGPD et aux recommandations de la CNIL.
@@ -88,7 +88,7 @@ function Cookies() {
               <td>13 mois</td>
             </tr>
             <tr>
-              <td>sitaly_cookie_consent</td>
+              <td>sitaly_cookie_consent_2</td>
               <td>Sitaly</td>
               <td>
                 Mémoriser votre choix. Enregistré dans le stockage local du navigateur
@@ -101,10 +101,37 @@ function Cookies() {
       </div>
       <h3>Cookies tiers</h3>
       <p>
-        Aucun cookie publicitaire n'est utilisé sur le site. Certains contenus intégrés (aperçus de
-        sites clients, module de prise de rendez-vous Calendly) peuvent déposer leurs propres
-        cookies, soumis aux politiques de leurs éditeurs respectifs.
+        Certains contenus intégrés (aperçus de sites clients, module de prise de rendez-vous
+        Calendly) peuvent déposer leurs propres cookies, soumis aux politiques de leurs éditeurs
+        respectifs.
       </p>
+      <h3>Cookies publicitaires</h3>
+      <p>
+        Le site utilise le <strong>pixel TikTok</strong> (TikTok Technology Limited, Irlande) pour
+        mesurer l'efficacité de nos publicités sur TikTok : pages vues et clics vers la création d'un
+        site. Ce traceur n'est chargé qu'après votre consentement. Si vous refusez, ou si vous n'avez
+        pas encore répondu, aucune donnée ne part vers TikTok.
+      </p>
+      <div className="overflow-x-auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Traceur</th>
+              <th>Éditeur</th>
+              <th>Finalité</th>
+              <th>Durée</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>_ttp, ttcsid, _tt_enable_cookie</td>
+              <td>TikTok</td>
+              <td>Relier une visite à une publicité TikTok et mesurer ses résultats</td>
+              <td>13 mois maximum</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <h2>3. Durée de conservation</h2>
       <p>

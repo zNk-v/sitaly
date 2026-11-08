@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
+import { activerPixelTiktok, couperPixelTiktok } from "@/lib/pixel-tiktok";
 
-const STORAGE_KEY = "sitaly_cookie_consent";
+// « _2 » depuis le pixel TikTok (8 novembre 2026) : un accord donné avant ne couvrait pas la publicité.
+const STORAGE_KEY = "sitaly_cookie_consent_2";
 
 type Consent = "granted" | "denied";
 
@@ -39,6 +41,7 @@ export function useCookieConsent() {
       const stored = localStorage.getItem(STORAGE_KEY) as Consent | null;
       if (stored === "granted" || stored === "denied") {
         updateGtagConsent(stored);
+        if (stored === "granted") activerPixelTiktok();
       } else {
         setVisible(true);
       }
@@ -54,6 +57,8 @@ export function useCookieConsent() {
       // ignore
     }
     updateGtagConsent(value);
+    if (value === "granted") activerPixelTiktok();
+    else couperPixelTiktok();
     setVisible(false);
   };
 
@@ -76,7 +81,7 @@ export function CookieConsentBandeau() {
     >
       <div className="mx-auto flex max-w-md items-center gap-3 text-xs text-muted-foreground">
         <p className="flex-1 leading-snug">
-          Mesure d'audience (Google Analytics).{" "}
+          Audience (Google Analytics) et publicité (TikTok).{" "}
           <Link to="/politique-confidentialite/" className="underline">
             En savoir plus
           </Link>
@@ -133,7 +138,7 @@ export function CookieConsent() {
     >
       <div className="mx-auto flex h-9 max-w-3xl items-center gap-2 text-xs text-muted-foreground">
         <p className="min-w-0 flex-1 truncate">
-          Cookies d'audience.{" "}
+          Cookies d'audience et de pub.{" "}
           <Link to="/politique-confidentialite/" className="underline hover:text-primary">
             Détails
           </Link>

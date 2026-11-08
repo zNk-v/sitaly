@@ -15,6 +15,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CookieConsent } from "../components/CookieConsent";
 import { PageIntrouvable } from "../components/PageIntrouvable";
 import { battreMesure, compterVue, prolongerCampagne, suivreClicsDeContact } from "../lib/mesure";
+import { pageTiktok, suivreDepartsVersApp } from "../lib/pixel-tiktok";
 import {
   FICHE_GOOGLE_URL,
   SITALY_CODE_POSTAL,
@@ -313,10 +314,12 @@ function RootComponent() {
   // Clics sur le téléphone et le Calendly, comptés dans GA4 (src/lib/mesure.ts).
   useEffect(() => suivreClicsDeContact(), []);
   useEffect(() => prolongerCampagne(), []);
+  useEffect(() => suivreDepartsVersApp(), []);
 
   // Les visites, sans cookie (src/lib/mesure.ts) : une page vue à chaque changement d'adresse.
   const chemin = useRouterState({ select: (s) => s.location.pathname });
   useEffect(() => compterVue(chemin), [chemin]);
+  useEffect(() => pageTiktok(chemin), [chemin]);
   useEffect(() => battreMesure(), []);
 
   return (

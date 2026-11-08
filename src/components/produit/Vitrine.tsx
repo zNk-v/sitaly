@@ -1,4 +1,5 @@
 import { avecCampagne } from "@/lib/mesure";
+import { departVersAppTiktok } from "@/lib/pixel-tiktok";
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { ArrowRight, Lock, Sparkles, Star } from "lucide-react";
 import { lienCreation } from "@/components/produit/Produit";
@@ -332,6 +333,7 @@ export function BarreCollante() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          departVersAppTiktok("formulaire-vitrine");
           window.location.href = avecCampagne(lienCreation(activite.trim()));
         }}
         className="flex w-full max-w-xl items-center gap-2 rounded-full border border-black/10 bg-white/95 p-1.5 pl-5 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.35)] backdrop-blur"
