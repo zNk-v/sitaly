@@ -354,7 +354,7 @@ function RenderSection({ section }: { section: BlogSection }) {
                         key={ci}
                         className={`px-5 py-3.5 ${ci === 0 ? "font-medium text-black" : "text-black/70"}`}
                       >
-                        {cell}
+                        <TexteAvecLiens texte={cell} />
                       </td>
                     ))}
                   </tr>

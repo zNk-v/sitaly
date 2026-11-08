@@ -102,4 +102,8 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "La relance des devis fait partie des six agents que Sitaly installe et pilote pour les PME. On part de votre façon de travailler, on règle la séquence et les messages avec vous, et l'agent vous passe la main dès qu'un client répond. Le [diagnostic offert de 30 minutes](/agents-ia/#diagnostic) sert à repérer où vos devis se perdent aujourd'hui.",
   },
+  {
+    type: "p",
+    text: "Pour une petite entreprise, [Devis et factures](/produits/devis-et-factures/) fait accepter vos devis en ligne et relance vos impayés à J+1, J+8 et J+15, directement depuis l'application Sitaly.",
+  },
 ];

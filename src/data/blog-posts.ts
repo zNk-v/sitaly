@@ -72,6 +72,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     category: "Créer son site",
     readingTime: "5 min",
     publishedAt: "2026-10-30",
+    updatedAt: "2026-11-08",
     author: "Teddy Vidal",
     keyword: "créer un site internet gratuit",
     cta: "app",
@@ -87,6 +88,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     category: "Créer son site",
     readingTime: "5 min",
     publishedAt: "2026-10-30",
+    updatedAt: "2026-11-08",
     author: "Teddy Vidal",
     keyword: "créer un site internet sans coder",
     cta: "app",
@@ -139,7 +141,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
   {
     slug: "mentions-legales-site-internet",
     title: "Mentions légales d'un site professionnel : ce qui est obligatoire",
-    metaTitle: "Mentions légales d'un site internet professionnel : la liste",
+    metaTitle: "Mentions légales d'un site pro : la liste selon votre statut",
     metaDescription:
       "Ce que doit contenir la page de mentions légales d'un site professionnel selon votre statut, les sanctions prévues et les textes voisins (RGPD, cookies).",
     excerpt:
@@ -177,6 +179,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     category: "Lancer son activité",
     readingTime: "6 min",
     publishedAt: "2026-10-30",
+    updatedAt: "2026-11-08",
     author: "Teddy Vidal",
     keyword: "apparaître sur Google",
     cta: "app",
@@ -691,7 +694,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     category: "Automatisation",
     readingTime: "10 min",
     publishedAt: "2026-09-04",
-    updatedAt: "2026-09-28",
+    updatedAt: "2026-11-08",
     author: "Teddy Vidal",
     keyword: "agent IA entreprise",
     cta: "agents-ia",

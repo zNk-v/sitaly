@@ -63,7 +63,52 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Chez Sitaly, la formule Découverte met votre site en ligne gratuitement, sans carte bancaire. Les formules Essentiel et Pro ajoutent votre nom de domaine, offert et renouvelé tant que l'abonnement court, même au mois. Le détail est sur la page [Tarifs](/tarifs/).",
   },
+  { type: "h2", text: "Quel outil gratuit choisir selon votre situation" },
+  {
+    type: "table",
+    caption: "Trois façons de créer un site sans payer, selon ce que vous attendez de l'outil.",
+    headers: ["Votre situation", "Le type d'outil", "Pour comparer"],
+    rows: [
+      [
+        "Vous voulez un site en ligne aujourd'hui, sans rédiger les pages",
+        "Un créateur par IA",
+        "[Sitaly](/) et ses [modèles par métier](/modeles/)",
+      ],
+      [
+        "Vous voulez placer chaque bloc vous-même",
+        "Un éditeur à modèles",
+        "[Sitaly ou Wix](/comparer/wix/)",
+      ],
+      [
+        "Vous prévoyez de publier beaucoup d'articles et acceptez d'apprendre l'outil",
+        "Un système de gestion de contenu",
+        "[Sitaly ou WordPress](/comparer/wordpress/)",
+      ],
+    ],
+  },
+  { type: "h2", text: "Créer un site gratuit avec l'IA : ce que ça change" },
+  {
+    type: "p",
+    text: "Avec un éditeur à modèles, vous remplissez chaque page. Avec un créateur par IA, vous décrivez votre activité et vous relisez : les textes, la mise en page et une première photo arrivent en une minute environ. Vous corrigez ensuite en écrivant ce que vous voulez changer, par exemple « ajoute mes horaires » ou « une section tarifs ».",
+  },
+  {
+    type: "p",
+    text: "Gardez un réflexe : relire. Une IA peut se tromper sur un détail, et une image qu'elle crée illustre votre métier sans montrer votre travail. Remplacez-la par vos propres photos dès que vous en avez.",
+  },
+  { type: "h2", text: "Les oublis qui coûtent cher après la mise en ligne" },
+  {
+    type: "ul",
+    items: [
+      "Les mentions légales : un site professionnel doit les afficher, même gratuit. Consultez [la liste selon votre statut](/blog/mentions-legales-site-internet/).",
+      "Le nom de domaine : choisissez-le avant d'imprimer vos cartes de visite, avec [ces règles simples](/blog/choisir-nom-de-domaine/).",
+      "La fiche Google : sans elle, peu de clients de votre secteur vous trouveront. Suivez [les six étapes pour apparaître sur Google](/blog/apparaitre-sur-google/).",
+    ],
+  },
   { type: "h2", text: "Créer son site gratuit en 4 étapes" },
+  {
+    type: "p",
+    text: "La méthode vaut pour la plupart des outils. Sur [Sitaly](/), les deux premières étapes prennent environ une minute, sans carte bancaire.",
+  },
   {
     type: "ul",
     items: [
@@ -87,6 +132,14 @@ export const contenu: BlogSection[] = [
       {
         q: "Puis-je passer d'une formule gratuite à une formule payante sans tout refaire ?",
         a: "Oui, chez la plupart des outils, Sitaly compris : votre site reste le même, seules les fonctions et l'adresse changent.",
+      },
+      {
+        q: "Combien de temps faut-il pour créer un site gratuit ?",
+        a: "Avec un créateur par IA, une première version prend environ une minute, puis comptez le temps de la relire. Avec un éditeur à modèles, prévoyez plutôt un week-end.",
+      },
+      {
+        q: "Faut-il une carte bancaire pour créer un site gratuit ?",
+        a: "Pas chez Sitaly : la formule Découverte se passe de carte bancaire. Pour les autres outils, vérifiez leur page d'inscription.",
       },
       {
         q: "Un site gratuit suffit-il pour une activité professionnelle ?",

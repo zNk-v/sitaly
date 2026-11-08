@@ -39,6 +39,10 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Les comparatifs [Sitaly ou Wix](/comparer/wix/) et [Sitaly ou WordPress](/comparer/wordpress/) détaillent les différences, y compris les cas où l'autre outil est le meilleur choix.",
   },
+  {
+    type: "p",
+    text: "Si vous partez de zéro, [Sitaly](/) écrit une première version à partir de votre phrase, gratuitement. Les [modèles par métier](/modeles/) montrent le résultat pour une activité proche de la vôtre.",
+  },
   { type: "h2", text: "Étape 3 : rassembler votre contenu" },
   {
     type: "p",

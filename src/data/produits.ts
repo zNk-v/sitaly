@@ -194,7 +194,7 @@ export const PRODUITS: Produit[] = [
       "Une demande arrive sur votre site, un avis tombe sur votre fiche Google, le blog attend son article : vos agents IA préparent la réponse dans votre ton. Vous relisez, vous envoyez. Rien ne part sans vous.",
     seoTitre: "Agents IA pour répondre à vos clients et à vos avis",
     description:
-      "Les agents IA de Sitaly répondent aux demandes de votre site, relèvent vos avis Google et publient la réponse que vous validez, demandent des avis à vos clients et écrivent votre blog.",
+      "Les agents IA de Sitaly répondent aux demandes de votre site et à vos avis Google, demandent des avis à vos clients et écrivent votre blog. Vous validez.",
     etapes: [
       {
         titre: "Activez un agent",
@@ -272,9 +272,9 @@ export const PRODUITS: Produit[] = [
     titre: "Plus d'avis Google, sans y penser",
     intro:
       "Connectez votre fiche : chaque nouvel avis arrive le matin avec sa réponse prête, que vous publiez d'un clic. Après chaque chantier, votre client reçoit la demande d'avis à votre nom.",
-    seoTitre: "Avis Google pour artisans : répondre et en obtenir plus",
+    seoTitre: "Avis Google : y répondre et en obtenir plus",
     description:
-      "Répondez à chaque avis Google d'un clic et récoltez-en plus : réponse préparée par l'IA, demande d'avis envoyée après chaque facture, QR code à imprimer, avis affichés sur votre site.",
+      "Répondez à chaque avis Google d'un clic et récoltez-en plus : réponse préparée par l'IA, demande d'avis après chaque facture, QR code à imprimer.",
     etapes: [
       {
         titre: "Connectez votre fiche",

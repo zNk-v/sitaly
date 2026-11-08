@@ -152,6 +152,15 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Cette progression a un avantage sur les déploiements complets vendus clés en main : elle échoue tôt et pour pas cher quand le besoin n'était pas là. C'est exactement ce qu'on cherche quand on décide sur un marché où tout le monde promet la même chose.",
   },
+  { type: "h2", text: "Agent IA pour une TPE : commencer sans chantier" },
+  {
+    type: "p",
+    text: "Une petite entreprise n'a pas toujours besoin d'un déploiement sur mesure. Les [agents IA de Sitaly](/produits/agents-ia/) sont compris dans l'application : ils préparent la réponse aux demandes de votre site et à vos avis Google, demandent des avis à vos clients et écrivent votre blog. Vous relisez avant l'envoi, et chaque réponse rédigée coûte un crédit.",
+  },
+  {
+    type: "p",
+    text: "Une PME qui reçoit beaucoup d'appels, ou qui veut brancher l'agent sur son CRM et son agenda, relève plutôt d'une [installation sur mesure](/agents-ia/).",
+  },
   { type: "h2", text: "Et la réglementation ?" },
   {
     type: "p",

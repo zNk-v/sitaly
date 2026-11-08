@@ -75,4 +75,8 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "La prise de rendez-vous fait partie des six agents que Sitaly installe et pilote pour les PME : l'agent propose un créneau, le confirme, envoie le rappel et vous passe la main quand la demande sort du cadre. Réservez un diagnostic offert de 30 minutes pour en parler.",
   },
+  {
+    type: "p",
+    text: "Si vous voulez seulement que vos clients réservent depuis votre site, la [prise de rendez-vous de l'application Sitaly](/produits/prise-de-rendez-vous/) suffit : prestations, horaires, confirmation par e-mail et annulation en un clic, avec les formules Essentiel et Pro.",
+  },
 ];

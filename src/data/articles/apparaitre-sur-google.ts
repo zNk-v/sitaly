@@ -27,10 +27,14 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Les avis comptent pour le classement local et, surtout, pour le choix du client. Demandez-les juste après une prestation réussie, avec un lien direct vers votre fiche. Répondez à chaque avis, les bons comme les moins bons. N'achetez jamais d'avis : Google les détecte et peut suspendre la fiche.",
   },
+  {
+    type: "p",
+    text: "Sitaly vous aide sur ce point : [chaque nouvel avis arrive avec sa réponse prête](/produits/avis-google/), et votre client reçoit la demande d'avis après la facture.",
+  },
   { type: "h2", text: "5. Déclarer le site à Google" },
   {
     type: "p",
-    text: "Google Search Console, gratuite, vous permet d'envoyer le plan de votre site (le fichier sitemap.xml) et de voir sur quelles recherches vous apparaissez. Un site Sitaly prépare ce plan automatiquement : il reste à le déclarer.",
+    text: "Google Search Console, gratuite, vous permet d'envoyer le plan de votre site (le fichier sitemap.xml) et de voir sur quelles recherches vous apparaissez. [Un site Sitaly](/produits/referencement-seo-geo/) prépare ce plan automatiquement : il reste à le déclarer.",
   },
   { type: "h2", text: "6. Faire vivre le tout" },
   {
