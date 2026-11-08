@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 import { SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
+import { directiveRobots } from "@/lib/indexation";
 
 import photoArtisan600 from "@/assets/photos/secteur-artisans-600.webp";
 import photoArtisan1000 from "@/assets/photos/secteur-artisans-1000.webp";
@@ -81,7 +82,7 @@ export const Route = createFileRoute("/acquisition")({
     meta: [
       { title: TITRE },
       { name: "description", content: DESCRIPTION },
-      { name: "robots", content: "index,follow" },
+      { name: "robots", content: directiveRobots("/acquisition") },
       { property: "og:title", content: TITRE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: "https://sitaly.fr/acquisition/" },

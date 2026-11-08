@@ -7,6 +7,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SectionHeader } from "@/components/SectionHeader";
 import { getRealisation, srcSetCapture } from "@/data/realisations";
 import { BASE_URL } from "@/lib/sitemap";
+import { directiveRobots } from "@/lib/indexation";
 import { SITALY_DEPARTEMENT, SITALY_PHONE, SITALY_PHONE_DISPLAY, SITALY_VILLE } from "@/lib/config";
 
 /**
@@ -97,7 +98,7 @@ export const Route = createFileRoute("/essonne")({
     meta: [
       { title: TITRE },
       { name: "description", content: DESCRIPTION },
-      { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large" },
+      { name: "robots", content: directiveRobots("/essonne") },
       { property: "og:type", content: "website" },
       { property: "og:title", content: TITRE },
       { property: "og:description", content: DESCRIPTION },

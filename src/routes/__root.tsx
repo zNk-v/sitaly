@@ -1,5 +1,4 @@
-import { PRIX_SITE_MIN } from "@/data/offres";
-import { euros } from "@/lib/config";
+import { CREATEUR_IA } from "@/data/offres";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -59,8 +58,8 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-const TITRE_PAR_DEFAUT = "Création de site internet et fiche Google | Sitaly";
-const DESCRIPTION_PAR_DEFAUT = `Sitaly crée, héberge et entretient les sites des artisans, indépendants et petits commerces, fiche Google comprise. Dès ${euros(PRIX_SITE_MIN)} par mois, sans engagement.`;
+const TITRE_PAR_DEFAUT = "Sitaly : créez votre site internet avec l'IA";
+const DESCRIPTION_PAR_DEFAUT = `Décrivez votre activité en une phrase : l'IA de Sitaly écrit votre site et le met en ligne. Gratuit pour commencer, puis dès ${CREATEUR_IA.essentiel.mensuel} €/mois.`;
 
 /**
  * L'entité Sitaly, telle que Google et les assistants IA doivent la comprendre.
@@ -87,9 +86,10 @@ const GRAPHE_ENTITE = {
         height: 512,
       },
       image: "https://sitaly.fr/og-image.png",
-      description:
-        "Sitaly est une micro-agence en abonnement qui crée, héberge et entretient les sites internet des artisans, indépendants, commerçants et TPE : site vitrine, boutique en ligne Shopify, refonte, maintenance de site existant et gestion de la fiche Google. Agents IA et campagnes publicitaires sur devis.",
-      slogan: "Une seule personne au bout du fil, celle qui construit.",
+      // Depuis le 30 octobre 2026, sitaly.fr vend l'application. Les assistants
+      // IA reprennent cette description : elle doit dire ce que Sitaly vend.
+      description: `Sitaly est une application française qui crée le site internet d'un artisan, d'un indépendant ou d'une TPE à partir d'une phrase, avec l'IA, et le met en ligne en une minute. Gratuit pour commencer, puis dès ${CREATEUR_IA.essentiel.mensuel} € par mois. Elle réunit aussi les devis et factures, la prise de rendez-vous, les avis Google, le blog et le référencement.`,
+      slogan: "Créez votre site internet avec l'IA, en une minute.",
       founder: { "@id": "https://sitaly.fr/#teddy-vidal" },
       telephone: SITALY_PHONE,
       email: SITALY_EMAIL,
@@ -118,11 +118,7 @@ const GRAPHE_ENTITE = {
         },
       ],
       priceRange: "€€",
-      areaServed: [
-        { "@type": "AdministrativeArea", name: "Essonne" },
-        { "@type": "AdministrativeArea", name: "Île-de-France" },
-        { "@type": "Country", name: "France" },
-      ],
+      areaServed: [{ "@type": "Country", name: "France" }],
       identifier: [
         { "@type": "PropertyValue", propertyID: "SIREN", value: "833848831" },
         { "@type": "PropertyValue", propertyID: "SIRET", value: "83384883100032" },
@@ -130,18 +126,13 @@ const GRAPHE_ENTITE = {
       currenciesAccepted: "EUR",
       knowsLanguage: "fr",
       knowsAbout: [
+        "Création de site internet par IA",
+        "Générateur de site internet",
+        "Référencement SEO et GEO",
+        "Devis et factures",
+        "Prise de rendez-vous en ligne",
+        "Avis Google",
         "Agents IA",
-        "Agent vocal IA",
-        "Accueil téléphonique automatisé",
-        "Qualification de leads",
-        "Relance de devis",
-        "Automatisation de processus",
-        "ChatGPT Ads",
-        "Google Ads",
-        "Mise en relation entre particuliers et artisans",
-        "CRM sur mesure",
-        "Intégration d'API",
-        "Création de site internet",
       ],
       // sameAs relie l'entreprise à ses profils et à son registre : c'est ce
       // qui permet aux moteurs de traiter ces pages comme une seule entité.
@@ -165,14 +156,16 @@ const GRAPHE_ENTITE = {
         areaServed: "FR",
         availableLanguage: "French",
       },
-      // L'ordre de l'offre depuis le 18 octobre 2026 : le site en tête.
+      // L'offre depuis le 30 octobre 2026 : l'application et ses fonctions.
       makesOffer: [
-        ["Création de site internet", "https://sitaly.fr/creation-site-internet/"],
-        ["Site vitrine", "https://sitaly.fr/site-vitrine/"],
-        ["Boutique en ligne Shopify", "https://sitaly.fr/site-e-commerce/"],
-        ["Refonte de site internet", "https://sitaly.fr/refonte-site-internet/"],
-        ["Maintenance de site existant", "https://sitaly.fr/tarifs/#maintenance"],
-        ["Agents IA pour PME", "https://sitaly.fr/agents-ia/"],
+        ["Créateur de site internet par IA", "https://sitaly.fr/"],
+        ["Devis et factures", "https://sitaly.fr/produits/devis-et-factures/"],
+        ["Prise de rendez-vous en ligne", "https://sitaly.fr/produits/prise-de-rendez-vous/"],
+        ["Agents IA", "https://sitaly.fr/produits/agents-ia/"],
+        ["Avis Google", "https://sitaly.fr/produits/avis-google/"],
+        ["Blog écrit par l'IA", "https://sitaly.fr/produits/blog-ia/"],
+        ["Référencement SEO et GEO", "https://sitaly.fr/produits/referencement-seo-geo/"],
+        ["Identité de marque", "https://sitaly.fr/produits/identite-de-marque/"],
       ].map(([name, url]) => ({
         "@type": "Offer",
         itemOffered: { "@type": "Service", name, url },
@@ -191,7 +184,7 @@ const GRAPHE_ENTITE = {
       "@type": "WebSite",
       "@id": "https://sitaly.fr/#website",
       name: "Sitaly",
-      alternateName: ["sitaly.fr", "Sitaly Agence"],
+      alternateName: ["sitaly.fr"],
       url: "https://sitaly.fr/",
       publisher: { "@id": "https://sitaly.fr/#business" },
       inLanguage: "fr-FR",
@@ -216,7 +209,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:image:height", content: "630" },
       {
         property: "og:image:alt",
-        content: "Sitaly — création de sites internet et fiche Google, en abonnement",
+        content: "Sitaly : créez votre site internet avec l'IA",
       },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: "https://sitaly.fr/og-image.png" },

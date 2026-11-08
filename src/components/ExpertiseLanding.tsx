@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Calendar, Check, Phone } from "lucide-react";
+import { directiveRobots } from "@/lib/indexation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -399,6 +400,7 @@ export function buildExpertiseHead(e: Expertise) {
     meta: [
       { title: e.titre },
       { name: "description", content: e.description },
+      { name: "robots", content: directiveRobots(cheminExpertise(e)) },
       { property: "og:type", content: "website" },
       { property: "og:title", content: e.titre },
       { property: "og:description", content: e.description },

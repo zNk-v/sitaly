@@ -84,6 +84,26 @@ export const ARTICLES_HORS_INDEX = [
  */
 export const LANDINGS_STATIQUES_HORS_INDEX = ["/agents-ia/chatgpt"];
 
+/**
+ * Les pages de l'ancienne agence (décision du 8 novembre 2026). Depuis le
+ * 30 octobre, sitaly.fr vend l'application : ces pages dispersaient le site
+ * sur « agence web Essonne » et « agence SEO 91 », où elles se classaient vers
+ * la 80e place. /essonne/ faisait 62 % des affichages pour aucun clic. Elles
+ * restent en ligne pour les prestations sur devis, hors de l'index.
+ * /agents-ia/ n'y figure pas : ces pages reçoivent des clics.
+ */
+export const PAGES_AGENCE_HORS_INDEX = [
+  "/essonne",
+  "/acquisition",
+  "/integration-api",
+  "/crm-sur-mesure",
+  "/logiciel-metier",
+  "/application-web-mobile",
+  "/automatisation-taches",
+  "/referencement-local",
+  "/referencement-naturel",
+];
+
 function normaliser(chemin: string): string {
   const sansQuery = chemin.split(/[?#]/)[0];
   const net = sansQuery.replace(/\/+$/, "");
@@ -93,6 +113,7 @@ function normaliser(chemin: string): string {
 const HORS_INDEX = new Set<string>([
   ...PAGES_METIER_HORS_INDEX,
   ...PAGES_OUTILS_HORS_INDEX,
+  ...PAGES_AGENCE_HORS_INDEX,
   ...ARTICLES_HORS_INDEX.map((slug) => `/blog/${slug}`),
   ...LANDINGS_STATIQUES_HORS_INDEX,
 ]);
@@ -127,5 +148,6 @@ export function directiveRobots(chemin: string): string {
 export const PAGES_A_PRERENDRE_HORS_INDEX = [
   ...PAGES_METIER_HORS_INDEX,
   ...PAGES_OUTILS_HORS_INDEX,
+  ...PAGES_AGENCE_HORS_INDEX,
   ...ARTICLES_HORS_INDEX.map((slug) => `/blog/${slug}`),
 ];
