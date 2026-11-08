@@ -1,0 +1,1 @@
+import{Xt as e}from"./index-Ca2S1T1l.js";var t=e;export{t as component};
