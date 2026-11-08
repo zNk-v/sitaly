@@ -89,7 +89,8 @@ export function couperPixelTiktok(): void {
     // La mesure ne doit jamais casser la page.
   }
   actif = false;
-  for (const nom of ["_ttp", "_tt_enable_cookie", "ttcsid"]) {
+  const noms = document.cookie.split(";").map((c) => c.trim().split("=")[0]).filter((n) => /^(_ttp|_tt_enable_cookie|ttcsid)/.test(n));
+  for (const nom of noms) {
     for (const domaine of ["", "; domain=.sitaly.fr"]) document.cookie = `${nom}=; Max-Age=0; path=/${domaine}`;
   }
 }
