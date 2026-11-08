@@ -6,10 +6,8 @@ import { LINKEDIN_URL } from "@/components/LinkedinLink";
 import { lienCreation } from "@/components/produit/Produit";
 import {
   APP_URL,
-  SITALY_DEPARTEMENT,
   SITALY_PHONE,
   SITALY_PHONE_DISPLAY,
-  SITALY_VILLE,
 } from "@/lib/config";
 
 /**
@@ -193,7 +191,7 @@ export function SiteFooter() {
 
         <div className="mt-6 flex flex-col items-center justify-between gap-3 text-xs text-black/50 sm:flex-row">
           <div>
-            © {ANNEE_DU_BUILD} Sitaly · Entreprise française, {SITALY_VILLE} ({SITALY_DEPARTEMENT})
+            © {ANNEE_DU_BUILD} Sitaly · Entreprise française, Paris
           </div>
           <div className="flex flex-wrap justify-center gap-x-5 gap-y-1">
             <Link to="/mentions-legales/" className="py-2 transition hover:text-black">
