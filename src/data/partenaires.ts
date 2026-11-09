@@ -78,8 +78,9 @@ export const PARTENAIRES: OffrePartenaire[] = [
     categorie: "Comptabilité",
     description:
       "Comptabilité et déclarations fiscales des indépendants, à partir de leurs relevés bancaires.",
-    avantage: "",
-    lien: "",
+    // Programme Affilae validé par Indy le 9 novembre 2026 (partenariat 2190).
+    avantage: "1er mois offert, sans engagement",
+    lien: "https://www.indy.fr/?ae=2190",
     logo: "/vitrine/partenaires/indy.png",
   },
   {
