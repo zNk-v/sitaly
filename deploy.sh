@@ -16,6 +16,10 @@ cd "$SRC"
 npm run build
 
 echo "==> 2/5 Copie du build vers le repo de mise en ligne"
+# Le centre de pilotage publie aussi sur main (workflow publier-vitrine.yml) :
+# sans cette mise à niveau, la copie locale prend du retard et GitHub refuse le
+# push, comme le 9 novembre 2026. --ff-only échoue si la copie locale a divergé.
+git -C "$PUB" pull -q --ff-only origin main
 # --delete nettoie les pages supprimées.
 # --exclude protège ce qui N'EST PAS dans le build : CNAME, .nojekyll, .git, landing pub/, vidéos des réseaux medias/ (4/11/2026)
 # --filter 'P /assets/**' garde les anciens fichiers JS et CSS : GitHub Pages
