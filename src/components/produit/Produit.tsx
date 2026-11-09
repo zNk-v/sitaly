@@ -392,6 +392,10 @@ const FORMULES: Formule[] = [
         texte: "Un .fr ou un .com enregistré à votre nom, branché sur votre site et renouvelé tant que votre abonnement court.",
       },
       {
+        titre: "Sans mention Sitaly",
+        texte: "« Site créé avec Sitaly » disparaît du pied de votre site.",
+      },
+      {
         titre: "Prise de rendez-vous en ligne",
         texte: "Vos clients réservent un créneau depuis votre site.",
       },
@@ -607,6 +611,11 @@ const GROUPES_COMPARES: { titre: string; lignes: LigneComparee[] }[] = [
       {
         libelle: "Votre nom de domaine, offert",
         aide: "Enregistré à votre nom, renouvelé tant que l'abonnement court.",
+        valeurs: [false, true, true],
+      },
+      {
+        libelle: "Sans mention Sitaly",
+        aide: "« Site créé avec Sitaly » s'affiche au pied des sites de la formule Découverte.",
         valeurs: [false, true, true],
       },
       { libelle: "Score de visibilité SEO et GEO, fichier llms.txt", valeurs: [true, true, true] },

@@ -9,6 +9,7 @@ TVA non applicable, art. 293 B du CGI. Sans engagement au mois ; l'annuel se pai
 - En ligne sur votre-nom.sitaly.fr, avec HTTPS
 - 50 crédits IA offerts
 - Devis illimités, 3 factures par mois, payables par carte ou virement
+- Le pied du site porte la mention « Site créé avec Sitaly »
 
 ## Essentiel : 39 € par mois ou 398 € par an
 Tout Découverte, plus :
@@ -16,6 +17,7 @@ Tout Découverte, plus :
 - Factures illimitées, impayés relancés à J+1, J+8 et J+15
 - Assistance par e-mail, en français
 - Nom de domaine en .fr ou en .com offert, enregistré à votre nom, renouvelé tant que l'abonnement court
+- Sans la mention « Site créé avec Sitaly » au pied du site
 - Prise de rendez-vous en ligne
 - Avis Google : réponse prête à chaque nouvel avis, publiée d'un clic ; demande d'avis à vos clients
 
