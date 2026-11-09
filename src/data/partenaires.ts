@@ -19,13 +19,14 @@
  */
 
 /**
- * L'interrupteur de la rubrique. Décision de Teddy du 9 novembre 2026 : rien ne
- * se publie avant le premier accord d'un partenaire, parce qu'un logo affiché
- * sous « Partenaires » annonce un accord. À `false`, aucun lien ne mène à la
+ * L'interrupteur de la rubrique. Ouvert le 9 novembre 2026 au soir, à la
+ * demande de Teddy, avant tout accord : les cinq marques s'affichent grisées
+ * avec « Bientôt ». Si une marque demande le retrait de son logo, repasser à
+ * `false` ferme tout d'un coup. À `false`, aucun lien ne mène à la
  * page et elle n'affiche ni marque ni logo, même si le projet est déployé pour
  * autre chose. Passer à `true` ici et dans ~/sitaly-saas/src/lib/partenaires.ts.
  */
-export const PARTENAIRES_EN_LIGNE = false;
+export const PARTENAIRES_EN_LIGNE = true;
 
 export interface OffrePartenaire {
   id: string;
