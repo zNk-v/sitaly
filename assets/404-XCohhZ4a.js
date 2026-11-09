@@ -1,0 +1,1 @@
+import{Wt as e}from"./index-DGEPeJsv.js";var t=e;export{t as component};
