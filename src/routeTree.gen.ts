@@ -31,6 +31,7 @@ import { Route as ReferencementLocalRouteImport } from './routes/referencement-l
 import { Route as ReferencementIaRouteImport } from './routes/referencement-ia'
 import { Route as PubliciteReseauxSociauxRouteImport } from './routes/publicite-reseaux-sociaux'
 import { Route as PolitiqueConfidentialiteRouteImport } from './routes/politique-confidentialite'
+import { Route as PartenairesRouteImport } from './routes/partenaires'
 import { Route as ParrainageRouteImport } from './routes/parrainage'
 import { Route as MonProjetRouteImport } from './routes/mon-projet'
 import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
@@ -191,6 +192,11 @@ const PolitiqueConfidentialiteRoute =
     path: '/politique-confidentialite',
     getParentRoute: () => rootRouteImport,
   } as any)
+const PartenairesRoute = PartenairesRouteImport.update({
+  id: '/partenaires',
+  path: '/partenaires',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ParrainageRoute = ParrainageRouteImport.update({
   id: '/parrainage',
   path: '/parrainage',
@@ -454,6 +460,7 @@ export interface FileRoutesByFullPath {
   '/mentions-legales': typeof MentionsLegalesRoute
   '/mon-projet': typeof MonProjetRoute
   '/parrainage': typeof ParrainageRoute
+  '/partenaires': typeof PartenairesRoute
   '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
   '/publicite-reseaux-sociaux': typeof PubliciteReseauxSociauxRoute
   '/referencement-ia': typeof ReferencementIaRoute
@@ -524,6 +531,7 @@ export interface FileRoutesByTo {
   '/mentions-legales': typeof MentionsLegalesRoute
   '/mon-projet': typeof MonProjetRoute
   '/parrainage': typeof ParrainageRoute
+  '/partenaires': typeof PartenairesRoute
   '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
   '/publicite-reseaux-sociaux': typeof PubliciteReseauxSociauxRoute
   '/referencement-ia': typeof ReferencementIaRoute
@@ -596,6 +604,7 @@ export interface FileRoutesById {
   '/mentions-legales': typeof MentionsLegalesRoute
   '/mon-projet': typeof MonProjetRoute
   '/parrainage': typeof ParrainageRoute
+  '/partenaires': typeof PartenairesRoute
   '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
   '/publicite-reseaux-sociaux': typeof PubliciteReseauxSociauxRoute
   '/referencement-ia': typeof ReferencementIaRoute
@@ -669,6 +678,7 @@ export interface FileRouteTypes {
     | '/mentions-legales'
     | '/mon-projet'
     | '/parrainage'
+    | '/partenaires'
     | '/politique-confidentialite'
     | '/publicite-reseaux-sociaux'
     | '/referencement-ia'
@@ -739,6 +749,7 @@ export interface FileRouteTypes {
     | '/mentions-legales'
     | '/mon-projet'
     | '/parrainage'
+    | '/partenaires'
     | '/politique-confidentialite'
     | '/publicite-reseaux-sociaux'
     | '/referencement-ia'
@@ -810,6 +821,7 @@ export interface FileRouteTypes {
     | '/mentions-legales'
     | '/mon-projet'
     | '/parrainage'
+    | '/partenaires'
     | '/politique-confidentialite'
     | '/publicite-reseaux-sociaux'
     | '/referencement-ia'
@@ -882,6 +894,7 @@ export interface RootRouteChildren {
   MentionsLegalesRoute: typeof MentionsLegalesRoute
   MonProjetRoute: typeof MonProjetRoute
   ParrainageRoute: typeof ParrainageRoute
+  PartenairesRoute: typeof PartenairesRoute
   PolitiqueConfidentialiteRoute: typeof PolitiqueConfidentialiteRoute
   PubliciteReseauxSociauxRoute: typeof PubliciteReseauxSociauxRoute
   ReferencementIaRoute: typeof ReferencementIaRoute
@@ -1084,6 +1097,13 @@ declare module '@tanstack/react-router' {
       path: '/politique-confidentialite'
       fullPath: '/politique-confidentialite'
       preLoaderRoute: typeof PolitiqueConfidentialiteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partenaires': {
+      id: '/partenaires'
+      path: '/partenaires'
+      fullPath: '/partenaires'
+      preLoaderRoute: typeof PartenairesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/parrainage': {
@@ -1452,6 +1472,7 @@ const rootRouteChildren: RootRouteChildren = {
   MentionsLegalesRoute: MentionsLegalesRoute,
   MonProjetRoute: MonProjetRoute,
   ParrainageRoute: ParrainageRoute,
+  PartenairesRoute: PartenairesRoute,
   PolitiqueConfidentialiteRoute: PolitiqueConfidentialiteRoute,
   PubliciteReseauxSociauxRoute: PubliciteReseauxSociauxRoute,
   ReferencementIaRoute: ReferencementIaRoute,

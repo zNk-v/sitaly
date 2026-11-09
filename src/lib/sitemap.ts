@@ -6,6 +6,7 @@ import { EXPERTISES } from "@/data/expertises";
 import { SECTEURS } from "@/data/secteurs";
 import { METIERS } from "@/lib/metiers";
 import { MODELES } from "@/data/modeles";
+import { PARTENAIRES_PUBLIES } from "@/data/partenaires";
 import { COMPARATIFS } from "@/data/comparatifs";
 import { PRODUITS } from "@/data/produits";
 import { GUIDES } from "@/data/guides";
@@ -161,6 +162,17 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
   { path: "/a-propos", changefreq: "yearly", priority: "0.6", source: [route("a-propos.tsx")] },
   // Le parrainage (5 novembre 2026) : les règles vivent dans l'app (src/lib/parrainage.ts).
   { path: "/parrainage", changefreq: "monthly", priority: "0.5", source: [route("parrainage.tsx")] },
+  // Les offres partenaires (9 novembre 2026) : au sitemap dès qu'une offre a son lien.
+  ...(PARTENAIRES_PUBLIES
+    ? [
+        {
+          path: "/partenaires",
+          changefreq: "monthly" as const,
+          priority: "0.5",
+          source: [route("partenaires.tsx"), "src/data/partenaires.ts"],
+        },
+      ]
+    : []),
   // La grille des prix (18 octobre 2026). Ses montants vivent dans src/data/offres.ts.
   {
     path: "/tarifs",

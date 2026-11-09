@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { PARTENAIRES_EN_LIGNE } from "@/data/partenaires";
 import { ANNEE_DU_BUILD } from "@/lib/date-du-build";
 import { Instagram, Linkedin, Phone, Youtube } from "lucide-react";
 import { SitalyLogo } from "@/components/SitalyLogo";
@@ -76,6 +77,8 @@ const COLONNES: { titre: string; entrees: Entree[] }[] = [
       { label: "Réalisations", to: "/realisations/" },
       { label: "Nous contacter", to: "/mon-projet/" },
       { label: "Parrainage", to: "/parrainage/" },
+      // Le lien n'apparaît qu'une fois la rubrique ouverte (PARTENAIRES_EN_LIGNE, src/data/partenaires.ts).
+      ...(PARTENAIRES_EN_LIGNE ? [{ label: "Offres partenaires", to: "/partenaires/" }] : []),
     ],
   },
 ];
