@@ -139,6 +139,19 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
     priority: "0.8",
     source: [route("outils.generateur-nom-entreprise.tsx")],
   },
+  // Les générateurs de mentions légales et de devis (9 novembre 2026).
+  {
+    path: "/outils/generateur-mentions-legales",
+    changefreq: "monthly",
+    priority: "0.8",
+    source: [route("outils.generateur-mentions-legales.tsx")],
+  },
+  {
+    path: "/outils/generateur-devis-gratuit",
+    changefreq: "monthly",
+    priority: "0.8",
+    source: [route("outils.generateur-devis-gratuit.tsx")],
+  },
   // Les modèles de sites par métier (31 octobre 2026).
   {
     path: "/modeles",
@@ -161,7 +174,12 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
   })),
   { path: "/a-propos", changefreq: "yearly", priority: "0.6", source: [route("a-propos.tsx")] },
   // Le parrainage (5 novembre 2026) : les règles vivent dans l'app (src/lib/parrainage.ts).
-  { path: "/parrainage", changefreq: "monthly", priority: "0.5", source: [route("parrainage.tsx")] },
+  {
+    path: "/parrainage",
+    changefreq: "monthly",
+    priority: "0.5",
+    source: [route("parrainage.tsx")],
+  },
   // Les offres partenaires (9 novembre 2026) : au sitemap dès qu'une offre a son lien.
   ...(PARTENAIRES_PUBLIES
     ? [
@@ -207,10 +225,20 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
         },
       ]
     : []),
-  { path: "/outils", changefreq: "monthly", priority: "0.5" },
-  { path: "/outils/audit-fiche-google", changefreq: "monthly", priority: "0.5" },
+  { path: "/outils", changefreq: "monthly", priority: "0.7", source: [route("outils.index.tsx")] },
+  {
+    path: "/outils/audit-fiche-google",
+    changefreq: "monthly",
+    priority: "0.6",
+    source: [route("outils.audit-fiche-google.tsx")],
+  },
   { path: "/outils/budget-google-ads-artisan", changefreq: "monthly", priority: "0.5" },
-  { path: "/outils/verifier-nom-de-domaine", changefreq: "monthly", priority: "0.5" },
+  {
+    path: "/outils/verifier-nom-de-domaine",
+    changefreq: "monthly",
+    priority: "0.7",
+    source: [route("outils.verifier-nom-de-domaine.tsx")],
+  },
   { path: "/cgv", changefreq: "yearly", priority: "0.3", source: [route("cgv.tsx")] },
   {
     path: "/mentions-legales",

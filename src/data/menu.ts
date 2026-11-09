@@ -1,6 +1,7 @@
 import {
   Bot,
   CalendarCheck,
+  FileText,
   Globe,
   ImagePlus,
   Info,
@@ -13,6 +14,7 @@ import {
   PenTool,
   PlayCircle,
   ReceiptText,
+  Scale,
   SearchCheck,
   Sparkles,
   Star,
@@ -202,6 +204,18 @@ const OUTILS: MenuDeroulant = {
           desc: "Votre adresse en .fr ou .com est-elle libre ?",
           to: "/outils/verifier-nom-de-domaine/",
           icone: Wand2,
+        },
+        {
+          label: "Générateur de devis",
+          desc: "Votre devis en PDF, mentions comprises.",
+          to: "/outils/generateur-devis-gratuit/",
+          icone: FileText,
+        },
+        {
+          label: "Générateur de mentions légales",
+          desc: "Le texte à copier sur votre site.",
+          to: "/outils/generateur-mentions-legales/",
+          icone: Scale,
         },
         {
           label: "Générateur de logo",

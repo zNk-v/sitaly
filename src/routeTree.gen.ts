@@ -63,6 +63,8 @@ import { Route as RealisationsSlugRouteImport } from './routes/realisations.$slu
 import { Route as ProduitsIdRouteImport } from './routes/produits.$id'
 import { Route as OutilsVerifierNomDeDomaineRouteImport } from './routes/outils.verifier-nom-de-domaine'
 import { Route as OutilsGenerateurNomEntrepriseRouteImport } from './routes/outils.generateur-nom-entreprise'
+import { Route as OutilsGenerateurMentionsLegalesRouteImport } from './routes/outils.generateur-mentions-legales'
+import { Route as OutilsGenerateurDevisGratuitRouteImport } from './routes/outils.generateur-devis-gratuit'
 import { Route as OutilsBudgetGoogleAdsArtisanRouteImport } from './routes/outils.budget-google-ads-artisan'
 import { Route as OutilsAuditFicheGoogleRouteImport } from './routes/outils.audit-fiche-google'
 import { Route as OffresIdRouteImport } from './routes/offres.$id'
@@ -354,6 +356,18 @@ const OutilsGenerateurNomEntrepriseRoute =
     path: '/outils/generateur-nom-entreprise',
     getParentRoute: () => rootRouteImport,
   } as any)
+const OutilsGenerateurMentionsLegalesRoute =
+  OutilsGenerateurMentionsLegalesRouteImport.update({
+    id: '/outils/generateur-mentions-legales',
+    path: '/outils/generateur-mentions-legales',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const OutilsGenerateurDevisGratuitRoute =
+  OutilsGenerateurDevisGratuitRouteImport.update({
+    id: '/outils/generateur-devis-gratuit',
+    path: '/outils/generateur-devis-gratuit',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const OutilsBudgetGoogleAdsArtisanRoute =
   OutilsBudgetGoogleAdsArtisanRouteImport.update({
     id: '/outils/budget-google-ads-artisan',
@@ -499,6 +513,8 @@ export interface FileRoutesByFullPath {
   '/offres/$id': typeof OffresIdRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
   '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
+  '/outils/generateur-devis-gratuit': typeof OutilsGenerateurDevisGratuitRoute
+  '/outils/generateur-mentions-legales': typeof OutilsGenerateurMentionsLegalesRoute
   '/outils/generateur-nom-entreprise': typeof OutilsGenerateurNomEntrepriseRoute
   '/outils/verifier-nom-de-domaine': typeof OutilsVerifierNomDeDomaineRoute
   '/produits/$id': typeof ProduitsIdRoute
@@ -570,6 +586,8 @@ export interface FileRoutesByTo {
   '/offres/$id': typeof OffresIdRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
   '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
+  '/outils/generateur-devis-gratuit': typeof OutilsGenerateurDevisGratuitRoute
+  '/outils/generateur-mentions-legales': typeof OutilsGenerateurMentionsLegalesRoute
   '/outils/generateur-nom-entreprise': typeof OutilsGenerateurNomEntrepriseRoute
   '/outils/verifier-nom-de-domaine': typeof OutilsVerifierNomDeDomaineRoute
   '/produits/$id': typeof ProduitsIdRoute
@@ -643,6 +661,8 @@ export interface FileRoutesById {
   '/offres/$id': typeof OffresIdRoute
   '/outils/audit-fiche-google': typeof OutilsAuditFicheGoogleRoute
   '/outils/budget-google-ads-artisan': typeof OutilsBudgetGoogleAdsArtisanRoute
+  '/outils/generateur-devis-gratuit': typeof OutilsGenerateurDevisGratuitRoute
+  '/outils/generateur-mentions-legales': typeof OutilsGenerateurMentionsLegalesRoute
   '/outils/generateur-nom-entreprise': typeof OutilsGenerateurNomEntrepriseRoute
   '/outils/verifier-nom-de-domaine': typeof OutilsVerifierNomDeDomaineRoute
   '/produits/$id': typeof ProduitsIdRoute
@@ -717,6 +737,8 @@ export interface FileRouteTypes {
     | '/offres/$id'
     | '/outils/audit-fiche-google'
     | '/outils/budget-google-ads-artisan'
+    | '/outils/generateur-devis-gratuit'
+    | '/outils/generateur-mentions-legales'
     | '/outils/generateur-nom-entreprise'
     | '/outils/verifier-nom-de-domaine'
     | '/produits/$id'
@@ -788,6 +810,8 @@ export interface FileRouteTypes {
     | '/offres/$id'
     | '/outils/audit-fiche-google'
     | '/outils/budget-google-ads-artisan'
+    | '/outils/generateur-devis-gratuit'
+    | '/outils/generateur-mentions-legales'
     | '/outils/generateur-nom-entreprise'
     | '/outils/verifier-nom-de-domaine'
     | '/produits/$id'
@@ -860,6 +884,8 @@ export interface FileRouteTypes {
     | '/offres/$id'
     | '/outils/audit-fiche-google'
     | '/outils/budget-google-ads-artisan'
+    | '/outils/generateur-devis-gratuit'
+    | '/outils/generateur-mentions-legales'
     | '/outils/generateur-nom-entreprise'
     | '/outils/verifier-nom-de-domaine'
     | '/produits/$id'
@@ -932,6 +958,8 @@ export interface RootRouteChildren {
   OffresIdRoute: typeof OffresIdRoute
   OutilsAuditFicheGoogleRoute: typeof OutilsAuditFicheGoogleRoute
   OutilsBudgetGoogleAdsArtisanRoute: typeof OutilsBudgetGoogleAdsArtisanRoute
+  OutilsGenerateurDevisGratuitRoute: typeof OutilsGenerateurDevisGratuitRoute
+  OutilsGenerateurMentionsLegalesRoute: typeof OutilsGenerateurMentionsLegalesRoute
   OutilsGenerateurNomEntrepriseRoute: typeof OutilsGenerateurNomEntrepriseRoute
   OutilsVerifierNomDeDomaineRoute: typeof OutilsVerifierNomDeDomaineRoute
   ProduitsIdRoute: typeof ProduitsIdRoute
@@ -1323,6 +1351,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OutilsGenerateurNomEntrepriseRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/outils/generateur-mentions-legales': {
+      id: '/outils/generateur-mentions-legales'
+      path: '/outils/generateur-mentions-legales'
+      fullPath: '/outils/generateur-mentions-legales'
+      preLoaderRoute: typeof OutilsGenerateurMentionsLegalesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/outils/generateur-devis-gratuit': {
+      id: '/outils/generateur-devis-gratuit'
+      path: '/outils/generateur-devis-gratuit'
+      fullPath: '/outils/generateur-devis-gratuit'
+      preLoaderRoute: typeof OutilsGenerateurDevisGratuitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/outils/budget-google-ads-artisan': {
       id: '/outils/budget-google-ads-artisan'
       path: '/outils/budget-google-ads-artisan'
@@ -1510,6 +1552,8 @@ const rootRouteChildren: RootRouteChildren = {
   OffresIdRoute: OffresIdRoute,
   OutilsAuditFicheGoogleRoute: OutilsAuditFicheGoogleRoute,
   OutilsBudgetGoogleAdsArtisanRoute: OutilsBudgetGoogleAdsArtisanRoute,
+  OutilsGenerateurDevisGratuitRoute: OutilsGenerateurDevisGratuitRoute,
+  OutilsGenerateurMentionsLegalesRoute: OutilsGenerateurMentionsLegalesRoute,
   OutilsGenerateurNomEntrepriseRoute: OutilsGenerateurNomEntrepriseRoute,
   OutilsVerifierNomDeDomaineRoute: OutilsVerifierNomDeDomaineRoute,
   ProduitsIdRoute: ProduitsIdRoute,

@@ -34,13 +34,13 @@ export const PAGES_METIER_HORS_INDEX = [
   "/site-internet-carreleur",
 ];
 
-/** Outils gratuits pensés pour les artisans. */
-export const PAGES_OUTILS_HORS_INDEX = [
-  "/outils",
-  "/outils/audit-fiche-google",
-  "/outils/budget-google-ads-artisan",
-  "/outils/verifier-nom-de-domaine",
-];
+/**
+ * Outils gratuits pensés pour l'ancienne agence. Le 9 novembre 2026, la page
+ * /outils, le vérificateur de nom de domaine et l'audit de fiche Google sont
+ * revenus dans l'index : ils servent ceux qui lancent leur activité, la cible
+ * de l'application. Le calculateur Google Ads reste un outil d'agence.
+ */
+export const PAGES_OUTILS_HORS_INDEX = ["/outils/budget-google-ads-artisan"];
 
 /** Articles écrits pour les artisans, les professions libérales, ou hors offre. */
 export const ARTICLES_HORS_INDEX = [

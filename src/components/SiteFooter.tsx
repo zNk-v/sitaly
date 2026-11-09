@@ -5,11 +5,7 @@ import { Instagram, Linkedin, Phone, Youtube } from "lucide-react";
 import { SitalyLogo } from "@/components/SitalyLogo";
 import { LINKEDIN_URL } from "@/components/LinkedinLink";
 import { lienCreation } from "@/components/produit/Produit";
-import {
-  APP_URL,
-  SITALY_PHONE,
-  SITALY_PHONE_DISPLAY,
-} from "@/lib/config";
+import { APP_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 /**
  * Pied de page unique du site (refonte du 30 octobre 2026, sur le modèle de
@@ -58,6 +54,8 @@ const COLONNES: { titre: string; entrees: Entree[] }[] = [
     entrees: [
       { label: "Vérifier un nom de domaine", to: "/outils/verifier-nom-de-domaine/" },
       { label: "Générateur de nom", to: "/outils/generateur-nom-entreprise/" },
+      { label: "Générateur de devis", to: "/outils/generateur-devis-gratuit/" },
+      { label: "Générateur de mentions légales", to: "/outils/generateur-mentions-legales/" },
       { label: "Générateur de logo", to: "/produits/identite-de-marque/" },
     ],
   },
@@ -148,7 +146,11 @@ export function SiteFooter() {
                   <Linkedin className="h-[18px] w-[18px]" aria-hidden="true" />
                 </a>
                 {[
-                  { nom: "Instagram", Icone: Instagram, url: "https://www.instagram.com/sitaly.fr/" },
+                  {
+                    nom: "Instagram",
+                    Icone: Instagram,
+                    url: "https://www.instagram.com/sitaly.fr/",
+                  },
                   { nom: "YouTube", Icone: Youtube, url: "https://www.youtube.com/@sitaly-fr" },
                 ].map(({ nom, Icone, url }) => (
                   <a
@@ -193,9 +195,7 @@ export function SiteFooter() {
         </nav>
 
         <div className="mt-6 flex flex-col items-center justify-between gap-3 text-xs text-black/50 sm:flex-row">
-          <div>
-            © {ANNEE_DU_BUILD} Sitaly · Entreprise française, Paris
-          </div>
+          <div>© {ANNEE_DU_BUILD} Sitaly · Entreprise française, Paris</div>
           <div className="flex flex-wrap justify-center gap-x-5 gap-y-1">
             <Link to="/mentions-legales/" className="py-2 transition hover:text-black">
               Mentions légales

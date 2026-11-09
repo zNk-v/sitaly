@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { directiveRobots } from "@/lib/indexation";
 import { SiteChrome } from "@/components/SiteChrome";
 import { VerificateurDomaine } from "@/components/VerificateurDomaine";
+import { lienCreation } from "@/components/produit/Produit";
 
 const URL = "https://sitaly.fr/outils/verifier-nom-de-domaine/";
 const TITLE = "Vérifier si un nom de domaine est libre en .fr et .com (gratuit) | Sitaly";
@@ -36,8 +37,7 @@ export const Route = createFileRoute("/outils/verifier-nom-de-domaine")({
   head: () => ({
     meta: [
       { title: TITLE },
-      // Outil pensé pour les artisans, comme les autres outils : hors index
-      // (src/lib/indexation.ts), envoyé par lien et repris dans le questionnaire.
+      // Revenu dans l'index le 9 novembre 2026 (src/lib/indexation.ts).
       { name: "robots", content: directiveRobots(new globalThis.URL(URL).pathname) },
       { name: "description", content: DESCRIPTION },
       { property: "og:title", content: TITLE },
@@ -138,19 +138,15 @@ function VerifierNomDeDomaine() {
                 vaut au moment de la recherche, pas au moment de votre commande.
               </p>
               <p>
-                Avec un site Sitaly, le nom de domaine est compris dans l'abonnement : nous le
-                réservons pour vous dès la mise en service, et il vous est transféré gratuitement si
-                vous arrêtez l'abonnement.
+                Avec les formules Essentiel et Pro de Sitaly, un nom de domaine en .fr ou en .com
+                est offert et enregistré à votre nom. Vous créez d'abord votre site, gratuitement,
+                puis vous choisissez votre adresse.
               </p>
             </div>
-            <Link
-              to="/mon-projet/"
-              search={{ besoin: "site" }}
-              className="bouton mt-8 px-6 py-3 text-sm"
-            >
-              Trouver mon offre
+            <a href={lienCreation()} className="bouton mt-8 px-6 py-3 text-sm">
+              Créer mon site
               <ArrowRight className="h-4 w-4" />
-            </Link>
+            </a>
           </div>
         </section>
       </SiteChrome>

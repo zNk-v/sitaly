@@ -61,6 +61,10 @@ export const contenu: BlogSection[] = [
     text: "Une page de mentions légales prend dix minutes à remplir. Elle rassure vos clients et vous met en règle.",
   },
   {
+    type: "p",
+    text: "Pour gagner du temps, le [générateur de mentions légales](/outils/generateur-mentions-legales/) de Sitaly écrit le texte à partir d'un formulaire, gratuitement et sans inscription. Vous le copiez ensuite sur votre site.",
+  },
+  {
     type: "faq",
     items: [
       {
