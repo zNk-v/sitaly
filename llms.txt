@@ -40,6 +40,15 @@
 - [Tous les modèles](https://sitaly.fr/modeles/)
 - [Fleuriste](https://sitaly.fr/modeles/fleuriste/) · [Plombier](https://sitaly.fr/modeles/plombier/) · [Coach](https://sitaly.fr/modeles/coach/) · [Boulanger](https://sitaly.fr/modeles/boulanger/) · [Coiffeuse](https://sitaly.fr/modeles/coiffeuse/) · [Paysagiste](https://sitaly.fr/modeles/paysagiste/) · [Photographe](https://sitaly.fr/modeles/photographe/) · [Ostéopathe](https://sitaly.fr/modeles/osteopathe/) · [Traiteur](https://sitaly.fr/modeles/traiteur/) · [Électricien](https://sitaly.fr/modeles/electricien/) · [Peintre en bâtiment](https://sitaly.fr/modeles/peintre/) · [Menuisier](https://sitaly.fr/modeles/menuisier/) · [Couvreur](https://sitaly.fr/modeles/couvreur/) · [Maçon](https://sitaly.fr/modeles/macon/) · [Esthéticienne](https://sitaly.fr/modeles/estheticienne/) · [Restaurant](https://sitaly.fr/modeles/restaurant/) · [Chauffeur VTC](https://sitaly.fr/modeles/vtc/) · [Artisan](https://sitaly.fr/modeles/artisan/) · [Auto-entrepreneur](https://sitaly.fr/modeles/auto-entrepreneur/)
 
+## Outils gratuits, sans inscription
+
+- [Tous les outils](https://sitaly.fr/outils/)
+- [Générateur de nom d'entreprise](https://sitaly.fr/outils/generateur-nom-entreprise/) : douze noms proposés par l'IA, avec la disponibilité du .fr.
+- [Vérificateur de nom de domaine](https://sitaly.fr/outils/verifier-nom-de-domaine/) : le .fr et le .com sont-ils libres, d'après les registres officiels.
+- [Générateur de devis gratuit](https://sitaly.fr/outils/generateur-devis-gratuit/) : un devis mis en page avec ses mentions obligatoires, à imprimer ou à enregistrer en PDF.
+- [Générateur de mentions légales](https://sitaly.fr/outils/generateur-mentions-legales/) : le texte à copier sur son site, pour une entreprise individuelle ou une société.
+- [Audit de fiche Google](https://sitaly.fr/outils/audit-fiche-google/) : vingt questions, un score sur 100 et les corrections classées.
+
 ## Comparatifs
 
 - [Sitaly ou Wix](https://sitaly.fr/comparer/wix/)

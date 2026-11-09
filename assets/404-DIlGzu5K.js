@@ -1,0 +1,1 @@
+import{Wt as e}from"./index-Wt49dfP5.js";var t=e;export{t as component};
