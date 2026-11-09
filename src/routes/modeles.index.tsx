@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { SiteChrome } from "@/components/SiteChrome";
 import { BoiteApp, Confiance, TEXTE_GRIS, lienCreation } from "@/components/produit/Produit";
-import { METIERS, MiniSite, photo } from "@/components/produit/Vitrine";
+import { MiniSite, photo } from "@/components/produit/Vitrine";
+import { METIERS_MODELES } from "@/lib/modeles-metiers";
 import { MODELES } from "@/data/modeles";
 import { BASE_URL } from "@/lib/sitemap";
 
@@ -14,7 +15,7 @@ import { BASE_URL } from "@/lib/sitemap";
 const URL = `${BASE_URL}/modeles/`;
 const TITRE = "Modèles de sites internet par métier | Sitaly";
 const DESCRIPTION =
-  "Fleuriste, plombier, coach, coiffure, photographe, ostéopathe… Choisissez un modèle : l'IA de Sitaly l'adapte à votre activité en une minute.";
+  "Plombier, électricien, coiffure, esthéticienne, restaurant, VTC… 19 modèles de sites : l'IA de Sitaly adapte le vôtre à votre activité en une minute.";
 
 export const Route = createFileRoute("/modeles/")({
   head: () => ({
@@ -52,7 +53,7 @@ function Modeles() {
 
         <section className="px-4 pb-24 sm:px-6">
           <div className="mx-auto grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {METIERS.map((m) => (
+            {METIERS_MODELES.map((m) => (
               <Link
                 key={m.id}
                 to="/modeles/$id/"
@@ -93,7 +94,9 @@ function Modeles() {
               <div className="flex items-start gap-5">
                 <Sparkles className="mt-1 h-6 w-6 shrink-0 text-[#c4b5fd]" />
                 <div>
-                  <div className="titre-produit text-3xl text-white">Votre métier n'est pas là ?</div>
+                  <div className="titre-produit text-3xl text-white">
+                    Votre métier n'est pas là ?
+                  </div>
                   <p className="mt-2 max-w-xl text-white/60">
                     Décrivez votre activité en une phrase : l'IA crée un site sur mesure, quel que
                     soit votre métier.

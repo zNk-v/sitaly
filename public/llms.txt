@@ -38,7 +38,7 @@
 ## Modèles de sites par métier
 
 - [Tous les modèles](https://sitaly.fr/modeles/)
-- [Fleuriste](https://sitaly.fr/modeles/fleuriste/) · [Plombier](https://sitaly.fr/modeles/plombier/) · [Coach](https://sitaly.fr/modeles/coach/) · [Boulanger](https://sitaly.fr/modeles/boulanger/) · [Coiffeuse](https://sitaly.fr/modeles/coiffeuse/) · [Paysagiste](https://sitaly.fr/modeles/paysagiste/) · [Photographe](https://sitaly.fr/modeles/photographe/) · [Ostéopathe](https://sitaly.fr/modeles/osteopathe/) · [Traiteur](https://sitaly.fr/modeles/traiteur/)
+- [Fleuriste](https://sitaly.fr/modeles/fleuriste/) · [Plombier](https://sitaly.fr/modeles/plombier/) · [Coach](https://sitaly.fr/modeles/coach/) · [Boulanger](https://sitaly.fr/modeles/boulanger/) · [Coiffeuse](https://sitaly.fr/modeles/coiffeuse/) · [Paysagiste](https://sitaly.fr/modeles/paysagiste/) · [Photographe](https://sitaly.fr/modeles/photographe/) · [Ostéopathe](https://sitaly.fr/modeles/osteopathe/) · [Traiteur](https://sitaly.fr/modeles/traiteur/) · [Électricien](https://sitaly.fr/modeles/electricien/) · [Peintre en bâtiment](https://sitaly.fr/modeles/peintre/) · [Menuisier](https://sitaly.fr/modeles/menuisier/) · [Couvreur](https://sitaly.fr/modeles/couvreur/) · [Maçon](https://sitaly.fr/modeles/macon/) · [Esthéticienne](https://sitaly.fr/modeles/estheticienne/) · [Restaurant](https://sitaly.fr/modeles/restaurant/) · [Chauffeur VTC](https://sitaly.fr/modeles/vtc/) · [Artisan](https://sitaly.fr/modeles/artisan/) · [Auto-entrepreneur](https://sitaly.fr/modeles/auto-entrepreneur/)
 
 ## Comparatifs
 
