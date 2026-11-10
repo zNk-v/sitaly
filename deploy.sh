@@ -45,15 +45,24 @@ echo "==> 4/5 Push (met sitaly.fr en ligne, ~1 min)"
 git push origin main
 
 echo "==> 5/5 IndexNow, en arrière-plan dans 2 min"
-# Signale les pages du sitemap à Bing (et aux moteurs du protocole IndexNow),
+# Signale les pages du sitemap et les pages hors index à Bing (et aux moteurs du protocole IndexNow),
 # dont s'alimentent Copilot et la recherche de ChatGPT. Lancé en différé, le
 # temps que GitHub Pages publie le fichier de clé ; un échec n'a aucun effet
 # sur la mise en ligne. La clé n'est pas un secret : elle est publiée à
 # https://sitaly.fr/76491aa47a5df04b8a46d7e43083c6d0.txt, c'est ce qui prouve la propriété du site.
 INDEXNOW_KEY="76491aa47a5df04b8a46d7e43083c6d0"
-URLS=$(grep -o '<loc>[^<]*</loc>' "$SRC/public/sitemap.xml" 2>/dev/null \
-  | sed -e 's#<loc>##' -e 's#</loc>##' \
-  | awk '{printf "%s\"%s\"", (NR>1?",":""), $0}' || true)
+PAGES_SITEMAP=$(grep -o '<loc>[^<]*</loc>' "$SRC/public/sitemap.xml" 2>/dev/null \
+  | sed -e 's#<loc>##' -e 's#</loc>##' || true)
+# Les pages sorties de l'index (src/lib/indexation.ts) ne sont plus dans le
+# sitemap : sans cet envoi, Bing ne repasse pas dessus et ne lit jamais leur
+# noindex. Le 10 novembre 2026, son index montrait encore les pages d'agence
+# « dès 149 €/mois », et ChatGPT décrivait Sitaly avec. Une entrée qui commence
+# par « / » est une page, les autres sont des articles du blog.
+PAGES_HORS_INDEX=$(awk '/^export const PAGES_METIER_HORS_INDEX/,/^function normaliser/' "$SRC/src/lib/indexation.ts" 2>/dev/null \
+  | grep -o '"[^"]*"' | tr -d '"' \
+  | awk '{ if ($0 ~ /^\//) print "https://sitaly.fr" $0 "/"; else print "https://sitaly.fr/blog/" $0 "/" }' || true)
+URLS=$(printf '%s\n%s\n' "$PAGES_SITEMAP" "$PAGES_HORS_INDEX" \
+  | awk 'NF && !vu[$0]++ {printf "%s\"%s\"", (n++?",":""), $0}' || true)
 if [ -n "$URLS" ]; then
   nohup bash -c "sleep 120; curl -s -o /dev/null -w 'IndexNow : HTTP %{http_code}\n' \
     -X POST 'https://api.indexnow.org/indexnow' \
