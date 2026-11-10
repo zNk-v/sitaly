@@ -88,8 +88,10 @@ export const PARTENAIRES: OffrePartenaire[] = [
     nom: "Abby",
     categorie: "Gestion d'auto-entrepreneur",
     description: "Facturation, livre des recettes et déclarations URSSAF pour auto-entrepreneurs.",
+    // Programme Affilae validé par Abby le 10 novembre 2026 (partenariat 1135). Lien suivi
+    // d'Affilae : il redirige vers abby.fr avec utm_source=Sitaly. Aucune remise annoncée.
     avantage: "",
-    lien: "",
+    lien: "https://lb.affilae.com/r/?p=620239042458145515dfbb22&af=1135&lp=https%3A%2F%2Fabby.fr%2F%3Futm_campaign%3Daffiliation%26utm_medium%3Dpartner%26utm_source%3DSitaly",
     logo: "/vitrine/partenaires/abby.svg",
   },
 ];
