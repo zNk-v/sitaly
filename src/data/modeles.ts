@@ -6,10 +6,12 @@
  * Les neuf premiers reprennent les identifiants, les photos et les couleurs
  * des métiers de l'accueil (METIERS, src/components/produit/Vitrine.tsx). Les
  * dix suivants (9 novembre 2026) ont leur fiche dans METIERS_PLUS, plus bas :
- * ils ont une page, sans entrer dans le défilé de l'accueil.
+ * ils ont une page, sans entrer dans le défilé de l'accueil. Trois de plus le
+ * 10 novembre 2026 (nettoyage, consultant, formateur), choisis d'après les
+ * créations d'entreprises de septembre et octobre.
  *
  * Chaque page vise la recherche « site internet » suivie du métier. Pour ne pas
- * être dix-neuf fois la même page, chacune porte ce qui est propre au métier :
+ * être vingt-deux fois la même page, chacune porte ce qui est propre au métier :
  * ce que son client veut savoir, ses sections, ses conseils et ses questions.
  *
  * Ce fichier ne dépend d'aucun composant : le script du sitemap le lit.
@@ -1036,6 +1038,210 @@ export const MODELES: Modele[] = [
     ],
   },
   {
+    id: "nettoyage",
+    nom: "entreprise de nettoyage",
+    famille: "service",
+    attentes:
+      "Un syndic, un gérant de bureaux ou un particulier confie ses clés avant de confier son ménage. Il veut savoir qui vient, à quelle fréquence, avec quels produits, et si vous êtes assuré. Il demande deux ou trois devis. Un site qui présente vos prestations, votre secteur et vos références lui donne une raison de vous appeler en premier.",
+    outils: ["devis-et-factures", "avis-google", "referencement-seo-geo"],
+    faq: [
+      {
+        q: "Comment un client demande-t-il un devis de nettoyage ?",
+        a: "Par le formulaire du site : il indique le type de locaux, la surface et la fréquence souhaitée. La demande arrive dans votre boîte mail et dans votre espace Sitaly, où vous créez le devis qu'il accepte en ligne.",
+      },
+      {
+        q: "Puis-je séparer mes offres pour les entreprises et pour les particuliers ?",
+        a: "Oui. Demandez à l'IA une page pour les bureaux et les copropriétés, et une autre pour le ménage à domicile. Chaque public lit ce qui le concerne.",
+      },
+      {
+        q: "Faut-il afficher mes tarifs ?",
+        a: "Un prix à l'heure ou un forfait de départ rassure un particulier. Pour des bureaux, le devis après visite reste la règle : dites-le sur la page. L'IA n'écrit aucun prix que vous n'avez pas fourni.",
+      },
+      {
+        q: "Combien coûte un site d'entreprise de nettoyage avec Sitaly ?",
+        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
+      },
+    ],
+    intro:
+      "Un site qui inspire confiance avant la première visite : vos prestations, votre secteur, vos garanties et une demande de devis en une minute.",
+    sections: [
+      {
+        titre: "Accueil",
+        texte: "Vos prestations et votre secteur, dès le premier écran.",
+      },
+      {
+        titre: "Bureaux et commerces",
+        texte: "Entretien régulier, vitres, remise en état.",
+      },
+      {
+        titre: "Copropriétés",
+        texte: "Parties communes, sorties de poubelles, contrats.",
+      },
+      {
+        titre: "Particuliers",
+        texte: "Ménage à domicile et fin de chantier.",
+      },
+      {
+        titre: "Avis clients",
+        texte: "Les retours de vos clients réguliers.",
+      },
+      {
+        titre: "Demande de devis",
+        texte: "Type de locaux, surface, fréquence.",
+      },
+    ],
+    conseils: [
+      {
+        titre: "Dites qui vient",
+        texte: "Une photo de l'équipe et quelques lignes rassurent un client qui remet ses clés.",
+      },
+      {
+        titre: "Nommez votre secteur",
+        texte: "Citez vos communes : Google montre d'abord les entreprises proches.",
+      },
+      {
+        titre: "Affichez vos garanties",
+        texte: "Assurance, produits utilisés, remplacement en cas d'absence : écrivez-le.",
+      },
+    ],
+  },
+  {
+    id: "consultant",
+    nom: "consultant",
+    famille: "service",
+    attentes:
+      "Un dirigeant qui cherche un consultant tape votre nom après une recommandation ou une rencontre. Il veut comprendre en une minute quel problème vous réglez, pour quel type d'entreprise, et lire un résultat obtenu chez un client. Un site clair lui évite un premier appel pour rien et vous amène des demandes plus mûres.",
+    outils: ["prise-de-rendez-vous", "blog-ia", "devis-et-factures"],
+    faq: [
+      {
+        q: "Un profil LinkedIn ne suffit-il pas ?",
+        a: "LinkedIn montre votre parcours. Un site présente votre offre, vos tarifs si vous les donnez et vos résultats, à une adresse qui vous appartient. Les deux se complètent : mettez le lien du site sur votre profil.",
+      },
+      {
+        q: "Un prospect peut-il réserver un premier échange ?",
+        a: "Oui, avec les formules Essentiel et Pro : il choisit un créneau depuis votre site et reçoit une confirmation par e-mail. Avec la formule gratuite, il vous écrit par le formulaire.",
+      },
+      {
+        q: "Je n'ai pas le droit de citer mes clients.",
+        a: "Décrivez la mission sans le nom : le secteur, la taille de l'entreprise, le problème et le résultat chiffré. L'IA rédige ces cas à partir de vos notes.",
+      },
+      {
+        q: "Combien coûte un site de consultant avec Sitaly ?",
+        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
+      },
+    ],
+    intro:
+      "Un site qui dit en une phrase ce que vous réglez : votre offre, vos résultats et un premier échange à réserver.",
+    sections: [
+      {
+        titre: "Accueil",
+        texte: "Le problème que vous réglez, et pour qui.",
+      },
+      {
+        titre: "Offres",
+        texte: "Vos missions, du diagnostic à l'accompagnement.",
+      },
+      {
+        titre: "Résultats",
+        texte: "Deux ou trois cas clients, chiffres à l'appui.",
+      },
+      {
+        titre: "À propos",
+        texte: "Votre parcours, en quelques lignes.",
+      },
+      {
+        titre: "Articles",
+        texte: "Vos idées sur votre spécialité.",
+      },
+      {
+        titre: "Contact",
+        texte: "Formulaire ou rendez-vous en ligne.",
+      },
+    ],
+    conseils: [
+      {
+        titre: "Une spécialité, pas dix",
+        texte: "Un consultant qui annonce un seul sujet se retient mieux qu'un généraliste.",
+      },
+      {
+        titre: "Donnez un chiffre",
+        texte: "Un délai réduit, un coût évité : un résultat précis vaut un long discours.",
+      },
+      {
+        titre: "Écrivez sur votre métier",
+        texte: "Un article par mois montre votre méthode et aide Google à vous trouver.",
+      },
+    ],
+  },
+  {
+    id: "formateur",
+    nom: "formateur",
+    famille: "service",
+    attentes:
+      "Un responsable de formation ou un particulier compare les programmes avant de vous écrire. Il cherche le contenu, la durée, le prix, les prochaines dates et les financements possibles. Il vérifie aussi votre numéro de déclaration d'activité et, pour un financement public, votre certification Qualiopi. Un site qui répond à ces points reçoit des demandes d'inscription, plus des demandes de renseignement.",
+    outils: ["devis-et-factures", "prise-de-rendez-vous", "avis-google"],
+    faq: [
+      {
+        q: "Puis-je présenter chaque formation sur sa page ?",
+        a: "Oui. Donnez à l'IA le programme, la durée, le public et les prérequis : elle crée une page par formation, avec un formulaire d'inscription.",
+      },
+      {
+        q: "Comment afficher mes prochaines sessions ?",
+        a: "Écrivez à l'IA « ajoute une session le 12 mars à Lyon » : elle met la page à jour. Vous retirez une date passée de la même façon.",
+      },
+      {
+        q: "Dois-je afficher Qualiopi et mon numéro de déclaration ?",
+        a: "Si vous les détenez, oui : un financeur les cherche. Indiquez-les à l'IA, elle les place en pied de page et sur la page des formations. Elle n'affiche aucune certification que vous n'avez pas fournie.",
+      },
+      {
+        q: "Combien coûte un site de formateur avec Sitaly ?",
+        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
+      },
+    ],
+    intro:
+      "Un site qui remplit vos sessions : vos programmes, vos dates, vos tarifs et une inscription simple.",
+    sections: [
+      {
+        titre: "Accueil",
+        texte: "Vos thèmes de formation et votre public.",
+      },
+      {
+        titre: "Formations",
+        texte: "Une page par programme : objectifs, durée, prix.",
+      },
+      {
+        titre: "Prochaines sessions",
+        texte: "Dates, lieux ou classes à distance.",
+      },
+      {
+        titre: "Financement",
+        texte: "Les prises en charge possibles, expliquées.",
+      },
+      {
+        titre: "Avis des stagiaires",
+        texte: "Les retours de vos sessions passées.",
+      },
+      {
+        titre: "Inscription",
+        texte: "Un formulaire par formation.",
+      },
+    ],
+    conseils: [
+      {
+        titre: "Des objectifs concrets",
+        texte: "Écrivez ce que le stagiaire sait faire à la fin de la formation.",
+      },
+      {
+        titre: "Des dates à jour",
+        texte: "Une session passée en première page fait douter de votre activité.",
+      },
+      {
+        titre: "Montrez vos preuves",
+        texte: "Certification, taux de satisfaction, avis : placez-les près du formulaire.",
+      },
+    ],
+  },
+  {
     id: "artisan",
     nom: "artisan",
     famille: "batiment",
@@ -1258,6 +1464,33 @@ export const METIERS_PLUS = [
     phrase: "Chauffeur VTC à Marseille, transferts gare et aéroport",
     couleur: "#15171c",
     accent: "#d4af37",
+  },
+  {
+    id: "nettoyage",
+    activite: "entreprise de nettoyage",
+    entreprise: "Net & Clair",
+    titre: "Des locaux propres, chaque matin",
+    phrase: "Entreprise de nettoyage à Lille, bureaux et copropriétés",
+    couleur: "#1d2f33",
+    accent: "#8fd6c4",
+  },
+  {
+    id: "consultant",
+    activite: "activité de conseil",
+    entreprise: "Durand Conseil",
+    titre: "Des décisions claires pour votre entreprise",
+    phrase: "Consultant en gestion à Lyon, accompagnement des dirigeants de PME",
+    couleur: "#1c2536",
+    accent: "#e6c27a",
+  },
+  {
+    id: "formateur",
+    activite: "organisme de formation",
+    entreprise: "Cap Formation",
+    titre: "Des formations qui servent dès le lundi",
+    phrase: "Formateur à Bordeaux, management et prise de parole",
+    couleur: "#2b2440",
+    accent: "#f2b880",
   },
   {
     id: "artisan",

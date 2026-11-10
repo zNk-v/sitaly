@@ -15,7 +15,7 @@ import { BASE_URL } from "@/lib/sitemap";
 const URL = `${BASE_URL}/modeles/`;
 const TITRE = "Modèles de sites internet par métier | Sitaly";
 const DESCRIPTION =
-  "Plombier, électricien, coiffure, esthéticienne, restaurant, VTC… 19 modèles de sites : l'IA de Sitaly adapte le vôtre à votre activité en une minute.";
+  "Plombier, électricien, coiffure, esthéticienne, restaurant, VTC… 22 modèles de sites : l'IA de Sitaly adapte le vôtre à votre activité en une minute.";
 
 export const Route = createFileRoute("/modeles/")({
   head: () => ({
