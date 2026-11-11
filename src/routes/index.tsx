@@ -45,7 +45,8 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: TITRE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: "https://sitaly.fr/" },
-      { property: "og:image", content: "https://sitaly.fr/vitrine/metiers/fleuriste-1536.webp" },
+      { property: "og:image", content: "https://sitaly.fr/og-accueil.jpg" },
+      { name: "twitter:image", content: "https://sitaly.fr/og-accueil.jpg" },
     ],
     links: [
       { rel: "canonical", href: "https://sitaly.fr/" },
