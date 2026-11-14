@@ -6,17 +6,17 @@
 
 - **Nom** : Sitaly
 - **Type** : application en ligne, créateur de site internet par IA et outils de gestion pour petites entreprises
-- **Application** : https://app.sitaly.fr
-- **Site** : https://sitaly.fr
+- **Application** : [app.sitaly.fr](https://app.sitaly.fr) : créer et gérer son site
+- **Site** : [sitaly.fr](https://sitaly.fr) : présentation, tarifs, guides et blog
 - **Pour qui** : artisans, indépendants, professions libérales, commerçants et TPE, en France, sans compétence technique
 - **Fonctionnement** : vous décrivez votre activité en une phrase ; l'IA écrit le site, choisit la mise en page et crée la photo. Vous le retouchez en écrivant ce que vous voulez changer, puis vous le publiez en un clic.
 - **Adresse du site** : votre-nom.sitaly.fr ; avec Essentiel et Pro, un nom de domaine en .fr ou en .com offert, enregistré à votre nom
 - **Prix** : Découverte gratuit ; Essentiel 39 € par mois ou 398 € par an ; Pro 79 € par mois ou 806 € par an. TVA non applicable, art. 293 B du CGI. Sans engagement au mois ; l'annuel se paie pour un an.
 - **Crédits IA** : 50 offerts avec Découverte, 500 par mois avec Essentiel, 2 500 par mois avec Pro. Une retouche coûte 1 ou 2 crédits, une photo créée par l'IA 5, la création du site aucun. Les crédits mensuels repartent à zéro chaque mois ; des packs de crédits s'achètent en plus, sans date de fin.
-- **Entreprise** : Teddy Vidal, entrepreneur individuel, SIREN 833 848 831, SIRET 833 848 831 00032, Brétigny-sur-Orge (91220)
+- **Entreprise** : Teddy Vidal, entrepreneur individuel, SIREN 833 848 831, SIRET 833 848 831 00032, basé à Paris
 - **E-mail** : contact@sitaly.fr
 - **Téléphone** : +33 6 58 68 33 72
-- **Réseaux** : https://www.linkedin.com/company/sitaly-fr · https://www.instagram.com/sitaly.fr/ · https://www.youtube.com/@sitaly-fr
+- **Réseaux** : [LinkedIn](https://www.linkedin.com/company/sitaly-fr), [Instagram](https://www.instagram.com/sitaly.fr/), [YouTube](https://www.youtube.com/@sitaly-fr) : tutoriels vidéo de l'application
 
 ## Ce que Sitaly ne promet pas
 
@@ -38,7 +38,28 @@
 ## Modèles de sites par métier
 
 - [Tous les modèles](https://sitaly.fr/modeles/)
-- [Fleuriste](https://sitaly.fr/modeles/fleuriste/) · [Plombier](https://sitaly.fr/modeles/plombier/) · [Coach](https://sitaly.fr/modeles/coach/) · [Boulanger](https://sitaly.fr/modeles/boulanger/) · [Coiffeuse](https://sitaly.fr/modeles/coiffeuse/) · [Paysagiste](https://sitaly.fr/modeles/paysagiste/) · [Photographe](https://sitaly.fr/modeles/photographe/) · [Ostéopathe](https://sitaly.fr/modeles/osteopathe/) · [Traiteur](https://sitaly.fr/modeles/traiteur/) · [Électricien](https://sitaly.fr/modeles/electricien/) · [Peintre en bâtiment](https://sitaly.fr/modeles/peintre/) · [Menuisier](https://sitaly.fr/modeles/menuisier/) · [Couvreur](https://sitaly.fr/modeles/couvreur/) · [Maçon](https://sitaly.fr/modeles/macon/) · [Esthéticienne](https://sitaly.fr/modeles/estheticienne/) · [Restaurant](https://sitaly.fr/modeles/restaurant/) · [Chauffeur VTC](https://sitaly.fr/modeles/vtc/) · [Entreprise de nettoyage](https://sitaly.fr/modeles/nettoyage/) · [Consultant](https://sitaly.fr/modeles/consultant/) · [Formateur](https://sitaly.fr/modeles/formateur/) · [Artisan](https://sitaly.fr/modeles/artisan/) · [Auto-entrepreneur](https://sitaly.fr/modeles/auto-entrepreneur/)
+- [Fleuriste](https://sitaly.fr/modeles/fleuriste/) : modèle de site pour ce métier
+- [Plombier](https://sitaly.fr/modeles/plombier/) : modèle de site pour ce métier
+- [Coach](https://sitaly.fr/modeles/coach/) : modèle de site pour ce métier
+- [Boulanger](https://sitaly.fr/modeles/boulanger/) : modèle de site pour ce métier
+- [Coiffeuse](https://sitaly.fr/modeles/coiffeuse/) : modèle de site pour ce métier
+- [Paysagiste](https://sitaly.fr/modeles/paysagiste/) : modèle de site pour ce métier
+- [Photographe](https://sitaly.fr/modeles/photographe/) : modèle de site pour ce métier
+- [Ostéopathe](https://sitaly.fr/modeles/osteopathe/) : modèle de site pour ce métier
+- [Traiteur](https://sitaly.fr/modeles/traiteur/) : modèle de site pour ce métier
+- [Électricien](https://sitaly.fr/modeles/electricien/) : modèle de site pour ce métier
+- [Peintre en bâtiment](https://sitaly.fr/modeles/peintre/) : modèle de site pour ce métier
+- [Menuisier](https://sitaly.fr/modeles/menuisier/) : modèle de site pour ce métier
+- [Couvreur](https://sitaly.fr/modeles/couvreur/) : modèle de site pour ce métier
+- [Maçon](https://sitaly.fr/modeles/macon/) : modèle de site pour ce métier
+- [Esthéticienne](https://sitaly.fr/modeles/estheticienne/) : modèle de site pour ce métier
+- [Restaurant](https://sitaly.fr/modeles/restaurant/) : modèle de site pour ce métier
+- [Chauffeur VTC](https://sitaly.fr/modeles/vtc/) : modèle de site pour ce métier
+- [Entreprise de nettoyage](https://sitaly.fr/modeles/nettoyage/) : modèle de site pour ce métier
+- [Consultant](https://sitaly.fr/modeles/consultant/) : modèle de site pour ce métier
+- [Formateur](https://sitaly.fr/modeles/formateur/) : modèle de site pour ce métier
+- [Artisan](https://sitaly.fr/modeles/artisan/) : modèle de site pour ce métier
+- [Auto-entrepreneur](https://sitaly.fr/modeles/auto-entrepreneur/) : modèle de site pour ce métier
 
 ## Outils gratuits, sans inscription
 
@@ -51,27 +72,46 @@
 
 ## Comparatifs
 
-- [Sitaly ou Wix](https://sitaly.fr/comparer/wix/)
-- [Sitaly ou WordPress](https://sitaly.fr/comparer/wordpress/)
-- [Sitaly ou Squarespace](https://sitaly.fr/comparer/squarespace/)
-- [Sitaly ou une agence web](https://sitaly.fr/comparer/agence/)
+- [Alternatives à Wix](https://sitaly.fr/comparer/alternatives-wix/) : huit créateurs de site comparés, prix relevés le 14 novembre 2026, avec le meilleur usage de chacun.
+- [Sitaly ou Wix](https://sitaly.fr/comparer/wix/) : éditeur à faire soi-même contre site écrit par l'IA, coût sur trois ans.
+- [Sitaly ou WordPress](https://sitaly.fr/comparer/wordpress/) : liberté totale contre outil prêt à l'emploi, coût sur trois ans.
+- [Sitaly ou Squarespace](https://sitaly.fr/comparer/squarespace/) : modèles soignés contre site écrit pour votre métier.
+- [Sitaly ou une agence web](https://sitaly.fr/comparer/agence/) : site sur mesure contre application, ce que chacun apporte.
 
 ## Guides
 
 - [Tutoriels vidéo](https://sitaly.fr/guides/) : chaque étape de l'application, montrée pas à pas.
-- [Publier votre site](https://sitaly.fr/guides/publier/)
-- [Créer un site internet gratuit en 2026 : le guide honnête](https://sitaly.fr/blog/creer-site-internet-gratuit/)
-- [Créer un site internet sans coder : la méthode en 5 étapes](https://sitaly.fr/blog/creer-site-internet-sans-coder/)
-- [Apparaître sur Google quand on lance son activité : 6 étapes](https://sitaly.fr/blog/apparaitre-sur-google/)
-- [Choisir son nom de domaine : .fr ou .com et 8 règles simples](https://sitaly.fr/blog/choisir-nom-de-domaine/)
-- [Trouver un nom d'entreprise : 7 méthodes](https://sitaly.fr/blog/trouver-nom-entreprise/)
-- [Mentions légales d'un site internet professionnel : la liste](https://sitaly.fr/blog/mentions-legales-site-internet/)
-- [Prise de rendez-vous en ligne : le guide 2026](https://sitaly.fr/blog/prise-rendez-vous-en-ligne-guide/)
-- [Relance de devis automatique : méthode et modèles](https://sitaly.fr/blog/relance-automatique-devis/)
+- [Publier votre site](https://sitaly.fr/guides/publier/) : mettre son site en ligne en un clic, en vidéo.
+
+### Créer son site
+
+- [Créer un site internet d'artisan : le guide complet](https://sitaly.fr/blog/creation-site-internet-artisan-guide/) : contenu, mentions obligatoires, prix et délais, l'IA, Wix et l'agence comparés.
+- [Prix d'un site internet en 2026](https://sitaly.fr/blog/prix-site-internet/) : prix publiés et coût réel sur trois ans.
+- [Créer un site internet gratuit en 2026 : le guide honnête](https://sitaly.fr/blog/creer-site-internet-gratuit/) : ce que permettent les offres gratuites, et leurs limites.
+- [Créer un site internet sans coder](https://sitaly.fr/blog/creer-site-internet-sans-coder/) : la méthode en cinq étapes.
+- [Pages indispensables d'un site vitrine](https://sitaly.fr/blog/pages-indispensables-site-vitrine/) : ce que chaque page doit dire.
+- [Choisir son nom de domaine](https://sitaly.fr/blog/choisir-nom-de-domaine/) : .fr ou .com, et huit règles simples.
+- [Trouver un nom d'entreprise](https://sitaly.fr/blog/trouver-nom-entreprise/) : sept méthodes et les vérifications à faire.
+- [Mentions légales d'un site internet professionnel](https://sitaly.fr/blog/mentions-legales-site-internet/) : la liste, avec les textes de loi.
+
+### Être trouvé sur Google
+
+- [Apparaître sur Google quand on lance son activité](https://sitaly.fr/blog/apparaitre-sur-google/) : six étapes et les délais réels.
+- [Référencement local pour artisan](https://sitaly.fr/blog/referencement-local-google-artisan/) : comment Google classe les artisans sur la carte.
+- [Fiche Google Business Profile pour artisan](https://sitaly.fr/blog/fiche-google-business-profile-artisan/) : créer et remplir sa fiche selon les règles de Google.
+- [Obtenir plus d'avis Google](https://sitaly.fr/blog/recolter-avis-google-artisan/) : lien direct, QR code, modèles de SMS et pratiques interdites.
+
+### Devis, factures et rendez-vous
+
+- [Logiciel de devis et facture pour artisan](https://sitaly.fr/blog/logiciel-devis-artisan-choisir/) : mentions obligatoires, réforme de 2027 et critères de choix.
+- [Facturation électronique 2027 pour les artisans](https://sitaly.fr/blog/facturation-electronique-artisan-2027/) : calendrier, plateformes agréées et amendes, d'après la DGFiP.
+- [Mentions obligatoires d'un devis d'artisan](https://sitaly.fr/blog/mentions-obligatoires-devis-artisan/) : la liste vérifiée sur les textes officiels.
+- [Relance de devis](https://sitaly.fr/blog/relance-automatique-devis/) : quand relancer et quoi écrire.
+- [Prise de rendez-vous en ligne : le guide complet](https://sitaly.fr/blog/prise-rendez-vous-en-ligne-guide/) : réglages, rappels et règles de la CNIL.
 
 ## Aussi, sur mesure
 
-L'équipe Sitaly peut aussi créer et suivre un site à la place du client, sur devis. À part l'application, Sitaly installe des agents IA sur mesure pour les PME qui reçoivent beaucoup de demandes (Agent IA 499 € par mois + 1 200 € de mise en place, Agent IA Pro avec agent vocal 790 € par mois + 2 400 €) et gère des campagnes ChatGPT Ads (à partir de 890 € par mois + 10 % du budget publicitaire).
+Sitaly peut aussi créer et suivre un site à la place du client, sur devis. À part l'application, Sitaly installe des agents IA sur mesure pour les PME qui reçoivent beaucoup de demandes (Agent IA 499 € par mois + 1 200 € de mise en place, Agent IA Pro avec agent vocal 790 € par mois + 2 400 €) et gère des campagnes ChatGPT Ads (à partir de 890 € par mois + 10 % du budget publicitaire).
 
 - [Agents IA sur mesure pour PME](https://sitaly.fr/agents-ia/)
 - [Agence ChatGPT Ads](https://sitaly.fr/chatgpt-ads/)
