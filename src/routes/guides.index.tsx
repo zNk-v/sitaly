@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronRight, PlayCircle } from "lucide-react";
 import { SiteChrome } from "@/components/SiteChrome";
 import { BOUTON_NOIR, TEXTE_GRIS, lienCreation } from "@/components/produit/Produit";
-import { GUIDES, imageGuide } from "@/data/guides";
+import { GUIDES, vignetteGuide } from "@/data/guides";
 import { BASE_URL } from "@/lib/sitemap";
 
 /**
@@ -83,11 +83,11 @@ function PageGuides() {
                 >
                   <span className="relative block aspect-[16/10] overflow-hidden">
                     <img
-                      src={imageGuide(g.id, Math.min(1, g.etapes.length - 1))}
+                      src={vignetteGuide(g.id)}
                       alt={`Capture d'écran du tutoriel : ${g.titre}`}
                       loading="lazy"
-                      width={1120}
-                      height={700}
+                      width={560}
+                      height={350}
                       className="h-full w-full object-cover object-top transition duration-300 group-hover:scale-[1.03]"
                     />
                     <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-black/85 px-2.5 py-1 text-xs font-medium text-white">

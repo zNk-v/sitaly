@@ -93,7 +93,7 @@ export const Route = createFileRoute("/outils/generateur-nom-entreprise")({
               applicationCategory: "BusinessApplication",
               operatingSystem: "Web",
               offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
-              provider: { "@type": "Organization", name: "Sitaly", url: BASE_URL },
+              provider: { "@type": "Organization", "@id": "https://sitaly.fr/#business", name: "Sitaly", url: "https://sitaly.fr/" },
             },
             {
               "@type": "FAQPage",

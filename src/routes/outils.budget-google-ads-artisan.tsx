@@ -68,7 +68,7 @@ export const Route = createFileRoute("/outils/budget-google-ads-artisan")({
           applicationCategory: "BusinessApplication",
           operatingSystem: "Tous navigateurs",
           offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
-          provider: { "@type": "Organization", name: "Sitaly", url: "https://sitaly.fr" },
+          provider: { "@type": "Organization", "@id": "https://sitaly.fr/#business", name: "Sitaly", url: "https://sitaly.fr/" },
         }),
       },
       {

@@ -14,7 +14,7 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Combien coûte un site internet en 2026 ?" },
   {
     type: "p",
-    text: "Pour un site vitrine, comptez de 0 € avec une formule gratuite à environ 15 à 80 € par mois avec un outil en ligne, nom de domaine souvent compris. Chez un freelance ou une agence, la création coûte souvent 1 500 à 5 000 €, plus la maintenance. L'écart vient surtout de qui fait le travail : vous, une IA ou un prestataire.",
+    text: "Pour un site vitrine, comptez de 0 € avec une formule gratuite à environ 15 à 80 € par mois avec un outil en ligne, nom de domaine souvent compris. Chez une agence, la création coûte 5 000 € en valeur médiane, et moins de 3 000 € pour un projet sur quatre, d'après 3 565 budgets réels (voir [Sitaly ou une agence](/comparer/agence/)), plus la maintenance. L'écart vient surtout de qui fait le travail : vous, une IA ou un prestataire.",
   },
   {
     type: "table",
@@ -67,13 +67,13 @@ export const contenu: BlogSection[] = [
       ],
       [
         "[Squarespace](https://fr.squarespace.com/tarifs), formule Basic",
-        "12 €/mois payé à l'année, 17 € au mois, hors TVA",
+        "12 €/mois payé à l'année, 17 € au mois, TVA non précisée",
         "Offert la première année en annuel, puis au tarif normal",
         "14 novembre 2026",
       ],
       [
         "[WordPress.com](https://wordpress.com/fr/pricing/), formule Personal",
-        "4 $/mois payé à l'année, 9 $ au mois, affichés en dollars hors taxes",
+        "4 €/mois HT payé à l'année, 9 € HT au mois",
         "Offert la première année en annuel, pas en mensuel",
         "14 novembre 2026",
       ],
@@ -93,7 +93,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Deux détails changent la facture. D'abord, un prix « par mois » affiché pour un paiement annuel se règle en une fois : 12 mois d'avance. Ensuite, Squarespace et WordPress.com affichent des prix hors taxes ; comptez 20 % de TVA en plus si vous ne la récupérez pas. Les comparatifs [Sitaly ou Wix](/comparer/wix/), [Sitaly ou Squarespace](/comparer/squarespace/) et [Sitaly ou WordPress](/comparer/wordpress/) détaillent le reste.",
+    text: "Deux détails changent la facture. D'abord, un prix « par mois » affiché pour un paiement annuel se règle en une fois : 12 mois d'avance. Ensuite, WordPress.com affiche des prix hors taxes et Squarespace ne précise pas la TVA ; comptez jusqu'à 20 % de TVA en plus si vous ne la récupérez pas. Les comparatifs [Sitaly ou Wix](/comparer/wix/), [Sitaly ou Squarespace](/comparer/squarespace/) et [Sitaly ou WordPress](/comparer/wordpress/) détaillent le reste.",
   },
   { type: "h2", text: "Combien coûte un site fait par un freelance ou une agence ?" },
   {

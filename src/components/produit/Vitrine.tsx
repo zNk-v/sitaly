@@ -147,7 +147,7 @@ const sousDomaine = (nom: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
 
-export const photo = (id: string, taille: 384 | 768 | 1536 = 1536) =>
+export const photo = (id: string, taille: 384 | 768 | 1024 | 1536 = 1536) =>
   `/vitrine/metiers/${id}-${taille}.webp`;
 
 /** Les vignettes : 384 px suffisent jusqu'à 190 px affichés sur un écran Retina. */

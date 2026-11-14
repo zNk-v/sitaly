@@ -106,7 +106,7 @@ export const ARTICLES_AGENTS_IA: BlogPost[] = [
       "Démarchage téléphonique interdit sans consentement : ce qu'un agent IA a encore le droit de faire",
     metaTitle: "Démarchage téléphonique interdit : la loi 2026 et l'IA",
     metaDescription:
-      "Depuis le 11 août 2026, appeler un particulier sans son accord est interdit. Exceptions, amendes, preuve du consentement et ce qu'un agent IA peut encore faire.",
+      "Depuis le 11 août 2026, appeler un particulier sans son accord est interdit. Exceptions, amendes, preuve du consentement et ce qu'un agent IA peut faire.",
     excerpt:
       "Depuis le 11 août 2026, démarcher un particulier par téléphone sans son consentement préalable est interdit. Un agent IA qui appelle à froid tombe sous le coup de la loi. Un agent qui décroche, rappelle ceux qui l'ont demandé et suit vos clients, non. Voici où passe la frontière.",
     category: "Automatisation",

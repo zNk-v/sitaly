@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { SiteChrome } from "@/components/SiteChrome";
 import { BoiteApp, Confiance, TEXTE_GRIS } from "@/components/produit/Produit";
 import { COMPARATIFS, RELEVE, RELEVE_ISO } from "@/data/comparatifs";
-import { CREATEUR_IA as IA } from "@/data/offres";
+import { APP_REF, CREATEUR_IA as IA } from "@/data/offres";
 import { BASE_URL } from "@/lib/sitemap";
 
 /**
@@ -44,7 +44,7 @@ export const Route = createFileRoute("/comparer/")({
               description: DESCRIPTION,
               inLanguage: "fr-FR",
               isPartOf: { "@id": `${BASE_URL}/#website` },
-              about: { "@id": `${BASE_URL}/#app` },
+              about: APP_REF,
               publisher: { "@id": `${BASE_URL}/#business` },
               dateModified: RELEVE_ISO,
               mainEntity: { "@id": `${URL}#liste` },

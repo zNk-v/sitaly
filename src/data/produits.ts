@@ -90,7 +90,7 @@ export const PRODUITS: Produit[] = [
     points: [
       {
         titre: "Conforme au droit français",
-        texte: "Numérotation sans trou, facture figée une fois envoyée, avoir pour corriger, SIRET, pénalités de retard, mention 293 B en franchise, assurance décennale.",
+        texte: "Numérotation sans trou, facture figée une fois envoyée, avoir pour corriger, SIRET, pénalités de retard, mention de franchise en base de TVA, assurance décennale.",
       },
       {
         titre: "Payé par carte, sans commission",
@@ -483,7 +483,7 @@ export const PRODUITS: Produit[] = [
       "Sitaly dessine votre logo à partir de votre site : votre nom, votre métier, vos couleurs. Choisissez une proposition, réglez-la, elle s'applique à tout votre site.",
     seoTitre: "Créateur de logo et identité de marque",
     description:
-      "Créez le logo de votre entreprise : symbole, forme, police et couleurs, appliqués à votre site et téléchargeables en PNG pour vos devis, Google et vos réseaux.",
+      "Créez le logo de votre entreprise : symbole, police et couleurs, appliqués à votre site et téléchargeables en PNG pour vos devis, Google et vos réseaux.",
     etapes: [
       {
         titre: "Parcourez les propositions",

@@ -11,7 +11,7 @@ import {
   type Outil,
   type Source,
 } from "@/data/comparatifs";
-import { MENTION_TVA } from "@/data/offres";
+import { APP_REF, MENTION_TVA } from "@/data/offres";
 import { BASE_URL } from "@/lib/sitemap";
 
 /**
@@ -71,7 +71,7 @@ export const Route = createFileRoute("/comparer/$id")({
                 description: c.description,
                 inLanguage: "fr-FR",
                 isPartOf: { "@id": `${BASE_URL}/#website` },
-                about: [{ "@id": `${BASE_URL}/#app` }, sujet(c)],
+                about: [APP_REF, sujet(c)],
                 publisher: { "@id": `${BASE_URL}/#business` },
                 dateModified: RELEVE_ISO,
                 breadcrumb: { "@id": `${url}#ariane` },

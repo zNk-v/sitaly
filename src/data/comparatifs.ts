@@ -538,7 +538,7 @@ export const COMPARATIFS: Comparatif[] = [
     autreSite: "https://wordpress.com/fr/",
     titre: "Sitaly ou WordPress : lequel choisir pour votre site ?",
     description:
-      "Sitaly ou WordPress : temps de création, hébergement, mises à jour, coût sur trois ans, devis et rendez-vous. Prix WordPress.com relevés le 14 novembre 2026.",
+      "Sitaly ou WordPress : temps de création, hébergement, mises à jour, coût sur trois ans, devis et rendez-vous. Prix WordPress.com relevés le 14/11/2026.",
     intro:
       "WordPress fait tourner une grande partie du web : il peut tout faire, à condition de le choisir, l'installer, l'héberger, le mettre à jour et le sécuriser. Il existe en deux versions : le logiciel libre, à installer chez un hébergeur, et WordPress.com, qui l'héberge pour vous. Sitaly s'occupe de tout cela à votre place : vous décrivez votre activité, le site est en ligne.",
     verdict: [

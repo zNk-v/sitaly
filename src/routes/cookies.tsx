@@ -8,7 +8,7 @@ export const Route = createFileRoute("/cookies")({
       {
         name: "description",
         content:
-          "Les cookies utilisés sur sitaly.fr, leur finalité et leur durée de conservation, et la façon de gérer vos préférences, selon les recommandations de la CNIL.",
+          "Les cookies utilisés sur sitaly.fr, leur finalité, leur durée de conservation et la façon de gérer vos préférences, selon les recommandations de la CNIL.",
       },
       { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large" },
       { property: "og:title", content: "Politique cookies du site sitaly.fr | Sitaly" },

@@ -25,6 +25,9 @@ export interface Guide {
 export const APP_TUTOS = "https://app.sitaly.fr/tutos";
 export const clipGuide = (id: string, n: number) => `${APP_TUTOS}/${id}-${n + 1}.mp4`;
 export const imageGuide = (id: string, n: number) => `${APP_TUTOS}/${id}-${n + 1}.jpg`;
+/** Vignette légère de la liste /guides/ : la 2e capture du tutoriel, en WebP 560 px
+    (public/guides-vignettes/, 7 à 20 Ko au lieu de 50 à 65 Ko pour le JPEG de l'app). */
+export const vignetteGuide = (id: string) => `/guides-vignettes/${id}.webp`;
 
 export const GUIDES: Guide[] = [
   {

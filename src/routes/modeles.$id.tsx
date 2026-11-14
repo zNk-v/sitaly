@@ -15,6 +15,7 @@ import { deMetier, getModele, MODELES } from "@/data/modeles";
 import { getProduit } from "@/data/produits";
 import { METIERS_MODELES, phraseSansVille } from "@/lib/modeles-metiers";
 import { BASE_URL } from "@/lib/sitemap";
+import { APP_REF } from "@/data/offres";
 
 /**
  * La page d'un modèle (31 octobre 2026, étoffée le 9 novembre) : le site que
@@ -104,7 +105,7 @@ export const Route = createFileRoute("/modeles/$id")({
             description,
             inLanguage: "fr-FR",
             isPartOf: { "@id": `${BASE_URL}/#website` },
-            about: { "@id": `${BASE_URL}/#app` },
+            about: APP_REF,
             primaryImageOfPage: `${BASE_URL}${photo(metier.id)}`,
           }),
         },
@@ -182,8 +183,8 @@ function PageModele() {
                     380 px faisaient monter le LCP mobile à 3,1 s). */}
                 <img
                   src={photo(metier.id)}
-                  srcSet={`${photo(metier.id, 768)} 768w, ${photo(metier.id)} 1536w`}
-                  sizes="(min-width: 1024px) 560px, 100vw"
+                  srcSet={`${photo(metier.id, 768)} 768w, ${photo(metier.id, 1024)} 1024w, ${photo(metier.id)} 1536w`}
+                  sizes="(min-width: 1024px) 560px, calc(100vw - 32px)"
                   alt={`Photo d'illustration pour un site ${deMetier(modele.nom)}`}
                   width={1536}
                   height={864}

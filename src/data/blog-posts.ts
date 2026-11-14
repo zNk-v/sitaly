@@ -592,7 +592,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     title: "Agent immobilier : générer des mandats et des acheteurs en ligne en 2026",
     metaTitle: "Trouver des clients agent immobilier (mandats 2026)",
     metaDescription:
-      "Plus de mandats, plus d'acheteurs : le guide acquisition pour agent immobilier indépendant. Site, estimation en ligne, Google Ads, avis et relance automatique.",
+      "Plus de mandats et d'acheteurs : le guide acquisition de l'agent immobilier indépendant. Site, estimation en ligne, Google Ads, avis et relances.",
     excerpt:
       "Le nerf de la guerre en immobilier, ce sont les mandats. Voici comment un agent indépendant génère des estimations, des mandats et des acheteurs grâce à une présence en ligne efficace.",
     category: "Acquisition de clients",
@@ -765,7 +765,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     title: "Résilier un contrat de site internet en location financière : les recours d'un artisan",
     metaTitle: "Contrat de site en location financière : comment en sortir",
     metaDescription:
-      "Contrat de site internet sur 48 mois avec un organisme de financement : comment le lire, quand la loi protège un artisan, et les étapes pour tenter d'en sortir.",
+      "Contrat de site sur 48 mois avec un organisme de financement : comment le lire, quand la loi protège un artisan, et les étapes pour tenter d'en sortir.",
     excerpt:
       "Un site vendu lors d'un démarchage, un contrat de 48 mois, un loyer prélevé par une société de financement que vous ne connaissiez pas. Voici comment ces contrats fonctionnent et les pistes pour en sortir.",
     category: "Site internet",

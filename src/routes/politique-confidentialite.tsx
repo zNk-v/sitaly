@@ -8,7 +8,7 @@ export const Route = createFileRoute("/politique-confidentialite")({
       {
         name: "description",
         content:
-          "Politique de confidentialité de Sitaly : données collectées sur le site et dans l'application, finalités, bases légales, durées de conservation et vos droits.",
+          "Confidentialité chez Sitaly : données collectées sur le site et dans l'application, finalités, bases légales, durées de conservation et vos droits.",
       },
       { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large" },
       { property: "og:title", content: "Politique de confidentialité — Sitaly" },

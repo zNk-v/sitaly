@@ -125,8 +125,8 @@ export const contenu: BlogSection[] = [
         a: "Une campagne d'appel peut tourner sans site, mais la plupart des clients regardent qui vous êtes avant d'appeler. Un site avec vos prestations, votre zone et votre numéro rassure ceux qui hésitent. Sitaly en publie un gratuitement avec la formule Découverte, sans carte bancaire.",
       },
       {
-        q: "Sitaly peut-il gérer ma campagne Google Ads ?",
-        a: "La gestion de campagnes Google Ads est un service de Sitaly à part de l'application, établi sur devis selon votre métier et votre zone. L'application, elle, fournit le site, les devis et les avis : la base qui fait qu'un clic devient un appel.",
+        q: "Que faut-il avoir en place avant de lancer une campagne ?",
+        a: "Un site qui dit ce que vous faites, où et comment vous joindre, une fiche Google à jour et une façon simple d'envoyer un devis. Sans cela, vous payez des clics qui ne deviennent pas des appels. L'application Sitaly fournit le site, les devis et les demandes d'avis.",
       },
     ],
   },

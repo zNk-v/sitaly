@@ -57,6 +57,11 @@ export const PAGES_OUTILS_HORS_INDEX = ["/outils/budget-google-ads-artisan"];
 export const ARTICLES_HORS_INDEX = [
   "site-internet-kinesitherapeute-patients",
   "google-ads-artisan-pourquoi-investir",
+  // Second audit du 14 novembre 2026 : les trois articles ChatGPT Ads mènent
+  // vers l'offre d'agence (gestion dès 890 €/mois), hors de l'application.
+  "publicite-chatgpt-ads-guide",
+  "cout-chatgpt-ads",
+  "chatgpt-ads-secteurs-pme",
 ];
 
 /**
@@ -64,7 +69,11 @@ export const ARTICLES_HORS_INDEX = [
  * payant mais hors index : leur sujet est déjà porté par une page du routeur.
  * Leur `noindex` est écrit en dur dans leur HTML.
  */
-export const LANDINGS_STATIQUES_HORS_INDEX = ["/agents-ia/chatgpt"];
+export const LANDINGS_STATIQUES_HORS_INDEX = [
+  "/agents-ia/chatgpt",
+  // Offre d'agence ChatGPT Ads, sortie de l'index le 14 novembre 2026.
+  "/chatgpt-ads",
+];
 
 /**
  * Les pages de l'ancienne agence (décision du 8 novembre 2026). Depuis le
@@ -87,6 +96,12 @@ export const PAGES_AGENCE_HORS_INDEX = [
   "/creation-site-internet",
   "/site-vitrine",
   "/refonte-site-internet",
+  // Oubliées le 8 novembre, sorties au second audit du 14 novembre 2026.
+  "/site-e-commerce",
+  "/landing-page",
+  "/site-evenementiel",
+  "/referencement-ia",
+  "/publicite-reseaux-sociaux",
 ];
 
 /**

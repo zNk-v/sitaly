@@ -42,6 +42,13 @@ export const Route = createFileRoute("/modeles/")({
           description: DESCRIPTION,
           inLanguage: "fr-FR",
           isPartOf: { "@id": `${BASE_URL}/#website` },
+          breadcrumb: {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Accueil", item: `${BASE_URL}/` },
+              { "@type": "ListItem", position: 2, name: "Modèles", item: URL },
+            ],
+          },
           mainEntity: {
             "@type": "ItemList",
             itemListElement: METIERS_MODELES.map((m, i) => ({
@@ -87,6 +94,8 @@ function Modeles() {
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
                     src={photo(m.id, 768)}
+                    srcSet={`${photo(m.id, 384)} 384w, ${photo(m.id, 768)} 768w`}
+                    sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
                     alt={`Photo d'illustration pour un site ${deMetier(nomDe(m.id))}`}
                     loading="lazy"
                     width={768}

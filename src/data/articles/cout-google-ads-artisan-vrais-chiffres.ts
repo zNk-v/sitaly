@@ -83,10 +83,6 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Une petite campagne locale se gère seul si vous y consacrez un moment chaque semaine. Un prestataire vous fait gagner ce temps ; demandez-lui un prix écrit, l'accès permanent à votre compte et un relevé mensuel des recherches, des appels et du coût par contact. Méfiez-vous d'un chiffre de rentabilité promis avant d'avoir vu votre marché.",
   },
-  {
-    type: "p",
-    text: "Sitaly propose aussi la gestion de campagnes Google Ads, sur devis, à part de l'abonnement à l'application. Le prix dépend du métier et de la zone : nous ne publions donc pas de tarif.",
-  },
   { type: "h2", text: "Questions fréquentes" },
   {
     type: "faq",

@@ -14,7 +14,7 @@ import {
 import { VisuelProduit } from "@/components/produit/VisuelsProduits";
 import { BoutonCollant } from "@/components/produit/BoutonCollant";
 import { PRODUITS, getProduit } from "@/data/produits";
-import { CREATEUR_IA as IA, MENTION_TVA } from "@/data/offres";
+import { APP_REF, CREATEUR_IA as IA, MENTION_TVA } from "@/data/offres";
 import { euros } from "@/lib/config";
 import { BASE_URL } from "@/lib/sitemap";
 
@@ -48,6 +48,16 @@ export const Route = createFileRoute("/produits/$id")({
           children: JSON.stringify({
             "@context": "https://schema.org",
             "@graph": [
+              {
+                "@type": "WebPage",
+                "@id": `${url}#page`,
+                url,
+                name: `${p.seoTitre} | Sitaly`,
+                description: p.description,
+                inLanguage: "fr-FR",
+                isPartOf: { "@id": `${BASE_URL}/#website` },
+                about: APP_REF,
+              },
               {
                 "@type": "FAQPage",
                 mainEntity: p.faq.map((f) => ({

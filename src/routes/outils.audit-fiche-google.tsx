@@ -8,7 +8,7 @@ import { lienCreation } from "@/components/produit/Produit";
 const URL = "https://sitaly.fr/outils/audit-fiche-google/";
 const TITLE = "Audit gratuit de fiche Google : score sur 100 | Sitaly";
 const DESCRIPTION =
-  "Auditez votre fiche Google Business Profile en 3 minutes : 20 questions, un score sur 100 et les corrections classées par impact. Gratuit, sans inscription.";
+  "Auditez votre fiche Google Business Profile en 3 minutes : 20 questions, un score sur 100 et les corrections par impact. Gratuit, sans inscription.";
 
 /**
  * Les critères et leur poids. Le total fait 100.
@@ -236,7 +236,7 @@ export const Route = createFileRoute("/outils/audit-fiche-google")({
           applicationCategory: "BusinessApplication",
           operatingSystem: "Tous navigateurs",
           offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
-          provider: { "@type": "Organization", name: "Sitaly", url: "https://sitaly.fr" },
+          provider: { "@type": "Organization", "@id": "https://sitaly.fr/#business", name: "Sitaly", url: "https://sitaly.fr/" },
         }),
       },
       {

@@ -612,7 +612,6 @@ export function offresStructurees() {
     price: prix,
     priceCurrency: "EUR",
     billingDuration: duree,
-    valueAddedTaxIncluded: false,
   });
   const payante = (f: { nom: string; mensuel: number; annuel: number }) => ({
     "@type": "Offer",
@@ -649,3 +648,17 @@ export function offre(id: OffreId): Offre {
   if (!o) throw new Error(`Offre inconnue : ${id}`);
   return o;
 }
+
+/**
+ * L'application telle que les autres pages la citent dans leur JSON-LD. Google
+ * ne suit pas un @id d'une page à l'autre : chaque page qui parle de
+ * l'application la nomme elle-même (second audit du 14 novembre 2026).
+ */
+export const APP_REF = {
+  "@type": "SoftwareApplication",
+  "@id": "https://sitaly.fr/#app",
+  name: "Sitaly",
+  url: "https://sitaly.fr/",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+} as const;
