@@ -7,7 +7,11 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Le nom de domaine, c'est l'adresse de votre site : mon-entreprise.fr. Vos clients le tapent, le lisent sur votre camionnette, l'entendent au téléphone. Un bon domaine se retient du premier coup. Voici comment le choisir, et pourquoi le .fr est souvent le meilleur choix pour une activité en France.",
   },
-  { type: "h2", text: ".fr ou .com ?" },
+  { type: "h2", text: "Faut-il choisir un .fr ou un .com ?" },
+  {
+    type: "p",
+    text: "Pour une activité en France, choisissez le .fr : il dit tout de suite où vous travaillez, il reste plus de noms courts libres, et il coûte en moyenne 20 à 30 % moins cher qu'un .com selon l'[Afnic](https://www.afnic.fr/noms-de-domaine/tout-savoir/pourquoi-choisir-le-fr/), qui gère le .fr. Si le .com du même nom est libre, réservez-le aussi.",
+  },
   {
     type: "table",
     headers: ["", ".fr", ".com"],
@@ -19,14 +23,18 @@ export const contenu: BlogSection[] = [
         "Tout le monde",
       ],
       ["Disponibilité", "Plus de noms courts encore libres", "Beaucoup de noms courts déjà pris"],
-      ["Prix courant", "Environ 5 à 15 € par an", "Environ 10 à 20 € par an"],
+      ["Prix courant", "12 € par an en moyenne, selon l'[Afnic](https://www.afnic.fr/noms-de-domaine/tout-savoir/pourquoi-choisir-le-fr/)", "20 à 30 % plus cher qu'un .fr en moyenne, selon l'Afnic"],
     ],
   },
   {
     type: "p",
-    text: "Pour une activité locale, le .fr rassure et se comprend tout de suite. Si le .com du même nom est libre, réservez-le aussi pour éviter qu'un autre ne le prenne.",
+    text: "Pour une activité locale, le .fr rassure et se comprend tout de suite. Réserver aussi le .com évite qu'un autre ne le prenne et ne capte les clients qui se trompent d'extension.",
   },
-  { type: "h2", text: "Huit règles pour un bon nom de domaine" },
+  { type: "h2", text: "Comment choisir un bon nom de domaine ?" },
+  {
+    type: "p",
+    text: "Prenez un nom court, proche du nom de votre entreprise, qui se dicte au téléphone sans l'épeler. Évitez les accents, les doubles tirets et les noms proches d'une marque connue. Vérifiez qu'il est libre, réservez-le à votre nom, puis seulement imprimez vos cartes de visite. Les huit règles ci-dessous détaillent chaque point.",
+  },
   {
     type: "ul",
     items: [
@@ -42,7 +50,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Pour savoir en une seconde si votre nom est libre, utilisez notre [vérificateur de nom de domaine](/outils/verifier-nom-de-domaine/) : il interroge directement les registres officiels du .fr et du .com.",
+    text: "Pour savoir en une seconde si votre nom est libre, utilisez notre [vérificateur de nom de domaine](/outils/verifier-nom-de-domaine/) : il interroge les registres officiels du .fr et du .com. L'Afnic propose aussi une [recherche Whois](https://www.afnic.fr/noms-de-domaine/tout-savoir/whois-trouver-un-nom-de-domaine/) pour le .fr.",
   },
   { type: "h2", text: "Le domaine doit être à votre nom" },
   {
@@ -55,7 +63,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Avec les formules Essentiel et Pro de Sitaly, votre domaine est offert et enregistré à votre nom, comme l'exige l'Afnic pour le .fr. Sitaly le renouvelle tant que votre abonnement court, et il reste le vôtre si vous partez.",
+    text: "Un domaine ne s'achète pas : son titulaire reçoit un droit d'utilisation exclusif, renouvelable, comme l'explique l'[Afnic](https://www.afnic.fr/noms-de-domaine/tout-savoir/gerer-son-nom-de-domaine/). Avec les formules Essentiel et Pro de Sitaly, votre domaine est offert et enregistré à votre nom. Sitaly le renouvelle tant que votre abonnement court, et il reste le vôtre si vous partez.",
   },
   {
     type: "faq",
@@ -66,7 +74,7 @@ export const contenu: BlogSection[] = [
       },
       {
         q: "Que se passe-t-il si j'oublie de renouveler mon domaine ?",
-        a: "Le site et les e-mails cessent de fonctionner, puis le nom redevient libre après une période de grâce. Activez le renouvellement automatique ou confiez-le à votre outil de site.",
+        a: "Le site et les e-mails cessent de fonctionner. Pour un .fr, le nom est supprimé, puis il redevient libre après une période de rédemption de 30 jours, pendant laquelle vous pouvez encore le récupérer. Activez le renouvellement automatique ou confiez-le à votre outil de site.",
       },
     ],
   },

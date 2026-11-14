@@ -18,7 +18,15 @@ export { LIEN_DANS_LE_TEXTE, texteBrut } from "@/lib/liens-texte";
  * L'étape suivante proposée en fin d'article. Chaque article pousse vers la
  * page de vente de son sujet, pas vers le catalogue entier.
  */
-export type CtaArticle = "agents-ia" | "chatgpt-ads" | "automatisation" | "site" | "app";
+export type CtaArticle =
+  | "agents-ia"
+  | "chatgpt-ads"
+  | "automatisation"
+  | "site"
+  | "app"
+  | "devis"
+  | "rendez-vous"
+  | "avis";
 
 export interface BlogPost {
   slug: string;
@@ -72,7 +80,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     category: "Créer son site",
     readingTime: "5 min",
     publishedAt: "2026-10-30",
-    updatedAt: "2026-11-08",
+    updatedAt: "2026-11-14",
     author: "Teddy Vidal",
     keyword: "créer un site internet gratuit",
     cta: "app",
@@ -88,7 +96,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     category: "Créer son site",
     readingTime: "5 min",
     publishedAt: "2026-10-30",
-    updatedAt: "2026-11-08",
+    updatedAt: "2026-11-14",
     author: "Teddy Vidal",
     keyword: "créer un site internet sans coder",
     cta: "app",
@@ -96,17 +104,17 @@ const ALL_BLOG_POSTS: BlogPost[] = [
   {
     slug: "prix-site-internet",
     title: "Combien coûte un site internet en 2026 ? Les vrais prix, poste par poste",
-    metaTitle: "Prix d'un site internet en 2026 : les vrais coûts",
-    metaDescription:
-      "Créateur par IA, Wix, WordPress ou agence : ce que coûte vraiment un site internet, les frais qu'on oublie, et le calcul sur trois ans pour comparer.",
+    metaTitle: "Prix d'un site internet en 2026 : le coût réel sur 3 ans",
+    metaDescription: "Prix publiés de Wix, Squarespace, WordPress.com et Sitaly, coûts oubliés, freelance ou agence : ce que coûte un site internet sur trois ans.",
     excerpt:
       "De zéro à plusieurs milliers d'euros : pour comparer, il faut séparer ce que vous payez une fois, chaque année, et en temps.",
     category: "Créer son site",
-    readingTime: "6 min",
+    readingTime: "8 min",
     publishedAt: "2026-10-30",
     author: "Teddy Vidal",
     keyword: "prix site internet",
     cta: "app",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "trouver-nom-entreprise",
@@ -122,6 +130,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     author: "Teddy Vidal",
     keyword: "trouver un nom d'entreprise",
     cta: "app",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "choisir-nom-de-domaine",
@@ -137,6 +146,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     author: "Teddy Vidal",
     keyword: "choisir nom de domaine",
     cta: "app",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "mentions-legales-site-internet",
@@ -152,6 +162,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     author: "Teddy Vidal",
     keyword: "mentions légales site internet",
     cta: "app",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "pages-indispensables-site-vitrine",
@@ -167,19 +178,19 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     author: "Teddy Vidal",
     keyword: "pages site vitrine",
     cta: "app",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "apparaitre-sur-google",
     title: "Apparaître sur Google quand on lance son activité : le plan en 6 étapes",
     metaTitle: "Apparaître sur Google quand on lance son activité : 6 étapes",
-    metaDescription:
-      "Fiche Google, site, avis, Search Console : les six étapes pour être trouvé sur Google quand on lance son activité, dans l'ordre où elles rapportent.",
+    metaDescription: "Fiche Google, site, avis, Search Console : les 6 étapes pour être trouvé sur Google, les délais réels et les règles publiées par Google.",
     excerpt:
       "Être trouvé par les gens du coin ne se fait pas en un jour, mais ne demande pas d'expert. Voici les six étapes, dans l'ordre où elles rapportent.",
     category: "Lancer son activité",
-    readingTime: "6 min",
+    readingTime: "8 min",
     publishedAt: "2026-10-30",
-    updatedAt: "2026-11-08",
+    updatedAt: "2026-11-14",
     author: "Teddy Vidal",
     keyword: "apparaître sur Google",
     cta: "app",
@@ -237,8 +248,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     title:
       "Logiciel de gestion pour artisan : lequel choisir pour vraiment développer votre activité ?",
     metaTitle: "Logiciel de gestion pour artisan : lequel choisir en 2026",
-    metaDescription:
-      "Facturation, clients, avis Google, visibilité : tous les logiciels pour artisan ne servent pas à la même chose. Le guide pour choisir le bon outil et remplir votre planning.",
+    metaDescription: "Facturation, clients, avis Google, rendez-vous : ce que couvre chaque logiciel de gestion pour artisan, les critères pour choisir et leurs limites.",
     excerpt:
       "Vous avez un logiciel de devis, mais le planning ne se remplit pas tout seul. C'est normal : il n'a jamais été conçu pour ça. Voici comment choisir l'outil qui développe votre activité au lieu de seulement l'administrer.",
     category: "Développement commercial",
@@ -246,13 +256,14 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     publishedAt: "2026-07-10",
     author: "Teddy Vidal",
     keyword: "logiciel de gestion pour artisan",
+    cta: "app",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "recolter-avis-google-artisan",
     title: "Récolter des avis Google quand on est artisan : la méthode complète",
     metaTitle: "Avis Google artisan : comment en obtenir plus (méthode 2026)",
-    metaDescription:
-      "Peu ou pas d'avis Google ? La méthode concrète pour passer de 2 à 30 avis 5★ en quelques mois, avec les scripts SMS prêts à copier et l'astuce du lien direct.",
+    metaDescription: "La méthode pour obtenir plus d'avis Google quand on est artisan : lien direct, QR code, modèles de SMS, réponses, et les pratiques que Google interdit.",
     excerpt:
       "Les avis Google décident souvent qui décroche le chantier. Voici la méthode pas à pas pour en récolter régulièrement, sans harceler vos clients ni enfreindre les règles de Google.",
     category: "Référencement",
@@ -260,220 +271,220 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     publishedAt: "2026-07-08",
     author: "Teddy Vidal",
     keyword: "avis google artisan",
+    cta: "avis",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "creation-site-internet-artisan-guide",
     title: "Création de site internet pour artisan : le guide complet 2026",
-    metaTitle: "Création site internet artisan : guide 2026 (prix, délais)",
-    metaDescription:
-      "Combien coûte vraiment un site d'artisan en 2026 ? Délais, fonctionnalités, pièges. Le guide complet pour faire le bon choix dès le 1er devis.",
-    excerpt:
-      "Vous êtes plombier, électricien, menuisier ou maçon et vous voulez enfin un site internet qui vous ramène des clients ? Ce guide vous explique tout : prix réels, fonctionnalités indispensables, pièges à éviter.",
+    metaTitle: "Créer un site internet d'artisan : le guide complet 2026",
+    metaDescription: "Contenu, mentions obligatoires, prix et délais : l'IA, Wix ou une agence comparés pour créer votre site d'artisan, avec des modèles par métier.",
+    excerpt: "Ce que votre site doit contenir, ce que la loi impose, et les trois façons de le créer comparées sur le prix et le délai : application d'IA, éditeur ou agence.",
     category: "Site internet",
     readingTime: "12 min",
     publishedAt: "2026-06-18",
     author: "Teddy Vidal",
     keyword: "création site internet artisan",
+    cta: "app",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "comment-attirer-clients-artisan",
     title: "Comment attirer plus de clients quand on est artisan en 2026",
-    metaTitle: "Attirer des clients artisan : 9 leviers qui marchent (2026)",
-    metaDescription:
-      "Téléphone qui ne sonne plus assez ? 9 leviers concrets, testés par des artisans, pour remplir votre planning en 2 à 4 mois sans passer par les plateformes.",
-    excerpt:
-      "Vous êtes bon dans votre métier mais le téléphone ne sonne pas assez ? Ce guide rassemble les 9 leviers concrets que les meilleurs artisans utilisent pour remplir leur planning sans dépendre du hasard.",
+    metaTitle: "Attirer des clients quand on est artisan : 8 leviers",
+    metaDescription: "Fiche Google, avis, site, anciens clients, partenaires : 8 leviers concrets pour attirer des clients de façon régulière quand on est artisan.",
+    excerpt: "Le téléphone ne sonne pas assez ? Huit leviers concrets pour remplir votre planning sans dépendre du hasard.",
     category: "Développement commercial",
     readingTime: "13 min",
     publishedAt: "2026-06-18",
     author: "Teddy Vidal",
     keyword: "attirer clients artisan",
+    cta: "app",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "referencement-local-google-artisan",
     title: "Référencement local sur Google pour artisan : le guide pratique",
-    metaTitle: "Référencement local artisan : top 3 Google en 6 mois",
-    metaDescription:
-      "Apparaître dans le top 3 Google sur 'plombier + ville' peut tripler vos appels. La méthode étape par étape : fiche, avis, pages locales, citations.",
-    excerpt:
-      "Apparaître dans les 3 premiers résultats Google quand un client tape 'plombier Avignon' ou 'menuisier Nîmes' peut tripler votre nombre d'appels. Voici comment y arriver, étape par étape.",
+    metaTitle: "Référencement local artisan : la méthode Google pas à pas",
+    metaDescription: "Comment Google classe les artisans sur la carte, et ce que vous pouvez faire : fiche d'établissement, avis, site, coordonnées. Méthode sourcée, pas à pas.",
+    excerpt: "Pertinence, distance, notoriété : comment Google choisit les artisans qu'il affiche sur « plombier + ville », et les cinq étapes pour travailler ce qui dépend de vous.",
     category: "Référencement",
     readingTime: "11 min",
     publishedAt: "2026-06-18",
     author: "Teddy Vidal",
     keyword: "référencement local artisan",
+    cta: "avis",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "combien-coute-site-internet-artisan",
     title: "Combien coûte un site internet pour artisan en 2026 ?",
-    metaTitle: "Prix site internet artisan : de 99€ à 4 000€ ? (guide 2026)",
-    metaDescription:
-      "Pourquoi 99€, 800€ ou 4 000€ pour le même site ? Tarifs réels 2026, comparatif freelance vs agence, achat vs location, et ce qui doit toujours être inclus dans un devis.",
-    excerpt:
-      "Site à 99€, à 800€, à 4 000€ ou à 10 000€ : pourquoi un tel écart, et qu'est-ce qui justifie réellement le prix d'un site internet d'artisan ? On vous explique tout, sans langue de bois.",
+    metaTitle: "Prix d'un site internet d'artisan en 2026 : coût sur 3 ans",
+    metaDescription: "Gratuit, 39 €/mois ou plusieurs milliers d'euros : le vrai coût d'un site d'artisan sur trois ans, chiffres sourcés, et les pièges avant de signer.",
+    excerpt: "De zéro à plusieurs milliers d'euros : ce que vous payez une fois, chaque année et en temps, avec des prix sourcés pour comparer des offres comparables.",
     category: "Tarifs",
     readingTime: "10 min",
     publishedAt: "2026-06-18",
     author: "Teddy Vidal",
     keyword: "prix site internet artisan",
+    cta: "app",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "fiche-google-business-profile-artisan",
     title: "Fiche Google Business Profile pour artisan : le guide d'optimisation",
-    metaTitle: "Google Business Profile artisan : +5x d'appels en 6 mois",
-    metaDescription:
-      "Multipliez vos appels par 5 en 6 mois avec une fiche Google bien optimisée. Photos, avis, posts, attributs : la méthode complète, exemples chiffrés.",
-    excerpt:
-      "Votre fiche Google est souvent le 1er contact avec un client. Bien optimisée, elle peut générer plus d'appels que votre site. Voici la méthode complète.",
+    metaTitle: "Fiche Google Business Profile artisan : le guide complet",
+    metaDescription: "Créer, valider et remplir votre fiche Google d'artisan : nom, catégorie, zones desservies, description, photos et avis, selon les règles de Google.",
+    excerpt: "Votre fiche Google est souvent le premier contact avec un client. Voici comment la remplir selon les règles que Google publie.",
     category: "Référencement",
     readingTime: "12 min",
     publishedAt: "2026-07-02",
     author: "Teddy Vidal",
     keyword: "google business profile artisan",
+    cta: "avis",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "site-internet-plombier-electricien",
     title: "Site internet pour plombier ou électricien : ce qui fait la différence",
-    metaTitle: "Site internet plombier / électricien : +4x d'appels (2026)",
-    metaDescription:
-      "Plombier ou électricien : ce qui fait passer un site de 9 à 41 appels/mois. Téléphone, formulaire, pages ville et vitesse, avec exemples chiffrés.",
-    excerpt:
-      "Les artisans du bâtiment urgentiste (plombier, électricien, chauffagiste) ont des besoins très spécifiques en matière de site internet. Voici ce qui change vraiment.",
+    metaTitle: "Site internet plombier et électricien : l'essentiel en 2026",
+    metaDescription: "Numéro visible, tarifs de dépannage affichés en ligne, assurance, zones, formulaire court : ce que doit contenir le site d'un plombier ou électricien.",
+    excerpt: "Plombiers, électriciens, chauffagistes : vos clients arrivent souvent pressés, et la loi vous impose d'afficher vos prix de dépannage. Ce que votre site doit contenir.",
     category: "Site internet",
     readingTime: "11 min",
     publishedAt: "2026-06-25",
     author: "Teddy Vidal",
     keyword: "site internet plombier",
+    cta: "app",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "seo-local-villes-pages-artisan",
-    title: "Pages 'ville' pour artisan : booster son SEO local intelligemment",
-    metaTitle: "Pages ville artisan : ×3 de trafic SEO local sans pénalité",
-    metaDescription:
-      "Une page par ville desservie peut tripler votre trafic SEO local… ou vous faire pénaliser. La méthode propre pour éviter le piège 'doorway' Google.",
-    excerpt:
-      "Créer une page par ville desservie peut multiplier votre trafic SEO local par 3 ou 4 — à condition de bien le faire. Voici la méthode propre.",
+    title: "Pages par ville pour artisan : la méthode sans pénalité Google",
+    metaTitle: "Pages ville pour artisan : la méthode sans pénalité Google",
+    metaDescription: "Une page par commune desservie peut aider votre référencement local, ou tomber sous les règles anti-spam de Google. La méthode propre, pas à pas.",
+    excerpt: "Une page par commune desservie aide vos clients et Google à savoir où vous travaillez, à condition qu'elle ne soit pas une copie. La méthode propre, et quand s'abstenir.",
     category: "Référencement",
     readingTime: "10 min",
     publishedAt: "2026-06-27",
     author: "Teddy Vidal",
     keyword: "seo local artisan villes",
+    cta: "app",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "site-internet-artisan-rentabilite-roi",
-    title: "Site internet d'artisan : quelle rentabilité réelle attendre ?",
-    metaTitle: "Rentabilité site internet artisan : ROI réel chiffré 2026",
-    metaDescription:
-      "Combien rapporte un site d'artisan en location à 149€/mois ? ROI par métier, exemples chiffrés et formule de calcul. La rentabilité réelle, sans baratin.",
-    excerpt:
-      "Investir 149€/mois dans un site, c'est combien d'appels en retour ? Combien de chantiers ? Voici les chiffres et la méthode pour calculer votre ROI réel.",
+    title: "Site internet d'artisan : comment calculer sa rentabilité ?",
+    metaTitle: "Rentabilité d'un site d'artisan : calculez votre seuil",
+    metaDescription: "Combien de chantiers faut-il pour rembourser un site d'artisan ? La formule du seuil de rentabilité, deux exemples de calcul et la méthode pour mesurer.",
+    excerpt: "Personne ne peut vous garantir un nombre d'appels. Vous pouvez en revanche calculer combien de chantiers remboursent votre site, puis mesurer ce qu'il rapporte.",
     category: "Tarifs",
     readingTime: "10 min",
     publishedAt: "2026-06-30",
     author: "Teddy Vidal",
     keyword: "rentabilité site internet artisan",
+    cta: "app",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "google-ads-artisan-quand-utiliser",
-    title: "Google Ads pour artisan : quand l'utiliser et comment éviter de cramer son budget",
-    metaTitle: "Google Ads artisan : guide pour ne pas cramer 500€ (2026)",
-    metaDescription:
-      "Google Ads peut ramener des appels en 24h… ou cramer 500€. Coût par appel par métier, configuration efficace et erreurs à éviter en 2026.",
-    excerpt:
-      "Google Ads peut ramener des appels en 24h... ou cramer 500€ pour zéro chantier si c'est mal configuré. Voici le guide honnête pour les artisans.",
+    title: "Google Ads pour artisan : quand l'utiliser et comment régler sa première campagne",
+    metaTitle: "Google Ads artisan : quand l'utiliser, comment le régler",
+    metaDescription: "Quand Google Ads vaut le coup pour un artisan, quand attendre, et les réglages documentés par Google pour ne pas vider votre budget la première semaine.",
+    excerpt: "Google Ads peut amener des appels dès le premier jour, ou vider un budget sans un chantier. Les situations où il a du sens et les réglages qui protègent votre budget.",
     category: "Développement commercial",
-    readingTime: "11 min",
+    readingTime: "8 min",
     publishedAt: "2026-07-04",
     author: "Teddy Vidal",
     keyword: "google ads artisan",
+    cta: "app",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "refonte-site-artisan-quand-comment",
     title: "Refonte de site internet d'artisan : quand et comment s'y prendre ?",
-    metaTitle: "Refonte site artisan : 8 signes + méthode SEO 2026",
-    metaDescription:
-      "Site daté, trafic en baisse ? 8 signes qu'il faut refondre + méthode pour préserver votre référencement Google. Prix, délais et checklist incluse.",
-    excerpt:
-      "Votre site a 4 ans, ne convertit plus, et vous perdez des appels ? Voici comment savoir s'il faut refondre, et la méthode pour le faire sans perdre Google.",
+    metaTitle: "Refonte site artisan : quand et comment, sans perdre Google",
+    metaDescription: "Les signes qu'il faut refaire votre site, et la méthode pour garder votre référencement : liste des pages, redirections 301, sitemap et suivi.",
+    excerpt: "Votre site a quelques années et vous n'osez plus donner l'adresse ? Comment décider entre corriger et refaire, puis mener la refonte sans perdre vos positions sur Google.",
     category: "Site internet",
     readingTime: "11 min",
     publishedAt: "2026-07-07",
     author: "Teddy Vidal",
     keyword: "refonte site internet artisan",
+    cta: "app",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "google-ads-artisan-pourquoi-investir",
-    title: "Google Ads pour artisan : est-ce vraiment rentable en 2026 ?",
-    metaTitle: "Google Ads artisan rentable ? Le ROI réel en 2026",
-    metaDescription:
-      "Google Ads est-il rentable pour un artisan en 2026 ? ROI réel, exemples chiffrés, coût par appel et le piège qui ruine la rentabilité avant le 1er euro.",
-    excerpt:
-      "Investir dans Google Ads quand on est artisan : est-ce que ça vaut vraiment le coup ? ROI réel, coût par appel et la condition n°1 pour que ce soit rentable.",
+    title: "Google Ads pour artisan : comment savoir si c'est rentable",
+    metaTitle: "Google Ads rentable pour un artisan ? La méthode de calcul",
+    metaDescription: "Coût d'un clic, part des visiteurs qui appellent, devis signés, marge : la méthode pour savoir si Google Ads est rentable pour votre activité d'artisan.",
+    excerpt: "La rentabilité de Google Ads ne se devine pas : elle se calcule avec quatre chiffres que vous pouvez réunir vous-même. La méthode, et les leviers qui baissent le coût d'un chantier.",
     category: "Acquisition payante",
-    readingTime: "11 min",
+    readingTime: "6 min",
     publishedAt: "2026-06-18",
     author: "Teddy Vidal",
     keyword: "google ads artisan rentable",
+    cta: "app",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "google-ads-vs-seo-artisan",
-    title: "Google Ads vs SEO pour un artisan : que choisir en 2026 ?",
-    metaTitle: "Google Ads vs SEO artisan : que choisir ? (guide 2026)",
-    metaDescription:
-      "Google Ads ou SEO pour un artisan ? Comparatif coûts, délais, ROI et la stratégie qui combine les deux pour un maximum d'appels sans exploser le budget.",
-    excerpt:
-      "Faut-il investir dans le référencement naturel ou payer Google ? La réponse honnête : ça dépend de votre situation — et bien souvent, les deux sont complémentaires.",
+    title: "Google Ads ou SEO pour un artisan : que choisir ?",
+    metaTitle: "Google Ads ou SEO pour un artisan : que choisir ?",
+    metaDescription: "Délais, coûts, ce qui reste quand vous arrêtez : Google Ads et référencement naturel comparés avec les sources de Google, et un plan sur douze mois.",
+    excerpt: "Payer chaque clic ou construire une visibilité qui reste : la comparaison, et l'ordre dans lequel s'y prendre selon votre situation.",
     category: "Acquisition payante",
-    readingTime: "12 min",
+    readingTime: "6 min",
     publishedAt: "2026-06-18",
     author: "Teddy Vidal",
     keyword: "google ads vs seo",
+    cta: "app",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "cout-google-ads-artisan-vrais-chiffres",
-    title: "Combien coûte une campagne Google Ads pour un artisan en 2026 ?",
-    metaTitle: "Coût Google Ads artisan 2026 : vrais chiffres (CPC, ROI)",
-    metaDescription:
-      "Coût réel d'une campagne Google Ads pour un artisan en 2026 : CPC par métier, budget mensuel conseillé, coût par appel et ROI mesuré. Sans baratin.",
-    excerpt:
-      "300€, 500€, 2 000€/mois ? Voici les vrais chiffres d'une campagne Google Ads d'artisan en 2026 : coût par clic par métier, budget conseillé, ROI mesuré et frais cachés.",
+    title: "Combien coûte Google Ads pour un artisan ? Les chiffres sourcés",
+    metaTitle: "Coût de Google Ads pour un artisan : les chiffres sourcés",
+    metaDescription: "Prix du clic, frais de 2 % en France (3 % en 2027), TVA, plafond de budget : ce que coûte Google Ads pour un artisan, avec des sources vérifiables.",
+    excerpt: "Aucune étude sérieuse ne donne le prix d'un clic par métier en France. Ce qui est vérifiable : la facturation de Google, les frais français et la méthode pour estimer votre budget.",
     category: "Tarifs",
-    readingTime: "11 min",
+    readingTime: "7 min",
     publishedAt: "2026-06-18",
     author: "Teddy Vidal",
     keyword: "coût google ads artisan",
+    cta: "app",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "relance-automatique-devis",
     title: "Relancer ses devis automatiquement : la méthode pour signer plus en 2026",
-    metaTitle: "Relance de devis automatique : méthode et modèles (2026)",
-    metaDescription:
-      "Quand et comment relancer un devis automatiquement : le bon timing, des modèles de SMS et d'email, et ce qu'un agent IA peut prendre en charge.",
+    metaTitle: "Relance de devis : quand relancer et quoi écrire (2026)",
+    metaDescription: "Quand relancer un devis, combien de fois, deux modèles de SMS, les règles d'appel depuis août 2026, et le devis accepté en ligne avec Sitaly.",
     excerpt:
       "La plupart des devis sans réponse ne sont pas refusés : ils sont oubliés. Voici quand relancer, avec quels messages, et comment automatiser la relance sans perdre le ton d'un échange humain.",
     category: "Automatisation",
-    readingTime: "8 min",
+    readingTime: "6 min",
     publishedAt: "2026-06-22",
-    updatedAt: "2026-09-28",
+    updatedAt: "2026-11-14",
     author: "Teddy Vidal",
     keyword: "relance devis automatique",
-    cta: "agents-ia",
+    cta: "devis",
   },
   {
     slug: "prise-rendez-vous-en-ligne-guide",
     title: "Prise de rendez-vous en ligne : le guide complet pour PME, TPE et indépendants",
-    metaTitle: "Prise de rendez-vous en ligne : le guide 2026",
-    metaDescription:
-      "Pourquoi et comment mettre en place la prise de rendez-vous en ligne quand on est indépendant : moins d'appels manqués, moins de rendez-vous oubliés.",
+    metaTitle: "Prise de rendez-vous en ligne : le guide complet 2026",
+    metaDescription: "Mettre en place la prise de rendez-vous en ligne : métiers concernés, réglages, rappel la veille, choix de l'outil et règles de la CNIL.",
     excerpt:
       "Un appel manqué pendant un rendez-vous, et le prospect appelle ailleurs. La prise de rendez-vous en ligne laisse vos clients réserver seuls, à toute heure. Voici comment la mettre en place.",
     category: "Automatisation",
-    readingTime: "8 min",
+    readingTime: "9 min",
     publishedAt: "2026-06-22",
-    updatedAt: "2026-09-28",
+    updatedAt: "2026-11-14",
     author: "Teddy Vidal",
     keyword: "prise de rendez-vous en ligne",
-    cta: "agents-ia",
+    cta: "rendez-vous",
   },
   {
     slug: "automatiser-suivi-client-tpe",
@@ -485,96 +496,96 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     excerpt:
       "Quand on gère tout seul, le suivi client passe toujours après. Voici 7 automatisations simples qui travaillent à votre place et vous évitent de laisser filer des clients.",
     category: "Automatisation",
-    readingTime: "9 min",
+    readingTime: "4 min",
     publishedAt: "2026-06-22",
-    updatedAt: "2026-09-28",
+    updatedAt: "2026-11-14",
     author: "Teddy Vidal",
     keyword: "automatisation TPE suivi client",
-    cta: "automatisation",
+    cta: "app",
   },
   {
     slug: "trouver-patients-osteopathe",
-    title: "Comment trouver plus de patients quand on est ostéopathe en 2026",
-    metaTitle: "Trouver des patients ostéopathe : le guide complet 2026",
-    metaDescription:
-      "Cabinet trop calme ? 7 leviers concrets pour trouver plus de patients en ostéopathie : Google, avis, site internet, prise de rendez-vous en ligne et Google Ads.",
-    excerpt:
-      "Diplôme en poche mais agenda à moitié vide ? Trouver des patients en ostéopathie ne dépend pas du hasard. Voici les 7 leviers qui remplissent un cabinet en quelques mois.",
+    title: "Trouver des patients quand on est ostéopathe : les leviers et les règles",
+    metaTitle: "Trouver des patients quand on est ostéopathe",
+    metaDescription: "Fiche Google, avis, site, réservation en ligne : comment un ostéopathe se fait trouver par ses patients, dans le respect du décret de 2007 sur sa pratique.",
+    excerpt: "Vos futurs patients cherchent un ostéopathe sur leur téléphone. Les leviers qui vous rendent trouvable, et les règles à respecter quand on parle de soin.",
     category: "Acquisition de clients",
-    readingTime: "10 min",
+    readingTime: "7 min",
     publishedAt: "2026-06-22",
     author: "Teddy Vidal",
     keyword: "trouver des patients ostéopathe",
+    cta: "rendez-vous",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "site-internet-kinesitherapeute-patients",
-    title: "Site internet pour kinésithérapeute : attirer plus de patients en 2026",
-    metaTitle: "Site internet kinésithérapeute : attirer des patients 2026",
-    metaDescription:
-      "Cabinet de kiné qui veut se développer ? Site internet, fiche Google, avis et réservation en ligne : le guide pour attirer plus de patients sans bouche-à-oreille.",
-    excerpt:
-      "Beaucoup de kinés croient que leur agenda se remplit tout seul. Jusqu'au jour où un nouveau cabinet ouvre à côté. Voici comment sécuriser et développer sa patientèle en ligne.",
+    title: "Site internet de kinésithérapeute : ce que le code de déontologie permet",
+    metaTitle: "Site internet de kiné : ce que la déontologie permet",
+    metaDescription: "Mentions obligatoires, témoignages interdits, pas de Google Ads, spécificités reconnues : les règles du site d'un kinésithérapeute depuis décembre 2020.",
+    excerpt: "Depuis décembre 2020, un kiné peut présenter son cabinet en ligne, dans des limites précises. Ce que votre site doit contenir, et ce qu'il ne peut pas contenir.",
     category: "Acquisition de clients",
-    readingTime: "9 min",
+    readingTime: "6 min",
     publishedAt: "2026-06-22",
     author: "Teddy Vidal",
     keyword: "site internet kinésithérapeute",
+    cta: "app",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "trouver-clients-coach-sportif",
-    title: "Comment trouver des clients quand on est coach sportif en 2026",
-    metaTitle: "Trouver des clients coach sportif : le guide 2026",
-    metaDescription:
-      "Coach sportif qui veut remplir son planning ? 7 leviers pour trouver des clients sans dépendre uniquement d'Instagram : site, Google, avis et prise de rendez-vous.",
-    excerpt:
-      "Dépendre uniquement d'Instagram pour trouver des clients, c'est fragile. Voici comment un coach sportif construit un vrai système d'acquisition qui remplit son planning.",
+    title: "Trouver des clients quand on est coach sportif : 7 leviers",
+    metaTitle: "Trouver des clients coach sportif : 7 leviers concrets",
+    metaDescription: "Fiche Google, avis, site, séance découverte en ligne, carte professionnelle : 7 leviers pour remplir votre planning de coach sans dépendre d'Instagram.",
+    excerpt: "Instagram fait connaître un coach, il ne remplit pas toujours son planning. Les leviers qui captent les personnes qui cherchent déjà un coach près de chez elles.",
     category: "Acquisition de clients",
-    readingTime: "10 min",
+    readingTime: "6 min",
     publishedAt: "2026-06-22",
     author: "Teddy Vidal",
     keyword: "trouver des clients coach sportif",
+    cta: "rendez-vous",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "trouver-clients-consultant-independant",
-    title: "Trouver des clients en tant que consultant ou indépendant : le système complet",
-    metaTitle: "Trouver des clients consultant indépendant (guide 2026)",
-    metaDescription:
-      "Consultant ou indépendant qui veut un flux régulier de clients ? Le système complet : positionnement, site, Google, contenu et automatisation. Sans démarchage à froid.",
-    excerpt:
-      "Le talent ne suffit pas à remplir un carnet de commandes. Voici le système complet qu'un consultant indépendant met en place pour attirer des clients sans démarcher à froid.",
+    title: "Trouver des clients quand on est consultant indépendant",
+    metaTitle: "Trouver des clients quand on est consultant indépendant",
+    metaDescription: "Offre claire, site avec cas clients, articles, réservation en ligne, prospection conforme à la CNIL : le système qui lisse l'activité d'un consultant.",
+    excerpt: "Le réseau rapporte les meilleures missions, mais vous ne décidez pas quand il joue. Les mécanismes qui travaillent pendant que vous êtes en mission.",
     category: "Acquisition de clients",
-    readingTime: "10 min",
+    readingTime: "6 min",
     publishedAt: "2026-06-22",
     author: "Teddy Vidal",
     keyword: "trouver des clients consultant",
+    cta: "rendez-vous",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "trouver-clients-avocat",
-    title: "Comment un avocat trouve de nouveaux clients en ligne en 2026",
-    metaTitle: "Trouver des clients avocat : le guide en ligne 2026",
-    metaDescription:
-      "Développer sa clientèle d'avocat dans le respect de la déontologie : site internet, référencement, Google et avis. Le guide pour attirer des clients qualifiés en 2026.",
-    excerpt:
-      "Un client qui a un problème juridique commence par Google. Voici comment un avocat développe sa clientèle en ligne, dans le respect de la déontologie, sans démarchage.",
+    title: "Avocat : trouver des clients en ligne dans le respect du RIN",
+    metaTitle: "Trouver des clients avocat en ligne : ce que permet le RIN",
+    metaDescription: "Site, nom de domaine, Google Ads, avis clients, sollicitation personnalisée : ce que le RIN et le CNB permettent à l'avocat qui développe sa clientèle.",
+    excerpt: "Un avocat peut communiquer en ligne, dans un cadre plus strict qu'un commerce. Ce que le RIN permet, ce qu'il interdit, et les leviers qui restent ouverts.",
     category: "Acquisition de clients",
-    readingTime: "10 min",
+    readingTime: "6 min",
     publishedAt: "2026-06-22",
     author: "Teddy Vidal",
     keyword: "trouver des clients avocat",
+    cta: "app",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "trouver-clients-expert-comptable",
-    title: "Trouver des clients quand on est expert-comptable : l'acquisition digitale en 2026",
-    metaTitle: "Trouver des clients expert-comptable (guide 2026)",
-    metaDescription:
-      "Développer son cabinet d'expertise comptable : site internet, référencement local, Google Ads et automatisation pour attirer des dirigeants et des créateurs d'entreprise.",
-    excerpt:
-      "Les créateurs d'entreprise cherchent leur expert-comptable sur Google. Voici comment un cabinet attire des clients qualifiés et automatise son acquisition en 2026.",
+    title: "Trouver des clients quand on est expert-comptable : leviers et déontologie",
+    metaTitle: "Trouver des clients expert-comptable : leviers et règles",
+    metaDescription: "Site, fiche Google, articles pour créateurs, réservation en ligne : comment un cabinet attire des clients dans le cadre de l'article 152 de sa déontologie.",
+    excerpt: "Les créateurs d'entreprise cherchent leur cabinet en ligne. Ce que l'article 152 permet, et les leviers qui vous rendent trouvable sans sortir de la retenue.",
     category: "Acquisition de clients",
-    readingTime: "9 min",
+    readingTime: "6 min",
     publishedAt: "2026-06-22",
     author: "Teddy Vidal",
     keyword: "trouver des clients expert-comptable",
+    cta: "rendez-vous",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "trouver-clients-agent-immobilier",
@@ -595,24 +606,24 @@ const ALL_BLOG_POSTS: BlogPost[] = [
   {
     slug: "trouver-des-chantiers-artisan",
     title: "Trouver des chantiers : les 7 canaux qui remplissent vraiment un planning",
-    metaTitle: "Trouver des chantiers : 7 canaux classés par rentabilité",
+    metaTitle: "Trouver des chantiers : 7 canaux comparés pour artisan",
     metaDescription:
-      "Fiche Google, site internet, plateformes, Ads, bouche-à-oreille : ce que chaque canal rapporte vraiment à un artisan, ce qu'il coûte, et par lequel commencer selon votre situation.",
-    excerpt:
-      "Tous les canaux ne se valent pas. Certains vous coûtent 20 % du chantier à vie, d'autres vous appartiennent pour toujours. Voici les sept façons de trouver des chantiers, classées par ce qu'elles rapportent réellement.",
+      "Fiche Google, site, plateformes, Ads, bouche-à-oreille : ce que chaque canal apporte à un artisan, ce qu'il coûte, et par lequel commencer.",
+    excerpt: "Certains canaux s'arrêtent dès que vous cessez de payer, d'autres vous appartiennent. Les sept façons de trouver des chantiers, comparées.",
     category: "Trouver des chantiers",
     readingTime: "11 min",
     publishedAt: "2026-08-13",
     author: "Teddy Vidal",
     keyword: "trouver des chantiers",
+    cta: "app",
+    updatedAt: "2026-11-14",
   },
 
   {
     slug: "plateformes-mise-en-relation-artisan-avis",
-    title: "Travaux.com, Ootravaux, Habitatpresto : ce que ces plateformes coûtent vraiment",
-    metaTitle: "Avis Travaux.com et plateformes artisans : le vrai coût",
-    metaDescription:
-      "Combien coûtent réellement les plateformes de mise en relation pour un artisan, comment fonctionne la revente de leads, et à partir de quand il devient rentable de s'en passer.",
+    title: "Plateformes de mise en relation : ce qu'un chantier vous coûte vraiment",
+    metaTitle: "Plateformes de mise en relation artisan : le vrai coût",
+    metaDescription: "Comment fonctionnent les plateformes de mise en relation pour artisans, comment calculer le coût réel d'un chantier obtenu, et comment en dépendre moins.",
     excerpt:
       "Les plateformes livrent de vraies demandes, personne ne le conteste. La question est ailleurs : combien vous coûte un chantier obtenu ainsi, et que vous reste-t-il le jour où vous arrêtez de payer ?",
     category: "Trouver des chantiers",
@@ -620,21 +631,23 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     publishedAt: "2026-08-13",
     author: "Teddy Vidal",
     keyword: "travaux.com avis",
+    cta: "app",
+    updatedAt: "2026-11-14",
   },
 
   {
     slug: "appels-manques-artisan-permanence-telephonique",
-    title: "Appels manqués : combien ça vous coûte, et les quatre façons d'y remédier",
-    metaTitle: "Appels manqués artisan : permanence téléphonique ou agent IA ?",
-    metaDescription:
-      "Un artisan rate 20 à 30 % de ses appels. Répondeur, secrétariat externalisé, permanence téléphonique, agent IA : ce que chaque solution coûte et laquelle choisir.",
-    excerpt:
-      "Six appels manqués par jour, deux qui ne rappelleront jamais, et un client parti chez le concurrent. Voici le calcul exact de ce que ça représente sur une année, et les quatre solutions possibles.",
+    title: "Appels manqués : combien ça vous coûte, et comment y remédier",
+    metaTitle: "Appels manqués artisan : permanence, agent IA ou rendez-vous",
+    metaDescription: "Mesurez ce que vous coûtent vos appels manqués, puis comparez répondeur, SMS, permanence téléphonique, agent vocal IA et réservation en ligne.",
+    excerpt: "Un appel manqué est souvent un client parti chez le concurrent. La méthode pour chiffrer la perte avec vos chiffres, et les solutions possibles.",
     category: "Trouver des chantiers",
     readingTime: "10 min",
     publishedAt: "2026-08-13",
     author: "Teddy Vidal",
     keyword: "permanence téléphonique",
+    cta: "rendez-vous",
+    updatedAt: "2026-11-14",
   },
 
   {
@@ -642,14 +655,15 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     title: "CRM pour artisan : à quoi ça sert vraiment quand on est seul sur les chantiers",
     metaTitle: "CRM artisan : lequel choisir et comment s'en servir",
     metaDescription:
-      "Un CRM pour artisan ne sert pas à faire des tableaux. Il sert à ne perdre aucun devis en attente. Ce qu'il faut suivre, les outils possibles, et par quoi commencer.",
-    excerpt:
-      "La plupart des artisans pilotent leur suivi client avec un carnet et leur mémoire. Ça tient jusqu'à quinze devis en cours. Au-delà, les oublis coûtent plus cher que n'importe quel logiciel.",
+      "Un CRM pour artisan sert à ne perdre aucun devis en attente. Ce qu'il faut suivre, les outils possibles, et par quoi commencer quand on est seul.",
+    excerpt: "La plupart des artisans suivent leurs clients avec un carnet et leur mémoire. Le jour où les oublis commencent, une simple liste avec un statut par contact évite de perdre des devis.",
     category: "Outils & logiciels",
     readingTime: "10 min",
     publishedAt: "2026-08-18",
     author: "Teddy Vidal",
     keyword: "crm artisan",
+    cta: "app",
+    updatedAt: "2026-11-14",
   },
 
   {
@@ -669,19 +683,52 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     cta: "agents-ia",
   },
 
+  // Audit SEO du 14 novembre 2026 : la réforme de la facture électronique et
+  // les mentions du devis, deux sujets du module Devis et factures.
+  {
+    slug: "facturation-electronique-artisan-2027",
+    title: "Facturation électronique 2027 : ce qui change pour les artisans et auto-entrepreneurs",
+    metaTitle: "Facturation électronique artisan 2027 : dates et obligations",
+    metaDescription:
+      "Réception depuis 2026, émission au 1er septembre 2027 : plateforme agréée, formats, e-reporting et amendes, pour artisans et micro-entrepreneurs.",
+    excerpt:
+      "Depuis septembre 2026, vous devez pouvoir recevoir des factures électroniques. En septembre 2027, vous devrez en émettre. Calendrier, plateformes agréées, amendes et liste datée.",
+    category: "Outils & logiciels",
+    readingTime: "10 min",
+    publishedAt: "2026-11-13",
+    author: "Teddy Vidal",
+    keyword: "facturation électronique artisan 2027",
+    cta: "devis",
+  },
+  {
+    slug: "mentions-obligatoires-devis-artisan",
+    title: "Mentions obligatoires d'un devis d'artisan : la liste complète et vérifiée",
+    metaTitle: "Mentions obligatoires d'un devis d'artisan : la liste à jour",
+    metaDescription:
+      "Quand le devis est obligatoire, les mentions à porter (RNE, décennale, TVA), le bon pour accord et la rétractation, vérifiés sur les textes officiels.",
+    excerpt:
+      "Identité, RNE, assurance décennale, prix, validité, rétractation : chaque mention obligatoire d'un devis d'artisan, avec sa source et une liste à cocher.",
+    category: "Outils & logiciels",
+    readingTime: "8 min",
+    publishedAt: "2026-11-13",
+    author: "Teddy Vidal",
+    keyword: "mentions obligatoires devis artisan",
+    cta: "devis",
+  },
   {
     slug: "logiciel-devis-artisan-choisir",
-    title: "Logiciel de devis pour artisan : ce qui compte vraiment avant de choisir",
-    metaTitle: "Logiciel de devis artisan : comment choisir sans se tromper",
-    metaDescription:
-      "Bibliothèque d'ouvrages, devis sur mobile, signature en ligne, relance automatique : les critères qui font gagner du temps et ceux qui n'en font perdre.",
+    title: "Logiciel de devis et facture pour artisan : le guide pour bien choisir",
+    metaTitle: "Logiciel devis facture artisan : mentions, 2027, critères",
+    metaDescription: "Mentions obligatoires du devis et de la facture, facture électronique en 2026 et 2027, critères et comparatif honnête des logiciels pour artisans.",
     excerpt:
       "Le meilleur logiciel de devis n'est pas celui qui a le plus de fonctions. C'est celui qui vous fait envoyer le devis le jour même plutôt que trois semaines plus tard.",
     category: "Outils & logiciels",
     readingTime: "11 min",
     publishedAt: "2026-09-01",
     author: "Teddy Vidal",
-    keyword: "logiciel devis artisan",
+    keyword: "logiciel devis facture artisan",
+    cta: "devis",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "agent-ia-entreprise-guide",
@@ -701,23 +748,22 @@ const ALL_BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "comparatif-solutions-site-internet-artisan",
-    title:
-      "Site internet d'artisan : éditeur, abonnement, agence ou freelance ? Le comparatif 2026",
-    metaTitle: "Comparatif site internet artisan 2026 : quelle solution choisir ?",
-    metaDescription:
-      "Éditeur automatique, abonnement d'agence spécialisée, offre tout compris ou création à l'achat : ce que coûte et rapporte chaque solution de site internet pour un artisan en 2026.",
-    excerpt:
-      "De 15 € à 400 € par mois, ou 2 500 € à l'achat : les offres de site internet pour artisans n'ont plus rien de comparable à première vue. Voici comment les ranger, ce que chaque famille inclut, et les questions qui départagent.",
+    title: "Site internet d'artisan : application IA, éditeur, agence ou freelance ? Le comparatif",
+    metaTitle: "Site internet artisan : quelle solution choisir en 2026 ?",
+    metaDescription: "Application d'IA, éditeur, abonnement d'agence, offre avec publicité ou freelance : ce que comprend chaque solution, son prix et pour quel artisan.",
+    excerpt: "Gratuit, quelques dizaines d'euros par mois ou plusieurs milliers d'euros : six familles d'offres de site pour artisan, ce qu'elles comprennent et les questions qui départagent.",
     category: "Site internet",
     readingTime: "9 min",
     publishedAt: "2026-09-14",
     author: "Teddy Vidal",
     keyword: "comparatif site internet artisan",
+    cta: "app",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "resilier-contrat-site-internet-location-financiere",
     title: "Résilier un contrat de site internet en location financière : les recours d'un artisan",
-    metaTitle: "Résilier un contrat de site internet (location financière) : recours",
+    metaTitle: "Contrat de site en location financière : comment en sortir",
     metaDescription:
       "Contrat de site internet sur 48 mois avec un organisme de financement : comment le lire, quand la loi protège un artisan, et les étapes pour tenter d'en sortir.",
     excerpt:
@@ -727,15 +773,15 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     publishedAt: "2026-09-14",
     author: "Teddy Vidal",
     keyword: "résilier contrat site internet location financière",
+    cta: "app",
+    updatedAt: "2026-11-14",
   },
   {
     slug: "iphone-duo-site-internet-ecran-pliable",
     title: "iPhone Duo : votre site internet est-il prêt pour l'écran pliable d'Apple ?",
     metaTitle: "iPhone Duo : adapter votre site internet à l'écran pliable",
-    metaDescription:
-      "L'iPhone Duo, premier iPhone pliable, sort le 23 octobre 2026. Trois largeurs d'écran, Split View, Safari en double fenêtre : la checklist pour adapter votre site.",
-    excerpt:
-      "Apple a présenté l'iPhone Duo le 9 septembre 2026. Un écran de 5,4 pouces fermé, 7,6 pouces ouvert, deux applications côte à côte. Votre site va s'afficher dans trois formats qu'il n'a jamais rencontrés. Voici ce qui casse, ce qui compte pour le SEO et comment vous préparer avant la sortie du 23 octobre.",
+    metaDescription: "L'iPhone Duo, premier iPhone pliable, affiche votre site sur trois largeurs d'écran et en Split View. Ce qui casse, et comment tester votre site.",
+    excerpt: "Apple a présenté l'iPhone Duo le 9 septembre 2026 : 5,4 pouces fermé, 7,6 pouces ouvert, deux apps côte à côte. Ce qui casse sur un site mal adapté, et comment tester le vôtre en deux minutes.",
     category: "Site internet",
     readingTime: "9 min",
     publishedAt: "2026-09-21",
@@ -745,6 +791,8 @@ const ALL_BLOG_POSTS: BlogPost[] = [
       src: "/blog-img/iphone-duo-avant-apres",
       alt: "Le même site sur l'écran déplié de l'iPhone Duo. Avant : une colonne étroite au centre, une photo floue et un numéro coupé. Après : une mise en page pleine largeur, une photo nette et un numéro visible.",
     },
+    cta: "app",
+    updatedAt: "2026-11-14",
   },
   // Ligne Agents IA / PME (26 septembre 2026) : src/data/blog-posts-agents-ia.ts
   ...ARTICLES_AGENTS_IA,

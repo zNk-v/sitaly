@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, Check, ChevronRight } from "lucide-react";
 import { SiteChrome } from "@/components/SiteChrome";
+import { ArticlesALire } from "@/components/ArticlesALire";
 import {
   BOUTON_NOIR,
   CARTE,
@@ -56,8 +57,19 @@ export const Route = createFileRoute("/modeles/$id")({
         `Site internet pour ${modele.nom}, gratuit avec l'IA | Sitaly`,
         `Site internet pour ${modele.nom}, gratuit | Sitaly`,
       ].find((t) => t.length <= 60) ?? `Site internet pour ${modele.nom} | Sitaly`;
-    const longue = `${modele.intro} Gratuit, créé par l'IA en une minute.`;
-    const description = longue.length <= 160 ? longue : `${modele.intro} Gratuit, créé par l'IA.`;
+    // La fin de la description varie d'un modèle à l'autre (audit SEO du
+    // 14 novembre 2026 : 20 descriptions sur 22 finissaient par la même phrase).
+    const rang = MODELES.findIndex((m) => m.id === modele.id);
+    const fins = [
+      "Gratuit, créé par l'IA en une minute.",
+      "Écrit par l'IA, gratuit pour commencer.",
+      "En ligne en une minute, sans carte bancaire.",
+    ];
+    const description =
+      [fins[rang % fins.length], ...fins, "Gratuit, créé par l'IA."]
+        .map((fin) => `${modele.intro} ${fin}`)
+        .find((d) => d.length <= 160) ?? modele.intro;
+    const nomAffiche = modele.nom.charAt(0).toUpperCase() + modele.nom.slice(1);
     return {
       meta: [
         { title: titre },
@@ -77,8 +89,23 @@ export const Route = createFileRoute("/modeles/$id")({
             itemListElement: [
               { "@type": "ListItem", position: 1, name: "Accueil", item: `${BASE_URL}/` },
               { "@type": "ListItem", position: 2, name: "Modèles", item: `${BASE_URL}/modeles/` },
-              { "@type": "ListItem", position: 3, name: modele.nom, item: url },
+              { "@type": "ListItem", position: 3, name: nomAffiche, item: url },
             ],
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": `${url}#page`,
+            url,
+            name: titre,
+            description,
+            inLanguage: "fr-FR",
+            isPartOf: { "@id": `${BASE_URL}/#website` },
+            about: { "@id": `${BASE_URL}/#app` },
+            primaryImageOfPage: `${BASE_URL}${photo(metier.id)}`,
           }),
         },
         {
@@ -150,11 +177,17 @@ function PageModele() {
               </div>
 
               <div className="relative">
+                {/* Image du premier écran : chargée en priorité, en 768 px sur
+                    téléphone (audit du 14 novembre 2026 : 1 536 px affichés à
+                    380 px faisaient monter le LCP mobile à 3,1 s). */}
                 <img
                   src={photo(metier.id)}
-                  alt=""
+                  srcSet={`${photo(metier.id, 768)} 768w, ${photo(metier.id)} 1536w`}
+                  sizes="(min-width: 1024px) 560px, 100vw"
+                  alt={`Photo d'illustration pour un site ${deMetier(modele.nom)}`}
                   width={1536}
                   height={864}
+                  fetchPriority="high"
                   className="aspect-[4/3] w-full rounded-[28px] object-cover"
                 />
                 <MiniSite
@@ -298,6 +331,22 @@ function PageModele() {
           </div>
         </section>
 
+        {/* Les guides du blog pour ce métier (audit SEO du 14 novembre 2026) :
+            les modèles renvoient vers le blog, le blog vers les modèles. */}
+        <section className="px-4 pb-16 sm:px-6">
+          <div className="mx-auto max-w-6xl">
+            <h2 className="titre-produit text-3xl sm:text-4xl">Guides pour votre métier</h2>
+            <div className="mt-8">
+              <ArticlesALire
+                slugs={guidesDuMetier(modele.id)}
+                titre=""
+                classeCarte="rounded-3xl bg-black/[0.03] p-6 transition hover:bg-black/[0.05]"
+                classeLien="text-black"
+              />
+            </div>
+          </div>
+        </section>
+
         <section className="px-4 pb-20 sm:px-6 sm:pb-24">
           <div className="mx-auto max-w-6xl">
             <div className="flex items-end justify-between gap-4">
@@ -316,7 +365,7 @@ function PageModele() {
                 >
                   <img
                     src={photo(m.id, 768)}
-                    alt=""
+                    alt={`Photo d'illustration pour un site ${deMetier(nomDe(m.id))}`}
                     loading="lazy"
                     width={768}
                     height={432}
@@ -352,4 +401,39 @@ function PageModele() {
       </SiteChrome>
     </div>
   );
+}
+
+/**
+ * Trois guides par modèle : un article propre au métier quand il existe, puis
+ * les guides de base pour créer son site et être trouvé.
+ */
+const GUIDES_PAR_METIER: Record<string, string> = {
+  plombier: "site-internet-plombier-electricien",
+  electricien: "site-internet-plombier-electricien",
+  osteopathe: "trouver-patients-osteopathe",
+  coach: "trouver-clients-coach-sportif",
+  consultant: "trouver-clients-consultant-independant",
+  formateur: "trouver-clients-consultant-independant",
+  artisan: "logiciel-devis-artisan-choisir",
+  "auto-entrepreneur": "mentions-legales-site-internet",
+  couvreur: "logiciel-devis-artisan-choisir",
+  macon: "logiciel-devis-artisan-choisir",
+  menuisier: "logiciel-devis-artisan-choisir",
+  peintre: "logiciel-devis-artisan-choisir",
+  paysagiste: "recolter-avis-google-artisan",
+  coiffeuse: "prise-rendez-vous-en-ligne-guide",
+  estheticienne: "prise-rendez-vous-en-ligne-guide",
+  restaurant: "fiche-google-business-profile-artisan",
+  boulanger: "fiche-google-business-profile-artisan",
+  fleuriste: "fiche-google-business-profile-artisan",
+  traiteur: "recolter-avis-google-artisan",
+  photographe: "pages-indispensables-site-vitrine",
+  vtc: "apparaitre-sur-google",
+  nettoyage: "recolter-avis-google-artisan",
+};
+
+function guidesDuMetier(id: string): string[] {
+  const base = ["creation-site-internet-artisan-guide", "apparaitre-sur-google", "prix-site-internet"];
+  const propre = GUIDES_PAR_METIER[id];
+  return (propre ? [propre, ...base.filter((s) => s !== propre)] : base).slice(0, 3);
 }

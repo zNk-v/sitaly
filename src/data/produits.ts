@@ -52,18 +52,25 @@ export interface Produit {
   /** Le bouton de la page : il reprend la promesse du titre, pas « Créer mon site ». */
   cta: string;
   faq: { q: string; a: string }[];
+  /**
+   * Les articles du blog qui prolongent la page (audit SEO du 14 novembre
+   * 2026) : la page produit renvoie vers le blog autant que le blog renvoie
+   * vers elle. Un slug absent ou pas encore publié disparaît sans lien cassé.
+   */
+  articles?: string[];
 }
 
 export const PRODUITS: Produit[] = [
   {
     id: "devis-et-factures",
+    articles: ["logiciel-devis-artisan-choisir", "mentions-obligatoires-devis-artisan", "facturation-electronique-artisan-2027", "relance-automatique-devis"],
     cta: "Faire mon premier devis",
     nom: "Devis et factures",
     menuDesc: "Devis acceptés en ligne, factures payées par carte.",
-    titre: "Facturez, soyez payé",
+    titre: "Devis et factures pour artisans",
     intro:
       "Un devis que votre client accepte en ligne, une facture conforme qu'il règle par carte ou par virement, des relances qui partent seules. Depuis la fiche de votre client, en deux minutes.",
-    seoTitre: "Devis et factures pour artisans et indépendants",
+    seoTitre: "Logiciel de devis et factures pour artisans",
     description:
       "Devis et factures conformes, acceptés en ligne et payés par carte sans commission. Les impayés sont relancés pour vous. Inclus dans Sitaly.",
     etapes: [
@@ -122,13 +129,14 @@ export const PRODUITS: Produit[] = [
   },
   {
     id: "prise-de-rendez-vous",
+    articles: ["prise-rendez-vous-en-ligne-guide", "automatiser-suivi-client-tpe", "agent-ia-prise-de-rendez-vous"],
     cta: "Ouvrir mes réservations",
     nom: "Prise de rendez-vous",
     menuDesc: "Vos clients réservent depuis votre site.",
-    titre: "Vos clients réservent seuls",
+    titre: "Prise de rendez-vous en ligne",
     intro:
       "Une page de réservation sur votre site : vos prestations, vos horaires, les créneaux libres. Le client choisit, vous recevez le rendez-vous par e-mail et dans votre liste de clients.",
-    seoTitre: "Prise de rendez-vous en ligne pour votre site",
+    seoTitre: "Logiciel de prise de rendez-vous en ligne",
     description:
       "Vos clients réservent en ligne depuis votre site : prestations, horaires, confirmation par e-mail, annulation en un clic. Formules Essentiel et Pro.",
     etapes: [
@@ -186,13 +194,14 @@ export const PRODUITS: Produit[] = [
   },
   {
     id: "agents-ia",
+    articles: ["agent-ia-entreprise-guide", "chatbot-entreprise-tpe-guide", "recolter-avis-google-artisan"],
     cta: "Activer mes agents IA",
     nom: "Agents IA",
     menuDesc: "Ils répondent à vos clients pendant que vous travaillez.",
     titre: "Vos agents répondent pour vous",
     intro:
       "Une demande arrive sur votre site, un avis tombe sur votre fiche Google, le blog attend son article : vos agents IA préparent la réponse dans votre ton. Vous relisez, vous envoyez. Rien ne part sans vous.",
-    seoTitre: "Agents IA pour répondre à vos clients et à vos avis",
+    seoTitre: "Réponses aux clients et aux avis par l'IA",
     description:
       "Les agents IA de Sitaly répondent aux demandes de votre site et à vos avis Google, demandent des avis à vos clients et écrivent votre blog. Vous validez.",
     etapes: [
@@ -266,6 +275,7 @@ export const PRODUITS: Produit[] = [
   },
   {
     id: "avis-google",
+    articles: ["recolter-avis-google-artisan", "fiche-google-business-profile-artisan", "apparaitre-sur-google"],
     cta: "Recevoir plus d'avis",
     nom: "Avis Google",
     menuDesc: "Plus d'avis, et une réponse à chacun.",
@@ -334,6 +344,7 @@ export const PRODUITS: Produit[] = [
   },
   {
     id: "blog-ia",
+    articles: ["apparaitre-sur-google", "referencement-local-google-artisan", "pages-indispensables-site-vitrine"],
     cta: "Lancer mon blog",
     nom: "Blog écrit par l'IA",
     menuDesc: "Des articles qui vous amènent des visites.",
@@ -398,6 +409,7 @@ export const PRODUITS: Produit[] = [
   },
   {
     id: "referencement-seo-geo",
+    articles: ["apparaitre-sur-google", "referencement-local-google-artisan", "seo-local-villes-pages-artisan"],
     cta: "Améliorer mon référencement",
     nom: "Référencement SEO et GEO",
     menuDesc: "Trouvé sur Google et par les IA.",
@@ -462,6 +474,7 @@ export const PRODUITS: Produit[] = [
   },
   {
     id: "identite-de-marque",
+    articles: ["trouver-nom-entreprise", "choisir-nom-de-domaine", "creation-site-internet-artisan-guide"],
     cta: "Créer mon logo",
     nom: "Identité de marque",
     menuDesc: "Votre logo, vos couleurs, votre police.",

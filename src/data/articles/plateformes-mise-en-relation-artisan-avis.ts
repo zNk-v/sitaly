@@ -5,149 +5,140 @@ import type { BlogSection } from "@/data/blog-posts";
 export const contenu: BlogSection[] = [
   {
     type: "p",
-    text: "Avant de s'inscrire sur une plateforme de mise en relation, tout artisan tape le nom du service suivi de « avis ». Il trouve alors deux discours opposés : les pages officielles qui promettent des demandes qualifiées, et les fils de forum où des artisans racontent avoir payé pour des contacts injoignables. La vérité se situe entre les deux, et elle dépend surtout de la façon dont vous utilisez ces plateformes. Voici comment elles fonctionnent réellement, ce qu'elles coûtent, et à quel moment il devient rentable de réduire votre dépendance.",
+    text: "Avant de s'inscrire sur une plateforme de mise en relation, un artisan cherche des avis. Il trouve deux discours : les pages des plateformes, qui promettent des demandes qualifiées, et les forums, où des confrères racontent avoir payé pour des contacts injoignables. Les deux contiennent une part de vrai. La question utile se pose autrement : combien vous coûte un chantier obtenu par ce canal, et que vous reste-t-il le jour où vous arrêtez de payer ? Ce guide vous donne la méthode pour répondre avec vos propres chiffres.",
   },
 
   { type: "h2", text: "Comment fonctionne une plateforme de mise en relation" },
   {
     type: "p",
-    text: "Le modèle est le même partout, à quelques variantes près. La plateforme achète de la visibilité sur Google, capte un particulier qui a un projet, lui fait remplir un formulaire, puis revend cette demande à des artisans. Vous ne payez pas la plateforme pour vous apporter des clients. Vous lui payez le droit de recontacter quelqu'un qui a rempli un formulaire.",
+    text: "Le modèle se ressemble d'une plateforme à l'autre. Elle attire des particuliers qui ont un projet, en général grâce à de la publicité et au référencement, leur fait remplir une demande de devis, puis transmet cette demande à des artisans inscrits. Vous payez l'accès à ces demandes, sous une forme ou une autre.",
   },
   {
     type: "p",
-    text: "La nuance change tout. Ce même formulaire est en général vendu à trois, quatre ou cinq artisans du secteur. Le particulier reçoit donc quatre appels dans l'heure et compare quatre devis. Vous ne vendez plus votre savoir-faire, vous vendez un prix face à trois confrères qui ont payé pour le même contact.",
+    text: "Une même demande part souvent vers plusieurs professionnels. Les conditions générales d'utilisation d'Habitatpresto, par exemple, indiquent que les demandes des particuliers sont transmises à des membres et que ces particuliers reçoivent [« de zéro à cinq devis »](https://www.habitatpresto.com/conditions-generales-utilisation). Vous entrez donc en concurrence avec d'autres artisans sur le même contact, souvent dans la même heure.",
   },
   {
     type: "table",
-    caption: "Les trois modèles de facturation des plateformes",
-    headers: ["Modèle", "Ce que vous payez", "Le risque"],
+    caption: "Les modèles de facturation que l'on rencontre",
+    headers: ["Modèle", "Ce que vous payez", "Le point de vigilance"],
     rows: [
-      [
-        "Paiement au lead",
-        "Un forfait par contact transmis",
-        "Vous payez même si le contact ne répond jamais",
-      ],
-      [
-        "Abonnement mensuel",
-        "Un montant fixe pour un volume de contacts",
-        "Vous payez les mois creux comme les autres",
-      ],
-      [
-        "Commission sur chantier",
-        "Un pourcentage du montant signé",
-        "Le coût augmente avec la taille du chantier",
-      ],
+      ["Paiement à la demande", "Un prix par contact transmis", "Vous payez aussi les contacts qui ne répondent jamais"],
+      ["Abonnement", "Un montant fixe chaque mois", "Vous payez les mois creux comme les autres"],
+      ["Commission", "Un pourcentage du chantier signé", "Le coût grimpe avec la taille du chantier"],
     ],
   },
-
-  { type: "h2", text: "Ce que rapportent réellement ces plateformes" },
   {
     type: "p",
-    text: "Soyons justes : elles fonctionnent. Un artisan qui démarre, sans avis Google ni réseau, obtient ses premiers chantiers plus vite par ce canal que par n'importe quel autre. Pour combler un trou de planning ou tester une nouvelle prestation, c'est utile.",
-  },
-  {
-    type: "p",
-    text: "Le point de vigilance est le taux de transformation. Sur dix contacts payés, une partie ne décroche jamais, une autre a déjà signé ailleurs, une autre cherchait juste un ordre de prix. Il reste deux ou trois demandes sérieuses, et vous êtes en concurrence sur chacune. Le coût réel d'un chantier obtenu n'est donc pas le prix d'un lead, c'est le prix de tous les leads qu'il a fallu payer pour en signer un.",
+    text: "Lisez les conditions générales de vente de la plateforme avant de signer, en particulier la durée d'engagement, le préavis de résiliation et ce qui se passe si un contact est faux ou injoignable. Ces documents sont publics : vous n'avez pas à vous contenter du discours commercial.",
   },
 
-  { type: "h2", text: "Le calcul à faire avec vos propres chiffres" },
+  { type: "h2", text: "Les plateformes de mise en relation sont-elles rentables pour un artisan ?" },
   {
     type: "p",
-    text: "Prenez vos trois derniers mois et posez quatre chiffres : le total versé à la plateforme, le nombre de contacts reçus, le nombre de devis envoyés, le nombre de chantiers signés. Divisez le total versé par le nombre de chantiers signés. Vous obtenez votre coût d'acquisition réel, celui que la plateforme n'affiche nulle part.",
+    text: "Elles peuvent l'être, surtout au démarrage. Un artisan sans avis ni réseau obtient ses premiers chantiers plus vite par ce canal que par la plupart des autres. La rentabilité dépend de trois chiffres que vous seul connaissez : ce que vous payez, combien de chantiers vous signez, et la valeur moyenne de ces chantiers. Faites le calcul chaque trimestre.",
   },
   {
     type: "p",
-    text: "La plupart des artisans qui font ce calcul pour la première fois découvrent un montant deux à quatre fois supérieur au prix affiché du lead. Ce n'est pas un scandale, c'est le fonctionnement normal d'un canal où le contact est partagé. Mais c'est le chiffre à comparer aux autres canaux, et personne ne le calcule.",
+    text: "Le point de vigilance se trouve dans la transformation. Sur un lot de contacts payés, certains ne décrochent jamais, d'autres ont déjà signé ailleurs, d'autres cherchaient un ordre de prix. Le coût d'un chantier obtenu ne se résume donc pas au prix d'un contact : il inclut tous les contacts payés pour en signer un.",
+  },
+
+  { type: "h2", text: "Comment calculer le vrai coût d'un chantier obtenu par une plateforme ?" },
+  {
+    type: "p",
+    text: "Prenez vos trois derniers mois. Additionnez tout ce que vous avez versé à la plateforme, puis divisez par le nombre de chantiers signés grâce à elle sur la même période. Le résultat est votre coût d'acquisition réel. Comparez-le ensuite au montant moyen de vos chantiers et à votre marge.",
+  },
+  {
+    type: "ul",
+    items: [
+      "Le total versé à la plateforme sur la période, abonnement et contacts compris.",
+      "Le nombre de contacts reçus.",
+      "Le nombre de devis envoyés à ces contacts.",
+      "Le nombre de chantiers signés.",
+      "Le montant moyen de ces chantiers.",
+    ],
   },
   {
     type: "p",
-    text: "Rapportez ensuite ce coût au montant moyen de vos chantiers. Sur une intervention à 400 €, un coût d'acquisition à 90 € pèse lourd. Sur une réfection de toiture à 14 000 €, le même montant est indolore. C'est ce ratio qui doit décider de votre usage, pas l'avis d'un confrère sur un forum.",
+    text: "Exemple fictif, à refaire avec vos chiffres : vous avez versé 900 € en trois mois et signé trois chantiers. Chaque chantier vous a coûté 300 € d'acquisition. Sur une réfection de toiture, ce montant passe inaperçu. Sur un dépannage, il absorbe une bonne partie de la marge. Le même calcul, mené pour chacun de vos canaux, vous dit lequel garder.",
+  },
+  {
+    type: "p",
+    text: "Pour faire ce calcul sans effort, notez l'origine de chaque contact dès le premier appel. Notre guide sur [le CRM pour artisan](/blog/crm-artisan-guide/) explique comment tenir cette liste simplement.",
   },
 
   { type: "h2", text: "Le vrai problème : vous ne construisez rien" },
   {
     type: "p",
-    text: "Un chantier obtenu par plateforme se termine et disparaît. Le client appartient à la plateforme, pas à vous. Il ne trouvera pas votre site parce que vous n'en avez pas, il ne laissera pas d'avis sur votre fiche parce qu'on ne le lui a pas demandé, et l'année suivante il repassera par le même formulaire, où il tombera peut-être sur un autre artisan.",
+    text: "Un chantier obtenu par une plateforme se termine et le lien s'arrête là si vous ne faites rien. Le client ne vous retrouvera pas sur Google si vous n'y êtes pas, il ne laissera pas d'avis sur votre fiche si personne ne le lui demande, et l'année suivante il repassera par le même formulaire, où il tombera peut-être sur un autre artisan.",
   },
   {
     type: "p",
-    text: "Au bout de trois ans, deux artisans qui ont réalisé le même nombre de chantiers se retrouvent dans des situations opposées. Celui qui a tout passé par la plateforme repart chaque matin de zéro. Celui qui a demandé un avis à chaque client, entretenu sa fiche et laissé son site remonter sur Google reçoit maintenant des appels directs qui ne lui coûtent rien.",
+    text: "Comparez deux artisans qui ont réalisé le même nombre de chantiers en trois ans. Le premier a tout fait passer par une plateforme et repart chaque mois de zéro. Le second a demandé un avis à chaque client, entretenu sa fiche Google et publié un site : il reçoit des appels directs qui ne lui coûtent rien par contact.",
   },
 
   { type: "h2", text: "La bonne façon de les utiliser" },
   {
     type: "p",
-    text: "Rien n'oblige à quitter les plateformes. La sortie brutale est même une mauvaise idée si elles représentent aujourd'hui l'essentiel de votre activité. Quatre règles permettent de les garder sans en dépendre.",
+    text: "Rien ne vous oblige à quitter les plateformes, et une sortie brutale serait une erreur si elles portent aujourd'hui l'essentiel de votre activité. Quatre règles permettent de les garder sans en dépendre.",
   },
   {
     type: "ul",
     items: [
-      "Traitez chaque contact comme un client à conserver : demandez un avis Google en fin de chantier, laissez une carte, envoyez un message six mois plus tard.",
-      "Suivez votre coût d'acquisition réel chaque trimestre, et refusez les catégories de leads qui ne se transforment jamais.",
-      "Fixez-vous un objectif de réduction : faire passer la part de la plateforme de 80 à 50 % du chiffre d'affaires en un an.",
-      "Investissez la marge dégagée dans les canaux qui vous appartiennent, plutôt que d'augmenter le budget de la plateforme quand le planning se creuse.",
+      "Traitez chaque contact comme un client à garder : demandez un avis Google en fin de chantier et laissez une carte avec vos coordonnées.",
+      "Rappelez vite : quand une demande part vers plusieurs artisans, le premier qui décroche a l'avantage.",
+      "Calculez votre coût d'acquisition chaque trimestre et arrêtez les catégories de demandes qui ne se transforment pas.",
+      "Investissez une partie de la marge dans les canaux qui vous appartiennent : fiche Google, avis, site.",
     ],
   },
 
   { type: "h2", text: "Ce qui remplace une plateforme, et en combien de temps" },
   {
     type: "p",
-    text: "Aucun canal ne se substitue à une plateforme du jour au lendemain, et c'est honnêtement le point que les prestataires web passent sous silence. Voici les ordres de grandeur réels.",
-  },
-  {
-    type: "table",
-    caption: "Délai de montée en puissance des canaux qui vous appartiennent",
-    headers: ["Canal", "Premiers résultats", "Régime de croisière"],
-    rows: [
-      ["Fiche Google entretenue et avis", "2 à 8 semaines", "4 à 6 mois"],
-      ["Site avec pages par prestation et par ville", "3 à 6 mois", "9 à 12 mois"],
-      ["Google Ads", "48 heures", "2 à 4 semaines d'optimisation"],
-      ["Réseau d'artisans et prescripteurs", "1 à 3 mois", "1 an"],
-    ],
+    text: "Aucun canal ne prend le relais du jour au lendemain. Une fiche Google bien remplie et un flux régulier d'avis produisent leurs premiers effets en quelques semaines ou quelques mois, selon la concurrence dans votre ville. Un site qui décrit chaque prestation et vos communes met plusieurs mois à remonter sur Google. Le réseau de confrères et de prescripteurs se construit sur la durée.",
   },
   {
     type: "p",
-    text: "La stratégie qui fonctionne consiste donc à faire tourner les deux en parallèle pendant six à douze mois. Les plateformes financent l'activité pendant que vos canaux se mettent en place, puis leur part diminue d'elle-même à mesure que les appels directs augmentent.",
+    text: "La stratégie qui tient la route consiste à faire tourner les deux en parallèle. La plateforme finance l'activité pendant que vos canaux se mettent en place, puis sa part baisse à mesure que les appels directs augmentent. Notre guide pour [trouver des chantiers](/blog/trouver-des-chantiers-artisan/) compare chaque canal en détail.",
+  },
+
+  { type: "h2", text: "Construire vos propres canaux avec Sitaly" },
+  {
+    type: "p",
+    text: "Sitaly vous donne les canaux qui restent à vous. L'IA écrit votre site à partir d'une phrase et le publie en une minute environ ; vous le modifiez en écrivant ce que vous voulez changer. Les [modèles par métier](/modeles/artisan/) montrent le résultat. La partie [avis Google](/produits/avis-google/) envoie la demande d'avis le lendemain d'une facture payée et prépare vos réponses, que vous publiez d'un clic.",
+  },
+  {
+    type: "p",
+    text: "Chaque demande reçue par votre site entre dans votre liste de clients avec son origine, ce qui rend le calcul du coût d'acquisition immédiat. La formule Découverte est gratuite et sans carte ; Essentiel coûte 39 € par mois et Pro 79 € par mois, sans engagement au mois.",
   },
 
   {
     type: "quote",
-    text: "Une plateforme vous loue un client pour un chantier. Une fiche Google et un site vous en donnent un pour dix ans.",
+    text: "Une plateforme vous loue un contact pour un chantier. Vos avis et votre site travaillent pour vous les années suivantes.",
   },
 
   {
     type: "faq",
     items: [
       {
-        q: "Travaux.com est-il fiable pour un artisan ?",
-        a: "La plateforme transmet de vraies demandes, mais chaque contact est en général vendu à plusieurs artisans du même secteur, ce qui vous met en concurrence directe sur le prix. Elle convient pour démarrer ou combler un creux, moins comme source unique de chantiers sur la durée.",
-      },
-      {
         q: "Combien coûte réellement un chantier obtenu via une plateforme ?",
-        a: "Divisez le total versé sur trois mois par le nombre de chantiers effectivement signés sur la même période. La plupart des artisans obtiennent un montant deux à quatre fois supérieur au prix affiché d'un lead, parce qu'il faut payer plusieurs contacts pour en transformer un.",
+        a: "Divisez le total versé sur trois mois par le nombre de chantiers signés grâce à la plateforme sur la même période. Ce coût d'acquisition dépasse le prix d'un contact, parce qu'il faut payer plusieurs contacts pour en transformer un. Comparez-le à la marge de vos chantiers.",
       },
       {
         q: "Pourquoi les prospects des plateformes ne répondent-ils pas ?",
-        a: "Le formulaire est transmis à plusieurs artisans en même temps, souvent dans l'heure. Le particulier reçoit donc plusieurs appels d'affilée, retient les premiers et cesse de répondre aux suivants. Rappeler dans les cinq minutes change nettement le taux de réponse.",
+        a: "La demande part en général vers plusieurs artisans. Le particulier reçoit plusieurs appels, retient les premiers et cesse de répondre aux suivants. Rappeler vite augmente vos chances d'obtenir un rendez-vous.",
       },
       {
         q: "Faut-il quitter les plateformes de mise en relation ?",
-        a: "Pas brutalement si elles représentent l'essentiel de votre activité. La bonne approche consiste à les garder pendant six à douze mois tout en construisant vos propres canaux, puis à réduire leur part à mesure que les appels directs augmentent.",
+        a: "Pas d'un coup si elles portent l'essentiel de votre activité. Gardez-les le temps de construire vos propres canaux (fiche Google, avis, site), puis réduisez leur part à mesure que les appels directs augmentent.",
       },
       {
-        q: "Comment transformer un client de plateforme en client à moi ?",
-        a: "Demandez un avis Google en fin de chantier, laissez une carte ou un magnet, et reprenez contact six mois plus tard. Un client acquis via une plateforme ne vous appartient qu'à partir du moment où il peut vous retrouver sans passer par elle.",
+        q: "Comment transformer un client de plateforme en client fidèle ?",
+        a: "Faites un travail soigné, demandez un avis Google en fin de chantier, laissez vos coordonnées et notez le client dans votre liste. Un client acquis par une plateforme devient le vôtre le jour où il peut vous retrouver sans passer par elle.",
       },
       {
         q: "Quelle alternative aux plateformes pour trouver des chantiers ?",
-        a: "La combinaison qui remplace durablement une plateforme : une fiche Google Business Profile entretenue avec des avis récents, un site avec une page par prestation et par commune desservie, et des campagnes Google Ads pour les périodes creuses. Comptez six à douze mois de montée en puissance.",
+        a: "Une fiche Google Business Profile tenue à jour avec des avis récents, un site qui décrit vos prestations et vos communes, et un réseau de confrères et de prescripteurs locaux. Comptez plusieurs mois avant que ces canaux prennent le relais.",
       },
     ],
-  },
-
-  { type: "h2", text: "Réduisez votre dépendance, sans couper du jour au lendemain" },
-  {
-    type: "p",
-    text: "Sitaly construit les canaux qui vous appartiennent pendant que vos plateformes continuent de tourner : site optimisé pour votre métier et vos communes, fiche Google entretenue, récolte d'avis à chaque chantier, campagnes Ads en appoint. Réservez un appel gratuit de 20 minutes, on calcule ensemble votre coût d'acquisition réel.",
   },
 ];

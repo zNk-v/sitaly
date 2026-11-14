@@ -24,7 +24,7 @@ export const Route = createFileRoute("/cgv")({
         content:
           "Conditions générales de vente et d'utilisation de Sitaly : l'application (formules, crédits IA, abonnement) et les prestations de l'agence.",
       },
-      { name: "robots", content: "index,follow" },
+      { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large" },
       { property: "og:title", content: "Conditions Générales de Vente et d'Utilisation — Sitaly" },
       {
         property: "og:description",

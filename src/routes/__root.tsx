@@ -16,13 +16,7 @@ import { CookieConsent } from "../components/CookieConsent";
 import { PageIntrouvable } from "../components/PageIntrouvable";
 import { battreMesure, compterVue, prolongerCampagne, suivreClicsDeContact } from "../lib/mesure";
 import { pageTiktok, suivreDepartsVersApp } from "../lib/pixel-tiktok";
-import {
-  FICHE_GOOGLE_URL,
-  SITALY_CODE_POSTAL,
-  SITALY_EMAIL,
-  SITALY_PHONE,
-  SITALY_VILLE,
-} from "../lib/config";
+import { FICHE_GOOGLE_URL, SITALY_EMAIL, SITALY_PHONE, SITALY_VILLE_PUBLIQUE } from "../lib/config";
 
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
@@ -79,6 +73,9 @@ const GRAPHE_ENTITE = {
       "@type": ["Organization", "ProfessionalService"],
       "@id": "https://sitaly.fr/#business",
       name: "Sitaly",
+      // Le nom au registre : Sitaly est le nom commercial de l'entreprise
+      // individuelle de Teddy Vidal (SIREN 833 848 831).
+      legalName: "Teddy Vidal (Sitaly)",
       url: "https://sitaly.fr/",
       logo: {
         "@type": "ImageObject",
@@ -94,16 +91,14 @@ const GRAPHE_ENTITE = {
       founder: { "@id": "https://sitaly.fr/#teddy-vidal" },
       telephone: SITALY_PHONE,
       email: SITALY_EMAIL,
+      // La ville publique seulement (config.ts) : Sitaly ne reçoit pas de
+      // public, et l'adresse d'immatriculation reste dans les mentions légales.
       address: {
         "@type": "PostalAddress",
-        addressLocality: SITALY_VILLE,
-        postalCode: SITALY_CODE_POSTAL,
+        addressLocality: SITALY_VILLE_PUBLIQUE,
         addressRegion: "Île-de-France",
         addressCountry: "FR",
       },
-      // Le centre de Brétigny-sur-Orge, pas une adresse : Sitaly ne reçoit
-      // pas de public (DESIGN.md §9).
-      geo: { "@type": "GeoCoordinates", latitude: 48.61056, longitude: 2.30889 },
       openingHoursSpecification: [
         {
           "@type": "OpeningHoursSpecification",
@@ -178,6 +173,23 @@ const GRAPHE_ENTITE = {
       "@id": "https://sitaly.fr/#teddy-vidal",
       name: "Teddy Vidal",
       jobTitle: "Fondateur de Sitaly",
+      description:
+        "Teddy Vidal a fondé Sitaly, l'application française qui crée le site internet des artisans, des indépendants et des TPE avec l'IA. Avant l'application, il a créé des sites à la main pour des artisans et des petites entreprises.",
+      // Pas de photo : Teddy a demandé qu'elle n'apparaisse pas (8 novembre 2026).
+      knowsAbout: [
+        "Création de site internet",
+        "Référencement local",
+        "Fiche Google Business Profile",
+        "Devis et factures pour artisans",
+      ],
+      workLocation: {
+        "@type": "Place",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: SITALY_VILLE_PUBLIQUE,
+          addressCountry: "FR",
+        },
+      },
       worksFor: { "@id": "https://sitaly.fr/#business" },
       url: "https://sitaly.fr/a-propos/",
       sameAs: ["https://www.linkedin.com/in/vidalozzi"],
@@ -199,6 +211,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      // GitHub Pages n'envoie aucun en-tête de sécurité. La politique de
+      // référent, elle, passe par une balise (audit SEO du 14 novembre 2026).
+      { name: "referrer", content: "strict-origin-when-cross-origin" },
       { title: TITRE_PAR_DEFAUT },
       { name: "description", content: DESCRIPTION_PAR_DEFAUT },
       { property: "og:title", content: TITRE_PAR_DEFAUT },

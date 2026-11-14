@@ -25,9 +25,9 @@ import { BASE_URL } from "@/lib/sitemap";
  */
 
 const URL = `${BASE_URL}/outils/generateur-devis-gratuit/`;
-const TITRE = "Générateur de devis gratuit en ligne, PDF sans inscription | Sitaly";
+const TITRE = "Générateur de devis gratuit en PDF | Sitaly";
 const DESCRIPTION =
-  "Remplissez vos lignes : le devis se met en page, avec les mentions obligatoires, prêt à imprimer ou à enregistrer en PDF. Pour auto-entrepreneurs et artisans. Gratuit, sans inscription.";
+  "Vos lignes, et le devis se met en page avec ses mentions obligatoires, prêt en PDF. Pour artisans et auto-entrepreneurs. Gratuit, sans inscription.";
 
 const TAUX = [
   { valeur: 20, label: "20 %" },
@@ -49,7 +49,7 @@ const MENTIONS = [
 const FAQ = [
   {
     q: "Le devis est-il obligatoire ?",
-    a: "Il l'est pour les travaux et les dépannages dans le bâtiment au-delà de 150 € TTC, pour un déménagement, et pour les services à la personne au-delà de 100 € TTC par mois. Pour les autres prestations, il reste la meilleure preuve de ce que vous avez convenu avec votre client.",
+    a: "Pour le dépannage, la réparation et l'entretien dans le bâtiment et l'équipement de la maison, il l'est quel que soit le montant depuis l'arrêté du 24 janvier 2017. Il l'est aussi pour un déménagement et pour les services à la personne au-delà de 100 € TTC par mois. Pour les autres prestations, il reste la meilleure preuve de ce que vous avez convenu avec votre client.",
   },
   {
     q: "Un auto-entrepreneur doit-il faire apparaître la TVA ?",

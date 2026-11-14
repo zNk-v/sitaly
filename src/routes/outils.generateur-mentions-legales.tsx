@@ -22,9 +22,9 @@ import { BASE_URL } from "@/lib/sitemap";
  */
 
 const URL = `${BASE_URL}/outils/generateur-mentions-legales/`;
-const TITRE = "Générateur de mentions légales gratuit pour site internet | Sitaly";
+const TITRE = "Générateur de mentions légales gratuit | Sitaly";
 const DESCRIPTION =
-  "Remplissez le formulaire : vos mentions légales s'écrivent sous vos yeux, prêtes à copier sur votre site. Auto-entrepreneur, entreprise individuelle ou société. Gratuit, sans inscription.";
+  "Vos mentions légales s'écrivent sous vos yeux, prêtes à copier sur votre site. Auto-entrepreneur, EI ou société. Gratuit, sans inscription.";
 
 type Statut = "ei" | "societe";
 

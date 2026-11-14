@@ -19,7 +19,7 @@ Depuis le 30 octobre 2026, sitaly.fr présente cette application. Avant cette da
 | Éditeur | Teddy Vidal, entrepreneur individuel |
 | SIREN | 833 848 831 |
 | SIRET | 833 848 831 00032 |
-| Ville | Brétigny-sur-Orge (91220) |
+| Ville | Paris |
 | Clients | France entière, en ligne |
 | Application | https://app.sitaly.fr |
 | Site officiel | https://sitaly.fr |

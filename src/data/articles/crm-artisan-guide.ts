@@ -5,123 +5,136 @@ import type { BlogSection } from "@/data/blog-posts";
 export const contenu: BlogSection[] = [
   {
     type: "p",
-    text: "Trois lettres qui font fuir la moitié des artisans. CRM, ça sonne grande entreprise, formation de deux jours et tableaux de bord que personne ne regarde. Dans les faits, un CRM d'artisan répond à une question très simple : qui attend une réponse de moi en ce moment ? Si vous avez déjà retrouvé un devis de six semaines au fond d'une boîte mail, oublié de rappeler quelqu'un qui était prêt à signer, ou cherché le numéro d'un client dans trois applications, vous avez déjà eu besoin d'un CRM. Voici ce qu'il fait réellement, ce qu'il ne fait pas, et comment démarrer sans y passer vos soirées.",
+    text: "CRM : trois lettres qui évoquent une grande entreprise, une formation de deux jours et des tableaux que personne ne lit. Pour un artisan, un CRM répond à une question plus simple : qui attend une réponse de moi en ce moment ? Si vous avez déjà retrouvé un devis vieux de six semaines au fond d'une boîte mail, oublié de rappeler quelqu'un prêt à signer, ou cherché un numéro dans trois applications, vous en avez eu besoin. Ce guide explique ce qu'il fait, ce qu'il ne fait pas, et comment démarrer cette semaine.",
   },
 
-  { type: "h2", text: "Ce qu'un CRM fait, et ce que la plupart des gens croient qu'il fait" },
+  { type: "h2", text: "Qu'est-ce qu'un CRM pour un artisan ?" },
   {
     type: "p",
-    text: "CRM signifie gestion de la relation client. Le mot évoque un logiciel commercial complexe. Pour une entreprise artisanale, l'objet est plus étroit et beaucoup plus utile : une liste de toutes les personnes qui vous ont contacté, avec l'état de chacune et la prochaine action à mener.",
+    text: "C'est la liste de toutes les personnes qui vous ont contacté, avec l'état de chaque affaire et la prochaine action à mener. Un logiciel de facturation gère ce qui est signé. Un CRM suit ce qui ne l'est pas encore : la demande reçue hier soir, le devis envoyé lundi, le client qui doit rappeler après ses congés.",
   },
   {
     type: "p",
-    text: "Ce n'est pas un logiciel de facturation. Ce n'est pas un agenda. Ce n'est pas un outil de comptabilité. Ces trois-là gèrent ce qui est déjà signé. Un CRM gère ce qui ne l'est pas encore, c'est-à-dire l'endroit exact où l'argent se perd.",
+    text: "CRM signifie gestion de la relation client. Le terme vient du monde des équipes commerciales, mais l'objet utile pour une entreprise artisanale tient en peu de choses. Il ne remplace ni votre agenda, ni votre logiciel de devis, ni votre comptable.",
   },
   {
     type: "table",
-    caption: "Ce que chaque outil couvre réellement",
+    caption: "Ce que chaque outil couvre",
     headers: ["Outil", "Ce qu'il gère", "Ce qu'il ne gère pas"],
     rows: [
-      [
-        "Logiciel de facturation",
-        "Devis édités, factures, comptabilité",
-        "Les prospects qui n'ont pas encore répondu",
-      ],
-      ["Agenda", "Ce qui est déjà calé", "Les demandes en attente de rendez-vous"],
-      ["Boîte mail", "L'historique des échanges", "Ce qui exige une action aujourd'hui"],
-      ["CRM", "Qui attend quoi, et depuis combien de temps", "L'exécution du chantier"],
+      ["Logiciel de facturation", "Devis édités, factures, paiements", "Les demandes qui n'ont pas encore de devis"],
+      ["Agenda", "Les rendez-vous déjà calés", "Les demandes en attente de rendez-vous"],
+      ["Boîte mail et SMS", "L'historique des échanges", "Ce qui exige une action aujourd'hui"],
+      ["CRM", "Qui attend quoi, et depuis quand", "L'exécution du chantier"],
     ],
   },
 
-  { type: "h2", text: "Le moment où le carnet ne suffit plus" },
+  { type: "h2", text: "À partir de quand un artisan a-t-il besoin d'un CRM ?" },
   {
     type: "p",
-    text: "Tant que vous avez cinq ou six affaires en cours, votre mémoire fait le travail. Le basculement se produit vers quinze à vingt devis en attente. À ce stade, votre suivi ne repose plus sur une méthode mais sur votre fatigue du jour, et les demandes reçues le mardi soir passent à la trappe le mercredi matin.",
+    text: "Dès que vous ne pouvez plus citer de mémoire toutes vos affaires en cours, avec le nom du client et la prochaine étape. Quand vos relances dépendent de votre fatigue du soir, les demandes reçues le mardi passent à la trappe le mercredi. À ce stade, le problème ne vient plus de votre organisation : il vous manque une liste.",
   },
   {
     type: "p",
-    text: "Les signes qui montrent que le seuil est franchi : vous retrouvez des devis anciens sans savoir s'ils ont été relancés, un client vous rappelle en disant qu'il attendait votre retour, vous cherchez un numéro dans vos SMS, ou vous ne savez pas dire combien d'euros de devis sont en attente en ce moment. Si deux de ces situations vous parlent, le problème n'est plus l'organisation, c'est l'outil.",
+    text: "Quelques signes qui ne trompent pas : vous retrouvez des devis sans savoir s'ils ont été relancés, un client vous rappelle en disant qu'il attendait votre retour, vous cherchez un numéro dans vos SMS, ou vous ne savez pas dire combien d'euros de devis attendent une réponse. Si deux de ces situations vous parlent, passez à un outil.",
   },
 
-  { type: "h2", text: "Les quatre informations qui suffisent" },
+  { type: "h2", text: "Les informations qui suffisent" },
   {
     type: "p",
-    text: "Un CRM d'artisan qui fonctionne tient en quatre colonnes. Tout le reste est du confort, et souvent la raison pour laquelle les outils finissent abandonnés.",
+    text: "Un CRM d'artisan qui fonctionne tient en quelques colonnes. Tout le reste relève du confort, et c'est souvent l'excès de champs qui fait abandonner un outil.",
   },
   {
     type: "ul",
     items: [
-      "Le contact : nom, téléphone, commune, et par quel canal il est arrivé.",
-      "L'état : nouveau contact, devis envoyé, en attente de réponse, signé, perdu.",
-      "La date du dernier échange, qui indique en un coup d'œil ce qui dort depuis trop longtemps.",
-      "La prochaine action et sa date : rappeler, envoyer le devis, relancer.",
+      "Le contact : nom, téléphone, commune.",
+      "L'origine : par où il est arrivé (fiche Google, site, recommandation, plateforme, rendez-vous en ligne).",
+      "Le statut : nouveau, contacté, devis envoyé, client, perdu.",
+      "La date du dernier échange, qui montre ce qui dort depuis trop longtemps.",
+      "La prochaine action : rappeler, envoyer le devis, relancer.",
     ],
   },
   {
     type: "p",
-    text: "La quatrième colonne est celle que tout le monde oublie, et c'est la seule qui produit du chiffre d'affaires. Une liste de contacts sans prochaine action n'est qu'un annuaire. Une liste avec une prochaine action datée devient une liste de tâches qui se remplit toute seule.",
+    text: "La prochaine action est la colonne que tout le monde oublie. C'est pourtant elle qui fait de votre liste un outil de travail : sans elle, vous tenez un annuaire.",
   },
 
-  { type: "h2", text: "Suivre l'origine de chaque contact change vos décisions" },
+  { type: "h2", text: "Pourquoi noter l'origine de chaque contact" },
   {
     type: "p",
-    text: "Une colonne coûte trente secondes à remplir et vaut de l'or au bout de six mois : d'où vient ce contact ? Fiche Google, site internet, plateforme, recommandation, Google Ads. Au bout d'un trimestre, vous savez lesquels de vos canaux amènent des chantiers signés, et non simplement des appels.",
+    text: "Trente secondes par fiche, et au bout de quelques mois vous savez quels canaux amènent des chantiers signés, pas seulement des appels. La décision de garder ou couper un abonnement à une plateforme, ou de travailler votre fiche Google, se prend alors sur vos chiffres, pas sur l'impression laissée par le dernier coup de fil.",
   },
   {
     type: "p",
-    text: "C'est souvent une surprise. Beaucoup d'artisans découvrent que la plateforme qui leur coûte le plus produit surtout des demandes non transformées, pendant que leur fiche Google, gratuite, amène les clients qui signent. Sans ce suivi, la décision se prend au ressenti, et le ressenti retient les appels les plus récents.",
+    text: "Le calcul reste simple : pour chaque origine, comptez les contacts reçus, les devis envoyés et les chantiers signés sur un trimestre. Rapportez ensuite ce que vous a coûté chaque canal au nombre de chantiers signés. Notre article sur [les plateformes de mise en relation](/blog/plateformes-mise-en-relation-artisan-avis/) détaille ce calcul pour les leads payants.",
   },
 
   { type: "h2", text: "Quel outil choisir" },
   { type: "h3", text: "Le tableur, pour commencer" },
   {
     type: "p",
-    text: "Un simple tableau avec les quatre colonnes citées plus haut fait déjà 80 % du travail, et il ne coûte rien. C'est le bon point de départ si vous n'avez jamais rien structuré. Sa limite arrive vite : il n'est pas pratique sur un téléphone, entre deux chantiers, avec des gants.",
+    text: "Un tableau avec les colonnes citées plus haut fait déjà l'essentiel et ne coûte rien. C'est le bon départ si vous n'avez jamais rien structuré. Sa limite arrive vite : il se manie mal sur un téléphone, et chaque demande doit être recopiée à la main.",
   },
   { type: "h3", text: "Le CRM généraliste" },
   {
     type: "p",
-    text: "Les grands noms du marché sont puissants et pensés pour des équipes commerciales. Pour un artisan seul, ils demandent un paramétrage long et affichent quantité de fonctions inutiles. Le risque n'est pas le prix, c'est l'abandon au bout de trois semaines.",
+    text: "Les grands outils du marché sont pensés pour des équipes commerciales. Pour un artisan seul, ils demandent un paramétrage long et affichent des dizaines de fonctions inutiles. Le risque tient moins au prix qu'à l'abandon au bout de quelques semaines.",
   },
-  { type: "h3", text: "Le logiciel métier bâtiment" },
+  { type: "h3", text: "Le logiciel métier du bâtiment" },
   {
     type: "p",
-    text: "Certains outils du bâtiment intègrent un suivi de prospects à leur module de devis. C'est cohérent quand vous utilisez déjà l'outil pour vos chiffrages. Vérifiez un point avant de vous engager : gère-t-il les demandes qui n'ont pas encore de devis ? Beaucoup ne suivent que les affaires déjà chiffrées, donc trop tard.",
+    text: "Certains logiciels de devis intègrent un suivi des prospects. C'est cohérent si vous chiffrez déjà avec eux. Vérifiez un point : l'outil suit-il les demandes qui n'ont pas encore de devis ? Beaucoup ne commencent le suivi qu'au moment du chiffrage, donc trop tard.",
   },
-  { type: "h3", text: "Le CRM léger connecté à votre site" },
+  { type: "h3", text: "La liste de clients reliée à votre site" },
   {
     type: "p",
-    text: "La formule la plus efficace quand les demandes arrivent par votre site et votre fiche Google : chaque nouvelle demande entre automatiquement dans la liste, sans ressaisie, avec son origine déjà renseignée. Vous ne remplissez rien, vous traitez.",
-  },
-  {
-    type: "p",
-    text: "Sur le choix d'un outil de gestion au sens large, devis et facturation compris, notre guide des logiciels de gestion pour artisan détaille les familles d'outils et leurs usages.",
+    text: "Quand les demandes arrivent par votre site, la solution la plus simple consiste à les faire entrer d'elles-mêmes dans la liste, avec leur origine. Vous ne ressaisissez rien : vous traitez.",
   },
 
-  { type: "h2", text: "La relance : là où le CRM se rembourse" },
+  { type: "h2", text: "Ce que fait Sitaly pour le suivi de vos clients" },
   {
     type: "p",
-    text: "Un devis sur deux reste sans réponse, et le prix n'est pas la raison principale. Le client a demandé trois devis, il a rangé le vôtre dans un coin, la vie a continué. Une relance à sept jours puis à trois semaines récupère une part significative de ces dossiers, à condition qu'une liste vous rappelle qui relancer.",
+    text: "Dans Sitaly, chaque fiche client porte un statut (nouveau, contacté, devis envoyé, client, perdu) et une origine : formulaire du site, rendez-vous en ligne ou ajout à la main. Une demande envoyée depuis votre site crée la fiche. Une réservation faite sur votre page de [prise de rendez-vous](/produits/prise-de-rendez-vous/) la crée ou la complète. Chaque devis, facture et paiement s'ajoute à l'historique du client, et un devis accepté fait passer la fiche en « client ».",
   },
   {
     type: "p",
-    text: "Faites le calcul sur vos propres chiffres. Si vous avez vingt devis en attente à 3 000 € en moyenne, cela représente 60 000 € en suspens. Récupérer deux dossiers grâce à une relance au bon moment paie plusieurs années d'abonnement à n'importe quel outil.",
+    text: "La partie [devis et factures](/produits/devis-et-factures/) part de cette fiche : vous choisissez le client, vous ajoutez vos lignes, il accepte en ligne. Les impayés sont relancés seuls en Essentiel et Pro. Sitaly ne relance pas les devis en attente à votre place : c'est votre liste, triée par dernière activité, qui vous montre qui rappeler.",
+  },
+
+  { type: "h2", text: "La relance : là où le suivi rapporte" },
+  {
+    type: "p",
+    text: "Un devis sans réponse ne veut pas dire un refus. Le client a demandé plusieurs devis, il a rangé le vôtre, la vie a continué. Un appel ou un message court quelques jours après l'envoi suffit souvent à relancer la discussion, à condition qu'une liste vous rappelle de le faire.",
+  },
+  {
+    type: "p",
+    text: "Faites le calcul avec vos propres chiffres : additionnez le montant de tous vos devis en attente. Ce total, souvent plus élevé qu'on ne le pense, représente ce que vous risquez de perdre par simple oubli. Récupérer un seul dossier paie en général plusieurs mois de n'importe quel outil.",
+  },
+
+  { type: "h2", text: "Ce que dit la CNIL sur votre fichier clients" },
+  {
+    type: "p",
+    text: "Un fichier de clients et de prospects contient des données personnelles. La CNIL recommande de conserver les données d'un client pendant la relation commerciale puis trois ans après sa fin, et celles d'un prospect trois ans après la collecte ou son dernier contact. Ces durées figurent dans [ses questions-réponses sur la gestion des activités commerciales](https://www.cnil.fr/fr/questions-reponses-sur-les-referentiels-relatifs-la-gestion-des-activites-commerciales-et-des).",
+  },
+  {
+    type: "p",
+    text: "Si vous écrivez à vos anciens clients par SMS ou par e-mail pour leur proposer une prestation, respectez aussi les règles de prospection : la CNIL les détaille sur sa page consacrée à [la prospection par courrier électronique et SMS](https://www.cnil.fr/fr/la-prospection-commerciale-par-courrier-electronique-sms-mms-et-automate-dappel). Chaque message doit permettre de se désinscrire simplement.",
   },
 
   { type: "h2", text: "Comment démarrer cette semaine" },
   {
     type: "ul",
     items: [
-      "Listez toutes les affaires en attente à ce jour, même les vieilles. La plupart des artisans en trouvent plus qu'ils ne pensaient.",
-      "Attribuez à chacune un état et une prochaine action datée. Les dossiers sans action à mener passent en perdu, sans état d'âme.",
-      "Bloquez un créneau fixe de vingt minutes par semaine pour passer la liste en revue. Le vendredi matin fonctionne bien.",
-      "Ajoutez la colonne d'origine dès maintenant, pour disposer de trois mois de données au prochain arbitrage budgétaire.",
+      "Listez toutes les affaires en attente, même anciennes. Vous en trouverez sans doute plus que prévu.",
+      "Donnez à chacune un statut et une prochaine action. Les dossiers sans suite possible passent en « perdu ».",
+      "Bloquez un créneau fixe de vingt minutes par semaine pour passer la liste en revue, le vendredi matin par exemple.",
+      "Notez l'origine de chaque nouveau contact dès aujourd'hui, pour disposer de vrais chiffres au prochain trimestre.",
     ],
   },
 
   {
     type: "quote",
-    text: "Un CRM ne vous apporte pas de nouveaux clients. Il vous empêche de perdre ceux que vous avez déjà.",
+    text: "Un CRM ne vous apporte pas de nouveaux clients. Il vous évite de perdre ceux qui vous ont déjà contacté.",
   },
 
   {
@@ -129,34 +142,24 @@ export const contenu: BlogSection[] = [
     items: [
       {
         q: "Qu'est-ce qu'un CRM pour un artisan ?",
-        a: "C'est la liste de toutes les personnes qui vous ont contacté, avec l'état de chaque affaire et la prochaine action à mener. Contrairement à un logiciel de facturation, qui gère ce qui est déjà signé, un CRM suit ce qui ne l'est pas encore : les devis en attente et les demandes sans réponse.",
-      },
-      {
-        q: "À partir de quand un artisan a-t-il besoin d'un CRM ?",
-        a: "Le basculement se situe autour de quinze à vingt devis en attente. En dessous, la mémoire et un carnet suffisent. Au-delà, le suivi dépend de votre fatigue du jour et les oublis deviennent réguliers, en particulier sur les demandes reçues en soirée.",
+        a: "La liste de toutes les personnes qui vous ont contacté, avec l'état de chaque affaire et la prochaine action à mener. Un logiciel de facturation gère ce qui est signé ; un CRM suit ce qui ne l'est pas encore : les demandes sans réponse et les devis en attente.",
       },
       {
         q: "Un logiciel de facturation peut-il servir de CRM ?",
-        a: "Rarement, parce qu'il ne suit en général que les affaires déjà chiffrées. Or les demandes se perdent le plus souvent avant l'édition du devis, entre le premier appel et l'envoi. Vérifiez si votre outil gère les contacts sans devis avant de vous en contenter.",
+        a: "Rarement, parce qu'il suit en général les affaires déjà chiffrées. Or les demandes se perdent le plus souvent avant le devis, entre le premier appel et l'envoi. Vérifiez si votre outil gère les contacts sans devis avant de vous en contenter.",
       },
       {
         q: "Quel CRM choisir quand on est artisan seul ?",
-        a: "Le plus simple que vous utiliserez vraiment. Un tableur à quatre colonnes fait déjà l'essentiel, mais reste pénible sur un téléphone. Un CRM léger connecté à votre site évite la ressaisie : chaque demande entre automatiquement avec son origine.",
+        a: "Le plus simple que vous utiliserez. Un tableur fait l'essentiel mais reste pénible sur un téléphone. Une liste de clients reliée à votre site évite la ressaisie : chaque demande et chaque rendez-vous entrent avec leur origine.",
       },
       {
-        q: "Combien coûte un CRM pour une entreprise artisanale ?",
-        a: "De zéro pour un tableur à quelques dizaines d'euros par mois pour un outil connecté. Le bon repère n'est pas le prix mais le montant de vos devis en attente : vingt devis à 3 000 € représentent 60 000 € en suspens, et deux dossiers récupérés paient plusieurs années d'abonnement.",
+        q: "Combien de temps garder les données de ses prospects ?",
+        a: "La CNIL recommande trois ans à compter de la collecte ou du dernier contact venant du prospect. Pour un client, la durée de la relation commerciale puis trois ans après sa fin. Au-delà, supprimez ou archivez ses données.",
       },
       {
         q: "Pourquoi suivre l'origine de chaque contact ?",
-        a: "Parce qu'au bout d'un trimestre vous savez quels canaux amènent des chantiers signés, et non simplement des appels. Beaucoup d'artisans découvrent alors que la plateforme la plus coûteuse transforme mal, pendant que leur fiche Google, gratuite, amène les clients qui signent.",
+        a: "Pour savoir au bout d'un trimestre quels canaux amènent des chantiers signés, et pas seulement des appels. Vous décidez alors de garder ou de couper un canal payant sur vos propres chiffres.",
       },
     ],
-  },
-
-  { type: "h2", text: "Un suivi client qui se remplit tout seul" },
-  {
-    type: "p",
-    text: "Sitaly connecte votre site, votre fiche Google et vos formulaires à un suivi simple : chaque demande arrive avec son origine, son état et sa prochaine action, sans ressaisie. Les relances de devis partent automatiquement au bon moment. Réservez un appel gratuit de 20 minutes pour voir ce que ça donne sur votre activité.",
   },
 ];

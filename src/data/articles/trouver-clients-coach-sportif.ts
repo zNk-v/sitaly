@@ -5,75 +5,118 @@ import type { BlogSection } from "@/data/blog-posts";
 export const contenu: BlogSection[] = [
   {
     type: "p",
-    text: "La plupart des coachs sportifs misent tout sur les réseaux sociaux. C'est utile pour la notoriété, mais c'est fragile : l'algorithme change, la portée chute, et un compte qui marche aujourd'hui peut être invisible demain. Pendant ce temps, des dizaines de personnes tapent chaque mois « coach sportif + ville », « coach perte de poids + ville » ou « coaching à domicile » sur Google… et tombent sur vos concurrents. Voici comment construire un système d'acquisition de clients stable, qui ne dépend pas du bon vouloir d'un réseau social.",
+    text: "Vous postez sur Instagram trois fois par semaine, vos vidéos plaisent, et pourtant votre planning a encore des trous. Les réseaux sociaux font connaître un coach ; ils ne suffisent pas toujours à remplir ses créneaux. Pendant ce temps, des personnes de votre ville tapent « coach sportif » suivi du nom de leur quartier, « coach à domicile » ou « perte de poids coach » dans Google. Elles ne cherchent pas de l'inspiration : elles veulent réserver. Cet article vous aide à être trouvé par elles, et à transformer leur visite en première séance.",
   },
-  { type: "h2", text: "Le problème de l'acquisition 100 % réseaux sociaux" },
+  { type: "h2", text: "Comment trouver des clients quand on est coach sportif ?" },
   {
     type: "p",
-    text: "Instagram et TikTok demandent un effort permanent : poster, filmer, suivre les tendances. Le jour où vous arrêtez, les demandes s'arrêtent. Surtout, les abonnés ne sont pas des clients : un compte à 10 000 abonnés peut générer moins de rendez-vous qu'une page Google bien référencée. L'idéal n'est pas d'abandonner les réseaux, mais de les compléter par des canaux que vous contrôlez : votre site, votre fiche Google, vos avis.",
+    text: "Combinez ce que vous contrôlez et ce que vous louez. Vos réseaux font connaître votre personnalité. Votre fiche Google, vos avis et votre site captent les personnes qui cherchent déjà un coach près de chez elles. Une séance découverte facile à réserver en ligne transforme leur curiosité en rendez-vous. Le bouche-à-oreille et les partenariats locaux font le reste.",
   },
-  { type: "h2", text: "1. Un site internet qui transforme l'intérêt en réservation" },
+  { type: "h2", text: "Pourquoi les réseaux seuls ne suffisent pas" },
   {
     type: "p",
-    text: "Votre site est le seul endroit où vous maîtrisez tout : votre offre, vos tarifs, vos résultats clients, et surtout l'appel à l'action. Un bon site de coach sportif présente vos formules (à domicile, en salle, en visio, en petit groupe), affiche des témoignages et des transformations, et propose un bouton « Réserver une séance découverte » visible partout. C'est lui qui convertit un curieux en client, là où un post Instagram se contente de générer un like.",
+    text: "Un compte Instagram ou TikTok dépend d'un algorithme que vous ne maîtrisez pas : une publication peut toucher beaucoup de monde un jour et presque personne le lendemain. Le jour où vous arrêtez de publier, les messages ralentissent. Surtout, la plupart de vos abonnés ne cherchent pas un coach aujourd'hui. Gardez vos réseaux pour montrer votre façon de travailler, et renvoyez-les vers un lieu qui vous appartient : votre site, avec votre offre et votre bouton de réservation.",
   },
-  { type: "h2", text: "2. Google : être trouvé par ceux qui cherchent déjà un coach" },
+  { type: "h2", text: "1. Votre fiche Google, pour ceux qui cherchent près de chez eux" },
   {
     type: "p",
-    text: "Quelqu'un qui tape « coach sportif + ville » est bien plus chaud qu'un internaute qui scrolle son fil. Il cherche activement. Pour capter ces prospects, deux leviers : une fiche Google Business Profile complète avec des avis, et le référencement local de votre site sur vos prestations et votre zone. Ajoutez Google Ads si vous voulez des résultats immédiats, notamment au lancement de votre activité.",
+    text: "Pour une recherche locale, Google montre une carte et quelques fiches avant les sites. Sa fiche d'aide [Améliorer votre classement local](https://support.google.com/business/answer/7091?hl=fr) cite trois critères : la pertinence, la distance, et la notoriété, qui tient compte du nombre d'avis et des notes. Si vous coachez à domicile ou en extérieur sans local ouvert au public, Google permet de [définir une zone desservie](https://support.google.com/business/answer/9157481?hl=fr) et de retirer l'adresse de la fiche.",
   },
-  { type: "h2", text: "3 à 7. Les autres leviers d'un coach qui ne manque pas de clients" },
+  {
+    type: "p",
+    text: "Créer la fiche ne coûte rien : Google permet de l'[ajouter ou la revendiquer](https://support.google.com/business/answer/2911778?hl=fr) sans frais. Choisissez la bonne catégorie, ajoutez des photos de vos séances avec l'accord des personnes filmées, vos horaires et le lien vers votre site.",
+  },
+  { type: "h2", text: "2. Des avis demandés à chaque client" },
+  {
+    type: "p",
+    text: "Un coaching se vend sur la confiance. Une personne qui hésite lit les avis pour savoir si vous êtes ponctuel, à l'écoute, si vos séances conviennent à un débutant. Demandez un avis à chaque client, pas seulement à ceux qui ont atteint leur objectif : le règlement de Google interdit de [solliciter des avis de façon sélective](https://support.google.com/contributionpolicy/answer/7400114?hl=fr) et d'offrir une séance gratuite ou une remise en échange.",
+  },
+  {
+    type: "p",
+    text: "La rubrique [Avis Google](/produits/avis-google/) de Sitaly relève vos nouveaux avis chaque matin, prépare une réponse que vous publiez d'un clic et envoie une demande d'avis le lendemain d'un rendez-vous ou d'une facture payée, au plus une fois tous les six mois par client. Vous pouvez aussi afficher votre note et vos avis récents sur votre site.",
+  },
+  { type: "h2", text: "3. Un site qui répond avant que le client n'écrive" },
+  {
+    type: "p",
+    text: "Votre futur client se pose quatre questions : est-ce que votre méthode lui convient, où se passent les séances, combien elles coûtent, comment commencer. Votre site doit répondre aux quatre :",
+  },
   {
     type: "ul",
     items: [
-      "La prise de rendez-vous en ligne pour réserver une séance découverte 24h/24",
-      "Les avis Google et témoignages clients, preuve sociale décisive pour un coaching",
-      "Une offre d'appel ou de séance découverte gratuite pour amorcer la relation",
-      "La relance automatique des prospects qui ont demandé un renseignement sans réserver",
-      "Les partenariats locaux : kinés, ostéos, nutritionnistes, salles, entreprises",
+      "Vos formules : à domicile, en salle, en extérieur, en visio, en petit groupe, avec leur durée.",
+      "Un prix de départ, ou le tarif d'une séance et d'un forfait.",
+      "Votre zone : les quartiers ou communes où vous vous déplacez.",
+      "Votre diplôme et votre carte professionnelle d'éducateur sportif.",
+      "Une séance découverte, avec un bouton pour la réserver visible sur chaque page.",
     ],
   },
-  {
-    type: "table",
-    caption: "Canaux d'acquisition pour un coach sportif",
-    headers: ["Canal", "Contrôle", "Délai", "Stabilité"],
-    rows: [
-      ["Réseaux sociaux", "Faible (algorithme)", "Variable", "Fragile"],
-      ["Fiche Google + avis", "Élevé", "2 à 6 semaines", "Solide"],
-      ["Site + réservation en ligne", "Total", "1 à 3 mois", "Solide"],
-      ["Google Ads local", "Élevé", "Quelques jours", "Pilotable"],
-    ],
-  },
-  { type: "h2", text: "Le levier sous-estimé : la relance automatique" },
   {
     type: "p",
-    text: "Beaucoup de prospects demandent un renseignement puis disparaissent — non par désintérêt, mais parce que la vie reprend le dessus. Une relance automatique par SMS ou email, deux ou trois jours après une demande restée sans suite, récupère une part significative de ces clients perdus. C'est l'une des automatisations les plus rentables pour un coach, et elle tourne toute seule pendant que vous donnez vos séances.",
+    text: "Le [modèle coach sportif](/modeles/coach/) de Sitaly montre ce que l'IA écrit à partir d'une phrase sur votre activité. Donnez-lui vos vrais tarifs : elle ne les invente pas, et sans eux votre site n'affiche aucun prix.",
+  },
+  { type: "h2", text: "Quelles obligations pour un coach sportif rémunéré ?" },
+  {
+    type: "p",
+    text: "Pour encadrer une activité physique contre rémunération, il faut détenir un diplôme ou un titre reconnu par le code du sport et se déclarer auprès des services de l'État. Cette déclaration donne une carte professionnelle, à renouveler tous les cinq ans. Une copie de la carte et du diplôme doit être affichée là où vous exercez.",
+  },
+  {
+    type: "p",
+    text: "Le ministère des Sports détaille ces règles sur sa page [Éducateurs sportifs](https://www.sports.gouv.fr/educateurs-sportifs), avec le lien vers la déclaration en ligne. Mentionner votre diplôme et votre carte professionnelle sur votre site rassure un client qui compare plusieurs coachs, et ne vous coûte rien.",
+  },
+  { type: "h2", text: "4. La réservation en ligne de la première séance" },
+  {
+    type: "p",
+    text: "Une personne motivée un dimanche soir n'attendra pas lundi pour vous écrire. Si elle peut choisir un créneau tout de suite, elle s'engage. La [prise de rendez-vous](/produits/prise-de-rendez-vous/) de Sitaly ajoute un bouton « Prendre rendez-vous » à votre site : vous définissez vos prestations, leur durée, vos horaires et le temps entre deux clients. Le client reçoit une confirmation avec un lien d'annulation, puis un rappel la veille. Deux clients ne peuvent pas réserver le même créneau, et vous fermez la réservation d'un geste pendant vos vacances.",
+  },
+  {
+    type: "p",
+    text: "La réservation est comprise dans les formules Essentiel (39 € / mois) et Pro (79 € / mois), sans commission par rendez-vous. Avec Découverte, gratuite, vos clients vous écrivent par le formulaire du site.",
+  },
+  { type: "h2", text: "5. Répondre vite aux demandes" },
+  {
+    type: "p",
+    text: "Une demande qui attend votre réponse toute la journée laisse au client le temps d'écrire à un autre coach. Bloquez deux moments dans la journée pour répondre aux messages. Dans Sitaly, l'agent de réponse aux demandes prépare un brouillon dans votre ton à partir des informations de votre site ; vous le relisez et l'envoyez. Rien ne part sans votre accord.",
+  },
+  { type: "h2", text: "6. Les partenariats locaux" },
+  {
+    type: "ul",
+    items: [
+      "Les kinés, ostéopathes et diététiciens de votre quartier croisent des patients à qui un accompagnement sportif ferait du bien.",
+      "Les entreprises voisines cherchent parfois des séances pour leurs salariés.",
+      "Les salles et clubs ont besoin d'intervenants pour des créneaux précis.",
+      "Les commerces de sport acceptent souvent une carte ou une affiche avec votre QR code de réservation.",
+    ],
+  },
+  { type: "h2", text: "7. Des articles qui répondent aux questions de vos clients" },
+  {
+    type: "p",
+    text: "« Combien de séances par semaine pour débuter ? », « Faut-il un certificat médical ? », « Que manger avant une séance ? » : chaque question récurrente peut devenir une page. Ces articles rassurent un client qui hésite et donnent à Google des raisons de montrer votre site. Le [blog écrit par l'IA](/produits/blog-ia/) de Sitaly propose des idées tirées de votre activité et rédige l'article ; vous le relisez et vérifiez chaque conseil de santé avant de publier.",
   },
   { type: "h2", text: "Questions fréquentes" },
   {
     type: "faq",
     items: [
       {
-        q: "Faut-il arrêter Instagram si on a un site ?",
-        a: "Non. Les réseaux servent à se faire connaître et à montrer votre personnalité ; le site et Google servent à convertir et à capter ceux qui cherchent activement. La combinaison est bien plus puissante que les réseaux seuls.",
+        q: "Faut-il arrêter Instagram si j'ai un site ?",
+        a: "Non. Les réseaux montrent votre personnalité et votre façon de travailler. Le site et la fiche Google captent ceux qui cherchent un coach maintenant. Mettez le lien de réservation dans votre profil pour relier les deux.",
       },
       {
-        q: "Google Ads vaut-il le coup pour un coach sportif ?",
-        a: "Oui, surtout au démarrage ou pour une nouvelle offre : vous apparaissez immédiatement sur « coach sportif + ville » pendant que votre référencement naturel se construit. Avec un budget maîtrisé et une page dédiée, le retour est souvent rapide.",
+        q: "Dois-je afficher mes tarifs ?",
+        a: "Au moins un prix de départ. Sans prix, le client doit vous écrire pour une question que le site aurait pu régler, et certains ne prennent pas cette peine.",
       },
       {
-        q: "Combien coûte un site pour coach sportif ?",
-        a: "Chez Sitaly, à partir de 149€/mois tout inclus, en location sans engagement. Les options Google Ads, prise de rendez-vous en ligne et automatisations s'ajoutent selon vos besoins.",
+        q: "Je coache à domicile, puis-je avoir une fiche Google ?",
+        a: "Oui. Google vous laisse indiquer les communes que vous desservez. Si vous ne recevez pas de clients chez vous, son aide demande de supprimer l'adresse de la fiche.",
       },
       {
-        q: "Je débute, par où commencer ?",
-        a: "Par une fiche Google complète et un site simple avec réservation en ligne et une offre découverte. Ajoutez Google Ads pour accélérer, puis les automatisations de relance une fois les premiers clients arrivés.",
+        q: "Par où commencer si je débute ?",
+        a: "Déclarez votre activité pour obtenir votre carte professionnelle, créez votre fiche Google, puis un site simple avec vos formules, vos prix et une séance découverte à réserver. Demandez un avis à chaque client dès les premières semaines.",
       },
     ],
   },
-  { type: "h2", text: "Construisez votre système d'acquisition avec Sitaly" },
+  { type: "h2", text: "Votre site de coach en ligne en une minute" },
   {
     type: "p",
-    text: "Site internet orienté conversion, prise de rendez-vous en ligne, référencement local, et en option Google Ads et relance automatique des prospects : Sitaly met en place le système qui remplit votre planning sans dépendre des réseaux sociaux. Réservez un appel gratuit de 15 minutes pour en parler.",
+    text: "Avec [Sitaly](https://app.sitaly.fr), vous écrivez une phrase sur votre coaching et l'IA rédige votre site, publié en une minute environ sur votre-nom.sitaly.fr. Vous le modifiez en écrivant ce qu'il faut changer. La formule Découverte est gratuite et sans carte ; Essentiel ajoute un domaine en .fr ou en .com, la réservation en ligne et les demandes d'avis automatiques.",
   },
 ];

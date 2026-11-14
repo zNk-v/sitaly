@@ -599,6 +599,44 @@ export const CREATEUR_IA = {
   pro: { nom: "Pro", mensuel: VITRINE.tarif("pro", "mensuel") ?? 79, annuel: VITRINE.tarif("pro", "annuel") ?? 806, credits: 2500, creditDomaine: 40 },
 } as const;
 
+/**
+ * Les formules de l'application en données structurées (audit SEO du
+ * 14 novembre 2026) : chaque offre porte sa page, sa disponibilité et ses deux
+ * périodes de facturation, au mois et à l'année. Partagé par l'accueil et
+ * /tarifs/, pour que les deux pages disent la même chose à Google.
+ */
+export function offresStructurees() {
+  const url = "https://sitaly.fr/tarifs/";
+  const periode = (prix: number, duree: "P1M" | "P1Y") => ({
+    "@type": "UnitPriceSpecification",
+    price: prix,
+    priceCurrency: "EUR",
+    billingDuration: duree,
+    valueAddedTaxIncluded: false,
+  });
+  const payante = (f: { nom: string; mensuel: number; annuel: number }) => ({
+    "@type": "Offer",
+    name: f.nom,
+    url,
+    price: String(f.mensuel),
+    priceCurrency: "EUR",
+    availability: "https://schema.org/InStock",
+    priceSpecification: [periode(f.mensuel, "P1M"), periode(f.annuel, "P1Y")],
+  });
+  return [
+    {
+      "@type": "Offer",
+      name: CREATEUR_IA.decouverte.nom,
+      url,
+      price: "0",
+      priceCurrency: "EUR",
+      availability: "https://schema.org/InStock",
+    },
+    payante(CREATEUR_IA.essentiel),
+    payante(CREATEUR_IA.pro),
+  ];
+}
+
 /** Prix le plus bas d'un site, pour les accroches (« à partir de »). */
 export const PRIX_SITE_MIN = Math.min(
   ...OFFRES.filter((o) => o.groupe === "site" || o.groupe === "boutique").map(

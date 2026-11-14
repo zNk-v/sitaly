@@ -84,7 +84,7 @@ function PageGuides() {
                   <span className="relative block aspect-[16/10] overflow-hidden">
                     <img
                       src={imageGuide(g.id, Math.min(1, g.etapes.length - 1))}
-                      alt=""
+                      alt={`Capture d'écran du tutoriel : ${g.titre}`}
                       loading="lazy"
                       width={1120}
                       height={700}

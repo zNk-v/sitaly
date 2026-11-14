@@ -19,9 +19,9 @@ import {
 
 const URL = "https://sitaly.fr/outils/";
 const TITLE =
-  "Outils gratuits pour lancer son entreprise : nom, domaine, devis, mentions légales | Sitaly";
+  "Outils gratuits pour lancer son entreprise | Sitaly";
 const DESCRIPTION =
-  "Cinq outils gratuits et sans inscription pour les créateurs d'entreprise : trouver un nom, vérifier un nom de domaine, faire un devis en PDF, écrire ses mentions légales et auditer sa fiche Google.";
+  "Cinq outils gratuits, sans inscription : nom d'entreprise, nom de domaine, devis en PDF, mentions légales et audit de fiche Google.";
 
 const OUTILS = [
   {

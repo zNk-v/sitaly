@@ -92,7 +92,7 @@ export const GUIDES: Guide[] = [
     duree: "1 min",
     seoTitre: "Changer le thème et les couleurs de son site",
     description:
-      "Une autre allure en un clic, sans perdre vos textes ni vos photos : le guide en vidéo.",
+      "Changer l'allure de votre site en un clic (Franc, Doux, Joyeux ou Éclat) sans perdre vos textes ni vos photos : le guide en vidéo.",
     etapes: [
       {
         titre: "Ouvrez les thèmes",
@@ -175,7 +175,7 @@ export const GUIDES: Guide[] = [
     duree: "2 min",
     seoTitre: "Faire un devis en ligne et le transformer en facture",
     description:
-      "Préparer un devis, le faire accepter en ligne, puis créer la facture en un clic : le guide en vidéo.",
+      "Préparer un devis depuis la fiche du client, le faire accepter en ligne, puis le transformer en facture en un clic : le guide en vidéo.",
     etapes: [
       {
         titre: "Préparez le devis",
@@ -201,7 +201,7 @@ export const GUIDES: Guide[] = [
     duree: "2 min",
     seoTitre: "Suivre ses demandes et ses clients, sans tableur",
     description:
-      "Une fiche par client, son statut, son historique et ses devis : le guide en vidéo du carnet de clients Sitaly.",
+      "Une fiche par client avec son statut, son historique, ses devis et ses factures : le guide en vidéo du carnet de clients de Sitaly.",
     etapes: [
       {
         titre: "Ajoutez une fiche",
@@ -227,7 +227,7 @@ export const GUIDES: Guide[] = [
     duree: "2 min",
     seoTitre: "Proposer la prise de rendez-vous en ligne sur son site",
     description:
-      "Vos prestations, vos horaires et un bouton de réservation sur votre site : le guide en vidéo.",
+      "Décrire vos prestations, poser vos horaires et ouvrir la réservation en ligne sur votre site, avec confirmation par e-mail : le guide en vidéo.",
     etapes: [
       {
         titre: "Ajoutez vos prestations",
@@ -253,7 +253,7 @@ export const GUIDES: Guide[] = [
     duree: "2 min",
     seoTitre: "Répondre aux demandes de ses clients avec l'IA",
     description:
-      "L'agent rédige la réponse à chaque message de votre site, vous relisez et envoyez : le guide en vidéo.",
+      "Activer l'agent qui rédige la réponse à chaque demande reçue par votre site, régler son ton, relire et envoyer : le guide en vidéo.",
     etapes: [
       {
         titre: "Activez l'agent",
@@ -279,7 +279,7 @@ export const GUIDES: Guide[] = [
     duree: "3 min",
     seoTitre: "Être trouvé sur Google et dans ChatGPT : le guide",
     description:
-      "Annuaires, recherches de vos clients, présence dans les IA : les trois gestes qui comptent, en vidéo.",
+      "Lire votre score de visibilité, inscrire votre site dans les annuaires et être cité par les IA : les trois gestes qui comptent, en vidéo.",
     etapes: [
       {
         titre: "Inscrivez-vous dans les annuaires",
@@ -304,7 +304,7 @@ export const GUIDES: Guide[] = [
     resume: "Partager votre lien et suivre vos gains.",
     duree: "1 min",
     seoTitre: "Parrainer une entreprise et toucher une commission",
-    description: "Partager votre lien Sitaly et suivre vos gains : le guide en vidéo.",
+    description: "Trouver votre lien de parrainage Sitaly, le partager à un autre entrepreneur et suivre vos gains dans l'application : le guide en vidéo.",
     etapes: [
       {
         titre: "Copiez votre lien",
@@ -325,7 +325,7 @@ export const GUIDES: Guide[] = [
     duree: "1 min",
     seoTitre: "Changer de formule ou résilier son abonnement Sitaly",
     description:
-      "Changer d'offre, résilier en deux clics ou revenir sur sa décision : le guide en vidéo.",
+      "Passer de Découverte à Essentiel ou Pro, changer d'offre, résilier en deux clics ou revenir sur sa décision : le guide de l'abonnement en vidéo.",
     etapes: [
       {
         titre: "Choisissez votre formule",

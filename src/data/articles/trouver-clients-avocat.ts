@@ -5,50 +5,85 @@ import type { BlogSection } from "@/data/blog-posts";
 export const contenu: BlogSection[] = [
   {
     type: "p",
-    text: "Le réflexe d'un particulier ou d'un dirigeant confronté à un litige a changé : avant d'appeler une connaissance, il tape sa question sur Google — « avocat divorce + ville », « avocat droit du travail + ville », « avocat licenciement ». Celui qui apparaît, qui inspire confiance et qui est facile à contacter récupère le rendez-vous. Développer sa clientèle d'avocat passe désormais par une présence en ligne maîtrisée, parfaitement compatible avec la déontologie, à condition de respecter quelques règles.",
+    text: "Une personne licenciée la veille, un couple qui se sépare, un gérant qui reçoit une mise en demeure : avant d'appeler qui que ce soit, beaucoup tapent leur question dans Google. L'avocat qu'ils trouvent, qui inspire confiance et qu'ils peuvent joindre facilement, obtient le premier rendez-vous. Un avocat peut communiquer en ligne, mais dans un cadre plus strict que n'importe quel commerce. Cet article réunit ce que permet le règlement intérieur national de la profession, ce qu'il interdit, et les leviers qui restent ouverts pour développer votre clientèle.",
   },
-  { type: "h2", text: "Communication oui, sollicitation non : le cadre déontologique" },
+  { type: "h2", text: "Un avocat a-t-il le droit de faire de la publicité ?" },
   {
     type: "p",
-    text: "Depuis 2014, un avocat a le droit de communiquer et de faire de la publicité fonctionnelle : site internet, référencement, présence sur Google. Ce qui reste encadré, c'est la sollicitation personnalisée (démarcher nommément une personne précise pour une affaire donnée). Une présence en ligne qui informe, présente vos domaines d'intervention et permet d'être trouvé est non seulement autorisée mais attendue. Tout l'enjeu est de communiquer avec dignité et sans démarchage individualisé.",
-  },
-  { type: "h2", text: "1. Un site qui inspire confiance et autorité" },
-  {
-    type: "p",
-    text: "Le choix d'un avocat est un choix de confiance. Votre site doit asseoir votre crédibilité : vos domaines d'intervention détaillés (une page par domaine), votre parcours, votre barreau, votre approche, et un moyen de prise de contact simple. Un site sobre, clair et rassurant transforme un visiteur inquiet en prise de rendez-vous, là où une fiche annuaire impersonnelle laisse le doute s'installer.",
-  },
-  { type: "h2", text: "2. Le référencement local et thématique" },
-  {
-    type: "p",
-    text: "Vos futurs clients cherchent par domaine et par ville. Une page dédiée et optimisée par domaine d'expertise (droit de la famille, droit du travail, droit des affaires, droit pénal…) vous permet d'apparaître précisément sur les recherches correspondantes. Couplée à une fiche Google Business Profile complète et à des avis, cette stratégie de référencement local vous rend visible au moment où le besoin juridique apparaît.",
-  },
-  {
-    type: "h2",
-    text: "3. Google Ads : visibilité immédiate sur les requêtes à forte intention",
+    text: "Oui. L'article 10.3 du règlement intérieur national permet la publicité et la sollicitation personnalisée si elles donnent une information sincère sur vos prestations et respectent les principes essentiels de la profession. Toute publicité doit être communiquée sans délai au conseil de l'Ordre. Sont interdites la publicité mensongère ou trompeuse et toute mention comparative ou dénigrante.",
   },
   {
     type: "p",
-    text: "Quelqu'un qui tape « avocat licenciement + ville » a un besoin immédiat et une valeur de dossier élevée. Google Ads, autorisé pour les avocats dans le respect de la déontologie, permet d'apparaître en tête sur ces requêtes dès aujourd'hui, sans attendre des mois de référencement naturel. Avec une page dédiée par domaine et un budget maîtrisé, le coût d'acquisition d'un client reste largement absorbé par la valeur d'un seul dossier.",
+    text: "Les règles citées dans cet article viennent du [règlement intérieur national (RIN)](https://cnb.avocat.fr/reglement-interieur-national-de-la-profession-d-avocat-rin) publié par le Conseil national des barreaux, dans sa version consolidée au 7 juillet 2026, et du [vade-mecum de la communication des avocats](https://www.cnb.avocat.fr/sites/default/files/cnb_2020-10_ru_vademecum-communicationweb-p-k.pdf) du CNB (2e édition, octobre 2020), qui rassemble les avis de sa commission des règles et usages. Votre bâtonnier reste l'interlocuteur à consulter en cas de doute.",
   },
-  { type: "h2", text: "Les leviers complémentaires" },
+  { type: "h2", text: "Ce que votre site doit respecter" },
   {
     type: "ul",
     items: [
-      "Les avis clients (dans le respect du secret professionnel) qui rassurent et renforcent le référencement",
-      "La prise de rendez-vous en ligne pour un premier rendez-vous, qui réduit les appels manqués",
-      "Du contenu juridique vulgarisé qui répond aux questions fréquentes et vous référence",
-      "La réponse automatique aux demandes entrantes pour ne jamais laisser un prospect sans réponse",
+      "Prévenir l'Ordre : l'article 10.5 impose d'informer sans délai le conseil de l'Ordre de l'ouverture ou de toute modification substantielle de votre site, avec les noms de domaine qui y mènent.",
+      "Le nom de domaine : il doit comporter votre nom ou celui du cabinet, en entier ou en abrégé, éventuellement suivi ou précédé du mot « avocat ». Un domaine générique du type « avocat-divorce-lyon.fr » est interdit.",
+      "Les mentions d'identification : selon l'article 10.2, toute communication doit permettre de vous identifier, de vous localiser, de vous joindre, et de connaître votre barreau, votre structure d'exercice et, le cas échéant, votre réseau.",
+      "Aucune bannière publicitaire : le site ne peut comporter aucun encart publicitaire autre que ceux de la profession, ni de lien vers des contenus contraires aux principes essentiels.",
+      "Les honoraires : le vade-mecum recommande une rubrique « Honoraires » qui expose leur mode de détermination et rappelle l'obligation d'une convention écrite.",
+      "Les mentions légales du site, comme pour toute activité professionnelle. Notre [générateur de mentions légales](/outils/generateur-mentions-legales/) vous donne une base à compléter avec votre barreau.",
     ],
+  },
+  { type: "h2", text: "Spécialisations et domaines d'activité" },
+  {
+    type: "p",
+    text: "L'article 10.2 réserve les mots « spécialiste », « spécialisé », « spécialité » et « spécialisation » aux avocats titulaires d'un certificat de spécialisation régulièrement obtenu. Sans certificat, vous pouvez mentionner vos domaines d'activités dominantes, trois au plus, à condition qu'ils correspondent à une pratique effective et habituelle. Toute communication sur ces domaines ou ces spécialisations doit être transmise sans délai au conseil de l'Ordre.",
+  },
+  {
+    type: "p",
+    text: "Sur votre site, une page par domaine d'activité dominante fonctionne bien : elle explique les situations que vous traitez, le déroulé d'un dossier, les documents à préparer pour un premier rendez-vous. Elle aide le visiteur à savoir s'il frappe à la bonne porte, et elle donne à Google de quoi relier votre site aux recherches correspondantes.",
+  },
+  { type: "h2", text: "Avis clients et noms de clients : prudence" },
+  {
+    type: "p",
+    text: "Le vade-mecum du CNB reproduit l'avis n° 2015-019 de la commission des règles et usages : un avocat ne peut pas renvoyer depuis son site vers des commentaires élogieux de ses clients. La commission y voit une publicité déguisée, puisque personne ne peut garantir la provenance de ces avis. N'affichez donc pas vos avis Google sur votre site, même sous forme de note.",
+  },
+  {
+    type: "p",
+    text: "Le même document rappelle que le secret professionnel, prévu à l'article 2.2 du RIN, interdit en principe de citer le nom de vos clients. Si des avis apparaissent sur votre fiche Google, ne confirmez jamais en répondant qu'une personne est votre cliente, et n'évoquez aucun élément de dossier. Avant de solliciter des avis, interrogez votre Ordre.",
+  },
+  { type: "h2", text: "Un avocat peut-il acheter des annonces Google Ads ?" },
+  {
+    type: "p",
+    text: "Oui. Selon l'avis n° 2012-032 de la commission des règles et usages, cité dans le vade-mecum du CNB, l'achat de liens sponsorisés pour référencer un cabinet relève de la publicité autorisée. Les annonces doivent correspondre à une activité et une compétence avérées du cabinet, et respecter les règles de l'article 10, dont la communication à l'Ordre.",
+  },
+  {
+    type: "p",
+    text: "En pratique, n'enchérissez que sur vos domaines d'activité réels, n'utilisez pas le mot « spécialiste » sans certificat, et faites pointer chaque annonce vers la page du domaine concerné. Gardez une trace des textes d'annonce transmis à l'Ordre.",
+  },
+  { type: "h2", text: "La sollicitation personnalisée" },
+  {
+    type: "p",
+    text: "L'article 10.3 autorise aussi la sollicitation personnalisée, c'est-à-dire une offre de services adressée à une personne déterminée. Elle doit exclure toute démarche physique ou téléphonique ; les SMS sont exclus. Elle précise comment sera fixé le coût de la prestation, qui fera l'objet d'une convention d'honoraires. Vous ne pouvez pas passer par un tiers pour contourner ces limites. Une lettre ou un e-mail sobre, adressé à une entreprise dont l'activité vous concerne, reste dans le cadre.",
+  },
+  { type: "h2", text: "La fiche Google et la prise de rendez-vous" },
+  {
+    type: "p",
+    text: "La fiche d'établissement Google fait apparaître votre cabinet sur la carte quand quelqu'un cherche un avocat près de chez lui. Google permet de la [créer ou la revendiquer](https://support.google.com/business/answer/2911778?hl=fr) sans frais. Reprenez les mêmes informations que sur votre site : nom, adresse, téléphone, horaires, barreau dans la description.",
+  },
+  {
+    type: "p",
+    text: "La [prise de rendez-vous](/produits/prise-de-rendez-vous/) de Sitaly ajoute à votre site une page de réservation pour un premier rendez-vous : vous fixez la durée, vos créneaux et le délai minimum avant un rendez-vous. Le client reçoit une confirmation et un rappel la veille. Son formulaire contient un champ de message facultatif : indiquez au-dessus de ne pas y décrire l'affaire, pour garder les éléments du dossier pour l'entretien.",
+  },
+  { type: "h2", text: "Des articles juridiques qui répondent aux vraies questions" },
+  {
+    type: "p",
+    text: "« Combien de temps pour contester un licenciement ? », « Que faire après une mise en demeure ? » : un article clair sur une question fréquente aide un visiteur à comprendre sa situation et lui montre votre façon d'expliquer. Le [blog écrit par l'IA](/produits/blog-ia/) de Sitaly propose des sujets et rédige un premier jet ; vérifiez chaque règle, chaque délai et chaque référence de texte avant publication, et citez vos sources. Une erreur de droit publiée sous votre nom engage votre crédibilité.",
   },
   {
     type: "table",
-    caption: "Acquisition de clients pour un cabinet d'avocat",
-    headers: ["Levier", "Conformité déontologie", "Délai", "Valeur"],
+    caption: "Les leviers d'un cabinet et leur cadre, d'après le RIN et le vade-mecum du CNB",
+    headers: ["Levier", "Cadre", "Point de vigilance"],
     rows: [
-      ["Site + pages par domaine", "Communication autorisée", "1 à 3 mois", "Élevée"],
-      ["Référencement local + avis", "Autorisé", "2 à 4 mois", "Élevée"],
-      ["Google Ads", "Autorisé (publicité encadrée)", "Quelques jours", "Très élevée"],
-      ["Démarchage nominatif", "Interdit", "—", "—"],
+      ["Site internet", "Autorisé (art. 10.5)", "Informer l'Ordre, domaine à votre nom, aucune bannière"],
+      ["Domaines d'activité", "Autorisés (art. 10.2)", "Trois au plus, pratique effective, communication à l'Ordre"],
+      ["Liens sponsorisés", "Autorisés (avis n° 2012-032)", "Activité et compétence avérées"],
+      ["Sollicitation personnalisée", "Autorisée (art. 10.3)", "Ni démarche physique, ni téléphone, ni SMS"],
+      ["Avis clients sur le site", "Proscrits (avis n° 2015-019)", "Ne pas afficher ni relayer"],
     ],
   },
   { type: "h2", text: "Questions fréquentes" },
@@ -56,26 +91,26 @@ export const contenu: BlogSection[] = [
     type: "faq",
     items: [
       {
-        q: "Un avocat a-t-il le droit de faire de la publicité Google Ads ?",
-        a: "Oui. Depuis 2014, la publicité fonctionnelle est autorisée pour les avocats, Google Ads compris, tant qu'elle reste digne, loyale et qu'elle ne constitue pas une sollicitation personnalisée. Le cadrage des annonces doit respecter la déontologie.",
+        q: "Puis-je utiliser une adresse comme « avocat-divorce.fr » ?",
+        a: "Non. L'article 10.5 du RIN interdit les noms de domaine qui évoquent de façon générique le titre d'avocat ou un domaine du droit. Le domaine doit comporter votre nom ou celui du cabinet.",
       },
       {
-        q: "Quels domaines bénéficient le plus d'une présence en ligne ?",
-        a: "Les domaines où les particuliers cherchent eux-mêmes : droit de la famille, droit du travail, droit pénal, droit immobilier, droit de la consommation. Ce sont des requêtes à fort volume et forte intention.",
+        q: "Dois-je déclarer mon site à l'Ordre ?",
+        a: "Oui. L'article 10.5 impose d'informer sans délai le conseil de l'Ordre de l'ouverture ou de la modification substantielle du site, et de lui communiquer les noms de domaine.",
       },
       {
-        q: "Le site doit-il respecter des mentions particulières ?",
-        a: "Oui : mention du barreau, respect du secret professionnel, communication loyale et non trompeuse. Un accompagnement habitué aux professions réglementées sécurise ces aspects.",
+        q: "Puis-je me dire spécialiste en droit du travail ?",
+        a: "Seulement si vous détenez le certificat de spécialisation correspondant. Sinon, présentez le droit du travail comme l'un de vos domaines d'activités dominantes, trois au plus.",
       },
       {
-        q: "Puis-je déléguer la mise en place sans risque déontologique ?",
-        a: "Oui, à condition que le prestataire respecte votre cadre. Sitaly met en place site, référencement et, en option, Google Ads en restant dans les limites de la communication autorisée. Vous validez les contenus.",
+        q: "Les SMS de prospection sont-ils permis ?",
+        a: "Non. L'article 10.3 exclut les messages textuels envoyés sur un téléphone mobile de la sollicitation personnalisée.",
       },
     ],
   },
-  { type: "h2", text: "Développez votre cabinet avec Sitaly" },
+  { type: "h2", text: "Un site sobre, à votre nom" },
   {
     type: "p",
-    text: "Site sobre et crédible, pages par domaine d'expertise, référencement local et, en option, Google Ads conforme à la déontologie : Sitaly aide les avocats à être trouvés par des clients qualifiés au bon moment. Réservez un appel gratuit de 15 minutes pour en parler.",
+    text: "[Sitaly](https://app.sitaly.fr) écrit votre site à partir d'une phrase et le publie en une minute environ ; vous le corrigez en écrivant ce qu'il faut changer. Pour un cabinet, choisissez la formule Essentiel ou Pro : elles incluent un domaine en .fr ou en .com, que vous pouvez composer avec votre nom comme l'exige l'article 10.5. Relisez chaque texte, laissez désactivé l'affichage des avis, puis transmettez l'adresse du site à votre Ordre. Les prix figurent sur la page [Tarifs](/tarifs/).",
   },
 ];

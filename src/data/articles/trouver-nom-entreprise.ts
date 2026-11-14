@@ -7,7 +7,11 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Le nom de votre entreprise vous suivra sur votre enseigne, vos devis, votre site et votre fiche Google. Il mérite une heure de réflexion, pas une semaine d'hésitation. Voici sept méthodes pour trouver des idées, puis les vérifications à faire avant de vous décider.",
   },
-  { type: "h2", text: "Sept méthodes pour trouver des idées" },
+  { type: "h2", text: "Comment trouver un nom d'entreprise ?" },
+  {
+    type: "p",
+    text: "Partez de ce que vous faites, de votre nom, de votre lieu ou de ce que vous apportez au client, puis associez des mots et testez-les à voix haute. Notez une vingtaine d'idées sans les juger, gardez-en trois, et vérifiez qu'elles sont libres : marques, entreprises existantes, nom de domaine. Les sept méthodes ci-dessous donnent des pistes.",
+  },
   { type: "h3", text: "1. Partir du métier" },
   {
     type: "p",
@@ -43,12 +47,16 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Le [générateur de nom d'entreprise](/outils/generateur-nom-entreprise/) de Sitaly propose douze noms à partir de votre activité et du style voulu, et vérifie aussitôt si le nom de domaine en .fr est libre. Servez-vous-en pour débloquer l'imagination, puis gardez ce qui vous ressemble.",
   },
-  { type: "h2", text: "Les vérifications avant de choisir" },
+  { type: "h2", text: "Comment vérifier qu'un nom d'entreprise est libre ?" },
+  {
+    type: "p",
+    text: "Faites quatre recherches avant de vous décider : le nom dans la [base des marques de l'INPI](https://www.inpi.fr/ressources/propriete-intellectuelle/rechercher-une-marque-base-marques), dans l'[annuaire officiel des entreprises](https://annuaire-entreprises.data.gouv.fr/), dans Google avec votre ville, et la disponibilité du nom de domaine en .fr. Une marque déposée dans votre secteur peut vous obliger à changer de nom plus tard, enseigne et site compris.",
+  },
   {
     type: "ul",
     items: [
-      "Les marques : cherchez le nom dans la base des marques de l'INPI (data.inpi.fr). Une marque déposée dans votre secteur peut vous obliger à changer de nom plus tard.",
-      "Les entreprises existantes : cherchez-le sur l'annuaire des entreprises (annuaire-entreprises.data.gouv.fr) et sur Google, avec votre ville.",
+      "Les marques : cherchez le nom dans la [base des marques de l'INPI](https://www.inpi.fr/ressources/propriete-intellectuelle/rechercher-une-marque-base-marques). Regardez les marques proches dans votre secteur, pas seulement le nom exact.",
+      "Les entreprises existantes : cherchez-le sur l'[Annuaire des entreprises](https://annuaire-entreprises.data.gouv.fr/) de l'État et sur Google, avec votre ville.",
       "Le nom de domaine : vérifiez que le .fr est libre, et si possible le .com. Notre [vérificateur de nom de domaine](/outils/verifier-nom-de-domaine/) interroge les registres officiels.",
       "Les réseaux sociaux : le même nom libre sur Instagram ou Facebook simplifie tout.",
       "Les mots réglementés : certains titres ou professions ne peuvent pas figurer dans un nom sans le diplôme ou l'agrément qui va avec.",
@@ -61,14 +69,14 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Et ensuite ?" },
   {
     type: "p",
-    text: "Une fois le nom choisi, réservez le nom de domaine sans attendre, puis créez votre site. Avec Sitaly, une phrase sur votre activité et votre nom suffit : le site est en ligne une minute plus tard.",
+    text: "Une fois le nom choisi, réservez le nom de domaine sans attendre, avant qu'un autre ne le prenne : notre guide pour [choisir son nom de domaine](/blog/choisir-nom-de-domaine/) vous aide à trancher entre .fr et .com. Créez ensuite votre site. Avec Sitaly, une phrase sur votre activité et votre nom suffit : le site est en ligne une minute plus tard.",
   },
   {
     type: "faq",
     items: [
       {
         q: "Faut-il déposer son nom comme marque ?",
-        a: "Ce n'est pas obligatoire pour exercer, mais cela protège votre nom si vous comptez investir dedans. Le dépôt se fait auprès de l'INPI, pour une durée de dix ans renouvelable.",
+        a: "Ce n'est pas obligatoire pour exercer, mais cela protège votre nom si vous comptez investir dedans. Le dépôt se fait auprès de l'INPI, pour une durée de dix ans [renouvelable](https://www.inpi.fr/realiser-demarches/propriete-intellectuelle/prolonger-validite-de-sa-marque).",
       },
       {
         q: "Puis-je changer de nom plus tard ?",

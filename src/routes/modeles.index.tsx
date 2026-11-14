@@ -4,7 +4,7 @@ import { SiteChrome } from "@/components/SiteChrome";
 import { BoiteApp, Confiance, TEXTE_GRIS, lienCreation } from "@/components/produit/Produit";
 import { MiniSite, photo } from "@/components/produit/Vitrine";
 import { METIERS_MODELES } from "@/lib/modeles-metiers";
-import { MODELES } from "@/data/modeles";
+import { deMetier, MODELES } from "@/data/modeles";
 import { BASE_URL } from "@/lib/sitemap";
 
 /**
@@ -17,6 +17,8 @@ const TITRE = "Modèles de sites internet par métier | Sitaly";
 const DESCRIPTION =
   "Plombier, électricien, coiffure, esthéticienne, restaurant, VTC… 22 modèles de sites : l'IA de Sitaly adapte le vôtre à votre activité en une minute.";
 
+const nomDe = (id: string) => MODELES.find((m) => m.id === id)?.nom ?? id;
+
 export const Route = createFileRoute("/modeles/")({
   head: () => ({
     meta: [
@@ -28,11 +30,33 @@ export const Route = createFileRoute("/modeles/")({
       { property: "og:image", content: `${BASE_URL}${photo("coiffeuse")}` },
     ],
     links: [{ rel: "canonical", href: URL }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "@id": `${URL}#page`,
+          url: URL,
+          name: TITRE,
+          description: DESCRIPTION,
+          inLanguage: "fr-FR",
+          isPartOf: { "@id": `${BASE_URL}/#website` },
+          mainEntity: {
+            "@type": "ItemList",
+            itemListElement: METIERS_MODELES.map((m, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              name: `Site internet pour ${nomDe(m.id)}`,
+              url: `${BASE_URL}/modeles/${m.id}/`,
+            })),
+          },
+        }),
+      },
+    ],
   }),
   component: Modeles,
 });
-
-const nomDe = (id: string) => MODELES.find((m) => m.id === id)?.nom ?? id;
 
 function Modeles() {
   return (
@@ -63,7 +87,7 @@ function Modeles() {
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
                     src={photo(m.id, 768)}
-                    alt=""
+                    alt={`Photo d'illustration pour un site ${deMetier(nomDe(m.id))}`}
                     loading="lazy"
                     width={768}
                     height={432}

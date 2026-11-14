@@ -5,43 +5,99 @@ import type { BlogSection } from "@/data/blog-posts";
 export const contenu: BlogSection[] = [
   {
     type: "p",
-    text: "La relation avec un expert-comptable est durable et récurrente : gagner un client, c'est souvent un revenu sur plusieurs années. C'est ce qui rend l'acquisition digitale particulièrement rentable pour un cabinet. Or les dirigeants, créateurs d'entreprise et indépendants choisissent de plus en plus leur cabinet en ligne : ils tapent « expert-comptable + ville », « comptable création d'entreprise », « cabinet comptable + secteur » sur Google. Voici comment capter ces prospects à forte valeur.",
+    text: "Un client d'expertise comptable reste souvent plusieurs années. Gagner un dossier, c'est donc gagner une relation, et perdre un prospect faute de réponse coûte plus cher qu'une prestation ponctuelle manquée. Or les créateurs d'entreprise, les indépendants et les dirigeants de TPE cherchent de plus en plus leur cabinet en ligne : « expert-comptable » suivi de leur ville, « comptable pour SASU », « cabinet comptable restaurant ». Cet article rappelle ce que votre code de déontologie permet en matière de promotion, puis passe en revue les leviers qui vous rendent trouvable et rassurant.",
   },
-  { type: "h2", text: "Pourquoi l'acquisition en ligne est très rentable pour un cabinet" },
+  { type: "h2", text: "Un expert-comptable a-t-il le droit de faire de la publicité ?" },
   {
     type: "p",
-    text: "Contrairement à une prestation ponctuelle, un client en expertise comptable représente une mission récurrente et une valeur vie élevée. Même un coût d'acquisition de plusieurs centaines d'euros se rentabilise en quelques mois d'honoraires. C'est pourquoi un cabinet visible sur Google, avec un site crédible et un suivi automatisé, dispose d'un avantage concurrentiel durable sur les confrères qui comptent encore uniquement sur le bouche-à-oreille.",
+    text: "Oui. Depuis 2014, l'article 152 du code de déontologie des professionnels de l'expertise comptable autorise les actions de promotion qui procurent au public une information utile. Elles doivent rester discrètes, décentes et empreintes de retenue, sans inexactitude, sans élément trompeur et sans élément comparatif. Proposer vos services à quelqu'un qui ne les a pas demandés reste possible dans ces limites.",
   },
-  { type: "h2", text: "1. Un site qui rassure des dirigeants exigeants" },
   {
     type: "p",
-    text: "Un dirigeant confie ses chiffres : il veut un cabinet fiable, moderne et accessible. Votre site doit refléter ce sérieux : vos services (création d'entreprise, tenue, paie, conseil, fiscalité), vos secteurs de prédilection, votre équipe, et un moyen simple de prendre rendez-vous. Mettre en avant votre spécialisation (TPE, professions libérales, e-commerce, restauration…) vous différencie et attire exactement la clientèle que vous visez.",
+    text: "Le texte complet de l'[article 152 du décret n° 2012-432 du 30 mars 2012](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000029387074), dans sa version issue du décret du 18 août 2014, ajoute que les moyens de promotion ou de démarchage ne doivent porter atteinte ni à l'indépendance, ni à la dignité, ni à l'honneur de la profession, ni au secret professionnel, ni à la loyauté envers les clients et les confrères.",
   },
-  { type: "h2", text: "2. Le référencement local pour capter les créateurs d'entreprise" },
-  {
-    type: "p",
-    text: "Les créations d'entreprise sont un flux constant de prospects. Une page optimisée sur « expert-comptable création d'entreprise + ville », couplée à une fiche Google Business Profile soignée et à des avis, vous positionne au moment précis où un futur dirigeant cherche un cabinet. Le référencement local est un actif qui travaille pour vous en continu, sans coût par contact.",
-  },
-  { type: "h2", text: "3. Google Ads et automatisation pour accélérer" },
+  { type: "h2", text: "Ce que ces règles changent pour votre communication" },
   {
     type: "ul",
     items: [
-      "Google Ads sur les requêtes à forte intention (« comptable création SASU + ville ») pour une visibilité immédiate",
-      "Une page d'atterrissage dédiée par service, qui convertit le clic en demande de rendez-vous",
-      "La réponse automatique aux demandes pour traiter chaque prospect sans délai",
-      "La relance automatique des devis et propositions de mission restés sans réponse",
-      "La prise de rendez-vous en ligne pour un premier entretien sans échanges de mails",
+      "Pas de comparaison : « moins cher que les cabinets traditionnels » ou « le cabinet le plus réactif de Nantes » sortent du cadre.",
+      "Pas de promesse inexacte : n'annoncez pas un délai de réponse ou un tarif que vous ne tenez pas pour tous vos clients.",
+      "Un ton sobre : présentez vos missions, vos secteurs et votre organisation, sans slogan ni superlatif.",
+      "Le secret professionnel : ne citez pas un client, ni par son nom ni par des détails qui permettraient de le reconnaître, sans son accord.",
+      "Le démarchage : un e-mail ou un courrier adressé à une entreprise est possible, s'il reste discret et utile pour son destinataire.",
+    ],
+  },
+  { type: "h2", text: "1. Un site qui rassure un dirigeant exigeant" },
+  {
+    type: "p",
+    text: "Un dirigeant vous confiera ses chiffres, ses salaires, parfois ses difficultés. Avant de vous appeler, il veut savoir si vous connaissez son secteur, comment vous travaillez et combien cela coûte. Votre site doit répondre à ces questions :",
+  },
+  {
+    type: "ul",
+    items: [
+      "Vos missions : création d'entreprise, tenue et révision, bilan, paie, déclarations fiscales, conseil.",
+      "Les clients que vous accompagnez le plus : artisans, professions libérales, commerçants, sociétés de services.",
+      "Votre organisation : outils, échanges, interlocuteur dédié, fréquence des points.",
+      "Un ordre de prix ou la façon dont vous fixez vos honoraires.",
+      "Votre qualité d'expert-comptable inscrit à l'Ordre et vos coordonnées complètes.",
+      "Un moyen simple de prendre un premier rendez-vous.",
+    ],
+  },
+  {
+    type: "p",
+    text: "Une page par type de client fonctionne bien : « expert-comptable pour artisans du bâtiment », « comptabilité des professions libérales ». Elle parle la langue du visiteur et donne à Google de quoi relier votre site à sa recherche.",
+  },
+  { type: "h2", text: "2. La fiche Google et les avis" },
+  {
+    type: "p",
+    text: "Pour une recherche locale, Google affiche une carte et quelques fiches de cabinets avant les sites. Sa fiche d'aide [Améliorer votre classement local](https://support.google.com/business/answer/7091?hl=fr) cite trois critères : la pertinence, la distance et la notoriété, qui tient compte du nombre d'avis et des notes. La création de la fiche est gratuite.",
+  },
+  {
+    type: "p",
+    text: "Si vous demandez des avis, demandez-les à tous vos clients : le règlement de Google interdit de [solliciter des avis de façon sélective](https://support.google.com/contributionpolicy/answer/7400114?hl=fr) ou contre une contrepartie. La rubrique [Avis Google](/produits/avis-google/) de Sitaly prépare une réponse à chaque avis, que vous relisez avant de la publier ; en répondant, ne révélez rien du dossier du client, secret professionnel oblige.",
+  },
+  { type: "h2", text: "Comment attirer des créateurs d'entreprise ?" },
+  {
+    type: "p",
+    text: "Répondez aux questions qu'ils se posent avant même de choisir leur statut : micro-entreprise ou société, SASU ou EURL, TVA ou franchise. Un article clair sur chacune de ces questions vous fait trouver au moment où ils cherchent. Ajoutez une page qui décrit votre accompagnement à la création, avec un rendez-vous en ligne pour en parler.",
+  },
+  {
+    type: "p",
+    text: "Le [blog écrit par l'IA](/produits/blog-ia/) de Sitaly propose des idées d'articles tirées de votre activité et rédige un texte complet. Vérifiez chaque règle fiscale, chaque seuil et chaque date avant publication : les seuils évoluent avec les lois de finances, et une erreur publiée sous votre nom pèse sur votre crédibilité. Datez vos articles et mettez-les à jour quand la loi évolue.",
+  },
+  { type: "h2", text: "3. Un premier rendez-vous facile à prendre" },
+  {
+    type: "p",
+    text: "Un créateur qui compare trois cabinets veut un premier échange vite, sans multiplier les e-mails. La [prise de rendez-vous](/produits/prise-de-rendez-vous/) de Sitaly ajoute une page de réservation à votre site : vous définissez un premier entretien, sa durée, vos créneaux et le délai minimum avant un rendez-vous. Le prospect reçoit une confirmation et un rappel la veille, et sa fiche entre dans votre liste de contacts. La réservation fait partie des formules Essentiel et Pro.",
+  },
+  { type: "h2", text: "4. Répondre vite et relancer" },
+  {
+    type: "p",
+    text: "Une demande de devis qui attend plusieurs jours laisse au prospect le temps de signer ailleurs. Fixez-vous un délai de réponse et tenez-le. Dans Sitaly, l'agent de réponse aux demandes prépare un brouillon dans votre ton à partir des informations de votre site ; vous le relisez et l'envoyez, rien ne part sans vous. Notez une date de relance pour chaque proposition envoyée.",
+  },
+  {
+    type: "p",
+    text: "Rappel utile : un devis accepté en ligne ne remplace pas la lettre de mission écrite prévue à l'article 151 de votre [code de déontologie](https://www.legifrance.gouv.fr/codes/id/LEGISCTA000025599334).",
+  },
+  { type: "h2", text: "5. Le réseau et les prescripteurs" },
+  {
+    type: "ul",
+    items: [
+      "Les banquiers, avocats et notaires de votre ville orientent des créateurs : présentez-leur votre accompagnement.",
+      "Les réseaux d'accompagnement à la création et les chambres consulaires organisent des réunions d'information où un expert-comptable apporte une parole utile.",
+      "Vos clients satisfaits recommandent : demandez-leur s'ils connaissent un dirigeant dans la même situation qu'eux à leurs débuts.",
     ],
   },
   {
     type: "table",
-    caption: "Leviers d'acquisition pour un cabinet comptable",
-    headers: ["Levier", "Cible", "Délai", "Rentabilité"],
+    caption: "Les leviers d'un cabinet et le cadre de l'article 152",
+    headers: ["Levier", "Ce qu'il apporte", "Point de vigilance"],
     rows: [
-      ["Site + pages par service", "Dirigeants, créateurs", "1 à 3 mois", "Élevée"],
-      ["Référencement local + avis", "Recherche locale", "2 à 4 mois", "Très élevée"],
-      ["Google Ads", "Intention immédiate", "Quelques jours", "Élevée (valeur client haute)"],
-      ["Automatisation", "Suivi prospects", "Immédiat", "Élevée"],
+      ["Site avec pages par type de client", "Des prospects qui se reconnaissent", "Ton sobre, aucune comparaison"],
+      ["Fiche Google et avis", "Visibilité sur la carte", "Demander à tous, rien sur les dossiers"],
+      ["Articles sur la création", "Des visites de futurs dirigeants", "Vérifier et dater chaque règle"],
+      ["Réservation en ligne", "Des premiers entretiens sans aller-retour", "Créneaux à jour"],
+      ["Démarchage par e-mail", "Des contacts ciblés", "Discrétion, information utile"],
     ],
   },
   { type: "h2", text: "Questions fréquentes" },
@@ -49,26 +105,26 @@ export const contenu: BlogSection[] = [
     type: "faq",
     items: [
       {
-        q: "Un cabinet comptable a-t-il le droit de faire de la publicité ?",
-        a: "Oui. La profession peut communiquer et recourir à la publicité dans le respect de son cadre déontologique (information loyale, dignité, confraternité). Site internet, référencement et Google Ads sont des leviers parfaitement utilisables.",
+        q: "Puis-je acheter des annonces Google Ads ?",
+        a: "L'article 152 n'écarte aucun support en particulier. L'annonce doit en respecter les conditions : information utile, ton décent et retenu, sans inexactitude ni comparaison, et renvoyer vers une page aussi sobre qu'elle.",
       },
       {
-        q: "Quel est le meilleur levier pour attirer des créateurs d'entreprise ?",
-        a: "Le couple référencement local et Google Ads sur les requêtes de création (SASU, SAS, micro-entreprise…). Ce sont des prospects à forte intention, au tout début d'une relation potentiellement longue.",
+        q: "Puis-je afficher mes tarifs ?",
+        a: "Oui, si l'information est exacte. Un prix de départ par type de mission, ou la façon dont vous fixez vos honoraires, aide un dirigeant à savoir si votre cabinet correspond à son budget.",
       },
       {
-        q: "L'automatisation est-elle utile pour un expert-comptable ?",
-        a: "Oui : réponse immédiate aux demandes, relance des propositions de mission et prise de rendez-vous en ligne évitent de perdre des prospects à forte valeur faute de réactivité.",
+        q: "Puis-je citer mes clients comme références ?",
+        a: "Votre code impose le secret professionnel et la discrétion. Ne citez un client qu'avec son accord écrit, et préférez décrire un type de dossier sans nom.",
       },
       {
-        q: "Combien coûte la présence en ligne d'un cabinet ?",
-        a: "Chez Sitaly, à partir de 149€/mois tout inclus pour le site, en location sans engagement. Google Ads et automatisations s'ajoutent en option selon vos objectifs de développement.",
+        q: "Puis-je démarcher des entreprises par e-mail ?",
+        a: "Oui, depuis 2014, dans les conditions de l'article 152 : un message discret, utile pour son destinataire, sans élément comparatif. Les règles de la CNIL sur [la prospection par courrier électronique](https://www.cnil.fr/fr/la-prospection-commerciale-par-courrier-electronique) s'appliquent aussi.",
       },
     ],
   },
-  { type: "h2", text: "Développez votre cabinet comptable avec Sitaly" },
+  { type: "h2", text: "Votre site de cabinet en une minute" },
   {
     type: "p",
-    text: "Site crédible pensé pour rassurer les dirigeants, référencement local, et en option Google Ads et automatisations : Sitaly aide les experts-comptables à attirer des clients récurrents à forte valeur. Réservez un appel gratuit de 15 minutes pour en parler.",
+    text: "Avec [Sitaly](https://app.sitaly.fr), vous décrivez votre cabinet en une phrase et l'IA écrit votre site, publié en une minute environ. Relisez chaque texte pour retirer tout superlatif ou toute comparaison, puis complétez vos missions et vos coordonnées ordinales. La formule Découverte est gratuite et sans carte ; Essentiel et Pro ajoutent un domaine en .fr ou en .com et la réservation en ligne. Les prix sont sur la page [Tarifs](/tarifs/).",
   },
 ];

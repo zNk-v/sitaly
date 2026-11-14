@@ -12,7 +12,11 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Avant de choisir un outil, écrivez une phrase qui répond à trois questions : que faites-vous, pour qui, et où ? « Coach sportive à domicile à Bordeaux, pour les débutants » dit tout. Cette phrase servira de titre à votre page d'accueil, de description sur Google, et de point de départ si vous utilisez un créateur de site par IA.",
   },
-  { type: "h2", text: "Étape 2 : choisir le type d'outil" },
+  { type: "h2", text: "Étape 2 : quel outil choisir pour créer un site sans coder ?" },
+  {
+    type: "p",
+    text: "Trois familles d'outils existent. Un créateur par IA écrit et met en page le site à partir de votre description. Un éditeur à modèles vous laisse remplir chaque bloc vous-même. WordPress demande d'installer un thème et des extensions. Choisissez selon votre temps disponible, pas selon la liste des fonctions.",
+  },
   {
     type: "table",
     caption: "Les trois grandes familles d'outils pour créer un site sans coder.",
@@ -72,13 +76,22 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Mettez le site en ligne dès qu'il est juste, sans attendre qu'il soit parfait : vous l'améliorerez ensuite. Puis faites trois choses le jour même : reliez votre fiche Google à votre site, ajoutez l'adresse sur vos réseaux et vos devis, et demandez un avis à vos derniers clients.",
   },
+  { type: "h2", text: "Combien de temps faut-il pour créer un site sans coder ?" },
+  {
+    type: "p",
+    text: "Avec un créateur par IA, la première version prend environ une minute, puis comptez une heure pour relire et ajuster. Avec un éditeur à modèles, prévoyez plutôt un week-end. Avec WordPress, comptez plusieurs jours si vous partez de zéro, puis du temps chaque mois pour les mises à jour.",
+  },
+  {
+    type: "p",
+    text: "Le temps de préparation compte autant que l'outil : si vos prestations, vos prix et vos photos sont prêts dans un document, chaque outil va deux fois plus vite. Le comparatif [Sitaly ou Squarespace](/comparer/squarespace/) complète les deux autres.",
+  },
   { type: "h2", text: "Les pièges qui font perdre du temps" },
   {
     type: "ul",
     items: [
       "Passer des heures à choisir un modèle avant d'avoir écrit un seul texte.",
       "Écrire « nous » quand on travaille seul : vos clients aiment savoir à qui ils parlent.",
-      "Oublier le téléphone sur mobile : la majorité de vos visiteurs arrivent par leur téléphone.",
+      "Oublier le téléphone : vérifiez chaque page sur mobile, car Google explore d'abord [la version mobile de votre site](https://developers.google.com/search/docs/crawling-indexing/mobile/mobile-sites-mobile-first-indexing?hl=fr).",
       "Publier sans relire : un prix faux ou un horaire périmé coûte plus cher qu'une faute de goût.",
     ],
   },
@@ -86,8 +99,8 @@ export const contenu: BlogSection[] = [
     type: "faq",
     items: [
       {
-        q: "Combien de temps faut-il pour créer un site sans coder ?",
-        a: "Avec un créateur par IA, une première version prend une minute, puis une heure de relecture et d'ajustements. Avec un éditeur à modèles, comptez plutôt un week-end. Avec WordPress, plusieurs jours si vous partez de zéro.",
+        q: "Pourrai-je modifier mon site moi-même ensuite ?",
+        a: "Oui, avec les trois familles d'outils. Avec Sitaly, vous écrivez ce que vous voulez changer, par exemple « ajoute mes horaires du samedi », ou vous modifiez le texte à la main dans l'éditeur.",
       },
       {
         q: "Faut-il un nom de domaine dès le départ ?",

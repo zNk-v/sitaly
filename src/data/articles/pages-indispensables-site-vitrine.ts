@@ -7,6 +7,11 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Un site vitrine n'a pas besoin d'être grand. Il a besoin de répondre, dans l'ordre, aux questions que se pose un client : qu'est-ce que vous faites, combien ça coûte, est-ce que je peux vous faire confiance, comment vous joindre. Voici les pages qui y répondent, et ce qu'on met dans chacune.",
   },
+  { type: "h2", text: "Quelles pages faut-il sur un site vitrine ?" },
+  {
+    type: "p",
+    text: "Un site vitrine efficace compte huit pages ou sections : l'accueil, les prestations, les tarifs, les avis et réalisations, la page à propos, la FAQ, le contact et les mentions légales. Commencez par l'accueil, les prestations, le contact et les mentions légales, qui sont obligatoires. Ajoutez les autres dans les semaines qui suivent.",
+  },
   { type: "h2", text: "1. La page d'accueil" },
   {
     type: "p",
@@ -35,7 +40,7 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "6. La FAQ" },
   {
     type: "p",
-    text: "Les questions qu'on vous pose au téléphone, avec leur réponse : délais, zone, moyens de paiement, déroulement d'un premier rendez-vous. Une FAQ bien écrite répond aussi aux recherches que les gens tapent dans Google et dans les assistants d'IA.",
+    text: "Les questions qu'on vous pose au téléphone, avec leur réponse : délais, zone, moyens de paiement, déroulement d'un premier rendez-vous. Une FAQ bien écrite répond aussi aux recherches que les gens tapent dans Google et dans les assistants d'IA : Google dit privilégier les [contenus utiles et écrits pour les gens](https://developers.google.com/search/docs/fundamentals/creating-helpful-content?hl=fr).",
   },
   { type: "h2", text: "7. Le contact" },
   {
@@ -45,11 +50,16 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "8. Les mentions légales" },
   {
     type: "p",
-    text: "Obligatoires pour tout site professionnel. Le détail est dans notre article sur [les mentions légales d'un site](/blog/mentions-legales-site-internet/).",
+    text: "Obligatoires pour tout site professionnel, comme le rappelle la fiche [Mentions obligatoires sur le site internet d'une entreprise](https://entreprendre.service-public.gouv.fr/vosdroits/F37351) de Service Public Entreprendre. Le détail est dans notre article sur [les mentions légales d'un site](/blog/mentions-legales-site-internet/), et le [générateur de mentions légales](/outils/generateur-mentions-legales/) écrit la page pour vous.",
   },
   {
     type: "quote",
     text: "Commencez par l'accueil, les prestations et le contact. Le reste peut venir la semaine suivante.",
+  },
+  { type: "h2", text: "Un site vitrine d'une seule page suffit-il ?" },
+  {
+    type: "p",
+    text: "Pour démarrer, oui : une page bien construite qui enchaîne ces sections suffit à un indépendant. Ajoutez des pages quand une prestation mérite d'être détaillée ou que vous voulez être trouvé sur une recherche précise, comme « pose de parquet à Nantes ». Chaque page dédiée peut alors porter ce métier et cette ville dans son titre.",
   },
   {
     type: "p",
@@ -59,8 +69,8 @@ export const contenu: BlogSection[] = [
     type: "faq",
     items: [
       {
-        q: "Une seule page suffit-elle ?",
-        a: "Pour démarrer, une page bien construite qui enchaîne ces sections suffit. Ajoutez des pages quand une prestation mérite d'être détaillée ou que vous voulez être trouvé sur une recherche précise.",
+        q: "Faut-il afficher ses prix sur un site vitrine ?",
+        a: "Pour un travail sur devis, un prix de départ ou une fourchette suffit : il filtre les demandes qui n'aboutiront pas et rassure ceux qui hésitent. Pour une prestation à prix fixe, affichez le prix exact.",
       },
       {
         q: "Faut-il un blog sur un site vitrine ?",

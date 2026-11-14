@@ -11,7 +11,7 @@ import {
   TitreSection,
 } from "@/components/produit/Produit";
 import { BASE_URL } from "@/lib/sitemap";
-import { CREATEUR_IA as IA, MENTION_TVA } from "@/data/offres";
+import { CREATEUR_IA as IA, MENTION_TVA, offresStructurees } from "@/data/offres";
 
 /**
  * Les tarifs de sitaly.fr (30 octobre 2026) : seulement Sitaly App, comme sur
@@ -39,6 +39,18 @@ export const Route = createFileRoute("/tarifs")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@graph": [
+            // L'application et ses trois formules, comme sur l'accueil : la
+            // page Tarifs est celle que Google doit relier aux prix.
+            {
+              "@type": "SoftwareApplication",
+              "@id": "https://sitaly.fr/#app",
+              name: "Sitaly",
+              applicationCategory: "BusinessApplication",
+              operatingSystem: "Web",
+              url: "https://app.sitaly.fr/",
+              publisher: { "@id": "https://sitaly.fr/#business" },
+              offers: offresStructurees(),
+            },
             {
               "@type": "FAQPage",
               "@id": `${URL}#faq`,

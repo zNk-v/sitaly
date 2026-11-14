@@ -19,7 +19,7 @@ import {
   OutilsRemplaces,
 } from "@/components/produit/Vitrine";
 import { FilmLancement, GrilleActivite } from "@/components/produit/Activite";
-import { CREATEUR_IA as IA } from "@/data/offres";
+import { CREATEUR_IA as IA, offresStructurees } from "@/data/offres";
 import { VITRINE } from "@/data/vitrine";
 
 /**
@@ -81,21 +81,7 @@ export const Route = createFileRoute("/")({
               url: "https://app.sitaly.fr/",
               description: DESCRIPTION,
               publisher: { "@id": "https://sitaly.fr/#business" },
-              offers: [
-                { "@type": "Offer", name: IA.decouverte.nom, price: "0", priceCurrency: "EUR" },
-                {
-                  "@type": "Offer",
-                  name: IA.essentiel.nom,
-                  price: String(IA.essentiel.mensuel),
-                  priceCurrency: "EUR",
-                },
-                {
-                  "@type": "Offer",
-                  name: IA.pro.nom,
-                  price: String(IA.pro.mensuel),
-                  priceCurrency: "EUR",
-                },
-              ],
+              offers: offresStructurees(),
             },
             {
               "@type": "FAQPage",

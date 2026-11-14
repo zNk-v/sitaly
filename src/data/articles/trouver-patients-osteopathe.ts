@@ -5,79 +5,118 @@ import type { BlogSection } from "@/data/blog-posts";
 export const contenu: BlogSection[] = [
   {
     type: "p",
-    text: "Le marché de l'ostéopathie est saturé : on compte aujourd'hui plus de 35 000 praticiens en France, et chaque année de nouvelles promotions arrivent. Résultat, le bouche-à-oreille seul ne suffit plus à remplir un agenda, surtout en début d'installation. La bonne nouvelle : la grande majorité de vos confrères sont très mal visibles sur internet. En soignant quelques leviers simples, vous pouvez capter les patients qui cherchent un ostéopathe dans votre ville — et ils sont nombreux à chercher chaque mois sur Google.",
+    text: "Vous venez d'ouvrir votre cabinet, ou votre agenda a des trous le mardi et le jeudi. Le bouche-à-oreille finira par jouer, mais il prend du temps, et pendant ce temps vos futurs patients cherchent un ostéopathe sur leur téléphone. Ils tapent « ostéopathe » et le nom de leur ville, regardent la carte, lisent deux ou trois avis et réservent chez celui qui inspire confiance et propose un créneau. Cet article passe en revue les leviers qui vous rendent trouvable, et les règles à respecter quand on communique sur une pratique de soin.",
   },
-  { type: "h2", text: "Comment les patients cherchent un ostéopathe aujourd'hui" },
+  { type: "h2", text: "Comment trouver des patients quand on est ostéopathe ?" },
   {
     type: "p",
-    text: "Quand quelqu'un a mal au dos ou au cou, son premier réflexe n'est plus de demander à un voisin : il tape « ostéopathe + ville » sur Google, regarde les premiers résultats, lit les avis, et prend rendez-vous chez celui qui inspire confiance et propose la réservation en ligne. Toute votre acquisition de patients se joue dans cette poignée de secondes. Si vous n'apparaissez pas, ou si votre fiche est vide, le patient va chez le confrère mieux référencé.",
+    text: "Soignez d'abord ce que voit un patient qui cherche près de chez lui : une fiche Google complète, des avis récents auxquels vous répondez, un site qui dit qui vous êtes, ce que vous prenez en charge, vos tarifs et comment réserver. Ajoutez la réservation en ligne, puis entretenez les liens avec les soignants de votre quartier.",
   },
-  { type: "h2", text: "1. Votre fiche Google Business Profile, la priorité absolue" },
+  { type: "h2", text: "1. La fiche Google, première vitrine du cabinet" },
   {
     type: "p",
-    text: "C'est gratuit et c'est le levier numéro un pour un ostéopathe. Une fiche Google complète (adresse, horaires, photos du cabinet, prestations, lien de réservation) avec une vingtaine d'avis 5 étoiles vous fait apparaître dans le « pack local » de Google, juste sous la carte. Pour beaucoup de cabinets, la fiche Google génère à elle seule la moitié des nouveaux patients. Commencez par la remplir intégralement et demandez systématiquement un avis après chaque consultation.",
+    text: "Pour une recherche locale, Google affiche une carte et quelques fiches d'établissement avant les sites. Sa fiche d'aide [Améliorer votre classement local](https://support.google.com/business/answer/7091?hl=fr) cite trois critères : la pertinence de la fiche par rapport à la recherche, la distance, et la notoriété du cabinet, qui tient compte du nombre d'avis et des notes. La même page précise qu'aucun paiement ne permet d'obtenir une meilleure place.",
   },
-  { type: "h2", text: "2. Un site internet qui rassure et convertit" },
   {
     type: "p",
-    text: "Un patient hésite toujours un peu avant une première séance. Un site clair lève ses doutes : votre parcours, votre approche, les motifs de consultation traités, vos tarifs, l'accès et le parking, et surtout un bouton de prise de rendez-vous visible. Un site professionnel transforme un visiteur curieux en patient confirmé, là où une simple page Facebook laisse le doute s'installer.",
+    text: "Google permet de [créer ou revendiquer sa fiche](https://support.google.com/business/answer/2911778?hl=fr) sans frais. Remplissez tout : catégorie, adresse, horaires, téléphone, photos du cabinet et de l'accès, lien vers votre site et vers la prise de rendez-vous. Notre [audit de fiche Google](/outils/audit-fiche-google/) gratuit vous montre ce qui manque en quelques secondes.",
   },
-  { type: "h2", text: "3. La prise de rendez-vous en ligne, indispensable" },
+  { type: "h2", text: "2. Des avis réguliers, demandés à tous vos patients" },
   {
     type: "p",
-    text: "Une grande partie des recherches d'ostéopathe se font le soir ou le week-end, quand votre cabinet est fermé. Sans réservation en ligne, ces demandes se perdent. Avec un agenda en ligne, le patient réserve un vrai créneau en deux clics, à toute heure, et reçoit des rappels automatiques qui réduisent les rendez-vous non honorés. C'est l'un des leviers les plus rentables pour un thérapeute.",
+    text: "Un patient qui hésite entre deux cabinets lit les avis. Demandez-en à chaque patient, sans trier. Le règlement de Google interdit de [solliciter des avis positifs de façon sélective](https://support.google.com/contributionpolicy/answer/7400114?hl=fr) et d'offrir une contrepartie, réduction comprise, en échange d'un avis.",
   },
-  { type: "h2", text: "4 à 7. Les autres leviers qui remplissent un cabinet" },
+  {
+    type: "p",
+    text: "Répondez à chaque avis, positif ou non, sans jamais confirmer qu'une personne est votre patient ni évoquer son motif : ces informations touchent à sa santé et ne regardent que lui. La rubrique [Avis Google](/produits/avis-google/) de Sitaly prépare une réponse dans votre ton, que vous relisez avant de la publier d'un clic. Elle peut aussi envoyer la même demande d'avis à chaque patient le lendemain de son rendez-vous, au plus une fois tous les six mois.",
+  },
+  { type: "h2", text: "3. Un site qui répond aux questions avant le premier rendez-vous" },
+  {
+    type: "p",
+    text: "Avant une première séance, un patient se pose toujours les mêmes questions. Votre site doit y répondre sans qu'il ait besoin d'appeler :",
+  },
   {
     type: "ul",
     items: [
-      "Collecter les avis Google en continu : 30 avis récents valent mieux que 5 anciens",
-      "Google Ads local pour être visible immédiatement à l'installation, le temps que le référencement naturel monte",
-      "Le référencement local sur « ostéopathe + ville » et « ostéopathe + quartier »",
-      "Un partenariat avec les médecins, kinés, coachs et salles de sport de votre secteur",
+      "Qui vous êtes : votre titre d'ostéopathe, votre formation, l'établissement qui vous l'a délivrée.",
+      "Ce que vous prenez en charge, décrit avec des mots simples et sans promesse de guérison.",
+      "Le prix de la séance et sa durée.",
+      "La prise en charge possible par la mutuelle, avec l'invitation à vérifier son propre contrat.",
+      "L'adresse, l'accès, le stationnement, l'accessibilité du cabinet.",
+      "Un bouton pour réserver, visible sur chaque page.",
     ],
   },
-  {
-    type: "table",
-    caption: "Les leviers d'acquisition de patients en ostéopathie",
-    headers: ["Levier", "Coût", "Délai 1ers patients", "Rentabilité"],
-    rows: [
-      ["Fiche Google Business Profile", "Gratuit", "2 à 6 semaines", "Très élevée"],
-      ["Site internet + réservation en ligne", "À partir de 149€/mois", "1 à 3 mois", "Élevée"],
-      ["Google Ads local", "300 à 500€/mois", "Quelques jours", "Élevée au démarrage"],
-      ["Avis Google réguliers", "Gratuit", "Continu", "Très élevée"],
-    ],
-  },
-  { type: "h2", text: "Combien de nouveaux patients espérer ?" },
   {
     type: "p",
-    text: "Un cabinet d'ostéopathie qui combine une fiche Google optimisée, un site avec réservation en ligne et une collecte d'avis régulière génère couramment 15 à 40 nouveaux patients par mois en zone urbaine, une fois la mécanique en place. À une moyenne de 55 à 70€ la séance et avec le réachat (un patient revient souvent 2 à 4 fois par an), le retour sur investissement d'une présence en ligne sérieuse se mesure en semaines, pas en années.",
+    text: "Le [modèle ostéopathe](/modeles/osteopathe/) de Sitaly montre ce que l'IA met en place à partir d'une phrase sur votre pratique. Ses consignes lui interdisent d'inventer des diplômes, des chiffres ou des avis. Relisez quand même chaque texte avant de publier : vous restez responsable de ce que votre site affirme.",
+  },
+  { type: "h2", text: "Quelles règles encadrent la communication d'un ostéopathe ?" },
+  {
+    type: "p",
+    text: "L'ostéopathie n'a pas d'ordre professionnel, mais vos textes doivent rester exacts. Le décret de 2007 qui encadre la profession fixe les actes autorisés et ceux qui demandent un avis médical. Le code de la consommation sanctionne toute pratique commerciale trompeuse. Si vous êtes aussi kinésithérapeute, le code de déontologie des kinés s'applique en plus.",
+  },
+  {
+    type: "ul",
+    items: [
+      "Les actes : l'article 3 du [décret n° 2007-435 du 25 mars 2007](https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000462001) interdit à l'ostéopathe non médecin les manipulations gynéco-obstétricales et les touchers pelviens. Il soumet les manipulations du crâne, de la face et du rachis chez le nourrisson de moins de six mois, ainsi que celles du rachis cervical, à un diagnostic médical préalable. Votre site ne doit pas laisser croire le contraire.",
+      "Le titre : l'article 4 du même décret réserve l'usage du titre d'ostéopathe aux professionnels qui remplissent ses conditions de diplôme ou d'autorisation. Affichez le vôtre tel qu'il figure sur votre diplôme.",
+      "Les promesses : l'[article L121-2 du code de la consommation](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044563114) qualifie de trompeuse une pratique qui repose sur des allégations fausses ou de nature à induire en erreur, notamment sur les résultats attendus d'un service. Évitez « soulage à coup sûr » ou « guérit les migraines ».",
+      "Si vous êtes aussi inscrit à l'Ordre des masseurs-kinésithérapeutes, son code s'applique à votre communication. L'[article R4321-123 du code de la santé publique](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042795598) interdit alors tout référencement payant qui ferait apparaître votre nom en priorité dans les résultats de recherche.",
+    ],
+  },
+  { type: "h2", text: "4. La réservation en ligne, ouverte quand le cabinet est fermé" },
+  {
+    type: "p",
+    text: "Beaucoup de patients cherchent un ostéopathe le soir, après une journée passée avec le dos bloqué. Sans réservation en ligne, ils laissent un message ou appellent ailleurs le lendemain. La [prise de rendez-vous](/produits/prise-de-rendez-vous/) de Sitaly ajoute une page de réservation à votre site : vos prestations, leur durée, vos horaires, la pause de midi et le temps entre deux patients. Le patient choisit un créneau libre, reçoit une confirmation avec un lien d'annulation, puis un rappel la veille. Deux patients ne peuvent pas prendre le même créneau.",
+  },
+  {
+    type: "p",
+    text: "La réservation fait partie des formules Essentiel (39 € / mois) et Pro (79 € / mois), sans commission par rendez-vous. Avec la formule gratuite Découverte, vos patients vous écrivent par le formulaire du site.",
+  },
+  { type: "h2", text: "5. Le réseau local, toujours utile" },
+  {
+    type: "ul",
+    items: [
+      "Présentez-vous aux médecins généralistes, sages-femmes, kinés et podologues de votre quartier : ils vous adresseront des patients s'ils savent ce que vous faites et quand vous êtes disponible.",
+      "Les clubs de sport, les entreprises voisines et les associations accueillent parfois une intervention de prévention.",
+      "Une fiche à jour sur les annuaires de santé que vos patients consultent complète votre fiche Google.",
+    ],
+  },
+  { type: "h2", text: "6. Des articles qui répondent aux questions de vos patients" },
+  {
+    type: "p",
+    text: "« Combien de séances faut-il ? », « Faut-il consulter un médecin avant ? », « Que se passe-t-il pendant une séance ? » : chaque question récurrente peut devenir un court article. Ces pages aident un patient à franchir le pas et donnent à Google des raisons de montrer votre site. Le blog de Sitaly propose des idées d'articles tirées de votre activité et rédige un texte que vous relisez, corrigez et publiez. Vérifiez chaque affirmation médicale avant publication.",
+  },
+  { type: "h2", text: "Et la publicité Google Ads ?" },
+  {
+    type: "p",
+    text: "Aucun texte propre aux ostéopathes n'interdit les annonces Google, à condition qu'elles restent exactes et sans promesse de résultat. Avant d'y mettre un budget, vérifiez que votre fiche, vos avis et votre site sont prêts : une annonce qui mène à une page vide de réponses coûte cher pour peu de rendez-vous. Si vous exercez aussi comme kiné, la règle de l'article R4321-123 vous l'interdit.",
   },
   { type: "h2", text: "Questions fréquentes" },
   {
     type: "faq",
     items: [
       {
-        q: "Faut-il un site internet quand on a déjà une fiche Google ?",
-        a: "Oui, les deux sont complémentaires. La fiche Google attire et fait apparaître sur la carte ; le site rassure, présente votre approche et permet de réserver. Ensemble, ils génèrent 2 à 3 fois plus de rendez-vous que la fiche seule.",
+        q: "Faut-il un site quand on a déjà une fiche Google ?",
+        a: "La fiche vous place sur la carte. Le site répond aux questions que la fiche ne traite pas : votre parcours, votre façon de travailler, vos tarifs, l'accès, la réservation. Les deux se complètent, et la fiche peut renvoyer vers le site.",
       },
       {
-        q: "La publicité Google Ads est-elle autorisée pour un ostéopathe ?",
-        a: "Oui, Google Ads est utilisable pour promouvoir un cabinet d'ostéopathie. Il faut rester factuel dans les annonces (pas de promesses thérapeutiques) — c'est précisément le rôle d'un accompagnement de cadrer cela proprement.",
+        q: "Puis-je afficher les avis Google de mes patients sur mon site ?",
+        a: "Aucun ordre professionnel n'encadre les ostéopathes, et aucun texte propre à la profession ne l'interdit. Sitaly peut afficher votre note et vos avis récents d'une case à cocher. Si vous êtes aussi kinésithérapeute, ne le faites pas : votre code de déontologie interdit les témoignages de tiers.",
       },
       {
         q: "Combien de temps pour remplir son agenda en s'installant ?",
-        a: "Avec Google Ads dès l'ouverture pour la visibilité immédiate, puis la montée du référencement naturel et des avis, comptez 3 à 6 mois pour stabiliser un flux régulier de nouveaux patients.",
+        a: "Personne ne peut vous donner de délai fiable : il dépend de votre ville, du nombre de confrères et de votre réseau. Travaillez en parallèle la fiche Google, les avis, le site et le réseau de soignants, et notez d'où vient chaque nouveau patient.",
       },
       {
-        q: "Je n'ai pas le temps de gérer tout ça, est-ce délégable ?",
-        a: "Oui. Sitaly s'occupe du site, de la réservation en ligne, du référencement local et, en option, de vos campagnes Google Ads et de la collecte automatique d'avis. Vous vous concentrez sur vos consultations.",
+        q: "Que dire de mes tarifs sur le site ?",
+        a: "Le prix de la séance, sa durée et vos moyens de paiement. Si vous délivrez une facture que le patient peut transmettre à sa mutuelle, dites-le, et invitez-le à vérifier ce que prévoit son contrat.",
       },
     ],
   },
-  { type: "h2", text: "Remplissez votre cabinet avec Sitaly" },
+  { type: "h2", text: "Mettez votre cabinet en ligne en une minute" },
   {
     type: "p",
-    text: "Site internet pensé pour les thérapeutes, prise de rendez-vous en ligne, référencement local et, si besoin, Google Ads et automatisations : Sitaly met en place le système qui vous apporte des patients régulièrement. Réservez un appel gratuit de 15 minutes pour voir votre potentiel sur votre ville.",
+    text: "Avec [Sitaly](https://app.sitaly.fr), vous décrivez votre pratique en une phrase et l'IA écrit votre site, publié sur votre-nom.sitaly.fr en une minute environ. Vous le corrigez en écrivant ce qu'il faut changer. La formule Découverte est gratuite et sans carte. Essentiel ajoute un domaine en .fr ou en .com, la réservation en ligne et la fiche Google connectée pour recevoir vos avis chaque matin.",
   },
 ];

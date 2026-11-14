@@ -147,8 +147,14 @@ const sousDomaine = (nom: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
 
-export const photo = (id: string, taille: 768 | 1536 = 1536) =>
+export const photo = (id: string, taille: 384 | 768 | 1536 = 1536) =>
   `/vitrine/metiers/${id}-${taille}.webp`;
+
+/** Les vignettes : 384 px suffisent jusqu'à 190 px affichés sur un écran Retina. */
+const vignette = (id: string) => ({
+  src: photo(id, 384),
+  srcSet: `${photo(id, 384)} 384w, ${photo(id, 768)} 768w`,
+});
 
 /** Un petit site, aux couleurs du métier, qui montre ce que l'IA en a fait. */
 export function MiniSite({ m, className = "" }: { m: Metier; className?: string }) {
@@ -167,7 +173,15 @@ export function MiniSite({ m, className = "" }: { m: Metier; className?: string 
         </span>
       </div>
       <div className="relative">
-        <img src={photo(m.id, 768)} alt="" className="h-28 w-full object-cover" loading="lazy" />
+        <img
+          {...vignette(m.id)}
+          sizes="320px"
+          alt=""
+          width={384}
+          height={216}
+          className="h-28 w-full object-cover"
+          loading="lazy"
+        />
         <div
           className="absolute inset-0"
           style={{
@@ -417,8 +431,10 @@ export function Familles() {
           className="group relative flex items-center gap-4 overflow-hidden rounded-3xl bg-black/[0.03] p-3 pr-5 transition hover:bg-black/[0.06]"
         >
           <img
-            src={photo(f.photo, 768)}
-            alt=""
+            src={photo(f.photo, 384)}
+            alt={`Photo d'illustration : ${f.titre}`}
+            width={80}
+            height={80}
             className="h-20 w-20 shrink-0 rounded-2xl object-cover"
             loading="lazy"
           />
@@ -630,7 +646,9 @@ function VisuelPhotoIA() {
     <div className="relative overflow-hidden rounded-2xl">
       <img
         src={photo("boulanger", 768)}
-        alt=""
+        alt="Photo créée par l'IA : un boulanger sort ses baguettes du four"
+        width={768}
+        height={576}
         className="aspect-[4/3] w-full object-cover"
         loading="lazy"
       />

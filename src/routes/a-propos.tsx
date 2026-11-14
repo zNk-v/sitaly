@@ -167,10 +167,7 @@ function APropos() {
             </p>
           </div>
           <div className="mx-auto mt-12 grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <Link
-              to="/creer-son-site-ia/"
-              className={`group flex flex-col justify-between p-6 ${CARTE}`}
-            >
+            <Link to="/" className={`group flex flex-col justify-between p-6 ${CARTE}`}>
               <div>
                 <h3 className="titre-produit text-xl">Création de site</h3>
                 <p className={`mt-2 text-sm leading-6 ${TEXTE_GRIS}`}>
@@ -195,8 +192,8 @@ function APropos() {
             ))}
           </div>
           <p className={`mx-auto mt-8 max-w-2xl text-center ${TEXTE_GRIS}`}>
-            Vous préférez qu'on s'occupe de tout ? L'équipe Sitaly peut créer et suivre votre site à
-            votre place, ou installer des{" "}
+            Vous préférez déléguer ? Sitaly peut aussi créer et suivre votre site à votre place, sur
+            devis, ou installer des{" "}
             <Link
               to="/agents-ia/"
               className="font-semibold text-[#09090b] underline underline-offset-2"
@@ -205,6 +202,34 @@ function APropos() {
             </Link>
             .
           </p>
+        </section>
+
+        {/* Ce que l'application promet, et ce qu'elle ne promet pas : les mêmes
+            engagements que llms.txt, pour le lecteur comme pour les IA. */}
+        <section className="px-4 pb-20 sm:px-6">
+          <div className="mx-auto max-w-4xl rounded-3xl bg-black/[0.03] p-8 sm:p-12">
+            <h2 className="titre-produit text-3xl sm:text-5xl">Ce que Sitaly ne promet pas</h2>
+            <ul className={`mt-6 max-w-2xl space-y-4 text-lg leading-7 ${TEXTE_GRIS}`}>
+              <li>
+                Personne ne peut garantir une place sur Google. Chaque site part avec les bases :
+                des pages rapides et lisibles sur téléphone, un titre et une description, les
+                données que Google lit et un plan du site.
+              </li>
+              <li>
+                Une IA peut se tromper. Vous relisez votre site avant de le publier. Ses consignes
+                lui interdisent d'inventer des avis, des chiffres, des certifications ou des années
+                d'expérience, et elle n'écrit un prix que si vous le lui donnez.
+              </li>
+              <li>
+                Une image créée par l'IA illustre votre métier. Elle n'est jamais présentée comme
+                une de vos réalisations.
+              </li>
+              <li>
+                Sitaly est une petite entreprise : quand vous appelez ou écrivez, c'est moi qui
+                réponds.
+              </li>
+            </ul>
+          </div>
         </section>
 
         <section className="px-4 pb-20 sm:px-6">

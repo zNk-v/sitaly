@@ -5,167 +5,176 @@ import type { BlogSection } from "@/data/blog-posts";
 export const contenu: BlogSection[] = [
   {
     type: "p",
-    text: "Deux artisans, même métier, mêmes tarifs, même ville. L'un affiche 42 avis Google à 4,9 étoiles, l'autre en a 3. Devinez lequel décroche l'appel. Les avis sont devenus le premier réflexe de confiance d'un client local : avant de composer votre numéro, il regarde votre note et lit les trois derniers commentaires. Bonne nouvelle : récolter des avis ne demande ni budget ni talent commercial, juste une méthode simple appliquée après chaque chantier. Voici comment passer d'une poignée d'avis à une réputation qui travaille pour vous.",
+    text: "Deux artisans, même métier, même ville. L'un affiche une quarantaine d'avis récents, l'autre trois avis vieux de deux ans. Le particulier qui cherche un plombier dans sa commune appelle le premier sans hésiter. Récolter des avis ne demande ni budget ni talent commercial : il faut une méthode simple, appliquée après chaque chantier, et le respect de quelques règles que Google fait appliquer. Ce guide vous donne la méthode, des modèles de messages et la liste de ce qui est interdit.",
   },
-  { type: "h2", text: "Pourquoi les avis Google pèsent autant sur vos chantiers" },
+
+  { type: "h2", text: "Pourquoi les avis Google pèsent sur vos chantiers" },
   {
     type: "p",
-    text: "Les avis jouent sur deux plans à la fois. D'abord la confiance : d'après l'étude BrightLocal 2025, 87 % des consommateurs lisent les avis en ligne pour les entreprises locales, et la majorité écarte d'emblée une entreprise notée sous 4 étoiles. Ensuite le référencement : le nombre d'avis, la note moyenne et leur régularité font partie des critères que Google utilise pour classer les fiches dans le « pack local » (les trois entreprises affichées sur la carte en haut des résultats).",
-  },
-  {
-    type: "p",
-    text: "Concrètement, une fiche qui reçoit un nouvel avis chaque semaine envoie à Google un signal d'activité et de fiabilité. Elle remonte dans le classement local, apparaît sur plus de recherches, et convertit mieux les personnes qui la voient. C'est un cercle vertueux : plus d'avis, plus de visibilité, plus d'appels, donc plus de chantiers et de nouveaux avis.",
-  },
-  { type: "h2", text: "Combien d'avis faut-il vraiment ?" },
-  {
-    type: "p",
-    text: "Il n'y a pas de chiffre magique, mais des seuils qui rassurent. En dessous de 10 avis, un client hésite. Entre 20 et 50 avis avec une note supérieure à 4,7, vous êtes crédible face à la plupart des concurrents locaux. L'objectif réaliste pour un artisan : viser 1 à 2 nouveaux avis par semaine, ce qui suffit à dépasser 30 avis en moins de six mois.",
-  },
-  {
-    type: "table",
-    caption: "Ce que votre profil d'avis inspire à un client local",
-    headers: ["Nombre d'avis", "Note", "Perception du client"],
-    rows: [
-      ["0 à 3", "—", "Doute : « Est-ce sérieux ? » Beaucoup passent au suivant"],
-      ["4 à 15", "4,5+", "Rassurant, mais on compare encore"],
-      ["20 à 50", "4,7+", "Référence locale, choix par défaut"],
-      ["50+", "4,8+", "Autorité : on vous appelle sans comparer"],
-    ],
+    text: "Les avis jouent sur deux plans. Le premier est la confiance : avant d'appeler un inconnu pour venir chez lui, un client lit votre note et vos derniers commentaires. Le second est le classement local. Google explique dans sa page [« Conseils pour améliorer votre classement local »](https://support.google.com/business/answer/7091?hl=fr) que ses résultats locaux reposent sur la pertinence, la distance et la proéminence, et que le nombre d'avis et de notes positives fait partie de la proéminence.",
   },
   {
     type: "p",
-    text: "Un détail compte autant que le volume : la fraîcheur. Vingt avis dont le plus récent date de deux ans inspirent moins de confiance que huit avis étalés sur les trois derniers mois. La régularité prime sur l'accumulation ancienne.",
+    text: "La même page précise qu'aucun établissement ne peut payer pour obtenir un meilleur classement local. Les avis font donc partie des rares leviers gratuits que vous contrôlez, avec la qualité des informations de votre fiche.",
   },
+
+  { type: "h2", text: "Comment obtenir plus d'avis Google quand on est artisan ?" },
+  {
+    type: "p",
+    text: "Demandez un avis à chaque client, à la fin de chaque chantier, avec un lien direct qui ouvre la fenêtre de notation en un clic. Envoyez ce lien par SMS ou e-mail le jour même, et laissez un QR code au client ou sur votre véhicule. Répondez ensuite à chaque avis reçu. La régularité compte plus qu'une grosse campagne ponctuelle.",
+  },
+
   { type: "h2", text: "Le socle : une fiche prête à recevoir des avis" },
   {
     type: "p",
-    text: "Avant de demander des avis, vérifiez que votre fiche Google Business Profile est complète et vérifiée. Une fiche bâclée décourage les clients d'écrire, et donne moins de poids à leurs avis aux yeux de Google.",
+    text: "Avant de demander quoi que ce soit, vérifiez votre fiche d'établissement Google. Elle doit être validée : Google indique dans [sa page sur la gestion des avis](https://support.google.com/business/answer/3474050?hl=fr) qu'il faut avoir validé son établissement pour répondre aux avis.",
   },
   {
     type: "ul",
     items: [
-      "Fiche vérifiée (le fameux code par courrier ou par vidéo)",
-      "Nom, catégorie principale, téléphone et zone d'intervention exacts",
-      "Horaires à jour, y compris les jours fériés",
-      "Au moins 15 photos récentes de vos chantiers",
-      "Une description claire de vos prestations",
+      "Fiche validée, au nom réel de votre entreprise, sans mots-clés ajoutés.",
+      "Catégorie principale exacte : « Plombier », « Électricien », « Couvreur ».",
+      "Téléphone, horaires et zone d'intervention à jour.",
+      "Des photos récentes de vos chantiers, prises par vous.",
+      "Une description claire de vos prestations.",
     ],
   },
-  { type: "h2", text: "La méthode en 5 étapes pour récolter des avis régulièrement" },
-  { type: "h3", text: "1. Créez votre lien d'avis direct" },
   {
     type: "p",
-    text: "Le principal frein, ce n'est pas la mauvaise volonté du client, c'est l'effort. Personne n'a envie de chercher votre entreprise sur Google, de faire défiler, puis de trouver le bouton « Donner un avis ». La solution : le lien direct qui ouvre la fenêtre d'avis en un clic. Rendez-vous sur votre fiche dans Google Business Profile, cliquez sur « Demander des avis », et copiez le lien court fourni (du type g.page/r/...). C'est ce lien que vous enverrez à chaque client.",
+    text: "Notre [guide de la fiche Google Business Profile](/blog/fiche-google-business-profile-artisan/) détaille chaque réglage. Pour un bilan rapide, l'[audit gratuit de fiche Google](/outils/audit-fiche-google/) de Sitaly liste ce qui manque.",
+  },
+
+  { type: "h2", text: "La méthode en cinq étapes" },
+  { type: "h3", text: "1. Récupérez votre lien d'avis direct" },
+  {
+    type: "p",
+    text: "Le premier frein vient de l'effort demandé : chercher votre entreprise sur Google, faire défiler, trouver le bouton. Le lien direct supprime ces étapes. Google explique dans [sa page « Partager un lien ou un QR code pour demander des avis »](https://support.google.com/business/answer/16334724?hl=fr) comment le copier depuis votre fiche, ou télécharger le QR code correspondant. Gardez ce lien dans les notes de votre téléphone.",
   },
   { type: "h3", text: "2. Demandez au bon moment" },
   {
     type: "p",
-    text: "Le meilleur moment pour demander un avis, c'est juste après un chantier réussi, quand le client vient de constater le résultat et vous remercie. Attendez trois jours et l'élan est retombé. Prenez l'habitude de demander l'avis à la fin de l'intervention, à l'oral, puis d'envoyer le lien dans la foulée par SMS le soir même.",
+    text: "Le meilleur moment arrive juste après un chantier réussi, quand le client constate le résultat et vous remercie. Quelques jours plus tard, l'élan est retombé. Demandez à l'oral en fin d'intervention, puis envoyez le lien le soir même.",
   },
-  { type: "h3", text: "3. Utilisez un script SMS simple" },
+  { type: "h3", text: "3. Envoyez un message court et personnel" },
   {
     type: "p",
-    text: "Un SMS court, personnalisé, avec le lien direct : c'est le combo qui obtient le meilleur taux de réponse. Évitez le message impersonnel envoyé en masse. Voici un modèle qui fonctionne bien :",
+    text: "Un SMS qui cite le prénom du client et le travail réalisé obtient plus de réponses qu'un message générique envoyé à tous. Voici un modèle :",
   },
   {
     type: "quote",
-    text: "Bonjour Monsieur Martin, merci pour votre confiance sur le remplacement de votre chauffe-eau. Si vous êtes satisfait, un avis Google m'aiderait beaucoup à faire connaître mon travail. Ça prend 30 secondes ici : [votre lien]. Merci et belle journée. Julien",
+    text: "Bonjour Monsieur Martin, merci pour votre confiance pour le remplacement de votre chauffe-eau. Si vous avez une minute, votre avis sur Google m'aiderait à faire connaître mon travail : [votre lien]. Bonne journée. Julien",
   },
   { type: "h3", text: "4. Facilitez au maximum" },
   {
     type: "p",
-    text: "Plus l'action est simple, plus vous obtenez d'avis. En complément du SMS, imprimez un petit carton avec un QR code qui pointe vers votre lien d'avis, à laisser au client en fin de chantier ou sur le comptoir. Certains artisans l'ajoutent même au dos de leur facture ou de leur carte de visite.",
+    text: "Imprimez le QR code de votre fiche sur une petite carte à laisser en fin de chantier, sur le comptoir si vous recevez du public, ou au dos de vos cartes de visite. Votre client doit être connecté à un compte Google pour publier un avis ; le lien direct l'emmène sur la bonne page s'il l'est déjà.",
   },
   { type: "h3", text: "5. Répondez à chaque avis" },
   {
     type: "p",
-    text: "Répondre montre au client suivant que vous êtes présent et professionnel, et Google valorise les fiches actives. Une réponse de deux lignes suffit. Ne laissez jamais un avis, même un simple « Merci », sans réponse.",
+    text: "Google recommande de répondre aux avis pour montrer que vous tenez compte de l'avis de vos clients. Une réponse de deux lignes suffit. Elle s'affiche au nom de votre établissement et le client est prévenu de votre réponse.",
   },
-  { type: "h2", text: "3 scripts prêts à copier" },
+
+  { type: "h2", text: "Trois modèles prêts à copier" },
+  {
+    type: "ul",
+    items: [
+      "SMS : « Bonjour [prénom], merci pour votre confiance pour [prestation]. Votre avis sur Google m'aiderait beaucoup, ça prend une minute : [lien]. Merci ! [signature] »",
+      "E-mail : objet « Votre avis sur [entreprise] ». Corps : un rappel du chantier, un remerciement, le lien vers l'avis et une ligne pour rester joignable en cas de besoin.",
+      "À l'oral : « Si le travail vous convient, le plus utile pour moi, c'est un avis sur Google. Je vous envoie le lien ce soir. »",
+    ],
+  },
+
+  { type: "h2", text: "Peut-on offrir une réduction contre un avis Google ?" },
   {
     type: "p",
-    text: "Adaptez le prénom, la prestation et votre signature. Un message personnalisé double le taux de réponse par rapport à un texte générique.",
+    text: "Non. Le règlement de Google classe les avis payés, directement ou en nature, dans l'engagement artificiel, qu'il interdit. Une remise, un cadeau ou une prestation offerte contre un avis exposent ces avis à la suppression. Google interdit aussi de solliciter des avis positifs de façon sélective, c'est-à-dire de n'envoyer le lien qu'aux clients que vous savez contents.",
+  },
+  {
+    type: "p",
+    text: "Ces règles figurent dans [la page « Contenus interdits et soumis à des restrictions »](https://support.google.com/contributionpolicy/answer/7400114?hl=fr) du règlement de Google Maps. Elles visent aussi les avis rédigés par vos salariés ou vos proches (conflit d'intérêts) et les avis déposés sur la fiche d'un concurrent pour lui nuire.",
   },
   {
     type: "ul",
     items: [
-      "SMS (le plus efficace) : « Bonjour [prénom], merci pour votre confiance sur [prestation]. Un avis Google m'aiderait vraiment à développer mon activité, ça prend 30 secondes : [lien]. Merci ! [signature] »",
-      "E-mail : objet « Un petit avis pour [entreprise] ? ». Corps : rappel du chantier réalisé, phrase de remerciement, bouton ou lien vers l'avis, et une ligne pour rester disponible en cas de besoin.",
-      "En main propre : « Si le travail vous convient, le plus utile pour moi, c'est un avis Google. Je vous envoie le lien ce soir, vous n'aurez qu'à cliquer. »",
+      "Acheter des avis ou en faire écrire par des personnes qui ne sont pas clientes.",
+      "Offrir une remise ou un cadeau en échange d'un avis, ou pour retirer un avis négatif.",
+      "N'envoyer le lien qu'aux clients satisfaits et proposer aux autres un « retour direct » (le filtrage).",
+      "Demander à vos salariés ou à votre famille de noter votre entreprise.",
     ],
   },
-  { type: "h2", text: "Comment répondre aux avis, positifs comme négatifs" },
   {
     type: "p",
-    text: "Un avis négatif bien géré rassure parfois plus qu'un avis positif. Le futur client regarde comment vous réagissez sous pression. La règle : rester courtois, ne jamais se justifier de façon agressive, proposer de régler le problème hors ligne.",
+    text: "La loi française va plus loin. La DGCCRF rappelle dans sa fiche [« Avis en ligne : attention aux faux commentaires ! »](https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/avis-en-ligne-attention-aux-faux-commentaires) que diffuser de faux avis constitue une pratique commerciale trompeuse, un délit pénal. Le professionnel qui commande ces avis engage sa responsabilité.",
+  },
+
+  { type: "h2", text: "Répondre aux avis, positifs comme négatifs" },
+  {
+    type: "p",
+    text: "Un avis négatif bien traité rassure parfois davantage qu'une note parfaite. Le lecteur regarde comment vous réagissez sous pression. Restez courtois, ne vous justifiez pas avec agressivité, proposez de régler la question par téléphone.",
   },
   {
     type: "ul",
     items: [
-      "Avis positif : remerciez, citez le chantier ou le prénom, ajoutez une touche humaine. Exemple : « Merci Sophie, ravi que la pose de votre parquet vous plaise. À bientôt. »",
-      "Avis négatif justifié : reconnaissez, excusez-vous, proposez une solution concrète et un contact direct.",
-      "Avis négatif injuste ou faux : répondez calmement les faits, sans polémique, puis signalez-le à Google s'il enfreint les règles (avis d'un non-client, propos injurieux, concurrent).",
-      "Ne répondez jamais à chaud : relisez à froid avant de publier.",
+      "Avis positif : remerciez, citez le chantier, signez de votre prénom. « Merci Sophie, ravi que la pose de votre parquet vous plaise. À bientôt, Marc. »",
+      "Avis négatif justifié : reconnaissez le problème, excusez-vous, proposez une solution et un contact direct.",
+      "Avis négatif faux ou injurieux : répondez les faits, calmement, puis signalez l'avis à Google s'il enfreint ses règles.",
+      "Dans tous les cas : relisez à froid avant de publier.",
     ],
   },
-  { type: "h2", text: "Les erreurs qui peuvent vous coûter cher" },
   {
     type: "p",
-    text: "Certaines pratiques semblent malignes mais se retournent contre vous. Google détecte les schémas anormaux (pic d'avis, appareils identiques, comptes récents) et peut filtrer ou supprimer les avis suspects, voire pénaliser la fiche.",
+    text: "Google ne retire que les avis qui enfreignent son règlement. Un avis négatif sincère reste en ligne : votre réponse devient alors la meilleure défense.",
+  },
+
+  { type: "h2", text: "Combien d'avis viser ?" },
+  {
+    type: "p",
+    text: "Aucun seuil officiel n'existe. Comparez-vous plutôt aux trois ou quatre concurrents qui apparaissent avant vous sur Google Maps pour votre métier et votre ville : leur nombre d'avis et la date du plus récent vous donnent un objectif concret. Un flux régulier compte plus qu'un gros chiffre ancien : un client qui lit des avis datés du mois dernier sait que l'entreprise travaille.",
+  },
+
+  { type: "h2", text: "Automatiser la demande pour ne plus y penser" },
+  {
+    type: "p",
+    text: "L'obstacle tient rarement à la méthode. Il tient à la régularité : après une grosse journée, le SMS de demande d'avis passe à la trappe. La partie [avis Google](/produits/avis-google/) de Sitaly prend le relais :",
   },
   {
     type: "ul",
     items: [
-      "Acheter de faux avis : interdit par la loi française et par Google. En France, la DGCCRF sanctionne les faux avis, avec des amendes qui peuvent atteindre 300 000 € pour une entreprise, et Google supprime les avis frauduleux.",
-      "Offrir une réduction ou un cadeau contre un avis : contraire aux règles de Google, qui interdit les avis incités. Vous risquez la suppression des avis concernés.",
-      "Demander des avis à des gens qui ne sont pas clients : c'est de la fraude, facilement repérable.",
-      "Installer une borne au bureau où tout le monde note depuis la même adresse IP : Google filtre ces avis en masse.",
-      "Ne demander qu'aux clients mécontents un « retour direct » et rediriger les contents vers Google : cette pratique de filtrage (review gating) est également interdite par Google.",
+      "Le lendemain d'une facture payée ou d'un rendez-vous, votre client reçoit la demande d'avis à votre nom, avec le lien de votre fiche.",
+      "La même demande part à chaque client, au plus une fois tous les six mois, sans contrepartie, conformément aux règles de Google.",
+      "Une affichette A5 avec QR code est prête à imprimer pour le comptoir, la vitrine ou la camionnette.",
+      "Chaque matin, les nouveaux avis arrivent avec une réponse préparée par l'IA dans votre ton. Vous la relisez, puis vous la publiez sur Google d'un clic.",
     ],
   },
-  { type: "h2", text: "Exemple : Karim, électricien, de 3 à 34 avis en 5 mois" },
   {
     type: "p",
-    text: "Karim, électricien à Massy, plafonnait à 3 avis en deux ans. Il a mis en place une routine simple : demande orale en fin de chantier, puis SMS avec son lien direct le soir même, et un QR code au dos de ses factures. Résultat sur 5 mois : 31 nouveaux avis, une note stabilisée à 4,9, et une remontée dans le pack local sur « électricien Massy ». Il estime ses appels entrants en hausse d'environ 40 %, sans avoir dépensé un euro de publicité. Le seul changement : demander systématiquement, au bon moment, avec un lien qui rend l'action évidente.",
+    text: "La fiche connectée et les demandes automatiques font partie des formules Essentiel (39 € par mois) et Pro (79 € par mois). En formule Découverte, gratuite, vous collez un avis dans l'application pour recevoir une réponse préparée, puis vous la publiez vous-même.",
   },
-  { type: "h2", text: "Automatiser la collecte pour ne plus y penser" },
-  {
-    type: "p",
-    text: "Le vrai obstacle n'est pas la méthode, c'est la régularité. Après une grosse journée, envoyer le SMS passe à la trappe. C'est là qu'une automatisation change tout : dès qu'un chantier est marqué terminé, un SMS de demande d'avis part automatiquement avec votre lien, le prénom du client et votre signature. Vous ne gérez plus rien, les avis rentrent tout seuls. Chez Sitaly, cette relance d'avis fait partie des automatisations que nous mettons en place, aux côtés de la relance de devis et de la prise de rendez-vous en ligne.",
-  },
-  { type: "h2", text: "Questions fréquentes" },
+
   {
     type: "faq",
     items: [
       {
         q: "Peut-on demander un avis à un client sans risque ?",
-        a: "Oui, demander un avis à un vrai client satisfait est parfaitement autorisé et encouragé par Google. Ce qui est interdit, c'est d'acheter des avis, d'en offrir en échange d'une contrepartie, ou de filtrer pour n'envoyer que les clients contents vers Google.",
+        a: "Oui. Demander un avis à un vrai client est autorisé et Google l'encourage. Ce qui est interdit : acheter des avis, offrir une contrepartie, ou n'envoyer le lien qu'aux clients satisfaits. Envoyez la même demande à tous vos clients, sans rien promettre en échange.",
       },
       {
         q: "Comment obtenir mon lien d'avis Google direct ?",
-        a: "Connectez-vous à votre fiche Google Business Profile, cliquez sur « Demander des avis » ou « Obtenir plus d'avis », et copiez le lien court proposé. Ce lien ouvre directement la fenêtre de notation, ce qui supprime toutes les étapes intermédiaires pour le client.",
+        a: "Depuis votre fiche d'établissement, ouvrez la partie consacrée aux avis et choisissez de demander des avis : Google vous propose un lien à copier et un QR code à télécharger. Ce lien ouvre directement la fenêtre de notation pour votre client.",
       },
       {
         q: "Que faire d'un avis négatif ?",
-        a: "Répondez calmement et sans agressivité, reconnaissez le point s'il est justifié, et proposez de régler la situation par téléphone. Si l'avis est faux ou injurieux, signalez-le à Google. Un avis négatif bien géré rassure souvent les futurs clients sur votre professionnalisme.",
-      },
-      {
-        q: "Un client peut-il laisser un avis sans compte Google ?",
-        a: "Il faut un compte Google pour publier un avis, mais la quasi-totalité des utilisateurs de smartphone Android en possède déjà un, et beaucoup d'utilisateurs iPhone aussi via Gmail. Le lien direct détecte le compte connecté et simplifie l'opération.",
+        a: "Répondez calmement, reconnaissez le problème s'il est réel et proposez d'en parler par téléphone. Si l'avis est faux, injurieux ou vient d'un non-client, signalez-le à Google. Une réponse posée rassure les futurs clients qui liront l'échange.",
       },
       {
         q: "Faut-il répondre à tous les avis, même positifs ?",
-        a: "Oui. Répondre aux avis positifs montre votre présence, renforce la relation, et Google valorise les fiches actives. Une réponse courte et personnalisée suffit.",
+        a: "Oui. Google recommande de répondre aux avis, et une réponse montre aux lecteurs que vous suivez votre fiche. Deux lignes personnalisées suffisent : remerciement, rappel du chantier, signature.",
       },
       {
-        q: "En combien de temps voit-on l'effet sur le référencement ?",
-        a: "Les premiers effets sur la visibilité locale apparaissent en général en 1 à 3 mois de collecte régulière. L'important est la constance : mieux vaut 1 à 2 avis par semaine sur la durée qu'un pic isolé de 20 avis.",
+        q: "Peut-on supprimer un avis négatif sur Google ?",
+        a: "Vous ne pouvez pas le supprimer vous-même. Google ne retire que les avis qui enfreignent son règlement, par exemple un faux avis ou un contenu injurieux, après signalement. Un avis négatif sincère reste en ligne : répondez-y avec calme.",
       },
     ],
-  },
-  { type: "h2", text: "Passez à l'action" },
-  {
-    type: "p",
-    text: "Vous n'avez pas besoin d'un outil compliqué pour commencer : récupérez votre lien d'avis direct, et envoyez-le à vos trois prochains clients satisfaits dès ce soir. Si vous voulez que la collecte tourne toute seule, Sitaly met en place l'automatisation (SMS d'avis après chaque chantier), optimise votre fiche Google et votre site pour convertir cette visibilité en appels. Réservez un appel gratuit de 15 minutes pour en discuter.",
   },
 ];

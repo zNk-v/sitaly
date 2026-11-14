@@ -90,7 +90,7 @@ export function BlogCard({
           }
           width={1200}
           height={630}
-          alt=""
+          alt={post.image.alt}
           loading="lazy"
           decoding="async"
           className="block aspect-[40/21] h-auto w-full border-b border-border object-cover"

@@ -5,11 +5,11 @@ import type { BlogSection } from "@/data/blog-posts";
 export const contenu: BlogSection[] = [
   {
     type: "p",
-    text: "Vous envoyez un devis, le client répond « je reviens vers vous », puis plus rien. Ce silence n'est pas toujours un refus. Souvent, le devis a glissé sous d'autres priorités, chez le client comme chez vous. Dans une PME, la relance dépend de la mémoire de la personne qui a envoyé le devis, et cette personne a d'autres dossiers. La relance automatique retire ce maillon fragile.",
+    text: "Vous envoyez un devis, le client répond « je reviens vers vous », puis plus rien. Ce silence n'est pas toujours un refus. Souvent, le devis a glissé sous d'autres priorités, chez le client comme chez vous. Quand vous travaillez seul ou à deux, la relance dépend de votre mémoire, et votre mémoire est sur le chantier. Un outil qui suit vos devis retire ce maillon fragile.",
   },
   {
     type: "p",
-    text: "Cet article donne une séquence de relance, deux modèles de messages et la frontière entre ce qu'une automatisation simple fait bien et ce qu'un [agent de relance](/agents-ia/#relance) apporte en plus.",
+    text: "Cet article donne une séquence de relance, deux modèles de messages, les règles à respecter, et la façon de faire avec [Devis et factures](/produits/devis-et-factures/), le module de devis de l'application Sitaly.",
   },
   { type: "h2", text: "Ce qu'un devis non relancé vous coûte, calculé avec vos chiffres" },
   {
@@ -18,12 +18,12 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Devis sans réponse × part récupérable × marge moyenne = ce que la relance vaut chaque mois pour vous. C'est une simulation : la part récupérable, vous la mesurerez vraiment après trois mois de relances régulières. Mais le calcul suffit à dire si le sujet mérite une heure de réglage.",
+    text: "Devis sans réponse × part récupérable × marge moyenne = ce que la relance vaut chaque mois pour vous. Exemple : 8 devis sans réponse, une part récupérable que vous estimez à un sur quatre, 600 € de marge par chantier, soit 1 200 € par mois. C'est une simulation : la part récupérable, vous la mesurerez vraiment après trois mois de relances régulières.",
   },
-  { type: "h2", text: "Le bon timing pour relancer un devis" },
+  { type: "h2", text: "Quand relancer un devis sans réponse ?" },
   {
     type: "p",
-    text: "Une décision se prend rarement le jour de la réception. La séquence que nous mettons en place suit trois temps : un rappel court deux jours après l'envoi, une relance utile une semaine après, puis une dernière relance au bout de deux semaines, qui donne une date ou une disponibilité.",
+    text: "Relancez une première fois deux jours après l'envoi, pour vérifier que le devis est bien arrivé. Relancez une deuxième fois au bout d'une semaine, pour répondre à une question ou lever un frein. Faites une dernière relance vers deux semaines, avec une échéance : la validité du devis ou votre planning. Arrêtez-vous dès que le client répond.",
   },
   {
     type: "table",
@@ -37,16 +37,16 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Une règle vaut pour toute la séquence : elle s'arrête dès que le client répond. Personne ne doit recevoir la relance de J+7 après avoir signé à J+5.",
+    text: "Une décision se prend rarement le jour de la réception : le client compare, en parle chez lui, attend sa paie. La règle vaut pour toute la séquence : personne ne doit recevoir la relance de J+7 après avoir signé à J+5.",
   },
-  { type: "h2", text: "Manuelle ou automatique : ce qui change" },
+  { type: "h2", text: "Combien de fois faut-il relancer un devis ?" },
   {
     type: "p",
-    text: "Tout le monde sait qu'il faut relancer. Dans les faits, il faut noter chaque devis, programmer chaque rappel et réécrire chaque message. La relance automatique supprime ces trois gestes : dès qu'un devis passe au statut « envoyé » dans votre outil, les messages partent aux dates prévues, avec le nom du client, le bon montant et votre signature.",
+    text: "Trois relances en deux semaines suffisent dans la plupart des métiers : à J+2, J+7 et J+15. Au-delà, le client qui n'a pas répondu a le plus souvent choisi, et une relance de plus risque d'agacer. Gardez une trace de chaque devis perdu et de sa raison : c'est elle qui améliore vos prochains devis.",
   },
   {
     type: "p",
-    text: "Pour une séquence fixe, une [automatisation des tâches](/automatisation-taches/) suffit : c'est un calendrier, pas une décision. L'agent IA devient utile quand le client répond. Il lit la réponse, comprend s'il s'agit d'une question, d'un report ou d'un refus, répond à ce qui a déjà une réponse et vous transmet le reste avec le contexte.",
+    text: "Pour un gros chantier, comme une rénovation de salle de bain ou une toiture, le délai de décision s'allonge : espacez les relances plutôt que d'en ajouter. Pour un dépannage, raccourcissez-les : le client a besoin d'une réponse cette semaine.",
   },
   { type: "h2", text: "Deux modèles de messages prêts à l'emploi" },
   { type: "h3", text: "SMS de relance à J+2" },
@@ -57,53 +57,75 @@ export const contenu: BlogSection[] = [
   { type: "h3", text: "SMS de relance à J+15" },
   {
     type: "quote",
-    text: "Bonjour {Prénom}, notre planning de {mois} se remplit. Si vous souhaitez avancer, je peux encore réserver un créneau cette semaine. Voulez-vous que je bloque une date ?",
+    text: "Bonjour {Prénom}, mon planning de {mois} se remplit. Si vous souhaitez avancer, je peux encore réserver un créneau cette semaine. Voulez-vous que je bloque une date ?",
   },
-  { type: "h2", text: "Relancer par téléphone : ce que la loi permet" },
   {
     type: "p",
-    text: "Depuis le 11 août 2026, appeler un particulier pour le prospecter demande son consentement préalable. Relancer par téléphone un devis qu'il a demandé reste possible s'il a accepté d'être recontacté à ce sujet. Sinon, la relance passe par SMS ou e-mail. Le détail figure dans notre article sur le [démarchage téléphonique et les agents IA](/blog/demarchage-telephonique-agent-ia-2026/).",
+    text: "Adaptez le ton à votre client. Personnalisez toujours trois éléments : son prénom, l'objet du devis et votre nom. Un message générique se repère et se lit moins.",
   },
-  { type: "h2", text: "Ce que la relance automatique change au quotidien" },
+  { type: "h2", text: "Relancer vos devis avec Sitaly" },
+  {
+    type: "p",
+    text: "Avec [Devis et factures](/produits/devis-et-factures/), la relance commence avant le silence. Votre client reçoit un lien vers son devis, le lit sur son téléphone et l'accepte en ligne en écrivant son nom : c'est un bon pour accord. Vous êtes prévenu aussitôt. Un client qui n'a qu'un clic à faire répond plus vite qu'un client qui doit imprimer, signer et scanner.",
+  },
+  {
+    type: "ul",
+    items: [
+      "Le devis accepté devient une facture en un clic, payable par carte ou par virement, sans commission Sitaly.",
+      "Vous pouvez demander un acompte par carte à l'acceptation.",
+      "Les factures impayées sont relancées pour vous à J+1, J+8 et J+15 après l'échéance, dans les formules Essentiel et Pro.",
+      "La vue d'ensemble et le bilan envoyé chaque lundi vous rappellent les devis qui attendent une réponse.",
+      "L'Assistant IA rédige le SMS et l'e-mail de relance d'un devis ; vous relisez et vous envoyez.",
+      "Chaque devis entre dans l'historique du client, et un devis accepté fait passer sa fiche en « client ».",
+    ],
+  },
+  {
+    type: "p",
+    text: "Les devis sont illimités dans toutes les formules, y compris Découverte, qui est gratuite. Les prix sont sur la page [Tarifs](/tarifs/). Pour un premier devis sans inscription, le [générateur de devis gratuit](/outils/generateur-devis-gratuit/) produit un PDF dans votre navigateur.",
+  },
+  { type: "h2", text: "Peut-on relancer un devis par téléphone ?" },
+  {
+    type: "p",
+    text: "Depuis le 11 août 2026, appeler un particulier pour le prospecter demande son consentement préalable. Un appel lié à un contrat en cours reste permis. Pour un devis qu'il vous a demandé, appelez-le s'il a accepté d'être recontacté à ce sujet, et notez cet accord. Sinon, relancez par SMS ou par e-mail.",
+  },
+  {
+    type: "p",
+    text: "Les règles sont détaillées dans la fiche de la DGCCRF sur [le démarchage téléphonique](https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/les-regles-du-demarchage-telephonique-simposant-aux-entreprises) et dans notre article sur [le démarchage téléphonique et les agents IA](/blog/demarchage-telephonique-agent-ia-2026/). Gardez vos SMS et e-mails centrés sur le devis demandé : une offre commerciale sans rapport relève des règles de prospection que rappelle la [CNIL](https://www.cnil.fr/fr/la-prospection-commerciale-par-courrier-electronique).",
+  },
+  { type: "h2", text: "Ce que la relance change au quotidien" },
   {
     type: "ul",
     items: [
       "Aucun devis oublié dans une boîte mail",
-      "Un suivi régulier, qui ne dépend plus de la mémoire de celui qui a envoyé le devis",
+      "Un suivi régulier, qui ne dépend plus de votre mémoire",
       "Des messages personnalisés : prénom, prestation, montant, signature",
-      "L'arrêt de la séquence dès que le client répond",
-      "Une vue claire des devis en attente, relancés, acceptés ou perdus",
+      "L'arrêt de la relance dès que le client répond",
+      "Une vue claire des devis en attente, acceptés ou perdus",
     ],
   },
-  { type: "h2", text: "Questions fréquentes" },
+  {
+    type: "p",
+    text: "Vos clients appellent plus qu'ils n'écrivent, et vous ne pouvez pas décrocher sur le chantier ? Un [agent IA téléphonique sur mesure](/agents-ia/) peut répondre, prendre la demande et rappeler les devis en attente.",
+  },
   {
     type: "faq",
     items: [
       {
-        q: "La relance automatique, ce n'est pas trop impersonnel ?",
-        a: "Bien réglée, elle se lit comme un suivi attentif. Les messages reprennent votre nom, le prénom du client et l'objet du devis, et la séquence s'arrête dès qu'il répond. C'est le silence qui paraît impersonnel, pas le rappel.",
+        q: "La relance de devis, ce n'est pas trop insistant ?",
+        a: "Bien réglée, elle se lit comme un suivi attentif. Les messages reprennent votre nom, le prénom du client et l'objet du devis, et vous arrêtez dès qu'il répond. C'est le silence qui paraît désinvolte, pas le rappel.",
       },
       {
-        q: "Combien de fois faut-il relancer un devis ?",
-        a: "Nous recommandons trois relances réparties sur deux semaines : à J+2, J+7 et J+15. Au-delà, le client qui n'a pas répondu a le plus souvent choisi, et une relance de plus risque d'agacer.",
+        q: "Sitaly relance-t-il mes devis tout seul ?",
+        a: "Sitaly relance seul vos factures impayées, à J+1, J+8 et J+15, en Essentiel et Pro. Pour un devis sans réponse, il vous le rappelle et l'Assistant IA prépare le message : vous gardez la main sur ce qui part.",
       },
       {
-        q: "Faut-il un logiciel compliqué pour automatiser ses relances ?",
-        a: "Non. La relance se branche sur l'outil où vos devis sont déjà suivis : logiciel de devis, CRM ou tableur partagé. Vous passez un devis au statut envoyé, la séquence démarre.",
+        q: "Mon client doit-il créer un compte pour accepter le devis ?",
+        a: "Non. Il ouvre le lien, lit le devis, écrit son nom pour l'accepter. Il peut aussi l'imprimer ou l'enregistrer en PDF.",
       },
       {
         q: "Est-ce que ça marche dans tous les secteurs ?",
-        a: "Dès que vous envoyez des devis, des propositions ou des dossiers qui attendent une réponse : entreprises du BTP, agences immobilières, courtiers, cabinets de conseil, prestataires B2B. Le ton et le délai changent, pas le principe.",
+        a: "Dès que vous envoyez des devis qui attendent une réponse : artisans du bâtiment, paysagistes, déménageurs, photographes, prestataires de services. Le ton et le délai changent, pas le principe.",
       },
     ],
-  },
-  { type: "h2", text: "Automatisez vos relances avec Sitaly" },
-  {
-    type: "p",
-    text: "La relance des devis fait partie des six agents que Sitaly installe et pilote pour les PME. On part de votre façon de travailler, on règle la séquence et les messages avec vous, et l'agent vous passe la main dès qu'un client répond. Le [diagnostic offert de 30 minutes](/agents-ia/#diagnostic) sert à repérer où vos devis se perdent aujourd'hui.",
-  },
-  {
-    type: "p",
-    text: "Pour une petite entreprise, [Devis et factures](/produits/devis-et-factures/) fait accepter vos devis en ligne et relance vos impayés à J+1, J+8 et J+15, directement depuis l'application Sitaly.",
   },
 ];

@@ -28,6 +28,15 @@ export const SITALY_CODE_POSTAL = "91220";
 export const SITALY_DEPARTEMENT = "Essonne";
 
 /**
+ * La ville que Sitaly montre au public et aux moteurs : Teddy se présente à
+ * Paris (décision du 8 novembre 2026, confirmée le 14 novembre 2026 après
+ * l'audit SEO). Les données structurées et llms.txt disent Paris ; l'adresse
+ * d'immatriculation (SITALY_VILLE) ne reste que dans les mentions légales,
+ * les CGV et la politique de confidentialité.
+ */
+export const SITALY_VILLE_PUBLIQUE = "Paris";
+
+/**
  * Fiche d'établissement Google de Sitaly, par son identifiant Maps (cid).
  * Le cid ne change pas quand le nom, la catégorie ou la description changent.
  */

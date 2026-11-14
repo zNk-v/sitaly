@@ -10,7 +10,7 @@ export const Route = createFileRoute("/mentions-legales")({
         content:
           "Mentions légales de sitaly.fr : éditeur du site (Teddy Vidal, entrepreneur individuel), hébergement, propriété intellectuelle, droit applicable et contact.",
       },
-      { name: "robots", content: "index,follow" },
+      { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large" },
       { property: "og:title", content: "Mentions légales du site sitaly.fr | Sitaly" },
       {
         property: "og:description",

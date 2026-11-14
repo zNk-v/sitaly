@@ -6,9 +6,9 @@ import { VerificateurDomaine } from "@/components/VerificateurDomaine";
 import { lienCreation } from "@/components/produit/Produit";
 
 const URL = "https://sitaly.fr/outils/verifier-nom-de-domaine/";
-const TITLE = "Vérifier si un nom de domaine est libre en .fr et .com (gratuit) | Sitaly";
+const TITLE = "Nom de domaine libre ? Vérifier le .fr et le .com | Sitaly";
 const DESCRIPTION =
-  "Tapez le nom de votre entreprise : l'outil interroge les registres officiels du .fr et du .com et vous dit s'il est libre. Gratuit, sans inscription, sans trace.";
+  "Tapez le nom de votre entreprise : l'outil interroge les registres du .fr et du .com et vous dit s'il est libre. Gratuit, sans inscription.";
 
 const CONSEILS = [
   {

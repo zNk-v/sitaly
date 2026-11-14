@@ -156,7 +156,7 @@ export const Route = createFileRoute("/blog/$slug")({
 function BlogPostPage() {
   const { post } = Route.useLoaderData();
   const relatedPosts = getRelatedPosts(post.slug, 3);
-  const cta = post.cta ?? "site";
+  const cta = post.cta ?? "app";
 
   const headings: { id: string; text: string }[] = post.content
     .filter((s: BlogSection) => s.type === "h2")
@@ -462,20 +462,72 @@ const APPELS: Record<CtaArticle, { milieu: Appel; fin: Appel }> = {
       href: `${APP_URL}/`,
     },
   },
-  site: {
+  // Les produits de Sitaly App (14 novembre 2026) : chaque article qui parle
+  // d'un outil de gestion pousse vers sa page produit.
+  devis: {
     milieu: {
-      titre: "Vous voulez appliquer tout ça sans y passer 40 heures ?",
+      titre: "Un devis envoyé avant de quitter le chantier",
       texte:
-        "Site artisan livré en 48h, optimisé pour le SEO local. En abonnement mensuel, sans engagement.",
-      label: "Trouver mon offre",
-      href: "/mon-projet/",
+        "Vous préparez le devis depuis la fiche du client, il l'accepte en ligne, et la facture se paie par carte ou par virement. Devis illimités, même en formule gratuite.",
+      label: "Voir les devis et factures",
+      href: "/produits/devis-et-factures/",
     },
     fin: {
-      titre: "Et si on créait votre site ?",
+      titre: "Vos devis et factures au même endroit que votre site",
       texte:
-        "Sitaly s'occupe de tout : création, référencement local, mise en ligne en 48h. En abonnement mensuel, tout inclus et sans engagement.",
-      label: "Trouver mon offre",
-      href: "/mon-projet/",
+        "Devis accepté en ligne, facture conforme payée par carte ou virement, impayés relancés à J+1, J+8 et J+15. Gratuit pour commencer, sans carte bancaire.",
+      label: "Créer mon premier devis",
+      href: `${APP_URL}/`,
+    },
+  },
+  "rendez-vous": {
+    milieu: {
+      titre: "Vos clients réservent seuls, vous recevez un e-mail",
+      texte:
+        "Vos prestations et vos horaires sur votre site, la confirmation envoyée au client, l'annulation en un clic. Inclus dans les formules Essentiel et Pro.",
+      label: "Voir la prise de rendez-vous",
+      href: "/produits/prise-de-rendez-vous/",
+    },
+    fin: {
+      titre: "Ouvrez votre agenda en ligne",
+      texte:
+        "Votre site et votre page de réservation, créés par l'IA en une minute. Gratuit pour commencer, sans carte bancaire.",
+      label: "Créer mon site",
+      href: `${APP_URL}/`,
+    },
+  },
+  avis: {
+    milieu: {
+      titre: "Une réponse prête pour chaque avis Google",
+      texte:
+        "Chaque nouvel avis arrive avec sa réponse rédigée dans votre ton. Vous la publiez d'un clic. Le lendemain d'une facture payée, votre client reçoit la demande d'avis.",
+      label: "Voir les avis Google",
+      href: "/produits/avis-google/",
+    },
+    fin: {
+      titre: "Plus d'avis, sans y penser",
+      texte:
+        "Connectez votre fiche Google à Sitaly : demandes d'avis après chaque facture, réponses préparées par l'IA, QR code à imprimer. Gratuit pour commencer.",
+      label: "Commencer gratuitement",
+      href: `${APP_URL}/`,
+    },
+  },
+  // L'ancien appel « site » vendait l'offre d'agence (site livré en 48 h).
+  // Depuis le 14 novembre 2026, il mène à l'application, comme « app ».
+  site: {
+    milieu: {
+      titre: "Votre site, écrit par l'IA en une minute",
+      texte:
+        "Décrivez votre activité en une phrase : Sitaly écrit vos pages, crée vos photos et met le site en ligne. Gratuit pour commencer.",
+      label: "Créer mon site",
+      href: `${APP_URL}/`,
+    },
+    fin: {
+      titre: "Passez de la lecture à votre site",
+      texte:
+        "Une phrase sur votre activité suffit : votre site est en ligne une minute plus tard, et vous le retouchez en parlant à l'IA. Gratuit, sans carte bancaire.",
+      label: "Créer mon site gratuitement",
+      href: `${APP_URL}/`,
     },
   },
 };

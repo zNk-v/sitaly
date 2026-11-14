@@ -5,12 +5,12 @@ import type { BlogSection } from "@/data/blog-posts";
 export const contenu: BlogSection[] = [
   {
     type: "p",
-    text: "Quand on dirige une TPE ou qu'on travaille en indépendant, on porte toutes les casquettes : la production, les devis, la compta, le téléphone. Le suivi client, lui, passe systématiquement en dernier — et c'est là qu'on perd des clients sans même s'en rendre compte. L'[automatisation des tâches](/automatisation-taches/) n'a rien de réservé aux grandes entreprises : quelques automatisations simples, bien choisies, rendent du temps chaque semaine et évitent qu'une demande reste sans réponse.",
+    text: "Quand on dirige une TPE ou qu'on travaille en indépendant, on porte toutes les casquettes : la production, les devis, la compta, le téléphone. Le suivi client, lui, passe en dernier, et c'est là qu'on perd des clients sans s'en rendre compte. L'[automatisation des tâches](/automatisation-taches/) n'a rien de réservé aux grandes entreprises : quelques automatisations simples, bien choisies, rendent du temps chaque semaine et évitent qu'une demande reste sans réponse.",
   },
-  { type: "h2", text: "Pourquoi automatiser quand on est une petite structure" },
+  { type: "h2", text: "Pourquoi automatiser son suivi client quand on travaille seul ?" },
   {
     type: "p",
-    text: "Vous n'avez pas d'assistant, donc chaque tâche répétitive est du temps pris sur votre métier. Répondre aux mêmes questions, relancer, envoyer des rappels, demander un avis : ces gestes valent de l'argent, mais ils sont chronophages et faciles à oublier. Les automatiser, c'est confier ces tâches à un système qui ne dort jamais et n'oublie rien, pour vous concentrer sur ce qui demande vraiment votre savoir-faire.",
+    text: "Parce que vous n'avez pas d'assistant : chaque tâche répétitive prend du temps sur votre métier. Répondre aux mêmes questions, relancer un devis, rappeler un rendez-vous, demander un avis : ces gestes rapportent, mais ils s'oublient. Une automatisation les fait à heure fixe, et vous gardez votre temps pour le travail que vous seul savez faire.",
   },
   { type: "h2", text: "7 automatisations simples et rentables pour une TPE" },
   {
@@ -19,16 +19,16 @@ export const contenu: BlogSection[] = [
       "Réponse automatique aux demandes entrantes : tout prospect reçoit un accusé immédiat, même quand vous êtes occupé",
       "Relance automatique des devis : la séquence se déclenche seule et récupère les devis oubliés",
       "Rappels de rendez-vous par SMS : moins de lapins, un agenda mieux rempli",
-      "Demande d'avis Google automatique après chaque prestation : votre réputation se construit toute seule",
+      "Demande d'avis Google automatique après chaque prestation, envoyée à tous vos clients et sans contrepartie, comme l'exige le [règlement de Google](https://support.google.com/contributionpolicy/answer/7400114?hl=fr)",
       "Qualification des demandes : un mini-formulaire trie les prospects sérieux avant qu'ils vous contactent",
       "Confirmation et facture envoyées automatiquement à la signature",
-      "Relance des clients inactifs depuis 6 ou 12 mois pour générer du réachat",
+      "Relance des clients inactifs depuis 6 ou 12 mois pour générer du réachat, dans le respect des [règles de la CNIL sur la prospection par e-mail et SMS](https://www.cnil.fr/fr/la-prospection-commerciale-par-courrier-electronique)",
     ],
   },
-  { type: "h2", text: "Par où commencer sans se compliquer la vie" },
+  { type: "h2", text: "Par quelle automatisation commencer ?" },
   {
     type: "p",
-    text: "Inutile de tout automatiser d'un coup. Commencez par les deux automatisations au meilleur rapport effort/résultat : la réponse automatique aux demandes (vous ne perdez plus aucun contact) et la relance des devis (vous signez plus). Une fois ces deux-là en place et rentabilisées, ajoutez les rappels de rendez-vous et la demande d'avis. C'est cette logique progressive qui évite l'usine à gaz.",
+    text: "Commencez par deux automatisations : la réponse immédiate aux demandes, pour ne plus perdre de contact, et la relance des devis, pour signer plus. Elles demandent peu de réglages et rapportent vite. Une fois en place, ajoutez les rappels de rendez-vous, puis la demande d'avis. Avancer pas à pas évite l'usine à gaz.",
   },
   {
     type: "table",
@@ -42,12 +42,29 @@ export const contenu: BlogSection[] = [
       ["Relance clients inactifs", "Moyen", "Moyen (réachat)"],
     ],
   },
+  { type: "h2", text: "Les automatisations déjà prêtes dans l'application Sitaly" },
+  {
+    type: "p",
+    text: "Plusieurs de ces automatisations fonctionnent déjà dans l'application Sitaly, avec les formules Essentiel et Pro :",
+  },
+  {
+    type: "ul",
+    items: [
+      "[Devis et factures](/produits/devis-et-factures/) : devis accepté en ligne, acompte par carte, factures impayées relancées à J+1, J+8 et J+15.",
+      "[Prise de rendez-vous](/produits/prise-de-rendez-vous/) : confirmation par e-mail, rappel la veille, annulation en un clic.",
+      "[Avis Google](/produits/avis-google/) : demande d'avis le lendemain d'une facture payée ou d'un rendez-vous, réponse préparée à chaque nouvel avis.",
+      "Le bilan de la semaine, chaque lundi par e-mail : demandes, devis, factures et visites de votre site.",
+    ],
+  },
+  {
+    type: "p",
+    text: "Le détail des formules est sur la page [Tarifs](/tarifs/). Pour les automatisations qui relient plusieurs outils, comme un CRM, une messagerie et un agenda partagé, la mise en place sur mesure décrite plus bas prend le relais.",
+  },
   { type: "h2", text: "Le piège à éviter : automatiser sans personnaliser" },
   {
     type: "p",
     text: "Une automatisation réussie ne se voit pas. Le client doit avoir l'impression d'un suivi attentionné, pas d'un robot. La clé est de personnaliser chaque message (prénom, prestation, montant) et de prévoir un point de sortie : dès que le client répond, l'automatisation s'arrête et c'est vous qui prenez le relais. Automatiser le déclenchement, garder l'humain dans la conversation : c'est l'équilibre gagnant.",
   },
-  { type: "h2", text: "Questions fréquentes" },
   {
     type: "faq",
     items: [
@@ -61,7 +78,7 @@ export const contenu: BlogSection[] = [
       },
       {
         q: "Est-ce que ça coûte cher ?",
-        a: "Le coût dépend du nombre d'automatisations et des outils à relier. Il est chiffré par écrit après le diagnostic, et comparé au temps gagné calculé tâche par tâche. Si le calcul ne tient pas, on vous le dit.",
+        a: "Pas forcément. Les automatisations de base (demande d'avis après une facture, relance des impayés, confirmation de rendez-vous) sont comprises dans les formules de [Sitaly](/tarifs/), dès 39 € par mois. Une automatisation sur mesure, qui relie plusieurs logiciels, se chiffre à part, tâche par tâche.",
       },
       {
         q: "Faut-il changer tous mes outils actuels ?",
@@ -69,9 +86,9 @@ export const contenu: BlogSection[] = [
       },
     ],
   },
-  { type: "h2", text: "Gagnez du temps avec les automatisations Sitaly" },
+  { type: "h2", text: "Ce que Sitaly automatise déjà pour vous" },
   {
     type: "p",
-    text: "Réponse automatique, relance des devis, rappels de rendez-vous, demande d'avis : Sitaly met en place les automatisations adaptées à votre activité, et les [agents IA](/agents-ia/) quand une demande doit être comprise avant d'être traitée. On commence simple, on mesure le temps gagné, on ajoute au fur et à mesure. Réservez un diagnostic offert de 30 minutes pour repérer vos deux automatisations prioritaires.",
+    text: "Dans l'application, plusieurs suivis tournent seuls : les [factures impayées sont relancées](/produits/devis-et-factures/) le lendemain de l'échéance puis à huit et quinze jours, les [rendez-vous pris en ligne](/produits/prise-de-rendez-vous/) arrivent par e-mail avec leur confirmation, et la [demande d'avis Google](/produits/avis-google/) part le lendemain d'une facture payée. Rien ne part sans votre accord. Pour une demande qui doit être comprise avant d'être traitée, un [agent IA sur mesure](/agents-ia/) prend le relais.",
   },
 ];

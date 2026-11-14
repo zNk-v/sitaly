@@ -1,18 +1,32 @@
 import { CREATEUR_IA as IA } from "@/data/offres";
 
 /**
- * Les pages comparatives (30 octobre 2026), /comparer/<id>/, sur le modèle des
- * pages « compare » de durable.com : Sitaly face à Wix, WordPress, Squarespace
- * et une agence web.
+ * Les pages comparatives, /comparer/<id>/, sur le modèle des pages « compare »
+ * de durable.com : Sitaly face à Wix, WordPress, Squarespace et une agence
+ * web (30 octobre 2026), puis une page « Alternatives à Wix » qui compare
+ * huit outils (audit SEO du 13 novembre 2026).
  *
  * Publicité comparative : chaque ligne doit rester exacte et vérifiable
- * (article L122-1 du Code de la consommation). Les prix des autres outils ont
- * été relevés sur leurs pages officielles le 30 octobre 2026 (RELEVE) ; à
- * revoir à chaque changement de leur grille. On compare des faits, sans
- * dénigrer : chaque page dit aussi quand l'autre choix est le bon.
+ * (article L122-1 du Code de la consommation). Les prix et fonctions des autres
+ * outils ont été relevés sur leurs pages officielles le 14 novembre 2026
+ * (RELEVE), chaque fait avec sa source. À revoir à chaque changement de leur
+ * grille, et au plus tard tous les trois mois. Ce qui n'a pas pu être vérifié
+ * s'écrit « non relevé » : on ne le devine pas. On compare des faits, sans
+ * dénigrer : chaque page dit aussi quand l'autre choix est le bon, et ce que
+ * Sitaly ne fait pas.
+ *
+ * Sitaly est une entreprise individuelle : on écrit « le fondateur », jamais
+ * « l'équipe ».
  */
 
-export const RELEVE = "30 octobre 2026";
+export const RELEVE = "14 novembre 2026";
+/** La même date, pour le dateModified des données structurées. */
+export const RELEVE_ISO = "2026-11-14";
+
+export interface Source {
+  label: string;
+  url: string;
+}
 
 export interface Ligne {
   critere: string;
@@ -20,47 +34,163 @@ export interface Ligne {
   autre: string;
 }
 
+/** Un fait relevé chez l'autre outil, avec la page qui le prouve. */
+export interface Fait {
+  texte: string;
+  source: Source;
+}
+
+/** Le coût sur trois ans : une ligne par formule, Sitaly comprise. */
+export interface Cout3Ans {
+  hypothese: string;
+  lignes: { offre: string; calcul: string; total: string }[];
+  lecture: string;
+}
+
+/** Un outil de la page « Alternatives à Wix ». */
+export interface Outil {
+  id: string;
+  nom: string;
+  /** Le site officiel de l'outil. */
+  site: string;
+  gratuit: string;
+  prix: string;
+  cout3Ans: string;
+  ia: string;
+  boutique: string;
+  rendezVous: string;
+  factures: string;
+  avis: string;
+  meilleurPour: string;
+  limite: string;
+  sources: Source[];
+}
+
 export interface Comparatif {
   id: string;
   /** Le nom tel qu'on le lit dans une phrase : « Wix », « une agence web ». */
   nom: string;
-  /** Le nom en tête de colonne. */
+  /** Le nom en tête de colonne et dans le fil d'Ariane. */
   colonne: string;
+  /** Le titre court des cartes et des liens : « Sitaly ou Wix ». */
+  carte: string;
+  /** La phrase sous le titre court, sur la page /comparer/. */
+  accroche: string;
   titre: string;
   description: string;
   intro: string;
+  /** Le site officiel de l'autre outil (données structurées). */
+  autreSite?: string;
+  /** « Lequel choisir ? » : 130 à 170 mots, qui dit quand l'autre choix est le bon. */
+  verdict: string[];
+  /** « Pas fait pour vous si… » : les limites de Sitaly, dites franchement. */
+  pasPourVous: string;
   choisirSitaly: string[];
   choisirAutre: string[];
+  /** Le tableau point par point (vide sur la page à plusieurs outils). */
   lignes: Ligne[];
+  /** La grille à plusieurs outils (page « Alternatives à Wix »). */
+  outils?: Outil[];
+  faits: Fait[];
+  cout?: Cout3Ans;
+  sections: { titre: string; paragraphes: string[] }[];
   faq: { q: string; a: string }[];
   /** Les pages officielles d'où viennent les chiffres de l'autre colonne. */
-  sources: { label: string; url: string }[];
+  sources: Source[];
 }
 
-const prixSitaly = `Gratuit pour commencer, puis ${IA.essentiel.mensuel} €/mois ou ${IA.essentiel.annuel} €/an (Essentiel)`;
+/** 1194 → « 1 194 € », avec une espace insécable, identique au serveur et au navigateur. */
+const euros = (n: number) => `${String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " ")} €`;
+
+const ESS = IA.essentiel;
+const PRO = IA.pro;
+
+const prixSitaly = `Gratuit pour commencer, puis ${ESS.mensuel} €/mois ou ${ESS.annuel} €/an (Essentiel)`;
 const domaineSitaly =
   "Offert avec Essentiel et Pro, au mois comme à l'année, et renouvelé tant que l'abonnement court";
 const creationSitaly =
-  "Une phrase sur votre activité : l'IA écrit le site complet et le met en ligne en une minute";
+  "Une phrase sur votre activité : l'IA écrit le site complet et le met en ligne en une minute environ";
+const facturesSitaly =
+  "Compris : devis acceptés en ligne, factures payées par carte sans commission Sitaly, relances automatiques en Essentiel et Pro (3 factures par mois en Découverte)";
+const rdvSitaly =
+  "Compris en Essentiel et Pro : page de réservation, confirmation et rappel par e-mail, sans commission. Pas en Découverte";
+const avisSitaly =
+  "Fiche Google connectée en Essentiel et Pro : chaque avis arrive avec une réponse préparée, publiée après votre clic, et vos clients reçoivent la demande d'avis";
+const assistanceSitaly = "Le fondateur, Teddy Vidal, par téléphone ou par e-mail";
+
+const coutSitaly = {
+  offre: "Sitaly Essentiel, payé à l'année",
+  calcul: `3 × ${ESS.annuel} €, nom de domaine compris`,
+  total: euros(ESS.annuel * 3),
+};
+const coutSitalyMois = {
+  offre: "Sitaly Essentiel, payé au mois",
+  calcul: `36 × ${ESS.mensuel} €, nom de domaine compris`,
+  total: euros(ESS.mensuel * 36),
+};
+
+/* Les sources, une fois chacune. */
+const S = {
+  wix: { label: "Tarifs Wix", url: "https://fr.wix.com/pricing" },
+  wixReservations: {
+    label: "Aide Wix : Wix Bookings et forfaits Premium",
+    url: "https://support.wix.com/fr/article/wix-bookings-booster-wix-bookings-vers-un-forfait-premium-business",
+  },
+  wixAvis: {
+    label: "Aide Wix : gérer les avis de la fiche Google",
+    url: "https://support.wix.com/fr/article/g%C3%A9rer-les-avis-dans-fiche-d%C3%A9tablissement-google",
+  },
+  wixFactures: {
+    label: "Aide Wix : factures et devis",
+    url: "https://support.wix.com/fr/factures-et-devis-wix",
+  },
+  wordpress: { label: "Tarifs WordPress.com", url: "https://wordpress.com/fr/pricing/" },
+  squarespace: { label: "Tarifs Squarespace", url: "https://fr.squarespace.com/tarification" },
+  hostinger: {
+    label: "Tarifs du créateur IA Hostinger",
+    url: "https://www.hostinger.com/fr/pricing/ai-builder",
+  },
+  webador: { label: "Tarifs Webador", url: "https://www.webador.fr/tarifs" },
+  jimdo: { label: "Offres et tarifs Jimdo", url: "https://www.jimdo.com/fr/offres/" },
+  site123: { label: "Tarifs SITE123", url: "https://fr.site123.com/tarifs" },
+  site123Rdv: {
+    label: "SITE123 : prise de rendez-vous",
+    url: "https://fr.site123.com/online-appointment-scheduler",
+  },
+  barometre: {
+    label: "Baromètre des prix de La Fabrique du Net",
+    url: "https://www.lafabriquedunet.fr/agences/pages/agences-site-internet/tarifs",
+  },
+} satisfies Record<string, Source>;
 
 export const COMPARATIFS: Comparatif[] = [
   {
     id: "wix",
     nom: "Wix",
     colonne: "Wix",
+    carte: "Sitaly ou Wix",
+    accroche: "Construire son site bloc par bloc, ou le faire écrire par l'IA en une phrase.",
+    autreSite: "https://fr.wix.com/",
     titre: "Sitaly ou Wix : lequel choisir pour votre site ?",
     description:
-      "Sitaly ou Wix : création, prix, nom de domaine, modifications. Le comparatif honnête pour choisir l'outil qui convient à votre activité.",
+      "Sitaly ou Wix : création, prix sur trois ans, nom de domaine, devis, rendez-vous et avis Google. Le comparatif honnête, prix relevés le 14 novembre 2026.",
     intro:
-      "Wix est un créateur de site très complet, avec des centaines de modèles et un éditeur où l'on place chaque élément soi-même. Sitaly part de l'autre bout : vous décrivez votre activité, l'IA écrit et publie le site, et vous le retouchez en lui parlant.",
+      "Wix est un créateur de site très complet, avec plus de 900 modèles et un éditeur où vous placez chaque élément. Sitaly part de l'autre bout : vous décrivez votre activité, l'IA écrit et publie le site, et vous le retouchez en écrivant ce qu'il faut changer. Les deux outils servent des besoins différents ; cette page vous aide à savoir lequel est le vôtre.",
+    verdict: [
+      "Prenez Wix si vous aimez construire : choisir un modèle, placer chaque bloc, ajouter des applications. Wix coûte moins cher que Sitaly en entrée de gamme (16,80 € TTC par mois, payés à l'année) et vend en ligne dès son forfait Essentiel. Pour ouvrir une boutique, Wix est le meilleur choix des deux.",
+      "Prenez Sitaly si vous tenez une petite entreprise de services, artisan, coiffeuse, coach ou consultant, et que vous voulez un site en ligne aujourd'hui sans le monter vous-même. L'IA écrit les textes pour votre métier, et la même application fait vos devis et factures, prend vos rendez-vous et prépare vos réponses aux avis Google. Wix propose aussi ces fonctions, réparties entre plusieurs applications et selon le forfait. Chez Sitaly, vous payez plus, mais vous n'assemblez rien, et votre nom de domaine reste compris tant que l'abonnement court.",
+    ],
+    pasPourVous:
+      "Sitaly n'est pas fait pour vous si vous vendez des produits en ligne : l'application ne gère ni catalogue ni panier. Passez aussi votre chemin si vous voulez régler chaque marge au pixel ou brancher des dizaines d'applications tierces. Sitaly est un produit jeune, lancé fin octobre 2026, et une entreprise individuelle : son fondateur répond lui-même, sans service client derrière lui.",
     choisirSitaly: [
       "Vous voulez un site en ligne aujourd'hui, sans passer vos soirées à le construire.",
-      "Vous préférez dire ce que vous voulez changer plutôt que déplacer des blocs.",
-      "Vous voulez votre nom de domaine compris, même en payant au mois.",
+      "Vous préférez écrire ce que vous voulez changer plutôt que déplacer des blocs.",
+      "Vous voulez vos devis, vos rendez-vous et vos avis Google dans la même application que votre site.",
     ],
     choisirAutre: [
       "Vous voulez régler chaque détail de la mise en page vous-même.",
-      "Vous avez besoin d'une boutique en ligne complète ou d'applications spécialisées.",
+      "Vous avez besoin d'une boutique en ligne ou d'applications spécialisées.",
+      "Votre budget est serré : l'entrée de gamme Wix coûte moins cher sur trois ans.",
     ],
     lignes: [
       {
@@ -70,59 +200,362 @@ export const COMPARATIFS: Comparatif[] = [
       },
       {
         critere: "Modifications",
-        sitaly: "En une phrase à l'IA, ou à la main dans l'éditeur",
+        sitaly:
+          "Vous écrivez ce qu'il faut changer à l'IA, ou vous corrigez à la main dans l'éditeur",
         autre: "Dans l'éditeur glisser-déposer",
+      },
+      {
+        critere: "Formule gratuite",
+        sitaly: "Oui, Découverte, sans carte bancaire, sur votre-nom.sitaly.fr",
+        autre: "Oui, un site gratuit à l'adresse Wix, avec la marque Wix",
       },
       {
         critere: "Prix d'entrée payant",
         sitaly: prixSitaly,
-        autre: "Light à 16,80 €/mois TTC, payé à l'année",
+        autre: "Light à 16,80 €/mois TTC, payé à l'année en une fois",
       },
       {
         critere: "Nom de domaine",
         sitaly: domaineSitaly,
-        autre: "Offert la première année avec un forfait Premium annuel",
+        autre: "Offert la première année avec un forfait Premium",
+      },
+      {
+        critere: "Devis et factures",
+        sitaly: facturesSitaly,
+        autre: "Appli Factures et devis Wix ; paiement en ligne avec un forfait Premium",
+      },
+      {
+        critere: "Prise de rendez-vous",
+        sitaly: rdvSitaly,
+        autre: "Wix Bookings : un forfait Premium est nécessaire pour recevoir des réservations",
+      },
+      {
+        critere: "Avis Google",
+        sitaly: avisSitaly,
+        autre: "Vous répondez aux avis de votre fiche Google depuis le tableau de bord Wix",
       },
       {
         critere: "Boutique en ligne",
-        sitaly: "Pas encore : Sitaly fait des sites vitrines",
+        sitaly: "Non : Sitaly fait des sites vitrines",
         autre: "Oui, à partir du forfait Essentiel (30 €/mois TTC)",
       },
+      { critere: "Assistance", sitaly: assistanceSitaly, autre: "Assistance en français" },
+    ],
+    faits: [
       {
-        critere: "Assistance",
-        sitaly: "Une équipe en France, par e-mail",
-        autre: "Assistance en français",
+        texte:
+          "Quatre forfaits Premium : Light 16,80 €, Essentiel 30 €, Business 40,80 € et Business Plus 178,80 € par mois, TVA comprise, pour un abonnement annuel réglé en totalité à l'achat.",
+        source: S.wix,
+      },
+      {
+        texte: "Domaine gratuit pendant un an avec chaque forfait Premium.",
+        source: S.wix,
+      },
+      {
+        texte:
+          "Le forfait Light ne comprend ni paiements en ligne ni e-commerce ; les deux commencent au forfait Essentiel.",
+        source: S.wix,
+      },
+      {
+        texte:
+          "Un site Wix gratuit peut afficher vos services, mais il faut un forfait Premium pour recevoir des réservations et des paiements.",
+        source: S.wixReservations,
+      },
+      {
+        texte:
+          "Une fois votre fiche Google vérifiée, vous répondez aux avis depuis le tableau de bord de votre site.",
+        source: S.wixAvis,
+      },
+      {
+        texte: "Garantie de remboursement de 14 jours sur les forfaits Premium.",
+        source: S.wix,
+      },
+    ],
+    cout: {
+      hypothese:
+        "Un site vitrine payé à l'année pendant trois ans, avec votre nom de domaine. Chez Wix, le renouvellement du domaine à partir de la deuxième année s'ajoute : nous n'avons pas relevé son prix.",
+      lignes: [
+        coutSitaly,
+        coutSitalyMois,
+        {
+          offre: "Wix Light",
+          calcul: "36 × 16,80 € TTC, domaine offert la première année",
+          total: "604,80 €",
+        },
+        {
+          offre: "Wix Essentiel (paiements en ligne, boutique)",
+          calcul: "36 × 30 € TTC, domaine offert la première année",
+          total: "1 080 €",
+        },
+      ],
+      lecture:
+        "Wix Light coûte deux fois moins cher que Sitaly Essentiel sur trois ans. L'écart se réduit avec Wix Essentiel, le forfait qui encaisse les paiements en ligne. Comptez aussi votre temps : chez Wix, vous écrivez les textes et montez les pages vous-même.",
+    },
+    sections: [
+      {
+        titre: "Créer le site : construire ou décrire",
+        paragraphes: [
+          "Chez Wix, vous partez d'un modèle. Vous remplacez les textes d'exemple, vous ajoutez vos photos, vous déplacez les sections jusqu'à obtenir la page voulue. Le résultat dépend de votre œil et du temps que vous y passez : comptez une soirée pour une page simple, davantage pour un site de cinq pages.",
+          "Chez Sitaly, vous écrivez une phrase, par exemple « plombier à Lyon, dépannage et salles de bain ». L'IA écrit l'accueil, les services, la zone d'intervention et les questions fréquentes, choisit les photos et publie le site en une minute environ. Vous relisez ensuite et vous corrigez ce qui ne vous ressemble pas.",
+        ],
+      },
+      {
+        titre: "Le faire vivre au quotidien",
+        paragraphes: [
+          "Pour changer vos horaires chez Wix, vous ouvrez l'éditeur, vous retrouvez le bloc et vous le modifiez. Chez Sitaly, vous écrivez « fermé le samedi en août » et le site se met à jour. Les deux méthodes marchent : la première donne plus de contrôle, la seconde prend moins de temps.",
+          "Autour du site, Sitaly réunit dans une seule application vos clients, vos devis, vos factures, vos rendez-vous et vos avis Google. Wix offre un éventail plus large d'applications, que vous choisissez et réglez une par une selon votre forfait.",
+        ],
       },
     ],
     faq: [
       {
         q: "Puis-je passer de Wix à Sitaly ?",
-        a: "Oui. Décrivez votre activité : l'IA crée un nouveau site en une minute. Vous reprenez ensuite vos textes et vos photos en les donnant à l'IA, et vous reliez votre nom de domaine quand le site vous plaît.",
+        a: "Oui. Décrivez votre activité : l'IA crée un nouveau site en une minute environ. Vous reprenez ensuite vos textes et vos photos en les donnant à l'IA, et vous reliez votre nom de domaine quand le site vous plaît.",
       },
       {
         q: "Wix a aussi de l'IA : quelle différence ?",
-        a: "Wix propose des outils d'IA dans un éditeur complet, pensé pour qui veut tout régler. Sitaly est construit autour de l'IA : pas de modèle à remplir ni de blocs à placer, vous parlez à votre site et il se met à jour.",
+        a: "Wix propose des outils d'IA dans un éditeur complet, pensé pour qui veut tout régler. Sitaly est construit autour de l'IA : pas de modèle à remplir ni de blocs à placer, vous écrivez à votre site et il se met à jour.",
+      },
+      {
+        q: "Wix est-il moins cher que Sitaly ?",
+        a: "En entrée de gamme, oui : 604,80 € TTC sur trois ans pour Wix Light, contre 1 194 € pour Sitaly Essentiel payé à l'année. Sitaly comprend en plus le domaine chaque année, les devis et factures, la prise de rendez-vous et les réponses aux avis Google.",
       },
     ],
-    sources: [{ label: "Tarifs Wix", url: "https://fr.wix.com/pricing" }],
+    sources: [S.wix, S.wixReservations, S.wixAvis, S.wixFactures],
+  },
+  {
+    id: "alternatives-wix",
+    nom: "un autre créateur de site",
+    colonne: "Alternatives à Wix",
+    carte: "Alternatives à Wix",
+    accroche:
+      "Huit créateurs de site disponibles en France, prix et fonctions relevés à la même date.",
+    titre: "Alternatives à Wix : 8 créateurs de site comparés",
+    description:
+      "Sitaly, Hostinger, Webador, Jimdo, SITE123, Squarespace, WordPress.com : les alternatives à Wix comparées sur trois ans. Prix relevés le 14/11/2026.",
+    intro:
+      "Wix ne convient pas à tout le monde : trop d'options pour certains, un domaine offert seulement la première année pour d'autres. Voici sept autres créateurs de site disponibles en France, et Wix pour repère. Nous avons relevé leurs prix et leurs fonctions le 14 novembre 2026 sur leurs pages officielles. Sitaly figure dans la liste : c'est notre outil, et il ne gagne pas toutes les lignes.",
+    verdict: [
+      "Le moins cher sur trois ans : Hostinger, si vous acceptez de payer 48 mois d'avance, puis WordPress.com et Webador. Pour une boutique, gardez Wix ou prenez Squarespace, qui vend dès son premier forfait. Pour des réservations sans payer, Jimdo les ouvre même dans sa formule gratuite. Pour le design, Squarespace reste la référence des créatifs. Pour tout régler vous-même avec des extensions, WordPress.com.",
+      "Sitaly coûte plus cher que ces outils en entrée de gamme. Il vise un cas précis : l'artisan, l'indépendant ou la TPE de services qui veut un site écrit pour lui sans rien construire, et qui veut aussi faire ses devis et factures, prendre ses rendez-vous et répondre à ses avis Google dans la même application. Si ce n'est pas votre cas, un des sept autres outils vous servira mieux, et pour moins cher.",
+    ],
+    pasPourVous:
+      "Sitaly n'est pas fait pour vous si vous vendez des produits en ligne, si votre budget ne dépasse pas quelques euros par mois, ou si vous voulez construire chaque page vous-même. C'est aussi le plus jeune outil de cette liste, lancé fin octobre 2026 par une entreprise individuelle : vous parlez à son fondateur, pas à un centre d'assistance ouvert jour et nuit.",
+    choisirSitaly: [
+      "Vous voulez un site écrit pour votre métier, en ligne en une minute environ.",
+      "Vous voulez vos devis, rendez-vous et avis Google au même endroit que votre site.",
+      "Vous voulez votre nom de domaine compris chaque année, pas seulement la première.",
+    ],
+    choisirAutre: [
+      "Vous vendez des produits : les sept autres outils de cette liste proposent une boutique.",
+      "Vous cherchez le prix le plus bas : Hostinger, WordPress.com ou Webador.",
+      "Vous voulez construire et régler chaque page vous-même.",
+    ],
+    lignes: [],
+    outils: [
+      {
+        id: "sitaly",
+        nom: "Sitaly",
+        site: "https://sitaly.fr/",
+        gratuit: "Oui, Découverte, sans carte bancaire",
+        prix: `${ESS.mensuel} €/mois ou ${ESS.annuel} €/an (Essentiel), TVA non applicable`,
+        cout3Ans: `${euros(ESS.annuel * 3)}, domaine compris`,
+        ia: "Le site complet écrit à partir d'une phrase, modifié en écrivant ce qu'il faut changer",
+        boutique: "Non",
+        rendezVous: "Oui, en Essentiel et Pro",
+        factures: "Oui, dans toutes les formules (3 factures par mois en Découverte)",
+        avis: "Fiche connectée en Essentiel et Pro, réponse préparée par l'IA",
+        meilleurPour:
+          "L'artisan ou l'indépendant de services qui veut un site écrit pour lui, avec devis, rendez-vous et avis Google au même endroit.",
+        limite:
+          "Le plus cher de la liste en entrée de gamme, pas de boutique, produit jeune porté par une seule personne.",
+        sources: [],
+      },
+      {
+        id: "wix",
+        nom: "Wix",
+        site: "https://fr.wix.com/",
+        gratuit: "Oui, avec la marque et l'adresse Wix",
+        prix: "Light 16,80 €/mois TTC, payé à l'année",
+        cout3Ans: "604,80 € TTC, plus le domaine dès la 2e année",
+        ia: "Outils d'IA dans l'éditeur",
+        boutique: "Dès Essentiel, 30 €/mois TTC",
+        rendezVous: "Wix Bookings, avec un forfait Premium",
+        factures: "Appli Factures et devis Wix",
+        avis: "Réponse depuis le tableau de bord",
+        meilleurPour:
+          "Qui veut tout régler soi-même et vendre en ligne, avec un large choix d'applications.",
+        limite:
+          "Domaine offert un an seulement, forfaits payés à l'année d'avance, beaucoup d'options à apprendre.",
+        sources: [S.wix, S.wixReservations, S.wixAvis],
+      },
+      {
+        id: "hostinger",
+        nom: "Hostinger (créateur IA)",
+        site: "https://www.hostinger.com/fr",
+        gratuit: "Non relevé ; garantie satisfait ou remboursé de 30 jours",
+        prix: "Premium 1,99 €/mois HT en offre Black Friday, 95,52 € HT payés pour 48 mois",
+        cout3Ans: "95,52 € HT pour 48 mois, puis 9,99 €/mois HT au renouvellement",
+        ia: "Créateur IA : le site se construit en échangeant avec l'IA (crédits IA)",
+        boutique: "Hostinger Ecommerce offert un an avec Unlimited, puis 1,99 €/mois",
+        rendezVous: "Inclus selon le comparatif des packs",
+        factures: "Non relevé",
+        avis: "Non relevé",
+        meilleurPour: "Le plus petit budget, si vous acceptez de payer quatre ans d'avance.",
+        limite:
+          "Prix hors TVA, offre à durée limitée, renouvellement automatique à 9,99 €/mois HT pour la même durée.",
+        sources: [S.hostinger],
+      },
+      {
+        id: "webador",
+        nom: "Webador",
+        site: "https://www.webador.fr/",
+        gratuit: "Oui, sans nom de domaine",
+        prix: "Pro 10 €/mois HT payé à l'année (5 € les 12 premiers mois jusqu'au 30 novembre 2026)",
+        cout3Ans: "340 € HT avec l'offre, domaine compris (400 € HT sans l'offre)",
+        ia: "Fonctions basées sur l'IA",
+        boutique: "10 produits en Pro, illimitée en Business (20 €/mois HT)",
+        rendezVous: "Non relevé",
+        factures: "Non relevé",
+        avis: "Fonctions fiche Google en Business",
+        meilleurPour: "Un site simple et peu cher, avec une petite boutique.",
+        limite:
+          "Le forfait Lite affiche des publicités ; domaine gratuit la première année, puis 20 € par an.",
+        sources: [S.webador],
+      },
+      {
+        id: "jimdo",
+        nom: "Jimdo",
+        site: "https://www.jimdo.com/fr/",
+        gratuit: "Oui, Free, sur un sous-domaine Jimdo",
+        prix: "Start 12,10 €/mois TTC, soit 145,20 € par an",
+        cout3Ans: "435,60 € TTC, plus le domaine dès la 2e année",
+        ia: "Site créé avec l'IA et assistant Companion AI, sans crédit à acheter",
+        boutique: "Dès Complete, 29,65 €/mois TTC",
+        rendezVous:
+          "Oui, dans toutes les offres, gratuite comprise (options avancées : 6,55 €/mois)",
+        factures: "Non relevé",
+        avis: "Réponse aux avis avec l'option Listings Management (5,55 €/mois) ou Unlimited",
+        meilleurPour: "Prendre des réservations en ligne sans payer, avec un assistant IA compris.",
+        limite:
+          "Boutique réservée aux offres Complete et Unlimited ; réponse aux avis en option payante.",
+        sources: [S.jimdo],
+      },
+      {
+        id: "site123",
+        nom: "SITE123",
+        site: "https://fr.site123.com/",
+        gratuit: "Oui, sur un sous-domaine",
+        prix: "Premium 12,80 $/mois (prix en dollars sur la page française)",
+        cout3Ans: "460,80 $, plus le domaine dès la 2e année",
+        ia: "Non relevé",
+        boutique: "Oui, avec Premium",
+        rendezVous: "Module de rendez-vous en ligne (forfait non précisé)",
+        factures: "Non relevé",
+        avis: "Non relevé",
+        meilleurPour: "Démarrer sans rien connaître, avec une assistance par chat à toute heure.",
+        limite:
+          "Prix affichés en dollars ; la page des tarifs détaille peu les fonctions de chaque forfait.",
+        sources: [S.site123, S.site123Rdv],
+      },
+      {
+        id: "squarespace",
+        nom: "Squarespace",
+        site: "https://fr.squarespace.com/",
+        gratuit: "Non, essai gratuit de 14 jours",
+        prix: "Basic 12 €/mois payé à l'année, 17 € au mois",
+        cout3Ans: "432 €, plus le domaine dès la 2e année",
+        ia: "Outils d'IA intégrés, 10 crédits IA en Basic",
+        boutique: "Oui, 2 % de frais en Basic, 0 % dès Essentiel (18 €/mois)",
+        rendezVous: "Par Acuity Scheduling, un produit à part",
+        factures: "Facturation incluse dans tous les forfaits",
+        avis: "Non relevé",
+        meilleurPour: "Les créatifs qui veulent des modèles soignés et une facturation intégrée.",
+        limite: "Pas de formule gratuite ; la page des tarifs ne précise pas la TVA.",
+        sources: [S.squarespace],
+      },
+      {
+        id: "wordpress-com",
+        nom: "WordPress.com",
+        site: "https://wordpress.com/fr/",
+        gratuit: "Oui, avec publicités et adresse WordPress.com",
+        prix: "Personnel 4 €/mois HT payé à l'année, 9 € au mois",
+        cout3Ans: "144 € HT, plus le domaine dès la 2e année",
+        ia: "Non relevé",
+        boutique: "Complète avec Commerce, 45 €/mois HT",
+        rendezVous: "Par une extension, à choisir",
+        factures: "Par une extension, à choisir",
+        avis: "Non relevé",
+        meilleurPour:
+          "Qui veut la liberté de WordPress et ses extensions, sans gérer d'hébergement.",
+        limite: "Vous écrivez et montez tout ; rendez-vous et factures passent par des extensions.",
+        sources: [S.wordpress],
+      },
+    ],
+    faits: [],
+    sections: [
+      {
+        titre: "Comment nous avons comparé",
+        paragraphes: [
+          "Pour chaque outil, nous avons pris le premier forfait qui retire la marque de l'outil et permet votre propre nom de domaine. Le coût sur trois ans multiplie ce prix par 36 mois, au tarif annuel affiché le 14 novembre 2026. Il ne compte pas le renouvellement du domaine quand l'outil ne l'offre que la première année : ajoutez quelques dizaines d'euros par an.",
+          "Les prix ne se lisent pas tous de la même façon. Wix et Jimdo affichent la TVA comprise ; Hostinger, Webador et WordPress.com affichent des prix hors taxes ; SITE123 affiche des dollars ; la page de Squarespace ne précise pas la TVA. Sitaly n'applique pas de TVA (article 293 B du CGI). Quand une ligne dit « non relevé », nous n'avons pas trouvé l'information sur la page officielle : la fonction existe peut-être, vérifiez-la avant de choisir.",
+        ],
+      },
+      {
+        titre: "Trois questions pour trancher",
+        paragraphes: [
+          "Vendez-vous des produits ? Si oui, écartez Sitaly et regardez Wix, Squarespace, Jimdo Complete ou WordPress.com Commerce. Voulez-vous écrire et placer chaque page vous-même ? Wix, Squarespace et WordPress.com vous laissent la main sur tout. Voulez-vous le moins cher possible ? Hostinger et WordPress.com coûtent le moins sur trois ans, à condition de payer d'avance.",
+          "Si vous répondez non aux trois, et que votre journée se passe chez vos clients plutôt que devant un écran, Sitaly vous fait gagner le plus de temps : le site s'écrit seul, et les devis, les rendez-vous et les avis Google se gèrent depuis la même application.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Quelle est l'alternative à Wix la moins chère ?",
+        a: "Au relevé du 14 novembre 2026, Hostinger : 95,52 € HT payés d'avance pour 48 mois, en offre Black Friday. Viennent ensuite WordPress.com (144 € HT sur trois ans) et Webador (340 € HT sur trois ans avec son offre actuelle).",
+      },
+      {
+        q: "Quelle alternative à Wix choisir pour un artisan ?",
+        a: "Si vous voulez seulement une vitrine, Webador ou Jimdo suffisent pour peu cher. Si vous voulez aussi faire vos devis, prendre des rendez-vous et répondre à vos avis Google sans changer d'outil, Sitaly réunit les trois avec un site écrit par l'IA.",
+      },
+      {
+        q: "Quelle alternative à Wix pour une boutique en ligne ?",
+        a: "Wix vend dès Essentiel, Squarespace dès Basic, Webador dès Pro (10 produits), Jimdo dès Complete et WordPress.com avec Commerce. Sitaly ne fait pas de boutique en ligne.",
+      },
+      {
+        q: "Ces prix sont-ils à jour ?",
+        a: "Nous les avons relevés le 14 novembre 2026 sur les pages officielles citées sous le tableau. Plusieurs outils affichent des offres limitées dans le temps : vérifiez le prix du jour avant de payer.",
+      },
+    ],
+    sources: [S.wix, S.hostinger, S.webador, S.jimdo, S.site123, S.squarespace, S.wordpress],
   },
   {
     id: "wordpress",
     nom: "WordPress",
     colonne: "WordPress",
+    carte: "Sitaly ou WordPress",
+    accroche: "La liberté de WordPress, ou un site prêt sans hébergement ni extensions à gérer.",
+    autreSite: "https://wordpress.com/fr/",
     titre: "Sitaly ou WordPress : lequel choisir pour votre site ?",
     description:
-      "Sitaly ou WordPress : temps de création, hébergement, mises à jour, coût réel. Le comparatif pour choisir sans se tromper.",
+      "Sitaly ou WordPress : temps de création, hébergement, mises à jour, coût sur trois ans, devis et rendez-vous. Prix WordPress.com relevés le 14 novembre 2026.",
     intro:
-      "WordPress fait tourner une grande partie du web : il peut tout faire, à condition de le choisir, l'installer, l'héberger, le mettre à jour et le sécuriser. Sitaly s'occupe de tout cela à votre place : vous décrivez votre activité, le site est en ligne.",
+      "WordPress fait tourner une grande partie du web : il peut tout faire, à condition de le choisir, l'installer, l'héberger, le mettre à jour et le sécuriser. Il existe en deux versions : le logiciel libre, à installer chez un hébergeur, et WordPress.com, qui l'héberge pour vous. Sitaly s'occupe de tout cela à votre place : vous décrivez votre activité, le site est en ligne.",
+    verdict: [
+      "Prenez WordPress si vous voulez une liberté totale : de nombreux thèmes, plus de 60 000 extensions, un site que vous pouvez déplacer chez n'importe quel hébergeur. C'est le bon choix si vous avez un développeur, du temps pour apprendre, ou un projet précis comme un espace membres ou un catalogue complexe. Sur WordPress.com, l'entrée de gamme coûte aussi bien moins cher que Sitaly.",
+      "Prenez Sitaly si vous ne voulez ni choisir un thème, ni installer d'extensions, ni penser aux mises à jour. L'IA écrit vos textes pour votre métier et publie le site en une minute environ ; vous le modifiez en écrivant ce qu'il faut changer. Les devis et factures, la prise de rendez-vous et les avis Google sont déjà là, sans extension à choisir ni à maintenir. Vous payez un prix fixe, nom de domaine compris chaque année.",
+    ],
+    pasPourVous:
+      "Sitaly n'est pas fait pour vous si vous voulez installer vos propres extensions, toucher au code ou emporter les fichiers de votre site chez un autre hébergeur. Ni si vous vendez des produits : il n'y a pas de boutique dans l'application. Sitaly est aussi un produit jeune, lancé fin octobre 2026 et tenu par une seule personne, quand WordPress s'appuie sur une communauté mondiale.",
     choisirSitaly: [
       "Vous ne voulez gérer ni hébergement, ni extensions, ni mises à jour de sécurité.",
-      "Vous voulez un site prêt en une minute, que vous modifiez en une phrase.",
-      "Vous voulez un prix fixe, nom de domaine compris.",
+      "Vous voulez un site prêt en une minute environ, que vous modifiez en une phrase.",
+      "Vous voulez un prix fixe, nom de domaine compris chaque année.",
     ],
     choisirAutre: [
       "Vous avez un développeur, ou le temps d'apprendre, et un projet très particulier.",
       "Vous avez besoin d'extensions précises : forum, espace membres, catalogue complexe.",
+      "Vous voulez le prix le plus bas et vous écrivez vos textes vous-même.",
     ],
     lignes: [
       {
@@ -144,19 +577,101 @@ export const COMPARATIFS: Comparatif[] = [
       },
       {
         critere: "Textes et photos",
-        sitaly: "Écrits et créés par l'IA, pour votre métier",
+        sitaly: "Écrits et choisis par l'IA, pour votre métier",
         autre: "À écrire et à trouver vous-même",
       },
       {
-        critere: "Prix",
+        critere: "Prix d'entrée payant",
         sitaly: prixSitaly,
-        autre: "Hébergement, thème, extensions et éventuellement un prestataire, selon vos choix",
+        autre: "WordPress.com Personnel à 4 €/mois HT payé à l'année, 9 € au mois",
       },
       {
         critere: "Nom de domaine",
         sitaly: domaineSitaly,
         autre:
           "Offert la première année sur les formules annuelles de WordPress.com ; sinon à acheter",
+      },
+      {
+        critere: "Devis et factures",
+        sitaly: facturesSitaly,
+        autre: "Par une extension, à choisir et à régler",
+      },
+      {
+        critere: "Prise de rendez-vous",
+        sitaly: rdvSitaly,
+        autre: "Par une extension, à choisir et à régler",
+      },
+      {
+        critere: "Avis Google",
+        sitaly: avisSitaly,
+        autre: "Par une extension, à choisir et à régler",
+      },
+      {
+        critere: "Boutique en ligne",
+        sitaly: "Non : Sitaly fait des sites vitrines",
+        autre:
+          "Avec WooCommerce ; boutique complète dans la formule Commerce de WordPress.com (45 €/mois HT)",
+      },
+    ],
+    faits: [
+      {
+        texte:
+          "Cinq formules sur WordPress.com : Gratuit, Personnel 4 €, Premium 8 €, Business 25 € et Commerce 45 € par mois hors taxe, facturés tous les 12 mois. Au mois : 9 €, 18 €, 40 € et 70 €.",
+        source: S.wordpress,
+      },
+      {
+        texte:
+          "Domaine gratuit pendant un an avec les formules payantes annuelles ; les plans mensuels n'en offrent pas.",
+        source: S.wordpress,
+      },
+      {
+        texte:
+          "Plus de 60 000 extensions disponibles, ou une extension que vous téléversez vous-même, sur les formules payantes.",
+        source: S.wordpress,
+      },
+      {
+        texte: "La formule gratuite affiche des publicités WordPress.com à vos visiteurs.",
+        source: S.wordpress,
+      },
+    ],
+    cout: {
+      hypothese:
+        "Un site vitrine sur WordPress.com, payé à l'année pendant trois ans. Les prix WordPress.com sont hors taxe : ajoutez 20 % de TVA si vous ne la récupérez pas. Le domaine à partir de la deuxième année et les extensions payantes ne sont pas comptés.",
+      lignes: [
+        coutSitaly,
+        {
+          offre: "WordPress.com Personnel",
+          calcul: "36 × 4 € HT, domaine offert la première année",
+          total: "144 € HT (172,80 € TTC)",
+        },
+        {
+          offre: "WordPress.com Premium",
+          calcul: "36 × 8 € HT, domaine offert la première année",
+          total: "288 € HT (345,60 € TTC)",
+        },
+        {
+          offre: "WordPress.com Business",
+          calcul: "36 × 25 € HT, domaine offert la première année",
+          total: "900 € HT (1 080 € TTC)",
+        },
+      ],
+      lecture:
+        "WordPress.com coûte moins cher que Sitaly en abonnement. Le reste se paie en temps : choisir un thème, écrire chaque page, trouver une extension de réservation et une de facturation, puis les tenir à jour. Avec un WordPress installé chez un hébergeur, ajoutez l'hébergement et, souvent, un prestataire pour la maintenance.",
+    },
+    sections: [
+      {
+        titre: "Ce que « gratuit » veut dire",
+        paragraphes: [
+          "Le logiciel WordPress est libre et gratuit. Le site, lui, a besoin d'un hébergement, d'un nom de domaine, souvent d'un thème et d'extensions payants. Sur WordPress.com, l'hébergement est compris, mais la formule gratuite affiche des publicités et une adresse en wordpress.com.",
+          "Chez Sitaly, la formule Découverte est gratuite, sans carte bancaire, sur votre-nom.sitaly.fr. Les formules payantes ajoutent votre nom de domaine, renouvelé tant que l'abonnement court.",
+        ],
+      },
+      {
+        titre: "Le temps que vous y passez",
+        paragraphes: [
+          "Un site WordPress demande des choix à chaque étape : le thème, le constructeur de pages, l'extension de formulaire, celle de réservation, celle du référencement. Chacune a ses réglages et ses mises à jour. C'est une force si vous aimez maîtriser l'outil, une charge si vous voulez seulement que le site marche.",
+          "Sitaly fait ces choix pour vous. Titres, descriptions, plan du site et données pour Google sont prêts dès la publication, et la rubrique Visibilité vous dit ce qui manque.",
+        ],
       },
     ],
     faq: [
@@ -166,20 +681,33 @@ export const COMPARATIFS: Comparatif[] = [
       },
       {
         q: "Mon site Sitaly sera-t-il bien référencé ?",
-        a: "Oui : titres, descriptions, plan du site et données pour Google sont préparés dès la publication, et le site est rapide car il ne charge rien d'inutile.",
+        a: "Titres, descriptions, plan du site et données pour Google sont préparés dès la publication, et le site charge vite car il ne charge rien d'inutile. Personne ne peut promettre la première place : la concurrence de votre ville compte aussi.",
+      },
+      {
+        q: "Puis-je récupérer mon site Sitaly pour l'installer sur WordPress ?",
+        a: "Non, pas sous forme de fichiers WordPress. Vous gardez vos textes, vos photos et votre nom de domaine, que vous pouvez reprendre ailleurs.",
       },
     ],
-    sources: [{ label: "Tarifs WordPress.com", url: "https://wordpress.com/fr/pricing/" }],
+    sources: [S.wordpress],
   },
   {
     id: "squarespace",
     nom: "Squarespace",
     colonne: "Squarespace",
+    carte: "Sitaly ou Squarespace",
+    accroche: "Des modèles soignés à remplir, ou un site écrit pour vous en français.",
+    autreSite: "https://fr.squarespace.com/",
     titre: "Sitaly ou Squarespace : lequel choisir pour votre site ?",
     description:
-      "Sitaly ou Squarespace : création, prix, nom de domaine, langue. Le comparatif pour choisir l'outil qui convient à votre activité.",
+      "Sitaly ou Squarespace : création, prix sur trois ans, nom de domaine, facturation, rendez-vous. Le comparatif, prix relevés le 14 novembre 2026.",
     intro:
-      "Squarespace est connu pour ses modèles soignés, très appréciés des créatifs. Sitaly vise le même résultat professionnel sans passer par un modèle à remplir : l'IA écrit votre site à partir d'une phrase.",
+      "Squarespace est connu pour ses modèles soignés, appréciés des photographes, des designers et des créatifs. Sitaly vise un site professionnel sans passer par un modèle à remplir : l'IA écrit votre site à partir d'une phrase, en français, pour votre métier.",
+    verdict: [
+      "Prenez Squarespace si le rendu graphique passe avant tout et que vous aimez composer vos pages. Ses modèles sont parmi les plus soignés du marché, la facturation est comprise dans tous les forfaits, et vous pouvez vendre dès le forfait Basic. Sur trois ans, Squarespace Basic coûte aussi moins cher que Sitaly Essentiel.",
+      "Prenez Sitaly si vous voulez commencer sans payer, sans carte bancaire, et que vous préférez que les textes soient écrits pour vous. Sitaly réunit dans la même application les devis acceptés en ligne, la prise de rendez-vous et la réponse aux avis Google, quand Squarespace passe par Acuity, un produit à part, pour les rendez-vous. Votre nom de domaine reste compris chaque année, même en payant au mois. Pour un artisan ou un indépendant de services, ces outils comptent souvent plus qu'un modèle très graphique.",
+    ],
+    pasPourVous:
+      "Sitaly n'est pas fait pour vous si vous êtes photographe ou designer et que votre site est votre portfolio : Sitaly propose quatre thèmes, pas des dizaines de modèles. Ni si vous vendez des produits, ce que Squarespace fait et Sitaly non. Sitaly est un produit jeune, lancé fin octobre 2026, tenu par une seule personne : son fondateur vous répond lui-même.",
     choisirSitaly: [
       "Vous voulez commencer gratuitement, sans carte bancaire.",
       "Vous voulez que les textes soient écrits pour vous, en français.",
@@ -187,7 +715,8 @@ export const COMPARATIFS: Comparatif[] = [
     ],
     choisirAutre: [
       "Vous voulez partir d'un modèle très graphique et tout mettre en forme vous-même.",
-      "Vous avez besoin de fonctions de vente avancées.",
+      "Vous vendez des produits ou des contenus en ligne.",
+      "Vous voulez un abonnement moins cher sur trois ans.",
     ],
     lignes: [
       {
@@ -197,13 +726,13 @@ export const COMPARATIFS: Comparatif[] = [
       },
       {
         critere: "Formule gratuite",
-        sitaly: "Oui, Découverte : le site est en ligne sur nom.sitaly.fr",
-        autre: "Non, un essai gratuit avant de payer",
+        sitaly: "Oui, Découverte : le site est en ligne sur votre-nom.sitaly.fr",
+        autre: "Non, un essai gratuit de 14 jours",
       },
       {
         critere: "Prix d'entrée payant",
         sitaly: prixSitaly,
-        autre: "Basic à 14,40 €/mois payé à l'année, 20,40 € au mois (TTC estimée)",
+        autre: "Basic à 12 €/mois payé à l'année, 17 € au mois",
       },
       {
         critere: "Nom de domaine",
@@ -212,46 +741,139 @@ export const COMPARATIFS: Comparatif[] = [
       },
       {
         critere: "Modifications",
-        sitaly: "En une phrase à l'IA, ou à la main dans l'éditeur",
+        sitaly: "Vous écrivez ce qu'il faut changer à l'IA, ou vous corrigez à la main",
         autre: "Dans l'éditeur du modèle",
+      },
+      {
+        critere: "Devis et factures",
+        sitaly: facturesSitaly,
+        autre: "Facturation incluse dans tous les forfaits, sans frais de transaction",
+      },
+      {
+        critere: "Prise de rendez-vous",
+        sitaly: rdvSitaly,
+        autre: "Par Acuity Scheduling, un produit à part",
+      },
+      { critere: "Avis Google", sitaly: avisSitaly, autre: "Non relevé sur la page des tarifs" },
+      {
+        critere: "Boutique en ligne",
+        sitaly: "Non : Sitaly fait des sites vitrines",
+        autre: "Oui, avec 2 % de frais en Basic et 0 % à partir d'Essentiel",
+      },
+    ],
+    faits: [
+      {
+        texte:
+          "Quatre forfaits : Basic 12 €, Essentiel 18 €, Plus 32 € et Advanced 69 € par mois payés à l'année ; 17 €, 24 €, 42 € et 79 € au mois. La page ne dit pas si la TVA est comprise.",
+        source: S.squarespace,
+      },
+      {
+        texte: "Une période gratuite de 14 jours, pas de formule gratuite.",
+        source: S.squarespace,
+      },
+      {
+        texte:
+          "Domaine personnalisé gratuit pendant un an avec un forfait annuel, à enregistrer dans l'année qui suit la souscription ; renouvellement au tarif normal ensuite.",
+        source: S.squarespace,
+      },
+      {
+        texte:
+          "Facturation disponible gratuitement avec tous les forfaits, sans frais de transaction.",
+        source: S.squarespace,
+      },
+      {
+        texte: "Frais de transaction sur les boutiques : 2 % en Basic, aucun à partir d'Essentiel.",
+        source: S.squarespace,
+      },
+    ],
+    cout: {
+      hypothese:
+        "Un site vitrine payé à l'année pendant trois ans. Le domaine Squarespace à partir de la deuxième année et l'abonnement Acuity pour les rendez-vous ne sont pas comptés.",
+      lignes: [
+        coutSitaly,
+        {
+          offre: "Squarespace Basic",
+          calcul: "36 × 12 €, domaine offert la première année",
+          total: "432 €",
+        },
+        {
+          offre: "Squarespace Essentiel",
+          calcul: "36 × 18 €, domaine offert la première année",
+          total: "648 €",
+        },
+      ],
+      lecture:
+        "Squarespace coûte moins cher que Sitaly en abonnement. Si vous avez besoin de la prise de rendez-vous, ajoutez Acuity ; si vous voulez vos textes écrits pour vous, ajoutez votre temps ou un rédacteur.",
+    },
+    sections: [
+      {
+        titre: "Le design",
+        paragraphes: [
+          "Squarespace part d'un modèle dessiné par des designers, que vous remplissez et ajustez. Le résultat est soigné si vous suivez la logique du modèle ; il demande du temps si vous voulez vous en écarter.",
+          "Sitaly propose quatre thèmes, et l'IA adapte couleurs, photos et mise en page à votre métier. Vous changez de thème en un clic, vos textes restent. L'identité de marque crée aussi votre logo, appliqué partout sur le site.",
+        ],
+      },
+      {
+        titre: "Pour une entreprise de services",
+        paragraphes: [
+          "Un plombier, une esthéticienne ou un coach ont besoin que le client appelle, réserve ou demande un devis. Sitaly met ces trois chemins sur le site dès la publication, et les relie à votre liste de clients. Chez Squarespace, la facturation est comprise ; la réservation passe par Acuity, à souscrire à part.",
+        ],
       },
     ],
     faq: [
       {
         q: "Le design d'un site Sitaly est-il aussi soigné ?",
-        a: "Sitaly propose quatre thèmes soignés, et l'IA adapte couleurs, photos et mise en page à votre métier. Vous changez de thème en un clic, vos textes restent.",
+        a: "Sitaly propose quatre thèmes soignés, et l'IA adapte couleurs, photos et mise en page à votre métier. Squarespace offre plus de choix de modèles ; Sitaly vous fait gagner le temps de les remplir.",
+      },
+      {
+        q: "Squarespace est-il moins cher que Sitaly ?",
+        a: "En abonnement, oui : 432 € sur trois ans pour Basic payé à l'année, contre 1 194 € pour Sitaly Essentiel. Sitaly comprend en plus le domaine chaque année, la prise de rendez-vous et la réponse aux avis Google.",
       },
     ],
-    sources: [{ label: "Tarifs Squarespace", url: "https://fr.squarespace.com/tarifs" }],
+    sources: [S.squarespace],
   },
   {
     id: "agence",
     nom: "une agence web",
     colonne: "Agence web",
+    carte: "Sitaly ou une agence web",
+    accroche: "Un site sur mesure sur devis, ou un abonnement que vous pilotez vous-même.",
     titre: "Sitaly ou une agence web : que choisir pour votre site ?",
     description:
-      "Créer son site avec Sitaly ou le confier à une agence web : délai, prix, autonomie. Ce qui convient à chaque projet.",
+      "Créer son site avec Sitaly ou le confier à une agence web : délai, coût sur trois ans, autonomie, devis et rendez-vous. Ce qui convient à chaque projet.",
     intro:
-      "Une agence crée un site sur mesure, avec des rendez-vous, des maquettes et un devis. Pour beaucoup d'indépendants et de petites entreprises, Sitaly suffit : un site professionnel en une minute, à un prix fixe. Et si votre projet demande plus, l'équipe Sitaly fait aussi du sur-mesure.",
+      "Une agence crée un site sur mesure, avec des rendez-vous, des maquettes et un devis. Pour beaucoup d'indépendants et de petites entreprises, Sitaly suffit : un site professionnel en une minute environ, à un prix fixe, que vous modifiez vous-même. Cette page vous aide à savoir quand l'un ou l'autre vaut la dépense.",
+    verdict: [
+      "Confiez votre site à une agence si votre projet sort du cadre d'un site vitrine : outil métier, espace client, intégration avec votre logiciel, boutique importante ou identité visuelle complète. Une agence vous apporte aussi un regard extérieur et du temps : elle conçoit, rédige et règle chaque détail à votre place. Si vous préférez tout déléguer, c'est le bon choix.",
+      "Prenez Sitaly si vous voulez être en ligne cette semaine et que votre budget est celui d'un abonnement. Le site est écrit pour votre métier, et vous le modifiez vous-même quand vous voulez, sans attendre ni payer chaque changement. Les devis et factures, la prise de rendez-vous et les avis Google sont compris. Sur trois ans, Sitaly Essentiel coûte moins que la création d'un site vitrine par la plupart des agences, avant même leur maintenance.",
+    ],
+    pasPourVous:
+      "Sitaly n'est pas fait pour vous si vous voulez un design unique dessiné pour votre marque, une boutique en ligne ou un outil relié à vos logiciels. Ni si vous ne voulez pas toucher à votre site du tout : même en une phrase, c'est vous qui le pilotez. Sitaly est un produit jeune, lancé fin octobre 2026, porté par une entreprise individuelle.",
     choisirSitaly: [
       "Vous voulez être en ligne cette semaine, pas dans deux mois.",
       "Vous voulez modifier votre site vous-même, sans attendre ni payer chaque changement.",
       "Votre budget est celui d'un abonnement, pas d'un devis de plusieurs milliers d'euros.",
     ],
     choisirAutre: [
-      "Votre projet a des besoins très particuliers : outil métier, intégrations, identité complète.",
+      "Votre projet a des besoins particuliers : outil métier, intégrations, identité complète.",
       "Vous préférez tout déléguer, avec un interlocuteur qui s'occupe de chaque détail.",
     ],
     lignes: [
       {
         critere: "Délai",
-        sitaly: "Une minute pour la première version, en ligne aussitôt",
+        sitaly: "Une minute environ pour la première version, en ligne aussitôt",
         autre: "Plusieurs semaines : rendez-vous, maquettes, allers-retours",
       },
       {
         critere: "Prix",
         sitaly: prixSitaly,
-        autre: "Sur devis, souvent plusieurs milliers d'euros, plus la maintenance",
+        autre:
+          "Sur devis : 5 000 € de création en médiane selon un baromètre de 3 565 budgets, plus la maintenance",
+      },
+      {
+        critere: "Textes",
+        sitaly: "Écrits par l'IA pour votre métier, à relire",
+        autre: "Rédigés par l'agence, ou à fournir, selon le devis",
       },
       {
         critere: "Modifications",
@@ -263,15 +885,88 @@ export const COMPARATIFS: Comparatif[] = [
         sitaly: "Thèmes et sections adaptés à votre métier",
         autre: "Entièrement sur mesure",
       },
+      {
+        critere: "Devis et factures",
+        sitaly: facturesSitaly,
+        autre: "Selon le devis, souvent avec un logiciel à part",
+      },
+      { critere: "Prise de rendez-vous", sitaly: rdvSitaly, autre: "Selon le devis" },
+      { critere: "Avis Google", sitaly: avisSitaly, autre: "Selon le devis" },
       { critere: "Nom de domaine", sitaly: domaineSitaly, autre: "Selon le devis" },
+      {
+        critere: "Interlocuteur",
+        sitaly: assistanceSitaly,
+        autre: "Un chef de projet, selon l'agence",
+      },
+    ],
+    faits: [
+      {
+        texte:
+          "Médiane du prix d'un site internet confié à une agence : 5 000 €, sur 3 565 budgets réels (calcul du 13 novembre 2026). Un quart des projets coûte moins de 3 000 €.",
+        source: S.barometre,
+      },
+      {
+        texte:
+          "Le budget va de 2 000 € pour un site vitrine à plus de 50 000 € pour un projet sur mesure (baromètre de juillet 2026).",
+        source: S.barometre,
+      },
+      {
+        texte:
+          "Les projets qui comprennent la réservation ou la prise de rendez-vous ont un budget médian de 4 000 €.",
+        source: S.barometre,
+      },
+    ],
+    cout: {
+      hypothese:
+        "Un site vitrine sur trois ans. Côté agence, nous prenons la création seule, au premier quartile et à la médiane du baromètre : l'hébergement, la maintenance et les modifications s'ajoutent selon le contrat.",
+      lignes: [
+        coutSitaly,
+        {
+          offre: "Sitaly Pro, payé à l'année",
+          calcul: `3 × ${PRO.annuel} €, nom de domaine compris`,
+          total: euros(PRO.annuel * 3),
+        },
+        {
+          offre: "Agence, création (premier quartile)",
+          calcul: "Un projet sur quatre coûte moins",
+          total: "3 000 €",
+        },
+        {
+          offre: "Agence, création (médiane)",
+          calcul: "Un projet sur deux coûte moins",
+          total: "5 000 €",
+        },
+      ],
+      lecture:
+        "Sur trois ans, Sitaly Essentiel coûte moins que la création seule d'un site par la plupart des agences. Une agence vous fait gagner votre temps de relecture et vous donne un site unique : à vous de juger ce que cela vaut pour votre activité.",
+    },
+    sections: [
+      {
+        titre: "Le délai",
+        paragraphes: [
+          "Une agence commence par un rendez-vous de cadrage, puis des maquettes, des allers-retours et la mise en ligne. Comptez plusieurs semaines, parfois plusieurs mois. Ce temps sert à comprendre votre métier et à soigner chaque page.",
+          "Sitaly publie une première version en une minute environ. Vous la relisez le soir même, vous corrigez en écrivant ce qu'il faut changer, et votre site est prêt quand il vous plaît.",
+        ],
+      },
+      {
+        titre: "Après la mise en ligne",
+        paragraphes: [
+          "Un site vit : nouveaux horaires, nouvelle prestation, photos d'un chantier. Avec une agence, chaque changement passe par elle, compris dans un contrat de maintenance ou facturé à part. Avec Sitaly, vous le faites vous-même depuis votre téléphone, sans surcoût.",
+          "Si votre projet dépasse ce que fait l'application, Sitaly crée aussi des sites et des outils sur mesure, sur devis.",
+        ],
+      },
     ],
     faq: [
       {
         q: "Et si mon projet dépasse ce que fait Sitaly ?",
-        a: "L'équipe Sitaly crée aussi des sites et des outils sur mesure. Décrivez votre projet sur la page dédiée, nous vous rappelons.",
+        a: "Sitaly crée aussi des sites et des outils sur mesure, sur devis. Décrivez votre projet sur la page dédiée : le fondateur vous rappelle.",
+      },
+      {
+        q: "Combien coûte un site fait par une agence ?",
+        a: "Selon le baromètre de La Fabrique du Net, calculé le 13 novembre 2026 sur 3 565 budgets, la médiane est de 5 000 € et un quart des projets coûte moins de 3 000 €. La maintenance s'ajoute.",
       },
     ],
-    sources: [],
+    sources: [S.barometre],
   },
 ];
 

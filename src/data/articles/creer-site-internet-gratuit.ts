@@ -7,7 +7,7 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "« Créez votre site gratuitement » : la promesse revient partout. Elle est vraie, à une condition près : savoir ce que « gratuit » couvre. Un site sans frais existe bel et bien. Il porte en général l'adresse de l'outil, parfois sa publicité, et il vous coûte du temps. Voici ce que vous obtenez sans payer, ce qui reste payant, et comment démarrer sans regretter votre choix six mois plus tard.",
   },
-  { type: "h2", text: "Ce qu'un site gratuit vous donne vraiment" },
+  { type: "h2", text: "Que donne vraiment un site internet gratuit ?" },
   {
     type: "p",
     text: "Les formules gratuites des créateurs de site se ressemblent : vous construisez votre site, il est hébergé et mis en ligne, et il reste en ligne sans limite de durée. Ce qui change d'un outil à l'autre, c'est l'adresse, la publicité affichée et le temps qu'il faut pour obtenir un résultat présentable.",
@@ -15,36 +15,40 @@ export const contenu: BlogSection[] = [
   {
     type: "table",
     caption:
-      "Formules gratuites courantes, relevées en octobre 2026. Vérifiez la page de chaque outil avant de choisir.",
+      "Formules gratuites courantes, relevées en octobre 2026 (WordPress.com vérifié le 14 novembre 2026). Vérifiez la page de chaque outil avant de choisir.",
     headers: ["Outil", "Adresse du site", "Ce qu'il faut savoir"],
     rows: [
       [
-        "Sitaly (Découverte)",
+        "[Sitaly](/tarifs/) (Découverte)",
         "votre-nom.sitaly.fr",
         "L'IA écrit le site à partir d'une phrase ; 50 crédits IA offerts pour le retoucher",
       ],
       [
-        "Wix (gratuit)",
+        "[Wix](https://fr.wix.com/pricing) (gratuit)",
         "sous-domaine Wix",
         "Le site affiche une bannière Wix ; votre propre domaine demande un forfait payant",
       ],
       [
-        "WordPress.com (gratuit)",
+        "[WordPress.com](https://wordpress.com/fr/pricing/) (gratuit)",
         "sous-domaine WordPress.com",
-        "Fonctions limitées ; le domaine personnalisé passe par une formule payante",
+        "Publicités WordPress.com affichées, pas d'extension ; le domaine personnalisé passe par une formule payante",
       ],
-      ["Squarespace", "pas de formule gratuite", "Un essai gratuit, puis un abonnement"],
+      ["[Squarespace](https://fr.squarespace.com/tarifs)", "pas de formule gratuite", "Un essai gratuit, puis un abonnement"],
     ],
   },
   {
     type: "p",
     text: "Une précision utile : Google ne propose plus de petit site gratuit attaché à la fiche d'entreprise. Ce service a fermé en 2024. Votre fiche Google reste gratuite et indispensable, mais elle doit renvoyer vers un vrai site.",
   },
-  { type: "h2", text: "Ce qui reste payant, même avec un site gratuit" },
+  { type: "h2", text: "Qu'est-ce qui reste payant avec un site gratuit ?" },
+  {
+    type: "p",
+    text: "Le nom de domaine à votre nom reste payant : environ 12 € par an en moyenne pour un .fr, selon l'[Afnic](https://www.afnic.fr/noms-de-domaine/tout-savoir/pourquoi-choisir-le-fr/). L'adresse e-mail professionnelle aussi, et parfois les photos. Le coût le plus lourd ne se voit pas sur la facture : le temps qu'il vous faut pour obtenir un site présentable.",
+  },
   {
     type: "ul",
     items: [
-      "Le nom de domaine : mon-entreprise.fr coûte en général entre 5 et 15 € par an. C'est lui qui fait sérieux sur une carte de visite.",
+      "Le nom de domaine : mon-entreprise.fr coûte environ 12 € par an en moyenne. C'est lui qui fait sérieux sur une carte de visite.",
       "L'adresse e-mail à votre nom (contact@mon-entreprise.fr) : souvent quelques euros par mois chez un fournisseur de messagerie.",
       "Les photos : une banque d'images payante, un photographe, ou des images créées par l'IA.",
       "Votre temps : c'est le coût le plus sous-estimé. Remplir un modèle page par page prend facilement un week-end entier.",
@@ -63,7 +67,11 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Chez Sitaly, la formule Découverte met votre site en ligne gratuitement, sans carte bancaire. Les formules Essentiel et Pro ajoutent votre nom de domaine, offert et renouvelé tant que l'abonnement court, même au mois. Le détail est sur la page [Tarifs](/tarifs/).",
   },
-  { type: "h2", text: "Quel outil gratuit choisir selon votre situation" },
+  { type: "h2", text: "Quel outil gratuit choisir selon votre situation ?" },
+  {
+    type: "p",
+    text: "Si vous voulez un site en ligne aujourd'hui sans rédiger les pages, prenez un créateur par IA. Si vous voulez placer chaque bloc vous-même, un éditeur à modèles convient. Si vous comptez publier beaucoup d'articles et acceptez d'apprendre l'outil, regardez un système de gestion de contenu comme WordPress.",
+  },
   {
     type: "table",
     caption: "Trois façons de créer un site sans payer, selon ce que vous attendez de l'outil.",
@@ -127,7 +135,7 @@ export const contenu: BlogSection[] = [
     items: [
       {
         q: "Un site gratuit est-il bien référencé sur Google ?",
-        a: "Il peut l'être : Google classe les pages selon leur contenu et leur utilité, pas selon le prix de l'outil. Un domaine à votre nom aide surtout à inspirer confiance et à garder votre référencement si vous changez d'outil un jour.",
+        a: "Il peut l'être : Google classe les pages selon [leur contenu et leur utilité](https://developers.google.com/search/docs/fundamentals/creating-helpful-content?hl=fr), pas selon le prix de l'outil. Un domaine à votre nom aide surtout à inspirer confiance et à garder votre référencement si vous changez d'outil un jour.",
       },
       {
         q: "Puis-je passer d'une formule gratuite à une formule payante sans tout refaire ?",

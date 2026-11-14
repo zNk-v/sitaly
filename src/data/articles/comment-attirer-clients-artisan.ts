@@ -5,102 +5,120 @@ import type { BlogSection } from "@/data/blog-posts";
 export const contenu: BlogSection[] = [
   {
     type: "p",
-    text: "La majorité des artisans français passent par des hauts et des bas : quelques mois pleins, puis un trou dans le planning. Le bouche-à-oreille seul ne suffit plus, et les plateformes type Travaux.com prennent une marge énorme. Voici neuf leviers concrets, classés du plus simple au plus puissant, pour attirer plus de clients sans dépendre du hasard.",
+    text: "Vous connaissez le cycle : trois mois pleins, puis un trou dans le planning que personne n'avait vu venir. Le bouche-à-oreille suffit tant que vos anciens clients ont des travaux à faire, et les plateformes dépannent en prenant leur part. Ce guide rassemble huit leviers concrets pour attirer des clients de façon régulière, du plus simple au plus long à installer, avec ce que chacun demande de votre part.",
   },
+
+  { type: "h2", text: "Comment attirer des clients quand on est artisan ?" },
+  {
+    type: "p",
+    text: "Rendez-vous facile à trouver, facile à croire et facile à joindre. Concrètement : une fiche Google complète, des avis récents demandés à chaque client, un site qui montre vos réalisations, un téléphone qui décroche ou une réservation en ligne. Ajoutez ensuite vos anciens clients et un réseau local. Ces gestes, tenus dans la durée, remplissent le planning.",
+  },
+
   { type: "h2", text: "1. Soignez votre fiche Google Business Profile" },
   {
     type: "p",
-    text: "C'est gratuit, et c'est le levier le plus rentable de tous. Une fiche complète (photos, horaires, prestations, zone, numéro) avec une dizaine d'avis 5 étoiles peut générer 3 à 10 appels par semaine, surtout quand les concurrents locaux sont mal référencés.",
+    text: "La fiche apparaît dans la carte et le bloc local quand un particulier cherche votre métier près de chez lui. Elle est gratuite, et Google indique dans [ses conseils sur le classement local](https://support.google.com/business/answer/7091?hl=fr) qu'on ne peut pas payer pour y monter. Les leviers sont la pertinence de vos informations, la distance et la proéminence, dont les avis font partie.",
   },
-  { type: "h2", text: "2. Collectez systématiquement des avis Google" },
   {
     type: "p",
-    text: "À la fin de chaque chantier satisfaisant, envoyez un SMS au client avec le lien direct vers votre fiche Google. Un artisan qui a 30 avis 4,8/5 sera contacté avant celui qui en a 2, même si ses tarifs sont supérieurs.",
+    text: "Vérifiez votre nom, votre catégorie, vos horaires, votre zone d'intervention et vos photos. L'[audit gratuit de fiche Google](/outils/audit-fiche-google/) de Sitaly vous dit en quelques secondes ce qui manque.",
   },
-  { type: "h2", text: "3. Créez un site internet professionnel" },
+
+  { type: "h2", text: "2. Demandez un avis à chaque client" },
   {
     type: "p",
-    text: "Un client qui vous a vu sur Google ou qui vient en recommandation va systématiquement chercher votre site. Sans site, ou avec un site daté, vous perdez environ 1 prospect sur 3. Un site simple, clair, mobile, avec vos réalisations et un téléphone cliquable, change la donne. Lire aussi : le guide complet de la création de site internet pour artisan.",
+    text: "Un particulier qui hésite entre deux artisans compare les notes et lit les derniers avis. Demandez à chaque client, en fin de chantier, avec le lien direct de votre fiche envoyé par SMS le soir même. Google interdit d'offrir une contrepartie et de ne solliciter que les clients contents : envoyez la même demande à tous. Notre méthode complète pour [récolter des avis Google](/blog/recolter-avis-google-artisan/) donne des modèles de messages.",
   },
-  { type: "h2", text: "4. Soyez visible sur les recherches 'métier + ville'" },
+
+  { type: "h2", text: "3. Ayez un site qui montre votre travail" },
   {
     type: "p",
-    text: "Quand quelqu'un tape 'plombier Nîmes' ou 'électricien Avignon', Google affiche trois fiches locales et dix sites. Si vous n'êtes ni dans les trois, ni dans le top dix, vous n'existez pas. Le référencement local (SEO local) consiste à optimiser votre site et votre fiche Google pour apparaître sur ces requêtes.",
+    text: "Un client qui vous a vu sur Google, ou à qui l'on vous a recommandé, cherche ensuite à en savoir plus. Un site simple suffit : vos prestations, vos communes, vos réalisations en photos, votre téléphone cliquable et un moyen de vous écrire. Il répond aux questions avant l'appel et rassure sur le sérieux de l'entreprise.",
   },
-  { type: "h2", text: "5. Publiez régulièrement des photos de chantiers" },
   {
     type: "p",
-    text: "Sur votre site, votre Google Business Profile et éventuellement Instagram. Les photos avant/après réelles convertissent infiniment mieux que n'importe quel slogan marketing. Visez 1 publication par chantier terminé.",
+    text: "Avec Sitaly, l'IA écrit votre site à partir d'une phrase et le publie en une minute environ, sur votre-nom.sitaly.fr ou sur un nom de domaine en .fr ou .com compris dans les formules Essentiel et Pro. Les [modèles par métier](/modeles/) montrent le résultat pour un plombier, une coiffeuse, un paysagiste ou un électricien.",
   },
-  { type: "h2", text: "6. Activez vos anciens clients" },
+
+  { type: "h2", text: "4. Soyez visible sur les recherches « métier + ville »" },
   {
     type: "p",
-    text: "Un SMS une fois par an à vos anciens clients (entretien chaudière, vérification toiture, contrôle électrique) rappelle votre existence et génère du chiffre récurrent. Coût : zéro. Rentabilité : exceptionnelle.",
+    text: "Les recherches du type « électricien » suivi d'une commune pèsent lourd pour un artisan. Pour y apparaître, votre fiche doit être juste et votre site doit parler de vos prestations et des communes où vous intervenez, avec des mots que vos clients emploient. Une page par prestation importante vaut mieux qu'une page d'accueil qui dit tout en trois lignes.",
   },
+  {
+    type: "p",
+    text: "Un blog aide aussi, à condition de répondre à de vraies questions : « combien coûte un ravalement », « quand changer un chauffe-eau ». Un ou deux articles utiles par mois suffisent. Le blog écrit par l'IA de Sitaly propose des sujets tirés de votre activité et de votre ville, puis rédige l'article ; vous le relisez avant de le publier.",
+  },
+
+  { type: "h2", text: "5. Montrez vos chantiers en photos" },
+  {
+    type: "p",
+    text: "Des photos réelles, avant et après, convainquent mieux qu'un slogan. Publiez-les sur votre fiche Google et sur votre site, et sur un réseau social si vous y êtes à l'aise. Prenez l'habitude de photographier chaque chantier terminé, sous un bon éclairage, avec l'accord du client si l'on reconnaît son logement.",
+  },
+
+  { type: "h2", text: "6. Recontactez vos anciens clients" },
+  {
+    type: "p",
+    text: "Vos anciens clients vous connaissent déjà. Un message pour rappeler l'entretien d'une chaudière, la vérification d'une toiture avant l'hiver ou le contrôle d'une installation peut déclencher un rendez-vous. Le coût est faible, la réponse souvent meilleure qu'auprès d'inconnus.",
+  },
+  {
+    type: "p",
+    text: "Respectez les règles de prospection. La CNIL explique sur sa page consacrée à [la prospection par SMS et courrier électronique](https://www.cnil.fr/fr/la-prospection-commerciale-par-courrier-electronique-sms-mms-et-automate-dappel) qu'on peut écrire à un client existant pour des prestations analogues à celles qu'il a achetées, à condition qu'il ait été informé et qu'il puisse s'y opposer simplement dans chaque message. Pour un particulier qui n'a jamais été client, il faut son accord préalable.",
+  },
+
   { type: "h2", text: "7. Nouez des partenariats locaux" },
   {
     type: "p",
-    text: "Agents immobiliers, syndics, architectes d'intérieur, magasins de bricolage : chacun d'eux croise des dizaines de clients par mois qui ont besoin d'un artisan de confiance. Une commission de 5 à 10 % les motive à vous recommander.",
+    text: "Agents immobiliers, syndics, architectes d'intérieur, magasins de matériaux, confrères d'autres corps de métier : chacun croise des clients qui cherchent un artisan de confiance. Présentez-vous, laissez des cartes, et recommandez-les en retour quand l'occasion se présente. Un partenaire satisfait revient. Gardez une liste de ces contacts avec la date du dernier échange, et donnez-leur des nouvelles deux ou trois fois par an : un chantier réalisé ensemble, une nouvelle prestation, une période de disponibilité. Une relation entretenue rapporte plus qu'une poignée de cartes distribuées une seule fois.",
   },
-  { type: "h2", text: "8. Évitez la dépendance aux plateformes" },
+
+  { type: "h2", text: "8. Ne dépendez pas d'une seule source" },
   {
     type: "p",
-    text: "Travaux.com, IZI by EDF, Frizbiz : ces plateformes peuvent dépanner au démarrage, mais elles prennent 10 à 20 % de marge et vous mettent en compétition frontale sur le prix. Utilisez-les pour combler les trous, jamais comme canal principal.",
+    text: "Les plateformes de mise en relation et Google Ads amènent des contacts vite, tant que vous payez. Servez-vous en pour combler un creux, mais pas comme canal unique. Calculez chaque trimestre ce que vous coûte un chantier signé par chaque canal : additionnez ce que vous avez versé, puis divisez par le nombre de chantiers signés grâce à ce canal.",
   },
-  { type: "h2", text: "9. Investissez dans Google Ads avec parcimonie" },
+
+  { type: "h2", text: "Faut-il un site internet quand on travaille au bouche-à-oreille ?" },
   {
     type: "p",
-    text: "Quand le SEO local met du temps à monter, quelques euros par jour sur Google Ads ciblés 'urgence plombier + ville' peuvent ramener des appels immédiats. Comptez 5 à 15 € par appel qualifié selon le métier et la ville.",
+    text: "Oui. Une recommandation se termine presque toujours par une recherche sur votre nom. Si la personne trouve un site clair, vos avis et votre téléphone, elle appelle. Si elle ne trouve rien, ou une fiche vide, elle hésite et parfois appelle le concurrent affiché à côté. Le site prolonge le bouche-à-oreille, il ne le remplace pas.",
   },
-  { type: "h2", text: "Comparatif coût / délai / rentabilité des 9 leviers" },
+
+  { type: "h2", text: "Ne perdez pas les clients que vous attirez" },
   {
-    type: "table",
-    caption: "Quel canal pour quel besoin (estimations 2026 pour un artisan local)",
-    headers: ["Levier", "Coût mensuel", "Délai 1ers résultats", "Appels/mois espérés"],
-    rows: [
-      ["Fiche Google Business", "0€", "2 à 4 semaines", "3 à 15"],
-      ["Avis clients", "0€", "1 mois", "+30 % conversion"],
-      ["Site internet", "100 à 200€", "1 à 3 mois", "5 à 30"],
-      ["SEO local 'métier + ville'", "0 à 200€", "3 à 6 mois", "10 à 40"],
-      ["Anciens clients (SMS)", "0 à 20€", "1 semaine", "2 à 8"],
-      ["Partenariats locaux", "5 à 10 % CA", "1 à 2 mois", "3 à 12"],
-      ["Plateformes (Travaux.com)", "10 à 20 % CA", "Immédiat", "5 à 20"],
-      ["Google Ads", "300 à 800€", "24 à 48 h", "10 à 50"],
+    type: "p",
+    text: "Attirer des demandes ne sert à rien si elles se perdent ensuite. Rappelez vite, envoyez votre devis le jour de la visite et notez chaque contact dans une liste avec son statut. La [prise de rendez-vous en ligne](/produits/prise-de-rendez-vous/) de Sitaly (Essentiel et Pro) laisse vos clients réserver un créneau depuis votre site pendant que vous travaillez ; chaque réservation entre dans votre liste de clients.",
+  },
+
+  { type: "h2", text: "Par où commencer" },
+  {
+    type: "ul",
+    items: [
+      "Cette semaine : vérifiez et complétez votre fiche Google, puis demandez un avis à vos cinq derniers clients.",
+      "Ce mois-ci : publiez un site simple avec vos prestations, vos communes et vos photos.",
+      "Chaque chantier : une photo, une demande d'avis, une fiche client à jour.",
+      "Chaque trimestre : regardez d'où viennent vos chantiers signés, et renforcez le canal qui marche.",
     ],
   },
-  { type: "h2", text: "Cas concret : Julien, électricien à Nîmes" },
-  {
-    type: "p",
-    text: "Julien était à 60 % de planning rempli en moyenne. Il a appliqué 4 leviers en 3 mois : fiche Google passée de 6 à 28 avis, site internet refait, 2 pages 'ville' (Nîmes + Alès), et 200€/mois de Google Ads. Résultat à 6 mois : planning rempli à 95 %, refus de chantiers, et embauche d'un apprenti. CA additionnel mensuel : environ 4 800€, pour 200€/mois de budget publicitaire en plus du site.",
-  },
-  { type: "h2", text: "Par où commencer concrètement ?" },
-  {
-    type: "p",
-    text: "Si vous n'avez ni site ni fiche Google optimisée, commencez par là — c'est la base. Un site propre + une fiche Google bien remplie + 10 avis clients suffisent souvent à doubler le volume d'appels en quelques mois. Sitaly s'occupe du site internet et du référencement local à partir de 149€/mois en location, sans engagement, et peut gérer vos campagnes Google Ads et vos automatisations (relance des devis, prise de rendez-vous) pour passer à la vitesse supérieure.",
-  },
-  { type: "h2", text: "Questions fréquentes" },
+
   {
     type: "faq",
     items: [
       {
         q: "Combien de temps pour voir le téléphone sonner davantage ?",
-        a: "1 à 2 mois pour la fiche Google et les anciens clients réactivés, 3 à 6 mois pour le SEO local, 24 à 48h pour Google Ads. La règle d'or : combiner un canal rapide (Ads ou réseau) et un canal long terme (SEO).",
+        a: "Cela dépend du canal et de la concurrence dans votre ville. Les anciens clients et le réseau répondent vite. Une fiche Google bien tenue et des avis réguliers produisent leurs effets en quelques semaines ou quelques mois. Un site met plusieurs mois à remonter sur Google.",
       },
       {
-        q: "Les plateformes type Travaux.com valent-elles le coup ?",
-        a: "Pour démarrer ou combler un trou ponctuel, oui. Comme canal principal, non : elles prennent 10 à 20 % et vous habituent à la concurrence sur le prix. Visez à ne pas en dépendre au-delà de 20 % de votre CA.",
+        q: "Les plateformes valent-elles le coup ?",
+        a: "Pour démarrer ou combler un creux, elles peuvent servir. Comme canal principal, elles vous mettent en concurrence sur le prix et vous laissent sans rien le jour où vous arrêtez. Calculez votre coût par chantier signé avant de décider.",
       },
       {
-        q: "Faut-il être actif sur Instagram ou TikTok ?",
-        a: "Utile pour la notoriété et les chantiers premium (cuisine, salle de bain, rénovation complète). Pas indispensable pour un artisan urgentiste. Mieux vaut 0 publication que 3 mois actif puis abandonné.",
+        q: "Faut-il être actif sur Instagram ou Facebook ?",
+        a: "C'est utile pour les métiers où le visuel compte (cuisine, salle de bains, paysagisme, coiffure), moins pour un dépanneur. Mieux vaut un compte tenu avec régularité que trois mois d'activité suivis d'un abandon visible.",
       },
       {
-        q: "Combien d'avis Google sont nécessaires pour faire la différence ?",
-        a: "À partir de 10 avis 4,5+/5, vous décollez. À partir de 30, vous dominez souvent la concurrence locale. Visez 1 nouvel avis par semaine de manière constante.",
-      },
-      {
-        q: "Faut-il un budget marketing dès la création de l'entreprise ?",
-        a: "Oui, mais petit. Comptez 100 à 300€/mois la première année (site + Google Ads ciblés). Au-delà, c'est rarement rentable tant que la fiche Google et le site n'ont pas atteint leur maturité SEO.",
+        q: "Peut-on envoyer des SMS publicitaires à ses anciens clients ?",
+        a: "Oui, pour des prestations proches de celles qu'ils ont déjà achetées, s'ils ont été informés et peuvent refuser simplement dans chaque message, selon la CNIL. Pour des personnes qui n'ont jamais été clientes, il faut leur accord préalable.",
       },
     ],
   },

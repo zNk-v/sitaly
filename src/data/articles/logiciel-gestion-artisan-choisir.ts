@@ -5,132 +5,140 @@ import type { BlogSection } from "@/data/blog-posts";
 export const contenu: BlogSection[] = [
   {
     type: "p",
-    text: "Vous avez peut-être déjà un logiciel de devis. Pourtant le carnet de commandes ne se remplit pas tout seul, vos avis Google stagnent à trois, et deux prospects sur cinq ne rappellent jamais. Le souci n'est pas votre outil de facturation : il n'a jamais été conçu pour vous apporter des clients. Choisir un logiciel de gestion quand on est artisan, ça commence par savoir ce qu'on attend vraiment de lui. Ce guide fait le tri et vous aide à trouver l'outil qui remplit le planning, pas seulement celui qui édite les factures.",
+    text: "Vous tapez « logiciel de gestion artisan » et vous tombez sur des dizaines d'outils qui promettent tous de « tout gérer ». Sous ce mot, les éditeurs rangent des choses très différentes : la facturation, la comptabilité, le planning de chantier, le suivi des clients, parfois le site internet. Avant de comparer des marques, décidez ce que vous attendez de l'outil. Ce guide vous aide à faire ce tri, puis à choisir sans payer pour des fonctions que vous n'ouvrirez jamais.",
   },
 
-  { type: "h2", text: "Deux familles de logiciels à ne pas confondre" },
+  { type: "h2", text: "Quel logiciel de gestion choisir quand on est artisan ?" },
   {
     type: "p",
-    text: "Quand un artisan tape « logiciel de gestion » sur Google, il tombe sur des dizaines d'outils qui promettent tous de « tout gérer ». En réalité, ils se répartissent en deux familles très différentes. Les confondre, c'est payer pour un outil qui ne règle pas votre vrai problème.",
+    text: "Choisissez d'après votre point faible du moment. Si vos devis partent en retard et vos factures sont payées tard, prenez un outil de devis et facturation conforme et utilisable sur téléphone. Si votre planning se vide, il vous faut d'abord de quoi être trouvé et suivre vos demandes. Un outil qui couvre les deux évite de multiplier les abonnements.",
   },
-  { type: "h3", text: "1. Les logiciels de facturation et de chantier" },
+
+  { type: "h2", text: "Deux familles d'outils à ne pas confondre" },
+  { type: "h3", text: "1. La gestion administrative" },
   {
     type: "p",
-    text: "Axonaut, Extrabat, Tolteck, Obat, Sellsy : ces solutions gèrent vos devis, vos factures, votre comptabilité et le suivi de vos chantiers. Elles sont utiles, souvent indispensables pour la paperasse et les obligations légales. Mais elles s'arrêtent là. Elles pilotent l'argent qui rentre, pas les clients qui frappent à la porte. Un excellent logiciel de facturation ne vous apportera jamais un seul appel de plus.",
+    text: "Devis, factures, encaissements, parfois comptabilité et suivi de chantier. Ces outils pilotent l'argent qui entre et vos obligations légales. Pour un artisan qui facture chaque semaine, ils deviennent vite indispensables, en particulier avec la réforme de la facture électronique : la DGFiP indique sur [sa page consacrée à la réforme](https://www.impots.gouv.fr/professionnel/je-decouvre-la-facturation-electronique) que toutes les entreprises doivent pouvoir recevoir des factures électroniques depuis le 1er septembre 2026, et que les PME et micro-entreprises devront les émettre à partir du 1er septembre 2027.",
   },
-  { type: "h3", text: "2. Les outils pour trouver et fidéliser des clients" },
+  { type: "h3", text: "2. La gestion commerciale" },
   {
     type: "p",
-    text: "Suivi des prospects, récolte d'avis Google, relances au bon moment, réponse rapide aux demandes, visibilité en ligne : c'est la brique que la plupart des artisans négligent. C'est pourtant celle qui décide si votre planning est plein ou à moitié vide. La bonne nouvelle, c'est qu'elle ne demande ni comptable ni compétences techniques, juste le bon outil et une routine simple.",
+    text: "Être trouvé sur Google, recevoir des demandes, suivre chaque contact, obtenir des avis, laisser les clients réserver un créneau. Cette partie décide du remplissage de votre planning, et c'est souvent celle qu'aucun outil ne couvre chez un artisan. Elle ne demande ni comptable ni compétence technique, mais elle demande de la régularité.",
   },
   {
     type: "table",
-    caption: "Les deux familles d'outils pour artisans",
-    headers: ["", "Logiciels de facturation", "Outils de développement client"],
+    caption: "Ce que couvre chaque famille d'outils",
+    headers: ["", "Gestion administrative", "Gestion commerciale"],
     rows: [
-      [
-        "À quoi ça sert",
-        "Éditer devis, factures, compta",
-        "Trouver, suivre et fidéliser des clients",
-      ],
-      ["Exemples", "Axonaut, Extrabat, Tolteck", "CRM léger, avis Google, agents IA"],
-      ["Ce que ça règle", "La paperasse et le légal", "Le carnet de commandes"],
-      ["Impact sur le CA", "Indirect (gain de temps)", "Direct (plus d'appels, plus de devis)"],
+      ["À quoi ça sert", "Chiffrer, facturer, encaisser, déclarer", "Être trouvé, suivre les demandes, fidéliser"],
+      ["Ce que ça règle", "Les retards de paiement, la conformité", "Le carnet de commandes"],
+      ["Signe que ça vous manque", "Factures envoyées en retard, impayés oubliés", "Planning irrégulier, demandes perdues, peu d'avis"],
+      ["Ce que ça ne fait pas", "Vous amener une demande", "Tenir votre comptabilité"],
     ],
   },
-  {
-    type: "p",
-    text: "La plupart des artisans équipés d'un logiciel de facturation n'ont rien pour la seconde famille. C'est exactement là que se joue leur croissance.",
-  },
 
-  { type: "h2", text: "Ce qu'un bon outil doit vous faire gagner" },
+  { type: "h2", text: "Ce que l'outil doit vous faire gagner" },
   {
     type: "p",
-    text: "Avant de comparer des marques, listez ce que vous attendez concrètement. Un outil de développement client digne de ce nom doit vous permettre de :",
+    text: "Listez vos tâches de la semaine qui vous coûtent le plus de temps ou d'argent. Un bon outil de gestion doit en supprimer au moins deux. Pour la plupart des artisans, la liste ressemble à ceci :",
   },
   {
     type: "ul",
     items: [
-      "Garder toutes vos fiches clients et prospects au même endroit, avec leur statut et vos notes",
-      "Ne plus jamais oublier de relancer un devis ou de rappeler un prospect",
-      "Récolter des avis Google régulièrement, sans harceler ni quémander",
-      "Répondre vite et bien (avis, SMS, e-mails) même quand vous n'aimez pas écrire",
-      "Voir où vous en êtes de votre visibilité en ligne et quoi améliorer en priorité",
-      "Faire tout ça depuis votre téléphone, entre deux chantiers",
+      "Faire le devis le soir, au lieu de l'envoyer depuis chez le client.",
+      "Recopier un devis accepté pour en faire une facture.",
+      "Relancer un client qui n'a pas payé, et y penser au bon moment.",
+      "Retrouver le numéro de la personne qui a appelé il y a trois semaines.",
+      "Demander un avis Google à la fin d'un chantier, puis oublier de le faire.",
+      "Répondre au téléphone pour caler un rendez-vous pendant que vous travaillez.",
     ],
   },
 
-  { type: "h2", text: "Les 5 critères pour bien choisir" },
-  { type: "h3", text: "La simplicité avant tout" },
+  { type: "h2", text: "Les critères pour bien choisir" },
+  { type: "h3", text: "La simplicité" },
   {
     type: "p",
-    text: "Un artisan n'a pas le temps de suivre une formation de trois jours. Si l'outil demande un mode d'emploi, il finira au placard. Cherchez une prise en main en quelques minutes, un vocabulaire clair, zéro jargon.",
+    text: "Si l'outil demande une formation de plusieurs jours, il finira abandonné. Visez une prise en main en une soirée, avec des mots que vous employez déjà : client, devis, facture, rendez-vous.",
   },
-  { type: "h3", text: "Pensé pour le mobile" },
+  { type: "h3", text: "Le téléphone avant l'ordinateur" },
   {
     type: "p",
-    text: "Votre bureau, c'est votre camionnette. L'outil doit fonctionner parfaitement sur téléphone, pas seulement sur ordinateur.",
+    text: "Votre bureau, c'est souvent la camionnette. Testez chaque action importante depuis votre téléphone : créer un client, envoyer un devis, voir qui n'a pas payé.",
   },
-  { type: "h3", text: "Français et bien accompagné" },
+  { type: "h3", text: "La conformité des documents" },
   {
     type: "p",
-    text: "Un support en français, qui comprend les réalités du terrain, fait toute la différence le jour où vous bloquez.",
+    text: "Numérotation continue, facture figée après envoi, avoir pour corriger, mentions obligatoires. La fiche de Service Public Entreprendre sur [les mentions obligatoires d'une facture](https://entreprendre.service-public.gouv.fr/vosdroits/F31808) vous donne la liste à vérifier. Demandez aussi à l'éditeur comment il compte vous faire émettre des factures électroniques en septembre 2027.",
   },
-  { type: "h3", text: "Un prix clair, sans engagement" },
+  { type: "h3", text: "Un prix affiché et sans engagement" },
   {
     type: "p",
-    text: "Fuyez les devis opaques et les engagements de douze mois. Un tarif mensuel affiché, résiliable quand vous voulez, vous garde libre.",
+    text: "Un tarif mensuel public, résiliable quand vous voulez, vous laisse libre de changer. Fuyez les prix communiqués seulement après un rendez-vous commercial, et les contrats d'un an signés avant d'avoir testé l'outil sur un vrai chantier.",
   },
-  { type: "h3", text: "Un accompagnement à la mise en place" },
+  { type: "h3", text: "La sortie de vos données" },
   {
     type: "p",
-    text: "Le meilleur logiciel du monde ne sert à rien s'il reste à moitié configuré. Pour un artisan qui n'a pas le temps, l'idéal n'est pas seulement d'essayer : c'est qu'on installe et paramètre l'outil pour vous, connecté à votre fiche Google et à vos clients. Vous démarrez avec quelque chose qui fonctionne, pas avec un formulaire vide.",
-  },
-
-  { type: "h2", text: "Un carnet et un tableur, ça ne suffit pas ?" },
-  {
-    type: "p",
-    text: "Pour vos cinq premiers clients, oui. Au-delà, le carnet devient un trou noir : vous oubliez de relancer, vous perdez un numéro, vous ne savez plus qui a reçu son devis. Un tableur Excel fait illusion un temps, mais il ne vous rappellera jamais d'appeler M. Diallo aujourd'hui, et il n'enverra jamais une demande d'avis à votre place. Le passage à un vrai outil, c'est le moment où vous arrêtez de gérer de tête et où vous arrêtez de perdre des clients par simple oubli.",
+    text: "Avant de vous engager, vérifiez que vous pouvez exporter vos clients, vos devis et vos factures. Un outil dont on ne peut pas sortir vous coûte cher le jour où il ne vous convient plus.",
   },
 
-  { type: "h2", text: "Sitaly : la brique développement client, gérée pour vous" },
+  { type: "h2", text: "Un artisan seul a-t-il besoin d'un logiciel de gestion ?" },
   {
     type: "p",
-    text: "Sitaly ne remplace pas votre logiciel de facturation. Sitaly s'occupe de la seconde famille, celle qui vous manque : être trouvé sur Google, récolter des avis, relancer au bon moment et ne rater aucun appel. La différence, c'est qu'on ne vous livre pas un énième outil à configurer seul. On met en place cette brique et on la fait tourner à votre place.",
+    text: "Oui, dès que vous facturez régulièrement. Seul, personne ne relance à votre place, personne ne vérifie vos numéros de facture et personne ne rappelle le client oublié. Un outil simple remplace ce secrétariat absent. Un carnet et un tableur tiennent quelques mois, puis les oublis commencent à coûter des chantiers et des paiements.",
+  },
+  {
+    type: "p",
+    text: "Le tableur fait illusion un temps. Il ne vous préviendra jamais qu'une facture est échue, il n'enverra pas la demande d'avis et il ne sera pas prêt pour la facture électronique. Le passage à un vrai outil correspond au moment où vous arrêtez de gérer de mémoire.",
+  },
+
+  { type: "h2", text: "Une seule application ou plusieurs outils ?" },
+  {
+    type: "p",
+    text: "Deux options s'offrent à vous. La première consiste à empiler des outils spécialisés : un logiciel de facturation, un agenda en ligne, un créateur de site, un outil d'avis. Chacun fait bien son travail, mais vous payez quatre abonnements et vous recopiez les mêmes informations à quatre endroits. La seconde consiste à prendre une application qui regroupe l'essentiel, au prix de fonctions moins poussées sur chaque point.",
+  },
+  {
+    type: "p",
+    text: "Le critère de décision tient à la complexité de vos chantiers. Un couvreur ou un maçon qui chiffre des métrés, gère des équipes et facture par situations de travaux a besoin d'un logiciel métier du bâtiment. Un plombier dépanneur, une coiffeuse, un paysagiste ou un photographe gagnent plus de temps avec une application unique.",
+  },
+
+  { type: "h2", text: "Où se place Sitaly" },
+  {
+    type: "p",
+    text: "Sitaly est une application française pensée pour les artisans, indépendants, commerçants et TPE. Elle couvre la gestion commerciale et une partie de la gestion administrative :",
   },
   {
     type: "ul",
     items: [
-      "Un site professionnel et une fiche Google soignée, pour être trouvé dans votre zone",
-      "Des demandes d'avis Google envoyées à vos clients au bon moment, sans que vous y pensiez",
-      "Un agent IA qui reprend vos appels manqués, relance vos devis en attente et prend vos rendez-vous",
-      "Vos réponses aux avis, SMS et messages rédigées pour vous",
-      "Un interlocuteur unique qui ajuste tout ça au fil des mois",
+      "Un site professionnel écrit par l'IA à partir d'une phrase, publié en une minute environ, que vous modifiez en écrivant ce que vous voulez changer.",
+      "Une liste de clients avec un statut pour chacun (nouveau, contacté, devis envoyé, client, perdu) et l'origine de la fiche : formulaire du site, rendez-vous en ligne ou saisie à la main.",
+      "Des [devis et factures](/produits/devis-et-factures/) conformes, acceptés en ligne, avec acompte par carte et relance des impayés à J+1, J+8 et J+15 en Essentiel et Pro.",
+      "La prise de rendez-vous en ligne depuis votre site, en Essentiel et Pro.",
+      "Les avis Google : réponse préparée par l'IA et publiée d'un clic, demande d'avis le lendemain d'une facture payée, QR code à imprimer.",
     ],
   },
   {
     type: "p",
-    text: "Sitaly se concentre sur ce qui remplit votre planning et laisse la facturation aux outils qui font ça très bien : les deux sont complémentaires. Vous gardez votre logiciel de devis, on branche la partie qui vous apporte des clients.",
+    text: "Ce que Sitaly ne fait pas : la comptabilité, la bibliothèque d'ouvrages, les métrés et le planning d'équipe. Si ces fonctions vous sont indispensables, gardez un logiciel métier pour le chiffrage et regardez si le reste de Sitaly vous sert. Notre guide sur [le choix d'un logiciel de devis et facture](/blog/logiciel-devis-artisan-choisir/) compare les familles d'outils en détail.",
   },
   {
     type: "p",
-    text: "Concrètement, ça tient en deux offres sans engagement : Sitaly Présence (à partir de 149 €/mois) pour votre site, votre visibilité locale et votre fiche Google, et Sitaly Agents IA pour automatiser relances, avis et appels manqués. On installe et on connecte tout à votre place. Vous ne partez pas d'une page blanche, vous démarrez avec un système déjà prêt pour votre métier.",
+    text: "La formule Découverte est gratuite, sans carte bancaire. Essentiel coûte 39 € par mois (ou 398 € par an) et Pro 79 € par mois (ou 806 € par an), sans engagement au mois. Avec Essentiel et Pro, un nom de domaine en .fr ou .com est compris, enregistré à votre nom. Le détail figure sur la page [tarifs](/tarifs/).",
   },
 
-  { type: "h2", text: "Comment on met ça en place pour vous" },
+  { type: "h2", text: "Comment démarrer sans y passer vos soirées" },
   {
     type: "ul",
     items: [
-      "Un appel de 20 minutes pour cadrer votre métier, votre zone et vos priorités",
-      "Sitaly met en place votre visibilité et connecte vos agents à votre fiche Google Business",
-      "On règle avec vous les relances de devis, les demandes d'avis et la reprise des appels manqués",
-      "Ensuite tout tourne en fond : vous recevez les appels et les demandes de devis, on ajuste au fil des mois",
+      "Notez vos trois tâches les plus pénibles de la semaine, celles que l'outil doit supprimer.",
+      "Testez deux outils au plus, sur un vrai devis et un vrai client, depuis votre téléphone.",
+      "Importez ou saisissez vos clients en cours d'abord, pas tout votre historique.",
+      "Gardez l'outil que vous avez rouvert spontanément le troisième jour.",
     ],
   },
 
   {
     type: "quote",
-    text: "Le meilleur logiciel n'est pas celui qui a le plus de boutons, c'est celui que vous ouvrez vraiment tous les jours.",
+    text: "Le bon logiciel de gestion est celui que vous ouvrez sans vous forcer, entre deux chantiers.",
   },
 
   {
@@ -138,29 +146,24 @@ export const contenu: BlogSection[] = [
     items: [
       {
         q: "C'est quoi un logiciel de gestion pour artisan ?",
-        a: "C'est un outil qui centralise et automatise une partie de votre activité. Attention : certains gèrent la facturation et les chantiers (devis, factures, compta), d'autres gèrent le développement client (suivi des prospects, avis Google, relances, visibilité). Les deux sont utiles mais ne règlent pas le même problème.",
+        a: "Un outil qui centralise une partie de votre activité. Certains gèrent l'administratif (devis, factures, comptabilité, chantiers), d'autres le commercial (site, suivi des demandes, avis Google, rendez-vous). Les deux sont utiles mais ne règlent pas le même problème : identifiez le vôtre avant de choisir.",
       },
       {
-        q: "Existe-t-il un logiciel gratuit pour artisan ?",
-        a: "Plusieurs outils de facturation proposent une version gratuite ou un essai. Côté développement client (avis Google, relances, appels manqués), Sitaly met ces automatisations en place pour vous via ses offres Présence et Agents IA, plutôt que de vous laisser un outil à configurer seul. Réservez un appel pour voir ce qui correspond à votre situation.",
+        q: "Existe-t-il un logiciel de gestion gratuit pour artisan ?",
+        a: "Oui, plusieurs outils ont une formule gratuite. Chez Sitaly, la formule Découverte est gratuite et sans carte : site publié, liste de clients, devis illimités et trois factures par mois. Les relances automatiques, la prise de rendez-vous et la fiche Google connectée demandent une formule payante.",
       },
       {
-        q: "Un CRM est-il vraiment utile pour un artisan seul ?",
-        a: "Surtout pour un artisan seul. Quand personne ne gère les relances à votre place, un outil qui vous rappelle qui contacter et quand vous évite de perdre des devis par simple oubli. C'est du chiffre d'affaires récupéré sans aucun budget publicitaire.",
+        q: "Mon logiciel doit-il gérer la facture électronique ?",
+        a: "Oui. Selon la DGFiP, toutes les entreprises doivent pouvoir recevoir des factures électroniques depuis le 1er septembre 2026, et les PME et micro-entreprises devront les émettre à partir du 1er septembre 2027. Demandez à votre éditeur, par écrit, comment il vous y prépare.",
       },
       {
-        q: "Sitaly remplace-t-il mon logiciel de facturation ?",
-        a: "Non, et c'est volontaire. Sitaly se concentre sur les clients, les avis et la visibilité. Vous gardez votre outil de devis et de facture : les deux fonctionnent très bien ensemble.",
+        q: "Faut-il un logiciel métier du bâtiment ?",
+        a: "Si vous chiffrez des chantiers lourds au mètre carré, avec bibliothèque d'ouvrages et situations de travaux, oui. Si vos devis tiennent en quelques lignes, une application plus simple vous fera gagner plus de temps, en particulier si elle couvre aussi votre site et vos avis.",
       },
       {
         q: "Faut-il être à l'aise avec l'informatique ?",
-        a: "Non. Comme Sitaly installe et fait tourner les outils à votre place, vous n'avez rien à configurer. Vous recevez les appels et les demandes de devis, on s'occupe de la technique.",
+        a: "Non, à condition de choisir un outil simple. Testez-le depuis votre téléphone : si vous créez un client et envoyez un devis sans aide en dix minutes, il vous convient.",
       },
     ],
-  },
-
-  {
-    type: "p",
-    text: "Le bon logiciel de gestion, pour un artisan, n'est pas celui qui fait le plus de choses. C'est celui qui vous fait gagner des clients sans vous voler du temps, et qui est déjà prêt quand vous l'ouvrez. Réservez un appel gratuit de 20 minutes : on regarde votre situation et on met en place l'outil qui remplit votre planning, sans que vous ayez à le configurer.",
   },
 ];

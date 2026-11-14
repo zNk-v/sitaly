@@ -5,111 +5,146 @@ import type { BlogSection } from "@/data/blog-posts";
 export const contenu: BlogSection[] = [
   {
     type: "p",
-    text: "Pour un artisan local, la fiche Google Business Profile (ex-Google My Business) est l'outil marketing le plus rentable au monde : elle est gratuite, elle se classe avant les résultats naturels, et une fiche bien optimisée peut générer 3 à 10 appels qualifiés par semaine. Voici exactement comment la configurer.",
+    text: "Quand un particulier tape « électricien » suivi de sa commune, Google affiche une carte et quelques fiches d'entreprises avant les sites internet. Ces fiches viennent de Google Business Profile, l'outil gratuit qui s'appelait autrefois Google My Business. Pour un artisan qui travaille dans un rayon de quelques dizaines de kilomètres, c'est souvent le premier contact avec un client. Ce guide reprend chaque réglage, en s'appuyant sur les règles publiées par Google.",
   },
-  { type: "h2", text: "Créer ou revendiquer sa fiche" },
+
+  { type: "h2", text: "Comment créer une fiche Google Business Profile quand on est artisan ?" },
   {
     type: "p",
-    text: "Rendez-vous sur google.com/business avec un compte Google professionnel (pas votre compte perso). Si une fiche existe déjà à votre nom, revendiquez-la — sinon créez-la. Google vous demandera une validation par courrier postal (carte reçue sous 5 à 14 jours) ou par téléphone selon le métier.",
+    text: "Rendez-vous sur google.com/business avec un compte Google que vous réservez à votre entreprise. Cherchez d'abord si une fiche existe déjà à votre nom : si oui, revendiquez-la. Sinon, créez-la, choisissez votre catégorie, indiquez votre zone d'intervention, puis validez la fiche selon la méthode que Google vous propose.",
   },
-  { type: "h2", text: "Renseigner les informations qui comptent" },
+  {
+    type: "p",
+    text: "La validation n'est pas une formalité : sans elle, votre fiche reste incomplète et vous ne pouvez pas répondre aux avis, comme l'indique Google dans [sa page sur la gestion des avis](https://support.google.com/business/answer/3474050?hl=fr). Google choisit la méthode de validation selon votre établissement ; suivez celle qu'il vous propose.",
+  },
+
+  { type: "h2", text: "Comment Google classe les fiches locales" },
+  {
+    type: "p",
+    text: "Google détaille ses critères dans [« Conseils pour améliorer votre classement local »](https://support.google.com/business/answer/7091?hl=fr). Trois facteurs principaux décident de l'ordre des fiches :",
+  },
   {
     type: "ul",
     items: [
-      "Nom exact de l'entreprise, sans mots-clés (Google sanctionne les 'Plomberie Dupont - Plombier Avignon')",
-      "Catégorie principale ultra-précise : 'Plombier', 'Électricien', 'Couvreur'",
-      "Catégories secondaires : 2 à 3 pertinentes pour vos services annexes",
-      "Adresse réelle (siège ou atelier) — masquable si vous intervenez uniquement chez le client",
-      "Zone d'intervention : listez 5 à 10 villes maximum, les plus proches d'abord",
-      "Horaires précis, y compris jours fériés et fermetures estivales",
-      "Site internet et numéro de téléphone identiques à ceux de votre site",
+      "La pertinence : votre fiche correspond-elle à ce que la personne cherche ? D'où l'importance de la catégorie et de la description.",
+      "La distance : l'éloignement entre votre entreprise et le lieu de recherche. Vous ne la contrôlez pas.",
+      "La proéminence : la notoriété de votre entreprise, qui tient compte entre autres du nombre d'avis et des notes.",
     ],
   },
-  { type: "h2", text: "Photos : la règle du minimum 20" },
   {
     type: "p",
-    text: "Les fiches avec moins de 10 photos sont presque toujours sous le top 3. Visez 20 à 50 photos : votre équipe, vos véhicules floqués, vos outils, des chantiers terminés (avant/après), votre showroom si vous en avez un. Ajoutez 1 à 2 photos par mois pour signaler à Google que la fiche est active.",
+    text: "La même page précise qu'aucun établissement ne peut obtenir un meilleur classement en payant ou en le demandant. Les annonces Google Ads, elles, se paient et s'affichent à part des résultats locaux gratuits.",
   },
+
+  { type: "h2", text: "Comment faire remonter sa fiche Google dans les résultats locaux ?" },
+  {
+    type: "p",
+    text: "Travaillez ce que vous contrôlez : une catégorie principale exacte, un nom conforme, des horaires et une zone d'intervention à jour, une description claire et des photos de vrais chantiers. Demandez ensuite un avis à chaque client et répondez à chacun. La distance, elle, ne dépend pas de vous, et le classement ne s'achète pas.",
+  },
+
+  { type: "h2", text: "Renseigner les informations qui comptent" },
+  {
+    type: "p",
+    text: "Les [consignes de Google pour représenter votre établissement](https://support.google.com/business/answer/3038177?hl=fr) fixent des règles précises.",
+  },
+  {
+    type: "ul",
+    items: [
+      "Le nom : votre nom réel, tel que vos clients le connaissent. Pas de mot-clé ni de ville ajoutés : « Plomberie Dupont », pas « Plomberie Dupont Plombier Avignon pas cher ».",
+      "La catégorie : choisissez le moins de catégories possible pour décrire votre activité principale. Demandez-vous ce que vous êtes (« Plombier »), pas tout ce que vous proposez.",
+      "L'adresse : une adresse physique réelle. Les boîtes postales et les boîtes aux lettres à distance sont refusées.",
+      "Le téléphone : un numéro local de préférence, pas un numéro surtaxé.",
+      "Les horaires : à jour, jours fériés et congés compris.",
+      "Le site internet : le même nom, le même téléphone et la même adresse que sur la fiche.",
+    ],
+  },
+
+  { type: "h2", text: "Peut-on masquer son adresse sur sa fiche Google ?" },
+  {
+    type: "p",
+    text: "Oui, et c'est même obligatoire si vous ne recevez pas de clients à votre adresse. Google demande aux établissements qui se déplacent chez leurs clients de retirer l'adresse de la fiche et d'indiquer des zones desservies. Vous pouvez ajouter jusqu'à 20 zones, en restant dans un rayon d'environ deux heures de trajet.",
+  },
+  {
+    type: "p",
+    text: "Ces règles figurent dans la page [« Gérer vos zones desservies »](https://support.google.com/business/answer/9157481?hl=fr). Indiquez d'abord les communes où vous voulez travailler, pas toutes celles où vous pourriez aller. Si vous avez un atelier ou une boutique ouverte au public, gardez l'adresse visible et ajoutez vos zones en plus.",
+  },
+
   { type: "h2", text: "La description : 750 caractères à ne pas gâcher" },
   {
     type: "p",
-    text: "Mentionnez votre métier, vos spécialités, vos zones d'intervention, votre ancienneté, vos certifications (RGE, Qualibat, etc.). Restez naturel — pas de bourrage de mots-clés. Cette description influence votre référencement local et rassure les prospects qui hésitent à appeler.",
+    text: "Google limite la description à 750 caractères, selon [sa page « Modifier votre fiche d'établissement »](https://support.google.com/business/answer/3039617?hl=fr). Décrivez ce que vous faites, ce qui vous distingue et depuis quand vous exercez. Citez vos spécialités, vos communes principales et vos qualifications réelles. Google demande d'y éviter les liens, le code HTML, les promotions et les prix.",
   },
-  { type: "h2", text: "Activer les services et les attributs" },
   {
     type: "p",
-    text: "Listez tous vos services avec une description courte et un prix indicatif quand c'est possible. Cochez les attributs pertinents : 'Devis gratuit', 'Sur rendez-vous', 'Entreprise locale', 'Service en français', etc. Ces éléments apparaissent dans les filtres Google et améliorent la conversion.",
+    text: "Écrivez pour le client, pas pour le moteur. Une phrase comme « Plombier à Avignon depuis 2012, spécialisé en rénovation de salles de bains et en dépannage de chauffe-eau » dit l'essentiel et contient déjà les mots qu'un client tape.",
   },
-  { type: "h2", text: "La fonction 'Posts' : sous-utilisée et puissante" },
+
+  { type: "h2", text: "Photos, services et publications" },
   {
     type: "p",
-    text: "Vous pouvez publier des actualités sur votre fiche, comme sur un réseau social : nouvelle prestation, chantier en cours, offre spéciale. Ces posts apparaissent dans les résultats de recherche et renforcent le signal d'activité. Visez 1 post toutes les 2 semaines.",
+    text: "Les photos montrent votre travail avant le premier appel. Ajoutez des chantiers terminés, des avant-après, votre véhicule, votre atelier, et vous-même si vous êtes à l'aise. Évitez les images de banque : un client repère vite une salle de bains de catalogue. Ajoutez des photos au fil des chantiers plutôt que trente d'un coup.",
   },
-  { type: "h2", text: "Avis : la mécanique à mettre en place" },
   {
     type: "p",
-    text: "Récupérez votre lien d'avis court (g.page/r/...) depuis le tableau de bord. Envoyez systématiquement un SMS au client le lendemain du chantier avec ce lien et un mot personnalisé. Répondez à chaque avis sous 48h, même négatif — Google valorise les fiches actives dans les conversations.",
+    text: "La rubrique services liste vos prestations, avec une courte description. Elle aide Google et le client à comprendre ce que vous faites. Les publications, enfin, fonctionnent comme de courts messages : une réalisation récente, une période de fermeture, une nouvelle prestation. Elles montrent que la fiche vit.",
   },
-  { type: "h2", text: "Avant / après : ce que change une fiche optimisée" },
-  {
-    type: "table",
-    caption: "Évolution typique sur 6 mois après optimisation complète d'une fiche GBP",
-    headers: ["Indicateur", "Avant", "Après 6 mois", "Évolution"],
-    rows: [
-      ["Photos sur la fiche", "3", "32", "+967 %"],
-      ["Avis Google", "5", "28", "+460 %"],
-      ["Note moyenne", "4,2", "4,8", "+0,6"],
-      ["Impressions Google / mois", "1 200", "6 800", "+467 %"],
-      ["Clics vers site / mois", "18", "112", "+522 %"],
-      ["Appels directs / mois", "9", "47", "+422 %"],
-      ["Demandes d'itinéraire / mois", "4", "23", "+475 %"],
-    ],
-  },
-  { type: "h2", text: "Exemple chiffré : un chauffagiste à Montpellier" },
+
+  { type: "h2", text: "Les avis : la mécanique à mettre en place" },
   {
     type: "p",
-    text: "Un chauffagiste accompagné par Sitaly avait une fiche presque vide (3 photos, 5 avis, description vide). Après 3 mois d'optimisation suivant cette méthode : 28 nouveaux avis (4,9/5), 24 photos ajoutées, 12 posts publiés, description retravaillée. Résultat mesuré dans GBP Insights : 47 appels/mois en moyenne contre 9 auparavant — une multiplication par 5,2 sans dépenser un euro.",
+    text: "Le nombre d'avis et les notes font partie de la proéminence. Demandez un avis à chaque client avec le lien direct de votre fiche, que Google permet de copier ou de transformer en QR code. Répondez à chaque avis, positif ou négatif. Notre article sur [la récolte d'avis Google](/blog/recolter-avis-google-artisan/) donne la méthode complète, des modèles de messages et la liste des pratiques interdites.",
   },
+  {
+    type: "p",
+    text: "Attention aux raccourcis : Google interdit d'offrir une contrepartie contre un avis et de solliciter seulement les clients contents, comme l'explique [son règlement sur les contenus interdits](https://support.google.com/contributionpolicy/answer/7400114?hl=fr).",
+  },
+
   { type: "h2", text: "Les erreurs qui sabotent une fiche" },
   {
     type: "ul",
     items: [
-      "Nom de l'entreprise différent sur le site, la fiche et les factures",
-      "Adresse inexistante ou boîte postale (Google ferme les fiches sans préavis)",
-      "Catégorie générique 'Entreprise' au lieu du métier précis",
-      "Photos issues de banques d'images",
-      "Pas de réponse aux avis",
+      "Un nom différent sur la fiche, le site, les devis et le véhicule.",
+      "Une boîte postale ou une adresse de domiciliation à la place d'une adresse réelle.",
+      "Une adresse affichée alors que vous ne recevez personne.",
+      "Une catégorie générique au lieu de votre métier.",
+      "Des photos de banque d'images.",
+      "Des avis restés sans réponse depuis des mois.",
     ],
   },
-  { type: "h2", text: "Questions fréquentes" },
+
+  { type: "h2", text: "Relier la fiche à votre site" },
+  {
+    type: "p",
+    text: "La fiche attire l'attention ; le site rassure et répond aux questions que la fiche ne traite pas : vos réalisations, vos prestations, votre façon de travailler. Avec Sitaly, l'IA écrit votre site à partir d'une phrase et le publie en une minute environ ; les [modèles par métier](/modeles/) vous montrent le résultat pour un plombier, un électricien, un paysagiste et d'autres.",
+  },
+  {
+    type: "p",
+    text: "Une fois votre fiche connectée dans la partie [avis Google](/produits/avis-google/) de Sitaly (formules Essentiel et Pro), vos nouveaux avis arrivent chaque matin avec une réponse préparée, que vous publiez d'un clic, et votre note s'affiche sur votre site. Sitaly n'est pas partenaire de Google : l'application utilise l'accès que vous lui autorisez sur l'écran de Google, et vous pouvez le retirer à tout moment.",
+  },
+
   {
     type: "faq",
     items: [
       {
-        q: "Combien d'avis Google faut-il pour être dans le top 3 local ?",
-        a: "Pas de seuil absolu, mais en pratique le top 3 dans une ville moyenne a 20 à 60 avis, avec une note ≥ 4,5/5. En dessous de 10 avis, le décollage est très rare.",
-      },
-      {
-        q: "Faut-il répondre aux avis négatifs ?",
-        a: "Absolument oui, sous 48h, sans jamais s'énerver. Une réponse calme et factuelle à un avis négatif rassure davantage les futurs lecteurs qu'une fiche sans aucun avis négatif.",
+        q: "Une fiche Google Business Profile est-elle payante ?",
+        a: "Non, la création et la gestion de la fiche sont gratuites. Google précise qu'on ne peut pas payer pour améliorer son classement local. Seules les annonces Google Ads sont payantes.",
       },
       {
         q: "Puis-je masquer mon adresse personnelle ?",
-        a: "Oui, en cochant 'Je livre mes biens et services aux clients' et en désactivant l'affichage de l'adresse. Vous gardez le bénéfice du classement local sans exposer votre domicile.",
+        a: "Oui. Si vous vous déplacez chez vos clients sans les recevoir, Google vous demande même de retirer l'adresse et d'indiquer des zones desservies : jusqu'à 20 zones, dans un rayon d'environ deux heures de trajet.",
       },
       {
-        q: "Une fiche suffit-elle ou faut-il aussi un site internet ?",
-        a: "Le combo fiche + site convertit 2 à 3x mieux que la fiche seule. La fiche attire, le site rassure et permet d'expliquer. Les deux sont complémentaires.",
+        q: "Puis-je ajouter ma ville dans le nom de ma fiche ?",
+        a: "Non. Les consignes de Google interdisent d'ajouter au nom des mots-clés, des précisions géographiques ou des slogans. Le nom doit être celui que vos clients connaissent, tel qu'il figure sur vos documents.",
       },
       {
-        q: "Faut-il publier régulièrement sur la fiche ?",
-        a: "Oui — un post toutes les 2 semaines signale à Google que la fiche est active, et ces posts apparaissent directement dans la recherche, augmentant la visibilité.",
+        q: "Combien de caractères pour la description de la fiche ?",
+        a: "750 caractères au maximum. Décrivez votre métier, vos spécialités, vos communes et votre ancienneté, sans lien, sans code et sans promotion.",
+      },
+      {
+        q: "Faut-il un site internet en plus de la fiche ?",
+        a: "Oui, si vous le pouvez. La fiche donne le contact rapide, le site montre vos réalisations et répond aux questions avant l'appel. Indiquez le même nom, le même téléphone et la même adresse sur les deux.",
       },
     ],
-  },
-  { type: "h2", text: "Pour aller plus loin" },
-  {
-    type: "p",
-    text: "Une fiche optimisée fonctionne encore mieux quand elle pointe vers un site internet rapide, mobile et localisé. Sitaly intègre la connexion entre votre fiche Google et votre site pour maximiser le référencement local — réservez un appel gratuit pour en discuter.",
   },
 ];

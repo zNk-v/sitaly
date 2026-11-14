@@ -267,8 +267,8 @@ export function buildSitemapXml(entries: SitemapEntry[] = SITEMAP_ENTRIES): stri
       `  <url>`,
       `    <loc>${BASE_URL}${e.path.endsWith("/") ? e.path : `${e.path}/`}</loc>`,
       e.lastmod ? `    <lastmod>${e.lastmod}</lastmod>` : null,
-      e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
-      e.priority ? `    <priority>${e.priority}</priority>` : null,
+      // changefreq et priority ne sortent plus dans le XML (audit SEO du
+      // 14 novembre 2026) : Google les ignore, seul lastmod compte.
       `  </url>`,
     ]
       .filter(Boolean)

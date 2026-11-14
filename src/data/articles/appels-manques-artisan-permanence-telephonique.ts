@@ -5,141 +5,151 @@ import type { BlogSection } from "@/data/blog-posts";
 export const contenu: BlogSection[] = [
   {
     type: "p",
-    text: "Vous êtes sous un évier, les mains dans le siphon. Le téléphone sonne dans la poche arrière. Vous le laissez sonner. À l'autre bout, un particulier avec une fuite passe au numéro suivant de sa liste, et vous n'aurez jamais su qu'il existait. Ce scénario se répète tous les jours dans presque toutes les entreprises artisanales, et il représente la fuite la plus coûteuse d'une activité de services. Voici comment la chiffrer sur votre propre entreprise, et les quatre façons de la colmater.",
+    text: "Vous êtes sous un évier, les mains dans le siphon. Le téléphone sonne dans la poche arrière et vous le laissez sonner. À l'autre bout, un particulier avec une fuite passe au numéro suivant de sa liste, et vous ne saurez jamais qu'il existait. Cet article vous aide à mesurer ce que vous coûtent vos appels manqués, avec vos propres chiffres, puis compare les solutions : répondeur, SMS automatique, permanence téléphonique, agent vocal IA, et la plus sous-estimée, faire en sorte que vos clients aient moins besoin d'appeler.",
   },
 
-  { type: "h2", text: "Le calcul, avec vos chiffres" },
+  { type: "h2", text: "Combien vous coûtent vos appels manqués ?" },
   {
     type: "p",
-    text: "Prenez le nombre d'appels entrants que vous recevez par jour, et estimez la part que vous ne décrochez pas. Un artisan seul sur ses chantiers se situe généralement entre 20 et 30 %. Sur quinze appels par jour, cela représente trois à cinq appels manqués quotidiens.",
+    text: "Personne ne peut vous donner ce chiffre à votre place : il dépend de votre métier, de votre zone et de vos horaires. Relevez pendant dix jours les appels manqués dans le journal de votre téléphone ou le relevé de votre opérateur, comptez ceux qui n'ont jamais rappelé, puis appliquez votre taux de signature et votre panier moyen.",
   },
   {
-    type: "p",
-    text: "Ajoutez maintenant le comportement des appelants. La majorité des personnes qui tombent sur un répondeur ne laissent pas de message : elles appellent le suivant. Sur vos quatre appels manqués du jour, comptez qu'un seul rappellera ou laissera un message. Trois disparaissent sans laisser de trace.",
-  },
-  {
-    type: "table",
-    caption: "Ce que représentent les appels manqués sur une année",
-    headers: ["", "Artisan seul", "Petite équipe"],
-    rows: [
-      ["Appels entrants par jour", "12 à 18", "25 à 40"],
-      ["Part non décrochée", "20 à 30 %", "15 à 25 %"],
-      ["Appels perdus par semaine", "15 à 20", "25 à 40"],
-      ["Sur un an, à 220 jours travaillés", "660 à 880 appels", "1 100 à 1 800 appels"],
+    type: "ul",
+    items: [
+      "Le nombre d'appels manqués par jour, relevé sur dix jours ouvrés.",
+      "La part de ces numéros qui n'ont ni rappelé ni laissé de message.",
+      "La part de vrais clients parmi eux (enlevez démarcheurs, fournisseurs et erreurs).",
+      "Votre taux de signature habituel sur une demande sérieuse.",
+      "Le montant moyen d'un chantier ou d'une intervention.",
     ],
   },
   {
     type: "p",
-    text: "Tous ces appels ne sont pas des clients. Il y a des démarcheurs, des erreurs, des fournisseurs. Retenez malgré tout qu'un appel sur cinq est un prospect sérieux, et que votre taux de transformation habituel s'applique. Sur 700 appels perdus dans l'année, cela fait plus d'une centaine de prospects réels et plusieurs dizaines de chantiers qui sont partis ailleurs. Multipliez par votre panier moyen : le montant obtenu dépasse presque toujours ce que coûte n'importe quelle solution de cet article.",
+    text: "Multipliez ces chiffres entre eux, puis rapportez le résultat à une année travaillée. Exemple fictif, à refaire avec vos chiffres : deux appels perdus par jour, dont un sur deux est un vrai client, un client sur trois qui aurait signé, un panier moyen de 600 €. Cela fait 200 € par jour de chiffre d'affaires qui part ailleurs. Votre résultat vous donne le budget à ne pas dépasser pour régler le problème.",
   },
 
   { type: "h2", text: "Pourquoi le rappel du soir ne suffit pas" },
   {
     type: "p",
-    text: "La réponse instinctive consiste à rappeler tout le monde en fin de journée. Ça vaut mieux que rien, et ça rate l'essentiel : entre le moment où le particulier a appelé et 19 heures, il a joint deux autres artisans et pris rendez-vous avec l'un d'eux. Sur du dépannage, la fenêtre se compte en minutes, pas en heures.",
+    text: "Le réflexe consiste à rappeler tout le monde en fin de journée. C'est mieux que rien, mais entre l'appel de 10 heures et votre rappel de 19 heures, le particulier a souvent joint un autre artisan. Sur du dépannage, la décision se prend dans l'heure.",
   },
   {
     type: "p",
-    text: "S'ajoute le coût invisible : le rappel du soir empiète sur votre vie personnelle, se fait dans la fatigue, et se transforme vite en corvée qu'on repousse. Les demandes s'empilent et la moitié n'est jamais traitée.",
+    text: "S'ajoute un coût moins visible : le rappel du soir empiète sur votre vie personnelle, se fait dans la fatigue et devient une corvée qu'on repousse. Les demandes s'empilent et certaines ne sont jamais traitées.",
   },
 
-  { type: "h2", text: "Les quatre solutions, comparées" },
-  { type: "h3", text: "1. Le répondeur avec message soigné" },
+  { type: "h2", text: "Les solutions, comparées" },
+  { type: "h3", text: "1. Le répondeur avec un message précis" },
   {
     type: "p",
-    text: "Le minimum absolu, et vous le faites sûrement déjà. Un message qui annonce un délai de rappel précis vaut mieux qu'une messagerie opérateur anonyme. Ça ne règle rien sur le fond : la grande majorité des appelants ne laisse pas de message, quel que soit le message d'accueil.",
+    text: "Le minimum. Un message qui donne votre nom, votre métier et un délai de rappel précis vaut mieux qu'une messagerie anonyme. Il ne règle pas le fond : beaucoup d'appelants raccrochent sans laisser de message et appellent le suivant.",
   },
-  { type: "h3", text: "2. Le SMS automatique après appel manqué" },
+  { type: "h3", text: "2. Le SMS automatique après un appel manqué" },
   {
     type: "p",
-    text: "Dès qu'un appel n'aboutit pas, un SMS part automatiquement : « Je suis en intervention, décrivez-moi votre besoin par message, je vous rappelle avant ce soir. » C'est simple, peu coûteux, et ça récupère une partie des appels. Le prospect a une réponse immédiate et un moyen de vous laisser sa demande sans parler à un répondeur. Ça reste un pansement : le rendez-vous n'est pas pris, et il faut toujours rappeler.",
+    text: "Certains opérateurs et applications envoient un SMS dès qu'un appel n'aboutit pas : « Je suis en intervention. Décrivez-moi votre besoin par message, je vous rappelle avant ce soir. » La personne a une réponse immédiate et un moyen de laisser sa demande sans parler à un répondeur. Le rendez-vous n'est pas pris pour autant, et vous devez toujours rappeler.",
   },
   { type: "h3", text: "3. La permanence téléphonique ou le secrétariat externalisé" },
   {
     type: "p",
-    text: "Une personne décroche à votre nom, prend le message et vous le transmet. La qualité est bonne, la voix humaine rassure, et les formules démarrent en général à un forfait mensuel auquel s'ajoute un coût par appel traité. Deux limites à connaître : les horaires, souvent limités aux heures de bureau alors qu'une part de vos appels arrive le soir et le week-end, et le fait que l'opérateur ne connaît pas votre métier. Il prend un message, il ne qualifie pas une urgence de chaudière.",
+    text: "Une personne décroche à votre nom, prend le message et vous le transmet. La voix humaine rassure. Avant de signer, vérifiez trois points : les horaires couverts (le soir et le samedi comptent pour un artisan), la façon dont le prix évolue avec le nombre d'appels, et ce que la personne sait de votre métier. Un opérateur prend un message ; il ne sait pas toujours distinguer une urgence de chaudière d'une demande de devis.",
   },
   { type: "h3", text: "4. L'agent vocal IA" },
   {
     type: "p",
-    text: "Un agent décroche à votre place, se présente au nom de votre entreprise, répond aux questions courantes, distingue une urgence d'une demande de devis, et propose un créneau dans votre agenda. Il fonctionne 24 heures sur 24, y compris le dimanche soir, et il coûte moins cher qu'une permanence humaine parce qu'il ne facture pas à l'appel.",
+    text: "Un agent répond au nom de votre entreprise, à toute heure, pose les questions de base, distingue une urgence d'une demande de devis et peut proposer un créneau. Le paramétrage demande du soin : c'est lui qui fait la différence entre un agent qui rassure et un agent qui agace. Sur un client en colère ou une question très technique, l'agent doit pouvoir passer la main à un humain.",
   },
   {
     type: "p",
-    text: "Ses limites méritent d'être dites. Sur une conversation très technique ou un client en colère, il vaut mieux transférer à un humain, et un agent bien réglé le fait. Le paramétrage initial demande du soin : c'est là que se joue la différence entre un agent qui rassure et un agent qui agace.",
+    text: "La loi encadre ces agents : l'[article 50 du règlement européen sur l'intelligence artificielle](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) impose que l'appelant sache qu'il parle à une machine. Notre article sur [l'article 50 de l'AI Act et les agents vocaux](/blog/ai-act-article-50-agent-vocal/) détaille ces obligations, et notre guide du [standard téléphonique IA](/blog/standard-telephonique-ia/) explique comment ce type d'outil fonctionne.",
   },
   {
     type: "table",
-    caption: "Comparatif des solutions face aux appels manqués",
-    headers: ["", "SMS auto", "Permanence téléphonique", "Agent vocal IA"],
+    caption: "Ce que fait chaque solution",
+    headers: ["", "SMS automatique", "Permanence téléphonique", "Agent vocal IA"],
     rows: [
-      ["Disponibilité", "24h/24", "Heures de bureau", "24h/24"],
-      ["Prend un rendez-vous", "Non", "Parfois", "Oui"],
-      ["Qualifie l'urgence", "Non", "Partiellement", "Oui"],
-      ["Coût", "Très faible", "Forfait plus coût par appel", "Abonnement fixe"],
-      ["Le prospect parle à quelqu'un", "Non", "Oui", "Oui"],
+      ["Répond à toute heure", "Oui", "Selon le contrat", "Oui"],
+      ["Le client parle à quelqu'un", "Non", "Oui, un humain", "Oui, une machine annoncée comme telle"],
+      ["Prend un rendez-vous", "Non", "Selon le contrat", "Si vous le paramétrez"],
+      ["Distingue l'urgence", "Non", "En partie", "Si vous le paramétrez"],
+      ["Coût", "Faible", "Abonnement et souvent coût par appel", "Abonnement, variable selon l'offre"],
     ],
+  },
+
+  { type: "h2", text: "Permanence téléphonique ou agent vocal IA : que choisir ?" },
+  {
+    type: "p",
+    text: "Choisissez la permanence si vos clients attendent une voix humaine et si vos appels arrivent surtout aux heures de bureau. Choisissez un agent vocal si beaucoup d'appels tombent le soir et le week-end, et si vous voulez qu'il propose directement un créneau. Dans les deux cas, comparez le coût annuel au montant que vous avez calculé plus haut.",
+  },
+
+  { type: "h2", text: "Réduire le nombre d'appels à prendre" },
+  {
+    type: "p",
+    text: "Une partie de vos appels sert à caler un rendez-vous, demander un prix indicatif ou vérifier que vous intervenez dans telle commune. Ces appels peuvent passer par écrit, à l'heure qui arrange votre client, sans vous interrompre sur le chantier.",
+  },
+  {
+    type: "ul",
+    items: [
+      "Une page de réservation en ligne, où le client choisit lui-même un créneau libre dans vos horaires.",
+      "Un formulaire de demande sur votre site, avec la commune, le type de travaux et une photo si besoin.",
+      "Une page qui répond aux questions courantes : zone d'intervention, délais, déplacement, modes de paiement.",
+      "Un numéro cliquable en haut de chaque page de votre site et sur votre fiche Google, pour les urgences.",
+    ],
+  },
+  {
+    type: "p",
+    text: "C'est ce que fait Sitaly. La [prise de rendez-vous en ligne](/produits/prise-de-rendez-vous/) (formules Essentiel et Pro) ajoute un bouton « Prendre rendez-vous » à votre site : le client choisit sa prestation et un créneau libre, reçoit une confirmation puis un rappel la veille, et vous recevez son nom, son téléphone et son message. Deux clients ne peuvent pas prendre le même créneau.",
+  },
+  {
+    type: "p",
+    text: "Pour les demandes écrites, l'agent de réponse aux demandes de Sitaly, présenté sur la page [agents IA](/produits/agents-ia/), prépare une réponse dans votre ton à chaque message reçu par votre site. Il repère une fuite, une panne ou un rendez-vous du jour et vous prévient aussitôt par e-mail. Rien ne part sans votre accord : vous relisez et envoyez depuis votre téléphone. Sitaly ne décroche pas le téléphone à votre place ; il réduit le nombre d'appels que vous avez à prendre.",
   },
 
   { type: "h2", text: "Ce qui compte plus que la solution choisie" },
   {
     type: "p",
-    text: "Quelle que soit l'option retenue, deux paramètres décident du résultat. Le premier est le délai : une demande traitée dans les cinq minutes se transforme bien mieux qu'une demande traitée deux heures plus tard, et cet écart pèse plus lourd que le choix de l'outil. Le second est ce qui se passe après : un message pris et posé sur un carnet ne vaut rien si personne ne rappelle. Une solution qui prend directement le rendez-vous supprime ce risque.",
-  },
-  {
-    type: "p",
-    text: "Un troisième point, souvent négligé : votre numéro doit être visible et cliquable partout, sur votre fiche Google comme en haut de chaque page de votre site. Traiter les appels manqués sans travailler la visibilité revient à colmater un tuyau qui n'est pas alimenté.",
+    text: "Deux paramètres décident du résultat, quel que soit l'outil. Le premier est le délai : une demande traitée vite a plus de chances d'aboutir qu'une demande rappelée le lendemain. Le second est la suite : un message noté sur un carnet ne vaut rien si personne ne rappelle. Une solution qui prend le rendez-vous, ou qui range la demande dans votre liste de clients, supprime ce risque.",
   },
 
   { type: "h2", text: "Par où commencer" },
   {
     type: "ul",
     items: [
-      "Cette semaine : activez le SMS automatique après appel manqué, c'est immédiat et presque gratuit.",
-      "Ce mois-ci : mesurez votre volume réel d'appels manqués sur dix jours, avec le relevé de votre opérateur.",
-      "Si le chiffre dépasse trois appels par jour : passez à une solution qui décroche, permanence ou agent vocal.",
-      "Dans tous les cas : vérifiez que votre numéro est cliquable sur mobile en haut de chaque page de votre site et sur votre fiche Google.",
+      "Cette semaine : enregistrez un message de répondeur avec un délai de rappel précis.",
+      "Pendant dix jours : relevez vos appels manqués et faites le calcul avec vos chiffres.",
+      "Ce mois-ci : ouvrez la réservation en ligne et un formulaire de demande sur votre site.",
+      "Si le montant calculé reste élevé : comparez une permanence et un agent vocal sur un mois d'essai.",
     ],
   },
 
   {
     type: "quote",
-    text: "Le client qui n'a pas eu de réponse ne se plaint jamais. Il appelle simplement le suivant, et vous ne saurez jamais qu'il a existé.",
+    text: "Le client qui n'a pas eu de réponse ne se plaint pas. Il appelle le suivant.",
   },
 
   {
     type: "faq",
     items: [
       {
-        q: "Combien d'appels un artisan rate-t-il par jour ?",
-        a: "Un artisan seul sur ses chantiers ne décroche pas 20 à 30 % de ses appels entrants, soit trois à cinq appels par jour. Sur une année de 220 jours travaillés, cela représente entre 660 et 880 appels perdus, dont une partie sont de vrais prospects.",
+        q: "Comment savoir combien d'appels je rate ?",
+        a: "Relevez pendant dix jours ouvrés les appels manqués dans le journal de votre téléphone ou sur le relevé de votre opérateur. Comptez ceux qui n'ont ni rappelé ni laissé de message, puis retirez démarcheurs et fournisseurs. Vous obtenez votre propre chiffre, plus fiable que n'importe quelle moyenne.",
       },
       {
-        q: "Combien coûte une permanence téléphonique ?",
-        a: "Les formules combinent en général un forfait mensuel et un coût par appel traité, ce qui rend la facture variable selon votre volume. La principale limite tient aux horaires : la plupart des services couvrent les heures de bureau, alors qu'une part des appels d'artisans arrive le soir et le week-end.",
+        q: "Le SMS automatique après appel manqué est-il utile ?",
+        a: "Il donne au client une réponse immédiate et un moyen de laisser sa demande par écrit. Il ne prend pas le rendez-vous et vous devez toujours rappeler : c'est une première étape, peu coûteuse, plutôt qu'une solution complète.",
       },
       {
-        q: "Permanence téléphonique ou agent vocal IA, que choisir ?",
-        a: "La permanence apporte une voix humaine sur les heures de bureau, avec un coût qui augmente avec le volume d'appels. L'agent vocal IA fonctionne 24h/24 à coût fixe, qualifie l'urgence et prend directement le rendez-vous, mais demande un paramétrage soigné au départ.",
+        q: "Un agent vocal IA doit-il dire qu'il est une IA ?",
+        a: "Oui. Le règlement européen sur l'intelligence artificielle impose d'informer la personne qu'elle échange avec un système d'IA. Notre article sur l'article 50 de l'AI Act détaille cette obligation et la façon de vérifier qu'un agent la respecte.",
       },
       {
-        q: "Le SMS automatique après appel manqué est-il efficace ?",
-        a: "Il récupère une partie des appels perdus en donnant au prospect une réponse immédiate et un moyen de laisser sa demande. Il ne prend pas le rendez-vous et vous devez toujours rappeler, ce qui en fait une première étape utile plutôt qu'une solution complète.",
+        q: "La réservation en ligne remplace-t-elle le téléphone ?",
+        a: "Non, mais elle absorbe les appels qui servent à caler un créneau. Le client réserve le soir ou le week-end, sans vous interrompre. Gardez un numéro visible pour les urgences.",
       },
       {
-        q: "Les clients acceptent-ils de parler à un agent vocal IA ?",
-        a: "Les agents récents tiennent une conversation fluide et transfèrent à un humain sur les cas sensibles. Dans la pratique, la plupart des appelants préfèrent une réponse immédiate et un rendez-vous obtenu à un répondeur vide un dimanche soir. Ce qui agace un client, c'est de ne joindre personne.",
-      },
-      {
-        q: "En combien de temps faut-il rappeler un prospect ?",
-        a: "Le plus vite possible, et idéalement dans les cinq minutes. Une demande traitée dans ce délai se transforme nettement mieux qu'une demande rappelée deux heures plus tard, parce que le particulier a entre-temps joint deux autres artisans et souvent pris rendez-vous avec l'un d'eux.",
+        q: "Sitaly répond-il à mes appels ?",
+        a: "Non. Sitaly ne décroche pas le téléphone. Il réduit le nombre d'appels à prendre : réservation en ligne depuis votre site, réponse préparée aux demandes écrites, alerte par e-mail en cas d'urgence.",
       },
     ],
-  },
-
-  { type: "h2", text: "Ne perdez plus un appel" },
-  {
-    type: "p",
-    text: "Sitaly installe des agents IA clé en main pour les artisans et les TPE : un standardiste qui décroche 24h/24, qualifie la demande et remplit votre agenda pendant que vous travaillez. Vous ne configurez rien. Réservez un appel gratuit de 20 minutes pour chiffrer ce que vos appels manqués vous coûtent.",
   },
 ];

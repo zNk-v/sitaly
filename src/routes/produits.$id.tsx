@@ -1,3 +1,4 @@
+import { ArticlesALire, articlesPublies } from "@/components/ArticlesALire";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, Check, ChevronRight } from "lucide-react";
 import { SiteChrome } from "@/components/SiteChrome";
@@ -191,6 +192,22 @@ function PageProduit() {
             </p>
           </div>
         </section>
+
+        {p.articles && articlesPublies(p.articles).length > 0 && (
+          <section className="px-4 py-16 sm:px-6">
+            <div className="mx-auto max-w-5xl">
+              <TitreSection surtitre="Guides" titre="Pour aller plus loin" />
+              <div className="mt-10">
+                <ArticlesALire
+                  slugs={p.articles}
+                  titre=""
+                  classeCarte={`${CARTE} p-6 transition hover:bg-black/[0.05]`}
+                  classeLien="text-black"
+                />
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="px-4 py-16 sm:px-6">
           <div className="mx-auto max-w-3xl">

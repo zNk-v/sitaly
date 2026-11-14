@@ -42,39 +42,21 @@ export const PAGES_METIER_HORS_INDEX = [
  */
 export const PAGES_OUTILS_HORS_INDEX = ["/outils/budget-google-ads-artisan"];
 
-/** Articles écrits pour les artisans, les professions libérales, ou hors offre. */
+/**
+ * Articles écrits pour les artisans, les professions libérales, ou hors offre.
+ *
+ * Révision du 14 novembre 2026 (audit SEO) : l'application vise de nouveau les
+ * artisans et les indépendants. Les 29 articles sortis le 26 septembre ont été
+ * relus (prix de l'ancienne agence retirés, chiffres sans source supprimés,
+ * appels vers l'application) et 27 reviennent dans l'index. Deux restent dehors :
+ * - le site du kinésithérapeute : le code de la santé publique interdit les
+ *   liens sponsorisés et les témoignages de patients, et l'Ordre écarte les
+ *   champs libres à la réservation, que le formulaire de Sitaly propose encore ;
+ * - « Google Ads : pourquoi investir », qui doublonne l'article sur le coût.
+ */
 export const ARTICLES_HORS_INDEX = [
-  "creation-site-internet-artisan-guide",
-  "comment-attirer-clients-artisan",
-  "referencement-local-google-artisan",
-  "combien-coute-site-internet-artisan",
-  "fiche-google-business-profile-artisan",
-  "site-internet-plombier-electricien",
-  "seo-local-villes-pages-artisan",
-  "site-internet-artisan-rentabilite-roi",
-  "google-ads-artisan-quand-utiliser",
-  "refonte-site-artisan-quand-comment",
-  "google-ads-artisan-pourquoi-investir",
-  "google-ads-vs-seo-artisan",
-  "cout-google-ads-artisan-vrais-chiffres",
-  "logiciel-gestion-artisan-choisir",
-  "recolter-avis-google-artisan",
-  "trouver-patients-osteopathe",
   "site-internet-kinesitherapeute-patients",
-  "trouver-clients-coach-sportif",
-  "trouver-clients-consultant-independant",
-  "trouver-clients-avocat",
-  "trouver-clients-expert-comptable",
-  "trouver-des-chantiers-artisan",
-  "plateformes-mise-en-relation-artisan-avis",
-  "crm-artisan-guide",
-  "logiciel-devis-artisan-choisir",
-  "comparatif-solutions-site-internet-artisan",
-  "resilier-contrat-site-internet-location-financiere",
-  "iphone-duo-site-internet-ecran-pliable",
-  // Écrit pour les artisans, chiffres sans source : le sujet des appels manqués
-  // est porté par /agents-ia/btp/ et l'article sur le démarchage.
-  "appels-manques-artisan-permanence-telephonique",
+  "google-ads-artisan-pourquoi-investir",
 ];
 
 /**

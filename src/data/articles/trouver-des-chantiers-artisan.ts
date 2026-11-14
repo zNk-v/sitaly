@@ -5,170 +5,150 @@ import type { BlogSection } from "@/data/blog-posts";
 export const contenu: BlogSection[] = [
   {
     type: "p",
-    text: "Un planning qui se vide dans trois semaines, ça ne se règle pas en trois semaines. C'est le problème de fond quand on cherche des chantiers : on s'en préoccupe au moment où il est déjà tard, et on se rabat sur le canal le plus rapide, qui est presque toujours le plus cher. Cet article passe en revue les sept canaux qui amènent des chantiers à un artisan, avec ce que chacun coûte, ce qu'il rapporte et le délai avant les premiers résultats. L'objectif : que vous sachiez lequel actionner selon l'état de votre carnet.",
+    text: "Un planning qui se vide dans trois semaines ne se remplit pas en trois semaines. On s'en préoccupe quand il est déjà tard, et on se rabat sur le canal le plus rapide, qui coûte souvent le plus cher. Cet article passe en revue sept canaux qui amènent des chantiers à un artisan, avec ce que chacun coûte, le temps qu'il met à produire et ce qu'il vous laisse le jour où vous arrêtez. Vous saurez lequel actionner selon l'état de votre carnet.",
   },
 
   { type: "h2", text: "La question à se poser avant de choisir un canal" },
   {
     type: "p",
-    text: "Il y a deux familles de canaux, et les confondre coûte cher. Les canaux qu'on loue vous amènent des chantiers tant que vous payez, et s'arrêtent net dès que vous coupez le robinet. Les canaux qu'on possède mettent des mois à démarrer, puis continuent de produire sans coût variable.",
+    text: "Il existe deux familles de canaux. Ceux que vous louez vous amènent des chantiers tant que vous payez et s'arrêtent net quand vous coupez. Ceux que vous possédez mettent du temps à démarrer, puis continuent de produire sans coût par contact.",
   },
   {
     type: "p",
-    text: "La plupart des artisans construisent leur activité à 100 % sur des canaux loués, généralement les plateformes de mise en relation. Ça marche, jusqu'au jour où la plateforme augmente ses tarifs, change son algorithme ou envoie le même lead à cinq concurrents. Un carnet de commandes solide combine les deux familles.",
+    text: "Beaucoup d'artisans bâtissent leur activité sur des canaux loués, en général les plateformes de mise en relation. Ça fonctionne jusqu'au jour où la plateforme change ses tarifs ou ses règles. Un carnet de commandes solide combine les deux familles.",
   },
   {
     type: "table",
-    caption: "Ce que rapporte chaque canal pour un artisan",
-    headers: ["Canal", "Délai avant résultats", "Coût par chantier", "Vous appartient"],
+    caption: "Les sept canaux, comparés",
+    headers: ["Canal", "Délai avant résultats", "Ce que vous payez", "Vous appartient"],
     rows: [
-      ["Fiche Google Business Profile", "2 à 8 semaines", "Nul", "Oui"],
-      ["Site internet et SEO local", "3 à 6 mois", "Coût fixe mensuel", "Oui"],
-      ["Bouche-à-oreille organisé", "Immédiat", "Nul", "Oui"],
-      ["Google Ads", "48 heures", "Budget publicitaire", "Non"],
-      ["Réseaux entre artisans", "1 à 3 mois", "Nul", "Partiellement"],
-      ["Plateformes de mise en relation", "Immédiat", "10 à 20 % du chantier", "Non"],
-      ["Prospection locale directe", "2 à 6 semaines", "Votre temps", "Oui"],
+      ["Fiche Google Business Profile", "Quelques semaines à quelques mois", "Rien, votre temps", "Oui"],
+      ["Site internet et référencement local", "Plusieurs mois", "Un abonnement ou un forfait", "Oui"],
+      ["Bouche-à-oreille organisé", "Dès le prochain chantier", "Votre temps", "Oui"],
+      ["Google Ads", "Dès la mise en ligne des annonces", "Chaque clic", "Non"],
+      ["Réseau de confrères", "Quelques mois", "Votre temps", "En partie"],
+      ["Plateformes de mise en relation", "Rapide", "Contacts, abonnement ou commission", "Non"],
+      ["Prospection des professionnels", "Quelques semaines", "Votre temps", "Oui"],
     ],
   },
 
   { type: "h2", text: "1. La fiche Google Business Profile" },
   {
     type: "p",
-    text: "C'est le canal le plus rentable qui existe pour un artisan, et le plus souvent négligé. Quand quelqu'un cherche « couvreur » ou « plombier » près de chez lui, Google affiche trois fiches locales avant tout le reste. Sortir dans ce bloc de trois vaut plus que n'importe quelle position en dessous, et ça ne coûte rien.",
+    text: "Quand quelqu'un cherche « couvreur » ou « plombier » près de chez lui, Google affiche une carte et un bloc de fiches locales avant les sites. Y figurer ne coûte rien. Google explique dans [ses conseils pour le classement local](https://support.google.com/business/answer/7091?hl=fr) que ce classement repose sur la pertinence, la distance et la proéminence, et qu'on ne peut pas l'acheter.",
   },
   {
     type: "p",
-    text: "Trois leviers décident du classement : la distance entre le client et votre adresse, la complétude de votre fiche, et le volume d'avis récents. Vous ne pouvez rien à la distance. Sur les deux autres, tout est entre vos mains. Une fiche avec vingt-cinq avis et des photos de chantiers écrase une fiche à quatre avis créée il y a trois ans et jamais retouchée.",
-  },
-  {
-    type: "p",
-    text: "L'erreur classique consiste à créer la fiche puis à l'oublier. Une fiche vivante, avec des photos ajoutées chaque mois et des réponses aux avis, envoie à Google un signal d'activité que la concurrence endormie n'envoie pas.",
+    text: "Vous ne contrôlez pas la distance. Le reste dépend de vous : une fiche complète, une bonne catégorie, des photos de vrais chantiers et un flux régulier d'avis. Notre [guide de la fiche Google Business Profile](/blog/fiche-google-business-profile-artisan/) reprend chaque réglage. L'erreur classique consiste à créer la fiche puis à l'oublier.",
   },
 
   { type: "h2", text: "2. Le site internet et le référencement local" },
   {
     type: "p",
-    text: "La fiche Google capte les recherches courtes du type « plombier + ville ». Le site capte tout le reste : « remplacement chauffe-eau + commune », « devis ravalement maison ancienne », « menuisier sur mesure dressing ». Ces recherches ont moins de volume, mais celui qui les tape sait ce qu'il veut et compare deux ou trois artisans avant d'appeler.",
+    text: "La fiche capte les recherches courtes du type « plombier » et une ville. Le site capte le reste : « remplacement chauffe-eau » et le nom d'une commune, « ravalement maison ancienne », « dressing sur mesure ». Ces recherches sont moins nombreuses, mais la personne qui les tape sait ce qu'elle veut.",
   },
   {
     type: "p",
-    text: "Un site qui fonctionne n'est pas une brochure en ligne. C'est un ensemble de pages, une par prestation et une par commune desservie, chacune écrite pour une recherche précise. Un artisan qui n'a qu'une page d'accueil se limite à sa commune et à son métier générique. Avec quinze pages, il couvre son vrai rayon d'intervention.",
-  },
-  {
-    type: "p",
-    text: "Comptez trois à six mois avant que les premières pages remontent. C'est long quand le planning est vide, et c'est exactement pour ça qu'il faut lancer ce canal quand le carnet est plein.",
+    text: "Un site utile décrit chaque prestation et les communes où vous intervenez. Un site d'une seule page vous limite à votre métier générique. Comptez plusieurs mois avant que les pages remontent : c'est justement pour ça qu'il faut le lancer quand le carnet est plein. Avec Sitaly, l'IA écrit le site à partir d'une phrase et le publie en une minute environ ; la partie [référencement SEO et GEO](/produits/referencement-seo-geo/) prépare titres, descriptions et données pour Google et pour les assistants IA.",
   },
 
   { type: "h2", text: "3. Le bouche-à-oreille, mais organisé" },
   {
     type: "p",
-    text: "Tous les artisans disent travailler au bouche-à-oreille. Presque aucun ne l'organise. La différence tient à trois habitudes : demander un avis Google à chaque fin de chantier, reprendre contact avec les clients d'il y a deux ans, et laisser une trace physique sur place.",
+    text: "Tous les artisans disent travailler au bouche-à-oreille. Peu l'organisent. Trois habitudes font la différence : demander un avis Google à chaque fin de chantier, reprendre contact avec les clients d'il y a deux ans, et laisser une trace sur place (carte, autocollant sur la chaudière, QR code).",
   },
   {
     type: "p",
-    text: "Un point que beaucoup ignorent : le bouche-à-oreille passe par Google avant d'aboutir. On vous recommande, la personne tape votre nom, et ce qu'elle trouve décide de l'appel. Si elle ne trouve qu'un annuaire et deux avis, la recommandation se perd. Le bouche-à-oreille et la présence en ligne ne sont pas deux canaux séparés, c'est le même.",
+    text: "Le bouche-à-oreille passe aussi par Google. On vous recommande, la personne tape votre nom, et ce qu'elle trouve décide de l'appel. Si elle ne trouve qu'un annuaire et deux avis anciens, la recommandation se perd. Notre méthode pour [récolter des avis Google](/blog/recolter-avis-google-artisan/) vous aide à installer cette habitude.",
   },
 
   { type: "h2", text: "4. Google Ads" },
   {
     type: "p",
-    text: "C'est le seul canal qui produit des appels en quarante-huit heures. Vous payez pour apparaître en haut des résultats sur les recherches de votre métier dans votre zone, et vous coupez quand le planning se remplit. Cette souplesse en fait l'outil idéal pour combler un trou ou lancer une nouvelle prestation.",
+    text: "C'est le canal le plus rapide : vos annonces peuvent s'afficher dès que la campagne est validée, sur les recherches de votre métier dans votre zone, et vous coupez quand le planning se remplit. Vous payez au clic, que la personne vous appelle ou non.",
   },
   {
     type: "p",
-    text: "Le revers : chaque euro cesse de produire dès que vous arrêtez de payer. Un artisan qui ne fait que du Ads pendant trois ans a construit zéro actif. La bonne façon de s'en servir, c'est en complément du référencement naturel : les annonces couvrent les mois pendant lesquels le SEO se met en place.",
+    text: "Le revers : chaque euro cesse de produire dès que vous arrêtez. Un artisan qui ne fait que de la publicité pendant trois ans n'a rien construit. Servez-vous en pour combler un creux ou lancer une prestation, pendant que la fiche et le site montent.",
   },
 
-  { type: "h2", text: "5. Les réseaux entre artisans" },
+  { type: "h2", text: "5. Le réseau de confrères" },
   {
     type: "p",
-    text: "Un plombier qui connaît trois carreleurs et deux électriciens reçoit des chantiers sans rien dépenser. Sur une rénovation complète, l'artisan déjà sur place est en position de recommander tous les autres corps de métier. C'est un canal lent à construire et durable une fois établi.",
+    text: "Un plombier qui connaît trois carreleurs et deux électriciens sérieux reçoit des chantiers sans rien dépenser. Sur une rénovation, l'artisan déjà sur place recommande souvent les autres corps de métier. Le canal se construit lentement et dure une fois établi.",
   },
   {
     type: "p",
-    text: "Concrètement : identifiez les cinq artisans complémentaires de votre secteur qui travaillent proprement, proposez-leur un échange de recommandations, et tenez votre part. Cinq relations solides valent mieux que cinquante contacts dans un groupe Facebook.",
+    text: "Identifiez cinq artisans complémentaires dans votre secteur qui travaillent proprement, proposez-leur de vous recommander mutuellement, et tenez votre part. Cinq relations solides valent mieux que cinquante contacts dans un groupe en ligne.",
   },
 
   { type: "h2", text: "6. Les plateformes de mise en relation" },
   {
     type: "p",
-    text: "Travaux.com, Ootravaux, Habitatpresto et les autres promettent des demandes qualifiées sans effort. Elles en fournissent réellement, et c'est ce qui rend le calcul trompeur. Vous payez soit à la mise en relation, soit un pourcentage du chantier, et vous êtes mis en concurrence directe avec trois ou quatre confrères sur le même lead, ce qui tire les prix vers le bas.",
+    text: "Elles fournissent de vraies demandes, et c'est ce qui rend le calcul trompeur. Vous payez au contact, par abonnement ou à la commission, et la même demande part souvent vers plusieurs artisans. Le prix tire vers le bas.",
   },
   {
     type: "p",
-    text: "Le problème n'est pas d'y être. Le problème, c'est de n'être que là. Un artisan dont 100 % des chantiers viennent d'une plateforme n'a pas d'entreprise, il a un abonnement. Le jour où la plateforme change ses règles, il repart de zéro.",
-  },
-
-  { type: "h2", text: "7. La prospection locale directe" },
-  {
-    type: "p",
-    text: "Peu séduisant, souvent efficace. Syndics de copropriété, agences immobilières, gestionnaires de biens et entreprises générales cherchent en permanence des artisans fiables et disponibles. Un seul syndic conquis peut représenter plusieurs chantiers par an, chaque année.",
-  },
-  {
-    type: "p",
-    text: "Le ticket d'entrée : être joignable et répondre vite. Un gestionnaire qui appelle trois artisans retient celui qui décroche. C'est aussi pour ça que les appels manqués coûtent bien plus cher qu'on ne l'imagine.",
+    text: "Y être n'est pas le problème ; n'être que là en est un. Le jour où la plateforme change ses règles, vous repartez de zéro. Notre article sur [le vrai coût des plateformes](/blog/plateformes-mise-en-relation-artisan-avis/) vous montre comment calculer ce que vous coûte un chantier signé par ce canal.",
   },
 
-  { type: "h2", text: "Le calcul que personne ne fait" },
+  { type: "h2", text: "7. La prospection des professionnels" },
   {
     type: "p",
-    text: "Prenez un artisan qui réalise trente chantiers par an à 4 000 € en moyenne, soit 120 000 € de chiffre d'affaires. S'il passe intégralement par une plateforme prélevant 15 %, il verse 18 000 € par an. Le même artisan avec un site, une fiche Google entretenue et un budget publicitaire mesuré dépense entre 3 000 et 6 000 € par an, et il garde ses canaux le jour où il coupe.",
+    text: "Peu séduisante, souvent efficace. Syndics de copropriété, agences immobilières, gestionnaires de biens et entreprises générales cherchent des artisans fiables et disponibles. Un syndic satisfait peut vous confier plusieurs interventions par an, chaque année.",
   },
   {
     type: "p",
-    text: "L'écart ne vient pas du prix affiché de chaque canal. Il vient du fait que l'un se paie sur chaque chantier, indéfiniment, quand l'autre se paie à coût fixe et se rentabilise à mesure que le volume augmente.",
+    text: "Le ticket d'entrée : être joignable et répondre vite. Un gestionnaire qui appelle trois artisans retient celui qui décroche ou qui rappelle dans l'heure. Pour démarcher par e-mail des professionnels, respectez les règles rappelées par la CNIL sur [la prospection électronique](https://www.cnil.fr/fr/la-prospection-commerciale-par-courrier-electronique-sms-mms-et-automate-dappel) : le message doit concerner leur activité et permettre de se désinscrire.",
+  },
+
+  { type: "h2", text: "Comment trouver des chantiers rapidement quand le planning est vide ?" },
+  {
+    type: "p",
+    text: "Combinez un canal rapide et un canal durable. Pour l'urgence, lancez une campagne Google Ads ciblée sur votre métier et votre zone, rappelez vos anciens clients et prévenez vos confrères que vous êtes disponible. Le même jour, mettez votre fiche Google à jour et demandez un avis à vos derniers clients. Ces deux gestes gratuits préparent les mois suivants.",
+  },
+
+  { type: "h2", text: "Quel est le canal le moins cher pour trouver des chantiers ?" },
+  {
+    type: "p",
+    text: "La fiche Google Business Profile. Elle est gratuite, elle s'affiche avant les sites dans les recherches locales, et son classement ne s'achète pas. Son principal levier tient aux avis récents, que vous obtenez en les demandant à chaque client. Le bouche-à-oreille organisé et le réseau de confrères suivent : ils ne coûtent que votre temps.",
   },
 
   { type: "h2", text: "Par où commencer selon votre situation" },
   {
     type: "ul",
     items: [
-      "Planning vide dans les deux semaines : Google Ads pour l'urgence, plus la remise à niveau de votre fiche Google le même jour.",
-      "Planning correct mais irrégulier : fiche Google, récolte d'avis systématique et site avec pages par prestation.",
-      "Planning plein plusieurs mois : c'est le meilleur moment pour construire le site et le référencement, qui produiront quand le creux arrivera.",
-      "Dépendance à une plateforme : gardez-la, et lancez en parallèle vos canaux à vous pour réduire la part de la plateforme d'un tiers par an.",
+      "Planning vide dans les deux semaines : Google Ads pour l'urgence, anciens clients et confrères, plus la remise à niveau de votre fiche Google le même jour.",
+      "Planning correct mais irrégulier : fiche Google, demande d'avis systématique et site qui décrit vos prestations.",
+      "Planning plein pour plusieurs mois : le meilleur moment pour construire le site et le référencement, qui produiront quand le creux arrivera.",
+      "Dépendance à une plateforme : gardez-la, lancez vos propres canaux en parallèle, et réduisez sa part chaque trimestre.",
     ],
   },
 
   {
     type: "quote",
-    text: "Un canal qu'on loue remplit le planning de ce mois-ci. Un canal qu'on possède remplit celui des cinq prochaines années.",
+    text: "Un canal loué remplit le planning de ce mois-ci. Un canal qui vous appartient remplit celui des années suivantes.",
   },
 
   {
     type: "faq",
     items: [
       {
-        q: "Comment trouver des chantiers rapidement quand le planning est vide ?",
-        a: "Google Ads est le seul canal qui produit des appels sous quarante-huit heures : vous ciblez votre métier et votre zone, et vous coupez quand le carnet se remplit. En parallèle, remettez à niveau votre fiche Google Business Profile le jour même, car c'est gratuit et ça produit sous quelques semaines.",
-      },
-      {
         q: "Les plateformes de mise en relation valent-elles le coup pour un artisan ?",
-        a: "Elles fournissent de vraies demandes, mais vous coûtent entre 10 et 20 % du chantier et vous mettent en concurrence directe sur le prix. Elles conviennent en complément, pas comme unique source. Un artisan dont tous les chantiers viennent d'une plateforme repart de zéro le jour où elle change ses règles.",
+        a: "Elles fournissent de vraies demandes, mais vous mettent en concurrence avec d'autres artisans sur le même contact. Elles conviennent en complément, pas comme source unique. Calculez chaque trimestre ce que vous coûte un chantier signé par ce canal.",
       },
       {
         q: "Combien de temps pour que le référencement amène des chantiers ?",
-        a: "Comptez trois à six mois pour qu'un site avec des pages par prestation et par commune commence à remonter sur Google, selon la concurrence locale. La fiche Google Business Profile, elle, produit des résultats en deux à huit semaines.",
+        a: "Comptez plusieurs mois pour qu'un site qui décrit vos prestations et vos communes remonte sur Google, selon la concurrence locale. Une fiche Google bien tenue, avec des avis récents, produit en général des effets plus tôt.",
       },
       {
         q: "Faut-il un site internet quand on travaille au bouche-à-oreille ?",
-        a: "Oui, parce que le bouche-à-oreille passe par Google avant d'aboutir. On vous recommande, la personne tape votre nom, et ce qu'elle trouve décide de l'appel. Sans site, elle tombe sur des annuaires et sur des concurrents qui payent pour apparaître sur votre nom.",
-      },
-      {
-        q: "Quel est le canal le moins cher pour trouver des chantiers ?",
-        a: "La fiche Google Business Profile ne coûte rien et place votre entreprise dans le bloc de trois fiches locales affiché avant tous les autres résultats. Le levier principal est le volume d'avis récents, qu'on obtient en sollicitant chaque client en fin d'intervention.",
+        a: "Oui, parce que la recommandation passe par Google. La personne qu'on vous a recommandée tape votre nom : si elle ne trouve rien de clair, elle hésite. Un site simple, avec vos réalisations et votre téléphone, transforme la recommandation en appel.",
       },
       {
         q: "Comment trouver des chantiers auprès des professionnels ?",
-        a: "Syndics de copropriété, agences immobilières et entreprises générales cherchent en permanence des artisans fiables. Un seul syndic conquis représente plusieurs chantiers par an. La condition d'entrée est d'être joignable : un gestionnaire qui appelle trois artisans retient celui qui décroche.",
+        a: "Présentez-vous aux syndics, agences immobilières, gestionnaires de biens et entreprises générales de votre secteur. Un professionnel satisfait revient chaque année. La condition d'entrée : décrocher ou rappeler vite, et envoyer vos devis sans délai.",
       },
     ],
-  },
-
-  { type: "h2", text: "Construisez les canaux qui vous appartiennent" },
-  {
-    type: "p",
-    text: "Sitaly met en place les canaux que vous gardez : site optimisé pour votre métier et votre zone, fiche Google entretenue, récolte d'avis automatisée, campagnes Google Ads pour combler les creux. Tout est géré, vous ne touchez à rien. Réservez un appel gratuit de 20 minutes pour faire le point sur vos canaux actuels.",
   },
 ];

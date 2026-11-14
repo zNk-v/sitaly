@@ -6,7 +6,7 @@ import { SiteChrome } from "@/components/SiteChrome";
 import { lienCreation } from "@/components/produit/Produit";
 
 const URL = "https://sitaly.fr/outils/audit-fiche-google/";
-const TITLE = "Audit gratuit de fiche Google Business Profile : score sur 100 | Sitaly";
+const TITLE = "Audit gratuit de fiche Google : score sur 100 | Sitaly";
 const DESCRIPTION =
   "Auditez votre fiche Google Business Profile en 3 minutes : 20 questions, un score sur 100 et les corrections classées par impact. Gratuit, sans inscription.";
 
