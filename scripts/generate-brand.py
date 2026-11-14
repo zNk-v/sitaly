@@ -251,7 +251,9 @@ def png(name_svg, name_png, w, h):
     return render(files[name_svg], os.path.join(OUT, name_png), w, h)
 
 os.makedirs(f"{OUT}/brand/png", exist_ok=True)
-png("og-image.svg", "og-image.png", 1200, 630)
+# og-image.png ne vient plus d'ici depuis le 14/11/2026 : son slogan d'agence
+# a été remplacé, voir scripts/og-image.html et scripts/og-image.mjs.
+# png("og-image.svg", "og-image.png", 1200, 630)
 Image.open(png("og-agents-ia.svg", "og-agents-ia.png", 1200, 630)).convert("RGB").save(f"{OUT}/og-agents-ia.jpg", quality=90)
 os.remove(f"{OUT}/og-agents-ia.png")
 png("tmp-apple.svg", "apple-touch-icon.png", 180, 180)
