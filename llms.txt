@@ -111,10 +111,9 @@
 
 ## Aussi, sur mesure
 
-Sitaly peut aussi créer et suivre un site à la place du client, sur devis. À part l'application, Sitaly installe des agents IA sur mesure pour les PME qui reçoivent beaucoup de demandes (Agent IA 499 € par mois + 1 200 € de mise en place, Agent IA Pro avec agent vocal 790 € par mois + 2 400 €) et gère des campagnes ChatGPT Ads (à partir de 890 € par mois + 10 % du budget publicitaire).
+Sitaly peut aussi créer et suivre un site à la place du client, sur devis. À part l'application, Sitaly installe des agents IA sur mesure pour les PME qui reçoivent beaucoup de demandes (Agent IA 499 € par mois + 1 200 € de mise en place, Agent IA Pro avec agent vocal 790 € par mois + 2 400 €).
 
 - [Agents IA sur mesure pour PME](https://sitaly.fr/agents-ia/)
-- [Agence ChatGPT Ads](https://sitaly.fr/chatgpt-ads/)
 - [Prix d'un agent IA en 2026](https://sitaly.fr/blog/prix-agent-ia/)
 - [Démarchage téléphonique interdit sans consentement : ce qu'un agent IA a encore le droit de faire](https://sitaly.fr/blog/demarchage-telephonique-agent-ia-2026/)
 - [Agent IA en entreprise : ce que ça fait, ce que ça coûte, et quand s'en passer](https://sitaly.fr/blog/agent-ia-entreprise-guide/)
