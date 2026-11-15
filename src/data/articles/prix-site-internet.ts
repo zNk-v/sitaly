@@ -183,6 +183,25 @@ export const contenu: BlogSection[] = [
     type: "quote",
     text: "Le site le moins cher est celui qui vous apporte des clients sans vous voler vos soirées.",
   },
+  { type: "h2", text: "Comment avoir un site internet pas cher ?" },
+  {
+    type: "p",
+    text: "Le moins cher n'est pas le prix d'appel le plus bas, mais le total sur trois ans pour un site qui vous amène des clients. Cinq règles gardent la facture basse sans sacrifier l'essentiel.",
+  },
+  {
+    type: "ul",
+    items: [
+      "Commencez gratuitement : une formule gratuite suffit pour tester votre présentation et la montrer à vos premiers clients, sans carte bancaire.",
+      "Payez le domaine, pas le reste : une adresse à votre nom coûte environ 12 € par an pour un .fr selon l'[Afnic](https://www.afnic.fr/noms-de-domaine/tout-savoir/pourquoi-choisir-le-fr/), et c'est elle qui inspire confiance.",
+      "Lisez le prix de renouvellement : beaucoup d'offres baissent la première année, puis remontent.",
+      "Évitez les contrats longs : un engagement de 36 ou 48 mois coûte cher le jour où vous voulez partir.",
+      "Faites vos retouches vous-même : chaque modification facturée à l'heure alourdit un site « pas cher » à la création.",
+    ],
+  },
+  {
+    type: "p",
+    text: "Sur ces critères, un éditeur à modèles ou un créateur par IA reste la solution la moins chère pour un indépendant. Le tableau des coûts sur trois ans, plus haut, donne les montants.",
+  },
   { type: "h2", text: "Combien coûte un site avec Sitaly ?" },
   {
     type: "p",
@@ -227,6 +246,10 @@ export const contenu: BlogSection[] = [
       {
         q: "Un site gratuit est-il vraiment gratuit ?",
         a: "Le site, oui. L'adresse reste celle de l'outil, et le domaine à votre nom se paie à part ou avec une formule payante. Le détail est dans notre guide pour [créer un site internet gratuit](/blog/creer-site-internet-gratuit/).",
+      },
+      {
+        q: "Quel est le site internet le moins cher ?",
+        a: "Une formule gratuite, comme Découverte chez Sitaly, avec une adresse au nom de l'outil. Avec votre propre domaine, les premières formules des éditeurs à modèles démarrent autour de 15 € par mois payés à l'année, et Sitaly Essentiel coûte 39 € par mois, domaine, devis, factures et rendez-vous compris.",
       },
       {
         q: "Vaut-il mieux payer au mois ou à l'année ?",

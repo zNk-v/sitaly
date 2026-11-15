@@ -9,7 +9,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Cet article donne une séquence de relance, deux modèles de messages, les règles à respecter, et la façon de faire avec [Devis et factures](/produits/devis-et-factures/), le module de devis de l'application Sitaly.",
+    text: "Cet article donne une séquence de relance, des modèles de SMS et de mail à copier, une trame d'appel, les règles à respecter, et la façon de faire avec [Devis et factures](/produits/devis-et-factures/), le module de devis de l'application Sitaly.",
   },
   { type: "h2", text: "Ce qu'un devis non relancé vous coûte, calculé avec vos chiffres" },
   {
@@ -48,16 +48,49 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Pour un gros chantier, comme une rénovation de salle de bain ou une toiture, le délai de décision s'allonge : espacez les relances plutôt que d'en ajouter. Pour un dépannage, raccourcissez-les : le client a besoin d'une réponse cette semaine.",
   },
-  { type: "h2", text: "Deux modèles de messages prêts à l'emploi" },
+  { type: "h2", text: "Modèles de relance de devis : SMS, mail et téléphone" },
   { type: "h3", text: "SMS de relance à J+2" },
   {
     type: "quote",
     text: "Bonjour {Prénom}, c'est {Votre nom} de {Entreprise}. Je voulais m'assurer que vous aviez bien reçu le devis envoyé lundi. Je reste disponible si vous avez une question. Bonne journée.",
   },
+  { type: "h3", text: "Mail de relance de devis à J+7" },
+  { type: "p", text: "Objet : Votre devis {numéro} pour {prestation}" },
+  {
+    type: "quote",
+    text: "Bonjour {Prénom}, je reviens vers vous au sujet du devis de {prestation} envoyé le {date}. Avez-vous une question sur les quantités, le délai ou le prix ? Si un poste vous freine, je peux vous proposer une variante. Je reste joignable au {téléphone}. Bien cordialement, {Votre nom}",
+  },
+  {
+    type: "p",
+    text: "Reprenez le numéro du devis et la prestation dans l'objet : votre client retrouve le message dans sa boîte, et le relit sans chercher de quoi il s'agit. Une question précise appelle une réponse, alors qu'un « avez-vous pris une décision ? » appelle le silence.",
+  },
   { type: "h3", text: "SMS de relance à J+15" },
   {
     type: "quote",
     text: "Bonjour {Prénom}, mon planning de {mois} se remplit. Si vous souhaitez avancer, je peux encore réserver un créneau cette semaine. Voulez-vous que je bloque une date ?",
+  },
+  { type: "h3", text: "Dernier mail de relance, avant l'échéance du devis" },
+  { type: "p", text: "Objet : Votre devis {numéro} reste valable jusqu'au {date}" },
+  {
+    type: "quote",
+    text: "Bonjour {Prénom}, votre devis pour {prestation} reste valable jusqu'au {date}. Après cette date, je devrai revoir les prix et le planning. Si votre projet a changé ou si vous avez choisi une autre entreprise, un mot suffit et je clôture le dossier. Bien cordialement, {Votre nom}",
+  },
+  {
+    type: "p",
+    text: "La dernière phrase autorise le client à dire non. Beaucoup répondent alors, et un refus vous donne sa raison : le prix, le délai, un concurrent. Notez-la avec le devis perdu.",
+  },
+  { type: "h3", text: "Relance par téléphone : une trame en trois temps" },
+  {
+    type: "ul",
+    items: [
+      "Présentez-vous et rappelez le devis : « Bonjour, c'est {Votre nom}, je vous appelle pour le devis de {prestation}. »",
+      "Posez une question ouverte : « Qu'est-ce qui vous fait encore hésiter ? »",
+      "Proposez une suite concrète : une visite, une variante moins chère, une date de début.",
+    ],
+  },
+  {
+    type: "p",
+    text: "N'appelez que si le client a accepté d'être recontacté au sujet de son devis : les règles sont plus bas. Notez sa réponse dans sa fiche, avec la date de la prochaine relance.",
   },
   {
     type: "p",
@@ -113,6 +146,10 @@ export const contenu: BlogSection[] = [
       {
         q: "La relance de devis, ce n'est pas trop insistant ?",
         a: "Bien réglée, elle se lit comme un suivi attentif. Les messages reprennent votre nom, le prénom du client et l'objet du devis, et vous arrêtez dès qu'il répond. C'est le silence qui paraît désinvolte, pas le rappel.",
+      },
+      {
+        q: "Comment relancer un devis par mail ?",
+        a: "Envoyez le mail une semaine après le devis. Mettez le numéro du devis et la prestation dans l'objet, rappelez la date d'envoi, posez une question précise et proposez une suite : une variante, une visite, une date. Le modèle de mail de cet article est prêt à copier.",
       },
       {
         q: "Sitaly relance-t-il mes devis tout seul ?",

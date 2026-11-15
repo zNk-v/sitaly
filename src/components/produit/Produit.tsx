@@ -398,8 +398,8 @@ const FORMULES: Formule[] = [
         texte: "Un .fr ou un .com enregistré à votre nom, branché sur votre site et renouvelé tant que votre abonnement court.",
       },
       {
-        titre: "Sans mention Sitaly",
-        texte: "« Site créé avec Sitaly » disparaît du pied de votre site.",
+        titre: "Mention Sitaly discrète et retirable",
+        texte: "Votre site affiche « Site réalisé avec Sitaly » en petit, et vous la retirez d'un clic si vous préférez.",
       },
       {
         titre: "Prise de rendez-vous en ligne",
@@ -620,8 +620,8 @@ const GROUPES_COMPARES: { titre: string; lignes: LigneComparee[] }[] = [
         valeurs: [false, true, true],
       },
       {
-        libelle: "Sans mention Sitaly",
-        aide: "« Site créé avec Sitaly » s'affiche au pied des sites de la formule Découverte.",
+        libelle: "Mention Sitaly retirable",
+        aide: "Découverte affiche « Site créé avec Sitaly ». Essentiel et Pro gardent une mention discrète, que vous retirez d'un clic.",
         valeurs: [false, true, true],
       },
       { libelle: "Score de visibilité SEO et GEO, fichier llms.txt", valeurs: [true, true, true] },

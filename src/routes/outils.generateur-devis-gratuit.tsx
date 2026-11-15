@@ -25,9 +25,9 @@ import { BASE_URL } from "@/lib/sitemap";
  */
 
 const URL = `${BASE_URL}/outils/generateur-devis-gratuit/`;
-const TITRE = "Générateur de devis gratuit en PDF | Sitaly";
+const TITRE = "Faire un devis gratuit en ligne : générateur PDF | Sitaly";
 const DESCRIPTION =
-  "Vos lignes, et le devis se met en page avec ses mentions obligatoires, prêt en PDF. Pour artisans et auto-entrepreneurs. Gratuit, sans inscription.";
+  "Faites un devis gratuit en ligne : le modèle se remplit avec les mentions obligatoires, prêt en PDF. Pour artisans et auto-entrepreneurs, sans inscription.";
 
 const TAUX = [
   { valeur: 20, label: "20 %" },
@@ -279,8 +279,9 @@ function GenerateurDevis() {
               Générateur de devis gratuit
             </h1>
             <p className={`mx-auto mt-6 max-w-2xl text-lg leading-7 ${TEXTE_GRIS}`}>
-              Remplissez vos lignes : le devis se met en page avec les mentions obligatoires, prêt à
-              imprimer ou à enregistrer en PDF. Sans inscription. Rien ne quitte votre navigateur.
+              Faites un devis gratuit en ligne : remplissez vos lignes, et ce modèle de devis se met
+              en page avec les mentions obligatoires, prêt à imprimer ou à enregistrer en PDF. Sans
+              inscription. Rien ne quitte votre navigateur.
             </p>
           </div>
         </section>

@@ -63,7 +63,7 @@ export interface Produit {
 export const PRODUITS: Produit[] = [
   {
     id: "devis-et-factures",
-    articles: ["logiciel-devis-artisan-choisir", "mentions-obligatoires-devis-artisan", "facturation-electronique-artisan-2027", "relance-automatique-devis"],
+    articles: ["logiciel-devis-artisan-choisir", "logiciel-facturation-auto-entrepreneur-gratuit", "facturation-electronique-artisan-2027", "mentions-obligatoires-devis-artisan", "relance-automatique-devis"],
     cta: "Faire mon premier devis",
     nom: "Devis et factures",
     menuDesc: "Devis acceptés en ligne, factures payées par carte.",

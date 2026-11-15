@@ -52,6 +52,23 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Pour savoir en une seconde si votre nom est libre, utilisez notre [vérificateur de nom de domaine](/outils/verifier-nom-de-domaine/) : il interroge les registres officiels du .fr et du .com. L'Afnic propose aussi une [recherche Whois](https://www.afnic.fr/noms-de-domaine/tout-savoir/whois-trouver-un-nom-de-domaine/) pour le .fr.",
   },
+  { type: "h2", text: "Peut-on avoir un nom de domaine gratuit ?" },
+  {
+    type: "p",
+    text: "Pas vraiment. Un .fr ou un .com se loue à l'année auprès d'un bureau d'enregistrement, et quelqu'un paie toujours ce renouvellement. Quand une offre annonce un nom de domaine gratuit, il s'agit en général de l'un de ces trois cas.",
+  },
+  {
+    type: "ul",
+    items: [
+      "Une sous-adresse : votre-nom.sitaly.fr ou votre-nom.wixsite.com. Elle est vraiment gratuite, mais elle porte le nom de l'outil et vous ne pouvez pas l'emporter si vous changez de service.",
+      "Un domaine offert la première année : fréquent chez les créateurs de sites avec un abonnement annuel. Regardez le prix du renouvellement, payé dès la deuxième année.",
+      "Un domaine inclus dans l'abonnement : pas de facture séparée tant que l'abonnement court. Vérifiez à quel nom il est enregistré et ce qu'il devient si vous partez.",
+    ],
+  },
+  {
+    type: "p",
+    text: "Chez Sitaly, la formule Découverte est gratuite avec une adresse en .sitaly.fr. Les formules Essentiel et Pro incluent un .fr ou un .com, enregistré à votre nom. Pour démarrer sans rien payer, une sous-adresse suffit : passez à votre propre domaine quand vos premiers clients arrivent.",
+  },
   { type: "h2", text: "Le domaine doit être à votre nom" },
   {
     type: "p",
@@ -68,6 +85,10 @@ export const contenu: BlogSection[] = [
   {
     type: "faq",
     items: [
+      {
+        q: "Existe-t-il un nom de domaine gratuit ?",
+        a: "Un vrai .fr ou .com se paie chaque année, environ 12 € pour un .fr selon l'Afnic. Ce qu'on appelle un domaine gratuit est soit une sous-adresse au nom de l'outil (votre-nom.sitaly.fr), soit un domaine inclus ou offert la première année avec un abonnement.",
+      },
       {
         q: "Peut-on changer de nom de domaine plus tard ?",
         a: "Oui. Gardez alors l'ancien quelques années et faites-le rediriger vers le nouveau : vos clients et Google suivront.",

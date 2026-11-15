@@ -94,7 +94,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Vous pouvez garder votre logiciel de facturation s'il est « solution compatible » : selon la FAQ de la DGFiP, il doit offrir des fonctions conformes à la réforme et être connecté à au moins une plateforme agréée. Posez la question à votre éditeur.",
+    text: "Vous pouvez garder votre logiciel de facturation s'il est « solution compatible » : selon la FAQ de la DGFiP, il doit offrir des fonctions conformes à la réforme et être connecté à au moins une plateforme agréée. Posez la question à votre éditeur. Pour un micro-entrepreneur qui cherche un outil sans abonnement, notre comparatif des [logiciels de facturation gratuits](/blog/logiciel-facturation-auto-entrepreneur-gratuit/) indique ce que chaque éditeur annonce.",
   },
   { type: "h3", text: "Et le Portail public de facturation ?" },
   {

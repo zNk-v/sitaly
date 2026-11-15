@@ -105,7 +105,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     slug: "prix-site-internet",
     title: "Combien coûte un site internet en 2026 ? Les vrais prix, poste par poste",
     metaTitle: "Prix d'un site internet en 2026 : le coût réel sur 3 ans",
-    metaDescription: "Prix publiés de Wix, Squarespace, WordPress.com et Sitaly, coûts oubliés, freelance ou agence : ce que coûte un site internet sur trois ans.",
+    metaDescription: "Prix publiés de Wix, Squarespace, WordPress.com et Sitaly, coûts oubliés, solutions pas chères, freelance ou agence : ce que coûte un site sur trois ans.",
     excerpt:
       "De zéro à plusieurs milliers d'euros : pour comparer, il faut séparer ce que vous payez une fois, chaque année, et en temps.",
     category: "Créer son site",
@@ -114,7 +114,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     author: "Teddy Vidal",
     keyword: "prix site internet",
     cta: "app",
-    updatedAt: "2026-11-14",
+    updatedAt: "2026-11-15",
   },
   {
     slug: "trouver-nom-entreprise",
@@ -146,7 +146,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     author: "Teddy Vidal",
     keyword: "choisir nom de domaine",
     cta: "app",
-    updatedAt: "2026-11-14",
+    updatedAt: "2026-11-15",
   },
   {
     slug: "mentions-legales-site-internet",
@@ -459,16 +459,16 @@ const ALL_BLOG_POSTS: BlogPost[] = [
   {
     slug: "relance-automatique-devis",
     title: "Relancer ses devis automatiquement : la méthode pour signer plus en 2026",
-    metaTitle: "Relance de devis : quand relancer et quoi écrire (2026)",
-    metaDescription: "Quand relancer un devis, combien de fois, deux modèles de SMS, les règles d'appel depuis août 2026, et le devis accepté en ligne avec Sitaly.",
+    metaTitle: "Relance devis : modèles de mail, SMS et calendrier (2026)",
+    metaDescription: "Relancer un devis sans réponse : quand le faire, des modèles de mail et de SMS à copier, une trame d'appel, et les règles du téléphone depuis août 2026.",
     excerpt:
       "La plupart des devis sans réponse ne sont pas refusés : ils sont oubliés. Voici quand relancer, avec quels messages, et comment automatiser la relance sans perdre le ton d'un échange humain.",
     category: "Automatisation",
-    readingTime: "6 min",
+    readingTime: "8 min",
     publishedAt: "2026-06-22",
-    updatedAt: "2026-11-14",
+    updatedAt: "2026-11-15",
     author: "Teddy Vidal",
-    keyword: "relance devis automatique",
+    keyword: "relance devis",
     cta: "devis",
   },
   {
@@ -698,6 +698,21 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     publishedAt: "2026-11-13",
     author: "Teddy Vidal",
     keyword: "facturation électronique artisan 2027",
+    cta: "devis",
+  },
+  {
+    slug: "logiciel-facturation-auto-entrepreneur-gratuit",
+    title: "Logiciel de facturation gratuit pour auto-entrepreneur : 8 offres comparées",
+    metaTitle: "Logiciel facturation auto-entrepreneur gratuit : comparatif",
+    metaDescription:
+      "Abby, Indy, Tiime, Shine, Henrri, VosFactures, Facture.net et Sitaly : ce que donne chaque formule gratuite, et ce qu'il faut vérifier avant 2027.",
+    excerpt:
+      "Plusieurs logiciels de facturation sont gratuits pour un micro-entrepreneur. Ce que chaque formule retire, et ce que la facturation électronique de 2027 change au choix.",
+    category: "Outils & logiciels",
+    readingTime: "7 min",
+    publishedAt: "2026-11-15",
+    author: "Teddy Vidal",
+    keyword: "logiciel facturation auto entrepreneur gratuit",
     cta: "devis",
   },
   {

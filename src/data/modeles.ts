@@ -1174,6 +1174,78 @@ export const MODELES: Modele[] = [
     ],
   },
   {
+    id: "avocat",
+    nom: "avocat",
+    famille: "service",
+    attentes:
+      "Une personne qui cherche un avocat a souvent un problème urgent : un licenciement, une séparation, un litige avec un voisin. Avant d'appeler, elle veut savoir si vous traitez son type d'affaire, où se trouve votre cabinet, comment vous facturez et quand elle peut vous parler. Un site clair, sous votre nom, répond à ces questions et lui donne un rendez-vous.",
+    outils: ["prise-de-rendez-vous", "blog-ia", "devis-et-factures"],
+    faq: [
+      {
+        q: "Un avocat a-t-il le droit d'avoir un site internet ?",
+        a: "Oui. La communication des avocats est permise et encadrée par le Règlement intérieur national de la profession (RIN, article 10) : des informations sincères, sans comparaison avec vos confrères ni dénigrement. Le RIN vous demande aussi d'informer votre ordre quand vous ouvrez un site et de lui communiquer son nom de domaine.",
+      },
+      {
+        q: "Puis-je écrire que je suis spécialiste en droit du travail ?",
+        a: "Seulement si vous détenez un certificat de spécialisation délivré par le Conseil national des barreaux. Sinon, présentez vos domaines d'activités dominantes, trois au plus (RIN, article 10.2) : « droit du travail, droit de la famille ». Les consignes de l'IA lui interdisent d'inventer un titre ou une spécialisation, et vous relisez chaque texte avant de publier.",
+      },
+      {
+        q: "Quel nom de domaine choisir pour mon cabinet ?",
+        a: "Votre nom ou celui de votre cabinet, éventuellement suivi ou précédé du mot « avocat » : le RIN interdit les noms de domaine génériques du type « avocat-divorce.fr ». La formule Essentiel, à 39 € par mois, inclut un nom de domaine en .fr ou en .com à votre nom.",
+      },
+      {
+        q: "Un client peut-il réserver une première consultation ?",
+        a: "Oui, avec les formules Essentiel et Pro : il choisit un créneau libre depuis votre site et reçoit une confirmation par e-mail. Avec la formule gratuite, il vous écrit par le formulaire de contact.",
+      },
+      {
+        q: "Combien coûte un site d'avocat avec Sitaly ?",
+        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine et la prise de rendez-vous.",
+      },
+    ],
+    intro:
+      "Un site sobre, à votre nom : vos domaines d'intervention, votre façon de facturer et un premier rendez-vous à réserver.",
+    sections: [
+      {
+        titre: "Accueil",
+        texte: "Votre cabinet, votre barreau et votre ville.",
+      },
+      {
+        titre: "Domaines d'intervention",
+        texte: "Les affaires que vous traitez, une page chacune.",
+      },
+      {
+        titre: "Honoraires",
+        texte: "Forfait, temps passé, convention d'honoraires.",
+      },
+      {
+        titre: "Le cabinet",
+        texte: "Votre parcours, votre équipe, l'accès.",
+      },
+      {
+        titre: "Actualités juridiques",
+        texte: "Vos articles sur les questions de vos clients.",
+      },
+      {
+        titre: "Rendez-vous",
+        texte: "Au cabinet, par téléphone ou en visio.",
+      },
+    ],
+    conseils: [
+      {
+        titre: "Écrivez pour le client",
+        texte: "Une page « Licenciement : que faire ? » parle mieux qu'une liste d'articles du Code.",
+      },
+      {
+        titre: "Expliquez vos honoraires",
+        texte: "Dites comment vous facturez : c'est la question que le client n'ose pas poser.",
+      },
+      {
+        titre: "Relisez avec le RIN en tête",
+        texte: "Pas de promesse de résultat, pas de « spécialiste » sans certificat.",
+      },
+    ],
+  },
+  {
     id: "formateur",
     nom: "formateur",
     famille: "service",
@@ -1482,6 +1554,15 @@ export const METIERS_PLUS = [
     phrase: "Consultant en gestion à Lyon, accompagnement des dirigeants de PME",
     couleur: "#1c2536",
     accent: "#e6c27a",
+  },
+  {
+    id: "avocat",
+    activite: "cabinet d'avocat",
+    entreprise: "Cabinet Delaunay",
+    titre: "Un avocat qui vous répond, à Nantes",
+    phrase: "Avocate à Nantes, droit de la famille et droit du travail",
+    couleur: "#1b2433",
+    accent: "#c9a46a",
   },
   {
     id: "formateur",

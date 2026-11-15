@@ -414,6 +414,7 @@ const GUIDES_PAR_METIER: Record<string, string> = {
   osteopathe: "trouver-patients-osteopathe",
   coach: "trouver-clients-coach-sportif",
   consultant: "trouver-clients-consultant-independant",
+  avocat: "trouver-clients-avocat",
   formateur: "trouver-clients-consultant-independant",
   artisan: "logiciel-devis-artisan-choisir",
   "auto-entrepreneur": "mentions-legales-site-internet",
