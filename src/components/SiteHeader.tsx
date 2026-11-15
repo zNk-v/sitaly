@@ -124,7 +124,10 @@ export function SiteHeader({
                 <a href={`${APP_URL}/connexion`} className="lien-entete hidden sm:inline-flex">
                   Se connecter
                 </a>
-                <a href={`${APP_URL}/`} className="bouton hidden h-10 px-5 text-sm sm:inline-flex">
+                <a
+                  href={`${APP_URL}/creer`}
+                  className="bouton hidden h-10 px-5 text-sm sm:inline-flex"
+                >
                   Créer mon site
                   <ArrowRight className="bouton-fleche h-4 w-4" />
                 </a>

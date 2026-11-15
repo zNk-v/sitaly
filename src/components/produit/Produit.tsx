@@ -24,8 +24,14 @@ export const BOUTON_CLAIR =
 export const TEXTE_GRIS = "text-black/60";
 
 /** L'adresse de l'application, avec la phrase du visiteur : elle remplit la création après l'inscription. */
+/**
+ * Sans phrase, le lien va droit à la première question de l'app (/creer) :
+ * l'accueil de l'app répète celui de sitaly.fr, le visiteur le verrait deux fois.
+ */
 export const lienCreation = (activite?: string) =>
-  activite ? `${APP_URL}/?activite=${encodeURIComponent(activite.slice(0, 600))}` : `${APP_URL}/`;
+  activite
+    ? `${APP_URL}/?activite=${encodeURIComponent(activite.slice(0, 600))}`
+    : `${APP_URL}/creer`;
 
 export function TitreSection({
   surtitre,

@@ -191,7 +191,11 @@ export function MobileMenu({
                 </>
               ) : (
                 <>
-                  <a href={`${APP_URL}/`} onClick={fermer} className="bouton h-12 w-full text-base">
+                  <a
+                    href={`${APP_URL}/creer`}
+                    onClick={fermer}
+                    className="bouton h-12 w-full text-base"
+                  >
                     Créer mon site
                     <ArrowRight className="bouton-fleche h-4 w-4" />
                   </a>

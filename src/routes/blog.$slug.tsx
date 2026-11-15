@@ -452,14 +452,14 @@ const APPELS: Record<CtaArticle, { milieu: Appel; fin: Appel }> = {
       texte:
         "Décrivez votre activité en une phrase : Sitaly écrit vos pages, crée vos photos et met le site en ligne. Gratuit pour commencer.",
       label: "Créer mon site",
-      href: `${APP_URL}/`,
+      href: `${APP_URL}/creer`,
     },
     fin: {
       titre: "Passez de la lecture à votre site",
       texte:
         "Une phrase sur votre activité suffit : votre site est en ligne une minute plus tard, et vous le retouchez en parlant à l'IA. Gratuit, sans carte bancaire.",
       label: "Créer mon site gratuitement",
-      href: `${APP_URL}/`,
+      href: `${APP_URL}/creer`,
     },
   },
   // Les produits de Sitaly App (14 novembre 2026) : chaque article qui parle
@@ -493,7 +493,7 @@ const APPELS: Record<CtaArticle, { milieu: Appel; fin: Appel }> = {
       texte:
         "Votre site et votre page de réservation, créés par l'IA en une minute. Gratuit pour commencer, sans carte bancaire.",
       label: "Créer mon site",
-      href: `${APP_URL}/`,
+      href: `${APP_URL}/creer`,
     },
   },
   avis: {
@@ -520,14 +520,14 @@ const APPELS: Record<CtaArticle, { milieu: Appel; fin: Appel }> = {
       texte:
         "Décrivez votre activité en une phrase : Sitaly écrit vos pages, crée vos photos et met le site en ligne. Gratuit pour commencer.",
       label: "Créer mon site",
-      href: `${APP_URL}/`,
+      href: `${APP_URL}/creer`,
     },
     fin: {
       titre: "Passez de la lecture à votre site",
       texte:
         "Une phrase sur votre activité suffit : votre site est en ligne une minute plus tard, et vous le retouchez en parlant à l'IA. Gratuit, sans carte bancaire.",
       label: "Créer mon site gratuitement",
-      href: `${APP_URL}/`,
+      href: `${APP_URL}/creer`,
     },
   },
 };
