@@ -5,7 +5,7 @@ import { Instagram, Linkedin, Phone, Youtube } from "lucide-react";
 import { SitalyLogo } from "@/components/SitalyLogo";
 import { LINKEDIN_URL } from "@/components/LinkedinLink";
 import { lienCreation } from "@/components/produit/Produit";
-import { APP_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
+import { APP_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY, SITALY_VILLE_PUBLIQUE } from "@/lib/config";
 
 /**
  * Pied de page unique du site (refonte du 30 octobre 2026, sur le modèle de
@@ -195,7 +195,9 @@ export function SiteFooter() {
         </nav>
 
         <div className="mt-6 flex flex-col items-center justify-between gap-3 text-xs text-black/50 sm:flex-row">
-          <div>© {ANNEE_DU_BUILD} Sitaly · Entreprise française, Paris</div>
+          <div>
+            © {ANNEE_DU_BUILD} Sitaly · Entreprise française, {SITALY_VILLE_PUBLIQUE}
+          </div>
           <div className="flex flex-wrap justify-center gap-x-5 gap-y-1">
             <Link to="/mentions-legales/" className="py-2 transition hover:text-black">
               Mentions légales

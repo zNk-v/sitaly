@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Star } from "lucide-react";
-import { AVIS_GOOGLE, NOTE_GOOGLE } from "@/data/avis-google";
+import { AVIS_GOOGLE, FICHE_GOOGLE_URL, NOTE_GOOGLE } from "@/data/avis-google";
 
 /**
  * Pièces partagées par les sections de l'accueil (refonte du 5 octobre 2026,
@@ -63,18 +63,31 @@ export function Etoiles({ className = "h-4 w-4" }: { className?: string }) {
   );
 }
 
-/** La ligne de preuve : logo, étoiles, note et nombre d'avis réels. */
+/**
+ * La ligne de preuve : logo, étoiles, note, nombre d'avis réels et mois du
+ * dernier.
+ *
+ * Elle mène à la fiche Google (audit SEO du 13 novembre 2026, 1.2) : une note
+ * que le visiteur ne peut pas aller vérifier ne vaut rien, et la nôtre repose
+ * sur trois avis seulement. Le compte et la date disent lesquels, le lien
+ * ouvre la fiche en un clic.
+ */
 export function NoteGoogle({ className = "" }: { className?: string }) {
   return (
-    <span className={`inline-flex items-center gap-2.5 text-sm ${className}`}>
+    <a
+      href={FICHE_GOOGLE_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`inline-flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm hover:underline ${className}`}
+    >
       <LogoGoogle />
       <Etoiles className="h-3.5 w-3.5" />
       <span className="opacity-60">|</span>
       <span>
         <strong className="font-semibold">{NOTE_GOOGLE.note}/5</strong> · {AVIS_GOOGLE.length} avis
-        Google
+        Google, le dernier en {NOTE_GOOGLE.dernier}
       </span>
-    </span>
+    </a>
   );
 }
 

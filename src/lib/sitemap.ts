@@ -14,10 +14,17 @@ import { estIndexable } from "@/lib/indexation";
 
 export const BASE_URL = "https://sitaly.fr";
 
+/**
+ * Une page du plan du site.
+ *
+ * Ni `changefreq` ni `priority` : Google les ignore depuis des années, et
+ * l'audit SEO du 13 novembre 2026 (1.7) demande de les retirer. Les champs
+ * sont partis du type, pas seulement du XML, pour qu'une nouvelle entrée ne
+ * les réintroduise pas. Seul `lastmod` compte, et il doit être vrai : une
+ * date inventée ou une date de build apprend à Google à ne plus la lire.
+ */
 export interface SitemapEntry {
   path: string;
-  changefreq?: "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
-  priority?: string;
   lastmod?: string;
   /**
    * Fichiers dont la date du dernier commit sert de `lastmod` quand l'entrée
@@ -41,24 +48,18 @@ const derniereDateBlog = BLOG_POSTS.filter((p) => estIndexable(`/blog/${p.slug}`
  * au sitemap envoie deux signaux contraires à Google.
  */
 export const TOUTES_LES_PAGES: SitemapEntry[] = [
-  { path: "/", changefreq: "weekly", priority: "1.0", source: [route("index.tsx")] },
+  { path: "/", source: [route("index.tsx")] },
   {
     path: "/agents-ia",
-    changefreq: "weekly",
-    priority: "0.9",
     source: [route("agents-ia.tsx")],
   },
   // Les pages sectorielles des agents IA, dérivées de leur source.
   ...SECTEURS.map((s) => ({
     path: `/agents-ia/${s.slug}`,
-    changefreq: "monthly" as const,
-    priority: "0.9",
     source: ["src/data/secteurs.ts", "src/components/SecteurLanding.tsx"],
   })),
   {
     path: "/agents-ia/agent-vocal",
-    changefreq: "monthly",
-    priority: "0.9",
     source: [
       "src/data/agent-vocal.ts",
       "src/components/SecteurLanding.tsx",
@@ -69,115 +70,81 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
   // le prérendu ne les découvre pas tout seul.
   {
     path: "/chatgpt-ads",
-    changefreq: "weekly",
-    priority: "0.9",
     source: ["public/chatgpt-ads/index.html"],
   },
-  { path: "/agents-ia/chatgpt", changefreq: "monthly", priority: "0.6" },
+  { path: "/agents-ia/chatgpt", source: ["public/agents-ia/chatgpt/index.html"] },
   {
     path: "/acquisition",
-    changefreq: "monthly",
-    priority: "0.9",
     source: [route("acquisition.tsx")],
   },
   // Les pages d'expertise, dérivées de leur source : en ajouter une suffit.
   ...EXPERTISES.map((e) => ({
     path: `/${e.slug}`,
-    changefreq: "monthly" as const,
-    priority: "0.9",
     source: ["src/data/expertises.ts", route(`${e.slug}.tsx`)],
   })),
   {
     path: "/realisations",
-    changefreq: "monthly",
-    priority: "0.9",
     source: [route("realisations.index.tsx"), "src/data/realisations.ts"],
   },
   ...REALISATIONS.map((r) => ({
     path: `/realisations/${r.slug}`,
-    changefreq: "yearly" as const,
-    priority: "0.7",
     source: ["src/data/realisations.ts"],
   })),
   // Les comparatifs (30 octobre 2026).
   {
     path: "/comparer",
-    changefreq: "monthly",
-    priority: "0.7",
     source: [route("comparer.index.tsx"), "src/data/comparatifs.ts"],
   },
   ...COMPARATIFS.map((c) => ({
     path: `/comparer/${c.id}`,
-    changefreq: "monthly" as const,
-    priority: "0.8",
     source: [route("comparer.$id.tsx"), "src/data/comparatifs.ts"],
   })),
   // Les pages produits de Sitaly App (31 octobre 2026).
   ...PRODUITS.map((p) => ({
     path: `/produits/${p.id}`,
-    changefreq: "monthly" as const,
-    priority: "0.8",
     source: [route("produits.$id.tsx"), "src/data/produits.ts"],
   })),
   // Les guides pas à pas de Sitaly App, en vidéo (3 novembre 2026).
   {
     path: "/guides",
-    changefreq: "monthly",
-    priority: "0.7",
     source: [route("guides.index.tsx"), "src/data/guides.ts"],
   },
   ...GUIDES.map((g) => ({
     path: `/guides/${g.id}`,
-    changefreq: "monthly" as const,
-    priority: "0.7",
     source: [route("guides.$id.tsx"), "src/data/guides.ts"],
   })),
   // Le générateur de noms d'entreprise (31 octobre 2026).
   {
     path: "/outils/generateur-nom-entreprise",
-    changefreq: "monthly",
-    priority: "0.8",
     source: [route("outils.generateur-nom-entreprise.tsx")],
   },
   // Les générateurs de mentions légales et de devis (9 novembre 2026).
   {
     path: "/outils/generateur-mentions-legales",
-    changefreq: "monthly",
-    priority: "0.8",
     source: [route("outils.generateur-mentions-legales.tsx")],
   },
   {
     path: "/outils/generateur-devis-gratuit",
-    changefreq: "monthly",
-    priority: "0.8",
     source: [route("outils.generateur-devis-gratuit.tsx")],
   },
   // Les modèles de sites par métier (31 octobre 2026).
   {
     path: "/modeles",
-    changefreq: "monthly",
-    priority: "0.8",
     source: [route("modeles.index.tsx"), "src/data/modeles.ts"],
   },
   ...MODELES.map((m) => ({
     path: `/modeles/${m.id}`,
-    changefreq: "monthly" as const,
-    priority: "0.7",
     source: [route("modeles.$id.tsx"), "src/data/modeles.ts"],
   })),
-  { path: "/blog", changefreq: "weekly", priority: "0.9", lastmod: derniereDateBlog },
+  { path: "/blog", lastmod: derniereDateBlog },
   ...BLOG_POSTS.map((p) => ({
     path: `/blog/${p.slug}`,
-    changefreq: "monthly" as const,
-    priority: "0.7",
     lastmod: p.updatedAt ?? p.publishedAt,
   })),
-  { path: "/a-propos", changefreq: "yearly", priority: "0.6", source: [route("a-propos.tsx")] },
+  { path: "/a-propos", source: [route("a-propos.tsx")] },
   // Le parrainage (5 novembre 2026) : les règles vivent dans l'app (src/lib/parrainage.ts).
   {
     path: "/parrainage",
-    changefreq: "monthly",
-    priority: "0.5",
     source: [route("parrainage.tsx")],
   },
   // Les offres partenaires (9 novembre 2026) : au sitemap dès qu'une offre a son lien.
@@ -185,8 +152,6 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
     ? [
         {
           path: "/partenaires",
-          changefreq: "monthly" as const,
-          priority: "0.5",
           source: [route("partenaires.tsx"), "src/data/partenaires.ts"],
         },
       ]
@@ -194,24 +159,18 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
   // La grille des prix (18 octobre 2026). Ses montants vivent dans src/data/offres.ts.
   {
     path: "/tarifs",
-    changefreq: "monthly",
-    priority: "0.9",
     source: [route("tarifs.tsx"), "src/data/offres.ts"],
   },
   // /creer-son-site-ia/ redirige vers l'accueil depuis le 30 octobre 2026 : hors plan du site.
   // La page locale, hors familles d'expertise (décision du 28 septembre 2026).
-  { path: "/essonne", changefreq: "monthly", priority: "0.8", source: [route("essonne.tsx")] },
+  { path: "/essonne", source: [route("essonne.tsx")] },
   // Les pages métier, dérivées de leur source (hors index, voir indexation.ts).
   ...METIERS.map((m) => ({
     path: m.to.replace(/\/$/, ""),
-    changefreq: "monthly" as const,
-    priority: "0.5",
   })),
   // Les pages d'offre (23 octobre 2026), une par offre sans page à elle.
   ...PAGES_OFFRES.map((p) => ({
     path: `/offres/${p.id}`,
-    changefreq: "monthly" as const,
-    priority: "0.8",
     source: [route("offres.$id.tsx"), "src/data/pages-offres.ts", "src/data/offres.ts"],
   })),
   // Sitaly Premium : dans le sitemap une fois publiée (premium.ts).
@@ -219,40 +178,33 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
     ? [
         {
           path: "/site-premium",
-          changefreq: "monthly" as const,
-          priority: "0.8",
           source: [route("site-premium.tsx"), "src/data/premium.ts", "src/data/offres.ts"],
         },
       ]
     : []),
-  { path: "/outils", changefreq: "monthly", priority: "0.7", source: [route("outils.index.tsx")] },
+  { path: "/outils", source: [route("outils.index.tsx")] },
   {
     path: "/outils/audit-fiche-google",
-    changefreq: "monthly",
-    priority: "0.6",
     source: [route("outils.audit-fiche-google.tsx")],
   },
-  { path: "/outils/budget-google-ads-artisan", changefreq: "monthly", priority: "0.5" },
+  {
+    path: "/outils/budget-google-ads-artisan",
+    source: [route("outils.budget-google-ads-artisan.tsx")],
+  },
   {
     path: "/outils/verifier-nom-de-domaine",
-    changefreq: "monthly",
-    priority: "0.7",
     source: [route("outils.verifier-nom-de-domaine.tsx")],
   },
-  { path: "/cgv", changefreq: "yearly", priority: "0.3", source: [route("cgv.tsx")] },
+  { path: "/cgv", source: [route("cgv.tsx")] },
   {
     path: "/mentions-legales",
-    changefreq: "yearly",
-    priority: "0.3",
     source: [route("mentions-legales.tsx")],
   },
   {
     path: "/politique-confidentialite",
-    changefreq: "yearly",
-    priority: "0.3",
     source: [route("politique-confidentialite.tsx")],
   },
-  { path: "/cookies", changefreq: "yearly", priority: "0.3", source: [route("cookies.tsx")] },
+  { path: "/cookies", source: [route("cookies.tsx")] },
 ];
 
 /**
@@ -267,8 +219,6 @@ export function buildSitemapXml(entries: SitemapEntry[] = SITEMAP_ENTRIES): stri
       `  <url>`,
       `    <loc>${BASE_URL}${e.path.endsWith("/") ? e.path : `${e.path}/`}</loc>`,
       e.lastmod ? `    <lastmod>${e.lastmod}</lastmod>` : null,
-      // changefreq et priority ne sortent plus dans le XML (audit SEO du
-      // 14 novembre 2026) : Google les ignore, seul lastmod compte.
       `  </url>`,
     ]
       .filter(Boolean)

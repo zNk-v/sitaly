@@ -7,7 +7,7 @@ import { BoiteApp, Confiance, TEXTE_GRIS } from "@/components/produit/Produit";
 import { REALISATIONS } from "@/data/realisations";
 import { PRODUITS } from "@/data/produits";
 import { BASE_URL } from "@/lib/sitemap";
-import { SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
+import { SITALY_PHONE, SITALY_PHONE_DISPLAY, SITALY_VILLE_PUBLIQUE } from "@/lib/config";
 
 /**
  * Page auteur et entreprise.
@@ -133,7 +133,8 @@ function APropos() {
                 fait ce travail en une minute environ, et vous gardez la main sur le résultat.
               </p>
               <p>
-                Je suis basé à Paris. Une question sur l'application ? Appelez-moi ou écrivez-moi.
+                Je suis basé à {SITALY_VILLE_PUBLIQUE}. Une question sur l'application ? Appelez-moi
+                ou écrivez-moi.
               </p>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">

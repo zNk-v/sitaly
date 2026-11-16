@@ -64,10 +64,13 @@ export const PRODUITS: Produit[] = [
   {
     id: "devis-et-factures",
     articles: ["logiciel-devis-artisan-choisir", "logiciel-facturation-auto-entrepreneur-gratuit", "facturation-electronique-artisan-2027", "mentions-obligatoires-devis-artisan", "relance-automatique-devis"],
-    cta: "Faire mon premier devis",
+    cta: "Créer mon premier devis",
     nom: "Devis et factures",
     menuDesc: "Devis acceptés en ligne, factures payées par carte.",
-    titre: "Devis et factures pour artisans",
+    // Le H1 porte le terme visé, « logiciel de devis » (audit SEO du
+    // 13 novembre 2026, 1.3) : « Facturez, soyez payé » n'en portait aucun.
+    // Il redit le seoTitre, et c'est voulu : la requête est la même.
+    titre: "Logiciel de devis et factures pour artisans",
     intro:
       "Un devis que votre client accepte en ligne, une facture conforme qu'il règle par carte ou par virement, des relances qui partent seules. Depuis la fiche de votre client, en deux minutes.",
     seoTitre: "Logiciel de devis et factures pour artisans",

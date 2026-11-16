@@ -156,6 +156,29 @@ function faqPages(noeud, sortie = []) {
   return sortie;
 }
 
+/** Toutes les villes déclarées dans les adresses d'un bloc JSON-LD. */
+function localites(noeud, sortie = []) {
+  if (Array.isArray(noeud)) {
+    for (const n of noeud) localites(n, sortie);
+  } else if (noeud && typeof noeud === "object") {
+    if (typeof noeud.addressLocality === "string") sortie.push(noeud.addressLocality);
+    for (const v of Object.values(noeud)) if (v && typeof v === "object") localites(v, sortie);
+  }
+  return sortie;
+}
+
+/**
+ * La ville d'immatriculation, celle que les données structurées doivent porter
+ * (décision du 16 novembre 2026, point 1.1 de l'audit du 13). Google recoupe
+ * le `PostalAddress` du JSON-LD avec le registre : une autre ville à cet
+ * endroit lui fait voir deux entreprises. La ville de présentation reste dans
+ * les textes visibles, et nulle part dans le schéma.
+ *
+ * Écrite ici en clair : un script .mjs ne lit pas src/lib/config.ts. Les deux
+ * se déplacent ensemble (SITALY_VILLE).
+ */
+const VILLE_REGISTRE = "Brétigny-sur-Orge";
+
 /* ---------------------------------------------------------------------------
    Lecture des pages
    --------------------------------------------------------------------------- */
@@ -205,6 +228,13 @@ for (const p of pages) {
     } catch (e) {
       erreur(chemin, `JSON-LD illisible (${e.message.slice(0, 80)})`);
       continue;
+    }
+    // Une seule ville dans les adresses du schéma, sur toutes les pages : les
+    // pages hors index portent le même graphe d'entité.
+    for (const ville of localites(donnees)) {
+      if (ville !== VILLE_REGISTRE) {
+        erreur(chemin, `adresse du schéma à « ${ville} » (attendu : ${VILLE_REGISTRE})`);
+      }
     }
     if (!p.indexable) continue;
     for (const faq of faqPages(donnees)) {

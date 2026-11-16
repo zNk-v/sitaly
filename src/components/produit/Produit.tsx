@@ -4,7 +4,7 @@ import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { ArrowRight, Check, Clock, Lock, Sparkles, Star, X } from "lucide-react";
 import { APP_URL, euros, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 import { CREATEUR_IA as IA, MENTION_TVA } from "@/data/offres";
-import { FICHE_GOOGLE_URL } from "@/data/avis-google";
+import { FICHE_GOOGLE_URL, NOTE_GOOGLE } from "@/data/avis-google";
 
 /**
  * Les blocs de la vitrine de Sitaly App (30 octobre 2026), partagés par
@@ -54,8 +54,12 @@ export function TitreSection({
 }
 
 /**
- * La note Google, sans le nombre d'avis (décision de Teddy, 30 octobre 2026) :
- * le lien mène à la fiche, où chacun peut les lire.
+ * La note Google avec son nombre d'avis, menant à la fiche.
+ *
+ * Le 30 octobre 2026, Teddy avait retiré le compte pour ne pas afficher « 3 ».
+ * L'audit SEO du 13 novembre 2026 (1.2) le remet : un « 5/5 » sans compte ni
+ * date se lit comme une note inventée, et trois avis nommés valent mieux
+ * qu'un chiffre que personne ne peut situer. À rediscuter avec Teddy.
  */
 export function NoteGoogle({ clair = false }: { clair?: boolean }) {
   return (
@@ -70,7 +74,8 @@ export function NoteGoogle({ clair = false }: { clair?: boolean }) {
           <Star key={i} className="h-3.5 w-3.5 fill-current" />
         ))}
       </span>
-      Noté 5/5 sur Google
+      Noté {NOTE_GOOGLE.note}/5 sur Google · {NOTE_GOOGLE.nombre} avis, le dernier en{" "}
+      {NOTE_GOOGLE.dernier}
     </a>
   );
 }
@@ -428,7 +433,8 @@ const FORMULES: Formule[] = [
       { ...DOMAINE_OFFERT },
       {
         titre: "Mention Sitaly discrète et retirable",
-        texte: "Votre site affiche « Site réalisé avec Sitaly » en petit, et vous la retirez d'un clic si vous préférez.",
+        texte:
+          "Votre site affiche « Site réalisé avec Sitaly » en petit, et vous la retirez d'un clic si vous préférez.",
       },
       {
         titre: "Prise de rendez-vous en ligne",
@@ -436,7 +442,8 @@ const FORMULES: Formule[] = [
       },
       {
         titre: "Vos avis Google",
-        texte: "Chaque nouvel avis arrive avec sa réponse prête, publiée d'un clic. Vos clients reçoivent la demande d'avis.",
+        texte:
+          "Chaque nouvel avis arrive avec sa réponse prête, publiée d'un clic. Vos clients reçoivent la demande d'avis.",
       },
     ],
   },
