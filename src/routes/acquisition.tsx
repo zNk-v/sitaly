@@ -1,6 +1,20 @@
 import { useRef } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Check, Minus, Phone, PhoneIncoming, Plus, X } from "lucide-react";
+import {
+  ArrowRight,
+  BarChart3,
+  Check,
+  FileText,
+  MessageSquare,
+  Minus,
+  Phone,
+  Plus,
+  Search,
+  ShieldCheck,
+  Target,
+  TrendingUp,
+  Wallet,
+} from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
@@ -9,73 +23,58 @@ import { directiveRobots } from "@/lib/indexation";
 
 import photoArtisan600 from "@/assets/photos/secteur-artisans-600.webp";
 import photoArtisan1000 from "@/assets/photos/secteur-artisans-1000.webp";
-import photoChantier600 from "@/assets/photos/secteur-btp-600.webp";
-import photoChantier1000 from "@/assets/photos/secteur-btp-1000.webp";
 
 /**
- * Page « Demandes de chantier » (refonte du 5 octobre 2026).
- *
- * L'URL /acquisition/ est conservée pour le référencement acquis. L'offre a
- * changé : Sitaly ne vend plus la gestion Google Ads au forfait. Elle lance
- * et paie ses propres campagnes, sous ses propres marques locales et sur ses
- * propres pages, puis transmet les demandes de particuliers à une seule
- * entreprise partenaire par métier et par zone.
+ * Page « Gestion de campagnes Google Ads » (retour au modèle d'origine, 16
+ * novembre 2026). L'offre du 5 octobre (demandes payées par Sitaly, livrées à
+ * une seule entreprise par zone) s'arrête : elle avançait un budget publicitaire
+ * que Sitaly ne récupérait pas toujours.
  *
  * Règles de fond, à ne pas contourner en retouchant la page :
- * 1. Sitaly s'engage sur la livraison de demandes valides. La signature d'un
- *    chantier relève de l'artisan : aucune promesse de chantier signé ni de
- *    chiffre d'affaires.
- * 2. Aucun chiffre de résultat tant qu'aucun cas réel n'est documenté (voir
- *    TEMOIGNAGES plus bas).
- * 3. Sitaly est un service de mise en relation. Rien ne doit laisser croire
- *    qu'elle se fait passer pour l'artisan auprès des particuliers.
- * 4. Aucun prix chiffré sur la page : il dépend du métier et s'annonce par
- *    écrit avant la première demande offerte.
- * 5. Pas de fausse rareté. « Une seule entreprise par zone » est vrai, et
- *    c'est la seule rareté affichée.
- *
- * Vocabulaire : « demande », « appel », « chantier ». Jamais « lead », « CPC »,
- * « conversion » ni « landing page ».
+ * 1. Le client paie son budget publicitaire directement à Google, depuis un
+ *    compte à son nom. Ce budget ne transite jamais par Sitaly.
+ * 2. Rien n'est offert ni avancé par Sitaly : ni demande, ni budget, ni mois
+ *    d'essai. Le forfait de gestion est dû dès le premier mois.
+ * 3. Aucune promesse de résultat (clients, position, chiffre d'affaires).
+ *    Sitaly s'engage sur la méthode : suivi des conversions avant la
+ *    première dépense, optimisation régulière, rapport mensuel.
+ * 4. Sans engagement de durée. Résiliable par e-mail, un mois de préavis.
  */
 
 const FAQ_ITEMS = [
   {
-    q: "Les premières demandes sont-elles vraiment gratuites ?",
-    a: "Oui. Vous recevez vos premières demandes sans rien payer, que vous signiez un chantier avec ou non. Le prix d'une demande vous est annoncé par écrit avant la première, pour que vous sachiez à quoi vous attendre si vous continuez.",
+    q: "Le forfait de 299 € comprend-il le budget publicitaire ?",
+    a: "Non. Les 299 € couvrent la gestion de vos campagnes : stratégie, création, rédaction des annonces, suivi des conversions, optimisation et rapport mensuel. Le budget publicitaire est payé séparément, directement à Google, depuis un compte Google Ads à votre nom.",
   },
   {
-    q: "Que se passe-t-il si je ne signe rien ?",
-    a: "Rien. Vous ne nous devez rien, et vous n'avez rien signé avec nous. Les demandes offertes servent à juger sur pièce. Si elles ne vous conviennent pas, on s'arrête là.",
+    q: "Qui est propriétaire du compte Google Ads ?",
+    a: "Vous. Le compte est ouvert à votre nom, le budget est prélevé sur votre moyen de paiement et vous gardez un accès complet à vos campagnes. Si vous arrêtez, vous gardez vos campagnes et leur historique.",
   },
   {
-    q: "Qu'est-ce qu'une demande valide ?",
-    a: "Un appel de plus de 60 secondes, ou un formulaire rempli en entier, pour une prestation que vous couvrez, dans votre zone, avec des coordonnées joignables. Une demande qui ne remplit pas ces conditions, signalée sous 48 heures, est remplacée.",
+    q: "Garantissez-vous des résultats ?",
+    a: "Non, et personne ne peut sérieusement le garantir. Nous nous engageons sur la méthode : le suivi des appels et des formulaires est installé et vérifié avant la première dépense, les campagnes sont revues chaque mois, et vous recevez un rapport qui montre ce qui a été dépensé et ce que ça a généré.",
   },
   {
-    q: "Revendez-vous la même demande à plusieurs artisans ?",
-    a: "Non, jamais. Une demande va à une seule entreprise : la vôtre. Et nous ne travaillons qu'avec une seule entreprise par métier et par zone.",
-  },
-  {
-    q: "Y a-t-il un engagement ?",
-    a: "Non. L'abonnement est prépayé chaque mois, sans engagement de durée. Vous l'arrêtez quand vous voulez, avec un préavis d'un mois.",
-  },
-  {
-    q: "Que se passe-t-il si le mois compte moins de demandes que prévu ?",
-    a: "Les demandes qui n'ont pas pu être livrées dans le mois sont reportées au mois suivant. Vous ne payez pas pour des demandes que vous n'avez pas reçues.",
+    q: "Y a-t-il un engagement de durée ?",
+    a: "Non. Le forfait est prélevé chaque mois, sans engagement de durée. Vous résiliez par e-mail, avec un préavis d'un mois.",
   },
   {
     q: "Ai-je besoin d'un site internet ?",
-    a: "Non. Les demandes arrivent par nos pages et nos campagnes : vous n'avez ni site à payer, ni publicité à gérer, ni compte Google à ouvrir. Si vous voulez votre propre site, l'offre Sitaly Présence reste disponible à part.",
+    a: "C'est préférable : la publicité envoie les visiteurs quelque part de convaincant. Si vous avez déjà un site, nous l'utilisons tel quel. Si vous n'en avez pas, l'offre Présence vous en livre un, géré par Sitaly.",
   },
   {
-    q: "Comment vérifier que les demandes viennent bien de vous ?",
-    a: "Les appels passent par un numéro de suivi : ils sont enregistrés et horodatés. Pour chaque demande, vous savez quand elle est arrivée, d'où elle vient et ce que le particulier a demandé.",
+    q: "Combien dois-je investir en publicité ?",
+    a: "Il n'existe pas de montant universel : le bon budget dépend de votre métier, de votre zone et de la concurrence sur vos mots-clés. Nous le définissons ensemble avant de lancer la première campagne, à partir de ce que vaut un nouveau client pour vous.",
+  },
+  {
+    q: "Comment savoir si mes campagnes sont rentables ?",
+    a: "Chaque appel et chaque formulaire envoyé depuis vos annonces est suivi. Votre rapport mensuel indique ce qui a été dépensé, combien d'appels et de formulaires sont arrivés, et ce que coûte réellement l'un d'eux.",
   },
 ] as const;
 
-const TITRE = "Demandes de chantier pour artisans en Essonne | Sitaly";
+const TITRE = "Gestion de campagnes Google Ads pour artisans et TPE | Sitaly";
 const DESCRIPTION =
-  "Demandes de chantier exclusives pour artisans en Essonne et Île-de-France. Premières demandes offertes, sans engagement, une seule entreprise par zone.";
+  "Gestion de vos campagnes Google Ads : 299 € par mois, sans engagement. Votre budget publicitaire reste payé à Google, sur votre compte.";
 
 export const Route = createFileRoute("/acquisition")({
   head: () => ({
@@ -95,29 +94,26 @@ export const Route = createFileRoute("/acquisition")({
           "@context": "https://schema.org",
           "@type": "Service",
           "@id": "https://sitaly.fr/acquisition/#service",
-          name: "Demandes de chantier pour artisans",
-          serviceType: "Mise en relation entre particuliers et artisans",
+          name: "Gestion de campagnes Google Ads",
+          serviceType: "Agence Google Ads",
           url: "https://sitaly.fr/acquisition/",
           description:
-            "Sitaly transmet aux artisans du bâtiment et de l'extérieur des demandes de chantier de particuliers (appels et formulaires), issues de ses propres campagnes et de ses propres pages. Chaque demande va à une seule entreprise, et une seule entreprise est partenaire par métier et par zone. Premières demandes offertes, puis abonnement mensuel prépayé, sans engagement de durée.",
+            "Création, gestion et optimisation de campagnes Google Ads pour artisans et TPE : stratégie, mots-clés, annonces, suivi des conversions, optimisation et rapport mensuel. Forfait de gestion mensuel de 299 €, sans engagement de durée. Le budget publicitaire est payé séparément, directement à Google, depuis un compte au nom du client.",
           // Rattaché à l'entité du graphe racine (__root.tsx) par son @id.
           provider: { "@id": "https://sitaly.fr/#business" },
-          audience: {
-            "@type": "BusinessAudience",
-            audienceType: "Artisans du bâtiment et de l'extérieur",
-          },
-          areaServed: [
-            { "@type": "AdministrativeArea", name: "Essonne" },
-            { "@type": "AdministrativeArea", name: "Île-de-France" },
-          ],
+          areaServed: { "@type": "Country", name: "France" },
           offers: [
             {
               "@type": "Offer",
-              name: "Abonnement mensuel de demandes de chantier",
+              name: "Gestion de campagnes Google Ads",
               description:
-                "Forfait mensuel de demandes exclusives, prépayé, sans engagement de durée, résiliable avec un préavis d'un mois. Le prix d'une demande dépend du métier et est annoncé par écrit avant la première demande offerte.",
+                "Forfait mensuel de gestion, sans engagement de durée, résiliable par e-mail avec un préavis d'un mois. Budget publicitaire Google non inclus, payé directement à Google par le client.",
+              price: 299,
+              priceCurrency: "EUR",
               priceSpecification: {
                 "@type": "UnitPriceSpecification",
+                price: 299,
+                priceCurrency: "EUR",
                 unitCode: "MON",
               },
             },
@@ -138,19 +134,16 @@ export const Route = createFileRoute("/acquisition")({
       },
     ],
   }),
-  component: DemandesDeChantier,
+  component: AcquisitionPage,
 });
 
-function DemandesDeChantier() {
+function AcquisitionPage() {
   /* Apparitions au défilement (DESIGN.md §6) : le contenu reste visible
      sans script, c'est le hook qui installe l'état masqué. */
   const ref = useRef<HTMLDivElement>(null);
   useRevealOnScroll(ref);
 
   return (
-    /* `page-acquisition` donne à la page sa couleur d'accent unique, le rouge
-       de la famille acquisition. Le rembourrage bas laisse la place à la
-       barre d'appel collée en bas d'écran sur téléphone. */
     <div
       ref={ref}
       className="ambiance-acquisition min-h-screen bg-background pb-20 text-foreground lg:pb-0"
@@ -159,12 +152,11 @@ function DemandesDeChantier() {
       <main>
         <Ouverture />
         <Constat />
+        <Prestations />
         <Etapes />
-        <CeQueVousRecevez />
-        <SansRisque />
         <Tarif />
-        <Temoignages />
-        <CompteGoogleAds />
+        <Methode />
+        <AvecOuSansSite />
         <Faq />
         <AppelFinal />
       </main>
@@ -176,14 +168,14 @@ function DemandesDeChantier() {
 
 /* ---------------- BRIQUES ---------------- */
 
-function BoutonZone({ className = "" }: { className?: string }) {
+function BoutonPrincipal({ className = "" }: { className?: string }) {
   return (
     <Link
       to="/mon-projet/"
       search={{ besoin: "visibilite" }}
       className={`bouton px-7 py-3.5 text-base ${className}`}
     >
-      Vérifier si ma zone est libre
+      Demander un diagnostic
       <ArrowRight className="bouton-fleche h-4 w-4" />
     </Link>
   );
@@ -210,11 +202,11 @@ function Reassurance({ sombre = false }: { sombre?: boolean }) {
     <p
       className={`flex flex-wrap items-center gap-x-3 gap-y-1 text-sm ${sombre ? "text-white/65" : "text-muted-foreground"}`}
     >
-      <span>Premières demandes offertes</span>
+      <span>299 € par mois</span>
       <span aria-hidden="true">·</span>
       <span>Sans engagement</span>
       <span aria-hidden="true">·</span>
-      <span>Une seule entreprise par zone</span>
+      <span>Budget payé directement à Google</span>
     </p>
   );
 }
@@ -230,18 +222,16 @@ function Ouverture() {
       <div aria-hidden="true" className="foyer-ambiance absolute inset-0 -z-10" />
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 pt-[calc(var(--entete-hauteur)+2.5rem)] pb-20 sm:px-6 sm:pt-[calc(var(--entete-hauteur)+4rem)] sm:pb-28 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
         <div data-reveal>
-          <Surtitre sombre>
-            Artisans du bâtiment et de l'extérieur · Essonne et Île-de-France
-          </Surtitre>
+          <Surtitre sombre>Agence Google Ads · Artisans et TPE</Surtitre>
           <h1 className="mt-5 font-display text-[clamp(2.4rem,5.4vw,4.4rem)] leading-[1.02] font-extrabold tracking-[-0.042em] text-balance">
-            Des demandes de chantier, <span className="accent-word">pas un site de plus</span>
+            Des campagnes Google Ads, <span className="accent-word">pas une boîte noire</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg text-white/75 sm:text-xl">
-            Nous faisons la publicité, nous recevons les appels et les demandes des particuliers de
-            votre secteur, et nous les transmettons à une seule entreprise : la vôtre.
+            Nous créons, pilotons et optimisons vos campagnes Google Ads. Votre budget reste chez
+            vous, payé directement à Google : nous facturons notre travail, pas votre publicité.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <BoutonZone />
+            <BoutonPrincipal />
             <BoutonTelephone sombre />
           </div>
           <div className="mt-7">
@@ -260,23 +250,20 @@ function Ouverture() {
             fetchPriority="high"
             className="aspect-[4/5] w-full rounded-[2rem] object-cover object-[50%_30%] lg:aspect-[4/5]"
           />
-          {/* Schéma d'une demande transmise. Il porte sa mention « Exemple »
-              (DESIGN.md §7) : aucune demande réelle n'est montrée. */}
           <figcaption className="sur-papier absolute -bottom-6 left-4 w-[min(19rem,85%)] rounded-2xl border border-border bg-card p-4 text-left shadow-elevated sm:-left-8">
             <div className="flex items-center justify-between text-[11px] text-muted-foreground">
               <span className="inline-flex items-center gap-1.5">
-                <PhoneIncoming className="h-3.5 w-3.5" />
-                Nouvelle demande · 9 h 42
+                <BarChart3 className="h-3.5 w-3.5" />
+                Rapport du mois · Exemple
               </span>
-              <span>Exemple</span>
             </div>
-            <p className="mt-2 text-sm font-semibold">Élagage d'un chêne, Brétigny-sur-Orge</p>
+            <p className="mt-2 text-sm font-semibold">Couverture, Brétigny-sur-Orge et alentours</p>
             <p className="mt-0.5 text-[13px] text-muted-foreground">
-              Appel de 3 min 12, enregistré et horodaté
+              Suivi des appels et des formulaires, actif depuis la première campagne
             </p>
             <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-2.5 py-1 text-[12px] font-semibold text-brand-ink">
               <Check className="h-3.5 w-3.5" />
-              Transmise à votre entreprise, à vous seul
+              Budget payé à Google, séparé de nos honoraires
             </p>
           </figcaption>
         </figure>
@@ -289,20 +276,20 @@ function Ouverture() {
 function Constat() {
   const constats = [
     {
-      t: "Les prospectus",
-      d: "Vous les payez, vous les distribuez. Ils finissent à la poubelle avant d'avoir été lus.",
+      t: "Vous êtes sur Google, mais loin",
+      d: "Un couvreur cherché à Brétigny-sur-Orge trouve d'abord trois concurrents avant vous. Être présent ne suffit pas, encore faut-il être vu au bon moment.",
     },
     {
-      t: "Le site qui ne fait pas appeler",
-      d: "Il est en ligne, il est propre. Le téléphone, lui, ne sonne pas plus qu'avant.",
+      t: "Vous avez déjà essayé, sans le savoir",
+      d: "Une campagne lancée seul, sans suivi des appels ni des formulaires, ne dit rien de ce qu'elle a réellement rapporté.",
     },
     {
-      t: "Les plateformes",
-      d: "Elles vendent la même demande à plusieurs artisans à la fois. Le premier qui rappelle prend le chantier, les autres ont payé pour rien.",
+      t: "Le temps manque",
+      d: "Entre deux chantiers, personne ne surveille des enchères ni ne corrige une annonce qui ne convertit plus.",
     },
     {
-      t: "La pub au jugé",
-      d: "La facture tombe chaque mois. Ce qu'elle a rapporté, personne ne sait vous le dire.",
+      t: "La confusion sur la facture",
+      d: "Certaines offres mélangent honoraires et budget publicitaire dans un seul montant. Vous ne savez plus ce qui vous revient vraiment.",
     },
   ];
 
@@ -312,7 +299,7 @@ function Constat() {
         <div data-reveal className="max-w-3xl">
           <Surtitre>Le constat</Surtitre>
           <h2 className="display-section mt-3">
-            Vous payez pour être vu. <span className="accent-word">Pas pour être appelé.</span>
+            Être présent sur Google. <span className="accent-word">Pas être trouvé.</span>
           </h2>
         </div>
 
@@ -336,44 +323,114 @@ function Constat() {
             </li>
           ))}
         </ol>
-
-        <p data-reveal className="mt-12 max-w-2xl text-xl leading-relaxed font-medium">
-          Ce qu'il vous faut, ce n'est pas plus de visibilité. C'est un particulier qui a un
-          chantier à faire, et dont la demande n'est allée qu'à vous.
-        </p>
       </div>
     </section>
   );
 }
 
-/* ---------------- 3. COMMENT ÇA MARCHE ---------------- */
-function Etapes() {
-  const etapes = [
+/* ---------------- 3. CE QUE NOUS PRENONS EN CHARGE ---------------- */
+function Prestations() {
+  const prestations = [
     {
-      t: "On vérifie que votre zone est libre",
-      d: "Un appel de quelques minutes : votre métier, vos prestations, les communes où vous intervenez. Si un autre artisan de votre métier travaille déjà avec nous sur votre zone, on vous le dit tout de suite.",
+      icon: Target,
+      t: "Stratégie",
+      d: "Analyse de votre activité, de votre zone d'intervention et de vos objectifs, avant de dépenser le moindre euro.",
     },
     {
-      t: "On vous envoie vos premières demandes, offertes",
-      d: "Le prix d'une demande vous est annoncé par écrit avant la première. Puis les demandes arrivent : des particuliers de votre secteur qui ont un chantier à faire.",
+      icon: Search,
+      t: "Recherche de mots-clés",
+      d: "Les recherches qui ont un vrai potentiel commercial, et l'exclusion de celles qui font cliquer sans jamais appeler.",
     },
     {
-      t: "Vous rappelez, vous signez",
-      d: "Le devis, le chantier et la relation avec le client restent les vôtres. Vous jugez la qualité des demandes sur pièce.",
+      icon: FileText,
+      t: "Création des campagnes",
+      d: "Vos campagnes Google Ads créées et configurées sur votre compte, structurées par service et par zone.",
     },
     {
-      t: "On passe à un abonnement mensuel de demandes",
-      d: "Si vous signez un chantier avec une demande offerte et que vous voulez continuer : un forfait mensuel de demandes, prépayé, sans engagement de durée.",
+      icon: MessageSquare,
+      t: "Rédaction des annonces",
+      d: "Plusieurs formulations testées, et conservation de celles qui déclenchent l'appel ou le formulaire.",
+    },
+    {
+      icon: Check,
+      t: "Suivi des conversions",
+      d: "Le suivi des appels et des formulaires, installé et vérifié avant la première dépense. Sans lui, aucun chiffre n'est fiable.",
+    },
+    {
+      icon: TrendingUp,
+      t: "Optimisation continue",
+      d: "Les campagnes et les mots-clés sont revus régulièrement, pas lancés puis oubliés.",
+    },
+    {
+      icon: Wallet,
+      t: "Pilotage du budget",
+      d: "Réallocation vers ce qui rapporte, coupure de ce qui coûte sans produire.",
+    },
+    {
+      icon: BarChart3,
+      t: "Rapport mensuel",
+      d: "Ce qui a été dépensé, ce que ça a généré, et ce que coûte réellement un appel.",
     },
   ];
 
   return (
-    <section id="fonctionnement" className="bg-paper-sunk py-20 sm:py-28">
+    <section className="bg-paper-sunk py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div data-reveal className="max-w-3xl">
+          <Surtitre>Ce que nous prenons en charge</Surtitre>
+          <h2 className="display-section mt-3">
+            Vos campagnes, <span className="accent-word">gérées de bout en bout</span>
+          </h2>
+        </div>
+        <ul className="stagger mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {prestations.map((p, i) => (
+            <li
+              key={p.t}
+              data-reveal
+              style={{ "--i": i } as React.CSSProperties}
+              className="rounded-[1.5rem] border border-border bg-card p-6 shadow-soft"
+            >
+              <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand-ink/10 text-brand-ink">
+                <p.icon className="h-5 w-5" />
+              </span>
+              <h3 className="mt-5 font-display text-lg font-extrabold tracking-tight">{p.t}</h3>
+              <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{p.d}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- 4. COMMENT ÇA MARCHE ---------------- */
+function Etapes() {
+  const etapes = [
+    {
+      t: "Analyse et budget",
+      d: "Nous étudions votre activité, votre zone et vos objectifs, puis définissons ensemble un budget publicitaire cohérent avec la valeur d'un client pour vous.",
+    },
+    {
+      t: "Mise en place",
+      d: "Création des campagnes, des mots-clés et des annonces. Le suivi des conversions est branché et vérifié avant la première dépense.",
+    },
+    {
+      t: "Lancement",
+      d: "Les campagnes se diffusent. Chaque impression, chaque clic et chaque appel est mesuré dès le premier jour.",
+    },
+    {
+      t: "Optimisation",
+      d: "Chaque mois, les données décident : mots-clés renforcés ou coupés, annonces réécrites, budget déplacé. Vous recevez le rapport et les décisions prises.",
+    },
+  ];
+
+  return (
+    <section id="fonctionnement" className="bg-paper py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div data-reveal className="max-w-3xl">
           <Surtitre>Comment ça marche</Surtitre>
           <h2 className="display-section mt-3">
-            Quatre étapes, <span className="accent-word">et vous ne payez qu'à la dernière</span>
+            Quatre étapes, <span className="accent-word">et des données à chaque mois</span>
           </h2>
         </div>
 
@@ -400,110 +457,73 @@ function Etapes() {
   );
 }
 
-/* ---------------- 4. CE QUE VOUS RECEVEZ ---------------- */
-function CeQueVousRecevez() {
-  const recu = [
+/* ---------------- 5. TARIF ---------------- */
+function Tarif() {
+  const lignes = [
     {
-      t: "Des demandes exclusives",
-      d: "Chaque demande va à une seule entreprise. Elle n'est jamais revendue à vos concurrents.",
+      label: "Forfait de gestion Sitaly",
+      detail: "299 € par mois, identique d'un mois sur l'autre",
+      nature: "Fixe",
+      accent: true,
     },
     {
-      t: "Une preuve pour chaque appel",
-      d: "Les appels passent par un numéro de suivi, enregistrés et horodatés.",
+      label: "Budget publicitaire Google",
+      detail: "Payé directement à Google, depuis votre compte, jamais à Sitaly",
+      nature: "Vous le fixez",
+      accent: false,
     },
-    {
-      t: "Les demandes invalides remplacées",
-      d: "Signalée sous 48 heures, une demande qui ne remplit pas les conditions est remplacée.",
-    },
-    {
-      t: "Une seule entreprise par zone",
-      d: "Pour votre métier, sur votre secteur, vous êtes notre seul partenaire.",
-    },
-  ];
-  const pasBesoin = [
-    "Aucun site à payer",
-    "Aucune publicité à gérer",
-    "Aucun compte Google à ouvrir",
-  ];
-  const criteres = [
-    "Un appel de plus de 60 secondes, ou un formulaire complet",
-    "Dans votre zone d'intervention",
-    "Pour une prestation que vous couvrez",
-    "Avec des coordonnées joignables",
   ];
 
   return (
-    <section className="on-ink relative overflow-hidden bg-ink py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-          <div data-reveal className="lg:sticky lg:top-28 lg:self-start">
-            <Surtitre sombre>Ce que vous recevez</Surtitre>
+    <section id="tarif" className="on-ink relative overflow-hidden bg-ink py-20 sm:py-28">
+      <div aria-hidden="true" className="foyer-ambiance absolute inset-0 -z-10" />
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+          <div data-reveal>
+            <Surtitre sombre>Tarif</Surtitre>
             <h2 className="display-section mt-3">
-              Des appels de particuliers, <span className="accent-word">rien à gérer</span>
+              Deux lignes, <span className="accent-word">et vous savez laquelle bouge</span>
             </h2>
-            <img
-              src={photoChantier1000}
-              srcSet={`${photoChantier600} 600w, ${photoChantier1000} 1000w`}
-              sizes="(min-width: 1024px) 460px, 100vw"
-              width={1000}
-              height={1500}
-              loading="lazy"
-              alt="Un chef de chantier en casque de sécurité"
-              className="mt-10 aspect-[4/3] w-full rounded-[1.75rem] object-cover object-[50%_25%] lg:aspect-[5/4]"
-            />
+            <p className="mt-6 max-w-md text-lg text-white/70">
+              Un forfait de gestion fixe, sans engagement de durée. Le budget publicitaire reste
+              séparé, payé par vous, directement à Google.
+            </p>
+            <div className="mt-8">
+              <BoutonPrincipal />
+            </div>
           </div>
 
-          <div>
-            <ul className="stagger grid gap-4 sm:grid-cols-2">
-              {recu.map((r, i) => (
+          <div className="sur-papier rounded-[1.75rem] border border-border bg-card p-7 text-foreground shadow-elevated sm:p-8">
+            <ul className="space-y-3">
+              {lignes.map((l) => (
                 <li
-                  key={r.t}
-                  data-reveal
-                  style={{ "--i": i } as React.CSSProperties}
-                  className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-6 transition hover:border-white/25"
+                  key={l.label}
+                  className={`flex flex-wrap items-center justify-between gap-3 rounded-xl border px-4 py-3.5 ${
+                    l.accent ? "border-accent/30 bg-accent/5" : "border-border bg-paper-sunk"
+                  }`}
                 >
-                  <span className="grid h-9 w-9 place-items-center rounded-full bg-white text-ink">
-                    <Check className="h-4 w-4" />
+                  <div>
+                    <div className="font-semibold">{l.label}</div>
+                    <div className="text-sm text-muted-foreground">{l.detail}</div>
+                  </div>
+                  <span
+                    className={`rail-label shrink-0 rounded-full px-3 py-1 ${
+                      l.accent
+                        ? "bg-accent/10 text-brand-ink"
+                        : "bg-background text-muted-foreground"
+                    }`}
+                  >
+                    {l.nature}
                   </span>
-                  <h3 className="mt-5 font-display text-lg font-extrabold tracking-tight text-white">
-                    {r.t}
-                  </h3>
-                  <p className="mt-2 leading-relaxed text-white/70">{r.d}</p>
                 </li>
               ))}
             </ul>
-
-            <ul data-reveal className="mt-4 grid gap-3 sm:grid-cols-3">
-              {pasBesoin.map((p) => (
-                <li
-                  key={p}
-                  className="flex items-center gap-2.5 rounded-full border border-white/10 px-4 py-3 text-[15px] text-white/85"
-                >
-                  <X className="h-4 w-4 shrink-0 text-white/50" />
-                  {p}
-                </li>
-              ))}
-            </ul>
-
-            {/* Ce qui compte comme une demande : la règle qui fonde le prix. */}
-            <div
-              data-reveal
-              className="sur-papier mt-10 rounded-[1.75rem] border border-border bg-card p-7 text-foreground sm:p-8"
-            >
-              <p className="rail-label text-brand-ink">Ce qu'est une demande valide</p>
-              <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-                {criteres.map((c) => (
-                  <li key={c} className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-brand-ink" />
-                    <span>{c}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-5 border-t border-border pt-5 text-sm text-muted-foreground">
-                Une demande qui ne remplit pas ces conditions, signalée sous 48 heures, est
-                remplacée.
-              </p>
-            </div>
+            <p className="mt-6 flex items-start gap-2 rounded-xl border border-border bg-paper-sunk px-4 py-3 text-sm text-muted-foreground">
+              <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-signal-ink" />
+              Sans engagement de durée. Résiliable par e-mail, avec un préavis d'un mois. Vos
+              campagnes et votre compte Google Ads vous appartiennent : si vous arrêtez, rien ne se
+              perd.
+            </p>
           </div>
         </div>
       </div>
@@ -511,20 +531,20 @@ function CeQueVousRecevez() {
   );
 }
 
-/* ---------------- 5. SANS RISQUE ---------------- */
-function SansRisque() {
-  const garanties = [
+/* ---------------- 6. MÉTHODE, SANS PROMESSE DE RÉSULTAT ---------------- */
+function Methode() {
+  const engagements = [
     {
-      t: "Vous jugez sur pièce",
-      d: "Vos premières demandes sont offertes. Vous voyez ce qu'elles valent avant de payer quoi que ce soit.",
+      t: "La mesure avant la dépense",
+      d: "Le suivi des appels et des formulaires est installé et vérifié avant le premier euro de publicité. Sans lui, aucun chiffre du rapport ne veut rien dire.",
     },
     {
-      t: "Le prix avant la première demande",
-      d: "Vous connaissez le prix d'une demande, par écrit, avant même de recevoir la première. Pas de surprise ensuite.",
+      t: "Une optimisation régulière",
+      d: "Les campagnes ne sont pas lancées puis oubliées. Elles sont revues, corrigées et arbitrées chaque mois.",
     },
     {
-      t: "Prépayé, sans engagement",
-      d: "Un forfait payé d'avance chaque mois, que vous arrêtez quand vous voulez, avec un mois de préavis.",
+      t: "Un rapport mensuel lisible",
+      d: "Ce qui a été dépensé, ce que ça a généré, et ce que coûte réellement un appel. Pas d'impressions flatteuses sans contact derrière.",
     },
   ];
 
@@ -532,13 +552,18 @@ function SansRisque() {
     <section className="bg-paper py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div data-reveal className="max-w-3xl">
-          <Surtitre>Sans risque pour vous</Surtitre>
+          <Surtitre>Notre engagement</Surtitre>
           <h2 className="display-section mt-3">
-            Vous essayez d'abord. <span className="accent-word">Vous décidez ensuite.</span>
+            Aucune promesse de résultat.{" "}
+            <span className="accent-word">Une méthode vérifiable.</span>
           </h2>
+          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+            Personne ne peut garantir un nombre de clients ou une position sur Google. Nous nous
+            engageons sur ce que nous contrôlons réellement.
+          </p>
         </div>
         <div className="stagger mt-14 grid gap-4 md:grid-cols-3 lg:gap-5">
-          {garanties.map((g, i) => (
+          {engagements.map((g, i) => (
             <div
               key={g.t}
               data-reveal
@@ -556,147 +581,47 @@ function SansRisque() {
   );
 }
 
-/* ---------------- 6. TARIF ---------------- */
-/* Aucun montant : le prix d'une demande dépend du métier et de la valeur
-   d'un chantier, et s'annonce par écrit avant la première demande offerte. */
-function Tarif() {
-  const regles = [
-    {
-      t: "Un prix par métier",
-      d: "Le prix d'une demande dépend de votre métier et de la valeur moyenne d'un chantier. Une demande d'élagage et une réfection de toiture ne valent pas la même chose.",
-    },
-    {
-      t: "Annoncé par écrit, avant la première demande",
-      d: "Vous recevez le prix avant même la première demande offerte. Vous savez ce que coûtera la suite avant de commencer.",
-    },
-    {
-      t: "Un forfait mensuel de demandes",
-      d: "Si vous continuez : un nombre de demandes par mois, prépayé, sans engagement de durée, résiliable avec un préavis d'un mois.",
-    },
-    {
-      t: "Rien de perdu",
-      d: "Les demandes qui n'ont pas pu être livrées dans le mois sont reportées au mois suivant.",
-    },
-  ];
-
+/* ---------------- 7. AVEC OU SANS SITE ---------------- */
+function AvecOuSansSite() {
   return (
-    <section id="tarif" className="bg-paper-sunk py-20 sm:py-28">
+    <section className="bg-paper-sunk py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-16">
           <div data-reveal>
-            <Surtitre>Tarif</Surtitre>
+            <Surtitre>Avec ou sans site</Surtitre>
             <h2 className="display-section mt-3">
-              Vous payez des demandes, <span className="accent-word">pas de la publicité</span>
+              Vos campagnes envoient quelque part.{" "}
+              <span className="accent-word">À vous de choisir où.</span>
             </h2>
-            <p className="mt-6 max-w-md text-lg text-muted-foreground">
-              Aucun budget publicitaire à avancer : la publicité, c'est nous qui la payons. Vous
-              payez les demandes que vous recevez.
-            </p>
-            <div className="mt-8">
-              <BoutonZone />
+          </div>
+          <div data-reveal className="grid gap-5 sm:grid-cols-2">
+            <div className="rounded-[1.5rem] border border-border bg-card p-7 shadow-soft">
+              <h3 className="font-display text-lg font-extrabold tracking-tight">
+                Vous avez un site
+              </h3>
+              <p className="mt-2 leading-relaxed text-muted-foreground">
+                Nous travaillons avec lui tel qu'il est. Les campagnes dirigent les visiteurs vers
+                vos pages existantes.
+              </p>
+            </div>
+            <div className="rounded-[1.5rem] border border-border bg-card p-7 shadow-soft">
+              <h3 className="font-display text-lg font-extrabold tracking-tight">
+                Vous n'en avez pas
+              </h3>
+              <p className="mt-2 leading-relaxed text-muted-foreground">
+                L'offre Présence vous livre un site, géré par Sitaly, avant de lancer vos campagnes.
+              </p>
+              <Link
+                to="/offres/$id/"
+                params={{ id: "presence" }}
+                className="mt-4 inline-flex items-center gap-1.5 font-semibold text-brand-ink underline decoration-brand-ink/30 underline-offset-4 transition hover:decoration-brand-ink"
+              >
+                Voir l'offre Présence
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </div>
-
-          <dl className="stagger border-t border-border">
-            {regles.map((r, i) => (
-              <div
-                key={r.t}
-                data-reveal
-                style={{ "--i": i } as React.CSSProperties}
-                className="grid gap-2 border-b border-border py-6 sm:grid-cols-[14rem_1fr] sm:gap-8"
-              >
-                <dt className="font-display text-lg font-extrabold tracking-tight">{r.t}</dt>
-                <dd className="leading-relaxed text-muted-foreground">{r.d}</dd>
-              </div>
-            ))}
-          </dl>
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- TÉMOIGNAGES ---------------- */
-/**
- * Emplacement de témoignage client, volontairement vide.
- *
- * Aucun propos ne doit être attribué à un artisan sans qu'il l'ait écrit, et
- * aucun chiffre (nombre de demandes, chantiers signés, chiffre d'affaires)
- * ne doit apparaître sans cas réel documenté. Tant que le tableau est vide,
- * la section ne s'affiche pas.
- *
- * Pour l'activer, ajouter l'avis tel que l'artisan l'a écrit :
- *   {
- *     citation: "…",
- *     auteur: "Prénom Nom",
- *     entreprise: "Nom de l'entreprise",
- *     metier: "Élagueur",
- *     zone: "Brétigny-sur-Orge (91)",
- *   },
- */
-type Temoignage = {
-  citation: string;
-  auteur: string;
-  entreprise: string;
-  metier: string;
-  zone: string;
-};
-
-const TEMOIGNAGES: Temoignage[] = [];
-
-function Temoignages() {
-  if (TEMOIGNAGES.length === 0) return null;
-  return (
-    <section className="bg-paper py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <Surtitre>Ils travaillent avec nous</Surtitre>
-        <div className="mt-10 grid gap-5 md:grid-cols-2">
-          {TEMOIGNAGES.map((t) => (
-            <figure
-              key={t.auteur}
-              data-reveal
-              className="rounded-[1.5rem] border border-border bg-card p-8 shadow-soft"
-            >
-              <blockquote className="text-lg leading-relaxed">« {t.citation} »</blockquote>
-              <figcaption className="mt-6 border-t border-border pt-5 text-sm">
-                <span className="font-semibold">{t.auteur}</span>
-                <span className="text-muted-foreground">
-                  {" "}
-                  · {t.metier}, {t.entreprise} · {t.zone}
-                </span>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- 7. GESTION CLASSIQUE ---------------- */
-function CompteGoogleAds() {
-  return (
-    <section className="bg-paper pb-4">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <p
-          data-reveal
-          className="flex flex-col gap-2 rounded-2xl border border-border px-6 py-5 text-[15px] text-muted-foreground sm:flex-row sm:items-center sm:justify-between"
-        >
-          <span>
-            <span className="font-semibold text-foreground">
-              Vous préférez piloter votre propre compte Google Ads ?
-            </span>{" "}
-            Nous gérons aussi des campagnes classiques sur votre compte et votre budget.
-          </span>
-          <Link
-            to="/"
-            hash="contact"
-            className="inline-flex shrink-0 items-center gap-1.5 font-semibold text-brand-ink underline decoration-brand-ink/30 underline-offset-4 transition hover:decoration-brand-ink"
-          >
-            Nous écrire
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </p>
       </div>
     </section>
   );
@@ -711,7 +636,7 @@ function Faq() {
         <div data-reveal>
           <Surtitre>Questions fréquentes</Surtitre>
           <h2 className="display-section mt-3">
-            Les questions <span className="accent-word">qu'on nous pose avant de commencer</span>
+            Le tarif, le budget, l'engagement : <span className="accent-word">sans détour</span>
           </h2>
         </div>
         <div className="mt-12 border-t border-border">
@@ -740,14 +665,14 @@ function AppelFinal() {
       <div aria-hidden="true" className="foyer-ambiance absolute inset-0 -z-10" />
       <div data-reveal className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 sm:py-32">
         <h2 className="display-section">
-          Votre zone est-elle <span className="accent-word">encore libre ?</span>
+          Vos clients cherchent déjà vos services <span className="accent-word">sur Google.</span>
         </h2>
         <p className="mx-auto mt-6 max-w-xl text-lg text-white/70">
-          Une seule entreprise par métier et par zone. Quelques minutes au téléphone suffisent pour
-          savoir si la vôtre l'est encore.
+          Un diagnostic suffit pour savoir si Google Ads a du sens pour votre activité et votre
+          budget.
         </p>
         <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-          <BoutonZone />
+          <BoutonPrincipal />
           <BoutonTelephone sombre />
         </div>
         <div className="mt-8 flex justify-center">
@@ -778,7 +703,7 @@ function BarreAppel() {
           search={{ besoin: "visibilite" }}
           className="bouton-secondaire flex-1 px-4 py-3 text-[15px]"
         >
-          Ma zone est libre ?
+          Diagnostic gratuit
         </Link>
       </div>
     </div>

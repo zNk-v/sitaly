@@ -29,8 +29,8 @@ const LEVIERS_LISTE: { label: string; desc: string; to?: string; href?: string }
     href: "/chatgpt-ads/",
   },
   {
-    label: "Demandes de chantier",
-    desc: "des demandes de particuliers livrées aux artisans, une seule entreprise par zone.",
+    label: "Campagnes Google Ads",
+    desc: "vos campagnes créées, pilotées et optimisées, budget payé directement à Google.",
     to: "/acquisition/",
   },
   {

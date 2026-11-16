@@ -83,9 +83,7 @@ const COLONNES: { titre: string; entrees: Entree[] }[] = [
 
 const AUSSI: { label: string; to: string }[] = [
   { label: "Campagnes Google Ads", to: "/acquisition/" },
-  { label: "Référencement local", to: "/referencement-local/" },
-  { label: "Site sur mesure", to: "/mon-projet/" },
-  { label: "Agents IA sur mesure", to: "/agents-ia/" },
+  { label: "Site géré par Sitaly", to: "/offres/presence/" },
 ];
 
 const LIEN = "block py-1 text-black/60 transition hover:text-black";

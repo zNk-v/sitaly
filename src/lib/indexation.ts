@@ -107,9 +107,12 @@ export const PAGES_AGENCE_HORS_INDEX = [
 /**
  * Les pages des anciennes offres d'agence (décision du 8 novembre 2026) : leurs
  * prix (79 à 399 €/mois) contredisaient la page Tarifs de l'application.
+ *
+ * /offres/presence en est sortie le 16 novembre 2026 : c'est la page « Site
+ * géré par Sitaly », pour l'artisan qui veut un site sans le faire lui-même
+ * dans l'app. Présence Pro et Présence Expert restent hors index.
  */
 export const PAGES_OFFRES_HORS_INDEX = [
-  "/offres/presence",
   "/offres/presence-pro",
   "/offres/presence-expert",
   "/offres/maintenance",

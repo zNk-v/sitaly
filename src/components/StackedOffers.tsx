@@ -87,24 +87,24 @@ export const LEVIERS: Levier[] = [
     maquette: <MaquetteConversation />,
   },
   {
-    /* Depuis le 5 octobre 2026, l'offre n'est plus la gestion Google Ads au
-       forfait : Sitaly paie ses propres campagnes et livre les demandes à
-       une seule entreprise par zone (voir src/routes/acquisition.tsx). */
+    /* Retour au modèle d'origine le 16 novembre 2026 (voir
+       src/routes/acquisition.tsx) : gestion de campagnes Google Ads à
+       299 €/mois, budget publicitaire payé par le client à Google. */
     cle: "ads",
-    categorie: "Demandes de chantier",
+    categorie: "Google Ads",
     titre: (
       <>
-        Des demandes de chantier, <span className="accent-word">pas une pub à gérer</span>
+        Des campagnes Google Ads, <span className="accent-word">pas une boîte noire</span>
       </>
     ),
     texte:
-      "Pour les artisans du bâtiment et de l'extérieur : nous payons la publicité, nous recevons les demandes des particuliers de votre secteur, et nous les transmettons à une seule entreprise, la vôtre. Les premières sont offertes.",
+      "Nous créons, pilotons et optimisons vos campagnes Google Ads. Votre budget reste chez vous, payé directement à Google : nous facturons notre travail, pas votre publicité.",
     points: [
-      "Demandes exclusives, jamais revendues",
-      "Une seule entreprise par zone",
-      "Sans engagement",
+      "299 € par mois, sans engagement",
+      "Budget payé directement à Google",
+      "Suivi des conversions avant la première dépense",
     ],
-    cta: { label: "Voir les demandes de chantier", to: "/acquisition/" },
+    cta: { label: "Voir l'offre Google Ads", to: "/acquisition/" },
     maquette: <MaquetteRecherche />,
   },
   {

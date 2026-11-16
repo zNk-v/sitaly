@@ -1,8 +1,8 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowRight, Check, Plus } from "lucide-react";
+import { ArrowRight, Check, ExternalLink, Plus } from "lucide-react";
 import { SiteChrome } from "@/components/SiteChrome";
 import { PictoRubrique } from "@/components/PictoRubrique";
-import { euros } from "@/lib/config";
+import { APP_URL, euros } from "@/lib/config";
 import { BASE_URL } from "@/lib/sitemap";
 import { directiveRobots } from "@/lib/indexation";
 import { FAQ_TARIFS } from "@/data/faq-tarifs";
@@ -141,7 +141,9 @@ function PageDOffre() {
   const groupe = offresDu(o.groupe);
   const rang = groupe.findIndex((x) => x.id === o.id);
   const avant = groupe[rang - 1];
-  const apres = groupe[rang + 1];
+  // Présence Pro et Présence Expert ne figurent pas sur /offres/presence/ :
+  // pas de comparaison qui les ferait apparaître sur cette page précise.
+  const apres = o.id === "presence" ? undefined : groupe[rang + 1];
   const site = o.groupe === "site";
   const faq = questions(p, o);
 
@@ -198,7 +200,7 @@ function PageDOffre() {
                 Choisir cette offre
                 <ArrowRight className="bouton-fleche h-4 w-4" />
               </Link>
-              {groupe.length > 1 && (
+              {groupe.length > 1 && o.id !== "presence" && (
                 <Link
                   to="/tarifs/"
                   hash={GROUPES[o.groupe].ancre}
@@ -206,6 +208,14 @@ function PageDOffre() {
                 >
                   Comparer les {groupe.length} offres
                 </Link>
+              )}
+              {o.id === "presence" && (
+                <a
+                  href={`${APP_URL}/creer`}
+                  className="mt-4 block text-center text-sm font-semibold text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white"
+                >
+                  Vous préférez créer votre site vous-même ?
+                </a>
               )}
             </aside>
           </div>
@@ -398,27 +408,38 @@ function PageDOffre() {
               </div>
               <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
                 {REALISATIONS.slice(0, 3).map((r) => (
-                  <Link
+                  <div
                     key={r.slug}
-                    to="/realisations/$slug/"
-                    params={{ slug: r.slug }}
                     className="lift group overflow-hidden rounded-2xl border border-border bg-card shadow-soft"
                   >
-                    <img
-                      src={r.capture.webp.w560}
-                      srcSet={srcSetCapture(r)}
-                      sizes="(min-width: 1024px) 400px, 100vw"
-                      alt={`Le site de ${r.client}`}
-                      loading="lazy"
-                      className="aspect-[16/10] w-full object-cover object-top"
-                    />
-                    <div className="p-5">
-                      <p className="font-display text-lg font-bold">{r.client}</p>
-                      <p className="mt-1 text-sm text-muted-foreground">
-                        {r.metier}, {r.zone}
-                      </p>
+                    <Link to="/realisations/$slug/" params={{ slug: r.slug }}>
+                      <img
+                        src={r.capture.webp.w560}
+                        srcSet={srcSetCapture(r)}
+                        sizes="(min-width: 1024px) 400px, 100vw"
+                        alt={`Le site de ${r.client}`}
+                        loading="lazy"
+                        className="aspect-[16/10] w-full object-cover object-top"
+                      />
+                      <div className="p-5 pb-0">
+                        <p className="font-display text-lg font-bold">{r.client}</p>
+                        <p className="mt-1 text-sm text-muted-foreground">
+                          {r.metier}, {r.zone}
+                        </p>
+                      </div>
+                    </Link>
+                    <div className="p-5 pt-3">
+                      <a
+                        href={r.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-ink hover:underline"
+                      >
+                        {r.domaine}
+                        <ExternalLink className="h-3.5 w-3.5" />
+                      </a>
                     </div>
-                  </Link>
+                  </div>
                 ))}
               </div>
             </div>

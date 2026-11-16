@@ -34,12 +34,12 @@ const SERVICES = [
     lien: { label: "Agents IA pour PME", to: "/agents-ia/" },
   },
   {
-    /* Offre du 5 octobre 2026 : Sitaly paie ses campagnes et livre les
-       demandes à une seule entreprise par zone (src/routes/acquisition.tsx). */
-    titre: "Des demandes de chantier pour les artisans",
+    /* Retour au modèle d'origine le 16 novembre 2026 : gestion de campagnes
+       Google Ads, budget payé par le client à Google (src/routes/acquisition.tsx). */
+    titre: "Des campagnes Google Ads pour les artisans",
     texte:
-      "Nous payons la publicité, nous recevons les demandes des particuliers de votre secteur et nous les transmettons à une seule entreprise par métier et par zone. Les premières sont offertes.",
-    lien: { label: "Demandes de chantier", to: "/acquisition/" },
+      "Nous créons, pilotons et optimisons vos campagnes Google Ads. Votre budget reste chez vous, payé directement à Google : nous facturons notre travail, pas votre publicité.",
+    lien: { label: "Campagnes Google Ads", to: "/acquisition/" },
   },
   {
     titre: "Le référencement local",
