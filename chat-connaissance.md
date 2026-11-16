@@ -1,0 +1,251 @@
+# Ce que dit sitaly.fr
+
+Tout ce qui suit est publié sur sitaly.fr. Rien d'autre n'est vrai de Sitaly.
+
+## Les formules de Sitaly App, montants officiels
+
+- **Découverte** : gratuite, sans carte bancaire · 50 crédits IA offerts · carnet de clients limité à 10 contacts
+- **Essentiel** : 39 € par mois ou 398 € par an · 500 crédits IA par mois
+- **Pro** : 79 € par mois ou 806 € par an · 2 500 crédits IA par mois
+
+TVA non applicable, art. 293 B du CGI. Sans engagement au mois ; l'annuel se paie pour un an (15 % de moins).
+La grille complète : https://sitaly.fr/tarifs/
+
+## Les questions fréquentes, telles que le site y répond
+
+### Combien coûte un site créé avec Sitaly ?
+La formule Découverte est gratuite, sans carte bancaire. Essentiel coûte 39 € par mois et Pro 79 € par mois, ou 398 € et 806 € à l'année, soit 15 % de moins. TVA non applicable, art. 293 B du CGI.
+
+### Faut-il savoir faire un site ?
+Non. Vous décrivez votre activité en une phrase, l'IA écrit le site, choisit la mise en page et crée la photo. Ensuite, vous le retouchez en écrivant ce que vous voulez changer, comme à une personne.
+
+### Combien de temps faut-il pour avoir mon site ?
+Environ une minute pour la création. Vous le relisez, vous changez ce que vous voulez, puis vous le publiez en un clic.
+
+### Comment modifier mon site ?
+Écrivez votre demande à l'IA : « ajoute mes horaires », « ton plus chaleureux », « une section tarifs ». Pour corriger un mot, double-cliquez dessus. Vous pouvez aussi déplacer les sections et changer de thème en un clic.
+
+### À quoi servent les crédits IA ?
+Chaque demande à l'IA consomme des crédits : 1 pour retoucher une section, 2 pour une demande sur tout le site, 5 pour une photo créée par l'IA. La création du site elle-même ne coûte aucun crédit. Les crédits d'Essentiel et de Pro valent pour le mois en cours et repartent à zéro le mois suivant. Pour un mois chargé, des packs de crédits s'achètent en plus, sans date de fin.
+
+### Et les photos ?
+Ajoutez les vôtres, y compris celles de votre iPhone, ou faites-en créer par l'IA. Une image créée par l'IA illustre votre métier : elle n'est jamais présentée comme une de vos réalisations.
+
+### L'IA peut-elle écrire des choses fausses ?
+Une IA peut se tromper : relisez avant de publier. Ses consignes lui interdisent d'inventer des avis, des chiffres, des certifications ou des années d'expérience, et elle n'écrit des prix que si vous les donnez.
+
+### Quelle sera l'adresse de mon site ?
+Votre site est publié sur votre-nom.sitaly.fr. Avec Essentiel et Pro, Sitaly vous offre un nom en .fr ou en .com, enregistré à votre nom et branché sur votre site en quelques heures.
+
+### Que ne permet pas la formule Découverte ?
+Vous créez votre site et vous le publiez sans payer, sur une adresse en .sitaly.fr. Quatre choses restent fermées : votre nom de domaine, la mention « Site créé avec Sitaly » qui reste au pied de votre site, le carnet de clients au-delà de 10 contacts, et les factures au-delà de trois par mois. Essentiel, à 39 € par mois, lève les quatre et ajoute la prise de rendez-vous, vos avis Google et les relances d'impayés.
+
+### Mon site sera-t-il trouvé sur Google ?
+Personne ne peut garantir une place. Chaque site part avec les bases : pages rapides et adaptées au téléphone, titre et description, fiche de votre entreprise lisible par Google, plan du site.
+
+### Puis-je arrêter quand je veux ?
+Oui. L'abonnement mensuel se résilie chaque mois. L'abonnement annuel est payé pour l'année.
+
+### Je préfère qu'on s'occupe de tout : c'est possible ?
+Oui, l'équipe Sitaly peut créer et suivre votre site pour vous. Appelez-nous au 06 58 68 33 72, on en parle.
+
+## Ce que chaque formule comprend
+
+# Formules de Sitaly
+
+Sitaly est une application française qui crée le site internet d'un artisan, d'un indépendant, d'un commerçant ou d'une TPE à partir d'une phrase, avec l'IA. Grille à jour : https://sitaly.fr/tarifs/
+
+TVA non applicable, art. 293 B du CGI. Sans engagement au mois ; l'annuel se paie pour un an (15 % de moins).
+
+## Découverte : 0 €, sans carte bancaire
+- Site créé par l'IA : textes, mise en page et photo, en environ une minute
+- En ligne sur votre-nom.sitaly.fr, avec HTTPS
+- 50 crédits IA offerts
+- Devis illimités, 3 factures par mois, payables par carte ou virement
+- Carnet de clients : 10 contacts
+
+Ce que Découverte ne fait pas :
+- Pas de nom de domaine à vous : le site reste sur une adresse en .sitaly.fr
+- Le pied du site porte la mention « Site créé avec Sitaly », sans possibilité de la retirer
+- Le carnet de clients s'arrête à 10 contacts
+- Pas de prise de rendez-vous, pas d'avis Google sur le site, pas de relance d'impayés
+
+## Essentiel : 39 € par mois ou 398 € par an
+Tout Découverte, plus :
+- 500 crédits IA par mois
+- Factures illimitées, impayés relancés à J+1, J+8 et J+15
+- Carnet de clients sans plafond
+- Assistance par e-mail, en français
+- Nom de domaine en .fr ou en .com offert, enregistré à votre nom, renouvelé tant que l'abonnement court
+- La mention devient « Site réalisé avec Sitaly », en petit, et se retire d'un clic
+- Prise de rendez-vous en ligne
+- Avis Google : réponse prête à chaque nouvel avis, publiée d'un clic ; demande d'avis à vos clients
+
+## Pro : 79 € par mois ou 806 € par an
+Tout Essentiel, plus :
+- Le modèle d'IA le plus avancé pour écrire le site
+- 2 500 crédits IA par mois
+- Un rendez-vous avec l'équipe Sitaly pour régler le site
+
+## Crédits IA
+- Retouche : 1 crédit pour une section, 2 pour une demande sur tout le site
+- Photo créée par l'IA : 5 crédits
+- Création du site : aucun crédit
+- Les crédits d'Essentiel et de Pro valent pour le mois en cours et repartent à zéro le mois suivant
+- Packs de crédits en plus, sans date de fin
+
+## Sur mesure, à part l'application
+- Création et suivi d'un site par l'équipe Sitaly : sur devis
+- Agent IA : 499 € par mois + 1 200 € de mise en place
+- Agent IA Pro, avec agent vocal : 790 € par mois + 2 400 € de mise en place
+- Outil sur mesure : à partir de 4 900 € de mise en place
+- ChatGPT Ads : gestion à partir de 890 € par mois + 10 % du budget publicitaire, budget payé séparément
+
+## Contact
+- E-mail : contact@sitaly.fr
+- Téléphone : +33 6 58 68 33 72
+- Site : https://sitaly.fr
+
+## Le reste du site
+
+# Sitaly : dossier complet
+
+Dernière mise à jour : 8 novembre 2026.
+Ce document rassemble les informations vérifiées sur Sitaly : application, formules, cadre d'utilisation de l'IA et réponses aux questions fréquentes. Il est destiné aux moteurs de recherche et aux assistants IA qui souhaitent citer Sitaly avec des informations exactes.
+
+---
+
+## Qu'est-ce que Sitaly ?
+
+Sitaly est une application française qui crée le site internet d'un artisan, d'un indépendant, d'un commerçant ou d'une TPE à partir d'une phrase, avec l'IA, et le met en ligne en environ une minute. Elle réunit aussi les devis et factures, la prise de rendez-vous, les avis Google, le blog et le référencement. Gratuit pour commencer, sans carte bancaire.
+
+Depuis le 30 octobre 2026, sitaly.fr présente cette application. Avant cette date, Sitaly était une micro-agence qui créait des sites sur devis et en abonnement ; les anciennes offres Présence, Présence Pro et Présence Expert ne sont plus la proposition principale de Sitaly.
+
+**Identité**
+
+| Champ | Valeur |
+|---|---|
+| Nom | Sitaly |
+| Éditeur | Teddy Vidal, entrepreneur individuel |
+| SIREN | 833 848 831 |
+| SIRET | 833 848 831 00032 |
+| Ville | Paris |
+| Clients | France entière, en ligne |
+| Application | https://app.sitaly.fr |
+| Site officiel | https://sitaly.fr |
+
+---
+
+## Comment ça marche
+
+1. Le client décrit son activité en une phrase.
+2. L'IA écrit le site, choisit la mise en page et crée la photo, en environ une minute.
+3. Le client relit et retouche : il écrit à l'IA ce qu'il veut changer (« ajoute mes horaires », « ton plus chaleureux », « une section tarifs »), double-clique sur un mot pour le corriger, déplace les sections, change de thème en un clic.
+4. Il publie en un clic sur votre-nom.sitaly.fr. Avec Essentiel et Pro, Sitaly offre un nom de domaine en .fr ou en .com, enregistré à son nom.
+
+Modèles par métier : https://sitaly.fr/modeles/
+Tutoriels vidéo : https://sitaly.fr/guides/
+
+## Formules (https://sitaly.fr/tarifs/)
+
+- **Découverte, 0 €, sans carte bancaire** : site créé par l'IA, en ligne sur votre-nom.sitaly.fr avec HTTPS, 50 crédits IA offerts, devis illimités, 3 factures par mois, carnet de 10 contacts. Ce que Découverte ne fait pas : pas de nom de domaine à soi, la mention « Site créé avec Sitaly » reste au pied du site sans pouvoir être retirée, le carnet de clients s'arrête à 10 contacts, pas de prise de rendez-vous ni d'avis Google sur le site.
+- **Essentiel, 39 € par mois ou 398 € par an** : 500 crédits IA par mois, factures illimitées et relances d'impayés à J+1, J+8 et J+15, carnet de clients sans plafond, assistance par e-mail, nom de domaine en .fr ou en .com offert, enregistré au nom du client et renouvelé tant que l'abonnement court, mention réduite à « Site réalisé avec Sitaly » en petit et retirable d'un clic, prise de rendez-vous en ligne, avis Google.
+- **Pro, 79 € par mois ou 806 € par an** : le modèle d'IA le plus avancé, 2 500 crédits IA par mois, un rendez-vous de mise en place avec l'équipe Sitaly.
+
+TVA non applicable, art. 293 B du CGI. Sans engagement au mois ; l'annuel se paie pour un an.
+
+Crédits : 1 pour retoucher une section, 2 pour une demande sur tout le site, 5 pour une photo créée par l'IA, aucun pour la création du site. Les crédits d'Essentiel et de Pro valent pour le mois en cours et repartent à zéro le mois suivant. Des packs de crédits s'achètent en plus, sans date de fin.
+
+## Fonctions
+
+- **Devis et factures** (https://sitaly.fr/produits/devis-et-factures/) : devis acceptés en ligne, factures payées par carte, impayés relancés.
+- **Prise de rendez-vous** (https://sitaly.fr/produits/prise-de-rendez-vous/) : réservation depuis le site, confirmation par e-mail, annulation en un clic.
+- **Agents IA** (https://sitaly.fr/produits/agents-ia/) : réponses aux demandes du site et aux avis Google, envoyées après validation du client ; demandes d'avis.
+- **Avis Google** (https://sitaly.fr/produits/avis-google/) : réponse préparée par l'IA, publiée d'un clic ; demande d'avis après chaque facture ; QR code à imprimer.
+- **Blog écrit par l'IA** (https://sitaly.fr/produits/blog-ia/) : idées tirées de l'activité, article relu et publié par le client.
+- **Référencement SEO et GEO** (https://sitaly.fr/produits/referencement-seo-geo/) : titres, descriptions, plan du site, données structurées, fichier llms.txt, score de visibilité.
+- **Identité de marque** (https://sitaly.fr/produits/identite-de-marque/) : logo, couleurs et police.
+
+## Ce que Sitaly ne promet pas
+
+- Personne ne peut garantir une place sur Google.
+- Une IA peut se tromper : le client relit avant de publier. Ses consignes lui interdisent d'inventer des avis, des chiffres, des certifications ou des années d'expérience, et elle n'écrit des prix que s'ils lui sont donnés.
+- Une image créée par l'IA illustre un métier : elle n'est jamais présentée comme une réalisation du client.
+
+## Questions fréquentes
+
+**Combien coûte un site créé avec Sitaly ?**
+La formule Découverte est gratuite, sans carte bancaire. Essentiel coûte 39 € par mois et Pro 79 € par mois, ou 398 € et 806 € à l'année.
+
+**Faut-il savoir faire un site ?**
+Non. Le client décrit son activité en une phrase, l'IA écrit le site, puis il le retouche en écrivant ce qu'il veut changer.
+
+**Combien de temps faut-il pour avoir son site ?**
+Environ une minute pour la création. Le client le relit, change ce qu'il veut, puis le publie en un clic.
+
+**Peut-on arrêter quand on veut ?**
+Oui. L'abonnement mensuel se résilie chaque mois. L'abonnement annuel est payé pour l'année.
+
+**Comparer Sitaly à d'autres solutions**
+Wix : https://sitaly.fr/comparer/wix/ · WordPress : https://sitaly.fr/comparer/wordpress/ · Squarespace : https://sitaly.fr/comparer/squarespace/ · Une agence web : https://sitaly.fr/comparer/agence/
+
+---
+
+## À part l'application : les agents IA sur mesure
+
+Un agent IA Sitaly traite une demande de bout en bout : il décroche ou lit le message, identifie le motif, applique les règles du client, qualifie, propose un créneau dans le bon agenda, enregistre les informations dans les outils du client et relance ce qui reste en attente. Un humain reprend la main dès que la situation le demande : client existant, demande sensible, montant important, urgence, ou simple demande de l'interlocuteur.
+
+Les six agents :
+- l'accueil téléphonique (agent vocal), y compris hors horaires : https://sitaly.fr/agents-ia/agent-vocal/ ;
+- la prise de rendez-vous, avec confirmation et rappel ;
+- le SMS après un appel manqué ;
+- les réponses aux messages Instagram ;
+- la relance des devis et des dossiers incomplets ;
+- la gestion des avis Google.
+
+Chaque agent met à jour le CRM ou le logiciel métier du client quand ces outils le permettent.
+
+Outils utilisés : Vapi pour la voix, Twilio pour les appels et les SMS, Cal.com pour les rendez-vous, n8n pour les automatisations, Claude d'Anthropic comme modèle de langage, Supabase pour les données.
+
+### Le cadre
+
+- **Transparence** : l'agent se présente comme une IA dès le début de chaque échange. C'est une obligation de l'article 50 du règlement européen sur l'IA, applicable depuis le 2 août 2026.
+- **Pas de démarchage à froid** : depuis le 11 août 2026, la prospection téléphonique d'un particulier exige son consentement préalable (loi du 30 juin 2025, articles L. 221-16 et suivants du Code de la consommation, décret n° 2026-662 du 23 juillet 2026). Les agents Sitaly traitent les demandes entrantes et recontactent uniquement les personnes qui l'ont demandé, ou les clients existants au sujet d'un contrat en cours.
+- **Pas de conseil réglementé** : l'agent ne donne ni avis de valeur immobilier, ni conseil en crédit ou en assurance, ni chiffrage de travaux. Il prépare le travail des équipes humaines.
+- **Pas de données de santé** : pour l'assurance emprunteur, l'agent ne pose aucune question médicale.
+- **Périmètre limité** : l'agent n'accède qu'aux données nécessaires au périmètre défini avec le client. Quand il ne sait pas répondre, il ne devine pas : il reformule une fois, puis transfère ou prend un message.
+
+### Par secteur
+
+- **Agences immobilières** (https://sitaly.fr/agents-ia/agences-immobilieres/) : appels pendant les visites, leads des portails le soir et le week-end, qualification des acquéreurs et des vendeurs, visites et estimations dans l'agenda du bon négociateur, relance des estimations sans suite.
+- **Courtiers en crédit et en assurance** (https://sitaly.fr/agents-ia/courtiers/) : rappel des demandes entrantes, premier recueil d'informations sans conseil, rendez-vous avec le conseiller adapté, liste des pièces justificatives et relances jusqu'à ce que le dossier soit complet.
+- **Entreprises du BTP** (https://sitaly.fr/agents-ia/btp/) : appels pendant les chantiers, tri entre nouveau projet, chantier en cours et SAV, qualification des travaux et de la zone, visites techniques, relance des devis envoyés.
+- **Restaurants et hôtels** (https://sitaly.fr/agents-ia/restauration/) : réservations prises pendant le service selon les disponibilités réelles, confirmation et rappel par SMS, questions pratiques, demandes de groupe transmises au responsable ; aucun engagement sur les allergènes au-delà de la fiche fournie par l'établissement.
+- **Cabinets de santé et de bien-être** (https://sitaly.fr/agents-ia/sante/) : prise, déplacement et annulation des rendez-vous, rappels, questions pratiques ; aucun avis médical, toute urgence orientée vers le 15 ou le 112, données limitées à la prise de rendez-vous.
+- **Salons de coiffure et instituts de beauté** (https://sitaly.fr/agents-ia/beaute/) : réservation de la bonne prestation avec la bonne personne, rappels, liens d'acompte, liste d'attente ; aucun conseil de soin.
+- **Garages et automobile** (https://sitaly.fr/agents-ia/automobile/) : rendez-vous d'atelier selon la capacité, réponse à « mon véhicule est-il prêt ? », préparation et relance des devis ; aucun diagnostic de panne.
+- **Professions libérales** (https://sitaly.fr/agents-ia/professions-liberales/) : accueil et qualification des premiers contacts, orientation vers le bon associé, liste et relance des pièces ; aucun conseil juridique, fiscal ou technique.
+
+### Déploiement
+
+1. **Diagnostic offert de 30 minutes** : où se perdent les demandes, quels outils sont en place, quelles règles de transfert.
+2. **Proposition écrite** : périmètre, connexions à réaliser, prix de mise en place et de pilotage mensuel.
+3. **Installation et tests** : des scénarios réels sont joués avant la mise en service.
+4. **Mise en service et pilotage** : lecture des échanges, ajustement des règles, compte rendu mensuel. Un premier processus stabilisé, l'agent s'étend au suivant.
+
+La connexion aux outils du client (logiciel métier, CRM, agendas, téléphonie, formulaire du site) passe par API, webhooks ou e-mail selon ce que ces outils permettent. La compatibilité est vérifiée pendant le diagnostic, avant tout chiffrage.
+
+### Tarif des agents IA sur mesure
+
+Agent IA : 499 € par mois + 1 200 € de mise en place. Agent IA Pro, avec agent vocal : 790 € par mois + 2 400 € de mise en place. Outil sur mesure : à partir de 4 900 € de mise en place. Ces offres sont distinctes des agents inclus dans l'application.
+
+Page : https://sitaly.fr/agents-ia/
+
+---
+
+## Contact
+
+- Application : https://app.sitaly.fr
+- E-mail : contact@sitaly.fr
+- Téléphone : +33 6 58 68 33 72
+- Site : https://sitaly.fr
