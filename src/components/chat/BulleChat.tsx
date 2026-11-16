@@ -1,6 +1,13 @@
 import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
 import { MessageCircle, X } from "lucide-react";
-import { ErreurChat, envoyer as envoyerAuServeur, laisserEmail, parlerATed, suivre, type CodeChat } from "@/lib/chat";
+import {
+  ErreurChat,
+  envoyer as envoyerAuServeur,
+  laisserEmail,
+  parlerATed,
+  suivre,
+  type CodeChat,
+} from "@/lib/chat";
 import { suivreEvenement } from "@/lib/mesure";
 import { SITALY_EMAIL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 import { Fil, type Ligne } from "@/components/chat/Fil";
@@ -27,10 +34,12 @@ const TEXTES = {
   sous: "L'IA de Sitaly répond avec le contenu du site. Ted prend le relais quand il faut.",
   accueil:
     "Bonjour. Posez votre question sur Sitaly : les formules, ce que fait l'application, ce qui est compris. Je réponds avec ce qui est écrit sur le site.",
-  neSaitPas: "Je n'ai pas cette réponse sur le site. Ted, qui dirige Sitaly, peut vous répondre lui-même.",
+  neSaitPas:
+    "Je n'ai pas cette réponse sur le site. Ted, qui dirige Sitaly, peut vous répondre lui-même.",
   horsSujet: `Je réponds seulement sur Sitaly et sur ce que fait l'application. Pour autre chose, écrivez à ${SITALY_EMAIL}.`,
   tedPrevenu: "Ted est prévenu. Restez sur la page, sa réponse s'affiche ici.",
-  demandeEmail: "Vous pouvez laisser votre e-mail pour recevoir sa réponse même après avoir fermé la page. C'est facultatif.",
+  demandeEmail:
+    "Vous pouvez laisser votre e-mail pour recevoir sa réponse même après avoir fermé la page. C'est facultatif.",
   emailEnregistre: (email: string) => `C'est noté. Ted vous écrit à ${email}.`,
   limite: `Vous avez posé beaucoup de questions aujourd'hui. Écrivez à ${SITALY_EMAIL}, Ted vous répondra.`,
   close: "Cette discussion est close. Rechargez la page pour en ouvrir une nouvelle.",
@@ -50,7 +59,9 @@ const cle = () => `l${++compteur}`;
 
 export default function BulleChat() {
   const [ouvert, setOuvert] = useState(false);
-  const [lignes, setLignes] = useState<Ligne[]>([{ cle: cle(), auteur: "site", texte: TEXTES.accueil }]);
+  const [lignes, setLignes] = useState<Ligne[]>([
+    { cle: cle(), auteur: "site", texte: TEXTES.accueil },
+  ]);
   const [attente, setAttente] = useState(false);
   const [codeErreur, setCodeErreur] = useState<CodeChat | null>(null);
   const [tedDemande, setTedDemande] = useState(false);
@@ -62,7 +73,10 @@ export default function BulleChat() {
   const champ = useRef<HTMLInputElement | null>(null);
   const declencheur = useRef<HTMLButtonElement | null>(null);
 
-  const ajouter = useCallback((ligne: Omit<Ligne, "cle">) => setLignes((l) => [...l, { cle: cle(), ...ligne }]), []);
+  const ajouter = useCallback(
+    (ligne: Omit<Ligne, "cle">) => setLignes((l) => [...l, { cle: cle(), ...ligne }]),
+    [],
+  );
 
   /* --------------------------------------------- ouverture et fermeture */
 
@@ -84,11 +98,19 @@ export default function BulleChat() {
   // Échap ferme, et le focus ne sort pas du panneau tant qu'il est ouvert.
   useEffect(() => {
     if (!ouvert) return;
-    champ.current?.focus();
+    // Sur un écran tactile, le focus ouvrirait le clavier dès l'ouverture :
+    // l'écran rétrécit et la page saute. Le visiteur touche le champ lui-même.
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) champ.current?.focus();
+    // Sur téléphone, la page derrière le panneau ne défile plus tant qu'il est ouvert.
+    const telephone = window.matchMedia("(max-width: 639px)").matches;
+    const avant = document.documentElement.style.overflow;
+    if (telephone) document.documentElement.style.overflow = "hidden";
     const auClavier = (e: KeyboardEvent) => {
       if (e.key === "Escape") return fermer();
       if (e.key !== "Tab" || !panneau.current) return;
-      const cibles = panneau.current.querySelectorAll<HTMLElement>('button:not([disabled]), input:not([disabled]), a[href]');
+      const cibles = panneau.current.querySelectorAll<HTMLElement>(
+        "button:not([disabled]), input:not([disabled]), a[href]",
+      );
       if (!cibles.length) return;
       const premier = cibles[0];
       const dernier = cibles[cibles.length - 1];
@@ -101,7 +123,10 @@ export default function BulleChat() {
       }
     };
     document.addEventListener("keydown", auClavier);
-    return () => document.removeEventListener("keydown", auClavier);
+    return () => {
+      document.removeEventListener("keydown", auClavier);
+      if (telephone) document.documentElement.style.overflow = avant;
+    };
   }, [ouvert, fermer]);
 
   /* --------------------------------------------- la question du visiteur */
@@ -165,7 +190,10 @@ export default function BulleChat() {
           // Une relance ratée n'est pas une panne : le tour suivant réessaie.
         }
       }
-      minuterie = window.setTimeout(tour, Date.now() - depuis > AVANT_DE_RALENTIR ? RELANCE_LENTE : RELANCE_VIVE);
+      minuterie = window.setTimeout(
+        tour,
+        Date.now() - depuis > AVANT_DE_RALENTIR ? RELANCE_LENTE : RELANCE_VIVE,
+      );
     };
     minuterie = window.setTimeout(tour, RELANCE_VIVE);
     return () => window.clearTimeout(minuterie);
@@ -199,7 +227,14 @@ export default function BulleChat() {
 
   /* --------------------------------------------- l'affichage */
 
-  const message = codeErreur === "LIMITE" ? TEXTES.limite : codeErreur === "CLOSE" ? TEXTES.close : codeErreur ? TEXTES.panne : null;
+  const message =
+    codeErreur === "LIMITE"
+      ? TEXTES.limite
+      : codeErreur === "CLOSE"
+        ? TEXTES.close
+        : codeErreur
+          ? TEXTES.panne
+          : null;
 
   return (
     <>
@@ -227,7 +262,10 @@ export default function BulleChat() {
           role="dialog"
           aria-label="Discuter avec Sitaly"
           className="fixed inset-x-3 z-40 flex flex-col overflow-hidden rounded-3xl border border-black/10 bg-white shadow-2xl sm:inset-x-auto sm:right-4 sm:w-[380px]"
-          style={{ height: "min(70dvh, 560px)", bottom: "calc(var(--bandeau-cookies, 0px) + 0.75rem)" }}
+          style={{
+            height: "min(70dvh, 560px)",
+            bottom: "calc(var(--bandeau-cookies, 0px) + 0.75rem)",
+          }}
         >
           <div className="flex items-start justify-between gap-3 border-b border-black/[0.07] px-4 py-3">
             <div className="min-w-0">
@@ -268,7 +306,10 @@ export default function BulleChat() {
           )}
 
           {emailDemande && !emailLaisse && (
-            <form onSubmit={noterEmail} className="space-y-2 border-t border-black/[0.07] bg-black/[0.02] px-4 py-3">
+            <form
+              onSubmit={noterEmail}
+              className="space-y-2 border-t border-black/[0.07] bg-black/[0.02] px-4 py-3"
+            >
               <label className="block text-xs text-black/60" htmlFor="bulle-chat-email">
                 {TEXTES.demandeEmail}
               </label>
@@ -280,7 +321,7 @@ export default function BulleChat() {
                   onChange={(e) => setEmail(e.target.value)}
                   autoComplete="email"
                   placeholder="vous@exemple.fr"
-                  className="min-w-0 flex-1 rounded-xl border border-black/10 bg-white px-3 py-2 text-sm text-black placeholder:text-black/40 focus:border-black/30 focus:outline-none"
+                  className="min-w-0 flex-1 rounded-xl border border-black/10 bg-white px-3 py-2 text-base text-black sm:text-sm placeholder:text-black/40 focus:border-black/30 focus:outline-none"
                 />
                 <button
                   type="submit"

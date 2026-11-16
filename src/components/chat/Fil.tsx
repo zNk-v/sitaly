@@ -71,13 +71,22 @@ export function Fil({
 
   return (
     <>
-      <div role="log" aria-live="polite" aria-label="La discussion" className="min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-4">
+      <div
+        role="log"
+        aria-live="polite"
+        aria-label="La discussion"
+        className="min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-4"
+      >
         {lignes.map((l) => (
           <div key={l.cle} className={l.auteur === "visiteur" ? "flex" : undefined}>
             {AUTEURS[l.auteur].etiquette && (
-              <p className="mb-1 text-xs font-medium text-violet-700">{AUTEURS[l.auteur].etiquette}</p>
+              <p className="mb-1 text-xs font-medium text-violet-700">
+                {AUTEURS[l.auteur].etiquette}
+              </p>
             )}
-            <p className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${AUTEURS[l.auteur].classe}`}>
+            <p
+              className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${AUTEURS[l.auteur].classe}`}
+            >
               {l.texte}
             </p>
             {l.offrirTed && (
@@ -117,7 +126,10 @@ export function Fil({
         <div ref={bas} />
       </div>
 
-      <form onSubmit={soumettre} className="flex items-center gap-2 border-t border-black/[0.07] p-3">
+      <form
+        onSubmit={soumettre}
+        className="flex items-center gap-2 border-t border-black/[0.07] p-3"
+      >
         <label className="min-w-0 flex-1">
           <span className="sr-only">Votre question</span>
           <input
@@ -128,7 +140,7 @@ export function Fil({
             disabled={desactive}
             placeholder="Écrivez votre question"
             autoComplete="off"
-            className="w-full rounded-xl border border-black/10 bg-white px-3.5 py-2.5 text-sm text-black placeholder:text-black/40 focus:border-black/30 focus:outline-none disabled:bg-black/[0.03]"
+            className="w-full rounded-xl border border-black/10 bg-white px-3.5 py-2.5 text-base text-black sm:text-sm placeholder:text-black/40 focus:border-black/30 focus:outline-none disabled:bg-black/[0.03]"
           />
         </label>
         <button
