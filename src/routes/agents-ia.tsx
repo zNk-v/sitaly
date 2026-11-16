@@ -1646,7 +1646,7 @@ function DiagnosticForm() {
           required
           maxLength={800}
           placeholder="Par exemple : nous manquons des appels en journée et nos devis ne sont pas relancés."
-          className="mt-1.5 w-full rounded-[10px] border border-input bg-background px-3.5 py-2.5 text-[15px] text-foreground outline-none transition placeholder:text-muted-foreground/70 focus:border-accent"
+          className="mt-1.5 w-full rounded-[10px] border border-input bg-background px-3.5 py-2.5 text-base text-foreground sm:text-[15px] outline-none transition placeholder:text-muted-foreground/70 focus:border-accent"
         />
       </div>
 
@@ -1699,7 +1699,7 @@ function FormField({
         autoComplete={autoComplete}
         required={required}
         maxLength={150}
-        className="mt-1.5 h-12 w-full rounded-[10px] border border-input bg-background px-3.5 text-[15px] text-foreground outline-none transition focus:border-accent"
+        className="mt-1.5 h-12 w-full rounded-[10px] border border-input bg-background px-3.5 text-base text-foreground sm:text-[15px] outline-none transition focus:border-accent"
       />
     </div>
   );
@@ -1727,7 +1727,7 @@ function SelectField({
         name={name}
         required={required}
         defaultValue=""
-        className="mt-1.5 h-12 w-full rounded-[10px] border border-input bg-background px-3 text-[15px] text-foreground outline-none transition focus:border-accent"
+        className="mt-1.5 h-12 w-full rounded-[10px] border border-input bg-background px-3 text-base text-foreground sm:text-[15px] outline-none transition focus:border-accent"
       >
         <option value="" disabled>
           Sélectionner
