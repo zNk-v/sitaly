@@ -13,7 +13,9 @@ import {
 } from "@/components/produit/Produit";
 import { VisuelProduit } from "@/components/produit/VisuelsProduits";
 import { BoutonCollant } from "@/components/produit/BoutonCollant";
+import { CartePilier } from "@/components/pilier/Pilier";
 import { PRODUITS, getProduit } from "@/data/produits";
+import { PILIER_PAR_PRODUIT, PILIER_SITE } from "@/data/piliers";
 import { APP_REF, CREATEUR_IA as IA, MENTION_TVA } from "@/data/offres";
 import { euros } from "@/lib/config";
 import { BASE_URL } from "@/lib/sitemap";
@@ -91,6 +93,7 @@ const FORMULES = [
 function PageProduit() {
   const p = Route.useLoaderData();
   const autres = PRODUITS.filter((x) => x.id !== p.id);
+  const guide = PILIER_PAR_PRODUIT[p.id];
 
   return (
     <div className="min-h-screen bg-white text-[#09090b]">
@@ -116,6 +119,20 @@ function PageProduit() {
               </a>
               <span className={`text-sm ${TEXTE_GRIS}`}>Gratuit, sans carte bancaire.</span>
             </div>
+            {/* Le guide comparatif du produit (16 novembre 2026), quand il
+                existe : celui qui compare avant de choisir le lit d'abord. */}
+            {guide && (
+              <p className={`mt-6 text-sm ${TEXTE_GRIS}`}>
+                Vous comparez encore les outils ?{" "}
+                <Link
+                  to={guide.chemin}
+                  className="font-medium text-black underline underline-offset-2"
+                >
+                  {guide.ancre}
+                </Link>
+                .
+              </p>
+            )}
           </div>
         </section>
 
@@ -254,6 +271,17 @@ function PageProduit() {
                   <ArrowRight className="mt-1 h-4 w-4 shrink-0 transition group-hover:translate-x-0.5" />
                 </Link>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Le guide pilier des artisans (16 novembre 2026) : chaque page
+            produit y mène, et il renvoie vers les produits. */}
+        <section className="px-4 pb-16 sm:px-6">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="titre-produit text-2xl sm:text-3xl">Avant de vous lancer</h2>
+            <div className="mt-6">
+              <CartePilier pilier={PILIER_SITE} />
             </div>
           </div>
         </section>

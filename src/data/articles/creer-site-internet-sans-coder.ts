@@ -108,4 +108,8 @@ export const contenu: BlogSection[] = [
       },
     ],
   },
+  {
+    type: "p",
+    text: "Vous êtes artisan du bâtiment ou des services ? Le guide [créer un site internet d'artisan](/creer-site-internet-artisan/) reprend ces étapes avec les exemples de votre métier.",
+  },
 ];

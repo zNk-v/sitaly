@@ -182,4 +182,8 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Commencez par ce qui ne coûte rien : créez une première version de votre site dans [l'application Sitaly](https://app.sitaly.fr) avec la formule Découverte, sans carte bancaire. Vous verrez à quoi ressemble votre site avant de payer quoi que ce soit, et vous saurez si vous avez besoin de plus. Si votre projet demande un vrai sur-mesure, vous aurez au moins une base claire à montrer à un freelance ou à une agence.",
   },
+  {
+    type: "p",
+    text: "Les étapes de la création, les modèles par métier et la grille de prix tiennent sur une page : [créer un site internet d'artisan](/creer-site-internet-artisan/).",
+  },
 ];

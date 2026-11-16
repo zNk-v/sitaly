@@ -85,7 +85,8 @@
 
 ### Créer son site
 
-- [Créer un site internet d'artisan : le guide complet](https://sitaly.fr/blog/creation-site-internet-artisan-guide/) : contenu, mentions obligatoires, prix et délais, l'IA, Wix et l'agence comparés.
+- [Créer un site internet d'artisan](https://sitaly.fr/creer-site-internet-artisan/) : les trois façons de s'y prendre, ce que le site doit contenir, la grille de prix et les modèles par métier.
+- [Création de site internet pour artisan : le guide](https://sitaly.fr/blog/creation-site-internet-artisan-guide/) : obligations d'affichage, mentions légales, prix relevés chez chaque acteur, délais, et la méthode en sept étapes.
 - [Prix d'un site internet en 2026](https://sitaly.fr/blog/prix-site-internet/) : prix publiés et coût réel sur trois ans.
 - [Créer un site internet gratuit en 2026 : le guide honnête](https://sitaly.fr/blog/creer-site-internet-gratuit/) : ce que permettent les offres gratuites, et leurs limites.
 - [Créer un site internet sans coder](https://sitaly.fr/blog/creer-site-internet-sans-coder/) : la méthode en cinq étapes.
@@ -103,7 +104,8 @@
 
 ### Devis, factures et rendez-vous
 
-- [Logiciel de devis et facture pour artisan](https://sitaly.fr/blog/logiciel-devis-artisan-choisir/) : mentions obligatoires, réforme de 2027 et critères de choix.
+- [Logiciel de devis et factures pour artisans : comment choisir](https://sitaly.fr/logiciel-devis-factures-artisan/) : ce que l'outil doit garantir, le devis accepté en ligne, la facturation électronique de 2027 et les prix.
+- [Devis et facture d'artisan : les mentions obligatoires](https://sitaly.fr/blog/logiciel-devis-artisan-choisir/) : les mentions du devis et de la facture, les quatre mentions ajoutées en 2027, les sanctions.
 - [Facturation électronique 2027 pour les artisans](https://sitaly.fr/blog/facturation-electronique-artisan-2027/) : calendrier, plateformes agréées et amendes, d'après la DGFiP.
 - [Mentions obligatoires d'un devis d'artisan](https://sitaly.fr/blog/mentions-obligatoires-devis-artisan/) : la liste vérifiée sur les textes officiels.
 - [Relance de devis](https://sitaly.fr/blog/relance-automatique-devis/) : quand relancer et quoi écrire.

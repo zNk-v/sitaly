@@ -277,16 +277,23 @@ const ALL_BLOG_POSTS: BlogPost[] = [
   {
     slug: "creation-site-internet-artisan-guide",
     title: "Création de site internet pour artisan : le guide complet 2026",
-    metaTitle: "Créer un site internet d'artisan : le guide complet 2026",
-    metaDescription: "Contenu, mentions obligatoires, prix et délais : l'IA, Wix ou une agence comparés pour créer votre site d'artisan, avec des modèles par métier.",
-    excerpt: "Ce que votre site doit contenir, ce que la loi impose, et les trois façons de le créer comparées sur le prix et le délai : application d'IA, éditeur ou agence.",
+    // Balise titre réalignée sur la requête de l'article (« création site
+    // internet artisan ») le 16 novembre 2026 : elle reprenait mot pour mot
+    // celle de la page pilier /creer-site-internet-artisan/, que SITA-14
+    // ajoute au site. Les intertitres communs aux deux pages ont été réécrits
+    // le même jour, et l'article garde ses obligations d'affichage, son budget
+    // sourcé et sa méthode en sept étapes : le pilier prend l'intention
+    // « par où je commence ».
+    metaTitle: "Création de site internet pour artisan : guide 2026",
+    metaDescription: "Obligations d'affichage, mentions légales, prix relevés chez chaque acteur et délais : le guide 2026 de la création de site internet pour un artisan.",
+    excerpt: "Ce que la loi vous oblige à afficher, ce que chaque route coûte en argent et en temps, et la méthode en sept étapes : application d'IA, éditeur ou prestataire.",
     category: "Site internet",
     readingTime: "12 min",
     publishedAt: "2026-06-18",
     author: "Teddy Vidal",
     keyword: "création site internet artisan",
     cta: "app",
-    updatedAt: "2026-11-14",
+    updatedAt: "2026-11-16",
   },
   {
     slug: "comment-attirer-clients-artisan",
@@ -731,19 +738,25 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     cta: "devis",
   },
   {
+    // Recentré le 16 novembre 2026 (SITA-14) : la requête « logiciel devis
+    // facture artisan » et l'intention de choix passent à la page pilier
+    // /logiciel-devis-factures-artisan/. L'article garde la conformité des
+    // documents, et vise la facture, là où
+    // « mentions-obligatoires-devis-artisan » tient le devis seul.
     slug: "logiciel-devis-artisan-choisir",
-    title: "Logiciel de devis et facture pour artisan : le guide pour bien choisir",
-    metaTitle: "Logiciel devis facture artisan : mentions, 2027, critères",
-    metaDescription: "Mentions obligatoires du devis et de la facture, facture électronique en 2026 et 2027, critères et comparatif honnête des logiciels pour artisans.",
+    title: "Devis et facture d'artisan : les mentions obligatoires, et ce que 2027 ajoute",
+    metaTitle: "Mentions obligatoires d'une facture d'artisan, et 2027",
+    metaDescription:
+      "Les mentions à porter sur une facture et un devis d'artisan, les quatre mentions ajoutées par la réforme de 2027, les sanctions, et les sources officielles.",
     excerpt:
-      "Le meilleur logiciel de devis n'est pas celui qui a le plus de fonctions. C'est celui qui vous fait envoyer le devis le jour même plutôt que trois semaines plus tard.",
+      "Numérotation continue, taux horaire TTC, pénalités de retard, mention 293 B, décennale, et quatre mentions de plus en 2027 : ce que vos devis et vos factures doivent porter, avec la source de chaque ligne.",
     category: "Outils & logiciels",
     readingTime: "11 min",
     publishedAt: "2026-09-01",
     author: "Teddy Vidal",
-    keyword: "logiciel devis facture artisan",
+    keyword: "mentions obligatoires facture artisan",
     cta: "devis",
-    updatedAt: "2026-11-14",
+    updatedAt: "2026-11-16",
   },
   {
     slug: "agent-ia-entreprise-guide",

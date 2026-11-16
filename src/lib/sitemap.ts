@@ -9,6 +9,7 @@ import { MODELES } from "@/data/modeles";
 import { PARTENAIRES_PUBLIES } from "@/data/partenaires";
 import { COMPARATIFS } from "@/data/comparatifs";
 import { PRODUITS } from "@/data/produits";
+import { PILIERS } from "@/data/piliers";
 import { GUIDES } from "@/data/guides";
 import { estIndexable } from "@/lib/indexation";
 
@@ -135,6 +136,11 @@ export const TOUTES_LES_PAGES: SitemapEntry[] = [
   ...MODELES.map((m) => ({
     path: `/modeles/${m.id}`,
     source: [route("modeles.$id.tsx"), "src/data/modeles.ts"],
+  })),
+  // Les deux pages piliers artisans (16 novembre 2026), textes validés par Ted.
+  ...PILIERS.map((p) => ({
+    path: p.chemin.replace(/\/$/, ""),
+    source: [route(`${p.id}.tsx`), "src/components/pilier/Pilier.tsx", "src/data/piliers.ts"],
   })),
   { path: "/blog", lastmod: derniereDateBlog },
   ...BLOG_POSTS.map((p) => ({

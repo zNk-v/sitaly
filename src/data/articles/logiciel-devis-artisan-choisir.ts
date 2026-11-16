@@ -1,21 +1,21 @@
 import type { BlogSection } from "@/data/blog-posts";
 
 /** Le corps de l'article « logiciel-devis-artisan-choisir ». Ses métadonnées vivent dans
-    src/data/blog-posts.ts ; ce fichier n'est chargé que sur sa page. */
+    src/data/blog-posts.ts ; ce fichier n'est chargé que sur sa page.
+
+    Recentré le 16 novembre 2026 (SITA-14, décision de Ted) : l'intention « quel
+    logiciel choisir » appartient désormais à la page pilier
+    /logiciel-devis-factures-artisan/. Cet article tient la conformité des
+    documents — mentions du devis, mentions de la facture, réforme de 2027 — et
+    renvoie la comparaison des outils au pilier. */
 export const contenu: BlogSection[] = [
   {
     type: "p",
-    text: "Vous sortez de chez un client à 18 heures. Il attend votre devis, et deux confrères sont passés avant vous dans la semaine. Si le chiffrage attend dimanche soir, vous partez avec un handicap. Un logiciel de devis et de facture sert d'abord à ça : envoyer un document juste, conforme, le jour de la visite, puis encaisser sans courir après l'argent. Ce guide passe en revue les mentions obligatoires, la réforme de la facture électronique, les critères de choix et les grandes familles d'outils, avec leurs limites.",
-  },
-
-  { type: "h2", text: "Quel logiciel de devis et facture choisir quand on est artisan ?" },
-  {
-    type: "p",
-    text: "Choisissez l'outil qui produit un devis conforme depuis votre téléphone, que le client peut accepter en ligne, et qui transforme ce devis en facture numérotée sans ressaisie. Vérifiez ensuite trois points : le paiement par carte, la relance des impayés et la préparation à la facture électronique. Le reste dépend de la taille de vos chiffrages.",
+    text: "Vous sortez de chez un client à 18 heures. Il attend son devis, et deux confrères sont passés avant vous dans la semaine. Un logiciel de devis et de facture sert d'abord à envoyer un document le jour de la visite, puis à encaisser sans courir après l'argent. Encore faut-il que ce document soit juste : l'arrêté du 24 janvier 2017 fixe ce qui doit figurer sur le devis, le Code de commerce ce qui doit figurer sur la facture, et la réforme de la facture électronique ajoute quatre mentions et deux échéances.",
   },
   {
     type: "p",
-    text: "Un plombier qui fait des dépannages et des remplacements de chauffe-eau n'a pas les besoins d'une entreprise de gros œuvre qui chiffre des métrés sur plusieurs niveaux. Le premier veut aller vite sur des lignes simples. La seconde a besoin d'une bibliothèque d'ouvrages et de situations de travaux. Les deux cherchent « logiciel devis facture artisan » et tombent sur les mêmes comparatifs. Commencez donc par décrire vos devis types avant de regarder les outils.",
+    text: "Cet article rassemble ces trois listes avec leurs sources, puis ce qu'un outil doit poser à votre place pour que vous n'y pensiez plus. Vous cherchez plutôt quel outil prendre, à quel prix, et ce que vaut chaque famille de logiciels ? La page [logiciel de devis et factures pour artisans : comment choisir](/logiciel-devis-factures-artisan/) traite ce sujet.",
   },
 
   { type: "h2", text: "Pourquoi le délai d'envoi pèse sur la signature" },
@@ -118,7 +118,11 @@ export const contenu: BlogSection[] = [
     text: "Avant de vous engager avec un éditeur, posez-lui deux questions écrites : comment son outil vous permettra-t-il d'émettre en septembre 2027, et avec quelle plateforme agréée ? Un éditeur qui répond flou aujourd'hui vous laissera chercher une solution en août 2027. Notre article sur [la facturation électronique pour les artisans](/blog/facturation-electronique-artisan-2027/) détaille les étapes, le choix d'une plateforme et les cas particuliers.",
   },
 
-  { type: "h2", text: "Les critères qui comptent pour choisir" },
+  { type: "h2", text: "Ce que votre logiciel doit poser à votre place" },
+  {
+    type: "p",
+    text: "Les listes ci-dessus tiennent sur trois pages. Vous ne les relirez pas avant chaque devis : c'est l'outil qui doit les porter. Voici ce qu'il doit tenir seul, et comment le vérifier pendant une période d'essai.",
+  },
   { type: "h3", text: "1. La conformité par défaut" },
   {
     type: "p",
@@ -174,14 +178,14 @@ export const contenu: BlogSection[] = [
     ],
   },
 
-  { type: "h2", text: "Les approches possibles, comparées" },
+  { type: "h2", text: "Ce que chaque type d'outil laisse à votre charge" },
   {
     type: "p",
-    text: "Il n'existe pas de meilleur logiciel dans l'absolu. Il existe des familles d'outils, chacune adaptée à un type d'entreprise. Ce tableau les compare sans classement.",
+    text: "Un tableur et une application tout-en-un sortent tous les deux un PDF. Ils ne vous laissent pas la même part de travail sur la numérotation, les mentions et l'échéance de 2027. Ce tableau situe chaque famille d'outils sur ce terrain, sans classement.",
   },
   {
     type: "table",
-    caption: "Cinq façons de faire ses devis et factures",
+    caption: "Ce que chaque approche garantit, et ce qu'elle vous laisse",
     headers: ["Approche", "Pour qui", "Points forts", "Limites"],
     rows: [
       [
@@ -218,7 +222,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Le bon choix dépend donc de vos devis. Si vous chiffrez des chantiers de plusieurs semaines avec des dizaines de postes, un logiciel métier du bâtiment vous fera gagner plus de temps. Si vos devis tiennent en une page et que votre difficulté se situe aussi en amont (être trouvé, avoir des avis, recevoir des demandes), une application qui regroupe tout vous évite de jongler entre quatre abonnements.",
+    text: "Vos devis décident de la suite. Si vous chiffrez des chantiers de plusieurs semaines avec des dizaines de postes, un logiciel métier du bâtiment vous fera gagner plus de temps. Si vos devis tiennent en une page et que votre difficulté se situe aussi en amont (être trouvé, avoir des avis, recevoir des demandes), une application qui regroupe tout vous évite de jongler entre quatre abonnements. Le détail de cette comparaison, prix compris, est sur [la page qui compare les logiciels de devis et factures](/logiciel-devis-factures-artisan/).",
   },
 
   { type: "h2", text: "Ce que fait Sitaly, et ce qu'il ne fait pas" },
@@ -259,7 +263,7 @@ export const contenu: BlogSection[] = [
     text: "Un outil gratuit convient tant que votre volume reste faible. Le jour où vous facturez chaque semaine, la numérotation, le suivi des paiements et la préparation à la facture électronique justifient un outil complet.",
   },
 
-  { type: "h2", text: "Comment tester un logiciel sans perdre trois mois" },
+  { type: "h2", text: "Essayer un outil sur un vrai devis, pas sur une démonstration" },
   {
     type: "p",
     text: "Cliquer dans les menus d'une période d'essai ne vous apprend rien. Prenez un devis réel que vous devez envoyer cette semaine et refaites-le dans chaque outil candidat, chronomètre en main.",
@@ -293,8 +297,8 @@ export const contenu: BlogSection[] = [
     type: "faq",
     items: [
       {
-        q: "Quel logiciel de devis et facture choisir quand on est artisan ?",
-        a: "Celui qui produit un devis conforme depuis votre téléphone, que le client accepte en ligne, et qui le transforme en facture numérotée sans ressaisie. Si vous chiffrez des chantiers lourds au mètre carré, privilégiez un logiciel métier avec bibliothèque d'ouvrages. Si vos devis sont courts, une application plus simple suffit.",
+        q: "Peut-on modifier une facture déjà envoyée ?",
+        a: "Non. Une facture émise se corrige par un avoir, ou par une facture rectificative qui renvoie à la première. Un outil qui vous laisse réécrire une facture envoyée vous expose en cas de contrôle : la numérotation doit rester continue et chaque document conservé.",
       },
       {
         q: "Quelles mentions sont obligatoires sur un devis de travaux ?",
@@ -321,5 +325,9 @@ export const contenu: BlogSection[] = [
         a: "Pas pour des chiffrages lourds. Sitaly n'a ni bibliothèque d'ouvrages, ni métrés, ni situations de travaux. Il convient aux artisans et indépendants dont les devis tiennent en quelques lignes et qui veulent aussi un site, des avis Google et la prise de rendez-vous dans la même application.",
       },
     ],
+  },
+  {
+    type: "p",
+    text: "Pour la suite, deux pages : [les mentions obligatoires d'un devis d'artisan](/blog/mentions-obligatoires-devis-artisan/) vérifiées une par une sur les textes officiels, et [comment choisir un logiciel de devis et factures](/logiciel-devis-factures-artisan/) pour comparer les outils et leurs prix.",
   },
 ];
