@@ -36,11 +36,13 @@ import { Route as ParrainageRouteImport } from './routes/parrainage'
 import { Route as MonProjetRouteImport } from './routes/mon-projet'
 import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as LogicielMetierRouteImport } from './routes/logiciel-metier'
+import { Route as LogicielDevisFacturesArtisanRouteImport } from './routes/logiciel-devis-factures-artisan'
 import { Route as LandingPageRouteImport } from './routes/landing-page'
 import { Route as IntegrationApiRouteImport } from './routes/integration-api'
 import { Route as EssonneRouteImport } from './routes/essonne'
 import { Route as CrmSurMesureRouteImport } from './routes/crm-sur-mesure'
 import { Route as CreerSonSiteIaRouteImport } from './routes/creer-son-site-ia'
+import { Route as CreerSiteInternetArtisanRouteImport } from './routes/creer-site-internet-artisan'
 import { Route as CreationSiteInternetRouteImport } from './routes/creation-site-internet'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as CgvRouteImport } from './routes/cgv'
@@ -219,6 +221,12 @@ const LogicielMetierRoute = LogicielMetierRouteImport.update({
   path: '/logiciel-metier',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LogicielDevisFacturesArtisanRoute =
+  LogicielDevisFacturesArtisanRouteImport.update({
+    id: '/logiciel-devis-factures-artisan',
+    path: '/logiciel-devis-factures-artisan',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const LandingPageRoute = LandingPageRouteImport.update({
   id: '/landing-page',
   path: '/landing-page',
@@ -244,6 +252,12 @@ const CreerSonSiteIaRoute = CreerSonSiteIaRouteImport.update({
   path: '/creer-son-site-ia',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CreerSiteInternetArtisanRoute =
+  CreerSiteInternetArtisanRouteImport.update({
+    id: '/creer-site-internet-artisan',
+    path: '/creer-site-internet-artisan',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const CreationSiteInternetRoute = CreationSiteInternetRouteImport.update({
   id: '/creation-site-internet',
   path: '/creation-site-internet',
@@ -465,11 +479,13 @@ export interface FileRoutesByFullPath {
   '/cgv': typeof CgvRoute
   '/cookies': typeof CookiesRoute
   '/creation-site-internet': typeof CreationSiteInternetRoute
+  '/creer-site-internet-artisan': typeof CreerSiteInternetArtisanRoute
   '/creer-son-site-ia': typeof CreerSonSiteIaRoute
   '/crm-sur-mesure': typeof CrmSurMesureRoute
   '/essonne': typeof EssonneRoute
   '/integration-api': typeof IntegrationApiRoute
   '/landing-page': typeof LandingPageRoute
+  '/logiciel-devis-factures-artisan': typeof LogicielDevisFacturesArtisanRoute
   '/logiciel-metier': typeof LogicielMetierRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/mon-projet': typeof MonProjetRoute
@@ -538,11 +554,13 @@ export interface FileRoutesByTo {
   '/cgv': typeof CgvRoute
   '/cookies': typeof CookiesRoute
   '/creation-site-internet': typeof CreationSiteInternetRoute
+  '/creer-site-internet-artisan': typeof CreerSiteInternetArtisanRoute
   '/creer-son-site-ia': typeof CreerSonSiteIaRoute
   '/crm-sur-mesure': typeof CrmSurMesureRoute
   '/essonne': typeof EssonneRoute
   '/integration-api': typeof IntegrationApiRoute
   '/landing-page': typeof LandingPageRoute
+  '/logiciel-devis-factures-artisan': typeof LogicielDevisFacturesArtisanRoute
   '/logiciel-metier': typeof LogicielMetierRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/mon-projet': typeof MonProjetRoute
@@ -613,11 +631,13 @@ export interface FileRoutesById {
   '/cgv': typeof CgvRoute
   '/cookies': typeof CookiesRoute
   '/creation-site-internet': typeof CreationSiteInternetRoute
+  '/creer-site-internet-artisan': typeof CreerSiteInternetArtisanRoute
   '/creer-son-site-ia': typeof CreerSonSiteIaRoute
   '/crm-sur-mesure': typeof CrmSurMesureRoute
   '/essonne': typeof EssonneRoute
   '/integration-api': typeof IntegrationApiRoute
   '/landing-page': typeof LandingPageRoute
+  '/logiciel-devis-factures-artisan': typeof LogicielDevisFacturesArtisanRoute
   '/logiciel-metier': typeof LogicielMetierRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/mon-projet': typeof MonProjetRoute
@@ -689,11 +709,13 @@ export interface FileRouteTypes {
     | '/cgv'
     | '/cookies'
     | '/creation-site-internet'
+    | '/creer-site-internet-artisan'
     | '/creer-son-site-ia'
     | '/crm-sur-mesure'
     | '/essonne'
     | '/integration-api'
     | '/landing-page'
+    | '/logiciel-devis-factures-artisan'
     | '/logiciel-metier'
     | '/mentions-legales'
     | '/mon-projet'
@@ -762,11 +784,13 @@ export interface FileRouteTypes {
     | '/cgv'
     | '/cookies'
     | '/creation-site-internet'
+    | '/creer-site-internet-artisan'
     | '/creer-son-site-ia'
     | '/crm-sur-mesure'
     | '/essonne'
     | '/integration-api'
     | '/landing-page'
+    | '/logiciel-devis-factures-artisan'
     | '/logiciel-metier'
     | '/mentions-legales'
     | '/mon-projet'
@@ -836,11 +860,13 @@ export interface FileRouteTypes {
     | '/cgv'
     | '/cookies'
     | '/creation-site-internet'
+    | '/creer-site-internet-artisan'
     | '/creer-son-site-ia'
     | '/crm-sur-mesure'
     | '/essonne'
     | '/integration-api'
     | '/landing-page'
+    | '/logiciel-devis-factures-artisan'
     | '/logiciel-metier'
     | '/mentions-legales'
     | '/mon-projet'
@@ -911,11 +937,13 @@ export interface RootRouteChildren {
   CgvRoute: typeof CgvRoute
   CookiesRoute: typeof CookiesRoute
   CreationSiteInternetRoute: typeof CreationSiteInternetRoute
+  CreerSiteInternetArtisanRoute: typeof CreerSiteInternetArtisanRoute
   CreerSonSiteIaRoute: typeof CreerSonSiteIaRoute
   CrmSurMesureRoute: typeof CrmSurMesureRoute
   EssonneRoute: typeof EssonneRoute
   IntegrationApiRoute: typeof IntegrationApiRoute
   LandingPageRoute: typeof LandingPageRoute
+  LogicielDevisFacturesArtisanRoute: typeof LogicielDevisFacturesArtisanRoute
   LogicielMetierRoute: typeof LogicielMetierRoute
   MentionsLegalesRoute: typeof MentionsLegalesRoute
   MonProjetRoute: typeof MonProjetRoute
@@ -1162,6 +1190,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LogicielMetierRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/logiciel-devis-factures-artisan': {
+      id: '/logiciel-devis-factures-artisan'
+      path: '/logiciel-devis-factures-artisan'
+      fullPath: '/logiciel-devis-factures-artisan'
+      preLoaderRoute: typeof LogicielDevisFacturesArtisanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/landing-page': {
       id: '/landing-page'
       path: '/landing-page'
@@ -1195,6 +1230,13 @@ declare module '@tanstack/react-router' {
       path: '/creer-son-site-ia'
       fullPath: '/creer-son-site-ia'
       preLoaderRoute: typeof CreerSonSiteIaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/creer-site-internet-artisan': {
+      id: '/creer-site-internet-artisan'
+      path: '/creer-site-internet-artisan'
+      fullPath: '/creer-site-internet-artisan'
+      preLoaderRoute: typeof CreerSiteInternetArtisanRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/creation-site-internet': {
@@ -1505,11 +1547,13 @@ const rootRouteChildren: RootRouteChildren = {
   CgvRoute: CgvRoute,
   CookiesRoute: CookiesRoute,
   CreationSiteInternetRoute: CreationSiteInternetRoute,
+  CreerSiteInternetArtisanRoute: CreerSiteInternetArtisanRoute,
   CreerSonSiteIaRoute: CreerSonSiteIaRoute,
   CrmSurMesureRoute: CrmSurMesureRoute,
   EssonneRoute: EssonneRoute,
   IntegrationApiRoute: IntegrationApiRoute,
   LandingPageRoute: LandingPageRoute,
+  LogicielDevisFacturesArtisanRoute: LogicielDevisFacturesArtisanRoute,
   LogicielMetierRoute: LogicielMetierRoute,
   MentionsLegalesRoute: MentionsLegalesRoute,
   MonProjetRoute: MonProjetRoute,

@@ -191,4 +191,8 @@ export const contenu: BlogSection[] = [
       },
     ],
   },
+  {
+    type: "p",
+    text: "Comment choisir l'outil qui vous y prépare : [comment choisir un logiciel de devis et factures](/logiciel-devis-factures-artisan/).",
+  },
 ];

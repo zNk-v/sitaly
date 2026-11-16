@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteChrome } from "@/components/SiteChrome";
 import {
   BoiteApp,
@@ -12,6 +12,7 @@ import {
 } from "@/components/produit/Produit";
 import { BASE_URL } from "@/lib/sitemap";
 import { CREATEUR_IA as IA, MENTION_TVA, offresStructurees } from "@/data/offres";
+import { PILIER_DEVIS, PILIER_SITE } from "@/data/piliers";
 
 /**
  * Les tarifs de sitaly.fr (30 octobre 2026) : seulement Sitaly App, comme sur
@@ -88,7 +89,14 @@ function Tarifs() {
             <p className={`mx-auto mt-6 max-w-2xl text-lg leading-7 ${TEXTE_GRIS}`}>
               Créez votre site et mettez-le en ligne sans payer, sur une adresse en .sitaly.fr.{" "}
               {IA.essentiel.nom} ajoute votre nom de domaine, offert, et retire la mention Sitaly du
-              pied de votre site.
+              pied de votre site. Artisan ?{" "}
+              <Link
+                to={PILIER_SITE.chemin}
+                className="font-medium text-black underline underline-offset-4"
+              >
+                Le guide pour créer votre site
+              </Link>{" "}
+              détaille les étapes et le prix réel.
             </p>
           </div>
           <div className="mx-auto mt-14 max-w-6xl">
@@ -106,6 +114,18 @@ function Tarifs() {
             <div className="mt-14">
               <TableauFormules />
             </div>
+            {/* Les devis et les factures sont comparés ligne par ligne au-dessus :
+                le guide comparatif prolonge cette rubrique (16 novembre 2026). */}
+            <p className={`mt-10 text-center text-sm leading-6 ${TEXTE_GRIS}`}>
+              Devis et factures :{" "}
+              <Link
+                to={PILIER_DEVIS.chemin}
+                className="font-medium text-black underline underline-offset-4"
+              >
+                {PILIER_DEVIS.ancre}
+              </Link>
+              , et ce que la loi impose à un artisan.
+            </p>
           </div>
         </section>
 

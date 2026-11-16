@@ -168,4 +168,8 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Le plus simple pour comparer reste d'essayer : créez une première version de votre site dans [l'application Sitaly](https://app.sitaly.fr), gratuitement, et mettez-la à côté des autres offres que vous avez reçues.",
   },
+  {
+    type: "p",
+    text: "Une fois votre famille d'outils choisie, la méthode pas à pas : [créer un site internet d'artisan](/creer-site-internet-artisan/).",
+  },
 ];

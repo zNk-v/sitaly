@@ -155,4 +155,8 @@ export const contenu: BlogSection[] = [
       },
     ],
   },
+  {
+    type: "p",
+    text: "Vous êtes artisan ? Le guide [créer un site internet d'artisan](/creer-site-internet-artisan/) détaille ce que votre site doit contenir pour transformer une visite en appel.",
+  },
 ];

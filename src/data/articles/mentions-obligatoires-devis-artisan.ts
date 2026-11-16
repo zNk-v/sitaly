@@ -163,7 +163,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Si vous envoyez plusieurs devis par semaine, le module [Devis et factures](/produits/devis-et-factures/) va plus loin : votre client accepte le devis en ligne en écrivant son nom, ce qui vaut bon pour accord, vous êtes prévenu, et le devis devient une facture en un clic. Pour comparer les outils, lisez [comment choisir un logiciel de devis](/blog/logiciel-devis-artisan-choisir/). Et pour la suite de la chaîne, la facture, voyez ce qui change avec la [facturation électronique en 2027](/blog/facturation-electronique-artisan-2027/).",
+    text: "Si vous envoyez plusieurs devis par semaine, le module [Devis et factures](/produits/devis-et-factures/) va plus loin : votre client accepte le devis en ligne en écrivant son nom, ce qui vaut bon pour accord, vous êtes prévenu, et le devis devient une facture en un clic. Pour la suite de la chaîne, la facture : [ses mentions obligatoires](/blog/logiciel-devis-artisan-choisir/), et ce que change la [facturation électronique en 2027](/blog/facturation-electronique-artisan-2027/).",
   },
   {
     type: "faq",
@@ -189,5 +189,9 @@ export const contenu: BlogSection[] = [
         a: "Pas avant sept jours après la signature : l'article L221-10 du code de la consommation interdit tout paiement avant ce délai pour un contrat conclu hors établissement, sauf travaux d'entretien ou de réparation urgents demandés par le client.",
       },
     ],
+  },
+  {
+    type: "p",
+    text: "Ce qu'un logiciel doit garantir au-delà des mentions : [comment choisir un logiciel de devis et factures](/logiciel-devis-factures-artisan/).",
   },
 ];

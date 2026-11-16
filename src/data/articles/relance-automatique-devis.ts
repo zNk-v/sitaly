@@ -165,4 +165,8 @@ export const contenu: BlogSection[] = [
       },
     ],
   },
+  {
+    type: "p",
+    text: "Relances, paiement en ligne et conformité, outil par outil : [comment choisir un logiciel de devis et factures](/logiciel-devis-factures-artisan/).",
+  },
 ];

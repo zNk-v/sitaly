@@ -1,11 +1,18 @@
 import type { BlogSection } from "@/data/blog-posts";
 
 /** Le corps de l'article « creation-site-internet-artisan-guide ». Ses métadonnées vivent dans
-    src/data/blog-posts.ts ; ce fichier n'est chargé que sur sa page. */
+    src/data/blog-posts.ts ; ce fichier n'est chargé que sur sa page.
+
+    Recentré le 16 novembre 2026 (SITA-14) : la page pilier
+    /creer-site-internet-artisan/ prend l'intention « par où je commence », et
+    l'article garde ce qu'il est seul à porter, sources à l'appui — les
+    obligations d'affichage, le budget relevé chez chaque acteur et la méthode
+    en sept étapes. Les intertitres qui reprenaient mot pour mot ceux du pilier
+    ont été réécrits ; aucune section n'a été supprimée. */
 export const contenu: BlogSection[] = [
   {
     type: "p",
-    text: "Un client vous appelle sur recommandation. Avant de composer votre numéro, il tape le nom de votre entreprise sur son téléphone. S'il trouve un site clair, avec vos chantiers, votre zone et un numéro qui s'appelle d'un doigt, il vous appelle. S'il ne trouve rien, il appelle peut-être le suivant de la liste. Ce guide vous montre comment créer votre site internet d'artisan : ce qu'il doit contenir, ce que la loi impose, les trois façons de le faire avec leur coût et leur délai, et les réglages qui vous font trouver sur Google.",
+    text: "Un client vous appelle sur recommandation. Avant de composer votre numéro, il tape le nom de votre entreprise sur son téléphone. S'il trouve un site clair, avec vos chantiers, votre zone et un numéro qui s'appelle d'un doigt, il vous appelle. S'il ne trouve rien, il appelle peut-être le suivant de la liste. Ce guide détaille ce que la loi vous oblige à afficher, ce que chaque route coûte en argent et en temps d'après des sources datées, et la méthode en sept étapes. Si votre question est plutôt par où commencer, la page [créer un site internet d'artisan](/creer-site-internet-artisan/) y répond en une page.",
   },
   {
     type: "p",
@@ -24,7 +31,7 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Google le dit lui-même : les résultats locaux sont classés surtout selon la pertinence, la distance et la notoriété, et la notoriété tient compte des sites qui parlent de vous et de vos avis ([aide Google sur le classement local](https://support.google.com/business/answer/7091?hl=fr)). Un site bien rempli nourrit la pertinence : il dit à Google ce que vous faites et où.",
   },
-  { type: "h2", text: "Ce que votre site d'artisan doit contenir" },
+  { type: "h2", text: "Ce que le client cherche, et ce que la loi vous oblige à afficher" },
   {
     type: "p",
     text: "Un site d'artisan n'a pas besoin de dizaines de pages. Il doit répondre vite aux questions que se pose un client avant d'appeler : faites-vous ce travail, venez-vous chez moi, êtes-vous sérieux, comment vous joindre.",
@@ -73,7 +80,7 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Ajoutez les frais qui reviennent chaque année. Codeur.com cite 10 à 50 € par an pour un nom de domaine et 200 à 500 € par an pour un contrat de maintenance chez un prestataire. Avec un abonnement tout compris, ces frais sont déjà dans la mensualité : lisez la ligne qui le confirme avant de signer.",
   },
-  { type: "h2", text: "Les trois façons de créer votre site, comparées" },
+  { type: "h2", text: "Application d'IA, éditeur ou prestataire : qui fait le travail" },
   {
     type: "p",
     text: "Vous avez trois routes : une application d'IA qui écrit le site pour vous, un éditeur où vous le construisez vous-même, ou un professionnel (freelance ou agence) que vous payez pour le faire. Aucune n'est la bonne pour tout le monde. Le tableau ci-dessous compare le coût, le temps et ce qui reste à votre charge.",
@@ -195,7 +202,7 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Après chaque chantier réussi, envoyez à votre client le lien vers votre fiche Google. Google autorise à demander des avis, mais interdit d'offrir une remise ou un cadeau en échange ([conseils Google pour obtenir des avis](https://support.google.com/business/answer/3474122?hl=fr)). Ensuite, demandez à chaque nouveau client comment il vous a trouvé, et notez la réponse : au bout de trois mois, vous saurez ce que le site vous apporte.",
   },
-  { type: "h2", text: "Des modèles de site pour chaque métier" },
+  { type: "h2", text: "Par où commencer selon votre métier" },
   {
     type: "p",
     text: "Chaque métier a ses questions. Un plombier doit montrer qu'il intervient vite ; un couvreur, qu'il est assuré et qu'il sait monter sur un toit en sécurité ; un paysagiste, de belles photos de jardins. Les [modèles Sitaly](/modeles/) partent de ces différences. Vous pouvez en ouvrir un, voir la structure, puis créer votre propre site à partir de votre phrase.",
@@ -259,8 +266,8 @@ export const contenu: BlogSection[] = [
         a: "Une page d'accueil, une page par prestation principale, une page de réalisations, une page contact et les mentions légales suffisent pour démarrer. Ajoutez ensuite des pages ou des articles quand vous avez du contenu réel à montrer, comme un chantier dans une nouvelle commune.",
       },
       {
-        q: "Puis-je créer mon site moi-même sans savoir coder ?",
-        a: "Oui. Une application d'IA comme Sitaly écrit le site à partir d'une phrase, et un éditeur comme Wix vous laisse le construire par blocs. La première demande moins de temps, la seconde plus de liberté de mise en page.",
+        q: "Dois-je afficher mes prix sur mon site ?",
+        a: "Si vous faites du dépannage, de la réparation ou de l'entretien dans le bâtiment, oui : l'arrêté du 24 janvier 2017 vous oblige à rendre vos prix accessibles, y compris sur votre site internet, avec le taux horaire de main-d'œuvre TTC. Pour les autres prestations, aucun texte ne l'impose, et un ordre de grandeur rassure quand même le client qui hésite à appeler.",
       },
       {
         q: "Une fiche Google ne suffit-elle pas ?",
@@ -284,5 +291,9 @@ export const contenu: BlogSection[] = [
   {
     type: "p",
     text: "Rassemblez dix photos de chantiers, la liste de vos prestations et celle de vos communes. Puis ouvrez [l'application Sitaly](https://app.sitaly.fr) : la formule Découverte est gratuite et sans carte bancaire, et vous verrez votre site en ligne avant d'avoir à décider quoi que ce soit. Les formules Essentiel et Pro, avec nom de domaine, sont détaillées sur la page [Tarifs](/tarifs/).",
+  },
+  {
+    type: "p",
+    text: "Pour voir la marche à suivre en une page, avec les modèles par métier et la grille de prix : [créer un site internet d'artisan](/creer-site-internet-artisan/).",
   },
 ];

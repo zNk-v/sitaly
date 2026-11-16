@@ -3,6 +3,8 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { SiteChrome } from "@/components/SiteChrome";
 import { BoiteApp, Confiance, TEXTE_GRIS, lienCreation } from "@/components/produit/Produit";
 import { MiniSite, photo } from "@/components/produit/Vitrine";
+import { CartePilier } from "@/components/pilier/Pilier";
+import { PILIER_SITE } from "@/data/piliers";
 import { METIERS_MODELES } from "@/lib/modeles-metiers";
 import { deMetier, MODELES } from "@/data/modeles";
 import { BASE_URL } from "@/lib/sitemap";
@@ -140,6 +142,14 @@ function Modeles() {
                 Créer mon site <ArrowRight className="h-4 w-4" />
               </span>
             </a>
+          </div>
+        </section>
+
+        {/* Le guide pilier (16 novembre 2026) : les modèles mènent au guide, le
+            guide ramène aux modèles. */}
+        <section className="px-4 pb-16 sm:px-6">
+          <div className="mx-auto max-w-3xl">
+            <CartePilier pilier={PILIER_SITE} />
           </div>
         </section>
 

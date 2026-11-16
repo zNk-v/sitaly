@@ -543,3 +543,14 @@ export const PRODUITS: Produit[] = [
 ];
 
 export const getProduit = (id: string) => PRODUITS.find((p) => p.id === id);
+
+/**
+ * Un produit nommé, pour les pages qui en citent un en particulier (les pages
+ * piliers artisans). Comme `offre()` dans src/data/offres.ts : un identifiant
+ * inconnu casse le build plutôt que la page.
+ */
+export function produit(id: ProduitId): Produit {
+  const p = PRODUITS.find((x) => x.id === id);
+  if (!p) throw new Error(`Produit inconnu : ${id}`);
+  return p;
+}

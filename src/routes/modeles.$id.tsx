@@ -12,6 +12,8 @@ import {
   lienCreation,
 } from "@/components/produit/Produit";
 import { MiniSite, photo } from "@/components/produit/Vitrine";
+import { CartePilier } from "@/components/pilier/Pilier";
+import { PILIER_SITE } from "@/data/piliers";
 import { deMetier, getModele, MODELES } from "@/data/modeles";
 import { getProduit } from "@/data/produits";
 import { METIERS_MODELES, phraseSansVille } from "@/lib/modeles-metiers";
@@ -381,6 +383,10 @@ function PageModele() {
                 classeCarte="rounded-3xl bg-black/[0.03] p-6 transition hover:bg-black/[0.05]"
                 classeLien="text-black"
               />
+            </div>
+            {/* Le guide pilier (16 novembre 2026) : chaque modèle y mène. */}
+            <div className="mt-3">
+              <CartePilier pilier={PILIER_SITE} />
             </div>
           </div>
         </section>

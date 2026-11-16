@@ -118,7 +118,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Ce que Sitaly ne fait pas : la comptabilité, la bibliothèque d'ouvrages, les métrés et le planning d'équipe. Si ces fonctions vous sont indispensables, gardez un logiciel métier pour le chiffrage et regardez si le reste de Sitaly vous sert. Notre guide sur [le choix d'un logiciel de devis et facture](/blog/logiciel-devis-artisan-choisir/) compare les familles d'outils en détail.",
+    text: "Ce que Sitaly ne fait pas : la comptabilité, la bibliothèque d'ouvrages, les métrés et le planning d'équipe. Si ces fonctions vous sont indispensables, gardez un logiciel métier pour le chiffrage et regardez si le reste de Sitaly vous sert. La page [comment choisir un logiciel de devis et factures](/logiciel-devis-factures-artisan/) compare les approches et les prix.",
   },
   {
     type: "p",
