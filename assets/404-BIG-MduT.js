@@ -1,0 +1,1 @@
+import{Lt as e}from"./index-BA8Dbic_.js";var t=e;export{t as component};
