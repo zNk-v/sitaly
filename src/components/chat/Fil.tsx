@@ -25,10 +25,13 @@ export const QUESTIONS_PRETES = [
 ];
 
 const AUTEURS: Record<Ligne["auteur"], { etiquette: string | null; classe: string }> = {
-  visiteur: { etiquette: null, classe: "ml-auto bg-black/85 text-white" },
-  ia: { etiquette: null, classe: "bg-black/[0.04] text-black/80" },
+  visiteur: {
+    etiquette: null,
+    classe: "ml-auto bg-gradient-to-br from-[#7c3aed] to-[#c026d3] text-white",
+  },
+  ia: { etiquette: null, classe: "bg-[#f5f3ff] text-black/85" },
   ted: { etiquette: "Ted, Sitaly", classe: "bg-violet-50 text-black/85 ring-1 ring-violet-200" },
-  site: { etiquette: null, classe: "bg-black/[0.04] text-black/70" },
+  site: { etiquette: null, classe: "bg-[#f5f3ff] text-black/80" },
 };
 
 export const QUESTION_MAX = 500;
@@ -93,7 +96,7 @@ export function Fil({
               <button
                 type="button"
                 onClick={surParlerATed}
-                className="mt-2 inline-flex min-h-10 items-center rounded-xl bg-black/85 px-4 text-sm font-medium text-white transition hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30"
+                className="mt-2 inline-flex min-h-10 items-center rounded-xl bg-gradient-to-br from-[#7c3aed] to-[#c026d3] px-4 text-sm font-medium text-white shadow-sm transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7c3aed]/40"
               >
                 Parler à Ted
               </button>
@@ -115,7 +118,7 @@ export function Fil({
                   type="button"
                   onClick={() => envoyer(q)}
                   disabled={desactive}
-                  className="w-full rounded-xl border border-black/10 px-3.5 py-2.5 text-left text-sm text-black/75 transition hover:bg-black/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 disabled:opacity-50"
+                  className="w-full rounded-xl border border-[#7c3aed]/25 bg-white px-3.5 py-2.5 text-left text-sm font-medium text-[#6d28d9] transition hover:border-[#7c3aed]/50 hover:bg-[#f5f3ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7c3aed]/30 disabled:opacity-50"
                 >
                   {q}
                 </button>
@@ -140,14 +143,14 @@ export function Fil({
             disabled={desactive}
             placeholder="Écrivez votre question"
             autoComplete="off"
-            className="w-full rounded-xl border border-black/10 bg-white px-3.5 py-2.5 text-base text-black sm:text-sm placeholder:text-black/40 focus:border-black/30 focus:outline-none disabled:bg-black/[0.03]"
+            className="w-full rounded-xl border border-black/10 bg-white px-3.5 py-2.5 text-base text-black sm:text-sm placeholder:text-black/40 focus:border-[#7c3aed]/60 focus:outline-none disabled:bg-black/[0.03]"
           />
         </label>
         <button
           type="submit"
           aria-label="Envoyer la question"
           disabled={attente || desactive || !texte.trim()}
-          className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-black/85 text-white transition hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30 disabled:opacity-40"
+          className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-[#7c3aed] to-[#c026d3] text-white transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7c3aed]/40 disabled:opacity-40"
         >
           <ArrowUp className="h-4 w-4" aria-hidden="true" />
         </button>

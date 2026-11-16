@@ -250,7 +250,7 @@ export default function BulleChat() {
         // produit, jamais sur eux : les deux annoncent leur hauteur en
         // variable CSS (CookieConsent, BoutonCollant).
         style={{ bottom: "calc(var(--bandeau-cookies, 0px) + var(--bouton-collant, 0px) + 1rem)" }}
-        className="fixed right-4 z-40 grid h-14 w-14 place-items-center rounded-full bg-black/85 text-white shadow-lg transition hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30 focus-visible:ring-offset-2"
+        className="fixed right-4 z-40 grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-[#7c3aed] to-[#c026d3] text-white shadow-lg shadow-[#7c3aed]/40 ring-4 ring-[#7c3aed]/15 transition hover:scale-105 hover:shadow-xl motion-reduce:hover:scale-100 focus-visible:outline-none focus-visible:ring-[#7c3aed]/50 focus-visible:ring-offset-2"
       >
         <MessageCircle className="h-6 w-6" aria-hidden="true" />
       </button>
@@ -261,22 +261,28 @@ export default function BulleChat() {
           id="bulle-chat"
           role="dialog"
           aria-label="Discuter avec Sitaly"
-          className="fixed inset-x-3 z-40 flex flex-col overflow-hidden rounded-3xl border border-black/10 bg-white shadow-2xl sm:inset-x-auto sm:right-4 sm:w-[380px]"
+          className="fixed inset-x-3 z-40 flex flex-col overflow-hidden rounded-3xl border border-[#7c3aed]/20 bg-white shadow-2xl shadow-[#7c3aed]/20 sm:inset-x-auto sm:right-4 sm:w-[380px]"
           style={{
             height: "min(70dvh, 560px)",
             bottom: "calc(var(--bandeau-cookies, 0px) + 0.75rem)",
           }}
         >
-          <div className="flex items-start justify-between gap-3 border-b border-black/[0.07] px-4 py-3">
+          <div className="flex items-start justify-between gap-3 bg-gradient-to-br from-[#7c3aed] to-[#c026d3] px-4 py-3.5 text-white">
             <div className="min-w-0">
-              <p className="font-medium text-black">{TEXTES.titre}</p>
-              <p className="mt-0.5 text-xs leading-snug text-black/55">{TEXTES.sous}</p>
+              <p className="flex items-center gap-2 font-semibold">
+                <span
+                  className="h-2 w-2 shrink-0 rounded-full bg-[#4ade80] ring-2 ring-white/40"
+                  aria-hidden="true"
+                />
+                {TEXTES.titre}
+              </p>
+              <p className="mt-0.5 text-xs leading-snug text-white/90">{TEXTES.sous}</p>
             </div>
             <button
               type="button"
               onClick={fermer}
               aria-label="Fermer la discussion"
-              className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-black/50 transition hover:bg-black/[0.05] hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
+              className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-white/80 transition hover:bg-white/15 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
             >
               <X className="h-4 w-4" aria-hidden="true" />
             </button>
@@ -321,11 +327,11 @@ export default function BulleChat() {
                   onChange={(e) => setEmail(e.target.value)}
                   autoComplete="email"
                   placeholder="vous@exemple.fr"
-                  className="min-w-0 flex-1 rounded-xl border border-black/10 bg-white px-3 py-2 text-base text-black sm:text-sm placeholder:text-black/40 focus:border-black/30 focus:outline-none"
+                  className="min-w-0 flex-1 rounded-xl border border-black/10 bg-white px-3 py-2 text-base text-black sm:text-sm placeholder:text-black/40 focus:border-[#7c3aed]/60 focus:outline-none"
                 />
                 <button
                   type="submit"
-                  className="shrink-0 rounded-xl bg-black/85 px-3.5 py-2 text-sm font-medium text-white transition hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30"
+                  className="shrink-0 rounded-xl bg-[#7c3aed] px-3.5 py-2 text-sm font-medium text-white transition hover:bg-[#6d28d9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7c3aed]/40"
                 >
                   Envoyer
                 </button>
