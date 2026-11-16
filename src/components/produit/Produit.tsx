@@ -155,39 +155,43 @@ export function BoiteApp({ idees = true }: { idees?: boolean }) {
 
   return (
     <div data-boite-ia>
-      <form
-        onSubmit={envoyer}
-        className="rounded-3xl border border-black/10 bg-white p-2.5 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.25)]"
-      >
-        <label htmlFor={`${id}-activite`} className="sr-only">
-          Votre activité
-        </label>
-        <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center">
-          <div className="flex min-w-0 flex-1 items-center gap-2 pl-1">
-            <button
-              type="button"
-              onClick={inspirer}
-              title="Inspire-moi : écrire un exemple"
-              aria-label="Écrire une phrase d'exemple"
-              className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#2563eb] to-[#7c3aed] text-white shadow-sm transition hover:scale-105 active:scale-95"
-            >
-              <Sparkles className="h-[18px] w-[18px]" aria-hidden="true" />
+      {/* Le liseré au dégradé du logo, et sa lueur qui respire derrière (16/11/2026). */}
+      <div className="relative isolate rounded-3xl bg-[linear-gradient(to_top_right,#0b53b0,#3049ba,#483dc1,#5d2dc4,#7014c2,#8c009e,#9d0073,#a60047,#a51111)] p-[1.5px] shadow-[0_24px_60px_-24px_rgba(0,0,0,0.25)]">
+        <div
+          aria-hidden="true"
+          className="lueur-sitaly pointer-events-none absolute -inset-1.5 -z-10 rounded-[30px] bg-[linear-gradient(to_top_right,#0b53b0,#3049ba,#483dc1,#5d2dc4,#7014c2,#8c009e,#9d0073,#a60047,#a51111)] blur-lg"
+        />
+        <form onSubmit={envoyer} className="rounded-[22.5px] bg-white p-2.5">
+          <label htmlFor={`${id}-activite`} className="sr-only">
+            Votre activité
+          </label>
+          <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center">
+            <div className="flex min-w-0 flex-1 items-center gap-2 pl-1">
+              <button
+                type="button"
+                onClick={inspirer}
+                title="Inspire-moi : écrire un exemple"
+                aria-label="Écrire une phrase d'exemple"
+                className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#2563eb] to-[#7c3aed] text-white shadow-sm transition hover:scale-105 active:scale-95"
+              >
+                <Sparkles className="h-[18px] w-[18px]" aria-hidden="true" />
+              </button>
+              <input
+                id={`${id}-activite`}
+                value={activite}
+                onChange={(e) => setActivite(e.target.value)}
+                maxLength={600}
+                placeholder="Quelle est votre activité ?"
+                className="min-h-12 w-full bg-transparent text-[17px] outline-none placeholder:text-black/40"
+              />
+            </div>
+            <button type="submit" className={`${BOUTON_NOIR} min-h-12 px-6 text-[15px]`}>
+              Créer mon site
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </button>
-            <input
-              id={`${id}-activite`}
-              value={activite}
-              onChange={(e) => setActivite(e.target.value)}
-              maxLength={600}
-              placeholder="Quelle est votre activité ?"
-              className="min-h-12 w-full bg-transparent text-[17px] outline-none placeholder:text-black/40"
-            />
           </div>
-          <button type="submit" className={`${BOUTON_NOIR} min-h-12 px-6 text-[15px]`}>
-            Créer mon site
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </button>
-        </div>
-      </form>
+        </form>
+      </div>
       {idees && (
         <div className="mt-4 flex flex-wrap justify-center gap-2">
           {IDEES.map((idee, k) => (

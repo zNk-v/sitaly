@@ -3121,3 +3121,18 @@ body.menu-ouvert .entete-plaque {
   body.impression-devis>#devis-impression{display:block!important}
   body.impression-devis{background:#fff!important}
 }
+
+/* La lueur au dégradé du logo autour du champ « Quelle est votre activité ? » :
+   elle respire lentement pour attirer l'œil sans clignoter (16/11/2026).
+   Immobile pour qui a demandé moins d'animations. */
+.lueur-sitaly {
+  opacity: 0.35;
+  animation: lueur-sitaly 3.6s ease-in-out infinite;
+}
+@keyframes lueur-sitaly {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.55; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lueur-sitaly { animation: none; opacity: 0.35; }
+}

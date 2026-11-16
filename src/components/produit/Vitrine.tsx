@@ -355,36 +355,42 @@ export function BarreCollante() {
       style={{ bottom: "calc(var(--bandeau-cookies, 0px) + 1rem)" }}
       aria-hidden={!montre}
     >
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          departVersAppTiktok("formulaire-vitrine");
-          window.location.href = avecCampagne(lienCreation(activite.trim()));
-        }}
-        className="flex w-full max-w-xl items-center gap-2 rounded-full border border-black/10 bg-white/95 p-1.5 pl-5 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.35)] backdrop-blur"
-      >
-        <Sparkles className="h-4 w-4 shrink-0 text-brand-ink" aria-hidden="true" />
-        <label className="sr-only" htmlFor="barre-collante">
-          Votre activité
-        </label>
-        <input
-          id="barre-collante"
-          tabIndex={montre ? 0 : -1}
-          value={activite}
-          onChange={(e) => setActivite(e.target.value)}
-          placeholder="Quelle est votre activité ?"
-          className="min-h-10 min-w-0 flex-1 bg-transparent text-[16px] outline-none placeholder:text-black/40"
+      <div className="relative isolate w-full max-w-xl rounded-full bg-[linear-gradient(to_top_right,#0b53b0,#3049ba,#483dc1,#5d2dc4,#7014c2,#8c009e,#9d0073,#a60047,#a51111)] p-[1.5px] shadow-[0_20px_50px_-15px_rgba(0,0,0,0.35)]">
+        <div
+          aria-hidden="true"
+          className="lueur-sitaly pointer-events-none absolute -inset-1 -z-10 rounded-full bg-[linear-gradient(to_top_right,#0b53b0,#3049ba,#483dc1,#5d2dc4,#7014c2,#8c009e,#9d0073,#a60047,#a51111)] blur-md"
         />
-        <button
-          type="submit"
-          tabIndex={montre ? 0 : -1}
-          aria-label="Créer mon site"
-          className="inline-flex h-10 shrink-0 items-center gap-2 rounded-full bg-black/85 px-4 text-sm font-medium text-white hover:bg-black"
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            departVersAppTiktok("formulaire-vitrine");
+            window.location.href = avecCampagne(lienCreation(activite.trim()));
+          }}
+          className="flex w-full items-center gap-2 rounded-full bg-white p-1.5 pl-5"
         >
-          <span className="sm:hidden">Créer</span>
-          <span className="hidden sm:inline">Créer mon site</span>
-        </button>
-      </form>
+          <Sparkles className="h-4 w-4 shrink-0 text-brand-ink" aria-hidden="true" />
+          <label className="sr-only" htmlFor="barre-collante">
+            Votre activité
+          </label>
+          <input
+            id="barre-collante"
+            tabIndex={montre ? 0 : -1}
+            value={activite}
+            onChange={(e) => setActivite(e.target.value)}
+            placeholder="Quelle est votre activité ?"
+            className="min-h-10 min-w-0 flex-1 bg-transparent text-[16px] outline-none placeholder:text-black/40"
+          />
+          <button
+            type="submit"
+            tabIndex={montre ? 0 : -1}
+            aria-label="Créer mon site"
+            className="inline-flex h-10 shrink-0 items-center gap-2 rounded-full bg-black/85 px-4 text-sm font-medium text-white hover:bg-black"
+          >
+            <span className="sm:hidden">Créer</span>
+            <span className="hidden sm:inline">Créer mon site</span>
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
