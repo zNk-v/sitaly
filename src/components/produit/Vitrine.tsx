@@ -3,6 +3,7 @@ import { departVersAppTiktok } from "@/lib/pixel-tiktok";
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { ArrowRight, Lock, Sparkles, Star } from "lucide-react";
 import { lienCreation } from "@/components/produit/Produit";
+import { useBoutonCollant } from "@/components/produit/BoutonCollant";
 
 /**
  * Les blocs vivants de l'accueil de sitaly.fr (30 octobre 2026), après l'étude
@@ -346,6 +347,7 @@ export function BarreCollante() {
       window.removeEventListener("scroll", maj);
     };
   }, []);
+  useBoutonCollant(montre);
 
   return (
     <div

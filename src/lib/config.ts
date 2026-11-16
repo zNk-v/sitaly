@@ -10,6 +10,12 @@ export const APP_URL = "https://app.sitaly.fr";
 export const NOMS_ENTREPRISE_URL =
   "https://zgigeakspxdzgaigypoq.supabase.co/functions/v1/noms-entreprise";
 
+// Fonction Supabase de la bulle de discussion, en bas à droite de chaque page
+// (SITA-22, 16 novembre 2026). Elle lit public/chat-connaissance.md sur le
+// site publié : l'IA ne répond qu'avec ce qui est écrit sur sitaly.fr.
+export const CHAT_VITRINE_URL =
+  "https://zgigeakspxdzgaigypoq.supabase.co/functions/v1/chat-vitrine";
+
 // Téléphone Sitaly : format E.164 pour les liens tel:/sms:, format lisible pour l'affichage.
 export const SITALY_PHONE = "+33658683372";
 export const SITALY_PHONE_DISPLAY = "06 58 68 33 72";

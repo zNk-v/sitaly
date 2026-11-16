@@ -26,7 +26,7 @@ export const Route = createFileRoute("/cookies")({
 
 function Cookies() {
   return (
-    <LegalLayout title="Politique de gestion des cookies" updated="8 novembre 2026">
+    <LegalLayout title="Politique de gestion des cookies" updated="16 novembre 2026">
       <p>
         Cette page décrit l'utilisation des cookies et autres traceurs sur le site Sitaly,
         conformément à la directive ePrivacy, au RGPD et aux recommandations de la CNIL.
@@ -55,6 +55,14 @@ function Cookies() {
         visites d'un jour à l'autre, ni de vous suivre sur d'autres sites. Nous conservons ces
         statistiques 25 mois. Cette mesure, limitée à Sitaly, n'exige pas votre consentement selon
         les règles de la CNIL.
+      </p>
+      <h3>Chat du site</h3>
+      <p>
+        La bulle de discussion en bas de page ne pose aucun cookie et aucun traceur publicitaire.
+        Le temps de votre onglet, votre navigateur garde seulement un identifiant de conversation,
+        qui sert à vous rendre vos propres messages ; il disparaît à la fermeture de l'onglet. Ce
+        que devient le contenu de la discussion est détaillé dans la{" "}
+        <a href="/politique-confidentialite/">politique de confidentialité</a>.
       </p>
       <h3>Cookies de mesure d'audience</h3>
       <p>

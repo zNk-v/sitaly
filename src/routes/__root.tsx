@@ -8,12 +8,19 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { lazy, Suspense, useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CookieConsent } from "../components/CookieConsent";
 import { PageIntrouvable } from "../components/PageIntrouvable";
+
+/**
+ * La bulle de discussion (SITA-22) : son lot de JavaScript est à part, et il
+ * ne part qu'à un moment de repos, après le premier affichage. Rien d'elle
+ * n'est dans le chemin critique : le LCP ne bouge pas.
+ */
+const BulleChat = lazy(() => import("../components/chat/BulleChat"));
 import { battreMesure, compterVue, prolongerCampagne, suivreClicsDeContact } from "../lib/mesure";
 import { pageTiktok, suivreDepartsVersApp } from "../lib/pixel-tiktok";
 import {
@@ -352,11 +359,28 @@ function RootComponent() {
   useEffect(() => pageTiktok(chemin), [chemin]);
   useEffect(() => battreMesure(), []);
 
+  // La bulle attend un temps libre, avec un secours à 2 s.
+  const [bulle, setBulle] = useState(false);
+  useEffect(() => {
+    const charger = () => setBulle(true);
+    const libre = window.requestIdleCallback?.(charger, { timeout: 2000 });
+    const secours = window.setTimeout(charger, 2000);
+    return () => {
+      if (libre != null) window.cancelIdleCallback?.(libre);
+      window.clearTimeout(secours);
+    };
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <CookieConsent />
+      {bulle && (
+        <Suspense fallback={null}>
+          <BulleChat />
+        </Suspense>
+      )}
     </QueryClientProvider>
   );
 }

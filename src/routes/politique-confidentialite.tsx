@@ -26,7 +26,7 @@ export const Route = createFileRoute("/politique-confidentialite")({
 
 function PolitiqueConfidentialite() {
   return (
-    <LegalLayout title="Politique de confidentialité" updated="8 novembre 2026">
+    <LegalLayout title="Politique de confidentialité" updated="16 novembre 2026">
       <p>
         La présente politique de confidentialité informe les utilisateurs du site et de
         l'application <strong>Sitaly</strong> sur la manière dont leurs données personnelles sont
@@ -81,6 +81,16 @@ function PolitiqueConfidentialite() {
           heure.
         </li>
       </ul>
+      <p>
+        <strong>Chat du site.</strong> Si vous ouvrez la bulle de discussion en bas de page, vos
+        messages et la page d'où vous écrivez sont enregistrés pour vous répondre, et transmis à
+        Anthropic, qui produit la réponse de l'IA. Votre e-mail n'est enregistré que si vous le
+        donnez, et seulement pour vous envoyer la réponse. Aucun cookie et aucun traceur
+        publicitaire n'est posé par le chat : seul un identifiant de conversation est gardé par
+        votre navigateur le temps de l'onglet. Conversations effacées au bout de 90 jours, e-mail
+        au bout de 30 jours au plus tard. Base légale : l'intérêt légitime à répondre à votre
+        demande.
+      </p>
       <p>
         <strong>Dans l'application (compte utilisateur) :</strong>
       </p>
@@ -151,7 +161,8 @@ function PolitiqueConfidentialite() {
           l'authentification de l'application ;
         </li>
         <li>
-          <strong>Anthropic (Claude)</strong> — génération de texte par l'assistant IA ;
+          <strong>Anthropic (Claude)</strong> — génération de texte par l'assistant IA, et
+          réponses du chat de ce site ;
         </li>
         <li>
           <strong>Black Forest Labs</strong> — génération des images et des logos des sites, par
@@ -213,6 +224,11 @@ function PolitiqueConfidentialite() {
         <li>
           Données comptables et factures : <strong>10 ans</strong> conformément aux obligations
           légales.
+        </li>
+        <li>
+          Discussions du chat du site : <strong>90 jours</strong>. L'e-mail que vous y laissez est
+          effacé dès que la réponse vous est partie, et au plus tard au bout de{" "}
+          <strong>30 jours</strong>.
         </li>
         <li>
           Données de connexion : <strong>13 mois</strong> maximum. Cookies : voir la{" "}

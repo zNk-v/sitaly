@@ -7,6 +7,23 @@ import { ArrowRight } from "lucide-react";
  * de l'écran. Il se pose au-dessus du bandeau des cookies tant que celui-ci est
  * affiché (variable --bandeau-cookies, voir CookieConsent).
  */
+/**
+ * Pendant qu'un bouton collant occupe le bas de l'écran, la bulle de
+ * discussion doit passer au-dessus de lui et non sur lui : la variable
+ * --bouton-collant donne sa hauteur, comme --bandeau-cookies donne celle du
+ * bandeau des cookies (16 novembre 2026, SITA-22).
+ */
+export function useBoutonCollant(montre: boolean) {
+  useEffect(() => {
+    const racine = document.documentElement;
+    if (montre) racine.style.setProperty("--bouton-collant", "4rem");
+    else racine.style.removeProperty("--bouton-collant");
+    return () => {
+      racine.style.removeProperty("--bouton-collant");
+    };
+  }, [montre]);
+}
+
 export function BoutonCollant({ libelle, href }: { libelle: string; href: string }) {
   const [montre, setMontre] = useState(false);
   useEffect(() => {
@@ -15,6 +32,7 @@ export function BoutonCollant({ libelle, href }: { libelle: string; href: string
     window.addEventListener("scroll", maj, { passive: true });
     return () => window.removeEventListener("scroll", maj);
   }, []);
+  useBoutonCollant(montre);
 
   return (
     <div
