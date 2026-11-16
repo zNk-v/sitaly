@@ -156,7 +156,16 @@ const vignette = (id: string) => ({
   srcSet: `${photo(id, 384)} 384w, ${photo(id, 768)} 768w`,
 });
 
-/** Un petit site, aux couleurs du métier, qui montre ce que l'IA en a fait. */
+/**
+ * Un petit site, aux couleurs du métier, qui montre ce que l'IA en a fait.
+ *
+ * La maquette entière porte `aria-hidden` : son entreprise, son titre et son
+ * adresse sont des exemples, et la carte qui l'entoure porte déjà le nom du
+ * métier. D'où le seul `alt=""` qui reste dans `src/` (audit SEO du
+ * 13 novembre 2026, 1.6) : dans un conteneur masqué, un texte de
+ * remplacement ne serait jamais lu. C'est une décoration, pas une image de
+ * contenu, et l'audit garde `alt=""` pour la décoration.
+ */
 export function MiniSite({ m, className = "" }: { m: Metier; className?: string }) {
   return (
     <div

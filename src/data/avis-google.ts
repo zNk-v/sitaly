@@ -44,10 +44,18 @@ export const AVIS_GOOGLE: AvisGoogle[] = [
   },
 ];
 
+/**
+ * Mois du dernier avis publié sur la fiche, écrit à la main : les dates de
+ * `AVIS_GOOGLE` sont des mois en français, qu'aucun tri ne remet dans l'ordre.
+ * À corriger en même temps qu'un avis ajouté.
+ */
+export const DERNIER_AVIS = "septembre 2026";
+
 /** Moyenne affichée, calculée sur les avis ci-dessus : elle ne peut pas diverger. */
 export const NOTE_GOOGLE = {
   note: (AVIS_GOOGLE.reduce((s, a) => s + a.note, 0) / AVIS_GOOGLE.length)
     .toFixed(1)
     .replace(".", ","),
   nombre: AVIS_GOOGLE.length,
+  dernier: DERNIER_AVIS,
 };

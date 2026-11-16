@@ -1,5 +1,5 @@
 import { Clock, Star, UserRound } from "lucide-react";
-import { NOTE_GOOGLE } from "@/data/avis-google";
+import { FICHE_GOOGLE_URL, NOTE_GOOGLE } from "@/data/avis-google";
 import { Compteur, Pastille } from "@/components/accueil/communs";
 
 /**
@@ -51,12 +51,19 @@ export function Constat() {
       valeur: note,
       decimales: 1,
       suffixe: "/5",
+      // Le chiffre mène à la fiche (audit SEO du 13 novembre 2026, 1.2) :
+      // « que vous pouvez lire » promettait une lecture sans donner le lien.
       texte: (
         <>
-          <strong className="font-semibold text-foreground">
+          <a
+            href={FICHE_GOOGLE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-foreground underline decoration-from-font underline-offset-2"
+          >
             {NOTE_GOOGLE.nombre} avis publics sur notre fiche Google
-          </strong>
-          , que vous pouvez lire avant d'appeler.
+          </a>
+          , le dernier en {NOTE_GOOGLE.dernier}. Lisez-les avant d'appeler.
         </>
       ),
     },

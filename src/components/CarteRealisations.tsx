@@ -92,7 +92,7 @@ export function CarteRealisations() {
           className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1 font-medium text-foreground"
         >
           <Etoiles note={5} />
-          {NOTE_GOOGLE.note} sur Google
+          {NOTE_GOOGLE.note} sur Google · {NOTE_GOOGLE.nombre} avis
         </a>
         <span>{realisations.length} sites en ligne, à vérifier en un clic.</span>
       </div>

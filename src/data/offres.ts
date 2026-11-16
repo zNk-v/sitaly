@@ -630,6 +630,10 @@ export function offresStructurees() {
       price: "0",
       priceCurrency: "EUR",
       availability: "https://schema.org/InStock",
+      // Découverte porte aussi ses deux périodes à 0 € (audit SEO du
+      // 13 novembre 2026, 1.5) : « chaque Offer » comprend la formule
+      // gratuite, et sans elles Google lisait une offre sans durée.
+      priceSpecification: [periode(0, "P1M"), periode(0, "P1Y")],
     },
     payante(CREATEUR_IA.essentiel),
     payante(CREATEUR_IA.pro),
