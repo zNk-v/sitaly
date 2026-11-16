@@ -68,7 +68,12 @@ export const Route = createFileRoute("/outils/budget-google-ads-artisan")({
           applicationCategory: "BusinessApplication",
           operatingSystem: "Tous navigateurs",
           offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
-          provider: { "@type": "Organization", "@id": "https://sitaly.fr/#business", name: "Sitaly", url: "https://sitaly.fr/" },
+          provider: {
+            "@type": "Organization",
+            "@id": "https://sitaly.fr/#business",
+            name: "Sitaly",
+            url: "https://sitaly.fr/",
+          },
         }),
       },
       {
@@ -127,7 +132,10 @@ function BudgetGoogleAds() {
         <section className="hero-bg relative overflow-hidden">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
             <div className="rail-label text-brand-ink">
-              <Link to="/outils/" className="hover:underline">
+              <Link
+                to="/outils/"
+                className="inline-flex min-h-11 items-center hover:underline sm:min-h-0"
+              >
                 Outils gratuits
               </Link>
             </div>

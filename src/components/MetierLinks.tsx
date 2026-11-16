@@ -57,7 +57,9 @@ export function MetierLinksSection({
                 <h3 className="mt-4 font-display text-lg font-bold leading-snug transition group-hover:text-accent">
                   {m.label}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.teaser}</p>
+                <p className="mt-2 text-base leading-relaxed text-muted-foreground sm:text-sm">
+                  {m.teaser}
+                </p>
                 <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-accent">
                   Voir la page
                   <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" />

@@ -45,11 +45,11 @@ export function SiteHeader({
   appel?: AppelPrincipal;
 }) {
   const Logo = accueil ? (
-    <a href="#top" className="flex items-center" aria-label="Sitaly — accueil">
+    <a href="#top" className="flex min-h-11 items-center" aria-label="Sitaly — accueil">
       <SitalyLogo />
     </a>
   ) : (
-    <Link to="/" className="flex items-center" aria-label="Sitaly — accueil">
+    <Link to="/" className="flex min-h-11 items-center" aria-label="Sitaly — accueil">
       <SitalyLogo />
     </Link>
   );
@@ -69,11 +69,16 @@ export function SiteHeader({
         {VITRINE.annonce && (
           <div className="pointer-events-auto mx-auto mb-2 flex w-fit max-w-full justify-center">
             {VITRINE.annonce.lien ? (
-              <a href={VITRINE.annonce.lien} className="truncate rounded-full bg-[#0d0f14] px-4 py-1.5 text-center text-[13px] font-medium text-white shadow-lg hover:bg-black">
+              <a
+                href={VITRINE.annonce.lien}
+                className="truncate rounded-full bg-[#0d0f14] px-4 py-1.5 text-center text-[13px] font-medium text-white shadow-lg hover:bg-black"
+              >
                 {VITRINE.annonce.texte} <span aria-hidden="true">→</span>
               </a>
             ) : (
-              <p className="truncate rounded-full bg-[#0d0f14] px-4 py-1.5 text-center text-[13px] font-medium text-white shadow-lg">{VITRINE.annonce.texte}</p>
+              <p className="truncate rounded-full bg-[#0d0f14] px-4 py-1.5 text-center text-[13px] font-medium text-white shadow-lg">
+                {VITRINE.annonce.texte}
+              </p>
             )}
           </div>
         )}

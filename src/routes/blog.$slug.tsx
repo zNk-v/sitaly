@@ -237,7 +237,7 @@ function BlogPostPage() {
                     <span className="w-5 shrink-0 text-black/35 tabular-nums">{i + 1}</span>
                     <a
                       href={`#${h.id}`}
-                      className="text-black/75 underline-offset-4 transition hover:text-black hover:underline"
+                      className="inline-flex min-h-11 items-center text-black/75 underline-offset-4 transition hover:text-black hover:underline sm:min-h-0"
                     >
                       {h.text}
                     </a>
@@ -264,7 +264,10 @@ function BlogPostPage() {
             <div className="mx-auto max-w-6xl">
               <div className="flex flex-wrap items-end justify-between gap-4">
                 <h2 className="titre-produit text-[2rem] sm:text-4xl">À lire ensuite</h2>
-                <Link to="/blog/" className="text-sm font-semibold hover:underline">
+                <Link
+                  to="/blog/"
+                  className="inline-flex min-h-11 items-center text-sm font-semibold hover:underline sm:min-h-0"
+                >
                   Tous les articles
                 </Link>
               </div>

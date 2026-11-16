@@ -151,7 +151,7 @@ const TD =
 function TableauDuel({ c }: { c: Comparatif }) {
   return (
     <div className="mt-12 md:overflow-hidden md:rounded-3xl md:border md:border-black/[0.08]">
-      <table className="block w-full text-left text-[15px] md:table">
+      <table className="block w-full text-left text-base md:table md:text-[15px]">
         <caption className="sr-only">Sitaly ou {c.nom}, critère par critère</caption>
         <thead className="hidden md:table-header-group">
           <tr className="bg-black/[0.03]">
@@ -174,14 +174,11 @@ function TableauDuel({ c }: { c: Comparatif }) {
               </th>
               <td
                 data-label="Sitaly :"
-                className={`${TD} rounded-2xl bg-[#f6f3ff] p-3 text-[15px] md:rounded-none md:px-5`}
+                className={`${TD} rounded-2xl bg-[#f6f3ff] p-3 md:rounded-none md:px-5`}
               >
                 {l.sitaly}
               </td>
-              <td
-                data-label={`${c.colonne} :`}
-                className={`${TD} px-3 text-[15px] md:px-5 ${TEXTE_GRIS}`}
-              >
+              <td data-label={`${c.colonne} :`} className={`${TD} px-3 md:px-5 ${TEXTE_GRIS}`}>
                 {l.autre}
               </td>
             </tr>

@@ -111,7 +111,12 @@ export const Route = createFileRoute("/outils/generateur-mentions-legales")({
               applicationCategory: "BusinessApplication",
               operatingSystem: "Web",
               offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
-              provider: { "@type": "Organization", "@id": "https://sitaly.fr/#business", name: "Sitaly", url: "https://sitaly.fr/" },
+              provider: {
+                "@type": "Organization",
+                "@id": "https://sitaly.fr/#business",
+                name: "Sitaly",
+                url: "https://sitaly.fr/",
+              },
             },
             {
               "@type": "BreadcrumbList",
@@ -343,7 +348,10 @@ function GenerateurMentions() {
         <section className="px-4 pt-14 pb-10 sm:px-6 sm:pt-20">
           <div className="mx-auto max-w-4xl text-center">
             <div className="text-sm font-medium text-brand-ink">
-              <Link to="/outils/" className="hover:underline">
+              <Link
+                to="/outils/"
+                className="inline-flex min-h-11 items-center hover:underline sm:min-h-0"
+              >
                 Outil gratuit
               </Link>
             </div>

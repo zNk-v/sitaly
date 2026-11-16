@@ -132,7 +132,7 @@ export function TarifPremium() {
                     </span>
                     {r.titre}
                   </p>
-                  <ul className="mt-4 space-y-2.5 text-[15px]">
+                  <ul className="mt-4 space-y-2.5 text-base sm:text-[15px]">
                     {r.lignes.map((l) => {
                       const v = l.valeurs[PREMIUM.id];
                       return (

@@ -208,7 +208,7 @@ function PageModele() {
                   {bouton}
                   <ArrowRight className="h-4 w-4" />
                 </a>
-                <p className={`mt-3 text-sm ${TEXTE_GRIS}`}>
+                <p className={`mt-3 text-base sm:text-sm ${TEXTE_GRIS}`}>
                   Gratuit, sans carte bancaire. L'IA adapte le modèle à votre activité.
                 </p>
               </div>
@@ -395,7 +395,10 @@ function PageModele() {
           <div className="mx-auto max-w-6xl">
             <div className="flex items-end justify-between gap-4">
               <h2 className="titre-produit text-3xl sm:text-4xl">Autres modèles</h2>
-              <Link to="/modeles/" className="text-sm font-semibold hover:underline">
+              <Link
+                to="/modeles/"
+                className="inline-flex min-h-11 items-center text-sm font-semibold hover:underline sm:min-h-0"
+              >
                 Tous les modèles
               </Link>
             </div>
@@ -479,7 +482,11 @@ const GUIDES_PAR_METIER: Record<string, string> = {
 };
 
 function guidesDuMetier(id: string): string[] {
-  const base = ["creation-site-internet-artisan-guide", "apparaitre-sur-google", "prix-site-internet"];
+  const base = [
+    "creation-site-internet-artisan-guide",
+    "apparaitre-sur-google",
+    "prix-site-internet",
+  ];
   const propre = GUIDES_PAR_METIER[id];
   return (propre ? [propre, ...base.filter((s) => s !== propre)] : base).slice(0, 3);
 }

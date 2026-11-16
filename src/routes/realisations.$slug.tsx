@@ -86,7 +86,7 @@ function RealisationPage() {
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
             <Link
               to="/realisations/"
-              className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition hover:text-foreground"
+              className="inline-flex min-h-11 items-center gap-2 text-sm font-medium text-muted-foreground transition hover:text-foreground sm:min-h-0"
             >
               <ArrowLeft className="h-4 w-4" />
               Toutes les réalisations

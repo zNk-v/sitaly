@@ -103,9 +103,7 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
                   <dt className="font-display text-lg font-bold tracking-tight sm:text-xl">
                     {c.t}
                   </dt>
-                  <dd className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">
-                    {c.d}
-                  </dd>
+                  <dd className="text-base leading-relaxed text-muted-foreground">{c.d}</dd>
                 </div>
               ))}
             </dl>
@@ -295,7 +293,7 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
                     <h3 className="font-display text-lg font-bold leading-snug transition group-hover:text-brand-ink">
                       {a.label}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    <p className="mt-2 text-base leading-relaxed text-muted-foreground sm:text-sm">
                       {a.menuDesc}
                     </p>
                     <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-ink">

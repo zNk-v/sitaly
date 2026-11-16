@@ -153,9 +153,7 @@ export function SecteurLanding({ s }: { s: Secteur }) {
                   <dt className="font-display text-lg font-bold tracking-tight sm:text-xl">
                     {a.t}
                   </dt>
-                  <dd className="text-[15px] leading-relaxed text-muted-foreground sm:text-base">
-                    {a.d}
-                  </dd>
+                  <dd className="text-base leading-relaxed text-muted-foreground">{a.d}</dd>
                 </div>
               ))}
             </dl>
@@ -328,7 +326,9 @@ export function SecteurLanding({ s }: { s: Secteur }) {
                   <h3 className="font-display text-lg font-bold leading-snug transition group-hover:text-brand-ink">
                     {a.label}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{a.carte}</p>
+                  <p className="mt-2 text-base leading-relaxed text-muted-foreground sm:text-sm">
+                    {a.carte}
+                  </p>
                   <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-ink">
                     Voir la page
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -342,7 +342,7 @@ export function SecteurLanding({ s }: { s: Secteur }) {
                 <h3 className="font-display text-lg font-bold leading-snug transition group-hover:text-brand-ink">
                   Tous les agents IA
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-2 text-base leading-relaxed text-muted-foreground sm:text-sm">
                   Le système complet : accueil, qualification, rendez-vous, relances.
                 </p>
                 <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-ink">

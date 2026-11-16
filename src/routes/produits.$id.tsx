@@ -208,7 +208,9 @@ function PageProduit() {
                 );
               })}
             </div>
-            <p className={`mx-auto mt-6 max-w-2xl text-center text-sm leading-6 ${TEXTE_GRIS}`}>
+            <p
+              className={`mx-auto mt-6 max-w-2xl text-center text-base leading-6 sm:text-sm ${TEXTE_GRIS}`}
+            >
               {p.noteInclus}
             </p>
             <p className={`mt-3 text-center text-sm ${TEXTE_GRIS}`}>

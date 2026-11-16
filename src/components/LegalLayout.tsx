@@ -16,7 +16,10 @@ export function LegalLayout({
     <div className="min-h-screen bg-background text-foreground">
       <header className="border-b border-border">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-5 sm:px-6">
-          <Link to="/" className="text-sm font-semibold text-primary hover:underline">
+          <Link
+            to="/"
+            className="inline-flex min-h-11 items-center text-sm font-semibold text-primary hover:underline sm:min-h-0"
+          >
             ← Retour à l'accueil
           </Link>
           {updated && (

@@ -79,7 +79,7 @@ export function CookieConsentBandeau() {
       aria-label="Consentement aux cookies"
       className="border-b border-border bg-card px-4 py-2.5"
     >
-      <div className="mx-auto flex max-w-md items-center gap-3 text-xs text-muted-foreground">
+      <div className="mx-auto flex max-w-md items-center gap-3 text-sm text-muted-foreground sm:text-xs">
         <p className="flex-1 leading-snug">
           Audience (Google Analytics) et publicité (TikTok).{" "}
           <Link to="/politique-confidentialite/" className="underline">
@@ -89,14 +89,14 @@ export function CookieConsentBandeau() {
         <button
           type="button"
           onClick={() => handle("denied")}
-          className="bouton-secondaire h-8 shrink-0 px-3 text-xs"
+          className="bouton-secondaire h-11 shrink-0 px-3 text-sm sm:h-8 sm:text-xs"
         >
           Refuser
         </button>
         <button
           type="button"
           onClick={() => handle("granted")}
-          className="bouton h-8 shrink-0 px-3 text-xs"
+          className="bouton h-11 shrink-0 px-3 text-sm sm:h-8 sm:text-xs"
         >
           Accepter
         </button>
@@ -136,8 +136,11 @@ export function CookieConsent() {
       aria-label="Consentement aux cookies"
       className="fixed inset-x-0 bottom-0 z-[100] border-t border-border bg-background/95 px-3 py-2 backdrop-blur supports-[backdrop-filter]:bg-background/85"
     >
-      <div className="mx-auto flex h-9 max-w-3xl items-center gap-2 text-xs text-muted-foreground">
-        <p className="min-w-0 flex-1 truncate">
+      {/* Sur téléphone, la rangée passe à la ligne : le texte garde sa phrase
+          entière au-dessus des deux boutons, au lieu d'être coupé par
+          `truncate` dans une rangée de 36 px (SITA-28). */}
+      <div className="mx-auto flex max-w-3xl flex-wrap items-center gap-2 text-sm text-muted-foreground sm:h-9 sm:flex-nowrap sm:text-xs">
+        <p className="min-w-0 basis-full sm:flex-1 sm:basis-auto sm:truncate">
           Cookies d'audience et de pub.{" "}
           <Link to="/politique-confidentialite/" className="underline hover:text-primary">
             Détails
@@ -146,14 +149,14 @@ export function CookieConsent() {
         <button
           type="button"
           onClick={() => handle("denied")}
-          className="bouton-secondaire h-8 shrink-0 px-3 text-xs"
+          className="bouton-secondaire h-11 shrink-0 px-3 text-sm sm:h-8 sm:text-xs"
         >
           Refuser
         </button>
         <button
           type="button"
           onClick={() => handle("granted")}
-          className="bouton h-8 shrink-0 px-3 text-xs"
+          className="bouton h-11 shrink-0 px-3 text-sm sm:h-8 sm:text-xs"
         >
           Accepter
         </button>

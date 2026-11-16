@@ -73,7 +73,7 @@ export function TableauEmpile({
         </table>
       </div>
       {legende && (
-        <figcaption className="mt-2 px-1 text-[15px] text-black/50 sm:text-sm">{legende}</figcaption>
+        <figcaption className="mt-2 px-1 text-base text-black/50 sm:text-sm">{legende}</figcaption>
       )}
     </figure>
   );

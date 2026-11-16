@@ -261,6 +261,59 @@
   }
 }
 
+/* Fil d'Ariane au pouce, sur téléphone (SITA-28).
+
+   Les douze pages qui portent un fil d'Ariane écrivent le même balisage à la
+   main, sans composant partagé : ses liens mesuraient 20 px de haut, soit la
+   hauteur de leur texte. Chaque maillon prend 44 px, et comme ils sont sur une
+   seule ligne, c'est la rangée entière qui grandit, pas chaque maillon.
+
+   Le sélecteur s'accroche au `aria-label`, seul point commun des douze copies.
+   Le jour où un composant `FilAriane` existera, cette règle s'effacera.
+
+   La taille du texte ne change pas : trois fils sont écrits en capitales
+   espacées (`rail-label`), et les passer à 16 px les étirerait au-delà de
+   320 px, soit le débordement qu'on vient de fermer. Un fil d'Ariane est une
+   étiquette de navigation, pas du corps de texte. */
+@media (max-width: 639px) {
+  nav[aria-label="Fil d'Ariane"] > a,
+  nav[aria-label="Fil d'Ariane"] > span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+  }
+}
+
+/* Rangées de FAQ au pouce, sur téléphone (SITA-28).
+
+   Treize fichiers ouvrent leurs questions avec `<details><summary>`, chacun avec
+   ses propres classes. Les plus serrées mesuraient 24 px de haut. Un `summary`
+   est toujours une rangée qu'on touche pour ouvrir : le plancher de 44 px vaut
+   pour toutes, et celles qui dépassent déjà ne bougent pas. */
+@media (max-width: 639px) {
+  summary {
+    min-height: 2.75rem;
+  }
+}
+
+/* Les longs mots français cassent plutôt que de pousser la page (SITA-28).
+
+   À 320 px, « automatiquement » mesure 305 px dans un titre à 2,3 rem, pour
+   288 px de colonne : le mot sortait de l'écran et rendait `/blog/
+   relance-automatique-devis/` glissante de 19 px. Aucun bloc n'était en cause,
+   d'où l'intérêt de traiter la famille entière des titres.
+
+   `break-word` et non `break-all` : la coupure n'arrive qu'au mot qui ne tient
+   sur aucune ligne, le reste de la mise en page ne change pas. */
+@media (max-width: 639px) {
+  h1,
+  h2,
+  h3,
+  h4 {
+    overflow-wrap: break-word;
+  }
+}
+
 @utility hero-bg {
   background: var(--gradient-hero);
 }
@@ -3001,47 +3054,122 @@ body.menu-ouvert .entete-plaque {
    posée par useVisible) et s'arrêtent si le visiteur réduit les animations.
    --------------------------------------------------------------------------- */
 @keyframes vitrine-monte {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 @keyframes vitrine-defile {
-  from { transform: translateY(0); }
-  to { transform: translateY(-50%); }
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
 }
 @keyframes vitrine-chute {
-  0% { opacity: 0; transform: translateY(-140px) rotate(var(--rotation-depart, -12deg)); }
-  12% { opacity: 1; }
-  70% { transform: translateY(var(--chute, 120px)) rotate(var(--rotation, 6deg)); }
-  82% { transform: translateY(calc(var(--chute, 120px) - 10px)) rotate(var(--rotation, 6deg)); }
-  100% { opacity: 1; transform: translateY(var(--chute, 120px)) rotate(var(--rotation, 6deg)); }
+  0% {
+    opacity: 0;
+    transform: translateY(-140px) rotate(var(--rotation-depart, -12deg));
+  }
+  12% {
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(var(--chute, 120px)) rotate(var(--rotation, 6deg));
+  }
+  82% {
+    transform: translateY(calc(var(--chute, 120px) - 10px)) rotate(var(--rotation, 6deg));
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(var(--chute, 120px)) rotate(var(--rotation, 6deg));
+  }
 }
 @keyframes vitrine-points {
-  0%, 80%, 100% { opacity: 0.25; transform: translateY(0); }
-  40% { opacity: 1; transform: translateY(-3px); }
+  0%,
+  80%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
 }
 @keyframes vitrine-curseur {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 @keyframes vitrine-courbe {
-  from { stroke-dashoffset: 320; }
-  to { stroke-dashoffset: 0; }
+  from {
+    stroke-dashoffset: 320;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
 }
-.vitrine-monte { opacity: 0; }
-.est-visible .vitrine-monte { animation: vitrine-monte 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; animation-delay: var(--delai, 0s); }
-.vitrine-ticker { animation: vitrine-defile 14s linear infinite; }
-.vitrine-pastille { opacity: 0; }
+.vitrine-monte {
+  opacity: 0;
+}
+.est-visible .vitrine-monte {
+  animation: vitrine-monte 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation-delay: var(--delai, 0s);
+}
+.vitrine-ticker {
+  animation: vitrine-defile 14s linear infinite;
+}
+.vitrine-pastille {
+  opacity: 0;
+}
 /* Sur téléphone, une rangée par pastille : le cadre est trop étroit pour les mêler. */
-.vitrine-pastille { --chute: var(--chute-mobile); }
-@media (min-width: 640px) { .vitrine-pastille { --chute: var(--chute-bureau); } }
-.est-visible .vitrine-pastille { animation: vitrine-chute 1.4s cubic-bezier(0.3, 0.6, 0.3, 1) forwards; animation-delay: var(--delai, 0s); }
-.vitrine-point { animation: vitrine-points 1.1s ease-in-out infinite; }
-.vitrine-curseur { animation: vitrine-curseur 1s step-end infinite; }
-.vitrine-courbe { stroke-dasharray: 320; stroke-dashoffset: 320; }
-.est-visible .vitrine-courbe { animation: vitrine-courbe 2.2s ease-out forwards; }
+.vitrine-pastille {
+  --chute: var(--chute-mobile);
+}
+@media (min-width: 640px) {
+  .vitrine-pastille {
+    --chute: var(--chute-bureau);
+  }
+}
+.est-visible .vitrine-pastille {
+  animation: vitrine-chute 1.4s cubic-bezier(0.3, 0.6, 0.3, 1) forwards;
+  animation-delay: var(--delai, 0s);
+}
+.vitrine-point {
+  animation: vitrine-points 1.1s ease-in-out infinite;
+}
+.vitrine-curseur {
+  animation: vitrine-curseur 1s step-end infinite;
+}
+.vitrine-courbe {
+  stroke-dasharray: 320;
+  stroke-dashoffset: 320;
+}
+.est-visible .vitrine-courbe {
+  animation: vitrine-courbe 2.2s ease-out forwards;
+}
 @media (prefers-reduced-motion: reduce) {
-  .vitrine-monte, .vitrine-pastille { opacity: 1; animation: none !important; transform: none !important; }
-  .vitrine-ticker, .vitrine-point, .vitrine-curseur { animation: none !important; }
-  .vitrine-courbe { stroke-dashoffset: 0; animation: none !important; }
+  .vitrine-monte,
+  .vitrine-pastille {
+    opacity: 1;
+    animation: none !important;
+    transform: none !important;
+  }
+  .vitrine-ticker,
+  .vitrine-point,
+  .vitrine-curseur {
+    animation: none !important;
+  }
+  .vitrine-courbe {
+    stroke-dashoffset: 0;
+    animation: none !important;
+  }
 }
 
 /* ---------------------------------------------------------------------------
@@ -3049,64 +3177,239 @@ body.menu-ouvert .entete-plaque {
    Les scènes SVG s'animent quand leur cadre reçoit .est-visible ; avec
    « réduire les animations », elles s'affichent directement dans leur état final.
    --------------------------------------------------------------------------- */
-.couv-monte, .couv-trait, .couv-tombe, .couv-barre, .couv-eventail, .couv-remonte, .couv-etoile, .couv-pulse, .couv-flotte, .couv-voile {
+.couv-monte,
+.couv-trait,
+.couv-tombe,
+.couv-barre,
+.couv-eventail,
+.couv-remonte,
+.couv-etoile,
+.couv-pulse,
+.couv-flotte,
+.couv-voile {
   transform-box: fill-box;
 }
-.couv-monte { opacity: 0; transform: translateY(10px); }
-.couv-trait { transform: scaleX(0); transform-origin: left center; }
-.couv-tombe { opacity: 0; transform: translateY(-28px); }
-.couv-barre { transform: scaleY(0); transform-origin: center bottom; }
-.couv-coche { stroke-dasharray: 20; stroke-dashoffset: 20; }
-.couv-eventail { transform-origin: center bottom; }
-.couv-remonte { transform: translateY(186px); }
-.couv-etoile { opacity: .2; transform-origin: center; }
-.couv-pulse { transform-origin: center; }
+.couv-monte {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.couv-trait {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.couv-tombe {
+  opacity: 0;
+  transform: translateY(-28px);
+}
+.couv-barre {
+  transform: scaleY(0);
+  transform-origin: center bottom;
+}
+.couv-coche {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+}
+.couv-eventail {
+  transform-origin: center bottom;
+}
+.couv-remonte {
+  transform: translateY(186px);
+}
+.couv-etoile {
+  opacity: 0.2;
+  transform-origin: center;
+}
+.couv-pulse {
+  transform-origin: center;
+}
 
-.est-visible .couv-monte { animation: couv-monte .7s cubic-bezier(.2,.7,.2,1) var(--d, 0s) forwards; }
-.est-visible .couv-trait { animation: couv-trait .7s cubic-bezier(.2,.7,.2,1) var(--d, 0s) forwards; }
-.est-visible .couv-tombe { animation: couv-tombe .9s cubic-bezier(.3,1.4,.4,1) var(--d, 0s) forwards; }
-.est-visible .couv-barre { animation: couv-trait-y 1s cubic-bezier(.2,.7,.2,1) var(--d, 0s) forwards; }
-.est-visible .couv-coche { animation: couv-coche .5s ease-out var(--d, 0s) forwards; }
-.est-visible .couv-eventail { animation: couv-eventail 1.1s cubic-bezier(.2,.7,.2,1) var(--d, 0s) forwards; }
-.est-visible .couv-remonte { animation: couv-remonte 1.2s cubic-bezier(.2,.7,.2,1) var(--d, 0s) forwards; }
-.est-visible .couv-etoile { animation: couv-etoile .4s ease-out var(--d, 0s) forwards; }
-.est-visible .couv-pulse { animation: couv-pulse 2.4s ease-in-out var(--d, 0s) infinite; }
-.est-visible .couv-flotte { animation: couv-flotte 3s ease-in-out infinite; }
-.est-visible .couv-saisie { transform-box: fill-box; transform-origin: left center; animation: couv-saisie 4s steps(14) infinite; }
-.est-visible .couv-voile { animation: couv-voile 5s steps(17) infinite; }
-.est-visible .couv-defile { animation: couv-defile 9s cubic-bezier(.6,0,.2,1) infinite; }
+.est-visible .couv-monte {
+  animation: couv-monte 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) forwards;
+}
+.est-visible .couv-trait {
+  animation: couv-trait 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) forwards;
+}
+.est-visible .couv-tombe {
+  animation: couv-tombe 0.9s cubic-bezier(0.3, 1.4, 0.4, 1) var(--d, 0s) forwards;
+}
+.est-visible .couv-barre {
+  animation: couv-trait-y 1s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) forwards;
+}
+.est-visible .couv-coche {
+  animation: couv-coche 0.5s ease-out var(--d, 0s) forwards;
+}
+.est-visible .couv-eventail {
+  animation: couv-eventail 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) forwards;
+}
+.est-visible .couv-remonte {
+  animation: couv-remonte 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) forwards;
+}
+.est-visible .couv-etoile {
+  animation: couv-etoile 0.4s ease-out var(--d, 0s) forwards;
+}
+.est-visible .couv-pulse {
+  animation: couv-pulse 2.4s ease-in-out var(--d, 0s) infinite;
+}
+.est-visible .couv-flotte {
+  animation: couv-flotte 3s ease-in-out infinite;
+}
+.est-visible .couv-saisie {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: couv-saisie 4s steps(14) infinite;
+}
+.est-visible .couv-voile {
+  animation: couv-voile 5s steps(17) infinite;
+}
+.est-visible .couv-defile {
+  animation: couv-defile 9s cubic-bezier(0.6, 0, 0.2, 1) infinite;
+}
 
-@keyframes couv-monte { to { opacity: 1; transform: none; } }
-@keyframes couv-trait { to { transform: scaleX(1); } }
-@keyframes couv-trait-y { to { transform: scaleY(1); } }
-@keyframes couv-tombe { to { opacity: 1; transform: none; } }
-@keyframes couv-coche { to { stroke-dashoffset: 0; } }
-@keyframes couv-eventail { to { transform: translateX(var(--x, 0)) rotate(var(--r, 0deg)); } }
-@keyframes couv-remonte { to { transform: none; } }
-@keyframes couv-etoile { 60% { opacity: 1; transform: scale(1.3); } to { opacity: 1; transform: none; } }
-@keyframes couv-pulse { 0%, 100% { transform: none; } 50% { transform: scale(1.08); } }
-@keyframes couv-flotte { 0%, 100% { transform: none; } 50% { transform: translateY(-7px); } }
-@keyframes couv-saisie { 0% { transform: scaleX(0); } 70%, 100% { transform: scaleX(1); } }
-@keyframes couv-voile { 0% { transform: none; } 60%, 100% { transform: translateX(100%); } }
+@keyframes couv-monte {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes couv-trait {
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes couv-trait-y {
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes couv-tombe {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes couv-coche {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes couv-eventail {
+  to {
+    transform: translateX(var(--x, 0)) rotate(var(--r, 0deg));
+  }
+}
+@keyframes couv-remonte {
+  to {
+    transform: none;
+  }
+}
+@keyframes couv-etoile {
+  60% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes couv-pulse {
+  0%,
+  100% {
+    transform: none;
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+@keyframes couv-flotte {
+  0%,
+  100% {
+    transform: none;
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+@keyframes couv-saisie {
+  0% {
+    transform: scaleX(0);
+  }
+  70%,
+  100% {
+    transform: scaleX(1);
+  }
+}
+@keyframes couv-voile {
+  0% {
+    transform: none;
+  }
+  60%,
+  100% {
+    transform: translateX(100%);
+  }
+}
 @keyframes couv-defile {
-  0%, 20% { transform: none; }
-  25%, 45% { transform: translateY(-130px); }
-  50%, 70% { transform: translateY(-260px); }
-  75%, 95% { transform: translateY(-390px); }
-  100% { transform: translateY(-520px); }
+  0%,
+  20% {
+    transform: none;
+  }
+  25%,
+  45% {
+    transform: translateY(-130px);
+  }
+  50%,
+  70% {
+    transform: translateY(-260px);
+  }
+  75%,
+  95% {
+    transform: translateY(-390px);
+  }
+  100% {
+    transform: translateY(-520px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .couv-monte, .couv-trait, .couv-tombe, .couv-barre, .couv-remonte, .couv-etoile, .couv-pulse, .couv-flotte,
-  .couv-saisie, .couv-voile, .couv-defile,
-  .est-visible .couv-monte, .est-visible .couv-trait, .est-visible .couv-tombe, .est-visible .couv-barre,
-  .est-visible .couv-remonte, .est-visible .couv-etoile, .est-visible .couv-pulse, .est-visible .couv-flotte,
-  .est-visible .couv-saisie, .est-visible .couv-voile, .est-visible .couv-defile {
-    animation: none; opacity: 1; transform: none;
+  .couv-monte,
+  .couv-trait,
+  .couv-tombe,
+  .couv-barre,
+  .couv-remonte,
+  .couv-etoile,
+  .couv-pulse,
+  .couv-flotte,
+  .couv-saisie,
+  .couv-voile,
+  .couv-defile,
+  .est-visible .couv-monte,
+  .est-visible .couv-trait,
+  .est-visible .couv-tombe,
+  .est-visible .couv-barre,
+  .est-visible .couv-remonte,
+  .est-visible .couv-etoile,
+  .est-visible .couv-pulse,
+  .est-visible .couv-flotte,
+  .est-visible .couv-saisie,
+  .est-visible .couv-voile,
+  .est-visible .couv-defile {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
-  .couv-voile { display: none; }
-  .couv-coche, .est-visible .couv-coche { animation: none; stroke-dashoffset: 0; }
-  .couv-eventail, .est-visible .couv-eventail { animation: none; transform: translateX(var(--x, 0)) rotate(var(--r, 0deg)); }
+  .couv-voile {
+    display: none;
+  }
+  .couv-coche,
+  .est-visible .couv-coche {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .couv-eventail,
+  .est-visible .couv-eventail {
+    animation: none;
+    transform: translateX(var(--x, 0)) rotate(var(--r, 0deg));
+  }
 }
 
 /*
@@ -3114,30 +3417,122 @@ body.menu-ouvert .entete-plaque {
  * l'écran comme à l'impression. « Imprimer » copie la feuille à la racine du
  * document (#devis-impression) et pose .impression-devis sur <body>.
  */
-.dv{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#111;font-size:13px;line-height:1.5;background:#fff}
-.dv-haut{display:flex;justify-content:space-between;gap:24px;align-items:flex-start}
-.dv-titre{font-size:26px;font-weight:700;letter-spacing:-.02em;margin:0}
-.dv-petit{color:#555;font-size:12px}
-.dv-blocs{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:22px}
-.dv-etiquette{font-size:11px;font-weight:600;color:#777;margin-bottom:4px}
-.dv-nom{font-weight:700;font-size:14px}
-.dv-objet{margin-top:20px;font-weight:600}
-.dv table{width:100%;border-collapse:collapse;margin-top:14px}
-.dv th{text-align:left;font-size:11px;font-weight:600;color:#777;border-bottom:1.5px solid #111;padding:6px 6px 6px 0}
-.dv td{border-bottom:1px solid #e5e5e5;padding:8px 6px 8px 0;vertical-align:top}
-.dv .dv-d{text-align:right;white-space:nowrap;padding-right:0}
-.dv-totaux{margin:14px 0 0 auto;width:min(100%,260px)}
-.dv-ligne{display:flex;justify-content:space-between;padding:3px 0}
-.dv-total{border-top:1.5px solid #111;margin-top:6px;padding-top:8px;font-weight:700;font-size:15px}
-.dv-notes{margin-top:22px;color:#333;font-size:12px}
-.dv-notes p{margin:0 0 4px}
-.dv-signature{margin-top:26px;border:1px solid #ccc;border-radius:8px;padding:12px 14px 54px;width:min(100%,300px);margin-left:auto;font-size:12px;color:#444}
-#devis-impression{display:none}
-@media print{
-  @page{margin:14mm}
-  body.impression-devis>*:not(#devis-impression){display:none!important}
-  body.impression-devis>#devis-impression{display:block!important}
-  body.impression-devis{background:#fff!important}
+.dv {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #111;
+  font-size: 13px;
+  line-height: 1.5;
+  background: #fff;
+}
+.dv-haut {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+}
+.dv-titre {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.dv-petit {
+  color: #555;
+  font-size: 12px;
+}
+.dv-blocs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 22px;
+}
+.dv-etiquette {
+  font-size: 11px;
+  font-weight: 600;
+  color: #777;
+  margin-bottom: 4px;
+}
+.dv-nom {
+  font-weight: 700;
+  font-size: 14px;
+}
+.dv-objet {
+  margin-top: 20px;
+  font-weight: 600;
+}
+.dv table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+}
+.dv th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  color: #777;
+  border-bottom: 1.5px solid #111;
+  padding: 6px 6px 6px 0;
+}
+.dv td {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 8px 6px 8px 0;
+  vertical-align: top;
+}
+.dv .dv-d {
+  text-align: right;
+  white-space: nowrap;
+  padding-right: 0;
+}
+.dv-totaux {
+  margin: 14px 0 0 auto;
+  width: min(100%, 260px);
+}
+.dv-ligne {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 0;
+}
+.dv-total {
+  border-top: 1.5px solid #111;
+  margin-top: 6px;
+  padding-top: 8px;
+  font-weight: 700;
+  font-size: 15px;
+}
+.dv-notes {
+  margin-top: 22px;
+  color: #333;
+  font-size: 12px;
+}
+.dv-notes p {
+  margin: 0 0 4px;
+}
+.dv-signature {
+  margin-top: 26px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px 14px 54px;
+  width: min(100%, 300px);
+  margin-left: auto;
+  font-size: 12px;
+  color: #444;
+}
+#devis-impression {
+  display: none;
+}
+@media print {
+  @page {
+    margin: 14mm;
+  }
+  body.impression-devis > *:not(#devis-impression) {
+    display: none !important;
+  }
+  body.impression-devis > #devis-impression {
+    display: block !important;
+  }
+  body.impression-devis {
+    background: #fff !important;
+  }
 }
 
 /* La lueur au dégradé du logo autour du champ « Quelle est votre activité ? » :
@@ -3148,9 +3543,17 @@ body.menu-ouvert .entete-plaque {
   animation: lueur-sitaly 3.6s ease-in-out infinite;
 }
 @keyframes lueur-sitaly {
-  0%, 100% { opacity: 0.25; }
-  50% { opacity: 0.55; }
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.55;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
-  .lueur-sitaly { animation: none; opacity: 0.35; }
+  .lueur-sitaly {
+    animation: none;
+    opacity: 0.35;
+  }
 }

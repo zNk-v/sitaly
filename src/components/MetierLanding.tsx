@@ -116,7 +116,9 @@ export function MetierLanding(props: MetierLandingProps) {
                   <Check className="h-5 w-5" />
                 </div>
                 <h3 className="mt-4 font-display text-lg font-bold">{b.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{b.desc}</p>
+                <p className="mt-2 text-base leading-relaxed text-muted-foreground sm:text-sm">
+                  {b.desc}
+                </p>
               </article>
             ))}
           </div>

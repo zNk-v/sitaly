@@ -52,7 +52,7 @@ export function PageIntrouvable() {
                 const contenu = (
                   <>
                     <span className="font-display text-lg font-bold leading-snug">{p.titre}</span>
-                    <span className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    <span className="mt-2 text-base leading-relaxed text-muted-foreground sm:text-sm">
                       {p.texte}
                     </span>
                     <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-semibold text-brand-ink">
@@ -86,7 +86,7 @@ export function PageIntrouvable() {
                   <span className="font-display text-lg font-bold leading-snug">
                     Nous contacter
                   </span>
-                  <span className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  <span className="mt-2 text-base leading-relaxed text-muted-foreground sm:text-sm">
                     Un diagnostic offert de 30 minutes, par téléphone.
                   </span>
                   <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-semibold text-brand-ink">

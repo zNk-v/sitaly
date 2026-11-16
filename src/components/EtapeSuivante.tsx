@@ -55,7 +55,7 @@ export function CarteEtapeSuivante({ depuis }: { depuis: FamilleId }) {
             <Link
               key={l.label}
               to={l.to}
-              className="group inline-flex items-center gap-1.5 text-sm font-semibold"
+              className="group inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold sm:min-h-0"
               style={{ color: couleur.encre }}
             >
               {l.label}
@@ -66,7 +66,7 @@ export function CarteEtapeSuivante({ depuis }: { depuis: FamilleId }) {
             <a
               key={l.label}
               href={l.href}
-              className="group inline-flex items-center gap-1.5 text-sm font-semibold"
+              className="group inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold sm:min-h-0"
               style={{ color: couleur.encre }}
             >
               {l.label}

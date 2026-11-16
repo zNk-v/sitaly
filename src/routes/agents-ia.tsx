@@ -801,7 +801,9 @@ function Problem() {
                 <leak.icon className="h-5 w-5" aria-hidden="true" />
               </div>
               <h3 className="mt-4 text-base font-bold">{leak.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{leak.text}</p>
+              <p className="mt-2 text-base leading-relaxed text-muted-foreground sm:text-sm">
+                {leak.text}
+              </p>
             </div>
           ))}
         </div>
@@ -878,7 +880,9 @@ function Agents() {
               </div>
 
               <h3 className="mt-5 text-lg font-bold leading-tight">{agent.name}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{agent.pitch}</p>
+              <p className="mt-2 text-base leading-relaxed text-muted-foreground sm:text-sm">
+                {agent.pitch}
+              </p>
 
               <div className="mt-6 border-t border-border pt-5">
                 <div className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
@@ -1042,7 +1046,9 @@ function Sectors() {
                 <sector.icon className="h-5 w-5" aria-hidden="true" />
               </div>
               <h3 className="mt-4 text-base font-bold">{sector.name}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{sector.context}</p>
+              <p className="mt-2 text-base leading-relaxed text-muted-foreground sm:text-sm">
+                {sector.context}
+              </p>
               <ul className="mt-5 space-y-2.5 border-t border-border pt-5">
                 {sector.items.map((item) => (
                   <li key={item} className="flex items-start gap-2.5 text-[13.5px] leading-relaxed">

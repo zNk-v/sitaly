@@ -84,7 +84,7 @@ export function NoteGoogle({ clair = false }: { clair?: boolean }) {
 export function Confiance() {
   return (
     <p
-      className={`mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm ${TEXTE_GRIS}`}
+      className={`mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-base sm:text-sm ${TEXTE_GRIS}`}
     >
       <span>Gratuit, sans carte bancaire</span>
       <span aria-hidden="true" className="hidden sm:inline">
@@ -172,7 +172,7 @@ export function BoiteApp({ idees = true }: { idees?: boolean }) {
                 onClick={inspirer}
                 title="Inspire-moi : écrire un exemple"
                 aria-label="Écrire une phrase d'exemple"
-                className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#2563eb] to-[#7c3aed] text-white shadow-sm transition hover:scale-105 active:scale-95"
+                className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#2563eb] to-[#7c3aed] sm:h-10 sm:w-10 text-white shadow-sm transition hover:scale-105 active:scale-95"
               >
                 <Sparkles className="h-[18px] w-[18px]" aria-hidden="true" />
               </button>

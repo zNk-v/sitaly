@@ -25,7 +25,7 @@ export function LinkedinLink({
       rel="noopener noreferrer"
       aria-label="Sitaly sur LinkedIn"
       title="Sitaly sur LinkedIn"
-      className={`inline-flex h-10 w-10 items-center justify-center rounded-full border transition ${couleurs} ${className}`}
+      className={`inline-flex h-11 w-11 items-center justify-center rounded-full border transition sm:h-10 sm:w-10 ${couleurs} ${className}`}
     >
       <Linkedin className="h-[18px] w-[18px]" aria-hidden="true" />
     </a>

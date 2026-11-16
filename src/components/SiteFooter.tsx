@@ -91,7 +91,8 @@ const AUSSI: { label: string; to: string }[] = [
  * faisaient 31 px et se touchaient les uns les autres (SITA-28). À partir de `lg`,
  * où le pointeur est une souris, la liste retrouve sa densité.
  */
-const LIEN = "flex min-h-11 items-center text-black/60 transition hover:text-black lg:min-h-0 lg:py-1";
+const LIEN =
+  "flex min-h-11 items-center text-black/60 transition hover:text-black lg:min-h-0 lg:py-1";
 
 function Ligne({ e }: { e: Entree }) {
   if ("bientot" in e) {
@@ -125,13 +126,13 @@ export function SiteFooter() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.2fr_repeat(5,1fr)]">
           <div>
             <SitalyLogo />
-            <p className="mt-4 max-w-xs text-[15px] leading-relaxed text-black/60">
+            <p className="mt-4 max-w-xs text-base leading-relaxed text-black/60 sm:text-[15px]">
               Le créateur de site internet par l'IA, conçu en France pour les indépendants et les
               petites entreprises.
             </p>
             <a
               href={`tel:${SITALY_PHONE}`}
-              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold transition hover:text-black/70"
+              className="mt-4 inline-flex min-h-11 items-center gap-2 text-base font-semibold transition hover:text-black/70 sm:min-h-0 sm:text-sm"
             >
               <Phone className="h-4 w-4" aria-hidden="true" />
               {SITALY_PHONE_DISPLAY}
@@ -144,7 +145,7 @@ export function SiteFooter() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Sitaly sur LinkedIn"
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/[0.04] transition hover:bg-black/[0.08]"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-black/[0.04] transition hover:bg-black/[0.08] sm:h-10 sm:w-10"
                 >
                   <Linkedin className="h-[18px] w-[18px]" aria-hidden="true" />
                 </a>
@@ -162,7 +163,7 @@ export function SiteFooter() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Sitaly sur ${nom}`}
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/[0.04] transition hover:bg-black/[0.08]"
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-black/[0.04] transition hover:bg-black/[0.08] sm:h-10 sm:w-10"
                   >
                     <Icone className="h-[18px] w-[18px]" aria-hidden="true" />
                   </a>
@@ -187,33 +188,39 @@ export function SiteFooter() {
 
         <nav
           aria-label="Aussi chez Sitaly"
-          className="mt-12 flex flex-wrap items-center gap-x-5 gap-y-1 border-t border-black/[0.06] pt-6 text-sm text-black/50"
+          className="mt-12 flex flex-wrap items-center gap-x-5 border-t border-black/[0.06] pt-6 text-base text-black/50 sm:gap-y-1 sm:text-sm"
         >
           <span className="font-medium text-black/70">Aussi chez Sitaly :</span>
           {AUSSI.map((a) => (
-            <Link key={a.to} to={a.to} className="py-1 transition hover:text-black">
+            <Link
+              key={a.to}
+              to={a.to}
+              className="inline-flex min-h-11 items-center transition hover:text-black sm:min-h-0 sm:py-1"
+            >
               {a.label}
             </Link>
           ))}
         </nav>
 
-        <div className="mt-6 flex flex-col items-center justify-between gap-3 text-xs text-black/50 sm:flex-row">
+        <div className="mt-6 flex flex-col items-center justify-between gap-3 text-sm text-black/50 sm:flex-row sm:text-xs">
           <div>
             © {ANNEE_DU_BUILD} Sitaly · Entreprise française, {SITALY_VILLE_PUBLIQUE}
           </div>
-          <div className="flex flex-wrap justify-center gap-x-5 gap-y-1">
-            <Link to="/mentions-legales/" className="py-2 transition hover:text-black">
-              Mentions légales
-            </Link>
-            <Link to="/politique-confidentialite/" className="py-2 transition hover:text-black">
-              Confidentialité
-            </Link>
-            <Link to="/cgv/" className="py-2 transition hover:text-black">
-              CGV
-            </Link>
-            <Link to="/cookies/" className="py-2 transition hover:text-black">
-              Cookies
-            </Link>
+          <div className="flex flex-wrap justify-center gap-x-5 sm:gap-y-1">
+            {[
+              { to: "/mentions-legales/", label: "Mentions légales" },
+              { to: "/politique-confidentialite/", label: "Confidentialité" },
+              { to: "/cgv/", label: "CGV" },
+              { to: "/cookies/", label: "Cookies" },
+            ].map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                className="inline-flex min-h-11 items-center transition hover:text-black sm:min-h-0 sm:py-2"
+              >
+                {l.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

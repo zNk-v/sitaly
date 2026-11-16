@@ -53,7 +53,7 @@ export function CarteArticle({
           {post.title.replace(/ ([:;?!])/g, " $1")}
         </h3>
         <p
-          className={`mt-3 line-clamp-3 text-[15px] leading-relaxed ${sombre ? "max-w-xl text-white/65" : TEXTE_GRIS}`}
+          className={`mt-3 line-clamp-3 text-base leading-relaxed sm:text-[15px] ${sombre ? "max-w-xl text-white/65" : TEXTE_GRIS}`}
         >
           {post.excerpt}
         </p>
