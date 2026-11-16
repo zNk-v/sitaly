@@ -88,8 +88,8 @@ function Tarifs() {
             </h1>
             <p className={`mx-auto mt-6 max-w-2xl text-lg leading-7 ${TEXTE_GRIS}`}>
               Créez votre site et mettez-le en ligne sans payer, sur une adresse en .sitaly.fr.{" "}
-              {IA.essentiel.nom} ajoute votre nom de domaine, offert, et retire la mention Sitaly du
-              pied de votre site. Artisan ?{" "}
+              {IA.essentiel.nom} ajoute votre nom de domaine, offert, et vous laisse retirer la
+              mention Sitaly du pied de votre site. Artisan ?{" "}
               <Link
                 to={PILIER_SITE.chemin}
                 className="font-medium text-black underline underline-offset-4"
