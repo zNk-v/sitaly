@@ -97,8 +97,10 @@ function Champ({ label, children }: { label: string; children: React.ReactNode }
   );
 }
 
+/* 16 px et 44 px de haut sur téléphone, 15 px et la hauteur d'origine à partir
+   de `sm` : sous 16 px, Safari iOS zoome la page au premier toucher (SITA-28). */
 const selectClass =
-  "w-full rounded-xl border border-border bg-background px-3.5 py-2.5 text-[15px] focus:outline-none focus:ring-2 focus:ring-accent/40";
+  "min-h-11 w-full rounded-xl border border-border bg-background px-3.5 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-accent/40 sm:min-h-0 sm:text-[15px]";
 
 function BudgetGoogleAds() {
   const [metier, setMetier] = useState("couvreur");

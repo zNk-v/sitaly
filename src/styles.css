@@ -242,6 +242,25 @@
   }
 }
 
+/* Plancher de 16 px sur les champs de saisie, sur téléphone (SITA-28).
+
+   Sous 16 px, Safari iOS zoome la page entière au premier toucher d'un `input`,
+   d'un `textarea` ou d'un `select`, et le zoom reste : la page devient glissante
+   de gauche à droite jusqu'à ce qu'on la dézoome à la main. C'est ce que Ted
+   voyait sur le chat le 16/11/2026, et la cause est la même partout ailleurs.
+
+   La règle vit hors de tout `@layer` : les couches de Tailwind perdent toujours
+   contre les styles non calqués, donc un `text-sm` oublié sur un champ ne peut
+   plus rouvrir le problème. Au-delà de 640 px, pointeur et souris, chaque champ
+   retrouve la taille que lui donne sa classe. */
+@media (max-width: 639px) {
+  input:not([type="hidden"]),
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
 @utility hero-bg {
   background: var(--gradient-hero);
 }

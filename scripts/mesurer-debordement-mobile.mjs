@@ -297,6 +297,32 @@ const MESURE = () => {
     });
   }
 
+  /**
+   * Champs de saisie sous 16 px. C'est la cause que Ted a vue sur le chat
+   * (commentaire du 16/11) : sous 16 px, Safari iOS zoome la page entière au
+   * premier toucher du champ, et le zoom reste — la page devient glissante
+   * jusqu'à ce qu'on la dézoome à la main. Seuls `input`, `textarea` et
+   * `select` déclenchent ce zoom ; un bouton, même petit, ne le fait pas.
+   */
+  const champs = [];
+  for (const el of document.querySelectorAll("input, textarea, select")) {
+    if (el.type === "hidden") continue;
+    const style = getComputedStyle(el);
+    if (style.visibility === "hidden" || style.display === "none") continue;
+    const r = el.getBoundingClientRect();
+    if (r.width === 0 && r.height === 0) continue;
+    const taille = Number.parseFloat(style.fontSize);
+    if (taille >= 16) continue;
+    champs.push({
+      balise: el.tagName.toLowerCase(),
+      classes: typeof el.className === "string" ? el.className : "",
+      type: el.getAttribute("type") ?? "",
+      taille: Math.round(taille * 10) / 10,
+      hauteur: Math.round(r.height),
+      texte: (el.getAttribute("placeholder") ?? el.getAttribute("aria-label") ?? "").slice(0, 40),
+    });
+  }
+
   return {
     vue,
     scrollWidth: html.scrollWidth,
@@ -308,8 +334,27 @@ const MESURE = () => {
     glissieres: glissieres.slice(0, 12),
     petitTexte: petitTexte.slice(0, 12),
     petitesCibles: petitesCibles.slice(0, 12),
+    champs: champs.slice(0, 12),
   };
 };
+
+/**
+ * Touche le champ du chat ouvert, comme Ted le fait pour écrire sa question.
+ * Le clavier monte, la fenêtre rapetisse, le panneau se remet en page : c'est
+ * le moment où l'affichage se déréglait. Renvoie true si un champ a reçu le
+ * toucher.
+ */
+async function toucherLeChampDuChat(page) {
+  const champ = page.locator("[data-chat-panneau] textarea, [role='dialog'] textarea, textarea").first();
+  if ((await champ.count()) === 0) return false;
+  try {
+    await champ.click({ timeout: 2500 });
+    await page.waitForTimeout(400);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 /** Ouvre la bulle de chat si elle est présente. Renvoie true si elle s'est ouverte. */
 async function ouvrirLeChat(page) {
@@ -374,8 +419,17 @@ async function mesurerUnePage(page, url, largeurs, avecChat) {
     try {
       const ouvert = await ouvrirLeChat(page);
       resultats.chat = ouvert ? await page.evaluate(MESURE) : null;
+      if (ouvert && (await toucherLeChampDuChat(page))) {
+        // Le clavier de l'iPhone prend environ la moitié de l'écran, et aucun
+        // navigateur sans interface ne le fait monter : on rapetisse la fenêtre
+        // à sa place. 390 × 400, c'est ce qu'il reste à voir quand on écrit.
+        await page.setViewportSize({ width: 390, height: 400 });
+        await page.waitForTimeout(250);
+        resultats.chatChamp = await page.evaluate(MESURE);
+        await page.setViewportSize({ width: 390, height: HAUTEUR });
+      }
     } catch (err) {
-      resultats.chat = { erreur: String(err.message ?? err) };
+      resultats.chat = resultats.chat ?? { erreur: String(err.message ?? err) };
     }
   }
   return resultats;
@@ -386,26 +440,33 @@ async function mesurerUnePage(page, url, largeurs, avecChat) {
 /** Vrai dès qu'une largeur, ou le chat ouvert, déborde. */
 function debordeQuelquePart(par, largeurs) {
   if (par.erreur) return false;
-  return largeurs.some((l) => par[l]?.deborde) || Boolean(par.chat?.deborde);
+  return (
+    largeurs.some((l) => par[l]?.deborde) ||
+    Boolean(par.chat?.deborde) ||
+    Boolean(par.chatChamp?.deborde)
+  );
+}
+
+/** La case d'une mesure : `ok`, l'écart, ou le signe qu'il n'y avait rien à mesurer. */
+function caseMesure(m) {
+  if (!m) return "–";
+  if (m.erreur) return "erreur";
+  return m.deborde ? `**+${m.ecart}**` : "ok";
 }
 
 function tableau(mesures, largeurs, avecChat) {
-  const colonnes = [...largeurs.map((l) => `${l} px`), ...(avecChat ? ["chat 390 px"] : [])];
+  const colonnes = [
+    ...largeurs.map((l) => `${l} px`),
+    ...(avecChat ? ["chat 390 px", "chat + champ"] : []),
+  ];
   const lignes = [`| Page | ${colonnes.join(" | ")} |`, `|---|${colonnes.map(() => "---").join("|")}|`];
   for (const [chemin, par] of Object.entries(mesures)) {
     if (par.erreur) {
       lignes.push(`| \`${chemin}\` | ${colonnes.map(() => "erreur").join(" | ")} |`);
       continue;
     }
-    const cases = largeurs.map((l) => {
-      const m = par[l];
-      if (!m) return "?";
-      return m.deborde ? `**+${m.ecart}**` : "ok";
-    });
-    if (avecChat)
-      cases.push(
-        !par.chat ? "–" : par.chat.erreur ? "erreur" : par.chat.deborde ? `**+${par.chat.ecart}**` : "ok",
-      );
+    const cases = largeurs.map((l) => (par[l] ? caseMesure(par[l]) : "?"));
+    if (avecChat) cases.push(caseMesure(par.chat), caseMesure(par.chatChamp));
     lignes.push(`| \`${chemin}\` | ${cases.join(" | ")} |`);
   }
   return lignes.join("\n");
@@ -568,10 +629,20 @@ async function main() {
   const glissieres = regrouper(mesures, "glissieres", (g) => g.cache);
   const petitTexte = regrouper(mesures, "petitTexte", (t) => -t.taille);
   const petitesCibles = regrouper(mesures, "petitesCibles", (c) => -c.hauteur);
+  const champs = regrouper(mesures, "champs", (c) => -c.taille);
   await writeFile(
     join(dossier, `${opts.sortie}.json`),
     JSON.stringify(
-      { date: new Date().toISOString(), opts: { ...opts }, mesures, coupables, glissieres, petitTexte, petitesCibles },
+      {
+        date: new Date().toISOString(),
+        opts: { ...opts },
+        mesures,
+        coupables,
+        glissieres,
+        petitTexte,
+        petitesCibles,
+        champs,
+      },
       null,
       2,
     ),
@@ -603,6 +674,13 @@ async function main() {
         `- ${nomme(g)} — ${g.pages.length} page(s), ${g.pire} px hors écran` +
         (g.tableau ? " — tableau" : "") +
         (g.texte ? ` — « ${g.texte} »` : ""),
+    ),
+    ...section(
+      "Champs de saisie sous 16 px (Safari iOS zoome au premier toucher)",
+      champs,
+      (c) =>
+        `- ${nomme(c)}${c.type ? ` type=\`${c.type}\`` : ""} — ${c.pages.length} page(s), ${c.taille} px, ${c.hauteur} px de haut` +
+        (c.texte ? ` — « ${c.texte} »` : ""),
     ),
     ...section("Corps de texte sous 16 px", petitTexte, (t) =>
       `- ${nomme(t)} — ${t.pages.length} page(s), ${t.taille} px — « ${t.texte} »`),
