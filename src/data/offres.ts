@@ -593,7 +593,14 @@ export const MENTION_TVA = "TVA non applicable, art. 293 B du CGI";
 export const CREATEUR_IA = {
   page: "/",
   menuDesc: "Votre site écrit par l'IA, formule gratuite pour commencer.",
-  decouverte: { nom: "Découverte", mensuel: 0, annuel: 0, credits: 50 },
+  /**
+   * `contactsMax` : le plafond du carnet de clients en Découverte. La base le
+   * fait appliquer (sitaly-saas, fonction SQL `crm_limit_for` de la migration
+   * 20261029130000_offres_decouverte_essentiel_pro.sql, et son miroir
+   * `ENTITLEMENTS.decouverte.crmMax` dans src/lib/entitlements.ts). Essentiel
+   * et Pro n'ont pas de plafond.
+   */
+  decouverte: { nom: "Découverte", mensuel: 0, annuel: 0, credits: 50, contactsMax: 10 },
   // Les prix se règlent aussi depuis le centre de pilotage de l'app (src/data/vitrine.ts).
   essentiel: { nom: "Essentiel", mensuel: VITRINE.tarif("essentiel", "mensuel") ?? 39, annuel: VITRINE.tarif("essentiel", "annuel") ?? 398, credits: 500, creditDomaine: 20 },
   pro: { nom: "Pro", mensuel: VITRINE.tarif("pro", "mensuel") ?? 79, annuel: VITRINE.tarif("pro", "annuel") ?? 806, credits: 2500, creditDomaine: 40 },

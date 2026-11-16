@@ -86,8 +86,9 @@ function Tarifs() {
               Commencez gratuitement
             </h1>
             <p className={`mx-auto mt-6 max-w-2xl text-lg leading-7 ${TEXTE_GRIS}`}>
-              Créez votre site et mettez-le en ligne sans payer. Passez à une formule quand vous
-              voulez plus de retouches et votre propre adresse.
+              Créez votre site et mettez-le en ligne sans payer, sur une adresse en .sitaly.fr.{" "}
+              {IA.essentiel.nom} ajoute votre nom de domaine, offert, et retire la mention Sitaly du
+              pied de votre site.
             </p>
           </div>
           <div className="mx-auto mt-14 max-w-6xl">

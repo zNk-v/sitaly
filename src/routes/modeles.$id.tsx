@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { ArrowRight, Check, ChevronRight } from "lucide-react";
 import { SiteChrome } from "@/components/SiteChrome";
 import { ArticlesALire } from "@/components/ArticlesALire";
@@ -24,6 +25,39 @@ import { APP_REF } from "@/data/offres";
  * savoir, les sections du site, trois conseils, les outils utiles et ses
  * questions. Le bouton ouvre l'application avec le métier déjà écrit.
  */
+
+/**
+ * Le bouton qui suit le visiteur sur téléphone (16 novembre 2026). Mesure à
+ * 390 px : la page fait 10 943 px, et entre le bouton du héros (y = 413) et le
+ * suivant (y = 8 741) il n'y avait rien à toucher pendant dix écrans. Sur
+ * ordinateur le bouton de l'en-tête reste visible, donc la barre s'arrête à
+ * `md`. Elle garde le lien du héros : la phrase du métier survit au défilement.
+ */
+function BarreModele({ lien, bouton }: { lien: string; bouton: string }) {
+  const [montre, setMontre] = useState(false);
+  useEffect(() => {
+    const maj = () => setMontre(window.scrollY > 600);
+    maj();
+    window.addEventListener("scroll", maj, { passive: true });
+    return () => window.removeEventListener("scroll", maj);
+  }, []);
+  return (
+    <div
+      className={`fixed inset-x-0 z-40 px-3 transition-all duration-300 md:hidden ${montre ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-6 opacity-0"}`}
+      style={{ bottom: "calc(var(--bandeau-cookies, 0px) + 0.75rem)" }}
+      aria-hidden={!montre}
+    >
+      <a
+        href={lien}
+        tabIndex={montre ? 0 : -1}
+        className="flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-black/90 px-5 text-[15px] font-medium text-white shadow-[0_20px_50px_-15px_rgba(0,0,0,0.45)] backdrop-blur"
+      >
+        {bouton}
+        <ArrowRight className="h-4 w-4" aria-hidden="true" />
+      </a>
+    </div>
+  );
+}
 
 const ETAPES = [
   {
@@ -311,14 +345,17 @@ function PageModele() {
               surtitre="Questions"
               titre={`Vos questions sur un site ${deMetier(modele.nom)}`}
             />
+            {/* Le libellé porte le rembourrage, pas la carte : sans cela la
+                zone à toucher ne fait que 24 px de haut sur téléphone, sous le
+                minimum de 44 px (mesure à 390 px, 16 novembre 2026). */}
             <div className="mt-10 space-y-3">
               {modele.faq.map((f) => (
-                <details key={f.q} className={`${CARTE} group p-5`}>
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold marker:content-none">
+                <details key={f.q} className={`${CARTE} group`}>
+                  <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 p-5 font-semibold marker:content-none">
                     {f.q}
                     <span className="text-xl leading-none transition group-open:rotate-45">+</span>
                   </summary>
-                  <p className={`mt-3 ${TEXTE_GRIS}`}>{f.a}</p>
+                  <p className={`px-5 pb-5 ${TEXTE_GRIS}`}>{f.a}</p>
                 </details>
               ))}
             </div>
@@ -400,6 +437,7 @@ function PageModele() {
           </div>
         </section>
       </SiteChrome>
+      <BarreModele lien={lien} bouton={bouton} />
     </div>
   );
 }

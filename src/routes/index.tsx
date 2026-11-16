@@ -7,6 +7,7 @@ import {
   Faq,
   FAQ_PRODUIT,
   GrilleTarifs,
+  PassageEssentiel,
   TEXTE_GRIS,
   TitreSection,
 } from "@/components/produit/Produit";
@@ -221,6 +222,22 @@ function Accueil() {
                 </div>
                 <div className={`mt-1 text-sm ${TEXTE_GRIS}`}>par mois, sans engagement</div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Le passage du gratuit au payant, dit d'un bloc avant la grille
+            (audit du tunnel du 15 novembre 2026) : ce que Découverte arrête,
+            ce qu'Essentiel ouvre, le nom de domaine offert. */}
+        <section id="passage" className="scroll-mt-28 px-4 py-20 sm:px-6 sm:py-28">
+          <div className="mx-auto max-w-6xl">
+            <TitreSection
+              surtitre="Gratuit, puis payant"
+              titre={`De ${IA.decouverte.nom} à ${IA.essentiel.nom}`}
+              sousTitre={`Publiez gratuitement, autant de temps qu'il vous faut. Le jour où vous voulez votre nom de domaine, ${IA.essentiel.nom} vous l'offre.`}
+            />
+            <div className="mt-14">
+              <PassageEssentiel />
             </div>
           </div>
         </section>

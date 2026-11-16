@@ -12,6 +12,7 @@
 - **Fonctionnement** : vous décrivez votre activité en une phrase ; l'IA écrit le site, choisit la mise en page et crée la photo. Vous le retouchez en écrivant ce que vous voulez changer, puis vous le publiez en un clic.
 - **Adresse du site** : votre-nom.sitaly.fr ; avec Essentiel et Pro, un nom de domaine en .fr ou en .com offert, enregistré à votre nom
 - **Prix** : Découverte gratuit ; Essentiel 39 € par mois ou 398 € par an ; Pro 79 € par mois ou 806 € par an. TVA non applicable, art. 293 B du CGI. Sans engagement au mois ; l'annuel se paie pour un an.
+- **Limites de Découverte** : pas de nom de domaine à soi (le site reste en .sitaly.fr), mention « Site créé avec Sitaly » au pied du site sans pouvoir la retirer, carnet de clients plafonné à 10 contacts, 3 factures par mois, pas de prise de rendez-vous ni d'avis Google sur le site. Essentiel lève ces limites.
 - **Crédits IA** : 50 offerts avec Découverte, 500 par mois avec Essentiel, 2 500 par mois avec Pro. Une retouche coûte 1 ou 2 crédits, une photo créée par l'IA 5, la création du site aucun. Les crédits mensuels repartent à zéro chaque mois ; des packs de crédits s'achètent en plus, sans date de fin.
 - **Entreprise** : Teddy Vidal, entrepreneur individuel, SIREN 833 848 831, SIRET 833 848 831 00032, basé à Paris
 - **E-mail** : contact@sitaly.fr

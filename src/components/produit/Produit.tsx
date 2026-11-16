@@ -1,7 +1,7 @@
 import { avecCampagne } from "@/lib/mesure";
 import { departVersAppTiktok } from "@/lib/pixel-tiktok";
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
-import { ArrowRight, Check, Clock, Lock, Sparkles, Star } from "lucide-react";
+import { ArrowRight, Check, Clock, Lock, Sparkles, Star, X } from "lucide-react";
 import { APP_URL, euros, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 import { CREATEUR_IA as IA, MENTION_TVA } from "@/data/offres";
 import { FICHE_GOOGLE_URL } from "@/data/avis-google";
@@ -350,8 +350,26 @@ interface Formule {
   bouton: string;
   intro?: string;
   fonctions: Fonction[];
+  /**
+   * Ce que la formule ne fait pas, sous les fonctions (audit du tunnel du
+   * 15 novembre 2026, friction 5 : la carte Découverte listait ce qu'on a et
+   * jamais ce qu'on n'a pas). Chaque limite doit être vérifiable dans
+   * sitaly-saas ; la vitrine n'annonce pas une limite qu'on ne peut pas prouver.
+   */
+  limites?: { titre: string; texte: string }[];
   badge?: string;
 }
+
+/**
+ * Le nom de domaine offert, dit une seule fois dans le code : la carte
+ * Essentiel, le bloc de passage de l'accueil et le comparatif reprennent cette
+ * phrase au lieu d'en écrire chacun une version.
+ */
+export const DOMAINE_OFFERT = {
+  titre: "Votre nom de domaine, offert",
+  texte:
+    "Un .fr ou un .com enregistré à votre nom, branché sur votre site et renouvelé tant que votre abonnement court.",
+} as const;
 
 const FORMULES: Formule[] = [
   {
@@ -376,6 +394,20 @@ const FORMULES: Formule[] = [
         texte: "Devis illimités, 3 factures par mois, payables par carte ou virement.",
       },
     ],
+    limites: [
+      {
+        titre: "« Site créé avec Sitaly » au pied de votre site",
+        texte: `La mention reste affichée, avec un lien pour créer un site. Avec ${IA.essentiel.nom}, elle devient discrète et vous la retirez d'un clic.`,
+      },
+      {
+        titre: `Carnet de clients plafonné à ${IA.decouverte.contactsMax} contacts`,
+        texte: `Au-delà, il faut supprimer une fiche. ${IA.essentiel.nom} lève le plafond.`,
+      },
+      {
+        titre: "Pas de nom de domaine à vous",
+        texte: `Votre site vit sur une adresse en .sitaly.fr. ${IA.essentiel.nom} vous offre le vôtre.`,
+      },
+    ],
   },
   {
     ...IA.essentiel,
@@ -393,10 +425,7 @@ const FORMULES: Formule[] = [
         texte: "Vos impayés relancés automatiquement à J+1, J+8 et J+15.",
       },
       { titre: "Assistance par e-mail", texte: "Une vraie personne vous répond, en français." },
-      {
-        titre: "Votre nom de domaine, offert",
-        texte: "Un .fr ou un .com enregistré à votre nom, branché sur votre site et renouvelé tant que votre abonnement court.",
-      },
+      { ...DOMAINE_OFFERT },
       {
         titre: "Mention Sitaly discrète et retirable",
         texte: "Votre site affiche « Site réalisé avec Sitaly » en petit, et vous la retirez d'un clic si vous préférez.",
@@ -486,7 +515,7 @@ export function GrilleTarifs() {
 }
 
 function CartePrix({ formule, annuel }: { formule: Formule; annuel: boolean }) {
-  const { nom, mensuel, pour, intro, fonctions, bouton, badge } = formule;
+  const { nom, mensuel, pour, intro, fonctions, limites, bouton, badge } = formule;
   const prix = annuel && mensuel > 0 ? formule.annuel : mensuel;
   return (
     <div
@@ -542,6 +571,131 @@ function CartePrix({ formule, annuel }: { formule: Formule; annuel: boolean }) {
           </li>
         ))}
       </ul>
+      {limites && (
+        <div className="mt-8 border-t border-black/[0.06] pt-8">
+          <p className="text-sm font-medium">Ce que {nom} ne fait pas :</p>
+          <ul className="mt-5 space-y-5">
+            {limites.map((l) => (
+              <li key={l.titre} className="flex gap-3">
+                <X className="mt-0.5 h-4 w-4 shrink-0 text-black/35" aria-hidden="true" />
+                <div>
+                  <div className="text-[15px] font-semibold text-black/55">{l.titre}</div>
+                  <p className="mt-1 text-sm leading-6 text-black/45">{l.texte}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ---------------------------------------------------------------------------
+   Le passage de Découverte à Essentiel (16 novembre 2026)
+   --------------------------------------------------------------------------- */
+
+/**
+ * Ce qu'Essentiel ouvre, dans l'ordre de ce que l'artisan vient de vivre : il a
+ * publié son site sur une adresse en .sitaly.fr, avec la mention Sitaly au
+ * pied. Chaque ligne se vérifie dans sitaly-saas.
+ */
+const OUVERT_PAR_ESSENTIEL: { titre: string; texte: string }[] = [
+  { ...DOMAINE_OFFERT },
+  {
+    titre: "La mention Sitaly, discrète puis retirée",
+    texte:
+      "« Site réalisé avec Sitaly » remplace « Site créé avec Sitaly », en petit, et un clic la retire.",
+  },
+  {
+    titre: "Carnet de clients sans plafond",
+    texte: "Autant de fiches que de clients, avec leurs devis et leurs factures.",
+  },
+  {
+    titre: "Factures illimitées, impayés relancés",
+    texte: "Vos retards de paiement relancés par e-mail à J+1, J+8 et J+15.",
+  },
+  {
+    titre: "Rendez-vous et avis Google",
+    texte:
+      "Vos clients réservent un créneau depuis votre site ; vos avis Google arrivent avec leur réponse prête.",
+  },
+];
+
+/**
+ * Le passage de la formule gratuite à Essentiel, sur l'accueil (16 novembre
+ * 2026). L'audit du tunnel du 15 novembre l'a relevé : la vitrine chiffrait
+ * bien les trois formules, mais ne disait jamais d'un bloc ce que Découverte
+ * arrête ni ce qu'Essentiel ouvre. Les limites viennent de la carte Découverte
+ * (`FORMULES`), le domaine de `DOMAINE_OFFERT` : aucune phrase n'est réécrite ici.
+ */
+export function PassageEssentiel() {
+  const { fonctions, limites = [] } = FORMULES[0];
+  return (
+    <div className="grid gap-5 lg:grid-cols-2">
+      <div className={`${CARTE} flex flex-col p-8 sm:p-10`}>
+        <div className="flex items-baseline gap-2">
+          <h3 className="text-lg font-semibold">{IA.decouverte.nom}</h3>
+          <span className={`text-sm ${TEXTE_GRIS}`}>gratuit, sans carte bancaire</span>
+        </div>
+        <p className="mt-4 text-[17px] leading-7">
+          Votre site est écrit, retouché et mis en ligne sans payer un euro, sur une adresse en
+          <span className="whitespace-nowrap"> .sitaly.fr</span>. Vous restez dessus aussi longtemps
+          que vous voulez.
+        </p>
+        <ul className="mt-8 space-y-4">
+          {fonctions.map((f) => (
+            <li key={f.titre} className="flex gap-3">
+              <Check className="mt-0.5 h-4 w-4 shrink-0 text-black/75" aria-hidden="true" />
+              <span className="text-[15px] leading-6">{f.titre}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-8 border-t border-black/[0.06] pt-8 text-sm font-medium">
+          Là où {IA.decouverte.nom} s'arrête :
+        </p>
+        <ul className="mt-4 space-y-4">
+          {limites.map((l) => (
+            <li key={l.titre} className="flex gap-3">
+              <X className="mt-0.5 h-4 w-4 shrink-0 text-black/35" aria-hidden="true" />
+              <span className="text-[15px] leading-6 text-black/55">{l.titre}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="flex flex-col rounded-3xl bg-[#0d0f14] p-8 text-white sm:p-10">
+        <div className="flex items-baseline gap-2">
+          <h3 className="text-lg font-semibold">{IA.essentiel.nom}</h3>
+          <span className="text-sm text-white/60">
+            {euros(IA.essentiel.mensuel)}/mois, sans engagement
+          </span>
+        </div>
+        <p className="mt-4 text-[17px] leading-7 text-white/80">
+          Vous passez quand votre site vous plaît, pas avant. Ce qui change le jour même :
+        </p>
+        <ul className="mt-8 space-y-5">
+          {OUVERT_PAR_ESSENTIEL.map((f) => (
+            <li key={f.titre} className="flex gap-3">
+              <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#c4b5fd]" aria-hidden="true" />
+              <div>
+                <div className="text-[15px] font-semibold">{f.titre}</div>
+                <p className="mt-1 text-sm leading-6 text-white/60">{f.texte}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <a
+          href={lienCreation()}
+          className="mt-10 inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-medium text-black transition hover:bg-white/90"
+        >
+          Commencer gratuitement
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+        </a>
+        <p className="mt-3 text-sm text-white/55">
+          {MENTION_TVA}. Le détail formule par formule est sur la page Tarifs.
+        </p>
+      </div>
     </div>
   );
 }
@@ -615,7 +769,7 @@ const GROUPES_COMPARES: { titre: string; lignes: LigneComparee[] }[] = [
         valeurs: [true, true, true],
       },
       {
-        libelle: "Votre nom de domaine, offert",
+        libelle: DOMAINE_OFFERT.titre,
         aide: "Enregistré à votre nom, renouvelé tant que l'abonnement court.",
         valeurs: [false, true, true],
       },
@@ -631,6 +785,11 @@ const GROUPES_COMPARES: { titre: string; lignes: LigneComparee[] }[] = [
   {
     titre: "Gérer votre activité",
     lignes: [
+      {
+        libelle: "Carnet de clients",
+        aide: `Les fiches de vos clients, avec leurs devis et leurs factures. ${IA.decouverte.nom} s'arrête à ${IA.decouverte.contactsMax} fiches.`,
+        valeurs: [`${IA.decouverte.contactsMax} contacts`, "Illimité", "Illimité"],
+      },
       { libelle: "Devis acceptés en ligne", valeurs: [true, true, true] },
       {
         libelle: "Devis dicté à la voix",
@@ -840,6 +999,10 @@ export const FAQ_PRODUIT = [
   {
     q: "Quelle sera l'adresse de mon site ?",
     a: "Votre site est publié sur votre-nom.sitaly.fr. Avec Essentiel et Pro, Sitaly vous offre un nom en .fr ou en .com, enregistré à votre nom et branché sur votre site en quelques heures.",
+  },
+  {
+    q: `Que ne permet pas la formule ${IA.decouverte.nom} ?`,
+    a: `Vous créez votre site et vous le publiez sans payer, sur une adresse en .sitaly.fr. Quatre choses restent fermées : votre nom de domaine, la mention « Site créé avec Sitaly » qui reste au pied de votre site, le carnet de clients au-delà de ${IA.decouverte.contactsMax} contacts, et les factures au-delà de trois par mois. ${IA.essentiel.nom}, à ${euros(IA.essentiel.mensuel)} par mois, lève les quatre et ajoute la prise de rendez-vous, vos avis Google et les relances d'impayés.`,
   },
   {
     q: "Mon site sera-t-il trouvé sur Google ?",
