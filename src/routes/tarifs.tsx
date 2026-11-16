@@ -116,7 +116,7 @@ function Tarifs() {
             </div>
             {/* Les devis et les factures sont comparés ligne par ligne au-dessus :
                 le guide comparatif prolonge cette rubrique (16 novembre 2026). */}
-            <p className={`mt-10 text-center text-sm leading-6 ${TEXTE_GRIS}`}>
+            <p className={`mt-10 text-center text-base leading-6 sm:text-sm ${TEXTE_GRIS}`}>
               Devis et factures :{" "}
               <Link
                 to={PILIER_DEVIS.chemin}

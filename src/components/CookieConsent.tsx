@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { activerPixelTiktok, couperPixelTiktok } from "@/lib/pixel-tiktok";
 
@@ -116,12 +116,31 @@ export function CookieConsent() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const surCarte = pathname.startsWith("/carte");
   const montre = visible && !surCarte;
+  const bandeau = useRef<HTMLDivElement | null>(null);
 
+  /**
+   * `--bandeau-cookies` porte la hauteur réelle du bandeau, mesurée, et non une
+   * constante.
+   *
+   * Elle valait 3.25rem en dur. Depuis que la phrase passe à la ligne sur
+   * téléphone, le bandeau fait près du double, et tout ce qui se pose au-dessus
+   * — la bulle de chat, son panneau ouvert, le bouton collant des pages produit
+   * — se retrouvait par-dessus (SITA-28). Un `ResizeObserver` suit la hauteur :
+   * elle change avec la largeur de l'écran et avec la langue du texte.
+   */
   useEffect(() => {
     const racine = document.documentElement;
-    if (montre) racine.style.setProperty("--bandeau-cookies", "3.25rem");
-    else racine.style.removeProperty("--bandeau-cookies");
+    const el = bandeau.current;
+    if (!montre || !el) {
+      racine.style.removeProperty("--bandeau-cookies");
+      return;
+    }
+    const suivre = () => racine.style.setProperty("--bandeau-cookies", `${el.offsetHeight}px`);
+    suivre();
+    const observateur = new ResizeObserver(suivre);
+    observateur.observe(el);
     return () => {
+      observateur.disconnect();
       racine.style.removeProperty("--bandeau-cookies");
     };
   }, [montre]);
@@ -131,6 +150,7 @@ export function CookieConsent() {
 
   return (
     <div
+      ref={bandeau}
       role="region"
       aria-live="polite"
       aria-label="Consentement aux cookies"

@@ -20,6 +20,8 @@
  *     --sortie=<nom>     nom du rapport dans sitaly.fr-audit/mobile/ (défaut : rapport)
  *     --largeurs=320,390 largeurs à tester (défaut : 320,360,375,390,414)
  *     --pages=/,/tarifs/ ne tester que ces chemins
+ *     --liste=<fichier>  lire les chemins dans un fichier, un par ligne
+ *                        (scripts/pages-les-plus-vues.txt pour la passe courte)
  *     --chat             rouvre aussi chaque page bulle de chat ouverte
  *     --captures=/,/tarifs/  enregistre une capture pleine hauteur à 390 px
  *     --dist=<chemin>    racine servie (défaut : dist/client)
@@ -49,6 +51,7 @@ function lireArguments(argv) {
     sortie: "rapport",
     largeurs: LARGEURS_PAR_DEFAUT,
     pages: null,
+    liste: null,
     chat: false,
     captures: [],
     dist: join(racine, "dist/client"),
@@ -67,6 +70,7 @@ function lireArguments(argv) {
         .map((n) => Number(n.trim()))
         .filter(Boolean);
     else if (arg.startsWith("--pages=")) opts.pages = arg.slice(8).split(",").filter(Boolean);
+    else if (arg.startsWith("--liste=")) opts.liste = resolve(racine, arg.slice(8));
     else if (arg.startsWith("--captures="))
       opts.captures = arg.slice(11).split(",").filter(Boolean);
     else if (arg.startsWith("--dist=")) opts.dist = resolve(racine, arg.slice(7));
@@ -85,6 +89,22 @@ async function cheminsDuSitemap() {
     if (!chemins.includes(chemin)) chemins.push(chemin);
   }
   return chemins;
+}
+
+/**
+ * Chemins lus dans un fichier, un par ligne, `#` pour un commentaire.
+ *
+ * Pourquoi : mesurer les 134 pages du sitemap à cinq largeurs sature cette
+ * machine (le run du 16/11 à 22 h 50 s'est coupé en pleine passe). La liste
+ * courte de `scripts/pages-les-plus-vues.txt` garde une page par famille de
+ * gabarit, ce qui suffit à surveiller les composants partagés.
+ */
+async function cheminsDuFichier(fichier) {
+  const texte = await readFile(fichier, "utf8");
+  return texte
+    .split("\n")
+    .map((l) => l.trim())
+    .filter((l) => l && !l.startsWith("#"));
 }
 
 /* --------------------------------------------------------- serveur statique */
@@ -271,22 +291,48 @@ const MESURE = () => {
 
   /** Zones à toucher sous 44 px : la cible du pouce, pas celle de la souris. */
   const petitesCibles = [];
-  for (const el of document.querySelectorAll('a, button, [role="button"], input, select, summary')) {
+  for (const el of document.querySelectorAll(
+    'a, button, [role="button"], input, select, summary',
+  )) {
     const style = getComputedStyle(el);
     if (style.visibility === "hidden" || style.display === "none") continue;
     if (el.type === "hidden") continue;
+    // Ni le pouce ni le clavier n'atteignent ces éléments : le pot de miel du
+    // formulaire d'`/agents-ia/` est un `input` posé à -9999 px, `aria-hidden`
+    // et `tabindex="-1"`. Le mesurer n'apprend rien.
+    if (el.closest('[aria-hidden="true"]') || el.getAttribute("tabindex") === "-1") continue;
     const r = el.getBoundingClientRect();
     if (r.width === 0 || r.height === 0) continue;
-    // Un lien au fil d'une phrase n'est pas une zone à toucher : il suit la ligne,
-    // on ne peut pas lui donner 44 px de haut sans casser l'interligne. Le test :
-    // son paragraphe porte-t-il d'autre texte que le lien lui-même ?
-    const phrase = el.closest("p, li, dd, blockquote, figcaption");
-    if (
-      el.tagName === "A" &&
-      phrase &&
-      (phrase.textContent ?? "").trim().length > (el.textContent ?? "").trim().length + 10
-    )
-      continue;
+    // Une case à cocher dessine un carré de 16 px, mais c'est son `label` qu'on
+    // touche : cocher en appuyant sur le texte est le comportement du
+    // navigateur, pas une astuce. La cible, c'est donc le label.
+    if (["checkbox", "radio"].includes(el.type)) {
+      const etiquette =
+        el.closest("label") ?? (el.id ? document.querySelector(`label[for="${el.id}"]`) : null);
+      if (etiquette && etiquette.getBoundingClientRect().height >= 44) continue;
+    }
+    // Un lien au fil d'une phrase n'est pas une zone à toucher : il suit la
+    // ligne, et lui donner 44 px de haut décalerait l'interligne de la phrase.
+    // Pour qu'il devienne une cible, il faut d'abord qu'il quitte la ligne —
+    // c'est ce qu'on a fait du pied de page des pages légales.
+    //
+    // Deux conditions : le lien coule dans la ligne (`display: inline`, donc un
+    // `block` ou un `inline-flex` posé exprès reste une cible), et le bloc qui
+    // le porte écrit autre chose que lui. Le test cherche le plus proche
+    // ancêtre de bloc plutôt qu'une liste de balises, parce que les pages
+    // légales et les articles enveloppent leurs liens dans des `span`.
+    //
+    // « Autre chose que lui » se prend au pied de la lettre : « Source : Tarifs
+    // Wix » ne laisse que neuf caractères autour du lien, et c'est pourtant une
+    // phrase. À l'inverse, `<li><a>Google Chrome</a></li>` n'en laisse aucun :
+    // le lien est seul, donc il doit se toucher.
+    if (el.tagName === "A" && style.display === "inline") {
+      let bloc = el.parentElement;
+      while (bloc && !["block", "flow-root", "list-item"].includes(getComputedStyle(bloc).display))
+        bloc = bloc.parentElement;
+      const autour = (bloc?.textContent ?? "").trim().length;
+      if (bloc && autour > (el.textContent ?? "").trim().length) continue;
+    }
     if (r.height >= 44 && r.width >= 24) continue;
     petitesCibles.push({
       balise: el.tagName.toLowerCase(),
@@ -330,11 +376,14 @@ const MESURE = () => {
     glisse,
     deborde: html.scrollWidth > vue || glisse > 0,
     ecart: Math.max(html.scrollWidth - vue, glisse),
-    coupables: coupables.slice(0, 12),
-    glissieres: glissieres.slice(0, 12),
-    petitTexte: petitTexte.slice(0, 12),
-    petitesCibles: petitesCibles.slice(0, 12),
-    champs: champs.slice(0, 12),
+    // 60 et non 12 : à douze par page et par largeur, corriger les douze
+    // premiers faisait apparaître les suivants à la passe d'après, sans que
+    // rien ne dise qu'il en restait. On préfère un rapport long et complet.
+    coupables: coupables.slice(0, 60),
+    glissieres: glissieres.slice(0, 60),
+    petitTexte: petitTexte.slice(0, 60),
+    petitesCibles: petitesCibles.slice(0, 60),
+    champs: champs.slice(0, 60),
   };
 };
 
@@ -343,13 +392,35 @@ const MESURE = () => {
  * Le clavier monte, la fenêtre rapetisse, le panneau se remet en page : c'est
  * le moment où l'affichage se déréglait. Renvoie true si un champ a reçu le
  * toucher.
+ *
+ * Le champ de `Fil.tsx` est un `input`, pas un `textarea` : la première version
+ * de ce script ne cherchait qu'un `textarea` et ne touchait donc jamais rien.
  */
 async function toucherLeChampDuChat(page) {
-  const champ = page.locator("[data-chat-panneau] textarea, [role='dialog'] textarea, textarea").first();
-  if ((await champ.count()) === 0) return false;
+  const champ = page
+    .locator('[role="dialog"] form input, [role="dialog"] textarea, [data-chat-panneau] input')
+    .first();
+  if (!(await attendreLaPresence(champ))) return false;
   try {
     await champ.click({ timeout: 2500 });
     await page.waitForTimeout(400);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Attend qu'un élément existe, jusqu'à `delai` ms. Renvoie false à l'épuisement.
+ *
+ * `count()` seul ne suffit pas : `__root.tsx` charge `BulleChat` en `lazy()`,
+ * donc le bouton n'existe qu'une fois son morceau de code arrivé. Compter tout
+ * de suite renvoyait zéro, et la colonne « chat » du rapport restait vide sans
+ * que rien ne signale l'absence de mesure.
+ */
+async function attendreLaPresence(locator, delai = 4000) {
+  try {
+    await locator.waitFor({ state: "attached", timeout: delai });
     return true;
   } catch {
     return false;
@@ -363,7 +434,7 @@ async function ouvrirLeChat(page) {
       'button[aria-label*="chat" i], button[aria-label*="Discuter" i], button[aria-label*="assistant" i], [data-chat-ouvrir]',
     )
     .first();
-  if ((await bouton.count()) === 0) return false;
+  if (!(await attendreLaPresence(bouton))) return false;
   try {
     await bouton.click({ timeout: 2500 });
     await page.waitForTimeout(500);
@@ -418,15 +489,21 @@ async function mesurerUnePage(page, url, largeurs, avecChat) {
     await page.setViewportSize({ width: 390, height: HAUTEUR });
     try {
       const ouvert = await ouvrirLeChat(page);
-      resultats.chat = ouvert ? await page.evaluate(MESURE) : null;
-      if (ouvert && (await toucherLeChampDuChat(page))) {
-        // Le clavier de l'iPhone prend environ la moitié de l'écran, et aucun
-        // navigateur sans interface ne le fait monter : on rapetisse la fenêtre
-        // à sa place. 390 × 400, c'est ce qu'il reste à voir quand on écrit.
-        await page.setViewportSize({ width: 390, height: 400 });
-        await page.waitForTimeout(250);
-        resultats.chatChamp = await page.evaluate(MESURE);
-        await page.setViewportSize({ width: 390, height: HAUTEUR });
+      // Une bulle qui ne s'ouvre pas est un résultat, pas un trou : le rapport
+      // le dit, au lieu d'afficher le même tiret qu'une page sans chat.
+      resultats.chat = ouvert ? await page.evaluate(MESURE) : { erreur: "bulle introuvable" };
+      if (ouvert) {
+        if (await toucherLeChampDuChat(page)) {
+          // Le clavier de l'iPhone prend environ la moitié de l'écran, et aucun
+          // navigateur sans interface ne le fait monter : on rapetisse la fenêtre
+          // à sa place. 390 × 400, c'est ce qu'il reste à voir quand on écrit.
+          await page.setViewportSize({ width: 390, height: 400 });
+          await page.waitForTimeout(250);
+          resultats.chatChamp = await page.evaluate(MESURE);
+          await page.setViewportSize({ width: 390, height: HAUTEUR });
+        } else {
+          resultats.chatChamp = { erreur: "champ introuvable" };
+        }
       }
     } catch (err) {
       resultats.chat = resultats.chat ?? { erreur: String(err.message ?? err) };
@@ -459,7 +536,10 @@ function tableau(mesures, largeurs, avecChat) {
     ...largeurs.map((l) => `${l} px`),
     ...(avecChat ? ["chat 390 px", "chat + champ"] : []),
   ];
-  const lignes = [`| Page | ${colonnes.join(" | ")} |`, `|---|${colonnes.map(() => "---").join("|")}|`];
+  const lignes = [
+    `| Page | ${colonnes.join(" | ")} |`,
+    `|---|${colonnes.map(() => "---").join("|")}|`,
+  ];
   for (const [chemin, par] of Object.entries(mesures)) {
     if (par.erreur) {
       lignes.push(`| \`${chemin}\` | ${colonnes.map(() => "erreur").join(" | ")} |`);
@@ -525,9 +605,20 @@ function regrouper(mesures, champ, valeur) {
 }
 
 /** Une section « du plus répandu au plus rare », ou rien si le relevé est vide. */
+/**
+ * Une section « du plus répandu au plus rare ». Le titre porte le compte, et
+ * la liste s'arrête à 60 : couper en silence donnait l'illusion d'avoir fini.
+ */
 function section(titre, items, ligne) {
   if (!items.length) return [`## ${titre}`, "", "Rien à signaler.", ""];
-  return [`## ${titre}`, "", ...items.slice(0, 25).map(ligne), ""];
+  const montres = items.slice(0, 60);
+  return [
+    `## ${titre} — ${items.length}`,
+    "",
+    ...montres.map(ligne),
+    ...(items.length > montres.length ? [`- …et ${items.length - montres.length} autres.`] : []),
+    "",
+  ];
 }
 
 const nomme = (c) =>
@@ -545,7 +636,8 @@ async function main() {
   // Ted fait glisser la page. Chromium reste disponible pour comparer.
   const lanceur = playwright[opts.moteur];
   if (!lanceur) throw new Error(`Moteur inconnu : ${opts.moteur} (chromium ou webkit)`);
-  const chemins = opts.pages ?? (await cheminsDuSitemap());
+  const chemins =
+    opts.pages ?? (opts.liste ? await cheminsDuFichier(opts.liste) : await cheminsDuSitemap());
   const serveur = await servirDist(opts.dist);
   const base = `http://127.0.0.1:${serveur.address().port}`;
   const profil = await mkdtemp(join(tmpdir(), "sitaly-mesure-"));
@@ -573,7 +665,8 @@ async function main() {
           ...OPTIONS_CONTEXTE,
         })
       : await lanceur.launch({ headless: true });
-  const contexte = opts.moteur === "chromium" ? navigateur : await navigateur.newContext(OPTIONS_CONTEXTE);
+  const contexte =
+    opts.moteur === "chromium" ? navigateur : await navigateur.newContext(OPTIONS_CONTEXTE);
 
   const mesures = {};
   let debordantes = 0;
@@ -660,11 +753,13 @@ async function main() {
     "## Éléments fautifs, du plus répandu au plus rare",
     "",
     ...(coupables.length
-      ? coupables.slice(0, 40).map(
-          (c) =>
-            `- ${nomme(c)} — ${c.pages.length} page(s), jusqu'à +${c.depasseMax} px` +
-            (c.texte ? ` — « ${c.texte} »` : ""),
-        )
+      ? coupables
+          .slice(0, 40)
+          .map(
+            (c) =>
+              `- ${nomme(c)} — ${c.pages.length} page(s), jusqu'à +${c.depasseMax} px` +
+              (c.texte ? ` — « ${c.texte} »` : ""),
+          )
       : ["Rien à signaler."]),
     "",
     ...section(
@@ -682,11 +777,18 @@ async function main() {
         `- ${nomme(c)}${c.type ? ` type=\`${c.type}\`` : ""} — ${c.pages.length} page(s), ${c.taille} px, ${c.hauteur} px de haut` +
         (c.texte ? ` — « ${c.texte} »` : ""),
     ),
-    ...section("Corps de texte sous 16 px", petitTexte, (t) =>
-      `- ${nomme(t)} — ${t.pages.length} page(s), ${t.taille} px — « ${t.texte} »`),
-    ...section("Zones à toucher sous 44 px de haut", petitesCibles, (c) =>
-      `- ${nomme(c)} — ${c.pages.length} page(s), ${c.hauteur}×${c.largeur} px` +
-      (c.texte ? ` — « ${c.texte} »` : "")),
+    ...section(
+      "Corps de texte sous 16 px",
+      petitTexte,
+      (t) => `- ${nomme(t)} — ${t.pages.length} page(s), ${t.taille} px — « ${t.texte} »`,
+    ),
+    ...section(
+      "Zones à toucher sous 44 px de haut",
+      petitesCibles,
+      (c) =>
+        `- ${nomme(c)} — ${c.pages.length} page(s), ${c.hauteur}×${c.largeur} px` +
+        (c.texte ? ` — « ${c.texte} »` : ""),
+    ),
   ].join("\n");
   await writeFile(join(dossier, `${opts.sortie}.md`), md);
   process.stdout.write(

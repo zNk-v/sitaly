@@ -196,7 +196,12 @@ function BlogPostPage() {
             </h1>
             <p className={`mt-6 text-lg leading-8 sm:text-xl ${TEXTE_GRIS}`}>{post.excerpt}</p>
             <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-black/55">
-              <Link to="/a-propos/" className="font-medium text-black hover:underline">
+              {/* Seul lien de la ligne d'auteur : il se touche, donc 44 px sur
+                  téléphone. La date et la durée à côté sont du texte (SITA-28). */}
+              <Link
+                to="/a-propos/"
+                className="inline-flex min-h-11 items-center font-medium text-black hover:underline sm:min-h-0"
+              >
                 {post.author}
               </Link>
               <span>{formatDate(post.publishedAt)}</span>
@@ -231,7 +236,7 @@ function BlogPostPage() {
           {headings.length >= 3 && (
             <nav aria-label="Table des matières" className={`${CARTE} mt-10 p-6`}>
               <div className="text-sm font-semibold">Dans cet article</div>
-              <ol className="mt-3 space-y-2 text-[15px]">
+              <ol className="mt-3 space-y-2 text-base sm:text-[15px]">
                 {headings.map((h, i) => (
                   <li key={h.id} className="flex gap-3">
                     <span className="w-5 shrink-0 text-black/35 tabular-nums">{i + 1}</span>

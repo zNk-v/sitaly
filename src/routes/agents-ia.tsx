@@ -833,7 +833,9 @@ function System() {
           {JOURNEY.map((item) => (
             <li key={item.step} data-reveal className="ai-card p-5">
               <div className="font-display text-sm font-extrabold text-accent">{item.step}</div>
-              <p className="mt-2 text-sm leading-relaxed text-foreground/90">{item.text}</p>
+              <p className="mt-2 text-base leading-relaxed text-foreground/90 sm:text-sm">
+                {item.text}
+              </p>
             </li>
           ))}
         </ol>
@@ -890,7 +892,7 @@ function Agents() {
                 </div>
                 <ul className="mt-3 space-y-2.5">
                   {agent.does.map((d) => (
-                    <li key={d} className="flex items-start gap-2.5 text-sm">
+                    <li key={d} className="flex items-start gap-2.5 text-base sm:text-sm">
                       <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
                       <span className="text-foreground/90">{d}</span>
                     </li>
@@ -902,7 +904,9 @@ function Agents() {
                 <div className="text-[11px] font-semibold uppercase tracking-wider text-success">
                   Ce que ça change
                 </div>
-                <p className="mt-1.5 text-sm leading-relaxed text-foreground/90">{agent.changes}</p>
+                <p className="mt-1.5 text-base leading-relaxed text-foreground/90 sm:text-sm">
+                  {agent.changes}
+                </p>
               </div>
 
               <div className="mt-4 flex items-start gap-2.5 rounded-xl border border-border bg-secondary/50 p-4">
@@ -911,7 +915,7 @@ function Agents() {
                   <div className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                     Reprise humaine
                   </div>
-                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-1 text-base leading-relaxed text-muted-foreground sm:text-sm">
                     {agent.handover}
                   </p>
                 </div>
@@ -943,7 +947,9 @@ function Agents() {
               </div>
               <div>
                 <h3 className="text-[15px] font-bold leading-tight">{agent.name}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{agent.text}</p>
+                <p className="mt-1.5 text-base leading-relaxed text-muted-foreground sm:text-sm">
+                  {agent.text}
+                </p>
               </div>
             </article>
           ))}
@@ -986,7 +992,7 @@ function ServiceClient() {
             <h3 className="text-lg font-bold">Ce que l'agent prend en charge</h3>
             <ul className="mt-6 space-y-4">
               {SERVICE_CLIENT_AGENT.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-[15px]">
+                <li key={item} className="flex items-start gap-3 text-base sm:text-[15px]">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
                   <span className="text-foreground/90">{item}</span>
                 </li>
@@ -998,7 +1004,7 @@ function ServiceClient() {
             <h3 className="text-lg font-bold">Ce qui reste à votre équipe</h3>
             <ul className="mt-6 space-y-4">
               {SERVICE_CLIENT_EQUIPE.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-[15px]">
+                <li key={item} className="flex items-start gap-3 text-base sm:text-[15px]">
                   <UserCheck className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
                   <span className="text-muted-foreground">{item}</span>
                 </li>
@@ -1009,7 +1015,7 @@ function ServiceClient() {
 
         <p
           data-reveal
-          className="mx-auto mt-10 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground"
+          className="mx-auto mt-10 max-w-3xl text-center text-base leading-relaxed text-muted-foreground sm:text-sm"
         >
           L'agent se présente comme une IA dès le début de l'échange, comme l'exige l'article 50 du
           règlement européen sur l'IA depuis le 2 août 2026.{" "}
@@ -1051,7 +1057,10 @@ function Sectors() {
               </p>
               <ul className="mt-5 space-y-2.5 border-t border-border pt-5">
                 {sector.items.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-[13.5px] leading-relaxed">
+                  <li
+                    key={item}
+                    className="flex items-start gap-2.5 text-base leading-relaxed sm:text-[13.5px]"
+                  >
                     <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" aria-hidden="true" />
                     <span className="text-foreground/90">{item}</span>
                   </li>
@@ -1086,7 +1095,7 @@ function Sectors() {
 
         <p
           data-reveal
-          className="mx-auto mt-10 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground"
+          className="mx-auto mt-10 max-w-2xl text-center text-base leading-relaxed text-muted-foreground sm:text-sm"
         >
           Votre métier n'est pas dans la liste ? Le diagnostic part de vos demandes réelles, pas
           d'un modèle préétabli.
@@ -1120,7 +1129,10 @@ function Automations() {
               </div>
               <ul className="mt-5 space-y-2.5">
                 {family.items.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-[13.5px] leading-relaxed">
+                  <li
+                    key={item}
+                    className="flex items-start gap-2.5 text-base leading-relaxed sm:text-[13.5px]"
+                  >
                     <span
                       className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
                       aria-hidden="true"
@@ -1164,7 +1176,7 @@ function BeforeAfter() {
             </div>
             <ul className="mt-6 space-y-4">
               {BEFORE.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-[15px]">
+                <li key={item} className="flex items-start gap-3 text-base sm:text-[15px]">
                   <X className="mt-0.5 h-4 w-4 shrink-0 text-destructive" aria-hidden="true" />
                   <span className="text-muted-foreground">{item}</span>
                 </li>
@@ -1185,7 +1197,7 @@ function BeforeAfter() {
             </div>
             <ul className="mt-6 space-y-4">
               {AFTER.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-[15px]">
+                <li key={item} className="flex items-start gap-3 text-base sm:text-[15px]">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
                   <span className="text-foreground/90">{item}</span>
                 </li>
@@ -1228,7 +1240,7 @@ function Deployment() {
               <h3 className="mt-5 text-lg font-bold">{phase.title}</h3>
               <ul className="mt-5 space-y-3">
                 {phase.items.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm">
+                  <li key={item} className="flex items-start gap-2.5 text-base sm:text-sm">
                     <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
                     <span className="text-muted-foreground">{item}</span>
                   </li>
@@ -1246,7 +1258,7 @@ function Deployment() {
             <div className="font-display text-lg font-bold">
               Déploiement sur mesure après diagnostic
             </div>
-            <p className="mt-1 text-sm text-muted-foreground">
+            <p className="mt-1 text-base text-muted-foreground sm:text-sm">
               Le périmètre, le calendrier et le budget sont chiffrés une fois vos demandes entrantes
               analysées.
               {PRIX_AGENTS_IA.afficher &&
@@ -1285,7 +1297,9 @@ function Control() {
               </div>
               <div>
                 <h3 className="text-[15px] font-bold leading-tight">{g.title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{g.text}</p>
+                <p className="mt-1.5 text-base leading-relaxed text-muted-foreground sm:text-sm">
+                  {g.text}
+                </p>
               </div>
             </div>
           ))}
@@ -1313,7 +1327,7 @@ function Fit() {
             <h3 className="text-lg font-bold">Le bon profil</h3>
             <ul className="mt-6 space-y-4">
               {FIT.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-[15px]">
+                <li key={item} className="flex items-start gap-3 text-base sm:text-[15px]">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
                   <span className="text-foreground/90">{item}</span>
                 </li>
@@ -1325,7 +1339,7 @@ function Fit() {
             <h3 className="text-lg font-bold text-muted-foreground">Ce n'est pas pour vous si</h3>
             <ul className="mt-6 space-y-4">
               {NOT_FIT.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-[15px]">
+                <li key={item} className="flex items-start gap-3 text-base sm:text-[15px]">
                   <X className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />
                   <span className="text-muted-foreground">{item}</span>
                 </li>
@@ -1381,7 +1395,7 @@ function Faq() {
                   <span className="text-lg leading-none">+</span>
                 </span>
               </summary>
-              <p className="px-6 pb-6 text-[15px] leading-relaxed text-muted-foreground">
+              <p className="px-6 pb-6 text-base leading-relaxed text-muted-foreground sm:text-[15px]">
                 <TexteAvecLiens
                   texte={item.a}
                   classeLien="font-semibold text-accent underline-offset-4 hover:underline"
@@ -1456,7 +1470,7 @@ function FinalCta() {
             automatiser et définissons un périmètre de déploiement réaliste.
           </p>
 
-          <ul className="mt-8 space-y-3.5 text-[15px]">
+          <ul className="mt-8 space-y-3.5 text-base sm:text-[15px]">
             {[
               "Analyse de vos demandes entrantes et de vos points de perte",
               "Un périmètre de départ chiffré, pas un devis global",
@@ -1473,7 +1487,7 @@ function FinalCta() {
             <div className="text-sm text-muted-foreground">Vous préférez parler directement ?</div>
             <a
               href={`tel:${SITALY_PHONE}`}
-              className="mt-1 inline-flex items-center gap-2.5 py-1.5 font-display text-2xl font-extrabold tracking-tight transition hover:text-accent"
+              className="mt-1 inline-flex min-h-11 items-center gap-2.5 py-1.5 font-display text-2xl font-extrabold tracking-tight transition hover:text-accent"
             >
               <Phone className="h-5 w-5 text-accent" aria-hidden="true" />
               {SITALY_PHONE_DISPLAY}
@@ -1483,7 +1497,7 @@ function FinalCta() {
                 href={CALENDLY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block py-2 text-sm font-semibold text-accent underline-offset-4 hover:underline"
+                className="inline-flex min-h-11 items-center py-2 text-base font-semibold text-accent underline-offset-4 hover:underline sm:min-h-0 sm:text-sm"
               >
                 Réserver un créneau en ligne
               </a>
@@ -1622,7 +1636,7 @@ function DiagnosticForm() {
   return (
     <form onSubmit={handleSubmit} className="ai-card relative p-6 sm:p-8">
       <h3 className="font-display text-xl font-bold">{CTA_LABEL}</h3>
-      <p className="mt-2 text-sm text-muted-foreground">
+      <p className="mt-2 text-base text-muted-foreground sm:text-sm">
         Sept champs, deux minutes. Nous préparons l'échange à partir de vos réponses.
       </p>
 

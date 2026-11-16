@@ -157,7 +157,11 @@ function PageDOffre() {
           <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-[1fr_24rem] lg:items-center">
             <div>
               <div className="rail-label text-brand-ink">
-                <Link to="/tarifs/" hash={GROUPES[o.groupe].ancre} className="hover:underline">
+                <Link
+                  to="/tarifs/"
+                  hash={GROUPES[o.groupe].ancre}
+                  className="inline-flex min-h-11 items-center hover:underline sm:min-h-0"
+                >
                   {GROUPES[o.groupe].titre}
                 </Link>
               </div>
@@ -187,7 +191,7 @@ function PageDOffre() {
                   <span className="font-medium text-white/70">/mois</span>
                 )}
               </p>
-              <p className="mt-2 text-[15px] font-medium text-white/85">
+              <p className="mt-2 text-base sm:text-[15px] font-medium text-white/85">
                 + {o.aPartirDe ? "dès " : ""}
                 {euros(o.depart)} {o.departLibelle}
               </p>
@@ -204,7 +208,7 @@ function PageDOffre() {
                 <Link
                   to="/tarifs/"
                   hash={GROUPES[o.groupe].ancre}
-                  className="mt-4 block text-center text-sm font-semibold text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white"
+                  className="mt-4 flex min-h-11 items-center justify-center text-center text-base font-semibold text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white sm:min-h-0 sm:text-sm"
                 >
                   Comparer les {groupe.length} offres
                 </Link>
@@ -212,7 +216,7 @@ function PageDOffre() {
               {o.id === "presence" && (
                 <a
                   href={`${APP_URL}/creer`}
-                  className="mt-4 block text-center text-sm font-semibold text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white"
+                  className="mt-4 flex min-h-11 items-center justify-center text-center text-base font-semibold text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white sm:min-h-0 sm:text-sm"
                 >
                   Vous préférez créer votre site vous-même ?
                 </a>
@@ -262,7 +266,7 @@ function PageDOffre() {
                       </span>
                       {r.titre}
                     </p>
-                    <ul className="mt-4 space-y-2.5 text-[15px]">
+                    <ul className="mt-4 space-y-2.5 text-base sm:text-[15px]">
                       {lignes.map((l) => {
                         const v = l.valeurs[o.id];
                         return (
@@ -332,7 +336,7 @@ function PageDOffre() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <h3 className="mt-2 font-display text-lg font-bold">{e.titre}</h3>
-                  <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
+                  <p className="mt-2 text-base sm:text-[15px] leading-relaxed text-muted-foreground">
                     {e.texte}
                   </p>
                 </li>
@@ -380,7 +384,7 @@ function PageDOffre() {
               </BlocPrix>
             </div>
             {site && (
-              <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
+              <p className="mt-6 max-w-3xl text-base sm:text-[15px] leading-relaxed text-muted-foreground">
                 Le site reste la propriété de Sitaly tant que dure l'abonnement : c'est ce qui
                 permet d'inclure la création dans la mensualité. Si vous partez, vous pouvez le
                 racheter (
@@ -400,7 +404,7 @@ function PageDOffre() {
                 <h2 className="font-display text-3xl font-bold tracking-tight">Des sites livrés</h2>
                 <Link
                   to="/realisations/"
-                  className="inline-flex items-center gap-2 font-semibold text-brand-ink"
+                  className="inline-flex min-h-11 items-center gap-2 font-semibold text-brand-ink sm:min-h-0"
                 >
                   Toutes les réalisations
                   <ArrowRight className="h-4 w-4" />
@@ -423,7 +427,7 @@ function PageDOffre() {
                       />
                       <div className="p-5 pb-0">
                         <p className="font-display text-lg font-bold">{r.client}</p>
-                        <p className="mt-1 text-sm text-muted-foreground">
+                        <p className="mt-1 text-base text-muted-foreground sm:text-sm">
                           {r.metier}, {r.zone}
                         </p>
                       </div>
@@ -433,7 +437,7 @@ function PageDOffre() {
                         href={r.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-ink hover:underline"
+                        className="inline-flex min-h-11 items-center gap-1.5 text-base font-semibold text-brand-ink hover:underline sm:min-h-0 sm:text-sm"
                       >
                         {r.domaine}
                         <ExternalLink className="h-3.5 w-3.5" />
@@ -499,7 +503,7 @@ function Ecart({
     <div className="flex flex-col rounded-2xl border border-border bg-card p-6 shadow-soft">
       <h3 className="font-display text-lg font-bold">{titre}</h3>
       <p className="mt-1 text-sm font-semibold text-brand-ink">{prix}</p>
-      <ul className="mt-4 flex-1 space-y-2.5 text-[15px]">
+      <ul className="mt-4 flex-1 space-y-2.5 text-base sm:text-[15px]">
         {lignes.map((l) => (
           <li key={l} className="flex gap-3">
             <Plus className="mt-0.5 h-4 w-4 shrink-0 text-brand-ink" />
@@ -534,7 +538,9 @@ function BlocPrix({ titre, children }: { titre: string; children: React.ReactNod
   return (
     <div className="rounded-2xl border border-border bg-card p-6 shadow-soft">
       <h3 className="font-display text-lg font-bold">{titre}</h3>
-      <div className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{children}</div>
+      <div className="mt-3 text-base sm:text-[15px] leading-relaxed text-muted-foreground">
+        {children}
+      </div>
     </div>
   );
 }

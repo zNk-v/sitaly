@@ -62,9 +62,9 @@ export function OffresEnBref({ ids, apres }: { ids: OffreId[]; apres?: React.Rea
               </span>
               {o.mensuel !== undefined && <span className="font-medium opacity-70">/mois</span>}
             </p>
-            <p className="mt-2 text-[15px] font-medium opacity-85">{ligneDepart(o)}</p>
+            <p className="mt-2 text-base sm:text-[15px] font-medium opacity-85">{ligneDepart(o)}</p>
             <ul
-              className={`mt-6 flex-1 space-y-2.5 border-t pt-6 text-[15px] ${
+              className={`mt-6 flex-1 space-y-2.5 border-t pt-6 text-base sm:text-[15px] ${
                 o.recommandee ? "border-white/10" : "border-border"
               }`}
             >

@@ -63,10 +63,30 @@ export function Bloc({ children }: { children: React.ReactNode }) {
 /** L'habillage d'un lien posé au fil du texte. */
 const LIEN_TEXTE = "font-medium text-black underline underline-offset-4";
 
-/** Un lien de texte vers une autre page du site. */
-export function LienTexte({ to, children }: { to: string; children: React.ReactNode }) {
+/**
+ * Le même lien, mais seul sur sa ligne : il prend 44 px de haut sur téléphone,
+ * et retrouve la hauteur de son texte dès `sm` (SITA-28). Au fil d'une phrase on
+ * ne peut pas grandir sans décaler l'interligne ; seul sur sa ligne, si.
+ */
+const LIEN_TEXTE_SEUL = `inline-flex min-h-11 items-center sm:min-h-0 ${LIEN_TEXTE}`;
+
+/**
+ * Un lien de texte vers une autre page du site.
+ *
+ * `seul` quand le lien occupe sa propre ligne : il devient alors une zone à
+ * toucher de 44 px, ce qu'un lien au fil d'une phrase ne peut pas être.
+ */
+export function LienTexte({
+  to,
+  seul,
+  children,
+}: {
+  to: string;
+  seul?: boolean;
+  children: React.ReactNode;
+}) {
   return (
-    <Link to={to} className={LIEN_TEXTE}>
+    <Link to={to} className={seul ? LIEN_TEXTE_SEUL : LIEN_TEXTE}>
       {children}
     </Link>
   );

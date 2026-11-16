@@ -308,7 +308,9 @@ function PageCreerSite() {
             ))}
           </ul>
           <p className="mt-6">
-            <LienTexte to="/modeles/">Voir tous les modèles</LienTexte>
+            <LienTexte to="/modeles/" seul>
+              Voir tous les modèles
+            </LienTexte>
           </p>
         </Bloc>
 
@@ -347,7 +349,9 @@ function PageCreerSite() {
           </div>
           <Confiance />
           <p className={`mt-6 text-center ${TEXTE_GRIS}`}>
-            <LienTexte to="/tarifs/">Voir les tarifs</LienTexte>
+            <LienTexte to="/tarifs/" seul>
+              Voir les tarifs
+            </LienTexte>
           </p>
         </section>
       </SiteChrome>

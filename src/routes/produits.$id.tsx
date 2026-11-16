@@ -122,7 +122,7 @@ function PageProduit() {
             {/* Le guide comparatif du produit (16 novembre 2026), quand il
                 existe : celui qui compare avant de choisir le lit d'abord. */}
             {guide && (
-              <p className={`mt-6 text-sm ${TEXTE_GRIS}`}>
+              <p className={`mt-6 text-base sm:text-sm ${TEXTE_GRIS}`}>
                 Vous comparez encore les outils ?{" "}
                 <Link
                   to={guide.chemin}

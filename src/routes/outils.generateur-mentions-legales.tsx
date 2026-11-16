@@ -331,12 +331,12 @@ function GenerateurMentions() {
   );
 
   const caseACocher = (cle: keyof Saisie, label: string) => (
-    <label className="flex cursor-pointer items-start gap-3 text-[15px]">
+    <label className="flex min-h-11 cursor-pointer items-start gap-3 text-base sm:min-h-0 sm:text-[15px]">
       <input
         type="checkbox"
         checked={s[cle] as boolean}
         onChange={(e) => maj(cle, e.target.checked as never)}
-        className="mt-1 h-4 w-4 shrink-0 accent-black"
+        className="mt-1 h-5 w-5 shrink-0 accent-black sm:h-4 sm:w-4"
       />
       <span>{label}</span>
     </label>

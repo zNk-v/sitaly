@@ -199,7 +199,7 @@ export function BoiteApp({ idees = true }: { idees?: boolean }) {
               key={idee}
               type="button"
               onClick={() => setActivite(idee)}
-              className={`rounded-full bg-black/[0.04] px-3.5 py-1.5 text-sm text-black/65 transition hover:bg-black/[0.08] ${k >= 2 ? "hidden sm:inline-block" : ""}`}
+              className={`min-h-11 items-center rounded-full bg-black/[0.04] px-3.5 py-1.5 text-sm text-black/65 transition hover:bg-black/[0.08] sm:min-h-0 ${k >= 2 ? "hidden sm:inline-flex" : "inline-flex"}`}
             >
               {idee}
             </button>
@@ -500,7 +500,7 @@ export function GrilleTarifs() {
               role="radio"
               aria-checked={annuel === valeur}
               onClick={() => setAnnuel(valeur as boolean)}
-              className={`inline-flex min-h-10 items-center gap-2 rounded-full px-5 transition ${annuel === valeur ? "bg-white shadow-sm" : "text-black/55 hover:text-black/80"}`}
+              className={`inline-flex min-h-11 items-center gap-2 rounded-full px-5 transition sm:min-h-10 ${annuel === valeur ? "bg-white shadow-sm" : "text-black/55 hover:text-black/80"}`}
             >
               {libelle as string}
               {valeur && (
@@ -576,7 +576,9 @@ function CartePrix({ formule, annuel }: { formule: Formule; annuel: boolean }) {
                   </span>
                 )}
               </div>
-              <p className={`mt-1 text-sm leading-6 ${f.bientot ? "text-black/45" : TEXTE_GRIS}`}>
+              <p
+                className={`mt-1 text-base leading-6 sm:text-sm ${f.bientot ? "text-black/45" : TEXTE_GRIS}`}
+              >
                 {f.texte}
               </p>
             </div>
@@ -592,7 +594,7 @@ function CartePrix({ formule, annuel }: { formule: Formule; annuel: boolean }) {
                 <X className="mt-0.5 h-4 w-4 shrink-0 text-black/35" aria-hidden="true" />
                 <div>
                   <div className="text-[15px] font-semibold text-black/55">{l.titre}</div>
-                  <p className="mt-1 text-sm leading-6 text-black/45">{l.texte}</p>
+                  <p className="mt-1 text-base leading-6 text-black/45 sm:text-sm">{l.texte}</p>
                 </div>
               </li>
             ))}
@@ -692,7 +694,7 @@ export function PassageEssentiel() {
               <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#c4b5fd]" aria-hidden="true" />
               <div>
                 <div className="text-[15px] font-semibold">{f.titre}</div>
-                <p className="mt-1 text-sm leading-6 text-white/60">{f.texte}</p>
+                <p className="mt-1 text-base leading-6 text-white/60 sm:text-sm">{f.texte}</p>
               </div>
             </li>
           ))}
@@ -939,7 +941,7 @@ export function TableauFormules() {
               role="tab"
               aria-selected={choix === k}
               onClick={() => setChoix(k)}
-              className={`min-h-10 rounded-full transition ${choix === k ? "bg-white shadow-sm" : "text-black/55"}`}
+              className={`min-h-11 rounded-full transition sm:min-h-10 ${choix === k ? "bg-white shadow-sm" : "text-black/55"}`}
             >
               {nom}
             </button>

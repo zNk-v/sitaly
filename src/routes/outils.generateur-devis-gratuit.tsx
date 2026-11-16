@@ -318,12 +318,14 @@ function GenerateurDevis() {
                   autoComplete: "email",
                   facultatif: true,
                 })}
-                <label className="flex cursor-pointer items-start gap-3 text-[15px]">
+                {/* Le label est la cible du pouce : 44 px de haut sur téléphone,
+                    et la case passe de 16 à 20 px pour qu'on la voie (SITA-28). */}
+                <label className="flex min-h-11 cursor-pointer items-start gap-3 text-base sm:min-h-0 sm:text-[15px]">
                   <input
                     type="checkbox"
                     checked={franchise}
                     onChange={(e) => setFranchise(e.target.checked)}
-                    className="mt-1 h-4 w-4 shrink-0 accent-black"
+                    className="mt-1 h-5 w-5 shrink-0 accent-black sm:h-4 sm:w-4"
                   />
                   <span>Je ne facture pas la TVA (auto-entrepreneur en franchise en base)</span>
                 </label>
@@ -383,14 +385,14 @@ function GenerateurDevis() {
                           onChange={(e) => majLigne(l.cle, "designation", e.target.value)}
                           maxLength={240}
                           placeholder="Désignation. Ex. : Pose d'un chauffe-eau 200 L"
-                          className="h-10 w-full rounded-xl bg-white px-3 outline-none placeholder:text-black/40 focus:ring-2 focus:ring-black/15"
+                          className="h-11 w-full rounded-xl bg-white px-3 outline-none placeholder:text-black/40 focus:ring-2 focus:ring-black/15 sm:h-10"
                         />
                         <button
                           type="button"
                           aria-label={`Supprimer la ligne ${k + 1}`}
                           disabled={lignes.length === 1}
                           onClick={() => setLignes((avant) => avant.filter((x) => x.cle !== l.cle))}
-                          className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-black/50 transition hover:text-black disabled:opacity-30"
+                          className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white text-black/50 transition hover:text-black disabled:opacity-30 sm:h-10 sm:w-10"
                         >
                           <Trash2 className="h-4 w-4" />
                         </button>
@@ -402,7 +404,7 @@ function GenerateurDevis() {
                           value={l.quantite}
                           onChange={(e) => majLigne(l.cle, "quantite", e.target.value)}
                           placeholder="Quantité"
-                          className="h-10 w-full rounded-xl bg-white px-3 outline-none placeholder:text-black/40 focus:ring-2 focus:ring-black/15"
+                          className="h-11 w-full rounded-xl bg-white px-3 outline-none placeholder:text-black/40 focus:ring-2 focus:ring-black/15 sm:h-10"
                         />
                         <input
                           aria-label={`Unité de la ligne ${k + 1}`}
@@ -410,7 +412,7 @@ function GenerateurDevis() {
                           onChange={(e) => majLigne(l.cle, "unite", e.target.value)}
                           maxLength={16}
                           placeholder="Unité (h, m², forfait)"
-                          className="h-10 w-full rounded-xl bg-white px-3 outline-none placeholder:text-black/40 focus:ring-2 focus:ring-black/15"
+                          className="h-11 w-full rounded-xl bg-white px-3 outline-none placeholder:text-black/40 focus:ring-2 focus:ring-black/15 sm:h-10"
                         />
                         <input
                           aria-label={`Prix unitaire hors taxes de la ligne ${k + 1}`}
@@ -418,7 +420,7 @@ function GenerateurDevis() {
                           value={l.prix}
                           onChange={(e) => majLigne(l.cle, "prix", e.target.value)}
                           placeholder="Prix unitaire HT"
-                          className="h-10 w-full rounded-xl bg-white px-3 outline-none placeholder:text-black/40 focus:ring-2 focus:ring-black/15"
+                          className="h-11 w-full rounded-xl bg-white px-3 outline-none placeholder:text-black/40 focus:ring-2 focus:ring-black/15 sm:h-10"
                         />
                       </div>
                     </div>

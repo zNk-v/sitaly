@@ -282,7 +282,7 @@ export function Carrousel() {
                 <a
                   href={lienCreation(m.phrase)}
                   tabIndex={k === i ? 0 : -1}
-                  className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 text-sm font-semibold text-black hover:bg-white"
+                  className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-full bg-white/95 px-4 py-2 text-sm font-semibold text-black hover:bg-white sm:min-h-0"
                 >
                   Essayer avec « {m.phrase.split(",")[0]} »
                   <ArrowRight className="h-4 w-4" />
@@ -295,8 +295,11 @@ export function Carrousel() {
             </figure>
           ))}
         </div>
+        {/* Les pastilles mesurent 8 px : c'est le dessin, et un pouce ne les
+            attrape pas. Le bouton prend donc 44 px de haut sur téléphone, et la
+            pastille n'est plus que ce qu'on voit à l'intérieur (SITA-28). */}
         <div
-          className="mt-6 flex justify-center gap-2"
+          className="mt-2 flex flex-wrap justify-center gap-1 sm:mt-6 sm:gap-2"
           role="tablist"
           aria-label="Choisir un métier"
         >
@@ -308,8 +311,13 @@ export function Carrousel() {
               aria-selected={k === i}
               aria-label={m.activite}
               onClick={() => setI(k)}
-              className={`h-2 rounded-full transition-all ${k === i ? "w-7 bg-black/80" : "w-2 bg-black/20 hover:bg-black/40"}`}
-            />
+              className="grid h-11 w-6 place-items-center sm:h-2 sm:w-auto"
+            >
+              <span
+                aria-hidden="true"
+                className={`block h-2 rounded-full transition-all ${k === i ? "w-5 bg-black/80 sm:w-7" : "w-2 bg-black/20 hover:bg-black/40"}`}
+              />
+            </button>
           ))}
         </div>
       </div>
@@ -378,13 +386,13 @@ export function BarreCollante() {
             value={activite}
             onChange={(e) => setActivite(e.target.value)}
             placeholder="Quelle est votre activité ?"
-            className="min-h-10 min-w-0 flex-1 bg-transparent text-[16px] outline-none placeholder:text-black/40"
+            className="min-h-11 min-w-0 flex-1 bg-transparent text-[16px] outline-none placeholder:text-black/40 sm:min-h-10"
           />
           <button
             type="submit"
             tabIndex={montre ? 0 : -1}
             aria-label="Créer mon site"
-            className="inline-flex h-10 shrink-0 items-center gap-2 rounded-full bg-black/85 px-4 text-sm font-medium text-white hover:bg-black"
+            className="inline-flex h-11 shrink-0 items-center gap-2 rounded-full bg-black/85 px-4 text-sm font-medium text-white hover:bg-black sm:h-10"
           >
             <span className="sm:hidden">Créer</span>
             <span className="hidden sm:inline">Créer mon site</span>

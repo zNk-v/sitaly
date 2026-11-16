@@ -276,13 +276,13 @@ export default function BulleChat() {
                 />
                 {TEXTES.titre}
               </p>
-              <p className="mt-0.5 text-xs leading-snug text-white/90">{TEXTES.sous}</p>
+              <p className="mt-0.5 text-sm leading-snug text-white/90 sm:text-xs">{TEXTES.sous}</p>
             </div>
             <button
               type="button"
               onClick={fermer}
               aria-label="Fermer la discussion"
-              className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-white/80 transition hover:bg-white/15 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+              className="grid h-11 w-11 shrink-0 place-items-center rounded-full text-white/80 transition hover:bg-white/15 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 sm:h-9 sm:w-9"
             >
               <X className="h-4 w-4" aria-hidden="true" />
             </button>
@@ -339,7 +339,7 @@ export default function BulleChat() {
             </form>
           )}
 
-          <p className="border-t border-black/[0.07] px-4 py-2.5 text-[11px] leading-snug text-black/45">
+          <p className="border-t border-black/[0.07] px-4 py-2.5 text-xs leading-snug text-black/45 sm:text-[11px]">
             {TEXTES.pied}{" "}
             <a href="/politique-confidentialite/" className="underline">
               Confidentialité

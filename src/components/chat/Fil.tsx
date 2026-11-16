@@ -8,6 +8,11 @@ import { ArrowUp } from "lucide-react";
  *
  * La liste porte role="log" et aria-live="polite" : un lecteur d'écran annonce
  * chaque réponse sans voler le focus au champ.
+ *
+ * Téléphone d'abord (SITA-28) : les réponses se lisent en 16 px et les boutons
+ * font 44 px, puis `sm:` les ramène à 14 px et 40 px pour la souris. Le chat
+ * suit le visiteur sur toutes les pages, donc une mesure trop petite ici se
+ * retrouve partout — c'est bien là que Ted avait vu l'affichage se dérégler.
  */
 
 export type Ligne = {
@@ -89,7 +94,7 @@ export function Fil({
               </p>
             )}
             <p
-              className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${AUTEURS[l.auteur].classe}`}
+              className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-3.5 py-2.5 text-base leading-relaxed sm:text-sm ${AUTEURS[l.auteur].classe}`}
             >
               {l.texte}
             </p>
@@ -97,7 +102,7 @@ export function Fil({
               <button
                 type="button"
                 onClick={surParlerATed}
-                className="mt-2 inline-flex min-h-10 items-center rounded-xl bg-[linear-gradient(to_top_right,#0b53b0,#3049ba,#483dc1,#5d2dc4,#7014c2,#8c009e,#9d0073,#a60047,#a51111)] px-4 text-sm font-medium text-white shadow-sm transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7014c2]/40"
+                className="mt-2 inline-flex min-h-11 items-center rounded-xl bg-[linear-gradient(to_top_right,#0b53b0,#3049ba,#483dc1,#5d2dc4,#7014c2,#8c009e,#9d0073,#a60047,#a51111)] px-4 text-base font-medium text-white shadow-sm transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7014c2]/40 sm:min-h-10 sm:text-sm"
               >
                 Parler à Ted
               </button>
@@ -106,7 +111,7 @@ export function Fil({
         ))}
 
         {attente && (
-          <p className="text-sm text-black/45">
+          <p className="text-base text-black/45 sm:text-sm">
             Sitaly écrit<span className="motion-safe:animate-pulse">…</span>
           </p>
         )}
@@ -119,7 +124,7 @@ export function Fil({
                   type="button"
                   onClick={() => envoyer(q)}
                   disabled={desactive}
-                  className="w-full rounded-xl border border-[#7014c2]/25 bg-white px-3.5 py-2.5 text-left text-sm font-medium text-[#5d2dc4] transition hover:border-[#7014c2]/50 hover:bg-[#f6effc] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7014c2]/30 disabled:opacity-50"
+                  className="min-h-11 w-full rounded-xl border border-[#7014c2]/25 bg-white px-3.5 py-2.5 text-left text-base font-medium text-[#5d2dc4] transition hover:border-[#7014c2]/50 hover:bg-[#f6effc] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7014c2]/30 disabled:opacity-50 sm:min-h-0 sm:text-sm"
                 >
                   {q}
                 </button>
@@ -151,7 +156,7 @@ export function Fil({
           type="submit"
           aria-label="Envoyer la question"
           disabled={attente || desactive || !texte.trim()}
-          className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[linear-gradient(to_top_right,#0b53b0,#3049ba,#483dc1,#5d2dc4,#7014c2,#8c009e,#9d0073,#a60047,#a51111)] text-white transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7014c2]/40 disabled:opacity-40"
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[linear-gradient(to_top_right,#0b53b0,#3049ba,#483dc1,#5d2dc4,#7014c2,#8c009e,#9d0073,#a60047,#a51111)] text-white transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7014c2]/40 disabled:opacity-40 sm:h-10 sm:w-10"
         >
           <ArrowUp className="h-4 w-4" aria-hidden="true" />
         </button>

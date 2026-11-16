@@ -170,7 +170,7 @@ export function CarteRealisations() {
                   <p className="font-display text-lg font-extrabold leading-tight tracking-tight">
                     {r.client}
                   </p>
-                  <p className="mt-1 text-sm text-muted-foreground">
+                  <p className="mt-1 text-base text-muted-foreground sm:text-sm">
                     {r.metier} · {r.zone}
                   </p>
 

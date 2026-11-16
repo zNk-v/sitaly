@@ -261,6 +261,17 @@
   }
 }
 
+/* Le bas de page se lit entièrement, bandeau des cookies compris (SITA-28).
+
+   Le bandeau est `fixed` en bas de l'écran : il recouvrait la fin de chaque
+   page, et sur les pages légales c'étaient les quatre liens du pied qui
+   passaient dessous. On rend au défilement la hauteur que le bandeau prend —
+   `CookieConsent` la mesure et la publie dans `--bandeau-cookies`, elle vaut
+   zéro dès que le visiteur a répondu. */
+body {
+  padding-bottom: var(--bandeau-cookies, 0px);
+}
+
 /* Fil d'Ariane au pouce, sur téléphone (SITA-28).
 
    Les douze pages qui portent un fil d'Ariane écrivent le même balisage à la
@@ -1753,12 +1764,20 @@
   white-space: nowrap;
 }
 
+/* La phrase qui explique l'étape du schéma. Téléphone d'abord : 16 px, puis
+   13 px à partir de 640 px, où elle redevient une légende (SITA-28). */
 .wfc-blurb {
   padding: 10px 18px 2px;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.5;
   color: #a8a8b6;
   max-width: 62ch;
+}
+
+@media (min-width: 640px) {
+  .wfc-blurb {
+    font-size: 13px;
+  }
 }
 
 .wfc-svg {

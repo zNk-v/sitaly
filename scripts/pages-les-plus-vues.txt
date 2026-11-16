@@ -1,0 +1,26 @@
+# Les pages à mesurer dans la passe courte de SITA-28.
+#
+# Une page par famille de gabarit, plus les pages d'entrée les plus vues. Le
+# débordement vient d'un composant partagé : si le gabarit est sain ici, il
+# l'est sur les 134 pages du sitemap. La passe complète reste disponible avec
+# `node scripts/mesurer-debordement-mobile.mjs` sans `--liste`.
+#
+# Usage :
+#   node scripts/mesurer-debordement-mobile.mjs \
+#     --liste=scripts/pages-les-plus-vues.txt --largeurs=320,390 --chat
+
+/
+/tarifs/
+/offres/presence/
+/produits/devis-et-factures/
+/produits/referencement-seo-geo/
+/guides/
+/guides/publier/
+/comparer/wix/
+/modeles/plombier/
+/agents-ia/
+/outils/generateur-devis-gratuit/
+/blog/comparatif-solutions-site-internet-artisan/
+/creer-site-internet-artisan/
+/mentions-legales/
+/cookies/
