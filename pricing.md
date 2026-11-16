@@ -9,15 +9,22 @@ TVA non applicable, art. 293 B du CGI. Sans engagement au mois ; l'annuel se pai
 - En ligne sur votre-nom.sitaly.fr, avec HTTPS
 - 50 crédits IA offerts
 - Devis illimités, 3 factures par mois, payables par carte ou virement
-- Le pied du site porte la mention « Site créé avec Sitaly »
+- Carnet de clients : 10 contacts
+
+Ce que Découverte ne fait pas :
+- Pas de nom de domaine à vous : le site reste sur une adresse en .sitaly.fr
+- Le pied du site porte la mention « Site créé avec Sitaly », sans possibilité de la retirer
+- Le carnet de clients s'arrête à 10 contacts
+- Pas de prise de rendez-vous, pas d'avis Google sur le site, pas de relance d'impayés
 
 ## Essentiel : 39 € par mois ou 398 € par an
 Tout Découverte, plus :
 - 500 crédits IA par mois
 - Factures illimitées, impayés relancés à J+1, J+8 et J+15
+- Carnet de clients sans plafond
 - Assistance par e-mail, en français
 - Nom de domaine en .fr ou en .com offert, enregistré à votre nom, renouvelé tant que l'abonnement court
-- Sans la mention « Site créé avec Sitaly » au pied du site
+- La mention devient « Site réalisé avec Sitaly », en petit, et se retire d'un clic
 - Prise de rendez-vous en ligne
 - Avis Google : réponse prête à chaque nouvel avis, publiée d'un clic ; demande d'avis à vos clients
 

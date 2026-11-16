@@ -38,8 +38,8 @@ Tutoriels vidéo : https://sitaly.fr/guides/
 
 ## Formules (https://sitaly.fr/tarifs/)
 
-- **Découverte, 0 €, sans carte bancaire** : site créé par l'IA, en ligne sur votre-nom.sitaly.fr avec HTTPS, 50 crédits IA offerts, devis illimités, 3 factures par mois.
-- **Essentiel, 39 € par mois ou 398 € par an** : 500 crédits IA par mois, factures illimitées et relances d'impayés, assistance par e-mail, nom de domaine offert, site sans la mention « Site créé avec Sitaly », prise de rendez-vous en ligne, avis Google.
+- **Découverte, 0 €, sans carte bancaire** : site créé par l'IA, en ligne sur votre-nom.sitaly.fr avec HTTPS, 50 crédits IA offerts, devis illimités, 3 factures par mois, carnet de 10 contacts. Ce que Découverte ne fait pas : pas de nom de domaine à soi, la mention « Site créé avec Sitaly » reste au pied du site sans pouvoir être retirée, le carnet de clients s'arrête à 10 contacts, pas de prise de rendez-vous ni d'avis Google sur le site.
+- **Essentiel, 39 € par mois ou 398 € par an** : 500 crédits IA par mois, factures illimitées et relances d'impayés à J+1, J+8 et J+15, carnet de clients sans plafond, assistance par e-mail, nom de domaine en .fr ou en .com offert, enregistré au nom du client et renouvelé tant que l'abonnement court, mention réduite à « Site réalisé avec Sitaly » en petit et retirable d'un clic, prise de rendez-vous en ligne, avis Google.
 - **Pro, 79 € par mois ou 806 € par an** : le modèle d'IA le plus avancé, 2 500 crédits IA par mois, un rendez-vous de mise en place avec l'équipe Sitaly.
 
 TVA non applicable, art. 293 B du CGI. Sans engagement au mois ; l'annuel se paie pour un an.
