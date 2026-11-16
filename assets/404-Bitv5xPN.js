@@ -1,0 +1,1 @@
+import{Lt as e}from"./index-BYj-nBEy.js";var t=e;export{t as component};
