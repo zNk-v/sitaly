@@ -1628,17 +1628,16 @@
   overflow: hidden;
 }
 
-/* --- Sélecteur d'onglets (pills discrètes, scrollable sur mobile) --- */
+/* --- Sélecteur d'onglets (pills discrètes, qui passent à la ligne) ---
+   Elles défilaient horizontalement : sur un écran de 390 px, 666 px d'onglets
+   restaient hors champ, donc trois workflows sur cinq invisibles sans glisser
+   le doigt (SITA-28). Elles passent à la ligne ; sur grand écran elles tiennent
+   déjà sur une seule, le repli ne change rien. */
 .wfc-tabs {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   padding: 14px 16px 4px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-.wfc-tabs::-webkit-scrollbar {
-  display: none;
 }
 .wfc-tab {
   flex: none;

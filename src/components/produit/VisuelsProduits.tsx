@@ -36,12 +36,16 @@ function Reservation() {
   const heures = ["09:00", "09:45", "10:30", "14:30", "15:15", "16:00"];
   return (
     <div className={`${PANNEAU} grid gap-4 md:grid-cols-[1.25fr_1fr] md:items-center`}>
-      <div className="rounded-2xl bg-white p-5 sm:p-6">
+      {/* `min-w-0` : sans lui, cette carte garde la largeur minimale de son
+          contenu (335 px) et pousse la page de 47 px à 320 px de large. */}
+      <div className="min-w-0 rounded-2xl bg-white p-5 sm:p-6">
         <div className="text-xs font-medium text-black/50">Atelier Lina · Coiffure à Nantes</div>
         <div className="mt-1 text-lg font-bold">Coupe femme</div>
         <div className="text-sm text-black/55">45 min · 38 €</div>
         <div className="mt-5 text-sm font-semibold">Choisissez un jour</div>
-        <div className="mt-2 flex gap-1.5 overflow-x-auto pb-1">
+        {/* Les jours passent à la ligne au lieu de défiler : à 390 px, deux des
+            cinq restaient hors écran. */}
+        <div className="mt-2 flex flex-wrap gap-1.5 pb-1">
           {jours.map((j, i) => (
             <button
               key={j}
@@ -73,7 +77,7 @@ function Reservation() {
           })}
         </div>
       </div>
-      <div className="space-y-3">
+      <div className="min-w-0 space-y-3">
         <div className="rounded-2xl bg-white/[0.06] p-5 text-white">
           <div className="flex items-center gap-2 text-sm text-[#c4b5fd]">
             <CalendarCheck className="h-4 w-4" aria-hidden="true" /> Nouveau rendez-vous

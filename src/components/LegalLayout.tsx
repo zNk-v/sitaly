@@ -26,7 +26,11 @@ export function LegalLayout({
       </header>
       <main className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h1>
-        <div className="prose prose-neutral mt-8 max-w-none text-sm leading-7 text-foreground/90 [&_h2]:mt-10 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-foreground [&_h3]:mt-6 [&_h3]:text-base [&_h3]:font-semibold [&_p]:mt-3 [&_ul]:mt-3 [&_ul]:list-disc [&_ul]:pl-6 [&_li]:mt-1 [&_a]:text-primary [&_a]:underline [&_table]:mt-4 [&_table]:w-full [&_table]:border-collapse [&_table]:text-left [&_th]:border [&_th]:border-border [&_th]:bg-secondary/50 [&_th]:px-3 [&_th]:py-2 [&_th]:font-semibold [&_td]:border [&_td]:border-border [&_td]:px-3 [&_td]:py-2 [&_td]:align-top">
+        {/* Corps en 16 px sur téléphone : les pages légales se lisaient en 14 px,
+            donc en zoomant, donc en glissant la page (SITA-28). Les bordures de
+            cellules n'arrivent qu'à partir de `md`, où le tableau redevient un
+            tableau ; en dessous, chaque ligne est une carte. */}
+        <div className="prose prose-neutral mt-8 max-w-none text-base leading-7 text-foreground/90 [&_h2]:mt-10 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-foreground [&_h3]:mt-6 [&_h3]:text-base [&_h3]:font-semibold [&_p]:mt-3 [&_ul]:mt-3 [&_ul]:list-disc [&_ul]:pl-6 [&_li]:mt-1 [&_a]:text-primary [&_a]:underline [&_table]:mt-4 [&_table]:w-full [&_table]:border-collapse [&_table]:text-left md:[&_td]:border md:[&_td]:border-border md:[&_td]:px-3 md:[&_td]:py-2 md:[&_td]:align-top md:[&_th]:border md:[&_th]:border-border md:[&_th]:bg-secondary/50 md:[&_th]:px-3 md:[&_th]:py-2 md:[&_th]:font-semibold">
           {children}
         </div>
       </main>

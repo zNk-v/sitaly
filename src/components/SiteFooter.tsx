@@ -86,12 +86,17 @@ const AUSSI: { label: string; to: string }[] = [
   { label: "Site géré par Sitaly", to: "/offres/presence/" },
 ];
 
-const LIEN = "block py-1 text-black/60 transition hover:text-black";
+/**
+ * 44 px de haut sur téléphone, la taille d'un pouce : les liens du pied de page
+ * faisaient 31 px et se touchaient les uns les autres (SITA-28). À partir de `lg`,
+ * où le pointeur est une souris, la liste retrouve sa densité.
+ */
+const LIEN = "flex min-h-11 items-center text-black/60 transition hover:text-black lg:min-h-0 lg:py-1";
 
 function Ligne({ e }: { e: Entree }) {
   if ("bientot" in e) {
     return (
-      <span className="flex items-center gap-2 py-1 text-black/40">
+      <span className="flex min-h-11 items-center gap-2 text-black/40 lg:min-h-0 lg:py-1">
         <span className="min-w-0">{e.label}</span>
         <span className="shrink-0 rounded-full bg-black/[0.05] px-2 py-0.5 text-[11px] font-medium text-black/50">
           Bientôt

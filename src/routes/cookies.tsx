@@ -1,5 +1,33 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LegalLayout } from "@/components/LegalLayout";
+import { TableauEmpile } from "@/components/TableauEmpile";
+
+/**
+ * Les traceurs en données plutôt qu'en `<table>` écrit à la main : à quatre
+ * colonnes, le tableau cachait 134 px hors écran sur un téléphone (SITA-28).
+ * `TableauEmpile` en fait des cartes sous `md`.
+ */
+const COLONNES_TRACEURS = ["Traceur", "Éditeur", "Finalité", "Durée"] as const;
+
+const TRACEURS_AUDIENCE = [
+  ["_ga", "Google Analytics 4", "Distinguer les visiteurs", "13 mois"],
+  ["_ga_<ID>", "Google Analytics 4", "Maintenir l'état de la session", "13 mois"],
+  [
+    "sitaly_cookie_consent_2",
+    "Sitaly",
+    "Mémoriser votre choix. Enregistré dans le stockage local du navigateur (localStorage), pas sous forme de cookie. Traceur nécessaire.",
+    "Jusqu'à effacement par vos soins",
+  ],
+] as const;
+
+const TRACEURS_TIKTOK = [
+  [
+    "_ttp, ttcsid, _tt_enable_cookie",
+    "TikTok",
+    "Relier une visite à une publicité TikTok et mesurer ses résultats",
+    "13 mois maximum",
+  ],
+] as const;
 
 export const Route = createFileRoute("/cookies")({
   head: () => ({
@@ -72,41 +100,7 @@ function Cookies() {
         consentement : tant que vous n'avez pas accepté, le mode Consentement de Google est réglé
         sur « refusé » et aucun cookie de mesure d'audience n'est déposé.
       </p>
-      <div className="overflow-x-auto">
-        <table>
-          <thead>
-            <tr>
-              <th>Traceur</th>
-              <th>Éditeur</th>
-              <th>Finalité</th>
-              <th>Durée</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>_ga</td>
-              <td>Google Analytics 4</td>
-              <td>Distinguer les visiteurs</td>
-              <td>13 mois</td>
-            </tr>
-            <tr>
-              <td>_ga_&lt;ID&gt;</td>
-              <td>Google Analytics 4</td>
-              <td>Maintenir l'état de la session</td>
-              <td>13 mois</td>
-            </tr>
-            <tr>
-              <td>sitaly_cookie_consent_2</td>
-              <td>Sitaly</td>
-              <td>
-                Mémoriser votre choix. Enregistré dans le stockage local du navigateur
-                (localStorage), pas sous forme de cookie. Traceur nécessaire.
-              </td>
-              <td>Jusqu'à effacement par vos soins</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <TableauEmpile entetes={COLONNES_TRACEURS} lignes={TRACEURS_AUDIENCE} classe="mt-4" />
       <h3>Cookies tiers</h3>
       <p>
         Certains contenus intégrés (aperçus de sites clients, module de prise de rendez-vous
@@ -120,26 +114,7 @@ function Cookies() {
         site. Ce traceur n'est chargé qu'après votre consentement. Si vous refusez, ou si vous n'avez
         pas encore répondu, aucune donnée ne part vers TikTok.
       </p>
-      <div className="overflow-x-auto">
-        <table>
-          <thead>
-            <tr>
-              <th>Traceur</th>
-              <th>Éditeur</th>
-              <th>Finalité</th>
-              <th>Durée</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>_ttp, ttcsid, _tt_enable_cookie</td>
-              <td>TikTok</td>
-              <td>Relier une visite à une publicité TikTok et mesurer ses résultats</td>
-              <td>13 mois maximum</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <TableauEmpile entetes={COLONNES_TRACEURS} lignes={TRACEURS_TIKTOK} classe="mt-4" />
 
       <h2>3. Durée de conservation</h2>
       <p>

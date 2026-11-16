@@ -12,6 +12,7 @@ import {
   type CtaArticle,
 } from "@/data/blog-posts";
 import { chargerContenu } from "@/data/articles/charger";
+import { TableauEmpile } from "@/components/TableauEmpile";
 import { TexteAvecLiens } from "@/components/TexteAvecLiens";
 import { MetierLinksStrip } from "@/components/MetierLinks";
 import { SiteChrome } from "@/components/SiteChrome";
@@ -334,38 +335,13 @@ function RenderSection({ section }: { section: BlogSection }) {
       );
     case "table":
       return (
-        <figure className="!my-8">
-          <div className="overflow-x-auto rounded-3xl border border-black/[0.08]">
-            <table className="w-full text-left text-[15px] leading-6">
-              <thead className="bg-black/[0.03]">
-                <tr>
-                  {section.headers.map((h, i) => (
-                    <th key={i} scope="col" className="px-5 py-3.5 font-semibold text-black">
-                      {h}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {section.rows.map((row, ri) => (
-                  <tr key={ri} className="border-t border-black/[0.06] align-top">
-                    {row.map((cell, ci) => (
-                      <td
-                        key={ci}
-                        className={`px-5 py-3.5 ${ci === 0 ? "font-medium text-black" : "text-black/70"}`}
-                      >
-                        <TexteAvecLiens texte={cell} />
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          {section.caption && (
-            <figcaption className="mt-2 px-1 text-sm text-black/50">{section.caption}</figcaption>
-          )}
-        </figure>
+        <TableauEmpile
+          entetes={section.headers}
+          lignes={section.rows}
+          legende={section.caption}
+          rendreCellule={(texte) => <TexteAvecLiens texte={texte} />}
+          classe="!my-8"
+        />
       );
     case "faq":
       return (

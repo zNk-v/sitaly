@@ -34,6 +34,12 @@ dist-ssr
 # Claude Code local tooling
 .claude/
 
+# Espaces de travail isolés des agents (git worktree) et leurs outils
+.paperclip/
+
+# Rapports d'audit : sorties de mesure, captures, JSON lourds
+sitaly.fr-audit/
+
 # Prospection — données personnelles, jamais versionnées
 prospection/
 .indexnow.log

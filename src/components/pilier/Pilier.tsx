@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronRight } from "lucide-react";
+import { TableauEmpile } from "@/components/TableauEmpile";
 import { CARTE, TEXTE_GRIS } from "@/components/produit/Produit";
 import { APP_REF } from "@/data/offres";
 import type { Pilier } from "@/data/piliers";
@@ -133,38 +134,7 @@ export function TableauPilier({
   lignes: readonly (readonly string[])[];
   legende?: string;
 }) {
-  return (
-    <figure className="mt-8">
-      <div className="overflow-x-auto rounded-3xl border border-black/[0.08]">
-        <table className="w-full text-left text-[15px] leading-6">
-          <thead className="bg-black/[0.03]">
-            <tr>
-              {entetes.map((h) => (
-                <th key={h} scope="col" className="px-5 py-3.5 font-semibold text-black">
-                  {h}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {lignes.map((ligne) => (
-              <tr key={ligne[0]} className="border-t border-black/[0.06] align-top">
-                {ligne.map((cellule, i) => (
-                  <td
-                    key={i}
-                    className={`px-5 py-3.5 ${i === 0 ? "font-medium text-black" : "text-black/70"}`}
-                  >
-                    {cellule}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      {legende && <figcaption className="mt-2 px-1 text-sm text-black/50">{legende}</figcaption>}
-    </figure>
-  );
+  return <TableauEmpile entetes={entetes} lignes={lignes} legende={legende} classe="mt-8" />;
 }
 
 /** La carte d'un lien entrant vers un pilier, posée en bas des pages du site. */
