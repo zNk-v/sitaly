@@ -16,7 +16,13 @@ import { CookieConsent } from "../components/CookieConsent";
 import { PageIntrouvable } from "../components/PageIntrouvable";
 import { battreMesure, compterVue, prolongerCampagne, suivreClicsDeContact } from "../lib/mesure";
 import { pageTiktok, suivreDepartsVersApp } from "../lib/pixel-tiktok";
-import { FICHE_GOOGLE_URL, SITALY_EMAIL, SITALY_PHONE, SITALY_VILLE_PUBLIQUE } from "../lib/config";
+import {
+  FICHE_GOOGLE_URL,
+  SITALY_CODE_POSTAL,
+  SITALY_EMAIL,
+  SITALY_PHONE,
+  SITALY_VILLE,
+} from "../lib/config";
 
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
@@ -91,11 +97,16 @@ const GRAPHE_ENTITE = {
       founder: { "@id": "https://sitaly.fr/#teddy-vidal" },
       telephone: SITALY_PHONE,
       email: SITALY_EMAIL,
-      // La ville publique seulement (config.ts) : Sitaly ne reçoit pas de
-      // public, et l'adresse d'immatriculation reste dans les mentions légales.
+      // La ville et le code postal du registre (décision du 16 novembre 2026,
+      // point 1.1 de l'audit) : c'est ici que Google recoupe l'entité avec le
+      // SIREN ci-dessous, et l'écart lui faisait voir deux entreprises. Ni rue
+      // ni numéro : Sitaly ne reçoit pas de public, et l'adresse complète
+      // reste dans les mentions légales. La ville de présentation
+      // (SITALY_VILLE_PUBLIQUE) n'apparaît que dans les textes visibles.
       address: {
         "@type": "PostalAddress",
-        addressLocality: SITALY_VILLE_PUBLIQUE,
+        addressLocality: SITALY_VILLE,
+        postalCode: SITALY_CODE_POSTAL,
         addressRegion: "Île-de-France",
         addressCountry: "FR",
       },
@@ -182,11 +193,15 @@ const GRAPHE_ENTITE = {
         "Fiche Google Business Profile",
         "Devis et factures pour artisans",
       ],
+      // Même ville que l'entreprise ci-dessus : le fondateur travaille là où
+      // elle est immatriculée, et deux villes dans un même graphe se
+      // contrediraient.
       workLocation: {
         "@type": "Place",
         address: {
           "@type": "PostalAddress",
-          addressLocality: SITALY_VILLE_PUBLIQUE,
+          addressLocality: SITALY_VILLE,
+          postalCode: SITALY_CODE_POSTAL,
           addressCountry: "FR",
         },
       },
