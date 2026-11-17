@@ -123,10 +123,12 @@ function PageLogicielDevis() {
             <P>
               Un serrurier qui dépanne une ouverture de porte à vingt-deux heures n'a pas le temps
               d'écrire un devis à la main avant d'intervenir, ni l'envie de laisser un impayé
-              traîner trois mois. Un bon logiciel de devis et factures règle les deux problèmes : un
-              devis envoyé et accepté en deux minutes, une facture qui se paie et se relance sans
-              intervention. Ce guide détaille ce qu'un tel outil doit garantir à un artisan, et ce
-              qu'il coûte.
+              traîner trois mois.
+            </P>
+            <P>
+              Un bon logiciel de devis et factures règle les deux problèmes : un devis envoyé et
+              accepté en deux minutes, une facture qui se paie et se relance sans intervention. Ce
+              guide détaille ce qu'un tel outil doit garantir à un artisan, et ce qu'il coûte.
             </P>
             <div className="mt-8 flex flex-col items-start gap-3">
               <Link
@@ -148,9 +150,12 @@ function PageLogicielDevis() {
           <P>
             Un maçon qui chiffre une extension sur un carnet à souche prend un risque réel : une
             facture mal numérotée, une mention obligatoire oubliée, un calcul de TVA faux, et c'est
-            lui qui répond en cas de contrôle. Un tableur partagé n'empêche ni l'erreur de recopie
-            ni la perte du fichier. Un logiciel de devis et factures pensé pour les artisans
-            numérote sans trou, calcule la TVA, et conserve chaque document.
+            lui qui répond en cas de contrôle.
+          </P>
+          <P>
+            Un tableur partagé n'empêche ni l'erreur de recopie ni la perte du fichier. Un logiciel
+            de devis et factures pensé pour les artisans numérote sans trou, calcule la TVA, et
+            conserve chaque document.
           </P>
         </Bloc>
 
@@ -220,6 +225,8 @@ function PageLogicielDevis() {
             Un paysagiste qui facture un contrat d'entretien à l'année ne veut pas suivre quinze
             échéances à la main. Relié à un compte Stripe en quelques minutes, son logiciel encaisse
             directement sur son compte, sans commission Sitaly, seuls les frais Stripe s'appliquent.
+          </P>
+          <P>
             Un rappel part seul au client le lendemain de l'échéance, puis à huit et quinze jours.
             Le virement reste gratuit pour qui préfère ne pas payer par carte. Quand relancer et
             quoi écrire :{" "}
@@ -232,9 +239,12 @@ function PageLogicielDevis() {
           <P>
             Un menuisier qui travaille aussi pour des entreprises verra l'émission électronique des
             factures devenir obligatoire entre professionnels à partir du 1er septembre 2027 pour
-            les petites structures. Pour ses clients particuliers, la facture au format PDF reste
-            valable. Ce qui compte d'ici là : choisir un outil qui annonce s'y préparer, pas un
-            carnet papier qu'il faudra abandonner dans l'urgence. Détail :{" "}
+            les petites structures.
+          </P>
+          <P>
+            Pour ses clients particuliers, la facture au format PDF reste valable. Ce qui compte
+            d'ici là : choisir un outil qui annonce s'y préparer, pas un carnet papier qu'il faudra
+            abandonner dans l'urgence. Détail :{" "}
             <LienArticle slug="facturation-electronique-artisan-2027">
               la facturation électronique 2027 pour les artisans
             </LienArticle>
@@ -277,10 +287,12 @@ function PageLogicielDevis() {
           <P>
             Un boulanger qui reçoit une demande de pièce montée par téléphone peut déjà la
             transformer en devis chiffré dans Sitaly, mais cette demande est arrivée parce qu'un
-            client a trouvé son activité quelque part. Le logiciel de devis et factures fait partie
-            du site de l'artisan, pas un outil séparé : zone d'intervention, galerie de réalisations
-            et formulaire de contact amènent la demande, le devis et la facture la concluent. Pour
-            créer ce site :{" "}
+            client a trouvé son activité quelque part.
+          </P>
+          <P>
+            Le logiciel de devis et factures fait partie du site de l'artisan, pas un outil séparé :
+            zone d'intervention, galerie de réalisations et formulaire de contact amènent la
+            demande, le devis et la facture la concluent. Pour créer ce site :{" "}
             <LienTexte to={PILIER_SITE.chemin}>créer un site internet d'artisan</LienTexte> et le{" "}
             <LienModele id="boulanger">modèle boulanger</LienModele>.
           </P>

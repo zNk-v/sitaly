@@ -131,10 +131,12 @@ function PageCreerSite() {
             </h1>
             <P>
               Un plombier qui dépanne depuis dix ans sans site perd des appels tous les jours, au
-              profit du premier résultat que Google affiche. Créer un site internet d'artisan
-              n'exige plus un développeur ni un budget de plusieurs milliers d'euros. Ce guide
-              détaille les étapes, ce que le site doit contenir pour transformer une visite en
-              appel, et ce que ça coûte réellement en 2026.
+              profit du premier résultat que Google affiche.
+            </P>
+            <P>
+              Créer un site internet d'artisan n'exige plus un développeur ni un budget de plusieurs
+              milliers d'euros. Ce guide détaille les étapes, ce que le site doit contenir pour
+              transformer une visite en appel, et ce que ça coûte réellement en 2026.
             </P>
             <div className="mt-8 flex flex-col items-start gap-3">
               <a href={lienCreation()} className={`${BOUTON_NOIR} min-h-12 px-6 text-base`}>
@@ -151,12 +153,16 @@ function PageCreerSite() {
             Un électricien qui compare ses options trouve trois chemins. L'agence web classique
             écrit le site à sa place, facture la création plusieurs milliers d'euros, puis un
             forfait mensuel pour l'hébergement et les modifications. Le délai se compte en semaines.
+          </P>
+          <P>
             L'éditeur de site généraliste (Wix, Squarespace) coûte moins cher, mais l'artisan écrit
             lui-même chaque texte, choisit lui-même sa structure, et doit comprendre le
-            référencement local pour que la page serve à quelque chose. La troisième voie, un
-            créateur de site par IA pensé pour les métiers manuels comme Sitaly, décrit le métier et
-            la ville en une phrase et reçoit un site déjà écrit, déjà structuré pour le
-            référencement local, à relire plutôt qu'à rédiger.
+            référencement local pour que la page serve à quelque chose.
+          </P>
+          <P>
+            La troisième voie, un créateur de site par IA pensé pour les métiers manuels comme
+            Sitaly, décrit le métier et la ville en une phrase et reçoit un site déjà écrit, déjà
+            structuré pour le référencement local, à relire plutôt qu'à rédiger.
           </P>
         </Bloc>
 
@@ -229,13 +235,18 @@ function PageCreerSite() {
           <P>
             Un peintre en bâtiment qui ne nomme jamais ses communes d'intervention n'apparaît pas
             quand un habitant de la ville voisine cherche « peintre » suivi du nom de sa ville.
+          </P>
+          <P>
             Sitaly pose les bases dès la création : un titre et une description par page, les
             communes couvertes nommées dans les textes, des données structurées lisibles par Google,
             un plan du site (
             <LienProduit id="referencement-seo-geo">référencement SEO et GEO</LienProduit>
-            ). Aucune de ces bases ne garantit une place en tête des résultats : elles donnent au
-            site une chance d'y figurer, le reste se construit avec le temps, les avis récents et
-            une fiche Google Business Profile tenue à jour. Lire :{" "}
+            ).
+          </P>
+          <P>
+            Aucune de ces bases ne garantit une place en tête des résultats : elles donnent au site
+            une chance d'y figurer, le reste se construit avec le temps, les avis récents et une
+            fiche Google Business Profile tenue à jour. Lire :{" "}
             <LienArticle slug="referencement-local-google-artisan">
               le référencement local pour un artisan
             </LienArticle>
@@ -280,13 +291,19 @@ function PageCreerSite() {
           <P>
             Sitaly a préparé un point de départ par métier, visible avant toute inscription : zone
             d'intervention pour un couvreur, grille de tarifs pour une coiffeuse, galerie de
-            chantiers pour un menuisier. Un boulanger retrouve une page pensée pour ses horaires et
-            ses commandes de fêtes (<LienModele id="boulanger">modèle boulanger</LienModele>) ; un
-            plombier, une page qui met en avant son numéro et ses délais de dépannage (
+            chantiers pour un menuisier.
+          </P>
+          <P>
+            Un boulanger retrouve une page pensée pour ses horaires et ses commandes de fêtes (
+            <LienModele id="boulanger">modèle boulanger</LienModele>) ; un plombier, une page qui
+            met en avant son numéro et ses délais de dépannage (
             <LienModele id="plombier">modèle plombier</LienModele>
-            ). Un métier qui ne figure pas dans la liste, comme serrurier, part du modèle
-            généraliste <LienModele id="artisan">artisan</LienModele> : l'IA construit le site à
-            partir de la description donnée, pas seulement d'une liste figée.
+            ).
+          </P>
+          <P>
+            Un métier qui ne figure pas dans la liste, comme serrurier, part du modèle généraliste{" "}
+            <LienModele id="artisan">artisan</LienModele> : l'IA construit le site à partir de la
+            description donnée, pas seulement d'une liste figée.
           </P>
           <ul className="mt-8 grid gap-3 sm:grid-cols-2">
             {MODELES_CITES.map((id) => (
