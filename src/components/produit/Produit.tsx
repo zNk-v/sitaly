@@ -6,6 +6,7 @@ import { APP_URL, euros, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config
 import { CREATEUR_IA as IA, MENTION_TVA } from "@/data/offres";
 import { FICHE_GOOGLE_URL, NOTE_GOOGLE } from "@/data/avis-google";
 import { FAQ_PRODUIT } from "@/data/faq-produit";
+import { RepereRail } from "@/components/RepereRail";
 import { useHorsEcran } from "@/lib/ecran";
 
 /**
@@ -485,6 +486,7 @@ const FORMULES: Formule[] = [
 /** Les trois formules, au mois ou à l'année (−15 %). */
 export function GrilleTarifs() {
   const [annuel, setAnnuel] = useState(false);
+  const rail = useRef<HTMLDivElement>(null);
   return (
     <div>
       <div className="flex justify-center">
@@ -517,11 +519,12 @@ export function GrilleTarifs() {
       </div>
       {/* Rail à arrêts sous 640 px : empilées, les trois cartes faisaient
           4,04 écrans à 390 px (SITA-31, friction 3). */}
-      <div className="rail-mobile mt-10 grid gap-5 lg:grid-cols-3">
+      <div ref={rail} className="rail-mobile mt-10 grid gap-5 lg:grid-cols-3">
         {FORMULES.map((f) => (
           <CartePrix key={f.nom} formule={f} annuel={annuel} />
         ))}
       </div>
+      <RepereRail rail={rail} total={FORMULES.length} />
       <p className={`mx-auto mt-6 max-w-2xl text-center text-sm ${TEXTE_GRIS}`}>
         {MENTION_TVA}. Sans engagement au mois ; l'annuel se paie pour un an. « Bientôt » :
         fonctions en préparation, ajoutées à votre formule dès leur ouverture. Une retouche coûte 1
