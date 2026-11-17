@@ -6,6 +6,18 @@ export const CALENDLY_URL = "https://calendly.com/contact-sitaly/decouverte-de-v
 // URL de l'application SaaS (espace client artisans).
 export const APP_URL = "https://app.sitaly.fr";
 
+/**
+ * Adresse du site vitrine, racine de toutes les URL canoniques et des données
+ * structurées.
+ *
+ * Elle vit ici, et non dans `@/lib/sitemap`, parce que ce module-là importe les
+ * treize fichiers de `src/data/` pour construire le plan du site : 22 modules
+ * tiraient 340 ko de données dans le paquet client pour cette seule chaîne de
+ * caractères (SITA-31, friction 2 de l'état des lieux du 17 novembre 2026).
+ * `@/lib/config` n'importe rien : l'ajouter ici ne coûte rien à personne.
+ */
+export const BASE_URL = "https://sitaly.fr";
+
 // Fonction Supabase du générateur de noms d'entreprise (outil gratuit, sans compte).
 export const NOMS_ENTREPRISE_URL =
   "https://zgigeakspxdzgaigypoq.supabase.co/functions/v1/noms-entreprise";

@@ -29,10 +29,9 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { VerificateurDomaine } from "@/components/VerificateurDomaine";
 import { resumeDomaine } from "@/lib/domaine";
-import { CALENDLY_URL, euros } from "@/lib/config";
+import { BASE_URL, CALENDLY_URL, euros } from "@/lib/config";
 import { envoyerDemande } from "@/lib/formulaire";
 import { suivreEvenement } from "@/lib/mesure";
-import { BASE_URL } from "@/lib/sitemap";
 import {
   prixCourt,
   montantsAcomptes,

@@ -5,7 +5,7 @@ import { SiteChrome } from "@/components/SiteChrome";
 import { BoiteApp, Confiance, TEXTE_GRIS } from "@/components/produit/Produit";
 import { COMPARATIFS, RELEVE, RELEVE_ISO } from "@/data/comparatifs";
 import { APP_REF, CREATEUR_IA as IA } from "@/data/offres";
-import { BASE_URL } from "@/lib/sitemap";
+import { BASE_URL } from "@/lib/config";
 
 /**
  * La liste des comparatifs (30 octobre 2026) : Sitaly face à Wix, WordPress,

@@ -8,9 +8,8 @@ import { CarteEtapeSuivante } from "@/components/EtapeSuivante";
 import { ArticlesALire } from "@/components/ArticlesALire";
 import { COULEURS_FAMILLE } from "@/data/expertises";
 import { autresSecteurs, cheminSecteur, texteTarif, type Secteur } from "@/data/secteurs";
-import { BASE_URL } from "@/lib/sitemap";
 import { directiveRobots } from "@/lib/indexation";
-import { CALENDLY_URL, PRIX_AGENTS_IA, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
+import { BASE_URL, CALENDLY_URL, PRIX_AGENTS_IA, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 /**
  * Gabarit des pages Agents IA par secteur.

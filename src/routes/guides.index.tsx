@@ -3,7 +3,7 @@ import { ArrowRight, ChevronRight, PlayCircle } from "lucide-react";
 import { SiteChrome } from "@/components/SiteChrome";
 import { BOUTON_NOIR, TEXTE_GRIS, lienCreation } from "@/components/produit/Produit";
 import { GUIDES, vignetteGuide } from "@/data/guides";
-import { BASE_URL } from "@/lib/sitemap";
+import { BASE_URL } from "@/lib/config";
 
 /**
  * Les guides pas à pas de Sitaly App (3 novembre 2026) : chaque geste de

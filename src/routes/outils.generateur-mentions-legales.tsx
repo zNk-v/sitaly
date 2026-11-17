@@ -11,7 +11,7 @@ import {
   TitreSection,
   lienCreation,
 } from "@/components/produit/Produit";
-import { BASE_URL } from "@/lib/sitemap";
+import { BASE_URL } from "@/lib/config";
 
 /**
  * Le générateur de mentions légales (9 novembre 2026), outil gratuit pour ceux

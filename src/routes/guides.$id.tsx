@@ -4,7 +4,7 @@ import { SiteChrome } from "@/components/SiteChrome";
 import { BOUTON_NOIR, TEXTE_GRIS, lienCreation } from "@/components/produit/Produit";
 import { ExtraitGuide, TexteGuide } from "@/components/guides/Guides";
 import { GUIDES, clipGuide, getGuide, imageGuide } from "@/data/guides";
-import { BASE_URL } from "@/lib/sitemap";
+import { BASE_URL } from "@/lib/config";
 
 /**
  * Un guide pas à pas (3 novembre 2026) : chaque étape, son texte à gauche et

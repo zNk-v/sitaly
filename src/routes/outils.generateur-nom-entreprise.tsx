@@ -12,8 +12,7 @@ import {
   lienCreation,
 } from "@/components/produit/Produit";
 import { disponibilite, nomDeDomaine, type Disponibilite } from "@/lib/domaine";
-import { NOMS_ENTREPRISE_URL } from "@/lib/config";
-import { BASE_URL } from "@/lib/sitemap";
+import { BASE_URL, NOMS_ENTREPRISE_URL } from "@/lib/config";
 
 /**
  * Le générateur de noms d'entreprise (31 octobre 2026), outil gratuit sur le

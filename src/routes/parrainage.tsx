@@ -3,8 +3,7 @@ import { ArrowRight, ChevronRight } from "lucide-react";
 import { SiteChrome } from "@/components/SiteChrome";
 import { BOUTON_CLAIR, BOUTON_NOIR, CARTE, TEXTE_GRIS, TitreSection, lienCreation } from "@/components/produit/Produit";
 import { CREATEUR_IA as IA } from "@/data/offres";
-import { APP_URL } from "@/lib/config";
-import { BASE_URL } from "@/lib/sitemap";
+import { APP_URL, BASE_URL } from "@/lib/config";
 
 /**
  * Le parrainage, page publique (5 novembre 2026). Le programme tourne dans

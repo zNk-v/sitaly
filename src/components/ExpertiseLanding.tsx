@@ -14,8 +14,7 @@ import {
 import { CarteEtapeSuivante } from "@/components/EtapeSuivante";
 import { OffresEnBref } from "@/components/OffresEnBref";
 import { ArticlesALire } from "@/components/ArticlesALire";
-import { BASE_URL } from "@/lib/sitemap";
-import { CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
+import { BASE_URL, CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 /**
  * Gabarit des pages d'expertise.

@@ -12,8 +12,7 @@ import { PRODUITS } from "@/data/produits";
 import { PILIERS } from "@/data/piliers";
 import { GUIDES } from "@/data/guides";
 import { estIndexable } from "@/lib/indexation";
-
-export const BASE_URL = "https://sitaly.fr";
+import { BASE_URL } from "@/lib/config";
 
 /**
  * Une page du plan du site.

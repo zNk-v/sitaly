@@ -11,7 +11,7 @@ import { TarifPremium } from "@/components/premium/TarifPremium";
 import { FaqPremium } from "@/components/premium/FaqPremium";
 import { AppelPremium } from "@/components/premium/AppelPremium";
 import { BarreAppelMobile } from "@/components/premium/BarreAppelMobile";
-import { BASE_URL } from "@/lib/sitemap";
+import { BASE_URL } from "@/lib/config";
 import { FAQ_PREMIUM, MEDIA_EFFET, PREMIUM_PUBLIE } from "@/data/premium";
 import { offre, prixCourt } from "@/data/offres";
 

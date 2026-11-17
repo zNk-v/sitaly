@@ -17,7 +17,7 @@ import { PILIER_SITE } from "@/data/piliers";
 import { deMetier, getModele, MODELES } from "@/data/modeles";
 import { getProduit } from "@/data/produits";
 import { METIERS_MODELES, phraseSansVille } from "@/lib/modeles-metiers";
-import { BASE_URL } from "@/lib/sitemap";
+import { BASE_URL } from "@/lib/config";
 import { APP_REF } from "@/data/offres";
 
 /**

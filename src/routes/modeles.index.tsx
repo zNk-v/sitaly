@@ -7,7 +7,7 @@ import { CartePilier } from "@/components/pilier/Pilier";
 import { PILIER_SITE } from "@/data/piliers";
 import { METIERS_MODELES } from "@/lib/modeles-metiers";
 import { deMetier, MODELES } from "@/data/modeles";
-import { BASE_URL } from "@/lib/sitemap";
+import { BASE_URL } from "@/lib/config";
 
 /**
  * La liste des modèles de sites (31 octobre 2026), comme la page « Templates »

@@ -4,7 +4,7 @@ import { TableauEmpile } from "@/components/TableauEmpile";
 import { CARTE, TEXTE_GRIS } from "@/components/produit/Produit";
 import { APP_REF } from "@/data/offres";
 import type { Pilier } from "@/data/piliers";
-import { BASE_URL } from "@/lib/sitemap";
+import { BASE_URL } from "@/lib/config";
 
 /**
  * Les blocs communs aux deux pages piliers artisans (16 novembre 2026) : fil

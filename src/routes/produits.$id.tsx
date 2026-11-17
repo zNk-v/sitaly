@@ -17,8 +17,7 @@ import { CartePilier } from "@/components/pilier/Pilier";
 import { PRODUITS, getProduit } from "@/data/produits";
 import { PILIER_PAR_PRODUIT, PILIER_SITE } from "@/data/piliers";
 import { APP_REF, CREATEUR_IA as IA, MENTION_TVA } from "@/data/offres";
-import { euros } from "@/lib/config";
-import { BASE_URL } from "@/lib/sitemap";
+import { BASE_URL, euros } from "@/lib/config";
 
 /**
  * Une page produit de Sitaly App (31 octobre 2026), comme les pages

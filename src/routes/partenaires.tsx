@@ -15,7 +15,7 @@ import {
   PARTENAIRES_PUBLIES,
   type OffrePartenaire,
 } from "@/data/partenaires";
-import { BASE_URL } from "@/lib/sitemap";
+import { BASE_URL } from "@/lib/config";
 
 /**
  * Les offres partenaires (9 novembre 2026) : les outils que Sitaly recommande

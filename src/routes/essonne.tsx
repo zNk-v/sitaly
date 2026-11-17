@@ -1,12 +1,11 @@
 import { PRIX_SITE_MIN } from "@/data/offres";
-import { euros } from "@/lib/config";
+import { BASE_URL, euros } from "@/lib/config";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, Phone } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SectionHeader } from "@/components/SectionHeader";
 import { getRealisation, srcSetCapture } from "@/data/realisations";
-import { BASE_URL } from "@/lib/sitemap";
 import { directiveRobots } from "@/lib/indexation";
 import { SITALY_DEPARTEMENT, SITALY_PHONE, SITALY_PHONE_DISPLAY, SITALY_VILLE } from "@/lib/config";
 

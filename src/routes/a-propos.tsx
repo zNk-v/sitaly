@@ -6,8 +6,7 @@ import { LINKEDIN_URL } from "@/components/LinkedinLink";
 import { BoiteApp, Confiance, TEXTE_GRIS } from "@/components/produit/Produit";
 import { REALISATIONS } from "@/data/realisations";
 import { PRODUITS } from "@/data/produits";
-import { BASE_URL } from "@/lib/sitemap";
-import { SITALY_PHONE, SITALY_PHONE_DISPLAY, SITALY_VILLE_PUBLIQUE } from "@/lib/config";
+import { BASE_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY, SITALY_VILLE_PUBLIQUE } from "@/lib/config";
 
 /**
  * Page auteur et entreprise.

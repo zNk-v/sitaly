@@ -12,7 +12,7 @@ import {
   type Source,
 } from "@/data/comparatifs";
 import { APP_REF, MENTION_TVA } from "@/data/offres";
-import { BASE_URL } from "@/lib/sitemap";
+import { BASE_URL } from "@/lib/config";
 
 /**
  * Une page comparative (30 octobre 2026) : Sitaly face à un autre outil, sur

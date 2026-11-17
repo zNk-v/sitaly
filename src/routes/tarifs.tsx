@@ -10,7 +10,7 @@ import {
   TEXTE_GRIS,
   TitreSection,
 } from "@/components/produit/Produit";
-import { BASE_URL } from "@/lib/sitemap";
+import { BASE_URL } from "@/lib/config";
 import { CREATEUR_IA as IA, MENTION_TVA, offresStructurees } from "@/data/offres";
 import { PILIER_DEVIS, PILIER_SITE } from "@/data/piliers";
 
