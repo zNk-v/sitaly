@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
-import { MessageCircle, X } from "lucide-react";
+import { ChevronDown, CircleHelp, House, MessageCircle, MessageSquare } from "lucide-react";
 import {
   ErreurChat,
   envoyer as envoyerAuServeur,
@@ -11,14 +11,24 @@ import {
 import { suivreEvenement } from "@/lib/mesure";
 import { SITALY_EMAIL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 import { Fil, type Ligne } from "@/components/chat/Fil";
+import { Accueil } from "@/components/chat/Accueil";
+import { Aide, type VueAide } from "@/components/chat/Aide";
+import { EnTeteConversation, ListeMessages } from "@/components/chat/Messages";
+import { DEGRADE } from "@/components/chat/elements";
+import type { Article } from "@/components/chat/articles-aide";
 
 /**
- * La bulle de discussion de sitaly.fr (16 novembre 2026, SITA-22).
+ * La bulle de discussion de sitaly.fr (16 novembre 2026, SITA-22), en trois
+ * onglets depuis le 17 novembre, sur le modèle du messager d'Intercom chez
+ * Indy : Accueil, Messages, Aide.
  *
- * Du 4 au 16 novembre : 608 visiteurs, 2 inscriptions. Un visiteur qui a une
- * question et ne trouve pas la réponse repart. L'IA répond tout de suite avec
- * le seul contenu du site ; quand elle ne sait pas, le visiteur demande Ted,
- * qui reçoit une notification et un e-mail et répond depuis son pilotage.
+ * - Accueil : le bonjour, l'accès à la conversation, la recherche, trois
+ *   réponses fréquentes et le lien vers l'application.
+ * - Messages : la conversation. L'IA répond tout de suite avec le seul
+ *   contenu du site ; quand elle ne sait pas, le visiteur demande Ted, qui
+ *   reçoit une notification et un e-mail et répond depuis son pilotage.
+ * - Aide : la FAQ produit et les guides pas à pas, rangés en collections,
+ *   avec une recherche. Rien n'y part au serveur.
  *
  * Montée en React.lazy depuis __root.tsx, à un moment de repos : rien de cette
  * bulle n'est dans le chemin critique, et le bouton n'entre dans le DOM
@@ -30,10 +40,8 @@ import { Fil, type Ligne } from "@/components/chat/Fil";
 
 const TEXTES = {
   bouton: "Une question ? Discuter avec Sitaly",
-  titre: "Une question sur Sitaly ?",
-  sous: "L'IA de Sitaly répond avec le contenu du site. Ted prend le relais quand il faut.",
   accueil:
-    "Bonjour. Posez votre question sur Sitaly : les formules, ce que fait l'application, ce qui est compris. Je réponds avec ce qui est écrit sur le site.",
+    "Bonjour. Posez votre question sur Sitaly\u00a0: les formules, ce que fait l'application, ce qui est compris. Je réponds avec ce qui est écrit sur le site.",
   neSaitPas:
     "Je n'ai pas cette réponse sur le site. Ted, qui dirige Sitaly, peut vous répondre lui-même.",
   horsSujet: `Je réponds seulement sur Sitaly et sur ce que fait l'application. Pour autre chose, écrivez à ${SITALY_EMAIL}.`,
@@ -54,13 +62,27 @@ const AVANT_DE_RALENTIR = 120_000;
 /** Ted met quelques minutes à écrire : passé une demi-minute, la bulle propose l'e-mail. */
 const AVANT_DE_DEMANDER_EMAIL = 30_000;
 
+type Onglet = "accueil" | "messages" | "aide";
+
+const ONGLETS: { id: Onglet; libelle: string; Icone: typeof House }[] = [
+  { id: "accueil", libelle: "Accueil", Icone: House },
+  { id: "messages", libelle: "Messages", Icone: MessageSquare },
+  { id: "aide", libelle: "Aide", Icone: CircleHelp },
+];
+
 let compteur = 0;
 const cle = () => `l${++compteur}`;
 
 export default function BulleChat() {
   const [ouvert, setOuvert] = useState(false);
+  const [onglet, setOnglet] = useState<Onglet>("accueil");
+  const [enConversation, setEnConversation] = useState(false);
+  const [vueAide, setVueAide] = useState<VueAide>({ type: "collections" });
+  const [rechercheAuto, setRechercheAuto] = useState(false);
+  const [nonLu, setNonLu] = useState(false);
+
   const [lignes, setLignes] = useState<Ligne[]>([
-    { cle: cle(), auteur: "site", texte: TEXTES.accueil },
+    { cle: cle(), auteur: "site", texte: TEXTES.accueil, le: Date.now() },
   ]);
   const [attente, setAttente] = useState(false);
   const [codeErreur, setCodeErreur] = useState<CodeChat | null>(null);
@@ -74,9 +96,12 @@ export default function BulleChat() {
   const declencheur = useRef<HTMLButtonElement | null>(null);
 
   const ajouter = useCallback(
-    (ligne: Omit<Ligne, "cle">) => setLignes((l) => [...l, { cle: cle(), ...ligne }]),
+    (ligne: Omit<Ligne, "cle" | "le">) =>
+      setLignes((l) => [...l, { cle: cle(), le: Date.now(), ...ligne }]),
     [],
   );
+
+  const conversationCommencee = lignes.some((l) => l.auteur === "visiteur");
 
   /* --------------------------------------------- ouverture et fermeture */
 
@@ -87,6 +112,29 @@ export default function BulleChat() {
 
   const fermer = useCallback(() => setOuvert(false), []);
 
+  const changerOnglet = (o: Onglet) => {
+    setOnglet(o);
+    setEnConversation(false);
+    setRechercheAuto(false);
+    if (o === "aide") setVueAide({ type: "collections" });
+    suivreEvenement("chat_onglet", { onglet: o });
+  };
+
+  /** Ouvre la conversation, et pose la question tout de suite si elle est donnée. */
+  const demander = (question?: string) => {
+    setOnglet("messages");
+    setEnConversation(true);
+    setNonLu(false);
+    if (question) void envoyer(question);
+  };
+
+  const lireArticle = (article: Article) => {
+    setOnglet("aide");
+    setEnConversation(false);
+    setVueAide({ type: "article", article, depuis: { type: "collections" } });
+    suivreEvenement("chat_aide_article", { article: article.id, depuis: "accueil" });
+  };
+
   // Le bouton reprend le focus à la fermeture, une fois qu'il est revenu dans
   // le DOM : c'est ce qui permet de refermer et de rouvrir au clavier.
   const aEteOuvert = useRef(false);
@@ -95,16 +143,21 @@ export default function BulleChat() {
     else if (aEteOuvert.current) declencheur.current?.focus();
   }, [ouvert]);
 
+  // Dans la conversation, le champ prend le focus, sauf sur un écran tactile :
+  // le clavier s'ouvrirait, l'écran rétrécirait et la page sauterait.
+  useEffect(() => {
+    if (!ouvert || !enConversation) return;
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) champ.current?.focus();
+  }, [ouvert, enConversation]);
+
   // Échap ferme, et le focus ne sort pas du panneau tant qu'il est ouvert.
   useEffect(() => {
     if (!ouvert) return;
-    // Sur un écran tactile, le focus ouvrirait le clavier dès l'ouverture :
-    // l'écran rétrécit et la page saute. Le visiteur touche le champ lui-même.
-    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) champ.current?.focus();
-    // Sur téléphone, la page derrière le panneau ne défile plus tant qu'il est ouvert.
+    // Sur téléphone, le panneau prend tout l'écran : la page derrière ne défile plus.
     const telephone = window.matchMedia("(max-width: 639px)").matches;
     const avant = document.documentElement.style.overflow;
     if (telephone) document.documentElement.style.overflow = "hidden";
+    else panneau.current?.focus();
     const auClavier = (e: KeyboardEvent) => {
       if (e.key === "Escape") return fermer();
       if (e.key !== "Tab" || !panneau.current) return;
@@ -170,6 +223,11 @@ export default function BulleChat() {
     }
   };
 
+  // Le visiteur qui lit l'aide pendant que Ted écrit voit un point sur
+  // l'onglet Messages quand la réponse arrive.
+  const regardeLaConversation = useRef(false);
+  regardeLaConversation.current = onglet === "messages" && enConversation;
+
   // La relance ne tourne qu'une fois Ted prévenu : avant, la réponse de l'IA
   // arrive dans la même requête, et il n'y a rien à aller chercher.
   useEffect(() => {
@@ -185,6 +243,7 @@ export default function BulleChat() {
             if (m.auteur !== "ted") continue;
             ajouter({ auteur: "ted", texte: m.texte });
             setTedARepondu(true);
+            if (!regardeLaConversation.current) setNonLu(true);
           }
         } catch {
           // Une relance ratée n'est pas une panne : le tour suivant réessaie.
@@ -241,18 +300,29 @@ export default function BulleChat() {
       <button
         ref={declencheur}
         type="button"
-        onClick={ouvrir}
-        aria-label={TEXTES.bouton}
+        onClick={ouvert ? fermer : ouvrir}
+        aria-label={ouvert ? "Fermer la discussion" : TEXTES.bouton}
         aria-expanded={ouvert}
         aria-controls="bulle-chat"
-        hidden={ouvert}
         // Au-dessus du bandeau des cookies et du bouton collant des pages
         // produit, jamais sur eux : les deux annoncent leur hauteur en
-        // variable CSS (CookieConsent, BoutonCollant).
+        // variable CSS (CookieConsent, BoutonCollant). Panneau ouvert, il reste
+        // sur ordinateur pour le refermer ; sur téléphone, le panneau prend
+        // tout l'écran et a sa propre croix.
         style={{ bottom: "calc(var(--bandeau-cookies, 0px) + var(--bouton-collant, 0px) + 1rem)" }}
-        className="fixed right-4 z-40 grid h-14 w-14 place-items-center rounded-full bg-[linear-gradient(to_top_right,#0b53b0,#3049ba,#483dc1,#5d2dc4,#7014c2,#8c009e,#9d0073,#a60047,#a51111)] text-white shadow-lg shadow-[#7014c2]/40 ring-4 ring-[#7014c2]/15 transition hover:scale-105 hover:shadow-xl motion-reduce:hover:scale-100 focus-visible:outline-none focus-visible:ring-[#7014c2]/50 focus-visible:ring-offset-2"
+        className={`fixed right-5 z-[70] h-14 w-14 place-items-center rounded-full text-white shadow-lg shadow-[#7014c2]/40 ring-4 ring-[#7014c2]/15 transition hover:scale-105 hover:shadow-xl motion-reduce:hover:scale-100 focus-visible:outline-none focus-visible:ring-[#7014c2]/50 focus-visible:ring-offset-2 ${DEGRADE} ${ouvert ? "hidden sm:grid" : "grid"}`}
       >
-        <MessageCircle className="h-6 w-6" aria-hidden="true" />
+        {ouvert ? (
+          <ChevronDown className="h-6 w-6" aria-hidden="true" />
+        ) : (
+          <MessageCircle className="h-6 w-6" aria-hidden="true" />
+        )}
+        {nonLu && !ouvert && (
+          <span
+            className="absolute right-0.5 top-0.5 h-3.5 w-3.5 rounded-full bg-[#ef4444] ring-2 ring-white"
+            aria-hidden="true"
+          />
+        )}
       </button>
 
       {ouvert && (
@@ -261,90 +331,141 @@ export default function BulleChat() {
           id="bulle-chat"
           role="dialog"
           aria-label="Discuter avec Sitaly"
-          className="fixed inset-x-3 z-40 flex flex-col overflow-hidden rounded-3xl border border-[#7014c2]/20 bg-white shadow-2xl shadow-[#7014c2]/20 sm:inset-x-auto sm:right-4 sm:w-[380px]"
-          style={{
-            height: "min(70dvh, 560px)",
-            bottom: "calc(var(--bandeau-cookies, 0px) + 0.75rem)",
-          }}
+          tabIndex={-1}
+          className="fixed inset-x-0 top-0 bottom-[var(--bandeau-cookies,0px)] z-[70] flex flex-col overflow-hidden bg-white outline-none motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-3 motion-safe:duration-200 sm:inset-x-auto sm:top-auto sm:right-5 sm:bottom-[calc(var(--bandeau-cookies,0px)_+_var(--bouton-collant,0px)_+_5.25rem)] sm:h-[min(690px,calc(100dvh_-_var(--bandeau-cookies,0px)_-_var(--bouton-collant,0px)_-_7rem))] sm:w-[400px] sm:origin-bottom-right sm:rounded-[22px] sm:shadow-[0_12px_48px_rgba(17,12,46,0.22)] sm:ring-1 sm:ring-black/[0.06] sm:motion-safe:zoom-in-95"
         >
-          <div className="flex items-start justify-between gap-3 bg-[linear-gradient(to_top_right,#0b53b0,#3049ba,#483dc1,#5d2dc4,#7014c2,#8c009e,#9d0073,#a60047,#a51111)] px-4 py-3.5 text-white">
-            <div className="min-w-0">
-              <p className="flex items-center gap-2 font-semibold">
-                <span
-                  className="h-2 w-2 shrink-0 rounded-full bg-[#4ade80] ring-2 ring-white/40"
-                  aria-hidden="true"
-                />
-                {TEXTES.titre}
-              </p>
-              <p className="mt-0.5 text-sm leading-snug text-white/90 sm:text-xs">{TEXTES.sous}</p>
-            </div>
-            <button
-              type="button"
-              onClick={fermer}
-              aria-label="Fermer la discussion"
-              className="grid h-11 w-11 shrink-0 place-items-center rounded-full text-white/80 transition hover:bg-white/15 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 sm:h-9 sm:w-9"
-            >
-              <X className="h-4 w-4" aria-hidden="true" />
-            </button>
-          </div>
+          {onglet === "accueil" && (
+            <Accueil
+              surFermer={fermer}
+              surQuestion={() => demander()}
+              surChercher={() => {
+                setOnglet("aide");
+                setVueAide({ type: "collections" });
+                setRechercheAuto(true);
+              }}
+              surArticle={lireArticle}
+              conversationEnCours={conversationCommencee}
+            />
+          )}
 
-          <Fil
-            lignes={lignes}
-            attente={attente}
-            desactive={codeErreur === "LIMITE" || codeErreur === "CLOSE"}
-            surEnvoi={(t) => void envoyer(t)}
-            surParlerATed={() => void demanderTed()}
-            premierChamp={champ}
-          />
+          {onglet === "messages" && !enConversation && (
+            <ListeMessages lignes={lignes} surOuvrir={() => demander()} surFermer={fermer} />
+          )}
 
-          {message && (
-            <p className="border-t border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-              {message}
-              {codeErreur === "PANNE" && (
-                <>
-                  {" "}
-                  <a href={`tel:${SITALY_PHONE}`} className="underline">
-                    Appeler
-                  </a>
-                </>
+          {onglet === "messages" && enConversation && (
+            <>
+              <EnTeteConversation surRetour={() => setEnConversation(false)} surFermer={fermer} />
+              <Fil
+                lignes={lignes}
+                attente={attente}
+                desactive={codeErreur === "LIMITE" || codeErreur === "CLOSE"}
+                surEnvoi={(t) => void envoyer(t)}
+                surParlerATed={() => void demanderTed()}
+                premierChamp={champ}
+              />
+
+              {message && (
+                <p className="border-t border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+                  {message}
+                  {codeErreur === "PANNE" && (
+                    <>
+                      {" "}
+                      <a href={`tel:${SITALY_PHONE}`} className="underline">
+                        Appeler
+                      </a>
+                    </>
+                  )}
+                </p>
               )}
-            </p>
-          )}
 
-          {emailDemande && !emailLaisse && (
-            <form
-              onSubmit={noterEmail}
-              className="space-y-2 border-t border-black/[0.07] bg-black/[0.02] px-4 py-3"
-            >
-              <label className="block text-xs text-black/60" htmlFor="bulle-chat-email">
-                {TEXTES.demandeEmail}
-              </label>
-              <div className="flex gap-2">
-                <input
-                  id="bulle-chat-email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  autoComplete="email"
-                  placeholder="vous@exemple.fr"
-                  className="min-w-0 flex-1 rounded-xl border border-black/10 bg-white px-3 py-2 text-base text-black sm:text-sm placeholder:text-black/40 focus:border-[#7014c2]/60 focus:outline-none"
-                />
-                <button
-                  type="submit"
-                  className="shrink-0 rounded-xl bg-[#7014c2] px-3.5 py-2 text-sm font-medium text-white transition hover:bg-[#5d2dc4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7014c2]/40"
+              {emailDemande && !emailLaisse && (
+                <form
+                  onSubmit={noterEmail}
+                  className="space-y-2 border-t border-black/[0.07] bg-[#f7f5fb] px-4 py-3"
                 >
-                  Envoyer
-                </button>
-              </div>
-            </form>
+                  <label className="block text-xs text-black/60" htmlFor="bulle-chat-email">
+                    {TEXTES.demandeEmail}
+                  </label>
+                  <div className="flex gap-2">
+                    <input
+                      id="bulle-chat-email"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      autoComplete="email"
+                      placeholder="vous@exemple.fr"
+                      className="min-w-0 flex-1 rounded-xl border border-black/10 bg-white px-3 py-2 text-base text-black placeholder:text-black/40 focus:border-[#7014c2]/60 focus:outline-none sm:text-sm"
+                    />
+                    <button
+                      type="submit"
+                      className="shrink-0 rounded-xl bg-[#7014c2] px-3.5 py-2 text-sm font-medium text-white transition hover:bg-[#5d2dc4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7014c2]/40"
+                    >
+                      Envoyer
+                    </button>
+                  </div>
+                </form>
+              )}
+
+              <p className="bg-white px-4 pb-[max(0.6rem,env(safe-area-inset-bottom))] pt-0 text-center text-[11px] leading-snug text-black/40">
+                {TEXTES.pied}{" "}
+                <a href="/politique-confidentialite/" className="underline">
+                  Confidentialité
+                </a>
+              </p>
+            </>
           )}
 
-          <p className="border-t border-black/[0.07] px-4 py-2.5 text-xs leading-snug text-black/45 sm:text-[11px]">
-            {TEXTES.pied}{" "}
-            <a href="/politique-confidentialite/" className="underline">
-              Confidentialité
-            </a>
-          </p>
+          {onglet === "aide" && (
+            <Aide
+              vue={vueAide}
+              surVue={setVueAide}
+              surFermer={fermer}
+              surDemander={demander}
+              rechercheAuto={rechercheAuto}
+            />
+          )}
+
+          {/* Les trois onglets, cachés pendant la conversation comme chez Intercom. */}
+          {!(onglet === "messages" && enConversation) && (
+            <nav
+              aria-label="Rubriques du chat"
+              className="grid grid-cols-3 border-t border-black/[0.06] bg-white pb-[env(safe-area-inset-bottom)]"
+            >
+              {ONGLETS.map(({ id, libelle, Icone }) => {
+                const actif = onglet === id;
+                return (
+                  <button
+                    key={id}
+                    type="button"
+                    onClick={() => changerOnglet(id)}
+                    aria-current={actif ? "page" : undefined}
+                    className={`relative flex flex-col items-center gap-1 pb-3 pt-2.5 text-xs transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#7014c2]/40 ${
+                      actif
+                        ? "font-semibold text-[#7014c2]"
+                        : "font-medium text-black/55 hover:text-black/80"
+                    }`}
+                  >
+                    <span className="relative">
+                      <Icone
+                        className="h-[22px] w-[22px]"
+                        strokeWidth={actif ? 2.2 : 1.8}
+                        fill={actif ? "currentColor" : "none"}
+                        fillOpacity={actif ? 0.14 : 0}
+                        aria-hidden="true"
+                      />
+                      {id === "messages" && nonLu && (
+                        <span
+                          className="absolute -right-1 -top-0.5 h-2.5 w-2.5 rounded-full bg-[#ef4444] ring-2 ring-white"
+                          aria-label="Nouveau message"
+                        />
+                      )}
+                    </span>
+                    {libelle}
+                  </button>
+                );
+              })}
+            </nav>
+          )}
         </div>
       )}
     </>
