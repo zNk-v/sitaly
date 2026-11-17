@@ -512,7 +512,9 @@ export function GrilleTarifs() {
           ))}
         </div>
       </div>
-      <div className="mt-10 grid gap-5 lg:grid-cols-3">
+      {/* Rail à arrêts sous 640 px : empilées, les trois cartes faisaient
+          4,04 écrans à 390 px (SITA-31, friction 3). */}
+      <div className="rail-mobile mt-10 grid gap-5 lg:grid-cols-3">
         {FORMULES.map((f) => (
           <CartePrix key={f.nom} formule={f} annuel={annuel} />
         ))}
@@ -646,7 +648,7 @@ const OUVERT_PAR_ESSENTIEL: { titre: string; texte: string }[] = [
 export function PassageEssentiel() {
   const { fonctions, limites = [] } = FORMULES[0];
   return (
-    <div className="grid gap-5 lg:grid-cols-2">
+    <div className="rail-mobile rail-deux grid gap-5 lg:grid-cols-2">
       <div className={`${CARTE} flex flex-col p-8 sm:p-10`}>
         <div className="flex items-baseline gap-2">
           <h3 className="text-lg font-semibold">{IA.decouverte.nom}</h3>

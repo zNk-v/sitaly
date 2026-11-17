@@ -56,7 +56,7 @@ const PASTILLE = "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-x
 
 export function GrilleActivite() {
   return (
-    <div className="grid gap-5 md:grid-cols-2">
+    <div className="rail-mobile grid gap-5 md:grid-cols-2">
       <Carte
         id="devis-et-factures"
         titre="Devis dicté, facture payée"

@@ -3576,3 +3576,51 @@ body.menu-ouvert .entete-plaque {
     opacity: 0.35;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Rails de cartes sur téléphone (SITA-31, 17 novembre 2026)
+
+   Les grilles de cartes se dépilaient en colonnes : les trois formules
+   faisaient 4,04 écrans à 390 px, les six fonctionnalités 2,80, les cinq
+   blocs d'activité 2,84 (friction 3 de l'état des lieux). Sous 640 px, la
+   grille devient un rail qui défile de côté et s'arrête sur chaque carte ;
+   la carte suivante dépasse de son bord, et c'est ce bord qui dit qu'il y a
+   une suite.
+
+   Au-delà de 640 px, rien ne change : la grille reprend les classes Tailwind
+   écrites sur place (`grid`, `lg:grid-cols-3`…). Ces règles arrivent après
+   l'import de Tailwind, elles l'emportent donc à égalité de spécificité, et
+   seulement sous 640 px.
+   --------------------------------------------------------------------------- */
+@media (max-width: 639px) {
+  .rail-mobile {
+    display: flex;
+    overflow-x: auto;
+    /* `mandatory` colle au plus proche : sur un rail de cartes de même
+       largeur, aucun risque de bloquer un défilement à l'intérieur. */
+    scroll-snap-type: x mandatory;
+    /* Le rail déborde des marges de la section (px-4), sinon la première carte
+       s'arrête à 16 px du bord et la suivante se devine à peine. */
+    margin-inline: -1rem;
+    padding-inline: 1rem;
+    scroll-padding-inline: 1rem;
+    padding-bottom: 0.25rem;
+    overscroll-behavior-x: contain;
+    /* Pas de barre : sur iPhone elle se cache déjà, et sur Android elle
+       ajouterait une ligne grise sous chaque rail. */
+    scrollbar-width: none;
+  }
+  .rail-mobile::-webkit-scrollbar {
+    display: none;
+  }
+  .rail-mobile > * {
+    /* 84 % : la carte suivante dépasse de 16 % de l'écran, assez pour se voir. */
+    flex: 0 0 var(--rail-carte, 84%);
+    scroll-snap-align: center;
+  }
+  /* Deux cartes seulement : elles se partagent l'écran plus largement, le
+     visiteur voit tout de suite qu'il n'y en a qu'une de plus. */
+  .rail-mobile.rail-deux > * {
+    flex-basis: var(--rail-carte, 88%);
+  }
+}

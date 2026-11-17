@@ -448,7 +448,7 @@ const FAMILLES = [
 
 export function Familles() {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="rail-mobile grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {FAMILLES.map((f) => (
         <a
           key={f.titre}
@@ -744,7 +744,7 @@ function VisuelAdresse() {
 
 export function GrilleFonctions() {
   return (
-    <div className="grid gap-5 lg:grid-cols-3">
+    <div className="rail-mobile grid gap-5 lg:grid-cols-3">
       <Bloc
         className="lg:col-span-2"
         titre="Un site complet en une minute"
