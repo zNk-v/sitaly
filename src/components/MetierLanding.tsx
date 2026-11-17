@@ -366,7 +366,7 @@ export function MetierLanding(props: MetierLandingProps) {
             Prêt à recevoir plus d'appels qualifiés ?
           </h2>
           <p className="mt-3 text-primary-foreground/90">
-            Quatre questions pour connaître l'offre qui convient à votre site {metier}, et son prix.
+            Répondez à trois questions sur votre activité : l'IA crée votre site {metier}, gratuit pour commencer.
           </p>
           <a
             href={`${APP_URL}/creer`}
