@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 
 const URL = "https://sitaly.fr/site-internet-chauffagiste/";
-const TITLE = "Site internet chauffagiste : dépannage, PAC et entretien | Sitaly";
+const TITLE = "Site internet chauffagiste : dépannage et entretien | Sitaly";
 const DESCRIPTION =
-  "Site internet chauffagiste pensé pour les pannes d'hiver, les pompes à chaleur et les contrats d'entretien. SEO local, livré en 48h, abonnement mensuel sans engagement.";
+  "Site internet chauffagiste pensé pour les pannes d'hiver, les pompes à chaleur, les contrats d'entretien. SEO local, livré en 48h, sans engagement.";
 
 const FAQ = [
   {

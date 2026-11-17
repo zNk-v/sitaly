@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 
 const URL = "https://sitaly.fr/site-internet-carreleur/";
-const TITLE = "Site internet carreleur : salles de bain, terrasses et devis | Sitaly";
+const TITLE = "Site internet carreleur : salle de bain, terrasse | Sitaly";
 const DESCRIPTION =
-  "Site internet carreleur qui montre la finition : salles de bain, douches à l'italienne, terrasses, grands formats. SEO local, livré en 48h, abonnement mensuel sans engagement.";
+  "Site internet carreleur qui montre la finition : salles de bain, douches à l'italienne, terrasses. SEO local, livré en 48h, sans engagement.";
 
 const FAQ = [
   {

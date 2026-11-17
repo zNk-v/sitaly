@@ -5,7 +5,7 @@ import { LinkedinLink } from "@/components/LinkedinLink";
 import { SiteHeader } from "@/components/SiteHeader";
 import { MetierFooterLinks, MetierLinksSection } from "@/components/MetierLinks";
 import type { MetierLink } from "@/lib/metiers";
-import { euros } from "@/lib/config";
+import { APP_URL, euros } from "@/lib/config";
 import { MENTION_TVA, lignesIncluses, offre } from "@/data/offres";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -68,14 +68,10 @@ export function MetierLanding(props: MetierLandingProps) {
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-muted-foreground sm:text-xl">{intro}</p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Link
-              to="/mon-projet/"
-              search={{ besoin: "site" }}
-              className="bouton px-7 py-3.5 text-sm"
-            >
-              Trouver mon offre
+            <a href={`${APP_URL}/creer`} className="bouton px-7 py-3.5 text-sm">
+              Créer mon site
               <ArrowRight className="bouton-fleche h-4 w-4" />
-            </Link>
+            </a>
             <Link to="/" hash="offre" className="bouton-secondaire px-6 py-3.5 text-sm">
               Voir les tarifs
             </Link>
@@ -372,14 +368,13 @@ export function MetierLanding(props: MetierLandingProps) {
           <p className="mt-3 text-primary-foreground/90">
             Quatre questions pour connaître l'offre qui convient à votre site {metier}, et son prix.
           </p>
-          <Link
-            to="/mon-projet/"
-            search={{ besoin: "site" }}
+          <a
+            href={`${APP_URL}/creer`}
             className="mt-7 inline-flex items-center gap-2 rounded-xl bg-background px-7 py-3.5 text-sm font-semibold text-foreground shadow-elevated transition hover:opacity-95"
           >
-            Trouver mon offre
+            Créer mon site
             <ArrowRight className="h-4 w-4" />
-          </Link>
+          </a>
         </div>
       </section>
 

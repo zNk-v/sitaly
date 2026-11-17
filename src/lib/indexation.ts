@@ -20,18 +20,22 @@
  * pour que le prérendu génère ces pages même quand plus rien ne les lie.
  */
 
-/** Pages métier écrites pour les artisans. */
+/**
+ * Pages métier écrites pour les artisans.
+ *
+ * Serrurier, chauffagiste et carreleur en sont sorties le 17 novembre 2026
+ * (SITA-26) : aucune page `/modeles/` ne vise déjà leur requête, et leur bouton
+ * mène maintenant à `app.sitaly.fr/creer`. Elles restent listées à part dans
+ * `vite.config.ts` pour le prérendu, tant qu'aucune page indexée ne les lie.
+ */
 export const PAGES_METIER_HORS_INDEX = [
   "/site-internet-plombier",
   "/site-internet-electricien",
   "/site-internet-couvreur",
   "/site-internet-menuisier",
-  "/site-internet-chauffagiste",
   "/site-internet-macon",
   "/site-internet-peintre",
   "/site-internet-paysagiste",
-  "/site-internet-serrurier",
-  "/site-internet-carreleur",
 ];
 
 /**

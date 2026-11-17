@@ -4,7 +4,7 @@ import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 const URL = "https://sitaly.fr/site-internet-serrurier/";
 const TITLE = "Site internet serrurier : urgence et confiance | Sitaly";
 const DESCRIPTION =
-  "Site internet serrurier qui prouve votre sérieux : adresse réelle, tarifs annoncés, avis vérifiables, appel en un geste. SEO local, livré en 48h, abonnement mensuel sans engagement.";
+  "Site internet serrurier qui prouve votre sérieux : adresse réelle, tarifs annoncés, avis vérifiables. SEO local, livré en 48h, sans engagement.";
 
 const FAQ = [
   {
