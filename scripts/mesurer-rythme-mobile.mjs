@@ -105,7 +105,15 @@ function servirDist(dist) {
   return new Promise((ok) => serveur.listen(0, "127.0.0.1", () => ok(serveur)));
 }
 
+/**
+ * Playwright et ses navigateurs vivent hors du dépôt, installés une fois pour
+ * SITA-28 : `.paperclip/playwright/pw` pour le module, `navigateurs` pour WebKit.
+ */
+const NAVIGATEURS = "/Users/vidalozzi/sitaly/.paperclip/playwright/navigateurs";
+
 function chargerPlaywright() {
+  if (!process.env.PLAYWRIGHT_BROWSERS_PATH && existsSync(NAVIGATEURS))
+    process.env.PLAYWRIGHT_BROWSERS_PATH = NAVIGATEURS;
   const require = createRequire(import.meta.url);
   const pistes = [
     process.env.PLAYWRIGHT_MODULE,
