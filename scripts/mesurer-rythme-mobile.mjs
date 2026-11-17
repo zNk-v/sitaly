@@ -105,8 +105,7 @@ function servirDist(dist) {
       return;
     }
     const type = TYPES[extname(fichier)] ?? "application/octet-stream";
-    const gzip =
-      COMPRESSIBLE.test(type) && /\bgzip\b/.test(req.headers["accept-encoding"] ?? "");
+    const gzip = COMPRESSIBLE.test(type) && /\bgzip\b/.test(req.headers["accept-encoding"] ?? "");
     res.writeHead(200, {
       "content-type": type,
       "cache-control": "no-store",
@@ -447,7 +446,9 @@ async function mesurerPage(contexte, base, chemin, largeur, opts, dossierCapture
     for (let i = 0; i < total; i += 1) {
       await page.evaluate((y) => window.scrollTo(0, y), i * HAUTEUR);
       await page.waitForTimeout(220);
-      await page.screenshot({ path: join(dossierCaptures, nom, `ecran-${String(i + 1).padStart(2, "0")}.png`) });
+      await page.screenshot({
+        path: join(dossierCaptures, nom, `ecran-${String(i + 1).padStart(2, "0")}.png`),
+      });
     }
   }
 
@@ -466,7 +467,9 @@ function rendreMarkdown(mesures, opts) {
   l.push("");
   l.push("## Vue d'ensemble");
   l.push("");
-  l.push("| Page | Largeur | Écrans | Hauteur | Débordement X | Saut de hauteur | Octets | dont images |");
+  l.push(
+    "| Page | Largeur | Écrans | Hauteur | Débordement X | Saut de hauteur | Octets | dont images |",
+  );
   l.push("| --- | --- | --- | --- | --- | --- | --- | --- |");
   for (const m of mesures) {
     l.push(
@@ -553,9 +556,7 @@ function rendreMarkdown(mesures, opts) {
       l.push("");
     }
     if (m.polices.length) {
-      l.push(
-        `Polices : ${m.polices.map((p) => `${p.famille} → ${p.display}`).join(", ")}`,
-      );
+      l.push(`Polices : ${m.polices.map((p) => `${p.famille} → ${p.display}`).join(", ")}`);
       l.push("");
     }
   }
@@ -564,7 +565,8 @@ function rendreMarkdown(mesures, opts) {
 
 async function main() {
   const opts = lireArguments(process.argv.slice(2));
-  if (!existsSync(opts.dist)) throw new Error(`${opts.dist} manquant : lance d'abord npm run build`);
+  if (!existsSync(opts.dist))
+    throw new Error(`${opts.dist} manquant : lance d'abord npm run build`);
   const playwright = chargerPlaywright();
   const serveur = await servirDist(opts.dist);
   const base = `http://127.0.0.1:${serveur.address().port}`;

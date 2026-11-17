@@ -11,6 +11,11 @@
  * Usage :
  *     npm run build
  *     node scripts/lighthouse-mobile.mjs --sortie=avant
+ *
+ * Options :
+ *     --sortie=<nom>   dossier du rapport (défaut : avant)
+ *     --pages=/,/tarifs/   chemins à mesurer
+ *     --essais=3       passages par page, médiane retenue (défaut : 3)
  */
 import { createRequire } from "node:module";
 import { createReadStream, existsSync } from "node:fs";
@@ -22,10 +27,10 @@ import { fileURLToPath } from "node:url";
 import { createGzip } from "node:zlib";
 
 const racine = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const MODULES = process.env.LIGHTHOUSE_MODULES ?? "/Users/vidalozzi/sitaly/.paperclip/playwright/pw/node_modules";
+const MODULES =
+  process.env.LIGHTHOUSE_MODULES ?? "/Users/vidalozzi/sitaly/.paperclip/playwright/pw/node_modules";
 const CHROME =
-  process.env.CHROME_PATH ??
-  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+  process.env.CHROME_PATH ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
 const PAGES_PAR_DEFAUT = [
   "/",
@@ -75,8 +80,7 @@ function servirDist(dist) {
       return;
     }
     const type = TYPES[extname(fichier)] ?? "application/octet-stream";
-    const gzip =
-      COMPRESSIBLE.test(type) && /\bgzip\b/.test(req.headers["accept-encoding"] ?? "");
+    const gzip = COMPRESSIBLE.test(type) && /\bgzip\b/.test(req.headers["accept-encoding"] ?? "");
     res.writeHead(200, {
       "content-type": type,
       "cache-control": "no-store",
@@ -94,6 +98,15 @@ async function main() {
   const sortie = (argv.find((a) => a.startsWith("--sortie=")) ?? "--sortie=avant").slice(9);
   const pagesArg = argv.find((a) => a.startsWith("--pages="));
   const pages = pagesArg ? pagesArg.slice(8).split(",").filter(Boolean) : PAGES_PAR_DEFAUT;
+  /**
+   * Trois passages par page, résultat médian. Le 17/11/2026, trois mesures de
+   * l'accueil sur le même build ont donné un TBT de 251, 1 593 et 2 669 ms :
+   * sur cette machine, qui fait tourner d'autres agents, un essai isolé ne
+   * permet de conclure ni à un gain ni à une régression.
+   */
+  const nombreEssais = Number(
+    (argv.find((a) => a.startsWith("--essais=")) ?? "--essais=3").slice(9),
+  );
   const dist = join(racine, "dist/client");
   if (!existsSync(dist)) throw new Error("dist/client manquant : lance d'abord npm run build");
   if (!existsSync(CHROME)) throw new Error(`Chrome introuvable : ${CHROME}`);
@@ -124,14 +137,26 @@ async function main() {
   const resultats = [];
   try {
     for (const chemin of pages) {
-      const { lhr } = await lighthouse(
-        base + chemin,
-        { port: chrome.port, output: "json", logLevel: "error" },
-        null,
-      );
+      const essais = [];
+      for (let n = 0; n < nombreEssais; n++) {
+        const { lhr } = await lighthouse(
+          base + chemin,
+          { port: chrome.port, output: "json", logLevel: "error" },
+          null,
+        );
+        essais.push(lhr);
+      }
+      /** La passe médiane sur le TBT : c'est lui qui bouge le plus d'un essai à l'autre. */
+      const lhr = [...essais].sort(
+        (x, y) =>
+          x.audits["total-blocking-time"].numericValue -
+          y.audits["total-blocking-time"].numericValue,
+      )[Math.floor(essais.length / 2)];
       const a = lhr.audits;
+      const valeurs = (id) => essais.map((e) => e.audits[id].numericValue);
       const r = {
         chemin,
+        essais: essais.length,
         performance: Math.round(lhr.categories.performance.score * 100),
         accessibilite: lhr.categories.accessibility
           ? Math.round(lhr.categories.accessibility.score * 100)
@@ -141,6 +166,17 @@ async function main() {
         tbt: a["total-blocking-time"].numericValue,
         fcp: a["first-contentful-paint"].numericValue,
         si: a["speed-index"].numericValue,
+        /** L'écart entre essais : sans lui, un chiffre isolé se lit comme un progrès. */
+        etendue: {
+          tbt: [
+            Math.min(...valeurs("total-blocking-time")),
+            Math.max(...valeurs("total-blocking-time")),
+          ],
+          lcp: [
+            Math.min(...valeurs("largest-contentful-paint")),
+            Math.max(...valeurs("largest-contentful-paint")),
+          ],
+        },
         elementLcp:
           a["largest-contentful-paint-element"]?.details?.items?.[0]?.items?.[0]?.node?.snippet ??
           null,
@@ -157,7 +193,8 @@ async function main() {
       };
       resultats.push(r);
       console.log(
-        `${chemin} → perf ${r.performance}, LCP ${Math.round(r.lcp)} ms, CLS ${r.cls.toFixed(3)}, TBT ${Math.round(r.tbt)} ms`,
+        `${chemin} → perf ${r.performance}, LCP ${Math.round(r.lcp)} ms, CLS ${r.cls.toFixed(3)}, ` +
+          `TBT ${Math.round(r.tbt)} ms (${essais.length} essais, TBT ${Math.round(r.etendue.tbt[0])}–${Math.round(r.etendue.tbt[1])} ms)`,
       );
     }
   } finally {
@@ -170,12 +207,29 @@ async function main() {
   await mkdir(dossier, { recursive: true });
   await writeFile(join(dossier, "lighthouse.json"), JSON.stringify(resultats, null, 2));
 
-  const l = ["# Lighthouse mobile", "", "| Page | Perf. | LCP | CLS | TBT | FCP | Speed Index |", "| --- | --- | --- | --- | --- | --- | --- |"];
+  const l = [
+    "# Lighthouse mobile",
+    "",
+    `Essai médian sur ${nombreEssais} passage${nombreEssais > 1 ? "s" : ""} par page (médiane sur le TBT).`,
+    "",
+    "| Page | Perf. | LCP | CLS | TBT | FCP | Speed Index |",
+    "| --- | --- | --- | --- | --- | --- | --- |",
+  ];
   for (const r of resultats)
     l.push(
       `| \`${r.chemin}\` | ${r.performance} | ${Math.round(r.lcp)} ms | ${r.cls.toFixed(3)} | ${Math.round(r.tbt)} ms | ${Math.round(r.fcp)} ms | ${Math.round(r.si)} ms |`,
     );
   l.push("");
+  if (nombreEssais > 1) {
+    l.push("Écart entre essais — un gain plus petit que cet écart ne prouve rien :", "");
+    l.push("| Page | TBT min–max | LCP min–max |", "| --- | --- | --- |");
+    for (const r of resultats)
+      l.push(
+        `| \`${r.chemin}\` | ${Math.round(r.etendue.tbt[0])}–${Math.round(r.etendue.tbt[1])} ms | ` +
+          `${Math.round(r.etendue.lcp[0])}–${Math.round(r.etendue.lcp[1])} ms |`,
+      );
+    l.push("");
+  }
   for (const r of resultats) {
     l.push(`## \`${r.chemin}\``);
     l.push("");
