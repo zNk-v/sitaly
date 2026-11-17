@@ -3649,3 +3649,14 @@ body.menu-ouvert .entete-plaque {
     transition: none;
   }
 }
+
+/* Les animations sans fin ne tournent que dans l'écran (SITA-31, useHorsEcran).
+   Elles repeignaient pendant tout le défilement de l'accueil, liseré du logo
+   compris. La règle est à l'envers d'une mise en pause par défaut : un bloc
+   sans repère continue d'animer, il ne se fige jamais par oubli. */
+.hors-ecran .lueur-sitaly,
+.hors-ecran .vitrine-ticker,
+.hors-ecran .vitrine-curseur,
+.hors-ecran .vitrine-point {
+  animation-play-state: paused;
+}

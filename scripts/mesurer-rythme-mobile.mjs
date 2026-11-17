@@ -364,8 +364,19 @@ function mesurerDansLaPage() {
     }
   }
 
+  /**
+   * Les animations sans fin qui tournent à cet instant. Elles repeignent à
+   * chaque image, y compris hors écran, et c'est du retard pris par le doigt
+   * pendant le défilement (SITA-31, friction 8).
+   */
+  const animations = document
+    .getAnimations()
+    .filter((a) => a.playState === "running" && a.effect?.getTiming().iterations === Infinity)
+    .map((a) => a.animationName || "(sans nom)");
+
   return {
     vue,
+    animationsSansFin: animations,
     hauteurTotale: document.documentElement.scrollHeight,
     ecransTotal: ecrans(document.documentElement.scrollHeight),
     debordementX: document.documentElement.scrollWidth - vue.l,
@@ -557,6 +568,11 @@ function rendreMarkdown(mesures, opts) {
     }
     if (m.polices.length) {
       l.push(`Polices : ${m.polices.map((p) => `${p.famille} → ${p.display}`).join(", ")}`);
+      l.push("");
+    }
+    {
+      const a = m.animationsSansFin ?? [];
+      l.push(`Animations sans fin en cours, bas de page : ${a.length ? a.join(", ") : "aucune"}`);
       l.push("");
     }
   }

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 
 import { ArrowRight, Lock, Sparkles, Star } from "lucide-react";
 import { lienCreation } from "@/components/produit/Produit";
 import { useBoutonCollant } from "@/components/produit/BoutonCollant";
+import { useHorsEcran } from "@/lib/ecran";
 
 /**
  * Les blocs vivants de l'accueil de sitaly.fr (30 octobre 2026), après l'étude
@@ -402,7 +403,9 @@ export function BarreCollante() {
 
   return (
     <div
-      className={`fixed inset-x-0 z-40 flex justify-center px-3 transition-all duration-500 ${montre ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-6 opacity-0"}`}
+      /* `hors-ecran` tant que la barre est cachée : sa lueur respirait quand
+         même, en haut de page comme sur les pages où elle ne vient jamais. */
+      className={`fixed inset-x-0 z-40 flex justify-center px-3 transition-all duration-500 ${montre ? "translate-y-0 opacity-100" : "hors-ecran pointer-events-none translate-y-6 opacity-0"}`}
       style={{ bottom: "calc(var(--bandeau-cookies, 0px) + 1rem)" }}
       aria-hidden={!montre}
     >
@@ -628,8 +631,12 @@ function VisuelDemandes() {
     ["Nadia", "une intervention samedi"],
   ];
   const liste = [...demandes, ...demandes];
+  const { ref, classe } = useHorsEcran<HTMLDivElement>();
   return (
-    <div className="relative h-44 overflow-hidden [mask-image:linear-gradient(transparent,black_20%,black_80%,transparent)]">
+    <div
+      ref={ref}
+      className={`${classe} relative h-44 overflow-hidden [mask-image:linear-gradient(transparent,black_20%,black_80%,transparent)]`}
+    >
       <div className="vitrine-ticker space-y-2.5">
         {liste.map(([nom, objet], k) => (
           <div key={k} className="flex items-center gap-3 rounded-2xl bg-white p-3 shadow-sm">
@@ -759,6 +766,7 @@ function VisuelGoogle() {
 function VisuelAdresse() {
   const adresse = "votre-nom.sitaly.fr";
   const { ref, visible } = useVisible<HTMLDivElement>(0.5);
+  const { ref: refEcran, classe } = useHorsEcran<HTMLDivElement>();
   const [n, setN] = useState(0);
   useEffect(() => {
     if (!visible) return;
@@ -767,19 +775,21 @@ function VisuelAdresse() {
     return () => clearInterval(t);
   }, [visible]);
   return (
-    <div ref={ref} className="space-y-3">
-      <div className="flex items-center gap-2 rounded-xl bg-white px-3 py-2.5 text-sm shadow-sm">
-        <Lock className="h-3.5 w-3.5 text-[#16a34a]" />
-        <span className="font-medium">
-          {adresse.slice(0, n)}
-          <span className="vitrine-curseur">|</span>
-        </span>
-      </div>
-      <div
-        className={`flex items-center gap-2 text-sm transition-opacity duration-500 ${n >= adresse.length ? "opacity-100" : "opacity-0"}`}
-      >
-        <span className="h-2 w-2 rounded-full bg-[#16a34a]" />
-        En ligne, sécurisé, sur tous les écrans
+    <div ref={refEcran} className={classe}>
+      <div ref={ref} className="space-y-3">
+        <div className="flex items-center gap-2 rounded-xl bg-white px-3 py-2.5 text-sm shadow-sm">
+          <Lock className="h-3.5 w-3.5 text-[#16a34a]" />
+          <span className="font-medium">
+            {adresse.slice(0, n)}
+            <span className="vitrine-curseur">|</span>
+          </span>
+        </div>
+        <div
+          className={`flex items-center gap-2 text-sm transition-opacity duration-500 ${n >= adresse.length ? "opacity-100" : "opacity-0"}`}
+        >
+          <span className="h-2 w-2 rounded-full bg-[#16a34a]" />
+          En ligne, sécurisé, sur tous les écrans
+        </div>
       </div>
     </div>
   );

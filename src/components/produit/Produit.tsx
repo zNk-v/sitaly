@@ -6,6 +6,7 @@ import { APP_URL, euros, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config
 import { CREATEUR_IA as IA, MENTION_TVA } from "@/data/offres";
 import { FICHE_GOOGLE_URL, NOTE_GOOGLE } from "@/data/avis-google";
 import { FAQ_PRODUIT } from "@/data/faq-produit";
+import { useHorsEcran } from "@/lib/ecran";
 
 /**
  * Les blocs de la vitrine de Sitaly App (30 octobre 2026), partagés par
@@ -124,6 +125,7 @@ const INSPIRATIONS = [
  */
 export function BoiteApp({ idees = true }: { idees?: boolean }) {
   const id = useId();
+  const { ref: refLueur, classe: lueur } = useHorsEcran<HTMLDivElement>();
   const [activite, setActivite] = useState("");
   const minuteur = useRef<ReturnType<typeof setInterval> | null>(null);
   const tour = useRef(0);
@@ -154,8 +156,9 @@ export function BoiteApp({ idees = true }: { idees?: boolean }) {
   }
 
   return (
-    <div data-boite-ia>
-      {/* Le liseré au dégradé du logo, et sa lueur qui respire derrière (16/11/2026). */}
+    <div data-boite-ia ref={refLueur} className={lueur}>
+      {/* Le liseré au dégradé du logo, et sa lueur qui respire derrière (16/11/2026).
+          Elle ne respire que dans l'écran : hors champ, elle repeignait pour rien. */}
       <div className="relative isolate rounded-3xl bg-[linear-gradient(to_top_right,#0b53b0,#3049ba,#483dc1,#5d2dc4,#7014c2,#8c009e,#9d0073,#a60047,#a51111)] p-[1.5px] shadow-[0_24px_60px_-24px_rgba(0,0,0,0.25)]">
         <div
           aria-hidden="true"
