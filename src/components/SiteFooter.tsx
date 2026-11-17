@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { PARTENAIRES_EN_LIGNE } from "@/data/partenaires";
 import { ANNEE_DU_BUILD } from "@/lib/date-du-build";
-import { Instagram, Linkedin, Phone, Youtube } from "lucide-react";
+import { ChevronDown, Instagram, Linkedin, Phone, Youtube } from "lucide-react";
 import { SitalyLogo } from "@/components/SitalyLogo";
 import { LINKEDIN_URL } from "@/components/LinkedinLink";
 import { lienCreation } from "@/components/produit/Produit";
@@ -94,6 +95,57 @@ const AUSSI: { label: string; to: string }[] = [
 const LIEN =
   "flex min-h-11 items-center text-black/60 transition hover:text-black lg:min-h-0 lg:py-1";
 
+/**
+ * Une rubrique du pied de page, repliée sur téléphone (SITA-31).
+ *
+ * Les 29 liens à 44 px — la taille d'un pouce, acquise en SITA-28 — faisaient
+ * un pied de page de 2 331 px, soit 2,76 écrans à 390 px, répétés sur les cinq
+ * pages du parcours. Repliées, les cinq rubriques tiennent en cinq lignes, et
+ * les liens restent dans le HTML : Google les lit comme avant.
+ *
+ * Le serveur rend la rubrique ouverte, comme sur ordinateur : le premier rendu
+ * du navigateur lui est donc identique, sans écart d'hydratation ni
+ * clignotement sur grand écran. Le repli arrive ensuite, et seulement sous
+ * 640 px — là où le pied de page est de toute façon sous la ligne de
+ * flottaison, hors de portée du CLS.
+ */
+function ColonnePied({ colonne }: { colonne: (typeof COLONNES)[number] }) {
+  const [replie, setReplie] = useState(false);
+  useEffect(() => {
+    if (window.matchMedia("(max-width: 639px)").matches) setReplie(true);
+  }, []);
+  return (
+    <details
+      open={!replie}
+      onToggle={(e) => setReplie(!e.currentTarget.open)}
+      className="border-b border-black/[0.06] sm:border-0"
+    >
+      <summary
+        className="flex min-h-11 cursor-pointer list-none items-center justify-between text-sm font-semibold sm:min-h-0 sm:cursor-default [&::-webkit-details-marker]:hidden"
+        /* Sans repli, le titre n'est plus un bouton : la souris ne doit rien
+           ouvrir ni fermer sur grand écran. */
+        onClick={(e) => {
+          if (!window.matchMedia("(max-width: 639px)").matches) e.preventDefault();
+        }}
+      >
+        {colonne.titre}
+        <ChevronDown
+          className="h-4 w-4 shrink-0 text-black/40 transition-transform duration-200 sm:hidden"
+          style={{ transform: replie ? "none" : "rotate(180deg)" }}
+          aria-hidden="true"
+        />
+      </summary>
+      <ul className="mt-3 pb-2 text-[15px] sm:pb-0">
+        {colonne.entrees.map((e) => (
+          <li key={e.label}>
+            <Ligne e={e} />
+          </li>
+        ))}
+      </ul>
+    </details>
+  );
+}
+
 function Ligne({ e }: { e: Entree }) {
   if ("bientot" in e) {
     return (
@@ -174,14 +226,7 @@ export function SiteFooter() {
 
           {COLONNES.map((c) => (
             <nav key={c.titre} aria-label={c.titre}>
-              <div className="text-sm font-semibold">{c.titre}</div>
-              <ul className="mt-3 text-[15px]">
-                {c.entrees.map((e) => (
-                  <li key={e.label}>
-                    <Ligne e={e} />
-                  </li>
-                ))}
-              </ul>
+              <ColonnePied colonne={c} />
             </nav>
           ))}
         </div>

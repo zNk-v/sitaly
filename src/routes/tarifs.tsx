@@ -80,7 +80,7 @@ function Tarifs() {
   return (
     <div className="min-h-screen bg-white text-[#09090b]">
       <SiteChrome>
-        <section className="px-4 pt-16 pb-24 sm:px-6 sm:pt-24 sm:pb-32">
+        <section className="px-4 pt-10 pb-14 sm:px-6 sm:pt-24 sm:pb-32">
           <div className="mx-auto max-w-4xl text-center">
             <div className="text-sm font-medium text-brand-ink">Tarifs</div>
             <h1 className="titre-produit mt-3 text-[2.5rem] sm:text-6xl lg:text-7xl">
@@ -104,7 +104,7 @@ function Tarifs() {
           </div>
         </section>
 
-        <section className="px-4 py-20 sm:px-6 sm:py-28">
+        <section className="px-4 py-12 sm:px-6 sm:py-28">
           <div className="mx-auto max-w-5xl">
             <TitreSection
               surtitre="Comparer"

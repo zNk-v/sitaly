@@ -128,40 +128,40 @@ function Accueil() {
           <Carrousel />
         </div>
 
-        <section id="film" className="scroll-mt-28 px-4 pt-20 sm:px-6 sm:pt-28">
+        <section id="film" className="scroll-mt-28 px-4 pt-12 sm:px-6 sm:pt-28">
           <div className="mx-auto max-w-6xl">
             <TitreSection
               surtitre="En vidéo"
               titre="Voyez Sitaly travailler"
               sousTitre="Une phrase, un site en ligne, puis les devis, les rendez-vous et les réponses aux clients."
             />
-            <div className="mt-12">
+            <div className="mt-8 sm:mt-12">
               <FilmLancement />
             </div>
           </div>
         </section>
 
-        <section className="px-4 py-20 sm:px-6 sm:py-28">
+        <section className="px-4 py-12 sm:px-6 sm:py-28">
           <div className="mx-auto max-w-6xl">
             <TitreSection
               surtitre="Pour qui"
               titre="Pensé pour toutes les activités"
               sousTitre="Artisan, commerçant, soignant ou créatif : choisissez la vôtre, l'IA démarre avec."
             />
-            <div className="mt-12">
+            <div className="mt-8 sm:mt-12">
               <Familles />
             </div>
           </div>
         </section>
 
-        <section id="fonctionnalites" className="scroll-mt-28 px-4 py-20 sm:px-6 sm:py-28">
+        <section id="fonctionnalites" className="scroll-mt-28 px-4 py-12 sm:px-6 sm:py-28">
           <div className="mx-auto max-w-6xl">
             <TitreSection
               surtitre="Fonctionnalités"
               titre="Tout pour lancer votre activité en ligne"
               sousTitre="Un site complet, vos demandes de contact, Google, vos photos : l'IA s'occupe du travail."
             />
-            <div className="mt-14">
+            <div className="mt-8 sm:mt-14">
               <GrilleFonctions />
             </div>
           </div>
@@ -169,7 +169,7 @@ function Accueil() {
 
         <section
           id="retouches"
-          className="scroll-mt-28 bg-[#0d0f14] px-4 py-20 text-white sm:px-6 sm:py-28"
+          className="scroll-mt-28 bg-[#0d0f14] px-4 py-12 text-white sm:px-6 sm:py-28"
         >
           <div className="mx-auto max-w-6xl">
             <div className="mx-auto max-w-3xl text-center">
@@ -182,26 +182,26 @@ function Accueil() {
                 quelques secondes, et un clic annule.
               </p>
             </div>
-            <div className="mt-14">
+            <div className="mt-8 sm:mt-14">
               <Conversation />
             </div>
           </div>
         </section>
 
-        <section id="activite" className="scroll-mt-28 px-4 py-20 sm:px-6 sm:py-28">
+        <section id="activite" className="scroll-mt-28 px-4 py-12 sm:px-6 sm:py-28">
           <div className="mx-auto max-w-6xl">
             <TitreSection
               surtitre="Gérer votre activité"
               titre="Votre site, et tout le reste"
               sousTitre="Devis, rendez-vous, réponses aux clients : ce qui vous prenait vos soirées tient dans la même app."
             />
-            <div className="mt-14">
+            <div className="mt-8 sm:mt-14">
               <GrilleActivite />
             </div>
           </div>
         </section>
 
-        <section className="px-4 py-20 sm:px-6 sm:py-28">
+        <section className="px-4 py-12 sm:px-6 sm:py-28">
           <div className="mx-auto max-w-5xl">
             <TitreSection
               surtitre="Un seul abonnement"
@@ -229,36 +229,36 @@ function Accueil() {
         {/* Le passage du gratuit au payant, dit d'un bloc avant la grille
             (audit du tunnel du 15 novembre 2026) : ce que Découverte arrête,
             ce qu'Essentiel ouvre, le nom de domaine offert. */}
-        <section id="passage" className="scroll-mt-28 px-4 py-20 sm:px-6 sm:py-28">
+        <section id="passage" className="scroll-mt-28 px-4 py-12 sm:px-6 sm:py-28">
           <div className="mx-auto max-w-6xl">
             <TitreSection
               surtitre="Gratuit, puis payant"
               titre={`De ${IA.decouverte.nom} à ${IA.essentiel.nom}`}
               sousTitre={`Publiez gratuitement, autant de temps qu'il vous faut. Le jour où vous voulez votre nom de domaine, ${IA.essentiel.nom} vous l'offre.`}
             />
-            <div className="mt-14">
+            <div className="mt-8 sm:mt-14">
               <PassageEssentiel />
             </div>
           </div>
         </section>
 
-        <section id="tarifs" className="scroll-mt-28 px-4 py-20 sm:px-6 sm:py-28">
+        <section id="tarifs" className="scroll-mt-28 px-4 py-12 sm:px-6 sm:py-28">
           <div className="mx-auto max-w-6xl">
             <TitreSection
               surtitre="Tarifs"
               titre="Commencez gratuitement"
               sousTitre="Payez seulement si votre site vous plaît. Au mois ou à l'année, 15 % moins cher."
             />
-            <div className="mt-14">
+            <div className="mt-8 sm:mt-14">
               <GrilleTarifs />
             </div>
           </div>
         </section>
 
-        <section className="px-4 py-20 sm:px-6 sm:py-28">
+        <section className="px-4 py-12 sm:px-6 sm:py-28">
           <div className="mx-auto max-w-3xl">
             <TitreSection surtitre="Questions" titre="Questions fréquentes" />
-            <div className="mt-12">
+            <div className="mt-8 sm:mt-12">
               <Faq />
             </div>
           </div>

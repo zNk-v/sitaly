@@ -246,14 +246,14 @@ function PageModele() {
           </div>
         </section>
 
-        <section className="px-4 py-20 sm:px-6 sm:py-24">
+        <section className="px-4 py-12 sm:px-6 sm:py-24">
           <div className="mx-auto max-w-6xl">
             <TitreSection
               surtitre="Ce que contient votre site"
               titre="Les pages de votre site, déjà écrites"
               sousTitre="L'IA prépare ces sections pour votre métier. Vous en ajoutez, en retirez ou les réécrivez en une phrase."
             />
-            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="rail-mobile mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {modele.sections.map((s) => (
                 <div key={s.titre} className={`${CARTE} p-6`}>
                   <span
@@ -270,7 +270,7 @@ function PageModele() {
           </div>
         </section>
 
-        <section className="px-4 pb-20 sm:px-6 sm:pb-24">
+        <section className="px-4 pb-12 sm:px-6 sm:pb-24">
           <div className="mx-auto max-w-6xl">
             <TitreSection
               surtitre="Comment ça marche"
@@ -288,7 +288,7 @@ function PageModele() {
           </div>
         </section>
 
-        <section className="px-4 py-20 sm:px-6 sm:py-24" style={{ background: metier.couleur }}>
+        <section className="px-4 py-12 sm:px-6 sm:py-24" style={{ background: metier.couleur }}>
           <div className="mx-auto max-w-6xl text-white">
             <div className="mx-auto max-w-3xl text-center">
               <div className="text-sm font-medium" style={{ color: metier.accent }}>
@@ -313,7 +313,7 @@ function PageModele() {
         </section>
 
         {outils.length > 0 && (
-          <section className="px-4 pt-20 sm:px-6 sm:pt-24">
+          <section className="px-4 pt-12 sm:px-6 sm:pt-24">
             <div className="mx-auto max-w-6xl">
               <TitreSection
                 surtitre="Avec votre site"
@@ -341,7 +341,7 @@ function PageModele() {
           </section>
         )}
 
-        <section className="px-4 py-20 sm:px-6 sm:py-24">
+        <section className="px-4 py-12 sm:px-6 sm:py-24">
           <div className="mx-auto max-w-3xl">
             <TitreSection
               surtitre="Questions"
@@ -391,7 +391,7 @@ function PageModele() {
           </div>
         </section>
 
-        <section className="px-4 pb-20 sm:px-6 sm:pb-24">
+        <section className="px-4 pb-12 sm:px-6 sm:pb-24">
           <div className="mx-auto max-w-6xl">
             <div className="flex items-end justify-between gap-4">
               <h2 className="titre-produit text-3xl sm:text-4xl">Autres modèles</h2>
@@ -402,7 +402,7 @@ function PageModele() {
                 Tous les modèles
               </Link>
             </div>
-            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="rail-mobile mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {autres.map((m) => (
                 <Link
                   key={m.id}
