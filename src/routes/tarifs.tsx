@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Apparition } from "@/components/Apparition";
 import { SiteChrome } from "@/components/SiteChrome";
 import {
   BoiteApp,
@@ -104,54 +105,60 @@ function Tarifs() {
           </div>
         </section>
 
-        <section className="px-4 py-12 sm:px-6 sm:py-28">
-          <div className="mx-auto max-w-5xl">
-            <TitreSection
-              surtitre="Comparer"
-              titre="Toutes les fonctions, formule par formule"
-              sousTitre="Ce que comprend chaque formule, ligne par ligne."
-            />
-            <div className="mt-14">
-              <TableauFormules />
+        <Apparition>
+          <section className="px-4 py-12 sm:px-6 sm:py-28">
+            <div className="mx-auto max-w-5xl">
+              <TitreSection
+                surtitre="Comparer"
+                titre="Toutes les fonctions, formule par formule"
+                sousTitre="Ce que comprend chaque formule, ligne par ligne."
+              />
+              <div className="mt-14">
+                <TableauFormules />
+              </div>
+              {/* Les devis et les factures sont comparés ligne par ligne au-dessus :
+                  le guide comparatif prolonge cette rubrique (16 novembre 2026). */}
+              <p className={`mt-10 text-center text-base leading-6 sm:text-sm ${TEXTE_GRIS}`}>
+                Devis et factures :{" "}
+                <Link
+                  to={PILIER_DEVIS.chemin}
+                  className="font-medium text-black underline underline-offset-4"
+                >
+                  {PILIER_DEVIS.ancre}
+                </Link>
+                , et ce que la loi impose à un artisan.
+              </p>
             </div>
-            {/* Les devis et les factures sont comparés ligne par ligne au-dessus :
-                le guide comparatif prolonge cette rubrique (16 novembre 2026). */}
-            <p className={`mt-10 text-center text-base leading-6 sm:text-sm ${TEXTE_GRIS}`}>
-              Devis et factures :{" "}
-              <Link
-                to={PILIER_DEVIS.chemin}
-                className="font-medium text-black underline underline-offset-4"
-              >
-                {PILIER_DEVIS.ancre}
-              </Link>
-              , et ce que la loi impose à un artisan.
-            </p>
-          </div>
-        </section>
+          </section>
+        </Apparition>
 
-        <section className="px-4 py-24 sm:px-6 sm:py-32">
-          <div className="mx-auto max-w-3xl">
-            <TitreSection surtitre="Questions" titre="Questions fréquentes" />
-            <div className="mt-12">
-              <Faq />
+        <Apparition>
+          <section className="px-4 py-24 sm:px-6 sm:py-32">
+            <div className="mx-auto max-w-3xl">
+              <TitreSection surtitre="Questions" titre="Questions fréquentes" />
+              <div className="mt-12">
+                <Faq />
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </Apparition>
 
-        <section className="px-4 pt-8 pb-28 sm:px-6">
-          <div className="mx-auto max-w-4xl text-center">
-            <h2 className="titre-produit text-[2.15rem] sm:text-5xl lg:text-6xl">
-              Essayez, c'est gratuit
-            </h2>
-            <p className={`mx-auto mt-5 max-w-xl text-lg ${TEXTE_GRIS}`}>
-              Décrivez votre activité en une phrase : votre site est prêt une minute plus tard.
-            </p>
-          </div>
-          <div className="mx-auto mt-10 max-w-3xl">
-            <BoiteApp idees={false} />
-          </div>
-          <Confiance />
-        </section>
+        <Apparition>
+          <section className="px-4 pt-8 pb-28 sm:px-6">
+            <div className="mx-auto max-w-4xl text-center">
+              <h2 className="titre-produit text-[2.15rem] sm:text-5xl lg:text-6xl">
+                Essayez, c'est gratuit
+              </h2>
+              <p className={`mx-auto mt-5 max-w-xl text-lg ${TEXTE_GRIS}`}>
+                Décrivez votre activité en une phrase : votre site est prêt une minute plus tard.
+              </p>
+            </div>
+            <div className="mx-auto mt-10 max-w-3xl">
+              <BoiteApp idees={false} />
+            </div>
+            <Confiance />
+          </section>
+        </Apparition>
       </SiteChrome>
     </div>
   );

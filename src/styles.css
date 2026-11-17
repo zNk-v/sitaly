@@ -3624,3 +3624,28 @@ body.menu-ouvert .entete-plaque {
     flex-basis: var(--rail-carte, 88%);
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Apparition des sections à l'entrée dans l'écran (SITA-31, Apparition.tsx)
+
+   La classe cachée n'est posée qu'après le montage, et seulement sur ce qui
+   n'est pas encore à l'écran : sans JavaScript la page reste entière, et la
+   première section ne clignote pas.
+   --------------------------------------------------------------------------- */
+.apparition {
+  transition:
+    opacity 250ms ease-out,
+    transform 250ms ease-out;
+}
+.apparition-cachee {
+  opacity: 0;
+  transform: translateY(12px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .apparition,
+  .apparition-cachee {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

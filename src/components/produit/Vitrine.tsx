@@ -231,37 +231,76 @@ export function MiniSite({ m, className = "" }: { m: Metier; className?: string 
  * les points permettent de choisir, et le survol le met en pause.
  */
 export function Carrousel() {
+  const piste = useRef<HTMLDivElement>(null);
   const [i, setI] = useState(0);
   const [pause, setPause] = useState(false);
+  /**
+   * Le premier contact arrête l'avance automatique, définitivement : une image
+   * qui change pendant qu'on la regarde fait perdre le fil, et le visiteur qui
+   * balaye vient de dire qu'il choisit lui-même.
+   */
+  const [pris, setPris] = useState(false);
+
+  /** Amène une diapo au centre, sans bouger la page verticalement. */
+  const aller = (k: number) => {
+    const el = piste.current;
+    const cible = el?.children[k] as HTMLElement | undefined;
+    if (!el || !cible) return;
+    el.scrollTo({
+      left: cible.offsetLeft - (el.clientWidth - cible.clientWidth) / 2,
+      behavior: reduit() ? "auto" : "smooth",
+    });
+  };
+
   useEffect(() => {
-    if (pause || reduit()) return;
-    const t = setInterval(() => setI((x) => (x + 1) % METIERS.length), 4500);
+    if (pause || pris || reduit()) return;
+    const t = setInterval(() => aller((i + 1) % METIERS.length), 4500);
     return () => clearInterval(t);
-  }, [pause]);
+  }, [pause, pris, i]);
+
+  /** La diapo courante se lit sur le défilement : au doigt comme au bouton. */
+  const suivreDefilement = () => {
+    const el = piste.current;
+    if (!el) return;
+    const centre = el.scrollLeft + el.clientWidth / 2;
+    let proche = 0;
+    let ecart = Infinity;
+    for (let k = 0; k < el.children.length; k++) {
+      const c = el.children[k] as HTMLElement;
+      const d = Math.abs(c.offsetLeft + c.clientWidth / 2 - centre);
+      if (d < ecart) {
+        ecart = d;
+        proche = k;
+      }
+    }
+    setI(proche);
+  };
 
   return (
     <section
       aria-label="Exemples de métiers"
-      className="overflow-hidden pt-4 pb-6"
+      className="pt-4 pb-6"
       onMouseEnter={() => setPause(true)}
       onMouseLeave={() => setPause(false)}
     >
       <div className="relative mx-auto max-w-[1600px]">
         <div
-          className="flex gap-4 transition-transform duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] sm:gap-6"
+          ref={piste}
+          onScroll={suivreDefilement}
+          onPointerDown={() => setPris(true)}
+          onTouchStart={() => setPris(true)}
+          onWheel={() => setPris(true)}
+          className="flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-smooth px-[calc((100%-var(--diapo))/2)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden motion-reduce:scroll-auto sm:gap-6"
           style={
             {
-              transform: `translateX(calc(${-i} * (var(--diapo) + var(--ecart)) + (100% - var(--diapo)) / 2))`,
               ["--diapo" as string]: "min(86vw, 1180px)",
-              ["--ecart" as string]: "1.5rem",
             } as CSSProperties
           }
         >
           {METIERS.map((m, k) => (
             <figure
               key={m.id}
-              className={`relative aspect-[4/5] w-[var(--diapo)] shrink-0 overflow-hidden rounded-[28px] transition-opacity duration-700 sm:aspect-[16/9] ${k === i ? "opacity-100" : "opacity-50"}`}
-              aria-hidden={k !== i}
+              className={`relative aspect-[4/5] w-[var(--diapo)] shrink-0 snap-center overflow-hidden rounded-[28px] transition-opacity duration-700 sm:aspect-[16/9] ${k === i ? "opacity-100" : "opacity-50"}`}
             >
               <picture>
                 <source media="(max-width: 640px)" srcSet={photo(m.id, 768)} />
@@ -269,7 +308,7 @@ export function Carrousel() {
                   src={photo(m.id)}
                   alt={`Une personne au travail : ${m.activite}`}
                   className="h-full w-full object-cover"
-                  loading={k < 2 ? "eager" : "lazy"}
+                  loading={k === 0 ? "eager" : "lazy"}
                   width={1536}
                   height={864}
                 />
@@ -279,9 +318,10 @@ export function Carrousel() {
                 <div className="text-2xl leading-tight font-semibold tracking-tight sm:text-4xl">
                   Le site de votre {m.activite}, en une minute.
                 </div>
+                {/* Toutes les diapos sont atteignables au doigt depuis qu'elles
+                    défilent : leur lien reste donc atteignable au clavier. */}
                 <a
                   href={lienCreation(m.phrase)}
-                  tabIndex={k === i ? 0 : -1}
                   className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-full bg-white/95 px-4 py-2 text-sm font-semibold text-black hover:bg-white sm:min-h-0"
                 >
                   Essayer avec « {m.phrase.split(",")[0]} »
@@ -310,7 +350,10 @@ export function Carrousel() {
               role="tab"
               aria-selected={k === i}
               aria-label={m.activite}
-              onClick={() => setI(k)}
+              onClick={() => {
+                setPris(true);
+                aller(k);
+              }}
               className="grid h-11 w-6 place-items-center sm:h-2 sm:w-auto"
             >
               <span

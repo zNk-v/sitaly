@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowRight, Check, ChevronRight } from "lucide-react";
+import { Apparition } from "@/components/Apparition";
 import { SiteChrome } from "@/components/SiteChrome";
 import { ArticlesALire } from "@/components/ArticlesALire";
 import {
@@ -236,215 +237,238 @@ function PageModele() {
           </div>
         </section>
 
-        <section className="px-4 pt-16 pb-4 sm:px-6 sm:pt-24">
-          <div className="mx-auto max-w-3xl text-center">
-            <div className="text-sm font-medium text-brand-ink">Avant le premier contact</div>
-            <h2 className="titre-produit mt-3 text-[2rem] sm:text-4xl">
-              Ce que vos clients veulent savoir
-            </h2>
-            <p className={`mt-6 text-lg leading-8 ${TEXTE_GRIS}`}>{modele.attentes}</p>
-          </div>
-        </section>
-
-        <section className="px-4 py-12 sm:px-6 sm:py-24">
-          <div className="mx-auto max-w-6xl">
-            <TitreSection
-              surtitre="Ce que contient votre site"
-              titre="Les pages de votre site, déjà écrites"
-              sousTitre="L'IA prépare ces sections pour votre métier. Vous en ajoutez, en retirez ou les réécrivez en une phrase."
-            />
-            <div className="rail-mobile mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {modele.sections.map((s) => (
-                <div key={s.titre} className={`${CARTE} p-6`}>
-                  <span
-                    className="grid h-8 w-8 place-items-center rounded-full"
-                    style={{ background: metier.accent, color: metier.couleur }}
-                  >
-                    <Check className="h-4 w-4" />
-                  </span>
-                  <div className="mt-4 text-lg font-semibold">{s.titre}</div>
-                  <p className={`mt-1 ${TEXTE_GRIS}`}>{s.texte}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="px-4 pb-12 sm:px-6 sm:pb-24">
-          <div className="mx-auto max-w-6xl">
-            <TitreSection
-              surtitre="Comment ça marche"
-              titre={`Votre site ${deMetier(modele.nom)}, en trois étapes`}
-            />
-            <ol className="mt-12 grid gap-4 md:grid-cols-3">
-              {ETAPES.map((e, k) => (
-                <li key={e.titre} className={`${CARTE} p-6`}>
-                  <div className="text-sm font-semibold text-brand-ink">Étape {k + 1}</div>
-                  <div className="mt-3 text-lg font-semibold">{e.titre}</div>
-                  <p className={`mt-1 ${TEXTE_GRIS}`}>{e.texte}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        <section className="px-4 py-12 sm:px-6 sm:py-24" style={{ background: metier.couleur }}>
-          <div className="mx-auto max-w-6xl text-white">
+        <Apparition>
+          <section className="px-4 pt-16 pb-4 sm:px-6 sm:pt-24">
             <div className="mx-auto max-w-3xl text-center">
-              <div className="text-sm font-medium" style={{ color: metier.accent }}>
-                Conseils
-              </div>
-              <h2 className="titre-produit mt-3 text-[2.15rem] text-white sm:text-5xl">
-                Un bon site {deMetier(modele.nom)}
+              <div className="text-sm font-medium text-brand-ink">Avant le premier contact</div>
+              <h2 className="titre-produit mt-3 text-[2rem] sm:text-4xl">
+                Ce que vos clients veulent savoir
               </h2>
+              <p className={`mt-6 text-lg leading-8 ${TEXTE_GRIS}`}>{modele.attentes}</p>
             </div>
-            <div className="mt-12 grid gap-4 md:grid-cols-3">
-              {modele.conseils.map((c, k) => (
-                <div key={c.titre} className="rounded-3xl bg-white/[0.07] p-6">
-                  <div className="text-sm font-semibold" style={{ color: metier.accent }}>
-                    {String(k + 1).padStart(2, "0")}
-                  </div>
-                  <div className="mt-3 text-lg font-semibold">{c.titre}</div>
-                  <p className="mt-1 text-white/70">{c.texte}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+          </section>
+        </Apparition>
 
-        {outils.length > 0 && (
-          <section className="px-4 pt-12 sm:px-6 sm:pt-24">
+        <Apparition>
+          <section className="px-4 py-12 sm:px-6 sm:py-24">
             <div className="mx-auto max-w-6xl">
               <TitreSection
-                surtitre="Avec votre site"
-                titre="Les outils qui vont avec"
-                sousTitre="Ils sont dans la même application que votre site."
+                surtitre="Ce que contient votre site"
+                titre="Les pages de votre site, déjà écrites"
+                sousTitre="L'IA prépare ces sections pour votre métier. Vous en ajoutez, en retirez ou les réécrivez en une phrase."
               />
-              <div className="mt-12 grid gap-4 md:grid-cols-3">
-                {outils.map((p) => (
-                  <Link
-                    key={p.id}
-                    to="/produits/$id/"
-                    params={{ id: p.id }}
-                    className={`${CARTE} group flex flex-col p-6 transition hover:bg-black/[0.05]`}
-                  >
-                    <div className="text-lg font-semibold">{p.nom}</div>
-                    <p className={`mt-1 ${TEXTE_GRIS}`}>{p.menuDesc}</p>
-                    <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold">
-                      En savoir plus
-                      <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+              <div className="rail-mobile mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {modele.sections.map((s) => (
+                  <div key={s.titre} className={`${CARTE} p-6`}>
+                    <span
+                      className="grid h-8 w-8 place-items-center rounded-full"
+                      style={{ background: metier.accent, color: metier.couleur }}
+                    >
+                      <Check className="h-4 w-4" />
                     </span>
+                    <div className="mt-4 text-lg font-semibold">{s.titre}</div>
+                    <p className={`mt-1 ${TEXTE_GRIS}`}>{s.texte}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </Apparition>
+
+        <Apparition>
+          <section className="px-4 pb-12 sm:px-6 sm:pb-24">
+            <div className="mx-auto max-w-6xl">
+              <TitreSection
+                surtitre="Comment ça marche"
+                titre={`Votre site ${deMetier(modele.nom)}, en trois étapes`}
+              />
+              <ol className="mt-12 grid gap-4 md:grid-cols-3">
+                {ETAPES.map((e, k) => (
+                  <li key={e.titre} className={`${CARTE} p-6`}>
+                    <div className="text-sm font-semibold text-brand-ink">Étape {k + 1}</div>
+                    <div className="mt-3 text-lg font-semibold">{e.titre}</div>
+                    <p className={`mt-1 ${TEXTE_GRIS}`}>{e.texte}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </section>
+        </Apparition>
+
+        <Apparition>
+          <section className="px-4 py-12 sm:px-6 sm:py-24" style={{ background: metier.couleur }}>
+            <div className="mx-auto max-w-6xl text-white">
+              <div className="mx-auto max-w-3xl text-center">
+                <div className="text-sm font-medium" style={{ color: metier.accent }}>
+                  Conseils
+                </div>
+                <h2 className="titre-produit mt-3 text-[2.15rem] text-white sm:text-5xl">
+                  Un bon site {deMetier(modele.nom)}
+                </h2>
+              </div>
+              <div className="mt-12 grid gap-4 md:grid-cols-3">
+                {modele.conseils.map((c, k) => (
+                  <div key={c.titre} className="rounded-3xl bg-white/[0.07] p-6">
+                    <div className="text-sm font-semibold" style={{ color: metier.accent }}>
+                      {String(k + 1).padStart(2, "0")}
+                    </div>
+                    <div className="mt-3 text-lg font-semibold">{c.titre}</div>
+                    <p className="mt-1 text-white/70">{c.texte}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </Apparition>
+
+        {outils.length > 0 && (
+          <Apparition>
+            <section className="px-4 pt-12 sm:px-6 sm:pt-24">
+              <div className="mx-auto max-w-6xl">
+                <TitreSection
+                  surtitre="Avec votre site"
+                  titre="Les outils qui vont avec"
+                  sousTitre="Ils sont dans la même application que votre site."
+                />
+                <div className="mt-12 grid gap-4 md:grid-cols-3">
+                  {outils.map((p) => (
+                    <Link
+                      key={p.id}
+                      to="/produits/$id/"
+                      params={{ id: p.id }}
+                      className={`${CARTE} group flex flex-col p-6 transition hover:bg-black/[0.05]`}
+                    >
+                      <div className="text-lg font-semibold">{p.nom}</div>
+                      <p className={`mt-1 ${TEXTE_GRIS}`}>{p.menuDesc}</p>
+                      <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold">
+                        En savoir plus
+                        <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </section>
+          </Apparition>
+        )}
+
+        <Apparition>
+          <section className="px-4 py-12 sm:px-6 sm:py-24">
+            <div className="mx-auto max-w-3xl">
+              <TitreSection
+                surtitre="Questions"
+                titre={`Vos questions sur un site ${deMetier(modele.nom)}`}
+              />
+              {/* Le libellé porte le rembourrage, pas la carte : sans cela la
+                  zone à toucher ne fait que 24 px de haut sur téléphone, sous le
+                  minimum de 44 px (mesure à 390 px, 16 novembre 2026). */}
+              <div className="mt-10 space-y-3">
+                {modele.faq.map((f) => (
+                  <details key={f.q} className={`${CARTE} group`}>
+                    <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 p-5 font-semibold marker:content-none">
+                      {f.q}
+                      <span className="text-xl leading-none transition group-open:rotate-45">
+                        +
+                      </span>
+                    </summary>
+                    <p className={`px-5 pb-5 ${TEXTE_GRIS}`}>{f.a}</p>
+                  </details>
+                ))}
+              </div>
+              <p className={`mt-8 text-center ${TEXTE_GRIS}`}>
+                Le détail des formules est sur la page{" "}
+                <Link
+                  to="/tarifs/"
+                  className="font-semibold text-black underline underline-offset-4"
+                >
+                  Tarifs
+                </Link>
+                .
+              </p>
+            </div>
+          </section>
+        </Apparition>
+
+        {/* Les guides du blog pour ce métier (audit SEO du 14 novembre 2026) :
+            les modèles renvoient vers le blog, le blog vers les modèles. */}
+        <Apparition>
+          <section className="px-4 pb-16 sm:px-6">
+            <div className="mx-auto max-w-6xl">
+              <h2 className="titre-produit text-3xl sm:text-4xl">Guides pour votre métier</h2>
+              <div className="mt-8">
+                <ArticlesALire
+                  slugs={guidesDuMetier(modele.id)}
+                  titre=""
+                  classeCarte="rounded-3xl bg-black/[0.03] p-6 transition hover:bg-black/[0.05]"
+                  classeLien="text-black"
+                />
+              </div>
+              {/* Le guide pilier (16 novembre 2026) : chaque modèle y mène. */}
+              <div className="mt-3">
+                <CartePilier pilier={PILIER_SITE} />
+              </div>
+            </div>
+          </section>
+        </Apparition>
+
+        <Apparition>
+          <section className="px-4 pb-12 sm:px-6 sm:pb-24">
+            <div className="mx-auto max-w-6xl">
+              <div className="flex items-end justify-between gap-4">
+                <h2 className="titre-produit text-3xl sm:text-4xl">Autres modèles</h2>
+                <Link
+                  to="/modeles/"
+                  className="inline-flex min-h-11 items-center text-sm font-semibold hover:underline sm:min-h-0"
+                >
+                  Tous les modèles
+                </Link>
+              </div>
+              <div className="rail-mobile mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {autres.map((m) => (
+                  <Link
+                    key={m.id}
+                    to="/modeles/$id/"
+                    params={{ id: m.id }}
+                    className="group overflow-hidden rounded-3xl bg-black/[0.03] transition hover:bg-black/[0.05]"
+                  >
+                    <img
+                      src={photo(m.id, 768)}
+                      alt={`Photo d'illustration pour un site ${deMetier(nomDe(m.id))}`}
+                      loading="lazy"
+                      width={768}
+                      height={432}
+                      className="aspect-[16/10] w-full object-cover"
+                    />
+                    <div className="flex items-center justify-between p-5">
+                      <span className="font-semibold first-letter:uppercase">
+                        Site internet pour {nomDe(m.id)}
+                      </span>
+                      <ArrowRight className="h-4 w-4 shrink-0 transition group-hover:translate-x-0.5" />
+                    </div>
                   </Link>
                 ))}
               </div>
             </div>
           </section>
-        )}
+        </Apparition>
 
-        <section className="px-4 py-12 sm:px-6 sm:py-24">
-          <div className="mx-auto max-w-3xl">
-            <TitreSection
-              surtitre="Questions"
-              titre={`Vos questions sur un site ${deMetier(modele.nom)}`}
-            />
-            {/* Le libellé porte le rembourrage, pas la carte : sans cela la
-                zone à toucher ne fait que 24 px de haut sur téléphone, sous le
-                minimum de 44 px (mesure à 390 px, 16 novembre 2026). */}
-            <div className="mt-10 space-y-3">
-              {modele.faq.map((f) => (
-                <details key={f.q} className={`${CARTE} group`}>
-                  <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 p-5 font-semibold marker:content-none">
-                    {f.q}
-                    <span className="text-xl leading-none transition group-open:rotate-45">+</span>
-                  </summary>
-                  <p className={`px-5 pb-5 ${TEXTE_GRIS}`}>{f.a}</p>
-                </details>
-              ))}
+        <Apparition>
+          <section className="px-4 pt-4 pb-28 sm:px-6">
+            <div className={`${CARTE} mx-auto max-w-4xl px-6 py-14 text-center`}>
+              <h2 className="titre-produit text-[2rem] sm:text-5xl">
+                Votre site {deMetier(modele.nom)}, dans une minute
+              </h2>
+              <p className={`mx-auto mt-4 max-w-xl text-lg ${TEXTE_GRIS}`}>
+                L'IA part de ce modèle et l'écrit pour votre activité, votre ville et vos services.
+              </p>
+              <a href={lien} className={`${BOUTON_NOIR} mt-8 px-6 py-3.5 text-base`}>
+                {bouton}
+                <ArrowRight className="h-4 w-4" />
+              </a>
+              <Confiance />
             </div>
-            <p className={`mt-8 text-center ${TEXTE_GRIS}`}>
-              Le détail des formules est sur la page{" "}
-              <Link to="/tarifs/" className="font-semibold text-black underline underline-offset-4">
-                Tarifs
-              </Link>
-              .
-            </p>
-          </div>
-        </section>
-
-        {/* Les guides du blog pour ce métier (audit SEO du 14 novembre 2026) :
-            les modèles renvoient vers le blog, le blog vers les modèles. */}
-        <section className="px-4 pb-16 sm:px-6">
-          <div className="mx-auto max-w-6xl">
-            <h2 className="titre-produit text-3xl sm:text-4xl">Guides pour votre métier</h2>
-            <div className="mt-8">
-              <ArticlesALire
-                slugs={guidesDuMetier(modele.id)}
-                titre=""
-                classeCarte="rounded-3xl bg-black/[0.03] p-6 transition hover:bg-black/[0.05]"
-                classeLien="text-black"
-              />
-            </div>
-            {/* Le guide pilier (16 novembre 2026) : chaque modèle y mène. */}
-            <div className="mt-3">
-              <CartePilier pilier={PILIER_SITE} />
-            </div>
-          </div>
-        </section>
-
-        <section className="px-4 pb-12 sm:px-6 sm:pb-24">
-          <div className="mx-auto max-w-6xl">
-            <div className="flex items-end justify-between gap-4">
-              <h2 className="titre-produit text-3xl sm:text-4xl">Autres modèles</h2>
-              <Link
-                to="/modeles/"
-                className="inline-flex min-h-11 items-center text-sm font-semibold hover:underline sm:min-h-0"
-              >
-                Tous les modèles
-              </Link>
-            </div>
-            <div className="rail-mobile mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {autres.map((m) => (
-                <Link
-                  key={m.id}
-                  to="/modeles/$id/"
-                  params={{ id: m.id }}
-                  className="group overflow-hidden rounded-3xl bg-black/[0.03] transition hover:bg-black/[0.05]"
-                >
-                  <img
-                    src={photo(m.id, 768)}
-                    alt={`Photo d'illustration pour un site ${deMetier(nomDe(m.id))}`}
-                    loading="lazy"
-                    width={768}
-                    height={432}
-                    className="aspect-[16/10] w-full object-cover"
-                  />
-                  <div className="flex items-center justify-between p-5">
-                    <span className="font-semibold first-letter:uppercase">
-                      Site internet pour {nomDe(m.id)}
-                    </span>
-                    <ArrowRight className="h-4 w-4 shrink-0 transition group-hover:translate-x-0.5" />
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="px-4 pt-4 pb-28 sm:px-6">
-          <div className={`${CARTE} mx-auto max-w-4xl px-6 py-14 text-center`}>
-            <h2 className="titre-produit text-[2rem] sm:text-5xl">
-              Votre site {deMetier(modele.nom)}, dans une minute
-            </h2>
-            <p className={`mx-auto mt-4 max-w-xl text-lg ${TEXTE_GRIS}`}>
-              L'IA part de ce modèle et l'écrit pour votre activité, votre ville et vos services.
-            </p>
-            <a href={lien} className={`${BOUTON_NOIR} mt-8 px-6 py-3.5 text-base`}>
-              {bouton}
-              <ArrowRight className="h-4 w-4" />
-            </a>
-            <Confiance />
-          </div>
-        </section>
+          </section>
+        </Apparition>
       </SiteChrome>
       <BarreModele lien={lien} bouton={bouton} />
     </div>

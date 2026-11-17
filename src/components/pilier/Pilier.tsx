@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronRight } from "lucide-react";
+import { Apparition } from "@/components/Apparition";
 import { TableauEmpile } from "@/components/TableauEmpile";
 import { CARTE, TEXTE_GRIS } from "@/components/produit/Produit";
 import { APP_REF } from "@/data/offres";
@@ -51,12 +52,14 @@ export function P({ children }: { children: React.ReactNode }) {
   return <p className={`mt-5 text-lg leading-8 ${TEXTE_GRIS}`}>{children}</p>;
 }
 
-/** Une section du guide, dans la colonne de lecture. */
+/** Une section du guide, dans la colonne de lecture, qui monte en entrant à l'écran. */
 export function Bloc({ children }: { children: React.ReactNode }) {
   return (
-    <section className="px-4 py-10 sm:px-6">
-      <div className="mx-auto max-w-3xl">{children}</div>
-    </section>
+    <Apparition>
+      <section className="px-4 py-10 sm:px-6">
+        <div className="mx-auto max-w-3xl">{children}</div>
+      </section>
+    </Apparition>
   );
 }
 
