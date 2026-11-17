@@ -19,6 +19,7 @@ import { createServer } from "node:http";
 import { dirname, extname, join, resolve } from "node:path";
 import { tmpdir } from "node:os";
 import { fileURLToPath } from "node:url";
+import { createGzip } from "node:zlib";
 
 const racine = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const MODULES = process.env.LIGHTHOUSE_MODULES ?? "/Users/vidalozzi/sitaly/.paperclip/playwright/pw/node_modules";
@@ -55,6 +56,13 @@ const TYPES = {
   ".webmanifest": "application/manifest+json",
 };
 
+/**
+ * Les types que GitHub Pages renvoie compressés. Sans gzip ici, Lighthouse voit
+ * 621 ko de JavaScript au lieu des ~170 ko reçus en production : sa simulation
+ * réseau en déduit un LCP de 9 s que personne ne subit (relevé du 17/11/2026).
+ */
+const COMPRESSIBLE = /^(text\/|application\/(javascript|json|xml|manifest\+json)|image\/svg)/;
+
 function servirDist(dist) {
   const serveur = createServer((req, res) => {
     const chemin = decodeURIComponent(req.url.split("?")[0]);
@@ -66,11 +74,17 @@ function servirDist(dist) {
       res.writeHead(404).end("introuvable");
       return;
     }
+    const type = TYPES[extname(fichier)] ?? "application/octet-stream";
+    const gzip =
+      COMPRESSIBLE.test(type) && /\bgzip\b/.test(req.headers["accept-encoding"] ?? "");
     res.writeHead(200, {
-      "content-type": TYPES[extname(fichier)] ?? "application/octet-stream",
+      "content-type": type,
       "cache-control": "no-store",
+      ...(gzip ? { "content-encoding": "gzip", vary: "accept-encoding" } : {}),
     });
-    createReadStream(fichier).pipe(res);
+    const flux = createReadStream(fichier);
+    if (gzip) flux.pipe(createGzip()).pipe(res);
+    else flux.pipe(res);
   });
   return new Promise((ok) => serveur.listen(0, "127.0.0.1", () => ok(serveur)));
 }
