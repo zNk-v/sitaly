@@ -301,7 +301,7 @@ function PageCreerSite() {
             ).
           </P>
           <P>
-            Un métier qui ne figure pas dans la liste, comme serrurier, part du modèle généraliste{" "}
+            Un métier qui ne figure pas dans la liste, comme ramoneur, part du modèle généraliste{" "}
             <LienModele id="artisan">artisan</LienModele> : l'IA construit le site à partir de la
             description donnée, pas seulement d'une liste figée.
           </P>
@@ -329,6 +329,32 @@ function PageCreerSite() {
               Voir tous les modèles
             </LienTexte>
           </p>
+          <div className="mt-8 border-t border-black/10 pt-6">
+            <p className="font-medium">
+              {insecable("Serrurier, chauffagiste, carreleur : leur page est prête")}
+            </p>
+            <p className={`mt-2 text-base leading-7 ${TEXTE_GRIS}`}>
+              Ces trois métiers n'ont pas de modèle visuel dans la grille ci-dessus, mais leur page
+              existe déjà.
+            </p>
+            <ul className="mt-2 flex flex-col sm:flex-row sm:flex-wrap sm:gap-x-6">
+              <li className="flex">
+                <LienTexte to="/site-internet-serrurier/" seul>
+                  Site internet serrurier
+                </LienTexte>
+              </li>
+              <li className="flex">
+                <LienTexte to="/site-internet-chauffagiste/" seul>
+                  Site internet chauffagiste
+                </LienTexte>
+              </li>
+              <li className="flex">
+                <LienTexte to="/site-internet-carreleur/" seul>
+                  Site internet carreleur
+                </LienTexte>
+              </li>
+            </ul>
+          </div>
         </Bloc>
 
         <Bloc>
