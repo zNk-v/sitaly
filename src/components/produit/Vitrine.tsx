@@ -149,7 +149,12 @@ const sousDomaine = (nom: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
 
-export const photo = (id: string, taille: 384 | 768 | 1024 | 1536 = 1536) =>
+/**
+ * Les photos de métiers. Toutes les tailles sont en 16:9, sauf le 160 : celui-là
+ * est carré, recadré au centre comme le fait object-cover, pour les vignettes.
+ * Fabriquées par scripts/vignettes-webp.mjs du dépôt sitaly-saas.
+ */
+export const photo = (id: string, taille: 160 | 384 | 768 | 1024 | 1536 = 1536) =>
   `/vitrine/metiers/${id}-${taille}.webp`;
 
 /** Les vignettes : 384 px suffisent jusqu'à 190 px affichés sur un écran Retina. */
@@ -502,7 +507,7 @@ export function Familles() {
           className="group relative flex items-center gap-4 overflow-hidden rounded-3xl bg-black/[0.03] p-3 pr-5 transition hover:bg-black/[0.06]"
         >
           <img
-            src={photo(f.photo, 384)}
+            src={photo(f.photo, 160)}
             alt={`Photo d'illustration : ${f.titre}`}
             width={80}
             height={80}
