@@ -1,0 +1,1 @@
+import{mn as e}from"./index-CfM9QMMX.js";var t=e;export{t as component};
