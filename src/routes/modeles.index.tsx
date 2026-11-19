@@ -17,7 +17,20 @@ import { BASE_URL } from "@/lib/config";
 const URL = `${BASE_URL}/modeles/`;
 const TITRE = "Modèles de sites internet par métier | Sitaly";
 const DESCRIPTION =
-  "Plombier, électricien, coiffure, esthéticienne, restaurant, VTC… 22 modèles de sites : l'IA de Sitaly adapte le vôtre à votre activité en une minute.";
+  "Plombier, électricien, coiffure, esthéticienne, restaurant, VTC… 23 modèles de sites : l'IA de Sitaly adapte le vôtre à votre activité en une minute.";
+
+/**
+ * Trois métiers sans modèle dans cette grille, mais avec leur propre page
+ * (19 novembre 2026, SITA-81) : serrurier, chauffagiste et carreleur sont
+ * servis par `/site-internet-<métier>/`, indexées depuis le 17 novembre. Ces
+ * liens restent hors de l'`ItemList` ci-dessus, qui décrit les pages
+ * `/modeles/<id>/` et rien d'autre.
+ */
+const AUTRES_METIERS = [
+  { nom: "Serrurier", to: "/site-internet-serrurier/" },
+  { nom: "Chauffagiste", to: "/site-internet-chauffagiste/" },
+  { nom: "Carreleur", to: "/site-internet-carreleur/" },
+] as const;
 
 const nomDe = (id: string) => MODELES.find((m) => m.id === id)?.nom ?? id;
 
@@ -142,6 +155,29 @@ function Modeles() {
                 Créer mon site <ArrowRight className="h-4 w-4" />
               </span>
             </a>
+          </div>
+        </section>
+
+        <section className="px-4 pb-20 sm:px-6">
+          <div className="mx-auto max-w-6xl rounded-3xl bg-black/[0.03] p-7 sm:p-9">
+            <h2 className="titre-produit text-2xl sm:text-3xl">Trois autres métiers</h2>
+            <p className={`mt-3 max-w-2xl ${TEXTE_GRIS}`}>
+              Ces métiers n'ont pas encore de modèle dans la grille, mais ils ont leur page, avec
+              leurs urgences et leurs mots-clés.
+            </p>
+            <ul className="mt-6 flex flex-wrap gap-3">
+              {AUTRES_METIERS.map((m) => (
+                <li key={m.to}>
+                  <Link
+                    to={m.to}
+                    className="inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold transition hover:bg-black hover:text-white"
+                  >
+                    Site internet {m.nom.toLowerCase()}
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

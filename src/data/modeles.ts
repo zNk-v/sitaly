@@ -110,8 +110,8 @@ export const MODELES: Modele[] = [
         a: "La demande arrive dans votre boîte mail et dans votre espace Sitaly. Vous pouvez répondre par un devis créé dans l'application, que le client accepte en ligne.",
       },
       {
-        q: "J'ai déjà une page Facebook, pourquoi un site ?",
-        a: "Sur Facebook, votre numéro et votre zone se perdent sous les publications. Un site les donne en dix secondes, et Google peut le montrer à quelqu'un qui cherche un plombier dans votre commune.",
+        q: "Combien coûte un site de plombier avec Sitaly ?",
+        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
       },
     ],
     intro:
@@ -313,12 +313,12 @@ export const MODELES: Modele[] = [
         a: "Oui. Vous créez le devis dans l'application, le client l'accepte en ligne, et la facture peut se payer par carte.",
       },
       {
-        q: "Mon activité change avec les saisons.",
-        a: "Demandez à l'IA un bandeau pour la taille d'automne ou les plantations de printemps. Elle l'ajoute, vous le retirez quand la saison passe.",
+        q: "Combien coûte un site de paysagiste avec Sitaly ?",
+        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
       },
     ],
     intro:
-      "Un site qui montre vos jardins : création, entretien, élagage, avec votre zone d'intervention et le devis en un clic.",
+      "Un site qui montre vos jardins : création, entretien, élagage, zone d'intervention et devis en un clic.",
     sections: [
       { titre: "Accueil", texte: "Vos plus beaux jardins et votre zone." },
       { titre: "Création de jardins", texte: "Plantations, terrasses, allées." },
@@ -518,7 +518,7 @@ export const MODELES: Modele[] = [
       },
     ],
     intro:
-      "Un site qui inspire confiance avant le premier appel : vos domaines d'intervention, vos qualifications et votre zone.",
+      "Un site qui inspire confiance avant l'appel : vos domaines d'intervention, vos qualifications et votre zone.",
     sections: [
       {
         titre: "Accueil",
@@ -581,8 +581,8 @@ export const MODELES: Modele[] = [
         a: "Oui. Écrivez-le dans votre description : l'IA présente un artisan qui suit lui-même chaque chantier, du devis aux finitions.",
       },
       {
-        q: "Puis-je modifier le site moi-même ?",
-        a: "Oui, sans rien installer. Vous écrivez ce que vous voulez changer, « ajoute les enduits décoratifs à mes prestations », et l'IA le fait. Un double-clic corrige un mot.",
+        q: "Combien coûte un site de peintre en bâtiment avec Sitaly ?",
+        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
       },
     ],
     intro:
@@ -649,8 +649,8 @@ export const MODELES: Modele[] = [
         a: "Le formulaire a un champ libre : le client y décrit son projet et ses mesures. La demande arrive dans votre boîte mail.",
       },
       {
-        q: "Aurai-je mon propre nom de domaine ?",
-        a: "Avec Essentiel et Pro, un nom en .fr ou en .com vous est offert et enregistré à votre nom. La formule gratuite utilise une adresse en .sitaly.fr.",
+        q: "Combien coûte un site de menuisier avec Sitaly ?",
+        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com, enregistré à votre nom.",
       },
     ],
     intro:
@@ -717,12 +717,12 @@ export const MODELES: Modele[] = [
         a: "Oui. Un client cherche un couvreur dans sa ville : citez vos communes, l'IA les intègre aux textes.",
       },
       {
-        q: "Combien de temps pour avoir le site en ligne ?",
-        a: "Une minute environ pour la création, puis le temps de relire. Vous publiez d'un clic, et vous corrigez plus tard en écrivant à l'IA.",
+        q: "Combien coûte un site de couvreur avec Sitaly ?",
+        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
       },
     ],
     intro:
-      "Un site qui rassure sur un chantier coûteux : vos interventions, vos garanties et un contact rapide après une fuite.",
+      "Un site qui rassure sur un chantier coûteux : vos garanties et un contact rapide après une fuite.",
     sections: [
       {
         titre: "Accueil",
@@ -785,8 +785,8 @@ export const MODELES: Modele[] = [
         a: "Listez vos activités en une phrase : l'IA crée une section par activité. Vous en ajoutez ou en retirez ensuite en lui écrivant.",
       },
       {
-        q: "Puis-je envoyer mes devis depuis Sitaly ?",
-        a: "Oui. Le devis se crée dans l'application, le client l'accepte en ligne et la facture suit. Les impayés reçoivent une relance.",
+        q: "Combien coûte un site de maçon avec Sitaly ?",
+        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
       },
     ],
     intro:
@@ -1233,7 +1233,8 @@ export const MODELES: Modele[] = [
     conseils: [
       {
         titre: "Écrivez pour le client",
-        texte: "Une page « Licenciement : que faire ? » parle mieux qu'une liste d'articles du Code.",
+        texte:
+          "Une page « Licenciement : que faire ? » parle mieux qu'une liste d'articles du Code.",
       },
       {
         titre: "Expliquez vos honoraires",

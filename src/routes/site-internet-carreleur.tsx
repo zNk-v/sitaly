@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 
 const URL = "https://sitaly.fr/site-internet-carreleur/";
-const TITLE = "Site internet carreleur : salle de bain, terrasse | Sitaly";
+const TITLE = "Création site internet carreleur gratuit | Sitaly";
 const DESCRIPTION =
-  "Site internet carreleur qui montre la finition : salles de bain, douches à l'italienne, terrasses. SEO local, livré en 48h, sans engagement.";
+  "Créez votre site internet carreleur avec l'IA : salles de bain, douches à l'italienne, terrasses. Gratuit pour commencer, sans carte bancaire.";
 
 const FAQ = [
   {
@@ -24,8 +24,8 @@ const FAQ = [
     a: "Ces poses demandent un savoir-faire que tous les carreleurs n'ont pas, et les clients qui les choisissent cherchent précisément ceux qui le maîtrisent. Une page par spécialité, avec vos chantiers réels, vous place sur ces recherches à plus forte valeur.",
   },
   {
-    q: "Puis-je recevoir des photos de la pièce avec la demande de devis ?",
-    a: "Oui. Le formulaire accepte les photos et demande la surface, le type de support et le carrelage envisagé. Vous voyez l'état de la pièce et le chantier avant de vous déplacer.",
+    q: "Combien coûte un site de carreleur avec Sitaly ?",
+    a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
   },
 ];
 
@@ -47,12 +47,12 @@ const INCLUDED = [
     desc: "Pour les entreprises générales, architectes et maîtres d'œuvre qui cherchent un carreleur sur la zone. Références, capacité, disponibilités.",
   },
   {
-    title: "Formulaire avec photos jointes",
-    desc: "Surface, support, carrelage choisi et photos de la pièce. Une demande exploitable dès la lecture, sans aller-retour.",
+    title: "Formulaire de demande détaillé",
+    desc: "Surface, type de support, carrelage envisagé : le client décrit son projet en texte libre. Une demande exploitable dès la lecture.",
   },
   {
-    title: "Hébergement, maintenance et modifications",
-    desc: "Domaine, SSL, sauvegardes et vos changements. Un chantier terminé : vous envoyez les photos, on l'ajoute au portfolio.",
+    title: "Modifications par l'IA, à tout moment",
+    desc: "Un chantier terminé, une nouvelle spécialité : vous l'écrivez à l'IA, elle met le site à jour elle-même. Pas de développeur à attendre.",
   },
 ];
 
@@ -86,7 +86,7 @@ function CarreleurLanding() {
       included={INCLUDED}
       localSeo={LOCAL_SEO}
       h1="Site internet carreleur : la qualité de pose se voit en gros plan"
-      intro="Salles de bain, douches à l'italienne, terrasses et grands formats montrés dans le détail, avec des demandes de devis qui arrivent photos jointes."
+      intro="Salles de bain, douches à l'italienne, terrasses et grands formats montrés dans le détail, sur un site créé par l'IA, gratuit pour commencer."
       benefits={[
         {
           title: "Le détail qui convainc",
@@ -97,8 +97,8 @@ function CarreleurLanding() {
           desc: "Une page par type de pose, avec les mots du client. Vous ressortez sur « douche à l'italienne + ville », pas seulement sur votre nom.",
         },
         {
-          title: "Des devis préparés",
-          desc: "Surface, support et photos de la pièce dans la demande. Vous chiffrez sans déplacement inutile.",
+          title: "Un devis bien préparé",
+          desc: "Surface, support et carrelage envisagé décrits dans la demande. Vous chiffrez avec les bonnes informations, sans aller-retour.",
         },
       ]}
       faq={FAQ}

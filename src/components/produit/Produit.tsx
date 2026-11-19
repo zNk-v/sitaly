@@ -385,7 +385,13 @@ export const DOMAINE_OFFERT = {
     "Un .fr ou un .com enregistré à votre nom, branché sur votre site et renouvelé tant que votre abonnement court.",
 } as const;
 
-const FORMULES: Formule[] = [
+/**
+ * Les trois formules de l'application, source unique de leurs prix et de leurs
+ * phrases. La grille de `/` et de `/tarifs/` les rend en entier ; les pages
+ * métier (MetierLanding) n'en reprennent que le nom, le prix et les titres de
+ * fonctions, pour ne pas en écrire une deuxième version.
+ */
+export const FORMULES: Formule[] = [
   {
     ...IA.decouverte,
     pour: "Créez votre site et mettez-le en ligne, sans carte bancaire.",

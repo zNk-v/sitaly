@@ -1,12 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { directiveRobots } from "@/lib/indexation";
-import { ArrowRight, Check, Clock, ExternalLink, ShieldCheck, Sparkles, Star } from "lucide-react";
+import { ArrowRight, Check, ExternalLink, ShieldCheck, Sparkles, Star } from "lucide-react";
 import { LinkedinLink } from "@/components/LinkedinLink";
 import { SiteHeader } from "@/components/SiteHeader";
 import { MetierFooterLinks, MetierLinksSection } from "@/components/MetierLinks";
 import type { MetierLink } from "@/lib/metiers";
 import { APP_URL, euros } from "@/lib/config";
-import { MENTION_TVA, lignesIncluses, offre } from "@/data/offres";
+import { FORMULES, lienCreation } from "@/components/produit/Produit";
+import { MENTION_TVA, offresStructurees } from "@/data/offres";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export interface MetierLandingProps {
@@ -78,8 +79,8 @@ export function MetierLanding(props: MetierLandingProps) {
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
             <span className="inline-flex items-center gap-2">
-              <Clock className="h-4 w-4 text-accent" />
-              Livré en 48h
+              <Sparkles className="h-4 w-4 text-accent" />
+              Gratuit pour commencer
             </span>
             <span className="inline-flex items-center gap-2">
               <ShieldCheck className="h-4 w-4 text-accent" />
@@ -214,23 +215,26 @@ export function MetierLanding(props: MetierLandingProps) {
         </div>
       </section>
 
-      {/* Tarifs : les deux offres de site, montants lus dans src/data/offres.ts
-          (prix publiés depuis le 18 octobre 2026, DESIGN.md §8). */}
+      {/* Tarifs : les trois formules de l'application, lues dans FORMULES
+          (src/components/produit/Produit.tsx), la même source que `/tarifs/`.
+          Décision de Ted du 19 novembre 2026 : les pages métier vendent
+          l'application, elles affichent donc ses prix, et plus ceux de
+          l'agence (Présence et Présence Pro, qui restent dans offres.ts). */}
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 className="display-section">
             Combien coûte un site internet <span className="accent-word">{metier}</span>
           </h2>
           <p className="measure mt-4 text-sm font-semibold text-foreground/80">
-            Un abonnement mensuel sans engagement, et une mise en service payée une fois. Tout est
-            géré, vous ne touchez à rien.
+            La création est gratuite, sans carte bancaire. Les formules payantes se prennent au
+            mois, sans engagement, et s'arrêtent quand vous voulez.
           </p>
-          <div className="mx-auto mt-8 grid max-w-3xl gap-5 md:grid-cols-2">
-            {[offre("presence"), offre("presence-pro")].map((o) => (
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {FORMULES.map((f) => (
               <article
-                key={o.id}
-                className={`rounded-2xl p-7 ${
-                  o.recommandee
+                key={f.nom}
+                className={`flex flex-col rounded-2xl p-7 ${
+                  f.badge
                     ? "border-2 border-primary bg-primary/5 shadow-elevated"
                     : "border border-border bg-card shadow-soft"
                 }`}
@@ -238,42 +242,57 @@ export function MetierLanding(props: MetierLandingProps) {
                 <div className="flex items-center justify-between">
                   <div
                     className={`text-xs font-semibold uppercase tracking-wider ${
-                      o.recommandee ? "text-primary" : "text-muted-foreground"
+                      f.badge ? "text-primary" : "text-muted-foreground"
                     }`}
                   >
-                    {o.nom}
+                    {f.nom}
                   </div>
-                  {o.recommandee && (
+                  {f.badge && (
                     <span className="rounded-full bg-primary px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-primary-foreground">
-                      Recommandée
+                      {f.badge}
                     </span>
                   )}
                 </div>
                 <div className="mt-3 font-display text-3xl font-extrabold tracking-tight tabular-nums">
-                  {/* Présence et Présence Pro ont toujours un mensuel fixe. */}
-                  {euros(o.mensuel ?? 0)}
-                  <span className="text-base font-medium text-muted-foreground">/mois</span>
+                  {euros(f.mensuel)}
+                  {f.mensuel > 0 && (
+                    <span className="text-base font-medium text-muted-foreground">/mois</span>
+                  )}
                 </div>
-                <p className="mt-1 text-sm font-medium text-foreground/80">
-                  + {euros(o.depart)} {o.departLibelle}
-                </p>
-                <ul className="mt-5 space-y-2.5 text-sm">
-                  {lignesIncluses(o).map((it) => (
-                    <li key={it} className="flex items-start gap-2.5">
-                      <Check
-                        className={`mt-0.5 h-4 w-4 flex-shrink-0 ${
-                          o.recommandee ? "text-primary" : "text-accent"
-                        }`}
-                      />
-                      <span>{it}</span>
-                    </li>
-                  ))}
+                <p className="mt-1 text-sm font-medium text-foreground/80">{f.pour}</p>
+                {f.intro && (
+                  <p className="mt-5 text-sm font-semibold text-foreground/80">{f.intro}</p>
+                )}
+                <ul className={`space-y-2.5 text-sm ${f.intro ? "mt-2.5" : "mt-5"}`}>
+                  {/* Les fonctions en préparation (`bientot`) restent hors de
+                      ces cartes : sans la pastille « Bientôt » de /tarifs/,
+                      elles se liraient comme des fonctions ouvertes. */}
+                  {f.fonctions
+                    .filter((fn) => !fn.bientot)
+                    .map((fn) => (
+                      <li key={fn.titre} className="flex items-start gap-2.5">
+                        <Check
+                          className={`mt-0.5 h-4 w-4 flex-shrink-0 ${
+                            f.badge ? "text-primary" : "text-accent"
+                          }`}
+                        />
+                        <span>{fn.titre}</span>
+                      </li>
+                    ))}
                 </ul>
+                <div className="mt-auto pt-7">
+                  <a
+                    href={lienCreation(metierCapitalized)}
+                    className={`${f.badge ? "bouton" : "bouton-secondaire"} w-full px-5 py-3 text-sm`}
+                  >
+                    {f.bouton}
+                  </a>
+                </div>
               </article>
             ))}
           </div>
           <p className="mt-6 text-center text-sm text-muted-foreground">
-            Boutique en ligne, maintenance d'un site existant, options et conditions :{" "}
+            Payé à l'année, c'est 15 % de moins. Le détail des trois formules :{" "}
             <Link to="/tarifs/" className="font-semibold text-accent hover:underline">
               voir tous les tarifs
             </Link>
@@ -302,11 +321,14 @@ export function MetierLanding(props: MetierLandingProps) {
         </section>
       )}
 
-      {/* Outils gratuits : portes d'entrée SEO et aimants à liens */}
+      {/* Outil gratuit : porte d'entrée SEO et aimant à liens. Le calculateur
+          de budget Google Ads est sorti de cette liste le 19 novembre 2026
+          (décision de Ted) : il est hors index depuis le 9 novembre et il
+          s'adressait à l'ancienne offre d'agence. */}
       <section className="py-14">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <h2 className="font-display text-2xl font-bold tracking-tight">
-            Deux outils gratuits pour votre activité {deMetier(metier)}
+            Un outil gratuit pour votre activité {deMetier(metier)}
           </h2>
           <ul className="mt-5 space-y-3 text-foreground/85">
             <li>
@@ -317,15 +339,6 @@ export function MetierLanding(props: MetierLandingProps) {
                 Auditez votre fiche Google en 3 minutes
               </Link>{" "}
               : un score sur 100 et la liste des points à corriger.
-            </li>
-            <li>
-              <Link
-                to="/outils/budget-google-ads-artisan/"
-                className="font-semibold text-accent hover:underline"
-              >
-                Calculez votre budget Google Ads
-              </Link>{" "}
-              : combien de clics, d'appels et de chantiers pour un budget donné.
             </li>
           </ul>
         </div>
@@ -366,7 +379,8 @@ export function MetierLanding(props: MetierLandingProps) {
             Prêt à recevoir plus d'appels qualifiés ?
           </h2>
           <p className="mt-3 text-primary-foreground/90">
-            Répondez à trois questions sur votre activité : l'IA crée votre site {metier}, gratuit pour commencer.
+            Répondez à trois questions sur votre activité : l'IA crée votre site {metier}, gratuit
+            pour commencer.
           </p>
           <a
             href={`${APP_URL}/creer`}
@@ -431,21 +445,10 @@ export function buildMetierMeta(opts: {
             url: "https://sitaly.fr",
           },
           areaServed: { "@type": "Country", name: "France" },
-          // Les deux offres de site et leur prix, comme la section Tarifs.
-          offers: [offre("presence"), offre("presence-pro")].map((o) => ({
-            "@type": "Offer",
-            name: o.nom,
-            description: lignesIncluses(o).join(", "),
-            priceCurrency: "EUR",
-            price: o.mensuel,
-            priceSpecification: {
-              "@type": "UnitPriceSpecification",
-              price: o.mensuel,
-              priceCurrency: "EUR",
-              billingDuration: "P1M",
-            },
-            url: "https://sitaly.fr/tarifs/",
-          })),
+          // Les trois formules de l'application et leur prix, comme la section
+          // Tarifs de la page et comme `/` et `/tarifs/` : une page qui
+          // affiche 0, 39 et 79 € ne peut pas en déclarer 149 à Google.
+          offers: offresStructurees(),
           url,
         }),
       },

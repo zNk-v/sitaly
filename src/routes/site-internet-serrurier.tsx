@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 
 const URL = "https://sitaly.fr/site-internet-serrurier/";
-const TITLE = "Site internet serrurier : urgence et confiance | Sitaly";
+const TITLE = "Création site internet serrurier gratuit | Sitaly";
 const DESCRIPTION =
-  "Site internet serrurier qui prouve votre sérieux : adresse réelle, tarifs annoncés, avis vérifiables. SEO local, livré en 48h, sans engagement.";
+  "Créez votre site internet serrurier avec l'IA : adresse réelle, tarifs annoncés, avis vérifiables. Gratuit pour commencer, sans carte bancaire.";
 
 const FAQ = [
   {
@@ -24,8 +24,8 @@ const FAQ = [
     a: "L'urgence coûte cher à acquérir et ne fidélise pas. Le site met aussi en avant les prestations planifiées : remplacement de serrure après un vol, porte blindée, blindage de porte existante, contrôle d'accès pour les copropriétés et les commerces. Ces chantiers ont une valeur plus élevée et une concurrence moins agressive.",
   },
   {
-    q: "Pourquoi la publicité Google coûte-t-elle si cher pour un serrurier ?",
-    a: "La serrurerie d'urgence fait partie des recherches locales où le clic coûte le plus cher, parce que la concurrence est forte et que chaque appel vaut une intervention. Un site qui transforme bien les visiteurs réduit ce coût par appel. Notre calculateur de budget donne un ordre de grandeur pour votre zone.",
+    q: "Combien coûte un site de serrurier avec Sitaly ?",
+    a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
   },
 ];
 
@@ -51,8 +51,8 @@ const INCLUDED = [
     desc: "Démarches après un cambriolage, facture détaillée pour l'assureur, mise en sécurité provisoire. Le client en état de choc appelle celui qui le guide.",
   },
   {
-    title: "Hébergement, maintenance et modifications",
-    desc: "Domaine, SSL, sauvegardes et vos changements. Un tarif qui évolue, une nouvelle commune couverte : vous écrivez, on met à jour.",
+    title: "Modifications par l'IA, à tout moment",
+    desc: "Un nouveau tarif, une commune en plus : vous l'écrivez à l'IA, elle modifie le site elle-même. Pas de développeur à attendre.",
   },
 ];
 
@@ -86,7 +86,7 @@ function SerrurierLanding() {
       included={INCLUDED}
       localSeo={LOCAL_SEO}
       h1="Site internet serrurier : prouvez que vous êtes le vrai artisan du coin"
-      intro="Adresse réelle, tarifs annoncés, avis vérifiables et appel en un geste. Le site qui rassure un client méfiant en quelques secondes."
+      intro="Adresse réelle, tarifs annoncés, avis vérifiables et appel en un geste : le site qui rassure un client méfiant, créé par l'IA et gratuit pour commencer."
       benefits={[
         {
           title: "La preuve du sérieux",

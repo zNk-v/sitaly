@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 
 const URL = "https://sitaly.fr/site-internet-chauffagiste/";
-const TITLE = "Site internet chauffagiste : dépannage et entretien | Sitaly";
+const TITLE = "Création site internet chauffagiste gratuit | Sitaly";
 const DESCRIPTION =
-  "Site internet chauffagiste pensé pour les pannes d'hiver, les pompes à chaleur, les contrats d'entretien. SEO local, livré en 48h, sans engagement.";
+  "Créez votre site internet chauffagiste avec l'IA : pannes, pompes à chaleur, contrats d'entretien. Gratuit pour commencer, sans carte bancaire.";
 
 const FAQ = [
   {
@@ -24,8 +24,8 @@ const FAQ = [
     a: "L'été est la saison des installations. Les propriétaires préparent le remplacement de leur chaudière fioul ou gaz, comparent les pompes à chaleur et montent leurs dossiers d'aides. Le site bascule la mise en avant : dépannage en hiver, projets d'installation d'avril à septembre.",
   },
   {
-    q: "Puis-je expliquer les aides sans me tromper sur les montants ?",
-    a: "Les montants des aides changent souvent. La page explique les dispositifs et renvoie vers le simulateur officiel, sans afficher de chiffres qui deviennent faux en cours d'année. Vous gardez la crédibilité, et on met la page à jour quand les règles bougent.",
+    q: "Combien coûte un site de chauffagiste avec Sitaly ?",
+    a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
   },
 ];
 
@@ -51,8 +51,8 @@ const INCLUDED = [
     desc: "Les marques que vous dépannez, chacune avec ses pannes courantes. Ces pages captent les recherches de clients qui ont le code erreur sous les yeux.",
   },
   {
-    title: "Hébergement, maintenance et modifications",
-    desc: "Domaine, SSL, sauvegardes et vos changements. Une nouvelle marque, un changement de tarif d'entretien : vous envoyez un message, on met en ligne.",
+    title: "Modifications par l'IA, à tout moment",
+    desc: "Une nouvelle marque dépannée, un tarif d'entretien qui change : vous l'écrivez à l'IA, elle met le site à jour elle-même. Pas de développeur à attendre.",
   },
 ];
 
@@ -86,7 +86,7 @@ function ChauffagisteLanding() {
       included={INCLUDED}
       localSeo={LOCAL_SEO}
       h1="Site internet chauffagiste : les pannes l'hiver, les installations l'été"
-      intro="Un site qui capte les urgences de janvier, les projets de pompe à chaleur du printemps et les contrats d'entretien qui reviennent chaque année."
+      intro="Un site qui capte les urgences de janvier, les projets de pompe à chaleur du printemps et les contrats d'entretien qui reviennent chaque année, créé par l'IA et gratuit pour commencer."
       benefits={[
         {
           title: "L'urgence sans friction",
