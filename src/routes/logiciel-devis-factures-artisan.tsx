@@ -157,6 +157,14 @@ function PageLogicielDevis() {
             de devis et factures pensé pour les artisans numérote sans trou, calcule la TVA, et
             conserve chaque document.
           </P>
+          <P>
+            Pour un devis à envoyer tout de suite, sans ouvrir de compte, vous pouvez{" "}
+            <LienTexte to="/outils/generateur-devis-gratuit/">
+              faire un devis en ligne gratuitement
+            </LienTexte>{" "}
+            : le modèle se remplit avec les mentions obligatoires et le PDF sort de votre
+            navigateur.
+          </P>
         </Bloc>
 
         <Bloc>

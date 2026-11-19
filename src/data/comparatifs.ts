@@ -838,9 +838,9 @@ export const COMPARATIFS: Comparatif[] = [
     colonne: "Agence web",
     carte: "Sitaly ou une agence web",
     accroche: "Un site sur mesure sur devis, ou un abonnement que vous pilotez vous-même.",
-    titre: "Sitaly ou une agence web : que choisir pour votre site ?",
+    titre: "Agence web ou Sitaly : le coût réel sur trois ans",
     description:
-      "Créer son site avec Sitaly ou le confier à une agence web : délai, coût sur trois ans, autonomie, devis et rendez-vous. Ce qui convient à chaque projet.",
+      "Une agence facture 5 000 € en médiane pour un site ; Sitaly Essentiel coûte 1 194 € sur trois ans. Délai, autonomie, limites : le comparatif chiffré.",
     intro:
       "Une agence crée un site sur mesure, avec des rendez-vous, des maquettes et un devis. Pour beaucoup d'indépendants et de petites entreprises, Sitaly suffit : un site professionnel en une minute environ, à un prix fixe, que vous modifiez vous-même. Cette page vous aide à savoir quand l'un ou l'autre vaut la dépense.",
     verdict: [

@@ -58,11 +58,23 @@ export interface Produit {
    * vers elle. Un slug absent ou pas encore publié disparaît sans lien cassé.
    */
   articles?: string[];
+  /**
+   * L'outil gratuit qui sert la même intention que la page, quand il en
+   * existe un (SITA-80, 19 novembre 2026) : le gabarit l'affiche sous le
+   * paragraphe du guide. Absent des autres produits, donc rien ne bouge
+   * sur leurs pages.
+   */
+  outil?: { to: "/outils/generateur-devis-gratuit/"; phrase: string; ancre: string };
 }
 
 export const PRODUITS: Produit[] = [
   {
     id: "devis-et-factures",
+    outil: {
+      to: "/outils/generateur-devis-gratuit/",
+      phrase: "Un seul devis à envoyer, sans compte ?",
+      ancre: "Faites votre devis en ligne gratuitement",
+    },
     articles: ["logiciel-devis-artisan-choisir", "logiciel-facturation-auto-entrepreneur-gratuit", "facturation-electronique-artisan-2027", "mentions-obligatoires-devis-artisan", "relance-automatique-devis"],
     cta: "Créer mon premier devis",
     nom: "Devis et factures",

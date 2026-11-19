@@ -151,9 +151,9 @@ const ALL_BLOG_POSTS: BlogPost[] = [
   {
     slug: "mentions-legales-site-internet",
     title: "Mentions légales d'un site professionnel : ce qui est obligatoire",
-    metaTitle: "Mentions légales d'un site pro : la liste selon votre statut",
+    metaTitle: "Mentions légales site internet : la liste et un générateur",
     metaDescription:
-      "Ce que doit contenir la page de mentions légales d'un site professionnel selon votre statut, les sanctions prévues et les textes voisins (RGPD, cookies).",
+      "La liste des mentions légales d'un site selon votre statut, l'amende prévue par la LCEN, et un générateur gratuit, sans inscription, pour écrire votre page.",
     excerpt:
       "Tout site professionnel doit dire qui l'édite et qui l'héberge. Voici ce que la page doit contenir selon votre statut.",
     category: "Créer son site",
@@ -629,8 +629,8 @@ const ALL_BLOG_POSTS: BlogPost[] = [
   {
     slug: "plateformes-mise-en-relation-artisan-avis",
     title: "Plateformes de mise en relation : ce qu'un chantier vous coûte vraiment",
-    metaTitle: "Plateformes de mise en relation artisan : le vrai coût",
-    metaDescription: "Comment fonctionnent les plateformes de mise en relation pour artisans, comment calculer le coût réel d'un chantier obtenu, et comment en dépendre moins.",
+    metaTitle: "Plateformes de mise en relation artisan : avis et coût réel",
+    metaDescription: "Ce qu'une plateforme facture, pourquoi vous payez des contacts injoignables, le calcul du coût réel d'un chantier, et comment bâtir votre propre canal.",
     excerpt:
       "Les plateformes livrent de vraies demandes, personne ne le conteste. La question est ailleurs : combien vous coûte un chantier obtenu ainsi, et que vous reste-t-il le jour où vous arrêtez de payer ?",
     category: "Trouver des chantiers",
@@ -695,9 +695,9 @@ const ALL_BLOG_POSTS: BlogPost[] = [
   {
     slug: "facturation-electronique-artisan-2027",
     title: "Facturation électronique 2027 : ce qui change pour les artisans et auto-entrepreneurs",
-    metaTitle: "Facturation électronique artisan 2027 : dates et obligations",
+    metaTitle: "Facturation électronique artisan : les dates et les amendes",
     metaDescription:
-      "Réception depuis 2026, émission au 1er septembre 2027 : plateforme agréée, formats, e-reporting et amendes, pour artisans et micro-entrepreneurs.",
+      "Émission obligatoire au 1er septembre 2027, réception depuis septembre 2026 : plateforme agréée, e-reporting, amendes, et quoi faire d'ici là, date par date.",
     excerpt:
       "Depuis septembre 2026, vous devez pouvoir recevoir des factures électroniques. En septembre 2027, vous devrez en émettre. Calendrier, plateformes agréées, amendes et liste datée.",
     category: "Outils & logiciels",
@@ -725,9 +725,9 @@ const ALL_BLOG_POSTS: BlogPost[] = [
   {
     slug: "mentions-obligatoires-devis-artisan",
     title: "Mentions obligatoires d'un devis d'artisan : la liste complète et vérifiée",
-    metaTitle: "Mentions obligatoires d'un devis d'artisan : la liste à jour",
+    metaTitle: "Devis d'artisan : les 18 mentions obligatoires à cocher",
     metaDescription:
-      "Quand le devis est obligatoire, les mentions à porter (RNE, décennale, TVA), le bon pour accord et la rétractation, vérifiés sur les textes officiels.",
+      "Les 18 mentions obligatoires d'un devis d'artisan, avec le texte officiel de chacune : RNE, décennale, TVA, rétractation. Et un générateur de devis gratuit.",
     excerpt:
       "Identité, RNE, assurance décennale, prix, validité, rétractation : chaque mention obligatoire d'un devis d'artisan, avec sa source et une liste à cocher.",
     category: "Outils & logiciels",
@@ -791,9 +791,9 @@ const ALL_BLOG_POSTS: BlogPost[] = [
   {
     slug: "resilier-contrat-site-internet-location-financiere",
     title: "Résilier un contrat de site internet en location financière : les recours d'un artisan",
-    metaTitle: "Contrat de site en location financière : comment en sortir",
+    metaTitle: "Site en location financière : les 5 étapes pour en sortir",
     metaDescription:
-      "Contrat de site sur 48 mois avec un organisme de financement : comment le lire, quand la loi protège un artisan, et les étapes pour tenter d'en sortir.",
+      "Contrat de 48 mois, loyers prélevés par un financeur : les cinq étapes pour tenter d'en sortir, la rétractation après démarchage, et récupérer son domaine.",
     excerpt:
       "Un site vendu lors d'un démarchage, un contrat de 48 mois, un loyer prélevé par une société de financement que vous ne connaissiez pas. Voici comment ces contrats fonctionnent et les pistes pour en sortir.",
     category: "Site internet",

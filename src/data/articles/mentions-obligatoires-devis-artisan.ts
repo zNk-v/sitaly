@@ -34,6 +34,10 @@ export const contenu: BlogSection[] = [
     type: "p",
     text: "Un devis d'artisan doit indiquer votre identité complète, celle du client et le lieu des travaux, le détail chiffré de chaque prestation, le taux horaire, les frais de déplacement, les totaux HT et TTC avec le taux de TVA, la durée de validité, le caractère payant ou gratuit du devis, et votre assurance professionnelle quand elle est obligatoire.",
   },
+  {
+    type: "p",
+    text: "Pour les mettre en page sans rien oublier, vous pouvez [faire votre devis en ligne gratuitement](/outils/generateur-devis-gratuit/) : les mentions courantes sont déjà dans le modèle, et le PDF sort de votre navigateur.",
+  },
   { type: "h3", text: "Votre identité" },
   {
     type: "ul",

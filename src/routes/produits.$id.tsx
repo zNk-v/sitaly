@@ -132,6 +132,20 @@ function PageProduit() {
                 .
               </p>
             )}
+            {/* L'outil gratuit qui sert la même intention (SITA-80,
+                19 novembre 2026) : un seul devis, sans compte. */}
+            {p.outil && (
+              <p className={`mt-3 text-base sm:text-sm ${TEXTE_GRIS}`}>
+                {p.outil.phrase}{" "}
+                <Link
+                  to={p.outil.to}
+                  className="font-medium text-black underline underline-offset-2"
+                >
+                  {p.outil.ancre}
+                </Link>
+                .
+              </p>
+            )}
           </div>
         </section>
 

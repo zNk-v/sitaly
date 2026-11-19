@@ -25,9 +25,9 @@ import { BASE_URL } from "@/lib/config";
  */
 
 const URL = `${BASE_URL}/outils/generateur-devis-gratuit/`;
-const TITRE = "Faire un devis gratuit en ligne : générateur PDF | Sitaly";
+const TITRE = "Créer un devis en ligne gratuit : modèle PDF | Sitaly";
 const DESCRIPTION =
-  "Faites un devis gratuit en ligne : le modèle se remplit avec les mentions obligatoires, prêt en PDF. Pour artisans et auto-entrepreneurs, sans inscription.";
+  "Faites votre devis en ligne gratuitement : le modèle se remplit avec les mentions obligatoires, prêt en PDF. Artisans et auto-entrepreneurs, sans inscription.";
 
 const TAUX = [
   { valeur: 20, label: "20 %" },
@@ -48,16 +48,24 @@ const MENTIONS = [
 
 const FAQ = [
   {
+    q: "Comment faire un devis en ligne gratuitement ?",
+    a: "Remplissez le formulaire de cette page : votre entreprise, votre client, vos lignes de prestation. Le devis se met en page à côté, à mesure que vous tapez. Cliquez sur « Imprimer ou enregistrer en PDF », puis choisissez « Enregistrer au format PDF » dans la fenêtre d'impression. Rien à installer, aucun compte à créer.",
+  },
+  {
     q: "Le devis est-il obligatoire ?",
     a: "Pour le dépannage, la réparation et l'entretien dans le bâtiment et l'équipement de la maison, il l'est quel que soit le montant depuis l'arrêté du 24 janvier 2017. Il l'est aussi pour un déménagement et pour les services à la personne au-delà de 100 € TTC par mois. Pour les autres prestations, il reste la meilleure preuve de ce que vous avez convenu avec votre client.",
   },
   {
     q: "Un auto-entrepreneur doit-il faire apparaître la TVA ?",
-    a: "Non, tant qu'il reste sous les seuils de la franchise en base. Le devis affiche alors un seul total et la mention « TVA non applicable, article 293 B du CGI ». Cochez la case « Je ne facture pas la TVA » : l'outil l'écrit pour vous.",
+    a: "Non, tant qu'il reste sous les seuils de la franchise en base. Le devis affiche alors un seul total et la mention de non-application de la TVA. Cochez la case « Je ne facture pas la TVA » : l'outil écrit « TVA non applicable, art. 293 B du CGI ». Cette formulation reste tolérée jusqu'au 31 décembre 2027 selon Service Public Entreprendre ; depuis le 1er septembre 2026, la mention renvoie aux articles L. 223 et suivants du code des impositions sur les biens et services.",
   },
   {
     q: "Un devis signé vaut-il contrat ?",
     a: "Oui. Une fois daté et signé par votre client, il vous engage tous les deux : vous sur le prix et le contenu, lui sur le paiement.",
+  },
+  {
+    q: "Un devis en ligne a-t-il la même valeur qu'un devis papier ?",
+    a: "Oui. Le code civil donne à la signature électronique la même valeur qu'à la signature manuscrite, à deux conditions : identifier la personne qui signe, et conserver le document de façon à garantir son intégrité (articles 1366 et 1367 du code civil). Un devis imprimé depuis cette page, puis signé à la main avec la mention « Bon pour accord », vaut lui aussi contrat.",
   },
   {
     q: "Peut-on faire payer un devis ?",
@@ -70,6 +78,10 @@ const FAQ = [
   {
     q: "Mes informations sont-elles enregistrées ?",
     a: "Non. Le devis se construit dans votre navigateur : la page n'envoie rien à Sitaly et ne garde rien après fermeture.",
+  },
+  {
+    q: "Et si je fais plusieurs devis en ligne par semaine ?",
+    a: "Cette page repart de zéro à chaque fois : elle ne garde ni vos coordonnées ni vos clients. Au-delà de deux ou trois devis par semaine, un compte Sitaly vous évite de tout retaper : vos clients sont enregistrés, votre client accepte le devis en ligne, et le devis devient une facture en un clic.",
   },
 ];
 
@@ -94,7 +106,7 @@ export const Route = createFileRoute("/outils/generateur-devis-gratuit")({
           "@graph": [
             {
               "@type": "WebApplication",
-              name: "Générateur de devis gratuit",
+              name: "Générateur de devis en ligne gratuit",
               description: DESCRIPTION,
               url: URL,
               applicationCategory: "BusinessApplication",
@@ -284,12 +296,12 @@ function GenerateurDevis() {
               </Link>
             </div>
             <h1 className="titre-produit mt-3 text-[2.4rem] sm:text-6xl lg:text-7xl">
-              Générateur de devis gratuit
+              Créer un devis en ligne gratuit
             </h1>
             <p className={`mx-auto mt-6 max-w-2xl text-lg leading-7 ${TEXTE_GRIS}`}>
-              Faites un devis gratuit en ligne : remplissez vos lignes, et ce modèle de devis se met
-              en page avec les mentions obligatoires, prêt à imprimer ou à enregistrer en PDF. Sans
-              inscription. Rien ne quitte votre navigateur.
+              Faites un devis en ligne gratuitement : vous remplissez vos lignes, et le modèle se
+              met en page avec les mentions obligatoires, prêt à imprimer ou à enregistrer en PDF.
+              Sans inscription, et rien ne quitte votre navigateur.
             </p>
           </div>
         </section>
@@ -627,16 +639,17 @@ function GenerateurDevis() {
         <section className="px-4 pt-8 pb-28 sm:px-6">
           <div className={`${CARTE} mx-auto max-w-4xl px-6 py-14 text-center`}>
             <h2 className="titre-produit text-[2rem] sm:text-5xl">
-              Un devis par semaine, ou dix ?
+              Vos devis sans limite, avec votre site
             </h2>
             <p className={`mx-auto mt-4 max-w-xl text-lg ${TEXTE_GRIS}`}>
               Dans Sitaly, vos coordonnées et vos clients sont déjà là. Votre client accepte le
-              devis en ligne, et le devis devient une facture en un clic. Devis illimités, gratuit
-              pour commencer.
+              devis en ligne, et le devis devient une facture en un clic. Devis illimités dès la
+              formule Découverte, qui est gratuite. Les factures passent à l'illimité à partir
+              d'Essentiel ; Découverte en permet trois par mois.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <a href={lienCreation()} className={`${BOUTON_NOIR} px-6 py-3.5 text-base`}>
-                Essayer Sitaly <ArrowRight className="h-4 w-4" />
+                Créer mon compte gratuit <ArrowRight className="h-4 w-4" />
               </a>
               <Link
                 to="/produits/$id/"
