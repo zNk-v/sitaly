@@ -5,6 +5,7 @@ import { SitalyLogo } from "@/components/SitalyLogo";
 import { MainNav } from "@/components/MainNav";
 import { MobileMenu, type AppelPrincipal } from "@/components/MobileMenu";
 import { APP_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
+import { BandeauPromo } from "@/components/BandeauPromo";
 
 /**
  * L'en-tête du site, en un seul endroit.
@@ -65,6 +66,10 @@ export function SiteHeader({
 
       {/* La gouttière ne doit pas intercepter les clics destinés au hero. */}
       <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
+        {/* Le bandeau fin du Black Friday, d'un bord à l'autre de la fenêtre, au-dessus de la pastille. */}
+        <div className="-mx-3 -mt-3 mb-2 sm:-mx-4 sm:-mt-4">
+          <BandeauPromo />
+        </div>
         {/* Le bandeau d'annonce, réglé depuis le centre de pilotage de l'app (src/data/vitrine.ts). */}
         {VITRINE.annonce && (
           <div className="pointer-events-auto mx-auto mb-2 flex w-fit max-w-full justify-center">
