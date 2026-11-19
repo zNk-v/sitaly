@@ -1,8 +1,17 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { useRef, useState, type FormEvent } from "react";
 import { ArrowRight, Check, ExternalLink, Plus } from "lucide-react";
 import { SiteChrome } from "@/components/SiteChrome";
 import { PictoRubrique } from "@/components/PictoRubrique";
-import { APP_URL, BASE_URL, euros } from "@/lib/config";
+import {
+  APP_URL,
+  BASE_URL,
+  SITALY_EMAIL,
+  SITALY_PHONE,
+  SITALY_PHONE_DISPLAY,
+  euros,
+} from "@/lib/config";
+import { envoyerDemande } from "@/lib/formulaire";
 import { directiveRobots } from "@/lib/indexation";
 import { FAQ_TARIFS } from "@/data/faq-tarifs";
 import { pageOffre, type PageOffre } from "@/data/pages-offres";
@@ -468,7 +477,7 @@ function PageDOffre() {
         </section>
 
         {/* ---------- Le questionnaire ---------- */}
-        <section className="border-t border-border bg-paper-sunk py-16 sm:py-20">
+        <section id="rappel" className="border-t border-border bg-paper-sunk py-16 sm:py-20">
           <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
             <h2 className="font-display text-3xl font-bold tracking-tight">On démarre ?</h2>
             <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
@@ -479,6 +488,11 @@ function PageDOffre() {
               Choisir cette offre
               <ArrowRight className="bouton-fleche h-4 w-4" />
             </Link>
+            {o.id === "presence" && (
+              <div className="mt-10 border-t border-border pt-10 text-left">
+                <FormulaireRappel />
+              </div>
+            )}
           </div>
         </section>
       </SiteChrome>
@@ -530,6 +544,213 @@ function Ecart({
         </Link>
       )}
     </div>
+  );
+}
+
+/* ---------------- Être rappelé ---------------- */
+
+/** Un numéro exploitable par Ted : 10 chiffres à partir de 0, ou +33 et 9 chiffres. */
+function telValide(brut: string) {
+  const chiffres = brut.replace(/[\s.()-]/g, "");
+  return /^0\d{9}$/.test(chiffres) || /^\+33\d{9}$/.test(chiffres);
+}
+
+/**
+ * Bloc « Être rappelé », bas de /offres/presence/ seulement (SITA-46, section 1
+ * du document `rappel-et-relance` de SITA-45).
+ *
+ * Trois champs, pas de champ e-mail : la page promet un rappel téléphonique, et
+ * un champ de moins est un abandon de moins. L'envoi passe par le relais
+ * `sitaly-forms` déjà en place (src/lib/formulaire.ts), qui écrit à Ted et
+ * déclenche `generate_lead` avec `form_id: "rappel-presence"`. Rien d'autre :
+ * aucun compte dans l'app, aucune session Stripe, aucun contact Brevo.
+ */
+function FormulaireRappel() {
+  const [etat, setEtat] = useState<"saisie" | "envoi" | "envoye" | "erreur">("saisie");
+  const [telFaux, setTelFaux] = useState(false);
+  const champTel = useRef<HTMLInputElement>(null);
+
+  async function envoyer(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (etat === "envoi") return;
+    const data = new FormData(event.currentTarget);
+    const lire = (cle: string) => String(data.get(cle) || "").trim();
+    const nom = lire("nom");
+    const metier = lire("metier");
+    const tel = lire("tel");
+
+    if (!telValide(tel)) {
+      setTelFaux(true);
+      champTel.current?.focus();
+      return;
+    }
+    setTelFaux(false);
+    setEtat("envoi");
+
+    /* Le relais exige `message` et recopie le métier depuis `profile`. Pas de
+       nom de domaine suivi d'une barre oblique dans le texte : depuis le
+       11 novembre, un message qui en contient part marqué « À vérifier ». */
+    const resultat = await envoyerDemande(
+      {
+        name: nom,
+        phone: tel,
+        profile: metier,
+        subject: "Être rappelé — page Présence",
+        message:
+          `Demande de rappel laissée en bas de la page Présence.\n` +
+          `Métier : ${metier}\n` +
+          `Pas d'e-mail laissé : rappeler au numéro ci-dessus.`,
+        website: lire("website"),
+      },
+      "rappel-presence",
+    );
+    /* `indisponible` mène au même message que `erreur` : la demande est perdue
+       dans les deux cas, et qui n'a pas laissé d'e-mail n'a pas envie d'en
+       écrire un. */
+    setEtat(resultat === "envoye" ? "envoye" : "erreur");
+  }
+
+  if (etat === "envoye") {
+    return (
+      <div
+        role="status"
+        className="rounded-2xl border border-border bg-card p-6 shadow-soft sm:p-8"
+      >
+        <h3 className="font-display text-xl font-bold">C'est noté.</h3>
+        <p className="mt-3 leading-relaxed text-muted-foreground">
+          Je vous rappelle sous 24 heures ouvrées, au numéro que vous venez de laisser. Si c'est
+          urgent, appelez le{" "}
+          <a
+            href={`tel:${SITALY_PHONE}`}
+            className="font-semibold text-brand-ink underline-offset-4 hover:underline"
+          >
+            {SITALY_PHONE_DISPLAY}
+          </a>
+          .
+        </p>
+      </div>
+    );
+  }
+
+  if (etat === "erreur") {
+    return (
+      <div
+        role="alert"
+        className="rounded-2xl border border-red-ink bg-card p-6 shadow-soft sm:p-8"
+      >
+        <h3 className="font-display text-xl font-bold">Votre demande n'est pas partie.</h3>
+        <p className="mt-3 leading-relaxed text-muted-foreground">
+          Appelez le{" "}
+          <a
+            href={`tel:${SITALY_PHONE}`}
+            className="font-semibold text-brand-ink underline-offset-4 hover:underline"
+          >
+            {SITALY_PHONE_DISPLAY}
+          </a>
+          , ou écrivez à{" "}
+          <a
+            href={`mailto:${SITALY_EMAIL}`}
+            className="font-semibold text-brand-ink underline-offset-4 hover:underline"
+          >
+            {SITALY_EMAIL}
+          </a>
+          . Votre numéro n'a pas été enregistré : ne restez pas à attendre un rappel.
+        </p>
+      </div>
+    );
+  }
+
+  const champ =
+    "mt-2 w-full rounded-lg border border-input bg-background px-3.5 py-3 text-[16px] outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20";
+
+  return (
+    <form
+      onSubmit={envoyer}
+      className="relative rounded-2xl border border-border bg-card p-6 shadow-soft sm:p-8"
+    >
+      <h3 className="font-display text-xl font-bold">Ou laissez votre numéro, je vous rappelle.</h3>
+      <p className="mt-2 leading-relaxed text-muted-foreground">
+        Trois champs, pas de compte à créer. Je rappelle sous 24 heures ouvrées.
+      </p>
+
+      <div className="mt-6 grid gap-5 sm:grid-cols-3 sm:gap-4">
+        <div>
+          <label htmlFor="rappel-nom" className="font-semibold">
+            Votre nom <span className="text-red-ink">*</span>
+          </label>
+          <input
+            id="rappel-nom"
+            name="nom"
+            type="text"
+            required
+            maxLength={120}
+            autoComplete="name"
+            placeholder="Marie Dupont"
+            className={champ}
+          />
+        </div>
+        <div>
+          <label htmlFor="rappel-metier" className="font-semibold">
+            Votre métier <span className="text-red-ink">*</span>
+          </label>
+          <input
+            id="rappel-metier"
+            name="metier"
+            type="text"
+            required
+            maxLength={120}
+            autoComplete="organization-title"
+            placeholder="Plombière, couvreur, carreleur…"
+            className={champ}
+          />
+        </div>
+        <div>
+          <label htmlFor="rappel-tel" className="font-semibold">
+            Votre téléphone <span className="text-red-ink">*</span>
+          </label>
+          <input
+            ref={champTel}
+            id="rappel-tel"
+            name="tel"
+            type="tel"
+            required
+            maxLength={30}
+            autoComplete="tel"
+            placeholder="06 12 34 56 78"
+            aria-invalid={telFaux}
+            aria-describedby={telFaux ? "rappel-tel-erreur" : undefined}
+            onChange={() => telFaux && setTelFaux(false)}
+            className={telFaux ? champ.replace("border-input", "border-red-ink") : champ}
+          />
+          {telFaux && (
+            <p id="rappel-tel-erreur" className="mt-1.5 text-sm text-red-ink">
+              Ce numéro n'a pas le bon nombre de chiffres. Exemple : 06 12 34 56 78.
+            </p>
+          )}
+        </div>
+      </div>
+
+      {/* Pot de miel : invisible pour un humain, rempli par les robots. */}
+      <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label htmlFor="rappel-website">Ne pas remplir</label>
+        <input id="rappel-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
+      <button
+        type="submit"
+        disabled={etat === "envoi"}
+        className="bouton mt-7 w-full px-6 py-3.5 disabled:opacity-70"
+      >
+        {etat === "envoi" ? "Envoi…" : "Être rappelé"}
+        <ArrowRight className="bouton-fleche h-4 w-4" />
+      </button>
+      <p className="mt-3 text-xs text-muted-foreground">
+        Votre numéro sert à vous rappeler, rien d'autre.{" "}
+        <Link to="/politique-confidentialite/" className="underline underline-offset-2">
+          Comment vos données sont traitées
+        </Link>
+      </p>
+    </form>
   );
 }
 
