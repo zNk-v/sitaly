@@ -77,9 +77,14 @@ export function MetierLanding(props: MetierLandingProps) {
               Créer mon site
               <ArrowRight className="bouton-fleche h-4 w-4" />
             </a>
-            <Link to="/" hash="offre" className="bouton-secondaire px-6 py-3.5 text-sm">
+            {/* « Voir les tarifs » descend vers la section Tarifs de cette page,
+                qui affiche les trois formules de l'application depuis le 19
+                novembre 2026. Avant, il renvoyait vers `/#offre`, un ancrage
+                que l'accueil n'a plus : le visiteur perdait son métier en route
+                et retombait en haut de la page d'accueil. */}
+            <a href="#tarifs" className="bouton-secondaire px-6 py-3.5 text-sm">
               Voir les tarifs
-            </Link>
+            </a>
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
             <span className="inline-flex items-center gap-2">
@@ -224,7 +229,7 @@ export function MetierLanding(props: MetierLandingProps) {
           Décision de Ted du 19 novembre 2026 : les pages métier vendent
           l'application, elles affichent donc ses prix, et plus ceux de
           l'agence (Présence et Présence Pro, qui restent dans offres.ts). */}
-      <section className="py-16 sm:py-20">
+      <section id="tarifs" className="scroll-mt-28 py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 className="display-section">
             Combien coûte un site internet <span className="accent-word">{metier}</span>
