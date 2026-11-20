@@ -416,6 +416,10 @@ export const FORMULES: Formule[] = [
     ],
     limites: [
       {
+        titre: "Votre site tient sur une page",
+        texte: `${IA.essentiel.nom} en autorise quatre, ${IA.pro.nom} huit : une page par prestation, et autant de portes d'entrée depuis Google.`,
+      },
+      {
         titre: "« Site créé avec Sitaly » au pied de votre site",
         texte: `La mention reste affichée, avec un lien pour créer un site. Avec ${IA.essentiel.nom}, elle devient discrète et vous la retirez d'un clic.`,
       },
@@ -437,8 +441,20 @@ export const FORMULES: Formule[] = [
     intro: `Tout ${IA.decouverte.nom}, plus :`,
     fonctions: [
       {
+        titre: "Jusqu'à quatre pages",
+        texte: "Accueil, prestations, à propos, contact.",
+      },
+      {
         titre: `${IA.essentiel.credits.toLocaleString("fr-FR")} crédits IA par mois`,
         texte: "Réécrire une section, ajouter des tarifs, changer le ton, créer des photos.",
+      },
+      {
+        titre: "Articles de blog écrits par l'IA",
+        texte: "L'agent choisit un sujet que vos clients cherchent, écrit l'article, vous le relisez.",
+      },
+      {
+        titre: "L'agent qui répond aux demandes de votre site",
+        texte: "Chaque message arrive avec sa réponse déjà rédigée, dans votre ton. Rien ne part sans vous.",
       },
       {
         titre: "Factures illimitées et relances",
@@ -468,6 +484,10 @@ export const FORMULES: Formule[] = [
     bouton: "Commencer",
     intro: `Tout ${IA.essentiel.nom}, plus :`,
     fonctions: [
+      {
+        titre: "Jusqu'à huit pages",
+        texte: "Une page par prestation, détaillée, avec ses photos et ses tarifs.",
+      },
       {
         titre: "Notre IA la plus avancée",
         texte: "Les textes de votre site écrits par le meilleur modèle d'IA du moment.",
@@ -751,7 +771,12 @@ const GROUPES_COMPARES: { titre: string; lignes: LigneComparee[] }[] = [
         libelle: "Modèle d'IA pour la rédaction",
         valeurs: ["Avancé", "Avancé", "Le plus avancé"],
       },
-      { libelle: "Onze thèmes, changement en un clic", valeurs: [true, true, true] },
+      {
+        libelle: "Pages de votre site",
+        aide: "Une page par prestation : autant de portes d'entrée depuis Google.",
+        valeurs: ["1", "4", "8"],
+      },
+      { libelle: "Seize thèmes, changement en un clic", valeurs: [true, true, true] },
       { libelle: "Retouches à la main dans l'éditeur", valeurs: [true, true, true] },
       { libelle: "Formulaire de contact", valeurs: [true, true, true] },
     ],
@@ -773,13 +798,13 @@ const GROUPES_COMPARES: { titre: string; lignes: LigneComparee[] }[] = [
       {
         libelle: "Articles de blog écrits par l'IA",
         aide: "1 crédit les idées, 6 crédits l'article.",
-        valeurs: [true, true, true],
+        valeurs: [false, true, true],
       },
       { libelle: "Logo et identité de marque", valeurs: [true, true, true] },
       {
         libelle: "Agent IA : réponses aux demandes du site",
         aide: "1 crédit par réponse rédigée, envoyée après votre accord.",
-        valeurs: [true, true, true],
+        valeurs: [false, true, true],
       },
       {
         libelle: "Agent IA : avis Google",
