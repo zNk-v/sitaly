@@ -751,7 +751,7 @@ const GROUPES_COMPARES: { titre: string; lignes: LigneComparee[] }[] = [
         libelle: "Modèle d'IA pour la rédaction",
         valeurs: ["Avancé", "Avancé", "Le plus avancé"],
       },
-      { libelle: "Quatre thèmes, changement en un clic", valeurs: [true, true, true] },
+      { libelle: "Onze thèmes, changement en un clic", valeurs: [true, true, true] },
       { libelle: "Retouches à la main dans l'éditeur", valeurs: [true, true, true] },
       { libelle: "Formulaire de contact", valeurs: [true, true, true] },
     ],
