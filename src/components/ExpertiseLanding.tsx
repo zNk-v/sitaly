@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Calendar, Check, Phone } from "lucide-react";
-import { directiveRobots } from "@/lib/indexation";
+import { directiveRobots, estIndexable } from "@/lib/indexation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -14,6 +14,7 @@ import {
 import { CarteEtapeSuivante } from "@/components/EtapeSuivante";
 import { OffresEnBref } from "@/components/OffresEnBref";
 import { ArticlesALire } from "@/components/ArticlesALire";
+import { lienCreation } from "@/components/produit/Produit";
 import { BASE_URL, CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 /**
@@ -29,7 +30,17 @@ import { BASE_URL, CALENDLY_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/li
  */
 export function ExpertiseLanding({ e }: { e: Expertise }) {
   const famille = FAMILLES.find((f) => f.id === e.famille)!;
-  const autres = voisines(e);
+  /* Une page indexée ne lie que des pages indexées : cinq des six pages de la
+     famille site sont hors index, et `scripts/verifier-seo.mjs` avertit à
+     chaque lien d'une page indexée vers une page qui ne l'est pas. Le coût
+     réel est ailleurs : /creation-site-internet/, réindexée le 20 novembre
+     2026, vend le site gratuit en libre-service et finirait par cinq cartes
+     vers des prestations d'agence à 149 € et plus. Les quinze autres pages
+     d'expertise, toutes hors index, gardent leur bloc tel quel. La section
+     disparaît si le filtre ne laisse rien, par la condition `autres.length`. */
+  const autres = estIndexable(cheminExpertise(e))
+    ? voisines(e).filter((x) => estIndexable(cheminExpertise(x)))
+    : voisines(e);
 
   return (
     <div className={`ambiance-${e.famille} min-h-screen bg-background text-foreground`}>
@@ -60,10 +71,7 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
 
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <BoutonPrincipal e={e} />
-              <a href={`tel:${SITALY_PHONE}`} className="bouton-contour-clair px-6 py-3.5">
-                <Phone className="h-4 w-4" />
-                {SITALY_PHONE_DISPLAY}
-              </a>
+              <BoutonSecondaire e={e} />
             </div>
 
             <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-border pt-6 text-sm font-medium">
@@ -308,11 +316,21 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
         )}
 
         {/* Appel final : le questionnaire, sauf pour les agents IA, dont la
-            vente passe par un diagnostic de trente minutes. */}
+            vente passe par un diagnostic de trente minutes, et sauf les pages
+            qui portent un champ `appel` — l'inscription libre-service dans
+            l'application, qui ne promet aucun rappel. */}
         <section className="on-ink relative isolate overflow-hidden bg-ink py-20 sm:py-28">
           <div aria-hidden="true" className="foyer-ambiance absolute inset-0 -z-10" />
           <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-            {e.famille === "automatisation" ? (
+            {e.appel ? (
+              <>
+                <h2 className="display-section">
+                  {e.appel.titre[0]}
+                  <span className="accent-word">{e.appel.titre[1]}</span>
+                </h2>
+                <p className="mt-5 text-lg text-muted-foreground">{e.appel.phrase}</p>
+              </>
+            ) : e.famille === "automatisation" ? (
               <>
                 <h2 className="display-section">
                   On en parle <span className="accent-word">trente minutes</span>&nbsp;?
@@ -335,10 +353,7 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
             )}
             <div className="mt-9 flex flex-wrap justify-center gap-3">
               <BoutonPrincipal e={e} />
-              <a href={`tel:${SITALY_PHONE}`} className="bouton-contour-clair px-6 py-3.5">
-                <Phone className="h-4 w-4" />
-                {SITALY_PHONE_DISPLAY}
-              </a>
+              <BoutonSecondaire e={e} />
             </div>
           </div>
         </section>
@@ -362,8 +377,23 @@ export function ExpertiseLanding({ e }: { e: Expertise }) {
  * Le bouton principal d'une page d'expertise : le questionnaire « Trouver mon
  * offre » (23 octobre 2026), sauf pour les agents IA et l'automatisation, où
  * le diagnostic de trente minutes reste le premier pas.
+ *
+ * Le champ `appel` passe devant les deux : la page vend l'inscription
+ * libre-service dans l'application, et son premier pas est la création. Le
+ * lien reste nu et vient de `lienCreation()` : un `utm_source` écrit en dur
+ * empêcherait `avecCampagne` (`src/lib/mesure.ts:133`) de poser
+ * `utm_source=seo`, et la page sortirait de la rubrique Organique du centre
+ * de pilotage.
  */
 function BoutonPrincipal({ e }: { e: Expertise }) {
+  if (e.appel) {
+    return (
+      <a href={lienCreation()} className="bouton px-7 py-3.5">
+        {e.appel.principal}
+        <ArrowRight className="bouton-fleche h-4 w-4" />
+      </a>
+    );
+  }
   if (e.famille === "automatisation") {
     return (
       <a
@@ -386,6 +416,34 @@ function BoutonPrincipal({ e }: { e: Expertise }) {
       Trouver mon offre
       <ArrowRight className="bouton-fleche h-4 w-4" />
     </Link>
+  );
+}
+
+/**
+ * Le second bouton, toujours en retrait du principal : le téléphone de Sitaly
+ * pour les quinze pages d'expertise qui vendent une prestation.
+ *
+ * `appel.secondaire` le remplace sur /creation-site-internet/, décision de Ted
+ * du 20 novembre 2026 : un numéro en tête d'une page qui vend l'inscription
+ * libre-service appelle l'inverse de son bouton. Rien ne se perd, le numéro
+ * change de place — le bloc « Être rappelé » est en ligne au bas de
+ * /offres/presence/ depuis le 20 novembre (`src/routes/offres.$id.tsx:480`),
+ * et c'est là que mène ce lien. Même libellé et même URL que le pied de page
+ * (`SiteFooter.tsx:87`), barre oblique finale comprise.
+ */
+function BoutonSecondaire({ e }: { e: Expertise }) {
+  if (e.appel?.secondaire) {
+    return (
+      <Link to={e.appel.secondaire.to} className="bouton-contour-clair px-6 py-3.5">
+        {e.appel.secondaire.libelle}
+      </Link>
+    );
+  }
+  return (
+    <a href={`tel:${SITALY_PHONE}`} className="bouton-contour-clair px-6 py-3.5">
+      <Phone className="h-4 w-4" />
+      {SITALY_PHONE_DISPLAY}
+    </a>
   );
 }
 
