@@ -1,4 +1,5 @@
-import type { OffreId } from "@/data/offres";
+import { euros } from "@/lib/config";
+import { CREATEUR_IA as IA, offre, type OffreId } from "@/data/offres";
 import { Bot, Globe, Megaphone } from "lucide-react";
 
 /**
@@ -110,6 +111,20 @@ export interface Expertise {
   intro: string;
   /** Les trois repères sous le titre. */
   reperes: [string, string, string];
+  /**
+   * Le premier pas de la page, quand il n'est ni le questionnaire ni le
+   * diagnostic : l'inscription libre-service dans l'application. Seul le
+   * libellé est ici, la destination vient de `lienCreation()`, source unique
+   * de l'entrée de l'app pour tout le site. `secondaire` garde une sortie
+   * pour qui préfère un site géré par Sitaly.
+   */
+  appel?: {
+    principal: string;
+    secondaire?: { libelle: string; to: string };
+    /** Le titre de l'appel final, en deux morceaux : le second est accentué. */
+    titre: [string, string];
+    phrase: string;
+  };
   comprend: { t: string; d: string }[];
   quand: { t: string; d: string }[];
   faq: { q: string; a: string }[];
@@ -142,36 +157,65 @@ const SITE: Expertise[] = [
     slug: "creation-site-internet",
     famille: "site",
     label: "Création de site internet",
-    nomService: "la création de site internet",
-    menuDesc: "Le socle : un site à vous, en ligne en 48 heures.",
-    titre: "Création de site internet pour TPE et PME | Sitaly",
+    nomService: "un site créé avec l'IA",
+    menuDesc: "Votre site écrit par l'IA, gratuit pour commencer.",
+    titre: "Créer son site internet gratuitement en une minute | Sitaly",
     description:
-      "Création de site internet sur mesure, livré en 48h. Hébergement, nom de domaine et référencement local inclus, en abonnement mensuel sans engagement.",
-    eyebrow: "Site internet",
-    h1: "Création de site internet, en ligne en 48 heures",
+      "Décrivez votre activité en une phrase : l'IA écrit votre site et le publie sur votre-nom.sitaly.fr en une minute environ. Gratuit, sans carte bancaire.",
+    eyebrow: "Sitaly App",
+    h1: "Créez votre site internet gratuitement, avec l'IA",
     intro:
-      "Un site construit pour votre activité, pas un gabarit revendu. Vous décrivez votre métier pendant un appel de trente minutes, vous recevez une maquette, et le site part en ligne deux jours plus tard avec son hébergement, son nom de domaine et son référencement local.",
-    reperes: ["Livré en 48 heures", "Hébergement et domaine inclus", "Sans engagement de durée"],
+      "Vous décrivez votre activité en une phrase. L'IA écrit les textes, choisit la mise en page et crée une première photo, en une minute environ. Vous relisez, vous corrigez en écrivant votre demande, puis vous publiez sur votre-nom.sitaly.fr. La formule Découverte est gratuite, sans carte bancaire.",
+    reperes: [
+      "Gratuit, sans carte bancaire",
+      "Publié en une minute environ",
+      "Modifié en écrivant votre demande",
+    ],
+    appel: {
+      principal: "Créer mon site gratuitement",
+      secondaire: { libelle: "Site géré par Sitaly", to: "/offres/presence/" },
+      titre: ["Votre site, ", "en une phrase"],
+      phrase:
+        "Décrivez votre activité, relisez ce que l'IA a écrit, publiez. La formule Découverte est gratuite et ne demande pas de carte bancaire.",
+    },
     comprend: [
       {
-        t: "Une structure pensée pour la demande",
-        d: "Une page par prestation, une page par ville quand votre zone le justifie. C'est ce découpage qui décide sur quelles recherches vous sortez, bien avant le graphisme.",
+        t: "Le site écrit à partir d'une phrase",
+        d: "« Fleuriste à Nantes, bouquets de mariage et livraison » suffit à lancer la création. L'IA écrit les pages, choisit la mise en page et crée une première photo. La création elle-même ne consomme aucun crédit.",
       },
       {
-        t: "Les textes écrits pour vous",
-        d: "Vous n'avez pas de contenu à fournir. On part de l'appel, de vos devis et de vos photos de chantier, et on écrit les pages.",
+        t: "Les retouches, écrites comme à une personne",
+        d: "« Ajoute mes horaires », « ton plus chaleureux », « une section tarifs ». Pour corriger un mot, double-cliquez dessus. Une retouche de section coûte 1 crédit, une demande sur tout le site 2, une photo créée par l'IA 5.",
       },
       {
-        t: "L'hébergement, le domaine et le certificat",
-        d: "Achat du nom de domaine, hébergement, HTTPS, sauvegardes et mises à jour. Il n'y a pas de prestataire technique à gérer en plus.",
+        t: "L'adresse, l'hébergement et le certificat",
+        d: "Le site est publié sur votre-nom.sitaly.fr, hébergement et HTTPS compris. Essentiel et Pro offrent un nom en .fr ou en .com, enregistré à votre nom et branché sur le site en quelques heures.",
       },
       {
-        t: "Le référencement local de départ",
-        d: "Balises, données structurées, fiche Google Business Profile, cohérence des coordonnées sur les annuaires. Le minimum pour exister sur « votre métier + votre ville ».",
+        t: "Les devis et les factures",
+        d: "Devis acceptés en ligne, factures payées par carte sans commission Sitaly. La formule Découverte en passe trois par mois ; Essentiel et Pro les laissent libres et relancent les impayés.",
       },
       {
-        t: "Le suivi, tous les mois",
-        d: "Une modification par mois est incluse : un texte, une photo, un tarif ou des horaires. Une page en plus ou une nouvelle fonction est chiffrée à l'avance.",
+        t: "Les rendez-vous et les avis Google",
+        d: "Compris en Essentiel et Pro : page de réservation, confirmation et rappel par e-mail, fiche Google connectée et réponse préparée pour chaque avis. Pas dans la formule Découverte.",
+      },
+    ],
+    etapes: [
+      {
+        t: "Décrivez votre activité",
+        d: "Une phrase : votre métier, votre ville, ce qui vous distingue.",
+      },
+      {
+        t: "Relisez chaque texte",
+        d: "Une IA peut se tromper. Corrigez les prix, les horaires et tout ce qui doit être exact.",
+      },
+      {
+        t: "Publiez en un clic",
+        d: "Le site part en ligne sur votre-nom.sitaly.fr, sans carte bancaire.",
+      },
+      {
+        t: "Branchez votre fiche Google",
+        d: "Reliez votre fiche à l'adresse du site : elle amène souvent les premiers appels.",
       },
     ],
     quand: [
@@ -180,32 +224,38 @@ const SITE: Expertise[] = [
         d: "Vos clients vérifient qui vous êtes avant d'appeler. Sans site, la vérification s'arrête sur un concurrent.",
       },
       {
-        t: "Vous avez une page réseau social et rien d'autre",
-        d: "Une page sociale ne se classe pas sur Google et ne vous appartient pas. Un site fait les deux.",
+        t: "Vous voulez garder la main",
+        d: "Vos horaires, vos prix et vos photos changent le jour où vous le décidez. Rien à demander à personne, rien à attendre.",
       },
       {
-        t: "Votre site date et ne rapporte rien",
-        d: "Dans ce cas, c'est une refonte plutôt qu'une création. Le point de départ change, l'objectif reste le même.",
+        t: "Vous préférez qu'on s'en occupe",
+        /* Les deux montants sont lus dans `offres.ts` et non retapés. Le `!`
+           dit au type ce que la donnée dit déjà : `mensuel` est optionnel sur
+           l'interface `Offre` (une prestation peut se chiffrer sur devis),
+           mais Présence porte bien un prix mensuel (`offres.ts:78`). Un repli
+           `?? 0` afficherait « 0 € » le jour où il disparaîtrait. */
+        d: `Alors l'application n'est pas pour vous. Sitaly crée et tient le site à votre place avec l'offre Présence, à ${euros(offre("presence").mensuel!)} par mois et ${euros(offre("presence").depart)} de mise en service.`,
       },
     ],
     faq: [
       {
-        q: "Combien de temps pour créer un site internet ?",
-        a: "48 heures après l'appel découverte, une fois vos photos et vos informations réunies. Le délai tient parce que la structure et les textes sont préparés pendant l'appel, pas après.",
+        q: "Créer son site internet gratuitement, c'est vraiment gratuit ?",
+        a: `Oui, avec la formule ${IA.decouverte.nom} : vous créez le site et vous le publiez sans payer et sans carte bancaire, sur une adresse en .sitaly.fr. Quatre choses restent fermées : votre nom de domaine, la mention « Site créé avec Sitaly » au pied du site, le carnet de clients au-delà de ${IA.decouverte.contactsMax} contacts, et les factures au-delà de trois par mois. ${IA.essentiel.nom}, à ${euros(IA.essentiel.mensuel)} par mois, lève les quatre.`,
       },
       {
-        q: "Le site m'appartient-il ?",
-        a: "Le site reste la propriété de Sitaly : c'est ce qui permet d'inclure sa création, son hébergement et sa maintenance dans une mensualité sans engagement. Votre fiche Google est à vous, votre nom de domaine vous est transféré gratuitement si vous partez, et le site peut être racheté au prix indiqué sur la page tarifs.",
+        q: "Combien de temps faut-il pour créer le site ?",
+        a: "Environ une minute pour la création. Vous le relisez, vous changez ce que vous voulez, puis vous le publiez en un clic. Le temps qui suit dépend de ce que vous voulez corriger, pas de nous.",
       },
       {
-        q: "Faut-il fournir les textes et les photos ?",
-        a: "Les textes sont écrits par Sitaly. Pour les photos, vos vraies réalisations prises au téléphone valent mieux qu'une banque d'images ; si vous n'en avez pas, on démarre avec des visuels temporaires.",
+        q: "L'IA peut-elle écrire des choses fausses sur mon activité ?",
+        a: "Une IA peut se tromper : relisez avant de publier. Ses consignes lui interdisent d'inventer des avis, des chiffres, des certifications ou des années d'expérience, et elle n'écrit des prix que si vous les donnez.",
       },
       {
-        q: "Que se passe-t-il si j'arrête ?",
-        a: "Sans engagement : vous arrêtez quand vous voulez, sans frais ni durée minimale. Le site est mis hors ligne, sauf si vous le rachetez, et le nom de domaine vous est transféré gratuitement.",
+        q: "Je préfère qu'on s'occupe de tout : c'est possible ?",
+        a: `Oui. L'offre Présence comprend cinq pages écrites pour vous, l'hébergement et votre fiche Google tenue par Sitaly, à ${euros(offre("presence").mensuel!)} par mois et ${euros(offre("presence").depart)} de mise en service. Sa page en donne le détail.`,
       },
     ],
+    aLire: ["creer-site-internet-gratuit", "creer-site-internet-sans-coder", "prix-site-internet"],
   },
   {
     slug: "site-vitrine",

@@ -7,9 +7,18 @@
  *
  * - `generate_lead` : un formulaire a bien été transmis ;
  * - `click_tel` : clic sur un numéro de téléphone ;
- * - `click_calendly` : clic vers la prise de rendez-vous.
+ * - `click_calendly` : clic vers la prise de rendez-vous ;
+ * - `click_creer` : clic vers l'entrée de création de l'app (20 novembre
+ *   2026). `prolongerCampagne` dit déjà d'où vient le visiteur, mais pas de
+ *   quelle page il est parti : `utm_campaign` porte le nom du moteur. Sans
+ *   cet événement, rien ne distingue une inscription partie de
+ *   /creation-site-internet/ d'une inscription partie d'une autre page
+ *   indexée, et la ligne « clics vers l'app » du tableau de bord
+ *   hebdomadaire reste vide. `suivreEvenement` ajoute `page_location`, donc
+ *   la page de départ arrive sans paramètre inventé.
  *
- * Dans GA4, marquer `generate_lead` et `click_calendly` comme événements clés.
+ * Dans GA4, marquer `generate_lead`, `click_calendly` et `click_creer` comme
+ * événements clés.
  *
  * Le consentement reste géré par le mode de consentement déjà en place
  * (`__root.tsx`) : gtag décide lui-même de ce qu'il envoie selon le choix du
@@ -30,9 +39,11 @@ export function suivreEvenement(nom: string, params: Record<string, unknown> = {
 }
 
 /**
- * Un seul écouteur pour tout le site, posé sur le document : les liens `tel:`
- * et Calendly sont répartis dans une vingtaine de composants, et les annoter
- * un par un en oublierait toujours un.
+ * Un seul écouteur pour tout le site, posé sur le document : les liens `tel:`,
+ * Calendly et les entrées de l'app sont répartis dans une vingtaine de
+ * composants, et les annoter un par un en oublierait toujours un. Les liens
+ * ne portent donc aucun paramètre de plus : un `utm_source` écrit en dur
+ * empêcherait `avecCampagne` de poser `utm_source=seo`.
  */
 export function suivreClicsDeContact(): () => void {
   if (typeof document === "undefined") return () => {};
@@ -45,6 +56,16 @@ export function suivreClicsDeContact(): () => void {
       suivreEvenement("click_tel", { link_url: href });
     } else if (href.includes("calendly.com")) {
       suivreEvenement("click_calendly", { link_url: href });
+    } else if (
+      lien.hostname === "app.sitaly.fr" &&
+      (lien.pathname === "/creer" || lien.search.includes("activite="))
+    ) {
+      // Les deux formes que produit `lienCreation()`, et rien d'autre :
+      // /connexion et /app/parrainage restent dehors, ce sont des clients
+      // existants et non des inscriptions. On lit `search` et non
+      // `searchParams`, qui n'existe que sur `URL` : un `HTMLAnchorElement`
+      // porte `hostname`, `pathname` et `search`.
+      suivreEvenement("click_creer", { link_url: lien.href });
     }
   };
   document.addEventListener("click", auClic, { capture: true });
