@@ -42,6 +42,11 @@ export default defineConfig({
       { path: "/site-internet-serrurier" },
       { path: "/site-internet-chauffagiste" },
       { path: "/site-internet-carreleur" },
+      // /essonne/ : même cas depuis le 20 novembre 2026 (SITA-76). Sortie de
+      // PAGES_AGENCE_HORS_INDEX, donc plus dans la liste ci-dessus, et aucune
+      // page du site ne la lie : sans cette ligne, le prérendu par liens ne la
+      // trouve pas et le sitemap annonce une adresse absente de dist/client.
+      { path: "/essonne" },
     ],
     prerender: {
       enabled: true,

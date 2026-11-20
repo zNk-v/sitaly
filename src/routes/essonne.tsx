@@ -1,87 +1,158 @@
-import { PRIX_SITE_MIN } from "@/data/offres";
+import { CREATEUR_IA as IA, offre } from "@/data/offres";
 import { BASE_URL, euros } from "@/lib/config";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, Phone } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SectionHeader } from "@/components/SectionHeader";
-import { getRealisation, srcSetCapture } from "@/data/realisations";
+import { lienCreation } from "@/components/produit/Produit";
 import { directiveRobots } from "@/lib/indexation";
-import { SITALY_DEPARTEMENT, SITALY_PHONE, SITALY_PHONE_DISPLAY, SITALY_VILLE } from "@/lib/config";
+import { SITALY_PHONE, SITALY_PHONE_DISPLAY, SITALY_VILLE } from "@/lib/config";
 
 /**
- * La page locale de Sitaly, décidée le 28 septembre 2026.
+ * La page locale de Sitaly, décidée le 28 septembre 2026, retournée vers
+ * l'application le 20 novembre 2026 (décision de Ted, SITA-76, textes de
+ * SITA-84).
+ *
+ * Elle ne vend plus l'agence : le visiteur du 91 crée son site lui-même dans
+ * l'application, gratuitement. Le téléphone reste, mais comme preuve d'ancrage
+ * à Brétigny-sur-Orge, pas comme entonnoir de vente : à 39 € par mois, Sitaly
+ * ne vend pas client par client (décision du 9 novembre 2026).
  *
  * Une seule page pour le département, et aucune page par ville : des pages
  * qui ne changeraient que le nom de la commune seraient traitées comme des
- * pages satellites. Elle ne fait pas partie des familles d'expertise : c'est
- * la porte d'entrée des recherches « agence web Essonne » et « agence web 91 »,
- * qui mène ensuite vers les agents IA, la publicité et le site.
+ * pages satellites.
+ *
+ * Indexée et au plan du site depuis le même commit que ces textes : /essonne
+ * est sortie de PAGES_AGENCE_HORS_INDEX (src/lib/indexation.ts) et listée dans
+ * les pages du prérendu (vite.config.ts), puisque aucune page ne la lie.
  *
  * Identité (DESIGN.md §9) : ni adresse de rue, ni invitation à se rencontrer.
- * Tout commence par un appel de 30 minutes.
  */
-const TITRE = "Création de site internet en Essonne (91) | Sitaly";
-const DESCRIPTION = `Agence web à Brétigny-sur-Orge : site internet, fiche Google et référencement local pour les artisans et commerces de l'Essonne. Dès ${euros(PRIX_SITE_MIN)} par mois.`;
+const TITRE = "Création de site internet en Essonne (91), gratuit | Sitaly";
+const DESCRIPTION =
+  "Créez le site de votre entreprise en Essonne en une minute : vous décrivez votre activité, l'IA l'écrit, vous publiez. Gratuit, sans carte bancaire.";
 const URL = `${BASE_URL}/essonne/`;
 
-const SERVICES = [
+/** Les trois gestes de la création, section 01. */
+const ETAPES = [
   {
-    titre: "Des agents IA qui répondent à vos clients",
+    titre: "Décrivez votre activité",
     texte:
-      "Accueil téléphonique, prise de rendez-vous, SMS après un appel manqué, relance des devis. L'agent se présente comme une IA et passe la main à votre équipe dès que la situation le demande.",
-    lien: { label: "Agents IA pour PME", to: "/agents-ia/" },
+      "Une phrase suffit : « plombier à Arpajon, dépannage et salle de bain ». L'IA écrit les pages, choisit la mise en page et crée une première photo. La création ne consomme aucun crédit.",
   },
   {
-    /* Retour au modèle d'origine le 16 novembre 2026 : gestion de campagnes
-       Google Ads, budget payé par le client à Google (src/routes/acquisition.tsx). */
-    titre: "Des campagnes Google Ads pour les artisans",
+    titre: "Relisez et corrigez en écrivant",
     texte:
-      "Nous créons, pilotons et optimisons vos campagnes Google Ads. Votre budget reste chez vous, payé directement à Google : nous facturons notre travail, pas votre publicité.",
-    lien: { label: "Campagnes Google Ads", to: "/acquisition/" },
+      "« Ajoute mes horaires », « une section tarifs », « ton plus chaleureux ». Pour changer un mot, double-cliquez dessus. Une retouche de section coûte 1 crédit, une demande sur tout le site 2, une photo créée par l'IA 5.",
   },
   {
-    titre: "Le référencement local",
+    titre: "Publiez",
     texte:
-      "Fiche Google Business Profile, avis, cohérence des coordonnées et pages utiles : ce qui vous fait sortir quand quelqu'un cherche votre métier près de chez lui.",
-    lien: { label: "Référencement local", to: "/referencement-local/" },
-  },
-  {
-    titre: "Un site internet qui reçoit les demandes",
-    texte:
-      "Un site sur mesure, hébergé et entretenu chaque mois, qui dit en quelques secondes ce que vous faites, où, et comment vous joindre.",
-    lien: { label: "Création de site internet", to: "/creation-site-internet/" },
+      "Un clic, et le site est en ligne sur votre-nom.sitaly.fr, avec le cadenas HTTPS, sur téléphone comme sur ordinateur. Relisez avant de publier : une IA peut se tromper, et c'est votre nom sur la page.",
   },
 ];
 
+/** Ce que le site contient, section 02. */
+const CONTENU = [
+  {
+    titre: "Votre numéro, en haut et cliquable",
+    texte:
+      "Sur un téléphone, un client qui a une fuite ou une porte bloquée appelle, il ne remplit pas un formulaire. Le numéro se clique depuis l'en-tête.",
+  },
+  {
+    titre: "Vos communes écrites en clair",
+    texte:
+      "Arpajon, Massy, Étampes : écrivez à l'IA les communes où vous vous déplacez, elle les liste en texte sur la page. Une image de carte ne se référence pas.",
+  },
+  {
+    titre: "Vos prestations, une par une",
+    texte:
+      "Une section par prestation, avec ce que vous faites et ce que vous ne faites pas. C'est ce découpage qui décide des recherches sur lesquelles vous sortez.",
+  },
+  {
+    titre: "Vos devis et vos factures",
+    texte:
+      "Un devis que votre client accepte en ligne, une facture qu'il paie par carte ou par virement, sans commission Sitaly. Les devis sont illimités dans toutes les formules.",
+  },
+  {
+    titre: "Vos avis Google",
+    texte: `À partir de la formule ${IA.essentiel.nom} : votre fiche est reliée au site, chaque nouvel avis arrive avec sa réponse prête, et vos clients reçoivent la demande d'avis.`,
+  },
+];
+
+/**
+ * Les communes que le visiteur peut nommer sur son site, section 03. Les cinq
+ * ajoutées le 20 novembre 2026 (Savigny-sur-Orge, Viry-Châtillon, Athis-Mons,
+ * Longjumeau, Dourdan) sont les plus peuplées du département qui manquaient.
+ * Une seule liste, et toujours aucune page par ville.
+ */
 const COMMUNES = [
   "Brétigny-sur-Orge",
   "Saint-Michel-sur-Orge",
   "Sainte-Geneviève-des-Bois",
   "Arpajon",
+  "Savigny-sur-Orge",
+  "Viry-Châtillon",
+  "Athis-Mons",
+  "Longjumeau",
   "Évry-Courcouronnes",
   "Corbeil-Essonnes",
   "Massy",
   "Palaiseau",
+  "Dourdan",
   "Étampes",
 ];
 
+/**
+ * Les trois formules, section 04. Aucun montant en dur : tout vient de
+ * CREATEUR_IA (src/data/offres.ts), la source de /tarifs/.
+ */
+const FORMULES_ESSONNE = [
+  {
+    titre: `${IA.decouverte.nom} à ${euros(IA.decouverte.mensuel)}`,
+    texte: `Vous créez le site et vous le publiez sans payer, sans carte bancaire, sur une adresse en .sitaly.fr. Devis illimités et trois factures par mois. ${IA.decouverte.credits.toLocaleString("fr-FR")} crédits IA offerts, un carnet de ${IA.decouverte.contactsMax} clients, et la mention « Site créé avec Sitaly » au pied de votre site.`,
+  },
+  {
+    titre: `${IA.essentiel.nom} à ${euros(IA.essentiel.mensuel)} par mois`,
+    texte: `Votre nom de domaine en .fr ou en .com, enregistré à votre nom et offert. La mention Sitaly devient discrète, et vous la retirez d'un clic. Factures illimitées, impayés relancés à J+1, J+8 et J+15. Prise de rendez-vous en ligne et avis Google. ${IA.essentiel.credits.toLocaleString("fr-FR")} crédits par mois.`,
+  },
+  {
+    titre: `${IA.pro.nom} à ${euros(IA.pro.mensuel)} par mois`,
+    texte: `Notre IA la plus avancée pour écrire les textes, ${IA.pro.credits.toLocaleString("fr-FR")} crédits par mois, et un rendez-vous avec l'équipe pour régler votre site avec vous.`,
+  },
+];
+
+/* Le prix mensuel de l'offre d'agence, lu à la source comme les autres prix.
+   Le repli sur `depart` suit l'idiome de /offres/$id/ pour les offres sans
+   mensuel ; Présence en a un. */
+const PRESENCE = offre("presence");
+const PRESENCE_MENSUEL = euros(PRESENCE.mensuel ?? PRESENCE.depart);
+
 const FAQ = [
   {
-    q: "Intervenez-vous dans toute l'Essonne ?",
-    a: "Oui. Sitaly est basée à Brétigny-sur-Orge et travaille avec des entreprises de tout le département, de Massy à Étampes. Le travail se fait au téléphone et à distance : la commune ne change rien au service.",
+    q: "Combien coûte un site internet pour une entreprise de l'Essonne ?",
+    a: `La formule ${IA.decouverte.nom} est gratuite, sans carte bancaire : vous créez le site et vous le publiez sur une adresse en .sitaly.fr. ${IA.essentiel.nom} coûte ${euros(IA.essentiel.mensuel)} par mois et ajoute votre nom de domaine, ${IA.pro.nom} ${euros(IA.pro.mensuel)} par mois. Sans engagement au mois. Le prix ne dépend pas de votre commune.`,
   },
   {
-    q: "Faut-il se déplacer ?",
-    a: "Non. Tout commence par un appel de 30 minutes, le diagnostic offert. La suite se fait à distance : proposition écrite, mise en place, puis suivi mensuel.",
+    q: "Faut-il être en Essonne pour créer son site avec Sitaly ?",
+    a: `Non, l'application marche de partout en France. Ce qui change dans le département, c'est qu'un numéro de l'Essonne décroche : Sitaly est immatriculée à ${SITALY_VILLE}, et Teddy Vidal répond au ${SITALY_PHONE_DISPLAY}.`,
   },
   {
-    q: "Travaillez-vous hors de l'Essonne ?",
-    a: "Oui : dans toute l'Île-de-France, et à distance dans toute la France.",
+    q: "Mon site sortira-t-il sur Google pour ma commune ?",
+    a: "Personne ne peut garantir une place sur Google, et méfiez-vous de qui vous la promet. Votre site part avec les bases : des pages rapides et lisibles sur téléphone, un titre et une description, vos communes écrites en texte, votre fiche d'entreprise lisible par Google et un plan du site.",
   },
   {
-    q: "Par quoi commencer ?",
-    a: "Par le diagnostic offert de 30 minutes. On regarde où vos demandes arrivent, où elles se perdent, et ce qui vaut la peine d'être fait en premier : un agent IA, des campagnes ou le site.",
+    q: "Puis-je écrire moi-même les communes où je me déplace ?",
+    a: "Oui. Écrivez-les à l'IA, comme une phrase : « je me déplace à Brétigny, Arpajon et Saint-Michel-sur-Orge ». Elle les reprend sur la page d'accueil et dans vos pages de prestations. Vous en ajoutez une à tout moment.",
+  },
+  {
+    q: "Puis-je envoyer des devis et des factures depuis le site ?",
+    a: `Oui. Les devis sont illimités dans toutes les formules, et votre client les accepte en ligne. La formule ${IA.decouverte.nom} passe trois factures par mois ; à partir d'${IA.essentiel.nom}, elles sont illimitées et les impayés sont relancés à J+1, J+8 et J+15. Votre client paie par carte ou par virement, sans commission Sitaly.`,
+  },
+  {
+    q: "Je préfère qu'on s'occupe de tout : c'est possible ?",
+    a: `Oui. L'équipe Sitaly crée le site et le tient à jour, avec la fiche Google et les avis : c'est l'offre Site géré par Sitaly, à ${PRESENCE_MENSUEL} par mois. Appelez le ${SITALY_PHONE_DISPLAY}, ou laissez votre numéro en bas de sa page.`,
   },
 ];
 
@@ -89,7 +160,7 @@ const HORAIRES = "du lundi au vendredi de 8 h à 19 h, le samedi de 9 h à 13 h"
 
 /** Espace insécable avant « : ; ? ! » dans les grands titres. */
 function insecable(texte: string): string {
-  return texte.replace(/ ([:;?!])/g, " $1");
+  return texte.replace(/ ([:;?!])/g, " $1");
 }
 
 export const Route = createFileRoute("/essonne")({
@@ -148,8 +219,6 @@ export const Route = createFileRoute("/essonne")({
 });
 
 function Essonne() {
-  const lafleur = getRealisation("lafleur-toiture");
-
   return (
     /* La réserve basse laisse la place à la barre d'appel mobile. */
     <div className="min-h-screen bg-background pb-20 text-foreground sm:pb-0">
@@ -166,32 +235,39 @@ function Essonne() {
           </nav>
 
           <h1 className="display-hero mt-6 max-w-5xl">
-            Agence web et agents IA en Essonne,{" "}
-            <span className="accent-word">à {SITALY_VILLE}</span>
+            Créez le site de votre entreprise <span className="accent-word">en Essonne</span>
           </h1>
           <p className="measure mt-6 text-lg leading-relaxed text-foreground/75 sm:text-xl">
-            Sitaly est une micro-agence de l'{SITALY_DEPARTEMENT}. Elle installe des agents IA,
-            livre des demandes de chantier aux artisans, travaille le référencement local et crée
-            des sites pour les entreprises du département. Un seul interlocuteur, Teddy Vidal, du
-            premier appel au suivi mensuel.
+            Sitaly est installée à {SITALY_VILLE}. Son application écrit le site de votre entreprise
+            à partir d'une phrase : votre métier, votre commune, ce que vous faites. Vous relisez,
+            vous corrigez en écrivant votre demande, puis vous publiez sur votre-nom.sitaly.fr. La
+            formule {IA.decouverte.nom} est gratuite et ne demande pas de carte bancaire. Si vous
+            voulez parler à quelqu'un du département avant de commencer, Teddy Vidal répond au{" "}
+            <a
+              href={`tel:${SITALY_PHONE}`}
+              className="font-semibold text-brand-ink hover:underline"
+            >
+              {SITALY_PHONE_DISPLAY}
+            </a>
+            .
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <a href={`tel:${SITALY_PHONE}`} className="bouton px-7 py-3.5">
+            <a href={lienCreation()} className="bouton px-7 py-3.5">
+              Créer mon site gratuitement
+              <ArrowRight className="bouton-fleche h-4 w-4" />
+            </a>
+            <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
               <Phone className="h-4 w-4" />
               {SITALY_PHONE_DISPLAY}
             </a>
-            <Link to="/mon-projet/" className="bouton-secondaire px-6 py-3.5">
-              Trouver mon offre
-              <ArrowRight className="bouton-fleche h-4 w-4" />
-            </Link>
           </div>
 
           <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-border pt-6 text-sm font-medium">
             {[
-              "Basé à Brétigny-sur-Orge",
-              "Diagnostic offert de 30 min",
-              "Toute l'Île-de-France",
+              "Gratuit, sans carte bancaire",
+              "Publié en une minute environ",
+              `Teddy à ${SITALY_VILLE}, au ${SITALY_PHONE_DISPLAY}`,
             ].map((r) => (
               <li key={r} className="flex items-center gap-2">
                 <Check className="h-4 w-4 shrink-0 text-signal-ink" />
@@ -203,46 +279,61 @@ function Essonne() {
       </section>
 
       <main>
-        {/* 01. Les services, un paragraphe et un lien chacun. */}
+        {/* 01. Les trois gestes de la création. */}
         <section className="py-20 sm:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <SectionHeader
               index="01"
-              eyebrow="Services"
+              eyebrow="Comment ça marche"
               title={
                 <>
-                  Ce que nous faisons pour les entreprises{" "}
-                  <span className="accent-word">de l'Essonne</span>
+                  Votre site, <span className="accent-word">en trois gestes</span>
                 </>
               }
             />
             <div className="mt-14 grid gap-x-10 gap-y-10 border-t border-border pt-10 sm:grid-cols-2">
-              {SERVICES.map((s) => (
-                <div key={s.titre}>
-                  <h3 className="font-display text-xl font-bold tracking-tight">{s.titre}</h3>
-                  <p className="mt-3 leading-relaxed text-muted-foreground">{s.texte}</p>
-                  <Link
-                    to={s.lien.to}
-                    className="group mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-ink"
-                  >
-                    {s.lien.label}
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                  </Link>
+              {ETAPES.map((e) => (
+                <div key={e.titre}>
+                  <h3 className="font-display text-xl font-bold tracking-tight">{e.titre}</h3>
+                  <p className="mt-3 leading-relaxed text-muted-foreground">{e.texte}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* 02. Les communes, en toutes lettres. Une liste, pas une page par ville. */}
+        {/* 02. Ce que le site contient, du point de vue du client du 91. */}
         <section className="bg-paper-sunk py-20 sm:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <SectionHeader
               index="02"
+              eyebrow="Le site"
+              title={
+                <>
+                  Ce qu'un client <span className="accent-word">du 91</span> cherche sur votre site
+                </>
+              }
+            />
+            <div className="mt-14 grid gap-x-10 gap-y-10 border-t border-border pt-10 sm:grid-cols-2">
+              {CONTENU.map((c) => (
+                <div key={c.titre}>
+                  <h3 className="font-display text-xl font-bold tracking-tight">{c.titre}</h3>
+                  <p className="mt-3 leading-relaxed text-muted-foreground">{c.texte}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 03. Les communes, en toutes lettres. Une liste, pas une page par ville. */}
+        <section className="py-20 sm:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <SectionHeader
+              index="03"
               eyebrow="Zone"
               title={
                 <>
-                  Les communes où <span className="accent-word">nous intervenons</span>
+                  Les communes que <span className="accent-word">votre site peut nommer</span>
                 </>
               }
             />
@@ -257,97 +348,66 @@ function Essonne() {
               ))}
             </ul>
             <p className="measure mt-8 leading-relaxed text-muted-foreground">
-              Et toutes les autres communes du département. Au-delà, Sitaly travaille dans toute
-              l'Île-de-France, et à distance dans toute la France : le diagnostic, la mise en place
-              et le suivi se font au téléphone et en ligne.
+              Et toutes les autres communes du département. Écrivez à l'IA celles où vous vous
+              déplacez : elle les reprend sur votre site, dans la page d'accueil et dans vos pages
+              de prestations. C'est ce que fait un site qui sort sur « votre métier + votre commune
+              », et c'est gratuit à écrire.
             </p>
           </div>
         </section>
 
-        {/* 03. Une réalisation dans le département, avec les seuls faits vérifiables. */}
-        {lafleur && (
-          <section className="py-20 sm:py-28">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6">
-              <SectionHeader
-                index="03"
-                eyebrow="Réalisation"
-                title={
-                  <>
-                    Une réalisation <span className="accent-word">en Essonne</span>
-                  </>
-                }
-              />
-              <div className="mt-14 grid gap-10 border-t border-border pt-10 lg:grid-cols-[1fr_1.1fr] lg:items-center">
-                <figure>
-                  <img
-                    src={lafleur.capture.small}
-                    srcSet={srcSetCapture(lafleur)}
-                    sizes="(min-width: 1024px) 40vw, calc(100vw - 2rem)"
-                    width={720}
-                    height={500}
-                    alt="Page d'accueil du site de Lafleur Toiture"
-                    loading="lazy"
-                    decoding="async"
-                    className="block h-auto w-full rounded-2xl border border-border shadow-elevated"
-                  />
-                  <figcaption className="mt-3 text-xs text-muted-foreground">
-                    Capture du site en ligne, prise le {lafleur.captureLe}.
-                  </figcaption>
-                </figure>
-                <div>
-                  <h3 className="font-display text-2xl font-bold tracking-tight">
-                    Lafleur Toiture, couvreur en Essonne
-                  </h3>
-                  <p className="mt-3 leading-relaxed text-muted-foreground">
-                    Un couvreur dont les clients appellent souvent en urgence. Le site est construit
-                    pour que l'appel parte vite.
-                  </p>
-                  <ul className="mt-6 space-y-3">
-                    {[
-                      "Numéro cliquable dans l'en-tête, en haut de page, dans la section contact et en pied de page",
-                      "Note Google réelle affichée à côté du bouton d'appel",
-                      "Communes d'intervention listées en clair",
-                      "Fiche Google optimisée",
-                      "Site hébergé et entretenu chaque mois",
-                    ].map((f) => (
-                      <li key={f} className="flex items-start gap-3 text-[15px]">
-                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-signal-ink" />
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    to="/realisations/$slug/"
-                    params={{ slug: lafleur.slug }}
-                    className="group mt-7 inline-flex items-center gap-1.5 font-semibold text-brand-ink"
-                  >
-                    Voir l'étude de cas
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* 04. L'interlocuteur. Pas de local, pas de rendez-vous en agence :
-            tout commence par un appel (DESIGN.md §9). */}
+        {/* 04. Les formules. Aucun montant en dur : tout vient de src/data/offres.ts. */}
         <section className="bg-paper-sunk py-20 sm:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <SectionHeader
               index="04"
+              eyebrow="Tarifs"
+              title={
+                <>
+                  Gratuit <span className="accent-word">pour commencer</span>
+                </>
+              }
+            />
+            <div className="mt-14 grid gap-x-10 gap-y-10 border-t border-border pt-10 sm:grid-cols-2">
+              {FORMULES_ESSONNE.map((f) => (
+                <div key={f.titre}>
+                  <h3 className="font-display text-xl font-bold tracking-tight">{f.titre}</h3>
+                  <p className="mt-3 leading-relaxed text-muted-foreground">{f.texte}</p>
+                </div>
+              ))}
+            </div>
+            <p className="measure mt-10 leading-relaxed text-muted-foreground">
+              Sans engagement au mois, ou 15 % de moins à l'année.
+            </p>
+            <Link
+              to="/tarifs/"
+              className="group mt-4 inline-flex items-center gap-1.5 font-semibold text-brand-ink"
+            >
+              Voir les trois formules
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          </div>
+        </section>
+
+        {/* 05. L'interlocuteur. Le téléphone est une preuve d'ancrage, pas un
+            entonnoir de vente (décision du 9 novembre 2026). */}
+        <section className="py-20 sm:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <SectionHeader
+              index="05"
               eyebrow="Interlocuteur"
               title={
                 <>
-                  Un seul interlocuteur, <span className="accent-word">à {SITALY_VILLE}</span>
+                  Sitaly est <span className="accent-word">à {SITALY_VILLE}</span>
                 </>
               }
             />
             <div className="measure mt-14 space-y-4 border-t border-border pt-10 leading-relaxed text-muted-foreground">
               <p>
-                Teddy Vidal conçoit, installe et pilote chaque projet. La personne qui décroche au
-                premier appel est celle qui règle votre agent, construit vos campagnes et vous
-                envoie le compte rendu du mois.
+                L'application fait le site, et Teddy Vidal répond au téléphone. Sitaly est une
+                entreprise de l'Essonne, immatriculée à {SITALY_VILLE} : quand vous appelez, vous
+                avez la personne qui écrit le programme, pas un service client à l'autre bout du
+                monde.
               </p>
               <p>
                 Joignable {HORAIRES}, au{" "}
@@ -357,7 +417,8 @@ function Essonne() {
                 >
                   {SITALY_PHONE_DISPLAY}
                 </a>
-                . Pour en savoir plus sur le parcours et l'entreprise :{" "}
+                . Vous pouvez créer votre site sans jamais appeler, c'est le plus souvent ce qui
+                arrive. Pour en savoir plus sur le parcours et l'entreprise :{" "}
                 <Link to="/a-propos/" className="font-semibold text-brand-ink hover:underline">
                   à propos de Sitaly
                 </Link>
@@ -367,11 +428,48 @@ function Essonne() {
           </div>
         </section>
 
-        {/* 05. Les questions, ouvertes sans script. */}
+        {/* 06. L'offre d'agence, en un paragraphe et deux liens dans le texte :
+            discrète, après les formules, sans bouton ni encadré. */}
+        <section className="bg-paper-sunk py-20 sm:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <SectionHeader
+              index="06"
+              eyebrow="Autre voie"
+              title={
+                <>
+                  Ou laissez-nous <span className="accent-word">le faire</span>
+                </>
+              }
+            />
+            <p className="measure mt-14 border-t border-border pt-10 leading-relaxed text-muted-foreground">
+              Certains n'ont ni le temps ni l'envie d'écrire leur site, même à une IA. Pour eux,
+              l'équipe Sitaly le fait et le tient à jour : cinq pages rédigées, la fiche Google
+              gérée et les avis suivis chaque mois, avec un numéro à appeler. C'est l'offre{" "}
+              <Link
+                to="/offres/$id/"
+                params={{ id: PRESENCE.id }}
+                className="font-semibold text-brand-ink hover:underline"
+              >
+                Site géré par Sitaly, {PRESENCE_MENSUEL}/mois
+              </Link>
+              , et elle porte un bloc pour laisser son numéro. Vous y verrez{" "}
+              <Link
+                to="/realisations/$slug/"
+                params={{ slug: "lafleur-toiture" }}
+                className="font-semibold text-brand-ink hover:underline"
+              >
+                le site de Lafleur Toiture
+              </Link>
+              , un couvreur de l'Essonne.
+            </p>
+          </div>
+        </section>
+
+        {/* 07. Les questions. Les chaînes de FAQ servent le texte et le JSON-LD. */}
         <section className="py-20 sm:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <SectionHeader
-              index="05"
+              index="07"
               eyebrow="Questions"
               title={
                 <>
@@ -411,23 +509,23 @@ function Essonne() {
           <div className="absolute inset-0 -z-10 hero-bg" aria-hidden="true" />
           <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
             <h2 className="display-section">
-              {insecable("On en parle ")}
-              <span className="accent-word">trente minutes</span>
-              {insecable(" ?")}
+              {insecable("Votre site, ")}
+              <span className="accent-word">en une minute</span>
             </h2>
             <p className="mt-5 text-lg text-muted-foreground">
-              Un appel, pas un déplacement. Vous décrivez votre activité, on dit ce qui est faisable
-              et par quoi commencer. Le chiffrage arrive par écrit, sans engagement.
+              Décrivez votre activité, relisez ce que l'IA a écrit, publiez. La formule{" "}
+              {IA.decouverte.nom} est gratuite et ne demande pas de carte bancaire. Une question
+              d'abord ? Appelez Teddy.
             </p>
             <div className="mt-9 flex flex-wrap justify-center gap-3">
-              <a href={`tel:${SITALY_PHONE}`} className="bouton px-7 py-3.5">
+              <a href={lienCreation()} className="bouton px-7 py-3.5">
+                Créer mon site gratuitement
+                <ArrowRight className="bouton-fleche h-4 w-4" />
+              </a>
+              <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
                 <Phone className="h-4 w-4" />
                 {SITALY_PHONE_DISPLAY}
               </a>
-              <Link to="/mon-projet/" className="bouton-secondaire px-6 py-3.5">
-                Trouver mon offre
-                <ArrowRight className="bouton-fleche h-4 w-4" />
-              </Link>
             </div>
           </div>
         </section>
@@ -435,17 +533,16 @@ function Essonne() {
 
       <SiteFooter />
 
-      {/* Barre d'appel mobile, reprise de /carte : sur un téléphone, le numéro
-          reste à portée de pouce pendant toute la lecture. */}
+      {/* Barre d'appel mobile : la création à gauche, l'appel à droite. */}
       <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-8px_24px_-16px_oklch(0.2_0.05_300/0.5)] sm:hidden">
         <div className="mx-auto flex max-w-md gap-3">
-          <a href={`tel:${SITALY_PHONE}`} className="bouton flex-1 px-4 py-3 text-sm">
+          <a href={lienCreation()} className="bouton flex-1 px-4 py-3 text-sm">
+            Créer mon site
+          </a>
+          <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire flex-1 px-4 py-3 text-sm">
             <Phone className="h-4 w-4" aria-hidden="true" />
             Appeler
           </a>
-          <Link to="/mon-projet/" className="bouton-secondaire flex-1 px-4 py-3 text-sm">
-            Mon offre
-          </Link>
         </div>
       </div>
     </div>

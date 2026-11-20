@@ -86,9 +86,14 @@ export const LANDINGS_STATIQUES_HORS_INDEX = [
  * la 80e place. /essonne/ faisait 62 % des affichages pour aucun clic. Elles
  * restent en ligne pour les prestations sur devis, hors de l'index.
  * /agents-ia/ n'y figure pas : ces pages reçoivent des clics.
+ *
+ * /essonne en est sortie le 20 novembre 2026 (décision de Ted, SITA-76) : la
+ * page ne vend plus l'agence, elle mène à l'application gratuite. Elle revient
+ * donc à l'index et au plan du site, dans le même commit que ses textes. Comme
+ * aucune page ne la lie, elle est listée dans les pages du prérendu de
+ * vite.config.ts : sans ça, pas de HTML généré pour l'adresse du sitemap.
  */
 export const PAGES_AGENCE_HORS_INDEX = [
-  "/essonne",
   "/acquisition",
   "/integration-api",
   "/crm-sur-mesure",
