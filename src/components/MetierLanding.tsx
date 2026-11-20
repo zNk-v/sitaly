@@ -5,7 +5,7 @@ import { LinkedinLink } from "@/components/LinkedinLink";
 import { SiteHeader } from "@/components/SiteHeader";
 import { MetierFooterLinks, MetierLinksSection } from "@/components/MetierLinks";
 import type { MetierLink } from "@/lib/metiers";
-import { APP_URL, euros } from "@/lib/config";
+import { euros } from "@/lib/config";
 import { FORMULES, lienCreation } from "@/components/produit/Produit";
 import { MENTION_TVA, offresStructurees } from "@/data/offres";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -68,8 +68,12 @@ export function MetierLanding(props: MetierLandingProps) {
             {h1}
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-muted-foreground sm:text-xl">{intro}</p>
+          {/* Les trois boutons de la page (héros, cartes de tarifs, appel final)
+              emportent le métier dans l'application, décision de Ted du 20
+              novembre 2026 : le visiteur arrive sur /creer avec son activité
+              déjà écrite, au lieu d'un champ vide. */}
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a href={`${APP_URL}/creer`} className="bouton px-7 py-3.5 text-sm">
+            <a href={lienCreation(metierCapitalized)} className="bouton px-7 py-3.5 text-sm">
               Créer mon site
               <ArrowRight className="bouton-fleche h-4 w-4" />
             </a>
@@ -383,7 +387,7 @@ export function MetierLanding(props: MetierLandingProps) {
             pour commencer.
           </p>
           <a
-            href={`${APP_URL}/creer`}
+            href={lienCreation(metierCapitalized)}
             className="mt-7 inline-flex items-center gap-2 rounded-xl bg-background px-7 py-3.5 text-sm font-semibold text-foreground shadow-elevated transition hover:opacity-95"
           >
             Créer mon site
