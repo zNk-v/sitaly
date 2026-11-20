@@ -86,10 +86,15 @@ export const Route = createFileRoute("/site-internet-couvreur")({
 });
 
 function CouvreurLanding() {
+  // `metierCapitalized` part dans le `?activite=` de l'application, un champ
+  // libre où personne n'écrit « Couvreur / Façadier ». Un seul métier, comme
+  // les neuf autres pages ; un façadier qui arrive d'ici change un mot.
+  // Décision du 20 novembre 2026. Le contenu de la page parle toujours des
+  // deux métiers, et le titre de la FAQ suit ce libellé.
   return (
     <MetierLanding
       metier="couvreur"
-      metierCapitalized="Couvreur / Façadier"
+      metierCapitalized="Couvreur"
       route="/site-internet-couvreur/"
       included={INCLUDED}
       localSeo={LOCAL_SEO}
