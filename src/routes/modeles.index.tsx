@@ -17,7 +17,7 @@ import { BASE_URL } from "@/lib/config";
 const URL = `${BASE_URL}/modeles/`;
 const TITRE = "Modèles de sites internet par métier | Sitaly";
 const DESCRIPTION =
-  "Plombier, électricien, coiffure, esthéticienne, restaurant, VTC… 23 modèles de sites : l'IA de Sitaly adapte le vôtre à votre activité en une minute.";
+  "Plombier, électricien, coiffure, esthéticienne, restaurant, VTC… 24 modèles de sites : l'IA de Sitaly adapte le vôtre à votre activité en une minute.";
 
 /**
  * Trois métiers sans modèle dans cette grille, mais avec leur propre page
