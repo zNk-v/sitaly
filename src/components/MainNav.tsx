@@ -1,11 +1,17 @@
 import { Link } from "@tanstack/react-router";
 import type { EntreeMenu } from "@/data/expertises";
-import { LIEN_TARIFS, MENUS, type MenuDeroulant } from "@/data/menu";
+import {
+  LIEN_TARIFS,
+  MENUS_APRES_TARIFS,
+  MENUS_AVANT_TARIFS,
+  type MenuDeroulant,
+} from "@/data/menu";
 
 /**
  * Navigation principale, avec ses menus déroulants.
  *
- * Depuis le 31 octobre 2026, comme sur durable.com : Produits, Ressources et
+ * Depuis le 20 novembre 2026, comme sur durable.com : Produits, Solutions,
+ * Tarifs, Ressources et Outils. Le 31 octobre 2026 : Produits, Ressources et
  * Outils en menus déroulants, puis Tarifs. Avant (30 octobre) :
  * Fonctionnalités, Exemples, Tarifs, l'onglet Services et Ressources ; avant
  * encore, trois onglets de services de l'agence à la manière de devmiweb.com.
@@ -140,8 +146,37 @@ function Deroulant({
   );
 }
 
-/** Un menu déroulant : ses colonnes d'entrées côte à côte. */
+/**
+ * Un menu déroulant. En grille (`grille`), comme chez durable.com depuis le
+ * 20 novembre 2026 : toutes les entrées sur deux colonnes, sans intertitre,
+ * avec au besoin un intitulé et un lien « tout voir » au-dessus.
+ */
 function Menu({ m }: { m: MenuDeroulant }) {
+  const entrees = m.colonnes.flatMap((c) => c.entrees);
+  if (m.grille) {
+    return (
+      <Deroulant label={m.label}>
+        {m.entete && (
+          <div className="flex items-baseline justify-between gap-6 px-2.5 pb-2">
+            <p className="rail-label text-muted-foreground">{m.entete.titre}</p>
+            {m.entete.tout && (
+              <Link
+                to={m.entete.tout.to}
+                className="text-[13px] font-semibold text-foreground hover:underline"
+              >
+                {m.entete.tout.label} →
+              </Link>
+            )}
+          </div>
+        )}
+        <div className="grid w-[40rem] grid-cols-2 gap-x-3 gap-y-0.5">
+          {entrees.map((e) => (
+            <EntreeLien key={e.label} e={e} />
+          ))}
+        </div>
+      </Deroulant>
+    );
+  }
   const plusieurs = m.colonnes.length > 1;
   return (
     <Deroulant label={m.label}>
@@ -164,12 +199,15 @@ function Menu({ m }: { m: MenuDeroulant }) {
 export function MainNav() {
   return (
     <nav className="hidden items-center gap-5 lg:flex xl:gap-7" aria-label="Navigation principale">
-      {MENUS.map((m) => (
+      {MENUS_AVANT_TARIFS.map((m) => (
         <Menu key={m.label} m={m} />
       ))}
       <Link to={LIEN_TARIFS.to} className="lien-entete py-5">
         {LIEN_TARIFS.label}
       </Link>
+      {MENUS_APRES_TARIFS.map((m) => (
+        <Menu key={m.label} m={m} />
+      ))}
     </nav>
   );
 }
