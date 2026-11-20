@@ -1,0 +1,1 @@
+import{mn as e}from"./index-Cf4ts3JN.js";var t=e;export{t as component};
