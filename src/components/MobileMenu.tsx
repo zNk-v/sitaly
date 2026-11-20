@@ -3,7 +3,12 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Menu, Phone, X } from "lucide-react";
 import type { EntreeMenu } from "@/data/expertises";
-import { LIEN_TARIFS, MENUS } from "@/data/menu";
+import {
+  LIEN_TARIFS,
+  MENUS_APRES_TARIFS,
+  MENUS_AVANT_TARIFS,
+  type MenuDeroulant,
+} from "@/data/menu";
 import { APP_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 /**
@@ -25,8 +30,8 @@ import { APP_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
  *   mais il pouvait déborder sans qu'on puisse l'atteindre.
  * - Chaque famille porte sa couleur, comme partout ailleurs.
  *
- * Les menus sont ceux du bureau (src/data/menu.ts) : Produits, Ressources et
- * Outils, chacun dans un volet, puis Tarifs.
+ * Les menus sont ceux du bureau (src/data/menu.ts), dans le même ordre :
+ * Produits, Solutions, Tarifs, Ressources et Outils, chacun dans un volet.
  *
  * Aucune bibliothèque : deux `details` repliés, une transition CSS, et la
  * touche Échap.
@@ -123,7 +128,7 @@ export function MobileMenu({
             className="feuille-menu fixed inset-x-3 top-[var(--entete-hauteur)] z-[60] max-h-[calc(100dvh-var(--entete-hauteur)-0.75rem)] overflow-y-auto overscroll-contain rounded-3xl border border-border bg-card shadow-elevated sm:inset-x-4 lg:hidden"
           >
             <nav className="p-3" aria-label="Navigation principale">
-              {MENUS.map((m) => (
+              {MENUS_AVANT_TARIFS.map((m: MenuDeroulant) => (
                 <details key={m.label} className="group">
                   <summary className="flex cursor-pointer list-none items-center justify-between rounded-xl px-3 py-3 font-display text-base font-bold tracking-tight marker:content-none">
                     {m.label}
@@ -147,6 +152,17 @@ export function MobileMenu({
                           <EntreeMobile e={e} onClick={fermer} />
                         </li>
                       ))}
+                    {m.entete?.tout && (
+                      <li>
+                        <Link
+                          to={m.entete.tout.to}
+                          onClick={fermer}
+                          className="block rounded-xl px-3 py-2.5 text-sm font-semibold"
+                        >
+                          {m.entete.tout.label} →
+                        </Link>
+                      </li>
+                    )}
                   </ul>
                 </details>
               ))}
@@ -155,6 +171,45 @@ export function MobileMenu({
                 {LIEN_TARIFS.label}
                 <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
               </Link>
+
+              {MENUS_APRES_TARIFS.map((m: MenuDeroulant) => (
+                <details key={m.label} className="group">
+                  <summary className="flex cursor-pointer list-none items-center justify-between rounded-xl px-3 py-3 font-display text-base font-bold tracking-tight marker:content-none">
+                    {m.label}
+                    <svg
+                      viewBox="0 0 12 12"
+                      aria-hidden="true"
+                      className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                    >
+                      <path d="M2.5 4.5L6 8l3.5-3.5" />
+                    </svg>
+                  </summary>
+                  <ul className="mb-1 space-y-0.5 px-2">
+                    {m.colonnes
+                      .flatMap((c) => c.entrees)
+                      .map((e) => (
+                        <li key={e.label}>
+                          <EntreeMobile e={e} onClick={fermer} />
+                        </li>
+                      ))}
+                    {m.entete?.tout && (
+                      <li>
+                        <Link
+                          to={m.entete.tout.to}
+                          onClick={fermer}
+                          className="block rounded-xl px-3 py-2.5 text-sm font-semibold"
+                        >
+                          {m.entete.tout.label} →
+                        </Link>
+                      </li>
+                    )}
+                  </ul>
+                </details>
+              ))}
 
               {!onHome && (
                 <Link to="/" onClick={fermer} className={lien}>
