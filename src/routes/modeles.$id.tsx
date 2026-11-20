@@ -15,11 +15,11 @@ import {
 import { MiniSite, photo } from "@/components/produit/Vitrine";
 import { CartePilier } from "@/components/pilier/Pilier";
 import { PILIER_SITE } from "@/data/piliers";
-import { deMetier, getModele, MODELES } from "@/data/modeles";
+import { captureApp, deMetier, getModele, MODELES } from "@/data/modeles";
 import { getProduit } from "@/data/produits";
 import { METIERS_MODELES, phraseSansVille } from "@/lib/modeles-metiers";
-import { BASE_URL } from "@/lib/config";
-import { APP_REF } from "@/data/offres";
+import { BASE_URL, euros } from "@/lib/config";
+import { APP_REF, CREATEUR_IA as IA } from "@/data/offres";
 
 /**
  * La page d'un modèle (31 octobre 2026, étoffée le 9 novembre) : le site que
@@ -62,6 +62,48 @@ function BarreModele({ lien, bouton }: { lien: string; bouton: string }) {
   );
 }
 
+/**
+ * Une capture de l'application, dans un cadre de téléphone (SITA-88). Les
+ * fichiers sortent en 390 × 844 et 780 × 1688 : c'est l'écran réel d'un site
+ * généré, pas une maquette.
+ */
+function CaptureApp({ image, alt }: { image: string; alt: string }) {
+  return (
+    <img
+      src={captureApp(image, 780)}
+      srcSet={`${captureApp(image, 390)} 390w, ${captureApp(image, 780)} 780w`}
+      sizes="(min-width: 768px) 300px, 70vw"
+      alt={alt}
+      loading="lazy"
+      width={390}
+      height={844}
+      className="w-[70%] max-w-[300px] rounded-[2rem] border border-black/[0.08] bg-white shadow-[0_30px_60px_-25px_rgba(0,0,0,0.35)] md:w-full"
+    />
+  );
+}
+
+/**
+ * Les trois formules de l'application, en court (SITA-88) : les montants
+ * viennent de CREATEUR_IA, jamais recopiés. Le détail reste sur /tarifs/.
+ */
+const FORMULES_RESTAURANT = [
+  {
+    nom: IA.decouverte.nom,
+    prix: euros(IA.decouverte.mensuel),
+    texte: "Créez et testez votre site, carte et menu du jour inclus.",
+  },
+  {
+    nom: IA.essentiel.nom,
+    prix: `${euros(IA.essentiel.mensuel)}/mois`,
+    texte: "Votre site en ligne, réservation de table, devis et factures.",
+  },
+  {
+    nom: IA.pro.nom,
+    prix: `${euros(IA.pro.mensuel)}/mois`,
+    texte: "Tout l'Essentiel, pour les établissements avec plus de demandes à gérer.",
+  },
+];
+
 const ETAPES = [
   {
     titre: "Décrivez votre activité",
@@ -91,10 +133,12 @@ export const Route = createFileRoute("/modeles/$id")({
     const url = `${BASE_URL}/modeles/${modele.id}/`;
     // Google coupe un titre au-delà de 60 signes et une description au-delà de 160 : la version longue d'abord, si elle tient.
     const titre =
+      modele.renfort?.titre ??
       [
         `Site internet pour ${modele.nom}, gratuit avec l'IA | Sitaly`,
         `Site internet pour ${modele.nom}, gratuit | Sitaly`,
-      ].find((t) => t.length <= 60) ?? `Site internet pour ${modele.nom} | Sitaly`;
+      ].find((t) => t.length <= 60) ??
+      `Site internet pour ${modele.nom} | Sitaly`;
     // La fin de la description varie d'un modèle à l'autre (audit SEO du
     // 14 novembre 2026 : 20 descriptions sur 22 finissaient par la même phrase).
     const rang = MODELES.findIndex((m) => m.id === modele.id);
@@ -104,9 +148,11 @@ export const Route = createFileRoute("/modeles/$id")({
       "En ligne en une minute, sans carte bancaire.",
     ];
     const description =
+      modele.renfort?.description ??
       [fins[rang % fins.length], ...fins, "Gratuit, créé par l'IA."]
         .map((fin) => `${modele.intro} ${fin}`)
-        .find((d) => d.length <= 160) ?? modele.intro;
+        .find((d) => d.length <= 160) ??
+      modele.intro;
     const nomAffiche = modele.nom.charAt(0).toUpperCase() + modele.nom.slice(1);
     return {
       meta: [
@@ -180,7 +226,8 @@ function PageModele() {
   });
   // Sans phrase d'exemple (artisan, auto-entrepreneur), le visiteur écrit la sienne dans l'application.
   const lien = metier.phrase ? lienCreation(phraseSansVille(metier.phrase)) : lienCreation();
-  const bouton = metier.phrase ? "Utiliser ce modèle" : "Créer mon site";
+  const renfort = modele.renfort;
+  const bouton = renfort?.bouton ?? (metier.phrase ? "Utiliser ce modèle" : "Créer mon site");
 
   return (
     <div className="min-h-screen bg-white text-[#09090b]">
@@ -202,13 +249,25 @@ function PageModele() {
               <div>
                 <div className="text-sm font-medium text-brand-ink">Modèle de site</div>
                 <h1 className="titre-produit mt-3 text-[2.4rem] sm:text-5xl lg:text-6xl">
-                  Site internet pour {modele.nom}
+                  {renfort?.h1 ?? `Site internet pour ${modele.nom}`}
                 </h1>
-                <p className={`mt-5 max-w-xl text-lg leading-7 ${TEXTE_GRIS}`}>{modele.intro}</p>
-                <a href={lien} className={`${BOUTON_NOIR} mt-8 px-6 py-3.5 text-base`}>
-                  {bouton}
-                  <ArrowRight className="h-4 w-4" />
-                </a>
+                <p className={`mt-5 max-w-xl text-lg leading-7 ${TEXTE_GRIS}`}>
+                  {renfort?.promesse ?? modele.intro}
+                </p>
+                <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+                  <a href={lien} className={`${BOUTON_NOIR} px-6 py-3.5 text-base`}>
+                    {bouton}
+                    <ArrowRight className="h-4 w-4" />
+                  </a>
+                  {renfort && (
+                    <a
+                      href="#exemple"
+                      className="inline-flex min-h-11 items-center text-base font-semibold underline underline-offset-4"
+                    >
+                      {renfort.lienExemple}
+                    </a>
+                  )}
+                </div>
                 <p className={`mt-3 text-base sm:text-sm ${TEXTE_GRIS}`}>
                   Gratuit, sans carte bancaire. L'IA adapte le modèle à votre activité.
                 </p>
@@ -236,6 +295,70 @@ function PageModele() {
             </div>
           </div>
         </section>
+
+        {renfort && (
+          <>
+            <Apparition>
+              <section id="exemple" className="scroll-mt-24 px-4 pt-16 sm:px-6 sm:pt-24">
+                <div className="mx-auto max-w-6xl">
+                  <TitreSection
+                    surtitre="Dans votre site, dès la génération"
+                    titre={renfort.atoutsTitre}
+                    sousTitre="Les écrans ci-dessous sortent de l'application, tels que vos clients les voient sur leur téléphone."
+                  />
+                  <div
+                    id="carte"
+                    className="rail-mobile mt-12 grid gap-8 scroll-mt-24 md:grid-cols-3"
+                  >
+                    {renfort.atouts.map((a) => (
+                      <div key={a.titre} className="flex flex-col items-center text-center">
+                        <CaptureApp image={a.image} alt={a.alt} />
+                        <div className="mt-6 text-lg font-semibold">{a.titre}</div>
+                        <p className={`mt-1 max-w-sm ${TEXTE_GRIS}`}>{a.texte}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <p className={`mt-10 text-center ${TEXTE_GRIS}`}>
+                    La réservation de table et les rendez-vous sont détaillés sur la page{" "}
+                    <Link
+                      to="/produits/$id/"
+                      params={{ id: "prise-de-rendez-vous" }}
+                      className="font-semibold text-black underline underline-offset-4"
+                    >
+                      Prise de rendez-vous
+                    </Link>
+                    .
+                  </p>
+                </div>
+              </section>
+            </Apparition>
+
+            <Apparition>
+              <section className="px-4 py-12 sm:px-6 sm:py-24">
+                <div className="mx-auto max-w-6xl">
+                  <TitreSection
+                    surtitre="Chaque établissement"
+                    titre={renfort.variantesTitre}
+                    sousTitre={renfort.variantesIntro}
+                  />
+                  <div className="rail-mobile mt-12 grid gap-8 md:grid-cols-3">
+                    {renfort.variantes.map((v) => (
+                      <div
+                        key={v.ancre}
+                        id={v.ancre}
+                        className="flex scroll-mt-24 flex-col items-center text-center"
+                      >
+                        <CaptureApp image={v.image} alt={v.alt} />
+                        <h3 className="mt-6 text-lg font-semibold">{v.titre}</h3>
+                        <p className={`mt-1 max-w-sm ${TEXTE_GRIS}`}>{v.texte}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+            </Apparition>
+          </>
+        )}
 
         <Apparition>
           <section className="px-4 pt-16 pb-4 sm:px-6 sm:pt-24">
@@ -280,20 +403,71 @@ function PageModele() {
             <div className="mx-auto max-w-6xl">
               <TitreSection
                 surtitre="Comment ça marche"
-                titre={`Votre site ${deMetier(modele.nom)}, en trois étapes`}
+                titre={
+                  renfort?.etapesTitre ?? `Votre site ${deMetier(modele.nom)}, en trois étapes`
+                }
               />
-              <ol className="mt-12 grid gap-4 md:grid-cols-3">
-                {ETAPES.map((e, k) => (
-                  <li key={e.titre} className={`${CARTE} p-6`}>
-                    <div className="text-sm font-semibold text-brand-ink">Étape {k + 1}</div>
-                    <div className="mt-3 text-lg font-semibold">{e.titre}</div>
-                    <p className={`mt-1 ${TEXTE_GRIS}`}>{e.texte}</p>
-                  </li>
-                ))}
-              </ol>
+              <div
+                className={
+                  renfort ? "mt-12 grid items-center gap-10 lg:grid-cols-[1fr_1.4fr]" : "mt-12"
+                }
+              >
+                {renfort && (
+                  <img
+                    src={captureApp(renfort.etapesImage.image, 780)}
+                    srcSet={`${captureApp(renfort.etapesImage.image, 390)} 390w, ${captureApp(renfort.etapesImage.image, 780)} 780w`}
+                    sizes="(min-width: 1024px) 380px, calc(100vw - 32px)"
+                    alt={renfort.etapesImage.alt}
+                    loading="lazy"
+                    width={780}
+                    height={renfort.etapesImage.hauteur}
+                    className="w-full rounded-3xl border border-black/[0.08]"
+                  />
+                )}
+                <ol className="grid gap-4 md:grid-cols-3 lg:grid-cols-1">
+                  {(renfort?.etapes ?? ETAPES).map((e, k) => (
+                    <li key={e.titre} className={`${CARTE} p-6`}>
+                      <div className="text-sm font-semibold text-brand-ink">Étape {k + 1}</div>
+                      <div className="mt-3 text-lg font-semibold">{e.titre}</div>
+                      <p className={`mt-1 ${TEXTE_GRIS}`}>{e.texte}</p>
+                    </li>
+                  ))}
+                </ol>
+              </div>
             </div>
           </section>
         </Apparition>
+
+        {renfort && (
+          <Apparition>
+            <section id="tarifs" className="scroll-mt-24 px-4 pb-12 sm:px-6 sm:pb-24">
+              <div className="mx-auto max-w-6xl">
+                <TitreSection
+                  surtitre="Tarifs"
+                  titre={renfort.tarifsTitre}
+                  sousTitre={renfort.tarifsIntro}
+                />
+                <div className="rail-mobile mt-12 grid gap-4 md:grid-cols-3">
+                  {FORMULES_RESTAURANT.map((f) => (
+                    <div key={f.nom} className={`${CARTE} p-6`}>
+                      <div className="text-lg font-semibold">{f.nom}</div>
+                      <div className="mt-3 text-4xl font-semibold tracking-tight">{f.prix}</div>
+                      <p className={`mt-3 ${TEXTE_GRIS}`}>{f.texte}</p>
+                    </div>
+                  ))}
+                </div>
+                <p className={`mt-8 text-center ${TEXTE_GRIS}`}>
+                  <Link
+                    to="/tarifs/"
+                    className="font-semibold text-black underline underline-offset-4"
+                  >
+                    Voir le détail des formules
+                  </Link>
+                </p>
+              </div>
+            </section>
+          </Apparition>
+        )}
 
         <Apparition>
           <section className="px-4 py-12 sm:px-6 sm:py-24" style={{ background: metier.couleur }}>
@@ -353,7 +527,7 @@ function PageModele() {
         )}
 
         <Apparition>
-          <section className="px-4 py-12 sm:px-6 sm:py-24">
+          <section id="faq" className="scroll-mt-24 px-4 py-12 sm:px-6 sm:py-24">
             <div className="mx-auto max-w-3xl">
               <TitreSection
                 surtitre="Questions"
@@ -456,10 +630,11 @@ function PageModele() {
           <section className="px-4 pt-4 pb-28 sm:px-6">
             <div className={`${CARTE} mx-auto max-w-4xl px-6 py-14 text-center`}>
               <h2 className="titre-produit text-[2rem] sm:text-5xl">
-                Votre site {deMetier(modele.nom)}, dans une minute
+                {renfort?.finTitre ?? `Votre site ${deMetier(modele.nom)}, dans une minute`}
               </h2>
               <p className={`mx-auto mt-4 max-w-xl text-lg ${TEXTE_GRIS}`}>
-                L'IA part de ce modèle et l'écrit pour votre activité, votre ville et vos services.
+                {renfort?.finTexte ??
+                  "L'IA part de ce modèle et l'écrit pour votre activité, votre ville et vos services."}
               </p>
               <a href={lien} className={`${BOUTON_NOIR} mt-8 px-6 py-3.5 text-base`}>
                 {bouton}

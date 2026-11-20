@@ -17,6 +17,54 @@
  * Ce fichier ne dépend d'aucun composant : le script du sitemap le lit.
  */
 
+/**
+ * Une page de modèle renforcée (20 novembre 2026, SITA-88) : quand
+ * l'application sait faire quelque chose de particulier pour un métier, la
+ * page le montre en captures de l'application, et non en promesse.
+ *
+ * Le premier renfort est celui du restaurant, écrit par Contenu (document
+ * `page-modele-restaurant`) : la carte, le menu du jour et la réservation de
+ * table. Il porte son propre titre, sa description et ses boutons, parce que
+ * la page vise « site internet restaurant », « création site restaurant
+ * gratuit », « site pour bar » et « site fast-food » — une seule page pour ces
+ * quatre recherches, les variantes étant des sections.
+ */
+export interface Renfort {
+  /** Le titre de la page, à la place de « Site internet pour <métier> ». */
+  h1: string;
+  /** La promesse sous le titre, à la place de `intro`. */
+  promesse: string;
+  /** La balise `<title>` et la meta description, écrites pour les recherches visées. */
+  titre: string;
+  description: string;
+  /** Le libellé des boutons qui ouvrent l'application. */
+  bouton: string;
+  /** Le lien secondaire du premier écran, vers la section des captures. */
+  lienExemple: string;
+  atoutsTitre: string;
+  /** Ce que l'application fait vraiment, chacun avec sa capture. */
+  atouts: { titre: string; texte: string; image: string; alt: string }[];
+  variantesTitre: string;
+  variantesIntro: string;
+  /** Les variantes du métier : des sections, jamais une page de plus. */
+  variantes: { ancre: string; titre: string; texte: string; image: string; alt: string }[];
+  etapesTitre: string;
+  etapes: { titre: string; texte: string }[];
+  etapesImage: { image: string; alt: string; hauteur: number };
+  tarifsTitre: string;
+  tarifsIntro: string;
+  finTitre: string;
+  finTexte: string;
+}
+
+/**
+ * Les captures de l'application pour une page renforcée, en deux largeurs.
+ * Elles sortent des scripts de `zNk-v/sitaly-saas` : ce sont des écrans réels,
+ * pas des maquettes.
+ */
+export const captureApp = (nom: string, largeur: 390 | 780 = 780) =>
+  `/vitrine/restauration/${nom}-${largeur}.webp`;
+
 export interface Modele {
   id: string;
   /** Le métier en minuscules, pour les phrases : « site internet pour fleuriste ». */
@@ -33,6 +81,8 @@ export interface Modele {
   /** Les sections du site que l'IA prépare pour ce métier. */
   sections: { titre: string; texte: string }[];
   conseils: { titre: string; texte: string }[];
+  /** Présent quand l'application a une catégorie dédiée à ce métier (SITA-88). */
+  renfort?: Renfort;
 }
 
 export const MODELES: Modele[] = [
@@ -905,48 +955,56 @@ export const MODELES: Modele[] = [
     nom: "restaurant",
     famille: "commerce",
     attentes:
-      "Avant de venir, un client vérifie quatre choses sur son téléphone : êtes-vous ouvert, où êtes-vous, que servez-vous et à quel prix. Une carte en PDF illisible ou des horaires faux font perdre la table. Votre site donne ces réponses sur le premier écran.",
-    outils: ["avis-google", "agents-ia", "identite-de-marque"],
+      "Avant de venir, un client vérifie quatre choses sur son téléphone : êtes-vous ouvert, où êtes-vous, que servez-vous et à quel prix. S'il décide de venir, il veut réserver sans appeler pendant votre service. Une carte en PDF illisible ou des horaires faux font perdre la table.",
+    outils: ["prise-de-rendez-vous", "avis-google", "identite-de-marque"],
     faq: [
       {
-        q: "Peut-on réserver une table sur le site ?",
-        a: "Le site affiche votre téléphone avec un bouton d'appel, et un formulaire pour les demandes de groupe. Sitaly n'a ni plan de salle ni gestion des couverts.",
+        q: "Puis-je créer le site de mon restaurant gratuitement ?",
+        a: "Oui, la formule Découverte est à 0 € : vous créez votre site, votre carte et votre menu du jour sans payer.",
       },
       {
-        q: "Comment mettre ma carte à jour ?",
-        a: "Écrivez le changement à l'IA : « remplace le plat du jour par une blanquette à 16 € ». Elle modifie la page, vous publiez d'un clic.",
+        q: "Le site gère-t-il les réservations de table ?",
+        a: "Oui, un formulaire de réservation est inclus : date, service, nombre de couverts. Vous recevez chaque demande par e-mail.",
       },
       {
-        q: "Le site remplace-t-il ma fiche Google ?",
-        a: "Non, il la complète. La fiche donne vos horaires et vos avis, le site donne votre carte et votre histoire. Pour répondre aux avis, Sitaly prépare une réponse que vous validez.",
+        q: "Est-ce adapté à un bar ou dois-je prendre un site différent ?",
+        a: "Le même site s'adapte : mettez en avant votre carte de vins ou de bières et vos planches plutôt qu'un menu à table.",
       },
       {
-        q: "Combien coûte un site de restaurant avec Sitaly ?",
-        a: "La création est gratuite, sans carte bancaire. À 39 € par mois, sans engagement, la formule Essentiel ajoute un nom de domaine au nom de votre restaurant.",
+        q: "Et pour un fast-food ou un snack, sans réservation ?",
+        a: "La réservation de table n'est pas obligatoire. Vous pouvez garder uniquement la carte, les horaires et l'adresse.",
+      },
+      {
+        q: "Combien de temps pour avoir un site en ligne ?",
+        a: "Quelques minutes pour la génération. Le temps restant dépend de vos modifications (photos, carte, horaires).",
+      },
+      {
+        q: "Puis-je changer mon menu du jour depuis mon téléphone ?",
+        a: "Oui, la formule et son prix se modifient en moins d'une minute, sans ordinateur.",
       },
     ],
     intro:
-      "Un site qui donne faim : votre carte, vos horaires, votre adresse et un moyen simple de vous joindre.",
+      "Un site qui donne faim : votre carte, votre menu du jour, vos horaires par service et la réservation de table.",
     sections: [
       {
         titre: "Accueil",
         texte: "Votre salle, votre cuisine et votre adresse.",
       },
       {
+        titre: "Le menu du jour",
+        texte: "La formule et son prix, tout en haut du site.",
+      },
+      {
         titre: "La carte",
-        texte: "Entrées, plats, desserts, menu du midi.",
+        texte: "Entrées, plats, desserts, boissons, avec les prix.",
       },
       {
-        titre: "Horaires et accès",
-        texte: "Services, jours de fermeture, plan.",
+        titre: "Réserver une table",
+        texte: "Date, service, nombre de couverts.",
       },
       {
-        titre: "Groupes et événements",
-        texte: "Repas d'équipe, anniversaires, privatisation.",
-      },
-      {
-        titre: "Avis clients",
-        texte: "Votre note et les mots de vos clients.",
+        titre: "Horaires par service",
+        texte: "Midi, soir, jours de fermeture, plan d'accès.",
       },
       {
         titre: "Contact",
@@ -964,10 +1022,102 @@ export const MODELES: Modele[] = [
         texte: "Service du midi, du soir, jour de fermeture : c'est la première recherche.",
       },
       {
-        titre: "Changez le menu en une phrase",
-        texte: "Écrivez le menu de la semaine à l'IA, elle met la page à jour.",
+        titre: "Le menu du jour, chaque matin",
+        texte:
+          "Deux écrans et trois gestes depuis le téléphone : l'application vous le rappelle tant qu'il n'est pas daté du jour.",
       },
     ],
+    renfort: {
+      h1: "Créez le site de votre restaurant en quelques minutes",
+      promesse:
+        "Décrivez votre activité, l'IA génère votre site avec votre carte, votre menu du jour et un formulaire de réservation de table. Vous modifiez depuis votre téléphone, entre deux services.",
+      titre: "Site internet pour restaurant, bar ou fast-food | Sitaly",
+      description:
+        "Créez le site de votre restaurant, bar ou fast-food avec Sitaly : carte, menu du jour et réservation de table incluses. Gratuit pour démarrer.",
+      bouton: "Créer mon site gratuitement",
+      lienExemple: "Voir un exemple de site restaurant",
+      atoutsTitre: "Votre carte, votre menu du jour, vos réservations",
+      atouts: [
+        {
+          titre: "La carte",
+          texte:
+            "Vos entrées, vos plats, vos desserts, vos boissons, avec les prix. Vous la modifiez vous-même, aussi souvent que vous changez de carte.",
+          image: "carte",
+          alt: "La carte d'un site de restaurant créé par Sitaly : entrées, plats, desserts et boissons, avec les prix.",
+        },
+        {
+          titre: "Le menu du jour",
+          texte:
+            "Une formule, un prix, affichés sur votre site. Vous la changez en moins d'une minute, même depuis la cuisine.",
+          image: "menu-du-jour",
+          alt: "Le menu du jour sur un site de restaurant créé par Sitaly : entrée, plat, dessert et son prix.",
+        },
+        {
+          titre: "La réservation de table",
+          texte:
+            "Un formulaire simple : date, service, nombre de couverts. Vous recevez la demande par e-mail, vous confirmez par téléphone ou SMS.",
+          image: "reservation",
+          alt: "Le formulaire de réservation de table d'un site Sitaly : date, service, couverts, nom et téléphone.",
+        },
+      ],
+      variantesTitre: "Restaurant, bar ou fast-food : le même outil, adapté à votre activité",
+      variantesIntro:
+        "Que vous serviez des menus à table, des planches de vin ou des burgers à emporter, Sitaly adapte le site à votre façon de travailler.",
+      variantes: [
+        {
+          ancre: "restaurant",
+          titre: "Restaurant",
+          texte:
+            "Carte complète, menu du jour qui change chaque midi, réservation de table pour le coup de feu du vendredi soir. Exemple : une pizzeria qui reçoit sur place et prépare des commandes à emporter en 15 minutes.",
+          image: "pizzeria",
+          alt: "Premier écran d'un site de pizzeria créé par Sitaly, avec son bouton de réservation.",
+        },
+        {
+          ancre: "bar",
+          titre: "Bar",
+          texte:
+            "Pas besoin de table à chaque fois : un site pour bar met en avant votre carte de vins ou de bières, vos planches, vos soirées. La réservation reste disponible pour les groupes et les week-ends chargés.",
+          image: "bar-a-vins",
+          alt: "Premier écran d'un site de bar à vins créé par Sitaly.",
+        },
+        {
+          ancre: "fast-food",
+          titre: "Fast-food et snack",
+          texte:
+            "Un site pour fast-food met en avant la rapidité : menu clair, prix visibles, adresse et horaires en un coup d'œil. Pas de réservation nécessaire, juste l'essentiel pour qu'on vous trouve et qu'on commande.",
+          image: "snack",
+          alt: "Premier écran d'un site de snack de quartier créé par Sitaly.",
+        },
+      ],
+      etapesTitre: "Votre site en trois étapes",
+      etapes: [
+        {
+          titre: "Décrivez votre activité",
+          texte:
+            "Quelques mots : type d'établissement, ville, spécialité. Mentionnez bar, restaurant, fast-food ou un mot proche, et l'IA reconnaît votre métier.",
+        },
+        {
+          titre: "L'IA génère votre site",
+          texte:
+            "Carte d'exemple, menu du jour, réservation de table, déjà en place. Vous remplacez les exemples par vos propres plats.",
+        },
+        {
+          titre: "Vous publiez",
+          texte: "Depuis votre téléphone ou votre ordinateur, en quelques minutes.",
+        },
+      ],
+      etapesImage: {
+        image: "activite",
+        alt: "L'écran « Quelle est votre activité ? » de Sitaly, avec la phrase « Pizzeria à Évry, pizzas au feu de bois, sur place et à emporter ».",
+        hauteur: 960,
+      },
+      tarifsTitre: "Des tarifs clairs, sans surprise",
+      tarifsIntro:
+        "Commencez gratuitement. Passez à une formule payante quand vous êtes prêt à publier.",
+      finTitre: "Votre site de restaurant, prêt aujourd'hui",
+      finTexte:
+        "Carte, menu du jour, réservation de table : tout est déjà en place. À vous de le remplir.",
+    },
   },
   {
     id: "vtc",
@@ -1233,7 +1383,8 @@ export const MODELES: Modele[] = [
     conseils: [
       {
         titre: "Écrivez pour le client",
-        texte: "Une page « Licenciement : que faire ? » parle mieux qu'une liste d'articles du Code.",
+        texte:
+          "Une page « Licenciement : que faire ? » parle mieux qu'une liste d'articles du Code.",
       },
       {
         titre: "Expliquez vos honoraires",
@@ -1527,6 +1678,8 @@ export const METIERS_PLUS = [
     phrase: "Restaurant à Dijon, cuisine de marché et menu du midi",
     couleur: "#2d1f1a",
     accent: "#f2a65a",
+    // Un restaurant ne demande pas de devis : il prend des tables (SITA-88).
+    bouton: "Réserver une table",
   },
   {
     id: "vtc",
