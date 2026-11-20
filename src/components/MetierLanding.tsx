@@ -5,7 +5,7 @@ import { LinkedinLink } from "@/components/LinkedinLink";
 import { SiteHeader } from "@/components/SiteHeader";
 import { MetierFooterLinks, MetierLinksSection } from "@/components/MetierLinks";
 import type { MetierLink } from "@/lib/metiers";
-import { APP_URL, euros } from "@/lib/config";
+import { euros } from "@/lib/config";
 import { FORMULES, lienCreation } from "@/components/produit/Produit";
 import { MENTION_TVA, offresStructurees } from "@/data/offres";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -68,14 +68,23 @@ export function MetierLanding(props: MetierLandingProps) {
             {h1}
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-muted-foreground sm:text-xl">{intro}</p>
+          {/* Les trois boutons de la page (héros, cartes de tarifs, appel final)
+              emportent le métier dans l'application, décision de Ted du 20
+              novembre 2026 : le visiteur arrive sur /creer avec son activité
+              déjà écrite, au lieu d'un champ vide. */}
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a href={`${APP_URL}/creer`} className="bouton px-7 py-3.5 text-sm">
+            <a href={lienCreation(metierCapitalized)} className="bouton px-7 py-3.5 text-sm">
               Créer mon site
               <ArrowRight className="bouton-fleche h-4 w-4" />
             </a>
-            <Link to="/" hash="offre" className="bouton-secondaire px-6 py-3.5 text-sm">
+            {/* « Voir les tarifs » descend vers la section Tarifs de cette page,
+                qui affiche les trois formules de l'application depuis le 19
+                novembre 2026. Avant, il renvoyait vers `/#offre`, un ancrage
+                que l'accueil n'a plus : le visiteur perdait son métier en route
+                et retombait en haut de la page d'accueil. */}
+            <a href="#tarifs" className="bouton-secondaire px-6 py-3.5 text-sm">
               Voir les tarifs
-            </Link>
+            </a>
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
             <span className="inline-flex items-center gap-2">
@@ -220,7 +229,7 @@ export function MetierLanding(props: MetierLandingProps) {
           Décision de Ted du 19 novembre 2026 : les pages métier vendent
           l'application, elles affichent donc ses prix, et plus ceux de
           l'agence (Présence et Présence Pro, qui restent dans offres.ts). */}
-      <section className="py-16 sm:py-20">
+      <section id="tarifs" className="scroll-mt-28 py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <h2 className="display-section">
             Combien coûte un site internet <span className="accent-word">{metier}</span>
@@ -383,7 +392,7 @@ export function MetierLanding(props: MetierLandingProps) {
             pour commencer.
           </p>
           <a
-            href={`${APP_URL}/creer`}
+            href={lienCreation(metierCapitalized)}
             className="mt-7 inline-flex items-center gap-2 rounded-xl bg-background px-7 py-3.5 text-sm font-semibold text-foreground shadow-elevated transition hover:opacity-95"
           >
             Créer mon site
