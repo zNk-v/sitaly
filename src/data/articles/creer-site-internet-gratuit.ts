@@ -115,7 +115,7 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Créer son site gratuit en 4 étapes" },
   {
     type: "p",
-    text: "La méthode vaut pour la plupart des outils. Sur [Sitaly](/), les deux premières étapes prennent environ une minute, sans carte bancaire.",
+    text: "La méthode vaut pour la plupart des outils. Sur [Sitaly](/), les deux premières étapes prennent environ une minute, sans carte bancaire : voir [créer son site internet gratuitement avec l'IA](/creation-site-internet/).",
   },
   {
     type: "ul",
