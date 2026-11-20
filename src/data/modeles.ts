@@ -343,6 +343,50 @@ export const MODELES: Modele[] = [
     ],
   },
   {
+    id: "elagueur",
+    nom: "élagueur",
+    famille: "batiment",
+    attentes:
+      "Un particulier qui cherche un élagueur veut d'abord savoir si l'arbre menace sa maison ou la rue : il cherche une intervention rapide après une tempête. Pour une taille en hauteur ou un abattage, il vérifie votre qualification de grimpeur-élagueur, votre assurance et si vous évacuez les déchets verts. Ces points, affichés clairement, décident de l'appel.",
+    outils: ["devis-et-factures", "avis-google", "referencement-seo-geo"],
+    faq: [
+      {
+        q: "Intervenez-vous en urgence après une tempête ?",
+        a: "Beaucoup de demandes arrivent juste après un coup de vent, pour un arbre penché ou une branche cassée sur un toit. Indiquez vos délais d'intervention à l'IA : elle les affiche en haut de la page d'accueil, avec votre numéro.",
+      },
+      {
+        q: "Le site parle-t-il de mon assurance ?",
+        a: "Oui, si vous la donnez. Un abattage touche parfois une clôture ou une toiture voisine : l'assurance responsabilité civile professionnelle est ce qu'un client vérifie avant de signer. L'IA n'invente aucune garantie que vous n'avez pas indiquée.",
+      },
+      {
+        q: "Dois-je afficher un prix pour un abattage ?",
+        a: "Un prix dépend trop de l'arbre pour être fixe, mais un principe de devis après visite rassure le client. Donnez-le à l'IA, elle l'écrit sur la page de demande de devis.",
+      },
+      {
+        q: "Combien coûte un site d'élagueur avec Sitaly ?",
+        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
+      },
+    ],
+    intro:
+      "Un site qui rassure sur un chantier en hauteur : votre assurance et un contact rapide après une tempête.",
+    sections: [
+      { titre: "Accueil", texte: "Votre numéro, votre zone et vos interventions d'urgence." },
+      { titre: "Abattage et démontage", texte: "Arbres dangereux, abattage en sections, dessouchage." },
+      {
+        titre: "Taille et soins aux arbres",
+        texte: "Taille de formation, élagage raisonné en hauteur, diagnostic phytosanitaire.",
+      },
+      { titre: "Déchets verts", texte: "Broyage sur place et évacuation du bois coupé." },
+      { titre: "Zone d'intervention", texte: "Les communes où vous intervenez, une par une." },
+      { titre: "Demande de devis", texte: "La description de l'arbre, sa hauteur et son accès." },
+    ],
+    conseils: [
+      { titre: "Affichez votre assurance", texte: "Sur un abattage, c'est la première garantie qu'un client vérifie." },
+      { titre: "Répondez vite après une tempête", texte: "Un numéro visible et un délai annoncé décident de l'appel." },
+      { titre: "Montrez vos chantiers", texte: "Une photo d'un arbre abattu en sécurité vaut plus qu'un long texte." },
+    ],
+  },
+  {
     id: "photographe",
     nom: "photographe",
     famille: "service",
@@ -1591,5 +1635,14 @@ export const METIERS_PLUS = [
     phrase: "",
     couleur: "#1f2937",
     accent: "#a5b4fc",
+  },
+  {
+    id: "elagueur",
+    activite: "entreprise d'élagage",
+    entreprise: "Vermeil Élagage",
+    titre: "Vos arbres taillés, en toute sécurité",
+    phrase: "Élagueur à Chambéry, abattage et taille en hauteur",
+    couleur: "#1f3326",
+    accent: "#9bbf8a",
   },
 ];
