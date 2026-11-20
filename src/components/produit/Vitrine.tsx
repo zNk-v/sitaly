@@ -55,6 +55,8 @@ export interface Metier {
   phrase: string;
   couleur: string;
   accent: string;
+  /** Le bouton du mini-site, quand « Demander un devis » ne veut rien dire pour ce métier. */
+  bouton?: string;
 }
 
 export const METIERS: Metier[] = [
@@ -213,7 +215,7 @@ export function MiniSite({ m, className = "" }: { m: Metier; className?: string 
             className="mt-2 inline-flex w-fit rounded-full px-2.5 py-1 text-[9px] font-semibold"
             style={{ background: m.accent, color: m.couleur }}
           >
-            Demander un devis
+            {m.bouton ?? "Demander un devis"}
           </span>
         </div>
       </div>
