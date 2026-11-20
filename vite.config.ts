@@ -42,6 +42,13 @@ export default defineConfig({
       { path: "/site-internet-serrurier" },
       { path: "/site-internet-chauffagiste" },
       { path: "/site-internet-carreleur" },
+      // /creation-site-internet/ : même cas depuis le 20 novembre 2026
+      // (SITA-90, décision de Ted), sortie de PAGES_AGENCE_HORS_INDEX. Les
+      // trois composants de src/components/accueil/ qui la liaient ne sont
+      // plus rendus, et le bloc voisines des pages d'expertise ne la lie plus
+      // depuis qu'il filtre sur estIndexable : sans cette ligne, le prérendu
+      // par liens ne la trouve plus. Google la découvre par le sitemap.
+      { path: "/creation-site-internet" },
     ],
     prerender: {
       enabled: true,

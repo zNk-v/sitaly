@@ -86,6 +86,15 @@ export const LANDINGS_STATIQUES_HORS_INDEX = [
  * la 80e place. /essonne/ faisait 62 % des affichages pour aucun clic. Elles
  * restent en ligne pour les prestations sur devis, hors de l'index.
  * /agents-ia/ n'y figure pas : ces pages reçoivent des clics.
+ *
+ * /creation-site-internet/ en est sortie le 20 novembre 2026, sur décision de
+ * Ted : « réécris la page pour Sitaly App, dans la ligne du SaaS prioritaire.
+ * Le message : on crée son site soi-même, gratuitement, avec l'IA, et le
+ * bouton mène vers /creer. Réindexe la page ensuite. » Elle ne vend plus la
+ * prestation d'agence mais l'inscription gratuite dans l'application, et elle
+ * vise « créer son site internet gratuit » (position 26,6) et « comment créer
+ * un site internet gratuitement » (19,7). Sortir le chemin d'ici lui retire
+ * son prérendu : la ligne qui le lui rend est dans `vite.config.ts`.
  */
 export const PAGES_AGENCE_HORS_INDEX = [
   "/essonne",
@@ -97,7 +106,6 @@ export const PAGES_AGENCE_HORS_INDEX = [
   "/automatisation-taches",
   "/referencement-local",
   "/referencement-naturel",
-  "/creation-site-internet",
   "/site-vitrine",
   "/refonte-site-internet",
   // Oubliées le 8 novembre, sorties au second audit du 14 novembre 2026.
