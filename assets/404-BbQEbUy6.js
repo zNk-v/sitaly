@@ -1,0 +1,1 @@
+import{hn as e}from"./index-Dw2g_JYj.js";var t=e;export{t as component};
