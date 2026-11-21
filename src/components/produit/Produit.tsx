@@ -776,7 +776,7 @@ const GROUPES_COMPARES: { titre: string; lignes: LigneComparee[] }[] = [
         aide: "Une page par prestation : autant de portes d'entrée depuis Google.",
         valeurs: ["1", "4", "8"],
       },
-      { libelle: "Seize thèmes, changement en un clic", valeurs: [true, true, true] },
+      { libelle: "Dix-neuf thèmes, changement en un clic", valeurs: [true, true, true] },
       { libelle: "Retouches à la main dans l'éditeur", valeurs: [true, true, true] },
       { libelle: "Formulaire de contact", valeurs: [true, true, true] },
     ],

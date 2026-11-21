@@ -707,7 +707,7 @@ export const COMPARATIFS: Comparatif[] = [
       "Prenez Sitaly si vous voulez commencer sans payer, sans carte bancaire, et que vous préférez que les textes soient écrits pour vous. Sitaly réunit dans la même application les devis acceptés en ligne, la prise de rendez-vous et la réponse aux avis Google, quand Squarespace passe par Acuity, un produit à part, pour les rendez-vous. Votre nom de domaine reste compris chaque année, même en payant au mois. Pour un artisan ou un indépendant de services, ces outils comptent souvent plus qu'un modèle très graphique.",
     ],
     pasPourVous:
-      "Sitaly n'est pas fait pour vous si vous êtes photographe ou designer et que votre site est votre portfolio : Sitaly propose seize thèmes, quand Squarespace aligne des dizaines de modèles. Ni si vous vendez des produits, ce que Squarespace fait et Sitaly non. Sitaly est un produit jeune, lancé fin octobre 2026, tenu par une seule personne : son fondateur vous répond lui-même.",
+      "Sitaly n'est pas fait pour vous si vous êtes photographe ou designer et que votre site est votre portfolio : Sitaly propose dix-neuf thèmes, quand Squarespace aligne des dizaines de modèles. Ni si vous vendez des produits, ce que Squarespace fait et Sitaly non. Sitaly est un produit jeune, lancé fin octobre 2026, tenu par une seule personne : son fondateur vous répond lui-même.",
     choisirSitaly: [
       "Vous voulez commencer gratuitement, sans carte bancaire.",
       "Vous voulez que les textes soient écrits pour vous, en français.",
@@ -810,7 +810,7 @@ export const COMPARATIFS: Comparatif[] = [
         titre: "Le design",
         paragraphes: [
           "Squarespace part d'un modèle dessiné par des designers, que vous remplissez et ajustez. Le résultat est soigné si vous suivez la logique du modèle ; il demande du temps si vous voulez vous en écarter.",
-          "Sitaly propose seize thèmes, et l'IA adapte couleurs, photos et mise en page à votre métier. Vous changez de thème en un clic, vos textes restent. L'identité de marque crée aussi votre logo, appliqué partout sur le site.",
+          "Sitaly propose dix-neuf thèmes, et l'IA adapte couleurs, photos et mise en page à votre métier. Vous changez de thème en un clic, vos textes restent. L'identité de marque crée aussi votre logo, appliqué partout sur le site.",
         ],
       },
       {
@@ -823,7 +823,7 @@ export const COMPARATIFS: Comparatif[] = [
     faq: [
       {
         q: "Le design d'un site Sitaly est-il aussi soigné ?",
-        a: "Sitaly propose seize thèmes soignés, et l'IA adapte couleurs, photos et mise en page à votre métier. Squarespace offre plus de choix de modèles ; Sitaly vous fait gagner le temps de les remplir.",
+        a: "Sitaly propose dix-neuf thèmes soignés, et l'IA adapte couleurs, photos et mise en page à votre métier. Squarespace offre plus de choix de modèles ; Sitaly vous fait gagner le temps de les remplir.",
       },
       {
         q: "Squarespace est-il moins cher que Sitaly ?",

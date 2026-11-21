@@ -663,7 +663,7 @@ function VisuelDemandes() {
   );
 }
 
-/** Le même site, quatre des seize thèmes, qui changent d'un coup. */
+/** Le même site, quatre des dix-neuf thèmes, qui changent d'un coup. */
 function VisuelThemes() {
   const themes = [
     { nom: "Franc", fond: "#0a2540", texte: "#ffffff", accent: "#f4471c", police: "font-sans" },
@@ -819,8 +819,8 @@ export function GrilleFonctions() {
         <VisuelDemandes />
       </Bloc>
       <Bloc
-        titre="Seize thèmes, un clic"
-        texte="Franc, Doux, Joyeux, Éclat et douze autres, rangés par métier : l'allure change, vos textes restent."
+        titre="Dix-neuf thèmes, un clic"
+        texte="Franc, Doux, Joyeux, Éclat et quinze autres, rangés par métier : l'allure change, vos textes restent."
       >
         <VisuelThemes />
       </Bloc>
