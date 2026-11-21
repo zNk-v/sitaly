@@ -46,7 +46,9 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: TITRE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: "https://sitaly.fr/" },
-      { property: "og:image", content: "https://sitaly.fr/vitrine/metiers/fleuriste-1536.webp" },
+      // Image de partage validée le 14/11/2026 (scripts/og-image.html). Ne pas
+      // remettre la photo du fleuriste : elle écrasait celle de __root.tsx.
+      { property: "og:image", content: "https://sitaly.fr/og-image.png" },
     ],
     links: [
       { rel: "canonical", href: "https://sitaly.fr/" },
