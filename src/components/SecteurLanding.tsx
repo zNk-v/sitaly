@@ -9,6 +9,7 @@ import { ArticlesALire } from "@/components/ArticlesALire";
 import { COULEURS_FAMILLE } from "@/data/expertises";
 import { autresSecteurs, cheminSecteur, texteTarif, type Secteur } from "@/data/secteurs";
 import { directiveRobots } from "@/lib/indexation";
+import { imagePartage } from "@/lib/partage";
 import { BASE_URL, CALENDLY_URL, PRIX_AGENTS_IA, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 /**
@@ -447,9 +448,8 @@ export function buildSecteurHead(s: Secteur) {
       { property: "og:title", content: s.titre },
       { property: "og:description", content: s.description },
       { property: "og:url", content: url },
-      { property: "og:image", content: `${BASE_URL}/og-agents-ia.jpg` },
+      ...imagePartage(`${BASE_URL}/og-agents-ia.jpg`, 1200, 630, "Sitaly Agents IA"),
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: `${BASE_URL}/og-agents-ia.jpg` },
     ],
     links: [{ rel: "canonical", href: url }],
     scripts: [

@@ -5,6 +5,7 @@ import { BOUTON_NOIR, TEXTE_GRIS, lienCreation } from "@/components/produit/Prod
 import { ExtraitGuide, TexteGuide } from "@/components/guides/Guides";
 import { GUIDES, clipGuide, getGuide, imageGuide } from "@/data/guides";
 import { BASE_URL } from "@/lib/config";
+import { imagePartage } from "@/lib/partage";
 
 /**
  * Un guide pas à pas (3 novembre 2026) : chaque étape, son texte à gauche et
@@ -30,7 +31,8 @@ export const Route = createFileRoute("/guides/$id")({
         { property: "og:title", content: g.seoTitre },
         { property: "og:description", content: g.description },
         { property: "og:url", content: url },
-        { property: "og:image", content: imageGuide(g.id, 0) },
+        // Captures de l'app : 1120 × 700 (mesuré le 21/11/2026).
+        ...imagePartage(imageGuide(g.id, 0), 1120, 700, g.titre),
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [

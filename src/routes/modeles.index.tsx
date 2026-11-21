@@ -8,6 +8,7 @@ import { PILIER_SITE } from "@/data/piliers";
 import { METIERS_MODELES } from "@/lib/modeles-metiers";
 import { deMetier, MODELES } from "@/data/modeles";
 import { BASE_URL } from "@/lib/config";
+import { imagePartage } from "@/lib/partage";
 
 /**
  * La liste des modèles de sites (31 octobre 2026), comme la page « Templates »
@@ -42,7 +43,8 @@ export const Route = createFileRoute("/modeles/")({
       { property: "og:title", content: TITRE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: URL },
-      { property: "og:image", content: `${BASE_URL}${photo("coiffeuse")}` },
+      // Photos métier en 1536 × 864.
+      ...imagePartage(`${BASE_URL}${photo("coiffeuse")}`, 1536, 864, "Modèles de sites Sitaly"),
     ],
     links: [{ rel: "canonical", href: URL }],
     scripts: [

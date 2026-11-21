@@ -19,6 +19,7 @@ import { captureApp, deMetier, getModele, MODELES } from "@/data/modeles";
 import { getProduit } from "@/data/produits";
 import { METIERS_MODELES, phraseSansVille } from "@/lib/modeles-metiers";
 import { BASE_URL, euros } from "@/lib/config";
+import { imagePartage } from "@/lib/partage";
 import { APP_REF, CREATEUR_IA as IA } from "@/data/offres";
 
 /**
@@ -161,7 +162,8 @@ export const Route = createFileRoute("/modeles/$id")({
         { property: "og:title", content: titre },
         { property: "og:description", content: description },
         { property: "og:url", content: url },
-        { property: "og:image", content: `${BASE_URL}${photo(metier.id)}` },
+        // Photos métier en 1536 × 864.
+        ...imagePartage(`${BASE_URL}${photo(metier.id)}`, 1536, 864, `Modèle de site ${nomAffiche}`),
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [
