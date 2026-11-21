@@ -46,9 +46,11 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: TITRE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: "https://sitaly.fr/" },
-      // Image de partage validée le 14/11/2026 (scripts/og-image.html). Ne pas
-      // remettre la photo du fleuriste : elle écrasait celle de __root.tsx.
-      { property: "og:image", content: "https://sitaly.fr/og-image.png" },
+      // Pas d'og:image ici : celle de __root.tsx (og-image.png, le plombier,
+      // validée le 14/11/2026) s'applique. Redéfinie ici, TanStack la place
+      // après og:image:width/height/alt, et l'aperçu Apple (iMessage, Safari)
+      // ne la lit plus : il prend la première grande photo, le fleuriste
+      // (constaté le 21/11/2026 avec LinkPresentation).
     ],
     links: [
       { rel: "canonical", href: "https://sitaly.fr/" },
