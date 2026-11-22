@@ -242,7 +242,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Les devis sont illimités dans toutes les formules. Découverte est gratuite, sans carte bancaire, avec trois factures par mois. Essentiel coûte 39 € par mois ou 398 € par an, Pro 79 € par mois ou 806 € par an, sans engagement au mois (TVA non applicable, art. 293 B du CGI). Le détail des formules figure sur la page tarifs du site.",
+    text: "Les devis sont illimités avec Essentiel et Pro. Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, ou 398 € par an, Pro 79 € par mois ou 806 € par an, sans engagement au mois (TVA non applicable, art. 293 B du CGI). Le détail des formules figure sur la page tarifs du site.",
   },
   {
     type: "p",
@@ -256,7 +256,7 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Existe-t-il un logiciel de devis gratuit pour artisan ?" },
   {
     type: "p",
-    text: "Oui. Pour un devis ponctuel, le [générateur de devis gratuit](/outils/generateur-devis-gratuit/) de Sitaly produit un PDF avec les mentions courantes, sans inscription. Pour suivre vos clients et facturer, la formule Découverte de Sitaly est gratuite, sans carte, avec des devis illimités et trois factures par mois. Les relances automatiques demandent une formule payante.",
+    text: "Oui. Pour un devis ponctuel, le [générateur de devis gratuit](/outils/generateur-devis-gratuit/) de Sitaly produit un PDF avec les mentions courantes, sans inscription. Pour suivre vos clients et facturer, Sitaly demande un abonnement : Essentiel, à 19 € par mois les 3 premiers mois puis 39 €, avec des devis et des factures illimités, satisfait ou remboursé pendant 30 jours.",
   },
   {
     type: "p",

@@ -147,7 +147,7 @@ function VerifierNomDeDomaine() {
               </p>
               <p>
                 Avec les formules Essentiel et Pro de Sitaly, un nom de domaine en .fr ou en .com
-                est offert et enregistré à votre nom. Vous créez d'abord votre site, gratuitement,
+                est offert et enregistré à votre nom. Vous voyez d'abord votre site, gratuitement,
                 puis vous choisissez votre adresse.
               </p>
             </div>

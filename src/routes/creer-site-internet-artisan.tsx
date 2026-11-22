@@ -27,7 +27,14 @@ import {
   scriptsPilier,
 } from "@/components/pilier/Pilier";
 import { PILIER_DEVIS, PILIER_SITE } from "@/data/piliers";
-import { CREATEUR_IA as IA, MENTION_TVA } from "@/data/offres";
+import {
+  CREATEUR_IA as IA,
+  GARANTIE,
+  GARANTIE_JOURS,
+  MENTION_TVA,
+  PHRASE_PRIX_APPEL,
+  PRIX_APPEL,
+} from "@/data/offres";
 import { MODELES } from "@/data/modeles";
 import { euros } from "@/lib/config";
 
@@ -83,8 +90,8 @@ const FAQ = [
     a: "Non. Toute la création se fait en langage courant : l'artisan écrit ce qu'il veut dire ou changer, l'IA s'occupe de la mise en page et du code.",
   },
   {
-    q: "Le site est-il vraiment gratuit au départ ?",
-    a: `Oui. La formule ${IA.decouverte.nom} crée et publie le site sur une adresse en .sitaly.fr, sans carte bancaire. Le nom de domaine personnel et les crédits supplémentaires arrivent avec les formules payantes.`,
+    q: "Que peut-on faire sans payer ?",
+    a: `Voir le site entier, écrit par l'IA, sans compte ni carte, puis le retoucher dans l'éditeur une fois le compte créé. Pour le mettre en ligne, ${IA.essentiel.nom} coûte ${PHRASE_PRIX_APPEL}, avec le nom de domaine offert. Satisfait ou remboursé pendant ${GARANTIE_JOURS} jours.`,
   },
   {
     q: "Combien de temps avant d'avoir un site en ligne ?",
@@ -142,7 +149,7 @@ function PageCreerSite() {
               <a href={lienCreation()} className={`${BOUTON_NOIR} min-h-12 px-6 text-base`}>
                 Créer mon site <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
-              <span className={`text-sm ${TEXTE_GRIS}`}>Gratuit, sans carte bancaire.</span>
+              <span className={`text-sm ${TEXTE_GRIS}`}>Aperçu gratuit, sans compte ni carte.</span>
             </div>
           </div>
         </section>
@@ -264,14 +271,14 @@ function PageCreerSite() {
             entetes={["Formule", "Prix", "Ce qui est inclus"]}
             lignes={[
               [
-                IA.decouverte.nom,
-                `${euros(IA.decouverte.mensuel)}/mois`,
-                `Création et aperçu sur une adresse en .sitaly.fr, ${IA.decouverte.credits} crédits de retouche`,
+                "Aperçu",
+                "Gratuit",
+                "Le site entier, vu sans compte ni carte, puis retouché dans l'éditeur",
               ],
               [
                 IA.essentiel.nom,
-                `${euros(IA.essentiel.mensuel)}/mois (${euros(IA.essentiel.annuel)}/an)`,
-                `Nom de domaine à son nom (.fr ou .com), ${IA.essentiel.credits.toLocaleString("fr-FR")} crédits par mois`,
+                `${euros(PRIX_APPEL.mensuel)}/mois les ${PRIX_APPEL.mois} premiers mois, puis ${euros(IA.essentiel.mensuel)} (${euros(IA.essentiel.annuel)}/an)`,
+                `Mise en ligne, nom de domaine à son nom (.fr ou .com), ${IA.essentiel.credits.toLocaleString("fr-FR")} crédits par mois`,
               ],
               [
                 IA.pro.nom,
@@ -281,7 +288,8 @@ function PageCreerSite() {
             ]}
           />
           <P>
-            {MENTION_TVA}. Aucun engagement de durée sur les formules mensuelles. Détail complet et
+            {MENTION_TVA}. Aucun engagement de durée sur les formules mensuelles. {GARANTIE} sur
+            le premier paiement. Détail complet et
             comparatif : <LienTexte to="/tarifs/">les tarifs de Sitaly</LienTexte>.
           </P>
         </Bloc>

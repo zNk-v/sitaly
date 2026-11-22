@@ -111,7 +111,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Avec une application d'IA, la reconstruction elle-même prend quelques minutes. Sur Sitaly, vous décrivez votre activité en une phrase, l'IA écrit un nouveau site, puis vous lui donnez vos textes et vos photos existants. La formule Découverte est gratuite ; Essentiel coûte 39 € par mois ou 398 € par an avec le nom de domaine. Le travail de redirection des anciennes pages reste à prévoir dans tous les cas. Le détail des formules est sur la page [Tarifs](/tarifs/).",
+    text: "Avec une application d'IA, la reconstruction elle-même prend quelques minutes. Sur Sitaly, vous décrivez votre activité en une phrase, l'IA écrit un nouveau site, puis vous lui donnez vos textes et vos photos existants. L'aperçu est gratuit, sans compte ni carte ; pour la mise en ligne, Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, ou 398 € par an, avec le nom de domaine. Le travail de redirection des anciennes pages reste à prévoir dans tous les cas. Le détail des formules est sur la page [Tarifs](/tarifs/).",
   },
   { type: "h2", text: "Combien de temps prévoir ?" },
   {
@@ -158,6 +158,6 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Par où commencer" },
   {
     type: "p",
-    text: "Ouvrez votre site sur votre téléphone et passez la liste des signes ci-dessus. Puis exportez la liste de vos pages. Si vous décidez de refaire, créez une nouvelle version dans [l'application Sitaly](https://app.sitaly.fr), gratuitement, et comparez-la à l'ancienne avant de basculer quoi que ce soit. Notre guide pour [créer un site internet d'artisan](/blog/creation-site-internet-artisan-guide/) vous accompagne pour le contenu.",
+    text: "Ouvrez votre site sur votre téléphone et passez la liste des signes ci-dessus. Puis exportez la liste de vos pages. Si vous décidez de refaire, créez une nouvelle version dans [l'application Sitaly](https://app.sitaly.fr), en aperçu gratuit, et comparez-la à l'ancienne avant de basculer quoi que ce soit. Notre guide pour [créer un site internet d'artisan](/blog/creation-site-internet-artisan-guide/) vous accompagne pour le contenu.",
   },
 ];

@@ -1,5 +1,5 @@
 import { euros } from "@/lib/config";
-import { CREATEUR_IA as IA, offre, type OffreId } from "@/data/offres";
+import { CREATEUR_IA as IA, GARANTIE_JOURS, offre, PRIX_APPEL, type OffreId } from "@/data/offres";
 import { Bot, Globe, Megaphone } from "lucide-react";
 
 /**
@@ -158,25 +158,25 @@ const SITE: Expertise[] = [
     famille: "site",
     label: "Création de site internet",
     nomService: "un site créé avec l'IA",
-    menuDesc: "Votre site écrit par l'IA, gratuit pour commencer.",
-    titre: "Créer son site internet gratuitement en une minute | Sitaly",
+    menuDesc: "Votre site écrit par l'IA, aperçu gratuit avant de payer.",
+    titre: "Créer son site internet avec l'IA en une minute | Sitaly",
     description:
-      "Décrivez votre activité en une phrase : l'IA écrit votre site et le publie sur votre-nom.sitaly.fr en une minute environ. Gratuit, sans carte bancaire.",
+      "Décrivez votre activité en une phrase : l'IA écrit votre site en une minute environ. Aperçu gratuit, sans compte ni carte, puis en ligne dès Essentiel.",
     eyebrow: "Sitaly App",
-    h1: "Créez votre site internet gratuitement, avec l'IA",
+    h1: "Créez votre site internet avec l'IA, et voyez-le avant de payer",
     intro:
-      "Vous décrivez votre activité en une phrase. L'IA écrit les textes, choisit la mise en page et crée une première photo, en une minute environ. Vous relisez, vous corrigez en écrivant votre demande, puis vous publiez sur votre-nom.sitaly.fr. La formule Découverte est gratuite, sans carte bancaire.",
+      "Vous décrivez votre activité en une phrase. L'IA écrit les textes, choisit la mise en page et crée une première photo, en une minute environ. Vous voyez votre site entier gratuitement, sans compte ni carte. Pour le mettre en ligne, choisissez Essentiel ou Pro : Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €.",
     reperes: [
-      "Gratuit, sans carte bancaire",
-      "Publié en une minute environ",
-      "Modifié en écrivant votre demande",
+      "Aperçu gratuit, sans compte ni carte",
+      "Écrit en une minute environ",
+      "Satisfait ou remboursé pendant 30 jours",
     ],
     appel: {
-      principal: "Créer mon site gratuitement",
+      principal: "Voir mon site gratuitement",
       secondaire: { libelle: "Site géré par Sitaly", to: "/offres/presence/" },
       titre: ["Votre site, ", "en une phrase"],
       phrase:
-        "Décrivez votre activité, relisez ce que l'IA a écrit, publiez. La formule Découverte est gratuite et ne demande pas de carte bancaire.",
+        "Décrivez votre activité et voyez ce que l'IA a écrit, sans compte ni carte. Publiez avec Essentiel ou Pro, satisfait ou remboursé pendant 30 jours.",
     },
     comprend: [
       {
@@ -189,15 +189,15 @@ const SITE: Expertise[] = [
       },
       {
         t: "L'adresse, l'hébergement et le certificat",
-        d: "Le site est publié sur votre-nom.sitaly.fr, hébergement et HTTPS compris. Essentiel et Pro offrent un nom en .fr ou en .com, enregistré à votre nom et branché sur le site en quelques heures.",
+        d: "Avec Essentiel et Pro, le site est publié sur votre-nom.sitaly.fr, hébergement et HTTPS compris, et Sitaly vous offre un nom en .fr ou en .com, enregistré à votre nom et branché sur le site en quelques heures.",
       },
       {
         t: "Les devis et les factures",
-        d: "Devis acceptés en ligne, factures payées par carte sans commission Sitaly. La formule Découverte en passe trois par mois ; Essentiel et Pro les laissent libres et relancent les impayés.",
+        d: "Devis acceptés en ligne, factures payées par carte sans commission Sitaly. Essentiel et Pro les laissent illimités et relancent les impayés.",
       },
       {
         t: "Les rendez-vous et les avis Google",
-        d: "Compris en Essentiel et Pro : page de réservation, confirmation et rappel par e-mail, fiche Google connectée et réponse préparée pour chaque avis. Pas dans la formule Découverte.",
+        d: "Compris en Essentiel et Pro : page de réservation, confirmation et rappel par e-mail, fiche Google connectée et réponse préparée pour chaque avis.",
       },
     ],
     etapes: [
@@ -211,7 +211,7 @@ const SITE: Expertise[] = [
       },
       {
         t: "Publiez en un clic",
-        d: "Le site part en ligne sur votre-nom.sitaly.fr, sans carte bancaire.",
+        d: "Choisissez Essentiel ou Pro : le site part en ligne sur votre-nom.sitaly.fr, avec votre nom de domaine offert.",
       },
       {
         t: "Branchez votre fiche Google",
@@ -239,12 +239,12 @@ const SITE: Expertise[] = [
     ],
     faq: [
       {
-        q: "Créer son site internet gratuitement, c'est vraiment gratuit ?",
-        a: `Oui, avec la formule ${IA.decouverte.nom} : vous créez le site et vous le publiez sans payer et sans carte bancaire, sur une adresse en .sitaly.fr. Quatre choses restent fermées : votre nom de domaine, la mention « Site créé avec Sitaly » au pied du site, le carnet de clients au-delà de ${IA.decouverte.contactsMax} contacts, et les factures au-delà de trois par mois. ${IA.essentiel.nom}, à ${euros(IA.essentiel.mensuel)} par mois, lève les quatre.`,
+        q: "Peut-on créer son site internet gratuitement avec Sitaly ?",
+        a: `En partie. L'aperçu est gratuit : l'IA écrit votre site entier et vous le voyez sans compte ni carte, puis vous le retouchez dans l'éditeur. Le mettre en ligne demande ${IA.essentiel.nom}, à ${euros(PRIX_APPEL.mensuel)} par mois les ${PRIX_APPEL.mois} premiers mois puis ${euros(IA.essentiel.mensuel)}, ou ${IA.pro.nom}, à ${euros(IA.pro.mensuel)} par mois. Satisfait ou remboursé pendant ${GARANTIE_JOURS} jours sur le premier paiement.`,
       },
       {
         q: "Combien de temps faut-il pour créer le site ?",
-        a: "Environ une minute pour la création. Vous le relisez, vous changez ce que vous voulez, puis vous le publiez en un clic. Le temps qui suit dépend de ce que vous voulez corriger, pas de nous.",
+        a: "Environ une minute pour la création. Vous le relisez, vous changez ce que vous voulez, puis vous le publiez en un clic avec Essentiel ou Pro. Le temps qui suit dépend de ce que vous voulez corriger, pas de nous.",
       },
       {
         q: "L'IA peut-elle écrire des choses fausses sur mon activité ?",

@@ -643,9 +643,8 @@ function GenerateurDevis() {
             </h2>
             <p className={`mx-auto mt-4 max-w-xl text-lg ${TEXTE_GRIS}`}>
               Dans Sitaly, vos coordonnées et vos clients sont déjà là. Votre client accepte le
-              devis en ligne, et le devis devient une facture en un clic. Devis illimités dès la
-              formule Découverte, qui est gratuite. Les factures passent à l'illimité à partir
-              d'Essentiel ; Découverte en permet trois par mois.
+              devis en ligne, et le devis devient une facture en un clic. Devis et factures
+              illimités avec Essentiel et Pro, satisfait ou remboursé pendant 30 jours.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <a href={lienCreation()} className={`${BOUTON_NOIR} px-6 py-3.5 text-base`}>

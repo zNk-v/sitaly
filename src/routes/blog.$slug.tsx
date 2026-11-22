@@ -434,15 +434,15 @@ const APPELS: Record<CtaArticle, { milieu: Appel; fin: Appel }> = {
     milieu: {
       titre: "Votre site, écrit par l'IA en une minute",
       texte:
-        "Décrivez votre activité en une phrase : Sitaly écrit vos pages, crée vos photos et met le site en ligne. Gratuit pour commencer.",
+        "Décrivez votre activité en une phrase : Sitaly écrit vos pages et crée vos photos. Vous voyez votre site entier avant de payer.",
       label: "Créer mon site",
       href: `${APP_URL}/creer`,
     },
     fin: {
       titre: "Passez de la lecture à votre site",
       texte:
-        "Une phrase sur votre activité suffit : votre site est en ligne une minute plus tard, et vous le retouchez en parlant à l'IA. Gratuit, sans carte bancaire.",
-      label: "Créer mon site gratuitement",
+        "Une phrase sur votre activité suffit : votre site est prêt une minute plus tard, et vous le retouchez en parlant à l'IA. Aperçu gratuit, sans compte ni carte.",
+      label: "Voir mon site gratuitement",
       href: `${APP_URL}/creer`,
     },
   },
@@ -452,14 +452,14 @@ const APPELS: Record<CtaArticle, { milieu: Appel; fin: Appel }> = {
     milieu: {
       titre: "Un devis envoyé avant de quitter le chantier",
       texte:
-        "Vous préparez le devis depuis la fiche du client, il l'accepte en ligne, et la facture se paie par carte ou par virement. Devis illimités, même en formule gratuite.",
+        "Vous préparez le devis depuis la fiche du client, il l'accepte en ligne, et la facture se paie par carte ou par virement. Devis et factures illimités avec Essentiel et Pro.",
       label: "Voir les devis et factures",
       href: "/produits/devis-et-factures/",
     },
     fin: {
       titre: "Vos devis et factures au même endroit que votre site",
       texte:
-        "Devis accepté en ligne, facture conforme payée par carte ou virement, impayés relancés à J+1, J+8 et J+15. Gratuit pour commencer, sans carte bancaire.",
+        "Devis accepté en ligne, facture conforme payée par carte ou virement, impayés relancés à J+1, J+8 et J+15. Satisfait ou remboursé pendant 30 jours.",
       label: "Créer mon premier devis",
       href: `${APP_URL}/`,
     },
@@ -475,7 +475,7 @@ const APPELS: Record<CtaArticle, { milieu: Appel; fin: Appel }> = {
     fin: {
       titre: "Ouvrez votre agenda en ligne",
       texte:
-        "Votre site et votre page de réservation, créés par l'IA en une minute. Gratuit pour commencer, sans carte bancaire.",
+        "Votre site et votre page de réservation, créés par l'IA en une minute. Aperçu gratuit, puis en ligne avec Essentiel ou Pro.",
       label: "Créer mon site",
       href: `${APP_URL}/creer`,
     },
@@ -491,8 +491,8 @@ const APPELS: Record<CtaArticle, { milieu: Appel; fin: Appel }> = {
     fin: {
       titre: "Plus d'avis, sans y penser",
       texte:
-        "Connectez votre fiche Google à Sitaly : demandes d'avis après chaque facture, réponses préparées par l'IA, QR code à imprimer. Gratuit pour commencer.",
-      label: "Commencer gratuitement",
+        "Connectez votre fiche Google à Sitaly : demandes d'avis après chaque facture, réponses préparées par l'IA, QR code à imprimer. Compris dans Essentiel et Pro.",
+      label: "Commencer",
       href: `${APP_URL}/`,
     },
   },
@@ -502,15 +502,15 @@ const APPELS: Record<CtaArticle, { milieu: Appel; fin: Appel }> = {
     milieu: {
       titre: "Votre site, écrit par l'IA en une minute",
       texte:
-        "Décrivez votre activité en une phrase : Sitaly écrit vos pages, crée vos photos et met le site en ligne. Gratuit pour commencer.",
+        "Décrivez votre activité en une phrase : Sitaly écrit vos pages et crée vos photos. Vous voyez votre site entier avant de payer.",
       label: "Créer mon site",
       href: `${APP_URL}/creer`,
     },
     fin: {
       titre: "Passez de la lecture à votre site",
       texte:
-        "Une phrase sur votre activité suffit : votre site est en ligne une minute plus tard, et vous le retouchez en parlant à l'IA. Gratuit, sans carte bancaire.",
-      label: "Créer mon site gratuitement",
+        "Une phrase sur votre activité suffit : votre site est prêt une minute plus tard, et vous le retouchez en parlant à l'IA. Aperçu gratuit, sans compte ni carte.",
+      label: "Voir mon site gratuitement",
       href: `${APP_URL}/creer`,
     },
   },

@@ -1,4 +1,4 @@
-import { CREATEUR_IA as IA, offre } from "@/data/offres";
+import { CREATEUR_IA as IA, GARANTIE, offre, PHRASE_APERCU, PRIX_APPEL } from "@/data/offres";
 import { BASE_URL, euros } from "@/lib/config";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, Phone } from "lucide-react";
@@ -29,9 +29,9 @@ import { SITALY_PHONE, SITALY_PHONE_DISPLAY, SITALY_VILLE } from "@/lib/config";
  *
  * Identité (DESIGN.md §9) : ni adresse de rue, ni invitation à se rencontrer.
  */
-const TITRE = "Création de site internet en Essonne (91), gratuit | Sitaly";
+const TITRE = "Création de site internet en Essonne (91) avec l'IA | Sitaly";
 const DESCRIPTION =
-  "Créez le site de votre entreprise en Essonne en une minute : vous décrivez votre activité, l'IA l'écrit, vous publiez. Gratuit, sans carte bancaire.";
+  "Créez le site de votre entreprise en Essonne en une minute : vous décrivez votre activité, l'IA l'écrit, vous publiez. Aperçu gratuit, sans compte ni carte.";
 const URL = `${BASE_URL}/essonne/`;
 
 /** Les trois gestes de la création, section 01. */
@@ -105,17 +105,17 @@ const COMMUNES = [
 ];
 
 /**
- * Les trois formules, section 04. Aucun montant en dur : tout vient de
- * CREATEUR_IA (src/data/offres.ts), la source de /tarifs/.
+ * L'aperçu et les deux formules, section 04. Aucun montant en dur : tout vient
+ * de CREATEUR_IA et PRIX_APPEL (src/data/offres.ts), la source de /tarifs/.
  */
 const FORMULES_ESSONNE = [
   {
-    titre: `${IA.decouverte.nom} à ${euros(IA.decouverte.mensuel)}`,
-    texte: `Vous créez le site et vous le publiez sans payer, sans carte bancaire, sur une adresse en .sitaly.fr. Devis illimités et trois factures par mois. ${IA.decouverte.credits.toLocaleString("fr-FR")} crédits IA offerts, un carnet de ${IA.decouverte.contactsMax} clients, et la mention « Site créé avec Sitaly » au pied de votre site.`,
+    titre: "L'aperçu, gratuit",
+    texte: `${PHRASE_APERCU} Vous créez votre compte gratuitement et vous retouchez le site dans l'éditeur.`,
   },
   {
-    titre: `${IA.essentiel.nom} à ${euros(IA.essentiel.mensuel)} par mois`,
-    texte: `Votre nom de domaine en .fr ou en .com, enregistré à votre nom et offert. La mention Sitaly devient discrète, et vous la retirez d'un clic. Factures illimitées, impayés relancés à J+1, J+8 et J+15. Prise de rendez-vous en ligne et avis Google. ${IA.essentiel.credits.toLocaleString("fr-FR")} crédits par mois.`,
+    titre: `${IA.essentiel.nom} à ${euros(PRIX_APPEL.mensuel)} par mois les ${PRIX_APPEL.mois} premiers mois, puis ${euros(IA.essentiel.mensuel)}`,
+    texte: `Votre site en ligne, avec votre nom de domaine en .fr ou en .com, enregistré à votre nom et offert. La mention Sitaly devient discrète, et vous la retirez d'un clic. Factures illimitées, impayés relancés à J+1, J+8 et J+15. Prise de rendez-vous en ligne et avis Google. ${IA.essentiel.credits.toLocaleString("fr-FR")} crédits par mois.`,
   },
   {
     titre: `${IA.pro.nom} à ${euros(IA.pro.mensuel)} par mois`,
@@ -132,7 +132,7 @@ const PRESENCE_MENSUEL = euros(PRESENCE.mensuel ?? PRESENCE.depart);
 const FAQ = [
   {
     q: "Combien coûte un site internet pour une entreprise de l'Essonne ?",
-    a: `La formule ${IA.decouverte.nom} est gratuite, sans carte bancaire : vous créez le site et vous le publiez sur une adresse en .sitaly.fr. ${IA.essentiel.nom} coûte ${euros(IA.essentiel.mensuel)} par mois et ajoute votre nom de domaine, ${IA.pro.nom} ${euros(IA.pro.mensuel)} par mois. Sans engagement au mois. Le prix ne dépend pas de votre commune.`,
+    a: `L'aperçu est gratuit : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, ${IA.essentiel.nom} coûte ${euros(PRIX_APPEL.mensuel)} par mois les ${PRIX_APPEL.mois} premiers mois, puis ${euros(IA.essentiel.mensuel)}, avec votre nom de domaine, et ${IA.pro.nom} ${euros(IA.pro.mensuel)} par mois. Sans engagement au mois, ${GARANTIE.toLowerCase()}. Le prix ne dépend pas de votre commune.`,
   },
   {
     q: "Faut-il être en Essonne pour créer son site avec Sitaly ?",
@@ -148,7 +148,7 @@ const FAQ = [
   },
   {
     q: "Puis-je envoyer des devis et des factures depuis le site ?",
-    a: `Oui. Les devis sont illimités dans toutes les formules, et votre client les accepte en ligne. La formule ${IA.decouverte.nom} passe trois factures par mois ; à partir d'${IA.essentiel.nom}, elles sont illimitées et les impayés sont relancés à J+1, J+8 et J+15. Votre client paie par carte ou par virement, sans commission Sitaly.`,
+    a: `Oui. Avec ${IA.essentiel.nom} et ${IA.pro.nom}, les devis et les factures sont illimités, votre client accepte les devis en ligne et les impayés sont relancés à J+1, J+8 et J+15. Votre client paie par carte ou par virement, sans commission Sitaly.`,
   },
   {
     q: "Je préfère qu'on s'occupe de tout : c'est possible ?",
@@ -240,8 +240,8 @@ function Essonne() {
           <p className="measure mt-6 text-lg leading-relaxed text-foreground/75 sm:text-xl">
             Sitaly est installée à {SITALY_VILLE}. Son application écrit le site de votre entreprise
             à partir d'une phrase : votre métier, votre commune, ce que vous faites. Vous relisez,
-            vous corrigez en écrivant votre demande, puis vous publiez sur votre-nom.sitaly.fr. La
-            formule {IA.decouverte.nom} est gratuite et ne demande pas de carte bancaire. Si vous
+            vous corrigez en écrivant votre demande, puis vous publiez sur votre-nom.sitaly.fr avec{" "}
+            {IA.essentiel.nom} ou {IA.pro.nom}. L'aperçu est gratuit, sans compte ni carte. Si vous
             voulez parler à quelqu'un du département avant de commencer, Teddy Vidal répond au{" "}
             <a
               href={`tel:${SITALY_PHONE}`}
@@ -254,7 +254,7 @@ function Essonne() {
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <a href={lienCreation()} className="bouton px-7 py-3.5">
-              Créer mon site gratuitement
+              Voir mon site gratuitement
               <ArrowRight className="bouton-fleche h-4 w-4" />
             </a>
             <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">
@@ -265,8 +265,8 @@ function Essonne() {
 
           <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-border pt-6 text-sm font-medium">
             {[
-              "Gratuit, sans carte bancaire",
-              "Publié en une minute environ",
+              "Aperçu gratuit, sans compte ni carte",
+              "Écrit en une minute environ",
               `Teddy à ${SITALY_VILLE}, au ${SITALY_PHONE_DISPLAY}`,
             ].map((r) => (
               <li key={r} className="flex items-center gap-2">
@@ -351,7 +351,7 @@ function Essonne() {
               Et toutes les autres communes du département. Écrivez à l'IA celles où vous vous
               déplacez : elle les reprend sur votre site, dans la page d'accueil et dans vos pages
               de prestations. C'est ce que fait un site qui sort sur « votre métier + votre commune
-              », et c'est gratuit à écrire.
+              », et vous les écrivez en une phrase.
             </p>
           </div>
         </section>
@@ -364,7 +364,7 @@ function Essonne() {
               eyebrow="Tarifs"
               title={
                 <>
-                  Gratuit <span className="accent-word">pour commencer</span>
+                  Gratuit <span className="accent-word">pour voir</span>, payant pour publier
                 </>
               }
             />
@@ -377,7 +377,8 @@ function Essonne() {
               ))}
             </div>
             <p className="measure mt-10 leading-relaxed text-muted-foreground">
-              Sans engagement au mois, ou 15 % de moins à l'année.
+              Sans engagement au mois, ou 15 % de moins à l'année. {GARANTIE} sur le premier
+              paiement.
             </p>
             <Link
               to="/tarifs/"
@@ -513,13 +514,12 @@ function Essonne() {
               <span className="accent-word">en une minute</span>
             </h2>
             <p className="mt-5 text-lg text-muted-foreground">
-              Décrivez votre activité, relisez ce que l'IA a écrit, publiez. La formule{" "}
-              {IA.decouverte.nom} est gratuite et ne demande pas de carte bancaire. Une question
-              d'abord ? Appelez Teddy.
+              Décrivez votre activité, relisez ce que l'IA a écrit, publiez. L'aperçu est gratuit
+              et ne demande ni compte ni carte. Une question d'abord ? Appelez Teddy.
             </p>
             <div className="mt-9 flex flex-wrap justify-center gap-3">
               <a href={lienCreation()} className="bouton px-7 py-3.5">
-                Créer mon site gratuitement
+                Voir mon site gratuitement
                 <ArrowRight className="bouton-fleche h-4 w-4" />
               </a>
               <a href={`tel:${SITALY_PHONE}`} className="bouton-secondaire px-6 py-3.5">

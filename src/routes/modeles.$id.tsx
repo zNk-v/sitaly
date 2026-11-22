@@ -20,7 +20,7 @@ import { getProduit } from "@/data/produits";
 import { METIERS_MODELES, phraseSansVille } from "@/lib/modeles-metiers";
 import { BASE_URL, euros } from "@/lib/config";
 import { imagePartage } from "@/lib/partage";
-import { APP_REF, CREATEUR_IA as IA } from "@/data/offres";
+import { APP_REF, CREATEUR_IA as IA, PRIX_APPEL } from "@/data/offres";
 
 /**
  * Les métiers qui ont leur page /site-internet-<métier>/ (revenues dans
@@ -99,19 +99,20 @@ function CaptureApp({ image, alt }: { image: string; alt: string }) {
 }
 
 /**
- * Les trois formules de l'application, en court (SITA-88) : les montants
- * viennent de CREATEUR_IA, jamais recopiés. Le détail reste sur /tarifs/.
+ * L'aperçu gratuit et les deux formules de l'application, en court (SITA-88,
+ * revu le 22 novembre 2026) : les montants viennent de CREATEUR_IA et de
+ * PRIX_APPEL, jamais recopiés. Le détail reste sur /tarifs/.
  */
 const FORMULES_RESTAURANT = [
   {
-    nom: IA.decouverte.nom,
-    prix: euros(IA.decouverte.mensuel),
-    texte: "Créez et testez votre site, carte et menu du jour inclus.",
+    nom: "Aperçu",
+    prix: "Gratuit",
+    texte: "Voyez votre site entier, carte et menu du jour compris, sans compte ni carte.",
   },
   {
     nom: IA.essentiel.nom,
-    prix: `${euros(IA.essentiel.mensuel)}/mois`,
-    texte: "Votre site en ligne, réservation de table, devis et factures.",
+    prix: `${euros(PRIX_APPEL.mensuel)}/mois`,
+    texte: `Les ${PRIX_APPEL.mois} premiers mois, puis ${euros(PRIX_APPEL.ensuite)}. Votre site en ligne, réservation de table, devis et factures.`,
   },
   {
     nom: IA.pro.nom,
@@ -155,12 +156,12 @@ export const Route = createFileRoute("/modeles/$id")({
       modele.renfort?.titre ??
       (PAGE_METIER[modele.id]
         ? [
-            `Modèle de site internet ${modele.nom}, gratuit | Sitaly`,
+            `Modèle de site internet ${modele.nom}, créé par l'IA | Sitaly`,
             `Modèle de site internet ${modele.nom} | Sitaly`,
           ]
         : [
-            `Création site internet ${modele.nom} : gratuit avec l'IA | Sitaly`,
-            `Création site internet ${modele.nom}, gratuit | Sitaly`,
+            `Création site internet ${modele.nom} : en 1 minute avec l'IA`,
+            `Création site internet ${modele.nom} avec l'IA | Sitaly`,
             `Création site internet ${modele.nom} | Sitaly`,
           ]
       ).find((t) => t.length <= 60) ??
@@ -169,13 +170,13 @@ export const Route = createFileRoute("/modeles/$id")({
     // 14 novembre 2026 : 20 descriptions sur 22 finissaient par la même phrase).
     const rang = MODELES.findIndex((m) => m.id === modele.id);
     const fins = [
-      "Gratuit, créé par l'IA en une minute.",
-      "Écrit par l'IA, gratuit pour commencer.",
-      "En ligne en une minute, sans carte bancaire.",
+      "Créé par l'IA en une minute, aperçu gratuit.",
+      "Écrit par l'IA, vu en entier avant de payer.",
+      "Aperçu sans compte ni carte, en une minute.",
     ];
     const description =
       modele.renfort?.description ??
-      [fins[rang % fins.length], ...fins, "Gratuit, créé par l'IA."]
+      [fins[rang % fins.length], ...fins, "Créé par l'IA."]
         .map((fin) => `${modele.intro} ${fin}`)
         .find((d) => d.length <= 160) ??
       modele.intro;
@@ -299,7 +300,7 @@ function PageModele() {
                   )}
                 </div>
                 <p className={`mt-3 text-base sm:text-sm ${TEXTE_GRIS}`}>
-                  Gratuit, sans carte bancaire. L'IA adapte le modèle à votre activité.
+                  Aperçu gratuit, sans compte ni carte. L'IA adapte le modèle à votre activité.
                 </p>
                 {PAGE_METIER[modele.id] && (
                   <a

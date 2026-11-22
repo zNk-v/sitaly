@@ -145,6 +145,6 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "En résumé" },
   {
     type: "p",
-    text: "Le référencement local se joue sur votre fiche Google, vos avis et votre site, travaillés chaque mois. Commencez par l'[audit de fiche Google](/outils/audit-fiche-google/), puis créez ou améliorez votre site dans [l'application Sitaly](https://app.sitaly.fr), gratuitement pour commencer. Le [modèle de site pour artisan](/modeles/artisan/) montre comment présenter vos prestations et votre zone.",
+    text: "Le référencement local se joue sur votre fiche Google, vos avis et votre site, travaillés chaque mois. Commencez par l'[audit de fiche Google](/outils/audit-fiche-google/), puis créez ou améliorez votre site dans [l'application Sitaly](https://app.sitaly.fr) : l'aperçu est gratuit, la mise en ligne demande Essentiel ou Pro. Le [modèle de site pour artisan](/modeles/artisan/) montre comment présenter vos prestations et votre zone.",
   },
 ];

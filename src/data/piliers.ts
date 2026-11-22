@@ -49,7 +49,7 @@ export const PILIER_SITE: Pilier = {
   // et scripts/verifier-seo.mjs refuse le build. La fin du texte validé
   // (« qui écrit le site pour votre métier ») tombait hors de l'extrait.
   description:
-    "Créer un site internet d'artisan sans développeur : les étapes, ce que le site doit contenir, le prix réel. Essai gratuit avec l'IA de Sitaly.",
+    "Créer un site internet d'artisan sans développeur : les étapes, ce que le site doit contenir, le prix réel. Aperçu gratuit avec l'IA de Sitaly.",
 };
 
 /**

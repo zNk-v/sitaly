@@ -1,4 +1,4 @@
-import { CREATEUR_IA } from "@/data/offres";
+import { CREATEUR_IA, PRIX_APPEL } from "@/data/offres";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -67,7 +67,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 const TITRE_PAR_DEFAUT = "Sitaly : créez votre site internet avec l'IA";
-const DESCRIPTION_PAR_DEFAUT = `Décrivez votre activité en une phrase : l'IA de Sitaly écrit votre site et le met en ligne. Gratuit pour commencer, puis dès ${CREATEUR_IA.essentiel.mensuel} €/mois.`;
+const DESCRIPTION_PAR_DEFAUT = `Décrivez votre activité en une phrase : l'IA de Sitaly écrit votre site. Aperçu gratuit, puis en ligne à ${PRIX_APPEL.mensuel} €/mois les ${PRIX_APPEL.mois} premiers mois.`;
 
 /**
  * L'entité Sitaly, telle que Google et les assistants IA doivent la comprendre.
@@ -99,7 +99,7 @@ const GRAPHE_ENTITE = {
       image: "https://sitaly.fr/og-image.png",
       // Depuis le 30 octobre 2026, sitaly.fr vend l'application. Les assistants
       // IA reprennent cette description : elle doit dire ce que Sitaly vend.
-      description: `Sitaly est une application française qui crée le site internet d'un artisan, d'un indépendant ou d'une TPE à partir d'une phrase, avec l'IA, et le met en ligne en une minute. Gratuit pour commencer, puis dès ${CREATEUR_IA.essentiel.mensuel} € par mois. Elle réunit aussi les devis et factures, la prise de rendez-vous, les avis Google, le blog et le référencement.`,
+      description: `Sitaly est une application française qui crée le site internet d'un artisan, d'un indépendant ou d'une TPE à partir d'une phrase, avec l'IA, en une minute. L'aperçu est gratuit ; la mise en ligne coûte ${PRIX_APPEL.mensuel} € par mois les ${PRIX_APPEL.mois} premiers mois avec Essentiel, puis ${CREATEUR_IA.essentiel.mensuel} €. Elle réunit aussi les devis et factures, la prise de rendez-vous, les avis Google, le blog et le référencement.`,
       slogan: "Créez votre site internet avec l'IA, en une minute.",
       founder: { "@id": "https://sitaly.fr/#teddy-vidal" },
       telephone: SITALY_PHONE,

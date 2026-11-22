@@ -122,7 +122,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "La formule Découverte est gratuite, sans carte bancaire. Essentiel coûte 39 € par mois (ou 398 € par an) et Pro 79 € par mois (ou 806 € par an), sans engagement au mois. Avec Essentiel et Pro, un nom de domaine en .fr ou .com est compris, enregistré à votre nom. Le détail figure sur la page [tarifs](/tarifs/).",
+    text: "L'aperçu de votre site est gratuit, sans compte ni carte. Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 € (ou 398 € par an), et Pro 79 € par mois (ou 806 € par an), sans engagement au mois. Avec Essentiel et Pro, un nom de domaine en .fr ou .com est compris, enregistré à votre nom. Le détail figure sur la page [tarifs](/tarifs/).",
   },
 
   { type: "h2", text: "Comment démarrer sans y passer vos soirées" },
@@ -150,7 +150,7 @@ export const contenu: BlogSection[] = [
       },
       {
         q: "Existe-t-il un logiciel de gestion gratuit pour artisan ?",
-        a: "Oui, plusieurs outils ont une formule gratuite. Chez Sitaly, la formule Découverte est gratuite et sans carte : site publié, liste de clients, devis illimités et trois factures par mois. Les relances automatiques, la prise de rendez-vous et la fiche Google connectée demandent une formule payante.",
+        a: "Oui, plusieurs outils ont une formule gratuite. Chez Sitaly, seul l'aperçu du site est gratuit, sans compte ni carte : la mise en ligne, la liste de clients, les devis, les factures, la prise de rendez-vous et la fiche Google connectée vont avec Essentiel ou Pro, dès 19 € par mois les 3 premiers mois.",
       },
       {
         q: "Mon logiciel doit-il gérer la facture électronique ?",

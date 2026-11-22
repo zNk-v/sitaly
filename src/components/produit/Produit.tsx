@@ -1,9 +1,18 @@
 import { avecCampagne } from "@/lib/mesure";
 import { departVersAppTiktok } from "@/lib/pixel-tiktok";
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
-import { ArrowRight, Check, Clock, Lock, Sparkles, Star, X } from "lucide-react";
+import { ArrowRight, Check, Clock, Eye, Lock, ShieldCheck, Sparkles, Star } from "lucide-react";
 import { APP_URL, euros, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
-import { CREATEUR_IA as IA, MENTION_TVA } from "@/data/offres";
+import {
+  BLACK_FRIDAY,
+  blackFridayActif,
+  CREATEUR_IA as IA,
+  GARANTIE,
+  MENTION_TVA,
+  PHRASE_APERCU,
+  PHRASE_PRIX_APPEL,
+  PRIX_APPEL,
+} from "@/data/offres";
 import { FICHE_GOOGLE_URL, NOTE_GOOGLE } from "@/data/avis-google";
 import { FAQ_PRODUIT } from "@/data/faq-produit";
 import { RepereRail } from "@/components/RepereRail";
@@ -88,7 +97,7 @@ export function Confiance() {
     <p
       className={`mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-base sm:text-sm ${TEXTE_GRIS}`}
     >
-      <span>Gratuit, sans carte bancaire</span>
+      <span>Aperçu gratuit, sans compte ni carte</span>
       <span aria-hidden="true" className="hidden sm:inline">
         •
       </span>
@@ -360,17 +369,14 @@ interface Formule {
   nom: string;
   mensuel: number;
   annuel: number;
+  /** Prix barré du Black Friday, et prix d'un an pendant la fenêtre. */
+  blackFriday: { an: number; barre: number };
+  /** Le prix d'appel au mois (Essentiel seulement, premier abonnement). */
+  appel?: typeof PRIX_APPEL;
   pour: string;
   bouton: string;
   intro?: string;
   fonctions: Fonction[];
-  /**
-   * Ce que la formule ne fait pas, sous les fonctions (audit du tunnel du
-   * 15 novembre 2026, friction 5 : la carte Découverte listait ce qu'on a et
-   * jamais ce qu'on n'a pas). Chaque limite doit être vérifiable dans
-   * sitaly-saas ; la vitrine n'annonce pas une limite qu'on ne peut pas prouver.
-   */
-  limites?: { titre: string; texte: string }[];
   badge?: string;
 }
 
@@ -386,60 +392,28 @@ export const DOMAINE_OFFERT = {
 } as const;
 
 /**
- * Les trois formules de l'application, source unique de leurs prix et de leurs
+ * Les deux formules de l'application (décision de Ted du 22 novembre 2026 :
+ * plus de publication gratuite), source unique de leurs prix et de leurs
  * phrases. La grille de `/` et de `/tarifs/` les rend en entier ; les pages
  * métier (MetierLanding) n'en reprennent que le nom, le prix et les titres de
- * fonctions, pour ne pas en écrire une deuxième version.
+ * fonctions, pour ne pas en écrire une deuxième version. L'aperçu gratuit
+ * n'est pas une formule : `EtapeApercu` le montre au-dessus des cartes.
  */
 export const FORMULES: Formule[] = [
   {
-    ...IA.decouverte,
-    pour: "Créez votre site et mettez-le en ligne, sans carte bancaire.",
-    bouton: "Commencer gratuitement",
-    fonctions: [
-      {
-        titre: "Votre site créé par l'IA",
-        texte: "Textes, mise en page et photo, écrits pour votre activité en une minute.",
-      },
-      {
-        titre: "En ligne sur nom.sitaly.fr",
-        texte: "Publié en un clic, avec le cadenas HTTPS, sur téléphone et ordinateur.",
-      },
-      {
-        titre: `${IA.decouverte.credits} crédits IA offerts`,
-        texte: "Pour retoucher votre site en une phrase ou créer des photos.",
-      },
-      {
-        titre: "Devis et factures",
-        texte: "Devis illimités, 3 factures par mois, payables par carte ou virement.",
-      },
-    ],
-    limites: [
-      {
-        titre: "Votre site tient sur une page",
-        texte: `${IA.essentiel.nom} en autorise quatre, ${IA.pro.nom} huit : une page par prestation, et autant de portes d'entrée depuis Google.`,
-      },
-      {
-        titre: "« Site créé avec Sitaly » au pied de votre site",
-        texte: `La mention reste affichée, avec un lien pour créer un site. Avec ${IA.essentiel.nom}, elle devient discrète et vous la retirez d'un clic.`,
-      },
-      {
-        titre: `Carnet de clients plafonné à ${IA.decouverte.contactsMax} contacts`,
-        texte: `Au-delà, il faut supprimer une fiche. ${IA.essentiel.nom} lève le plafond.`,
-      },
-      {
-        titre: "Pas de nom de domaine à vous",
-        texte: `Votre site vit sur une adresse en .sitaly.fr. ${IA.essentiel.nom} vous offre le vôtre.`,
-      },
-    ],
-  },
-  {
     ...IA.essentiel,
-    pour: "Tout pour un site à votre image, que vous retouchez quand vous voulez.",
+    appel: PRIX_APPEL,
+    blackFriday: { an: BLACK_FRIDAY.essentielAn, barre: BLACK_FRIDAY.essentielAnBarre },
+    pour: "Votre site en ligne à votre nom, que vous retouchez quand vous voulez.",
     bouton: "Commencer",
     badge: "Recommandé",
-    intro: `Tout ${IA.decouverte.nom}, plus :`,
     fonctions: [
+      {
+        titre: "Votre site créé par l'IA, mis en ligne",
+        texte:
+          "Textes, mise en page et photo écrits pour votre activité, publiés en un clic avec le cadenas HTTPS.",
+      },
+      { ...DOMAINE_OFFERT },
       {
         titre: "Jusqu'à quatre pages",
         texte: "Accueil, prestations, à propos, contact.",
@@ -457,11 +431,10 @@ export const FORMULES: Formule[] = [
         texte: "Chaque message arrive avec sa réponse déjà rédigée, dans votre ton. Rien ne part sans vous.",
       },
       {
-        titre: "Factures illimitées et relances",
-        texte: "Vos impayés relancés automatiquement à J+1, J+8 et J+15.",
+        titre: "Devis et factures illimités, impayés relancés",
+        texte: "Payables par carte ou virement. Vos retards relancés automatiquement à J+1, J+8 et J+15.",
       },
       { titre: "Assistance par e-mail", texte: "Une vraie personne vous répond, en français." },
-      { ...DOMAINE_OFFERT },
       {
         titre: "Mention Sitaly discrète et retirable",
         texte:
@@ -480,6 +453,7 @@ export const FORMULES: Formule[] = [
   },
   {
     ...IA.pro,
+    blackFriday: { an: BLACK_FRIDAY.proAn, barre: BLACK_FRIDAY.proAnBarre },
     pour: "L'IA la plus avancée et un expert pour démarrer vite.",
     bouton: "Commencer",
     intro: `Tout ${IA.essentiel.nom}, plus :`,
@@ -509,13 +483,59 @@ export const FORMULES: Formule[] = [
   },
 ];
 
-/** Les trois formules, au mois ou à l'année (−15 %). */
+/**
+ * Le Black Friday, vu du navigateur : le rendu serveur ne connaît pas l'heure
+ * du visiteur, la page prérendue part donc sans rien et le navigateur revérifie
+ * la date. Hors de la fenêtre, rien ne s'affiche.
+ */
+export function useBlackFriday() {
+  const [actif, setActif] = useState(false);
+  useEffect(() => setActif(blackFridayActif()), []);
+  return actif;
+}
+
+/** La garantie, en petit, sous un bouton de prix. */
+export function LigneGarantie({ clair = false }: { clair?: boolean }) {
+  return (
+    <p
+      className={`mt-3 flex items-center justify-center gap-1.5 text-sm ${clair ? "text-white/60" : TEXTE_GRIS}`}
+    >
+      <ShieldCheck className="h-4 w-4 shrink-0" aria-hidden="true" />
+      {GARANTIE}
+    </p>
+  );
+}
+
+/** L'aperçu gratuit, l'étape avant les formules. */
+export function EtapeApercu() {
+  return (
+    <div
+      className={`${CARTE} mx-auto flex max-w-4xl flex-col items-start gap-4 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-7`}
+    >
+      <div className="flex gap-3">
+        <Eye className="mt-0.5 h-5 w-5 shrink-0 text-black/70" aria-hidden="true" />
+        <div>
+          <div className="text-[15px] font-semibold">D'abord, l'aperçu gratuit</div>
+          <p className={`mt-1 text-base leading-6 sm:text-sm ${TEXTE_GRIS}`}>{PHRASE_APERCU}</p>
+        </div>
+      </div>
+      <a href={lienCreation()} className={`${BOUTON_CLAIR} shrink-0`}>
+        Voir mon site
+        <ArrowRight className="h-4 w-4" aria-hidden="true" />
+      </a>
+    </div>
+  );
+}
+
+/** Les deux formules, au mois ou à l'année (−15 %), sous l'étape de l'aperçu. */
 export function GrilleTarifs() {
   const [annuel, setAnnuel] = useState(false);
+  const blackFriday = useBlackFriday();
   const rail = useRef<HTMLDivElement>(null);
   return (
     <div>
-      <div className="flex justify-center">
+      <EtapeApercu />
+      <div className="mt-10 flex justify-center">
         <div
           role="radiogroup"
           aria-label="Période de paiement"
@@ -536,33 +556,42 @@ export function GrilleTarifs() {
               {libelle as string}
               {valeur && (
                 <span className="rounded-full bg-brand-ink px-2 py-0.5 text-[11px] font-semibold text-white">
-                  −15 %
+                  {blackFriday ? "Black Friday" : "−15 %"}
                 </span>
               )}
             </button>
           ))}
         </div>
       </div>
-      {/* Rail à arrêts sous 640 px : empilées, les trois cartes faisaient
-          4,04 écrans à 390 px (SITA-31, friction 3). */}
-      <div ref={rail} className="rail-mobile mt-10 grid gap-5 lg:grid-cols-3">
+      {/* Rail à arrêts sous 640 px (SITA-31, friction 3). */}
+      <div ref={rail} className="rail-mobile rail-deux mx-auto mt-10 grid max-w-4xl gap-5 lg:grid-cols-2">
         {FORMULES.map((f) => (
-          <CartePrix key={f.nom} formule={f} annuel={annuel} />
+          <CartePrix key={f.nom} formule={f} annuel={annuel} blackFriday={blackFriday} />
         ))}
       </div>
       <RepereRail rail={rail} total={FORMULES.length} />
       <p className={`mx-auto mt-6 max-w-2xl text-center text-sm ${TEXTE_GRIS}`}>
-        {MENTION_TVA}. Sans engagement au mois ; l'annuel se paie pour un an. « Bientôt » :
-        fonctions en préparation, ajoutées à votre formule dès leur ouverture. Une retouche coûte 1
-        ou 2 crédits, une photo créée par l'IA 5.
+        {MENTION_TVA}. Sans engagement au mois ; l'annuel se paie pour un an. Le prix d'appel
+        d'{IA.essentiel.nom} vaut pour le premier abonnement d'un compte, au mois. {GARANTIE}{" "}
+        sur le premier paiement, sur simple demande. « Bientôt » : fonctions en préparation,
+        ajoutées à votre formule dès leur ouverture. Une retouche coûte 1 ou 2 crédits, une photo
+        créée par l'IA 5.
       </p>
     </div>
   );
 }
 
-function CartePrix({ formule, annuel }: { formule: Formule; annuel: boolean }) {
-  const { nom, mensuel, pour, intro, fonctions, limites, bouton, badge } = formule;
-  const prix = annuel && mensuel > 0 ? formule.annuel : mensuel;
+function CartePrix({
+  formule,
+  annuel,
+  blackFriday,
+}: {
+  formule: Formule;
+  annuel: boolean;
+  blackFriday: boolean;
+}) {
+  const { nom, mensuel, appel, pour, intro, fonctions, bouton, badge } = formule;
+  const prix = annuel ? formule.annuel : appel ? appel.mensuel : mensuel;
   return (
     <div
       className={`flex flex-col rounded-3xl bg-white p-8 ${badge ? "border-2 border-black/80" : "border border-black/[0.08]"}`}
@@ -577,17 +606,26 @@ function CartePrix({ formule, annuel }: { formule: Formule; annuel: boolean }) {
       </div>
       <div className="mt-6 flex items-baseline gap-1">
         <span className="text-5xl font-semibold tracking-tight">{euros(prix)}</span>
-        {mensuel > 0 && <span className={TEXTE_GRIS}>{annuel ? "/an" : "/mois"}</span>}
+        <span className={TEXTE_GRIS}>{annuel ? "/an" : "/mois"}</span>
       </div>
-      <p className={`mt-1 h-5 text-sm ${TEXTE_GRIS}`}>
-        {annuel && mensuel > 0
+      <p className={`mt-1 min-h-5 text-sm ${TEXTE_GRIS}`}>
+        {annuel
           ? `soit ${euros(Math.round((formule.annuel / 12) * 100) / 100)} par mois, au lieu de ${euros(mensuel)}`
-          : ""}
+          : appel
+            ? `les ${appel.mois} premiers mois, puis ${euros(appel.ensuite)} par mois`
+            : ""}
       </p>
+      {annuel && blackFriday && (
+        <p className="mt-3 rounded-xl bg-black/[0.04] px-3 py-2 text-sm font-medium">
+          Black Friday : 1 an à {euros(formule.blackFriday.an)} au lieu de{" "}
+          <s>{euros(formule.blackFriday.barre)}</s>, jusqu'au 30 novembre
+        </p>
+      )}
       <p className={`mt-3 min-h-14 ${TEXTE_GRIS}`}>{pour}</p>
       <a href={lienCreation()} className={`${badge ? BOUTON_NOIR : BOUTON_CLAIR} mt-6`}>
         {bouton}
       </a>
+      <LigneGarantie />
       {intro && (
         <p className="mt-8 border-t border-black/[0.06] pt-8 text-sm font-medium">{intro}</p>
       )}
@@ -619,48 +657,37 @@ function CartePrix({ formule, annuel }: { formule: Formule; annuel: boolean }) {
           </li>
         ))}
       </ul>
-      {limites && (
-        <div className="mt-8 border-t border-black/[0.06] pt-8">
-          <p className="text-sm font-medium">Ce que {nom} ne fait pas :</p>
-          <ul className="mt-5 space-y-5">
-            {limites.map((l) => (
-              <li key={l.titre} className="flex gap-3">
-                <X className="mt-0.5 h-4 w-4 shrink-0 text-black/35" aria-hidden="true" />
-                <div>
-                  <div className="text-[15px] font-semibold text-black/55">{l.titre}</div>
-                  <p className="mt-1 text-base leading-6 text-black/45 sm:text-sm">{l.texte}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
     </div>
   );
 }
 
 /* ---------------------------------------------------------------------------
-   Le passage de Découverte à Essentiel (16 novembre 2026)
+   De l'aperçu à la mise en ligne (22 novembre 2026)
    --------------------------------------------------------------------------- */
 
+/** Ce que l'aperçu gratuit donne, avant tout paiement. */
+const DANS_L_APERCU = [
+  "Votre site entier, écrit par l'IA en une minute",
+  "Vu avant de créer un compte, sans carte",
+  "Votre compte créé gratuitement, pour retoucher le site dans l'éditeur",
+];
+
 /**
- * Ce qu'Essentiel ouvre, dans l'ordre de ce que l'artisan vient de vivre : il a
- * publié son site sur une adresse en .sitaly.fr, avec la mention Sitaly au
- * pied. Chaque ligne se vérifie dans sitaly-saas.
+ * Ce que la mise en ligne avec Essentiel apporte le jour même. Chaque ligne se
+ * vérifie dans sitaly-saas.
  */
 const OUVERT_PAR_ESSENTIEL: { titre: string; texte: string }[] = [
+  {
+    titre: "Votre site en ligne",
+    texte: "Publié en un clic, avec le cadenas HTTPS, sur téléphone et ordinateur.",
+  },
   { ...DOMAINE_OFFERT },
   {
-    titre: "La mention Sitaly, discrète puis retirée",
-    texte:
-      "« Site réalisé avec Sitaly » remplace « Site créé avec Sitaly », en petit, et un clic la retire.",
+    titre: "Une mention Sitaly discrète, que vous retirez",
+    texte: "« Site réalisé avec Sitaly » en petit au pied du site, et un clic la retire.",
   },
   {
-    titre: "Carnet de clients sans plafond",
-    texte: "Autant de fiches que de clients, avec leurs devis et leurs factures.",
-  },
-  {
-    titre: "Factures illimitées, impayés relancés",
+    titre: "Devis et factures illimités, impayés relancés",
     texte: "Vos retards de paiement relancés par e-mail à J+1, J+8 et J+15.",
   },
   {
@@ -671,56 +698,40 @@ const OUVERT_PAR_ESSENTIEL: { titre: string; texte: string }[] = [
 ];
 
 /**
- * Le passage de la formule gratuite à Essentiel, sur l'accueil (16 novembre
- * 2026). L'audit du tunnel du 15 novembre l'a relevé : la vitrine chiffrait
- * bien les trois formules, mais ne disait jamais d'un bloc ce que Découverte
- * arrête ni ce qu'Essentiel ouvre. Les limites viennent de la carte Découverte
- * (`FORMULES`), le domaine de `DOMAINE_OFFERT` : aucune phrase n'est réécrite ici.
+ * Le passage de l'aperçu gratuit à la mise en ligne, sur l'accueil. Avant le
+ * 22 novembre 2026, ce bloc opposait la formule gratuite Découverte à
+ * Essentiel ; la publication gratuite a disparu, l'aperçu reste.
  */
 export function PassageEssentiel() {
-  const { fonctions, limites = [] } = FORMULES[0];
   return (
     <div className="rail-mobile rail-deux grid gap-5 lg:grid-cols-2">
       <div className={`${CARTE} flex flex-col p-8 sm:p-10`}>
         <div className="flex items-baseline gap-2">
-          <h3 className="text-lg font-semibold">{IA.decouverte.nom}</h3>
-          <span className={`text-sm ${TEXTE_GRIS}`}>gratuit, sans carte bancaire</span>
+          <h3 className="text-lg font-semibold">L'aperçu</h3>
+          <span className={`text-sm ${TEXTE_GRIS}`}>gratuit, sans compte ni carte</span>
         </div>
-        <p className="mt-4 text-[17px] leading-7">
-          Votre site est écrit, retouché et mis en ligne sans payer un euro, sur une adresse en
-          <span className="whitespace-nowrap"> .sitaly.fr</span>. Vous restez dessus aussi longtemps
-          que vous voulez.
-        </p>
+        <p className="mt-4 text-[17px] leading-7">{PHRASE_APERCU}</p>
         <ul className="mt-8 space-y-4">
-          {fonctions.map((f) => (
-            <li key={f.titre} className="flex gap-3">
+          {DANS_L_APERCU.map((t) => (
+            <li key={t} className="flex gap-3">
               <Check className="mt-0.5 h-4 w-4 shrink-0 text-black/75" aria-hidden="true" />
-              <span className="text-[15px] leading-6">{f.titre}</span>
+              <span className="text-[15px] leading-6">{t}</span>
             </li>
           ))}
         </ul>
-        <p className="mt-8 border-t border-black/[0.06] pt-8 text-sm font-medium">
-          Là où {IA.decouverte.nom} s'arrête :
-        </p>
-        <ul className="mt-4 space-y-4">
-          {limites.map((l) => (
-            <li key={l.titre} className="flex gap-3">
-              <X className="mt-0.5 h-4 w-4 shrink-0 text-black/35" aria-hidden="true" />
-              <span className="text-[15px] leading-6 text-black/55">{l.titre}</span>
-            </li>
-          ))}
-        </ul>
+        <a href={lienCreation()} className={`${BOUTON_CLAIR} mt-auto self-start`}>
+          Voir mon site
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+        </a>
       </div>
 
       <div className="flex flex-col rounded-3xl bg-[#0d0f14] p-8 text-white sm:p-10">
-        <div className="flex items-baseline gap-2">
+        <div className="flex flex-wrap items-baseline gap-x-2">
           <h3 className="text-lg font-semibold">{IA.essentiel.nom}</h3>
-          <span className="text-sm text-white/60">
-            {euros(IA.essentiel.mensuel)}/mois, sans engagement
-          </span>
+          <span className="text-sm text-white/60">{PHRASE_PRIX_APPEL}, sans engagement</span>
         </div>
         <p className="mt-4 text-[17px] leading-7 text-white/80">
-          Vous passez quand votre site vous plaît, pas avant. Ce qui change le jour même :
+          Vous publiez quand votre site vous plaît. Ce qui change le jour même :
         </p>
         <ul className="mt-8 space-y-5">
           {OUVERT_PAR_ESSENTIEL.map((f) => (
@@ -737,10 +748,11 @@ export function PassageEssentiel() {
           href={lienCreation()}
           className="mt-10 inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-medium text-black transition hover:bg-white/90"
         >
-          Commencer gratuitement
+          Créer mon site
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </a>
-        <p className="mt-3 text-sm text-white/55">
+        <LigneGarantie clair />
+        <p className="mt-1 text-center text-sm text-white/55">
           {MENTION_TVA}. Le détail formule par formule est sur la page Tarifs.
         </p>
       </div>
@@ -752,6 +764,7 @@ export function PassageEssentiel() {
    Le tableau comparatif des formules (30 octobre 2026), comme « Compare plans »
    chez durable.com : sous les cartes de prix, ligne par ligne. Il reprend les
    mêmes chiffres (CREATEUR_IA) ; une valeur « bientot » s'affiche grisée.
+   Deux colonnes depuis le 22 novembre 2026 : Essentiel et Pro.
    --------------------------------------------------------------------------- */
 
 type Valeur = boolean | string | { bientot: string };
@@ -759,26 +772,26 @@ type Valeur = boolean | string | { bientot: string };
 interface LigneComparee {
   libelle: string;
   aide?: string;
-  valeurs: [Valeur, Valeur, Valeur];
+  valeurs: [Valeur, Valeur];
 }
 
 const GROUPES_COMPARES: { titre: string; lignes: LigneComparee[] }[] = [
   {
     titre: "Votre site",
     lignes: [
-      { libelle: "Site complet écrit par l'IA", valeurs: [true, true, true] },
+      { libelle: "Site complet écrit par l'IA", valeurs: [true, true] },
       {
         libelle: "Modèle d'IA pour la rédaction",
-        valeurs: ["Avancé", "Avancé", "Le plus avancé"],
+        valeurs: ["Avancé", "Le plus avancé"],
       },
       {
         libelle: "Pages de votre site",
         aide: "Une page par prestation : autant de portes d'entrée depuis Google.",
-        valeurs: ["1", "4", "8"],
+        valeurs: ["4", "8"],
       },
-      { libelle: "Dix-neuf thèmes, changement en un clic", valeurs: [true, true, true] },
-      { libelle: "Retouches à la main dans l'éditeur", valeurs: [true, true, true] },
-      { libelle: "Formulaire de contact", valeurs: [true, true, true] },
+      { libelle: "Dix-neuf thèmes, changement en un clic", valeurs: [true, true] },
+      { libelle: "Retouches à la main dans l'éditeur", valeurs: [true, true] },
+      { libelle: "Formulaire de contact", valeurs: [true, true] },
     ],
   },
   {
@@ -788,51 +801,50 @@ const GROUPES_COMPARES: { titre: string; lignes: LigneComparee[] }[] = [
         libelle: "Crédits IA",
         aide: "Une retouche coûte 1 ou 2 crédits, une photo 5.",
         valeurs: [
-          `${IA.decouverte.credits} offerts`,
           `${IA.essentiel.credits.toLocaleString("fr-FR")} par mois`,
           `${IA.pro.credits.toLocaleString("fr-FR")} par mois`,
         ],
       },
-      { libelle: "Retouches en une phrase", valeurs: [true, true, true] },
-      { libelle: "Photos créées par l'IA", valeurs: [true, true, true] },
+      { libelle: "Retouches en une phrase", valeurs: [true, true] },
+      { libelle: "Photos créées par l'IA", valeurs: [true, true] },
       {
         libelle: "Articles de blog écrits par l'IA",
         aide: "1 crédit les idées, 6 crédits l'article.",
-        valeurs: [false, true, true],
+        valeurs: [true, true],
       },
-      { libelle: "Logo et identité de marque", valeurs: [true, true, true] },
+      { libelle: "Logo et identité de marque", valeurs: [true, true] },
       {
         libelle: "Agent IA : réponses aux demandes du site",
         aide: "1 crédit par réponse rédigée, envoyée après votre accord.",
-        valeurs: [false, true, true],
+        valeurs: [true, true],
       },
       {
         libelle: "Agent IA : avis Google",
         aide: "Fiche connectée : avis relevés chaque matin, réponse prête, publiée sur Google après votre clic. 1 crédit par réponse.",
-        valeurs: [false, true, true],
+        valeurs: [true, true],
       },
     ],
   },
   {
     titre: "En ligne",
     lignes: [
-      { libelle: "Adresse nom.sitaly.fr et cadenas HTTPS", valeurs: [true, true, true] },
+      { libelle: "Mise en ligne avec le cadenas HTTPS", valeurs: [true, true] },
       {
         libelle: "Prêt pour Google : titres, descriptions, plan du site",
-        valeurs: [true, true, true],
+        valeurs: [true, true],
       },
       {
         libelle: DOMAINE_OFFERT.titre,
         aide: "Enregistré à votre nom, renouvelé tant que l'abonnement court.",
-        valeurs: [false, true, true],
+        valeurs: [true, true],
       },
       {
         libelle: "Mention Sitaly retirable",
-        aide: "Découverte affiche « Site créé avec Sitaly ». Essentiel et Pro gardent une mention discrète, que vous retirez d'un clic.",
-        valeurs: [false, true, true],
+        aide: "Une mention discrète « Site réalisé avec Sitaly », que vous retirez d'un clic.",
+        valeurs: [true, true],
       },
-      { libelle: "Score de visibilité SEO et GEO, fichier llms.txt", valeurs: [true, true, true] },
-      { libelle: "Site en deux langues", valeurs: [false, false, { bientot: "Bientôt" }] },
+      { libelle: "Score de visibilité SEO et GEO, fichier llms.txt", valeurs: [true, true] },
+      { libelle: "Site en deux langues", valeurs: [false, { bientot: "Bientôt" }] },
     ],
   },
   {
@@ -840,44 +852,43 @@ const GROUPES_COMPARES: { titre: string; lignes: LigneComparee[] }[] = [
     lignes: [
       {
         libelle: "Carnet de clients",
-        aide: `Les fiches de vos clients, avec leurs devis et leurs factures. ${IA.decouverte.nom} s'arrête à ${IA.decouverte.contactsMax} fiches.`,
-        valeurs: [`${IA.decouverte.contactsMax} contacts`, "Illimité", "Illimité"],
+        aide: "Les fiches de vos clients, avec leurs devis et leurs factures.",
+        valeurs: ["Illimité", "Illimité"],
       },
-      { libelle: "Devis acceptés en ligne", valeurs: [true, true, true] },
+      { libelle: "Devis acceptés en ligne", valeurs: [true, true] },
       {
         libelle: "Devis dicté à la voix",
         aide: "2 crédits le devis, relu par vous avant l'envoi.",
-        valeurs: [true, true, true],
+        valeurs: [true, true],
       },
-      { libelle: "Factures conformes", valeurs: ["3 par mois", "Illimitées", "Illimitées"] },
+      { libelle: "Factures conformes", valeurs: ["Illimitées", "Illimitées"] },
       {
         libelle: "Paiement des factures par carte",
         aide: "Sans commission Sitaly : seuls les frais Stripe s'appliquent.",
-        valeurs: [true, true, true],
+        valeurs: [true, true],
       },
-      { libelle: "Relances automatiques des impayés", valeurs: [false, true, true] },
-      { libelle: "Prise de rendez-vous en ligne", valeurs: [false, true, true] },
+      { libelle: "Relances automatiques des impayés", valeurs: [true, true] },
+      { libelle: "Prise de rendez-vous en ligne", valeurs: [true, true] },
       {
         libelle: "Demandes d'avis à vos clients",
         aide: "Par e-mail, SMS ou QR code, ou envoyées seules après une facture payée ou un rendez-vous.",
-        valeurs: [false, true, true],
+        valeurs: [true, true],
       },
-      { libelle: "Vos avis Google sur votre site", valeurs: [false, true, true] },
+      { libelle: "Vos avis Google sur votre site", valeurs: [true, true] },
     ],
   },
   {
     titre: "Accompagnement",
     lignes: [
-      { libelle: "Assistance par e-mail, en français", valeurs: [false, true, true] },
-      { libelle: "Mise en place avec un expert", valeurs: [false, false, true] },
+      { libelle: "Assistance par e-mail, en français", valeurs: [true, true] },
+      { libelle: "Mise en place avec un expert", valeurs: [false, true] },
     ],
   },
 ];
 
-const NOMS_COMPARES = [IA.decouverte.nom, IA.essentiel.nom, IA.pro.nom] as const;
+const NOMS_COMPARES = [IA.essentiel.nom, IA.pro.nom] as const;
 const PRIX_COMPARES = [
-  "Gratuit",
-  `${euros(IA.essentiel.mensuel)}/mois`,
+  `${euros(PRIX_APPEL.mensuel)}/mois les ${PRIX_APPEL.mois} premiers mois, puis ${euros(PRIX_APPEL.ensuite)}`,
   `${euros(IA.pro.mensuel)}/mois`,
 ] as const;
 
@@ -898,9 +909,9 @@ function CelluleValeur({ v }: { v: Valeur }) {
   );
 }
 
-/** Les trois formules ligne par ligne : un tableau sur ordinateur, une formule à la fois sur téléphone. */
+/** Les deux formules ligne par ligne : un tableau sur ordinateur, une formule à la fois sur téléphone. */
 export function TableauFormules() {
-  const [choix, setChoix] = useState(1);
+  const [choix, setChoix] = useState(0);
   return (
     <div>
       {/* Ordinateur */}
@@ -913,22 +924,23 @@ export function TableauFormules() {
               {NOMS_COMPARES.map((nom, k) => (
                 <th key={nom} scope="col" className="px-3 pb-6 text-center font-normal">
                   <div
-                    className={`rounded-3xl p-5 ${k === 1 ? "bg-[#0d0f14] text-white" : "bg-black/[0.03]"}`}
+                    className={`rounded-3xl p-5 ${k === 0 ? "bg-[#0d0f14] text-white" : "bg-black/[0.03]"}`}
                   >
                     <div className="text-lg font-semibold">{nom}</div>
-                    <div className={`mt-1 text-sm ${k === 1 ? "text-white/60" : TEXTE_GRIS}`}>
+                    <div className={`mt-1 text-sm ${k === 0 ? "text-white/60" : TEXTE_GRIS}`}>
                       {PRIX_COMPARES[k]}
                     </div>
                     <a
                       href={lienCreation()}
                       className={`mt-4 inline-flex w-full items-center justify-center rounded-2xl px-4 py-2.5 text-sm font-semibold transition ${
-                        k === 1
+                        k === 0
                           ? "bg-white text-black hover:bg-white/90"
                           : "bg-black/85 text-white hover:bg-black"
                       }`}
                     >
-                      {k === 0 ? "Commencer" : "Choisir"}
+                      Choisir
                     </a>
+                    <LigneGarantie clair={k === 0} />
                   </div>
                 </th>
               ))}
@@ -938,7 +950,7 @@ export function TableauFormules() {
             <tbody key={g.titre}>
               <tr>
                 <th
-                  colSpan={4}
+                  colSpan={3}
                   scope="colgroup"
                   className="pt-8 pb-3 text-sm font-semibold text-brand-ink"
                 >
@@ -954,7 +966,7 @@ export function TableauFormules() {
                   {l.valeurs.map((v, k) => (
                     <td
                       key={k}
-                      className={`px-3 py-4 text-center align-top ${k === 1 ? "bg-black/[0.02]" : ""}`}
+                      className={`px-3 py-4 text-center align-top ${k === 0 ? "bg-black/[0.02]" : ""}`}
                     >
                       <CelluleValeur v={v} />
                     </td>
@@ -971,7 +983,7 @@ export function TableauFormules() {
         <div
           role="tablist"
           aria-label="Formule à comparer"
-          className="sticky top-[calc(var(--entete-hauteur)+0.5rem)] z-10 grid grid-cols-3 rounded-full bg-black/[0.05] p-1 text-sm font-medium backdrop-blur"
+          className="sticky top-[calc(var(--entete-hauteur)+0.5rem)] z-10 grid grid-cols-2 rounded-full bg-black/[0.05] p-1 text-sm font-medium backdrop-blur"
         >
           {NOMS_COMPARES.map((nom, k) => (
             <button
@@ -1009,8 +1021,9 @@ export function TableauFormules() {
           </div>
         ))}
         <a href={lienCreation()} className={`${BOUTON_NOIR} mt-6 w-full`}>
-          {choix === 0 ? "Commencer gratuitement" : `Choisir ${NOMS_COMPARES[choix]}`}
+          Choisir {NOMS_COMPARES[choix]}
         </a>
+        <LigneGarantie />
       </div>
     </div>
   );

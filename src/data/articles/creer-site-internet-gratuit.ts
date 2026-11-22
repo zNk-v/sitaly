@@ -19,11 +19,6 @@ export const contenu: BlogSection[] = [
     headers: ["Outil", "Adresse du site", "Ce qu'il faut savoir"],
     rows: [
       [
-        "[Sitaly](/tarifs/) (Découverte)",
-        "votre-nom.sitaly.fr",
-        "L'IA écrit le site à partir d'une phrase ; 50 crédits IA offerts pour le retoucher",
-      ],
-      [
         "[Wix](https://fr.wix.com/pricing) (gratuit)",
         "sous-domaine Wix",
         "Le site affiche une bannière Wix ; votre propre domaine demande un forfait payant",
@@ -65,7 +60,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Chez Sitaly, la formule Découverte met votre site en ligne gratuitement, sans carte bancaire. Les formules Essentiel et Pro ajoutent votre nom de domaine, offert et renouvelé tant que l'abonnement court, même au mois. Le détail est sur la page [Tarifs](/tarifs/).",
+    text: "Chez Sitaly, l'aperçu est gratuit : vous voyez votre site entier sans compte ni carte. Le mettre en ligne demande Essentiel ou Pro. Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, avec votre nom de domaine offert et renouvelé tant que l'abonnement court, même au mois. Le premier paiement est satisfait ou remboursé pendant 30 jours. Le détail est sur la page [Tarifs](/tarifs/).",
   },
   { type: "h2", text: "Quel outil gratuit choisir selon votre situation ?" },
   {
@@ -74,7 +69,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "table",
-    caption: "Trois façons de créer un site sans payer, selon ce que vous attendez de l'outil.",
+    caption: "Trois façons de créer un site, selon ce que vous attendez de l'outil.",
     headers: ["Votre situation", "Le type d'outil", "Pour comparer"],
     rows: [
       [
@@ -115,7 +110,7 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Créer son site gratuit en 4 étapes" },
   {
     type: "p",
-    text: "La méthode vaut pour la plupart des outils. Sur [Sitaly](/), les deux premières étapes prennent environ une minute, sans carte bancaire : voir [créer son site internet gratuitement avec l'IA](/creation-site-internet/).",
+    text: "La méthode vaut pour la plupart des outils. Sur [Sitaly](/), les deux premières étapes prennent environ une minute, sans compte ni carte ; la mise en ligne demande Essentiel ou Pro. Voir [créer son site internet avec l'IA](/creation-site-internet/).",
   },
   {
     type: "ul",
@@ -139,7 +134,7 @@ export const contenu: BlogSection[] = [
       },
       {
         q: "Puis-je passer d'une formule gratuite à une formule payante sans tout refaire ?",
-        a: "Oui, chez la plupart des outils, Sitaly compris : votre site reste le même, seules les fonctions et l'adresse changent.",
+        a: "Oui, chez la plupart des outils : votre site reste le même, seules les fonctions et l'adresse changent. Chez Sitaly, le site que vous voyez en aperçu est celui qui part en ligne quand vous prenez Essentiel ou Pro.",
       },
       {
         q: "Combien de temps faut-il pour créer un site gratuit ?",
@@ -147,7 +142,7 @@ export const contenu: BlogSection[] = [
       },
       {
         q: "Faut-il une carte bancaire pour créer un site gratuit ?",
-        a: "Pas chez Sitaly : la formule Découverte se passe de carte bancaire. Pour les autres outils, vérifiez leur page d'inscription.",
+        a: "Chez Sitaly, l'aperçu se passe de carte : vous voyez votre site entier sans compte ni carte. La mise en ligne demande un abonnement Essentiel ou Pro. Pour les autres outils, vérifiez leur page d'inscription.",
       },
       {
         q: "Un site gratuit suffit-il pour une activité professionnelle ?",

@@ -66,7 +66,7 @@ export function SiteHeader({
 
       {/* La gouttière ne doit pas intercepter les clics destinés au hero. */}
       <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
-        {/* Le bandeau fin du Black Friday, d'un bord à l'autre de la fenêtre, au-dessus de la pastille. */}
+        {/* Le bandeau fin du prix d'appel (Black Friday du 27 au 30 novembre), d'un bord à l'autre de la fenêtre, au-dessus de la pastille. */}
         <div className="-mx-3 -mt-3 mb-2 sm:-mx-4 sm:-mt-4">
           <BandeauPromo />
         </div>

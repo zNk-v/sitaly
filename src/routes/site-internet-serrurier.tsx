@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 
 const URL = "https://sitaly.fr/site-internet-serrurier/";
-const TITLE = "Création site internet serrurier gratuit avec l'IA | Sitaly";
+const TITLE = "Création site internet serrurier : en 1 minute avec l'IA";
 const DESCRIPTION =
-  "Site internet serrurier créé par l'IA en une minute : adresse réelle, tarifs annoncés, appel en un geste. Gratuit pour commencer, vous le modifiez vous-même.";
+  "Site internet serrurier créé par l'IA en une minute : adresse réelle, tarifs annoncés, appel en un geste. Aperçu gratuit, vous le modifiez vous-même.";
 
 const FAQ = [
   {
@@ -25,7 +25,7 @@ const FAQ = [
   },
   {
     q: "Combien coûte un site internet serrurier avec Sitaly ?",
-    a: "0 € avec la formule Découverte : un site d'une page, en ligne sur votre-nom.sitaly.fr. Essentiel coûte 39 € par mois, avec 4 pages et votre nom de domaine offert. Pro coûte 79 € par mois, avec 8 pages. Les formules sont sans engagement, et vous commencez sans carte bancaire.",
+    a: "L'aperçu ne coûte rien : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, avec 4 pages et votre nom de domaine offert. Pro coûte 79 € par mois, avec 8 pages. Sans engagement, et satisfait ou remboursé pendant 30 jours.",
   },
   {
     q: "Faut-il savoir coder pour créer mon site ?",
@@ -89,7 +89,7 @@ function SerrurierLanding() {
       route="/site-internet-serrurier/"
       included={INCLUDED}
       localSeo={LOCAL_SEO}
-      h1="Création de site internet pour serrurier, gratuite avec l'IA"
+      h1="Création de site internet pour serrurier, en 1 minute avec l'IA"
       intro="Vous décrivez votre atelier, vos tarifs et votre zone, et l'IA écrit en une minute un site qui rassure le client méfiant des faux serruriers. Vous le publiez et vous le modifiez depuis votre téléphone."
       benefits={[
         {

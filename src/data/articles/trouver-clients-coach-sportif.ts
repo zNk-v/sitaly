@@ -70,7 +70,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "La réservation est comprise dans les formules Essentiel (39 € / mois) et Pro (79 € / mois), sans commission par rendez-vous. Avec Découverte, gratuite, vos clients vous écrivent par le formulaire du site.",
+    text: "La réservation est comprise dans les formules Essentiel (19 € / mois les 3 premiers mois, puis 39 €) et Pro (79 € / mois), sans commission par rendez-vous.",
   },
   { type: "h2", text: "5. Répondre vite aux demandes" },
   {
@@ -117,6 +117,6 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Votre site de coach en ligne en une minute" },
   {
     type: "p",
-    text: "Avec [Sitaly](https://app.sitaly.fr), vous écrivez une phrase sur votre coaching et l'IA rédige votre site, publié en une minute environ sur votre-nom.sitaly.fr. Vous le modifiez en écrivant ce qu'il faut changer. La formule Découverte est gratuite et sans carte ; Essentiel ajoute un domaine en .fr ou en .com, la réservation en ligne et les demandes d'avis automatiques.",
+    text: "Avec [Sitaly](https://app.sitaly.fr), vous écrivez une phrase sur votre coaching et l'IA rédige votre site en une minute environ : vous le voyez gratuitement, sans compte ni carte. Vous le modifiez en écrivant ce qu'il faut changer. Essentiel le met en ligne avec un domaine en .fr ou en .com, la réservation en ligne et les demandes d'avis automatiques.",
   },
 ];

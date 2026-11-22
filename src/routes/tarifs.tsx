@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ShieldCheck } from "lucide-react";
 import { Apparition } from "@/components/Apparition";
 import { SiteChrome } from "@/components/SiteChrome";
 import {
@@ -12,7 +13,14 @@ import {
   TitreSection,
 } from "@/components/produit/Produit";
 import { BASE_URL } from "@/lib/config";
-import { CREATEUR_IA as IA, MENTION_TVA, offresStructurees } from "@/data/offres";
+import {
+  CREATEUR_IA as IA,
+  GARANTIE,
+  GARANTIE_JOURS,
+  offresStructurees,
+  PHRASE_APERCU,
+  PRIX_APPEL,
+} from "@/data/offres";
 import { PILIER_DEVIS, PILIER_SITE } from "@/data/piliers";
 
 /**
@@ -22,8 +30,8 @@ import { PILIER_DEVIS, PILIER_SITE } from "@/data/piliers";
  */
 
 const URL = `${BASE_URL}/tarifs/`;
-const TITRE = `Tarifs de Sitaly : gratuit, puis dès ${IA.essentiel.mensuel} €/mois`;
-const DESCRIPTION = `Découverte gratuit, ${IA.essentiel.nom} ${IA.essentiel.mensuel} €/mois, ${IA.pro.nom} ${IA.pro.mensuel} €/mois, ou 15 % de moins à l'année. Sans engagement au mois, ${MENTION_TVA.toLowerCase()}.`;
+const TITRE = `Tarifs de Sitaly : ${IA.essentiel.nom} et ${IA.pro.nom}, aperçu gratuit`;
+const DESCRIPTION = `Aperçu gratuit. ${IA.essentiel.nom} ${PRIX_APPEL.mensuel} €/mois les ${PRIX_APPEL.mois} premiers mois puis ${PRIX_APPEL.ensuite} €, ${IA.pro.nom} ${IA.pro.mensuel} €/mois, 15 % de moins à l'année. ${GARANTIE}.`;
 
 export const Route = createFileRoute("/tarifs")({
   head: () => ({
@@ -41,7 +49,7 @@ export const Route = createFileRoute("/tarifs")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@graph": [
-            // L'application et ses trois formules, comme sur l'accueil : la
+            // L'application et ses deux formules, comme sur l'accueil : la
             // page Tarifs est celle que Google doit relier aux prix.
             {
               "@type": "SoftwareApplication",
@@ -85,12 +93,11 @@ function Tarifs() {
           <div className="mx-auto max-w-4xl text-center">
             <div className="text-sm font-medium text-brand-ink">Tarifs</div>
             <h1 className="titre-produit mt-3 text-[2.5rem] sm:text-6xl lg:text-7xl">
-              Commencez gratuitement
+              Voyez votre site, puis publiez-le
             </h1>
             <p className={`mx-auto mt-6 max-w-2xl text-lg leading-7 ${TEXTE_GRIS}`}>
-              Créez votre site et mettez-le en ligne sans payer, sur une adresse en .sitaly.fr.{" "}
-              {IA.essentiel.nom} ajoute votre nom de domaine, offert, et vous laisse retirer la
-              mention Sitaly du pied de votre site. Artisan ?{" "}
+              {PHRASE_APERCU} {IA.essentiel.nom} vous offre votre nom de domaine, à{" "}
+              {PRIX_APPEL.mensuel} € par mois les {PRIX_APPEL.mois} premiers mois. Artisan ?{" "}
               <Link
                 to={PILIER_SITE.chemin}
                 className="font-medium text-black underline underline-offset-4"
@@ -98,6 +105,10 @@ function Tarifs() {
                 Le guide pour créer votre site
               </Link>{" "}
               détaille les étapes et le prix réel.
+            </p>
+            <p className="mx-auto mt-6 inline-flex items-center gap-2 rounded-full bg-black/[0.04] px-4 py-2 text-sm font-medium">
+              <ShieldCheck className="h-4 w-4" aria-hidden="true" />
+              {GARANTIE} sur le premier paiement
             </p>
           </div>
           <div className="mx-auto mt-14 max-w-6xl">
@@ -111,7 +122,7 @@ function Tarifs() {
               <TitreSection
                 surtitre="Comparer"
                 titre="Toutes les fonctions, formule par formule"
-                sousTitre="Ce que comprend chaque formule, ligne par ligne."
+                sousTitre={`Ce que comprend chaque formule, ligne par ligne. Satisfait ou remboursé pendant ${GARANTIE_JOURS} jours sur votre premier paiement, sur simple demande.`}
               />
               <div className="mt-14">
                 <TableauFormules />
@@ -147,10 +158,11 @@ function Tarifs() {
           <section className="px-4 pt-8 pb-28 sm:px-6">
             <div className="mx-auto max-w-4xl text-center">
               <h2 className="titre-produit text-[2.15rem] sm:text-5xl lg:text-6xl">
-                Essayez, c'est gratuit
+                Voyez votre site avant de payer
               </h2>
               <p className={`mx-auto mt-5 max-w-xl text-lg ${TEXTE_GRIS}`}>
-                Décrivez votre activité en une phrase : votre site est prêt une minute plus tard.
+                Décrivez votre activité en une phrase : votre site est prêt une minute plus tard,
+                sans compte ni carte.
               </p>
             </div>
             <div className="mx-auto mt-10 max-w-3xl">

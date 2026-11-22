@@ -1,6 +1,6 @@
 # Sitaly
 
-> Sitaly est une application française qui crée le site internet d'un artisan, d'un indépendant, d'un commerçant ou d'une TPE à partir d'une phrase, avec l'IA, et le met en ligne en environ une minute. Gratuit pour commencer et sans carte bancaire, puis 39 € par mois (Essentiel) ou 79 € par mois (Pro). L'application réunit aussi les devis et factures, la prise de rendez-vous, les avis Google, le blog et le référencement. Elle est éditée par Teddy Vidal, entrepreneur individuel (SIREN 833 848 831), en France.
+> Sitaly est une application française qui crée le site internet d'un artisan, d'un indépendant, d'un commerçant ou d'une TPE à partir d'une phrase, avec l'IA, en environ une minute. L'aperçu est gratuit, sans compte ni carte ; la mise en ligne demande Essentiel (19 € par mois les 3 premiers mois, puis 39 €) ou Pro (79 € par mois). L'application réunit aussi les devis et factures, la prise de rendez-vous, les avis Google, le blog et le référencement. Elle est éditée par Teddy Vidal, entrepreneur individuel (SIREN 833 848 831), en France.
 
 ## En bref
 
@@ -10,10 +10,10 @@
 - **Site** : [sitaly.fr](https://sitaly.fr) : présentation, tarifs, guides et blog
 - **Pour qui** : artisans, indépendants, professions libérales, commerçants et TPE, en France, sans compétence technique
 - **Fonctionnement** : vous décrivez votre activité en une phrase ; l'IA écrit le site, choisit la mise en page et crée la photo. Vous le retouchez en écrivant ce que vous voulez changer, puis vous le publiez en un clic.
-- **Adresse du site** : votre-nom.sitaly.fr ; avec Essentiel et Pro, un nom de domaine en .fr ou en .com offert, enregistré à votre nom
-- **Prix** : Découverte gratuit ; Essentiel 39 € par mois ou 398 € par an ; Pro 79 € par mois ou 806 € par an. TVA non applicable, art. 293 B du CGI. Sans engagement au mois ; l'annuel se paie pour un an.
-- **Limites de Découverte** : pas de nom de domaine à soi (le site reste en .sitaly.fr), mention « Site créé avec Sitaly » au pied du site sans pouvoir la retirer, carnet de clients plafonné à 10 contacts, 3 factures par mois, pas de prise de rendez-vous ni d'avis Google sur le site. Essentiel lève ces limites.
-- **Crédits IA** : 50 offerts avec Découverte, 500 par mois avec Essentiel, 2 500 par mois avec Pro. Une retouche coûte 1 ou 2 crédits, une photo créée par l'IA 5, la création du site aucun. Les crédits mensuels repartent à zéro chaque mois ; des packs de crédits s'achètent en plus, sans date de fin.
+- **Adresse du site** : votre-nom.sitaly.fr, plus un nom de domaine en .fr ou en .com offert avec Essentiel et Pro, enregistré à votre nom
+- **Prix** : aperçu gratuit, sans compte ni carte ; Essentiel 19 € par mois les 3 premiers mois (premier abonnement), puis 39 € par mois, ou 398 € par an ; Pro 79 € par mois ou 806 € par an. Pas de formule gratuite pour publier. TVA non applicable, art. 293 B du CGI. Sans engagement au mois ; l'annuel se paie pour un an.
+- **Garantie** : satisfait ou remboursé pendant 30 jours sur le premier paiement d'un abonnement, sur simple demande à contact@sitaly.fr.
+- **Crédits IA** : 500 par mois avec Essentiel, 2 500 par mois avec Pro. Une retouche coûte 1 ou 2 crédits, une photo créée par l'IA 5, la création du site aucun. Les crédits mensuels repartent à zéro chaque mois ; des packs de crédits s'achètent en plus, sans date de fin.
 - **Entreprise** : Teddy Vidal, entrepreneur individuel, SIREN 833 848 831, SIRET 833 848 831 00032, basé à Paris
 - **E-mail** : contact@sitaly.fr
 - **Téléphone** : +33 6 58 68 33 72
@@ -27,7 +27,7 @@
 
 ## Fonctions
 
-- [Tarifs](https://sitaly.fr/tarifs/) : les formules Découverte, Essentiel et Pro, comparées ligne par ligne.
+- [Tarifs](https://sitaly.fr/tarifs/) : les formules Essentiel et Pro, comparées ligne par ligne, et l'aperçu gratuit.
 - [Devis et factures](https://sitaly.fr/produits/devis-et-factures/) : devis acceptés en ligne, factures payées par carte, relance des impayés.
 - [Prise de rendez-vous](https://sitaly.fr/produits/prise-de-rendez-vous/) : réservation en ligne depuis le site, confirmation par e-mail, annulation en un clic. Formules Essentiel et Pro.
 - [Agents IA](https://sitaly.fr/produits/agents-ia/) : réponses aux demandes du site et aux avis Google, envoyées après validation du client ; demandes d'avis.

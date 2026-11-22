@@ -31,7 +31,7 @@ const bundlePath = join(tmp, "connaissance.mjs");
 try {
   await build({
     stdin: {
-      contents: `export { CREATEUR_IA, MENTION_TVA } from "@/data/offres"; export { FAQ_PRODUIT } from "@/data/faq-produit"; export { euros } from "@/lib/config";`,
+      contents: `export { CREATEUR_IA, MENTION_TVA, PHRASE_APERCU, PHRASE_PRIX_APPEL, GARANTIE } from "@/data/offres"; export { FAQ_PRODUIT } from "@/data/faq-produit"; export { euros } from "@/lib/config";`,
       resolveDir: root,
       loader: "ts",
     },
@@ -43,7 +43,7 @@ try {
     alias: { "@": join(root, "src") },
   });
 
-  const { CREATEUR_IA, MENTION_TVA, FAQ_PRODUIT, euros } = await import(pathToFileURL(bundlePath).href);
+  const { CREATEUR_IA, MENTION_TVA, PHRASE_APERCU, PHRASE_PRIX_APPEL, GARANTIE, FAQ_PRODUIT, euros } = await import(pathToFileURL(bundlePath).href);
   const [pricing, llms] = await Promise.all([
     readFile(join(root, "public/pricing.md"), "utf8"),
     readFile(join(root, "public/llms-full.txt"), "utf8"),
@@ -51,8 +51,8 @@ try {
 
   // « 2 500 » et non « 2500 » : le reste du site écrit les milliers à la française.
   const n = (v) => v.toLocaleString("fr-FR").replace(/\u202f/g, "\u00a0");
-  const formule = (f, periode) =>
-    `- **${f.nom}** : ${f.mensuel === 0 ? "gratuite, sans carte bancaire" : `${euros(f.mensuel)} par mois ou ${euros(f.annuel)} par an`}${periode}`;
+  const formule = (f, periode, prixMois = `${euros(f.mensuel)} par mois`) =>
+    `- **${f.nom}** : ${prixMois} ou ${euros(f.annuel)} par an${periode}`;
 
   // Aucune date dans le fichier : il ne doit changer que quand le site change,
   // sinon chaque build salit le dépôt sans rien apporter au chat.
@@ -63,10 +63,11 @@ Tout ce qui suit est publié sur sitaly.fr. Rien d'autre n'est vrai de Sitaly.`,
 
     `## Les formules de Sitaly App, montants officiels
 
-${formule(CREATEUR_IA.decouverte, ` · ${n(CREATEUR_IA.decouverte.credits)} crédits IA offerts · carnet de clients limité à ${CREATEUR_IA.decouverte.contactsMax} contacts`)}
-${formule(CREATEUR_IA.essentiel, ` · ${n(CREATEUR_IA.essentiel.credits)} crédits IA par mois`)}
+${formule(CREATEUR_IA.essentiel, ` · ${n(CREATEUR_IA.essentiel.credits)} crédits IA par mois`, `${PHRASE_PRIX_APPEL} (premier abonnement, au mois)`)}
 ${formule(CREATEUR_IA.pro, ` · ${n(CREATEUR_IA.pro.credits)} crédits IA par mois`)}
 
+Il n'existe pas de formule gratuite. ${PHRASE_APERCU}
+${GARANTIE} sur le premier paiement d'un abonnement, sur simple demande à contact@sitaly.fr.
 ${MENTION_TVA}. Sans engagement au mois ; l'annuel se paie pour un an (15 % de moins).
 La grille complète : https://sitaly.fr/tarifs/`,
 

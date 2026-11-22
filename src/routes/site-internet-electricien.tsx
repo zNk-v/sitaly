@@ -2,14 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 
 const URL = "https://sitaly.fr/site-internet-electricien/";
-const TITLE = "Création site internet électricien, gratuit | Sitaly";
+const TITLE = "Création site internet électricien : en 1 minute avec l'IA";
 const DESCRIPTION =
-  "Votre site internet électricien créé par l'IA en une minute : habilitations, borne IRVE, dépannage. Gratuit pour commencer, et vous le modifiez vous-même.";
+  "Votre site internet électricien créé par l'IA en une minute : habilitations, borne IRVE, dépannage. Aperçu gratuit, vous le modifiez vous-même.";
 
 const FAQ = [
   {
     q: "Combien coûte un site internet électricien avec Sitaly ?",
-    a: "0 € avec Découverte : une page créée par l'IA et mise en ligne avec HTTPS. Essentiel coûte 39 €/mois, avec jusqu'à 4 pages et un nom de domaine offert. Pro coûte 79 €/mois, avec jusqu'à 8 pages et une mise en place avec un expert Sitaly. Toutes les formules sont sans engagement, et vous commencez sans carte bancaire.",
+    a: "L'aperçu ne coûte rien : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, Essentiel coûte 19 €/mois les 3 premiers mois, puis 39 €/mois, avec jusqu'à 4 pages et un nom de domaine offert. Pro coûte 79 €/mois, avec jusqu'à 8 pages et une mise en place avec un expert Sitaly. Sans engagement, et satisfait ou remboursé pendant 30 jours.",
   },
   {
     q: "Mon site mettra-t-il en avant mes habilitations électriques ?",
@@ -60,7 +60,7 @@ const INCLUDED = [
   },
   {
     title: "Hébergement et modifications",
-    desc: "En ligne avec HTTPS dès la formule gratuite, nom de domaine offert avec Essentiel. Une certification à ajouter, un tarif à corriger : vous l'écrivez en une phrase et l'IA modifie le site.",
+    desc: "En ligne avec HTTPS et nom de domaine offert dès Essentiel. Une certification à ajouter, un tarif à corriger : vous l'écrivez en une phrase et l'IA modifie le site.",
   },
 ];
 
@@ -93,7 +93,7 @@ function ElectricienLanding() {
       route="/site-internet-electricien/"
       included={INCLUDED}
       localSeo={LOCAL_SEO}
-      h1="Création de site internet pour électricien, gratuite avec l'IA"
+      h1="Création de site internet pour électricien, en 1 minute avec l'IA"
       intro="Vous décrivez vos habilitations et vos prestations, de la mise aux normes à la borne de recharge, et l'IA écrit votre site en une minute. Vous le publiez, puis vous le modifiez depuis votre téléphone."
       benefits={[
         {

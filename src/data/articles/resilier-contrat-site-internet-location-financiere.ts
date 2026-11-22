@@ -133,7 +133,7 @@ export const contenu: BlogSection[] = [
       },
       {
         q: "Sitaly propose-t-il de la location financière ?",
-        a: "Non. Sitaly est une application : l'abonnement mensuel est sans engagement, sans organisme de financement, et le nom de domaine compris dans Essentiel et Pro est déposé à votre nom. La formule Découverte est gratuite.",
+        a: "Non. Sitaly est une application : l'abonnement mensuel est sans engagement, sans organisme de financement, et le nom de domaine compris dans Essentiel et Pro est déposé à votre nom. Le premier paiement est satisfait ou remboursé pendant 30 jours.",
       },
     ],
   },

@@ -149,7 +149,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "La fiche connectée et les demandes automatiques font partie des formules Essentiel (39 € par mois) et Pro (79 € par mois). En formule Découverte, gratuite, vous collez un avis dans l'application pour recevoir une réponse préparée, puis vous la publiez vous-même.",
+    text: "La fiche connectée et les demandes automatiques font partie des formules Essentiel (19 € par mois les 3 premiers mois, puis 39 €) et Pro (79 € par mois).",
   },
 
   {

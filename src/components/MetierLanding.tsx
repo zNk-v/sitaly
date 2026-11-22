@@ -7,7 +7,13 @@ import { MetierFooterLinks, MetierLinksSection } from "@/components/MetierLinks"
 import type { MetierLink } from "@/lib/metiers";
 import { euros } from "@/lib/config";
 import { FORMULES, lienCreation } from "@/components/produit/Produit";
-import { MENTION_TVA, offresStructurees } from "@/data/offres";
+import {
+  GARANTIE,
+  GARANTIE_JOURS,
+  MENTION_TVA,
+  offresStructurees,
+  PHRASE_APERCU,
+} from "@/data/offres";
 import { SiteFooter } from "@/components/SiteFooter";
 import { getModele } from "@/data/modeles";
 
@@ -94,7 +100,7 @@ export function MetierLanding(props: MetierLandingProps) {
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
             <span className="inline-flex items-center gap-2">
               <Sparkles className="h-4 w-4 text-accent" />
-              Gratuit pour commencer
+              Aperçu gratuit, sans compte ni carte
             </span>
             <span className="inline-flex items-center gap-2">
               <ShieldCheck className="h-4 w-4 text-accent" />
@@ -238,7 +244,7 @@ export function MetierLanding(props: MetierLandingProps) {
         </div>
       </section>
 
-      {/* Tarifs : les trois formules de l'application, lues dans FORMULES
+      {/* Tarifs : les deux formules de l'application, lues dans FORMULES
           (src/components/produit/Produit.tsx), la même source que `/tarifs/`.
           Décision de Ted du 19 novembre 2026 : les pages métier vendent
           l'application, elles affichent donc ses prix, et plus ceux de
@@ -249,10 +255,10 @@ export function MetierLanding(props: MetierLandingProps) {
             Combien coûte un site internet <span className="accent-word">{metier}</span>
           </h2>
           <p className="measure mt-4 text-sm font-semibold text-foreground/80">
-            La création est gratuite, sans carte bancaire. Les formules payantes se prennent au
-            mois, sans engagement, et s'arrêtent quand vous voulez.
+            {PHRASE_APERCU} Au mois, sans engagement, et satisfait ou remboursé pendant{" "}
+            {GARANTIE_JOURS} jours.
           </p>
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
+          <div className="mt-8 grid max-w-4xl gap-5 md:grid-cols-2">
             {FORMULES.map((f) => (
               <article
                 key={f.nom}
@@ -277,11 +283,14 @@ export function MetierLanding(props: MetierLandingProps) {
                   )}
                 </div>
                 <div className="mt-3 font-display text-3xl font-extrabold tracking-tight tabular-nums">
-                  {euros(f.mensuel)}
-                  {f.mensuel > 0 && (
-                    <span className="text-base font-medium text-muted-foreground">/mois</span>
-                  )}
+                  {euros(f.appel ? f.appel.mensuel : f.mensuel)}
+                  <span className="text-base font-medium text-muted-foreground">/mois</span>
                 </div>
+                {f.appel && (
+                  <p className="mt-0.5 text-sm text-muted-foreground">
+                    les {f.appel.mois} premiers mois, puis {euros(f.appel.ensuite)} par mois
+                  </p>
+                )}
                 <p className="mt-1 text-sm font-medium text-foreground/80">{f.pour}</p>
                 {f.intro && (
                   <p className="mt-5 text-sm font-semibold text-foreground/80">{f.intro}</p>
@@ -310,12 +319,16 @@ export function MetierLanding(props: MetierLandingProps) {
                   >
                     {f.bouton}
                   </a>
+                  <p className="mt-2.5 flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
+                    <ShieldCheck className="h-3.5 w-3.5" aria-hidden="true" />
+                    {GARANTIE}
+                  </p>
                 </div>
               </article>
             ))}
           </div>
           <p className="mt-6 text-center text-sm text-muted-foreground">
-            Payé à l'année, c'est 15 % de moins. Le détail des trois formules :{" "}
+            Payé à l'année, c'est 15 % de moins. Le détail des deux formules :{" "}
             <Link to="/tarifs/" className="font-semibold text-accent hover:underline">
               voir tous les tarifs
             </Link>
@@ -402,8 +415,8 @@ export function MetierLanding(props: MetierLandingProps) {
             Prêt à recevoir plus d'appels qualifiés ?
           </h2>
           <p className="mt-3 text-primary-foreground/90">
-            Répondez à trois questions sur votre activité : l'IA crée votre site {metier}, gratuit
-            pour commencer.
+            Répondez à trois questions sur votre activité : l'IA crée votre site {metier}, et vous
+            le voyez en entier avant de payer.
           </p>
           <a
             href={lienCreation(metierCapitalized)}
@@ -468,9 +481,9 @@ export function buildMetierMeta(opts: {
             url: "https://sitaly.fr",
           },
           areaServed: { "@type": "Country", name: "France" },
-          // Les trois formules de l'application et leur prix, comme la section
+          // Les deux formules de l'application et leur prix, comme la section
           // Tarifs de la page et comme `/` et `/tarifs/` : une page qui
-          // affiche 0, 39 et 79 € ne peut pas en déclarer 149 à Google.
+          // affiche 19, 39 et 79 € ne peut pas en déclarer 149 à Google.
           offers: offresStructurees(),
           url,
         }),

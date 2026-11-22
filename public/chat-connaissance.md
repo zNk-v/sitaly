@@ -4,23 +4,24 @@ Tout ce qui suit est publié sur sitaly.fr. Rien d'autre n'est vrai de Sitaly.
 
 ## Les formules de Sitaly App, montants officiels
 
-- **Découverte** : gratuite, sans carte bancaire · 50 crédits IA offerts · carnet de clients limité à 10 contacts
-- **Essentiel** : 39 € par mois ou 398 € par an · 500 crédits IA par mois
+- **Essentiel** : 19 € par mois les 3 premiers mois, puis 39 € (premier abonnement, au mois) ou 398 € par an · 500 crédits IA par mois
 - **Pro** : 79 € par mois ou 806 € par an · 2 500 crédits IA par mois
 
+Il n'existe pas de formule gratuite. Voyez votre site entier gratuitement, sans compte ni carte. Pour le mettre en ligne, choisissez Essentiel ou Pro.
+Satisfait ou remboursé pendant 30 jours sur le premier paiement d'un abonnement, sur simple demande à contact@sitaly.fr.
 TVA non applicable, art. 293 B du CGI. Sans engagement au mois ; l'annuel se paie pour un an (15 % de moins).
 La grille complète : https://sitaly.fr/tarifs/
 
 ## Les questions fréquentes, telles que le site y répond
 
 ### Combien coûte un site créé avec Sitaly ?
-La formule Découverte est gratuite, sans carte bancaire. Essentiel coûte 39 € par mois et Pro 79 € par mois, ou 398 € et 806 € à l'année, soit 15 % de moins. TVA non applicable, art. 293 B du CGI.
+Voyez votre site entier gratuitement, sans compte ni carte. Pour le mettre en ligne, choisissez Essentiel ou Pro. Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 € (premier abonnement, au mois), et Pro 79 € par mois. À l'année : 398 € et 806 €, soit 15 % de moins. Satisfait ou remboursé pendant 30 jours sur le premier paiement. TVA non applicable, art. 293 B du CGI.
 
 ### Faut-il savoir faire un site ?
 Non. Vous décrivez votre activité en une phrase, l'IA écrit le site, choisit la mise en page et crée la photo. Ensuite, vous le retouchez en écrivant ce que vous voulez changer, comme à une personne.
 
 ### Combien de temps faut-il pour avoir mon site ?
-Environ une minute pour la création. Vous le relisez, vous changez ce que vous voulez, puis vous le publiez en un clic.
+Environ une minute pour la création. Vous le relisez, vous changez ce que vous voulez, puis vous le publiez en un clic avec Essentiel ou Pro.
 
 ### Comment modifier mon site ?
 Écrivez votre demande à l'IA : « ajoute mes horaires », « ton plus chaleureux », « une section tarifs ». Pour corriger un mot, double-cliquez dessus. Vous pouvez aussi déplacer les sections et changer de thème en un clic.
@@ -35,10 +36,13 @@ Ajoutez les vôtres, y compris celles de votre iPhone, ou faites-en créer par l
 Une IA peut se tromper : relisez avant de publier. Ses consignes lui interdisent d'inventer des avis, des chiffres, des certifications ou des années d'expérience, et elle n'écrit des prix que si vous les donnez.
 
 ### Quelle sera l'adresse de mon site ?
-Votre site est publié sur votre-nom.sitaly.fr. Avec Essentiel et Pro, Sitaly vous offre un nom en .fr ou en .com, enregistré à votre nom et branché sur votre site en quelques heures.
+Votre site est publié sur votre-nom.sitaly.fr dès la mise en ligne. Avec Essentiel et Pro, Sitaly vous offre aussi un nom en .fr ou en .com, enregistré à votre nom et branché sur votre site en quelques heures.
 
-### Que ne permet pas la formule Découverte ?
-Vous créez votre site et vous le publiez sans payer, sur une adresse en .sitaly.fr. Quatre choses restent fermées : votre nom de domaine, la mention « Site créé avec Sitaly » qui reste au pied de votre site, le carnet de clients au-delà de 10 contacts, et les factures au-delà de trois par mois. Essentiel, à 39 € par mois, lève les quatre et ajoute la prise de rendez-vous, vos avis Google et les relances d'impayés.
+### Que puis-je faire sans payer ?
+Voir votre site entier, écrit par l'IA, sans compte ni carte. Vous créez ensuite votre compte gratuitement et vous retouchez le site dans l'éditeur. Pour le mettre en ligne, choisissez Essentiel ou Pro.
+
+### Et si Sitaly ne me convient pas ?
+Satisfait ou remboursé pendant 30 jours : sur le premier paiement d'un abonnement, une demande à contact@sitaly.fr suffit, sans justification.
 
 ### Mon site sera-t-il trouvé sur Google ?
 Personne ne peut garantir une place. Chaque site part avec les bases : pages rapides et adaptées au téléphone, titre et description, fiche de votre entreprise lisible par Google, plan du site.
@@ -55,34 +59,30 @@ Oui, l'équipe Sitaly peut créer et suivre votre site pour vous. Appelez-nous a
 
 Sitaly est une application française qui crée le site internet d'un artisan, d'un indépendant, d'un commerçant ou d'une TPE à partir d'une phrase, avec l'IA. Grille à jour : https://sitaly.fr/tarifs/
 
-TVA non applicable, art. 293 B du CGI. Sans engagement au mois ; l'annuel se paie pour un an (15 % de moins).
+TVA non applicable, art. 293 B du CGI. Sans engagement au mois ; l'annuel se paie pour un an (15 % de moins). Satisfait ou remboursé pendant 30 jours sur le premier paiement d'un abonnement, sur simple demande à contact@sitaly.fr.
 
-## Découverte : 0 €, sans carte bancaire
-- Site créé par l'IA : textes, mise en page et photo, en environ une minute
-- En ligne sur votre-nom.sitaly.fr, avec HTTPS
-- 50 crédits IA offerts
-- Devis illimités, 3 factures par mois, payables par carte ou virement
-- Carnet de clients : 10 contacts
+## L'aperçu, gratuit, sans compte ni carte
+Voyez votre site entier gratuitement, sans compte ni carte. Pour le mettre en ligne, choisissez Essentiel ou Pro. Il n'existe pas de formule gratuite pour publier un site.
+- L'IA écrit le site entier : textes, mise en page et photo, en environ une minute
+- Vous le voyez avant de créer un compte
+- Vous créez votre compte gratuitement et vous retouchez le site dans l'éditeur
 
-Ce que Découverte ne fait pas :
-- Pas de nom de domaine à vous : le site reste sur une adresse en .sitaly.fr
-- Le pied du site porte la mention « Site créé avec Sitaly », sans possibilité de la retirer
-- Le carnet de clients s'arrête à 10 contacts
-- Pas de prise de rendez-vous, pas d'avis Google sur le site, pas de relance d'impayés
-
-## Essentiel : 39 € par mois ou 398 € par an
-Tout Découverte, plus :
+## Essentiel : 19 € par mois les 3 premiers mois, puis 39 € ; ou 398 € par an
+Le prix d'appel vaut pour le premier abonnement d'un compte, au mois.
+- Site créé par l'IA, mis en ligne avec HTTPS
+- Nom de domaine en .fr ou en .com offert, enregistré à votre nom, renouvelé tant que l'abonnement court
+- Jusqu'à 4 pages
 - 500 crédits IA par mois
-- Factures illimitées, impayés relancés à J+1, J+8 et J+15
+- Devis et factures illimités, payables par carte ou virement, impayés relancés à J+1, J+8 et J+15
 - Carnet de clients sans plafond
 - Assistance par e-mail, en français
-- Nom de domaine en .fr ou en .com offert, enregistré à votre nom, renouvelé tant que l'abonnement court
-- La mention devient « Site réalisé avec Sitaly », en petit, et se retire d'un clic
+- Mention « Site réalisé avec Sitaly », en petit, qui se retire d'un clic
 - Prise de rendez-vous en ligne
 - Avis Google : réponse prête à chaque nouvel avis, publiée d'un clic ; demande d'avis à vos clients
 
 ## Pro : 79 € par mois ou 806 € par an
 Tout Essentiel, plus :
+- Jusqu'à 8 pages
 - Le modèle d'IA le plus avancé pour écrire le site
 - 2 500 crédits IA par mois
 - Un rendez-vous avec l'équipe Sitaly pour régler le site
@@ -110,14 +110,14 @@ Tout Essentiel, plus :
 
 # Sitaly : dossier complet
 
-Dernière mise à jour : 8 novembre 2026.
+Dernière mise à jour : 22 novembre 2026.
 Ce document rassemble les informations vérifiées sur Sitaly : application, formules, cadre d'utilisation de l'IA et réponses aux questions fréquentes. Il est destiné aux moteurs de recherche et aux assistants IA qui souhaitent citer Sitaly avec des informations exactes.
 
 ---
 
 ## Qu'est-ce que Sitaly ?
 
-Sitaly est une application française qui crée le site internet d'un artisan, d'un indépendant, d'un commerçant ou d'une TPE à partir d'une phrase, avec l'IA, et le met en ligne en environ une minute. Elle réunit aussi les devis et factures, la prise de rendez-vous, les avis Google, le blog et le référencement. Gratuit pour commencer, sans carte bancaire.
+Sitaly est une application française qui crée le site internet d'un artisan, d'un indépendant, d'un commerçant ou d'une TPE à partir d'une phrase, avec l'IA, en environ une minute. Elle réunit aussi les devis et factures, la prise de rendez-vous, les avis Google, le blog et le référencement. L'aperçu est gratuit, sans compte ni carte ; la mise en ligne demande Essentiel ou Pro.
 
 Depuis le 30 octobre 2026, sitaly.fr présente cette application. Avant cette date, Sitaly était une micro-agence qui créait des sites sur devis et en abonnement ; les anciennes offres Présence, Présence Pro et Présence Expert ne sont plus la proposition principale de Sitaly.
 
@@ -141,18 +141,18 @@ Depuis le 30 octobre 2026, sitaly.fr présente cette application. Avant cette da
 1. Le client décrit son activité en une phrase.
 2. L'IA écrit le site, choisit la mise en page et crée la photo, en environ une minute.
 3. Le client relit et retouche : il écrit à l'IA ce qu'il veut changer (« ajoute mes horaires », « ton plus chaleureux », « une section tarifs »), double-clique sur un mot pour le corriger, déplace les sections, change de thème en un clic.
-4. Il publie en un clic sur votre-nom.sitaly.fr. Avec Essentiel et Pro, Sitaly offre un nom de domaine en .fr ou en .com, enregistré à son nom.
+4. Il choisit Essentiel ou Pro et publie en un clic sur votre-nom.sitaly.fr. Sitaly lui offre aussi un nom de domaine en .fr ou en .com, enregistré à son nom.
 
 Modèles par métier : https://sitaly.fr/modeles/
 Tutoriels vidéo : https://sitaly.fr/guides/
 
 ## Formules (https://sitaly.fr/tarifs/)
 
-- **Découverte, 0 €, sans carte bancaire** : site créé par l'IA, en ligne sur votre-nom.sitaly.fr avec HTTPS, 50 crédits IA offerts, devis illimités, 3 factures par mois, carnet de 10 contacts. Ce que Découverte ne fait pas : pas de nom de domaine à soi, la mention « Site créé avec Sitaly » reste au pied du site sans pouvoir être retirée, le carnet de clients s'arrête à 10 contacts, pas de prise de rendez-vous ni d'avis Google sur le site.
-- **Essentiel, 39 € par mois ou 398 € par an** : 500 crédits IA par mois, factures illimitées et relances d'impayés à J+1, J+8 et J+15, carnet de clients sans plafond, assistance par e-mail, nom de domaine en .fr ou en .com offert, enregistré au nom du client et renouvelé tant que l'abonnement court, mention réduite à « Site réalisé avec Sitaly » en petit et retirable d'un clic, prise de rendez-vous en ligne, avis Google.
-- **Pro, 79 € par mois ou 806 € par an** : le modèle d'IA le plus avancé, 2 500 crédits IA par mois, un rendez-vous de mise en place avec l'équipe Sitaly.
+- **L'aperçu, gratuit, sans compte ni carte** : l'IA écrit le site entier et le client le voit avant de créer un compte ; il crée ensuite son compte gratuitement et retouche le site dans l'éditeur. Il n'existe pas de formule gratuite pour publier.
+- **Essentiel, 19 € par mois les 3 premiers mois (premier abonnement), puis 39 € ; ou 398 € par an** : site mis en ligne avec HTTPS, jusqu'à 4 pages, 500 crédits IA par mois, factures illimitées et relances d'impayés à J+1, J+8 et J+15, carnet de clients sans plafond, assistance par e-mail, nom de domaine en .fr ou en .com offert, enregistré au nom du client et renouvelé tant que l'abonnement court, mention réduite à « Site réalisé avec Sitaly » en petit et retirable d'un clic, prise de rendez-vous en ligne, avis Google.
+- **Pro, 79 € par mois ou 806 € par an** : jusqu'à 8 pages, le modèle d'IA le plus avancé, 2 500 crédits IA par mois, un rendez-vous de mise en place avec l'équipe Sitaly.
 
-TVA non applicable, art. 293 B du CGI. Sans engagement au mois ; l'annuel se paie pour un an.
+TVA non applicable, art. 293 B du CGI. Sans engagement au mois ; l'annuel se paie pour un an. Satisfait ou remboursé pendant 30 jours sur le premier paiement d'un abonnement, sur simple demande à contact@sitaly.fr.
 
 Crédits : 1 pour retoucher une section, 2 pour une demande sur tout le site, 5 pour une photo créée par l'IA, aucun pour la création du site. Les crédits d'Essentiel et de Pro valent pour le mois en cours et repartent à zéro le mois suivant. Des packs de crédits s'achètent en plus, sans date de fin.
 
@@ -175,13 +175,13 @@ Crédits : 1 pour retoucher une section, 2 pour une demande sur tout le site, 5 
 ## Questions fréquentes
 
 **Combien coûte un site créé avec Sitaly ?**
-La formule Découverte est gratuite, sans carte bancaire. Essentiel coûte 39 € par mois et Pro 79 € par mois, ou 398 € et 806 € à l'année.
+L'aperçu est gratuit, sans compte ni carte. Pour mettre le site en ligne, Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, et Pro 79 € par mois, ou 398 € et 806 € à l'année.
 
 **Faut-il savoir faire un site ?**
 Non. Le client décrit son activité en une phrase, l'IA écrit le site, puis il le retouche en écrivant ce qu'il veut changer.
 
 **Combien de temps faut-il pour avoir son site ?**
-Environ une minute pour la création. Le client le relit, change ce qu'il veut, puis le publie en un clic.
+Environ une minute pour la création. Le client le relit, change ce qu'il veut, puis le publie en un clic avec Essentiel ou Pro.
 
 **Peut-on arrêter quand on veut ?**
 Oui. L'abonnement mensuel se résilie chaque mois. L'abonnement annuel est payé pour l'année.

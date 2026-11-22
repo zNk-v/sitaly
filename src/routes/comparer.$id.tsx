@@ -482,7 +482,7 @@ function PageComparatif() {
         <section className="px-4 pt-8 pb-28 sm:px-6">
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="titre-produit text-[2.15rem] sm:text-5xl lg:text-6xl">
-              Essayez, c'est gratuit
+              Voyez votre site avant de payer
             </h2>
             <p className={`mx-auto mt-5 max-w-xl text-lg ${TEXTE_GRIS}`}>
               Décrivez votre activité en une phrase : jugez sur pièce, votre site est prêt une

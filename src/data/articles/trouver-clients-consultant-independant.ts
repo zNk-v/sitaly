@@ -115,6 +115,6 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Votre site de consultant en une minute" },
   {
     type: "p",
-    text: "Avec [Sitaly](https://app.sitaly.fr), vous décrivez votre activité en une phrase et l'IA écrit votre site, publié en une minute environ sur votre-nom.sitaly.fr. Vous le modifiez en écrivant ce qu'il faut changer. La formule Découverte est gratuite et sans carte. Essentiel, à 39 € / mois, ajoute un domaine en .fr ou en .com, la prise de rendez-vous et les factures illimitées avec relances.",
+    text: "Avec [Sitaly](https://app.sitaly.fr), vous décrivez votre activité en une phrase et l'IA écrit votre site en une minute environ : vous le voyez gratuitement, sans compte ni carte. Vous le modifiez en écrivant ce qu'il faut changer. Essentiel, à 19 € / mois les 3 premiers mois puis 39 €, le met en ligne avec un domaine en .fr ou en .com, la prise de rendez-vous et les factures illimitées avec relances.",
   },
 ];

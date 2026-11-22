@@ -126,6 +126,6 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Pour aller plus loin" },
   {
     type: "p",
-    text: "Ouvrez le [modèle de site pour plombier](/modeles/plombier/) ou le [modèle de site pour électricien](/modeles/electricien/) pour voir comment ces conseils se traduisent sur une page. Puis créez le vôtre dans [l'application Sitaly](https://app.sitaly.fr), gratuitement, en indiquant dans votre phrase vos prestations, vos communes, vos horaires et vos tarifs de dépannage.",
+    text: "Ouvrez le [modèle de site pour plombier](/modeles/plombier/) ou le [modèle de site pour électricien](/modeles/electricien/) pour voir comment ces conseils se traduisent sur une page. Puis créez le vôtre dans [l'application Sitaly](https://app.sitaly.fr), en aperçu gratuit, en indiquant dans votre phrase vos prestations, vos communes, vos horaires et vos tarifs de dépannage.",
   },
 ];

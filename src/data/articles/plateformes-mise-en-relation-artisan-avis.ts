@@ -108,7 +108,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Chaque demande reçue par votre site entre dans votre liste de clients avec son origine, ce qui rend le calcul du coût d'acquisition immédiat. La formule Découverte est gratuite et sans carte ; Essentiel coûte 39 € par mois et Pro 79 € par mois, sans engagement au mois.",
+    text: "Chaque demande reçue par votre site entre dans votre liste de clients avec son origine, ce qui rend le calcul du coût d'acquisition immédiat. L'aperçu du site est gratuit, sans compte ni carte ; Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, et Pro 79 € par mois, sans engagement au mois.",
   },
 
   {

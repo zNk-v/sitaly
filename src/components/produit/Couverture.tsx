@@ -145,17 +145,19 @@ function SceneGratuit() {
         ))}
       </Fenetre>
       <g className="couv-tombe" style={d(1.6)}>
-        <rect x={392} y={30} width={96} height={52} rx="26" fill={VIOLET} />
+        {/* « Aperçu » et non plus « 0 € » depuis le 22 novembre 2026 : chez
+            Sitaly, seul l'aperçu est gratuit. */}
+        <rect x={382} y={30} width={116} height={52} rx="26" fill={VIOLET} />
         <text
           x={440}
-          y={64}
+          y={62}
           textAnchor="middle"
-          fontSize="24"
+          fontSize="20"
           fontWeight="700"
           fill="#fff"
           fontFamily="inherit"
         >
-          0 €
+          Aperçu
         </text>
       </g>
     </>

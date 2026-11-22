@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 
 const URL = "https://sitaly.fr/site-internet-peintre/";
-const TITLE = "Création site internet peintre en bâtiment, gratuit | Sitaly";
+const TITLE = "Création site internet peintre en bâtiment avec l'IA";
 const DESCRIPTION =
-  "Création de site internet peintre en bâtiment : l'IA écrit votre site en une minute. Gratuit pour commencer, vous le modifiez vous-même depuis votre téléphone.";
+  "Création de site internet peintre en bâtiment : l'IA écrit votre site en une minute. Aperçu gratuit, vous le modifiez vous-même depuis votre téléphone.";
 
 const FAQ = [
   {
@@ -25,7 +25,7 @@ const FAQ = [
   },
   {
     q: "Combien coûte un site internet peintre avec Sitaly ?",
-    a: "0 € avec la formule Découverte : un site d'une page, en ligne sur votre-nom.sitaly.fr. Essentiel coûte 39 € par mois, avec 4 pages et votre nom de domaine offert. Pro coûte 79 € par mois, avec 8 pages. Les formules sont sans engagement, et vous commencez sans carte bancaire.",
+    a: "L'aperçu ne coûte rien : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, avec 4 pages et votre nom de domaine offert. Pro coûte 79 € par mois, avec 8 pages. Sans engagement, et satisfait ou remboursé pendant 30 jours.",
   },
   {
     q: "Faut-il savoir coder pour créer mon site ?",
@@ -56,7 +56,7 @@ const INCLUDED = [
   },
   {
     title: "Devis et factures dans la même application",
-    desc: "Devis illimités dès la formule gratuite. Avec Essentiel, factures illimitées et relance des impayés à J+1, J+8 et J+15, sans que vous ayez à y penser.",
+    desc: "Avec Essentiel, devis et factures illimités, et relance des impayés à J+1, J+8 et J+15, sans que vous ayez à y penser.",
   },
 ];
 
@@ -89,7 +89,7 @@ function PeintreLanding() {
       route="/site-internet-peintre/"
       included={INCLUDED}
       localSeo={LOCAL_SEO}
-      h1="Création de site internet pour peintre en bâtiment, gratuite avec l'IA"
+      h1="Création de site internet pour peintre en bâtiment, en 1 minute avec l'IA"
       intro="Vous décrivez vos chantiers de peinture intérieure, de façade ou de décoration, et l'IA écrit votre site en une minute. Vous le publiez, puis vous ajoutez vos avant-après depuis votre téléphone."
       benefits={[
         {

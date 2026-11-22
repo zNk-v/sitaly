@@ -58,7 +58,7 @@ const FAQ = [
   },
   {
     q: "Et après avoir trouvé un nom ?",
-    a: "« Créer le site avec ce nom » ouvre Sitaly : l'IA écrit votre site internet à partir de votre activité et de votre nom, et le met en ligne en une minute, gratuitement.",
+    a: "« Créer le site avec ce nom » ouvre Sitaly : l'IA écrit votre site internet à partir de votre activité et de votre nom en une minute, et vous le voyez gratuitement avant de le mettre en ligne.",
   },
 ];
 
@@ -351,7 +351,7 @@ function Generateur() {
           <div className={`${CARTE} mx-auto max-w-4xl px-6 py-14 text-center`}>
             <h2 className="titre-produit text-[2rem] sm:text-5xl">Votre nom est trouvé ?</h2>
             <p className={`mx-auto mt-4 max-w-xl text-lg ${TEXTE_GRIS}`}>
-              Sitaly crée le site internet qui va avec, en une minute, gratuitement.
+              Sitaly crée le site internet qui va avec, en une minute. L'aperçu est gratuit.
             </p>
             <a
               href={lienCreation(activite || undefined)}

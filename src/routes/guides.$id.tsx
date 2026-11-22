@@ -151,7 +151,7 @@ function PageGuide() {
               href={lienCreation()}
               className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-white px-6 text-base font-medium text-black hover:bg-white/90"
             >
-              Créer mon site gratuitement <ArrowRight className="h-4 w-4" />
+              Voir mon site gratuitement <ArrowRight className="h-4 w-4" />
             </a>
           </div>
         </section>

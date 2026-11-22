@@ -45,7 +45,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Si vous partez de zéro, [Sitaly](/) écrit une première version à partir de votre phrase, gratuitement. Les [modèles par métier](/modeles/) montrent le résultat pour une activité proche de la vôtre.",
+    text: "Si vous partez de zéro, [Sitaly](/) écrit une première version à partir de votre phrase, que vous voyez gratuitement, sans compte ni carte. La mise en ligne demande Essentiel ou Pro. Les [modèles par métier](/modeles/) montrent le résultat pour une activité proche de la vôtre.",
   },
   { type: "h2", text: "Étape 3 : rassembler votre contenu" },
   {

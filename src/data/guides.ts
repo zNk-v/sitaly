@@ -328,7 +328,7 @@ export const GUIDES: Guide[] = [
     duree: "1 min",
     seoTitre: "Changer de formule ou résilier son abonnement Sitaly",
     description:
-      "Passer de Découverte à Essentiel ou Pro, changer d'offre, résilier en deux clics ou revenir sur sa décision : le guide de l'abonnement en vidéo.",
+      "Choisir Essentiel ou Pro, changer d'offre, résilier en deux clics ou revenir sur sa décision : le guide de l'abonnement en vidéo.",
     etapes: [
       {
         titre: "Choisissez votre formule",

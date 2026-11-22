@@ -114,7 +114,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "Les devis sont illimités dans toutes les formules, y compris Découverte, qui est gratuite. Les prix sont sur la page [Tarifs](/tarifs/). Pour un premier devis sans inscription, le [générateur de devis gratuit](/outils/generateur-devis-gratuit/) produit un PDF dans votre navigateur.",
+    text: "Les devis sont illimités avec Essentiel et Pro, les deux formules de Sitaly. Les prix sont sur la page [Tarifs](/tarifs/). Pour un premier devis sans inscription, le [générateur de devis gratuit](/outils/generateur-devis-gratuit/) produit un PDF dans votre navigateur.",
   },
   { type: "h2", text: "Peut-on relancer un devis par téléphone ?" },
   {

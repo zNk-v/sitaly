@@ -205,13 +205,13 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Combien coûte un site avec Sitaly ?" },
   {
     type: "p",
-    text: "Sitaly est gratuit pour commencer, sans carte bancaire. La formule Essentiel coûte 39 € par mois ou 398 € par an, la formule Pro 79 € par mois ou 806 € par an. Le nom de domaine est offert dans les deux formules payantes, même au mois. Sitaly n'est pas assujetti à la TVA : ces prix sont les montants que vous payez.",
+    text: "Chez Sitaly, l'aperçu est gratuit : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, la formule Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, ou 398 € par an, la formule Pro 79 € par mois ou 806 € par an. Le nom de domaine est offert dans les deux formules, même au mois, et le premier paiement est satisfait ou remboursé pendant 30 jours. Sitaly n'est pas assujetti à la TVA : ces prix sont les montants que vous payez.",
   },
   {
     type: "ul",
     items: [
-      "Découverte : gratuit, sans carte bancaire, avec 50 crédits IA offerts. Le site est en ligne sur votre-nom.sitaly.fr.",
-      "Essentiel : 39 € par mois, ou 398 € par an. Votre nom de domaine est offert et renouvelé tant que l'abonnement court, avec 500 crédits IA par mois pour vos retouches.",
+      "L'aperçu : gratuit, sans compte ni carte. Vous voyez votre site entier avant de choisir une formule.",
+      "Essentiel : 19 € par mois les 3 premiers mois, puis 39 €, ou 398 € par an. Votre nom de domaine est offert et renouvelé tant que l'abonnement court, avec 500 crédits IA par mois pour vos retouches.",
       "Pro : 79 € par mois, ou 806 € par an, avec le meilleur modèle d'IA et 2 500 crédits par mois.",
     ],
   },
@@ -227,7 +227,7 @@ export const contenu: BlogSection[] = [
   {
     type: "ul",
     items: [
-      "Un plombier qui s'installe à Arpajon : il lui faut ses prestations, sa zone, son téléphone et ses avis. Une formule gratuite, puis Essentiel pour le domaine à son nom, suffit. Les [modèles par métier](/modeles/) montrent le résultat.",
+      "Un plombier qui s'installe à Arpajon : il lui faut ses prestations, sa zone, son téléphone et ses avis. Essentiel, avec le domaine à son nom, suffit. Les [modèles par métier](/modeles/) montrent le résultat.",
       "Une coiffeuse qui veut que ses clientes réservent seules : la réservation en ligne fait partie d'Essentiel, sans commission par rendez-vous.",
       "Un cabinet qui a besoin d'un espace client ou d'un outil métier : un prestataire, sur devis détaillé, après lecture du comparatif [Sitaly ou une agence](/comparer/agence/).",
     ],
@@ -249,7 +249,7 @@ export const contenu: BlogSection[] = [
       },
       {
         q: "Quel est le site internet le moins cher ?",
-        a: "Une formule gratuite, comme Découverte chez Sitaly, avec une adresse au nom de l'outil. Avec votre propre domaine, les premières formules des éditeurs à modèles démarrent autour de 15 € par mois payés à l'année, et Sitaly Essentiel coûte 39 € par mois, domaine, devis, factures et rendez-vous compris.",
+        a: "Une formule gratuite d'éditeur, avec une adresse au nom de l'outil. Avec votre propre domaine, les premières formules des éditeurs à modèles démarrent autour de 15 € par mois payés à l'année, et Sitaly Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, domaine, devis, factures et rendez-vous compris.",
       },
       {
         q: "Vaut-il mieux payer au mois ou à l'année ?",

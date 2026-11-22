@@ -16,7 +16,7 @@ import { CREATEUR_IA as IA } from "@/data/offres";
  * - marque : rubrique Identité de marque (src/site/logo.ts), sans crédit ;
  * - factures (1er novembre 2026) : rubrique Devis et factures, page client
  *   /d/<jeton>, paiement Stripe Connect sans commission, relances en
- *   Essentiel et Pro, 3 factures par mois en Découverte.
+ *   Essentiel et Pro (plus de formule gratuite depuis le 22 novembre 2026).
  * - agents-ia (4 novembre 2026) : rubriques Réponse aux demandes (fonction
  *   agent-demandes, 1 crédit par réponse), Avis Google (agent-avis et
  *   google-fiche : fiche connectée depuis le 5 novembre, avis relevés chaque
@@ -46,8 +46,8 @@ export interface Produit {
   description: string;
   etapes: { titre: string; texte: string }[];
   points: { titre: string; texte: string }[];
-  /** Ce que chaque formule (Découverte, Essentiel, Pro) en donne. */
-  inclus: [string | false, string | false, string | false];
+  /** Ce que chaque formule (Essentiel, Pro) en donne. */
+  inclus: [string | false, string | false];
   noteInclus: string;
   /** Le bouton de la page : il reprend la promesse du titre, pas « Créer mon site ». */
   cta: string;
@@ -120,7 +120,7 @@ export const PRODUITS: Produit[] = [
         texte: "Chaque devis, facture et paiement entre dans l'historique du client. Un devis accepté fait passer la fiche en « client ».",
       },
     ],
-    inclus: ["3 factures par mois", "Illimité", "Illimité"],
+    inclus: ["Illimité", "Illimité"],
     noteInclus:
       "Devis illimités dans toutes les formules. Relances automatiques en Essentiel et Pro. Paiement par carte : frais Stripe seulement, aucune commission Sitaly.",
     faq: [
@@ -186,8 +186,8 @@ export const PRODUITS: Produit[] = [
         texte: "La page de réservation marche sur tous les téléphones, sans compte à créer pour votre client.",
       },
     ],
-    inclus: [false, "Compris", "Compris"],
-    noteInclus: "La réservation en ligne fait partie des formules payantes, sans supplément ni commission par rendez-vous.",
+    inclus: ["Compris", "Compris"],
+    noteInclus: "La réservation en ligne fait partie d'Essentiel et de Pro, sans supplément ni commission par rendez-vous.",
     faq: [
       {
         q: "Mes clients doivent-ils créer un compte ?",
@@ -259,7 +259,7 @@ export const PRODUITS: Produit[] = [
         texte: "L'Assistant IA vous envoie chaque lundi les chiffres de la semaine : demandes, devis, factures, visites de votre site.",
       },
     ],
-    inclus: ["Avec vos 50 crédits offerts", "500 crédits par mois", "2 500 crédits par mois"],
+    inclus: ["500 crédits par mois", "2 500 crédits par mois"],
     noteInclus: "Une réponse rédigée coûte 1 crédit, un article de blog 6. Les réponses aux avis Google sont comprises dans Essentiel et Pro.",
     faq: [
       {
@@ -332,7 +332,7 @@ export const PRODUITS: Produit[] = [
         texte: "Votre note et vos meilleurs avis récents s'affichent sur votre site Sitaly, à jour chaque matin.",
       },
     ],
-    inclus: ["Avis collés à la main", "Fiche connectée", "Fiche connectée"],
+    inclus: ["Fiche connectée", "Fiche connectée"],
     noteInclus: "Fiche connectée, envoi par e-mail et demandes automatiques en Essentiel et Pro. Une réponse préparée coûte 1 crédit.",
     faq: [
       {
@@ -401,8 +401,8 @@ export const PRODUITS: Produit[] = [
         texte: "Le blog reprend la police, les couleurs et l'en-tête de votre site, avec un bouton pour vous contacter.",
       },
     ],
-    inclus: ["6 crédits par article", "6 crédits par article", "6 crédits par article"],
-    noteInclus: `Les idées coûtent 1 crédit, l'article 6. Découverte offre ${IA.decouverte.credits} crédits, Essentiel en donne ${IA.essentiel.credits.toLocaleString("fr-FR")} par mois et Pro ${IA.pro.credits.toLocaleString("fr-FR")}, avec notre IA la plus avancée pour écrire.`,
+    inclus: ["6 crédits par article", "6 crédits par article"],
+    noteInclus: `Les idées coûtent 1 crédit, l'article 6. Essentiel donne ${IA.essentiel.credits.toLocaleString("fr-FR")} par mois et Pro ${IA.pro.credits.toLocaleString("fr-FR")}, avec notre IA la plus avancée pour écrire.`,
     faq: [
       {
         q: "Google pénalise-t-il les articles écrits par l'IA ?",
@@ -466,7 +466,7 @@ export const PRODUITS: Produit[] = [
         texte: "Envoyez à un client le lien vers votre fiche Google par SMS ou WhatsApp, depuis l'application.",
       },
     ],
-    inclus: ["Compris", "Compris", "Compris"],
+    inclus: ["Compris", "Compris"],
     noteInclus: "Le référencement est compris dans toutes les formules. Le blog, qui nourrit votre score, se paie en crédits IA.",
     faq: [
       {
@@ -531,7 +531,7 @@ export const PRODUITS: Produit[] = [
         texte: "Les propositions et les réglages ne consomment rien. Changez de logo autant de fois que vous voulez.",
       },
     ],
-    inclus: ["Compris", "Compris", "Compris"],
+    inclus: ["Compris", "Compris"],
     noteInclus: "L'identité de marque est comprise dans toutes les formules, sans crédit.",
     faq: [
       {

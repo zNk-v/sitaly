@@ -122,7 +122,7 @@ export const contenu: BlogSection[] = [
       },
       {
         q: "Faut-il un site pour faire de la publicité Google ?",
-        a: "Une campagne d'appel peut tourner sans site, mais la plupart des clients regardent qui vous êtes avant d'appeler. Un site avec vos prestations, votre zone et votre numéro rassure ceux qui hésitent. Sitaly en publie un gratuitement avec la formule Découverte, sans carte bancaire.",
+        a: "Une campagne d'appel peut tourner sans site, mais la plupart des clients regardent qui vous êtes avant d'appeler. Un site avec vos prestations, votre zone et votre numéro rassure ceux qui hésitent. Avec Sitaly, vous voyez le vôtre gratuitement, sans compte ni carte, puis vous le mettez en ligne avec Essentiel, à 19 € par mois les 3 premiers mois.",
       },
       {
         q: "Que faut-il avoir en place avant de lancer une campagne ?",
@@ -133,6 +133,6 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Commencez par la page qui fait appeler" },
   {
     type: "p",
-    text: "Avant de payer le premier clic, vérifiez que la page d'arrivée donne envie de vous appeler. Avec [Sitaly](https://app.sitaly.fr), vous décrivez votre activité en une phrase et votre site est en ligne une minute plus tard sur votre-nom.sitaly.fr. La formule Découverte est gratuite ; Essentiel, à 39 € / mois, ajoute un nom de domaine en .fr ou en .com et la prise de rendez-vous. Le détail est sur la page [Tarifs](/tarifs/).",
+    text: "Avant de payer le premier clic, vérifiez que la page d'arrivée donne envie de vous appeler. Avec [Sitaly](https://app.sitaly.fr), vous décrivez votre activité en une phrase et votre site est prêt une minute plus tard, en aperçu gratuit. Essentiel, à 19 € / mois les 3 premiers mois puis 39 €, le met en ligne avec un nom de domaine en .fr ou en .com et la prise de rendez-vous. Le détail est sur la page [Tarifs](/tarifs/).",
   },
 ];

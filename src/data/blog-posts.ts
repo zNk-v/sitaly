@@ -74,7 +74,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     title: "Créer un site internet gratuit : ce qui est vraiment gratuit, et ce qui ne l'est pas",
     metaTitle: "Créer un site internet gratuit en 2026 : le guide honnête",
     metaDescription:
-      "Ce que donnent vraiment les formules gratuites (Sitaly, Wix, WordPress.com), ce qui reste payant, et comment créer votre site gratuit en 4 étapes.",
+      "Ce que donnent vraiment les formules gratuites (Wix, WordPress.com), ce qui reste payant, et comment créer votre site gratuit en 4 étapes.",
     excerpt:
       "Un site sans frais existe bel et bien. Voici ce que vous obtenez sans payer, ce qui reste payant, et comment démarrer sans regretter votre choix six mois plus tard.",
     category: "Créer son site",
@@ -327,7 +327,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     slug: "combien-coute-site-internet-artisan",
     title: "Combien coûte un site internet pour artisan en 2026 ?",
     metaTitle: "Prix d'un site internet d'artisan en 2026 : coût sur 3 ans",
-    metaDescription: "Gratuit, 39 €/mois ou plusieurs milliers d'euros : le vrai coût d'un site d'artisan sur trois ans, chiffres sourcés, et les pièges avant de signer.",
+    metaDescription: "De 19 €/mois à plusieurs milliers d'euros : le vrai coût d'un site d'artisan sur trois ans, chiffres sourcés, et les pièges avant de signer.",
     excerpt: "De zéro à plusieurs milliers d'euros : ce que vous payez une fois, chaque année et en temps, avec des prix sourcés pour comparer des offres comparables.",
     category: "Tarifs",
     readingTime: "10 min",
@@ -712,7 +712,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     title: "Logiciel de facturation gratuit pour auto-entrepreneur : 8 offres comparées",
     metaTitle: "Logiciel facturation auto-entrepreneur gratuit : comparatif",
     metaDescription:
-      "Abby, Indy, Tiime, Shine, Henrri, VosFactures, Facture.net et Sitaly : ce que donne chaque formule gratuite, et ce qu'il faut vérifier avant 2027.",
+      "Abby, Indy, Tiime, Shine, Henrri, VosFactures et Facture.net : ce que donne chaque formule gratuite, Sitaly en repère, et ce qu'il faut vérifier avant 2027.",
     excerpt:
       "Plusieurs logiciels de facturation sont gratuits pour un micro-entrepreneur. Ce que chaque formule retire, et ce que la facturation électronique de 2027 change au choix.",
     category: "Outils & logiciels",

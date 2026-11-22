@@ -125,6 +125,6 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Votre site de cabinet en une minute" },
   {
     type: "p",
-    text: "Avec [Sitaly](https://app.sitaly.fr), vous décrivez votre cabinet en une phrase et l'IA écrit votre site, publié en une minute environ. Relisez chaque texte pour retirer tout superlatif ou toute comparaison, puis complétez vos missions et vos coordonnées ordinales. La formule Découverte est gratuite et sans carte ; Essentiel et Pro ajoutent un domaine en .fr ou en .com et la réservation en ligne. Les prix sont sur la page [Tarifs](/tarifs/).",
+    text: "Avec [Sitaly](https://app.sitaly.fr), vous décrivez votre cabinet en une phrase et l'IA écrit votre site en une minute environ. Relisez chaque texte pour retirer tout superlatif ou toute comparaison, puis complétez vos missions et vos coordonnées ordinales. L'aperçu est gratuit, sans compte ni carte ; Essentiel et Pro mettent le site en ligne avec un domaine en .fr ou en .com et la réservation en ligne. Les prix sont sur la page [Tarifs](/tarifs/).",
   },
 ];

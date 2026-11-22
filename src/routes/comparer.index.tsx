@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { SiteChrome } from "@/components/SiteChrome";
 import { BoiteApp, Confiance, TEXTE_GRIS } from "@/components/produit/Produit";
 import { COMPARATIFS, RELEVE, RELEVE_ISO } from "@/data/comparatifs";
-import { APP_REF, CREATEUR_IA as IA } from "@/data/offres";
+import { APP_REF, CREATEUR_IA as IA, PRIX_APPEL } from "@/data/offres";
 import { BASE_URL } from "@/lib/config";
 
 /**
@@ -139,9 +139,9 @@ function Comparer() {
               Sitaly vise un cas précis : l'artisan, l'indépendant ou la TPE de services qui veut un
               site écrit pour son métier sans le construire, et qui veut aussi faire ses devis et
               factures, prendre ses rendez-vous et répondre à ses avis Google au même endroit. Vous
-              commencez gratuitement avec la formule Découverte, puis l'offre Essentiel coûte{" "}
-              {IA.essentiel.mensuel} € par mois ou {IA.essentiel.annuel} € par an, nom de domaine
-              compris. Sitaly ne fait pas de boutique en ligne et coûte plus cher que plusieurs
+              voyez votre site entier gratuitement, sans compte ni carte, puis l'offre Essentiel
+              coûte {PRIX_APPEL.mensuel} € par mois les {PRIX_APPEL.mois} premiers mois, puis{" "}
+              {IA.essentiel.mensuel} €, ou {IA.essentiel.annuel} € par an, nom de domaine compris. Sitaly ne fait pas de boutique en ligne et coûte plus cher que plusieurs
               outils en entrée de gamme : chaque comparatif le dit.
             </p>
             <p className="text-base">
@@ -181,7 +181,7 @@ function Comparer() {
               Le plus simple : essayer
             </h2>
             <p className={`mx-auto mt-5 max-w-xl text-lg ${TEXTE_GRIS}`}>
-              Décrivez votre activité en une phrase. C'est gratuit.
+              Décrivez votre activité en une phrase. L'aperçu est gratuit.
             </p>
           </div>
           <div className="mx-auto mt-10 max-w-3xl">

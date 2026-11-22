@@ -197,7 +197,7 @@ function Modeles() {
               Ou décrivez-nous votre activité
             </h2>
             <p className={`mx-auto mt-5 max-w-xl text-lg ${TEXTE_GRIS}`}>
-              Une phrase suffit. C'est gratuit.
+              Une phrase suffit. L'aperçu est gratuit.
             </p>
           </div>
           <div className="mx-auto mt-10 max-w-3xl">

@@ -1,5 +1,11 @@
 import { euros, SITALY_PHONE_DISPLAY } from "@/lib/config";
-import { CREATEUR_IA as IA, MENTION_TVA } from "@/data/offres";
+import {
+  CREATEUR_IA as IA,
+  GARANTIE_JOURS,
+  MENTION_TVA,
+  PHRASE_APERCU,
+  PHRASE_PRIX_APPEL,
+} from "@/data/offres";
 
 /**
  * Les questions fréquentes sur Sitaly App, affichées par l'accueil et par
@@ -13,7 +19,7 @@ import { CREATEUR_IA as IA, MENTION_TVA } from "@/data/offres";
 export const FAQ_PRODUIT = [
   {
     q: "Combien coûte un site créé avec Sitaly ?",
-    a: `La formule ${IA.decouverte.nom} est gratuite, sans carte bancaire. ${IA.essentiel.nom} coûte ${euros(IA.essentiel.mensuel)} par mois et ${IA.pro.nom} ${euros(IA.pro.mensuel)} par mois, ou ${euros(IA.essentiel.annuel)} et ${euros(IA.pro.annuel)} à l'année, soit 15 % de moins. ${MENTION_TVA}.`,
+    a: `${PHRASE_APERCU} ${IA.essentiel.nom} coûte ${PHRASE_PRIX_APPEL} (premier abonnement, au mois), et ${IA.pro.nom} ${euros(IA.pro.mensuel)} par mois. À l'année : ${euros(IA.essentiel.annuel)} et ${euros(IA.pro.annuel)}, soit 15 % de moins. Satisfait ou remboursé pendant ${GARANTIE_JOURS} jours sur le premier paiement. ${MENTION_TVA}.`,
   },
   {
     q: "Faut-il savoir faire un site ?",
@@ -21,7 +27,7 @@ export const FAQ_PRODUIT = [
   },
   {
     q: "Combien de temps faut-il pour avoir mon site ?",
-    a: "Environ une minute pour la création. Vous le relisez, vous changez ce que vous voulez, puis vous le publiez en un clic.",
+    a: "Environ une minute pour la création. Vous le relisez, vous changez ce que vous voulez, puis vous le publiez en un clic avec Essentiel ou Pro.",
   },
   {
     q: "Comment modifier mon site ?",
@@ -41,11 +47,15 @@ export const FAQ_PRODUIT = [
   },
   {
     q: "Quelle sera l'adresse de mon site ?",
-    a: "Votre site est publié sur votre-nom.sitaly.fr. Avec Essentiel et Pro, Sitaly vous offre un nom en .fr ou en .com, enregistré à votre nom et branché sur votre site en quelques heures.",
+    a: "Votre site est publié sur votre-nom.sitaly.fr dès la mise en ligne. Avec Essentiel et Pro, Sitaly vous offre aussi un nom en .fr ou en .com, enregistré à votre nom et branché sur votre site en quelques heures.",
   },
   {
-    q: `Que ne permet pas la formule ${IA.decouverte.nom} ?`,
-    a: `Vous créez votre site et vous le publiez sans payer, sur une adresse en .sitaly.fr. Quatre choses restent fermées : votre nom de domaine, la mention « Site créé avec Sitaly » qui reste au pied de votre site, le carnet de clients au-delà de ${IA.decouverte.contactsMax} contacts, et les factures au-delà de trois par mois. ${IA.essentiel.nom}, à ${euros(IA.essentiel.mensuel)} par mois, lève les quatre et ajoute la prise de rendez-vous, vos avis Google et les relances d'impayés.`,
+    q: "Que puis-je faire sans payer ?",
+    a: `Voir votre site entier, écrit par l'IA, sans compte ni carte. Vous créez ensuite votre compte gratuitement et vous retouchez le site dans l'éditeur. Pour le mettre en ligne, choisissez ${IA.essentiel.nom} ou ${IA.pro.nom}.`,
+  },
+  {
+    q: "Et si Sitaly ne me convient pas ?",
+    a: `Satisfait ou remboursé pendant ${GARANTIE_JOURS} jours : sur le premier paiement d'un abonnement, une demande à contact@sitaly.fr suffit, sans justification.`,
   },
   {
     q: "Mon site sera-t-il trouvé sur Google ?",

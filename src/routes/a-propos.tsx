@@ -281,7 +281,7 @@ function APropos() {
               Créez votre site en une phrase
             </h2>
             <p className={`mx-auto mt-5 max-w-xl text-lg ${TEXTE_GRIS}`}>
-              C'est gratuit, sans carte bancaire.
+              L'aperçu est gratuit, sans compte ni carte.
             </p>
           </div>
           <div className="mx-auto mt-10 max-w-3xl">

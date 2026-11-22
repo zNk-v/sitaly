@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 
 const URL = "https://sitaly.fr/site-internet-carreleur/";
-const TITLE = "Création site internet carreleur gratuit avec l'IA | Sitaly";
+const TITLE = "Création site internet carreleur : en 1 minute avec l'IA";
 const DESCRIPTION =
-  "Site internet carreleur créé par l'IA en une minute : salles de bain, douches à l'italienne, terrasses. Gratuit pour commencer, vous le modifiez vous-même.";
+  "Site internet carreleur créé par l'IA en une minute : salles de bain, douches à l'italienne, terrasses. Aperçu gratuit, vous le modifiez vous-même.";
 
 const FAQ = [
   {
@@ -25,7 +25,7 @@ const FAQ = [
   },
   {
     q: "Combien coûte un site internet carreleur avec Sitaly ?",
-    a: "0 € avec la formule Découverte : un site d'une page, en ligne sur votre-nom.sitaly.fr. Essentiel coûte 39 € par mois, avec 4 pages et votre nom de domaine offert. Pro coûte 79 € par mois, avec 8 pages. Les formules sont sans engagement, et vous commencez sans carte bancaire.",
+    a: "L'aperçu ne coûte rien : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, avec 4 pages et votre nom de domaine offert. Pro coûte 79 € par mois, avec 8 pages. Sans engagement, et satisfait ou remboursé pendant 30 jours.",
   },
   {
     q: "Faut-il savoir coder pour créer mon site ?",
@@ -89,7 +89,7 @@ function CarreleurLanding() {
       route="/site-internet-carreleur/"
       included={INCLUDED}
       localSeo={LOCAL_SEO}
-      h1="Création de site internet pour carreleur, gratuite avec l'IA"
+      h1="Création de site internet pour carreleur, en 1 minute avec l'IA"
       intro="Vous décrivez vos poses de salle de bain, de douche à l'italienne ou de terrasse, et l'IA écrit votre site en une minute. Vous le publiez, puis vous ajoutez vos gros plans de chantier depuis votre téléphone."
       benefits={[
         {

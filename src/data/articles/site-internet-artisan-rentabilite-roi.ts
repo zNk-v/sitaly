@@ -28,7 +28,12 @@ export const contenu: BlogSection[] = [
       "Sources : grille Sitaly (novembre 2026), Codeur.com (page modifiée en mars 2025) pour le freelance, HubSpot France (mai 2026) pour l'agence. Création amortie sur trois ans.",
     headers: ["Solution", "Coût de départ", "Coût annuel ensuite", "Coût annuel moyen sur 3 ans"],
     rows: [
-      ["Sitaly Découverte", "0 €", "0 €", "0 €"],
+      [
+        "Sitaly Essentiel, payé au mois",
+        "0 €",
+        "408 € la 1re année (3 × 19 € puis 9 × 39 €), puis 468 €, domaine compris",
+        "448 €",
+      ],
       ["Sitaly Essentiel, payé à l'année", "0 €", "398 €, domaine compris", "398 €"],
       ["Sitaly Pro, payé à l'année", "0 €", "806 €, domaine compris", "806 €"],
       [
@@ -136,6 +141,6 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Faire le calcul pour votre cas" },
   {
     type: "p",
-    text: "Le moyen le plus sûr de tester sans risque reste un site qui ne coûte rien au départ. Avec la formule Découverte de [l'application Sitaly](https://app.sitaly.fr), votre site est en ligne en une minute environ, gratuitement et sans carte bancaire. Mesurez pendant quelques mois, puis passez à Essentiel avec votre nom de domaine si le site vous apporte vos premiers clients. Voir aussi notre guide pour [créer un site internet d'artisan](/blog/creation-site-internet-artisan-guide/).",
+    text: "Le moyen le plus sûr de tester sans risque reste de voir le site avant de payer. Avec [l'application Sitaly](https://app.sitaly.fr), vous voyez votre site entier en une minute environ, gratuitement, sans compte ni carte. Pour le mettre en ligne, Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, avec votre nom de domaine, et le premier paiement est satisfait ou remboursé pendant 30 jours. Mesurez ensuite ce que le site vous apporte pendant quelques mois. Voir aussi notre guide pour [créer un site internet d'artisan](/blog/creation-site-internet-artisan-guide/).",
   },
 ];

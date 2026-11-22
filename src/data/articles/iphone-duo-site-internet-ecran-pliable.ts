@@ -139,7 +139,7 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Si votre site est sur Sitaly" },
   {
     type: "p",
-    text: "Faites le même test de redimensionnement sur votre site Sitaly. Si un affichage vous gêne à une largeur donnée, écrivez à l'IA ce que vous voulez changer, par exemple « mets le bouton d'appel plus haut sur téléphone ». Si vous n'avez pas encore de site, vous pouvez en créer un dans [l'application Sitaly](https://app.sitaly.fr) à partir d'une phrase, gratuitement, puis le tester tout de suite sur votre propre téléphone. Pour voir la structure d'un site fait pour votre métier, ouvrez les [modèles par métier](/modeles/).",
+    text: "Faites le même test de redimensionnement sur votre site Sitaly. Si un affichage vous gêne à une largeur donnée, écrivez à l'IA ce que vous voulez changer, par exemple « mets le bouton d'appel plus haut sur téléphone ». Si vous n'avez pas encore de site, vous pouvez en créer un dans [l'application Sitaly](https://app.sitaly.fr) à partir d'une phrase et le voir gratuitement sur votre propre téléphone, sans compte ni carte. La mise en ligne demande Essentiel ou Pro. Pour voir la structure d'un site fait pour votre métier, ouvrez les [modèles par métier](/modeles/).",
   },
   { type: "h2", text: "Questions fréquentes" },
   {

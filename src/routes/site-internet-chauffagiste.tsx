@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 
 const URL = "https://sitaly.fr/site-internet-chauffagiste/";
-const TITLE = "Création site internet chauffagiste, gratuit | Sitaly";
+const TITLE = "Création site internet chauffagiste : en 1 minute avec l'IA";
 const DESCRIPTION =
-  "Site internet chauffagiste créé par l'IA en une minute : dépannage, pompes à chaleur, contrats d'entretien. Gratuit pour commencer, vous le modifiez vous-même.";
+  "Site internet chauffagiste créé par l'IA en une minute : dépannage, pompes à chaleur, contrats d'entretien. Aperçu gratuit, vous le modifiez vous-même.";
 
 const FAQ = [
   {
@@ -25,7 +25,7 @@ const FAQ = [
   },
   {
     q: "Combien coûte un site internet chauffagiste avec Sitaly ?",
-    a: "0 € avec la formule Découverte : un site d'une page, en ligne sur votre-nom.sitaly.fr. Essentiel coûte 39 € par mois, avec 4 pages et votre nom de domaine offert. Pro coûte 79 € par mois, avec 8 pages. Les formules sont sans engagement, et vous commencez sans carte bancaire.",
+    a: "L'aperçu ne coûte rien : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, avec 4 pages et votre nom de domaine offert. Pro coûte 79 € par mois, avec 8 pages. Sans engagement, et satisfait ou remboursé pendant 30 jours.",
   },
   {
     q: "Faut-il savoir coder pour créer mon site ?",
@@ -89,7 +89,7 @@ function ChauffagisteLanding() {
       route="/site-internet-chauffagiste/"
       included={INCLUDED}
       localSeo={LOCAL_SEO}
-      h1="Création de site internet pour chauffagiste, gratuite avec l'IA"
+      h1="Création de site internet pour chauffagiste, en 1 minute avec l'IA"
       intro="Vous décrivez vos dépannages, vos installations et vos contrats d'entretien, et l'IA écrit votre site en une minute. Depuis votre téléphone, vous passez des pannes de janvier aux pompes à chaleur du printemps en une phrase."
       benefits={[
         {

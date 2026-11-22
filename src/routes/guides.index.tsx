@@ -112,11 +112,11 @@ function PageGuides() {
               Essayez pendant que vous lisez
             </h2>
             <p className={`mx-auto mt-5 max-w-xl text-lg ${TEXTE_GRIS}`}>
-              Votre site est prêt une minute après votre première phrase. Gratuit, sans carte
-              bancaire.
+              Votre site est prêt une minute après votre première phrase. Aperçu gratuit, sans
+              compte ni carte.
             </p>
             <a href={lienCreation()} className={`${BOUTON_NOIR} mt-8 min-h-12 px-6 text-base`}>
-              Créer mon site gratuitement <ArrowRight className="h-4 w-4" />
+              Voir mon site gratuitement <ArrowRight className="h-4 w-4" />
             </a>
           </div>
         </section>

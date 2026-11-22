@@ -70,7 +70,7 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Combien coûte un site internet pour un artisan ?" },
   {
     type: "p",
-    text: "Tout dépend de qui fait le travail. Avec une application d'IA comme Sitaly, le site est gratuit pour commencer, puis 39 € par mois avec le nom de domaine. Un éditeur comme Wix démarre autour de 17 € par mois. Un freelance demande en général 500 à 2 000 € pour un site vitrine simple, une agence davantage.",
+    text: "Tout dépend de qui fait le travail. Avec une application d'IA comme Sitaly, l'aperçu du site est gratuit, puis la mise en ligne coûte 19 € par mois les 3 premiers mois et 39 € ensuite, nom de domaine compris. Un éditeur comme Wix démarre autour de 17 € par mois. Un freelance demande en général 500 à 2 000 € pour un site vitrine simple, une agence davantage.",
   },
   {
     type: "p",
@@ -93,7 +93,7 @@ export const contenu: BlogSection[] = [
     rows: [
       [
         "Application d'IA (Sitaly)",
-        "Gratuit, puis 39 €/mois ou 398 €/an (Essentiel), domaine compris",
+        "Aperçu gratuit, puis 19 €/mois les 3 premiers mois et 39 €/mois, ou 398 €/an (Essentiel), domaine compris",
         "Environ une minute pour la première version",
         "Décrire votre activité en une phrase, relire, ajouter vos photos",
         "Vos photos et vos retouches, que vous écrivez à l'IA",
@@ -290,7 +290,7 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Pour démarrer aujourd'hui" },
   {
     type: "p",
-    text: "Rassemblez dix photos de chantiers, la liste de vos prestations et celle de vos communes. Puis ouvrez [l'application Sitaly](https://app.sitaly.fr) : la formule Découverte est gratuite et sans carte bancaire, et vous verrez votre site en ligne avant d'avoir à décider quoi que ce soit. Les formules Essentiel et Pro, avec nom de domaine, sont détaillées sur la page [Tarifs](/tarifs/).",
+    text: "Rassemblez dix photos de chantiers, la liste de vos prestations et celle de vos communes. Puis ouvrez [l'application Sitaly](https://app.sitaly.fr) : vous verrez votre site entier gratuitement, sans compte ni carte, avant d'avoir à décider quoi que ce soit. Pour le mettre en ligne, les formules Essentiel et Pro, avec nom de domaine, sont détaillées sur la page [Tarifs](/tarifs/).",
   },
   {
     type: "p",

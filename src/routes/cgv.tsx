@@ -6,7 +6,9 @@ import {
   A_LA_CARTE,
   BOUTIQUE_SANS_ABONNEMENT,
   CREATEUR_IA as IA,
+  GARANTIE_JOURS,
   MENTION_TVA,
+  PRIX_APPEL,
   OFFRES,
   RACHAT_SITE,
   lignesIncluses,
@@ -67,7 +69,7 @@ const listeVitrines = `${nomsVitrines.slice(0, -1).join(", ")} et ${nomsVitrines
 
 function CGV() {
   return (
-    <LegalLayout title="Conditions Générales de Vente et d'Utilisation" updated="5 novembre 2026">
+    <LegalLayout title="Conditions Générales de Vente et d'Utilisation" updated="22 novembre 2026">
       <p>
         Les présentes conditions (ci-après « CGV/CGU ») régissent les relations contractuelles entre{" "}
         <strong>Sitaly</strong>, Auto-Entrepreneur, dont le siège social est situé 25 allée des
@@ -116,22 +118,34 @@ function CGV() {
       <h2>3. Sitaly App</h2>
 
       <h3>3.1 Formules et prix</h3>
-      <p>À la date des présentes, Sitaly App propose trois formules :</p>
+      <p>À la date des présentes, Sitaly App propose deux formules payantes :</p>
       <ul>
         <li>
-          <strong>{IA.decouverte.nom}</strong> : gratuite, sans carte bancaire. Elle comprend la
-          création du site, sa publication sur une adresse en nom.sitaly.fr et{" "}
-          {IA.decouverte.credits} crédits IA offerts une seule fois à l'ouverture du compte.
-        </li>
-        <li>
-          <strong>{IA.essentiel.nom}</strong> : {euros(IA.essentiel.mensuel)} par mois, ou{" "}
-          {euros(IA.essentiel.annuel)} par an, avec {IA.essentiel.credits} crédits IA par mois.
+          <strong>{IA.essentiel.nom}</strong> : {euros(PRIX_APPEL.mensuel)} par mois les{" "}
+          {PRIX_APPEL.mois} premiers mois, puis {euros(IA.essentiel.mensuel)} par mois, ou{" "}
+          {euros(IA.essentiel.annuel)} par an, avec {IA.essentiel.credits} crédits IA par mois. Le
+          prix de {euros(PRIX_APPEL.mensuel)} vaut pour le premier abonnement du compte, payé au
+          mois.
         </li>
         <li>
           <strong>{IA.pro.nom}</strong> : {euros(IA.pro.mensuel)} par mois, ou{" "}
           {euros(IA.pro.annuel)} par an, avec {IA.pro.credits.toLocaleString("fr-FR")} crédits IA par mois.
         </li>
       </ul>
+      <p>
+        Sans abonnement, l'Utilisateur peut faire créer son site par l'IA, le voir en entier et le
+        retoucher dans l'éditeur, sans le mettre en ligne. La publication du site demande une
+        formule payante. Les comptes créés avant le 23 novembre 2026 gardent le droit de publier
+        leur site sans abonnement, dans les limites de l'ancienne formule {IA.decouverte.nom} :
+        adresse en nom.sitaly.fr, {IA.decouverte.credits} crédits IA offerts une seule fois à
+        l'ouverture du compte, trois factures par mois et carnet de {IA.decouverte.contactsMax}{" "}
+        clients.
+      </p>
+      <p>
+        Une offre limitée dans le temps, comme l'abonnement annuel à prix réduit du Black Friday
+        2026, s'applique aux souscriptions faites pendant la période et aux conditions annoncées
+        sur le site.
+      </p>
       <p>
         Le détail de chaque formule figure sur la page <a href="/tarifs/">Tarifs</a>. Les fonctions
         signalées « Bientôt » sont en préparation : elles ne font pas partie de la formule souscrite
@@ -162,12 +176,23 @@ function CGV() {
         L'Utilisateur résilie depuis son espace (rubrique Abonnement) ou par e-mail à{" "}
         <a href="mailto:contact@sitaly.fr">contact@sitaly.fr</a>. Il reçoit un rappel par e-mail
         avant le renouvellement d'un abonnement annuel. En cas de défaut de paiement, le compte
-        revient à la formule {IA.decouverte.nom}. Le Prestataire peut faire évoluer ses prix : le
-        nouveau prix s'applique à la prochaine échéance, après information préalable de
-        l'Utilisateur, qui peut résilier avant.
+        perd les fonctions de sa formule payante, comme à la fin d'un abonnement (article 3.6). Le
+        Prestataire peut faire évoluer ses prix : le nouveau prix s'applique à la prochaine
+        échéance, après information préalable de l'Utilisateur, qui peut résilier avant.
       </p>
 
-      <h3>3.3 Crédits IA</h3>
+      <h3>3.3 Satisfait ou remboursé pendant {GARANTIE_JOURS} jours</h3>
+      <p>
+        Le premier paiement d'un abonnement à Sitaly App est couvert par une garantie « satisfait
+        ou remboursé » de {GARANTIE_JOURS} jours. Dans les {GARANTIE_JOURS} jours qui suivent ce
+        paiement, l'Utilisateur obtient son remboursement intégral sur simple demande à{" "}
+        <a href="mailto:contact@sitaly.fr">contact@sitaly.fr</a>, sans avoir à se justifier. Le
+        remboursement est fait sur le moyen de paiement utilisé, et l'abonnement prend fin. La
+        garantie vaut une fois par compte, pour le premier paiement d'un abonnement, au mois comme
+        à l'année. Elle s'ajoute au droit de rétractation (article 12) sans le remplacer.
+      </p>
+
+      <h3>3.4 Crédits IA</h3>
       <p>
         Les crédits IA servent aux demandes faites à l'intelligence artificielle : réécrire ou
         ajouter une section, changer le ton, modifier le site en une phrase, créer une photo, écrire
@@ -188,7 +213,7 @@ function CGV() {
         crédit.
       </p>
 
-      <h3>3.4 Contenus créés par l'IA</h3>
+      <h3>3.5 Contenus créés par l'IA</h3>
       <p>
         Les textes et les photos produits par l'IA sont générés automatiquement à partir des
         indications de l'Utilisateur. Ils peuvent contenir des erreurs ou des informations inexactes
@@ -204,7 +229,7 @@ function CGV() {
         leur caractère unique, ni l'absence de ressemblance avec des contenus existants.
       </p>
 
-      <h3>3.5 Site publié et fin d'abonnement</h3>
+      <h3>3.6 Site publié et fin d'abonnement</h3>
       <p>
         Le site est publié sur une adresse en nom.sitaly.fr. Le Prestataire reste titulaire du nom
         de domaine sitaly.fr : l'adresse est attribuée à l'Utilisateur pour son usage et peut lui
@@ -212,14 +237,16 @@ function CGV() {
         l'Utilisateur restent sa propriété.
       </p>
       <p>
-        À la fin d'un abonnement payant, le compte revient à la formule {IA.decouverte.nom} : le
-        site reste en ligne dans les limites de cette formule, et les fonctions réservées aux
-        formules payantes cessent. À la suppression du compte, le site est mis hors ligne et ses
+        À la fin d'un abonnement payant, les fonctions réservées aux formules payantes cessent.
+        Pour un compte créé à partir du 23 novembre 2026, la mise en ligne du site en fait partie :
+        le Prestataire peut alors mettre le site hors ligne. Le site d'un compte créé avant cette
+        date reste en ligne dans les limites de l'ancienne formule {IA.decouverte.nom} (article
+        3.1). À la suppression du compte, le site est mis hors ligne et ses
         données sont supprimées dans les conditions de la{" "}
         <a href="/politique-confidentialite/">politique de confidentialité</a>.
       </p>
 
-      <h3>3.6 Devis, factures et paiements</h3>
+      <h3>3.7 Devis, factures et paiements</h3>
       <p>
         Sitaly App permet à l'Utilisateur d'établir des devis et des factures à son nom et de les
         envoyer à ses propres clients. L'Utilisateur reste l'émetteur de ces documents : il répond
@@ -232,8 +259,7 @@ function CGV() {
         l'Utilisateur, qui accepte à cette occasion les conditions de Stripe. Les sommes sont
         versées directement à l'Utilisateur ; le Prestataire ne les détient à aucun moment et ne
         prélève, à la date des présentes, aucune commission sur ces paiements. Toute commission
-        future serait annoncée au moins trente jours avant son application. La formule{" "}
-        {IA.decouverte.nom} permet d'émettre trois factures par mois.
+        future serait annoncée au moins trente jours avant son application.
       </p>
 
       <h2>4. Offres de l'agence</h2>
@@ -424,7 +450,7 @@ function CGV() {
         Prestataire ; l'Utilisateur bénéficie d'un droit d'usage personnel et non exclusif pendant
         la durée de son abonnement. Les données et contenus saisis par l'Utilisateur restent sa
         propriété ; il peut en demander l'export ou la suppression. Pour les sites internet, les
-        dispositions spécifiques des articles 3.4, 3.5 et 6.4 à 6.6 s'appliquent.
+        dispositions spécifiques des articles 3.5, 3.6 et 6.4 à 6.6 s'appliquent.
       </p>
 
       <h2>12. Droit de rétractation</h2>

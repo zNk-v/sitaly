@@ -160,7 +160,7 @@ export const contenu: BlogSection[] = [
       },
       {
         q: "Puis-je avoir une fiche sans site internet ?",
-        a: "Oui, mais vous perdez des clients : la fiche donne vos coordonnées, le site les convainc. Avec Sitaly, un site gratuit se met en ligne en une minute, puis vous le reliez à la fiche.",
+        a: "Oui, mais vous perdez des clients : la fiche donne vos coordonnées, le site les convainc. Avec Sitaly, vous voyez votre site entier en une minute, gratuitement ; vous le mettez en ligne avec Essentiel ou Pro, puis vous le reliez à la fiche.",
       },
     ],
   },

@@ -583,22 +583,26 @@ export const MENTION_TVA = "TVA non applicable, art. 293 B du CGI";
 
 /**
  * Sitaly App, le créateur de site par l'IA en libre-service (29 octobre 2026,
- * produit principal de sitaly.fr depuis le 30 octobre). Trois formules
- * calquées sur Durable (Gratuit, Launch, Grow), mensuelles ou annuelles
- * (douze mois moins 15 %, arrondis à l'euro). Les mêmes montants vivent dans
- * l'application (sitaly-saas : src/lib/entitlements.ts) et dans Stripe.
+ * produit principal de sitaly.fr depuis le 30 octobre). Depuis la décision de
+ * Ted du 22 novembre 2026, deux formules payantes seulement, Essentiel et Pro,
+ * au mois ou à l'année (douze mois moins 15 %, arrondis à l'euro). Les mêmes
+ * montants vivent dans l'application (sitaly-saas : src/lib/entitlements.ts)
+ * et dans Stripe.
+ *
+ * L'aperçu reste gratuit : le visiteur voit son site entier sans compte ni
+ * carte, crée son compte et le retouche dans l'éditeur. Le mettre en ligne
+ * demande Essentiel ou Pro. Ce n'est plus une formule, la grille ne l'affiche
+ * qu'en étape.
  *
  * Hors de `OFFRES`, qui garde les offres de l'agence, vendues au téléphone.
  */
 export const CREATEUR_IA = {
   page: "/",
-  menuDesc: "Votre site écrit par l'IA, formule gratuite pour commencer.",
+  menuDesc: "Votre site écrit par l'IA, aperçu gratuit avant de payer.",
   /**
-   * `contactsMax` : le plafond du carnet de clients en Découverte. La base le
-   * fait appliquer (sitaly-saas, fonction SQL `crm_limit_for` de la migration
-   * 20261029130000_offres_decouverte_essentiel_pro.sql, et son miroir
-   * `ENTITLEMENTS.decouverte.crmMax` dans src/lib/entitlements.ts). Essentiel
-   * et Pro n'ont pas de plafond.
+   * Le compte sans abonnement (plan `decouverte` dans sitaly-saas). Il ne
+   * s'affiche plus comme une formule : les CGV en parlent pour les comptes
+   * créés avant le 23 novembre 2026, qui gardent le droit de publier.
    */
   decouverte: { nom: "Découverte", mensuel: 0, annuel: 0, credits: 50, contactsMax: 10 },
   // Les prix se règlent aussi depuis le centre de pilotage de l'app (src/data/vitrine.ts).
@@ -607,10 +611,50 @@ export const CREATEUR_IA = {
 } as const;
 
 /**
+ * Le prix d'appel d'Essentiel au mois (décision du 22 novembre 2026), toute
+ * l'année, réservé au premier abonnement du compte. Le serveur applique la
+ * remise lui-même (stripe-checkout) : la vitrine ne fait que l'annoncer.
+ */
+export const PRIX_APPEL = { mensuel: 19, mois: 3, ensuite: 39 } as const;
+
+/**
+ * Le Black Friday 2026, en heure de Paris : annuel à prix réduit, en un
+ * paiement. Hors de la fenêtre, rien ne s'en affiche. La fin est exclusive
+ * (1er décembre à minuit), le dernier jour annoncé est le 30 novembre.
+ */
+export const BLACK_FRIDAY = {
+  debut: "2026-11-27T00:00:00+01:00",
+  fin: "2026-12-01T00:00:00+01:00",
+  essentielAn: 290,
+  essentielAnBarre: 468,
+  proAn: 590,
+  proAnBarre: 948,
+} as const;
+
+export function blackFridayActif(maintenant = Date.now()) {
+  return maintenant >= Date.parse(BLACK_FRIDAY.debut) && maintenant < Date.parse(BLACK_FRIDAY.fin);
+}
+
+/** La garantie sur le premier paiement d'un abonnement, remboursé depuis Stripe. */
+export const GARANTIE_JOURS = 30;
+export const GARANTIE = `Satisfait ou remboursé pendant ${GARANTIE_JOURS} jours`;
+
+/** « 19 € par mois les 3 premiers mois, puis 39 € », dit une seule fois. */
+export const PHRASE_PRIX_APPEL = `${PRIX_APPEL.mensuel} € par mois les ${PRIX_APPEL.mois} premiers mois, puis ${PRIX_APPEL.ensuite} €`;
+
+/** L'aperçu gratuit, l'étape avant les formules. */
+export const PHRASE_APERCU =
+  "Voyez votre site entier gratuitement, sans compte ni carte. Pour le mettre en ligne, choisissez Essentiel ou Pro.";
+
+/**
  * Les formules de l'application en données structurées (audit SEO du
  * 14 novembre 2026) : chaque offre porte sa page, sa disponibilité et ses deux
- * périodes de facturation, au mois et à l'année. Partagé par l'accueil et
- * /tarifs/, pour que les deux pages disent la même chose à Google.
+ * périodes de facturation, au mois et à l'année. Partagé par l'accueil,
+ * /tarifs/ et les pages métier, pour qu'elles disent la même chose à Google.
+ *
+ * Plus d'offre à 0 € depuis le 22 novembre 2026 : l'aperçu gratuit n'est pas
+ * une offre. Essentiel déclare son prix d'appel en premier palier (trois mois à
+ * 19 €), puis son prix courant.
  */
 export function offresStructurees() {
   const url = "https://sitaly.fr/tarifs/";
@@ -629,22 +673,18 @@ export function offresStructurees() {
     availability: "https://schema.org/InStock",
     priceSpecification: [periode(f.mensuel, "P1M"), periode(f.annuel, "P1Y")],
   });
-  return [
+  const essentiel = payante(CREATEUR_IA.essentiel);
+  // Le prix d'appel : 19 € les trois premiers mois (billingStart compte en
+  // mois, unitCode MON), puis le prix courant à partir du quatrième.
+  essentiel.priceSpecification = [
     {
-      "@type": "Offer",
-      name: CREATEUR_IA.decouverte.nom,
-      url,
-      price: "0",
-      priceCurrency: "EUR",
-      availability: "https://schema.org/InStock",
-      // Découverte porte aussi ses deux périodes à 0 € (audit SEO du
-      // 13 novembre 2026, 1.5) : « chaque Offer » comprend la formule
-      // gratuite, et sans elles Google lisait une offre sans durée.
-      priceSpecification: [periode(0, "P1M"), periode(0, "P1Y")],
+      ...periode(PRIX_APPEL.mensuel, "P1M"),
+      name: `Les ${PRIX_APPEL.mois} premiers mois, premier abonnement`,
     },
-    payante(CREATEUR_IA.essentiel),
-    payante(CREATEUR_IA.pro),
-  ];
+    { ...periode(CREATEUR_IA.essentiel.mensuel, "P1M"), billingStart: PRIX_APPEL.mois, unitCode: "MON" },
+    periode(CREATEUR_IA.essentiel.annuel, "P1Y"),
+  ] as typeof essentiel.priceSpecification;
+  return [essentiel, payante(CREATEUR_IA.pro)];
 }
 
 /** Prix le plus bas d'un site, pour les accroches (« à partir de »). */

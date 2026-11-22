@@ -146,7 +146,7 @@ function Partenaires() {
               Et votre site, dans une minute
             </h2>
             <p className={`mx-auto mt-4 max-w-xl text-lg ${TEXTE_GRIS}`}>
-              Décrivez votre activité en une phrase : l'IA crée votre site. C'est gratuit.
+              Décrivez votre activité en une phrase : l'IA crée votre site. L'aperçu est gratuit.
             </p>
             <a href={lienCreation()} className={`${BOUTON_NOIR} mt-8 px-6 py-3.5 text-base`}>
               Créer mon site

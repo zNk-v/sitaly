@@ -22,7 +22,7 @@ export const contenu: BlogSection[] = [
   {
     type: "table",
     caption:
-      "Formules gratuites relevées le 15 novembre 2026 sur la page tarifs de chaque éditeur. La colonne « facturation électronique » reprend ce que l'éditeur affirme : vérifiez son nom sur la liste officielle des plateformes agréées.",
+      "Formules gratuites relevées le 15 novembre 2026 sur la page tarifs de chaque éditeur. La colonne « facturation électronique » reprend ce que l'éditeur affirme : vérifiez son nom sur la liste officielle des plateformes agréées. Sitaly, en dernière ligne pour comparer, n'a pas de formule gratuite.",
     headers: ["Logiciel", "Formule gratuite", "Ce qu'elle ne fait pas", "Facturation électronique, selon l'éditeur"],
     rows: [
       [
@@ -69,8 +69,8 @@ export const contenu: BlogSection[] = [
       ],
       [
         "[Sitaly](/tarifs/)",
-        "Découverte : devis illimités, 3 factures par mois, avec un site internet",
-        "Relances automatiques (Essentiel et Pro)",
+        "Pas de formule gratuite : devis et factures avec Essentiel, 19 € par mois les 3 premiers mois, puis 39 €, site internet compris",
+        "Rien en gratuit, hors l'aperçu de votre site",
         "Pas encore : connexion prévue avant septembre 2027",
       ],
     ],
@@ -138,7 +138,7 @@ export const contenu: BlogSection[] = [
       "La signature des devis en ligne : utile si vous faites des devis à des particuliers.",
       "L'envoi par e-mail depuis l'outil : sans lui, chaque facture demande un téléchargement et un mail à la main.",
       "La mention de l'éditeur sur vos documents : sans gravité, mais à savoir.",
-      "Le volume : 3 documents par mois chez VosFactures, 3 factures par mois chez Sitaly en formule gratuite.",
+      "Le volume : 3 documents par mois chez VosFactures.",
       "Le support : souvent limité à une aide en ligne dans les formules gratuites.",
     ],
   },
@@ -149,7 +149,7 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Et Sitaly ?" },
   {
     type: "p",
-    text: "Sitaly n'est pas d'abord un logiciel de facturation : c'est un créateur de site internet par l'IA, avec les devis et les factures inclus. La formule Découverte est gratuite, sans carte bancaire : devis illimités, 3 factures par mois et votre site en ligne sur votre-nom.sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, passe aux factures illimitées avec les relances automatiques, votre nom de domaine et la prise de rendez-vous.",
+    text: "Sitaly n'est pas d'abord un logiciel de facturation : c'est un créateur de site internet par l'IA, avec les devis et les factures inclus dans ses abonnements. Il n'a pas de formule gratuite pour facturer : l'aperçu de votre site est gratuit, sans compte ni carte, et les devis et factures vont avec Essentiel ou Pro. Essentiel, à 19 € par mois les 3 premiers mois puis 39 €, sans engagement, comprend les factures illimitées avec les relances automatiques, votre site en ligne avec votre nom de domaine et la prise de rendez-vous. Le premier paiement est satisfait ou remboursé pendant 30 jours.",
   },
   {
     type: "p",

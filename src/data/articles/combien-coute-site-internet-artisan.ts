@@ -17,10 +17,10 @@ export const contenu: BlogSection[] = [
     text: "Les prix des autres prestataires évoluent souvent. Ceux cités ici viennent des pages publiques indiquées en lien, à la date indiquée. Vérifiez toujours la page du prestataire le jour où vous décidez.",
   },
   { type: "h2", text: "Les quatre niveaux de prix" },
-  { type: "h3", text: "Gratuit à 40 € par mois : les applications d'IA" },
+  { type: "h3", text: "19 à 40 € par mois : les applications d'IA" },
   {
     type: "p",
-    text: "Vous décrivez votre activité, l'IA écrit le site et le publie. Chez Sitaly, la formule Découverte est gratuite et sans carte bancaire, avec un site en ligne sur votre-nom.sitaly.fr. La formule Essentiel coûte 39 € par mois ou 398 € par an et comprend un nom de domaine en .fr ou en .com déposé à votre nom. La formule Pro coûte 79 € par mois ou 806 € par an. Sitaly n'est pas assujetti à la TVA (article 293 B du CGI) : ces montants sont ceux que vous payez. Le détail est sur la page [Tarifs](/tarifs/).",
+    text: "Vous décrivez votre activité, l'IA écrit le site et le publie. Chez Sitaly, l'aperçu est gratuit : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, la formule Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, ou 398 € par an, et comprend un nom de domaine en .fr ou en .com déposé à votre nom. La formule Pro coûte 79 € par mois ou 806 € par an. Sitaly n'est pas assujetti à la TVA (article 293 B du CGI) : ces montants sont ceux que vous payez. Le détail est sur la page [Tarifs](/tarifs/).",
   },
   { type: "h3", text: "15 à 40 € par mois : les éditeurs à modèles" },
   {
@@ -48,7 +48,13 @@ export const contenu: BlogSection[] = [
       "Calcul Sitaly à partir des sources citées : grille Sitaly (novembre 2026), Wix (relevé du 30 octobre 2026), Codeur.com (mars 2025), HubSpot France (mai 2026).",
     headers: ["Solution", "Création", "Récurrent", "Total sur 3 ans", "Votre temps"],
     rows: [
-      ["Sitaly Découverte", "0 €", "0 €", "0 €, sur votre-nom.sitaly.fr", "Une heure pour relire"],
+      [
+        "Sitaly Essentiel au mois",
+        "0 €",
+        "19 €/mois les 3 premiers mois, puis 39 €/mois, domaine compris",
+        "1 344 €",
+        "Une heure pour relire",
+      ],
       [
         "Sitaly Essentiel en annuel",
         "0 €",
@@ -180,7 +186,7 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Notre conseil" },
   {
     type: "p",
-    text: "Commencez par ce qui ne coûte rien : créez une première version de votre site dans [l'application Sitaly](https://app.sitaly.fr) avec la formule Découverte, sans carte bancaire. Vous verrez à quoi ressemble votre site avant de payer quoi que ce soit, et vous saurez si vous avez besoin de plus. Si votre projet demande un vrai sur-mesure, vous aurez au moins une base claire à montrer à un freelance ou à une agence.",
+    text: "Commencez par ce qui ne coûte rien : créez une première version de votre site dans [l'application Sitaly](https://app.sitaly.fr), sans compte ni carte. Vous verrez votre site entier avant de payer quoi que ce soit, et vous saurez si vous avez besoin de plus. Si votre projet demande un vrai sur-mesure, vous aurez au moins une base claire à montrer à un freelance ou à une agence.",
   },
   {
     type: "p",

@@ -20,7 +20,7 @@ import {
   OutilsRemplaces,
 } from "@/components/produit/Vitrine";
 import { FilmLancement, GrilleActivite } from "@/components/produit/Activite";
-import { CREATEUR_IA as IA, offresStructurees } from "@/data/offres";
+import { CREATEUR_IA as IA, GARANTIE, offresStructurees, PRIX_APPEL } from "@/data/offres";
 import { VITRINE } from "@/data/vitrine";
 
 /**
@@ -35,7 +35,7 @@ import { VITRINE } from "@/data/vitrine";
  */
 
 const TITRE = "Sitaly : créez votre site internet avec l'IA, en une minute";
-const DESCRIPTION = `Décrivez votre activité en une phrase : l'IA de Sitaly écrit votre site, crée vos photos et le met en ligne. Gratuit pour commencer, puis dès ${IA.essentiel.mensuel} €/mois.`;
+const DESCRIPTION = `Décrivez votre activité en une phrase : l'IA de Sitaly écrit votre site et crée vos photos. Aperçu gratuit, en ligne à ${PRIX_APPEL.mensuel} €/mois les ${PRIX_APPEL.mois} premiers mois.`;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -216,11 +216,15 @@ function Accueil() {
             <div className="mx-auto mt-2 grid max-w-xl grid-cols-2 gap-4 text-center">
               <div className="rounded-3xl bg-black/[0.03] p-6">
                 <div className={`text-sm ${TEXTE_GRIS}`}>Avec Sitaly</div>
-                <div className="mt-1 text-4xl font-semibold tracking-tight">0 €</div>
-                <div className={`mt-1 text-sm ${TEXTE_GRIS}`}>pour commencer</div>
+                <div className="mt-1 text-4xl font-semibold tracking-tight">
+                  {PRIX_APPEL.mensuel} €
+                </div>
+                <div className={`mt-1 text-sm ${TEXTE_GRIS}`}>
+                  par mois, les {PRIX_APPEL.mois} premiers mois
+                </div>
               </div>
               <div className="rounded-3xl bg-black/[0.03] p-6">
-                <div className={`text-sm ${TEXTE_GRIS}`}>Tout compris</div>
+                <div className={`text-sm ${TEXTE_GRIS}`}>Ensuite</div>
                 <div className="mt-1 text-4xl font-semibold tracking-tight">
                   {IA.essentiel.mensuel} €
                 </div>
@@ -230,15 +234,15 @@ function Accueil() {
           </div>
         </section>
 
-        {/* Le passage du gratuit au payant, dit d'un bloc avant la grille
-            (audit du tunnel du 15 novembre 2026) : ce que Découverte arrête,
-            ce qu'Essentiel ouvre, le nom de domaine offert. */}
+        {/* De l'aperçu gratuit à la mise en ligne, dit d'un bloc avant la
+            grille (audit du tunnel du 15 novembre 2026, revu le 22 novembre :
+            plus de publication gratuite). */}
         <section id="passage" className="scroll-mt-28 px-4 py-12 sm:px-6 sm:py-28">
           <div className="mx-auto max-w-6xl">
             <TitreSection
-              surtitre="Gratuit, puis payant"
-              titre={`De ${IA.decouverte.nom} à ${IA.essentiel.nom}`}
-              sousTitre={`Publiez gratuitement, autant de temps qu'il vous faut. Le jour où vous voulez votre nom de domaine, ${IA.essentiel.nom} vous l'offre.`}
+              surtitre="Voir, puis publier"
+              titre="De l'aperçu à la mise en ligne"
+              sousTitre={`Vous voyez votre site entier avant de payer. Pour le publier, ${IA.essentiel.nom} vous offre aussi votre nom de domaine.`}
             />
             <div className="mt-8 sm:mt-14">
               <PassageEssentiel />
@@ -250,8 +254,8 @@ function Accueil() {
           <div className="mx-auto max-w-6xl">
             <TitreSection
               surtitre="Tarifs"
-              titre="Commencez gratuitement"
-              sousTitre="Payez seulement si votre site vous plaît. Au mois ou à l'année, 15 % moins cher."
+              titre="Deux formules, un aperçu gratuit"
+              sousTitre={`Payez seulement si votre site vous plaît. Au mois ou à l'année, 15 % moins cher. ${GARANTIE}.`}
             />
             <div className="mt-8 sm:mt-14">
               <GrilleTarifs />
@@ -274,7 +278,7 @@ function Accueil() {
               Votre site, dans une minute
             </h2>
             <p className={`mx-auto mt-5 max-w-xl text-lg ${TEXTE_GRIS}`}>
-              Décrivez votre activité en une phrase. C'est gratuit.
+              Décrivez votre activité en une phrase. L'aperçu est gratuit.
             </p>
           </div>
           <div className="mx-auto mt-10 max-w-3xl">

@@ -16,7 +16,7 @@ import { BoutonCollant } from "@/components/produit/BoutonCollant";
 import { CartePilier } from "@/components/pilier/Pilier";
 import { PRODUITS, getProduit } from "@/data/produits";
 import { PILIER_PAR_PRODUIT, PILIER_SITE } from "@/data/piliers";
-import { APP_REF, CREATEUR_IA as IA, MENTION_TVA } from "@/data/offres";
+import { APP_REF, CREATEUR_IA as IA, MENTION_TVA, PRIX_APPEL } from "@/data/offres";
 import { BASE_URL, euros } from "@/lib/config";
 
 /**
@@ -84,8 +84,7 @@ export const Route = createFileRoute("/produits/$id")({
 });
 
 const FORMULES = [
-  [IA.decouverte.nom, "Gratuit"],
-  [IA.essentiel.nom, `${euros(IA.essentiel.mensuel)}/mois`],
+  [IA.essentiel.nom, `${euros(PRIX_APPEL.mensuel)}/mois les ${PRIX_APPEL.mois} premiers mois, puis ${euros(IA.essentiel.mensuel)}`],
   [IA.pro.nom, `${euros(IA.pro.mensuel)}/mois`],
 ] as const;
 
@@ -116,7 +115,7 @@ function PageProduit() {
               <a href={lienCreation()} className={`${BOUTON_NOIR} min-h-12 px-6 text-base`}>
                 {p.cta} <ArrowRight className="h-4 w-4" />
               </a>
-              <span className={`text-sm ${TEXTE_GRIS}`}>Gratuit, sans carte bancaire.</span>
+              <span className={`text-sm ${TEXTE_GRIS}`}>Aperçu gratuit, sans compte ni carte.</span>
             </div>
             {/* Le guide comparatif du produit (16 novembre 2026), quand il
                 existe : celui qui compare avant de choisir le lit d'abord. */}
@@ -190,29 +189,29 @@ function PageProduit() {
         <section className="px-4 py-16 sm:px-6 sm:py-20">
           <div className="mx-auto max-w-5xl">
             <TitreSection surtitre="Formules" titre="Ce que chaque formule comprend" />
-            <div className="mt-12 grid gap-3 md:grid-cols-3">
+            <div className="mx-auto mt-12 grid max-w-3xl gap-3 md:grid-cols-2">
               {FORMULES.map(([nom, prix], k) => {
                 const v = p.inclus[k];
                 return (
                   <div
                     key={nom}
-                    className={k === 1 ? "rounded-3xl bg-[#0d0f14] p-7 text-white" : `${CARTE} p-7`}
+                    className={k === 0 ? "rounded-3xl bg-[#0d0f14] p-7 text-white" : `${CARTE} p-7`}
                   >
                     <div className="flex items-baseline justify-between gap-3">
                       <span className="text-lg font-semibold">{nom}</span>
-                      <span className={k === 1 ? "text-white/60" : TEXTE_GRIS}>{prix}</span>
+                      <span className={k === 0 ? "text-white/60" : TEXTE_GRIS}>{prix}</span>
                     </div>
                     <div className="mt-6 flex items-center gap-2.5 font-medium">
                       {v ? (
                         <>
                           <Check
-                            className={`h-5 w-5 ${k === 1 ? "text-[#c4b5fd]" : "text-black/80"}`}
+                            className={`h-5 w-5 ${k === 0 ? "text-[#c4b5fd]" : "text-black/80"}`}
                             aria-hidden="true"
                           />
                           {v}
                         </>
                       ) : (
-                        <span className={k === 1 ? "text-white/45" : "text-black/40"}>
+                        <span className={k === 0 ? "text-white/45" : "text-black/40"}>
                           Non compris
                         </span>
                       )}

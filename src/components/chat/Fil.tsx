@@ -23,7 +23,7 @@ export type Ligne = {
 
 export const QUESTIONS_PRETES = [
   "Combien ça coûte ?",
-  "Qu'est-ce que la formule gratuite comprend ?",
+  "Que puis-je faire sans payer ?",
   "Faut-il savoir faire un site ?",
 ];
 

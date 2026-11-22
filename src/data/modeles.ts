@@ -108,7 +108,7 @@ export const MODELES: Modele[] = [
       },
       {
         q: "Combien coûte un site de fleuriste avec Sitaly ?",
-        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
+        a: "L'aperçu est gratuit : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, la formule Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, sans engagement, et vous offre votre nom de domaine en .fr ou en .com.",
       },
     ],
     intro:
@@ -161,7 +161,7 @@ export const MODELES: Modele[] = [
       },
       {
         q: "Combien coûte un site de plombier avec Sitaly ?",
-        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
+        a: "L'aperçu est gratuit : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, la formule Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, sans engagement, et vous offre votre nom de domaine en .fr ou en .com.",
       },
     ],
     intro:
@@ -199,7 +199,7 @@ export const MODELES: Modele[] = [
     faq: [
       {
         q: "Mes clients peuvent-ils réserver une séance en ligne ?",
-        a: "Oui, avec les formules Essentiel et Pro : vous définissez vos prestations et vos créneaux, le client choisit le sien depuis votre site et reçoit une confirmation par e-mail. Avec la formule gratuite, il vous écrit par le formulaire.",
+        a: "Oui, avec les formules Essentiel et Pro : vous définissez vos prestations et vos créneaux, le client choisit le sien depuis votre site et reçoit une confirmation par e-mail.",
       },
       {
         q: "Dois-je afficher mes tarifs ?",
@@ -299,7 +299,7 @@ export const MODELES: Modele[] = [
     faq: [
       {
         q: "Les clientes peuvent-elles réserver en ligne ?",
-        a: "Oui, avec Essentiel et Pro : elles choisissent une prestation et un créneau libre depuis votre site, reçoivent une confirmation par e-mail et peuvent annuler en un clic. La formule gratuite affiche votre téléphone et un formulaire.",
+        a: "Oui, avec Essentiel et Pro : elles choisissent une prestation et un créneau libre depuis votre site, reçoivent une confirmation par e-mail et peuvent annuler en un clic.",
       },
       {
         q: "Comment afficher ma grille de tarifs ?",
@@ -364,7 +364,7 @@ export const MODELES: Modele[] = [
       },
       {
         q: "Combien coûte un site de paysagiste avec Sitaly ?",
-        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
+        a: "L'aperçu est gratuit : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, la formule Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, sans engagement, et vous offre votre nom de domaine en .fr ou en .com.",
       },
     ],
     intro:
@@ -414,7 +414,7 @@ export const MODELES: Modele[] = [
       },
       {
         q: "Combien coûte un site d'élagueur avec Sitaly ?",
-        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
+        a: "L'aperçu est gratuit : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, la formule Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, sans engagement, et vous offre votre nom de domaine en .fr ou en .com.",
       },
     ],
     intro:
@@ -458,7 +458,7 @@ export const MODELES: Modele[] = [
       },
       {
         q: "Puis-je avoir mon nom de domaine ?",
-        a: "Oui. Les formules Essentiel et Pro offrent un nom en .fr ou en .com, enregistré à votre nom. La formule gratuite met votre site sur une adresse en .sitaly.fr.",
+        a: "Oui. Les formules Essentiel et Pro offrent un nom en .fr ou en .com, enregistré à votre nom.",
       },
     ],
     intro:
@@ -608,7 +608,7 @@ export const MODELES: Modele[] = [
       },
       {
         q: "Combien coûte un site d'électricien avec Sitaly ?",
-        a: "Rien pour commencer : la création est gratuite et sans carte bancaire. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine.",
+        a: "Rien pour voir votre site : l'aperçu est gratuit, sans compte ni carte. Pour le mettre en ligne, la formule Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, sans engagement, nom de domaine offert.",
       },
     ],
     intro:
@@ -676,7 +676,7 @@ export const MODELES: Modele[] = [
       },
       {
         q: "Combien coûte un site de peintre en bâtiment avec Sitaly ?",
-        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
+        a: "L'aperçu est gratuit : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, la formule Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, sans engagement, et vous offre votre nom de domaine en .fr ou en .com.",
       },
     ],
     intro:
@@ -744,7 +744,7 @@ export const MODELES: Modele[] = [
       },
       {
         q: "Combien coûte un site de menuisier avec Sitaly ?",
-        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com, enregistré à votre nom.",
+        a: "L'aperçu est gratuit : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, la formule Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, sans engagement, et vous offre votre nom de domaine en .fr ou en .com, enregistré à votre nom.",
       },
     ],
     intro:
@@ -812,7 +812,7 @@ export const MODELES: Modele[] = [
       },
       {
         q: "Combien coûte un site de couvreur avec Sitaly ?",
-        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
+        a: "L'aperçu est gratuit : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, la formule Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, sans engagement, et vous offre votre nom de domaine en .fr ou en .com.",
       },
     ],
     intro:
@@ -880,7 +880,7 @@ export const MODELES: Modele[] = [
       },
       {
         q: "Combien coûte un site de maçon avec Sitaly ?",
-        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
+        a: "L'aperçu est gratuit : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, la formule Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, sans engagement, et vous offre votre nom de domaine en .fr ou en .com.",
       },
     ],
     intro:
@@ -936,7 +936,7 @@ export const MODELES: Modele[] = [
     faq: [
       {
         q: "La réservation en ligne est-elle comprise ?",
-        a: "Elle fait partie des formules Essentiel et Pro : vos soins, leurs durées et vos créneaux, avec confirmation par e-mail et annulation en un clic. La formule gratuite affiche votre téléphone et un formulaire.",
+        a: "Elle fait partie des formules Essentiel et Pro : vos soins, leurs durées et vos créneaux, avec confirmation par e-mail et annulation en un clic.",
       },
       {
         q: "Je travaille à domicile, le site convient-il ?",
@@ -1003,8 +1003,8 @@ export const MODELES: Modele[] = [
     outils: ["prise-de-rendez-vous", "avis-google", "identite-de-marque"],
     faq: [
       {
-        q: "Puis-je créer le site de mon restaurant gratuitement ?",
-        a: "Oui, la formule Découverte est à 0 € : vous créez votre site, votre carte et votre menu du jour sans payer.",
+        q: "Puis-je voir le site de mon restaurant avant de payer ?",
+        a: "Oui. L'aperçu est gratuit : vous voyez votre site, votre carte et votre menu du jour sans compte ni carte. Pour le mettre en ligne, choisissez Essentiel ou Pro.",
       },
       {
         q: "Le site gère-t-il les réservations de table ?",
@@ -1077,8 +1077,8 @@ export const MODELES: Modele[] = [
         "Décrivez votre activité, l'IA génère votre site avec votre carte, votre menu du jour et un formulaire de réservation de table. Vous modifiez depuis votre téléphone, entre deux services.",
       titre: "Création site internet restaurant, bar, fast-food | Sitaly",
       description:
-        "Créez le site de votre restaurant, bar ou fast-food avec Sitaly : carte, menu du jour et réservation de table incluses. Gratuit pour démarrer.",
-      bouton: "Créer mon site gratuitement",
+        "Créez le site de votre restaurant, bar ou fast-food avec Sitaly : carte, menu du jour et réservation de table incluses. Aperçu gratuit avant de payer.",
+      bouton: "Voir mon site gratuitement",
       lienExemple: "Voir un exemple de site restaurant",
       atoutsTitre: "Votre carte, votre menu du jour, vos réservations",
       atouts: [
@@ -1157,7 +1157,7 @@ export const MODELES: Modele[] = [
       },
       tarifsTitre: "Des tarifs clairs, sans surprise",
       tarifsIntro:
-        "Commencez gratuitement. Passez à une formule payante quand vous êtes prêt à publier.",
+        "Voyez votre site gratuitement. Choisissez une formule quand vous êtes prêt à le publier. Satisfait ou remboursé pendant 30 jours.",
       finTitre: "Votre site de restaurant, prêt aujourd'hui",
       finTexte:
         "Carte, menu du jour, réservation de table : tout est déjà en place. À vous de le remplir.",
@@ -1253,7 +1253,7 @@ export const MODELES: Modele[] = [
       },
       {
         q: "Combien coûte un site d'entreprise de nettoyage avec Sitaly ?",
-        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
+        a: "L'aperçu est gratuit : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, la formule Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, sans engagement, et vous offre votre nom de domaine en .fr ou en .com.",
       },
     ],
     intro:
@@ -1313,7 +1313,7 @@ export const MODELES: Modele[] = [
       },
       {
         q: "Un prospect peut-il réserver un premier échange ?",
-        a: "Oui, avec les formules Essentiel et Pro : il choisit un créneau depuis votre site et reçoit une confirmation par e-mail. Avec la formule gratuite, il vous écrit par le formulaire.",
+        a: "Oui, avec les formules Essentiel et Pro : il choisit un créneau depuis votre site et reçoit une confirmation par e-mail.",
       },
       {
         q: "Je n'ai pas le droit de citer mes clients.",
@@ -1321,7 +1321,7 @@ export const MODELES: Modele[] = [
       },
       {
         q: "Combien coûte un site de consultant avec Sitaly ?",
-        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
+        a: "L'aperçu est gratuit : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, la formule Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, sans engagement, et vous offre votre nom de domaine en .fr ou en .com.",
       },
     ],
     intro:
@@ -1389,11 +1389,11 @@ export const MODELES: Modele[] = [
       },
       {
         q: "Un client peut-il réserver une première consultation ?",
-        a: "Oui, avec les formules Essentiel et Pro : il choisit un créneau libre depuis votre site et reçoit une confirmation par e-mail. Avec la formule gratuite, il vous écrit par le formulaire de contact.",
+        a: "Oui, avec les formules Essentiel et Pro : il choisit un créneau libre depuis votre site et reçoit une confirmation par e-mail.",
       },
       {
         q: "Combien coûte un site d'avocat avec Sitaly ?",
-        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine et la prise de rendez-vous.",
+        a: "L'aperçu est gratuit : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, la formule Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, sans engagement, avec votre nom de domaine offert et la prise de rendez-vous.",
       },
     ],
     intro:
@@ -1462,7 +1462,7 @@ export const MODELES: Modele[] = [
       },
       {
         q: "Combien coûte un site de formateur avec Sitaly ?",
-        a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
+        a: "L'aperçu est gratuit : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, la formule Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, sans engagement, et vous offre votre nom de domaine en .fr ou en .com.",
       },
     ],
     intro:
@@ -1526,7 +1526,7 @@ export const MODELES: Modele[] = [
       },
       {
         q: "Qu'est-ce qui est gratuit, et qu'est-ce qui est payant ?",
-        a: "Gratuit : la création, la mise en ligne sur une adresse en .sitaly.fr et 50 crédits de retouche. Payant, à partir de 39 € par mois sans engagement : votre nom de domaine, la prise de rendez-vous en ligne et 500 crédits par mois.",
+        a: "Gratuit : l'aperçu de votre site entier, sans compte ni carte, et la création de votre compte. Payant, avec Essentiel à 19 € par mois les 3 premiers mois puis 39 €, sans engagement : la mise en ligne, votre nom de domaine, la prise de rendez-vous en ligne et 500 crédits par mois.",
       },
       {
         q: "Le site m'apportera-t-il des chantiers ?",
@@ -1590,7 +1590,7 @@ export const MODELES: Modele[] = [
       },
       {
         q: "Combien coûte un site quand on débute ?",
-        a: "Avec Sitaly, rien : la création et la mise en ligne sont gratuites, sans carte bancaire. Vous passez à 39 € par mois, sans engagement, le jour où vous voulez votre nom de domaine.",
+        a: "Avec Sitaly, l'aperçu ne coûte rien, sans compte ni carte. La mise en ligne coûte 19 € par mois les 3 premiers mois, puis 39 €, sans engagement, nom de domaine compris.",
       },
       {
         q: "Je n'ai pas encore de nom d'entreprise ni de logo.",

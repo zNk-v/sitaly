@@ -1,4 +1,4 @@
-import { CREATEUR_IA as IA } from "@/data/offres";
+import { CREATEUR_IA as IA, GARANTIE_JOURS, PRIX_APPEL } from "@/data/offres";
 
 /**
  * Les pages comparatives, /comparer/<id>/, sur le modèle des pages « compare »
@@ -105,15 +105,17 @@ const euros = (n: number) => `${String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " ")
 const ESS = IA.essentiel;
 const PRO = IA.pro;
 
-const prixSitaly = `Gratuit pour commencer, puis ${ESS.mensuel} €/mois ou ${ESS.annuel} €/an (Essentiel)`;
+const prixSitaly = `Essentiel à ${PRIX_APPEL.mensuel} €/mois les ${PRIX_APPEL.mois} premiers mois, puis ${ESS.mensuel} €/mois, ou ${ESS.annuel} €/an ; aperçu gratuit avant de payer`;
+/** La ligne « Formule gratuite » : Sitaly n'en a plus depuis le 22 novembre 2026. */
+const gratuitSitaly = `Non. L'aperçu est gratuit, sans compte ni carte ; la mise en ligne demande Essentiel ou Pro, satisfait ou remboursé pendant ${GARANTIE_JOURS} jours`;
 const domaineSitaly =
   "Offert avec Essentiel et Pro, au mois comme à l'année, et renouvelé tant que l'abonnement court";
 const creationSitaly =
   "Une phrase sur votre activité : l'IA écrit le site complet et le met en ligne en une minute environ";
 const facturesSitaly =
-  "Compris : devis acceptés en ligne, factures payées par carte sans commission Sitaly, relances automatiques en Essentiel et Pro (3 factures par mois en Découverte)";
+  "Compris : devis acceptés en ligne, factures payées par carte sans commission Sitaly, relances automatiques, en Essentiel et Pro";
 const rdvSitaly =
-  "Compris en Essentiel et Pro : page de réservation, confirmation et rappel par e-mail, sans commission. Pas en Découverte";
+  "Compris en Essentiel et Pro : page de réservation, confirmation et rappel par e-mail, sans commission";
 const avisSitaly =
   "Fiche Google connectée en Essentiel et Pro : chaque avis arrive avec une réponse préparée, publiée après votre clic, et vos clients reçoivent la demande d'avis";
 const assistanceSitaly = "Le fondateur, Teddy Vidal, par téléphone ou par e-mail";
@@ -125,8 +127,8 @@ const coutSitaly = {
 };
 const coutSitalyMois = {
   offre: "Sitaly Essentiel, payé au mois",
-  calcul: `36 × ${ESS.mensuel} €, nom de domaine compris`,
-  total: euros(ESS.mensuel * 36),
+  calcul: `${PRIX_APPEL.mois} × ${PRIX_APPEL.mensuel} €, puis ${36 - PRIX_APPEL.mois} × ${ESS.mensuel} €, nom de domaine compris`,
+  total: euros(PRIX_APPEL.mois * PRIX_APPEL.mensuel + (36 - PRIX_APPEL.mois) * ESS.mensuel),
 };
 
 /* Les sources, une fois chacune. */
@@ -206,7 +208,7 @@ export const COMPARATIFS: Comparatif[] = [
       },
       {
         critere: "Formule gratuite",
-        sitaly: "Oui, Découverte, sans carte bancaire, sur votre-nom.sitaly.fr",
+        sitaly: gratuitSitaly,
         autre: "Oui, un site gratuit à l'adresse Wix, avec la marque Wix",
       },
       {
@@ -357,13 +359,13 @@ export const COMPARATIFS: Comparatif[] = [
         id: "sitaly",
         nom: "Sitaly",
         site: "https://sitaly.fr/",
-        gratuit: "Oui, Découverte, sans carte bancaire",
-        prix: `${ESS.mensuel} €/mois ou ${ESS.annuel} €/an (Essentiel), TVA non applicable`,
+        gratuit: `Non ; aperçu gratuit sans compte ni carte, garantie satisfait ou remboursé de ${GARANTIE_JOURS} jours`,
+        prix: `${PRIX_APPEL.mensuel} €/mois les ${PRIX_APPEL.mois} premiers mois, puis ${ESS.mensuel} €/mois, ou ${ESS.annuel} €/an (Essentiel), TVA non applicable`,
         cout3Ans: `${euros(ESS.annuel * 3)}, domaine compris`,
         ia: "Le site complet écrit à partir d'une phrase, modifié en écrivant ce qu'il faut changer",
         boutique: "Non",
         rendezVous: "Oui, en Essentiel et Pro",
-        factures: "Oui, dans toutes les formules (3 factures par mois en Découverte)",
+        factures: "Oui, en Essentiel et Pro",
         avis: "Fiche connectée en Essentiel et Pro, réponse préparée par l'IA",
         meilleurPour:
           "L'artisan ou l'indépendant de services qui veut un site écrit pour lui, avec devis, rendez-vous et avis Google au même endroit.",
@@ -663,7 +665,7 @@ export const COMPARATIFS: Comparatif[] = [
         titre: "Ce que « gratuit » veut dire",
         paragraphes: [
           "Le logiciel WordPress est libre et gratuit. Le site, lui, a besoin d'un hébergement, d'un nom de domaine, souvent d'un thème et d'extensions payants. Sur WordPress.com, l'hébergement est compris, mais la formule gratuite affiche des publicités et une adresse en wordpress.com.",
-          "Chez Sitaly, la formule Découverte est gratuite, sans carte bancaire, sur votre-nom.sitaly.fr. Les formules payantes ajoutent votre nom de domaine, renouvelé tant que l'abonnement court.",
+          "Chez Sitaly, l'aperçu est gratuit : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, avec votre nom de domaine, renouvelé tant que l'abonnement court.",
         ],
       },
       {
@@ -677,7 +679,7 @@ export const COMPARATIFS: Comparatif[] = [
     faq: [
       {
         q: "WordPress est gratuit : pourquoi payer Sitaly ?",
-        a: "Le logiciel WordPress est gratuit, pas le site : il faut un hébergement, souvent un thème et des extensions payants, et du temps pour l'installer et le maintenir. Avec Sitaly, tout est compris dans un prix fixe, et la formule Découverte permet de commencer sans payer.",
+        a: "Le logiciel WordPress est gratuit, pas le site : il faut un hébergement, souvent un thème et des extensions payants, et du temps pour l'installer et le maintenir. Avec Sitaly, tout est compris dans un prix fixe, et l'aperçu gratuit vous montre votre site avant de payer.",
       },
       {
         q: "Mon site Sitaly sera-t-il bien référencé ?",
@@ -704,12 +706,12 @@ export const COMPARATIFS: Comparatif[] = [
       "Squarespace est connu pour ses modèles soignés, appréciés des photographes, des designers et des créatifs. Sitaly vise un site professionnel sans passer par un modèle à remplir : l'IA écrit votre site à partir d'une phrase, en français, pour votre métier.",
     verdict: [
       "Prenez Squarespace si le rendu graphique passe avant tout et que vous aimez composer vos pages. Ses modèles sont parmi les plus soignés du marché, la facturation est comprise dans tous les forfaits, et vous pouvez vendre dès le forfait Basic. Sur trois ans, Squarespace Basic coûte aussi moins cher que Sitaly Essentiel.",
-      "Prenez Sitaly si vous voulez commencer sans payer, sans carte bancaire, et que vous préférez que les textes soient écrits pour vous. Sitaly réunit dans la même application les devis acceptés en ligne, la prise de rendez-vous et la réponse aux avis Google, quand Squarespace passe par Acuity, un produit à part, pour les rendez-vous. Votre nom de domaine reste compris chaque année, même en payant au mois. Pour un artisan ou un indépendant de services, ces outils comptent souvent plus qu'un modèle très graphique.",
+      "Prenez Sitaly si vous voulez voir votre site entier avant de payer, et que vous préférez que les textes soient écrits pour vous. Sitaly réunit dans la même application les devis acceptés en ligne, la prise de rendez-vous et la réponse aux avis Google, quand Squarespace passe par Acuity, un produit à part, pour les rendez-vous. Votre nom de domaine reste compris chaque année, même en payant au mois. Pour un artisan ou un indépendant de services, ces outils comptent souvent plus qu'un modèle très graphique.",
     ],
     pasPourVous:
       "Sitaly n'est pas fait pour vous si vous êtes photographe ou designer et que votre site est votre portfolio : Sitaly propose dix-neuf thèmes, quand Squarespace aligne des dizaines de modèles. Ni si vous vendez des produits, ce que Squarespace fait et Sitaly non. Sitaly est un produit jeune, lancé fin octobre 2026, tenu par une seule personne : son fondateur vous répond lui-même.",
     choisirSitaly: [
-      "Vous voulez commencer gratuitement, sans carte bancaire.",
+      "Vous voulez voir votre site entier avant de payer, sans compte ni carte.",
       "Vous voulez que les textes soient écrits pour vous, en français.",
       "Vous voulez votre nom de domaine compris, même en payant au mois.",
     ],
@@ -726,7 +728,7 @@ export const COMPARATIFS: Comparatif[] = [
       },
       {
         critere: "Formule gratuite",
-        sitaly: "Oui, Découverte : le site est en ligne sur votre-nom.sitaly.fr",
+        sitaly: gratuitSitaly,
         autre: "Non, un essai gratuit de 14 jours",
       },
       {

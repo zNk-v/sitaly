@@ -397,7 +397,7 @@ function AuditFicheGoogle() {
                     Connectez votre fiche à Sitaly : chaque nouvel avis arrive avec sa réponse
                     prête, que vous publiez d'un clic. Le lendemain d'une facture payée ou d'un
                     rendez-vous, votre client reçoit la demande d'avis à votre nom. Compris dans la
-                    formule Essentiel, et le compte se crée gratuitement.
+                    formule Essentiel ; le compte, lui, se crée gratuitement.
                   </p>
                   <a href={lienCreation()} className="bouton mt-5 px-6 py-3 text-sm">
                     Créer mon compte gratuit

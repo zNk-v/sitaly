@@ -49,7 +49,8 @@ function questions(...debuts: string[]): Article[] {
 
 const prix = questions(
   "Combien coûte",
-  "Que ne permet pas",
+  "Que puis-je faire sans payer",
+  "Et si Sitaly ne me convient pas",
   "À quoi servent les crédits",
   "Quelle sera l'adresse",
   "Puis-je arrêter",
@@ -81,7 +82,7 @@ export const COLLECTIONS: Collection[] = [
   {
     id: "prix",
     titre: "Formules et prix",
-    description: "Ce que comprend la formule gratuite, ce qu'ajoutent Essentiel et Pro.",
+    description: "Ce que l'aperçu gratuit montre, ce que comprennent Essentiel et Pro.",
     articles: prix,
   },
   {

@@ -2,14 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 
 const URL = "https://sitaly.fr/site-internet-macon/";
-const TITLE = "Création site internet maçon : gratuit avec l'IA | Sitaly";
+const TITLE = "Création site internet maçon : en 1 minute avec l'IA";
 const DESCRIPTION =
-  "Votre site internet maçon créé par l'IA en une minute : extension, mur porteur, dalle, chantiers en photos. Gratuit pour commencer, vous le modifiez vous-même.";
+  "Votre site internet maçon créé par l'IA en une minute : extension, mur porteur, dalle, chantiers en photos. Aperçu gratuit, vous le modifiez vous-même.";
 
 const FAQ = [
   {
     q: "Combien coûte un site internet maçon avec Sitaly ?",
-    a: "0 € avec Découverte : une page créée par l'IA et mise en ligne avec HTTPS. Essentiel coûte 39 €/mois, avec jusqu'à 4 pages et un nom de domaine offert. Pro coûte 79 €/mois, avec jusqu'à 8 pages et une mise en place avec un expert Sitaly. Toutes les formules sont sans engagement, et vous commencez sans carte bancaire.",
+    a: "L'aperçu ne coûte rien : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, Essentiel coûte 19 €/mois les 3 premiers mois, puis 39 €/mois, avec jusqu'à 4 pages et un nom de domaine offert. Pro coûte 79 €/mois, avec jusqu'à 8 pages et une mise en place avec un expert Sitaly. Sans engagement, et satisfait ou remboursé pendant 30 jours.",
   },
   {
     q: "Faut-il savoir coder ?",
@@ -60,7 +60,7 @@ const INCLUDED = [
   },
   {
     title: "Hébergement, devis et factures",
-    desc: "En ligne avec HTTPS dès la formule gratuite, devis illimités compris. Essentiel ajoute un nom de domaine offert, les factures illimitées et la relance des impayés à J+1, J+8 et J+15, utile sur les acomptes d'un long chantier.",
+    desc: "En ligne avec HTTPS dès Essentiel, avec un nom de domaine offert, les devis et factures illimités et la relance des impayés à J+1, J+8 et J+15, utile sur les acomptes d'un long chantier.",
   },
 ];
 
@@ -93,7 +93,7 @@ function MaconLanding() {
       route="/site-internet-macon/"
       included={INCLUDED}
       localSeo={LOCAL_SEO}
-      h1="Création de site internet pour maçon, gratuite avec l'IA"
+      h1="Création de site internet pour maçon, en 1 minute avec l'IA"
       intro="Vous décrivez vos ouvrages, de l'extension à la dalle, et l'IA écrit votre site en une minute. Vous le publiez, puis vous ajoutez chaque étape de chantier en photo depuis votre téléphone."
       benefits={[
         {

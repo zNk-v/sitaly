@@ -114,6 +114,6 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Un site sobre, exact et à jour" },
   {
     type: "p",
-    text: "Un site de kiné conforme ressemble à une fiche d'information bien tenue : qui vous êtes, où vous trouver, ce que vous pratiquez, vos honoraires, comment prendre rendez-vous. [Sitaly](https://app.sitaly.fr) écrit un site à partir d'une phrase et le publie en une minute environ ; relisez chaque texte avec la liste ci-dessus, retirez toute formule promotionnelle et laissez désactivé l'affichage des avis. La formule Découverte est gratuite ; la page [Tarifs](/tarifs/) détaille Essentiel et Pro, qui incluent un domaine à votre nom. En cas de doute, votre conseil départemental de l'Ordre reste votre interlocuteur.",
+    text: "Un site de kiné conforme ressemble à une fiche d'information bien tenue : qui vous êtes, où vous trouver, ce que vous pratiquez, vos honoraires, comment prendre rendez-vous. [Sitaly](https://app.sitaly.fr) écrit un site à partir d'une phrase en une minute environ ; relisez chaque texte avec la liste ci-dessus, retirez toute formule promotionnelle et laissez désactivé l'affichage des avis. L'aperçu est gratuit ; la page [Tarifs](/tarifs/) détaille Essentiel et Pro, qui mettent le site en ligne avec un domaine à votre nom. En cas de doute, votre conseil départemental de l'Ordre reste votre interlocuteur.",
   },
 ];

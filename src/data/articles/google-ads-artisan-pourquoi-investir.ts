@@ -135,6 +135,6 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Préparez le terrain avant de payer le premier clic" },
   {
     type: "p",
-    text: "La page qui reçoit les clics pèse lourd dans le calcul. Avec [Sitaly](https://app.sitaly.fr), vous décrivez votre métier en une phrase, l'IA écrit votre site et le met en ligne en une minute environ ; vous le corrigez ensuite en écrivant ce qu'il faut changer. Le modèle d'[électricien](/modeles/electricien/) vous montre le résultat pour un artisan. La formule Découverte est gratuite et sans carte ; Essentiel et Pro ajoutent un domaine en .fr ou en .com, la prise de rendez-vous et l'envoi des demandes d'avis. Pour le détail des postes de dépense publicitaire, lisez notre article sur [le coût de Google Ads](/blog/cout-google-ads-artisan-vrais-chiffres/).",
+    text: "La page qui reçoit les clics pèse lourd dans le calcul. Avec [Sitaly](https://app.sitaly.fr), vous décrivez votre métier en une phrase, l'IA écrit votre site et le met en ligne en une minute environ ; vous le corrigez ensuite en écrivant ce qu'il faut changer. Le modèle d'[électricien](/modeles/electricien/) vous montre le résultat pour un artisan. L'aperçu est gratuit, sans compte ni carte ; Essentiel et Pro mettent le site en ligne avec un domaine en .fr ou en .com, la prise de rendez-vous et l'envoi des demandes d'avis. Pour le détail des postes de dépense publicitaire, lisez notre article sur [le coût de Google Ads](/blog/cout-google-ads-artisan-vrais-chiffres/).",
   },
 ];

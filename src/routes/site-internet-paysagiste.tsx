@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 
 const URL = "https://sitaly.fr/site-internet-paysagiste/";
-const TITLE = "Création site internet paysagiste gratuit avec l'IA | Sitaly";
+const TITLE = "Création site internet paysagiste : en 1 minute avec l'IA";
 const DESCRIPTION =
-  "Site internet paysagiste créé par l'IA en une minute : vos jardins, l'entretien, vos tarifs. Gratuit pour commencer, vous le modifiez vous-même, en une phrase.";
+  "Site internet paysagiste créé par l'IA en une minute : vos jardins, l'entretien, vos tarifs. Aperçu gratuit, vous le modifiez vous-même, en une phrase.";
 
 const FAQ = [
   {
@@ -29,7 +29,7 @@ const FAQ = [
   },
   {
     q: "Combien coûte un site internet paysagiste avec Sitaly ?",
-    a: "0 € avec la formule Découverte : un site d'une page, en ligne sur votre-nom.sitaly.fr. Essentiel coûte 39 € par mois, avec 4 pages et votre nom de domaine offert. Pro coûte 79 € par mois, avec 8 pages. Les formules sont sans engagement, et vous commencez sans carte bancaire.",
+    a: "L'aperçu ne coûte rien : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €, avec 4 pages et votre nom de domaine offert. Pro coûte 79 € par mois, avec 8 pages. Sans engagement, et satisfait ou remboursé pendant 30 jours.",
   },
   {
     q: "Faut-il savoir coder pour créer mon site ?",
@@ -93,7 +93,7 @@ function PaysagisteLanding() {
       route="/site-internet-paysagiste/"
       included={INCLUDED}
       localSeo={LOCAL_SEO}
-      h1="Création de site internet pour paysagiste, gratuite avec l'IA"
+      h1="Création de site internet pour paysagiste, en 1 minute avec l'IA"
       intro="Vous décrivez vos créations de jardin et vos contrats d'entretien, et l'IA écrit votre site en une minute. Vous le publiez, puis vous ajoutez vos jardins au fil des saisons, depuis votre téléphone."
       benefits={[
         {

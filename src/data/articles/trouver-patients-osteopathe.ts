@@ -71,7 +71,7 @@ export const contenu: BlogSection[] = [
   },
   {
     type: "p",
-    text: "La réservation fait partie des formules Essentiel (39 € / mois) et Pro (79 € / mois), sans commission par rendez-vous. Avec la formule gratuite Découverte, vos patients vous écrivent par le formulaire du site.",
+    text: "La réservation fait partie des formules Essentiel (19 € / mois les 3 premiers mois, puis 39 €) et Pro (79 € / mois), sans commission par rendez-vous.",
   },
   { type: "h2", text: "5. Le réseau local, toujours utile" },
   {
@@ -117,6 +117,6 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Mettez votre cabinet en ligne en une minute" },
   {
     type: "p",
-    text: "Avec [Sitaly](https://app.sitaly.fr), vous décrivez votre pratique en une phrase et l'IA écrit votre site, publié sur votre-nom.sitaly.fr en une minute environ. Vous le corrigez en écrivant ce qu'il faut changer. La formule Découverte est gratuite et sans carte. Essentiel ajoute un domaine en .fr ou en .com, la réservation en ligne et la fiche Google connectée pour recevoir vos avis chaque matin.",
+    text: "Avec [Sitaly](https://app.sitaly.fr), vous décrivez votre pratique en une phrase et l'IA écrit votre site en une minute environ : vous le voyez gratuitement, sans compte ni carte. Vous le corrigez en écrivant ce qu'il faut changer. Essentiel le met en ligne avec un domaine en .fr ou en .com, la réservation en ligne et la fiche Google connectée pour recevoir vos avis chaque matin.",
   },
 ];

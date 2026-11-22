@@ -96,7 +96,7 @@ export function Accueil({
             <span className="flex items-center justify-between gap-3">
               <span className="min-w-0">
                 <span className="block text-[13px] font-medium text-[#7014c2]">
-                  Formule Découverte, 0 €, sans carte
+                  Aperçu gratuit, sans compte ni carte
                 </span>
                 <span className="mt-0.5 block text-[15px] font-semibold text-black">
                   Créer mon site maintenant

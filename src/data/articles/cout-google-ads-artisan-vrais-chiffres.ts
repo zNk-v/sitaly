@@ -112,6 +112,6 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Le clic le moins cher reste celui qui fait appeler" },
   {
     type: "p",
-    text: "Un clic payé qui tombe sur une page confuse coûte le même prix qu'un clic qui finit en devis. Avant d'ouvrir le budget, soignez la page d'arrivée. Avec [Sitaly](https://app.sitaly.fr), vous décrivez votre activité en une phrase et l'IA écrit et publie votre site en une minute environ, avec vos prestations et votre zone. Découverte est gratuite et sans carte ; Essentiel coûte 39 € / mois ou 398 € / an, Pro 79 € / mois ou 806 € / an. Le détail figure sur la page [Tarifs](/tarifs/), et notre guide [Google Ads pour artisan](/blog/google-ads-artisan-quand-utiliser/) vous aide à régler la première campagne.",
+    text: "Un clic payé qui tombe sur une page confuse coûte le même prix qu'un clic qui finit en devis. Avant d'ouvrir le budget, soignez la page d'arrivée. Avec [Sitaly](https://app.sitaly.fr), vous décrivez votre activité en une phrase et l'IA écrit et publie votre site en une minute environ, avec vos prestations et votre zone. L'aperçu est gratuit, sans compte ni carte ; pour la mise en ligne, Essentiel coûte 19 € / mois les 3 premiers mois, puis 39 €, ou 398 € / an, Pro 79 € / mois ou 806 € / an. Le détail figure sur la page [Tarifs](/tarifs/), et notre guide [Google Ads pour artisan](/blog/google-ads-artisan-quand-utiliser/) vous aide à régler la première campagne.",
   },
 ];

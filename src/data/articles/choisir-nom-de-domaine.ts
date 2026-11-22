@@ -60,14 +60,14 @@ export const contenu: BlogSection[] = [
   {
     type: "ul",
     items: [
-      "Une sous-adresse : votre-nom.sitaly.fr ou votre-nom.wixsite.com. Elle est vraiment gratuite, mais elle porte le nom de l'outil et vous ne pouvez pas l'emporter si vous changez de service.",
+      "Une sous-adresse : votre-nom.wixsite.com, par exemple. Elle est gratuite, mais elle porte le nom de l'outil et vous ne pouvez pas l'emporter si vous changez de service.",
       "Un domaine offert la première année : fréquent chez les créateurs de sites avec un abonnement annuel. Regardez le prix du renouvellement, payé dès la deuxième année.",
       "Un domaine inclus dans l'abonnement : pas de facture séparée tant que l'abonnement court. Vérifiez à quel nom il est enregistré et ce qu'il devient si vous partez.",
     ],
   },
   {
     type: "p",
-    text: "Chez Sitaly, la formule Découverte est gratuite avec une adresse en .sitaly.fr. Les formules Essentiel et Pro incluent un .fr ou un .com, enregistré à votre nom. Pour démarrer sans rien payer, une sous-adresse suffit : passez à votre propre domaine quand vos premiers clients arrivent.",
+    text: "Chez Sitaly, l'aperçu de votre site est gratuit, sans compte ni carte. Pour le mettre en ligne, les formules Essentiel et Pro incluent un .fr ou un .com, enregistré à votre nom. Essentiel coûte 19 € par mois les 3 premiers mois, puis 39 €. Ailleurs, une sous-adresse gratuite permet de démarrer : passez à votre propre domaine quand vos premiers clients arrivent.",
   },
   { type: "h2", text: "Le domaine doit être à votre nom" },
   {
@@ -87,7 +87,7 @@ export const contenu: BlogSection[] = [
     items: [
       {
         q: "Existe-t-il un nom de domaine gratuit ?",
-        a: "Un vrai .fr ou .com se paie chaque année, environ 12 € pour un .fr selon l'Afnic. Ce qu'on appelle un domaine gratuit est soit une sous-adresse au nom de l'outil (votre-nom.sitaly.fr), soit un domaine inclus ou offert la première année avec un abonnement.",
+        a: "Un vrai .fr ou .com se paie chaque année, environ 12 € pour un .fr selon l'Afnic. Ce qu'on appelle un domaine gratuit est soit une sous-adresse au nom de l'outil (votre-nom.wixsite.com), soit un domaine inclus ou offert la première année avec un abonnement.",
       },
       {
         q: "Peut-on changer de nom de domaine plus tard ?",

@@ -2,14 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 
 const URL = "https://sitaly.fr/site-internet-menuisier/";
-const TITLE = "Création site internet menuisier, gratuit | Sitaly";
+const TITLE = "Création site internet menuisier : en 1 minute avec l'IA";
 const DESCRIPTION =
-  "Votre site internet menuisier créé par l'IA en une minute : escaliers, dressings, cuisines et réalisations en photos. Gratuit pour commencer, modifié par vous.";
+  "Votre site internet menuisier créé par l'IA en une minute : escaliers, dressings, cuisines et réalisations en photos. Aperçu gratuit, modifié par vous.";
 
 const FAQ = [
   {
     q: "Combien coûte un site internet menuisier avec Sitaly ?",
-    a: "0 € avec Découverte : une page créée par l'IA et mise en ligne avec HTTPS. Essentiel coûte 39 €/mois, avec jusqu'à 4 pages et un nom de domaine offert. Pro coûte 79 €/mois, avec jusqu'à 8 pages et une mise en place avec un expert Sitaly. Toutes les formules sont sans engagement, et vous commencez sans carte bancaire.",
+    a: "L'aperçu ne coûte rien : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, Essentiel coûte 19 €/mois les 3 premiers mois, puis 39 €/mois, avec jusqu'à 4 pages et un nom de domaine offert. Pro coûte 79 €/mois, avec jusqu'à 8 pages et une mise en place avec un expert Sitaly. Sans engagement, et satisfait ou remboursé pendant 30 jours.",
   },
   {
     q: "Le site mettra-t-il en valeur mes réalisations ?",
@@ -25,7 +25,7 @@ const FAQ = [
   },
   {
     q: "Je suis débordé jusqu'en mars, à quoi bon un site maintenant ?",
-    a: "Avec un carnet plein, vous choisissez vos chantiers au lieu de les subir. Plus de demandes entrantes vous permettent de refuser les projets peu rentables et de garder ceux qui paient bien. Un site met plusieurs mois à se faire une place sur Google : mis en ligne aujourd'hui, il sera prêt quand votre planning se videra. Découverte coûte 0 €, vous pouvez commencer dès maintenant.",
+    a: "Avec un carnet plein, vous choisissez vos chantiers au lieu de les subir. Plus de demandes entrantes vous permettent de refuser les projets peu rentables et de garder ceux qui paient bien. Un site met plusieurs mois à se faire une place sur Google : mis en ligne aujourd'hui, il sera prêt quand votre planning se videra. L'aperçu ne coûte rien : vous pouvez commencer dès maintenant.",
   },
   {
     q: "Les gens n'achètent pas une cuisine sur mesure par internet, si ?",
@@ -60,7 +60,7 @@ const INCLUDED = [
   },
   {
     title: "Hébergement, devis et factures",
-    desc: "En ligne avec HTTPS dès la formule gratuite, devis illimités compris. Essentiel ajoute un nom de domaine offert, les factures illimitées et la relance des impayés à J+1, J+8 et J+15.",
+    desc: "En ligne avec HTTPS dès Essentiel, avec un nom de domaine offert, les devis et factures illimités et la relance des impayés à J+1, J+8 et J+15.",
   },
 ];
 
@@ -93,7 +93,7 @@ function MenuisierLanding() {
       route="/site-internet-menuisier/"
       included={INCLUDED}
       localSeo={LOCAL_SEO}
-      h1="Création de site internet pour menuisier, gratuite avec l'IA"
+      h1="Création de site internet pour menuisier, en 1 minute avec l'IA"
       intro="Vous décrivez votre atelier et vos spécialités, l'IA écrit votre site en une minute. Vous le publiez, puis vous ajoutez chaque réalisation en photo depuis votre téléphone, le jour de la pose."
       benefits={[
         {

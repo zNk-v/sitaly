@@ -25,7 +25,7 @@ export const contenu: BlogSection[] = [
     rows: [
       [
         "Application d'IA (Sitaly)",
-        "Gratuit, puis 39 €/mois ou 398 €/an avec domaine",
+        "Aperçu gratuit, puis 19 €/mois les 3 premiers mois et 39 €/mois, ou 398 €/an avec domaine",
         "Environ une minute",
         "Boutique en ligne, mise en page entièrement libre",
       ],
@@ -68,7 +68,7 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "L'application d'IA : rapide, et vous gardez la main" },
   {
     type: "p",
-    text: "Vous décrivez votre activité en une phrase, l'IA écrit le site complet et le publie. Chez Sitaly, la première version est en ligne en une minute environ, et vous la modifiez en écrivant ce que vous voulez changer. La formule Découverte est gratuite, sans carte bancaire. Essentiel (39 € par mois ou 398 € par an) et Pro (79 € par mois ou 806 € par an) comprennent un nom de domaine en .fr ou en .com déposé à votre nom. L'abonnement mensuel est sans engagement.",
+    text: "Vous décrivez votre activité en une phrase, l'IA écrit le site complet et le publie. Chez Sitaly, la première version est en ligne en une minute environ, et vous la modifiez en écrivant ce que vous voulez changer. L'aperçu est gratuit : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, Essentiel (19 € par mois les 3 premiers mois, puis 39 €, ou 398 € par an) et Pro (79 € par mois ou 806 € par an) comprennent un nom de domaine en .fr ou en .com déposé à votre nom. L'abonnement mensuel est sans engagement, et satisfait ou remboursé pendant 30 jours.",
   },
   {
     type: "p",
@@ -131,7 +131,7 @@ export const contenu: BlogSection[] = [
   {
     type: "ul",
     items: [
-      "Vous travaillez surtout au bouche-à-oreille et voulez être trouvable sur votre nom : une application d'IA en formule gratuite ou d'entrée de gamme suffit.",
+      "Vous travaillez surtout au bouche-à-oreille et voulez être trouvable sur votre nom : une application d'IA en formule d'entrée de gamme suffit.",
       "Vous voulez des demandes régulières sur votre zone et gérer vos devis au même endroit : une application d'IA avec domaine, [devis et factures](/produits/devis-et-factures/) et [avis Google](/produits/avis-google/).",
       "Vous aimez construire et voulez une boutique : un éditeur à modèles.",
       "Vous avez besoin d'appels tout de suite : ajoutez de la publicité Google Ads, avec un budget séparé et visible.",
@@ -160,7 +160,7 @@ export const contenu: BlogSection[] = [
       },
       {
         q: "Où se situe Sitaly dans ce comparatif ?",
-        a: "Dans la famille des applications d'IA : site écrit à partir d'une phrase et publié en une minute environ, gratuit pour commencer, puis 39 € par mois avec le domaine à votre nom, sans engagement au mois. Sitaly ne fait pas de boutique en ligne.",
+        a: "Dans la famille des applications d'IA : site écrit à partir d'une phrase et aperçu gratuit, puis en ligne à 19 € par mois les 3 premiers mois et 39 € ensuite, avec le domaine à votre nom, sans engagement au mois. Sitaly ne fait pas de boutique en ligne.",
       },
     ],
   },

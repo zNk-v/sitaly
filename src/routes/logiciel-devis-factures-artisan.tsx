@@ -20,7 +20,7 @@ import {
   scriptsPilier,
 } from "@/components/pilier/Pilier";
 import { PILIER_DEVIS, PILIER_SITE } from "@/data/piliers";
-import { CREATEUR_IA as IA, MENTION_TVA } from "@/data/offres";
+import { CREATEUR_IA as IA, GARANTIE, MENTION_TVA, PRIX_APPEL } from "@/data/offres";
 import { produit } from "@/data/produits";
 import { MODELES } from "@/data/modeles";
 import { euros } from "@/lib/config";
@@ -88,8 +88,8 @@ const FAQ = [
     a: "Non. Il ouvre le lien reçu, lit le document, accepte le devis ou règle la facture.",
   },
   {
-    q: "Puis-je essayer gratuitement ?",
-    a: `Oui. La formule ${IA.decouverte.nom} permet des devis illimités et ${FACTURES[0].toLowerCase()}, sans carte bancaire.`,
+    q: "Puis-je essayer avant de payer ?",
+    a: `Vous voyez votre site entier gratuitement, sans compte ni carte. Les devis et les factures, illimités, vont avec ${IA.essentiel.nom} et ${IA.pro.nom}, et votre premier paiement est ${GARANTIE.toLowerCase()}.`,
   },
 ];
 
@@ -106,7 +106,6 @@ export const Route = createFileRoute("/logiciel-devis-factures-artisan")({
 
 function PageLogicielDevis() {
   const nomDe = (id: string) => MODELES.find((m) => m.id === id)?.nom ?? id;
-  const formule = (nom: string, mensuel: number) => `${nom} (${euros(mensuel)}/mois)`;
   const formuleAnnuelle = (nom: string, mensuel: number, annuel: number) =>
     `${nom} (${euros(mensuel)}/mois, ${euros(annuel)}/an)`;
 
@@ -139,7 +138,7 @@ function PageLogicielDevis() {
                 {PRODUIT.cta} <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
               <span className={`text-sm ${TEXTE_GRIS}`}>
-                Devis illimités dans toutes les formules, sans carte bancaire.
+                Devis et factures illimités avec {IA.essentiel.nom} et {IA.pro.nom}.
               </span>
             </div>
           </div>
@@ -269,23 +268,22 @@ function PageLogicielDevis() {
           <TableauPilier
             entetes={["Formule", "Devis", "Factures", "Relances automatiques"]}
             lignes={[
-              [formule(IA.decouverte.nom, IA.decouverte.mensuel), "Illimités", FACTURES[0], "Non"],
               [
-                formuleAnnuelle(IA.essentiel.nom, IA.essentiel.mensuel, IA.essentiel.annuel),
+                `${IA.essentiel.nom} (${euros(PRIX_APPEL.mensuel)}/mois les ${PRIX_APPEL.mois} premiers mois, puis ${euros(IA.essentiel.mensuel)} ; ${euros(IA.essentiel.annuel)}/an)`,
                 "Illimités",
-                FACTURES[1],
+                FACTURES[0],
                 "Oui",
               ],
               [
                 formuleAnnuelle(IA.pro.nom, IA.pro.mensuel, IA.pro.annuel),
                 "Illimités",
-                FACTURES[2],
+                FACTURES[1],
                 "Oui",
               ],
             ]}
           />
           <P>
-            {MENTION_TVA}. Détail complet :{" "}
+            {MENTION_TVA}. {GARANTIE} sur le premier paiement. Détail complet :{" "}
             <LienTexte to="/tarifs/">les tarifs de Sitaly</LienTexte>.
           </P>
         </Bloc>
@@ -351,8 +349,8 @@ function PageLogicielDevis() {
               Votre premier devis, en deux minutes
             </h2>
             <p className={`mx-auto mt-5 max-w-xl text-lg ${TEXTE_GRIS}`}>
-              Les devis et les factures sont dans la même application que votre site. Devis
-              illimités dès la formule {IA.decouverte.nom}.
+              Les devis et les factures sont dans la même application que votre site, illimités
+              avec {IA.essentiel.nom} et {IA.pro.nom}.
             </p>
             <Link
               to="/produits/$id/"

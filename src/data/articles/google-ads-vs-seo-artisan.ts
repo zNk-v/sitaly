@@ -123,6 +123,6 @@ export const contenu: BlogSection[] = [
   { type: "h2", text: "Posez d'abord le socle" },
   {
     type: "p",
-    text: "Que vous choisissiez les annonces, le référencement ou les deux, tout commence par un site qui donne envie d'appeler. Avec [Sitaly](https://app.sitaly.fr), vous écrivez une phrase sur votre activité, l'IA rédige le site et le publie en une minute environ. La formule Découverte est gratuite et sans carte ; Essentiel, à 39 € / mois, inclut un domaine en .fr ou en .com, la fiche Google connectée et la prise de rendez-vous.",
+    text: "Que vous choisissiez les annonces, le référencement ou les deux, tout commence par un site qui donne envie d'appeler. Avec [Sitaly](https://app.sitaly.fr), vous écrivez une phrase sur votre activité, l'IA rédige le site en une minute environ : vous le voyez gratuitement, sans compte ni carte. Pour le mettre en ligne, Essentiel, à 19 € / mois les 3 premiers mois puis 39 €, inclut un domaine en .fr ou en .com, la fiche Google connectée et la prise de rendez-vous.",
   },
 ];

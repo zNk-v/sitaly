@@ -2,14 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 
 const URL = "https://sitaly.fr/site-internet-couvreur/";
-const TITLE = "Création site internet couvreur : gratuit avec l'IA | Sitaly";
+const TITLE = "Création site internet couvreur : en 1 minute avec l'IA";
 const DESCRIPTION =
-  "Votre site internet couvreur créé par l'IA en une minute : toiture, façade, urgences après tempête. Gratuit pour commencer, et vous le modifiez vous-même.";
+  "Votre site internet couvreur créé par l'IA en une minute : toiture, façade, urgences après tempête. Aperçu gratuit, vous le modifiez vous-même.";
 
 const FAQ = [
   {
     q: "Combien coûte un site internet couvreur avec Sitaly ?",
-    a: "0 € avec Découverte : une page créée par l'IA et mise en ligne avec HTTPS. Essentiel coûte 39 €/mois, avec jusqu'à 4 pages et un nom de domaine offert. Pro coûte 79 €/mois, avec jusqu'à 8 pages et une mise en place avec un expert Sitaly. Toutes les formules sont sans engagement, et vous commencez sans carte bancaire.",
+    a: "L'aperçu ne coûte rien : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, Essentiel coûte 19 €/mois les 3 premiers mois, puis 39 €/mois, avec jusqu'à 4 pages et un nom de domaine offert. Pro coûte 79 €/mois, avec jusqu'à 8 pages et une mise en place avec un expert Sitaly. Sans engagement, et satisfait ou remboursé pendant 30 jours.",
   },
   {
     q: "Comment gérer les urgences (fuite, tempête) ?",
@@ -29,7 +29,7 @@ const FAQ = [
   },
   {
     q: "Mes concurrents passent par des apporteurs d'affaires, c'est mieux ?",
-    a: "Un apporteur prend un pourcentage sur chaque chantier, sans fin. L'abonnement Sitaly reste le même chaque mois, quel que soit le nombre de chantiers, et Découverte coûte 0 €. Faites le calcul sur vos chantiers de toiture de l'an dernier.",
+    a: "Un apporteur prend un pourcentage sur chaque chantier, sans fin. L'abonnement Sitaly reste le même chaque mois, quel que soit le nombre de chantiers, et l'aperçu de votre site ne coûte rien. Faites le calcul sur vos chantiers de toiture de l'an dernier.",
   },
   {
     q: "Faut-il savoir coder ?",
@@ -60,7 +60,7 @@ const INCLUDED = [
   },
   {
     title: "Hébergement et modifications",
-    desc: "En ligne avec HTTPS dès la formule gratuite, nom de domaine offert avec Essentiel. Un chantier à ajouter, une commune à citer : vous l'écrivez en une phrase et l'IA modifie le site.",
+    desc: "En ligne avec HTTPS et nom de domaine offert dès Essentiel. Un chantier à ajouter, une commune à citer : vous l'écrivez en une phrase et l'IA modifie le site.",
   },
 ];
 

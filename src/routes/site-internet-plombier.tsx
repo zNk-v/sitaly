@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 
 const URL = "https://sitaly.fr/site-internet-plombier/";
-const TITLE = "Création site internet plombier : gratuit avec l'IA | Sitaly";
+const TITLE = "Création site internet plombier : en 1 minute avec l'IA";
 const DESCRIPTION =
-  "Votre site internet plombier créé par l'IA en une minute : urgences, zone d'intervention, numéro cliquable. Gratuit pour commencer, vous le modifiez vous-même.";
+  "Votre site internet plombier créé par l'IA en une minute : urgences, zone d'intervention, numéro cliquable. Aperçu gratuit, vous le modifiez vous-même.";
 
 const FAQ = [
   {
@@ -13,7 +13,7 @@ const FAQ = [
   },
   {
     q: "Combien coûte un site internet plombier avec Sitaly ?",
-    a: "0 € avec Découverte : une page créée par l'IA et mise en ligne. Essentiel coûte 39 €/mois, avec jusqu'à 4 pages et un nom de domaine offert. Pro coûte 79 €/mois, avec jusqu'à 8 pages et une mise en place avec un expert Sitaly. Toutes les formules sont sans engagement, et vous commencez sans carte bancaire.",
+    a: "L'aperçu ne coûte rien : vous voyez votre site entier sans compte ni carte. Pour le mettre en ligne, Essentiel coûte 19 €/mois les 3 premiers mois, puis 39 €/mois, avec jusqu'à 4 pages et un nom de domaine offert. Pro coûte 79 €/mois, avec jusqu'à 8 pages et une mise en place avec un expert Sitaly. Sans engagement, et satisfait ou remboursé pendant 30 jours.",
   },
   {
     q: "Faut-il savoir coder ?",
@@ -56,11 +56,11 @@ const INCLUDED = [
   },
   {
     title: "Devis et factures depuis le téléphone",
-    desc: "Vous faites le devis sur place et la facture en fin d'intervention. Découverte donne des devis illimités et 3 factures par mois. Essentiel lève la limite et relance les impayés à J+1, J+8 et J+15.",
+    desc: "Vous faites le devis sur place et la facture en fin d'intervention. Essentiel et Pro donnent des devis et des factures illimités, et relancent les impayés à J+1, J+8 et J+15.",
   },
   {
     title: "Hébergement et nom de domaine",
-    desc: "Le site est en ligne avec HTTPS dès la formule gratuite, et Essentiel ajoute un nom de domaine offert. Vous n'installez rien et vous modifiez le site vous-même, en une phrase.",
+    desc: "Le site est en ligne avec HTTPS et un nom de domaine offert dès Essentiel. Vous n'installez rien et vous modifiez le site vous-même, en une phrase.",
   },
 ];
 
@@ -93,7 +93,7 @@ function PlombierLanding() {
       route="/site-internet-plombier/"
       included={INCLUDED}
       localSeo={LOCAL_SEO}
-      h1="Création de site internet pour plombier, gratuite avec l'IA"
+      h1="Création de site internet pour plombier, en 1 minute avec l'IA"
       intro="Vous décrivez votre activité et vos dépannages, l'IA écrit votre site en une minute. Vous le publiez, puis vous le modifiez depuis votre téléphone entre deux urgences."
       benefits={[
         {

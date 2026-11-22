@@ -292,8 +292,8 @@ function BlogIndex() {
               Passez à la pratique
             </h2>
             <p className={`mx-auto mt-5 max-w-xl text-lg ${TEXTE_GRIS}`}>
-              Décrivez votre activité en une phrase : votre site est en ligne une minute plus tard.
-              C'est gratuit.
+              Décrivez votre activité en une phrase : votre site est prêt une minute plus tard.
+              L'aperçu est gratuit.
             </p>
           </div>
           <div className="mx-auto mt-10 max-w-3xl">
