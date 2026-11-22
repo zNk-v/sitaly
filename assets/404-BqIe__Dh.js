@@ -1,0 +1,1 @@
+import{Wt as e}from"./index-B5TcMCrn.js";var t=e;export{t as component};
