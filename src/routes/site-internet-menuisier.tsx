@@ -2,65 +2,65 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 
 const URL = "https://sitaly.fr/site-internet-menuisier/";
-const TITLE = "Site internet menuisier : portfolio & devis | Sitaly";
+const TITLE = "Création site internet menuisier, gratuit | Sitaly";
 const DESCRIPTION =
-  "Site internet menuisier avec portfolio avant/après, devis en ligne et SEO local. Livré en 48h, en abonnement mensuel, sans engagement et tout inclus.";
+  "Votre site internet menuisier créé par l'IA en une minute : escaliers, dressings, cuisines et réalisations en photos. Gratuit pour commencer, modifié par vous.";
 
 const FAQ = [
   {
-    q: "Le site mettra-t-il bien en valeur mes réalisations ?",
-    a: "Oui : galerie portfolio avec photos avant/après, par type d'ouvrage (escaliers, dressings, agencement, fenêtres bois...). Chaque réalisation peut avoir sa propre fiche pour le SEO.",
+    q: "Combien coûte un site internet menuisier avec Sitaly ?",
+    a: "0 € avec Découverte : une page créée par l'IA et mise en ligne avec HTTPS. Essentiel coûte 39 €/mois, avec jusqu'à 4 pages et un nom de domaine offert. Pro coûte 79 €/mois, avec jusqu'à 8 pages et une mise en place avec un expert Sitaly. Toutes les formules sont sans engagement, et vous commencez sans carte bancaire.",
   },
   {
-    q: "Puis-je proposer un configurateur de devis ?",
-    a: "Possible en option (cuisine sur mesure, dressing, escalier). Pré-qualifie le prospect et fait gagner 1 à 2h de devis par projet.",
+    q: "Le site mettra-t-il en valeur mes réalisations ?",
+    a: "Oui. Le jour de la pose, vous photographiez l'escalier ou le dressing depuis l'application, vous ajoutez quelques mots (« chêne massif, sous pente, Rambouillet ») et la photo rejoint la galerie du site. L'IA écrit la légende à partir de vos mots.",
   },
   {
-    q: "Au bout de combien de chantiers un site est-il rentabilisé en menuiserie ?",
-    a: "1 seul chantier de cuisine ou dressing rapporte généralement 3 000 à 10 000€. Un seul appel converti via votre site dans l'année rentabilise très largement l'abonnement.",
+    q: "Faut-il savoir coder ?",
+    a: "Non. Vous répondez à trois questions et l'IA écrit le site. Pour ajouter une spécialité ou changer un texte, vous écrivez la demande en une phrase, depuis l'atelier ou le chantier.",
   },
   {
-    q: "Travaillez-vous avec les artisans menuisiers d'agencement pro ?",
-    a: "Oui, nous travaillons aussi bien avec les menuisiers particuliers que pros (agencement boutiques, bureaux). Le parcours et les pages sont adaptés à votre clientèle cible.",
+    q: "Je fais aussi de l'agencement pour les professionnels, le site peut le montrer ?",
+    a: "Oui. Avec Essentiel ou Pro, vous créez une page pour l'agencement de boutiques et de bureaux, à côté des pages pour les particuliers. Chacune parle à sa clientèle, avec ses références.",
   },
   {
     q: "Je suis débordé jusqu'en mars, à quoi bon un site maintenant ?",
-    a: "Un carnet plein six mois à l'avance, c'est le bon moment pour choisir ses chantiers plutôt que les subir. Plus de demandes entrantes veut dire refuser les projets peu rentables et garder ceux qui paient bien. Et un site mis en ligne aujourd'hui met trois à six mois à se positionner sur Google, donc il sera prêt quand votre planning se videra.",
+    a: "Avec un carnet plein, vous choisissez vos chantiers au lieu de les subir. Plus de demandes entrantes vous permettent de refuser les projets peu rentables et de garder ceux qui paient bien. Un site met plusieurs mois à se faire une place sur Google : mis en ligne aujourd'hui, il sera prêt quand votre planning se videra. Découverte coûte 0 €, vous pouvez commencer dès maintenant.",
   },
   {
     q: "Les gens n'achètent pas une cuisine sur mesure par internet, si ?",
-    a: "Ils ne l'achètent pas en ligne, mais ils vous choisissent en ligne. Un projet à 8 000 € commence par des semaines de recherches d'inspiration, de comparaisons et de lectures d'avis. Si vos réalisations ne sont visibles nulle part, vous n'êtes pas dans la liste au moment des trois devis.",
+    a: "Ils vous choisissent en ligne, puis ils signent à l'atelier. Un projet à 8 000 € commence par des semaines de recherches d'inspiration, de comparaisons et de lectures d'avis. Si vos réalisations ne sont visibles nulle part, vous n'êtes pas dans la liste au moment des trois devis.",
   },
   {
     q: "Faut-il afficher mes prix ?",
-    a: "Sur du sur-mesure, un prix fixe n'a pas de sens. En revanche un ordre de grandeur par type d'ouvrage, du type « dressing sur mesure à partir de 2 500 € », écarte les projets hors budget et évite les rendez-vous perdus. Vous perdez quelques contacts, vous gagnez des heures.",
+    a: "Sur du sur-mesure, un prix fixe n'a pas de sens. Un ordre de grandeur par type d'ouvrage, du type « dressing sur mesure à partir de 2 500 € », écarte les projets hors budget et évite les rendez-vous perdus. Vous l'ajoutez en une phrase à l'IA. Vous perdez quelques contacts et vous gagnez des heures de déplacement.",
   },
 ];
 
 const INCLUDED = [
   {
-    title: "Portfolio par type d'ouvrage",
-    desc: "Escaliers, dressings, cuisines, bibliothèques, fenêtres bois, agencement de boutique. Chaque réalisation a sa fiche avec les essences, les dimensions et le délai de fabrication.",
+    title: "Galerie de réalisations",
+    desc: "Escaliers, dressings, cuisines, bibliothèques, fenêtres bois. Vous ajoutez la photo avec l'essence, la pièce et la ville, et l'IA écrit la légende. Le client voit votre travail avant de vous appeler.",
   },
   {
     title: "Une page par spécialité",
-    desc: "Le client qui cherche un escalier sur mesure et celui qui veut changer ses fenêtres n'ont rien en commun. Chacun trouve une page qui parle de son projet, avec son propre formulaire.",
+    desc: "Le client qui cherche un escalier sur mesure et celui qui veut changer ses fenêtres n'ont rien en commun. Pro vous donne jusqu'à 8 pages, une par prestation avec ses photos et ses tarifs. Essentiel en donne 4.",
   },
   {
-    title: "Formulaire de projet détaillé",
-    desc: "Type d'ouvrage, pièce, dimensions approximatives, budget envisagé, échéance. Vous arrivez au rendez-vous en sachant déjà si le projet est faisable et rentable.",
+    title: "Demandes de projet et rendez-vous",
+    desc: "Le client décrit son projet dans le formulaire du site. Avec Essentiel, il réserve un rendez-vous en ligne et un agent prépare votre réponse. Rien ne part sans vous.",
   },
   {
-    title: "Parcours particuliers et professionnels",
-    desc: "L'agencement de boutique et la cuisine de particulier se vendent différemment. Deux entrées distinctes, avec les références et les arguments qui correspondent.",
+    title: "Particuliers et professionnels",
+    desc: "L'agencement de boutique et la cuisine de particulier se vendent différemment. Une page par clientèle, avec les références et les arguments qui lui correspondent.",
   },
   {
-    title: "Fiche Google Business Profile et avis",
-    desc: "Une fiche avec vos photos d'atelier et de réalisations, plus une relance d'avis après chaque pose. Sur un métier de confiance, les avis pèsent lourd dans le choix final.",
+    title: "Avis Google sur le site",
+    desc: "Avec Essentiel, vous reliez votre fiche Google et vos avis s'affichent sur le site. Sur un métier de confiance, les avis pèsent lourd dans le choix final.",
   },
   {
-    title: "Hébergement, maintenance et modifications",
-    desc: "Domaine, SSL, sauvegardes et vos demandes de changement. Un nouveau chantier terminé : vous envoyez les photos, elles sont en ligne dans la foulée.",
+    title: "Hébergement, devis et factures",
+    desc: "En ligne avec HTTPS dès la formule gratuite, devis illimités compris. Essentiel ajoute un nom de domaine offert, les factures illimitées et la relance des impayés à J+1, J+8 et J+15.",
   },
 ];
 
@@ -68,8 +68,8 @@ const LOCAL_SEO = {
   title: "En menuiserie, les photos font le référencement autant que les mots",
   paragraphs: [
     "Un projet de menuiserie sur mesure commence rarement par une recherche d'artisan. Il commence par une recherche d'idées : « dressing sous pente », « escalier bois et métal », « bibliothèque sur mesure salon ». Le particulier regarde des images pendant des semaines avant de chercher qui pourrait les fabriquer. Un site avec de vraies réalisations légendées apparaît dans ces recherches, un site sans photos n'existe pas.",
-    "C'est pour cette raison que chaque réalisation devient une fiche à part entière, avec un titre descriptif, un texte court sur les contraintes du chantier et des images nommées correctement. Vous accumulez ainsi des dizaines de portes d'entrée vers votre site, là où une simple galerie sans texte n'en offre aucune.",
-    "La dimension locale intervient ensuite. Quand le projet se précise, la recherche devient « menuisier sur mesure + ville » et la comparaison démarre. Là, ce sont votre fiche Google, vos avis et la qualité de vos fiches projets qui décident si vous faites partie des trois devis demandés. Les deux temps se complètent : l'inspiration fait connaître, le local fait appeler.",
+    "Légendez chaque réalisation : l'essence, la pièce, la contrainte du chantier, la ville. Dans Sitaly, vous ajoutez ces quelques mots à la photo et l'IA rédige la légende. Vous accumulez ainsi des dizaines de portes d'entrée vers votre site, là où une galerie sans texte n'en offre aucune.",
+    "La dimension locale intervient ensuite. Quand le projet se précise, la recherche devient « menuisier sur mesure + ville » et la comparaison démarre. Votre fiche Google, vos avis et vos photos de réalisations décident alors si vous faites partie des trois devis demandés. L'inspiration vous fait connaître des mois avant le projet, et la recherche locale déclenche l'appel.",
   ],
 };
 
@@ -93,20 +93,20 @@ function MenuisierLanding() {
       route="/site-internet-menuisier/"
       included={INCLUDED}
       localSeo={LOCAL_SEO}
-      h1="Site internet menuisier qui transforme vos photos en clients"
-      intro="Un portfolio qui sublime votre savoir-faire, des fiches projets optimisées SEO et un parcours devis fluide. Vos plus belles réalisations deviennent vos meilleurs commerciaux."
+      h1="Création de site internet pour menuisier, gratuite avec l'IA"
+      intro="Vous décrivez votre atelier et vos spécialités, l'IA écrit votre site en une minute. Vous le publiez, puis vous ajoutez chaque réalisation en photo depuis votre téléphone, le jour de la pose."
       benefits={[
         {
-          title: "Portfolio avant/après",
-          desc: "Galerie sublimée, slider avant/après, fiches projets détaillées. Vos chantiers parlent pour vous — 2x plus de demandes de devis qu'un site sans portfolio soigné.",
+          title: "Vos réalisations en vitrine",
+          desc: "Escaliers, dressings, cuisines en photos, avec une légende écrite par l'IA. Le client voit votre savoir-faire dès sa première visite.",
         },
         {
-          title: "Pages par spécialité",
-          desc: "Escalier, dressing, cuisine, fenêtre bois... Une page = un mot-clé, un trafic, un formulaire. Vous captez 4 à 5x plus de recherches qu'une page 'Services' générique.",
+          title: "Une page par spécialité",
+          desc: "Escalier, dressing, cuisine, fenêtre bois : avec Essentiel ou Pro, chaque spécialité a sa page et sa recherche Google.",
         },
         {
-          title: "Devis qualifié en amont",
-          desc: "Formulaire intelligent (type de projet, budget, délai) qui pré-qualifie : vous ne perdez plus de temps sur des prospects hors cible.",
+          title: "Des demandes de projet lisibles",
+          desc: "Le client décrit son projet par écrit avant tout rendez-vous. Avec Essentiel, un agent prépare votre réponse, et vous la relisez avant l'envoi.",
         },
       ]}
       faq={FAQ}

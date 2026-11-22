@@ -2,65 +2,65 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 
 const URL = "https://sitaly.fr/site-internet-couvreur/";
-const TITLE = "Site internet couvreur-façadier : captez vos devis | Sitaly";
+const TITLE = "Création site internet couvreur : gratuit avec l'IA | Sitaly";
 const DESCRIPTION =
-  "Site internet couvreur ou façadier optimisé urgences (fuite, tempête) et SEO local. Livré en 48h, en abonnement mensuel, sans engagement.";
+  "Votre site internet couvreur créé par l'IA en une minute : toiture, façade, urgences après tempête. Gratuit pour commencer, et vous le modifiez vous-même.";
 
 const FAQ = [
   {
-    q: "Le site sera-t-il bien optimisé pour 'couvreur + ma ville' ?",
-    a: "Oui : pages locales dédiées, fiche Google Business Profile optimisée, schema LocalBusiness. Top 3 Google local visé en 3 à 6 mois selon la concurrence.",
+    q: "Combien coûte un site internet couvreur avec Sitaly ?",
+    a: "0 € avec Découverte : une page créée par l'IA et mise en ligne avec HTTPS. Essentiel coûte 39 €/mois, avec jusqu'à 4 pages et un nom de domaine offert. Pro coûte 79 €/mois, avec jusqu'à 8 pages et une mise en place avec un expert Sitaly. Toutes les formules sont sans engagement, et vous commencez sans carte bancaire.",
   },
   {
     q: "Comment gérer les urgences (fuite, tempête) ?",
-    a: "Téléphone cliquable visible partout + bouton 'Urgence toiture' optionnel. On peut aussi prévoir une page dédiée 'Dépannage toiture 24/7' qui ressort sur les recherches d'urgence.",
+    a: "Votre numéro est cliquable sur téléphone et le site s'affiche vite : après une tempête, le particulier appelle le premier couvreur joignable. Quand vous êtes sur un toit, le formulaire de devis recueille les demandes. Avec Essentiel, un agent prépare la réponse et vous la validez avant l'envoi.",
   },
   {
     q: "Puis-je présenter mes prestations façade et isolation ?",
-    a: "Tout à fait : une page par service (couverture, zinguerie, ravalement, ITE, démoussage...). Idéal pour multiplier les portes d'entrée SEO et toucher plus de recherches.",
-  },
-  {
-    q: "Que faire avec mes aides MaPrimeRénov' / CEE ?",
-    a: "On intègre un bloc dédié aux aides (MaPrimeRénov', CEE, éco-PTZ) avec un formulaire de simulation rapide. Très efficace pour capter les recherches 'aides ravalement + ville'.",
+    a: "Oui. Vous créez jusqu'à 4 pages avec Essentiel, jusqu'à 8 avec Pro, une par prestation avec ses photos et ses tarifs : couverture, zinguerie, démoussage, ravalement, isolation par l'extérieur. Vous décrivez la prestation, l'IA écrit la page.",
   },
   {
     q: "Mon activité est saisonnière, le site sert-il en hiver ?",
-    a: "L'hiver amène les fuites, les tuiles arrachées et le démoussage, l'été les ravalements et les réfections complètes. Le site couvre les deux saisons avec des pages différentes. C'est aussi en basse saison qu'on prépare les demandes de devis du printemps, quand les particuliers commencent à se renseigner.",
+    a: "L'hiver amène les fuites, les tuiles arrachées et le démoussage, l'été les ravalements et les réfections complètes. Quand la saison tourne, vous changez la mise en avant du site en une phrase. En basse saison, les articles de blog écrits par l'IA (Essentiel) répondent aux questions que les particuliers se posent avant leurs travaux de printemps.",
   },
   {
     q: "Comment rassurer sur un devis de 15 000 € ?",
-    a: "Par la preuve. Décennale et assurance affichées, photos avant-après de vos chantiers réels, avis Google datés, déroulé précis des étapes et des délais. Un particulier qui engage le prix d'une voiture veut vérifier avant d'appeler, et il vérifie sur votre site.",
+    a: "Par la preuve. Affichez votre décennale et vos assurances, les photos de vos chantiers réels, vos avis Google et le déroulé des étapes et des délais. Un particulier qui engage le prix d'une voiture vérifie avant d'appeler, et il vérifie sur votre site.",
   },
   {
     q: "Mes concurrents passent par des apporteurs d'affaires, c'est mieux ?",
-    a: "Un apporteur prend entre 10 et 20 % du chantier, sur chaque chantier, indéfiniment. Un site coûte le même montant chaque mois quel que soit le volume. Sur une année à quelques chantiers de toiture, l'écart devient difficile à ignorer.",
+    a: "Un apporteur prend un pourcentage sur chaque chantier, sans fin. L'abonnement Sitaly reste le même chaque mois, quel que soit le nombre de chantiers, et Découverte coûte 0 €. Faites le calcul sur vos chantiers de toiture de l'an dernier.",
+  },
+  {
+    q: "Faut-il savoir coder ?",
+    a: "Non. Vous répondez à trois questions et l'IA écrit le site. Ensuite, pour ajouter une commune, un chantier ou une prestation de façade, vous écrivez la demande en une phrase depuis votre téléphone.",
   },
 ];
 
 const INCLUDED = [
   {
-    title: "Galerie de chantiers avant-après",
-    desc: "Vos photos de toitures, ravalements et démoussages, recadrées et légendées par type de chantier. C'est ce que les particuliers regardent en premier et ce qui justifie votre prix.",
+    title: "Galerie de chantiers",
+    desc: "Vous photographiez la toiture finie, vous ajoutez quelques mots, et la photo rejoint la galerie du site avec une légende écrite par l'IA. Les particuliers regardent ces photos en premier, et elles justifient votre prix.",
   },
   {
     title: "Une page par prestation",
-    desc: "Réfection de toiture, zinguerie, démoussage, ravalement de façade, isolation par l'extérieur, dépannage après tempête. Chacune vise sa recherche et son type de client.",
+    desc: "Réfection de toiture, zinguerie, démoussage, ravalement de façade, isolation par l'extérieur, réparation après tempête. Jusqu'à 4 pages avec Essentiel, 8 avec Pro : chacune vise sa recherche et son type de client.",
   },
   {
-    title: "Page dédiée aux aides",
-    desc: "MaPrimeRénov', CEE, éco-PTZ, TVA réduite, avec un simulateur simple. Les recherches d'aides amènent des propriétaires déjà décidés à faire des travaux.",
-  },
-  {
-    title: "Zone d'intervention cartographiée",
-    desc: "Les communes que vous couvrez, chacune avec sa page. Un couvreur qui n'apparaît que sur sa commune se prive des trois quarts de son rayon d'action réel.",
+    title: "Les aides expliquées",
+    desc: "MaPrimeRénov', CEE, éco-PTZ, TVA réduite : vous demandez à l'IA une section ou un article de blog sur les aides liées à vos travaux. Ces recherches amènent des propriétaires déjà décidés à faire des travaux.",
   },
   {
     title: "Assurances et garanties en évidence",
-    desc: "Décennale, RGE, SIRET, garantie de parfait achèvement. Sur des montants à cinq chiffres, ce bloc fait la différence entre un devis demandé et un onglet fermé.",
+    desc: "Décennale, RGE, SIRET, garantie de parfait achèvement. Vous les donnez à l'IA et elle les place sur le site. Sur des montants à cinq chiffres, ce bloc fait la différence entre un devis demandé et un onglet fermé.",
   },
   {
-    title: "Hébergement, maintenance et modifications",
-    desc: "Domaine, SSL, sauvegardes et vos demandes de changement. Un chantier à ajouter dans la galerie, une nouvelle commune à couvrir : envoyez les photos, on publie.",
+    title: "Demandes de devis et rendez-vous",
+    desc: "Le formulaire recueille les demandes pendant que vous êtes sur un chantier. Avec Essentiel, le client réserve un créneau de visite en ligne et un agent prépare votre réponse. Rien ne part sans vous.",
+  },
+  {
+    title: "Hébergement et modifications",
+    desc: "En ligne avec HTTPS dès la formule gratuite, nom de domaine offert avec Essentiel. Un chantier à ajouter, une commune à citer : vous l'écrivez en une phrase et l'IA modifie le site.",
   },
 ];
 
@@ -68,8 +68,8 @@ const LOCAL_SEO = {
   title: "Deux saisons, deux façons d'être trouvé",
   paragraphs: [
     "L'urgence et le projet ne se cherchent pas de la même manière. Après une tempête, on tape « couvreur urgence » sur son téléphone et on appelle le premier numéro visible : là, ce sont la fiche Google et la vitesse d'affichage du site qui décident. Pour un ravalement, on compare pendant trois semaines, on lit les avis, on regarde les photos, on demande trois devis : là, c'est le contenu et la preuve qui décident.",
-    "Un site de couvreur doit tenir les deux rôles. On construit donc une page de dépannage taillée pour le mobile et l'appel immédiat, et des pages de projet plus fournies, avec les étapes, les matériaux, les délais et les aides. Les deux se nourrissent : les appels d'urgence génèrent des avis, et les avis font remonter les pages de projet.",
-    "Reste la couverture géographique. Vous intervenez sur vingt ou trente communes, mais Google ne vous associe qu'à celle de votre adresse tant que rien ne lui indique le reste. Les pages par ville, la zone desservie renseignée dans la fiche et des mentions cohérentes ailleurs sur le web étendent progressivement votre visibilité à votre vrai rayon d'intervention.",
+    "Un site de couvreur doit tenir les deux rôles. La page d'accueil sert l'appel immédiat, avec le numéro cliquable et la zone d'intervention. Les pages de prestation, plus fournies, décrivent les étapes, les matériaux, les délais et les aides. Les deux se nourrissent : les interventions d'urgence vous valent des avis, et ces avis rassurent les propriétaires qui préparent un ravalement.",
+    "Reste la couverture géographique. Vous intervenez sur vingt ou trente communes, mais Google ne vous associe qu'à celle de votre adresse tant que rien ne lui indique le reste. Citez vos communes dans les textes du site, renseignez la zone desservie sur votre fiche Google et gardez les mêmes coordonnées partout sur le web : votre visibilité s'étend peu à peu à votre vrai rayon d'intervention.",
   ],
 };
 
@@ -98,29 +98,22 @@ function CouvreurLanding() {
       route="/site-internet-couvreur/"
       included={INCLUDED}
       localSeo={LOCAL_SEO}
-      h1="Site internet couvreur-façadier pour capter les chantiers locaux"
-      intro="Un site rapide, optimisé pour les urgences toiture et les recherches ravalement, qui vous fait remonter en 1ère page Google sur votre zone."
+      h1="Création de site internet pour couvreur, de la toiture à la façade"
+      intro="Vous décrivez vos chantiers de toiture et de façade, l'IA écrit votre site en une minute. Vous le publiez et vous le modifiez depuis votre téléphone, de l'hiver des fuites à l'été des ravalements."
       benefits={[
         {
-          title: "Urgence toiture en 1 clic",
-          desc: "Numéro visible, bouton dépannage, photos rassurantes de réalisations. Les particuliers en panique appellent le 1er résultat — autant que ce soit vous.",
+          title: "Urgence toiture en un geste",
+          desc: "Numéro cliquable, site qui s'affiche vite sur mobile. Après une tempête, le particulier appelle le premier couvreur joignable : autant que ce soit vous.",
         },
         {
-          title: "Pages services + aides",
-          desc: "Couverture, ravalement, isolation, démoussage, MaPrimeRénov', CEE : une page = un mot-clé. Le trafic SEO local peut tripler vs un site mono-page.",
+          title: "Toiture et façade, chacune sa page",
+          desc: "Couverture, ravalement, isolation, démoussage : avec Essentiel ou Pro, vous créez une page par prestation avec l'IA. Chaque page répond à une recherche précise.",
         },
         {
-          title: "Galerie chantiers crédibilisante",
-          desc: "Photos avant/après, drone, échafaudages : on met en scène votre savoir-faire pour rassurer avant l'appel et justifier vos tarifs.",
+          title: "Vos chantiers en photos",
+          desc: "Vous ajoutez vos photos de toitures et de façades depuis le chantier, l'IA écrit la légende. Le client voit votre travail avant d'appeler, et vos tarifs se justifient.",
         },
       ]}
-      example={{
-        label: "Lafleur Toiture — Essonne",
-        description:
-          "Site vitrine local réalisé par Sitaly pour un couvreur de l'Essonne. Pages services, galerie chantiers, formulaire devis local. Visitez l'aperçu.",
-        iframeUrl: "https://lafleur-toiture.fr/",
-        exempleHref: "https://lafleur-toiture.fr/",
-      }}
       faq={FAQ}
       url={URL}
     />

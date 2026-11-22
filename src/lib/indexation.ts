@@ -24,19 +24,14 @@
  * Pages métier écrites pour les artisans.
  *
  * Serrurier, chauffagiste et carreleur en sont sorties le 17 novembre 2026
- * (SITA-26) : aucune page `/modeles/` ne vise déjà leur requête, et leur bouton
- * mène maintenant à `app.sitaly.fr/creer`. Elles restent listées à part dans
- * `vite.config.ts` pour le prérendu, tant qu'aucune page indexée ne les lie.
+ * (SITA-26). Les sept autres (plombier, électricien, couvreur, menuisier,
+ * maçon, peintre, paysagiste) les ont suivies le 22 novembre 2026 : Ted vise la
+ * France entière sur « création site internet <métier> » (étude OpenSEO :
+ * difficulté 0 à 16, aucune page de Sitaly classée). Réécrites pour
+ * l'application, elles reviennent dans l'index et le sitemap. La liste reste
+ * pour une page métier qu'il faudrait de nouveau écarter.
  */
-export const PAGES_METIER_HORS_INDEX = [
-  "/site-internet-plombier",
-  "/site-internet-electricien",
-  "/site-internet-couvreur",
-  "/site-internet-menuisier",
-  "/site-internet-macon",
-  "/site-internet-peintre",
-  "/site-internet-paysagiste",
-];
+export const PAGES_METIER_HORS_INDEX: string[] = [];
 
 /**
  * Outils gratuits pensés pour l'ancienne agence. Le 9 novembre 2026, la page

@@ -1072,10 +1072,10 @@ export const MODELES: Modele[] = [
       },
     ],
     renfort: {
-      h1: "Créez le site de votre restaurant en quelques minutes",
+      h1: "Création de site internet pour restaurant, en quelques minutes",
       promesse:
         "Décrivez votre activité, l'IA génère votre site avec votre carte, votre menu du jour et un formulaire de réservation de table. Vous modifiez depuis votre téléphone, entre deux services.",
-      titre: "Site internet pour restaurant, bar ou fast-food | Sitaly",
+      titre: "Création site internet restaurant, bar, fast-food | Sitaly",
       description:
         "Créez le site de votre restaurant, bar ou fast-food avec Sitaly : carte, menu du jour et réservation de table incluses. Gratuit pour démarrer.",
       bouton: "Créer mon site gratuitement",

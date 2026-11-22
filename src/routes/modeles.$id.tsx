@@ -23,6 +23,21 @@ import { imagePartage } from "@/lib/partage";
 import { APP_REF, CREATEUR_IA as IA } from "@/data/offres";
 
 /**
+ * Les métiers qui ont leur page /site-internet-<métier>/ (revenues dans
+ * l'index le 22 novembre 2026). Leur modèle lie cette page et vise le mot-clé
+ * « modèle de site internet », pour ne pas lui disputer « création site internet ».
+ */
+const PAGE_METIER: Record<string, string> = {
+  plombier: "/site-internet-plombier/",
+  electricien: "/site-internet-electricien/",
+  couvreur: "/site-internet-couvreur/",
+  menuisier: "/site-internet-menuisier/",
+  macon: "/site-internet-macon/",
+  peintre: "/site-internet-peintre/",
+  paysagiste: "/site-internet-paysagiste/",
+};
+
+/**
  * La page d'un modèle (31 octobre 2026, étoffée le 9 novembre) : le site que
  * l'IA prépare pour un métier. Elle vise la recherche « site internet » suivie
  * du métier, et porte ce qui est propre à ce métier : ce que son client veut
@@ -133,13 +148,23 @@ export const Route = createFileRoute("/modeles/$id")({
     const { modele, metier } = loaderData;
     const url = `${BASE_URL}/modeles/${modele.id}/`;
     // Google coupe un titre au-delà de 60 signes et une description au-delà de 160 : la version longue d'abord, si elle tient.
+    // Mots-clés du 22 novembre 2026 (étude OpenSEO, Google France) : le métier
+    // qui a sa page /site-internet-<métier>/ lui laisse « création site
+    // internet <métier> » et prend « modèle » ; les autres visent la création.
     const titre =
       modele.renfort?.titre ??
-      [
-        `Site internet pour ${modele.nom}, gratuit avec l'IA | Sitaly`,
-        `Site internet pour ${modele.nom}, gratuit | Sitaly`,
-      ].find((t) => t.length <= 60) ??
-      `Site internet pour ${modele.nom} | Sitaly`;
+      (PAGE_METIER[modele.id]
+        ? [
+            `Modèle de site internet ${modele.nom}, gratuit | Sitaly`,
+            `Modèle de site internet ${modele.nom} | Sitaly`,
+          ]
+        : [
+            `Création site internet ${modele.nom} : gratuit avec l'IA | Sitaly`,
+            `Création site internet ${modele.nom}, gratuit | Sitaly`,
+            `Création site internet ${modele.nom} | Sitaly`,
+          ]
+      ).find((t) => t.length <= 60) ??
+      `Site internet ${modele.nom} | Sitaly`;
     // La fin de la description varie d'un modèle à l'autre (audit SEO du
     // 14 novembre 2026 : 20 descriptions sur 22 finissaient par la même phrase).
     const rang = MODELES.findIndex((m) => m.id === modele.id);
@@ -251,7 +276,10 @@ function PageModele() {
               <div>
                 <div className="text-sm font-medium text-brand-ink">Modèle de site</div>
                 <h1 className="titre-produit mt-3 text-[2.4rem] sm:text-5xl lg:text-6xl">
-                  {renfort?.h1 ?? `Site internet pour ${modele.nom}`}
+                  {renfort?.h1 ??
+                    (PAGE_METIER[modele.id]
+                      ? `Modèle de site internet pour ${modele.nom}`
+                      : `Création de site internet pour ${modele.nom}`)}
                 </h1>
                 <p className={`mt-5 max-w-xl text-lg leading-7 ${TEXTE_GRIS}`}>
                   {renfort?.promesse ?? modele.intro}
@@ -273,6 +301,15 @@ function PageModele() {
                 <p className={`mt-3 text-base sm:text-sm ${TEXTE_GRIS}`}>
                   Gratuit, sans carte bancaire. L'IA adapte le modèle à votre activité.
                 </p>
+                {PAGE_METIER[modele.id] && (
+                  <a
+                    href={PAGE_METIER[modele.id]}
+                    className="mt-4 inline-flex min-h-11 items-center gap-1.5 text-base font-semibold underline underline-offset-4"
+                  >
+                    Création de site internet {deMetier(modele.nom)} : tout savoir
+                    <ArrowRight className="h-4 w-4" />
+                  </a>
+                )}
               </div>
 
               <div className="relative">

@@ -36,12 +36,22 @@ export default defineConfig({
         prerender: { outputPath: "/404", autoSubfolderIndex: false, crawlLinks: false },
       },
       ...PAGES_A_PRERENDRE_HORS_INDEX.map((path) => ({ path })),
-      // Serrurier, chauffagiste, carreleur : indexées depuis le 17 novembre 2026
-      // (SITA-26), donc sorties de PAGES_METIER_HORS_INDEX, mais toujours sans
-      // page indexée qui les lie. Listées ici pour que le prérendu les génère.
-      { path: "/site-internet-serrurier" },
-      { path: "/site-internet-chauffagiste" },
-      { path: "/site-internet-carreleur" },
+      // Les dix pages métier, indexées depuis le 17 novembre 2026 (serrurier,
+      // chauffagiste, carreleur, SITA-26) et le 22 novembre 2026 (les sept
+      // autres). Les modèles en lient sept : les trois autres n'ont aucune page
+      // indexée qui les lie. Toutes listées ici pour que le prérendu les génère.
+      ...[
+        "plombier",
+        "electricien",
+        "couvreur",
+        "menuisier",
+        "macon",
+        "peintre",
+        "paysagiste",
+        "serrurier",
+        "chauffagiste",
+        "carreleur",
+      ].map((m) => ({ path: `/site-internet-${m}` })),
       // /essonne/ : même cas depuis le 20 novembre 2026 (SITA-76). Sortie de
       // PAGES_AGENCE_HORS_INDEX, donc plus dans la liste ci-dessus, et aucune
       // page du site ne la lie : sans cette ligne, le prérendu par liens ne la

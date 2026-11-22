@@ -2,57 +2,61 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MetierLanding, buildMetierMeta } from "@/components/MetierLanding";
 
 const URL = "https://sitaly.fr/site-internet-chauffagiste/";
-const TITLE = "Création site internet chauffagiste gratuit | Sitaly";
+const TITLE = "Création site internet chauffagiste, gratuit | Sitaly";
 const DESCRIPTION =
-  "Créez votre site internet chauffagiste avec l'IA : pannes, pompes à chaleur, contrats d'entretien. Gratuit pour commencer, sans carte bancaire.";
+  "Site internet chauffagiste créé par l'IA en une minute : dépannage, pompes à chaleur, contrats d'entretien. Gratuit pour commencer, vous le modifiez vous-même.";
 
 const FAQ = [
   {
     q: "Mon site peut-il vendre des contrats d'entretien ?",
-    a: "Oui. L'entretien annuel d'une chaudière est obligatoire, et chaque année des propriétaires cherchent quelqu'un pour le faire. Une page dédiée présente vos formules, la zone couverte et un formulaire de souscription. C'est le revenu le plus stable d'un chauffagiste, et la page qui l'attire travaille douze mois sur douze.",
+    a: "Oui. L'entretien annuel d'une chaudière est obligatoire, et chaque année des propriétaires cherchent quelqu'un pour le faire. Une page dédiée présente vos formules et la zone couverte, et le client vous écrit par le formulaire. Avec Essentiel, il réserve aussi la visite d'entretien en ligne. Ce contrat vous apporte le revenu le plus stable du métier, douze mois sur douze.",
   },
   {
     q: "Comment mettre en avant ma qualification RGE ?",
-    a: "Le logo et le numéro de qualification figurent en haut de page et sur chaque page d'installation. Pour une pompe à chaleur, le client sait que les aides dépendent d'un installateur RGE : il vérifie avant d'appeler.",
+    a: "Placez le logo et le numéro de qualification en haut de page et sur chaque page d'installation. Pour une pompe à chaleur, le client sait que les aides dépendent d'un installateur RGE : il vérifie avant d'appeler.",
   },
   {
     q: "Je travaille sur plusieurs marques de chaudières, faut-il les citer ?",
-    a: "Oui. Beaucoup de pannes se cherchent par marque : « dépannage chaudière Saunier Duval + ville », « code erreur Frisquet ». Une page par marque que vous maîtrisez capte ces recherches, qui viennent de clients en panne donc prêts à appeler.",
+    a: "Oui. Beaucoup de pannes se cherchent par marque : « dépannage chaudière Saunier Duval + ville », « code erreur Frisquet ». Avec Essentiel, une page liste les marques que vous maîtrisez et leurs pannes courantes. Avec Pro et ses 8 pages, vous donnez une page aux marques que vous dépannez le plus. Ces recherches viennent de clients en panne, prêts à appeler.",
   },
   {
     q: "L'été, le site ne sert plus à rien ?",
-    a: "L'été est la saison des installations. Les propriétaires préparent le remplacement de leur chaudière fioul ou gaz, comparent les pompes à chaleur et montent leurs dossiers d'aides. Le site bascule la mise en avant : dépannage en hiver, projets d'installation d'avril à septembre.",
+    a: "L'été est la saison des installations. Les propriétaires préparent le remplacement de leur chaudière fioul ou gaz, comparent les pompes à chaleur et montent leurs dossiers d'aides. Vous demandez à l'IA de basculer la mise en avant : dépannage en hiver, projets d'installation d'avril à septembre.",
   },
   {
-    q: "Combien coûte un site de chauffagiste avec Sitaly ?",
-    a: "La création est gratuite, sans carte bancaire, avec une adresse en .sitaly.fr. La formule Essentiel, à 39 € par mois sans engagement, ajoute votre nom de domaine en .fr ou en .com.",
+    q: "Combien coûte un site internet chauffagiste avec Sitaly ?",
+    a: "0 € avec la formule Découverte : un site d'une page, en ligne sur votre-nom.sitaly.fr. Essentiel coûte 39 € par mois, avec 4 pages et votre nom de domaine offert. Pro coûte 79 € par mois, avec 8 pages. Les formules sont sans engagement, et vous commencez sans carte bancaire.",
+  },
+  {
+    q: "Faut-il savoir coder pour créer mon site ?",
+    a: "Non. Vous répondez à trois questions sur votre activité, l'IA écrit les textes et monte la mise en page. Pour ajouter une marque ou changer le prix d'un entretien, vous l'écrivez en une phrase et l'IA modifie le site.",
   },
 ];
 
 const INCLUDED = [
   {
-    title: "Page dépannage taillée pour l'hiver",
-    desc: "Numéro en grand, délai d'intervention, marques prises en charge. Un client sans chauffage en janvier appelle le premier artisan qui dit clairement qu'il peut venir.",
+    title: "Dépannage mis en avant l'hiver",
+    desc: "Numéro en grand et cliquable, délai d'intervention, marques prises en charge. Un client sans chauffage en janvier appelle le premier artisan qui dit qu'il peut venir.",
   },
   {
     title: "Page contrat d'entretien",
-    desc: "Formules, périmètre, fréquence, zone couverte et souscription en ligne. Chaque contrat signé revient l'année suivante sans nouvelle dépense d'acquisition.",
+    desc: "Formules, périmètre, fréquence, zone couverte. Avec Essentiel, le client réserve sa visite en ligne. Chaque contrat signé revient l'année suivante sans nouvelle dépense d'acquisition.",
   },
   {
     title: "Pages installation par équipement",
-    desc: "Pompe à chaleur air-eau, chaudière gaz à condensation, poêle à granulés, climatisation réversible. Chaque équipement a ses recherches et ses objections.",
+    desc: "Pompe à chaleur air-eau, chaudière gaz à condensation, poêle à granulés, climatisation réversible. Avec Essentiel ou Pro, chaque équipement a sa page, ses recherches et ses objections.",
   },
   {
     title: "Bloc aides et qualification RGE",
-    desc: "Les dispositifs expliqués en langage clair, le lien vers le simulateur officiel et votre qualification visible. Le client qui arrive par cette page a déjà un projet.",
+    desc: "Les dispositifs expliqués en langage clair, un lien vers le site officiel France Rénov' et votre qualification visible. Le client qui arrive par ce bloc a déjà un projet.",
   },
   {
-    title: "Pages par marque maîtrisée",
-    desc: "Les marques que vous dépannez, chacune avec ses pannes courantes. Ces pages captent les recherches de clients qui ont le code erreur sous les yeux.",
+    title: "Marques et codes erreur",
+    desc: "Les marques que vous dépannez, chacune avec ses pannes courantes. Vous captez les recherches de clients qui ont le code erreur sous les yeux.",
   },
   {
     title: "Modifications par l'IA, à tout moment",
-    desc: "Une nouvelle marque dépannée, un tarif d'entretien qui change : vous l'écrivez à l'IA, elle met le site à jour elle-même. Pas de développeur à attendre.",
+    desc: "Une nouvelle marque dépannée, un tarif d'entretien qui change : vous l'écrivez à l'IA, elle met le site à jour. Vous n'attendez aucun développeur.",
   },
 ];
 
@@ -60,8 +64,8 @@ const LOCAL_SEO = {
   title: "Un chauffagiste se cherche de deux façons opposées",
   paragraphs: [
     "En panne, le client tape « chauffagiste urgence » ou « chaudière en panne + ville » depuis son téléphone, dans une maison froide. Il regarde les trois fiches Google du haut, lit la note, appelle. La fiche Google Business Profile, les avis récents et un site qui s'affiche vite sur mobile décident de l'appel.",
-    "En projet, le client compare pendant des semaines. Il cherche « prix pompe à chaleur air-eau », « installateur RGE + ville », « remplacer chaudière fioul ». Il lit, il revient, il demande trois devis. Là, ce sont les pages de contenu, les photos d'installations et l'explication des aides qui font la différence.",
-    "Votre site traite les deux publics avec des pages distinctes. Et il travaille le contrat d'entretien, qui transforme un dépannage ponctuel en client récurrent. La recherche « entretien chaudière + ville » revient chaque automne, avec un volume stable et une concurrence souvent plus faible que sur l'urgence.",
+    "En projet, le client compare pendant des semaines. Il cherche « prix pompe à chaleur air-eau », « installateur RGE + ville », « remplacer chaudière fioul ». Il lit, il revient, il demande trois devis. Là, les pages de contenu, les photos d'installations et l'explication des aides font la différence.",
+    "Donnez une page à chaque public. Ajoutez-y le contrat d'entretien, qui transforme un dépannage ponctuel en client récurrent. La recherche « entretien chaudière + ville » revient chaque automne, avec un volume stable et une concurrence plus faible que sur l'urgence.",
   ],
 };
 
@@ -85,8 +89,8 @@ function ChauffagisteLanding() {
       route="/site-internet-chauffagiste/"
       included={INCLUDED}
       localSeo={LOCAL_SEO}
-      h1="Site internet chauffagiste : les pannes l'hiver, les installations l'été"
-      intro="Un site qui capte les urgences de janvier, les projets de pompe à chaleur du printemps et les contrats d'entretien qui reviennent chaque année, créé par l'IA et gratuit pour commencer."
+      h1="Création de site internet pour chauffagiste, gratuite avec l'IA"
+      intro="Vous décrivez vos dépannages, vos installations et vos contrats d'entretien, et l'IA écrit votre site en une minute. Depuis votre téléphone, vous passez des pannes de janvier aux pompes à chaleur du printemps en une phrase."
       benefits={[
         {
           title: "L'urgence sans friction",

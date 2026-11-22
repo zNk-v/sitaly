@@ -9,6 +9,7 @@ import { euros } from "@/lib/config";
 import { FORMULES, lienCreation } from "@/components/produit/Produit";
 import { MENTION_TVA, offresStructurees } from "@/data/offres";
 import { SiteFooter } from "@/components/SiteFooter";
+import { getModele } from "@/data/modeles";
 
 export interface MetierLandingProps {
   metier: string; // "plombier"
@@ -52,6 +53,10 @@ export function MetierLanding(props: MetierLandingProps) {
     faq,
     testimonial,
   } = props;
+  // Le modèle du métier (/modeles/<id>/), quand il existe : la page lie le
+  // modèle, et le modèle lie la page (22 novembre 2026).
+  const idModele = route.replace(/^\/site-internet-|\/$/g, "");
+  const modele = getModele(idModele);
 
   return (
     <div className="ambiance-site min-h-screen bg-background text-foreground">
@@ -62,7 +67,7 @@ export function MetierLanding(props: MetierLandingProps) {
         <div className="mx-auto max-w-6xl px-4 pt-[calc(var(--entete-hauteur)+2rem)] pb-16 sm:px-6 sm:pb-24 sm:pt-[calc(var(--entete-hauteur)+4rem)]">
           <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
             <Sparkles className="h-3.5 w-3.5" />
-            Spécialiste site internet {metier}
+            Site internet {metier} créé par l'IA
           </div>
           <h1 className="mt-5 font-display text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
             {h1}
@@ -100,6 +105,15 @@ export function MetierLanding(props: MetierLandingProps) {
               SEO local inclus
             </span>
           </div>
+          {modele && (
+            <a
+              href={`/modeles/${modele.id}/`}
+              className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline"
+            >
+              Voir le modèle de site {deMetier(metier)}
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          )}
         </div>
       </section>
 
@@ -110,7 +124,7 @@ export function MetierLanding(props: MetierLandingProps) {
             Pourquoi un site {metier} change tout
           </h2>
           <p className="mt-3 max-w-2xl text-muted-foreground">
-            Trois leviers concrets qui transforment un site vitrine en machine à appels qualifiés.
+            Ce que vos clients cherchent avant de vous appeler, et ce que le site leur montre.
           </p>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {benefits.map((b) => (
@@ -138,8 +152,8 @@ export function MetierLanding(props: MetierLandingProps) {
             Ce que comprend votre site {metier}
           </h2>
           <p className="mt-3 max-w-2xl text-muted-foreground">
-            Tout est inclus dans l'abonnement. Vous n'achetez ni hébergement, ni nom de domaine, ni
-            plugin, et vous n'avez rien à gérer.
+            L'hébergement, le cadenas HTTPS et les mises à jour sont compris. Vous n'installez rien :
+            vous décrivez votre activité, l'IA écrit le site, vous le retouchez quand vous voulez.
           </p>
           <div className="mt-10 grid gap-x-10 gap-y-7 md:grid-cols-2">
             {included.map((it) => (
@@ -357,7 +371,7 @@ export function MetierLanding(props: MetierLandingProps) {
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            Questions fréquentes — {metierCapitalized}
+            Questions fréquentes : {metierCapitalized}
           </h2>
           <div className="mt-8 divide-y divide-border rounded-2xl border border-border bg-card">
             {faq.map((it, i) => (
