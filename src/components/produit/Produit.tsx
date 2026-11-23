@@ -463,6 +463,10 @@ export const FORMULES: Formule[] = [
         texte: "Une page par prestation, détaillée, avec ses photos et ses tarifs.",
       },
       {
+        titre: "Les devis à relancer",
+        texte: "Chaque jour, les devis restés sans réponse, avec le SMS de relance écrit par l'IA.",
+      },
+      {
         titre: "Notre IA la plus avancée",
         texte: "Les textes de votre site écrits par le meilleur modèle d'IA du moment.",
       },
@@ -868,6 +872,11 @@ const GROUPES_COMPARES: { titre: string; lignes: LigneComparee[] }[] = [
         valeurs: [true, true],
       },
       { libelle: "Relances automatiques des impayés", valeurs: [true, true] },
+      {
+        libelle: "Devis à relancer",
+        aide: "Chaque jour, les devis restés sans réponse depuis 3 jours, avec le SMS de relance écrit par l'IA.",
+        valeurs: [false, true],
+      },
       { libelle: "Prise de rendez-vous en ligne", valeurs: [true, true] },
       {
         libelle: "Demandes d'avis à vos clients",

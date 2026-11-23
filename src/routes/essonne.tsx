@@ -119,7 +119,7 @@ const FORMULES_ESSONNE = [
   },
   {
     titre: `${IA.pro.nom} à ${euros(IA.pro.mensuel)} par mois`,
-    texte: `Notre IA la plus avancée pour écrire les textes, ${IA.pro.credits.toLocaleString("fr-FR")} crédits par mois, et un rendez-vous avec l'équipe pour régler votre site avec vous.`,
+    texte: `Les devis à relancer chaque jour, avec le SMS écrit par l'IA. Notre IA la plus avancée pour écrire les textes, ${IA.pro.credits.toLocaleString("fr-FR")} crédits par mois, et un rendez-vous avec l'équipe pour régler votre site avec vous.`,
   },
 ];
 

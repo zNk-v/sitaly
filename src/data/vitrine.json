@@ -1,5 +1,16 @@
 {
-  "lu_le": "2026-11-04T22:36:04.615Z",
-  "contenus": {},
+  "lu_le": "2026-11-23T12:17:21.261Z",
+  "contenus": {
+    "tarifs": {
+      "pro": {
+        "annuel": 806,
+        "mensuel": 79
+      },
+      "essentiel": {
+        "annuel": 398,
+        "mensuel": 39
+      }
+    }
+  },
   "articles": []
 }

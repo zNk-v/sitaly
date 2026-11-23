@@ -150,7 +150,7 @@ Tutoriels vidéo : https://sitaly.fr/guides/
 
 - **L'aperçu, gratuit, sans compte ni carte** : l'IA écrit le site entier et le client le voit avant de créer un compte ; il crée ensuite son compte gratuitement et retouche le site dans l'éditeur. Il n'existe pas de formule gratuite pour publier.
 - **Essentiel, 19 € par mois les 3 premiers mois (premier abonnement), puis 39 € ; ou 398 € par an** : site mis en ligne avec HTTPS, jusqu'à 4 pages, 500 crédits IA par mois, factures illimitées et relances d'impayés à J+1, J+8 et J+15, carnet de clients sans plafond, assistance par e-mail, nom de domaine en .fr ou en .com offert, enregistré au nom du client et renouvelé tant que l'abonnement court, mention réduite à « Site réalisé avec Sitaly » en petit et retirable d'un clic, prise de rendez-vous en ligne, avis Google.
-- **Pro, 79 € par mois ou 806 € par an** : jusqu'à 8 pages, le modèle d'IA le plus avancé, 2 500 crédits IA par mois, un rendez-vous de mise en place avec l'équipe Sitaly.
+- **Pro, 79 € par mois ou 806 € par an** : jusqu'à 8 pages, les devis à relancer chaque jour avec le SMS écrit par l'IA, le modèle d'IA le plus avancé, 2 500 crédits IA par mois, un rendez-vous de mise en place avec l'équipe Sitaly.
 
 TVA non applicable, art. 293 B du CGI. Sans engagement au mois ; l'annuel se paie pour un an. Satisfait ou remboursé pendant 30 jours sur le premier paiement d'un abonnement, sur simple demande à contact@sitaly.fr.
 
