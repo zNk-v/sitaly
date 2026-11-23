@@ -1,6 +1,6 @@
 # Publier sitaly.fr depuis le centre de pilotage de l'app (4 novembre 2026).
 # Lancé par le bouton « Publier sitaly.fr » (fonction vitrine-publier) : construit
-# le site de la branche site-premium avec le contenu du pilotage (prebuild :
+# le site de la branche site/en-ligne avec le contenu du pilotage (prebuild :
 # scripts/contenus-vitrine.mjs), le copie sur la branche main servie par GitHub
 # Pages, comme le fait deploy.sh depuis le Mac de Teddy.
 name: Publier sitaly.fr
@@ -17,9 +17,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
+      # Le site se construit depuis site/en-ligne, la branche que chaque mise en
+      # ligne fait avancer (deploy-propre.sh). Le 23/11/2026, ce bouton
+      # construisait encore site-premium, figée au 11/11 : un clic a remis en
+      # ligne le site d'il y a douze jours (tarifs, pages métier, page artisan).
       - uses: actions/checkout@v4
         with:
-          ref: site-premium
+          ref: site/en-ligne
           fetch-depth: 0
           path: source
       - uses: actions/checkout@v4
