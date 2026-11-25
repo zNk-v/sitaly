@@ -2,7 +2,7 @@
 # Déploiement Sitaly — un seul geste.
 #   Source (build)  : ~/sitaly            (app TanStack)
 #   Mise en ligne   : ~/dev/sitaly -> repo zNk-v/sitaly -> GitHub Pages -> sitaly.fr
-# Lovable/sitaly-app ne sont plus utilisés : on ne pousse QUE le repo de déploiement.
+# On ne pousse QUE le repo de déploiement.
 set -euo pipefail
 
 export PATH="/Users/vidalozzi/.nvm/versions/node/v24.15.0/bin:$PATH"
