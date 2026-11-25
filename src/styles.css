@@ -1094,8 +1094,7 @@ body {
 }
 
 /* Les liens de l'en-tête prennent la graisse d'affichage du site et non celle
-   de l'interface, et se soulignent du dégradé porteur. Le trait naît du centre
-   pour ne pas donner l'impression de glisser depuis le lien voisin. */
+   de l'interface. */
 @utility lien-entete {
   position: relative;
   /* « Site web » et « Agents IA » passaient sur deux lignes à 1024 px. */
@@ -1106,34 +1105,15 @@ body {
   color: var(--muted-foreground);
   transition: color 0.2s ease;
 }
-/* Le trait est calé sur le texte, pas sur la boîte : le déclencheur d'un menu
-   porte 20 px de rembourrage vertical pour faire le pont vers le panneau
-   déroulant, et un trait posé au bas de cette boîte flotterait dans le vide. */
-.lien-entete::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  right: 50%;
-  top: calc(50% + 0.72em);
-  height: 2px;
-  border-radius: 2px;
-  background: var(--gradient-ruban);
-  transition:
-    left 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-    right 0.28s cubic-bezier(0.22, 1, 0.36, 1);
-}
+/* Le trait en dégradé sous les liens a été retiré le 25/11/2026 : une
+   pastille grise glisse sous l'onglet survolé (MainNav). */
 @media (hover: hover) {
   .lien-entete:hover {
     color: var(--foreground);
   }
-  .lien-entete:hover::after {
-    left: 0;
-    right: 0;
-  }
 }
-.lien-entete:focus-visible::after {
-  left: 0;
-  right: 0;
+.lien-entete:focus-visible {
+  color: var(--foreground);
 }
 
 /* Deux jeux de chevrons, un par format. La découpe `slice` ne montre en
@@ -2122,32 +2102,101 @@ body {
   color: var(--encre-famille, var(--brand-ink));
 }
 
-/* Feuille du menu mobile -------------------------------------------------- */
+/* Menu mobile plein écran (25/11/2026) ------------------------------------ */
 
-.voile-menu {
-  background: color-mix(in oklab, var(--ink) 55%, transparent);
-  backdrop-filter: blur(3px);
-  animation: voile-entre 200ms ease-out;
+/* Deux traits qui se croisent en croix. */
+.burger {
+  position: relative;
+  display: block;
+  width: 18px;
+  height: 12px;
 }
-@keyframes voile-entre {
+.burger > span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition:
+    top 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.burger > span:first-child {
+  top: 2px;
+}
+.burger > span:last-child {
+  top: 8px;
+}
+.burger[data-ouvert="true"] > span:first-child {
+  top: 5px;
+  transform: rotate(45deg);
+}
+.burger[data-ouvert="true"] > span:last-child {
+  top: 5px;
+  transform: rotate(-45deg);
+}
+
+/* Le menu descend comme un rideau, puis chaque rubrique monte à son tour. */
+.menu-plein {
+  animation: menu-plein-entre 380ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes menu-plein-entre {
   from {
-    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
   }
 }
-.feuille-menu {
-  animation: feuille-entre 260ms cubic-bezier(0.22, 1, 0.36, 1);
+.menu-ligne {
+  animation: menu-ligne-entre 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
-@keyframes feuille-entre {
+@keyframes menu-ligne-entre {
   from {
     opacity: 0;
-    transform: translateY(-0.75rem) scale(0.985);
+    transform: translateY(16px);
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .voile-menu,
-  .feuille-menu {
+  .menu-plein,
+  .menu-ligne {
     animation: none;
   }
+  .burger > span {
+    transition: none;
+  }
+}
+
+/* La bulle de l'assistant ne recouvre pas les boutons du menu ouvert. */
+body.menu-ouvert .bulle-chat {
+  display: none;
+}
+
+/* Le logo blanc ne sert que menu ouvert, sur la pastille passée au sombre. */
+.logo-nuit {
+  display: none;
+}
+body.menu-ouvert .logo-jour {
+  display: none;
+}
+body.menu-ouvert .logo-nuit {
+  display: block;
+}
+
+/* Les menus déroulants du bureau : pictogrammes neutres, qui passent à l'encre
+   au survol de leur ligne (25/11/2026, à la place des carrés violets). */
+.menu-neutre .pastille-famille {
+  background: color-mix(in oklab, var(--ink) 5%, transparent);
+  color: color-mix(in oklab, var(--ink) 75%, transparent);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+.menu-neutre a:hover .pastille-famille,
+.menu-neutre a:focus-visible .pastille-famille {
+  background: var(--ink);
+  color: var(--paper);
 }
 
 /* La pastille porte la teinte de sa famille, en fond très clair et en icône
@@ -2297,9 +2346,17 @@ body {
 
 /* Menu mobile ouvert : la pastille cesse de flouter, sinon elle ramène le voile
    sombre dans son propre fond et paraît barrée de gris. */
-body.menu-ouvert .entete-plaque {
-  background: var(--paper);
+body.menu-ouvert .entete-plaque::before {
+  /* Menu mobile ouvert : la pastille se fond dans le menu sombre. */
+  background: #0d0f14;
+  border-color: rgb(255 255 255 / 0.1);
   backdrop-filter: none;
+  box-shadow: none;
+  animation: none;
+  opacity: 1;
+}
+body.menu-ouvert .entete-plaque .lien-entete {
+  color: rgb(255 255 255 / 0.7);
 }
 
 /* Le champ des chevrons existe en deux exemplaires : celui du premier plan, qui

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { VITRINE } from "@/data/vitrine";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Phone } from "lucide-react";
@@ -45,25 +46,38 @@ export function SiteHeader({
       mon offre » sans offre. */
   appel?: AppelPrincipal;
 }) {
+  /* Le logo existe en deux couleurs : le blanc ne s'affiche que menu mobile
+     ouvert, quand la pastille passe au sombre (styles.css, « logo-nuit »). */
+  const logos = (
+    <>
+      <SitalyLogo className="logo-jour" />
+      <SitalyLogo variant="blanc" className="logo-nuit" />
+    </>
+  );
   const Logo = accueil ? (
     <a href="#top" className="flex min-h-11 items-center" aria-label="Sitaly — accueil">
-      <SitalyLogo />
+      {logos}
     </a>
   ) : (
     <Link to="/" className="flex min-h-11 items-center" aria-label="Sitaly — accueil">
-      <SitalyLogo />
+      {logos}
     </Link>
   );
 
+  /* Dès qu'on quitte le haut de page, la pastille se resserre au centre
+     (25/11/2026) : sur bureau, elle passe de 80 à 64 rem. */
+  const [resserre, setResserre] = useState(false);
+  useEffect(() => {
+    const mesurer = () => setResserre(window.scrollY > 120);
+    mesurer();
+    window.addEventListener("scroll", mesurer, { passive: true });
+    return () => window.removeEventListener("scroll", mesurer);
+  }, []);
+
   return (
     <>
-      {/* Progression de lecture, sur l'arête de la fenêtre et non sous une
-          pastille aux angles ronds, où un filet droit se couperait mal. */}
-      <div
-        className="scroll-progress fixed inset-x-0 top-0 z-[60] h-[3px] origin-left"
-        aria-hidden="true"
-      />
-
+      {/* Le filet de progression en dégradé a été retiré le 25/11/2026 :
+          Teddy le trouvait daté. */}
       {/* La gouttière ne doit pas intercepter les clics destinés au hero. */}
       <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
         {/* Le bandeau fin du prix d'appel (Black Friday du 27 au 30 novembre), d'un bord à l'autre de la fenêtre, au-dessus de la pastille. */}
@@ -88,7 +102,7 @@ export function SiteHeader({
           </div>
         )}
         <div
-          className={`entete-plaque${premierEcran === "sombre" ? " entete-plaque--fixe" : ""} pointer-events-auto mx-auto flex h-14 max-w-7xl items-center justify-between rounded-full pl-5 pr-2 sm:pl-6 sm:pr-3`}
+          className={`entete-plaque${premierEcran === "sombre" ? " entete-plaque--fixe" : ""} pointer-events-auto mx-auto flex h-14 max-w-7xl items-center justify-between rounded-full pl-5 pr-2 transition-[max-width] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:pl-6 sm:pr-2 ${resserre ? "lg:max-w-[64rem]" : ""}`}
         >
           {Logo}
 

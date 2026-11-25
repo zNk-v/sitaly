@@ -1,7 +1,7 @@
 import type { OffreId } from "@/data/offres";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Menu, Phone, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Phone, Plus } from "lucide-react";
 import type { EntreeMenu } from "@/data/expertises";
 import {
   LIEN_TARIFS,
@@ -12,29 +12,19 @@ import {
 import { APP_URL, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 
 /**
- * Le menu mobile.
+ * Le menu mobile, plein écran depuis le 25/11/2026.
  *
- * Il a d'abord listé sept ancres vers des sections de l'accueil, qui pointaient
- * dans le vide dès qu'on n'était pas sur l'accueil. Il a ensuite repris la
- * structure du menu de bureau, mais sous la forme d'un panneau accroché sous
- * le bandeau, sans fond derrière : la page continuait de défiler visuellement
- * derrière lui et rien ne disait où finissait le menu.
+ * L'ancienne feuille blanche posée sous la pastille faisait daté à Teddy. Le
+ * menu couvre maintenant l'écran en sombre, sous la pastille qui passe elle
+ * aussi au sombre (styles.css, « body.menu-ouvert »). Les rubriques montent
+ * l'une après l'autre en grande typographie ; chacune se déplie sur place.
+ * Le bouton n'est plus un carré bordé : deux traits qui se croisent en croix.
  *
- * C'est maintenant une feuille posée sur un fond assombri. Trois choses en
- * découlent, et chacune corrige un défaut mesuré :
- *
- * - Le fond capte le toucher, donc on referme en touchant à côté. C'était
- *   impossible auparavant : il fallait viser la croix.
- * - La feuille a une hauteur bornée et défile pour elle-même, le corps de la
- *   page étant figé. Le menu ouvert ne faisait pas défiler la page derrière,
- *   mais il pouvait déborder sans qu'on puisse l'atteindre.
- * - Chaque famille porte sa couleur, comme partout ailleurs.
- *
- * Les menus sont ceux du bureau (src/data/menu.ts), dans le même ordre :
- * Produits, Solutions, Tarifs, Ressources et Outils, chacun dans un volet.
- *
- * Aucune bibliothèque : deux `details` repliés, une transition CSS, et la
- * touche Échap.
+ * Ce qui reste de la version précédente, et pour les mêmes raisons :
+ * - le corps de la page ne défile pas derrière, le menu défile pour lui-même ;
+ * - Échap referme et rend le focus au bouton ;
+ * - les menus sont ceux du bureau (src/data/menu.ts), dans le même ordre ;
+ * - les deux actions restent collées en bas, quoi qu'on déplie au-dessus.
  */
 /** Le bouton principal d'une page : libellé et offre déjà choisie (voir SiteHeader). */
 export interface AppelPrincipal {
@@ -43,30 +33,30 @@ export interface AppelPrincipal {
 }
 
 export function MobileMenu({
-  variant = "bar",
   onHome = false,
   appel,
 }: {
   appel?: AppelPrincipal;
-  /** Conservé pour les appelants : la feuille est la même dans les deux cas. */
+  /** Conservé pour les appelants : le menu est le même dans les deux cas. */
   variant?: "bar" | "floating";
   onHome?: boolean;
   current?: "agents-ia" | "blog";
 }) {
   const [ouvert, setOuvert] = useState(false);
+  const [haut, setHaut] = useState(0);
   const fermer = () => setOuvert(false);
   const declencheur = useRef<HTMLButtonElement>(null);
 
-  /* Le corps ne défile plus derrière la feuille, et la touche Échap referme.
+  /* Le corps ne défile plus derrière le menu, et la touche Échap referme.
      Le focus revient au bouton : sans cela il repart au début du document. */
+  /* Le menu est rendu dans l'en-tête : en `-z-10`, il passe sous la pastille
+     et le bandeau du prix, qui restent visibles au-dessus de lui. */
   useEffect(() => {
     if (!ouvert) return;
+    // Le menu commence sous l'en-tête, dont la hauteur dépend des bandeaux.
+    setHaut(document.querySelector("header")?.getBoundingClientRect().bottom ?? 0);
     const precedent = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    /* La pastille de l'en-tête est translucide et floute ce qu'il y a derrière.
-       Le voile passant sous elle, son flou le ramenait dedans et la pastille
-       virait au gris barré. Elle devient opaque le temps du menu : le z-index
-       n'y pouvait rien, c'est le `backdrop-filter` qui échantillonnait. */
     document.body.classList.add("menu-ouvert");
     const auClavier = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -90,8 +80,14 @@ export function MobileMenu({
     return () => mq.removeEventListener("change", close);
   }, []);
 
-  const lien =
-    "flex items-center justify-between rounded-xl px-3 py-3 text-[15px] font-semibold text-foreground transition-colors active:bg-secondary";
+  const ligne =
+    "flex w-full cursor-pointer list-none items-center justify-between py-4 font-display text-[28px] font-semibold tracking-tight text-white marker:content-none [&::-webkit-details-marker]:hidden";
+  const rubriques: ({ menu: MenuDeroulant } | { lien: { to: string; label: string } })[] = [
+    ...MENUS_AVANT_TARIFS.map((menu) => ({ menu })),
+    { lien: LIEN_TARIFS },
+    ...MENUS_APRES_TARIFS.map((menu) => ({ menu })),
+    ...(onHome ? [] : [{ lien: { to: "/", label: "Accueil" } }]),
+  ];
 
   return (
     <>
@@ -99,173 +95,124 @@ export function MobileMenu({
         ref={declencheur}
         type="button"
         onClick={() => setOuvert((v) => !v)}
-        className={`relative z-[70] inline-flex h-11 w-11 shrink-0 items-center justify-center border border-border bg-card text-foreground shadow-soft transition active:scale-95 lg:hidden ${
-          variant === "floating" ? "rounded-full" : "rounded-xl"
+        className={`relative z-[70] grid h-11 w-11 shrink-0 place-items-center rounded-full transition-colors active:scale-95 lg:hidden ${
+          ouvert ? "bg-white/10 text-white" : "bg-black/[0.05] text-foreground"
         }`}
         aria-label={ouvert ? "Fermer le menu" : "Ouvrir le menu"}
         aria-expanded={ouvert}
         aria-controls="menu-mobile"
       >
-        {ouvert ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        <span className="burger" data-ouvert={ouvert} aria-hidden="true">
+          <span />
+          <span />
+        </span>
       </button>
 
       {ouvert && (
-        <>
-          {/* Le fond. Il assombrit la page et referme au toucher. Il passe
-              SOUS la pastille de l'en-tête, qui vaut z-50 : au-dessus, il la
-              barrait d'un rectangle gris dont les angles ne suivaient pas les
-              siens, et le logo devenait illisible pendant que le bouton, plus
-              haut encore, restait net. */}
-          <button
-            type="button"
-            aria-label="Fermer le menu"
-            onClick={fermer}
-            className="voile-menu fixed inset-0 z-40 cursor-default lg:hidden"
-          />
+        <div
+          id="menu-mobile"
+          className="menu-plein pointer-events-auto fixed inset-0 -z-10 flex flex-col overflow-y-auto overscroll-contain bg-[#0d0f14] text-white lg:hidden"
+          style={{ paddingTop: haut + 8 }}
+        >
+          <nav className="flex-1 px-6 pb-6" aria-label="Navigation principale">
+            <ul>
+              {rubriques.map((r, i) => (
+                <li
+                  key={"menu" in r ? r.menu.label : r.lien.label}
+                  className="menu-ligne border-b border-white/10"
+                  style={{ animationDelay: `${80 + i * 45}ms` }}
+                >
+                  {"menu" in r ? (
+                    <details className="group">
+                      <summary className={ligne}>
+                        {r.menu.label}
+                        <span className="grid h-9 w-9 place-items-center rounded-full bg-white/[0.08] transition-transform duration-300 group-open:rotate-45">
+                          <Plus className="h-4 w-4" aria-hidden="true" />
+                        </span>
+                      </summary>
+                      <ul className="space-y-0.5 pb-4">
+                        {r.menu.colonnes
+                          .flatMap((c) => c.entrees)
+                          .map((e) => (
+                            <li key={e.label}>
+                              <EntreeMobile e={e} onClick={fermer} />
+                            </li>
+                          ))}
+                        {r.menu.entete?.tout && (
+                          <li>
+                            <Link
+                              to={r.menu.entete.tout.to}
+                              onClick={fermer}
+                              className="flex items-center gap-1.5 px-2 py-2.5 text-[15px] font-semibold text-white"
+                            >
+                              {r.menu.entete.tout.label}
+                              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                            </Link>
+                          </li>
+                        )}
+                      </ul>
+                    </details>
+                  ) : (
+                    <Link to={r.lien.to} onClick={fermer} className={ligne}>
+                      {r.lien.label}
+                      <span className="grid h-9 w-9 place-items-center rounded-full bg-white/[0.08]">
+                        <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                      </span>
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
 
+          {/* Les deux actions, toujours à la même place. Une page de service
+              vend son offre (questionnaire, téléphone) ; partout ailleurs,
+              l'action est de créer son site dans l'application. */}
           <div
-            id="menu-mobile"
-            className="feuille-menu fixed inset-x-3 top-[var(--entete-hauteur)] z-[60] max-h-[calc(100dvh-var(--entete-hauteur)-0.75rem)] overflow-y-auto overscroll-contain rounded-3xl border border-border bg-card shadow-elevated sm:inset-x-4 lg:hidden"
+            className="menu-ligne sticky bottom-0 border-t border-white/10 bg-[#0d0f14]/90 p-5 backdrop-blur"
+            style={{ animationDelay: "320ms" }}
           >
-            <nav className="p-3" aria-label="Navigation principale">
-              {MENUS_AVANT_TARIFS.map((m: MenuDeroulant) => (
-                <details key={m.label} className="group">
-                  <summary className="flex cursor-pointer list-none items-center justify-between rounded-xl px-3 py-3 font-display text-base font-bold tracking-tight marker:content-none">
-                    {m.label}
-                    <svg
-                      viewBox="0 0 12 12"
-                      aria-hidden="true"
-                      className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                    >
-                      <path d="M2.5 4.5L6 8l3.5-3.5" />
-                    </svg>
-                  </summary>
-                  <ul className="mb-1 space-y-0.5 px-2">
-                    {m.colonnes
-                      .flatMap((c) => c.entrees)
-                      .map((e) => (
-                        <li key={e.label}>
-                          <EntreeMobile e={e} onClick={fermer} />
-                        </li>
-                      ))}
-                    {m.entete?.tout && (
-                      <li>
-                        <Link
-                          to={m.entete.tout.to}
-                          onClick={fermer}
-                          className="block rounded-xl px-3 py-2.5 text-sm font-semibold"
-                        >
-                          {m.entete.tout.label} →
-                        </Link>
-                      </li>
-                    )}
-                  </ul>
-                </details>
-              ))}
-
-              <Link to={LIEN_TARIFS.to} onClick={fermer} className={lien}>
-                {LIEN_TARIFS.label}
-                <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
-              </Link>
-
-              {MENUS_APRES_TARIFS.map((m: MenuDeroulant) => (
-                <details key={m.label} className="group">
-                  <summary className="flex cursor-pointer list-none items-center justify-between rounded-xl px-3 py-3 font-display text-base font-bold tracking-tight marker:content-none">
-                    {m.label}
-                    <svg
-                      viewBox="0 0 12 12"
-                      aria-hidden="true"
-                      className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                    >
-                      <path d="M2.5 4.5L6 8l3.5-3.5" />
-                    </svg>
-                  </summary>
-                  <ul className="mb-1 space-y-0.5 px-2">
-                    {m.colonnes
-                      .flatMap((c) => c.entrees)
-                      .map((e) => (
-                        <li key={e.label}>
-                          <EntreeMobile e={e} onClick={fermer} />
-                        </li>
-                      ))}
-                    {m.entete?.tout && (
-                      <li>
-                        <Link
-                          to={m.entete.tout.to}
-                          onClick={fermer}
-                          className="block rounded-xl px-3 py-2.5 text-sm font-semibold"
-                        >
-                          {m.entete.tout.label} →
-                        </Link>
-                      </li>
-                    )}
-                  </ul>
-                </details>
-              ))}
-
-              {!onHome && (
-                <Link to="/" onClick={fermer} className={lien}>
-                  Accueil
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
+            {appel ? (
+              <>
+                <Link
+                  to="/mon-projet/"
+                  search={appel.offre ? { offre: appel.offre } : {}}
+                  onClick={fermer}
+                  className="bouton h-12 w-full text-base"
+                >
+                  {appel.label}
+                  <ArrowRight className="bouton-fleche h-4 w-4" />
                 </Link>
-              )}
-            </nav>
-
-            {/* Le pied de la feuille. Les deux actions y sont toujours à la
-                même place, quel que soit ce qui est déplié au-dessus. */}
-            <div className="sticky bottom-0 border-t border-border bg-card/95 p-3 backdrop-blur">
-              {/* Une page de service vend son offre (questionnaire, téléphone) ;
-                  partout ailleurs, l'action est de créer son site dans l'application. */}
-              {appel ? (
-                <>
-                  <Link
-                    to="/mon-projet/"
-                    search={appel.offre ? { offre: appel.offre } : {}}
-                    onClick={fermer}
-                    className="bouton h-12 w-full text-base"
-                  >
-                    {appel.label}
-                    <ArrowRight className="bouton-fleche h-4 w-4" />
-                  </Link>
-                  <a
-                    href={`tel:${SITALY_PHONE}`}
-                    onClick={fermer}
-                    className="mt-2 flex h-11 items-center justify-center gap-2 rounded-xl border border-border text-[15px] font-semibold text-foreground"
-                  >
-                    <Phone className="h-4 w-4 text-brand-ink" />
-                    {SITALY_PHONE_DISPLAY}
-                  </a>
-                </>
-              ) : (
-                <>
-                  <a
-                    href={`${APP_URL}/creer`}
-                    onClick={fermer}
-                    className="bouton h-12 w-full text-base"
-                  >
-                    Créer mon site
-                    <ArrowRight className="bouton-fleche h-4 w-4" />
-                  </a>
-                  <a
-                    href={`${APP_URL}/connexion`}
-                    onClick={fermer}
-                    className="mt-2 flex h-11 items-center justify-center rounded-xl border border-border text-[15px] font-semibold text-foreground"
-                  >
-                    Se connecter
-                  </a>
-                </>
-              )}
-            </div>
+                <a
+                  href={`tel:${SITALY_PHONE}`}
+                  onClick={fermer}
+                  className="mt-2 flex h-12 items-center justify-center gap-2 rounded-full border border-white/15 text-[15px] font-semibold text-white"
+                >
+                  <Phone className="h-4 w-4" />
+                  {SITALY_PHONE_DISPLAY}
+                </a>
+              </>
+            ) : (
+              <>
+                <a
+                  href={`${APP_URL}/creer`}
+                  onClick={fermer}
+                  className="bouton h-12 w-full text-base"
+                >
+                  Créer mon site
+                  <ArrowRight className="bouton-fleche h-4 w-4" />
+                </a>
+                <a
+                  href={`${APP_URL}/connexion`}
+                  onClick={fermer}
+                  className="mt-2 flex h-12 items-center justify-center rounded-full border border-white/15 text-[15px] font-semibold text-white"
+                >
+                  Se connecter
+                </a>
+              </>
+            )}
           </div>
-        </>
+        </div>
       )}
     </>
   );
@@ -274,22 +221,22 @@ export function MobileMenu({
 /** Une entrée d'onglet : le libellé, et le prix quand c'est une offre de la grille. */
 function EntreeMobile({ e, onClick }: { e: EntreeMenu; onClick: () => void }) {
   const classe =
-    "entree-famille flex items-center gap-3 rounded-lg px-2 py-2 text-[15px] text-muted-foreground";
+    "flex items-center gap-3 rounded-xl px-2 py-2 text-base text-white/75 transition-colors active:bg-white/10";
   const contenu = (
     <>
       {e.icone && (
-        <span className="pastille-famille grid h-8 w-8 shrink-0 place-items-center rounded-lg">
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white/[0.07] text-white/85">
           <e.icone className="h-4 w-4" />
         </span>
       )}
       <span className="min-w-0 flex-1">{e.label}</span>
       {e.bientot && (
-        <span className="shrink-0 rounded-full bg-secondary px-2 py-0.5 text-[11px] font-medium">
+        <span className="shrink-0 rounded-full bg-white/10 px-2 py-0.5 text-[11px] font-medium text-white/60">
           Bientôt
         </span>
       )}
       {e.prix && (
-        <span className="shrink-0 text-[13px] font-semibold whitespace-nowrap tabular-nums text-[color:var(--encre-famille)]">
+        <span className="shrink-0 text-[13px] font-semibold whitespace-nowrap text-white/60 tabular-nums">
           {e.prix}
         </span>
       )}
