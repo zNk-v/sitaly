@@ -1,7 +1,7 @@
 import { avecCampagne } from "@/lib/mesure";
 import { departVersAppTiktok } from "@/lib/pixel-tiktok";
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
-import { ArrowRight, Check, Clock, Eye, Lock, ShieldCheck, Sparkles, Star } from "lucide-react";
+import { ArrowRight, ArrowUp, Check, Clock, Eye, Lock, ShieldCheck, Star } from "lucide-react";
 import { APP_URL, euros, SITALY_PHONE, SITALY_PHONE_DISPLAY } from "@/lib/config";
 import {
   BLACK_FRIDAY,
@@ -16,7 +16,7 @@ import {
 import { FICHE_GOOGLE_URL, NOTE_GOOGLE } from "@/data/avis-google";
 import { FAQ_PRODUIT } from "@/data/faq-produit";
 import { RepereRail } from "@/components/RepereRail";
-import { useHorsEcran } from "@/lib/ecran";
+import { TraitsFond } from "@/components/TraitsFond";
 
 /**
  * Les blocs de la vitrine de Sitaly App (30 octobre 2026), partagés par
@@ -29,10 +29,13 @@ import { useHorsEcran } from "@/lib/ecran";
  */
 
 export const CARTE = "rounded-3xl bg-black/[0.03]";
+/* Le bouton principal est violet depuis le 25/11/2026 (le violet du badge
+   « −15 % », seul sur l'action) ; le nom BOUTON_NOIR reste pour ne pas
+   toucher à tous les appels. Le secondaire garde son contour, en pilule. */
 export const BOUTON_NOIR =
-  "inline-flex items-center justify-center gap-2 rounded-2xl bg-black/85 px-5 py-3 text-sm font-medium text-white transition hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30 focus-visible:ring-offset-2 disabled:opacity-60";
+  "inline-flex items-center justify-center gap-2 rounded-full bg-violet px-5 py-3 text-sm font-semibold text-white transition hover:bg-[color-mix(in_oklab,var(--violet)_85%,black)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet/40 focus-visible:ring-offset-2 disabled:opacity-60";
 export const BOUTON_CLAIR =
-  "inline-flex items-center justify-center gap-2 rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-medium text-black/85 transition hover:bg-black/[0.03]";
+  "inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-white px-5 py-3 text-sm font-semibold text-black/85 transition hover:border-black/25";
 export const TEXTE_GRIS = "text-black/60";
 
 /** L'adresse de l'application, avec la phrase du visiteur : elle remplit la création après l'inscription. */
@@ -54,9 +57,12 @@ export function TitreSection({
   titre: string;
   sousTitre?: string;
 }) {
+  // Les traits du hero, derrière chaque titre de section (25/11/2026). Le côté
+  // alterne d'un titre à l'autre, sans état : il suit la longueur du titre.
   return (
-    <div className="mx-auto max-w-3xl text-center">
-      <div className="text-sm font-medium text-brand-ink">{surtitre}</div>
+    <div className="relative isolate mx-auto max-w-3xl text-center">
+      <TraitsFond sens={titre.length % 2 ? "droite" : "gauche"} />
+      <div className="text-sm font-medium text-black/45">{surtitre}</div>
       <h2 className="titre-produit mt-3 text-[2.15rem] sm:text-5xl lg:text-6xl">{titre}</h2>
       {sousTitre && (
         <p className={`mx-auto mt-5 max-w-2xl text-lg leading-7 ${TEXTE_GRIS}`}>{sousTitre}</p>
@@ -117,47 +123,79 @@ const IDEES = [
   "Coach sportive à Bordeaux",
 ];
 
-/** Les phrases que le bouton « Inspire-moi » écrit dans l'encart, lettre après lettre. */
-const INSPIRATIONS = [
-  "Je suis ostéopathe à Lyon, je soigne aussi les sportifs et les nourrissons",
-  "Boulangerie artisanale à Nantes, pain au levain et viennoiseries maison",
-  "Plombier chauffagiste en Essonne, dépannage en urgence 7 jours sur 7",
-  "Coach sportive à Bordeaux, séances en plein air et à domicile",
-  "Fleuriste à Lille, bouquets de mariage et livraison le jour même",
-  "Photographe de mariage en Provence, reportages naturels et sans pose",
+/**
+ * Les exemples qui s'écrivent seuls dans la barre IA tant qu'elle est vide :
+ * une lettre après l'autre, une pause, puis ils s'effacent pour le suivant
+ * (25/11/2026). Pour qui a demandé moins d'animations, le premier reste
+ * affiché, immobile.
+ */
+const EXEMPLES_TAPES = [
+  "Plombier chauffagiste à Arpajon, dépannage 7 j/7",
+  "Fleuriste à Nantes, bouquets de mariage et livraison",
+  "Ostéopathe à Lyon, je soigne aussi les nourrissons",
+  "Boulangerie au levain à Bordeaux, commandes en ligne",
+  "Coach sportive à Lille, séances à domicile",
 ];
 
-/**
- * La boîte du premier écran : une phrase, puis l'application. La phrase part
- * dans l'adresse (?activite=) ; l'application la garde pendant l'inscription
- * et en remplit la page de création. Le bouton Sitaly à gauche écrit une
- * phrase d'exemple pour qui ne sait pas par où commencer.
- */
-export function BoiteApp({ idees = true }: { idees?: boolean }) {
-  const id = useId();
-  const { ref: refLueur, classe: lueur } = useHorsEcran<HTMLDivElement>();
-  const [activite, setActivite] = useState("");
-  const minuteur = useRef<ReturnType<typeof setInterval> | null>(null);
-  const tour = useRef(0);
-
-  useEffect(
-    () => () => {
-      if (minuteur.current) clearInterval(minuteur.current);
-    },
-    [],
-  );
-
-  function inspirer() {
-    if (minuteur.current) clearInterval(minuteur.current);
-    const phrase = INSPIRATIONS[tour.current++ % INSPIRATIONS.length];
+function useExempleTape() {
+  const [texte, setTexte] = useState("Décrivez votre activité…");
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setTexte(EXEMPLES_TAPES[0]);
+      return;
+    }
+    let exemple = 0;
     let n = 0;
-    setActivite("");
-    minuteur.current = setInterval(() => {
-      n += 2;
-      setActivite(phrase.slice(0, n));
-      if (n >= phrase.length && minuteur.current) clearInterval(minuteur.current);
-    }, 28);
-  }
+    let efface = false;
+    let minuteur: ReturnType<typeof setTimeout>;
+    const pas = () => {
+      const phrase = EXEMPLES_TAPES[exemple];
+      if (!efface) {
+        n += 1;
+        setTexte(phrase.slice(0, n));
+        if (n >= phrase.length) {
+          efface = true;
+          minuteur = setTimeout(pas, 1800);
+          return;
+        }
+        minuteur = setTimeout(pas, 45);
+      } else {
+        n -= 2;
+        setTexte(phrase.slice(0, Math.max(n, 0)));
+        if (n <= 0) {
+          efface = false;
+          n = 0;
+          exemple = (exemple + 1) % EXEMPLES_TAPES.length;
+          minuteur = setTimeout(pas, 350);
+          return;
+        }
+        minuteur = setTimeout(pas, 22);
+      }
+    };
+    minuteur = setTimeout(pas, 900);
+    return () => clearTimeout(minuteur);
+  }, []);
+  return texte;
+}
+
+/**
+ * La barre IA de Sitaly, la même partout depuis le 25/11/2026 : une pilule
+ * blanche, des exemples qui s'écrivent seuls, et la flèche violette du badge
+ * « −15 % ». La phrase part dans l'adresse (?activite=) ; l'application la
+ * garde pendant l'inscription et en remplit la page de création.
+ *
+ * data-boite-ia : la barre collante se cache tant qu'une de ces barres est à
+ * l'écran.
+ */
+export function BarreIA({
+  activite,
+  setActivite,
+}: {
+  activite: string;
+  setActivite: (v: string) => void;
+}) {
+  const id = useId();
+  const exemple = useExempleTape();
 
   function envoyer(e: FormEvent) {
     e.preventDefault();
@@ -166,45 +204,47 @@ export function BoiteApp({ idees = true }: { idees?: boolean }) {
   }
 
   return (
-    <div data-boite-ia ref={refLueur} className={lueur}>
-      {/* Le liseré au dégradé du logo, et sa lueur qui respire derrière (16/11/2026).
-          Elle ne respire que dans l'écran : hors champ, elle repeignait pour rien. */}
-      <div className="relative isolate rounded-3xl bg-[linear-gradient(to_top_right,#0b53b0,#3049ba,#483dc1,#5d2dc4,#7014c2,#8c009e,#9d0073,#a60047,#a51111)] p-[1.5px] shadow-[0_24px_60px_-24px_rgba(0,0,0,0.25)]">
-        <div
-          aria-hidden="true"
-          className="lueur-sitaly pointer-events-none absolute -inset-1.5 -z-10 rounded-[30px] bg-[linear-gradient(to_top_right,#0b53b0,#3049ba,#483dc1,#5d2dc4,#7014c2,#8c009e,#9d0073,#a60047,#a51111)] blur-lg"
-        />
-        <form onSubmit={envoyer} className="rounded-[22.5px] bg-white p-2.5">
-          <label htmlFor={`${id}-activite`} className="sr-only">
-            Votre activité
-          </label>
-          <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center">
-            <div className="flex min-w-0 flex-1 items-center gap-2 pl-1">
-              <button
-                type="button"
-                onClick={inspirer}
-                title="Inspire-moi : écrire un exemple"
-                aria-label="Écrire une phrase d'exemple"
-                className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#2563eb] to-[#7c3aed] sm:h-10 sm:w-10 text-white shadow-sm transition hover:scale-105 active:scale-95"
-              >
-                <Sparkles className="h-[18px] w-[18px]" aria-hidden="true" />
-              </button>
-              <input
-                id={`${id}-activite`}
-                value={activite}
-                onChange={(e) => setActivite(e.target.value)}
-                maxLength={600}
-                placeholder="Quelle est votre activité ?"
-                className="min-h-12 w-full bg-transparent text-[17px] outline-none placeholder:text-black/40"
-              />
-            </div>
-            <button type="submit" className={`${BOUTON_NOIR} min-h-12 px-6 text-[15px]`}>
-              Créer mon site
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </button>
-          </div>
-        </form>
-      </div>
+    <form
+      data-boite-ia
+      onSubmit={envoyer}
+      className="flex items-center gap-2 rounded-full bg-white py-2 pr-2 pl-6 text-left shadow-[0_10px_40px_-18px_rgba(9,9,11,0.35)] ring-1 ring-black/[0.06]"
+    >
+      <label htmlFor={id} className="sr-only">
+        Votre activité
+      </label>
+      <span id={`${id}-aide`} className="sr-only">
+        Par exemple : {EXEMPLES_TAPES[0]}
+      </span>
+      <input
+        id={id}
+        value={activite}
+        onChange={(e) => setActivite(e.target.value)}
+        maxLength={600}
+        placeholder={exemple}
+        aria-describedby={`${id}-aide`}
+        className="min-h-11 w-full bg-transparent text-[17px] text-[#09090b] outline-none placeholder:text-black/40"
+      />
+      <button
+        type="submit"
+        aria-label="Créer mon site"
+        className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-violet text-white transition hover:-translate-y-0.5 hover:bg-[color-mix(in_oklab,var(--violet)_85%,black)] active:translate-y-0"
+      >
+        <ArrowUp className="h-5 w-5" aria-hidden="true" />
+      </button>
+    </form>
+  );
+}
+
+/**
+ * La barre IA avec, au besoin, des idées d'activité en dessous. Utilisée en
+ * bas de l'accueil et sur /tarifs/. Le bouton « Inspire-moi » a disparu le
+ * 25/11/2026 : les exemples s'écrivent désormais seuls dans la barre.
+ */
+export function BoiteApp({ idees = true }: { idees?: boolean }) {
+  const [activite, setActivite] = useState("");
+  return (
+    <div className="mx-auto max-w-xl">
+      <BarreIA activite={activite} setActivite={setActivite} />
       {idees && (
         <div className="mt-4 flex flex-wrap justify-center gap-2">
           {IDEES.map((idee, k) => (
@@ -424,15 +464,18 @@ export const FORMULES: Formule[] = [
       },
       {
         titre: "Articles de blog écrits par l'IA",
-        texte: "L'agent choisit un sujet que vos clients cherchent, écrit l'article, vous le relisez.",
+        texte:
+          "L'agent choisit un sujet que vos clients cherchent, écrit l'article, vous le relisez.",
       },
       {
         titre: "L'agent qui répond aux demandes de votre site",
-        texte: "Chaque message arrive avec sa réponse déjà rédigée, dans votre ton. Rien ne part sans vous.",
+        texte:
+          "Chaque message arrive avec sa réponse déjà rédigée, dans votre ton. Rien ne part sans vous.",
       },
       {
         titre: "Devis et factures illimités, impayés relancés",
-        texte: "Payables par carte ou virement. Vos retards relancés automatiquement à J+1, J+8 et J+15.",
+        texte:
+          "Payables par carte ou virement. Vos retards relancés automatiquement à J+1, J+8 et J+15.",
       },
       { titre: "Assistance par e-mail", texte: "Une vraie personne vous répond, en français." },
       {
@@ -568,18 +611,21 @@ export function GrilleTarifs() {
         </div>
       </div>
       {/* Rail à arrêts sous 640 px (SITA-31, friction 3). */}
-      <div ref={rail} className="rail-mobile rail-deux mx-auto mt-10 grid max-w-4xl gap-5 lg:grid-cols-2">
+      <div
+        ref={rail}
+        className="rail-mobile rail-deux mx-auto mt-10 grid max-w-4xl gap-5 lg:grid-cols-2"
+      >
         {FORMULES.map((f) => (
           <CartePrix key={f.nom} formule={f} annuel={annuel} blackFriday={blackFriday} />
         ))}
       </div>
       <RepereRail rail={rail} total={FORMULES.length} />
       <p className={`mx-auto mt-6 max-w-2xl text-center text-sm ${TEXTE_GRIS}`}>
-        {MENTION_TVA}. Sans engagement au mois ; l'annuel se paie pour un an. Le prix d'appel
-        d'{IA.essentiel.nom} vaut pour le premier abonnement d'un compte, au mois. {GARANTIE}{" "}
-        sur le premier paiement, sur simple demande. « Bientôt » : fonctions en préparation,
-        ajoutées à votre formule dès leur ouverture. Une retouche coûte 1 ou 2 crédits, une photo
-        créée par l'IA 5.
+        {MENTION_TVA}. Sans engagement au mois ; l'annuel se paie pour un an. Le prix d'appel d'
+        {IA.essentiel.nom} vaut pour le premier abonnement d'un compte, au mois. {GARANTIE} sur le
+        premier paiement, sur simple demande. « Bientôt » : fonctions en préparation, ajoutées à
+        votre formule dès leur ouverture. Une retouche coûte 1 ou 2 crédits, une photo créée par
+        l'IA 5.
       </p>
     </div>
   );
@@ -598,12 +644,12 @@ function CartePrix({
   const prix = annuel ? formule.annuel : appel ? appel.mensuel : mensuel;
   return (
     <div
-      className={`flex flex-col rounded-3xl bg-white p-8 ${badge ? "border-2 border-black/80" : "border border-black/[0.08]"}`}
+      className={`flex flex-col rounded-3xl bg-white p-8 ${badge ? "border-2 border-violet" : "border border-black/[0.08]"}`}
     >
       <div className="flex items-center justify-between gap-3">
         <h3 className="text-lg font-semibold">{nom}</h3>
         {badge && (
-          <span className="rounded-full bg-black/85 px-3 py-1 text-xs font-medium text-white">
+          <span className="rounded-full bg-violet px-3 py-1 text-xs font-medium text-white">
             {badge}
           </span>
         )}
@@ -740,7 +786,7 @@ export function PassageEssentiel() {
         <ul className="mt-8 space-y-5">
           {OUVERT_PAR_ESSENTIEL.map((f) => (
             <li key={f.titre} className="flex gap-3">
-              <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#c4b5fd]" aria-hidden="true" />
+              <Check className="mt-0.5 h-4 w-4 shrink-0 text-white/60" aria-hidden="true" />
               <div>
                 <div className="text-[15px] font-semibold">{f.titre}</div>
                 <p className="mt-1 text-base leading-6 text-white/60 sm:text-sm">{f.texte}</p>
@@ -750,7 +796,7 @@ export function PassageEssentiel() {
         </ul>
         <a
           href={lienCreation()}
-          className="mt-10 inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-medium text-black transition hover:bg-white/90"
+          className="mt-10 inline-flex items-center justify-center gap-2 rounded-full bg-violet px-5 py-3 text-sm font-semibold text-white transition hover:bg-[color-mix(in_oklab,var(--violet)_85%,black)]"
         >
           Créer mon site
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -941,11 +987,7 @@ export function TableauFormules() {
                     </div>
                     <a
                       href={lienCreation()}
-                      className={`mt-4 inline-flex w-full items-center justify-center rounded-2xl px-4 py-2.5 text-sm font-semibold transition ${
-                        k === 0
-                          ? "bg-white text-black hover:bg-white/90"
-                          : "bg-black/85 text-white hover:bg-black"
-                      }`}
+                      className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-violet px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[color-mix(in_oklab,var(--violet)_85%,black)]"
                     >
                       Choisir
                     </a>
@@ -961,7 +1003,7 @@ export function TableauFormules() {
                 <th
                   colSpan={3}
                   scope="colgroup"
-                  className="pt-8 pb-3 text-sm font-semibold text-brand-ink"
+                  className="pt-8 pb-3 text-sm font-semibold text-black/45"
                 >
                   {g.titre}
                 </th>
@@ -1010,7 +1052,7 @@ export function TableauFormules() {
         <p className={`mt-4 text-center text-sm ${TEXTE_GRIS}`}>{PRIX_COMPARES[choix]}</p>
         {GROUPES_COMPARES.map((g) => (
           <div key={g.titre} className="mt-6">
-            <div className="text-sm font-semibold text-brand-ink">{g.titre}</div>
+            <div className="text-sm font-semibold text-black/45">{g.titre}</div>
             <ul className="mt-2">
               {g.lignes.map((l) => (
                 <li

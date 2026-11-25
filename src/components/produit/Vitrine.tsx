@@ -1,7 +1,7 @@
 import { avecCampagne } from "@/lib/mesure";
 import { departVersAppTiktok } from "@/lib/pixel-tiktok";
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
-import { ArrowRight, Lock, Sparkles, Star } from "lucide-react";
+import { ArrowRight, ArrowUp, Lock, Sparkles, Star } from "lucide-react";
 import { lienCreation } from "@/components/produit/Produit";
 import { useBoutonCollant } from "@/components/produit/BoutonCollant";
 import { useHorsEcran } from "@/lib/ecran";
@@ -416,20 +416,18 @@ export function BarreCollante() {
       style={{ bottom: "calc(var(--bandeau-cookies, 0px) + 1rem)" }}
       aria-hidden={!montre}
     >
-      <div className="relative isolate w-full max-w-xl rounded-full bg-[linear-gradient(to_top_right,#0b53b0,#3049ba,#483dc1,#5d2dc4,#7014c2,#8c009e,#9d0073,#a60047,#a51111)] p-[1.5px] shadow-[0_20px_50px_-15px_rgba(0,0,0,0.35)]">
-        <div
-          aria-hidden="true"
-          className="lueur-sitaly pointer-events-none absolute -inset-1 -z-10 rounded-full bg-[linear-gradient(to_top_right,#0b53b0,#3049ba,#483dc1,#5d2dc4,#7014c2,#8c009e,#9d0073,#a60047,#a51111)] blur-md"
-        />
+      {/* La même pilule que la barre IA du hero depuis le 25/11/2026 : blanche,
+          flèche violette, plus de liseré arc-en-ciel. Elle garde une ombre
+          neutre, car elle flotte vraiment au-dessus de la page. */}
+      <div className="w-full max-w-xl">
         <form
           onSubmit={(e) => {
             e.preventDefault();
             departVersAppTiktok("formulaire-vitrine");
             window.location.href = avecCampagne(lienCreation(activite.trim()));
           }}
-          className="flex w-full items-center gap-2 rounded-full bg-white p-1.5 pl-5"
+          className="flex w-full items-center gap-2 rounded-full bg-white py-1.5 pr-1.5 pl-5 shadow-[0_12px_30px_-14px_rgba(9,9,11,0.4)] ring-1 ring-black/[0.06]"
         >
-          <Sparkles className="h-4 w-4 shrink-0 text-brand-ink" aria-hidden="true" />
           <label className="sr-only" htmlFor="barre-collante">
             Votre activité
           </label>
@@ -438,17 +436,16 @@ export function BarreCollante() {
             tabIndex={montre ? 0 : -1}
             value={activite}
             onChange={(e) => setActivite(e.target.value)}
-            placeholder="Quelle est votre activité ?"
+            placeholder="Décrivez votre activité…"
             className="min-h-11 min-w-0 flex-1 bg-transparent text-[16px] outline-none placeholder:text-black/40 sm:min-h-10"
           />
           <button
             type="submit"
             tabIndex={montre ? 0 : -1}
             aria-label="Créer mon site"
-            className="inline-flex h-11 shrink-0 items-center gap-2 rounded-full bg-black/85 px-4 text-sm font-medium text-white hover:bg-black sm:h-10"
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-violet text-white transition hover:bg-[color-mix(in_oklab,var(--violet)_85%,black)]"
           >
-            <span className="sm:hidden">Créer</span>
-            <span className="hidden sm:inline">Créer mon site</span>
+            <ArrowUp className="h-5 w-5" aria-hidden="true" />
           </button>
         </form>
       </div>
@@ -1021,14 +1018,15 @@ export function Conversation() {
    Ce que Sitaly remplace
    --------------------------------------------------------------------------- */
 
+/* Gris anthracite depuis le 25/11/2026, et un seul outil en violet : le violet reste à l'action. */
 const OUTILS = [
-  { nom: "Créateur de site", couleur: "#2563eb", x: "4%", rot: "-8deg", chute: "150px" },
-  { nom: "Hébergement", couleur: "#16a34a", x: "30%", rot: "5deg", chute: "170px" },
-  { nom: "Rédacteur web", couleur: "#e11d48", x: "55%", rot: "-4deg", chute: "140px" },
-  { nom: "Banque d'images", couleur: "#f59e0b", x: "86%", rot: "9deg", chute: "165px" },
-  { nom: "Outil de référencement", couleur: "#7c3aed", x: "12%", rot: "7deg", chute: "205px" },
-  { nom: "Formulaire de contact", couleur: "#0891b2", x: "47%", rot: "-10deg", chute: "215px" },
-  { nom: "Graphiste", couleur: "#db2777", x: "78%", rot: "-3deg", chute: "225px" },
+  { nom: "Créateur de site", couleur: "#18181b", x: "4%", rot: "-8deg", chute: "150px" },
+  { nom: "Hébergement", couleur: "#3f3f46", x: "30%", rot: "5deg", chute: "170px" },
+  { nom: "Rédacteur web", couleur: "#18181b", x: "55%", rot: "-4deg", chute: "140px" },
+  { nom: "Banque d'images", couleur: "#3f3f46", x: "86%", rot: "9deg", chute: "165px" },
+  { nom: "Outil de référencement", couleur: "#7429c3", x: "12%", rot: "7deg", chute: "205px" },
+  { nom: "Formulaire de contact", couleur: "#18181b", x: "47%", rot: "-10deg", chute: "215px" },
+  { nom: "Graphiste", couleur: "#3f3f46", x: "78%", rot: "-3deg", chute: "225px" },
 ];
 
 export function OutilsRemplaces() {

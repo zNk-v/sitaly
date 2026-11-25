@@ -7,7 +7,6 @@ import {
   Faq,
   FAQ_PRODUIT,
   GrilleTarifs,
-  PassageEssentiel,
   TEXTE_GRIS,
   TitreSection,
 } from "@/components/produit/Produit";
@@ -17,11 +16,11 @@ import {
   Conversation,
   Familles,
   GrilleFonctions,
-  OutilsRemplaces,
 } from "@/components/produit/Vitrine";
 import { FilmLancement, GrilleActivite } from "@/components/produit/Activite";
-import { CREATEUR_IA as IA, GARANTIE, offresStructurees, PRIX_APPEL } from "@/data/offres";
-import { VITRINE } from "@/data/vitrine";
+import { GARANTIE, offresStructurees, PRIX_APPEL } from "@/data/offres";
+import { HeroComposer } from "@/components/accueil/HeroComposer";
+import { TraitsFond } from "@/components/TraitsFond";
 
 /**
  * L'accueil de sitaly.fr (30 octobre 2026) : la vitrine de Sitaly App.
@@ -110,23 +109,7 @@ function Accueil() {
     <div className="min-h-screen bg-white text-[#09090b]">
       <SiteHeader accueil />
       <div id="top" className="pt-[var(--entete-hauteur)]">
-        <section className="px-4 pt-14 pb-8 sm:px-6 sm:pt-20">
-          <div className="mx-auto max-w-4xl text-center">
-            <h1 className="titre-produit text-[2.6rem] sm:text-6xl lg:text-[5.25rem]">
-              {VITRINE.accueilTitre ?? "Votre site internet, créé par l'IA en une minute"}
-            </h1>
-            <p
-              className={`mx-auto mt-6 max-w-2xl text-lg leading-7 sm:text-xl sm:leading-8 ${TEXTE_GRIS}`}
-            >
-              {VITRINE.accueilSousTitre ??
-                "Décrivez votre activité. Sitaly écrit vos pages, crée vos photos et met votre site en ligne. Ensuite, vous le retouchez en parlant à l'IA."}
-            </p>
-          </div>
-          <div className="mx-auto mt-10 max-w-3xl">
-            <BoiteApp />
-          </div>
-          <Confiance />
-        </section>
+        <HeroComposer />
 
         <div id="exemples" className="scroll-mt-28">
           <Carrousel />
@@ -177,7 +160,7 @@ function Accueil() {
         >
           <div className="mx-auto max-w-6xl">
             <div className="mx-auto max-w-3xl text-center">
-              <div className="text-sm font-medium text-[#c4b5fd]">Retouches</div>
+              <div className="text-sm font-medium text-white/50">Retouches</div>
               <h2 className="titre-produit mt-3 text-[2.15rem] text-white sm:text-5xl lg:text-6xl">
                 Votre site change quand vous lui parlez
               </h2>
@@ -205,51 +188,9 @@ function Accueil() {
           </div>
         </section>
 
-        <section className="px-4 py-12 sm:px-6 sm:py-28">
-          <div className="mx-auto max-w-5xl">
-            <TitreSection
-              surtitre="Un seul abonnement"
-              titre="Moins d'outils à assembler"
-              sousTitre="Créateur de site, hébergement, rédaction, photos, référencement, devis et factures, agenda : tout est déjà dans Sitaly."
-            />
-            <OutilsRemplaces />
-            <div className="mx-auto mt-2 grid max-w-xl grid-cols-2 gap-4 text-center">
-              <div className="rounded-3xl bg-black/[0.03] p-6">
-                <div className={`text-sm ${TEXTE_GRIS}`}>Avec Sitaly</div>
-                <div className="mt-1 text-4xl font-semibold tracking-tight">
-                  {PRIX_APPEL.mensuel} €
-                </div>
-                <div className={`mt-1 text-sm ${TEXTE_GRIS}`}>
-                  par mois, les {PRIX_APPEL.mois} premiers mois
-                </div>
-              </div>
-              <div className="rounded-3xl bg-black/[0.03] p-6">
-                <div className={`text-sm ${TEXTE_GRIS}`}>Ensuite</div>
-                <div className="mt-1 text-4xl font-semibold tracking-tight">
-                  {IA.essentiel.mensuel} €
-                </div>
-                <div className={`mt-1 text-sm ${TEXTE_GRIS}`}>par mois, sans engagement</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* De l'aperçu gratuit à la mise en ligne, dit d'un bloc avant la
-            grille (audit du tunnel du 15 novembre 2026, revu le 22 novembre :
-            plus de publication gratuite). */}
-        <section id="passage" className="scroll-mt-28 px-4 py-12 sm:px-6 sm:py-28">
-          <div className="mx-auto max-w-6xl">
-            <TitreSection
-              surtitre="Voir, puis publier"
-              titre="De l'aperçu à la mise en ligne"
-              sousTitre={`Vous voyez votre site entier avant de payer. Pour le publier, ${IA.essentiel.nom} vous offre aussi votre nom de domaine.`}
-            />
-            <div className="mt-8 sm:mt-14">
-              <PassageEssentiel />
-            </div>
-          </div>
-        </section>
-
+        {/* Accueil allégé le 25/11/2026 : « Moins d'outils à assembler » et
+            « De l'aperçu à la mise en ligne » sont retirés. Leur prix et leur
+            aperçu gratuit se trouvent déjà dans les tarifs juste en dessous. */}
         <section id="tarifs" className="scroll-mt-28 px-4 py-12 sm:px-6 sm:py-28">
           <div className="mx-auto max-w-6xl">
             <TitreSection
@@ -272,7 +213,8 @@ function Accueil() {
           </div>
         </section>
 
-        <section className="px-4 pt-10 pb-32 sm:px-6">
+        <section className="relative isolate overflow-x-clip px-4 pt-10 pb-32 sm:px-6">
+          <TraitsFond sens="droite" />
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="titre-produit text-[2.15rem] sm:text-5xl lg:text-6xl">
               Votre site, dans une minute

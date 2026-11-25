@@ -5,8 +5,8 @@ import teddy from "@/assets/teddy-vidal-carte-112.webp";
 /** Les petites pièces communes aux trois onglets du chat. */
 
 /** Le dégradé du logo, du bleu au rouge : les 9 teintes du favicon. */
-export const DEGRADE =
-  "bg-[linear-gradient(to_top_right,#0b53b0,#3049ba,#483dc1,#5d2dc4,#7014c2,#8c009e,#9d0073,#a60047,#a51111)]";
+/* Violet uni du badge « −15 % » depuis le 25/11/2026, à la place du dégradé du logo. */
+export const DEGRADE = "bg-violet";
 
 /** Le symbole de Sitaly, les deux chevrons, en blanc sur le dégradé. */
 export function AvatarSitaly({ taille = 32 }: { taille?: number }) {

@@ -227,6 +227,11 @@
     scroll-behavior: smooth;
   }
   body {
+    /* Rien ne doit faire défiler la page de côté : les traits de fond
+       (TraitsFond) glissent et tournent, et pourraient déborder du bord de
+       l'écran. « clip » coupe sans créer de zone de défilement, donc les
+       éléments collants (en-tête, barre IA) continuent de fonctionner. */
+    overflow-x: clip;
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
@@ -1269,16 +1274,13 @@ body {
   border-radius: 9999px;
   font-weight: 600;
   color: white;
-  background-image: var(--gradient-ruban);
-  background-size: 200% 100%;
-  background-position: 0% 50%;
-  box-shadow:
-    0 1px 2px oklch(0.3 0.08 290 / 0.25),
-    0 10px 26px -12px oklch(0.46 0.2 290 / 0.7);
+  /* Violet uni du badge « −15 % » (--violet, #7429c3) depuis le 25/11/2026,
+     à la place du dégradé du logo ; plus de halo coloré dessous (24/11).
+     Le blanc y tient 7,4:1. */
+  background-color: var(--violet);
   transition:
-    background-position 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.25s ease;
+    background-color 0.25s ease,
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Le secondaire reprend la géométrie du primaire — même pastille, même
@@ -1327,11 +1329,8 @@ body {
 
 @media (hover: hover) {
   .bouton:hover {
-    background-position: 100% 50%;
+    background-color: color-mix(in oklab, var(--violet) 85%, black);
     transform: translateY(-2px);
-    box-shadow:
-      0 1px 2px oklch(0.3 0.08 290 / 0.28),
-      0 18px 36px -14px oklch(0.46 0.2 290 / 0.8);
   }
   .bouton:hover .bouton-fleche {
     transform: translateX(4px);
@@ -3659,4 +3658,110 @@ body.menu-ouvert .entete-plaque {
 .hors-ecran .vitrine-curseur,
 .hors-ecran .vitrine-point {
   animation-play-state: paused;
+}
+
+/* Hero de l'accueil (25/11/2026, src/components/accueil/HeroComposer.tsx) :
+   les traits flous derrière la boîte IA dérivent lentement. Immobiles pour qui a
+   demandé moins d'animations. */
+@media (prefers-reduced-motion: no-preference) {
+  .trait-derive {
+    animation: trait-derive 16s ease-in-out infinite alternate;
+  }
+  .trait-derive--lent {
+    animation-duration: 22s;
+    animation-direction: alternate-reverse;
+  }
+  @keyframes trait-derive {
+    from {
+      translate: -4% 0;
+    }
+    to {
+      translate: 6% -12%;
+    }
+  }
+}
+
+/* Badges de confiance du hero (25/11/2026) : au survol du badge, son icône
+   bouge, chacune à sa façon. Le cadenas se ferme d'un petit coup, le
+   bouclier se gonfle, la coche saute, l'étoile tourne d'une branche. Rien ne
+   bouge pour qui a demandé moins d'animations. */
+.badge-icone {
+  transition: color 0.2s ease;
+}
+.group:hover .badge-icone,
+.group:focus-visible .badge-icone {
+  color: var(--violet);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .group:hover .badge-icone--cadenas {
+    animation: badge-cadenas 0.5s ease-in-out;
+  }
+  .group:hover .badge-icone--bouclier {
+    animation: badge-bouclier 0.45s ease-out;
+  }
+  .group:hover .badge-icone--coche {
+    animation: badge-coche 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .group:hover .badge-icone--etoile {
+    animation: badge-etoile 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes badge-cadenas {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-14deg); }
+    50% { transform: rotate(10deg); }
+    75% { transform: rotate(-5deg); }
+  }
+  @keyframes badge-bouclier {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+  }
+  @keyframes badge-coche {
+    0%, 100% { transform: translateY(0); }
+    45% { transform: translateY(-4px); }
+  }
+  @keyframes badge-etoile {
+    from { transform: rotate(0) scale(1); }
+    50% { transform: rotate(36deg) scale(1.25); }
+    to { transform: rotate(72deg) scale(1); }
+  }
+}
+
+/* Les traits de fond des sections (25/11/2026, src/components/TraitsFond.tsx).
+   À mesure que la section traverse l'écran, les traits apparaissent, glissent
+   d'un côté à l'autre, puis s'estompent : on retrouve le fond du hero au fil
+   du défilement. Sans animation liée au défilement, ou pour qui a demandé
+   moins d'animations, ils restent posés, immobiles. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* Le glissement n'existe qu'à partir de 1024 px : sur téléphone, un
+       décalage ferait déborder les traits et défiler la page de côté. */
+    .traits-defile {
+      --traits-pas: 0%;
+      animation: traits-defile linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+    .traits-defile--droite {
+      --traits-sens: -1;
+    }
+    @media (min-width: 1024px) {
+      .traits-defile {
+        --traits-pas: 12%;
+      }
+    }
+    @keyframes traits-defile {
+      0% {
+        opacity: 0;
+        translate: calc(var(--traits-pas) * var(--traits-sens, 1) * -1) calc(var(--traits-pas) / 2);
+      }
+      30%,
+      70% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        translate: calc(var(--traits-pas) * var(--traits-sens, 1)) calc(var(--traits-pas) / -2);
+      }
+    }
+  }
 }

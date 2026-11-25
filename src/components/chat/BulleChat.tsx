@@ -310,7 +310,7 @@ export default function BulleChat() {
         // sur ordinateur pour le refermer ; sur téléphone, le panneau prend
         // tout l'écran et a sa propre croix.
         style={{ bottom: "calc(var(--bandeau-cookies, 0px) + var(--bouton-collant, 0px) + 1rem)" }}
-        className={`fixed right-5 z-[70] h-14 w-14 place-items-center rounded-full text-white shadow-lg shadow-[#7014c2]/40 ring-4 ring-[#7014c2]/15 transition hover:scale-105 hover:shadow-xl motion-reduce:hover:scale-100 focus-visible:outline-none focus-visible:ring-[#7014c2]/50 focus-visible:ring-offset-2 ${DEGRADE} ${ouvert ? "hidden sm:grid" : "grid"}`}
+        className={`fixed right-5 z-[70] h-14 w-14 place-items-center rounded-full text-white shadow-[0_8px_24px_-10px_rgba(9,9,11,0.45)] transition hover:scale-105 motion-reduce:hover:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet/50 focus-visible:ring-offset-2 ${DEGRADE} ${ouvert ? "hidden sm:grid" : "grid"}`}
       >
         {ouvert ? (
           <ChevronDown className="h-6 w-6" aria-hidden="true" />
