@@ -23,7 +23,7 @@ import { FilmLancement, GrilleActivite } from "@/components/produit/Activite";
 import { GARANTIE, offresStructurees, PRIX_APPEL } from "@/data/offres";
 import { HeroComposer } from "@/components/accueil/HeroComposer";
 import { RetouchesDemo } from "@/components/produit/RetouchesDemo";
-import { ChiffresQuiComptent, PanneauEffets, useEffets } from "@/components/accueil/EffetsAccueil";
+import { PanneauEffets, useEffets } from "@/components/accueil/EffetsAccueil";
 import { TraitsFond } from "@/components/TraitsFond";
 
 /**
@@ -117,7 +117,8 @@ function Accueil() {
       <div id="top" className="pt-[var(--entete-hauteur)]">
         <PanneauEffets effets={effets} changer={changerEffets} />
         <HeroComposer effets={effets} />
-        {effets.chiffres && <ChiffresQuiComptent />}
+        {/* Les trois chiffres sous le hero (1 min, 5,0/5, 19 €) retirés le
+            25/11/2026 à la demande de Teddy. */}
 
         <div id="exemples" className="scroll-mt-28">
           <Carrousel />

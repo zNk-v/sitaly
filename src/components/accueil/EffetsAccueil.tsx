@@ -88,7 +88,6 @@ export function PanneauEffets({
   const lignes: [keyof Effets, string][] = [
     ["mot", "1. Métier qui change dans le titre"],
     ["ile", "2. Notifications en direct"],
-    ["chiffres", "3. Chiffres qui comptent"],
     ["bento", "4. Fonctionnalités en bento"],
     ["agents", "5. Agents IA en direct"],
     ["prix", "6. Prix qui glisse (tarifs)"],
