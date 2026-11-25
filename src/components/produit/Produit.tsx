@@ -575,7 +575,7 @@ export function EtapeApercu() {
 }
 
 /** Les deux formules, au mois ou à l'année (−15 %), sous l'étape de l'aperçu. */
-export function GrilleTarifs() {
+export function GrilleTarifs({ prixAnime = false }: { prixAnime?: boolean }) {
   const [annuel, setAnnuel] = useState(false);
   const blackFriday = useBlackFriday();
   const rail = useRef<HTMLDivElement>(null);
@@ -616,7 +616,13 @@ export function GrilleTarifs() {
         className="rail-mobile rail-deux mx-auto mt-10 grid max-w-4xl gap-5 lg:grid-cols-2"
       >
         {FORMULES.map((f) => (
-          <CartePrix key={f.nom} formule={f} annuel={annuel} blackFriday={blackFriday} />
+          <CartePrix
+            key={f.nom}
+            formule={f}
+            annuel={annuel}
+            blackFriday={blackFriday}
+            prixAnime={prixAnime}
+          />
         ))}
       </div>
       <RepereRail rail={rail} total={FORMULES.length} />
@@ -635,10 +641,12 @@ function CartePrix({
   formule,
   annuel,
   blackFriday,
+  prixAnime = false,
 }: {
   formule: Formule;
   annuel: boolean;
   blackFriday: boolean;
+  prixAnime?: boolean;
 }) {
   const { nom, mensuel, appel, pour, intro, fonctions, bouton, badge } = formule;
   const prix = annuel ? formule.annuel : appel ? appel.mensuel : mensuel;
@@ -655,7 +663,9 @@ function CartePrix({
         )}
       </div>
       <div className="mt-6 flex items-baseline gap-1">
-        <span className="text-5xl font-semibold tracking-tight">{euros(prix)}</span>
+        <span className="text-5xl font-semibold tracking-tight tabular-nums">
+          {prixAnime ? <PrixQuiGlisse valeur={prix} /> : euros(prix)}
+        </span>
         <span className={TEXTE_GRIS}>{annuel ? "/an" : "/mois"}</span>
       </div>
       <p className={`mt-1 min-h-5 text-sm ${TEXTE_GRIS}`}>
@@ -1122,5 +1132,40 @@ export function Faq() {
         </a>
       </p>
     </div>
+  );
+}
+
+/**
+ * Le prix qui défile d'une valeur à l'autre au passage Mensuel/Annuel
+ * (25/11/2026, inspiré de Vengeance UI « Animated Number »). Le texte lu par
+ * les lecteurs d'écran est la valeur finale, sans les étapes intermédiaires.
+ */
+function PrixQuiGlisse({ valeur }: { valeur: number }) {
+  const [affiche, setAffiche] = useState(valeur);
+  const depuis = useRef(valeur);
+  useEffect(() => {
+    const de = depuis.current;
+    depuis.current = valeur;
+    if (de === valeur || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setAffiche(valeur);
+      return;
+    }
+    const debut = performance.now();
+    let id = 0;
+    const pas = (t: number) => {
+      const p = Math.min((t - debut) / 600, 1);
+      const doux = 1 - Math.pow(1 - p, 3);
+      // Arrondi pendant le défilement, valeur exacte à l'arrivée (un prix peut avoir des centimes).
+      setAffiche(p < 1 ? Math.round(de + (valeur - de) * doux) : valeur);
+      if (p < 1) id = requestAnimationFrame(pas);
+    };
+    id = requestAnimationFrame(pas);
+    return () => cancelAnimationFrame(id);
+  }, [valeur]);
+  return (
+    <>
+      <span aria-hidden="true">{euros(affiche)}</span>
+      <span className="sr-only">{euros(valeur)}</span>
+    </>
   );
 }

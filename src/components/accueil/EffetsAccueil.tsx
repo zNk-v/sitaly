@@ -14,10 +14,41 @@ import { PRIX_APPEL } from "@/data/offres";
  * panneau les allume et les éteint un par un pour comparer (PanneauEffets).
  */
 
-export type Effets = { mot: boolean; ile: boolean; chiffres: boolean };
+export type Effets = {
+  mot: boolean;
+  ile: boolean;
+  chiffres: boolean;
+  bento: boolean;
+  agents: boolean;
+  prix: boolean;
+  familles: boolean;
+  retouches: boolean;
+};
 
 /** Ce qui s'affiche en ligne : les trois validés par Teddy le 25/11/2026. */
-export const EFFETS_EN_LIGNE: Effets = { mot: true, ile: true, chiffres: true };
+export const EFFETS_EN_LIGNE: Effets = {
+  mot: true,
+  ile: true,
+  chiffres: true,
+  // Sections, validées par Teddy le 25/11/2026.
+  bento: true,
+  agents: true,
+  prix: true,
+  familles: true,
+  retouches: true,
+};
+
+/** En local, tout est allumé tant qu'on n'a rien décoché. */
+const TOUT_ALLUME: Effets = {
+  familles: true,
+  retouches: true,
+  mot: true,
+  ile: true,
+  chiffres: true,
+  bento: true,
+  agents: true,
+  prix: true,
+};
 
 const CLE = "sitaly-effets-accueil";
 
@@ -33,11 +64,7 @@ export function useEffets(): [Effets, (e: Effets) => void] {
   useEffect(() => {
     if (!import.meta.env.DEV) return;
     const garde = window.localStorage.getItem(CLE);
-    setEffets(
-      garde
-        ? { ...EFFETS_EN_LIGNE, ...JSON.parse(garde) }
-        : { mot: true, ile: true, chiffres: true },
-    );
+    setEffets(garde ? { ...TOUT_ALLUME, ...JSON.parse(garde) } : TOUT_ALLUME);
   }, []);
   const changer = (e: Effets) => {
     setEffets(e);
@@ -58,6 +85,11 @@ export function PanneauEffets({
     ["mot", "1. Métier qui change dans le titre"],
     ["ile", "2. Notifications en direct"],
     ["chiffres", "3. Chiffres qui comptent"],
+    ["bento", "4. Fonctionnalités en bento"],
+    ["agents", "5. Agents IA en direct"],
+    ["prix", "6. Prix qui glisse (tarifs)"],
+    ["familles", "7. Activités en mosaïque photo"],
+    ["retouches", "8. Démo Retouches spectaculaire"],
   ];
   return (
     <div className="fixed top-28 right-4 z-[80] w-64 rounded-2xl bg-white p-3 text-[13px] text-black shadow-[0_12px_40px_-12px_rgba(0,0,0,0.35)] ring-1 ring-black/10">

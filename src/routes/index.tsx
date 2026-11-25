@@ -15,11 +15,14 @@ import {
   Carrousel,
   Conversation,
   Familles,
+  FamillesMosaique,
   GrilleFonctions,
+  GrilleFonctionsBento,
 } from "@/components/produit/Vitrine";
 import { FilmLancement, GrilleActivite } from "@/components/produit/Activite";
 import { GARANTIE, offresStructurees, PRIX_APPEL } from "@/data/offres";
 import { HeroComposer } from "@/components/accueil/HeroComposer";
+import { RetouchesDemo } from "@/components/produit/RetouchesDemo";
 import { ChiffresQuiComptent, PanneauEffets, useEffets } from "@/components/accueil/EffetsAccueil";
 import { TraitsFond } from "@/components/TraitsFond";
 
@@ -141,7 +144,7 @@ function Accueil() {
               sousTitre="Artisan, commerçant, soignant ou créatif : choisissez la vôtre, l'IA démarre avec."
             />
             <div className="mt-8 sm:mt-12">
-              <Familles />
+              {effets.familles ? <FamillesMosaique /> : <Familles />}
             </div>
           </div>
         </section>
@@ -154,7 +157,7 @@ function Accueil() {
               sousTitre="Un site complet, vos demandes de contact, Google, vos photos : l'IA s'occupe du travail."
             />
             <div className="mt-8 sm:mt-14">
-              <GrilleFonctions />
+              {effets.bento ? <GrilleFonctionsBento /> : <GrilleFonctions />}
             </div>
           </div>
         </section>
@@ -175,7 +178,7 @@ function Accueil() {
               </p>
             </div>
             <div className="mt-8 sm:mt-14">
-              <Conversation />
+              {effets.retouches ? <RetouchesDemo /> : <Conversation />}
             </div>
           </div>
         </section>
@@ -188,7 +191,7 @@ function Accueil() {
               sousTitre="Devis, rendez-vous, réponses aux clients : ce qui vous prenait vos soirées tient dans la même app."
             />
             <div className="mt-8 sm:mt-14">
-              <GrilleActivite />
+              <GrilleActivite agentsDirect={effets.agents} />
             </div>
           </div>
         </section>
@@ -204,7 +207,7 @@ function Accueil() {
               sousTitre={`Payez seulement si votre site vous plaît. Au mois ou à l'année, 15 % moins cher. ${GARANTIE}.`}
             />
             <div className="mt-8 sm:mt-14">
-              <GrilleTarifs />
+              <GrilleTarifs prixAnime={effets.prix} />
             </div>
           </div>
         </section>

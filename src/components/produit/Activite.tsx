@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Check, Play, Send, Sparkles, Star } from "lucide-react";
 import { useVisible } from "@/components/produit/Vitrine";
@@ -33,7 +33,19 @@ export function FilmLancement() {
   );
 }
 
-function Carte({ id, titre, texte, large = false, children }: { id: ProduitId; titre: string; texte: string; large?: boolean; children: ReactNode }) {
+function Carte({
+  id,
+  titre,
+  texte,
+  large = false,
+  children,
+}: {
+  id: ProduitId;
+  titre: string;
+  texte: string;
+  large?: boolean;
+  children: ReactNode;
+}) {
   const { ref, classe } = useVisible<HTMLAnchorElement>(0.3);
   return (
     <Link
@@ -46,7 +58,8 @@ function Carte({ id, titre, texte, large = false, children }: { id: ProduitId; t
       <h3 className="mt-7 text-xl font-semibold tracking-tight">{titre}</h3>
       <p className="mt-1.5 leading-7 text-black/60">{texte}</p>
       <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold">
-        En savoir plus <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" aria-hidden="true" />
+        En savoir plus{" "}
+        <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" aria-hidden="true" />
       </span>
     </Link>
   );
@@ -54,7 +67,7 @@ function Carte({ id, titre, texte, large = false, children }: { id: ProduitId; t
 
 const PASTILLE = "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold";
 
-export function GrilleActivite() {
+export function GrilleActivite({ agentsDirect = false }: { agentsDirect?: boolean }) {
   return (
     <div className="rail-mobile grid gap-5 md:grid-cols-2">
       <Carte
@@ -91,12 +104,17 @@ export function GrilleActivite() {
           <div className="text-xs text-black/50">Jeudi 5 novembre</div>
           <div className="mt-3 grid grid-cols-3 gap-1.5 text-center text-sm font-medium">
             {["9:00", "10:00", "11:30", "14:00", "15:30", "17:00"].map((h) => (
-              <span key={h} className={`rounded-xl py-2 ${h === "10:00" ? "bg-black/85 text-white" : "bg-black/[0.04]"}`}>
+              <span
+                key={h}
+                className={`rounded-xl py-2 ${h === "10:00" ? "bg-black/85 text-white" : "bg-black/[0.04]"}`}
+              >
                 {h}
               </span>
             ))}
           </div>
-          <div className="mt-3 rounded-xl bg-[#16a34a] py-2 text-center text-sm font-semibold text-white">Rendez-vous confirmé</div>
+          <div className="mt-3 rounded-xl bg-[#16a34a] py-2 text-center text-sm font-semibold text-white">
+            Rendez-vous confirmé
+          </div>
         </div>
       </Carte>
       <Carte
@@ -104,20 +122,29 @@ export function GrilleActivite() {
         titre="Des agents IA qui répondent"
         texte="Demandes du site, avis Google, articles de blog : la réponse est prête dans votre ton, vous la validez."
       >
-        <div className="space-y-2.5">
-          <div className="rounded-2xl bg-white p-4 text-sm">
-            <div className="flex items-center gap-2 text-xs text-black/50">
-              Sophie B. · il y a 4 min <span className={`${PASTILLE} bg-[#fee2e2] text-[#b91c1c]`}>Urgent</span>
+        {agentsDirect ? (
+          <AgentsEnDirect />
+        ) : (
+          <div className="space-y-2.5">
+            <div className="rounded-2xl bg-white p-4 text-sm">
+              <div className="flex items-center gap-2 text-xs text-black/50">
+                Sophie B. · il y a 4 min{" "}
+                <span className={`${PASTILLE} bg-[#fee2e2] text-[#b91c1c]`}>Urgent</span>
+              </div>
+              <p className="mt-1 text-black/75">
+                Une fuite sous l'évier, vous pouvez passer aujourd'hui ?
+              </p>
             </div>
-            <p className="mt-1 text-black/75">Une fuite sous l'évier, vous pouvez passer aujourd'hui ?</p>
-          </div>
-          <div className="rounded-2xl bg-[#f5f3ff] p-4 text-sm">
-            <div className="flex items-center gap-1.5 text-xs font-semibold text-[#6d28d9]">
-              <Sparkles className="h-3.5 w-3.5" aria-hidden="true" /> Réponse prête
+            <div className="rounded-2xl bg-[#f5f3ff] p-4 text-sm">
+              <div className="flex items-center gap-1.5 text-xs font-semibold text-[#6d28d9]">
+                <Sparkles className="h-3.5 w-3.5" aria-hidden="true" /> Réponse prête
+              </div>
+              <p className="mt-1 text-black/80">
+                Bonjour Sophie, je peux venir aujourd'hui entre 14 h et 16 h.
+              </p>
             </div>
-            <p className="mt-1 text-black/80">Bonjour Sophie, je peux venir aujourd'hui entre 14 h et 16 h.</p>
           </div>
-        </div>
+        )}
       </Carte>
       <Carte
         id="identite-de-marque"
@@ -126,7 +153,9 @@ export function GrilleActivite() {
       >
         <div className="grid grid-cols-[auto_1fr] gap-2.5">
           <div className="grid h-full min-h-28 w-28 place-items-center rounded-2xl bg-white">
-            <span className="grid h-14 w-14 place-items-center rounded-2xl bg-[#f4471c] text-2xl font-extrabold text-white">D</span>
+            <span className="grid h-14 w-14 place-items-center rounded-2xl bg-[#f4471c] text-2xl font-extrabold text-white">
+              D
+            </span>
           </div>
           <div className="flex min-w-0 flex-col justify-between rounded-2xl bg-[#0a2540] p-4 text-white">
             <div className="truncate font-bold">Durand Plomberie</div>
@@ -151,13 +180,17 @@ export function GrilleActivite() {
               </span>
               Claire M. · ce matin
             </div>
-            <p className="mt-1 text-black/75">Intervention rapide et propre, le devis a été respecté. Je recommande.</p>
+            <p className="mt-1 text-black/75">
+              Intervention rapide et propre, le devis a été respecté. Je recommande.
+            </p>
           </div>
           <div className="rounded-2xl bg-[#f0fdf4] p-4 text-sm">
             <div className="flex items-center gap-1.5 text-xs font-semibold text-[#15803d]">
               <Sparkles className="h-3.5 w-3.5" aria-hidden="true" /> Réponse prête
             </div>
-            <p className="mt-1 text-black/80">Merci Claire, ravi que le chantier se soit bien passé. À bientôt !</p>
+            <p className="mt-1 text-black/80">
+              Merci Claire, ravi que le chantier se soit bien passé. À bientôt !
+            </p>
             <span className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-black/85 px-3 py-1.5 text-xs font-semibold text-white">
               <Send className="h-3.5 w-3.5" aria-hidden="true" /> Publier sur Google
             </span>
@@ -174,6 +207,117 @@ export function GrilleActivite() {
           </div>
         </div>
       </Carte>
+    </div>
+  );
+}
+
+/* ---------------------------------------------------------------------------
+   Les agents IA en direct (25/11/2026, inspiré de Vengeance UI « Agent Bento »
+   et ReactBits « Animated List ») : les quatre agents avec leurs ronds de
+   couleur, ceux de l'app, puis une demande qui arrive et sa réponse qui
+   s'écrit. Exemples inventés, comme le reste de la vitrine.
+   --------------------------------------------------------------------------- */
+
+const AGENTS_IA = [
+  { nom: "Demandes", teinte: "conic-gradient(from 200deg,#7c3aed,#f472b6,#fb923c,#7c3aed)" },
+  { nom: "Avis Google", teinte: "conic-gradient(from 90deg,#16a34a,#facc15,#16a34a)" },
+  { nom: "Blog", teinte: "conic-gradient(from 30deg,#f97316,#fde047,#f97316)" },
+  { nom: "Assistant", teinte: "conic-gradient(from 0deg,#2563eb,#22d3ee,#a78bfa,#2563eb)" },
+];
+
+const ECHANGES = [
+  {
+    de: "Sophie B.",
+    urgent: true,
+    texte: "Une fuite sous l'évier, vous pouvez passer aujourd'hui ?",
+    reponse: "Bonjour Sophie, je peux venir aujourd'hui entre 14 h et 16 h.",
+  },
+  {
+    de: "Marc P.",
+    urgent: false,
+    texte: "Combien pour refaire une salle de bain ?",
+    reponse: "Bonjour Marc, je passe la mesurer jeudi et je vous envoie le devis le soir même.",
+  },
+  {
+    de: "Avis Google · Claire M.",
+    urgent: false,
+    texte: "Intervention rapide et propre, je recommande.",
+    reponse: "Merci Claire, ravi que le chantier se soit bien passé !",
+  },
+  {
+    de: "Julie R.",
+    urgent: false,
+    texte: "Vous intervenez le samedi matin ?",
+    reponse: "Bonjour Julie, oui, le samedi de 8 h à 12 h.",
+  },
+];
+
+function AgentsEnDirect() {
+  const [k, setK] = useState(0);
+  const [tape, setTape] = useState(ECHANGES[0].reponse.length);
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const reponse = ECHANGES[k].reponse;
+    setTape(0);
+    let n = 0;
+    let frappe: ReturnType<typeof setInterval> | undefined;
+    let suivant: ReturnType<typeof setTimeout> | undefined;
+    // La réponse s'écrit après un temps de « lecture », puis l'échange suivant arrive.
+    const debut = setTimeout(() => {
+      frappe = setInterval(() => {
+        n += 2;
+        setTape(n);
+        if (n >= reponse.length) {
+          clearInterval(frappe);
+          suivant = setTimeout(() => setK((x) => (x + 1) % ECHANGES.length), 2200);
+        }
+      }, 30);
+    }, 900);
+    return () => {
+      clearTimeout(debut);
+      clearInterval(frappe);
+      clearTimeout(suivant);
+    };
+  }, [k]);
+  const e = ECHANGES[k];
+  return (
+    <div>
+      <div className="flex flex-wrap gap-1.5">
+        {AGENTS_IA.map((a, i) => (
+          <span
+            key={a.nom}
+            className={`inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-xs font-medium transition ${(k === 2 ? 1 : 0) === i ? "text-black ring-1 ring-black/10" : "text-black/55"}`}
+          >
+            <span
+              aria-hidden="true"
+              className="h-3.5 w-3.5 rounded-full"
+              style={{ background: a.teinte }}
+            />
+            {a.nom}
+          </span>
+        ))}
+      </div>
+      <div key={k} className="echange-direct mt-3 h-[178px] space-y-2.5" aria-hidden="true">
+        <div className="rounded-2xl bg-white p-4 text-sm">
+          <div className="flex items-center gap-2 text-xs text-black/50">
+            {e.de} · à l'instant
+            {e.urgent && <span className={`${PASTILLE} bg-[#fee2e2] text-[#b91c1c]`}>Urgent</span>}
+          </div>
+          <p className="mt-1 text-black/75">{e.texte}</p>
+        </div>
+        <div className="rounded-2xl bg-[#f5f3ff] p-4 text-sm">
+          <div className="flex items-center gap-1.5 text-xs font-semibold text-[#6d28d9]">
+            <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+            {tape < e.reponse.length ? "L'agent écrit…" : "Réponse prête"}
+          </div>
+          <p className="mt-1 min-h-10 text-black/80">{e.reponse.slice(0, tape)}</p>
+        </div>
+      </div>
+      {/* Pour les lecteurs d'écran : un échange fixe, lisible d'un trait. */}
+      <p className="sr-only">
+        Exemple : {ECHANGES[0].de} écrit « {ECHANGES[0].texte} » ; l'agent prépare la réponse «{" "}
+        {ECHANGES[0].reponse} ».
+      </p>
     </div>
   );
 }

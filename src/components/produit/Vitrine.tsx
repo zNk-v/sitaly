@@ -496,6 +496,59 @@ const FAMILLES = [
   },
 ];
 
+/**
+ * « Pensé pour toutes les activités » en mosaïque de photos (25/11/2026) :
+ * six grandes images de métiers en cases de tailles variées, le nom de la
+ * famille posé sur la photo. Au survol, la photo avance un peu et « Créer mon
+ * site » apparaît ; un clic lance la création avec un exemple de ce métier.
+ * Les artisans prennent la photo du menuisier : Teddy ne veut plus du plombier
+ * en grand.
+ */
+const MOSAIQUE: { photo: string; place: string }[] = [
+  { photo: "menuisier", place: "lg:col-span-2 lg:row-span-2" },
+  { photo: "osteopathe", place: "" },
+  { photo: "coiffeuse", place: "" },
+  { photo: "boulanger", place: "lg:col-span-2" },
+  { photo: "fleuriste", place: "lg:col-span-2" },
+  { photo: "photographe", place: "lg:col-span-2" },
+];
+
+export function FamillesMosaique() {
+  return (
+    <div className="rail-mobile grid gap-4 lg:auto-rows-[230px] lg:grid-cols-4">
+      {FAMILLES.map((f, k) => (
+        <a
+          key={f.titre}
+          href={lienCreation(f.phrase)}
+          className={`group relative isolate flex min-h-64 flex-col justify-end overflow-hidden rounded-3xl p-6 text-white lg:min-h-0 ${MOSAIQUE[k].place}`}
+        >
+          <img
+            src={photo(MOSAIQUE[k].photo, k === 0 ? 1024 : 768)}
+            alt=""
+            width={k === 0 ? 1024 : 768}
+            height={k === 0 ? 576 : 432}
+            loading="lazy"
+            className="absolute inset-0 -z-20 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.05]"
+          />
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 -z-10 bg-gradient-to-t from-black/75 via-black/20 to-transparent"
+          />
+          <span
+            className={`font-semibold tracking-tight ${k === 0 ? "text-2xl sm:text-3xl" : "text-xl"}`}
+          >
+            {f.titre}
+          </span>
+          <span className="mt-1 text-sm text-white/75">{f.exemples}</span>
+          <span className="mt-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-sm font-semibold text-[#09090b] transition duration-300 lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 lg:group-focus-visible:translate-y-0 lg:group-focus-visible:opacity-100">
+            Créer mon site <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </span>
+        </a>
+      ))}
+    </div>
+  );
+}
+
 export function Familles() {
   return (
     <div className="rail-mobile grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -795,6 +848,100 @@ function VisuelAdresse() {
           En ligne, sécurisé, sur tous les écrans
         </div>
       </div>
+    </div>
+  );
+}
+
+/**
+ * La grille des fonctionnalités en « bento » (25/11/2026, inspirée de
+ * Vengeance UI et ReactBits) : les mêmes six visuels, des cases de tailles
+ * variées, et une lumière douce qui suit la souris dans la carte survolée.
+ * Pas de halo autour : la lumière reste à l'intérieur (styles.css, bento-carte).
+ */
+export function GrilleFonctionsBento() {
+  return (
+    <div className="rail-mobile grid gap-5 lg:grid-cols-6">
+      <BlocBento
+        grand
+        className="lg:col-span-4 lg:row-span-2"
+        titre="Un site complet en une minute"
+        texte="Textes, mise en page, couleurs et photo : l'IA construit chaque section pour votre métier."
+      >
+        <VisuelConstruction />
+      </BlocBento>
+      <BlocBento
+        className="lg:col-span-2"
+        titre="Les demandes arrivent"
+        texte="Le formulaire de votre site vous envoie chaque demande par e-mail."
+      >
+        <VisuelDemandes />
+      </BlocBento>
+      <BlocBento
+        className="lg:col-span-2"
+        titre="Dix-neuf thèmes, un clic"
+        texte="Franc, Doux, Joyeux, Éclat et quinze autres : l'allure change, vos textes restent."
+      >
+        <VisuelThemes />
+      </BlocBento>
+      <BlocBento
+        className="lg:col-span-2"
+        titre="Des photos créées par l'IA"
+        texte="Pas de photo sous la main ? Décrivez-la, l'IA la crée pour vous."
+      >
+        <VisuelPhotoIA />
+      </BlocBento>
+      <BlocBento
+        className="lg:col-span-2"
+        titre="Prêt pour Google"
+        texte="Titre, description, fiche de votre entreprise et plan du site, dès la publication."
+      >
+        <VisuelGoogle />
+      </BlocBento>
+      <BlocBento
+        className="lg:col-span-2"
+        titre="En ligne en un clic"
+        texte="Publié sur votre-nom.sitaly.fr. Avec Essentiel et Pro, votre nom de domaine est offert."
+      >
+        <VisuelAdresse />
+      </BlocBento>
+    </div>
+  );
+}
+
+function BlocBento({
+  titre,
+  texte,
+  children,
+  className = "",
+  grand = false,
+}: {
+  titre: string;
+  texte: string;
+  children: ReactNode;
+  className?: string;
+  /** La grande case : le visuel centré et agrandi, pour remplir ses deux rangées. */
+  grand?: boolean;
+}) {
+  const { ref, classe } = useVisible<HTMLDivElement>(0.3);
+  return (
+    <div
+      ref={ref}
+      onPointerMove={(e) => {
+        const r = e.currentTarget.getBoundingClientRect();
+        e.currentTarget.style.setProperty("--bx", `${e.clientX - r.left}px`);
+        e.currentTarget.style.setProperty("--by", `${e.clientY - r.top}px`);
+      }}
+      className={`${classe} bento-carte relative isolate flex flex-col overflow-hidden rounded-3xl bg-black/[0.03] p-7 sm:p-8 ${className}`}
+    >
+      {grand ? (
+        <div className="flex flex-1 items-center justify-center py-4 lg:py-10">
+          <div className="w-full lg:scale-150">{children}</div>
+        </div>
+      ) : (
+        <div className="flex-1">{children}</div>
+      )}
+      <h3 className="mt-7 text-xl font-semibold tracking-tight">{titre}</h3>
+      <p className="mt-1.5 leading-7 text-black/60">{texte}</p>
     </div>
   );
 }
