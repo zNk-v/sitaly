@@ -151,18 +151,7 @@ export function GrilleActivite({ agentsDirect = false }: { agentsDirect?: boolea
         titre="Votre marque, prête à servir"
         texte="Deux logos dessinés par l'IA, vos couleurs, votre police et l'aperçu de votre carte de visite."
       >
-        <div className="grid grid-cols-[auto_1fr] gap-2.5">
-          <div className="grid h-full min-h-28 w-28 place-items-center rounded-2xl bg-white">
-            <span className="grid h-14 w-14 place-items-center rounded-2xl bg-[#f4471c] text-2xl font-extrabold text-white">
-              D
-            </span>
-          </div>
-          <div className="flex min-w-0 flex-col justify-between rounded-2xl bg-[#0a2540] p-4 text-white">
-            <div className="truncate font-bold">Durand Plomberie</div>
-            <div className="text-xs text-white/70">Plombier chauffagiste · Valmont</div>
-            <div className="mt-2 text-xs text-white/85">01 99 00 12 34</div>
-          </div>
-        </div>
+        <PlancheMarque />
       </Carte>
       <Carte
         id="avis-google"
@@ -207,6 +196,138 @@ export function GrilleActivite({ agentsDirect = false }: { agentsDirect?: boolea
           </div>
         </div>
       </Carte>
+    </div>
+  );
+}
+
+/* ---------------------------------------------------------------------------
+   « Votre marque, prête à servir » en planche de marque (25/11/2026) : les
+   deux logos proposés, la carte de visite qui se redresse au survol, la
+   palette et la police. Durand Plomberie est inventé, comme le reste.
+   --------------------------------------------------------------------------- */
+
+const MARINE = "#0a2540";
+const BRIQUE = "#f4471c";
+const PALETTE = [MARINE, BRIQUE, "#f6efe6", "#5b6b7c"];
+
+/**
+ * Le logo inventé de Durand Plomberie : une goutte brique traversée de deux
+ * vagues, qui dessinent aussi un tuyau. `clair` pour les fonds marine.
+ */
+function GoutteDurand({ className = "", clair = false }: { className?: string; clair?: boolean }) {
+  const fond = clair ? "#0a2540" : "#ffffff";
+  return (
+    <svg viewBox="0 0 40 40" className={className} aria-hidden="true">
+      <path
+        d="M20 3.5C20 3.5 7.5 17.2 7.5 25.6a12.5 12.5 0 0 0 25 0C32.5 17.2 20 3.5 20 3.5Z"
+        fill={BRIQUE}
+      />
+      <path
+        d="M12 25.2c2.7-2.4 5.3-2.4 8 0s5.3 2.4 8 0"
+        fill="none"
+        stroke={fond}
+        strokeWidth="2.6"
+        strokeLinecap="round"
+      />
+      <path
+        d="M14.5 31c1.8-1.5 3.7-1.5 5.5 0s3.7 1.5 5.5 0"
+        fill="none"
+        stroke={fond}
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        opacity="0.7"
+      />
+      <path
+        d="M15.4 16.5c1-1.9 2.2-3.6 3.3-5"
+        fill="none"
+        stroke="#ffffff"
+        strokeWidth="2"
+        strokeLinecap="round"
+        opacity="0.55"
+      />
+    </svg>
+  );
+}
+
+function PlancheMarque() {
+  return (
+    <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-5">
+      {/* Les deux logos proposés : côte à côte sur téléphone, l'un sur l'autre au-delà */}
+      <div className="col-span-2 grid grid-cols-2 gap-2.5 sm:grid-cols-1 sm:grid-rows-2">
+        <div className="relative flex items-center justify-center gap-1.5 rounded-2xl bg-white px-2 py-4 sm:gap-2 sm:px-3">
+          <GoutteDurand className="h-8 w-8 shrink-0 sm:h-9 sm:w-9" />
+          <span className="flex min-w-0 flex-col leading-none">
+            <span
+              className="text-[13px] font-extrabold tracking-tight sm:text-[15px]"
+              style={{ color: MARINE }}
+            >
+              DURAND
+            </span>
+            <span
+              className="mt-1 text-[7px] font-bold tracking-[0.22em] sm:text-[8px]"
+              style={{ color: BRIQUE }}
+            >
+              PLOMBERIE
+            </span>
+          </span>
+          <span className="absolute top-2 right-2 grid h-4 w-4 place-items-center rounded-full bg-black text-white">
+            <Check className="h-2.5 w-2.5" aria-hidden="true" />
+          </span>
+        </div>
+        <div
+          className="flex flex-col items-center justify-center gap-1 rounded-2xl px-3 py-4 text-white"
+          style={{ background: MARINE }}
+        >
+          <span
+            className="grid h-10 w-10 place-items-center rounded-full border-[1.5px]"
+            style={{ borderColor: `${BRIQUE}99` }}
+          >
+            <GoutteDurand className="h-6 w-6" clair />
+          </span>
+          <span className="text-[10px] font-bold tracking-[0.28em] text-white">DURAND</span>
+          <span className="-mt-0.5 text-[7px] font-semibold tracking-[0.3em] text-white/55">
+            DEPUIS 1998
+          </span>
+        </div>
+      </div>
+
+      {/* La carte de visite, puis la palette et la police */}
+      <div className="col-span-2 flex min-w-0 flex-col gap-2.5 sm:col-span-3">
+        <div
+          className="flex min-h-28 flex-1 -rotate-2 flex-col justify-between rounded-2xl p-4 text-white shadow-[0_18px_30px_-18px_rgba(10,37,64,0.7)] transition-transform duration-500 ease-out group-hover:rotate-0"
+          style={{ background: MARINE }}
+        >
+          <div className="flex items-center gap-2">
+            <GoutteDurand className="h-6 w-6 shrink-0" clair />
+            <span className="truncate text-sm font-bold">Durand Plomberie</span>
+          </div>
+          <div>
+            <div className="truncate text-[11px] text-white/65">
+              Plombier chauffagiste · Valmont
+            </div>
+            <div className="mt-0.5 text-xs font-medium text-white/90 tabular-nums">
+              01 99 00 12 34
+            </div>
+          </div>
+        </div>
+        <div className="flex items-center justify-between gap-2 rounded-2xl bg-white px-3 py-2.5">
+          <div className="flex -space-x-1.5">
+            {PALETTE.map((c) => (
+              <span
+                key={c}
+                className="h-6 w-6 rounded-full ring-2 ring-white"
+                style={{ background: c }}
+              />
+            ))}
+          </div>
+          <span className="flex items-baseline gap-1.5 truncate">
+            <span className="font-display text-xl leading-none font-bold" style={{ color: MARINE }}>
+              Aa
+            </span>
+            <span className="hidden text-[11px] text-black/45 sm:inline">Jakarta</span>
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
