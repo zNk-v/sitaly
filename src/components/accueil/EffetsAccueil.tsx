@@ -23,6 +23,7 @@ export type Effets = {
   prix: boolean;
   familles: boolean;
   retouches: boolean;
+  tarifs: boolean;
 };
 
 /** Ce qui s'affiche en ligne : les trois validés par Teddy le 25/11/2026. */
@@ -36,12 +37,15 @@ export const EFFETS_EN_LIGNE: Effets = {
   prix: true,
   familles: true,
   retouches: true,
+  // Tarifs compacts, validés par Teddy le 25/11/2026.
+  tarifs: true,
 };
 
 /** En local, tout est allumé tant qu'on n'a rien décoché. */
 const TOUT_ALLUME: Effets = {
   familles: true,
   retouches: true,
+  tarifs: true,
   mot: true,
   ile: true,
   chiffres: true,
@@ -90,6 +94,7 @@ export function PanneauEffets({
     ["prix", "6. Prix qui glisse (tarifs)"],
     ["familles", "7. Activités en mosaïque photo"],
     ["retouches", "8. Démo Retouches spectaculaire"],
+    ["tarifs", "9. Tarifs compacts, Essentiel en sombre"],
   ];
   return (
     <div className="fixed top-28 right-4 z-[80] w-64 rounded-2xl bg-white p-3 text-[13px] text-black shadow-[0_12px_40px_-12px_rgba(0,0,0,0.35)] ring-1 ring-black/10">

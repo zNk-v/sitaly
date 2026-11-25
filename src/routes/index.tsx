@@ -207,7 +207,7 @@ function Accueil() {
               sousTitre={`Payez seulement si votre site vous plaît. Au mois ou à l'année, 15 % moins cher. ${GARANTIE}.`}
             />
             <div className="mt-8 sm:mt-14">
-              <GrilleTarifs prixAnime={effets.prix} />
+              <GrilleTarifs prixAnime={effets.prix} compact={effets.tarifs} />
             </div>
           </div>
         </section>

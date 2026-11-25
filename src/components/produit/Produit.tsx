@@ -575,7 +575,13 @@ export function EtapeApercu() {
 }
 
 /** Les deux formules, au mois ou à l'année (−15 %), sous l'étape de l'aperçu. */
-export function GrilleTarifs({ prixAnime = false }: { prixAnime?: boolean }) {
+export function GrilleTarifs({
+  prixAnime = false,
+  compact = false,
+}: {
+  prixAnime?: boolean;
+  compact?: boolean;
+}) {
   const [annuel, setAnnuel] = useState(false);
   const blackFriday = useBlackFriday();
   const rail = useRef<HTMLDivElement>(null);
@@ -615,17 +621,38 @@ export function GrilleTarifs({ prixAnime = false }: { prixAnime?: boolean }) {
         ref={rail}
         className="rail-mobile rail-deux mx-auto mt-10 grid max-w-4xl gap-5 lg:grid-cols-2"
       >
-        {FORMULES.map((f) => (
-          <CartePrix
-            key={f.nom}
-            formule={f}
-            annuel={annuel}
-            blackFriday={blackFriday}
-            prixAnime={prixAnime}
-          />
-        ))}
+        {FORMULES.map((f) =>
+          compact ? (
+            <CartePrixCompacte
+              key={f.nom}
+              formule={f}
+              annuel={annuel}
+              blackFriday={blackFriday}
+              prixAnime={prixAnime}
+            />
+          ) : (
+            <CartePrix
+              key={f.nom}
+              formule={f}
+              annuel={annuel}
+              blackFriday={blackFriday}
+              prixAnime={prixAnime}
+            />
+          ),
+        )}
       </div>
       <RepereRail rail={rail} total={FORMULES.length} />
+      {compact && (
+        <p className="mt-8 text-center">
+          <a
+            href="/tarifs/"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-black/80 hover:text-black"
+          >
+            Le détail de chaque fonction
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </a>
+        </p>
+      )}
       <p className={`mx-auto mt-6 max-w-2xl text-center text-sm ${TEXTE_GRIS}`}>
         {MENTION_TVA}. Sans engagement au mois ; l'annuel se paie pour un an. Le prix d'appel d'
         {IA.essentiel.nom} vaut pour le premier abonnement d'un compte, au mois. {GARANTIE} sur le
@@ -714,6 +741,101 @@ function CartePrix({
                 {f.texte}
               </p>
             </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/**
+ * La carte de prix en version courte (essai du 25/11/2026, case 9 du panneau
+ * d'effets) : la formule recommandée en sombre pour ressortir d'un coup
+ * d'œil, les fonctions en titres seuls. Les phrases de chaque fonction
+ * restent sur /tarifs/, un lien sous les cartes y mène.
+ */
+function CartePrixCompacte({
+  formule,
+  annuel,
+  blackFriday,
+  prixAnime = false,
+}: {
+  formule: Formule;
+  annuel: boolean;
+  blackFriday: boolean;
+  prixAnime?: boolean;
+}) {
+  const { nom, mensuel, appel, pour, intro, fonctions, bouton, badge } = formule;
+  const prix = annuel ? formule.annuel : appel ? appel.mensuel : mensuel;
+  const sombre = Boolean(badge);
+  const gris = sombre ? "text-white/60" : TEXTE_GRIS;
+  return (
+    <div
+      className={`flex flex-col rounded-3xl p-8 sm:p-10 ${sombre ? "bg-[#0d0f14] text-white" : "bg-white ring-1 ring-black/[0.08]"}`}
+    >
+      <div className="flex items-center justify-between gap-3">
+        <h3 className="text-xl font-semibold">{nom}</h3>
+        {badge && (
+          <span className="rounded-full bg-violet px-3 py-1 text-xs font-medium text-white">
+            {badge}
+          </span>
+        )}
+      </div>
+      <p className={`mt-2 min-h-12 text-[15px] leading-6 ${gris}`}>{pour}</p>
+      <div className="mt-8 flex items-baseline gap-1">
+        <span className="text-6xl font-semibold tracking-tight tabular-nums">
+          {prixAnime ? <PrixQuiGlisse valeur={prix} /> : euros(prix)}
+        </span>
+        <span className={gris}>{annuel ? "/an" : "/mois"}</span>
+      </div>
+      <p className={`mt-1 min-h-5 text-sm ${gris}`}>
+        {annuel
+          ? `soit ${euros(Math.round((formule.annuel / 12) * 100) / 100)} par mois, au lieu de ${euros(mensuel)}`
+          : appel
+            ? `les ${appel.mois} premiers mois, puis ${euros(appel.ensuite)} par mois`
+            : ""}
+      </p>
+      {annuel && blackFriday && (
+        <p
+          className={`mt-3 rounded-xl px-3 py-2 text-sm font-medium ${sombre ? "bg-white/10" : "bg-black/[0.04]"}`}
+        >
+          Black Friday : 1 an à {euros(formule.blackFriday.an)} au lieu de{" "}
+          <s>{euros(formule.blackFriday.barre)}</s>, jusqu'au 30 novembre
+        </p>
+      )}
+      <a href={lienCreation()} className={`${sombre ? BOUTON_NOIR : BOUTON_CLAIR} mt-8 w-full`}>
+        {bouton}
+      </a>
+      <LigneGarantie clair={sombre} />
+      <p
+        className={`mt-8 border-t pt-7 text-sm font-medium ${sombre ? "border-white/10 text-white/80" : "border-black/[0.06] text-black/80"}`}
+      >
+        {intro ?? "Tout compris :"}
+      </p>
+      <ul className="mt-4 space-y-3">
+        {fonctions.map((f) => (
+          <li key={f.titre} className="flex items-start gap-2.5 text-[15px] leading-6">
+            {f.bientot ? (
+              <Clock
+                className={`mt-1 h-4 w-4 shrink-0 ${sombre ? "text-white/35" : "text-black/35"}`}
+                aria-hidden="true"
+              />
+            ) : (
+              <Check
+                className={`mt-1 h-4 w-4 shrink-0 ${sombre ? "text-white/70" : "text-black/70"}`}
+                aria-hidden="true"
+              />
+            )}
+            <span className={f.bientot ? (sombre ? "text-white/50" : "text-black/50") : ""}>
+              {f.titre}
+              {f.bientot && (
+                <span
+                  className={`ml-2 rounded-full px-2 py-0.5 text-[11px] font-medium ${sombre ? "bg-white/10 text-white/60" : "bg-black/[0.05] text-black/55"}`}
+                >
+                  Bientôt
+                </span>
+              )}
+            </span>
           </li>
         ))}
       </ul>
