@@ -3622,6 +3622,12 @@ body.menu-ouvert .entete-plaque {
   .rail-mobile.rail-deux > * {
     flex-basis: var(--rail-carte, 88%);
   }
+  /* Chaque carte garde sa hauteur : étirées à la plus haute, les cartes à
+     petit visuel laissaient 200 px de blanc (devis, bento, 25/11/2026). Les
+     rails à deux cartes (tarifs) restent alignés. */
+  .rail-mobile:not(.rail-deux) {
+    align-items: flex-start;
+  }
 }
 
 /* ---------------------------------------------------------------------------
