@@ -1,0 +1,1 @@
+import{hn as e}from"./index-Cvt-a5RH.js";var t=e;export{t as component};
