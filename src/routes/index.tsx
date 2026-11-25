@@ -20,6 +20,7 @@ import {
 import { FilmLancement, GrilleActivite } from "@/components/produit/Activite";
 import { GARANTIE, offresStructurees, PRIX_APPEL } from "@/data/offres";
 import { HeroComposer } from "@/components/accueil/HeroComposer";
+import { ChiffresQuiComptent, PanneauEffets, useEffets } from "@/components/accueil/EffetsAccueil";
 import { TraitsFond } from "@/components/TraitsFond";
 
 /**
@@ -105,11 +106,15 @@ export const Route = createFileRoute("/")({
 });
 
 function Accueil() {
+  // Les effets du 25/11/2026 : en local, un panneau les allume un par un.
+  const [effets, changerEffets] = useEffets();
   return (
     <div className="min-h-screen bg-white text-[#09090b]">
       <SiteHeader accueil />
       <div id="top" className="pt-[var(--entete-hauteur)]">
-        <HeroComposer />
+        <PanneauEffets effets={effets} changer={changerEffets} />
+        <HeroComposer effets={effets} />
+        {effets.chiffres && <ChiffresQuiComptent />}
 
         <div id="exemples" className="scroll-mt-28">
           <Carrousel />

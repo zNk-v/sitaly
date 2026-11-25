@@ -3765,3 +3765,38 @@ body.menu-ouvert .entete-plaque {
     }
   }
 }
+
+/* Effets de l'accueil (25/11/2026, src/components/accueil/EffetsAccueil.tsx). */
+/* Le métier qui change : le mot présent est en place, les autres attendent
+   dessous, et celui qui part file vers le haut. */
+.mot-tournant {
+  opacity: 0;
+  transform: translateY(70%);
+  filter: blur(6px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.45s ease;
+}
+.mot-tournant--la {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+.mot-tournant--part {
+  transform: translateY(-70%);
+}
+.mot-tournant-zone {
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* L'îlot des notifications s'ouvre et se referme en glissant. */
+.ile-dynamique {
+  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .mot-tournant,
+  .mot-tournant-zone,
+  .ile-dynamique {
+    transition: none;
+  }
+}

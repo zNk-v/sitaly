@@ -4,6 +4,7 @@ import { BarreIA } from "@/components/produit/Produit";
 import { VITRINE } from "@/data/vitrine";
 import { GARANTIE_JOURS } from "@/data/offres";
 import { FICHE_GOOGLE_URL, NOTE_GOOGLE } from "@/data/avis-google";
+import { IleDynamique, TitreTournant, type Effets } from "@/components/accueil/EffetsAccueil";
 
 /**
  * Les badges de confiance sous la barre (25/11/2026). Chaque promesse est déjà
@@ -23,7 +24,7 @@ const ICONE = "badge-icone h-4 w-4 shrink-0 text-black/60";
  * Le violet du bouton est celui du badge « −15 % » (`bg-violet`, #7429c3).
  * Aucune lueur autour du bouton ni de la boîte : Teddy n'en veut plus.
  */
-export function HeroComposer() {
+export function HeroComposer({ effets }: { effets?: Effets }) {
   const [activite, setActivite] = useState("");
 
   return (
@@ -36,8 +37,15 @@ export function HeroComposer() {
       </div>
 
       <div className="mx-auto w-full max-w-3xl text-center">
-        <h1 className="titre-produit mx-auto max-w-2xl text-[2.4rem] sm:text-6xl">
-          {VITRINE.accueilTitre ?? "Votre site internet, créé par l'IA en une minute"}
+        {effets?.ile && <IleDynamique />}
+        <h1
+          className={`titre-produit mx-auto ${effets?.mot && !VITRINE.accueilTitre ? "max-w-4xl text-[2.2rem] sm:text-6xl" : "max-w-2xl text-[2.4rem] sm:text-6xl"}`}
+        >
+          {effets?.mot && !VITRINE.accueilTitre ? (
+            <TitreTournant />
+          ) : (
+            (VITRINE.accueilTitre ?? "Votre site internet, créé par l'IA en une minute")
+          )}
         </h1>
         <p className="mx-auto mt-5 max-w-lg text-lg text-black/60">
           {VITRINE.accueilSousTitre ??
