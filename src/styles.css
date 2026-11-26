@@ -3652,6 +3652,11 @@ body.menu-ouvert .entete-plaque .lien-entete {
   .rail-mobile {
     display: flex;
     overflow-x: auto;
+    /* Le rail sert de repère aux textes en position absolue des cartes (les
+       « sr-only » des liens) : sans lui, ils s'en échappaient à la place des
+       cartes cachées à droite, et la page passait à 660 px au lieu de 375
+       (page qui se dézoome, décentrée, sur iPhone ; 26 novembre 2026). */
+    position: relative;
     /* `mandatory` colle au plus proche : sur un rail de cartes de même
        largeur, aucun risque de bloquer un défilement à l'intérieur. */
     scroll-snap-type: x mandatory;
