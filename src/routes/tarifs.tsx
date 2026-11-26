@@ -112,6 +112,7 @@ function Tarifs() {
             </p>
           </div>
           <div className="mx-auto mt-14 max-w-6xl">
+            <h2 className="sr-only">Les formules</h2>
             <GrilleTarifs />
           </div>
         </section>

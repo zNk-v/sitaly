@@ -129,11 +129,11 @@ function Blog() {
       </div>
       <article className="rounded-2xl bg-white p-5 sm:p-7">
         <div className="text-xs font-medium text-black/45">plomberie-garnier.fr/blog/ · Brouillon</div>
-        <h3 className="mt-2 text-xl leading-snug font-bold sm:text-2xl">{idees[choisie]}</h3>
+        <p className="mt-2 text-xl leading-snug font-bold sm:text-2xl">{idees[choisie]}</p>
         <p className="mt-3 text-[15px] leading-6 text-black/60">
           Les bons réflexes, ce qu'ils coûtent et le moment où appeler un professionnel.
         </p>
-        <h4 className="mt-5 font-bold">Les trois premiers gestes</h4>
+        <p className="mt-5 font-bold">Les trois premiers gestes</p>
         <ul className="mt-2 list-disc space-y-1.5 pl-5 text-[15px] text-black/75">
           <li>
             <strong>Couper l'eau</strong> au robinet d'arrivée, souvent sous l'évier ou près du compteur.

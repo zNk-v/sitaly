@@ -24,6 +24,26 @@ type Entree =
   | { label: string; href: string }
   | { label: string; bientot: true };
 
+/**
+ * Les pages « site internet + métier » et la page locale (audit OpenSEO du
+ * 25 novembre 2026) : liées depuis chaque page du site, elles reçoivent le
+ * maillage qui leur manquait. /essonne/ n'avait aucun lien entrant.
+ */
+const METIERS: { label: string; to: string }[] = [
+  { label: "Artisan", to: "/creer-site-internet-artisan/" },
+  { label: "Plombier", to: "/site-internet-plombier/" },
+  { label: "Électricien", to: "/site-internet-electricien/" },
+  { label: "Couvreur", to: "/site-internet-couvreur/" },
+  { label: "Maçon", to: "/site-internet-macon/" },
+  { label: "Peintre", to: "/site-internet-peintre/" },
+  { label: "Menuisier", to: "/site-internet-menuisier/" },
+  { label: "Paysagiste", to: "/site-internet-paysagiste/" },
+  { label: "Carreleur", to: "/site-internet-carreleur/" },
+  { label: "Chauffagiste", to: "/site-internet-chauffagiste/" },
+  { label: "Serrurier", to: "/site-internet-serrurier/" },
+  { label: "En Essonne", to: "/essonne/" },
+];
+
 const COLONNES: { titre: string; entrees: Entree[] }[] = [
   {
     titre: "Produit",
@@ -230,6 +250,18 @@ export function SiteFooter() {
             </nav>
           ))}
         </div>
+
+        <nav
+          aria-label="Site internet par métier"
+          className="mt-12 flex flex-wrap items-center gap-x-5 border-t border-black/[0.06] pt-6 text-base text-black/50 sm:gap-y-1 sm:text-sm"
+        >
+          <span className="font-medium text-black/70">Site internet par métier :</span>
+          {METIERS.map((m) => (
+            <Link key={m.to} to={m.to} className="inline-flex min-h-11 items-center transition hover:text-black sm:min-h-0">
+              {m.label}
+            </Link>
+          ))}
+        </nav>
 
         <nav
           aria-label="Aussi chez Sitaly"

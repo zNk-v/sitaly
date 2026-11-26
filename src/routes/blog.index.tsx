@@ -229,6 +229,7 @@ function BlogIndex() {
 
         {/* La une : un grand article sombre et deux autres. */}
         <section className="px-4 pb-20 sm:px-6">
+          <h2 className="sr-only">À la une</h2>
           <div className="mx-auto grid max-w-6xl gap-4 lg:grid-cols-3">
             <CarteArticle post={uneSelection[0]} sombre className="min-h-[22rem] lg:col-span-2" />
             <div className="grid gap-4">
