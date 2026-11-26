@@ -13,6 +13,11 @@ MSG="${1:-Déploiement Sitaly}"
 
 echo "==> 1/5 Build"
 cd "$SRC"
+# Mise à niveau du code avant de construire (consigne de Teddy du 26/11/2026) :
+# d'autres sessions poussent aussi sur la branche, et un build sans leurs
+# commits remettrait en ligne une version qui les efface. --ff-only arrête la
+# mise en ligne si la copie locale a divergé, plutôt que de fusionner en douce.
+git pull -q --ff-only origin "$(git branch --show-current)"
 npm run build
 
 echo "==> 2/5 Copie du build vers le repo de mise en ligne"
